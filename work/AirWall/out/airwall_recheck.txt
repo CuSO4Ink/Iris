@@ -1,0 +1,45 @@
+Blueprint 简化摘要：共 24 个节点。
+执行入口：N1(K2Node_FunctionEntry)
+执行路径概览：
+- N1[K2Node_FunctionEntry] -> N2[K2Node_FunctionResult]
+节点细节（截断展示）：
+- N1: K2Node_FunctionEntry
+    outputs: StartP:real => N3.Distance, N5.Distance, N11.B, N14.Distance, N18.Distance, N23.A; EndP:real => N4.Distance, N6.Distance, N11.A, N15.Distance, N21.Distance, N24.A
+- N2: K2Node_FunctionResult
+- N3: Call SplineComponent.GetLocationAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N2.SP
+- N4: Call SplineComponent.GetLocationAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N2.EP
+- N5: Call SplineComponent.GetTangentAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N7.A, N12.B, N16.Tangent
+- N6: Call SplineComponent.GetTangentAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N8.A, N13.B, N17.Tangent
+- N7: Call KismetMathLibrary.Normal
+    outputs: ReturnValue:Vector => N9.A
+- N8: Call KismetMathLibrary.Normal
+    outputs: ReturnValue:Vector => N10.A
+- N9: K2Node_PromotableOperator
+    outputs: ReturnValue:Vector => N12.A
+- N10: K2Node_PromotableOperator
+    outputs: ReturnValue:Vector => N13.A
+- N11: K2Node_PromotableOperator
+    outputs: ReturnValue:real => N9.B, N10.B
+- N12: Call KismetMathLibrary.SelectVector
+    outputs: ReturnValue:Vector => N2.ST
+- N13: Call KismetMathLibrary.SelectVector
+    outputs: ReturnValue:Vector => N2.ET
+- N14: Call SplineComponent.GetRightVectorAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N16.Right
+- N15: Call SplineComponent.GetRightVectorAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N17.Right
+- N16: Call CalculateRoll
+    outputs: ReturnValue:real => N2.SR
+- N17: Call CalculateRoll
+    outputs: ReturnValue:real => N2.ER
+- N18: Call SplineComponent.GetScaleAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N2.SS
+- N19: Var GET FixGenerateDistance
+    outputs: FixGenerateDistance:bool => N12.bPickA, N13.bPickA
+- N20: Var GET Spline
+    outputs: Spline:SplineComponent => N5.self, N6.self, N3.self, N4.self, N14.self, N15.self, N18.self, N21.self, N22.self
+... 其余 4 个节点已省略。

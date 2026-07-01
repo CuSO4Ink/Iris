@@ -1,0 +1,562 @@
+{
+  "graph": {
+    "node_count": 24,
+    "entry_exec_nodes": [
+      "N1"
+    ],
+    "nodes": [
+      {
+        "id": "N1",
+        "class": "K2Node_FunctionEntry",
+        "title": "K2Node_FunctionEntry",
+        "target": {
+          "type": "node",
+          "name": "K2Node_FunctionEntry"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "StartP",
+            "type": "real",
+            "targets": [
+              "N3.Distance",
+              "N5.Distance",
+              "N11.B",
+              "N14.Distance",
+              "N18.Distance",
+              "N23.A"
+            ]
+          },
+          {
+            "name": "EndP",
+            "type": "real",
+            "targets": [
+              "N4.Distance",
+              "N6.Distance",
+              "N11.A",
+              "N15.Distance",
+              "N21.Distance",
+              "N24.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": [
+          "N2.execute"
+        ]
+      },
+      {
+        "id": "N2",
+        "class": "K2Node_FunctionResult",
+        "title": "K2Node_FunctionResult",
+        "target": {
+          "type": "node",
+          "name": "K2Node_FunctionResult"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N3",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetLocationAtDistanceAlongSpline",
+        "target": {
+          "type": "function",
+          "name": "GetLocationAtDistanceAlongSpline",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N2.SP"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N4",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetLocationAtDistanceAlongSpline",
+        "target": {
+          "type": "function",
+          "name": "GetLocationAtDistanceAlongSpline",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N2.EP"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N5",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetTangentAtDistanceAlongSpline",
+        "target": {
+          "type": "function",
+          "name": "GetTangentAtDistanceAlongSpline",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N7.A",
+              "N12.B",
+              "N16.Tangent"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N6",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetTangentAtDistanceAlongSpline",
+        "target": {
+          "type": "function",
+          "name": "GetTangentAtDistanceAlongSpline",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N8.A",
+              "N13.B",
+              "N17.Tangent"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N7",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.Normal",
+        "target": {
+          "type": "function",
+          "name": "Normal",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N9.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N8",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.Normal",
+        "target": {
+          "type": "function",
+          "name": "Normal",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N10.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N9",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N12.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N10",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N13.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N11",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N9.B",
+              "N10.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N12",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.SelectVector",
+        "target": {
+          "type": "function",
+          "name": "SelectVector",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N2.ST"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N13",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.SelectVector",
+        "target": {
+          "type": "function",
+          "name": "SelectVector",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N2.ET"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N14",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetRightVectorAtDistanceAlongSpline",
+        "target": {
+          "type": "function",
+          "name": "GetRightVectorAtDistanceAlongSpline",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N16.Right"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N15",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetRightVectorAtDistanceAlongSpline",
+        "target": {
+          "type": "function",
+          "name": "GetRightVectorAtDistanceAlongSpline",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N17.Right"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N16",
+        "class": "K2Node_CallFunction",
+        "title": "CalculateRoll",
+        "target": {
+          "type": "function",
+          "name": "CalculateRoll"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N2.SR"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N17",
+        "class": "K2Node_CallFunction",
+        "title": "CalculateRoll",
+        "target": {
+          "type": "function",
+          "name": "CalculateRoll"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N2.ER"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N18",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetScaleAtDistanceAlongSpline",
+        "target": {
+          "type": "function",
+          "name": "GetScaleAtDistanceAlongSpline",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N2.SS"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N19",
+        "class": "K2Node_VariableGet",
+        "title": "FixGenerateDistance",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "FixGenerateDistance"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "FixGenerateDistance",
+            "type": "bool",
+            "targets": [
+              "N12.bPickA",
+              "N13.bPickA"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N20",
+        "class": "K2Node_VariableGet",
+        "title": "Spline",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "Spline"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Spline",
+            "type": "SplineComponent",
+            "targets": [
+              "N5.self",
+              "N6.self",
+              "N3.self",
+              "N4.self",
+              "N14.self",
+              "N15.self",
+              "N18.self",
+              "N21.self",
+              "N22.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N21",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetScaleAtDistanceAlongSpline",
+        "target": {
+          "type": "function",
+          "name": "GetScaleAtDistanceAlongSpline",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N2.ES"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N22",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetSplineLength",
+        "target": {
+          "type": "function",
+          "name": "GetSplineLength",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N23.B",
+              "N24.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N23",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N2.STime"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N24",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N2.ETime"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      }
+    ],
+    "exec_edges": [
+      {
+        "from": "N1",
+        "to": "N2"
+      }
+    ]
+  },
+  "summary": "Blueprint 简化摘要：共 24 个节点。\n执行入口：N1(K2Node_FunctionEntry)\n执行路径概览：\n- N1[K2Node_FunctionEntry] -> N2[K2Node_FunctionResult]\n节点细节（截断展示）：\n- N1: K2Node_FunctionEntry\n    outputs: StartP:real => N3.Distance, N5.Distance, N11.B, N14.Distance, N18.Distance, N23.A; EndP:real => N4.Distance, N6.Distance, N11.A, N15.Distance, N21.Distance, N24.A\n- N2: K2Node_FunctionResult\n- N3: Call SplineComponent.GetLocationAtDistanceAlongSpline\n    outputs: ReturnValue:Vector => N2.SP\n- N4: Call SplineComponent.GetLocationAtDistanceAlongSpline\n    outputs: ReturnValue:Vector => N2.EP\n- N5: Call SplineComponent.GetTangentAtDistanceAlongSpline\n    outputs: ReturnValue:Vector => N7.A, N12.B, N16.Tangent\n- N6: Call SplineComponent.GetTangentAtDistanceAlongSpline\n    outputs: ReturnValue:Vector => N8.A, N13.B, N17.Tangent\n- N7: Call KismetMathLibrary.Normal\n    outputs: ReturnValue:Vector => N9.A\n- N8: Call KismetMathLibrary.Normal\n    outputs: ReturnValue:Vector => N10.A\n- N9: K2Node_PromotableOperator\n    outputs: ReturnValue:Vector => N12.A\n- N10: K2Node_PromotableOperator\n    outputs: ReturnValue:Vector => N13.A\n- N11: K2Node_PromotableOperator\n    outputs: ReturnValue:real => N9.B, N10.B\n- N12: Call KismetMathLibrary.SelectVector\n    outputs: ReturnValue:Vector => N2.ST\n- N13: Call KismetMathLibrary.SelectVector\n    outputs: ReturnValue:Vector => N2.ET\n- N14: Call SplineComponent.GetRightVectorAtDistanceAlongSpline\n    outputs: ReturnValue:Vector => N16.Right\n- N15: Call SplineComponent.GetRightVectorAtDistanceAlongSpline\n    outputs: ReturnValue:Vector => N17.Right\n- N16: Call CalculateRoll\n    outputs: ReturnValue:real => N2.SR\n- N17: Call CalculateRoll\n    outputs: ReturnValue:real => N2.ER\n- N18: Call SplineComponent.GetScaleAtDistanceAlongSpline\n    outputs: ReturnValue:Vector => N2.SS\n- N19: Var GET FixGenerateDistance\n    outputs: FixGenerateDistance:bool => N12.bPickA, N13.bPickA\n- N20: Var GET Spline\n    outputs: Spline:SplineComponent => N5.self, N6.self, N3.self, N4.self, N14.self, N15.self, N18.self, N21.self, N22.self\n... 其余 4 个节点已省略。"
+}

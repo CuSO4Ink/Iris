@@ -1,0 +1,49 @@
+Blueprint 简化摘要：共 87 个节点。
+执行入口：N12(Var SET P0), N13(Var SET P1), N18(K2Node_AddComponent), N2(Macro ForEachLoop), N25(K2Node_CallArrayFunction), N27(Call BoxComponent.SetBoxExtent), N36(Macro WhileLoop), N4(K2Node_CallArrayFunction), N40(Var SET guard), N45(Var SET step), N47(Macro WhileLoop), N48(Var SET SplineLength), N51(Var SET D1), N72(Var SET step), N76(Call KismetSystemLibrary.PrintString), N85(K2Node_AddDelegate)
+执行路径概览：
+- N12[Var SET P0] -> N13[Var SET P1] -> N72[Var SET step] -> N84[Var SET guardd]
+- N13[Var SET P1] -> N72[Var SET step] -> N84[Var SET guardd]
+- N18[K2Node_AddComponent] -> N85[K2Node_AddDelegate] -> N27[Call BoxComponent.SetBoxExtent] -> N25[K2Node_CallArrayFunction] -> N87[Var SET D]
+- N2[Macro ForEachLoop] -> {N3, N4}
+- N25[K2Node_CallArrayFunction] -> N87[Var SET D]
+- N27[Call BoxComponent.SetBoxExtent] -> N25[K2Node_CallArrayFunction] -> N87[Var SET D]
+节点细节（截断展示）：
+- N1: Var GET CollsionBoxes
+    outputs: CollsionBoxes:BoxComponent[] => N2.Array, N4.TargetArray
+- N2: Macro ForEachLoop
+    outputs: Array Element:BoxComponent => N3.self; Array Index:int
+- N3: Call ActorComponent.K2_DestroyComponent
+- N4: K2Node_CallArrayFunction
+- N5: Call SplineComponent.GetSplineLength
+    outputs: ReturnValue:real => N48.SplineLength
+- N6: K2Node_CommutativeAssociativeBinaryOperator
+    outputs: ReturnValue:real => N51.D1
+- N7: Call SplineComponent.GetLocationAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N12.P0
+- N8: Call SplineComponent.GetLocationAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N13.P1
+- N9: Var GET Spline
+    outputs: Spline:SplineComponent => N5.self
+- N10: Var GET Spline
+    outputs: Spline:SplineComponent => N7.self
+- N11: Var GET Spline
+    outputs: Spline:SplineComponent => N8.self
+- N12: Var SET P0
+    outputs: Output_Get:Vector
+- N13: Var SET P1
+    outputs: Output_Get:Vector
+- N14: K2Node_PromotableOperator
+    outputs: ReturnValue:Vector => N15.A
+- N15: K2Node_PromotableOperator
+    outputs: ReturnValue:Vector => N20.Start, N19.Location
+- N16: K2Node_PromotableOperator
+    outputs: ReturnValue:Vector => N17.A
+- N17: Call KismetMathLibrary.VSize
+    outputs: ReturnValue:real => N33.A
+- N18: K2Node_AddComponent
+    outputs: ReturnValue:BoxComponent => N25.NewItem, N27.self, N85.self
+- N19: Call KismetMathLibrary.MakeTransform
+    outputs: ReturnValue:Transform => N18.RelativeTransform
+- N20: Call KismetMathLibrary.FindLookAtRotation
+    outputs: ReturnValue:Rotator => N19.Rotation
+... 其余 67 个节点已省略。

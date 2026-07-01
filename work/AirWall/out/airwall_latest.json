@@ -1,0 +1,1080 @@
+{
+  "graph": {
+    "node_count": 44,
+    "entry_exec_nodes": [
+      "N1",
+      "N13",
+      "N14",
+      "N15",
+      "N16",
+      "N19",
+      "N20",
+      "N21",
+      "N25",
+      "N27",
+      "N28",
+      "N29",
+      "N31",
+      "N6",
+      "N8",
+      "N9"
+    ],
+    "nodes": [
+      {
+        "id": "N1",
+        "class": "K2Node_FunctionEntry",
+        "title": "K2Node_FunctionEntry",
+        "target": {
+          "type": "node",
+          "name": "K2Node_FunctionEntry"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "StartP",
+            "type": "real",
+            "targets": [
+              "N40.A",
+              "N37.StartP"
+            ]
+          },
+          {
+            "name": "EndP",
+            "type": "real",
+            "targets": [
+              "N38.A",
+              "N37.EndP"
+            ]
+          },
+          {
+            "name": "StartI",
+            "type": "int"
+          },
+          {
+            "name": "EndI",
+            "type": "int"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": [
+          "N9.execute"
+        ]
+      },
+      {
+        "id": "N2",
+        "class": "K2Node_CallFunction",
+        "title": "PrimitiveComponent.SetDefaultCustomPrimitiveDataVector2",
+        "target": {
+          "type": "function",
+          "name": "SetDefaultCustomPrimitiveDataVector2",
+          "owner": "PrimitiveComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N3",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.MakeVector2D",
+        "target": {
+          "type": "function",
+          "name": "MakeVector2D",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector2D",
+            "targets": [
+              "N2.Value"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N4",
+        "class": "K2Node_CallFunction",
+        "title": "PrimitiveComponent.SetMaterial",
+        "target": {
+          "type": "function",
+          "name": "SetMaterial",
+          "owner": "PrimitiveComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N5",
+        "class": "K2Node_VariableGet",
+        "title": "MID",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "MID"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "MID",
+            "type": "MaterialInstanceDynamic",
+            "targets": [
+              "N4.Material"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N6",
+        "class": "K2Node_ExecutionSequence",
+        "title": "K2Node_ExecutionSequence",
+        "target": {
+          "type": "node",
+          "name": "K2Node_ExecutionSequence"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N8.execute",
+          "N4.execute"
+        ]
+      },
+      {
+        "id": "N7",
+        "class": "K2Node_VariableGet",
+        "title": "NoTiling",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "NoTiling"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "NoTiling",
+            "type": "bool",
+            "targets": [
+              "N8.Condition"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N8",
+        "class": "K2Node_IfThenElse",
+        "title": "Branch",
+        "target": {
+          "type": "flow",
+          "name": "Branch"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N2.execute"
+        ]
+      },
+      {
+        "id": "N9",
+        "class": "K2Node_AddComponent",
+        "title": "K2Node_AddComponent",
+        "target": {
+          "type": "node",
+          "name": "K2Node_AddComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "SplineMeshComponent",
+            "targets": [
+              "N21.SPM"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": [
+          "N21.execute"
+        ]
+      },
+      {
+        "id": "N10",
+        "class": "K2Node_VariableGet",
+        "title": "GeneratedMesh",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "GeneratedMesh"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "GeneratedMesh",
+            "type": "StaticMeshComponent",
+            "targets": [
+              "N4.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N11",
+        "class": "K2Node_VariableGet",
+        "title": "GeneratedMesh",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "GeneratedMesh"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "GeneratedMesh",
+            "type": "StaticMeshComponent"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N13",
+        "class": "K2Node_CallFunction",
+        "title": "SplineMeshComponent.SetStartTangent",
+        "target": {
+          "type": "function",
+          "name": "SetStartTangent",
+          "owner": "SplineMeshComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N14.execute"
+        ]
+      },
+      {
+        "id": "N14",
+        "class": "K2Node_CallFunction",
+        "title": "SplineMeshComponent.SetEndTangent",
+        "target": {
+          "type": "function",
+          "name": "SetEndTangent",
+          "owner": "SplineMeshComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N19.execute"
+        ]
+      },
+      {
+        "id": "N15",
+        "class": "K2Node_VariableSet",
+        "title": "GeneratedMesh",
+        "target": {
+          "type": "variable",
+          "mode": "set",
+          "name": "GeneratedMesh"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Output_Get",
+            "type": "StaticMeshComponent"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": [
+          "N16.execute"
+        ]
+      },
+      {
+        "id": "N16",
+        "class": "K2Node_CallFunction",
+        "title": "StaticMeshComponent.SetStaticMesh",
+        "target": {
+          "type": "function",
+          "name": "SetStaticMesh",
+          "owner": "StaticMeshComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "bool",
+            "default": "false"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": [
+          "N6.execute"
+        ]
+      },
+      {
+        "id": "N17",
+        "class": "K2Node_VariableGet",
+        "title": "GeneratedMesh",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "GeneratedMesh"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "GeneratedMesh",
+            "type": "StaticMeshComponent",
+            "targets": [
+              "N16.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N18",
+        "class": "K2Node_VariableGet",
+        "title": "MeshToGenerate",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "MeshToGenerate"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "MeshToGenerate",
+            "type": "StaticMesh",
+            "targets": [
+              "N16.NewMesh"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N19",
+        "class": "K2Node_CallFunction",
+        "title": "SplineMeshComponent.SetStartPosition",
+        "target": {
+          "type": "function",
+          "name": "SetStartPosition",
+          "owner": "SplineMeshComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N20.execute"
+        ]
+      },
+      {
+        "id": "N20",
+        "class": "K2Node_CallFunction",
+        "title": "SplineMeshComponent.SetEndPosition",
+        "target": {
+          "type": "function",
+          "name": "SetEndPosition",
+          "owner": "SplineMeshComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N27.execute"
+        ]
+      },
+      {
+        "id": "N21",
+        "class": "K2Node_VariableSet",
+        "title": "SPM",
+        "target": {
+          "type": "variable",
+          "mode": "set",
+          "name": "SPM"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Output_Get",
+            "type": "SplineMeshComponent"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": [
+          "N13.execute"
+        ]
+      },
+      {
+        "id": "N22",
+        "class": "K2Node_VariableGet",
+        "title": "SPM",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "SPM"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "SPM",
+            "type": "SplineMeshComponent",
+            "targets": [
+              "N15.GeneratedMesh",
+              "N25.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N23",
+        "class": "K2Node_VariableGet",
+        "title": "SPM",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "SPM"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "SPM",
+            "type": "SplineMeshComponent",
+            "targets": [
+              "N13.self",
+              "N14.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N24",
+        "class": "K2Node_VariableGet",
+        "title": "SPM",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "SPM"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "SPM",
+            "type": "SplineMeshComponent",
+            "targets": [
+              "N20.self",
+              "N19.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N25",
+        "class": "K2Node_CallFunction",
+        "title": "SplineMeshComponent.UpdateMesh",
+        "target": {
+          "type": "function",
+          "name": "UpdateMesh",
+          "owner": "SplineMeshComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N15.execute"
+        ]
+      },
+      {
+        "id": "N26",
+        "class": "K2Node_VariableGet",
+        "title": "SPM",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "SPM"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "SPM",
+            "type": "SplineMeshComponent",
+            "targets": [
+              "N27.self",
+              "N28.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N27",
+        "class": "K2Node_CallFunction",
+        "title": "SplineMeshComponent.SetStartRollDegrees",
+        "target": {
+          "type": "function",
+          "name": "SetStartRollDegrees",
+          "owner": "SplineMeshComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N28.execute"
+        ]
+      },
+      {
+        "id": "N28",
+        "class": "K2Node_CallFunction",
+        "title": "SplineMeshComponent.SetEndRollDegrees",
+        "target": {
+          "type": "function",
+          "name": "SetEndRollDegrees",
+          "owner": "SplineMeshComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N29.execute"
+        ]
+      },
+      {
+        "id": "N29",
+        "class": "K2Node_CallFunction",
+        "title": "SplineMeshComponent.SetStartScale",
+        "target": {
+          "type": "function",
+          "name": "SetStartScale",
+          "owner": "SplineMeshComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N31.execute"
+        ]
+      },
+      {
+        "id": "N30",
+        "class": "K2Node_VariableGet",
+        "title": "SPM",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "SPM"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "SPM",
+            "type": "SplineMeshComponent",
+            "targets": [
+              "N29.self",
+              "N31.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N31",
+        "class": "K2Node_CallFunction",
+        "title": "SplineMeshComponent.SetEndScale",
+        "target": {
+          "type": "function",
+          "name": "SetEndScale",
+          "owner": "SplineMeshComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N25.execute"
+        ]
+      },
+      {
+        "id": "N32",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.BreakVector",
+        "target": {
+          "type": "function",
+          "name": "BreakVector",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "X",
+            "type": "real",
+            "default": "0.0"
+          },
+          {
+            "name": "Y",
+            "type": "real",
+            "targets": [
+              "N33.X"
+            ]
+          },
+          {
+            "name": "Z",
+            "type": "real",
+            "targets": [
+              "N33.Y"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N33",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.MakeVector2D",
+        "target": {
+          "type": "function",
+          "name": "MakeVector2D",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector2D",
+            "targets": [
+              "N29.StartScale"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N34",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.BreakVector",
+        "target": {
+          "type": "function",
+          "name": "BreakVector",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "X",
+            "type": "real",
+            "default": "0.0"
+          },
+          {
+            "name": "Y",
+            "type": "real",
+            "targets": [
+              "N35.X"
+            ]
+          },
+          {
+            "name": "Z",
+            "type": "real",
+            "targets": [
+              "N35.Y"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N35",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.MakeVector2D",
+        "target": {
+          "type": "function",
+          "name": "MakeVector2D",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector2D",
+            "targets": [
+              "N31.EndScale"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N36",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.MakeTransform",
+        "target": {
+          "type": "function",
+          "name": "MakeTransform",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Transform",
+            "targets": [
+              "N9.RelativeTransform"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N37",
+        "class": "K2Node_CallFunction",
+        "title": "GetFullSplineData",
+        "target": {
+          "type": "function",
+          "name": "GetFullSplineData"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ST",
+            "type": "Vector",
+            "targets": [
+              "N13.StartTangent"
+            ]
+          },
+          {
+            "name": "ET",
+            "type": "Vector",
+            "targets": [
+              "N14.EndTangent"
+            ]
+          },
+          {
+            "name": "SP",
+            "type": "Vector",
+            "targets": [
+              "N19.StartPos"
+            ]
+          },
+          {
+            "name": "EP",
+            "type": "Vector",
+            "targets": [
+              "N20.EndPos"
+            ]
+          },
+          {
+            "name": "SR",
+            "type": "real",
+            "targets": [
+              "N27.StartRollDegrees"
+            ]
+          },
+          {
+            "name": "ER",
+            "type": "real",
+            "targets": [
+              "N28.EndRollDegrees"
+            ]
+          },
+          {
+            "name": "SS",
+            "type": "Vector",
+            "targets": [
+              "N32.InVec"
+            ]
+          },
+          {
+            "name": "ES",
+            "type": "Vector",
+            "targets": [
+              "N34.InVec"
+            ]
+          },
+          {
+            "name": "STime",
+            "type": "real",
+            "default": "0.0"
+          },
+          {
+            "name": "ETime",
+            "type": "real",
+            "default": "0.0"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N38",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N41.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N39",
+        "class": "K2Node_VariableGet",
+        "title": "UVTiling",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "UVTiling"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "UVTiling",
+            "type": "real",
+            "targets": [
+              "N42.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N40",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N3.X"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N41",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N3.Y"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N42",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.SelectFloat",
+        "target": {
+          "type": "function",
+          "name": "SelectFloat",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N38.B",
+              "N40.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N43",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetSplineLength",
+        "target": {
+          "type": "function",
+          "name": "GetSplineLength",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N42.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N44",
+        "class": "K2Node_VariableGet",
+        "title": "FullUV",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "FullUV"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "FullUV",
+            "type": "bool",
+            "targets": [
+              "N42.bPickA"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N45",
+        "class": "K2Node_VariableGet",
+        "title": "Spline",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "Spline"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Spline",
+            "type": "SplineComponent",
+            "targets": [
+              "N43.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      }
+    ],
+    "exec_edges": [
+      {
+        "from": "N1",
+        "to": "N9"
+      },
+      {
+        "from": "N13",
+        "to": "N14"
+      },
+      {
+        "from": "N14",
+        "to": "N19"
+      },
+      {
+        "from": "N15",
+        "to": "N16"
+      },
+      {
+        "from": "N16",
+        "to": "N6"
+      },
+      {
+        "from": "N19",
+        "to": "N20"
+      },
+      {
+        "from": "N20",
+        "to": "N27"
+      },
+      {
+        "from": "N21",
+        "to": "N13"
+      },
+      {
+        "from": "N25",
+        "to": "N15"
+      },
+      {
+        "from": "N27",
+        "to": "N28"
+      },
+      {
+        "from": "N28",
+        "to": "N29"
+      },
+      {
+        "from": "N29",
+        "to": "N31"
+      },
+      {
+        "from": "N31",
+        "to": "N25"
+      },
+      {
+        "from": "N6",
+        "to": "N4"
+      },
+      {
+        "from": "N6",
+        "to": "N8"
+      },
+      {
+        "from": "N8",
+        "to": "N2"
+      },
+      {
+        "from": "N9",
+        "to": "N21"
+      }
+    ]
+  },
+  "summary": "Blueprint 简化摘要：共 44 个节点。\n执行入口：N1(K2Node_FunctionEntry), N13(Call SplineMeshComponent.SetStartTangent), N14(Call SplineMeshComponent.SetEndTangent), N15(Var SET GeneratedMesh), N16(Call StaticMeshComponent.SetStaticMesh), N19(Call SplineMeshComponent.SetStartPosition), N20(Call SplineMeshComponent.SetEndPosition), N21(Var SET SPM), N25(Call SplineMeshComponent.UpdateMesh), N27(Call SplineMeshComponent.SetStartRollDegrees), N28(Call SplineMeshComponent.SetEndRollDegrees), N29(Call SplineMeshComponent.SetStartScale), N31(Call SplineMeshComponent.SetEndScale), N6(K2Node_ExecutionSequence), N8(Branch), N9(K2Node_AddComponent)\n执行路径概览：\n- N1[K2Node_FunctionEntry] -> N9[K2Node_AddComponent] -> N21[Var SET SPM] -> N13[Call SplineMeshComponent.SetStartTangent] -> N14[Call SplineMeshComponent.SetEndTangent] -> N19[Call SplineMeshComponent.SetStartPosition] -> N20[Call SplineMeshComponent.SetEndPosition] -> N27[Call SplineMeshComponent.SetStartRollDegrees] -> N28[Call SplineMeshComponent.SetEndRollDegrees] -> N29[Call SplineMeshComponent.SetStartScale] ->\n- N13[Call SplineMeshComponent.SetStartTangent] -> N14[Call SplineMeshComponent.SetEndTangent] -> N19[Call SplineMeshComponent.SetStartPosition] -> N20[Call SplineMeshComponent.SetEndPosition] -> N27[Call SplineMeshComponent.SetStartRollDegrees] -> N28[Call SplineMeshComponent.SetEndRollDegrees] -> N29[Call SplineMeshComponent.SetStartScale] -> N31[Call SplineMeshComponent.SetEndScale] -> N25[Call SplineMeshComponent.UpdateMesh] -> N15[Var SET GeneratedMesh] ->\n- N14[Call SplineMeshComponent.SetEndTangent] -> N19[Call SplineMeshComponent.SetStartPosition] -> N20[Call SplineMeshComponent.SetEndPosition] -> N27[Call SplineMeshComponent.SetStartRollDegrees] -> N28[Call SplineMeshComponent.SetEndRollDegrees] -> N29[Call SplineMeshComponent.SetStartScale] -> N31[Call SplineMeshComponent.SetEndScale] -> N25[Call SplineMeshComponent.UpdateMesh] -> N15[Var SET GeneratedMesh] -> N16[Call StaticMeshComponent.SetStaticMesh] ->\n- N15[Var SET GeneratedMesh] -> N16[Call StaticMeshComponent.SetStaticMesh] -> N6[K2Node_ExecutionSequence] -> {N8, N4}\n- N16[Call StaticMeshComponent.SetStaticMesh] -> N6[K2Node_ExecutionSequence] -> {N8, N4}\n- N19[Call SplineMeshComponent.SetStartPosition] -> N20[Call SplineMeshComponent.SetEndPosition] -> N27[Call SplineMeshComponent.SetStartRollDegrees] -> N28[Call SplineMeshComponent.SetEndRollDegrees] -> N29[Call SplineMeshComponent.SetStartScale] -> N31[Call SplineMeshComponent.SetEndScale] -> N25[Call SplineMeshComponent.UpdateMesh] -> N15[Var SET GeneratedMesh] -> N16[Call StaticMeshComponent.SetStaticMesh] -> N6[K2Node_ExecutionSequence] -> {N8, N4}\n节点细节（截断展示）：\n- N1: K2Node_FunctionEntry\n    outputs: StartP:real => N40.A, N37.StartP; EndP:real => N38.A, N37.EndP; StartI:int; EndI:int\n- N2: Call PrimitiveComponent.SetDefaultCustomPrimitiveDataVector2\n- N3: Call KismetMathLibrary.MakeVector2D\n    outputs: ReturnValue:Vector2D => N2.Value\n- N4: Call PrimitiveComponent.SetMaterial\n- N5: Var GET MID\n    outputs: MID:MaterialInstanceDynamic => N4.Material\n- N6: K2Node_ExecutionSequence\n- N7: Var GET NoTiling\n    outputs: NoTiling:bool => N8.Condition\n- N8: Branch\n- N9: K2Node_AddComponent\n    outputs: ReturnValue:SplineMeshComponent => N21.SPM\n- N10: Var GET GeneratedMesh\n    outputs: GeneratedMesh:StaticMeshComponent => N4.self\n- N11: Var GET GeneratedMesh\n    outputs: GeneratedMesh:StaticMeshComponent\n- N13: Call SplineMeshComponent.SetStartTangent\n- N14: Call SplineMeshComponent.SetEndTangent\n- N15: Var SET GeneratedMesh\n    outputs: Output_Get:StaticMeshComponent\n- N16: Call StaticMeshComponent.SetStaticMesh\n    outputs: ReturnValue:bool\n- N17: Var GET GeneratedMesh\n    outputs: GeneratedMesh:StaticMeshComponent => N16.self\n- N18: Var GET MeshToGenerate\n    outputs: MeshToGenerate:StaticMesh => N16.NewMesh\n- N19: Call SplineMeshComponent.SetStartPosition\n- N20: Call SplineMeshComponent.SetEndPosition\n- N21: Var SET SPM\n    outputs: Output_Get:SplineMeshComponent\n... 其余 24 个节点已省略。"
+}

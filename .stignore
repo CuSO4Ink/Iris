@@ -1,0 +1,27 @@
+// Syncthing 排除规则 — WorkBuddy Vault
+// 不会同步到其他设备的内容放这里
+
+// WorkBuddy 本地数据（另一台设备有自己的）
+.workbuddy/
+
+// 会话临时文件
+.session_tmps/
+
+// WorkBuddy 会话输出产物（仅本机有效，另一台有自己的）
+output/
+
+// 脱敏方案配置（会话级）
+.box-desens/
+
+// Obsidian 工作区状态（每台设备不同）
+.obsidian/workspace.json
+
+// 缓存和编译产物
+__pycache__/
+*.pyc
+node_modules/
+
+// 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini

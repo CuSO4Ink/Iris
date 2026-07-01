@@ -1,0 +1,41 @@
+Blueprint 简化摘要：共 18 个节点。
+执行入口：N1(Event OnWallHit), N15(Macro ForEachLoop), N16(Call MaterialInstanceDynamic.SetVectorParameterValue), N4(Call MaterialInstanceDynamic.SetVectorParameterValue), N7(Call MaterialInstanceDynamic.SetScalarParameterValue), N8(Branch)
+执行路径概览：
+- N1[Event OnWallHit] -> N8[Branch] -> N15[Macro ForEachLoop] -> {N16, N4}
+- N15[Macro ForEachLoop] -> {N16, N4}
+- N16[Call MaterialInstanceDynamic.SetVectorParameterValue] -> N17[Call MaterialInstanceDynamic.SetScalarParameterValue]
+- N4[Call MaterialInstanceDynamic.SetVectorParameterValue] -> N7[Call MaterialInstanceDynamic.SetScalarParameterValue] -> N9[Var SET LastRippleTime]
+- N7[Call MaterialInstanceDynamic.SetScalarParameterValue] -> N9[Var SET LastRippleTime]
+- N8[Branch] -> N15[Macro ForEachLoop] -> {N16, N4}
+节点细节（截断展示）：
+- N1: Event OnWallHit
+    outputs: OutputDelegate:delegate; HitComponent:PrimitiveComponent; OtherActor:Actor; OtherComp:PrimitiveComponent; NormalImpulse:Vector; Hit:HitResult& => N2.Hit
+- N2: Call GameplayStatics.BreakHitResult
+    outputs: bBlockingHit:bool; bInitialOverlap:bool; Time:real; Distance:real; Location:Vector; ImpactPoint:Vector => N6.InVec
+- N3: Var GET FallbackMID
+    outputs: FallbackMID:MaterialInstanceDynamic => N4.self, N7.self
+- N4: Call MaterialInstanceDynamic.SetVectorParameterValue
+- N5: K2Node_MakeStruct
+    outputs: LinearColor:LinearColor => N4.Value, N16.Value
+- N6: Call KismetMathLibrary.BreakVector
+    outputs: X:real => N5.R; Y:real => N5.G; Z:real => N5.B
+- N7: Call MaterialInstanceDynamic.SetScalarParameterValue
+- N8: Branch
+- N9: Var SET LastRippleTime
+    outputs: Output_Get:real
+- N10: Var GET RippleDuration
+    outputs: RippleDuration:real => N12.B
+- N11: Var GET LastRippleTime
+    outputs: LastRippleTime:real => N12.A
+- N12: K2Node_PromotableOperator
+    outputs: ReturnValue:real => N13.B
+- N13: K2Node_PromotableOperator
+    outputs: ReturnValue:bool => N8.Condition
+- N14: Call KismetSystemLibrary.GetGameTimeInSeconds
+    outputs: ReturnValue:real => N7.Value, N9.LastRippleTime, N13.A, N17.Value
+- N15: Macro ForEachLoop
+    outputs: Array Element:MaterialInstanceDynamic => N16.self, N17.self; Array Index:int
+- N16: Call MaterialInstanceDynamic.SetVectorParameterValue
+- N17: Call MaterialInstanceDynamic.SetScalarParameterValue
+- N18: Var GET VisualLayerMIDs
+    outputs: VisualLayerMIDs:MaterialInstanceDynamic[] => N15.Array

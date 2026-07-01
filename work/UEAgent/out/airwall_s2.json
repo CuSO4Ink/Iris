@@ -1,0 +1,916 @@
+{
+  "graph": {
+    "node_count": 41,
+    "entry_exec_nodes": [
+      "N2",
+      "N23",
+      "N34",
+      "N37",
+      "N4",
+      "N40"
+    ],
+    "nodes": [
+      {
+        "id": "N1",
+        "class": "K2Node_VariableGet",
+        "title": "CollsionBoxes",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "CollsionBoxes"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "CollsionBoxes",
+            "type": "BoxComponent[]",
+            "targets": [
+              "N2.Array",
+              "N4.TargetArray",
+              "N38.TargetArray"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N2",
+        "class": "K2Node_MacroInstance",
+        "title": "ForEachLoop",
+        "target": {
+          "type": "macro",
+          "name": "ForEachLoop"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Array Element",
+            "type": "BoxComponent",
+            "targets": [
+              "N3.self"
+            ]
+          },
+          {
+            "name": "Array Index",
+            "type": "int"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": [
+          "N3.execute",
+          "N4.execute"
+        ]
+      },
+      {
+        "id": "N3",
+        "class": "K2Node_CallFunction",
+        "title": "ActorComponent.K2_DestroyComponent",
+        "target": {
+          "type": "function",
+          "name": "K2_DestroyComponent",
+          "owner": "ActorComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N4",
+        "class": "K2Node_CallArrayFunction",
+        "title": "K2Node_CallArrayFunction",
+        "target": {
+          "type": "node",
+          "name": "K2Node_CallArrayFunction"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N9.execute"
+        ]
+      },
+      {
+        "id": "N5",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetSplineLength",
+        "target": {
+          "type": "function",
+          "name": "GetSplineLength",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N6.A",
+              "N16.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N6",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N8.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N7",
+        "class": "K2Node_VariableGet",
+        "title": "SegmentLength",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "SegmentLength"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "SegmentLength",
+            "type": "real",
+            "targets": [
+              "N6.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N8",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.FCeil",
+        "target": {
+          "type": "function",
+          "name": "FCeil",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "int",
+            "targets": [
+              "N10.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N9",
+        "class": "K2Node_MacroInstance",
+        "title": "ForLoop",
+        "target": {
+          "type": "macro",
+          "name": "ForLoop"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Index",
+            "type": "int",
+            "targets": [
+              "N11.A",
+              "N13.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N10",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "int",
+            "targets": [
+              "N9.LastIndex"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N11",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N17.Distance"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N12",
+        "class": "K2Node_VariableGet",
+        "title": "SegmentLength",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "SegmentLength"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "SegmentLength",
+            "type": "real",
+            "targets": [
+              "N11.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N13",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "int",
+            "targets": [
+              "N14.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N14",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N16.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N15",
+        "class": "K2Node_VariableGet",
+        "title": "SegmentLength",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "SegmentLength"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "SegmentLength",
+            "type": "real",
+            "targets": [
+              "N14.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N16",
+        "class": "K2Node_CommutativeAssociativeBinaryOperator",
+        "title": "K2Node_CommutativeAssociativeBinaryOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_CommutativeAssociativeBinaryOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N18.Distance"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N17",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetLocationAtDistanceAlongSpline",
+        "target": {
+          "type": "function",
+          "name": "GetLocationAtDistanceAlongSpline",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N19.A",
+              "N21.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N18",
+        "class": "K2Node_CallFunction",
+        "title": "SplineComponent.GetLocationAtDistanceAlongSpline",
+        "target": {
+          "type": "function",
+          "name": "GetLocationAtDistanceAlongSpline",
+          "owner": "SplineComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N19.B",
+              "N21.A",
+              "N25.Target"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N19",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N20.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N20",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N25.Start",
+              "N24.Location"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N21",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N22.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N22",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.VSize",
+        "target": {
+          "type": "function",
+          "name": "VSize",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N36.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N23",
+        "class": "K2Node_AddComponent",
+        "title": "K2Node_AddComponent",
+        "target": {
+          "type": "node",
+          "name": "K2Node_AddComponent"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "BoxComponent",
+            "targets": [
+              "N29.NewItem",
+              "N34.self",
+              "N40.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": [
+          "N40.execute"
+        ]
+      },
+      {
+        "id": "N24",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.MakeTransform",
+        "target": {
+          "type": "function",
+          "name": "MakeTransform",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Transform",
+            "targets": [
+              "N23.RelativeTransform"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N25",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.FindLookAtRotation",
+        "target": {
+          "type": "function",
+          "name": "FindLookAtRotation",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Rotator",
+            "targets": [
+              "N24.Rotation"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N26",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.MakeVector",
+        "target": {
+          "type": "function",
+          "name": "MakeVector",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "Vector",
+            "targets": [
+              "N40.InBoxExtent"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N27",
+        "class": "K2Node_VariableGet",
+        "title": "WallHeight",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "WallHeight"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "WallHeight",
+            "type": "real",
+            "targets": [
+              "N41.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N28",
+        "class": "K2Node_VariableGet",
+        "title": "CollsionBoxes",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "CollsionBoxes"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "CollsionBoxes",
+            "type": "BoxComponent[]",
+            "targets": [
+              "N29.TargetArray"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N29",
+        "class": "K2Node_CallArrayFunction",
+        "title": "K2Node_CallArrayFunction",
+        "target": {
+          "type": "node",
+          "name": "K2Node_CallArrayFunction"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "int",
+            "default": "0"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N31",
+        "class": "K2Node_VariableGet",
+        "title": "Spline",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "Spline"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Spline",
+            "type": "SplineComponent",
+            "targets": [
+              "N5.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N32",
+        "class": "K2Node_VariableGet",
+        "title": "Spline",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "Spline"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Spline",
+            "type": "SplineComponent",
+            "targets": [
+              "N17.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N33",
+        "class": "K2Node_VariableGet",
+        "title": "WallThickness",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "WallThickness"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "WallThickness",
+            "type": "real",
+            "targets": [
+              "N26.Y"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N34",
+        "class": "K2Node_CallFunction",
+        "title": "SceneComponent.SetVisibility",
+        "target": {
+          "type": "function",
+          "name": "SetVisibility",
+          "owner": "SceneComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N29.execute"
+        ]
+      },
+      {
+        "id": "N35",
+        "class": "K2Node_VariableGet",
+        "title": "CollisionVisible",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "CollisionVisible"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "CollisionVisible",
+            "type": "bool",
+            "targets": [
+              "N34.bNewVisibility"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N36",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N26.X"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N37",
+        "class": "K2Node_CallFunction",
+        "title": "KismetSystemLibrary.PrintString",
+        "target": {
+          "type": "function",
+          "name": "PrintString",
+          "owner": "KismetSystemLibrary"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N2.Exec"
+        ]
+      },
+      {
+        "id": "N38",
+        "class": "K2Node_CallArrayFunction",
+        "title": "K2Node_CallArrayFunction",
+        "target": {
+          "type": "node",
+          "name": "K2Node_CallArrayFunction"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "int",
+            "targets": [
+              "N39.InInt"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N39",
+        "class": "K2Node_CallFunction",
+        "title": "KismetStringLibrary.Conv_IntToString",
+        "target": {
+          "type": "function",
+          "name": "Conv_IntToString",
+          "owner": "KismetStringLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "string",
+            "targets": [
+              "N37.InString"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N40",
+        "class": "K2Node_CallFunction",
+        "title": "BoxComponent.SetBoxExtent",
+        "target": {
+          "type": "function",
+          "name": "SetBoxExtent",
+          "owner": "BoxComponent"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N34.execute"
+        ]
+      },
+      {
+        "id": "N41",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N26.Z"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N42",
+        "class": "K2Node_VariableGet",
+        "title": "Spline",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "Spline"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Spline",
+            "type": "SplineComponent",
+            "targets": [
+              "N18.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      }
+    ],
+    "exec_edges": [
+      {
+        "from": "N2",
+        "to": "N3"
+      },
+      {
+        "from": "N2",
+        "to": "N4"
+      },
+      {
+        "from": "N23",
+        "to": "N40"
+      },
+      {
+        "from": "N34",
+        "to": "N29"
+      },
+      {
+        "from": "N37",
+        "to": "N2"
+      },
+      {
+        "from": "N4",
+        "to": "N9"
+      },
+      {
+        "from": "N40",
+        "to": "N34"
+      }
+    ]
+  },
+  "summary": "Blueprint 简化摘要：共 41 个节点。\n执行入口：N2(Macro ForEachLoop), N23(K2Node_AddComponent), N34(Call SceneComponent.SetVisibility), N37(Call KismetSystemLibrary.PrintString), N4(K2Node_CallArrayFunction), N40(Call BoxComponent.SetBoxExtent)\n执行路径概览：\n- N2[Macro ForEachLoop] -> {N3, N4}\n- N23[K2Node_AddComponent] -> N40[Call BoxComponent.SetBoxExtent] -> N34[Call SceneComponent.SetVisibility] -> N29[K2Node_CallArrayFunction]\n- N34[Call SceneComponent.SetVisibility] -> N29[K2Node_CallArrayFunction]\n- N37[Call KismetSystemLibrary.PrintString] -> N2[Macro ForEachLoop] -> {N3, N4}\n- N4[K2Node_CallArrayFunction] -> N9[Macro ForLoop]\n- N40[Call BoxComponent.SetBoxExtent] -> N34[Call SceneComponent.SetVisibility] -> N29[K2Node_CallArrayFunction]\n节点细节（截断展示）：\n- N1: Var GET CollsionBoxes\n    outputs: CollsionBoxes:BoxComponent[] => N2.Array, N4.TargetArray, N38.TargetArray\n- N2: Macro ForEachLoop\n    outputs: Array Element:BoxComponent => N3.self; Array Index:int\n- N3: Call ActorComponent.K2_DestroyComponent\n- N4: K2Node_CallArrayFunction\n- N5: Call SplineComponent.GetSplineLength\n    outputs: ReturnValue:real => N6.A, N16.B\n- N6: K2Node_PromotableOperator\n    outputs: ReturnValue:real => N8.A\n- N7: Var GET SegmentLength\n    outputs: SegmentLength:real => N6.B\n- N8: Call KismetMathLibrary.FCeil\n    outputs: ReturnValue:int => N10.A\n- N9: Macro ForLoop\n    outputs: Index:int => N11.A, N13.A\n- N10: K2Node_PromotableOperator\n    outputs: ReturnValue:int => N9.LastIndex\n- N11: K2Node_PromotableOperator\n    outputs: ReturnValue:real => N17.Distance\n- N12: Var GET SegmentLength\n    outputs: SegmentLength:real => N11.B\n- N13: K2Node_PromotableOperator\n    outputs: ReturnValue:int => N14.A\n- N14: K2Node_PromotableOperator\n    outputs: ReturnValue:real => N16.A\n- N15: Var GET SegmentLength\n    outputs: SegmentLength:real => N14.B\n- N16: K2Node_CommutativeAssociativeBinaryOperator\n    outputs: ReturnValue:real => N18.Distance\n- N17: Call SplineComponent.GetLocationAtDistanceAlongSpline\n    outputs: ReturnValue:Vector => N19.A, N21.B\n- N18: Call SplineComponent.GetLocationAtDistanceAlongSpline\n    outputs: ReturnValue:Vector => N19.B, N21.A, N25.Target\n- N19: K2Node_PromotableOperator\n    outputs: ReturnValue:Vector => N20.A\n- N20: K2Node_PromotableOperator\n    outputs: ReturnValue:Vector => N25.Start, N24.Location\n- N21: K2Node_PromotableOperator\n    outputs: ReturnValue:Vector => N22.A\n- N22: Call KismetMathLibrary.VSize\n    outputs: ReturnValue:real => N36.A\n- N23: K2Node_AddComponent\n    outputs: ReturnValue:BoxComponent => N29.NewItem, N34.self, N40.self\n- N24: Call KismetMathLibrary.MakeTransform\n    outputs: ReturnValue:Transform => N23.RelativeTransform\n- N25: Call KismetMathLibrary.FindLookAtRotation\n    outputs: ReturnValue:Rotator => N24.Rotation\n- N26: Call KismetMathLibrary.MakeVector\n    outputs: ReturnValue:Vector => N40.InBoxExtent\n- N27: Var GET WallHeight\n    outputs: WallHeight:real => N41.A\n- N28: Var GET CollsionBoxes\n    outputs: CollsionBoxes:BoxComponent[] => N29.TargetArray\n- N29: K2Node_CallArrayFunction\n    outputs: ReturnValue:int\n- N31: Var GET Spline\n    outputs: Spline:SplineComponent => N5.self\n- N32: Var GET Spline\n    outputs: Spline:SplineComponent => N17.self\n- N33: Var GET WallThickness\n    outputs: WallThickness:real => N26.Y\n- N34: Call SceneComponent.SetVisibility\n- N35: Var GET CollisionVisible\n    outputs: CollisionVisible:bool => N34.bNewVisibility\n- N36: K2Node_PromotableOperator\n    outputs: ReturnValue:real => N26.X\n- N37: Call KismetSystemLibrary.PrintString\n- N38: K2Node_CallArrayFunction\n    outputs: ReturnValue:int => N39.InInt\n- N39: Call KismetStringLibrary.Conv_IntToString\n    outputs: ReturnValue:string => N37.InString\n- N40: Call BoxComponent.SetBoxExtent\n- N41: K2Node_PromotableOperator\n    outputs: ReturnValue:real => N26.Z\n- N42: Var GET Spline\n    outputs: Spline:SplineComponent => N18.self"
+}

@@ -1,0 +1,97 @@
+// ============================================================
+// PP_CyberScan - 赛博朋克深度扫描后处理
+// 用法：PostProcess Material, Custom Node, Unlit + Translucent
+// 输入参数：
+//   Progress (Scalar Parameter, 0~1) — 扫描进度
+//   SceneTexture:PostProcessInput0 — 场景颜色
+//   SceneTexture:SceneDepth — 场景深度
+// ============================================================
+//
+// === UE Material 搭建指引 ===
+// 1. 新建 Material，设置：
+//    - Material Domain = Post Process
+//    - Blendable Location = After Tonemapping (或 Before)
+// 2. 添加 Custom 节点，OutputType = Float3 (CMOT_Float3)
+// 3. 创建以下输入引脚：
+//    - SceneColor (float3) — 从 SceneTexture:PostProcessInput0 的 RGB 连入
+//    - SceneDepth (float)  — 从 SceneTexture:SceneDepth 连入
+//    - UV (float2)         — 从 ScreenPosition 节点连入（或 TextureCoordinate[0]）
+//    - Progress (float)    — 从 ScalarParameter "Progress" 连入 (0~1)
+//    - Time (float)        — 从 Time 节点连入
+// 4. Custom 节点输出连接到 Emissive Color
+//
+// === HLSL 代码（粘贴到 Custom 节点的 Code 栏）===
+
+// ---- 参数 ----
+float scanWidth = 0.08;        // 扫描带宽度（深度空间占比）
+float maxDepth = 50000.0;      // 最大深度(cm)，可根据场景调
+float chromaticStrength = 0.012; // 色散强度
+float distortStrength = 0.015;  // 扰动强度
+float edgeGlow = 8.0;          // 扫描前沿辉光强度
+float scanColorR = 0.1;        // 扫描色调
+float scanColorG = 0.9;
+float scanColorB = 1.0;
+float gridScale = 200.0;       // 网格密度
+float gridWidth = 0.02;        // 网格线宽
+
+// ---- 深度归一化 ----
+float depthNorm = saturate(SceneDepth / maxDepth);
+
+// ---- 扫描前沿位置 ----
+float scanPos = Progress;  // 0~1 从近到远
+float dist = abs(depthNorm - scanPos);
+
+// ---- 扫描带 mask（高斯衰减）----
+float scanMask = exp(-dist * dist / (scanWidth * scanWidth));
+
+// ---- 时间噪声种子 ----
+float t = Time * 3.0;
+
+// ---- UV 扰动（在扫描带内生效）----
+float noise1 = frac(sin(dot(UV * 100.0 + t, float2(12.9898, 78.233))) * 43758.5453);
+float noise2 = frac(sin(dot(UV * 100.0 + t * 1.3, float2(39.346, 11.135))) * 43758.5453);
+float2 distortUV = UV + float2(noise1 - 0.5, noise2 - 0.5) * distortStrength * scanMask;
+
+// ---- 色散（Chromatic Aberration）----
+float2 chromaticOffset = (UV - 0.5) * chromaticStrength * scanMask;
+float3 colorR = SceneTexture::PostProcessInput0.SampleLevel(PostProcessInput0Sampler, distortUV + chromaticOffset, 0).rgb;
+float3 colorG = SceneTexture::PostProcessInput0.SampleLevel(PostProcessInput0Sampler, distortUV, 0).rgb;
+float3 colorB = SceneTexture::PostProcessInput0.SampleLevel(PostProcessInput0Sampler, distortUV - chromaticOffset, 0).rgb;
+
+// 注意：上面的采样方式在 UE Custom 节点里不能直接用
+// UE 里正确写法是通过输入引脚传入不同偏移的 SceneColor
+// 下面给出 UE-compatible 的简化版本（不重新采样，用输入颜色 + 偏移近似）
+
+// ========== UE-COMPATIBLE 简化版（直接用） ==========
+// 色散近似：对原始颜色按通道偏移
+float3 aberration = float3(
+    SceneColor.r * (1.0 + chromaticStrength * scanMask * 2.0),
+    SceneColor.g,
+    SceneColor.b * (1.0 - chromaticStrength * scanMask * 2.0)
+);
+
+// 混合扰动后的颜色
+float3 distortedColor = lerp(SceneColor, aberration, scanMask);
+
+// ---- 扫描前沿辉光 ----
+float edge = exp(-dist * dist / (scanWidth * scanWidth * 0.1));
+float3 glowColor = float3(scanColorR, scanColorG, scanColorB) * edge * edgeGlow;
+
+// ---- 赛博网格叠加 ----
+float2 worldUV = UV * gridScale;
+float gridX = step(frac(worldUV.x), gridWidth);
+float gridY = step(frac(worldUV.y), gridWidth);
+float grid = max(gridX, gridY) * scanMask * 0.3;
+float3 gridColor = float3(scanColorR, scanColorG, scanColorB) * grid;
+
+// ---- 扫描线噪声（水平干扰线）----
+float scanLine = step(0.98, frac(UV.y * 300.0 + t * 5.0)) * scanMask * 0.15;
+
+// ---- 最终合成 ----
+float3 finalColor = distortedColor + glowColor + gridColor + scanLine;
+
+// 轻微暗角 vignette 配合
+float vig = 1.0 - length(UV - 0.5) * 0.3;
+finalColor *= vig;
+
+return finalColor;

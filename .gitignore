@@ -1,0 +1,23 @@
+# WorkBuddy 本地数据（每台设备独立）
+.workbuddy/
+
+# 会话临时文件
+.session_tmps/
+
+# 会话输出产物（每台设备独立）
+output/
+
+# 脱敏方案配置（会话级）
+.box-desens/
+
+# Obsidian 工作区状态（每台设备不同）
+.obsidian/workspace.json
+
+# 缓存和编译产物
+__pycache__/
+*.pyc
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini

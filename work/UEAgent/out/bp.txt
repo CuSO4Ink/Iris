@@ -1,0 +1,48 @@
+Blueprint 简化摘要：共 37 个节点。
+执行入口：N1(K2Node_FunctionEntry), N24(K2Node_AddComponent), N29(Call PrimitiveComponent.SetCollisionEnabled), N3(Macro ForEachLoop), N36(Call SceneComponent.SetVisibility), N5(K2Node_CallArrayFunction)
+执行路径概览：
+- N1[K2Node_FunctionEntry] -> N3[Macro ForEachLoop] -> {N4, N5}
+- N24[K2Node_AddComponent] -> N36[Call SceneComponent.SetVisibility] -> N29[Call PrimitiveComponent.SetCollisionEnabled] -> N31[K2Node_CallArrayFunction]
+- N29[Call PrimitiveComponent.SetCollisionEnabled] -> N31[K2Node_CallArrayFunction]
+- N3[Macro ForEachLoop] -> {N4, N5}
+- N36[Call SceneComponent.SetVisibility] -> N29[Call PrimitiveComponent.SetCollisionEnabled] -> N31[K2Node_CallArrayFunction]
+- N5[K2Node_CallArrayFunction] -> N10[Macro ForLoop]
+节点细节（截断展示）：
+- N1: K2Node_FunctionEntry
+- N2: Var GET CollsionBoxes
+    outputs: CollsionBoxes:BoxComponent[] => N3.Array, N5.TargetArray
+- N3: Macro ForEachLoop
+    outputs: Array Element:BoxComponent => N4.self; Array Index:int
+- N4: Call ActorComponent.K2_DestroyComponent
+- N5: K2Node_CallArrayFunction
+- N6: Call SplineComponent.GetSplineLength
+    outputs: ReturnValue:real => N7.A, N17.B
+- N7: K2Node_PromotableOperator
+    outputs: ReturnValue:real => N9.A
+- N8: Var GET SegmentLength
+    outputs: SegmentLength:real => N7.B
+- N9: Call KismetMathLibrary.FCeil
+    outputs: ReturnValue:int => N11.A
+- N10: Macro ForLoop
+    outputs: Index:int => N12.A, N14.A
+- N11: K2Node_PromotableOperator
+    outputs: ReturnValue:int => N10.LastIndex
+- N12: K2Node_PromotableOperator
+    outputs: ReturnValue:real => N18.Distance
+- N13: Var GET SegmentLength
+    outputs: SegmentLength:real => N12.B
+- N14: K2Node_PromotableOperator
+    outputs: ReturnValue:int => N15.A
+- N15: K2Node_PromotableOperator
+    outputs: ReturnValue:real => N17.A
+- N16: Var GET SegmentLength
+    outputs: SegmentLength:real => N15.B
+- N17: K2Node_CommutativeAssociativeBinaryOperator
+    outputs: ReturnValue:real => N19.Distance
+- N18: Call SplineComponent.GetLocationAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N20.A, N22.B
+- N19: Call SplineComponent.GetLocationAtDistanceAlongSpline
+    outputs: ReturnValue:Vector => N20.B, N22.A, N26.Target
+- N20: K2Node_PromotableOperator
+    outputs: ReturnValue:Vector => N21.A
+... 其余 17 个节点已省略。

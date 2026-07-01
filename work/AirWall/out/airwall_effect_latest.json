@@ -1,0 +1,531 @@
+{
+  "graph": {
+    "node_count": 18,
+    "entry_exec_nodes": [
+      "N1",
+      "N15",
+      "N16",
+      "N4",
+      "N7",
+      "N8"
+    ],
+    "nodes": [
+      {
+        "id": "N1",
+        "class": "K2Node_CustomEvent",
+        "title": "OnWallHit",
+        "target": {
+          "type": "event",
+          "name": "OnWallHit"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "OutputDelegate",
+            "type": "delegate"
+          },
+          {
+            "name": "HitComponent",
+            "type": "PrimitiveComponent"
+          },
+          {
+            "name": "OtherActor",
+            "type": "Actor"
+          },
+          {
+            "name": "OtherComp",
+            "type": "PrimitiveComponent"
+          },
+          {
+            "name": "NormalImpulse",
+            "type": "Vector"
+          },
+          {
+            "name": "Hit",
+            "type": "HitResult&",
+            "targets": [
+              "N2.Hit"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": [
+          "N8.execute"
+        ]
+      },
+      {
+        "id": "N2",
+        "class": "K2Node_CallFunction",
+        "title": "GameplayStatics.BreakHitResult",
+        "target": {
+          "type": "function",
+          "name": "BreakHitResult",
+          "owner": "GameplayStatics"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "bBlockingHit",
+            "type": "bool",
+            "default": "false"
+          },
+          {
+            "name": "bInitialOverlap",
+            "type": "bool",
+            "default": "false"
+          },
+          {
+            "name": "Time",
+            "type": "real",
+            "default": "0.0"
+          },
+          {
+            "name": "Distance",
+            "type": "real",
+            "default": "0.0"
+          },
+          {
+            "name": "Location",
+            "type": "Vector",
+            "default": "0, 0, 0"
+          },
+          {
+            "name": "ImpactPoint",
+            "type": "Vector",
+            "targets": [
+              "N6.InVec"
+            ]
+          },
+          {
+            "name": "Normal",
+            "type": "Vector",
+            "default": "0, 0, 0"
+          },
+          {
+            "name": "ImpactNormal",
+            "type": "Vector",
+            "default": "0, 0, 0"
+          },
+          {
+            "name": "PhysMat",
+            "type": "PhysicalMaterial"
+          },
+          {
+            "name": "HitActor",
+            "type": "Actor"
+          },
+          {
+            "name": "HitComponent",
+            "type": "PrimitiveComponent"
+          },
+          {
+            "name": "HitBoneName",
+            "type": "Name"
+          },
+          {
+            "name": "BoneName",
+            "type": "Name"
+          },
+          {
+            "name": "HitItem",
+            "type": "int",
+            "default": "0"
+          },
+          {
+            "name": "ElementIndex",
+            "type": "int",
+            "default": "0"
+          },
+          {
+            "name": "FaceIndex",
+            "type": "int",
+            "default": "0"
+          },
+          {
+            "name": "TraceStart",
+            "type": "Vector",
+            "default": "0, 0, 0"
+          },
+          {
+            "name": "TraceEnd",
+            "type": "Vector",
+            "default": "0, 0, 0"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N3",
+        "class": "K2Node_VariableGet",
+        "title": "FallbackMID",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "FallbackMID"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "FallbackMID",
+            "type": "MaterialInstanceDynamic",
+            "targets": [
+              "N4.self",
+              "N7.self"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N4",
+        "class": "K2Node_CallFunction",
+        "title": "MaterialInstanceDynamic.SetVectorParameterValue",
+        "target": {
+          "type": "function",
+          "name": "SetVectorParameterValue",
+          "owner": "MaterialInstanceDynamic"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N7.execute"
+        ]
+      },
+      {
+        "id": "N5",
+        "class": "K2Node_MakeStruct",
+        "title": "K2Node_MakeStruct",
+        "target": {
+          "type": "node",
+          "name": "K2Node_MakeStruct"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "LinearColor",
+            "type": "LinearColor",
+            "targets": [
+              "N4.Value",
+              "N16.Value"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N6",
+        "class": "K2Node_CallFunction",
+        "title": "KismetMathLibrary.BreakVector",
+        "target": {
+          "type": "function",
+          "name": "BreakVector",
+          "owner": "KismetMathLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "X",
+            "type": "real",
+            "targets": [
+              "N5.R"
+            ]
+          },
+          {
+            "name": "Y",
+            "type": "real",
+            "targets": [
+              "N5.G"
+            ]
+          },
+          {
+            "name": "Z",
+            "type": "real",
+            "targets": [
+              "N5.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N7",
+        "class": "K2Node_CallFunction",
+        "title": "MaterialInstanceDynamic.SetScalarParameterValue",
+        "target": {
+          "type": "function",
+          "name": "SetScalarParameterValue",
+          "owner": "MaterialInstanceDynamic"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N9.execute"
+        ]
+      },
+      {
+        "id": "N8",
+        "class": "K2Node_IfThenElse",
+        "title": "Branch",
+        "target": {
+          "type": "flow",
+          "name": "Branch"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N15.Exec"
+        ]
+      },
+      {
+        "id": "N9",
+        "class": "K2Node_VariableSet",
+        "title": "LastRippleTime",
+        "target": {
+          "type": "variable",
+          "mode": "set",
+          "name": "LastRippleTime"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Output_Get",
+            "type": "real",
+            "default": "0.0"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N10",
+        "class": "K2Node_VariableGet",
+        "title": "RippleDuration",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "RippleDuration"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "RippleDuration",
+            "type": "real",
+            "targets": [
+              "N12.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N11",
+        "class": "K2Node_VariableGet",
+        "title": "LastRippleTime",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "LastRippleTime"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "LastRippleTime",
+            "type": "real",
+            "targets": [
+              "N12.A"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N12",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N13.B"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N13",
+        "class": "K2Node_PromotableOperator",
+        "title": "K2Node_PromotableOperator",
+        "target": {
+          "type": "node",
+          "name": "K2Node_PromotableOperator"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "bool",
+            "targets": [
+              "N8.Condition"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N14",
+        "class": "K2Node_CallFunction",
+        "title": "KismetSystemLibrary.GetGameTimeInSeconds",
+        "target": {
+          "type": "function",
+          "name": "GetGameTimeInSeconds",
+          "owner": "KismetSystemLibrary"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "ReturnValue",
+            "type": "real",
+            "targets": [
+              "N7.Value",
+              "N9.LastRippleTime",
+              "N13.A",
+              "N17.Value"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N15",
+        "class": "K2Node_MacroInstance",
+        "title": "ForEachLoop",
+        "target": {
+          "type": "macro",
+          "name": "ForEachLoop"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "Array Element",
+            "type": "MaterialInstanceDynamic",
+            "targets": [
+              "N16.self",
+              "N17.self"
+            ]
+          },
+          {
+            "name": "Array Index",
+            "type": "int"
+          }
+        ],
+        "exec_in": [],
+        "exec_out": [
+          "N16.execute",
+          "N4.execute"
+        ]
+      },
+      {
+        "id": "N16",
+        "class": "K2Node_CallFunction",
+        "title": "MaterialInstanceDynamic.SetVectorParameterValue",
+        "target": {
+          "type": "function",
+          "name": "SetVectorParameterValue",
+          "owner": "MaterialInstanceDynamic"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": [
+          "N17.execute"
+        ]
+      },
+      {
+        "id": "N17",
+        "class": "K2Node_CallFunction",
+        "title": "MaterialInstanceDynamic.SetScalarParameterValue",
+        "target": {
+          "type": "function",
+          "name": "SetScalarParameterValue",
+          "owner": "MaterialInstanceDynamic"
+        },
+        "inputs": [],
+        "outputs": [],
+        "exec_in": [],
+        "exec_out": []
+      },
+      {
+        "id": "N18",
+        "class": "K2Node_VariableGet",
+        "title": "VisualLayerMIDs",
+        "target": {
+          "type": "variable",
+          "mode": "get",
+          "name": "VisualLayerMIDs"
+        },
+        "inputs": [],
+        "outputs": [
+          {
+            "name": "VisualLayerMIDs",
+            "type": "MaterialInstanceDynamic[]",
+            "targets": [
+              "N15.Array"
+            ]
+          }
+        ],
+        "exec_in": [],
+        "exec_out": []
+      }
+    ],
+    "exec_edges": [
+      {
+        "from": "N1",
+        "to": "N8"
+      },
+      {
+        "from": "N15",
+        "to": "N16"
+      },
+      {
+        "from": "N15",
+        "to": "N4"
+      },
+      {
+        "from": "N16",
+        "to": "N17"
+      },
+      {
+        "from": "N4",
+        "to": "N7"
+      },
+      {
+        "from": "N7",
+        "to": "N9"
+      },
+      {
+        "from": "N8",
+        "to": "N15"
+      }
+    ]
+  },
+  "summary": "Blueprint 简化摘要：共 18 个节点。\n执行入口：N1(Event OnWallHit), N15(Macro ForEachLoop), N16(Call MaterialInstanceDynamic.SetVectorParameterValue), N4(Call MaterialInstanceDynamic.SetVectorParameterValue), N7(Call MaterialInstanceDynamic.SetScalarParameterValue), N8(Branch)\n执行路径概览：\n- N1[Event OnWallHit] -> N8[Branch] -> N15[Macro ForEachLoop] -> {N16, N4}\n- N15[Macro ForEachLoop] -> {N16, N4}\n- N16[Call MaterialInstanceDynamic.SetVectorParameterValue] -> N17[Call MaterialInstanceDynamic.SetScalarParameterValue]\n- N4[Call MaterialInstanceDynamic.SetVectorParameterValue] -> N7[Call MaterialInstanceDynamic.SetScalarParameterValue] -> N9[Var SET LastRippleTime]\n- N7[Call MaterialInstanceDynamic.SetScalarParameterValue] -> N9[Var SET LastRippleTime]\n- N8[Branch] -> N15[Macro ForEachLoop] -> {N16, N4}\n节点细节（截断展示）：\n- N1: Event OnWallHit\n    outputs: OutputDelegate:delegate; HitComponent:PrimitiveComponent; OtherActor:Actor; OtherComp:PrimitiveComponent; NormalImpulse:Vector; Hit:HitResult& => N2.Hit\n- N2: Call GameplayStatics.BreakHitResult\n    outputs: bBlockingHit:bool; bInitialOverlap:bool; Time:real; Distance:real; Location:Vector; ImpactPoint:Vector => N6.InVec\n- N3: Var GET FallbackMID\n    outputs: FallbackMID:MaterialInstanceDynamic => N4.self, N7.self\n- N4: Call MaterialInstanceDynamic.SetVectorParameterValue\n- N5: K2Node_MakeStruct\n    outputs: LinearColor:LinearColor => N4.Value, N16.Value\n- N6: Call KismetMathLibrary.BreakVector\n    outputs: X:real => N5.R; Y:real => N5.G; Z:real => N5.B\n- N7: Call MaterialInstanceDynamic.SetScalarParameterValue\n- N8: Branch\n- N9: Var SET LastRippleTime\n    outputs: Output_Get:real\n- N10: Var GET RippleDuration\n    outputs: RippleDuration:real => N12.B\n- N11: Var GET LastRippleTime\n    outputs: LastRippleTime:real => N12.A\n- N12: K2Node_PromotableOperator\n    outputs: ReturnValue:real => N13.B\n- N13: K2Node_PromotableOperator\n    outputs: ReturnValue:bool => N8.Condition\n- N14: Call KismetSystemLibrary.GetGameTimeInSeconds\n    outputs: ReturnValue:real => N7.Value, N9.LastRippleTime, N13.A, N17.Value\n- N15: Macro ForEachLoop\n    outputs: Array Element:MaterialInstanceDynamic => N16.self, N17.self; Array Index:int\n- N16: Call MaterialInstanceDynamic.SetVectorParameterValue\n- N17: Call MaterialInstanceDynamic.SetScalarParameterValue\n- N18: Var GET VisualLayerMIDs\n    outputs: VisualLayerMIDs:MaterialInstanceDynamic[] => N15.Array"
+}
