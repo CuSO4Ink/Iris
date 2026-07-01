@@ -6,7 +6,7 @@
 ---
 
 ```text
-你接入的是 ankoha 的工作区：c:\Work\AI\WorkBuddy
+你接入的是 ankoha 的工作区：iris（路径 c:\Work\AI\iris）
 
 先按顺序读：
 1. rules/00-canary.ankoha.md（最高优先级）
