@@ -5,7 +5,7 @@
 ---
 
 ```text
-你接入的是 ankoha 的工作区：c:\Work\AI\WorkBuddy
+你接入的是 ankoha 的工作区：iris（路径 c:\Work\AI\iris）
 接手项目：{项目名}，目录 work/{项目名}/
 
 先按顺序读：
