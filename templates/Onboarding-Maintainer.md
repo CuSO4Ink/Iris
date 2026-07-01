@@ -5,7 +5,7 @@
 ---
 
 ```text
-你接入的是 ankoha 的工作区：c:\Work\AI\WorkBuddy
+你接入的是 ankoha 的工作区：iris（路径 c:\Work\AI\iris）
 角色：工作区维护者，不参与项目技术内容。
 
 先按顺序读：

@@ -11,7 +11,8 @@
 
 ## 进行中
 
-- [ ] 深扫 A45 完整样本：资产依赖簇 + .zibravdb 源 + umap 引用关系（作为参照样本）
+- [ ] 深扫 B20 完整样本：资产依赖簇 + .zibravdb 源 + umap 引用关系（作为 ZibraVDB 完整闭包参照样本）
+- [ ] 复核 A45：ZibraVDB uasset 完整但缺独立 .zibravdb 源，确认 License 激活后是否可直接用于渲染验证
 
 ## 待办
 
