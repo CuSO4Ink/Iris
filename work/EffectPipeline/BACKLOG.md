@@ -4,48 +4,51 @@
 
 ## 当前最高优先
 
-- [ ] **特效对齐离线渲染 Sequence** — 将外包特效正确导入主工程并对上离线渲染 Sequence
-  - 不优先关心材质替换，优先保证特效在 Sequence 中正确播放
-  - 可用样本：D20（HoudiniNiagara 已跑通）、B20（ZibraVDB uasset + .zibravdb 源闭包最完整）、A45（ZibraVDB uasset 完整但缺独立源，License 待激活）
-  - 关键路径：特效资产导入 → 放入关卡 → 对齐 Sequence 时间轴 → 离线渲染验证
+- [ ] **等待外包按整改规范重新修改并返包**
+  - 当前已完成：BYDC 9 工程实勘、外包交付规范、逐镜头整改说明、PDF 整改清单、空目录结构示范 zip。
+  - 当前不继续扩大主工程导入面；等外包返包后，先做验收复核，再进入主工程导入 / Sequence 对齐。
+  - 返包验收优先级：P0 阻断项 → C30 公版引擎 → ZibraVDB 源随工程 → 目录/命名/引用闭包。
 
-## 进行中
+## 等外包返包后的第一轮验收
 
-- [ ] 深扫 B20 完整样本：资产依赖簇 + .zibravdb 源 + umap 引用关系（作为 ZibraVDB 完整闭包参照样本）
-- [ ] 复核 A45：ZibraVDB uasset 完整但缺独立 .zibravdb 源，确认 License 激活后是否可直接用于渲染验证
+- [ ] E40：确认 `baiyin_E40.7z` 已解压，并整理成完整 UE 工程包。
+- [ ] E20：确认已补齐 `.uproject` + `Config/` + 规范化 `Content/FX_E20/`。
+- [ ] C80：确认已补齐 `.uproject` + `Config/`，并移除 `WorkProjects/Outsource/` 深层内部工作流路径。
+- [ ] D20：确认补交 ZibraVDB Volume 资产与对应 `.zibravdb` 源，关卡 36 处引用不再悬空。
+- [ ] C30：确认已改为公版 UE 5.5 可打开的版本号关联工程（不再是未验证 GUID 自定义引擎）。
+- [ ] A45：确认平级 `UE_to_vdb/A45/output/vol/` 中的 6 个 `.zibravdb` 源已随工程归入 `Volume/`。
+- [ ] C50：确认平级 `vdb/zibra/` 中的 7 个极小 `.zibravdb` 源已随工程归入 `Volume/`，并说明 6 uasset vs 7 源数量差异。
+- [ ] B20：确认 9 个 uasset + 9 个 `.zibravdb` 源仍一一对应，目录和命名已规范化。
+- [ ] C60：确认 C30 命名残留已清理；如使用的是 UE 原生 SVT，则不要误启 ZibraVDB。
 
-## 待办
-
-### 阶段 0 · 摸底（部分完成）
-- [x] 外包归档实勘：15 工程完整度分级（见 `notes/外包归档清单.md`）
-- [x] 引擎版本统计：统一 UE 5.5（C30=GUID自定义）
-- [x] D20 Volume None 根因定位（见 `notes/ZibraVDB排查结论.md`）
-- [x] BYDC 逐工程详查：9 个工程输出不统一问题汇总（见 `notes/外包归档清单.md` §2、§5）
-- [ ] 确认是否有 UE 5.5 公版引擎（决定 Migrate 能否走通）
-- [ ] 找外包补交 D20 的 ZibraVDB Volume / .zibravdb 源
-- [ ] E40 解压 .7z 后补充检查内容
-- [ ] 抽样审查 5 个特效的散材质，归纳共性参数
-
-### 阶段 1 · 规范定义
-- [x] 外包特效交付规范 v1.0（见 `notes/外包交付规范.md`）
-- [ ] 主工程目录/命名规范（FX/<EffectName>/，见 notes/外包归档清单 §6）
-- [ ] 设计母材质 M_FX_Master（普通粒子族 + 体积族两套）—— 降优先，先保证 Sequence 对齐
-- [ ] 材质映射表：散材质参数 → 母材质 MI 参数 —— 降优先
+## 返包验收通过后
 
 ### 阶段 2 · 试点导入 + Sequence 对齐
-- [ ] D20 特效导入主工程 → 放入关卡 → 对齐离线渲染 Sequence（HoudiniNiagara 已跑通，首选试点）
-- [ ] B20 完整 ZibraVDB 闭包导入 + Sequence 对齐（uasset + .zibravdb 源均存在，待 ZibraVDB License 激活）
-- [ ] A45 导入 + Sequence 对齐（ZibraVDB uasset 存在但缺独立 .zibravdb 源，待 License 激活验证）
-- [ ] 验证 Houdini Engine / ZibraVDB 依赖在主工程正常
-- [ ] 沉淀导入 + Sequence 对齐 Checklist / 脚本
+
+- [ ] 选择 1-2 个返包样本做主工程导入试点。
+- [ ] 执行引用闭包检查：缺失引用 / Redirector / 跨工程 ExternalActors / 插件依赖。
+- [ ] 放入主工程关卡，绑定对应 Sequence 时间轴。
+- [ ] 离线渲染验证：画面与外包预览 mov 对齐。
+- [ ] 沉淀导入 + Sequence 对齐 Checklist / 脚本。
 
 ### 阶段 3 · 批量执行
-- [ ] 按清单批量导入剩余特效 → 对齐各自 Sequence
-- [ ] Fix Up Redirectors + 引用校验 + 视觉回归
-- [ ] 后续：统一材质替换（母材质 MI）
+
+- [ ] 按清单批量导入剩余特效 → 对齐各自 Sequence。
+- [ ] Fix Up Redirectors + 引用校验 + 视觉回归。
+- [ ] 后续：统一材质替换（母材质 MI）——继续降优先，Sequence 对齐之后再做。
 
 ## 已完成（近期）
-- [x] 需求澄清（形态混合/已有主工程/母材质+MI/保留Houdini/20+个）
+
+- [x] 需求澄清：形态混合 / 已有主工程 / 母材质+MI / 保留 Houdini / 20+ 个。
+- [x] 外包归档实勘：15 工程完整度分级（见 `notes/外包归档清单.md`）。
+- [x] 引擎版本统计：基本 UE 5.5，C30 为 GUID 自定义关联。
+- [x] D20 Volume None 根因定位：资产与 `.zibravdb` 源缺失（见 `notes/ZibraVDB排查结论.md`）。
+- [x] BYDC 逐工程详查：9 个工程输出不统一问题汇总（见 `notes/外包归档清单.md`）。
+- [x] 外包特效交付规范 v1.0（见 `notes/外包交付规范.md`）。
+- [x] 核实并修正 A45/C50/0623 三处误判：A45/C50 源存在但在工程外平级目录；0623 含 288GB `0623.7z`。
+- [x] 生成 `外包整改执行说明.md`：逐镜头问题与整改动作。
+- [x] 生成 `漫行者外包BYDC交付规范与整改清单.pdf`：可发外包的 PDF 版整改清单。
+- [x] 生成 `FX_镜头目录结构示范.zip` + `目录结构示范/`：可发外包的空目录样板。
 
 ---
 

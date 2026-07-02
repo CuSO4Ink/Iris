@@ -62,4 +62,13 @@ BYDC 9 个工程只读检查完成。6 个有 uproject（C30/C60/D20/A45/B20/C50
 逐工程定向扫描 8 个可访问工程的 Content 目录（E40 未解压跳过）。关键发现：(1) C30/C60 的 __ExternalActors__ 跨引用 E40，导入有顺序约束（E40→C30→C60）；(2) C60 含 3 个 ZibraVDB Volume（far/middle/near_vdb_302）但无 .zibravdb 源（同 D20 缺料问题）；(3) C30/C60 使用 World Partition，ExternalActors 路径不可重组；(4) C80 含 27 个 uasset 深层嵌套+命名不规范；(5) E20 含角色骨骼动画资产。全部同步至 notes/外包归档清单.md §7。
 
 ### 2026-07-01 15:25 — [修正] 归档清单复核：B20 才是最完整 ZibraVDB 闭包样本
-只读复核 BYDC 归档：A45 有 6 个大体积 ZibraVDBAssetData uasset 但未发现独立 .zibravdb 源；B20 同时具备 9 个 uasset + 9 个 .zibravdb 源，是现有最完整闭包；C50 仅极小 uasset 无源；C60 是 UE 原生 SparseVolumeTexture，不属于 ZibraVDB License 阻塞链。C30/C60 也缺 Config。
+只读复核 BYDC 归档：A45 有 6 个大体积 ZibraVDBAssetData uasset 但未发现独立 .zibravdb 源；B20 同时具备 9 个 uasset + 9 个 .zibravdb 源，是现有最完整闭包；C50 仅极小 uasset 无源；C60 是 UE 原生 SparseVolumeTexture，不属于 ZibraVDB License 阻塞链。C30/C60 也缺 Config.
+
+### 2026-07-01 16:30 — [修正] A45/C50/0623 误判已复核并更正
+进一步定点核实发现：A45 的 6 个 `.zibravdb` 源在平级 `UE_to_vdb/A45/output/vol/`，C50 的 7 个极小源在平级 `vdb/zibra/`，0623 并非空目录而是含约 288GB `0623.7z`。旧结论“缺源/空目录”已同步修正到归档清单、整改说明和交付规范。
+
+### 2026-07-01 17:25 — [决策] 外包整改资料成套完成
+基于核实后的事实，已整理 `外包整改执行说明.md`、`notes/外包交付规范.md`、PDF 版 `漫行者外包BYDC交付规范与整改清单.pdf`，并生成 `FX_镜头目录结构示范.zip`。对外文档只保留可执行要求，不展开我方内部推理；C30 单独要求公版 UE 5.5 交付。
+
+### 2026-07-02 11:39 — [决策] 项目阶段切到等待外包整改返包
+当前不继续扩大导入面，进入“等外包按规范重新修改并返包”阶段。返包后先验收 P0 阻断项（E40/E20/C80/D20）、C30 公版引擎、A45/C50 源随工程、目录命名和引用闭包，再恢复主工程导入与 Sequence 对齐。

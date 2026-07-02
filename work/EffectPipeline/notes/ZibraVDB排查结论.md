@@ -133,11 +133,12 @@ D20 子序列现有轨道：
 - **E40 解压**——C30/C60 导入前必须先解压 E40（跨工程 ExternalActors 依赖）
 - **D20 路径拼写错误**（`Asstes` → `Assets`）——已在主工程按错误路径放置资产，后续需批量修复引用
 
-## 10. 归档复核修正（2026-07-01）
+## 10. 归档复核修正（2026-07-01 / 2026-07-02 同步）
 
-只读复核 `J:\vendors\漫行者\Final最终归档\BYDC` 后，修正两处早期误判：
+只读复核 `J:\vendors\漫行者\Final最终归档\BYDC` 后，早期结论需以以下版本为准：
 
-1. **A45**：有 6 个大体积 `ZibraVDBAssetData` uasset（最大约 5.536GB），但未发现独立 `.zibravdb` 源文件。当前仍可作为 License 验证样本；正式交付仍应要求补独立源文件。
-2. **B20**：9 个 `ZibraVDBAssetData` uasset + 9 个 `.zibravdb` 源文件均存在，是现有最完整的 ZibraVDB 闭包样本。
-3. **C50**：仅 6 个极小 `ZibraVDBAssetData` uasset，未发现独立 `.zibravdb` 源，疑似低模/占位或测试资产。
-4. **C60**：虽然 uproject 启用了 ZibraVDB，且文件名含 `vdb`，但资产头部标记为 UE 原生 `SparseVolumeTexture/VolumeTexture`，不是 `ZibraVDBAssetData`；不要把 C60 归入 ZibraVDB License 阻塞链。
+1. **D20**：仍是当前真正阻断项。关卡有 36 处 ZibraVDB 引用，但 Volume uasset 与 `.zibravdb` 源均缺失，必须外包补交。
+2. **A45**：6 个大体积 `ZibraVDBAssetData` uasset 存在；对应 6 个 `.zibravdb` 源后来在工程外平级 `UE_to_vdb/A45/output/vol/` 找到。问题不是“源不存在”，而是“源未随工程归入 `Content/FX_A45/Volume/`”，正式返包必须整理进去。
+3. **B20**：9 个 `ZibraVDBAssetData` uasset + 9 个 `.zibravdb` 源文件均存在，是现有最完整的 ZibraVDB 闭包样本。
+4. **C50**：6 个极小 `ZibraVDBAssetData` uasset 存在；对应 7 个极小 `.zibravdb` 源后来在工程外平级 `vdb/zibra/` 找到。返包需随工程归入 `Volume/`，并说明 6 uasset vs 7 源数量差异及是否为正式资产。
+5. **C60**：虽然 uproject 启用了 ZibraVDB，且文件名含 `vdb`，但资产头部标记为 UE 原生 `SparseVolumeTexture/VolumeTexture`，不是 `ZibraVDBAssetData`；不要把 C60 归入 ZibraVDB License 阻塞链。
