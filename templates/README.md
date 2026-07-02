@@ -22,6 +22,7 @@
 | `Onboarding-General.md` | 通用接入 |
 | `Onboarding-Maintainer.md` | 维护者接入 |
 | `Onboarding-Project.md` | 项目接入（替换 `{项目名}`） |
+| `Onboarding-Handoff.md` | 纯对话 AI 交接包（`/handoff` 生成，含 `/sync` 回填契约） |
 
 **不**被 Obsidian Templates 插件加载。复制方框代码块内容即可用。
 

@@ -42,6 +42,25 @@ AI 会读 AI-BRIEF + BACKLOG 自动拉齐上下文。
   /log [发现] Saffman-Taylor 指状在 D/Viscosity > 2 时才明显
   ```
 
+### 换平台 / 找无限额纯对话 AI 讨论时（跨平台交接）
+
+在能读文件的平台（Agent / Box）发：
+
+```
+/handoff              # 打包当前活跃项目
+/handoff Bifrost      # 指定项目
+/handoff Bifrost 5    # 附带 LOG 近 5 条（默认 3）
+```
+
+AI 吐出一段「交接包」→ 整段复制 → 粘给纯对话 AI，末尾补上「我想让你帮的事」。
+纯对话 AI 会按契约吐 `<<<LOG>>>` / `<<<BACKLOG>>>` 块 → 你复制块 → 回来发：
+
+```
+/sync <粘贴那个块>
+```
+
+AI 原样回填到 LOG / BACKLOG，零改写。这样"手动落地"只剩两次复制粘贴。
+
 ### 收工（下班 / 切换话题前）
 
 ```
@@ -71,6 +90,8 @@ AI 会提炼当天 LOG 的关键决策更新到 AI-BRIEF，打勾 BACKLOG 已完
 | **项目生产** | | |
 | 新建项目 | `/project-init X` | 三件套建在 `work/X/` |
 | 记一笔决策/发现 | `/log <一句话>` | 追加到活跃项目 LOG.md |
+| 打包给纯对话AI | `/handoff [项目] [条数]` | 生成自包含交接包，整段复制去投喂 |
+| 回填纯对话AI结论 | `/sync <粘贴的块>` | 原样把 `<<<LOG>>>`/`<<<BACKLOG>>>` 写回 |
 | 收工快照 | `/checkpoint` | LOG 提炼到 BRIEF + BACKLOG 打勾 + 摘要 |
 | **维护/诊断** | | |
 | 结构体检 | `/check` | 四维度扫 → 双表输出 |
