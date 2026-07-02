@@ -1,0 +1,2 @@
+关卡 .umap。命名格式 <镜头号>_gk.umap（如 C50_gk.umap）。
+禁用 Main.umap / NewMap.umap 等通用名。

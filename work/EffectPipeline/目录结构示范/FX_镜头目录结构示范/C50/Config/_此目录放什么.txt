@@ -1,0 +1,2 @@
+引擎配置目录（DefaultEngine.ini / DefaultGame.ini 等）。
+必须随工程交付，缺 Config 会导致工程无法在标准引擎独立打开。

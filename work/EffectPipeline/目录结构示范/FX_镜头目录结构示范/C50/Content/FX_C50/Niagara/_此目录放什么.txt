@@ -1,0 +1,2 @@
+Niagara System / Emitter。命名 <镜头号>_描述，如 NS_C50_smoke。
+禁用 NewNiagaraSystem2 之类默认名。

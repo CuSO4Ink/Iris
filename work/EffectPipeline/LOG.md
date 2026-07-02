@@ -60,3 +60,6 @@ BYDC 9 个工程只读检查完成。6 个有 uproject（C30/C60/D20/A45/B20/C50
 
 ### 2026-07-01 15:15 — [扫描] BYDC 全工程 Content 依赖映射完成
 逐工程定向扫描 8 个可访问工程的 Content 目录（E40 未解压跳过）。关键发现：(1) C30/C60 的 __ExternalActors__ 跨引用 E40，导入有顺序约束（E40→C30→C60）；(2) C60 含 3 个 ZibraVDB Volume（far/middle/near_vdb_302）但无 .zibravdb 源（同 D20 缺料问题）；(3) C30/C60 使用 World Partition，ExternalActors 路径不可重组；(4) C80 含 27 个 uasset 深层嵌套+命名不规范；(5) E20 含角色骨骼动画资产。全部同步至 notes/外包归档清单.md §7。
+
+### 2026-07-01 15:25 — [修正] 归档清单复核：B20 才是最完整 ZibraVDB 闭包样本
+只读复核 BYDC 归档：A45 有 6 个大体积 ZibraVDBAssetData uasset 但未发现独立 .zibravdb 源；B20 同时具备 9 个 uasset + 9 个 .zibravdb 源，是现有最完整闭包；C50 仅极小 uasset 无源；C60 是 UE 原生 SparseVolumeTexture，不属于 ZibraVDB License 阻塞链。C30/C60 也缺 Config。
