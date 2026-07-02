@@ -1,4 +1,4 @@
-﻿# Bifrost
+# Bifrost
 
 > **L2 项目身份**。接手本项目的 AI 必读。
 
