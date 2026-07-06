@@ -37,7 +37,8 @@ AIEffectFoundry 方向3（AI-assisted Art Direction Diorama）的第一个具体
 
 - 引擎：UE5.8 自定义渲染引擎（作品集出图主线基线；AIEffectFoundry 三份文档已于 2026-07-06 统一到此基线，历史 5.5 主线作废）
 - L1 量产走 MCP/Agent（可复用 UEAgent 的 execute_python_script / execute_unreal_command 链路经验）
-- 前沿内核只做 1 个，避免摊大做不深
+- ~~前沿内核只做 1 个，避免摊大做不深~~ → **2026-07-06 松绑**：改为基底层（必做）+ 点缀层（独立模块增量挂载），详见 `PIPELINE.md`
+- 主海面：用户已复刻 FluidFlux，直接接入（非从零搭）
 - 收录进作品集须具备 breakdown（Portfolio 硬门槛），产出时同步留拆解素材
 - 版权干净：个人独立实现，不搬工作项目资产
 
@@ -51,7 +52,9 @@ AIEffectFoundry 方向3（AI-assisted Art Direction Diorama）的第一个具体
 ## 文档地图
 
 - `AI-BRIEF.md` — 本文件，项目身份
-- `CONCEPT.md` — 纯概念/美术向定案（D1/D2 已锁 + 定案提示词 + 备选机位）
+- `CONCEPT.md` — 纯概念/美术向定案（D1/D2 已锁 + 定案提示词 + 备选机位 + 因果链总览 §5）
+- `PIPELINE.md` — 美术生产 & 执行管线（分层架构 + 恒星/天象/铁磁流体技术方案 + MCP 量产管线 + 人/AI 边界 + 一个月周计划）
+- `PIPELINE-RAW.md` — 管线方案对话原文存档（未修改）
 - `D3-KERNEL.md` — D3 前沿内核技术选型全过程（A/B/C 方案 + UE5.8 落地路径 + breakdown 规划）
 - `TECH-SCOUT.md` — 技术候选池全量（宝藏池，Part A~E + 备选总表）；**含未拍板的开放岔路**：是否跳新场景 C / 围前沿重设 / 开研究向支线，见其文末
 - `LOG.md` — 决策流水
