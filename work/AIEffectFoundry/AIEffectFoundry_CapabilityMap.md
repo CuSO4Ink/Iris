@@ -1,4 +1,4 @@
-﻿# AIEffectFoundry · Capability Map
+# AIEffectFoundry · Capability Map
 
 ## 目的
 

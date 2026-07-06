@@ -15,11 +15,11 @@
 
 ## 已有资源
 
-### 1. UE5.5 自定义渲染引擎
+### 1. UE5.8 自定义渲染引擎
 
 - 自定义 Toon / NPR Shading Model、lighting、shadow、rim、outline、tone mapping 等渲染路径改造。
-- **已决策：短期作品集出图基线固定为 UE5.5 自定义渲染。** 当前阶段所有可见画面、LookDev、代表场景验证优先在 UE5.5 上完成。
-- UE5.8 仍视为 preview / 后续验证分支：只用于观察官方 MCP、新特性与核心能力迁移，不作为当前主线，不阻塞出图。
+- **已决策：作品集出图主线基线为 UE5.8 自定义渲染。**（v2026-07-06 更新）所有可见画面、LookDev、代表场景验证在 UE5.8 上完成；用户调教的 UE5.8 MCP 即在此基线跑通。
+- 历史：早期（≤2026-07-01）曾以 UE5.5 为短期稳定出图基线、UE5.8 仅作 preview 观察；自 2026-07-02 Bifrost 立项落地起主线已切到 UE5.8，旧的「UE5.5 主线」决策作废。
 
 ### 2. 旧版技术拆解素材
 
@@ -60,19 +60,21 @@
 1. Dynamic Surface Reconstruction Kernel（粒子/场、邻域查询、SDF/密度场、Marching Cubes，可转译多种视觉对象）。
 2. NNE Runtime Effect Kernel（多输入状态 → 效果参数/状态输出）。
 3. Gaussian / Neural Volume Kernel（体积雾、能量云、扫描残影，先作为前沿视觉模块）。
-4. Stylized Rendering Stack（自定义 NPR/Toon/Outline/Light，UE5.5 出图基线，UE5.8 做核心迁移）。
+4. Stylized Rendering Stack（自定义 NPR/Toon/Outline/Light，UE5.8 出图基线）。
 
 每个 Kernel 记录：解决什么视觉问题、输入输出、可转译对象、Debug view、性能/限制、是否适合第一版代表场景。
 
 ### Phase 3：选择代表场景，而不是被技术倒推主题
 
-从 Art Direction 出发筛选。当前重点候选：
+> [!ARCHIVED] **本 Phase 的候选已被 Bifrost 取代（v2026-07-06）**。下列三个候选是选题未定阶段的历史备选；代表场景已拍板为 **`work/Bifrost/`（北欧神话巨构海岸 diorama）**，且已升格为跨 P1+P3 的垂直代表作。本节仅保留方法论（"从 Art Direction 出发、内核服务表达"），候选清单作废。
 
-- 东方幻想材料工坊 / 灵液场景。
-- 科幻生物实验 / 液态金属场景。
-- 梦境动态雕塑 / 抽象展厅。
+从 Art Direction 出发筛选（历史候选，已作废）：
 
-注意：动态表面重建内核服务这些方向，不反过来决定方向。
+- ~~东方幻想材料工坊 / 灵液场景。~~
+- ~~科幻生物实验 / 液态金属场景。~~
+- ~~梦境动态雕塑 / 抽象展厅。~~
+
+注意（仍适用的方法论）：动态表面重建内核服务视觉方向，不反过来决定方向。
 
 ### Phase 4：做一条垂直闭环 MVP
 
@@ -93,5 +95,5 @@
 1. 对三个代表场景候选做 moodboard 关键词与画面焦点拆解。
 2. 基于 EffectSpec v0 设计第一个 AI/MCP 生成任务。
 3. 为 Dynamic Surface Reconstruction Kernel 画一张数据流图。
-4. 已完成：短期出图基线已定为 UE5.5 自定义渲染；UE5.8 只做后续核心迁移验证。
+4. 已完成：出图主线基线已统一为 UE5.8 自定义渲染（v2026-07-06，随 Bifrost 落地切换，作废旧的 UE5.5 主线决策）。
 

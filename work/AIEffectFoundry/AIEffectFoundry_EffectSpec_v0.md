@@ -1,4 +1,4 @@
-﻿# AIEffectFoundry · EffectSpec v0
+# AIEffectFoundry · EffectSpec v0
 
 ## 目的
 

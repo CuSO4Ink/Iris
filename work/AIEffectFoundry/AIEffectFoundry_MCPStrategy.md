@@ -6,7 +6,7 @@
 
 ## 背景矛盾
 
-UE5.8 仍是 preview，官方 MCP 不稳定；第三方 MCP 可用但有 API 变动、版本适配、功能覆盖、链路稳定性等风险。两边都不能 all-in。
+出图主线基线为 UE5.8 自定义渲染引擎（v2026-07-06 更新，随 Bifrost 落地确认）。但 UE 官方 MCP 仍不稳定；第三方 MCP 可用但有 API 变动、版本适配、功能覆盖、链路稳定性等风险。所以「引擎基线定在 5.8」与「MCP 执行层不 all-in 任何一家」是两件独立的事——基线已定，MCP 仍走 Spec-first + Adapter 解耦。
 
 ## 策略
 
@@ -30,9 +30,11 @@ CreateMaterial、CreateMaterialInstance、SetMaterialParameter、CreateBlueprint
 
 每次 MCP 执行都留：输入 spec、action plan、执行日志、生成资产清单、截图、verifier 结果、人类审查意见。这样从第三方换到官方 MCP 时能复现流程。
 
-## UE5.8 preview 的角色
+## UE5.8 基线与 MCP 的角色
 
-不作为主线。preview 适合：官方 MCP 观察、新特性探索、小型验证、adapter 兼容性测试。不适合：最终出图主线、长周期场景、深度引擎魔改、唯一依赖。主线短期用稳定环境（UE5.5 自定义渲染）出图。
+引擎基线：UE5.8 自定义渲染即当前出图主线（v2026-07-06 起，作废早期「UE5.5 主线 / UE5.8 仅 preview 观察」的旧决策）。
+
+MCP 执行层仍解耦：官方 MCP 尚不稳定，短期用第三方 MCP / 可控 UE 自动化跑通最小闭环；官方稳定后按 adapter 无痛替换。基线版本与 MCP 供应商是正交的两条决策线，互不绑定。
 
 ## 本质澄清
 
