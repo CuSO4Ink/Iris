@@ -91,9 +91,14 @@
 **可扩展的 AI×TA 方向(按值得做排序):**
 
 1. **AI 驱动 DCC 操作** — 个人自建,做成端到端演示(自然语言 → 蓝图/材质图/资产生成)
-2. **AI 驱动效果生成** — 文本/图 → 材质、文本 → HDRI、生成式贴图嵌入工作流
-3. **AI 驱动优化** — AI 辅助 LOD / 资产校验 / 性能瓶颈分析自动化
-4. **神经渲染资产化** — 3DGS 资产化、Neural Texture Compression(高阶可选)
+2. **神经后处理材质 demo（新增，2026-07-07 侦察后升榜）** — UE 官方 Neural Post Processing 路线：ONNX → NNE Model Data → Neural Profile → 材质编辑器挂 `Neural Input`/`Neural Output` 节点做风格化/降噪/色调映射。零代码、走材质图，工程投入低但恰好命中个人材质/HLSL 老本行；配 breakdown（模型结构、224²定长限制与 Tiling 取舍、GPU ms 实测）即可独立成篇。详见 `work/UE-NeuralRender-Lab/LOG.md` 路线对比。
+3. **AI 驱动效果生成** — 文本/图 → 材质、文本 → HDRI、生成式贴图嵌入工作流
+4. **AI 驱动优化** — AI 辅助 LOD / 资产校验 / 性能瓶颈分析自动化
+5. **神经渲染资产化** — 3DGS 资产化、Neural Texture Compression（高阶可选；插件生态成熟但套壳感强，原创度偏低，不建议作主线收录）
+
+> [!NOTE] 自定义 RDG 神经推理管线（C++ 接管渲染帧、GPU-only）投入更高、工程深度展示更强，可作为上面第2项做出成果后的进阶延伸，而不是起手方案——先用材质路线验证叙事，再决定是否加码。
+> ML Deformer 路线（官方已生产验证，《巫师4》Demo 同款）技术上最稳，但解决的是角色蒙皮形变问题，偏离当前 FX/材质特长定位，不建议作为 Part 3 主线。
+> — ai 2026-07-07（依据 `work/UE-NeuralRender-Lab` 全网侦察结论）
 
 **核心价值主张:工具思维 + 前瞻视野,证明你是"定义未来工作流"的 TA。**
 

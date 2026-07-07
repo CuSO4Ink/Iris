@@ -71,4 +71,16 @@ BYDC 9 个工程只读检查完成。6 个有 uproject（C30/C60/D20/A45/B20/C50
 基于核实后的事实，已整理 `外包整改执行说明.md`、`notes/外包交付规范.md`、PDF 版 `漫行者外包BYDC交付规范与整改清单.pdf`，并生成 `FX_镜头目录结构示范.zip`。对外文档只保留可执行要求，不展开我方内部推理；C30 单独要求公版 UE 5.5 交付。
 
 ### 2026-07-02 11:39 — [决策] 项目阶段切到等待外包整改返包
-当前不继续扩大导入面，进入“等外包按规范重新修改并返包”阶段。返包后先验收 P0 阻断项（E40/E20/C80/D20）、C30 公版引擎、A45/C50 源随工程、目录命名和引用闭包，再恢复主工程导入与 Sequence 对齐。
+当前不继续扩大导入面，进入”等外包按规范重新修改并返包”阶段。返包后先验收 P0 阻断项（E40/E20/C80/D20）、C30 公版引擎、A45/C50 源随工程、目录命名和引用闭包，再恢复主工程导入与 Sequence 对齐。
+
+### 2026-07-07 16:39 — [进展] ZibraVDB Personal Key 已到位
+用户已通过 support@zibra.ai 申请到 Personal License Key 并在主工程成功激活，临时 DLL 方案退出。ZibraVDB 不再是授权阻塞项。
+
+### 2026-07-07 16:39 — [进展] 外包返包开始上传，6/9 已到
+外包在 J:\vendors\漫行者\Final最终归档\BYDC\BYDC文件重新整理\ 新建目录，已上传 C30/C50/C60/D20/E20/E40 共 6 个工程，均含 uproject+Config+Content。缺 A45/B20/C80。开始逐工程验收规范问题。
+
+### 2026-07-07 17:14 — [决策] C30/C60 WP 文件夹豁免 + E40 空 Actor 版本接受
+外包反馈 __ExternalActors__/__ExternalObjects__ 是 World Partition 场景设置自动生成的产物，非手动创建，场景 Actor 全部保存在这两个文件夹下。用户同意在提交范围内保留。另：E40 因 ZibraVDB 载入内存占用过大导致外包侧电脑崩溃，用户同意接受不挂接 ZibraVDB、仅保留空 Actor 的版本；主工程侧需自行挂接 ZibraVDB 并在 Sequence 中添加 playback 轨道。
+
+### 2026-07-07 17:14 — [发现] 外包提交备注说明 + E20 ZibraVDB 误判
+读取外包 C30-C60-D20-E20-E40文件提交备注说明.docx（含4张截图）。三点备注：(1) 所有 ZibraVDB 镜头均只放 uasset 到 Assets/、未放 .zibravdb 源（通用问题，非仅 D20）；(2) E40 无 playback 轨道因 ZibraVDB 未挂入 Actor，挂入后添加即可；(3) ZibraVDB 会后景遮挡前景粒子，调 Volume Translucency Sort Priority 可解决。截图显示 **E20 实际使用 ZibraVDB**（ZebraVDB Playback 轨道 + ZebraVDB Actor 类型），原扫描误判为 SparseVolumeMaterial，E20 也需补 .zibravdb 源。

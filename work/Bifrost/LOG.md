@@ -1,4 +1,4 @@
-﻿# Bifrost · LOG
+# Bifrost · LOG
 
 > 决策流水。追加式，新条目加在**文件末尾**。由 `/log` 命令维护。
 

@@ -1,4 +1,4 @@
-﻿# Bifrost · CONCEPT（美术定案）
+# Bifrost · CONCEPT（美术定案）
 
 > **纯概念 / 美术向定案文档**。D1/D2/主机位/因果链均已锁。执行落地看 `ROADMAP.md`。技术实现看 `PIPELINE.md` / `D3-KERNEL.md`。
 
