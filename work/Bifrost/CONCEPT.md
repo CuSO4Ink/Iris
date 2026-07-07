@@ -1,36 +1,40 @@
-# Bifrost · CONCEPT
+﻿# Bifrost · CONCEPT（美术定案）
 
-> **纯概念 / 美术向设计文档**。D1（奇观焦点）/ D2（色彩基调）**均已拍板**，见 `LOG.md` 2026-07-02 19:45 / 17:10、`BACKLOG.md` 决策框架。本文件现聚焦：固化定案方向 + 定案提示词（冠军版本）+ 多角度扩展。
-> 不写技术实现细节（marching cubes 集成 / overdraw 调优等留到 D3 阶段）。
+> **纯概念 / 美术向定案文档**。D1/D2/主机位/因果链均已锁。执行落地看 `ROADMAP.md`。技术实现看 `PIPELINE.md` / `D3-KERNEL.md`。
 
 ---
 
 ## §1 定位速览
 
-- **一句话**：北欧神话 + 宏大奇幻 + 巨构瑰丽的海岸 diorama，作为 AIEffectFoundry 方向3 的首个落地样本，用来跑通 Human-in-the-loop 的 AI TA 工作流。
-- **命题红线**：风格化 > 写实；夸张巨构尺度，强调渺小人视角下的压迫性宏大感；内核是可复用能力。
-- **约束松绑（2026-07-06）**："内核只做 1 个、做深不摊大"已松绑 → 允许多元素分层挂载（基底层必做 + 点缀层独立模块增量加），详见 `PIPELINE.md` §1。
+- **一句话**：北欧神话 + 宏大奇幻 + 巨构瑰丽的**第三人称跑图海岸 diorama**，200m 单向沙滩走廊，扛得住玩家游览。作 AIEffectFoundry 方向3 首个落地样本 + 跨 P1+P3 垂直代表作。
+- **命题红线**：风格化 > 写实；夸张巨构尺度；跑图规模下"每个可达角落都经得起看"是硬约束；内核是可复用能力。
+- **场景形态**（07-07 重构）：从"单机位定点 diorama"改为"第三人称跑图 diorama"。主图 T-L2.2 降级为"场景内的最优机位截图"，不再是设计驱动因子；驱动整个场景设计的是"跑图叙事弧线"。
 
 ---
 
-## §2 已拍板方向
+## §2 已锁定案
 
-**D1 奇观焦点 = 合成态「等离子恒星驱动天气」**：一颗巨大冷白等离子恒星（翻涌熔融的 isosurface 表面，复用 NS_Slime marching cubes）既是视觉 hero，也是光源——它驱动风暴前锋、god-rays、大气散射。天气不是独立内核，是恒星的光学衍生效果。内核只有 1 个（等离子恒星），满足硬约束。
-
-**D2 色彩基调 = 冷神性**：冷白/蓝巨星，肃穆神性光，pale azure/icy cyan 色域。守住"瑰丽 ≠ 俗艳"，避免高光过曝糊成一片。
-
-| 元素 | 落层 | 结论 |
+| 决策 | 结论 | 拍板日 |
 |---|---|---|
-| 悬崖 + 古建筑群遗迹 | L1 量产 + L2 构图 | 舞台，非内核；kitbash + 岩石母材质量产 |
-| 等离子恒星（isosurface） | **L3 内核（已定）** | D1 落点，复用 NS_Slime marching cubes |
-| 天气 / god-rays | 恒星的衍生效果 | 不独立占内核名额 |
-| FluidFlux 主海面 | L1 基底 | 已复刻，直接接入（用户自带） |
-| 铁磁流体尖刺 | 点缀层 | 融视觉不融物理，挂 FluidFlux（见 `PIPELINE.md` §4） |
+| D1 奇观焦点 | 合成态「等离子恒星驱动天气」——恒星 hero + 光源 + 天气驱动源三合一 | 2026-07-02 |
+| D2 色彩基调 | 冷神性（cold blue-white 巨星、pale azure/icy cyan）；守瑰丽≠俗艳、控高光曝光 | 2026-07-02 |
+| D3 内核实现 | A 方案·轮廓局部化（材质三层堆 · `D3-KERNEL.md`） | 2026-07-06 |
+| 主机位 | ⑤前景剪影环境镜（S3 段最优截图点，非设计驱动因子） | 2026-07-06 / 07-07 降级 |
+| 场景形态 | 第三人称跑图 diorama · 200m 单向海滩走廊 · 4 段结构 | 2026-07-07 |
 
-> **恒星因果链**（2026-07-06 定案）：恒星光→云散射、恒星磁场→极光、恒星磁场→海面尖刺——天象与海面全是恒星的衍生，叙事自洽。技术落法见 `PIPELINE.md` §2-§4。
+场景元素落层：
 
-> [!NOTE] **教训存档**：此前 AI 曾未经要求自行用内部弱模型生图"验证"，误诊断"恒星必须显式补强 metaball/isosurface 措辞"。用户在自己实际工具上验证：**原始简单措辞效果最好**，最终定案版本（见 §3）就是未经该补强的原始写法。已记入 `LOG.md` [发现]。后续 AI 只负责提示词文本，不再自行生图验证。
-> — ai 2026-07-02
+| 元素 | 落层 |
+|---|---|
+| 4 段海滩沙滩 + 两侧悬崖边界 | L1 量产（Nanite kitbash + 母材质） |
+| 悬崖 + 古建筑群遗迹 | L1 量产（kitbash + 母材质） |
+| 等离子恒星（isosurface 局部化） | L3 内核 · A 方案 |
+| 天气 / god-rays / 大气散射 | 恒星光学衍生（基底） |
+| 体积云 / 贝母云 | 恒星光散射衍生（**基底**，07-07 从点缀升级） |
+| FluidFlux 主海面 | L1 基底（已复刻直接用） |
+| 铁磁流体尖刺 | 点缀（融视觉不融物理，挂 FluidFlux，S3 段焦点） |
+| 极光 | 点缀（磁场衍生，S3 天空区域） |
+| 前景苔藓 / 石缝植物 | Foliage Tool 或 Python 撒点（局部工具，量少） |
 
 ---
 
@@ -48,40 +52,53 @@ roiling flares and merging tendrils, cold luminous liquid-metal isosurface detai
 pale azure hero light over austere ruins, sublime divine mood
 ```
 
-> 中文注释：这版是"天气焦点段"+"等离子恒星段"拼接后的合成态，用户在自己工具上确认**最有感觉**，正式锁定为 Bifrost 的定案美术方向。§4 在此基础上拓展多角度。
+**主机位⑤追加**：`, over-the-shoulder framing with the human silhouette in sharp foreground, the star glowing in the background`
+
+> **教训存档**（07-02）：AI 曾用内部弱模型自行生图"验证"，误诊断"必须补强 metaball/isosurface 措辞"。用户实际工具验证：**原始简单措辞效果最好**，即上方定案版本。后续 AI 只负责提示词文本，不再自行生图验证。
 
 ---
 
-## §4 多角度扩展（备选机位）
+## §4 跑图叙事弧线（4 段海滩，07-07 新增）
 
-**目的**：基于 §3 定案版本换机位。主机位已定 **⑤前景剪影环境镜**（T-L2.2，见 LOG 2026-07-06）。下表为机位短语，**追加在 §3 末尾**即可，无需重写主体。
+玩家从远端出生 → 沿沙滩单向前进 → 抵达 S3 主锚点区 → 走过后回望远景，30-60 秒走完一趟。跑图叙事的核心：让玩家在跑动过程中自然感受"渺小人视角的压迫性宏大感"，主图⑤号构图不是硬塞的静态素材，而是**跑图过程中的自然高光时刻**。
 
-| 机位 | 追加短语 |
-|---|---|
-| ① 全景建立（=§3 原版） | `（无需追加）` |
-| ② 低角度仰视 hero | `, extreme low-angle hero shot looking up, emphasizing towering vertical scale` |
-| ③ 俯瞰鸟瞰 | `, high aerial bird's-eye overview, revealing coastline layout and silhouette against the horizon` |
-| ④ 焦点特写（恒星表面） | `, tight close-up shot focusing on the surface detail and light interaction of the churning plasma star` |
-| **⑤ 前景剪影环境镜（主机位）** | `, over-the-shoulder framing with the human silhouette in sharp foreground, the star glowing in the background` |
+| 段 | 视觉重心 | 叙事作用 |
+|---|---|---|
+| **S1 远端**（0-50m） | 远景巨构 + 恒星建立镜头 | 出生即震撼，引导玩家往前走 |
+| **S2 中景**（50-120m） | 遗迹 kitbash 群 · FluidFlux 主海面 | 走进环境，感受海面波动与遗迹质感 |
+| **S3 主锚点区**（120-160m） | 主机位⑤最优截图点 + 铁磁流体尖刺 + 极光 | 叙事高潮，玩家走过时形成⑤号构图 |
+| **S4 回望端**（160-200m 尾段） | 走过后回望远景，收束叙事 | 让玩家意识到"我刚穿过一个北欧神话世界" |
 
-> 工具提示：2D 文生图无法精确旋转同一三维场景；用图像参考 / IP-Adapter 锁风格身份（权重中等）+ 固定 seed + 机位短语只加末尾，即可在保持视觉身份下换角度。
-> [!TODO] 主机位⑤已定，下一步推进 D3 内核技术选型 —— 见 `D3-KERNEL.md`。
-> — ai 2026-07-02
+**walkthrough 视频叙事**：1 分钟单向走位 · S3 慢镜头 hold 主机位⑤构图 · 用于 Portfolio 视频页封面。作品集封面用 S3 静帧，视频用完整走位，双主线互相强化。
 
 ---
 
-## §5 因果链总览（2026-07-06 定案）
+## §5 因果链（叙事骨架）
 
-恒星是整个场景的唯一因果源，所有衍生效果由它驱动：
+恒星是场景的唯一因果源，所有效果由它驱动：
 
 ```
-等离子恒星（A1，hero + 光源）
-  ├─ 光 → 大气散射 / god-rays
-  ├─ 光 → 体积云穿透散射（A3）
-  ├─ 磁场 → 极光沿磁力线分布（A2）
-  └─ 磁场 → 海面铁磁流体尖刺（B2 融合，挂 FluidFlux）
+等离子恒星（hero + 光源）
+  ├─ 光 → 大气散射 / god-rays              【基底 · W3 交付】
+  ├─ 光 → 体积云穿透散射                   【基底 · W3 交付】
+  ├─ 磁场 → 极光沿磁力线分布（S3 上空）    【点缀 · W4 目标成片】
+  └─ 磁场 → 海面铁磁流体尖刺（S3 段焦点）   【点缀 · W4 目标成片】
 ```
+
+**交付基线明确**（07-07 修正）：W3 保底成片保 2 支（光→大气/云散射），W4 目标成片补齐磁场 2 支。宣传因果链 4 支时同步说明分档。
 
 **叙事一句话**：*"恒星不只是光源——它的磁场牵引着脚下这片黑色液金海，恒星在天上翻涌，海面就应和着长出尖刺。"*
 
-> 落法细节见 `PIPELINE.md` §2（恒星）/ §3（天象）/ §4（铁磁流体融合）。
+---
+
+## §6 备选机位（追加短语）
+
+主机位已定 ⑤（S3 段最优截图点），其余作储备参考（追加在 §3 定案提示词末尾即可）。跑图叙事下，这些机位可作为 walkthrough 视频的额外镜头素材：
+
+| 机位 | 追加短语 | 跑图用途 |
+|---|---|---|
+| ① 全景建立（=§3 原版） | `（无需追加）` | S1 出生视角 |
+| ② 低角度仰视 hero | `, extreme low-angle hero shot looking up, emphasizing towering vertical scale` | S2 走过遗迹时的仰角 |
+| ③ 俯瞰鸟瞰 | `, high aerial bird's-eye overview, revealing coastline layout and silhouette against the horizon` | 视频结尾拉远镜头 |
+| ④ 焦点特写（恒星表面） | `, tight close-up shot focusing on the surface detail and light interaction of the churning plasma star` | S3 慢镜头素材 |
+| **⑤ 前景剪影（主机位）** | `, over-the-shoulder framing with the human silhouette in sharp foreground, the star glowing in the background` | **S3 抵达时自然形成的高光构图** |
