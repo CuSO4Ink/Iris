@@ -1,4 +1,4 @@
-# EffectPipeline
+﻿# EffectPipeline
 
 > **L2 项目身份**。接手本项目的 AI 必读。
 
@@ -21,9 +21,11 @@
 
 ## 当前焦点
 
-**ZibraVDB Personal Key 已到位（授权阻塞解除），外包正在 J 盘 `BYDC文件重新整理/` 重新上传整改后的工程。**
+**C50 试点已用 Spawnable 路线全流程跑通（2026-07-08）；同时等外包上传剩余 A45/B20/C80。**
 
-已上传：C30、C50、C60、D20、E20、E40（6 个）。缺：A45、B20、C80（3 个尚未上传）。
+试点结论：外包特效 Actor（ZibraVDB/Niagara）转 Spawnable → 删外包相机/CameraCuts → 主 Shot 加 Subsequences Track 引用外包 Sequence。此路线绕开 WP 下 Actor GUID 变动导致的红色轨道重绑问题，取代原 Data Layer + 逐条重绑方案（详见 LOG 2026-07-08 17:20）。批量脚本 integrate_fx_shots.py 已起草，待引擎组确认 5.7.3 convert-to-spawnable 的 Python API 签名。
+
+外包返包：已上传 C30、C50、C60、D20、E20、E40（6 个）。缺：A45、B20、C80（3 个尚未上传）。
 
 已上传 6 个工程的首轮验收扫描完成，发现若干规范问题（详见 BACKLOG）。待全部 9 个上传完毕后统一复核，再进入主工程导入。
 

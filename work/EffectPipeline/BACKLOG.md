@@ -1,4 +1,4 @@
-# EffectPipeline · BACKLOG
+﻿# EffectPipeline · BACKLOG
 
 > 待办清单。顺手加，做完打勾。详细分析见 `notes/`。
 
@@ -50,16 +50,28 @@
 - [ ] **ZibraVDB 前后景遮挡问题**（⚠️ 2026-07-07 新增）：外包备注指出 ZibraVDB 会后景遮挡前景粒子，需通过调整 Volume Translucency Sort Priority 解决，主工程侧导入后需逐镜头检查
 - [ ] **E40 ZibraVDB 主工程侧挂接**（⚠️ 2026-07-07 新增）：外包侧因内存不足崩溃，交付空 Actor 版本；主工程侧需自行挂接 ZibraVDB + 在 Sequence 添加 playback 轨道
 
-## 返包验收通过后
+## 阶段 2 · 试点导入 + Sequence 对齐（2026-07-08 启动，C50 先行）
 
-### 阶段 2 · 试点导入 + Sequence 对齐
+> ⚠️ 2026-07-08 17:20 路线更新：C50 试点已改走 **Spawnable 路线**，推翻下方原 Data Layer + 逐条重绑方案（划线项为废弃，保留作历史参照）。详见 LOG 2026-07-08 17:20。
 
-- [ ] 选择 1-2 个返包样本做主工程导入试点。
-- [ ] 执行引用闭包检查：缺失引用 / Redirector / 跨工程 ExternalActors / 插件依赖。
-- [ ] 放入主工程关卡，绑定对应 Sequence 时间轴。
-- [ ] 离线渲染验证：画面与外包预览 mov 对齐。
-- [ ] 沉淀导入 + Sequence 对齐 Checklist / 脚本。
+### ✅ Spawnable 路线（现行，C50 已全流程跑通）
+- [x] C50 关卡+资产已拷贝到主工程 `Content/FX/C50/`（直接拷贝代替 Migrate，C50 无跨工程引用故等价）
+- [x] C50 `.zibravdb` 源已交齐，Volume 重导后 Actor 指向正确资产
+- [x] 外包 C50_Sequence 特效 Actor（ZibraVDB / Niagara）在 C50_gk 上下文里 Convert → Spawnable Actor（自包含，绕开 WP 下 GUID 红轨问题）
+- [x] 删除外包 Sequence 内相机 + Camera Cuts（相机/后处理由主工程 Shot 自带）
+- [x] 主 Sequence 对应 Shot 加 Subsequences Track 引用外包 C50_Sequence，时间对齐
+- [x] ZibraVDB 隐患排除：转 Spawnable 后体积正常显示，template Volume 引用有效
+- [ ] 引用闭包检查：缺失引用 / Redirector / 插件依赖（C50 无跨引用，快速确认即可）
+- [ ] 离线渲染验证：画面与外包预览 mov 对齐，查 ZibraVDB 前后景遮挡（调 Translucency Sort Priority）
+- [ ] 批量脚本 integrate_fx_shots.py 落地：转 Spawnable + 清相机 + 挂 Subsequence（待引擎组确认 5.7.3 convert to spawnable 的 Python API 签名）
 
+### ~~原 Data Layer + 逐条重绑路线（2026-07-08 废弃，Spawnable 路线更优）~~
+- [x] ~~C50 拷入主工程 Content/FX/C50/~~
+- [ ] ~~复制粘贴 Actor 进 WP 主关卡（OFPA，GUID 必然变）~~
+- [ ] ~~新建 Data Layer DL_C50，把搬入 Actor 加入该层~~
+- [ ] ~~主 Sequence C50 Shot 加 Data Layer Track 控制 DL_C50 显隐~~
+- [ ] ~~外包 Sequence 嵌套挂入后逐条重新绑定失效红色轨道~~
+- 废弃原因：Spawnable 路线不需要 Actor 进 WP 主关卡、不需要 Data Layer、不需要逐条重绑，批量脚本化难度更低。
 ### 阶段 3 · 批量执行
 
 - [ ] 按清单批量导入剩余特效 → 对齐各自 Sequence。
