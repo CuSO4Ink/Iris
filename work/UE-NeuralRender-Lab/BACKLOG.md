@@ -11,7 +11,8 @@
 - [ ] POC-A：用 NanoGS 把一个 .ply 高斯泼溅资产拖进现有 UE 项目，验证渲染质量和与 Nanite/光照的共存成本。
 - [ ] POC-B：如果项目已有骨骼网格体/布料相关需求，试装一个最小 ML Deformer（Neural Morph Model）流程，对照官方 MetaHuman 训练数据量级（5000~50000帧）评估训练成本。
 - [ ] 中风险验证：NNE 实时推理最小 demo —— 用官方 FPStyleTransfer 或 DeadMorose777 的 UE5.5 GPU-only 移植版，本机跑通一次，记录真实帧时间（对照NVIDIA博客 DirectML 5.7ms / TensorRT 3.8ms 的参考基线）。
-- [ ] 中风险验证：Neural Post Processing 材质路线 —— 走一次官方文档的零代码流程（ONNX→NNE Model Data→Neural Profile→材质挂Neural Input/Output），确认224x224定长限制和Tiling开销是否能接受。
+- [ ] 中风险验证：Neural Post Processing 材质路线 —— 走一次官方文档的零代码流程（ONNX→NNE Model Data→Neural Profile→材质挂Neural Input/Output），确认224x224定长限制和Tiling开销是否能接受。已有完整参数表（Tile Size/Border Overlaps/Overlap Resolve Type/两种索引模式），见LOG 2026-07-07 20:09条目，可直接照着走。
+- [ ] 材质POC实操细化：先用Tile Size=Auto的纹理索引模式跑通一个风格转换模型，截图`r.Neuralpostprocess.TileOverlap.Visualize 1`可视化结果；再挑战Buffer Indexing Mode手动切B=2x2批次，对比两种模式的breakdown深度差异。
 - [ ] 建性能预算表：1080p/4K，模型尺寸，Tile策略，GPU ms，显存，对比CPU同步 vs RDG异步两种接入方式。
 - [ ] 平台落地评估：目标平台是PC还是移动/主机？如果非PC，NNE的Experimental平台支持可能直接排除路线一/二。
 - [ ] 决策点：路线一/二是否值得投入 C++/SceneViewExtension 工程量，还是蓝图/材质层面就能满足当前项目诉求。
@@ -25,6 +26,7 @@
 - [x] 全网侦察四条路线（NNE实时推理 / 神经后处理材质 / ML Deformer / 离线3DGS导入）及代表案例，写入 LOG.md。
 - [x] RDG推理管线技术栈拆解 + 抓取 `DeadMorose777/OnnxRuntime-UnrealEngine` 核心源码，写入 LOG.md。
 - [x] 梳理材质路线/RDG路线各自应用场景清单，发现RDG路线的官方生产案例NNEDenoiser，写入 LOG.md。
+- [x] 抓取材质路线官方文档完整正文（五步流程/Neural Profile参数全表/两种索引模式/踩坑点），写入 LOG.md。
 
 ---
 

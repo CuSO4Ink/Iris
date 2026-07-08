@@ -85,3 +85,26 @@
 - 行业佐证：AMD FSR Redstone套件（Neural Radiance Caching / ML Super Resolution / ML Frame Generation）走的是同一条"RDG里跑轻量神经网络"思路，不是UE孤例，是行业方向。
 
 **结论/建议**：RDG进阶篇章不必局限于复刻风格迁移demo，更有说服力的叙事是"接入NNEDenoiser接口，跑一个自定义降噪/超分模型，讲清楚它和路径追踪管线(Movie Render Queue)的耦合方式"——这样故事是"理解并扩展了UE官方生产管线里已经在用的架构"，比"搬了个开源风格迁移demo"分量更重，也更贴近TA工作里"性能预算+管线集成"的核心价值主张。
+
+### 2026-07-07 20:09 — [发现] 材质路线完整操作细节 + Neural Profile 参数全表 + 两种索引模式
+
+抓取UE5.7官方文档完整正文（此前只拿到摘要），补全材质路线的实操细节：
+
+**五步流程**：①启用Neural Rendering插件 ②导入ONNX→NNE Model Data资产 ③创建Neural Profile资产（Material→Profiles菜单），把NNE Model Data塞进模型插槽 ④新建材质：Material Domain=Post Process + 勾选Used with Neural Networks + 赋值Neural Profile，图表挂Neural Input(仅能调用1次)/Neural Output(可多次)节点接到Emissive Color ⑤点Apply生效。
+
+**Neural Profile资产参数全表**：
+- 模型组：Runtime Type(NNERuntimeORTDml/NNERuntimeRDGHlsl)、NNE Model Data、Input/Output Dimension(只读)
+- 重载组：Batch Size Override(模型batch维为动态-1时手动指定)
+- 图块组：Tile Size(可设Auto，UE自动铺满图块，官方例子：模型输入1x3x200x200，缓冲区1000x1000→自动切5x5=25图块打包成(5x5)x3x200x200一次批量跑完再合并)、Border Overlaps(图块边界重叠幅度)、Overlap Resolve Type(Ignored忽略 / Feathered线性羽化混合——官方风格转换范例用2x2图块+Feathered隐藏接缝)
+
+**调试命令**：`r.Neuralpostprocess.TileOverlap.Visualize 1`可视化图块重叠区域（可作breakdown截图素材）；`r.Neuralpostprocess.Apply`开关神经网络（关闭时Output直接原样返回Input值，方便A/B对比）。
+
+**两种索引模式（此前完全没挖到的信息）**：
+- 纹理索引模式(默认)：只原生支持[1x3xHxW]标准布局，纹理会缩放到目标尺寸(Tile=Auto时不缩放，纹理外图块被镜像)
+- 缓冲区索引模式(Buffer Indexing Mode)：支持任意[BxCxHxW]模型(B≠1)，不做自动过滤，需材质图/自定义shader手写读写逻辑。官方例子：屏幕切成B=2x2=4批次，用Neural Input/Neural Output(Buffer)节点分别处理；需配合Batch Size Override=4(支持动态批次)或Tile Size=2x2(不支持动态批次)，两者可叠加
+
+**运行时差异**：NNERuntimeORTDml走DirectML后端；NNERuntimeRDGHlsl卷积按输出宽度优化，结果对32取模(意味着输出宽度理想应为32倍数)。
+
+**三个踩坑点**：①一个材质仅1次Neural Input但Neural Output可多次调用，决定材质图结构；②最终分辨率被模型输出尺寸卡死(先查Neural Profile的Output Dimension)，提升清晰度只能换高分辨率模型或用Tile/Buffer索引拆分，图块边界可能有肉眼可见不连贯(可作"取舍"素材)；③纹理索引模式原生只吃BCHW，TensorFlow默认导出BHWC需显式转换否则读错通道。
+
+**对作品集breakdown的价值**：多数人只会用默认纹理索引模式，能讲清楚Buffer Indexing Mode怎么手动控制批次拆分 + Tile重叠可视化截图，比单纯"套了个风格迁移模型"更能体现工程理解深度。
