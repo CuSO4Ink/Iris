@@ -28,7 +28,8 @@
 - [ ] **D20 关卡内 36 处 ZibraVDB 引用未验证**：需打开关卡确认是否已补齐 Volume 或删除无效 Actor
 - [ ] **E40 无 Houdini 源说明**：原 `baiying_E40_pop4.hip` 不在工程内，且无 Houdini 源文件说明
 - [ ] **E20 ZibraVDB 缺 `.zibravdb` 源**（⚠️ 2026-07-07 修正）：外包备注说明截图证实 E20 实际使用 ZibraVDB（ZebraVDB Playback 轨道 + ZebraVDB Actor），原扫描误判为 SparseVolumeMaterial；E20 也须补交 `.zibravdb` 源
-- [ ] **全部 ZibraVDB 镜头 `.zibravdb` 源均未随工程交付**（⚠️ 2026-07-07 新发现）：外包备注说明指出所有镜头只把 uasset 放入 Assets/、源未放入，非仅 D20 个案；C50/E20/E40 等均需核查
+- [x] ~~**C50 缺 `.zibravdb` 源**~~ → ✅ **已交付（2026-07-07 实测确认）**：6 个 `.zibravdb` 源已放入 `Volume/` 目录，与 uasset 成对交付
+- [x] ~~**全部 ZibraVDB 镜头 `.zibravdb` 源均未随工程交付**~~ → ⚠️ **修正（2026-07-07 实测）**：C50 已交付源；实际缺源的是 D20/E20/E40 三个
 
 **P1 — 应处理：**
 - [x] ~~**C30/C60 使用 World Partition**~~ → ✅ **已豁免（2026-07-07）**：用户确认 __ExternalActors__/__ExternalObjects__ 是 WP 场景设置自动生成，Actor 全保存在这两文件夹下，在提交范围内保留
@@ -37,9 +38,10 @@
 - [ ] **E20 插件含 ImagePlate**：与特效无关，应删除
 - [ ] **E40 插件含 ImagePlate**：同上
 - [ ] **D20 插件含 ImagePlate**：同上
-- [ ] **C50 无 Sequence 资产**：只有 `C50_gk.umap`，无 Sequence 文件
-- [ ] **C50 zibravdb 源体积极小**（280~405KB）：需确认是否为正式效果资产还是占位/测试
+- [ ] **C50 无 Sequence 资产**：只有 `C50_gk.umap`（64KB），无 Sequence 文件
+- [x] ~~**C50 zibravdb 源体积极小**（280~405KB）~~ → 保留确认项：源已交付但体积异常小，仍需确认是否为正式效果资产还是占位/测试
 - [ ] **E40 缺 Sequence 资产**：只有 `E40_gk.umap` + `E40_Sequencer.uasset`，但 Sequencer 命名不规范（应为 `E40_Sequence`）
+- [ ] **Sequence 命名不统一**（⚠️ v1.2 新增）：C30/C60 用 `*_Sequence`，D20/E20/E40 用 `*_Sequencer`，须统一为 `*_Sequence`
 
 **P2 — 建议处理：**
 - [ ] **多个工程存在空目录**：C30 的 Geo/Material/PointCache 空；E20 的 Geo/Material/PointCache 空；C50 的 Geo/Material/Mesh/Niagara/PointCache/Texture 全空
