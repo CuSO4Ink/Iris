@@ -124,3 +124,56 @@ ZibraVDB 隐患已排除：用户实测确认，特效 Actor 全部转 Spawnable
 
 ### 2026-07-08 17:20 — [确认] C50 外包 Sequence 资产存在
 全流程操作对象为外包 C50_Sequence.uasset（路径 /Game/FX_C50/Level/C50_Sequence），BACKLOG 旧记录"C50 无 Sequence 资产、只有 C50_gk.umap"应更新——该 Sequence 已存在/已补交（具体来源待用户顺手复核）。
+
+### 2026-07-09 14:40 — [进展] C50 接入脚本 integrate_fx_shots.py 端到端实跑成功
+两个脚本双双跑通并落地本地：
+- copy_fx_content.ps1（C:\Users\violinapeng\paozi-local\）：J盘只读拷贝外包 FX_<镜头> Content 到主工程。目标平级放 Content 下。实拷 C50 15文件通过。
+- integrate_fx_shots.py（c:\work\ai\iris\output\）：转Spawnable + 清相机/CameraCuts + 挂Subsequence + 时间对齐。方案B（自动load各镜头_gk关卡）。
+
+### 2026-07-09 14:40 — [发现/关键] convert_to_spawnable 只对"已在Sequencer打开的序列"生效
+5.6+ LevelSequenceEditorSubsystem.convert_to_spawnable 只作用于当前在Sequencer打开的序列，对仅load_asset未打开的序列静默无效（返回ok但不转，导致换关卡红轨）。修复：转Spawnable前先 unreal.LevelSequenceEditorBlueprintLibrary.open_level_sequence(seq) 打开。实锤：转换成功时日志出现 MovieSceneSpawnableActorBinding 序列化。这是本次卡最久的坑。
+
+### 2026-07-09 14:40 — [澄清] ZibraVDBActor Cube 网格警告为无害占位，非退化损坏
+MapCheck 报 ZibraVDBActor StaticMesh=Cube 警告是编辑器占位网格，不影响转Spawnable，特效正常Instantiating。之前怀疑"Volume=None退化成Cube导致转坏"的判断错误，真因是 open_level_sequence 未调用。
+
+### 2026-07-09 14:40 — [脚本要点] API名与幂等
+- 转Spawnable API 实测确认：LevelSequenceEditorSubsystem.convert_to_spawnable（add_spawnable_from_instance 5.6已deprecated）。
+- get_display_name() 返回 unreal.Text，用前需 str() 转换。
+- 脚本文件必须无BOM，否则UE Python报 U+FEFF SyntaxError。
+- 幂等：已Spawnable跳过 + Subsequence已挂同一fx_seq跳过（skip dup）。
+
+### 2026-07-09 14:40 — [待处理] 顶级目录规范：FX_<镜头> 不在主工程允许列表
+主工程内容校验器报错：[CheckTopLevelFolder] /Game/FX_C50 不在允许列表（资源位于不允许的顶级目录）。当前"平级放Content下"违反规范。待确认主工程允许的FX资产顶级目录，调整 copy_fx_content.ps1 目标路径与脚本内 /Game 路径。
+
+### 2026-07-09 16:00 — [进展] 两脚本联动改造：共享配置 + 自动探测 + 代号入口
+消除两脚本割裂感（PowerShell拷贝在Win跑 / Python接入需UE），三项改造完成并预演验证：
+- 共享配置 shot_config.json（本地两份：paozi-local 供PS、iris/output 供Py）。只列镜头代号数组 shots=["C50","C30","C60","D20","E20","E40"]，路径差异全靠脚本自动探测，配置不硬编码。
+- 自动探测：PowerShell端探测源FX目录大小写(FX_/Fx_)并自动带WP产物(__ExternalActors__/__ExternalObjects__)；Python端 resolve_shot() 探测/Game下FX目录大小写 + Sequence后缀(_Sequence/_Sequencer)。
+- 代号入口：copy_fx_content.ps1 -Shot C30 [-Execute]（单/全）；UE内 integrate_shot("C30") / integrate_all()。
+预演结果(6镜头全通过)：C50=FX_C50(15)；C30=Fx_C30(22)+ExtActors(21)+ExtObjs(5)；C60=FX_C60(16)+ExtActors(18)+ExtObjs(7)；D20=FX_D20(21)；E20=FX_E20(16)；E40=FX_E40(14)。C30小写目录、C30/C60的WP产物均正确识别。
+一键启动方案(PS自动拉起UE)已评估但放弃：convert_to_spawnable依赖Sequencer UI就绪，无头/自动启动时序有风险。
+
+### 2026-07-09 16:00 — [状态] 当前仅C50已实际导入主工程
+C30/C60/D20/E20/E40 已扫描确认J盘源完整、脚本预演通过，但尚未实拷进主工程、未接入。真导入需跑 copy_fx_content.ps1 -Execute + UE integrate_all()（写Company目录+改资产，待用户确认后执行）。
+
+### 2026-07-09 17:45 — [障碍/引擎] D20 批量脚本触发两个引擎级崩溃(非脚本逻辑问题)
+脚本探测/转换/挂接逻辑已验证正确(diagnose显示识别全对), 但 D20 实跑遇到两个引擎/硬件层崩溃:
+1) [CPU/save崩溃] FAssetProtect::EncryptAsset int32数组越界(index 2^31, package 5.4GB)。自研引擎资产加密模块处理超大package时int32溢出。栈: SaveLoadedAsset -> SavePackage -> FAssetProtect::EncryptAsset (AssetProtect.cpp:256)。应对: 脚本加 AUTO_SAVE=False, 完成后手动Ctrl+S。根治需引擎组改int64。
+2) [GPU崩溃] 打开D20_gk渲染时 GPUCrash / Device Hung / Aftermath。D20关卡含10个ZibraVDBActor(0~9)同时PreRenderView+Decompress, RTX3080(10GB)显存/算力过载, GPU挂起。崩在 ZibraVDB_PreRenderView(ZibraVDBActor_7/8) active态。
+症状: 重启UE后自动恢复上次关卡(D20_gk)->一加载就渲染10个ZibraVDB->秒崩, 陷入"一开就崩"循环。
+恢复: 启动UE时避免自动加载D20_gk(开空关卡/清Saved里上次关卡记录)。
+待解决: 超重ZibraVDB镜头(D20 10个/18GB, E20 11GB, E40 36GB)光打开渲染就可能GPU崩溃, 超出脚本范围, 属硬件/引擎负载问题(需分批渲染/降采样/更强显卡, 或引擎组优化ZibraVDB批量渲染)。
+D20特殊性: Volume空缺.zibravdb源(BACKLOG已记), 18GB超大, 10个ZibraVDB。是问题镜头, 不适合作常规批量样板。
+
+### 2026-07-09 17:45 — [进展汇总] 本周脚本化成果
+- C50: 全流程跑通并导入主工程(拷贝+转Spawnable+删相机+挂Subsequence)。
+- 两脚本落地: copy_fx_content.ps1(J盘拷贝, 支持大小写探测/WP产物/后台大文件模式) + integrate_fx_shots.py(转Spawnable接入, 黑名单式识别只删相机留其余, 自动探测目录大小写和Sequence后缀, diagnose/integrate_shot/integrate_all入口)。
+- 共享配置 shot_config.json 统一两脚本上下文。
+- 关键技术确认: convert_to_spawnable需先open_level_sequence; get_display_name返回unreal.Text需转str; 脚本无BOM; 5个待导入镜头J盘源完整。
+- D20暴露引擎级障碍(见上条), 超重镜头待专项处理。
+
+### 2026-07-09 19:00 — [发现/机理] Spawnable膨胀: 重体积特效转Spawnable会把Actor状态烘进Sequence导致资产爆炸
+根因解释"D20切Spawnable前没事、切后突然超2G": Possessable只存Actor引用(GUID指向关卡实例), Sequence很小; convert_to_spawnable会把每个Actor完整序列化副本(Object Template)内嵌进Sequence。D20有10个ZibraVDBActor, template可能烘进Volume运行时数据(日志见save时清理Transient.TextureRenderTargetVolume), 10个累积撑爆Sequence -> 撞2G(int32)加密崩溃线。
+C50没爆是因为其ZibraVDB template只存轻量uasset引用。
+边界结论: Spawnable路线适合轻量特效(C50), 对重体积特效(D20/E20/E40)会导致Sequence资产爆炸性膨胀+save崩溃。重镜头可能需回退Possessable+关卡引用路线(WP下需处理GUID重绑), 或先查清template到底烘进了什么、能否轻量化。待明日/引擎组深究。
+待确认: D20崩溃时到底是D20_Sequencer膨胀超2G, 还是D20_gk.umap(本身5.2GB)save触发——脚本save了fx和sh两个, 需区分。
