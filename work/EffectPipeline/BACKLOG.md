@@ -1,36 +1,77 @@
-# EffectPipeline · BACKLOG
+﻿# EffectPipeline · BACKLOG
 
 > 待办清单。顺手加，做完打勾。详细分析见 `notes/`。
 
 ## 当前最高优先
 
-- [ ] **等待外包按整改规范重新修改并返包**
-  - 当前已完成：BYDC 9 工程实勘、外包交付规范、逐镜头整改说明、PDF 整改清单、空目录结构示范 zip。
-  - 当前不继续扩大主工程导入面；等外包返包后，先做验收复核，再进入主工程导入 / Sequence 对齐。
-  - 返包验收优先级：P0 阻断项 → C30 公版引擎 → ZibraVDB 源随工程 → 目录/命名/引用闭包。
+- [x] ZibraVDB Personal Key 已到位，授权阻塞解除
+- [x] 外包返包首轮验收扫描（6/9 已上传：C30/C50/C60/D20/E20/E40）
+- [x] C30/C60 World Partition 文件夹豁免确认（2026-07-07 用户同意保留）
+- [x] E40 空 Actor 版本接受确认（2026-07-07 用户同意不挂接 ZibraVDB）
+- [ ] 外包继续上传 A45/B20/C80（3 个尚未到）
+- [ ] 全部到齐后统一复核 + 进入主工程导入
 
-## 等外包返包后的第一轮验收
+## 首轮验收发现的问题（6 个已上传工程）
 
-- [ ] E40：确认 `baiyin_E40.7z` 已解压，并整理成完整 UE 工程包。
-- [ ] E20：确认已补齐 `.uproject` + `Config/` + 规范化 `Content/FX_E20/`。
-- [ ] C80：确认已补齐 `.uproject` + `Config/`，并移除 `WorkProjects/Outsource/` 深层内部工作流路径。
-- [ ] D20：确认补交 ZibraVDB Volume 资产与对应 `.zibravdb` 源，关卡 36 处引用不再悬空。
-- [ ] C30：确认已改为公版 UE 5.5 可打开的版本号关联工程（不再是未验证 GUID 自定义引擎）。
-- [ ] A45：确认平级 `UE_to_vdb/A45/output/vol/` 中的 6 个 `.zibravdb` 源已随工程归入 `Volume/`。
-- [ ] C50：确认平级 `vdb/zibra/` 中的 7 个极小 `.zibravdb` 源已随工程归入 `Volume/`，并说明 6 uasset vs 7 源数量差异。
-- [ ] B20：确认 9 个 uasset + 9 个 `.zibravdb` 源仍一一对应，目录和命名已规范化。
-- [ ] C60：确认 C30 命名残留已清理；如使用的是 UE 原生 SVT，则不要误启 ZibraVDB。
+### ✅ 整体改善
+- 6 个工程均有 uproject + Config + Content 三件套
+- C30 已改为公版 UE 5.5（不再是 GUID 自定义引擎）✅
+- 无 StarterContent / Developers 残留 ✅
+- 目录结构统一到 `FX_<镜头号>/` 下 ✅
+- 命名基本含镜头号前缀 ✅
 
-## 返包验收通过后
+### ❌ 待整改问题
 
-### 阶段 2 · 试点导入 + Sequence 对齐
+**P0 — 必须处理：**
+- [ ] **C50 插件声明严重超标**：uproject 启用 25+ 个插件（OpenXR/VirtualScouting/nDisplay/DMX/PixelStreaming/Composure/MediaIO/LiveLink 等），绝大多数与特效无关，违反规范 §1.3
+- [ ] **D20 ZibraVDB Volume 缺 `.zibravdb` 源**：Volume\Assets\ 有 10 个 cloud uasset（总 ~6.3GB），但无 `.zibravdb` 源文件，无法在主工程侧重建
+- [ ] **D20 关卡内 36 处 ZibraVDB 引用未验证**：需打开关卡确认是否已补齐 Volume 或删除无效 Actor
+- [ ] **E40 无 Houdini 源说明**：原 `baiying_E40_pop4.hip` 不在工程内，且无 Houdini 源文件说明
+- [ ] **E20 ZibraVDB 缺 `.zibravdb` 源**（⚠️ 2026-07-07 修正）：外包备注说明截图证实 E20 实际使用 ZibraVDB（ZebraVDB Playback 轨道 + ZebraVDB Actor），原扫描误判为 SparseVolumeMaterial；E20 也须补交 `.zibravdb` 源
+- [x] ~~**C50 缺 `.zibravdb` 源**~~ → ✅ **已交付（2026-07-07 实测确认）**：6 个 `.zibravdb` 源已放入 `Volume/` 目录，与 uasset 成对交付
+- [x] ~~**全部 ZibraVDB 镜头 `.zibravdb` 源均未随工程交付**~~ → ⚠️ **修正（2026-07-07 实测）**：C50 已交付源；实际缺源的是 D20/E20/E40 三个
 
-- [ ] 选择 1-2 个返包样本做主工程导入试点。
-- [ ] 执行引用闭包检查：缺失引用 / Redirector / 跨工程 ExternalActors / 插件依赖。
-- [ ] 放入主工程关卡，绑定对应 Sequence 时间轴。
-- [ ] 离线渲染验证：画面与外包预览 mov 对齐。
-- [ ] 沉淀导入 + Sequence 对齐 Checklist / 脚本。
+**P1 — 应处理：**
+- [x] ~~**C30/C60 使用 World Partition**~~ → ✅ **已豁免（2026-07-07）**：用户确认 __ExternalActors__/__ExternalObjects__ 是 WP 场景设置自动生成，Actor 全保存在这两文件夹下，在提交范围内保留
+- [ ] **C30 目录名大小写不一致**：`Fx_C30`（小写 x）vs 规范 `FX_C30`
+- [ ] **C60 Volume 无 ZibraVDB 声明却启用 ZibraVDB 插件**：C60 Volume 资产是 UE 原生 SparseVolumeTexture（SVTM），不应启用 ZibraVDB 插件
+- [ ] **E20 插件含 ImagePlate**：与特效无关，应删除
+- [ ] **E40 插件含 ImagePlate**：同上
+- [ ] **D20 插件含 ImagePlate**：同上
+- [ ] **C50 无 Sequence 资产**：只有 `C50_gk.umap`（64KB），无 Sequence 文件
+- [x] ~~**C50 zibravdb 源体积极小**（280~405KB）~~ → 保留确认项：源已交付但体积异常小，仍需确认是否为正式效果资产还是占位/测试
+- [ ] **E40 缺 Sequence 资产**：只有 `E40_gk.umap` + `E40_Sequencer.uasset`，但 Sequencer 命名不规范（应为 `E40_Sequence`）
+- [ ] **Sequence 命名不统一**（⚠️ v1.2 新增）：C30/C60 用 `*_Sequence`，D20/E20/E40 用 `*_Sequencer`，须统一为 `*_Sequence`
 
+**P2 — 建议处理：**
+- [ ] **多个工程存在空目录**：C30 的 Geo/Material/PointCache 空；E20 的 Geo/Material/PointCache 空；C50 的 Geo/Material/Mesh/Niagara/PointCache/Texture 全空
+- [ ] **全部 6 个工程均无 DELIVERY_NOTE.md**：规范 §6 要求每个镜头附带交付说明
+- [ ] **Volume 目录结构不统一**：C30/D20/E20/E40 用 `Volume/Assets/` 子目录，C50/C60 用 `Volume/` 根目录
+- [ ] **ZibraVDB 前后景遮挡问题**（⚠️ 2026-07-07 新增）：外包备注指出 ZibraVDB 会后景遮挡前景粒子，需通过调整 Volume Translucency Sort Priority 解决，主工程侧导入后需逐镜头检查
+- [ ] **E40 ZibraVDB 主工程侧挂接**（⚠️ 2026-07-07 新增）：外包侧因内存不足崩溃，交付空 Actor 版本；主工程侧需自行挂接 ZibraVDB + 在 Sequence 添加 playback 轨道
+
+## 阶段 2 · 试点导入 + Sequence 对齐（2026-07-08 启动，C50 先行）
+
+> ⚠️ 2026-07-08 17:20 路线更新：C50 试点已改走 **Spawnable 路线**，推翻下方原 Data Layer + 逐条重绑方案（划线项为废弃，保留作历史参照）。详见 LOG 2026-07-08 17:20。
+
+### ✅ Spawnable 路线（现行，C50 已全流程跑通）
+- [x] C50 关卡+资产已拷贝到主工程 `Content/FX/C50/`（直接拷贝代替 Migrate，C50 无跨工程引用故等价）
+- [x] C50 `.zibravdb` 源已交齐，Volume 重导后 Actor 指向正确资产
+- [x] 外包 C50_Sequence 特效 Actor（ZibraVDB / Niagara）在 C50_gk 上下文里 Convert → Spawnable Actor（自包含，绕开 WP 下 GUID 红轨问题）
+- [x] 删除外包 Sequence 内相机 + Camera Cuts（相机/后处理由主工程 Shot 自带）
+- [x] 主 Sequence 对应 Shot 加 Subsequences Track 引用外包 C50_Sequence，时间对齐
+- [x] ZibraVDB 隐患排除：转 Spawnable 后体积正常显示，template Volume 引用有效
+- [ ] 引用闭包检查：缺失引用 / Redirector / 插件依赖（C50 无跨引用，快速确认即可）
+- [ ] 离线渲染验证：画面与外包预览 mov 对齐，查 ZibraVDB 前后景遮挡（调 Translucency Sort Priority）
+- [ ] 批量脚本 integrate_fx_shots.py 落地：转 Spawnable + 清相机 + 挂 Subsequence（待引擎组确认 5.7.3 convert to spawnable 的 Python API 签名）
+
+### ~~原 Data Layer + 逐条重绑路线（2026-07-08 废弃，Spawnable 路线更优）~~
+- [x] ~~C50 拷入主工程 Content/FX/C50/~~
+- [ ] ~~复制粘贴 Actor 进 WP 主关卡（OFPA，GUID 必然变）~~
+- [ ] ~~新建 Data Layer DL_C50，把搬入 Actor 加入该层~~
+- [ ] ~~主 Sequence C50 Shot 加 Data Layer Track 控制 DL_C50 显隐~~
+- [ ] ~~外包 Sequence 嵌套挂入后逐条重新绑定失效红色轨道~~
+- 废弃原因：Spawnable 路线不需要 Actor 进 WP 主关卡、不需要 Data Layer、不需要逐条重绑，批量脚本化难度更低。
 ### 阶段 3 · 批量执行
 
 - [ ] 按清单批量导入剩余特效 → 对齐各自 Sequence。

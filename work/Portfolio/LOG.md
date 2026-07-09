@@ -37,3 +37,6 @@
 
 ### 2026-07-06 21:04 — [回滚] 作废 AIEffectFoundry「UE5.5 主线出图」旧基线
 用户拍板统一引擎基线为 UE5.8（用户调教的 MCP 即在此跑通）。AIEffectFoundry 三份文档(DIRECTION/MCPStrategy/EXECUTION-PLAN)原写的"UE5.5 主线、UE5.8 仅 preview 观察"已过时，随 2026-07-02 Bifrost 落地统一改为 UE5.8 主线，与 Bifrost AI-BRIEF 对齐。跨项目一致性裁决记于枢纽。
+
+### 2026-07-07 17:03 — [发现] 神经渲染四条路线里，"神经后处理材质"最适合放进作品集
+依据 `work/UE-NeuralRender-Lab` 全网侦察结论做适配度评估：UE 官方 Neural Post Processing（ONNX→NNE Model Data→Neural Profile→材质挂Neural Input/Output）零代码、走材质图，命中个人材质/HLSL特长，工程投入低但故事完整（模型结构+224²定长限制的Tiling取舍+GPU ms实测=天然breakdown素材）。已写入 portfolio-plan.md 的 Part 3 候选榜第2位，BACKLOG 加了新待办项。自定义RDG推理管线列为进阶延伸（工程深度更强但起手成本高，先用材质路线验证叙事再决定要不要加码）；ML Deformer 虽是唯一生产验证路线但偏角色蒙皮、离题FX特长，不建议作主线；离线3DGS导入插件套壳感强、原创度低，同样不建议。

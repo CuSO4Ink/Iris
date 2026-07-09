@@ -1,4 +1,4 @@
-# EffectPipeline
+﻿# EffectPipeline
 
 > **L2 项目身份**。接手本项目的 AI 必读。
 
@@ -17,25 +17,28 @@
 
 ## 当前状态
 
-活跃 — **整改资料已整理完成，当前等待外包按规范重新修改并返包**。
+活跃 — **外包返包上传中（6/9 已到），正在逐工程验收规范问题**。
 
 ## 当前焦点
 
-**当前阶段不是继续盲目导入，而是等待外包整改返包；收到新包后做验收复核 + 再进入主工程导入/Sequence 对齐。**
+**C50 试点已用 Spawnable 路线全流程跑通（2026-07-08）；同时等外包上传剩余 A45/B20/C80。**
 
-返包后优先验收：
+试点结论：外包特效 Actor（ZibraVDB/Niagara）转 Spawnable → 删外包相机/CameraCuts → 主 Shot 加 Subsequences Track 引用外包 Sequence。此路线绕开 WP 下 Actor GUID 变动导致的红色轨道重绑问题，取代原 Data Layer + 逐条重绑方案（详见 LOG 2026-07-08 17:20）。批量脚本 integrate_fx_shots.py 已起草，待引擎组确认 5.7.3 convert-to-spawnable 的 Python API 签名。
 
-1. P0 阻断项：E40 解压并整理成完整工程；E20/C80 补齐 uproject+Config；D20 补交 ZibraVDB Volume / `.zibravdb` 源。
-2. C30：当前 GUID 自定义引擎关联尚未实测，要求外包改为**公版 UE 5.5**可打开的版本号关联工程。
-3. A45/C50：`.zibravdb` 源已在工程外平级目录核实存在，返包时必须随工程归入 `Volume/`，避免漏交。
-4. 收到返包后，再执行主工程导入、引用闭包检查、Fix Up Redirectors、Sequence 对齐和离线渲染验证。
+外包返包：已上传 C30、C50、C60、D20、E20、E40（6 个）。缺：A45、B20、C80（3 个尚未上传）。
+
+已上传 6 个工程的首轮验收扫描完成，发现若干规范问题（详见 BACKLOG）。待全部 9 个上传完毕后统一复核，再进入主工程导入。
 
 ## 关键事实（实勘）
 
-- 外包归档：`J:\vendors\漫行者\Final最终归档`（只读），1022GB，15 个 uproject 基本为 UE5.5，C30 为 GUID 自定义引擎关联。
+- 外包归档：`J:\vendors\漫行者\Final最终归档`（只读），1022GB，15 个 uproject 基本为 UE5.5。
+- 外包返包目录：`J:\vendors\漫行者\Final最终归档\BYDC\BYDC文件重新整理\`（7/6 开始上传，6/9 已到）。
 - 主工程：自研 UE5.7.3（JY_SRC），跨版本+跨引擎；普通 Content 可导入，ZibraVDB 需以 `.zibravdb` 源和主工程侧解码显示为准。
-- BYDC 9 工程实勘完成，已产出外包交付规范、整改执行说明、PDF 整改清单和空目录结构示范 zip。
-- D20 是当前真正缺 ZibraVDB 源/资产的阻断项；A45/C50 源已找到但位置不规范，需外包随工程重新整理。
+- **ZibraVDB Personal License Key 已到位**，主工程侧授权已激活，不再阻塞。
+- 返包首轮验收：6 个工程整体结构已规范化（三件套齐全、目录统一到 `FX_<镜头号>/`、无 StarterContent），但仍有插件超标、缺 `.zibravdb` 源、空目录、无 DELIVERY_NOTE 等问题（详见 BACKLOG）。
+- WP 文件夹豁免（2026-07-07）：C30/C60 的 `__ExternalActors__`/`__ExternalObjects__` 为 World Partition 自动生成产物，用户同意保留。
+- E40 空 Actor 豁免（2026-07-07）：E40 因 ZibraVDB 内存占用过大导致外包侧崩溃，用户同意接受不挂接 ZibraVDB 的空 Actor 版本，主工程侧自行挂接。
+- E20 ZibraVDB 误判修正（2026-07-07）：外包备注截图证实 E20 实际使用 ZibraVDB，原扫描误判为 SparseVolumeMaterial。
 - 黄金法则：插件未全部装好启用前，绝不保存任何关卡/资产（None 会永久写盘）。
 
 ## 技术栈与硬约束

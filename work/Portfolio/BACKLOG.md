@@ -23,6 +23,7 @@
 
 ### Part 3（收录载体 = Bifrost；UEAgent 仅能力背书）
 - [ ] 收录候选确认：**Bifrost 搭建过程**（我调教的 UE5.8 MCP 量产 L1 + 人主导 L2/L3 + 前沿内核 breakdown + 成片）
+- [ ] 新候选评估：**神经后处理材质 demo**（源自 `work/UE-NeuralRender-Lab` 侦察，零代码材质路线，命中材质/HLSL 特长，投入低价值高）——先在 Lab 项目跑通 POC，出效果后再决定是否升格为 Part 3 独立收录项还是 Bifrost 的补充篇章
 
 ## 已完成（近期，便于回忆）
 
