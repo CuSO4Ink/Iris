@@ -5,6 +5,7 @@ GaussianVolume MVP — standalone CPU renderer
   - ray-Gaussian 解析透射率（analytic optical depth，非固定步 raymarch）
   - brute-force traversal + candidate 统计
   - front-to-back 合成 + single scattering（含 fake ambient / powder）
+  - 预计算光源方向 tau 矩阵（O(N²) 一次/frame → O(M) 查表/ray）
   - debug view（optical depth / transmittance / candidate count）
 
 纯 NumPy，离线出图。目的是回答 MVP 三问，不追最终精度。
@@ -106,6 +107,51 @@ def ray_gaussian_taus(cloud: GaussianCloud, o, d, idx, t0, t1):
 
 
 # ---------------------------------------------------------------------------
+# 预计算光源方向 tau 矩阵
+# ---------------------------------------------------------------------------
+def precompute_light_tau_matrix(cloud, ldir, t_far=1e9, chunk_size=256):
+    """预计算 (N, N) 光源方向 optical depth 矩阵。
+
+    tau_light[i, j] = primitive j 沿 ray(origin=center[i], dir=ldir) 的 tau。
+    每帧一次（光源方向固定），把 shade_ray 中 O(M²) 逐 candidate 光照衰减
+    循环替换为 O(M) 查表。
+
+    分 chunk 计算，避免 (N, N, 3) 中间数组过大。
+    """
+    N = cloud.N
+    ldir = np.asarray(ldir, float)
+    ldir = ldir / np.linalg.norm(ldir)
+    tau_light = np.zeros((N, N), dtype=np.float64)
+
+    # 方向相关量，所有 origin 共享
+    Sd = np.einsum('nkl,l->nk', cloud._Sinv, ldir)  # (N,3) Sinv @ d
+    A = np.einsum('nk,k->n', Sd, ldir)               # (N,) d^T Sinv d
+    A = np.maximum(A, 1e-12)
+    sig1d = 1.0 / np.sqrt(A)                          # (N,)
+    sigma_t = cloud.sigma_t                           # (N,)
+    sqrt2_sig = np.sqrt(2.0) * sig1d                  # (N,)
+
+    for i0 in range(0, N, chunk_size):
+        i1 = min(i0 + chunk_size, N)
+        o_batch = cloud.center[i0:i1]                 # (B,3)
+        m = o_batch[:, None, :] - cloud.center[None, :, :]  # (B,N,3)
+        B_coef = np.einsum('bnk,nk->bn', m, Sd)       # (B,N) m^T Sinv d
+        Sinv_m = np.einsum('nkl,bnl->bnk', cloud._Sinv, m)  # (B,N,3)
+        Cq = np.einsum('bnk,bnk->bn', m, Sinv_m)      # (B,N) m^T Sinv m
+
+        t_star = -B_coef / A[None, :]                  # (B,N)
+        peak = -0.5 * (Cq - B_coef**2 / A[None, :])    # (B,N)
+        amp = sigma_t[None, :] * np.exp(peak)          # (B,N)
+
+        z0 = (0.0 - t_star) / sqrt2_sig[None, :]       # (B,N)
+        z1 = (t_far - t_star) / sqrt2_sig[None, :]     # (B,N)
+        integral = sig1d[None, :] * SQRT_2PI * 0.5 * (_erf(z1) - _erf(z0))
+        tau_light[i0:i1] = np.maximum(amp * integral, 0.0)
+
+    return tau_light
+
+
+# ---------------------------------------------------------------------------
 # Traversal: bounding-sphere brute force
 # ---------------------------------------------------------------------------
 def candidates_along_ray(cloud, o, d, t_near=0.0, t_far=1e9):
@@ -127,8 +173,12 @@ def candidates_along_ray(cloud, o, d, t_near=0.0, t_far=1e9):
 # Single-scattering integrator (front-to-back)
 # ---------------------------------------------------------------------------
 def shade_ray(cloud, o, d, light_dir, light_color, ambient, t_far=1e9,
-              powder=0.5):
-    """返回 (radiance(3,), optical_depth, transmittance, candidate_count)。"""
+              powder=0.5, tau_light=None):
+    """返回 (radiance(3,), optical_depth, transmittance, candidate_count)。
+
+    tau_light: 预计算的光源方向 (N,N) tau 矩阵。传入时用 O(M) 查表替代
+    O(M²) 逐 candidate ray_gaussian_taus 调用。
+    """
     idx, _ = candidates_along_ray(cloud, o, d, 0.0, t_far)
     L = np.zeros(3)
     T = 1.0                       # 透射率累积（front-to-back）
@@ -146,9 +196,11 @@ def shade_ray(cloud, o, d, light_dir, light_color, ambient, t_far=1e9,
             continue
         alpha = 1.0 - np.exp(-tau)
         # single scattering: 从该 primitive 中心朝光源的解析透射率
-        single = np.array([k])
-        tau_to_light = ray_gaussian_taus(
-            cloud, centers[k], ldir, idx, 0.0, t_far).sum()
+        if tau_light is not None:
+            tau_to_light = tau_light[idx[k], idx].sum()
+        else:
+            tau_to_light = ray_gaussian_taus(
+                cloud, centers[k], ldir, idx, 0.0, t_far).sum()
         Tl = np.exp(-tau_to_light)
         powder_term = 1.0 - np.exp(-2.0 * tau) * powder
         scat = albedo[k] * light_color * Tl * powder_term
@@ -162,8 +214,12 @@ def shade_ray(cloud, o, d, light_dir, light_color, ambient, t_far=1e9,
 
 
 def render(cloud, cam_pos, cam_target, fov_deg, width, height,
-           light_dir, light_color, ambient, bg=(0.02, 0.03, 0.05)):
-    """全画面渲染，返回 dict：color / optical_depth / transmittance / candidates。"""
+           light_dir, light_color, ambient, bg=(0.02, 0.03, 0.05),
+           tau_light=None):
+    """全画面渲染，返回 dict：color / optical_depth / transmittance / candidates。
+
+    tau_light: 预计算的光源方向 tau 矩阵。不传时在函数内自动预计算。
+    """
     aspect = width / height
     fwd = np.asarray(cam_target, float) - np.asarray(cam_pos, float)
     fwd /= np.linalg.norm(fwd)
@@ -172,6 +228,9 @@ def render(cloud, cam_pos, cam_target, fov_deg, width, height,
     up = np.cross(right, fwd)
     half = np.tan(np.radians(fov_deg) * 0.5)
     cam_pos = np.asarray(cam_pos, float)
+
+    if tau_light is None:
+        tau_light = precompute_light_tau_matrix(cloud, light_dir)
 
     color = np.zeros((height, width, 3))
     od = np.zeros((height, width))
@@ -186,7 +245,8 @@ def render(cloud, cam_pos, cam_target, fov_deg, width, height,
             d = fwd + px * right + py * up
             d /= np.linalg.norm(d)
             L, tau, T, n = shade_ray(cloud, cam_pos, d, light_dir,
-                                     light_color, ambient)
+                                     light_color, ambient,
+                                     tau_light=tau_light)
             color[j, i] = L + bg * T          # 背景透过残余透射
             od[j, i] = tau
             trans[j, i] = T

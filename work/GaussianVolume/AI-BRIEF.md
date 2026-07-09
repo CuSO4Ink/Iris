@@ -1,4 +1,4 @@
-# GaussianVolume
+﻿# GaussianVolume
 ![[Don’t Splat your Gaussians_ Volumetric Ray-Traced Primitives for Modeling and Rendering Scattering and Emissive Media.pdf]]
 > **L2 项目身份**。接手本项目的 AI 必读。
 
@@ -8,7 +8,7 @@
 
 ## 当前状态
 
-活跃 / 预研启动
+重新激活 / 预研继续
 
 ## 当前焦点
 

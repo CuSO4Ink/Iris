@@ -1,6 +1,9 @@
 # WorkBuddy 本地数据（每台设备独立）
 .workbuddy/
 
+# CodeBuddy 本地工具数据（每台设备独立：plan缓存/MCP调试临时文件）
+.codebuddy/
+
 # 会话临时文件
 .session_tmps/
 
