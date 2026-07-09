@@ -1,4 +1,4 @@
-﻿# Bifrost · BACKLOG（任务清单指针）
+# Bifrost · BACKLOG（任务清单指针）
 
 > **本文件定位**：任务清单短索引。**执行主图看 `ROADMAP.md`**（5 周计划 · 4 段结构 · 依赖 · 验收 · 交付基线全在那里）。
 > 本文件只列任务 ID · 一句话描述 · 状态。复杂任务可转 `tasks/T-xxx.md`。
@@ -12,7 +12,7 @@
 - ✅ **D3** 内核实现 = A 方案·轮廓局部化（07-06 决策，07-07 落地记录成文）
 - ✅ **主机位** = ⑤前景剪影环境镜（07-06 定案，07-07 降级为"S3 段最优截图点"）
 - ✅ **约束松绑** = 基底必做+点缀增量，非"内核只做 1 个"（07-06）
-- ✅ **场景形态** = 第三人称跑图 diorama · 200m 单向 · 4 段结构（07-07）
+- ✅ **场景形态** = 第三人称跑图 diorama · 400m 单向 · 4 段结构（07-07）
 - ✅ **地编工具** = 不用 Landscape、不用 PCG、Foliage 局部可选、Python 撒点为主（07-07）
 - ✅ **周期** = 5 周（每周内嵌 0.5 天缓冲）（07-07）
 
@@ -21,14 +21,14 @@
 ## 执行任务（详情看 ROADMAP §4 依赖图）
 
 ### P0 路径 + blockout + 跑通（W1 首要）
-- [ ] **T-P0.0** 路径设计（0.5 天）—— 顶视图 200m 路径线 + 4 段边界 + 4 锚点
-- [ ] **T-P0.1** 4 段海滩 blockout（3.5 天）—— S1/S2/S3/S4 低精代摆资产 + S3 主机位⑤构图 5 项量化验收
-- [ ] **T-P0.2** 第三人称接入（0.5 天）—— UE 默认 ThirdPersonCharacter · 可从 S1 走到 S4 不塌方
+- [x] **T-P0.0** 路径设计（0.5 天）—— 顶视图 400m 路径线 + 4 段边界 + 4 锚点（2026-07-07 完成）
+- [x] **T-P0.1** 4 段海滩 blockout（3.5 天）—— 灰模 v2 落地 + MCP 实测（20 actor·batch W1_P0_blockout_v2·400m 4 段·宽 40-60m·数值见 breakdown/P0-blockout/blockout-v2-measured.md）；通行验收随 T-P0.2 一并完成（2026-07-07）
+- [x] **T-P0.2** 第三人称接入（0.5 天）—— 用户自备角色蓝图 + GameMode 接入，S1→S4 实跑验收通过（不掉海/不穿墙/不卡 Gate/帧率不塌，用户 PIE 实测确认，2026-07-07）
 
 ### P1 L1 量产（W1-W3）
-- [ ] **T-L1.1** 3 张母材质（沙 / 岩石 / 遗迹金属）+ N 张 MI 变体（MCP 生成，人 LookDev 验收）
+- [x] **T-L1.1** 环境 Uber 母材质 `M_Env_Uber`（全 feature 内建：朝向遮罩/宏观噪声/湿度/风化/叠加层，Static Switch 分组开关）+ 6 张 MI 变体（沙×2/岩石×2/遗迹金属×2，MCP 生成，2026-07-07 完成，人 LookDev 待验收节点图）
 - [ ] **T-L1.2** 4 段分段 kitbash 摆位（S2/S3/S4 主线 W2 · S1 W3 · AI 批量 spawn+transform）
-- [ ] **T-L1.3** FluidFlux 主海面接入（S2-S4 海面，参数预留恒星光学/铁磁流体接口）
+- [ ] **T-L1.3** FluidFlux 主海面接入（S2-S4 海面，参数预留恒星光学/铁磁流体接口）。资产已复制到 `/Game/Bifrost/Ocean/Wave/`，材质层（`M_Wave_Base`/`_Inst`/`MF_CoastlineWave`）已重定向为独立自洽拷贝；`NS_InfiniteMesh`（Niagara）渲染器绑定**待用户手动在 Niagara 编辑器里重指向新资产**（MCP 无 Niagara 工具集，够不到这层）——接入 L_Bifrost 前必做。详见 `breakdown/T-L1.3-fluidflux/fluidflux-material-audit.md` 第7节
 - [ ] **T-L1.4** Foliage 局部撒点（前景苔藓/石缝植物，Python `AddInstance` 或 Foliage Tool，量少）
 
 ### P2 L3 内核（W2-W3）
@@ -74,10 +74,13 @@
 - [x] UE5.8 基线统一（07-06）
 - [x] D3 拍板 = A 方案·轮廓局部化（07-06 决策，07-07 记录成文）
 - [x] 07-07 全套文档审阅+精简+归档（新增 ROADMAP · 归档 TECH-SCOUT/PIPELINE-RAW · 修 P0-P3 全部审阅问题）
-- [x] 07-07 定位重构：单机位 diorama → 第三人称跑图 diorama · 200m 单向 · 4 段结构
+- [x] 07-07 定位重构：单机位 diorama → 第三人称跑图 diorama · 400m 单向 · 4 段结构
 - [x] 07-07 地编工具选型：不用 Landscape、不用 PCG、Foliage 局部可选、Python 撒点为主
 - [x] 07-07 跑图规模化生产策略：分段 + kitbash + AI 批量 + 分级 LookDev
 - [x] 07-07 周期定 5 周（每周内嵌 0.5 天缓冲，无独立缓冲周）
+- [x] 07-07 场景等比×2（200m→400m）· 41 处文档同步完成
+- [x] 07-07 18:50 **T-P0.0 路径设计完成**（🧑 纯人，0.5 天）—— 顶视图 + 4 段 thumbnail + 关键参数落 breakdown/P0-path-design/
+- [x] 07-07 **T-P0.2 第三人称接入完成**（🧑 纯人）—— 用户自备角色蓝图+GameMode，S1→S4 实跑验收通过；T-P0.1 通行验收随之达成，P0 三件全部闭环
 
 ---
 

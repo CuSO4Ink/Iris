@@ -4,26 +4,28 @@
 
 ## 一句话介绍
 
-北欧神话基调、宏大奇幻风格化的**第三人称跑图海岸 diorama**（200m 单向沙滩走廊，扛得住玩家游览）。作品集里的身份：**跨 Part 1（前沿内核）+ Part 3（MCP 提效流程）的垂直代表作**——它的搭建过程本身就是要展示的"我调教的 UE5.8 MCP 提效工作流"（P3），同时承载前沿内核的技术深度（P1）。
+北欧神话基调、宏大奇幻风格化的**第三人称跑图海岸 diorama**（400m 单向沙滩走廊，扛得住玩家游览）。作品集里的身份：**跨 Part 1（前沿内核）+ Part 3（MCP 提效流程）的垂直代表作**——它的搭建过程本身就是要展示的"我调教的 UE5.8 MCP 提效工作流"（P3），同时承载前沿内核的技术深度（P1）。
 
-## 当前状态（07-07）
+## 当前状态（07-08）
 
-**执行准备就绪**。全部核心决策已锁：
+**W1 已闭环，进入 W2 量产阶段**。全部核心决策已锁：
 - **D1 奇观焦点** = 合成态「等离子恒星驱动天气」
 - **D2 色彩基调** = 冷神性（pale azure / icy cyan）
 - **D3 内核实现** = A 方案·轮廓局部化（材质三层堆，见 `D3-KERNEL.md`）
 - **主机位** = ⑤前景剪影环境镜（S3 段最优截图点，非设计驱动因子）
-- **场景形态** = 第三人称跑图 diorama · 200m 单向 · 4 段结构
+- **场景形态** = 第三人称跑图 diorama · 400m 单向 · 4 段结构
 - **约束** = 基底必做 + 点缀增量（"内核只做 1 个"已松绑）
 - **周期** = 5 周（每周内嵌 0.5 天缓冲，无独立缓冲周）
 
-下一步：按 `ROADMAP.md` W1 启动，先做 T-P0.0 路径设计 + T-P0.1 4 段海滩 blockout + T-P0.2 第三人称接入。
+**W1 三件套已全部完成（07-07）**：T-P0.0 路径设计 · T-P0.1 4 段 blockout（灰模+MCP实测数值落 `breakdown/P0-blockout/`）· T-P0.2 第三人称接入（PIE 实跑 S1→S4 验收通过）。同批完成 T-L1.1 环境 Uber 母材质 `M_Env_Uber`（7 个 MF）+ 6 张 MI 变体（沙/岩石/遗迹金属，参数区分非分裂母材质），节点图/色值仍待人验收 LookDev。
+
+下一步：按 `ROADMAP.md`/`HANDBOOK.md` §3 推进 **W2**——T-L1.2 段主线 kitbash 批量摆位（S2/S3/S4 优先，🧑定锚点→🤖出脚本→🎮撒→🧑调构图）· T-L1.3 FluidFlux 海面接入 · T-L3.1 等离子恒星层1+层3起壳。
 
 ## 核心定位（不动）
 
 - **跨 P1+P3 的垂直代表作**（07-06 升格）：搭建过程 = P3 展示物；内核 = P1 深度锚点。**边界**：内核是可复用能力、海岸题材不绑架整个作品集审美。
 - **跑图 diorama 硬约束**（07-07）："扛得住别人跑图游览"——每个可达角落都要经得起看。主图⑤号构图从"设计驱动因子"降级为"场景内最优截图点"。
-- **AI 从提效升级为可行性前提**：200m 场景单人不可能全手工做完，AI 参与批量摆位/材质挂载/参数化生产是可行性刚需，对 Part3 叙事极大加分。
+- **AI 从提效升级为可行性前提**：400m 场景单人不可能全手工做完，AI 参与批量摆位/材质挂载/参数化生产是可行性刚需，对 Part3 叙事极大加分。
 - **风格化 > 写实**：北欧神话 + 宏大奇幻 + 巨构瑰丽。
 - **双证明**：跑通 AI 提效 pipeline（工作流本身是产出）+ 出一段能打的 walkthrough 视频（美术表达是产出）。
 
@@ -31,16 +33,19 @@
 
 | 层 | 谁主导 | 内容 |
 |---|---|---|
-| **L1 量产层** | AI / MCP | 岩石母材质+MI、遗迹 kitbash、植被、天空球、远景 mesh、参数脚手架、4 段批量摆位 |
+| **L1 量产层** | AI / MCP | 环境 Uber 母材质 `M_Env_Uber`+MI 变体、遗迹 kitbash、植被、天空球、远景 mesh、参数脚手架、4 段批量摆位 |
 | **L2 审美层** | 人（TA） | 路径设计、4 段 blockout、S3 主锚点区精修 LookDev、色彩基调、比例、光影层次、后期调色 |
 | **L3 内核层** | 人（TA） | 等离子恒星、天象体积框架、铁磁流体融合 |
 
 ## 技术栈与硬约束
 
 - 引擎：**UE5.8** 自定义渲染引擎（作品集出图基线）
-- **MCP 栈**：UE5.8 官方 ModelContextProtocol 插件（端口 8000）——非旧版 UEAgent（端口 9877，已作废）
-- L1 量产走 `execute_python_script` / `execute_unreal_command`
-- 主海面：用户已复刻 FluidFlux，直接接入
+- **MCP 栈**：UE5.8 官方 ModelContextProtocol 插件（`http://127.0.0.1:8000/mcp`）——非旧版 UEAgent（端口 9877，已作废）
+- **MCP 接入/调用规范以 `D:\Work\AI\UE_MCP_Access_Pack` 为唯一权威**（独立可运行接入包，跨项目共享，**勿拷进本项目**）：连通与调用走 `scripts/mcp_gateway.ps1`（action：ping / level.current / tool.call / script.execute），真实 UE 工具经 `call_tool` 元工具间接调用
+- **MCP 硬铁律（摘自 Pack SOP，必守）**：脚本内**禁止 `import unreal`**，改用沙箱注入的 `execute_tool(tool, json)`；多 Actor / 重复调用一律走 `script.execute`；不假设可新建空白关卡。旧写法 `execute_python_script` / `import unreal` 作废
+- **工程宿主**（07-07）：不新起工程，寄生在个人 UE study 工程内。**Bifrost 专属关卡已建并切入：`/Game/Bifrost/Maps/L_Bifrost`**（后续所有 blockout/摆位/截图默认锁定此关卡）。所有 Bifrost 资产隔离在 `/Game/Bifrost/` 命名空间下（子目录：Maps/Materials/Meshes/Kitbash/Blueprints/Star/Sky/Ocean/Segments{S1-S4}/Accents/Breakdown/_Sandbox），靠 batch/tag/folder/cleanup 铁律与 study 杂物隔离。
+- **可复用资产**（study 工程内实测存在）：`/Game/Effects/Slime/NS_Slime*`（marching cubes 内核，D3 层2 复用）· `/Game/Effects/VolumeCloud/` + `/Game/SlimeGame/Materials/Environment/VolumeCloud/`（体积云）· `/Game/NiagaraFluid/`（Niagara 流体框架）· `/Game/Environment/SoStylized/Environment/Water/`（风格化水，候选海面）。**FluidFlux / PreComputedGodRay 按原名未搜到**——待用户确认真实名字/位置或是否在本工程
+- 主海面：用户已复刻 FluidFlux，直接接入（**具体资产路径待确认**，见上条）
 - **不用 Landscape、不用 PCG**（07-07 决策）：AI 断层严重，跑图 diorama 规模不需要；Foliage Tool 作为局部工具可选
 - 收录进作品集须具备 breakdown（Portfolio 硬门槛）
 - 版权干净：个人独立实现
@@ -50,7 +55,7 @@
 
 - **diorama**：一个聚焦的、可展示的场景样本，非完整关卡
 - **跑图 diorama**（07-07 新增）：可第三人称游览的 diorama，玩家能在场景内移动，每个可达角落须经得起看
-- **4 段结构** S1/S2/S3/S4：S1 远端（0-50m）· S2 中景（50-120m）· S3 主锚点区（120-160m）· S4 回望端（160-200m）
+- **4 段结构** S1/S2/S3/S4：S1 远端（0-100m）· S2 中景（100-240m）· S3 主锚点区（240-320m）· S4 回望端（320-400m）
 - **L1/L2/L3**：见上方职责分工
 - **奇观焦点/色彩基调/内核** = D1/D2/D3（均已锁）
 - **Bifröst**：北欧彩虹桥，仅作项目命名寓意，**场景内不出现桥体几何**（07-02 否决）
@@ -58,7 +63,8 @@
 ## 文档地图（精简后）
 
 - `AI-BRIEF.md` — 本文件（项目身份）
-- `ROADMAP.md` — **唯一落地主图**（5 周计划 · 4 段结构 · 交付基线 · 依赖 · 验收 · 待拍板）
+- `ROADMAP.md` — **落地主图**（5 周计划 · 4 段结构 · 交付基线 · 依赖 · 验收 · 待拍板）
+- `HANDBOOK.md` — **分步执行手册**（按 TA+MCP+重度依赖 AI 的真实能力写：每步谁做/用什么工具/对 AI 说什么话 · 三方协作循环 · 话术库 · 红线清单）。周排布冲突处暂以 HANDBOOK 为准，跑顺后回收敛 ROADMAP §3
 - `CONCEPT.md` — 美术定案（D1/D2/主机位/跑图叙事/定案提示词/因果链）
 - `PIPELINE.md` — 技术方案（恒星 §2 · 天象 §3 · 铁磁流体 §4 · MCP 量产 §5 · 跑图规模化生产 §5.5）
 - `D3-KERNEL.md` — D3 内核实现记录（A 方案落地）
@@ -66,6 +72,7 @@
 - `BACKLOG.md` — 任务清单指针（详见 ROADMAP §4 依赖图）
 - `archive/` — 已完成讨论归档
 - 与 `work/AIEffectFoundry/`（方向 + MCP 策略 + 能力边界）/ `work/Portfolio/`（Part 1 + Part 3 收录）互引
+- **外部依赖** `D:\Work\AI\UE_MCP_Access_Pack` — UE MCP 接入包（可运行、跨项目共享、独立维护、**勿迁入本项目**）。所有 MCP 连接 / 调用 / 铁律以它为准，本项目只引不复制
 
 ## 协作约定
 
