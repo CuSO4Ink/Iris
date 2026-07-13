@@ -72,3 +72,10 @@ WorkBuddy spawn MCP 子进程时的环境不继承用户 shell PATH，裸 `pytho
 
 ### 2026-04-27 15:18 — [断点] 等 UE 重启加载新插件
 用户准备关 UE → 让弹窗选"Plugin out of date, rebuild?" → Yes → 等编译 → 重开项目 → Python 命令栏跑 `py "unreal_socket_server.py"` → WorkBuddy 新开对话。新会话接手的工作：用 `/project UEAgent` 接入，跑一次 `unreal.GenBlueprintNodeCreator.get_node_suggestions("SetVariableFloat")`，返回含 `NiagaraComponent.SetVariableFloat` 即确认改动生效，然后照下方"进度断点"继续做。
+
+---
+
+> 以上 04-27 各条均为**旧栈**（UnrealGenAISupport 插件 + TCP 9877）的调试历史，旧栈已于下条决策后作废，仅作历史参考保留，不再是操作依据。
+
+### 2026-07-09 10:XX — [决策] 弃用旧栈（UnrealGenAISupport/9877），迁移到 UE 官方 MCP 插件新栈（streamable-http/:8000）
+Bifrost 项目已先行验证新栈可用且更稳定（3 个 meta-tool 间接路由 + `editor_toolset.*` 官方工具集），旧栈的两个 handler bug（`handshake_test` 线程违规、`get_all_scene_objects` 废弃 API）及插件 C++ 改动均不再有维护价值。**决策**：UEAgent 项目定位调整为"新栈操作入口 + 历史踩坑经验库"，`AI-BRIEF.md`/`BACKLOG.md` 已改写为新栈内容，旧栈技术细节只保留在本 LOG 的历史条目里，不再同步维护。`notes/mcp-pitfalls.md` 的通用经验（E1/E2）继续有效，跨栈通用。外部权威接入包 `D:\Work\AI\UE_MCP_Access_Pack`（只引用不复制）成为新栈调用规范的唯一来源。

@@ -244,32 +244,84 @@ float3 CompositePS(float2 uv : TEXCOORD) {
 
 ## 5. 实施路线图
 
-### Phase 1: Plugin Scaffold（1-2 天）
-1. 创建 UE5 blank plugin（Runtime type）
-2. 实现 `FSceneViewExtension`，hook `PostOpaqueRenderDelegate`
-3. 创建 dummy compute shader pass（输出纯色到 RT）
-4. 验证 RT 可以 composite 到场景
+> **环境**：UE 5.7 源码版（`D:/Work/Personal/UnrealEngine`），项目 `Abyss.uproject`
+> **插件路径**：`Abyss/Plugins/GaussianVolume/`
 
-### Phase 2: Gaussian Data Upload（1 天）
-5. 定义 `FGaussianVolumeComponent`，持有 GaussianCloud 数据
-6. 实现 StructuredBuffer upload（CPU → GPU）
-7. 在 CS 中读取并输出第一个 Gaussian 的 debug color
+### Phase 1: Plugin Scaffold ✅ 已完成
+1. ✅ 创建 UE5 plugin（Runtime type），模块 `FGaussianVolumeModule`
+2. ✅ 实现 `FWorldSceneViewExtension`，注册到 World
+3. ✅ 创建 compute shader pass（`FGaussianVolumeRayTraceCS`），输出到 RDG texture
+4. ✅ 验证 CS 输出可以 composite 到场景
 
-### Phase 3: Ray Tracing Renderer（2-3 天）
-8. 实现 ray generation（camera params → per-pixel ray）
-9. 实现 A/B/C → erf transmittance（从 `gaussian_volume.py` 移植）
-10. 实现 front-to-back compositing + early termination
-11. 实现 single scattering（light ray tau）
+**文件**：
+- `GaussianVolume.uplugin`、`GaussianVolume.Build.cs`
+- `Public/GaussianVolume.h`、`Private/GaussianVolume.cpp`（shader source mapping `/GaussianVolume`）
+- `Public/GaussianVolumeShaders.h`、`Private/GaussianVolumeShaders.cpp`
+- `Public/GaussianVolumeSceneViewExtension.h`、`Private/GaussianVolumeSceneViewExtension.cpp`
 
-### Phase 4: Optimization（2-3 天）
-12. Half-res + temporal upsample
-13. PBF-CSF tile association（如果 N > 512）
-14. Depth composite with scene
+### Phase 2: Gaussian Data Upload ✅ 已完成
+5. ✅ 定义 `UGaussianVolumeComponent`（UActorComponent），持有 `TArray<FGaussianVolumePrimitive>`
+6. ✅ 实现 CPU→GPU 数据管线：`PackPrimitive()` → `TArray<FVector4f>` → `ENQUEUE_RENDER_COMMAND` → `CreateStructuredBuffer`
+7. ✅ GPU 打包格式：4 × float4 per Gaussian（`GaussianVolumeTypes.h`）
+   - `[0]` center.xyz, sigma_t
+   - `[1]` scale.xyz, quat.w
+   - `[2]` quat.xyz, pad
+   - `[3]` albedo.rgb, pad
+8. ✅ `AGaussianVolumeActor` 持有 Component，`OnRegister()` 自动创建 SVE + push data
+9. ✅ 调试默认 Gaussian：scale=300, sigma_t=2.0, 暖橙色 albedo
+10. ✅ 验证通过：品红色/暖橙色调试画面出现 = pipeline OK
 
-### Phase 5: Polish（1-2 天）
-15. Material/Blueprint interface
-16. VDB import pipeline（VDB → Gaussian → StructuredBuffer）
-17. Performance profiling & tuning
+**文件**：
+- `Public/GaussianVolumeTypes.h`（GPU pack format）
+- `Public/GaussianVolumeComponent.h`、`Private/GaussianVolumeComponent.cpp`
+- `Public/GaussianVolumeActor.h`、`Private/GaussianVolumeActor.cpp`
+
+### Phase 3: Ray Tracing Renderer ✅ 代码完成，待运行时验证
+11. ✅ Ray generation：camera pos/forward/right/up + tanHalfFov + aspect → per-pixel ray dir
+    - UE ViewToWorld 矩阵：`InvViewMat.GetColumn(0)` = forward, `(1)` = right, `(2)` = up
+12. ✅ A/B/C → erf transmittance（从 `gaussian_volume.py` 移植到 HLSL）
+    - `RayGaussianTau()`：erf 区间积分，有限积分限 [t_near, t_far]
+    - **HLSL SM6 不暴露 `erf()` 内置函数** → 手写 Abramowitz-Stegun 7.1.26 近似（max err ~1.5e-7）
+13. ✅ 3-sigma bounding sphere cull（per-pixel, brute force）
+14. ✅ Front-to-back compositing + early termination（T < 0.001）
+15. ✅ Single scattering：`LightGaussianTau()` per-primitive self-shadow
+16. ✅ Powder effect：`1.0 - exp(-2.0 * tau) * PowderFactor`
+17. ✅ Composite PS：alpha-blend Gaussian output onto SceneColor
+
+**三项关键修复（代码审查后完成）**：
+- **Fix #1 渲染钩子**：`PostRenderBasePassDeferred` → `PrePostProcessPass_RenderThread`
+  - 原因：PostRenderBasePass 在天空 pass 之前，天空会覆盖 Gaussian 输出
+  - PrePostProcessPass 在所有场景渲染（含天空/大气）完成后执行
+  - 通过 `FPostProcessingInputs::ViewFamilyTexture` 获取完整 SceneColor
+  - 需要在 `Build.cs` 添加 Renderer 模块 `Internal`、`Internal/PostProcess`、`Private` include 路径
+- **Fix #2 Composite 方式**：`AddDrawTexturePass`（直接覆盖）→ 自定义 Composite PS（alpha blend）
+  - `AddDrawTexturePass` 非命中像素输出近黑色 (0.02, 0.03, 0.05)，覆盖场景
+  - CS 输出 RGBA16F，alpha = 1 - T
+  - PS 执行 `finalColor = GaussianColor * alpha + SceneColor * (1 - alpha)`
+  - 使用 `AddDrawScreenPass` + `RENDER_TARGET_BINDING_SLOTS`，`ELoad` 保留未命中像素
+- **Fix #3 像素映射**：`ViewRect` → `UnconstrainedViewRect`，相机向量 `GetSafeNormal()`
+  - 原因：Screen Percentage 下 `ViewRect` 与实际渲染分辨率不匹配，导致球随视角漂移
+  - CS 用 view-rect-relative 坐标，PS 用 `SvPosition - ViewRect.Min` 反算
+
+**当前状态**：
+- `DebugMode=1`（纯 albedo 渲染，跳过光照计算，验证射线投射）
+- 编译通过（UE 5.7 源码版）
+- 编辑器可启动（已绕过 `ThirdPersonMap` 材质损坏崩溃）
+- **待验证**：在编辑器中放置 `GaussianVolumeActor`，确认调试 Gaussian（暖橙色球）正确渲染并随相机移动
+
+**已知问题**：
+- `SceneColorInput` SRV 方案已回退（担心 SRV/UAV 冲突），当前 CS 输出独立 OutputTexture 后 composite 写回
+
+### Phase 4: Optimization（待开始）
+18. Half-res + temporal upsample
+19. PBF-CSF tile association（如果 N > 512）
+20. Depth composite with scene
+21. N×N light tau 矩阵 GPU 化（当前仅 per-primitive self-shadow）
+
+### Phase 5: Polish（待开始）
+22. Material/Blueprint interface
+23. VDB import pipeline（VDB → Gaussian → StructuredBuffer）
+24. Performance profiling & tuning
 
 ---
 
@@ -277,8 +329,11 @@ float3 CompositePS(float2 uv : TEXCOORD) {
 
 | 风险 | 概率 | Mitigation |
 |------|------|-----------|
-| RDG pass 集成复杂 | 中 | 参考 3DGS UE5 插件的 RDG 实现 |
-| Compute shader erf 精度问题 | 低 | HLSL 有 `erf()` intrinsic；或用 Schiaparelli 近似 |
-| 大 N 排序开销 | 中 | N ≤ 512 不排序（brute-force + early termination）；大 N 用 PBF |
-| UE5 版本兼容性 | 中 | 以 UE5.4 为 baseline，`FSceneViewExtension` API 稳定 |
-| 体积云与场景交互 | 低 | Depth composite + 可选 shadow map 采样 |
+| RDG pass 集成复杂 | 已解决 | 实现 `PrePostProcessPass_RenderThread` + RDG CS + Composite PS |
+| ~~HLSL 有 `erf()` intrinsic~~ | 已解决 | **SM6 不暴露 `erf()`**，手写 Abramowitz-Stegun 7.1.26 近似（err ~1.5e-7） |
+| 渲染钩子选择 | 已解决 | `PostRenderBasePassDeferred` 被天空覆盖 → 改用 `PrePostProcessPass_RenderThread` |
+| Composite 覆盖问题 | 已解决 | `AddDrawTexturePass` 全屏覆盖 → 自定义 PS alpha blend |
+| Screen Percentage 漂移 | 已解决 | `ViewRect` → `UnconstrainedViewRect` + `GetSafeNormal()` |
+| UE5.7 API 变更 | 已解决 | `ViewRect`→`UnconstrainedViewRect`；`SceneViewExtension.h` 无 `Engine/` 前缀；`FRDGTextureDesc.Extent` |
+| 大 N 排序开销 | 后置 | N ≤ 512 不排序（brute-force + early termination）；大 N 用 PBF |
+| 体积云与场景交互 | 后置 | Depth composite + 可选 shadow map 采样 |

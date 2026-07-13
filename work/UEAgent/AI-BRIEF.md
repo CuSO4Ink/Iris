@@ -4,52 +4,59 @@
 
 ## 一句话介绍
 
-用 WorkBuddy AI + MCP 协议通过自然语言操控 Unreal Engine 5.7.3 编辑器进行开发——把"打开编辑器点鼠标敲菜单"换成"跟 AI 说一句话"。
+用 AI + MCP 协议通过自然语言操控 Unreal Engine（`study` 工程）编辑器进行开发——把"打开编辑器点鼠标敲菜单"换成"跟 AI 说一句话"。当前走 UE 官方 MCP 插件新栈（streamable-http /:8000），旧栈（WorkBuddy + UnrealGenAISupport / TCP 9877）已作废。
 
 ## 当前状态
 
-**活跃** · 链路调通阶段刚结束，进入实际使用阶段。
+**活跃** · 2026-07-09 起已从旧栈（UnrealGenAISupport 插件，TCP 9877）迁移到新栈：UE 官方 MCP 插件（streamable-http，:8000）。旧栈判定作废，不再维护。
 
 ## 当前焦点
 
-用 `execute_unreal_command` + `execute_python_script` 两个万能工具跑通第一个实际开发需求，摸清哪些工具能用、哪些要绕过。
+用新栈跑通实际开发需求，摸清 `editor_toolset.*` 常用工具集；探索 `script.execute` 批量工作流。旧栈相关待办已随迁移清空，历史见 `LOG.md`。
 
-## 技术栈与硬约束
+## 技术栈与硬约束（新栈；权威源见下方「外部权威包」）
 
-- **UE 版本**：5.7.3（Python 3.11）——插件里若出现 `EditorLevelLibrary.get_level()` 这类旧 API 会直接报错，新 API 是 `get_all_level_actors()`
 - **UE 项目**：`C:\Work\UEProject\Study\study\study.uproject`
-- **插件**：`Plugins/UnrealGenAISupport/`（第三方开源 + 另一 AI 修过一轮的 fork）
-- **MCP 服务端**：外部 Python 进程 `mcp_server.py`（FastMCP）走 stdio，UE 内 `unreal_socket_server.py` 走 TCP 9877
-- **WorkBuddy 客户端约定**：MCP 叫「连接器」，左侧栏配置；工具前缀 `mcp__connector-proxy__unreal-genai_<name>`
-- **线程规则**：Unreal Python API 必须在 game thread 调——handler 里若直接在 socket 接收线程调 `unreal.SystemLibrary` 等会翻车
+- **MCP 端点**：`http://127.0.0.1:8000/mcp`（streamable-http），UE 侧是官方 ModelContextProtocol 插件
+- **协议形态**：顶层只有 3 个 meta tool —— `list_toolsets` / `describe_toolset` / `call_tool`；真实工具（`editor_toolset.toolsets.*`）必须经 `call_tool` 间接调用，任何宿主都不会自动展开出二级工具
+- **常用 toolset**：`SceneTools` / `ActorTools` / `AssetTools` / `ProgrammaticToolset`（内含 `execute_tool_script` 跑批量脚本）
+- **接入方式**：原生支持 MCP 的宿主（如本项目）直连 `mcp.json`；不支持的宿主走 PowerShell gateway 兜底
+- **硬规则**：不假设可 `import unreal`；不假设可直接新建空白关卡；多 Actor/重复调用走 `script.execute`；生成内容必须带 batch tag + semantic tag + Outliner folder + cleanup 方案；delete/move/save/merge 属高风险操作，需先限定 tag/folder 范围
+- **旧栈（已作废，仅存历史参考）**：UnrealGenAISupport 插件 + TCP 9877 + 29 工具直接展开，UE 5.7.3。技术细节不再维护，历史记录见 `LOG.md`；通用踩坑经验已沉淀进 `notes/mcp-pitfalls.md`
+
+## 外部权威包（跨项目共享，只引用不复制）
+
+```
+D:\Work\AI\UE_MCP_Access_Pack
+```
+
+- `AI_QUICK_START.md` —— 接入判断分支（原生直连 vs gateway 兜底）+ 逐平台自检清单
+- `references/mcp_sop.md` —— 标准调用 SOP（action 列表、请求/响应包络）
+- `references/toolsets.md` —— 已知工具集与能力边界
+- `references/friction_log.md` —— 踩坑上报处；发现新坑先记这里，不擅自改 Pack 脚本，等用户批准
 
 ## 术语表
 
 | 术语 | 含义 |
 |---|---|
-| **连接器** | WorkBuddy 对 MCP 的别名 |
-| **unreal-genai** | 本项目注册的 MCP server 名字 |
-| **handler** | 插件 `Content/Python/handlers/` 下的各个 `*_commands.py` 模块，承载每个 MCP 工具的实现 |
-| **dispatcher** | `unreal_socket_server.py` 里的 `CommandDispatcher`，按 `type` 分发请求到 handler |
-| **万能二兄弟** | `execute_unreal_command`（控制台命令） + `execute_python_script`（任意 Python）——其他工具坏了就走这两个 |
+| **meta tool** | 顶层仅暴露的 3 个间接路由工具：`list_toolsets` / `describe_toolset` / `call_tool` |
+| **toolset** | 按领域分组的真实工具集合，如 `editor_toolset.toolsets.scene.SceneTools` |
+| **gateway** | `mcp_gateway.ps1`，给不支持原生 MCP 的宿主用的 PowerShell 兜底调用脚本 |
+| **batch tag** | 批量生成 Actor 时必须打的统一标签，用于后续查找/清理 |
 
 ## 文档地图
 
 - `AI-BRIEF.md` — 本文件
 - `LOG.md` — 决策流水，凡是选了/否决了/踩坑/发现 都在这里追加
 - `BACKLOG.md` — 待办
-- `notes/tool-inventory.md` — **（待建）** 29 个工具逐个实测状态
-
-### 跨项目关键记忆（在 `~/.workbuddy/memory/MEMORY.md`）
-- "MCP / 连接器接入备忘" 段：完整的启动依赖链、已知插件缺陷、链路健康验证命令
-- "UE / Niagara 技术备忘" 段：UE 资产 Rename=Move、Niagara Custom HLSL 约束等历史经验
+- `notes/mcp-pitfalls.md` — MCP 调用踩坑台账 + 已毕业经验（E1/E2 通用，长期有效，跨旧新栈）
 
 ## 协作约定
 
-- **先用再修**：能用 `execute_python_script` 绕过的插件 bug 不修；高频且绕不过的才打补丁
-- **补丁只改 handlers**：`mcp_server.py` 和 `unreal_socket_server.py` 验证过没问题，别动
-- **链路健康体检命令**：`execute_unreal_command "stat fps"`——能跑就说明 MCP→UE 全链路活的
-- **调用前确认前置**：UE 项目开着 + 在 UE Python 命令栏跑过 `py "...unreal_socket_server.py"` + 看到 "socket server started on port 9877"
+- **先自检再选接入方式**：原生支持 MCP → 直连 `mcp.json`；不确定 → 走 gateway，不要自己实现握手/SSE 解析
+- **参数复杂用 `-ArgumentsFile`**：避免 shell 转义坑，别硬凹 `-ArgumentsJson`
+- **踩坑先报不擅自改**：Pack 脚本/文档发现问题 → 写 Pack 的 `friction_log.md`，等用户批准再改；本项目自己的踩坑记 `notes/mcp-pitfalls.md`
+- **截图类操作先问用户，不擅自跑** → 见 `notes/mcp-pitfalls.md` E2（唯一详情源，不在此复述）
 
 ---
 

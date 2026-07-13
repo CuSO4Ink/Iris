@@ -1,89 +1,29 @@
-# Bifrost · BACKLOG（任务清单指针）
+# Bifrost Backlog
 
-> **本文件定位**：任务清单短索引。**执行主图看 `ROADMAP.md`**（5 周计划 · 4 段结构 · 依赖 · 验收 · 交付基线全在那里）。
-> 本文件只列任务 ID · 一句话描述 · 状态。复杂任务可转 `tasks/T-xxx.md`。
+> TechLab 验收仍是技术主线；S3 固定镜头构图已由用户恢复，范围仅限现有资产重排与 Hero 画面收口。
 
----
+## 当前
 
-## 已决策（拍板锁定，不再讨论）
+- [ ] **T2 / G4：确认 GaussianVolume 落地与性能基线**。复用 GaussianVolume 项目已完成的 UE 5.8 G0-G3 主体，在固定机位记录 1080p 下 `N=1/32/64/128` 的 GPU 时间、伪影与失效点；先确认 64 primitives / ≤2ms 初始预算，再决定是否优化。
+- [x] S3 第一轮构图重排：隐藏非 Floor blockout/ScaleTest 参照；按包围盒重排 cliff、column、rock、Gaussian 和恒星；固定 Hero viewport 并保存 `L_Bifrost`。
+- [x] S3 岸边浪最小接入：修复 Wave MI/HeightMap BP 的旧路径引用，放置高细分 Hero 水面与 Height Capture；保留 Niagara infinite clipmap 为后续性能/远景项。
+- [~] S3 第二轮 LookDev（**未验收，暂停**）：陆地改为约 4° 主沙滩坡 + 右侧沙嘴 + 水下浅滩，三块 Rock_S3 半浸打断岸线；沙地改深冷湿沙，水面提高粗糙度并压暗；Directional/Sky 改为冷色填充；恒星上移并降低 emissive；Gaussian 恢复 Spline 生成。需在 T-SCENE-SUPPORT 后重新审视，不把当前摆位当定案。
+- [ ] `T0` 创建 `L_Bifrost_TechLab` 和统一记录模板。
 
-- ✅ **D1** 奇观焦点 = 合成态「等离子恒星驱动天气」（07-02）
-- ✅ **D2** 色彩基调 = 冷神性（07-02）
-- ✅ **D3** 内核实现 = A 方案·轮廓局部化（07-06 决策，07-07 落地记录成文）
-- ✅ **主机位** = ⑤前景剪影环境镜（07-06 定案，07-07 降级为"S3 段最优截图点"）
-- ✅ **约束松绑** = 基底必做+点缀增量，非"内核只做 1 个"（07-06）
-- ✅ **场景形态** = 第三人称跑图 diorama · 400m 单向 · 4 段结构（07-07）
-- ✅ **地编工具** = 不用 Landscape、不用 PCG、Foliage 局部可选、Python 撒点为主（07-07）
-- ✅ **周期** = 5 周（每周内嵌 0.5 天缓冲）（07-07）
+## 后置
 
----
+- [ ] **T-SCENE-SUPPORT**：建立 AI 场景编辑支撑结构。最低内容：Actor 语义角色与锁定级别、资产真实尺度/包围盒/接地面、Hero 镜头投影与屏占、前中后景区、焦点/负空间/遮挡约束、海岸线与水位约束、变更前快照、变更后数值检查、用户审美 Gate。完成前暂停大批量场景重排。
 
-## 执行任务（详情看 ROADMAP §4 依赖图）
+## 随后独立验收
 
-### P0 路径 + blockout + 跑通（W1 首要）
-- [x] **T-P0.0** 路径设计（0.5 天）—— 顶视图 400m 路径线 + 4 段边界 + 4 锚点（2026-07-07 完成）
-- [x] **T-P0.1** 4 段海滩 blockout（3.5 天）—— 灰模 v2 落地 + MCP 实测（20 actor·batch W1_P0_blockout_v2·400m 4 段·宽 40-60m·数值见 breakdown/P0-blockout/blockout-v2-measured.md）；通行验收随 T-P0.2 一并完成（2026-07-07）
-- [x] **T-P0.2** 第三人称接入（0.5 天）—— 用户自备角色蓝图 + GameMode 接入，S1→S4 实跑验收通过（不掉海/不穿墙/不卡 Gate/帧率不塌，用户 PIE 实测确认，2026-07-07）
+- [ ] `T1` 恒星 Layer 1 + 标准光照/大气链。
+- [ ] `T3` Spline -> Gaussian Field Authoring。
+- [ ] `T4` Neural Gaussian Decoder：训练、ONNX、NNE runtime。
+- [ ] `T5-T6` 可复用 Raymarch Core 与 HPVolumeCloud UE 适配。
+- [ ] `T7` Layer 2 Marching Cubes 的 SDF 输入链与局部化性能。
+- [ ] `T8` FluidFlux 材质、Niagara、Height RT。
+- [ ] `T9` 环境材质 LookDev。
 
-### P1 L1 量产（W1-W3）
-- [x] **T-L1.1** 环境 Uber 母材质 `M_Env_Uber`（全 feature 内建：朝向遮罩/宏观噪声/湿度/风化/叠加层，Static Switch 分组开关）+ 6 张 MI 变体（沙×2/岩石×2/遗迹金属×2，MCP 生成，2026-07-07 完成，人 LookDev 待验收节点图）
-- [ ] **T-L1.2** 4 段分段 kitbash 摆位（S2/S3/S4 主线 W2 · S1 W3 · AI 批量 spawn+transform）
-- [ ] **T-L1.3** FluidFlux 主海面接入（S2-S4 海面，参数预留恒星光学/铁磁流体接口）。资产已复制到 `/Game/Bifrost/Ocean/Wave/`，材质层（`M_Wave_Base`/`_Inst`/`MF_CoastlineWave`）已重定向为独立自洽拷贝；`NS_InfiniteMesh`（Niagara）渲染器绑定**待用户手动在 Niagara 编辑器里重指向新资产**（MCP 无 Niagara 工具集，够不到这层）——接入 L_Bifrost 前必做。详见 `breakdown/T-L1.3-fluidflux/fluidflux-material-audit.md` 第7节
-- [ ] **T-L1.4** Foliage 局部撒点（前景苔藓/石缝植物，Python `AddInstance` 或 Foliage Tool，量少）
+## 暂停
 
-### P2 L3 内核（W2-W3）
-- [ ] **T-L3.1** 等离子恒星（A 方案·材质三层堆，PIPELINE §2）
-- [ ] **T-L3.2** 天象体积框架 · 体积云（**基底**，PIPELINE §3）
-- [ ] **T-L3.3** 恒星驱动 god-rays / 大气散射（**基底**，恒星衍生自动出）
-
-### P4 分级 LookDev（W3-W4，硬窗口）
-- [ ] **T-L2.3a** S3 主锚点区精修 LookDev（60% 精力，W3 首版，W4 定稿）
-- [ ] **T-L2.3b** S1/S2/S4 基础 LookDev（各 15%/15%/10%，W4）
-
-### P3 点缀（W4，S3 焦点区）
-- [ ] **T-ACC.1** 铁磁流体尖刺（S3 恒星正下方海面，材质①+局部 Niagara②，PIPELINE §4）· ⭐ 因果链完整性必挂
-- [ ] **T-ACC.2** 极光（S3 天空区域，走 §3 体积框架）· ⭐ 因果链完整性建议挂
-- [ ] **T-ACC.3** 分色三选一（B8/A7/A5）· ⚠️ 是否要做未拍板
-- [ ] **T-ACC.4** 沙雪 / 鸟群（低优先级氛围层，默认不做）
-- [ ] **T-ACC.5** 放电 / 反应扩散 · ⚠️ 存疑，默认不做
-
-### P6 走位测试 + 视频 + breakdown（W5）
-- [ ] **T-P6.1** 全场景走位测试 —— 每段截图 3 张，找塌方点回滚重做
-- [ ] **T-P6.2** walkthrough 视频录制 —— 1 分钟单向 · S3 慢镜头 hold 主机位⑤
-- [ ] **T-P6.3** breakdown 素材汇总 —— 节点图 / 分层截图 / 4 段分段截图 / 参数演示 / 性能数据 / MCP 脚本 / Portfolio 页面初稿
-
-### P5 breakdown（贯穿全程）
-- [ ] **T-P.1** 每模块产出时同步留 breakdown 素材（节点图/分层/参数/性能/MCP 脚本）
-
----
-
-## 已完成（近期，便于回忆）
-
-- [x] 立项：作为 AIEffectFoundry 方向3 首个 diorama 实例（07-02）
-- [x] 定位：风格化巨构 > 写实（07-02）
-- [x] 三层职责分工 L1/L2/L3（07-02）
-- [x] 抽象重构：剥离 AI 越权具象化，收敛为决策框架（07-02）
-- [x] D2 冷神性拍板（07-02）
-- [x] D1 等离子恒星驱动天气拍板（07-02）
-- [x] Bifröst 桥体几何否决（07-02）
-- [x] 主机位⑤定案（07-06）
-- [x] 约束"内核只做 1 个"松绑（07-06）
-- [x] 铁磁流体复活+降级为点缀（07-06）
-- [x] 因果链定案 + 恒星技术方案落地（07-06 · PIPELINE.md 成文）
-- [x] Bifrost 升格跨 P1+P3 垂直代表作（07-06）
-- [x] UE5.8 基线统一（07-06）
-- [x] D3 拍板 = A 方案·轮廓局部化（07-06 决策，07-07 记录成文）
-- [x] 07-07 全套文档审阅+精简+归档（新增 ROADMAP · 归档 TECH-SCOUT/PIPELINE-RAW · 修 P0-P3 全部审阅问题）
-- [x] 07-07 定位重构：单机位 diorama → 第三人称跑图 diorama · 400m 单向 · 4 段结构
-- [x] 07-07 地编工具选型：不用 Landscape、不用 PCG、Foliage 局部可选、Python 撒点为主
-- [x] 07-07 跑图规模化生产策略：分段 + kitbash + AI 批量 + 分级 LookDev
-- [x] 07-07 周期定 5 周（每周内嵌 0.5 天缓冲，无独立缓冲周）
-- [x] 07-07 场景等比×2（200m→400m）· 41 处文档同步完成
-- [x] 07-07 18:50 **T-P0.0 路径设计完成**（🧑 纯人，0.5 天）—— 顶视图 + 4 段 thumbnail + 关键参数落 breakdown/P0-path-design/
-- [x] 07-07 **T-P0.2 第三人称接入完成**（🧑 纯人）—— 用户自备角色蓝图+GameMode，S1→S4 实跑验收通过；T-P0.1 通行验收随之达成，P0 三件全部闭环
-
----
-
-## 维护
-- 完成的项打勾；超过 2 周的完成项移除、有保留价值的写进 LOG
-- 新增任务先建 ID · 一句话描述 · 状态；详情写进 ROADMAP 或 tasks/T-xxx.md
+第三人称、S1-S4 跑图和全场景扩张仍暂停；S3 LookDev 也暂停到 T-SCENE-SUPPORT 完成。
