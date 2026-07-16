@@ -21,6 +21,8 @@
 - [ ] 实现 `get_frame_stats` 工具（帧统计信息）
 - [ ] 编写 .mcp.json 配置示例和安装说明
 - [ ] 补充 SPIR-V / HLSL 反编译对比测试
+- [ ] `get_pipeline_state` 补充 blend state 读取（`PipeState.GetColorBlends()`），当前无法直接确认某材质是否启用Alpha混合，只能靠shader输出逻辑反推（瀑布水幕主体分析中遇到，2026-07-15）
+- [ ] `get_pipeline_state` 补充 `render_targets`/`viewports`/`input_assembly`/`vertex_buffers` 字段的实际输出排查——代码里已有对应的try/except读取逻辑但实测始终不出现在返回结果里（可能被异常静默吞掉），需要定位根因
 
 ## 已完成（近期，便于回忆）
 

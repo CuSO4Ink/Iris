@@ -177,3 +177,77 @@ D20特殊性: Volume空缺.zibravdb源(BACKLOG已记), 18GB超大, 10个ZibraVDB
 C50没爆是因为其ZibraVDB template只存轻量uasset引用。
 边界结论: Spawnable路线适合轻量特效(C50), 对重体积特效(D20/E20/E40)会导致Sequence资产爆炸性膨胀+save崩溃。重镜头可能需回退Possessable+关卡引用路线(WP下需处理GUID重绑), 或先查清template到底烘进了什么、能否轻量化。待明日/引擎组深究。
 待确认: D20崩溃时到底是D20_Sequencer膨胀超2G, 还是D20_gk.umap(本身5.2GB)save触发——脚本save了fx和sh两个, 需区分。
+
+### 2026-07-13 16:55 — [方案] D20 打开即吃 7GB 显存：隐藏渲染代替调画质，先完成 Sequence 迁移
+用户目标是先跑通 Sequence 迁移，不需要看效果，问能否把画质调到最低甚至不显示。
+排查 ZibraVDB 官方文档结论：运行时显存≈2~3×最大单帧解压体积，由压缩时烘死的分辨率决定；Illumination Downscale / 关闭 Voxel Interpolation 等画质旋钮最多省 30~50%，量级不够砍到接近 0，"调画质"此路不通。
+正确方案是"隐藏不渲染"：D20 上次 GPU Hung 崩溃点是 `PreRenderView`（渲染阶段才分配显存），Actor 隐藏后不会走到这一步。批量做法：`EditorActorSubsystem.get_all_level_actors()` 遍历，类名含 ZibraVDB 的 Actor 调 `set_is_temporarily_hidden_in_editor(True)` + `set_actor_hidden_in_game(True)`，隐藏后再正常跑 `integrate_shot`/转 Spawnable/挂 Subsequence，与 Sequence 数据层操作完全解耦、可逆。
+边界提醒：隐藏只解决"打开关卡不崩"，不解决 07-09 19:00 记录的"重体积特效转 Spawnable 导致 Sequence 资产爆炸"隐患，D20/E20/E40 仍在 heavy_shots 名单，是否走 Spawnable 待验证完再定。
+
+### 2026-07-13 17:04 — [修复] 主工程编辑器启动崩溃循环：LoadLevelAtStartup 改为 None
+用户授权改动主工程 `D:\Work\Company\UE\Jianlai\TMR\UnrealEngine\Games\JyGame` 一次。修改 `Saved\Config\WindowsEditor\EditorPerProjectUserSettings.ini` 的 `LoadLevelAtStartup`：`LastOpened` → `None`。避免编辑器每次启动自动重新加载上次打开的重体积关卡（如 B20_gk/D20_gk），从而复现 GPU Hung/崩溃循环。原文件已备份为 `EditorPerProjectUserSettings.ini.bak_20260713`，可随时改回。此为 Epic 官方论坛认可的标准修复方式（社区惯用做法），不是项目特有方案。
+
+### 2026-07-13 17:11 — [方案/修正] ZibraVDB 显存问题的正确旋钮：Volume Resolution 降采样，非完全隐藏
+用户补充约束：不能完全关掉 VDB，否则看不到效果对不上；可以接受"超一点显存慢慢调"。这与上一条"隐藏不渲染"的约束不同，需要"看得见但显存降低"的中间方案。
+查官方 ZibraVDB for UE 1.4 参数文档（Render 分类）确认：`Volume Resolution`——"Allows rendering of a downscaled version of the effect"，直接砍解压帧本身（显存公式 VRAM≈2~3×最大解压帧体积 的主项），量级足够；上次提的 Illumination Downscale 只砍伴生光照贴图，量级不够，这个判断维持。
+量级估算：降采样系数 s 对显存影响约 s²~s³（体积型烟雾偏 s³，薄层偏 s²）。s=0.3 大致可把 7GB 砍到 200~700MB 量级。
+另发现官方原生开关 `Visible`（Playback parameters）："Toggles decompression and rendering of the effect"——比泛用的 Actor 隐藏更精确（连解压这步也关/开），推荐优先用这个而非通用 hide-actor 技巧。
+安全顺序：先用隐藏方式安全打开关卡 → 隐藏状态下批量设 Volume Resolution 低值 → 用 Visible 属性打开 → 边看显存边迭代。
+待办：Volume Resolution / Visible 的真实 property 名未从文档拿到内部字段名，实操前须在 Details 面板核实，避免重蹈 convert_to_spawnable 那种"API 名字猜错静默无效"的坑。
+
+### 2026-07-13 17:14 — [实测/计算] B20 实测显存 7GB/10GB，与 D20 同属重风险但仍在 spawnable_shots 名单
+用户实测：B20 单独打开吃 7GB 显存，GPU 总显存 10GB（占用 70%，逼近 D20 当时崩溃前的危险区）。
+按目标压到 50%(5GB) 计算，Volume Resolution 降采样系数 s³=5/7≈0.714 → s≈0.89，建议先试 0.85（留缓冲），不够再降到 0.7（目标约 35%/3.5GB）。此为体素三维网格降采样的理论估算(s³关系)，ZibraVDB 未公开具体实现，需实测微调。
+关键提醒：查 notes/外包归档清单.md，B20 是 9 个 ZibraVDBAssetData + 9 个 .zibravdb 源的"最完整闭包样本"，体积数量(9个)与 D20(10个)几乎同量级，风险特征相同。但 shot_config.json 当前把 B20 分在 spawnable_shots（安全批量名单），未与 D20/E20/E40 一起进 heavy_shots。若不调整，integrate_all() 会把 B20 当轻量镜头自动转 Spawnable，可能重演 D20 的"Sequence资产爆炸撞2GB加密崩溃"坑。**待用户确认是否将 B20 移入 heavy_shots**。
+
+### 2026-07-13 19:07 — [排查] B20_gk 迁移/改名弹窗排查：主工程无硬编码引用，可安全 Continue
+用户迁移/改名 B20_gk 关卡时弹出 UE 标准提示："Source code, config INI, and text files may need Find/Replace...Otherwise assets can be missing from cooked builds."
+排查主工程 `D:\...\JyGame` 的 Config、Designer、JGameAI、JGameAIHub、Plugins（cpp/h/ini/cs/json/txt）、JGame.uproject，搜索 "B20_gk" 全部零命中；且该项目无 Source/ 目录（Content-only，无 C++ 层）。结论：此弹窗是 UE 对任意资产改名/移动的通用保守提示，非针对 B20_gk 检测到实际问题，可点 Continue。
+唯一排查不到的盲区是 Content 内二进制资产（Blueprint/Sequence）里可能硬编码的字符串路径，文本搜索排除不了，但 B20 尚未接入主 Sequence/主关卡逻辑，此类硬编码几乎不可能已存在。建议迁移后用 Reference Viewer 肉眼复核一次。
+
+### 2026-07-13 19:20 — [根因确认] B20 迁移崩溃/掉引用：走了 Migrate 直迁 uasset，跳过 .zibravdb 重导流程，复现 A45 老坑
+用户反馈迁移 B20_gk 关卡会 crash，且 3 个 ZibraVDB 掉引用。查主工程日志（Saved/Logs/JGame-backup-2026.07.13-*.log）实锤：
+- 9 个 Volume 资产（B20_cloud_01_v01 ~ 04_v05）Asset Registry 加载阶段全部报 `Missing custom version GUID: 3DC15BB1E4C9409C9E5409529E555017`，标记 unloadable。
+- b20_sequence 打开/关闭时触发标准加载路径，7 个 Volume 明确报 "dependent package ... was not available ... Perhaps it has been deleted or was not synced"。
+根因：B20 走了 Migrate/直拷 uasset 路线，而不是 07-08 11:51 条目已定的规则——"ZibraVDB Volume 不能直接 Migrate uasset（5.5→5.7 Custom Version GUID 不匹配，A45 已实测踩过），须用 .zibravdb 源在主工程侧重新导入"。B20 复现的是 A45 当年一字不差的失败模式。
+"表面正常"原因：ZibraVDB Runtime 有旁路机制可绕开标准 Asset Registry 自行读帧（日志能看到 Instantiating 正常），平时不触发标准加载路径就不报错；一旦 Sequence 引用重新解析（迁移操作触发），旁路失效，暴露为掉引用/崩溃。9 个 Volume 全部处于同样病态，用户观察到的"3 个"只是暴露程度不同，不代表其余 6 个没问题。
+修复方向：不是修迁移方式，而是回滚重新导入——①删除当前主工程 9 个坏 Volume uasset ②用 B20 的 .zibravdb 源（外包归档记录源在 houdini/B20/output/vol/，9 个齐全）在主工程侧通过 ZibraVDB 插件重新导入（非 Migrate/拷贝）③重导后核对 b20_sequence 的 Volume 引用是否自动关联 ④再执行 Sequence 迁移。
+待确认：B20 的 .zibravdb 源文件是否已经拷进主工程（还是只拷了 uasset）。
+
+### 2026-07-13 21:24 — [崩溃实锤] B20 GPU Hung 崩溃日志分析：显存超预算触发设备挂起
+用户提供崩溃日志 `Saved/Crashes/UECC-Windows-1A14AF1E408CEEE837349B9EE0786A95_0001/JGame.log`。分析结论：与上面 19:20 条目（GUID不兼容/掉引用）是同一 B20 场景下的**另一类独立问题**——这次是真正的 GPU 崩溃，不是资产加载问题。
+关键证据：`"Device state": "Hung"`, `"CrashType": "GPUCrash"`, `"ErrorMessage": "Aftermath crash dump"`；显存统计 `Local Budget: 9285.00 MB` vs `Local Used: 9361.73 MB`——实际用量超出本地显存预算约77MB，驱动判定设备挂起。触发着色器为 `ZibraVDBBBoxRender`（ZibraVDB 体积包围盒渲染），确认是 ZibraVDB 渲染阶段显存溢出。硬件 RTX 3080（本地预算9285MB）、内存128GB不是瓶颈（`bIsOOM:0`）。
+与今日 17:14 条目的显存计算互相印证：B20 静止基线已测得约7GB(70%)，此次崩溃发生在渲染叠加负载后瞬时冲高到9.3GB+，正好越线。结论：Volume Resolution 降采样方案（目标压至约50%/5GB）方向正确且更紧迫——当前使用量已逼近甚至超过硬件上限，需要比原计算更激进的压缩比才够安全冗余。同时印证 B20 应立即移入 heavy_shots（此前是待确认项，现有崩溃实锤，不必再等确认）。
+
+### 2026-07-13 21:27 — [定位] B20 崩溃真凶锁定单体积：B20_cloud_04_v03 占体素总量56%，是唯二异常大的体积
+用户反馈：挂其他体积都正常，只挂 B20_cloud_04_v03 时才炸。核实崩溃日志里 9 个体积的实例化分辨率，换算体素数排序：v03(1040×912×928)≈8.8亿体素，占9个体积总量56%，是第二大 v04(880×464×928≈3.79亿)的2.3倍；其余7个体积体素量级都在v03的1/10以下甚至更小。
+结论：GPU Hung（显存超预算77MB）主要由 v03 一个体积的解压缓冲撬动，此前挂其他8个体积时已把显存吃到接近预算线（薄余量），v03 一挂上去直接击穿。修正17:14的"整批9个体积压到50%"方案为**只需单独对 v03 做降采样**（Volume Resolution 先试0.8，体素砍到约51%即约4.5亿，量级回落到v04附近），其余8个体积体素本来就小，无需一起压画质，避免过度牺牲。
+澄清与19:20 GUID条目的关系：两者是B20身上两个独立问题（GUID是全部9个体积的资产兼容性问题，GPU Hung是v03一个的显存问题），实操顺序建议先做.zibravdb重导（修复全部9个的GUID问题），重导完成后再单独对v03调Volume Resolution，避免调完画质资产本身还是坏的。
+
+### 2026-07-14 11:00 — [关键实测] 换公版UE5.7.4测试B20：GUID问题消失，但显存超支从77MB暴增到5.8GB
+用户在独立缓存目录 `D:\Work\Cache\B20`（干净公版UE5.7.4，非主工程自研5.7.3）单独测试B20，又崩了，提供崩溃日志 `Saved/Crashes/UECC-Windows-A89B4BF34AB4979C0A09669CA10E1E15_0000/B20.log`。
+核心发现：①该日志中搜索"Missing custom version GUID"**完全零命中**，证实19:20条目"GUID不兼容根因是主工程自研5.7.3装的ZibraVDB插件构建版本、与外包用的公版5.5插件构建版本注册的私有版本表不匹配"这一判断——换到公版5.7.4（插件构建版本对得上）后GUID问题不再出现。②但代价是：全部9个体积（包括元凶v03）这次都被成功实例化并参与渲染（`Instantiating ZibraVDB B20_cloud_04_v03...`等9条全部出现），显存暴涨：`Local Budget 9285MB` vs `Local Used 15077.81MB`，超支5792MB（62%），比昨天77MB的轻微超支严重得多。CrashType仍为GPUCrash/Hung，GPU断点显示崩溃时`ZibraVDBActor_6`的`VolumeDownscale`步骤为Active（说明降采样管线本身在跑，只是需求量依然远超预算）。
+结论：GUID修复和显存问题是接力关系，不是二选一——解决GUID只是让全部9个体积"有资格"被加载渲染，代价是显存需求从"部分体积"变成"全部9个体积"，负载不降反升。之前17:14/21:27算的Volume Resolution方案目标(压到~50%/5GB)基于旧基线(7GB/9.3GB)，现在实测基线已是15GB量级，需要重新计算：15GB→5.5GB目标，s³=5.5/15≈0.367，s≈0.72（比之前给的0.85起始值更激进）。且现在看不能只压v03一个，因为全部9个同时加载时总量已经很大，可能需要普遍性降采样而非单点。
+
+### 2026-07-14 11:05 — [应急方案] B20场景连打开都直接崩，物理挪走v03资产文件绕开GPU崩溃
+用户反馈场景现在连打开都会crash，没有机会进编辑器调Volume Resolution参数。给出应急方案：利用已确认的"依赖包缺失→ZibraVDBActor退化Cube占位→不触发解压渲染"机制（19:20条目已验证的效果），主动把 `B20_cloud_04_v03.uasset` 从 `Content/.../FX_B20/Volume/` 剪切到临时目录，使其变成缺失引用。v03是占体素总量56%的元凶，挪走后其余8个体积（约44%总量）应该能在预算内正常加载，可借此窗口完成Sequence迁移工作，事后需将文件挪回原位。
+备选正规方案：用 `-nullrhi` 命令行标志启动无渲染管线的editor-cmd进程+Python脚本，在没有GPU设备的情况下加载关卡改Volume Resolution属性再存盘，从根本上避免GPU Hung，但具体命令行标志组合和headless模式下Python子系统可用性未经验证，建议先跑纯诊断（只打印不改）版本确认可行。
+
+### 2026-07-15 14:54 — [发现/约束] Git LFS 单文件上限 5GB，22 个工程超限需 cp 回本地切分返工
+实测返包目录 `BYDC\BYDC文件重新整理\` 各工程大小。返包分"云雾效果"（27 个工程）和"金沙效果"（6 个工程）两大类，共 33 个目录条目。
+超过 5GB 的有 22 个（去重 17 个镜头代号）：E40(51.54G云雾+35.29G金沙)、C11(46.14G)、C30(31.54G云雾+12.79G金沙)、C10(27.80G)、C60(27.05G云雾+5.83G金沙)、F50(20.16G)、B10(15.22G)、A45(14.17G)、B20(14.02G)、D20(13.12G云雾+17.96G金沙)、D40(11.68G)、C80(10.47G云雾)、E30(9.25G)、D30(8.97G)、D60(7.72G)、E20(7.23G云雾+11.08G金沙)、D70(5.14G)。这些工程必须 cp 全部回本地做切分返工。
+未超 5GB 可正常导入的有 11 个：D10(4.51G)、B30(2.78G)、B40(2.00G)、A50(1.98G)、D50(1.22G)、B60(0.89G)、C40(0.88G)、B55(0.30G)、B50(0.22G)、C50(0.01G已导入)、C80金沙(2.42G)。BACKLOG 已同步完整分诊表。
+注意：超限工程若走 `.zibravdb` 源在主工程侧重导路线（非 LFS 推 uasset），则不受 LFS 5GB 限制，需逐个确认导入路线后排除。
+
+### 2026-07-15 15:15 — [进展] 10 个未超 5GB 镜头已全部拷贝到主工程 Content
+用 copy_fx_content.ps1（云雾9个）+ robocopy（金沙C80）完成拷贝，全部验证文件数和大小匹配：
+- 云雾：D10(4.6G/4files)、B30(2.8G/38f)、B40(2.0G/26f)、A50(2.0G/10f)、D50(1.2G/4f)、B50(226M/10f)、B55(307M/18f)、B60(910M/14f)、C40(899M/8f)
+- 金沙：C80(2.4G/77f)
+- C50 此前已导入（试点完成），本次不重复
+shot_config.json 两份（paozi-local + iris/output）已同步更新，新增 copied_shots 字段。下一步：UE 内跑 integrate_fx_shots.py 的 integrate_all() 或逐个 integrate_shot() 接入 Sequence。
+
+### 2026-07-16 16:50 — [进展] B20 + D10 导入完成，已完成 4/23 镜头
+B20 和 D10 完成导入，项目进度同步更新至 AI-BRIEF / BACKLOG / LOG 三份文档与企微在线文档。
+- B20：v03 外包切片体素分辨率 1040×912×928 触发 GPU TDR 超时（非 OOM），按体素分辨率切分为 11 段（000_050 ~ 501_534），通过 Spawned Track 互斥帧段避免同时加载爆显存。
+- D10：Spawnable 转换完成，注意保存超大 ZibraVDB 资产可能触发 32 位数组索引溢出（2147483648）。
+- 当前总进度：已完成 4（C50/C40/B20/D10）· 阻塞 4（A45/D20/E20/E40）· 待导入 15。
