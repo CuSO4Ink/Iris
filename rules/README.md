@@ -16,6 +16,7 @@
 |---|---|---|
 | [00-canary.ankoha](00-canary.ankoha.md) | 所有回复 | 末尾单独一行 `唔呣。` |
 | [commands](commands.md) | 用户发斜杠命令时 | `/general` `/maintainer` `/project` `/check` `/canary` `/help` |
+| [sync](sync.md) | 用户发 `/sync` 时 | 将当前对话进展同步到活跃项目三件套 |
 | [annotation](annotation.md) | 所有文档协作 | `[!Q] / [!NOTE] / [!TODO] / [!FIX]` callout 格式 |
 | [naming](naming.md) | 新建文件/文件夹时 | 文件名/文件夹名不出现中文，一律用英文命名 |
 

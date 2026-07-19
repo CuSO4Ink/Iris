@@ -6,6 +6,8 @@ Violina 的独立读者测试模块。它验证读者实际经历了什么，不
 
 当前阶段默认使用 **Authorship Perception**：重点不是询问读者喜不喜欢情节，而是定位 AI 写作感何时形成、由哪些反复模式造成、哪些段落仍保有人类写作感，以及最值得优先消除的一个模式。通用阅读体验测试仅在另有目标时使用。
 
+需要保留文学侧弱参考时，另走 **Literary Calibration** 旁路：匿名 A/B、三名全新读者、冻结六维量表，不询问作者来源，也不与同一候选的来源读者或审校员复用身份。Epoch 02 只在 Round 01 与结束节点调用，结果不参与自动判断。
+
 ## Two Entry Modes
 
 ### Framework Operator
@@ -28,6 +30,7 @@ Violina 的独立读者测试模块。它验证读者实际经历了什么，不
 - `protocol.md`：角色隔离、运行流程、测试类型和质量门槛。
 - `blind-reader-prompt.md`：提供给全新 AI 读者的中性提示。
 - `authorship-reader-prompt.md`：以识别和定位 AI 写作感为唯一主目标的提示；当前默认使用。
+- `literary-reader-prompt.md`：匿名 A/B 文学校准提示；评价内在生命、人物形体、具身现场、关系、语言余波与续读牵引。
 - `templates/manifest.md`：测试所有者使用的内部清单，不交给读者。
 - `templates/packet.md`：匿名、自包含的盲测包。
 - `templates/authorship-packet.md`：专门用于 AI 写作感诊断的匿名包模板。

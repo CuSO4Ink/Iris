@@ -1,0 +1,4 @@
+interface:
+  display_name: "Violina 故事状态"
+  short_description: "维护固定小说权威事实、GenerationFrame、事件状态与正式正文提交"
+  default_prompt: "使用 $violina-story-state 检查或更新这部 Violina 小说的权威故事状态。"

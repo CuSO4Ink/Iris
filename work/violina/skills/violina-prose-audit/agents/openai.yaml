@@ -1,0 +1,4 @@
+interface:
+  display_name: "Violina 正文审校"
+  short_description: "分开检查候选正文的有效性硬闸门与非阻断作者来源风险画像"
+  default_prompt: "使用 $violina-prose-audit 审校这份 Violina 候选正文，并分开报告硬问题与来源风险。"
