@@ -79,3 +79,24 @@ WorkBuddy spawn MCP 子进程时的环境不继承用户 shell PATH，裸 `pytho
 
 ### 2026-07-09 10:XX — [决策] 弃用旧栈（UnrealGenAISupport/9877），迁移到 UE 官方 MCP 插件新栈（streamable-http/:8000）
 Bifrost 项目已先行验证新栈可用且更稳定（3 个 meta-tool 间接路由 + `editor_toolset.*` 官方工具集），旧栈的两个 handler bug（`handshake_test` 线程违规、`get_all_scene_objects` 废弃 API）及插件 C++ 改动均不再有维护价值。**决策**：UEAgent 项目定位调整为"新栈操作入口 + 历史踩坑经验库"，`AI-BRIEF.md`/`BACKLOG.md` 已改写为新栈内容，旧栈技术细节只保留在本 LOG 的历史条目里，不再同步维护。`notes/mcp-pitfalls.md` 的通用经验（E1/E2）继续有效，跨栈通用。外部权威接入包 `D:\Work\AI\UE_MCP_Access_Pack`（只引用不复制）成为新栈调用规范的唯一来源。
+
+### 2026-07-15 14:29 — [决策] UE MCP Skill 以 UEAgent 为主源
+新增 `skills/ue-mcp-workflows/`，把已验证的 MCP Core、材质、蓝图与场景编辑流程固化为项目内 Skill；Codex 等平台目录只作为按需迁移目标，不承担主维护。外部 `UE_MCP_Access_Pack` 继续只引用、不复制。最终版 Custom 输入探针已在当前官方栈实跑通过：`MaterialExpressionCustom` 成功得到并连接 `A/B` 两个输入，临时资产及新建目录均独立回查为不存在。
+
+### 2026-07-15 14:49 — [决策] MCP 操作采用项目内自改进闭环
+每次真实 MCP 任务仅在出现重复调用、猜参重试、手工恢复、payload/延迟或能力缺口时做收尾复盘。项目内 Skill、探针、批处理脚本和坑册可在当前任务范围内经过验证后直接改进；外部 Access Pack、UE 插件、平台副本和生产资产仍不得静默修改。沉淀顺序固定为：现场证据 → 坑册计数 → 隔离 Probe → Verified SOP → 确有重复后才升格为脚本。
+
+### 2026-07-15 15:05 — [决策] 用仓库级符号链接向 Codex 自动暴露 UE MCP Skill
+新增 `.agents/skills/ue-mcp-workflows`，符号链接到 `work/UEAgent/skills/ue-mcp-workflows`。Codex 新任务可按仓库 Skill 机制自动发现并隐式触发；UEAgent 仍是唯一主源，不维护平台副本。Skill 同时增加 Iris 项目路由：开始 UE 修改前按当前 `/Game/<Project>` 读取对应 `work/<Project>/AI-BRIEF.md` 与 `BACKLOG.md`。
+
+### 2026-07-22 — [发现] VibeUE 已在 Abyss 完成接入验证
+安装并编译 VibeUE `271f487` 后，官方 `:8000/mcp` 同端点实测暴露 10 个顶层工具、30 个 VibeUE service toolset 与 35 个核心 skill；技能加载、类发现、任意 Python、Transaction 查询和 PIE 启停均已验真，且没有创建或保存资产。
+
+### 2026-07-22 — [决策] 当前采用“官方 MCP 底座 + VibeUE 按需扩展”
+UEAgent 继续承担项目路由、操作规范与证据治理；通用 CRUD 先走官方 typed tool，VibeUE 只补 transactions、Niagara scratchpad 等官方缺口，任意 Python 只作限域兜底。是否把 VibeUE 升为必装强依赖尚未由本人拍板，不写入正式依赖基线。
+
+### 2026-07-22 — [发现] VibeUE 性能时序暂不可作为证据
+`PerformanceService.frame_timing` 在非 PIE 两次返回约 3370 ms game thread、PIE 返回约 7817 ms，而 render/GPU 约 1–3 ms；接口可用但数据明显受采样路径污染。完成独立 trace 或异步采样对齐前，拒绝将该结果写入作品性能结论。
+
+### 2026-07-23 — [决策] UEAgent 收口为路径无关的可迁移操作层
+安装、项目配置、gateway 与验收入口全部进入 UEAgent；外部只保留 UE 5.8 官方来源和固定 commit 的 VibeUE。本机绝对路径、外置 Access Pack、引擎私有分支及未提交 Niagara 修改不再构成运行基线。
