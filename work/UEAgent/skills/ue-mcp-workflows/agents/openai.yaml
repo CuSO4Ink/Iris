@@ -1,0 +1,4 @@
+interface:
+  display_name: "UE MCP Workflows"
+  short_description: "Verified UE MCP editing SOPs"
+  default_prompt: "Use $ue-mcp-workflows to inspect and modify this Unreal Engine project through MCP with verified safeguards."
