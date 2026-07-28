@@ -1,0 +1,227 @@
+// Copyright 2026 Violina. All Rights Reserved.
+
+// Phase 3: Ray-tracing renderer for Gaussian volume primitives.
+// Ported from mvp/gaussian_volume.py:
+//   - ray_gaussian_taus() → RayGaussianTau()
+//   - shade_ray()         → MainCS body (front-to-back compositing + single scatter)
+//   - candidates_along_ray() → 3-sigma bounding sphere cull per pixel
+//
+// GPU packing: 4 x float4 per Gaussian (see GaussianVolumeTypes.h)
+//   [0] center.xyz,  sigma_t
+//   [1] scale.xyz,   quat.w
+//   [2] quat.xyz,    pad
+//   [3] albedo.rgb,  pad
+
+#include "/Engine/Private/Common.ush"
+
+// --- Parameters filled by C++ FParameters ---
+#define GAUSSIAN_STRIDE 4  // float4s per Gaussian
+
+// StructuredBuffer: 4*float4 per primitive, tightly packed
+StructuredBuffer<float4> GaussianBuffer;
+
+RWTexture2D<float4> OutputTexture;
+
+// Camera & render params (packed as float4s for alignment)
+float4 CameraPos;       // xyz = camera position (world)
+float4 CameraDirs;      // x = tanHalfFov, y = aspect, z, w unused
+float4 CameraForward;   // xyz = forward dir (normalized)
+float4 CameraRight;     // xyz = right dir (normalized)
+float4 CameraUp;        // xyz = up dir (normalized)
+float4 Resolution;      // x = width, y = height, z = 1/width, w = 1/height
+uint   NumGaussians;
+
+// Lighting
+float4 LightDir;        // xyz = normalized light direction (toward light)
+float4 LightColor;      // rgb = light color * intensity
+float4 AmbientColor;    // rgb = ambient term
+float  PowderFactor;    // powder effect strength (default 0.5)
+float  MaxRayDistance;  // t_far for integration (default 1e5)
+
+// --- Math helpers ---
+
+// Quaternion to 3x3 rotation matrix (matches _quat_to_matrix in Python)
+float3x3 QuatToRotMatrix(float3 qxyz, float qw)
+{
+    float w = qw;
+    float x = qxyz.x;
+    float y = qxyz.y;
+    float z = qxyz.z;
+    return float3x3(
+        1 - 2*(y*y + z*z),  2*(x*y - w*z),      2*(x*z + w*y),
+        2*(x*y + w*z),      1 - 2*(x*x + z*z),  2*(y*z - w*x),
+        2*(x*z - w*y),      2*(y*z + w*x),      1 - 2*(x*x + y*y)
+    );
+}
+
+// Build Sigma^{-1} = R * diag(1/s_x^2, 1/s_y^2, 1/s_z^2) * R^T
+float3x3 BuildSigmaInv(float3 scale, float3 qxyz, float qw)
+{
+    float3x3 R = QuatToRotMatrix(qxyz, qw);
+    float3 inv_s2 = 1.0 / (scale * scale);
+    // R * diag(inv_s2) = scale columns of R by inv_s2
+    float3x3 R_diag = float3x3(
+        R[0][0]*inv_s2.x, R[0][1]*inv_s2.y, R[0][2]*inv_s2.z,
+        R[1][0]*inv_s2.x, R[1][1]*inv_s2.y, R[1][2]*inv_s2.z,
+        R[2][0]*inv_s2.x, R[2][1]*inv_s2.y, R[2][2]*inv_s2.z
+    );
+    // SigmaInv = R_diag * transpose(R)
+    return mul(R_diag, transpose(R));
+}
+
+// Analytic optical depth along a ray through one Gaussian.
+// Ported from ray_gaussian_taus() in gaussian_volume.py.
+// Returns tau >= 0. Also outputs t_star (peak density param) via out param.
+float RayGaussianTau(
+    float3 ray_o, float3 ray_d,
+    float3 center, float3x3 sigma_inv, float sigma_t,
+    float t_near, float t_far,
+    out float t_star)
+{
+    float3 m = ray_o - center;
+
+    // Sd = SigmaInv * d
+    float3 Sd = mul(sigma_inv, ray_d);
+    float A = dot(Sd, ray_d);           // d^T SigmaInv d
+    float B = dot(m, Sd);               // m^T SigmaInv d
+    float C = dot(m, mul(sigma_inv, m)); // m^T SigmaInv m
+
+    A = max(A, 1e-12);
+    t_star = -B / A;
+
+    float peak = -0.5 * (C - B * B / A);  // <= 0
+    float sig1d = rsqrt(A);                // 1/sqrt(A)
+    float amp = sigma_t * exp(peak);
+
+    // Integral of exp(-0.5*(t-t*)^2 / sig^2) dt over [t_near, t_far]
+    // = sig * sqrt(2*pi) * 0.5 * (erf(z1) - erf(z0))
+    float sqrt2_sig = sqrt(2.0) * sig1d;
+    float z0 = (t_near - t_star) / sqrt2_sig;
+    float z1 = (t_far  - t_star) / sqrt2_sig;
+    float integral = sig1d * sqrt(2.0 * PI) * 0.5 * (erf(z1) - erf(z0));
+
+    return max(amp * integral, 0.0);
+}
+
+// Compute light-direction tau for a single Gaussian center toward light.
+// This is the per-primitive self-shadow approximation (no precomputed N×N matrix).
+float LightGaussianTau(
+    float3 center, float3 light_dir,
+    float3x3 sigma_inv, float sigma_t,
+    float t_far)
+{
+    float t_star_dummy;
+    // Ray from center toward light, integrating from 0 to t_far
+    // m = origin - center = 0 (origin IS center), so B=0, C=0, t_star=0
+    float3 Sd = mul(sigma_inv, light_dir);
+    float A = dot(Sd, light_dir);
+    A = max(A, 1e-12);
+    float sig1d = rsqrt(A);
+    float amp = sigma_t;  // peak at origin (peak=0 since C=0, B=0)
+
+    float sqrt2_sig = sqrt(2.0) * sig1d;
+    // Integrate from t=0 outward (light ray starts at center)
+    float z0 = (0.0 - 0.0) / sqrt2_sig;  // = 0
+    float z1 = (t_far - 0.0) / sqrt2_sig;
+    float integral = sig1d * sqrt(2.0 * PI) * 0.5 * (erf(z1) - erf(z0));
+
+    return max(amp * integral, 0.0);
+}
+
+// --- Main compute shader ---
+[numthreads(8, 8, 1)]
+void MainCS(uint3 DTid : SV_DispatchThreadID)
+{
+    uint2 pixel = DTid.xy;
+    if (pixel.x >= (uint)Resolution.x || pixel.y >= (uint)Resolution.y)
+        return;
+
+    // 1. Generate camera ray (matches Python MVP: top = +y)
+    float2 uv = (pixel + 0.5) * Resolution.zw;   // [0,1]
+    float2 ndc;
+    ndc.x = uv.x * 2.0 - 1.0;                     // [-1,1] left→right
+    ndc.y = 1.0 - uv.y * 2.0;                     // [+1,-1] top→bottom (flip)
+    float tanHalfFov = CameraDirs.x;               // horizontal tanHalfFov
+    float aspect = CameraDirs.y;
+    float3 ray_dir = normalize(
+        CameraForward.xyz
+        + CameraRight.xyz * ndc.x * tanHalfFov
+        + CameraUp.xyz    * ndc.y * tanHalfFov / aspect
+    );
+    float3 ray_o = CameraPos.xyz;
+
+    // 2. Front-to-back compositing loop (brute force all Gaussians)
+    float3 color = float3(0, 0, 0);
+    float T = 1.0;  // transmittance
+    float depth = 1e8;
+
+    for (uint i = 0; i < NumGaussians && T > 0.001; i++)
+    {
+        uint base = i * GAUSSIAN_STRIDE;
+        float4 cs  = GaussianBuffer[base + 0];  // center.xyz, sigma_t
+        float4 sq  = GaussianBuffer[base + 1];  // scale.xyz, quat.w
+        float4 rq  = GaussianBuffer[base + 2];  // quat.xyz, pad
+        float4 alb = GaussianBuffer[base + 3];  // albedo.rgb, pad
+
+        float3 center = cs.xyz;
+        float  sigma_t = cs.w;
+        float3 scale   = sq.xyz;
+        float3 qxyz    = rq.xyz;
+        float  qw      = sq.w;
+        float3 albedo  = alb.rgb;
+
+        // Build Sigma^{-1}
+        float3x3 sigma_inv = BuildSigmaInv(scale, qxyz, qw);
+
+        // 3-sigma bounding sphere cull
+        float bound_r = 3.0 * max(max(scale.x, scale.y), scale.z);
+        float3 oc = ray_o - center;
+        float b_coef = dot(oc, ray_dir);
+        float c_coef = dot(oc, oc) - bound_r * bound_r;
+        float disc = b_coef * b_coef - c_coef;
+        if (disc < 0.0)
+            continue;  // ray misses bounding sphere
+
+        float sq_disc = sqrt(disc);
+        float t_enter = -b_coef - sq_disc;
+        float t_exit  = -b_coef + sq_disc;
+        if (t_exit < 0.0)
+            continue;  // entirely behind camera
+
+        float t_near = max(t_enter, 0.0);
+        float t_far  = min(t_exit, MaxRayDistance);
+
+        // Analytic transmittance along view ray
+        float t_star;
+        float tau = RayGaussianTau(ray_o, ray_dir, center, sigma_inv, sigma_t,
+                                    t_near, t_far, t_star);
+
+        if (tau < 1e-5)
+            continue;
+
+        float alpha = 1.0 - exp(-tau);
+
+        // Single scattering: light attenuation from this Gaussian's center
+        // toward the light source (self-shadow of all other Gaussians along
+        // that ray — simplified: only compute this primitive's own tau).
+        // For full N×N light tau matrix, see Phase 4 optimization.
+        float light_tau = LightGaussianTau(center, LightDir.xyz, sigma_inv, sigma_t, MaxRayDistance);
+        float Tl = exp(-light_tau);
+
+        // Powder effect (darkening in dense regions)
+        float powder = 1.0 - exp(-2.0 * tau) * PowderFactor;
+
+        float3 scatter = albedo * LightColor.rgb * Tl * powder;
+        scatter += albedo * AmbientColor.rgb;  // fake ambient
+
+        color += T * alpha * scatter;
+        T *= (1.0 - alpha);
+        depth = min(depth, t_star);
+    }
+
+    // Background through residual transmittance
+    float3 bg = float3(0.02, 0.03, 0.05);
+    color += bg * T;
+
+    OutputTexture[pixel] = float4(color, 1.0 - T);
+}

@@ -1,0 +1,80 @@
+[
+    {
+        "Label":  "Empty",
+        "Map":  "/Game/GaussianVolume/Maps/L_GaussianVolume_EmptyBaseline",
+        "ProcessId":  99260,
+        "Resolution":  "1920x1080",
+        "WarmupSeconds":  5,
+        "SampleCount":  5,
+        "DedicatedMedianMiB":  3282.012,
+        "DedicatedMinMiB":  3282.012,
+        "DedicatedMaxMiB":  3282.012,
+        "SharedMedianMiB":  244.691,
+        "DedicatedDeltaVsEmptyMiB":  0
+    },
+    {
+        "Label":  "GaussianQ2",
+        "Map":  "/Game/GaussianVolume/Maps/L_GaussianVolume_TechLab",
+        "ProcessId":  101248,
+        "Resolution":  "1920x1080",
+        "WarmupSeconds":  5,
+        "SampleCount":  5,
+        "DedicatedMedianMiB":  3304.617,
+        "DedicatedMinMiB":  3304.363,
+        "DedicatedMaxMiB":  3304.617,
+        "SharedMedianMiB":  204.004,
+        "DedicatedDeltaVsEmptyMiB":  22.605
+    },
+    {
+        "Label":  "SVT_U8",
+        "Map":  "/Game/GaussianVolume/Maps/L_GaussianVolume_SVT_U8",
+        "ProcessId":  16500,
+        "Resolution":  "1920x1080",
+        "WarmupSeconds":  5,
+        "SampleCount":  5,
+        "DedicatedMedianMiB":  3281.07,
+        "DedicatedMinMiB":  3280.816,
+        "DedicatedMaxMiB":  3296.445,
+        "SharedMedianMiB":  195.379,
+        "DedicatedDeltaVsEmptyMiB":  -0.942
+    },
+    {
+        "Label":  "SVT_F16",
+        "Map":  "/Game/GaussianVolume/Maps/L_GaussianVolume_SVT_F16",
+        "ProcessId":  80012,
+        "Resolution":  "1920x1080",
+        "WarmupSeconds":  5,
+        "SampleCount":  5,
+        "DedicatedMedianMiB":  3316.777,
+        "DedicatedMinMiB":  3316.777,
+        "DedicatedMaxMiB":  3316.781,
+        "SharedMedianMiB":  202.457,
+        "DedicatedDeltaVsEmptyMiB":  34.765
+    },
+    {
+        "Label":  "NanoVDB_Fp8",
+        "Map":  "/Game/GaussianVolume/Maps/L_GaussianVolume_NanoVDB_Fp8",
+        "ProcessId":  91020,
+        "Resolution":  "1920x1080",
+        "WarmupSeconds":  5,
+        "SampleCount":  5,
+        "DedicatedMedianMiB":  3310.855,
+        "DedicatedMinMiB":  3305.141,
+        "DedicatedMaxMiB":  3311.242,
+        "SharedMedianMiB":  969.766,
+        "DedicatedDeltaVsEmptyMiB":  28.843
+    },
+    {
+        "Label":  "NanoVDB_FpN",
+        "Map":  "/Game/GaussianVolume/Maps/L_GaussianVolume_NanoVDB_FpN",
+        "ProcessId":  16796,
+        "Resolution":  "1920x1080",
+        "WarmupSeconds":  5,
+        "SampleCount":  5,
+        "DedicatedMedianMiB":  3309.375,
+        "DedicatedMinMiB":  3308.867,
+        "DedicatedMaxMiB":  3314.355,
+        "SharedMedianMiB":  895.953,
+        "DedicatedDeltaVsEmptyMiB":  27.363
+    }
+]

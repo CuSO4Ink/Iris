@@ -1,5 +1,8 @@
 # VoGE 交叉阅读笔记
 
+> [!WARNING] **符号映射尚有内部冲突。**
+> 本文 §2 把 `hit_length` 写成与 `t_star` 相等，但文末对照表写成相反号；在逐一定义 ray origin、`mu` 与 B 的符号并复核代码前，不得引用“完全一致”作为正式结论。
+
 > 论文：VoGE: A Differentiable Volume Renderer using Gaussian Ellipsoids for Analysis-by-Synthesis
 > 作者：Angtian Wang, Peng Wang, Jian Sun, Adam Kortylewski, Alan Yuille
 > 发表：ICLR 2023 | arXiv:2205.15401 | 代码：https://github.com/Angtian/VoGE

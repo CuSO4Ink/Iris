@@ -1,0 +1,205 @@
+// Copyright 2026 Violina. All Rights Reserved.
+
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/SceneTexturesCommon.ush"
+
+#define PNANOVDB_HLSL
+#include "/GaussianVolume/Private/ThirdParty/PNanoVDB.ush"
+
+StructuredBuffer<uint> NanoVdbBuffer;
+Texture2D SceneColorTexture;
+RWTexture2D<float4> OutputTexture;
+
+float4 Resolution;
+float4 ViewRectMin;
+float4 DepthViewRect;
+float4 DepthBufferInvSize;
+float4x4 ClipToWorld;
+float4x4 WorldToNanoLocal;
+float4 Albedo;
+float DensityScale;
+float StepSizeVoxels;
+uint MaxSteps;
+uint bUseSceneDepth;
+
+float ReadDensity(
+	pnanovdb_grid_type_t gridType,
+	pnanovdb_buf_t buffer,
+	inout pnanovdb_readaccessor_t accessor,
+	pnanovdb_coord_t ijk)
+{
+	uint level = 0;
+	pnanovdb_address_t address = pnanovdb_readaccessor_get_value_address_and_level(
+		gridType, buffer, accessor, ijk, level);
+	if (gridType == PNANOVDB_GRID_TYPE_FP8)
+	{
+		return pnanovdb_root_fp8_read_float(buffer, address, ijk, level);
+	}
+	if (gridType == PNANOVDB_GRID_TYPE_FPN)
+	{
+		return pnanovdb_root_fpn_read_float(buffer, address, ijk, level);
+	}
+	return pnanovdb_read_float(buffer, address);
+}
+
+float SampleTrilinear(
+	pnanovdb_grid_type_t gridType,
+	pnanovdb_buf_t buffer,
+	inout pnanovdb_readaccessor_t accessor,
+	float3 position)
+{
+	int3 base = int3(floor(position));
+	float3 f = frac(position);
+	float values[8];
+	[unroll] for (uint corner = 0; corner < 8; ++corner)
+	{
+		pnanovdb_coord_t ijk;
+		ijk.x = base.x + int(corner & 1);
+		ijk.y = base.y + int((corner >> 1) & 1);
+		ijk.z = base.z + int((corner >> 2) & 1);
+		values[corner] = max(ReadDensity(gridType, buffer, accessor, ijk), 0.0);
+	}
+	float x00 = lerp(values[0], values[1], f.x);
+	float x10 = lerp(values[2], values[3], f.x);
+	float x01 = lerp(values[4], values[5], f.x);
+	float x11 = lerp(values[6], values[7], f.x);
+	return lerp(lerp(x00, x10, f.y), lerp(x01, x11, f.y), f.z);
+}
+
+[numthreads(THREADGROUP_SIZE_X, THREADGROUP_SIZE_Y, 1)]
+void MainCS(uint3 dispatchThreadId : SV_DispatchThreadID)
+{
+	uint2 pixel = dispatchThreadId.xy;
+	if (pixel.x >= (uint)Resolution.x || pixel.y >= (uint)Resolution.y)
+	{
+		return;
+	}
+
+	uint2 outPixel = pixel + uint2(ViewRectMin.xy);
+	float2 uv = (float2(pixel) + 0.5) * Resolution.zw;
+	float2 ndc = float2(uv.x * 2.0 - 1.0, 1.0 - uv.y * 2.0);
+	float4 clipNear = float4(ndc, 1.0, 1.0);
+	float4 clipMid = float4(ndc, 0.5, 1.0);
+	float4 worldNear = mul(clipNear, ClipToWorld);
+	float4 worldMid = mul(clipMid, ClipToWorld);
+	worldNear.xyz /= worldNear.w;
+	worldMid.xyz /= worldMid.w;
+
+	float3 rayOriginWorld = worldNear.xyz;
+	float3 rayDirectionWorld = normalize(worldMid.xyz - worldNear.xyz);
+	float3 rayOriginLocal = mul(float4(rayOriginWorld, 1.0), WorldToNanoLocal).xyz;
+	float3 rayDirectionLocal = normalize(
+		mul(float4(rayDirectionWorld, 0.0), WorldToNanoLocal).xyz);
+
+	float sceneDistanceWorld = 1.0e20;
+	if (bUseSceneDepth != 0)
+	{
+		float2 depthPixel = DepthViewRect.xy + uv * DepthViewRect.zw;
+		float2 depthUv = depthPixel * DepthBufferInvSize.xy;
+		float deviceDepth = SceneTexturesStruct.SceneDepthTexture.SampleLevel(
+			SceneTexturesStruct.PointClampSampler, depthUv, 0).r;
+		if (deviceDepth > 0.0)
+		{
+			float4 clipScene = float4(ndc, deviceDepth, 1.0);
+			float4 worldScene = mul(clipScene, ClipToWorld);
+			worldScene.xyz /= worldScene.w;
+			sceneDistanceWorld = max(dot(
+				worldScene.xyz - rayOriginWorld, rayDirectionWorld), 0.0);
+		}
+	}
+	float3 localScene = mul(
+		float4(rayOriginWorld + rayDirectionWorld * sceneDistanceWorld, 1.0),
+		WorldToNanoLocal).xyz;
+	float localSceneDistance = sceneDistanceWorld < 1.0e19
+		? length(localScene - rayOriginLocal)
+		: 1.0e20;
+
+	pnanovdb_grid_handle_t grid;
+	grid.address = pnanovdb_address_null();
+	pnanovdb_grid_type_t gridType = pnanovdb_grid_get_grid_type(
+		NanoVdbBuffer, grid);
+	pnanovdb_tree_handle_t tree = pnanovdb_grid_get_tree(NanoVdbBuffer, grid);
+	pnanovdb_root_handle_t root = pnanovdb_tree_get_root(
+		NanoVdbBuffer, tree);
+	pnanovdb_readaccessor_t accessor;
+	pnanovdb_readaccessor_init(accessor, root);
+
+	pnanovdb_vec3_t localOrigin;
+	localOrigin.x = rayOriginLocal.x;
+	localOrigin.y = rayOriginLocal.y;
+	localOrigin.z = rayOriginLocal.z;
+	pnanovdb_vec3_t localDirection;
+	localDirection.x = rayDirectionLocal.x;
+	localDirection.y = rayDirectionLocal.y;
+	localDirection.z = rayDirectionLocal.z;
+	pnanovdb_vec3_t indexOrigin = pnanovdb_grid_world_to_indexf(
+		NanoVdbBuffer, grid, localOrigin);
+	pnanovdb_vec3_t indexDirection = pnanovdb_grid_world_to_index_dirf(
+		NanoVdbBuffer, grid, localDirection);
+	float directionScale = length(float3(
+		indexDirection.x, indexDirection.y, indexDirection.z));
+	indexDirection.x /= max(directionScale, 1.0e-8);
+	indexDirection.y /= max(directionScale, 1.0e-8);
+	indexDirection.z /= max(directionScale, 1.0e-8);
+
+	pnanovdb_coord_t bboxMinCoord = pnanovdb_root_get_bbox_min(
+		NanoVdbBuffer, root);
+	pnanovdb_coord_t bboxMaxCoord = pnanovdb_root_get_bbox_max(
+		NanoVdbBuffer, root);
+	pnanovdb_vec3_t bboxMin = pnanovdb_coord_to_vec3(bboxMinCoord);
+	pnanovdb_vec3_t bboxMax = pnanovdb_coord_to_vec3(
+		pnanovdb_coord_add(bboxMaxCoord, pnanovdb_coord_uniform(1)));
+	float tMin = 0.0;
+	float tMax = min(localSceneDistance * directionScale, 1.0e20);
+	if (!pnanovdb_hdda_ray_clip(
+		bboxMin, bboxMax, indexOrigin, tMin, indexDirection, tMax))
+	{
+		OutputTexture[outPixel] = float4(
+			SceneColorTexture.Load(int3(outPixel, 0)).rgb, 1.0);
+		return;
+	}
+
+	float transmittance = 1.0;
+	float3 color = 0.0;
+	float t = tMin;
+	uint stepCount = 0;
+	while (t < tMax && stepCount < MaxSteps && transmittance > 0.001)
+	{
+		pnanovdb_vec3_t position = pnanovdb_hdda_ray_start(
+			indexOrigin, t + 1.0e-4, indexDirection);
+		pnanovdb_coord_t ijk = pnanovdb_hdda_pos_to_ijk(position);
+		int dim = int(pnanovdb_readaccessor_get_dim(
+			gridType, NanoVdbBuffer, accessor, ijk));
+		if (dim > 1 || !pnanovdb_readaccessor_is_active(
+			gridType, NanoVdbBuffer, accessor, ijk))
+		{
+			pnanovdb_hdda_t skip;
+			pnanovdb_hdda_init(
+				skip, indexOrigin, t, indexDirection, tMax, max(dim, 1));
+			if (!pnanovdb_hdda_step(skip))
+			{
+				break;
+			}
+			t = max(skip.tmin, t + 1.0e-4);
+			++stepCount;
+			continue;
+		}
+
+		float dt = min(StepSizeVoxels, tMax - t);
+		float3 samplePosition = float3(
+			position.x, position.y, position.z) + 0.5 * dt * float3(
+				indexDirection.x, indexDirection.y, indexDirection.z);
+		float density = SampleTrilinear(
+			gridType, NanoVdbBuffer, accessor, samplePosition);
+		float opticalDepth = density * DensityScale * dt;
+		float alpha = 1.0 - exp(-opticalDepth);
+		float3 scatter = Albedo.rgb;
+		color += transmittance * alpha * scatter;
+		transmittance *= 1.0 - alpha;
+		t += dt;
+		++stepCount;
+	}
+
+	float3 sceneColor = SceneColorTexture.Load(int3(outPixel, 0)).rgb;
+	OutputTexture[outPixel] = float4(color + sceneColor * transmittance, 1.0);
+}

@@ -1,0 +1,52 @@
+[
+    {
+        "Sample":  0,
+        "LocalMiB":  3280.9765625,
+        "NonLocalMiB":  425.8203125
+    },
+    {
+        "Sample":  1,
+        "LocalMiB":  3281.23046875,
+        "NonLocalMiB":  425.8828125
+    },
+    {
+        "Sample":  2,
+        "LocalMiB":  3281.23046875,
+        "NonLocalMiB":  425.8828125
+    },
+    {
+        "Sample":  3,
+        "LocalMiB":  3281.23046875,
+        "NonLocalMiB":  425.8828125
+    },
+    {
+        "Sample":  4,
+        "LocalMiB":  3281.23046875,
+        "NonLocalMiB":  425.8828125
+    },
+    {
+        "Sample":  5,
+        "LocalMiB":  3281.23046875,
+        "NonLocalMiB":  425.8828125
+    },
+    {
+        "Sample":  6,
+        "LocalMiB":  3281.23046875,
+        "NonLocalMiB":  425.8828125
+    },
+    {
+        "Sample":  7,
+        "LocalMiB":  3281.23046875,
+        "NonLocalMiB":  425.8828125
+    },
+    {
+        "Sample":  8,
+        "LocalMiB":  3281.23046875,
+        "NonLocalMiB":  425.8828125
+    },
+    {
+        "Sample":  9,
+        "LocalMiB":  3281.23046875,
+        "NonLocalMiB":  425.8828125
+    }
+]

@@ -1,0 +1,47 @@
+{
+  "checkpoint": "D:\\Work\\AI\\Iris\\tmp\\gabor_fields\\results\\checkpoints\\smoke2_q3_gaussian_24k_at120",
+  "checkpoint_ply_sha256": "30884af46d11a8c6b4188a536c27f252a795b94bbb93bafa14125434d4f5605d",
+  "primitive_count": 24576,
+  "reference_cache": "D:\\Work\\AI\\Iris\\tmp\\gabor_fields\\results\\evaluation\\heldout_32_39_512\\reference",
+  "candidate_tau": "D:\\Work\\AI\\Iris\\tmp\\gabor_fields\\results\\checkpoints\\smoke2_q3_gaussian_24k_at120\\heldout_eval_stable_64spp\\candidate_tau",
+  "heldout_cameras": {
+    "generator": "gfields.training.regression.prepare_cameras",
+    "sequence": "Halton(2,3)",
+    "indices": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "resolution": [
+      512,
+      512
+    ],
+    "cam_scale": 0.95,
+    "cam_y_offset": -0.25,
+    "sample_single_hemisphere": true
+  },
+  "metrics": {
+    "foreground_definition": "reference alpha = 1 - clamp(T_ref, epsilon, 1); foreground iff alpha >= alpha_threshold; background is the complement. Tau metrics and foreground transmittance PSNR exclude background; full transmittance PSNR includes every pixel.",
+    "alpha_threshold": 0.01,
+    "epsilon": 1e-06,
+    "foreground_pixels": 120387,
+    "foreground_fraction": 0.05740499496459961,
+    "tau_data_range": 0.3793840261896551,
+    "tau_psnr_db": 5.652854102996572,
+    "tau_mae": 0.04547173627232393,
+    "transmittance_psnr_full_db": 34.59479027390091,
+    "transmittance_psnr_foreground_db": 22.41600089288587,
+    "silhouette_iou": 0.6858550118857744,
+    "candidate_negative_tau_fraction": 0.0,
+    "views": 8,
+    "resolution": [
+      512,
+      512
+    ]
+  }
+}

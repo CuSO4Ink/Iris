@@ -1,0 +1,41 @@
+diff --git a/gfields/optimizers.py b/gfields/optimizers.py
+index 3ddb901..5e01f3a 100644
+--- a/gfields/optimizers.py
++++ b/gfields/optimizers.py
+@@ -23,6 +23,9 @@ import numpy as np
+ def _apply_bounds(new_value, original_value, upper, lower):
+     '''Frozen bounds handling for optimizer step'''
+     Bool = dr.mask_t(dr.leaf_t(new_value))
++    if upper is not None and lower is not None and upper == lower:
++        return dr.full(type(new_value), upper, dr.width(new_value)), Bool(True)
++
+     over_boundary = Bool(False)
+     
+     if upper is not None:
+diff --git a/gfields/tests/test_gfields.py b/gfields/tests/test_gfields.py
+index 41070cc..7bb031d 100644
+--- a/gfields/tests/test_gfields.py
++++ b/gfields/tests/test_gfields.py
+@@ -43,6 +43,22 @@ def _setup_mi():
+     return mi
+ 
+ 
++@needs_cuda
++def test_equal_optimizer_bounds_freeze_parameter():
++    """Equal lower/upper bounds must freeze a parameter instead of reflecting it twice."""
++    mi = _setup_mi()
++    from gfields.optimizers import _apply_bounds
++
++    bounded, hit = _apply_bounds(
++        mi.Float([0.25, -0.25, 1.0]),
++        mi.Float([0.5, -0.5, 2.0]),
++        upper=0.0,
++        lower=0.0,
++    )
++    assert np.allclose(bounded.numpy(), 0.0)
++    assert bool(hit[0])
++
++
+ # ---------------------------------------------------------------------------
+ # Scene helpers
+ # ---------------------------------------------------------------------------
