@@ -1,0 +1,25 @@
+//***REngine Begin Modify added by tuckersu. [Keep only BuildDrawArgsFromCountCS used by HW raster indirect draw args generation]
+// GaussianSplattingSort.usf
+//
+// NOTE:
+//   Legacy custom radix-sort kernels were removed because the runtime now uses
+//   engine-side GPUSort (SortGPUBuffers). This file only keeps the tiny utility
+//   compute shader that converts GPU visible-count into DrawIndirect args.
+
+#include "/Engine/Private/Common.ush"
+
+Buffer<uint>   InVisibleCount;
+RWBuffer<uint> OutDrawArgs;
+uint           GSMaxInstanceCap;
+
+[numthreads(1, 1, 1)]
+void BuildDrawArgsFromCountCS(uint3 DTid : SV_DispatchThreadID)
+{
+  uint count = min(InVisibleCount[0], GSMaxInstanceCap);
+  OutDrawArgs[0] = 4u;
+  OutDrawArgs[1] = count;
+  OutDrawArgs[2] = 0u;
+  OutDrawArgs[3] = 0u;
+  OutDrawArgs[4] = 0u;
+}
+//***REngine End Modify

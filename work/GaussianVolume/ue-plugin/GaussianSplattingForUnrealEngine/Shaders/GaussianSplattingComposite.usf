@@ -1,0 +1,397 @@
+//***REngine Begin Modify added by tuckersu. [GaussianSplatting composite PS - blend GS result into SceneColor]
+// GaussianSplattingComposite.usf
+// Phase 6: Full-screen pixel shader to composite GS color into SceneColor.
+// BlendState: SrcBlend=ONE, DstBlend=SRC_ALPHA for premultiplied alpha compositing.
+//
+//***REngine Begin Modify added by tuckersu. [Method B - GSColorRT is now full-RT, no ViewRect math needed]
+// Method B coordinate system:
+//   - GSColorRT spans the entire SceneColor RT (allocated at SceneColor extent).
+//   - The PS runs over the full RT (FullRTRect on the CPU side), and SvPosition.xy
+//     is the SceneColor pixel coord — which equals the GSColorRT load coord (1:1).
+//   - Pixels outside any view's sub-rect carry the GSColorRT clear value (0,0,0,1).
+//     The blend (SrcBlend=ONE, DstBlend=SRC_ALPHA) reduces those samples to:
+//         dst_new = 0 + dst * 1 = dst
+//     so SceneColor is untouched there. Hence multi-view / split-screen / PIE /
+//     non-origin viewports all work correctly without any ViewRect.Min subtraction
+//     in this PS — the per-view sub-rect was already enforced upstream
+//     (Preprocess produces SceneColor-space screen coords; RasterBlend clips writes
+//     to the per-view sub-rect via View.ViewRectMinAndSize on the GPU).
+//***REngine End Modify
+
+#include "/Engine/Private/Common.ush"
+
+Texture2D GSColorTexture;
+SamplerState GSColorSampler;
+
+//***REngine Begin Modify added by tuckersu. [7DRGS single-RT latent: light recovery uniforms forwarded from C++]
+// When GSUseTViewMatte > 0, GSColorRT contains latent quantities:
+//   R = sum_i(J_i * alpha_i * T_i)           — accumulated J (mono, no LightColor, no PreExposure)
+//   G = sum_i((1-TViewK_i) * alpha_i * T_i)  — accumulated TView absorption
+//   A = product_i(1-alpha_i)                  — final transmittance T
+// The Composite PS recovers the final lit color:
+//   relitRGB = GSRelightLightColor * JAcc * View.PreExposure
+//   matteT   = 1.0 - TViewAcc
+// Output: float4(relitRGB, matteT) → blend state (One, SrcAlpha) → SceneColor' = relitRGB + SceneColor * matteT
+float3 GSRelightLightColor;   // directional light Color * Intensity * scale
+float3 GSRelightAmbientColor; // skylight Color * Intensity * user scale
+//***REngine Begin Modify added by tuckersu. [7DRGS relight - directional-light vector for upper-hemisphere gate]
+float3 GSRelightLightDirWS;   // world-space toward-light direction (+Z => upper hemisphere)
+//***REngine End Modify
+uint   GSUseTViewMatte;       // 0 = legacy gs.a compositing, 1 = latent resolve with TView matte
+//***REngine Begin Modify added by tuckersu. [7DRGS relight - composite-time AtmosScale switch.
+// 0: do NOT read ResolvedView atmosphere illuminance (recommended with HV-deferred light color).
+// 1: apply legacy AtmosScale = GroundPost / OuterSpace in composite.]
+uint   GSApplyAtmosphereScale;
+//***REngine End Modify
+//***REngine End Modify
+
+
+uint  GSDebugOverlay;     // unused in composite (handled in RasterBlend now)
+uint2 GSCompositeSize;    // SceneColor RT extent — used only as a defensive bounds check
+//***REngine Begin Modify added by tuckersu. [Per-source screen AABB buffers for composite region culling]
+Buffer<uint> GSSourceScreenAABBMin;  // [0]=minX, [1]=minY
+Buffer<uint> GSSourceScreenAABBMax;  // [0]=maxX(exclusive), [1]=maxY(exclusive)
+//***REngine Begin Modify added by tuckersu. [Runtime switch for source AABB composite]
+uint GSUseSourceAABB; // 0=fullscreen fallback, 1=use source AABB
+//***REngine End Modify
+//***REngine End Modify
+
+//***REngine Begin Modify added by tuckersu. [Phase function parameters for Composite relight]
+uint  GSPhaseMode;            // 0=isotropic, 1=dual-lobe HG, 2=Nubis
+float GSPhaseG;               // HG primary lobe anisotropy
+float GSPhaseG2;              // HG secondary lobe anisotropy (or Nubis unused)
+float GSPhaseBlend;           // HG dual-lobe blend weight
+float GSNubisEccentricity;    // Nubis base eccentricity
+float GSNubisSilverIntensity; // Nubis silver lining intensity
+float GSNubisSilverSpread;    // Nubis silver lining spread
+float GSPhaseIntensity;       // overall phase effect strength (0=off, 1=full)
+//***REngine End Modify
+
+
+
+//***REngine Begin Modify added by tuckersu. [IndirectLight - Lumen TranslucencyGIVolume sampling at component AABB center]
+Texture3D GSTranslucencyGIVolumeHistory0;
+SamplerState GSTranslucencyGIVolumeSampler;
+float3 GSTranslucencyGIGridZParams;
+int3 GSTranslucencyGIGridSize;
+float2 GSTranslucencyGIScreenToResourceUV;
+float2 GSTranslucencyGIScreenToResourceMaxUV;
+float3 GSSourceWorldPos;          // Regular (non-translated) world position of the Gaussian cloud centroid
+uint   GSIndirectLightEnable;     // 0 = off, 1 = sample Lumen GI Volume at GSSourceWorldPos
+float  GSIndirectLightIntensity;  // Scale factor for indirect light contribution
+
+// Inline minimal Lumen TranslucencyGI Volume sampling.
+// Computes volume UV from a regular world position and samples the ambient SH (Volume0).
+// Matches ComputeTranslucencyGIVolumeUV from LumenTranslucencyVolumeLightingShared.ush
+// but without FDF derivative-safe types or the heavy include chain.
+float3 ComputeGIVolumeUV(float3 WorldPosition, float4x4 WorldToClip,
+  float3 GridZParams, uint3 GridSize)
+{
+  // WorldToClip in UE5 transforms from translated world to clip space.
+  // Convert regular world → translated world first.
+  float3 TranslatedPos = WorldPosition + DFHackToFloat(ResolvedView.PreViewTranslation);
+  float4 NDCPosition = mul(float4(TranslatedPos, 1.0f), WorldToClip);
+  NDCPosition.xy /= NDCPosition.w;
+  float2 ScreenUV = NDCPosition.xy * float2(0.5f, -0.5f) + 0.5f;
+  float2 ResourceUV = min(
+    ScreenUV * GSTranslucencyGIScreenToResourceUV,
+    GSTranslucencyGIScreenToResourceMaxUV);
+  float NormalizedZSlice = log2(NDCPosition.w * GridZParams.x + GridZParams.y)
+    * GridZParams.z / (float)GridSize.z;
+  return float3(ResourceUV, NormalizedZSlice);
+}
+
+// Sample the Lumen TranslucencyGIVolume ambient SH band at the given world position.
+// Returns float3 ambient lighting (DC term of 2-band SH, in PreExposure space).
+float3 SampleIndirectLight(float3 WorldPosition)
+{
+  // Guard: if Lumen GI is not active, GridSize.z == 0
+  if (GSTranslucencyGIGridSize.z == 0)
+  {
+    return float3(0.0f, 0.0f, 0.0f);
+  }
+
+  float3 VolumeUV = ComputeGIVolumeUV(WorldPosition, ResolvedView.TranslatedWorldToClip,
+    GSTranslucencyGIGridZParams,
+    uint3(GSTranslucencyGIGridSize));
+
+  // Sample the temporally-filtered history texture for stable results
+  // (matches what translucent base pass and HV raymarching use).
+  float3 AmbientLighting = Texture3DSampleLevel(
+    GSTranslucencyGIVolumeHistory0,
+    GSTranslucencyGIVolumeSampler,
+    VolumeUV, 0).xyz;
+
+  return AmbientLighting;
+}
+//***REngine End Modify
+
+//***REngine Begin Modify added by tuckersu. [Phase function evaluation for 7DRGS Composite]
+// Inline HG to avoid including HeterogeneousVolumesREngineUtils.ush in plugin code.
+// Matches ParticipatingMediaCommon.ush::HenyeyGreensteinPhase exactly.
+float GS_HenyeyGreensteinPhase(float G, float CosTheta)
+{
+  float G2 = G * G;
+  float Denom = 1.0f + G2 + 2.0f * G * CosTheta;
+  return (1.0f - G2) / (4.0f * PI * Denom * sqrt(Denom));
+}
+
+// Dual-lobe HG: lerp between two lobes with different g values.
+// Matches HeterogeneousVolumesREngineUtils.ush::SampleHGPhaseFunction.
+// Note: CosTheta is negated internally (HV convention: incident direction).
+float GS_SampleDualHG(float CosTheta, float G1, float G2, float Blend)
+{
+  G1 = clamp(G1, -0.999f, 0.999f);
+  G2 = clamp(G2, -0.999f, 0.999f);
+  Blend = clamp(Blend, 0.0f, 1.0f);
+  float Lobe0 = GS_HenyeyGreensteinPhase(G1, -CosTheta);
+  float Lobe1 = GS_HenyeyGreensteinPhase(G2, -CosTheta);
+  return Lobe0 + Blend * (Lobe1 - Lobe0);
+}
+
+// Nubis Silver Lining: max(BaseHG, SilverIntensity * NarrowHG).
+// Matches HeterogeneousVolumesREngineUtils.ush::SampleNubisPhaseFunction.
+float GS_SampleNubis(float CosTheta, float Eccentricity, float SilverIntensity, float SilverSpread)
+{
+  Eccentricity = clamp(Eccentricity, -0.999f, 0.999f);
+  SilverSpread = clamp(SilverSpread, -0.999f, 0.999f);
+  float Base   = GS_HenyeyGreensteinPhase(Eccentricity, -CosTheta);
+  float Silver = GS_HenyeyGreensteinPhase(0.99f - SilverSpread, -CosTheta);
+  return max(Base, SilverIntensity * Silver);
+}
+
+// Evaluate phase function and return a multiplier relative to isotropic (= 1.0).
+// PhaseIntensity blends between isotropic (0) and full phase effect (1).
+float GS_EvaluatePhaseMultiplier(float CosTheta)
+{
+  float RawPhase;
+  if (GSPhaseMode == 1u)
+  {
+    RawPhase = GS_SampleDualHG(CosTheta, GSPhaseG, GSPhaseG2, GSPhaseBlend);
+  }
+  else if (GSPhaseMode == 2u)
+  {
+    RawPhase = GS_SampleNubis(CosTheta, GSNubisEccentricity, GSNubisSilverIntensity, GSNubisSilverSpread);
+  }
+  else
+  {
+    return 1.0f;  // Isotropic: no modulation
+  }
+
+  // Normalize to isotropic = 1.0 (IsotropicPhase = 1/(4pi), so multiply by 4pi)
+  float PhaseMultiplier = saturate(RawPhase) * (4.0f * PI);
+
+  // Blend with isotropic (1.0) by PhaseIntensity
+  return lerp(1.0f, PhaseMultiplier, clamp(GSPhaseIntensity, 0.0f, 1.0f));
+}
+//***REngine End Modify
+
+//***REngine Begin Modify added by tuckersu. [Step2 - AABB-driven composite quad VS + Step1 in-PS AABB guard]
+struct FCompositeVSOut
+{
+  float4 SVPos : SV_POSITION;
+};
+
+float2 PixelToNDCForComposite(float2 PixelPos, float2 ScreenSize)
+{
+  float2 InvScreen = float2(1.0f / max(ScreenSize.x, 1.0f), 1.0f / max(ScreenSize.y, 1.0f));
+  return float2(PixelPos.x * InvScreen.x * 2.0f - 1.0f,
+                1.0f - PixelPos.y * InvScreen.y * 2.0f);
+}
+
+void MainVS(uint VertexID : SV_VertexID, out FCompositeVSOut Out)
+{
+  uint MinX = GSSourceScreenAABBMin.Load(0);
+  uint MinY = GSSourceScreenAABBMin.Load(1);
+  uint MaxX = GSSourceScreenAABBMax.Load(0);
+  uint MaxY = GSSourceScreenAABBMax.Load(1);
+
+  bool bValidAABB =
+    (GSUseSourceAABB > 0u) &&
+    (MinX != 0xFFFFFFFFu) &&
+    (MinY != 0xFFFFFFFFu) &&
+    (MaxX > MinX) &&
+    (MaxY > MinY) &&
+    (MinX < GSCompositeSize.x) &&
+    (MinY < GSCompositeSize.y);
+
+
+  //***REngine Begin Modify added by tuckersu. [Fallback to full-screen quad when source AABB is invalid so composite output never disappears]
+  float2 PixelMin = float2(0.0f, 0.0f);
+  float2 PixelMax = float2(GSCompositeSize);
+  if (bValidAABB)
+  {
+    PixelMin = float2(MinX, MinY);
+    PixelMax = float2(min(MaxX, GSCompositeSize.x), min(MaxY, GSCompositeSize.y));
+  }
+  //***REngine End Modify
+
+  float2 PixelPos = float2(
+    (VertexID & 1u) ? PixelMax.x : PixelMin.x,
+    (VertexID & 2u) ? PixelMax.y : PixelMin.y);
+
+  float2 NDC = PixelToNDCForComposite(PixelPos, float2(GSCompositeSize));
+  Out.SVPos = float4(NDC, 0.0f, 1.0f);
+}
+//***REngine End Modify
+
+void MainPS(
+  FCompositeVSOut In,
+  out float4 OutColor : SV_Target0)
+{
+  // SvPosition is generated by MainVS's source-local AABB quad.
+  int2 pix = int2(In.SVPos.xy);
+
+  //***REngine Begin Modify added by tuckersu. [Step1 - in-PS AABB guard to reject out-of-range fragments]
+  uint MinX = GSSourceScreenAABBMin.Load(0);
+  uint MinY = GSSourceScreenAABBMin.Load(1);
+  uint MaxX = GSSourceScreenAABBMax.Load(0);
+  uint MaxY = GSSourceScreenAABBMax.Load(1);
+
+  bool bValidAABB =
+    (GSUseSourceAABB > 0u) &&
+    (MinX != 0xFFFFFFFFu) &&
+    (MinY != 0xFFFFFFFFu) &&
+    (MaxX > MinX) &&
+    (MaxY > MinY);
+
+
+  //***REngine Begin Modify added by tuckersu. [Only apply AABB discard when reduction is valid; otherwise keep full-screen fallback path]
+  if (bValidAABB)
+  {
+    if (pix.x < int(MinX) || pix.x >= int(MaxX) || pix.y < int(MinY) || pix.y >= int(MaxY))
+    {
+      discard;
+    }
+  }
+  //***REngine End Modify
+  //***REngine End Modify
+
+  // Defensive clamp — Load() with OOB indices returns zero on most APIs but
+  // some tile-based GPUs prefer an explicit bound check.
+  if (any(pix < 0) || any(pix >= int2(GSCompositeSize)))
+  {
+    OutColor = float4(0, 0, 0, 1);
+    return;
+  }
+  float4 gs = GSColorTexture.Load(int3(pix, 0));
+
+
+  //***REngine Begin Modify added by tuckersu. [7DRGS single-RT latent: per-pixel light recovery from latent RT]
+  if (GSUseTViewMatte > 0u)
+  {
+    // Latent resolve path (7DGS with DualSH / Relight):
+    //   gs.r = JAcc = sum_i(J_i * alpha_i * T_i)  — raw J accumulated, not lit
+    //   gs.g = TViewAbsAcc = sum_i((1-TViewK_i) * alpha_i * T_i)  — TView absorption
+    //   gs.a = T = product(1-alpha_i)  — volumetric transmittance
+    //
+    // Recover final lit color by applying the global LightColor + PreExposure once per-pixel.
+    // This is algebraically identical to multiplying per-gaussian but saves ROP bandwidth.
+    //***REngine Begin Modify added by tuckersu. [7DRGS relight - apply SkyAtmosphere directional-light tint/attenuation in composite]
+    // Match HV's visible sun color trend (e.g., warm/yellow at low sun angles) by
+    // modulating GSRelightLightColor with the view's sky-atmosphere directional-light
+    // post-transmittance ratio:
+    //   AtmosScale = L_ground_post_atm / L_outer_space
+    // If SkyAtmosphere is absent (or light index disabled), fall back to 1.
+    //***REngine Begin Modify added by tuckersu. [7DRGS relight - robust SkyAtmosphere match by light direction (index 0/1)]
+    float3 DirToLightWS = normalize(GSRelightLightDirWS);
+    float3 AtmosScale = float3(1.0f, 1.0f, 1.0f);
+
+    //***REngine Begin Modify added by tuckersu. [7DRGS relight - optional second-stage atmosphere scaling in composite]
+    // HV-aligned path keeps this off because GSRelightLightColor is already sourced
+    // from GetDeferredLightParameters(Scene->Atmosphere Lights[i]) on RT.
+    if (GSApplyAtmosphereScale > 0u)
+    {
+      // Direction matching may suffer from opposite-vector conventions between systems.
+      // For robustness, pick the enabled atmosphere light (0/1) with stronger
+      // ground post-transmittance luminance; if data is invalid, keep AtmosScale=1.
+      float Enable0 = step(0.0f, ResolvedView.AtmosphereLightIlluminanceOnGroundPostTransmittance[0].a);
+      float Enable1 = step(0.0f, ResolvedView.AtmosphereLightIlluminanceOnGroundPostTransmittance[1].a);
+
+      float3 Ground0 = max(ResolvedView.AtmosphereLightIlluminanceOnGroundPostTransmittance[0].rgb, 0.0f);
+      float3 Ground1 = max(ResolvedView.AtmosphereLightIlluminanceOnGroundPostTransmittance[1].rgb, 0.0f);
+      float Luma0 = dot(Ground0, float3(0.2126f, 0.7152f, 0.0722f));
+      float Luma1 = dot(Ground1, float3(0.2126f, 0.7152f, 0.0722f));
+
+      if ((Enable0 + Enable1) > 0.0f)
+      {
+        uint SelectedLightIndex = 0u;
+        if (Enable0 <= 0.0f)
+        {
+          SelectedLightIndex = 1u;
+        }
+        else if (Enable1 > 0.0f && Luma1 > Luma0)
+        {
+          SelectedLightIndex = 1u;
+        }
+
+        float3 OuterSpaceIlluminance = ResolvedView.AtmosphereLightIlluminanceOuterSpace[SelectedLightIndex].rgb;
+        float OuterLuma = dot(max(OuterSpaceIlluminance, 0.0f), float3(0.2126f, 0.7152f, 0.0722f));
+        if (OuterLuma > 1.0e-4f)
+        {
+          float3 SafeOuter = max(OuterSpaceIlluminance, float3(1.0e-4f, 1.0e-4f, 1.0e-4f));
+          float3 GroundPostAtmIlluminance = max(
+            ResolvedView.AtmosphereLightIlluminanceOnGroundPostTransmittance[SelectedLightIndex].rgb,
+            0.0f);
+          AtmosScale = GroundPostAtmIlluminance / SafeOuter;
+        }
+      }
+    }
+    //***REngine End Modify
+
+    float3 RelightColorWithAtmosphere = GSRelightLightColor * AtmosScale;
+
+    //***REngine End Modify
+    //***REngine Begin Modify added by tuckersu. [7DRGS relight - enforce directional-light upper hemisphere gate]
+    // Requirement: no direct directional light when light points to lower hemisphere.
+    // Direction sign is aligned in C++ resolve path (TryResolveHVAtmosphereLightForView).
+    float UpperHemiGate = step(0.0f, dot(DirToLightWS, float3(0.0f, 0.0f, 1.0f)));
+    float3 relitRGB  = (RelightColorWithAtmosphere * UpperHemiGate) * gs.r * View.PreExposure;
+    //***REngine End Modify
+
+    //***REngine Begin Modify added by tuckersu. [Apply phase function modulation to 7DRGS composite relight]
+    if (GSPhaseMode > 0u)
+    {
+      float3 ViewDirWS = GetScreenWorldDir(In.SVPos);
+      float PhaseCosTheta = dot(ViewDirWS, DirToLightWS);
+      float PhaseMul = GS_EvaluatePhaseMultiplier(PhaseCosTheta);
+      relitRGB *= PhaseMul;
+    }
+    float3 AmbientLighting = GSRelightAmbientColor * View.PreExposure;
+    if (GSIndirectLightEnable > 0u)
+    {
+      AmbientLighting = SampleIndirectLight(GSSourceWorldPos) * GSIndirectLightIntensity;
+    }
+    relitRGB += AmbientLighting * gs.g;
+    //***REngine End Modify
+
+    float  matteT    = 1.0f - gs.g;   // T_view pixel = how much background shows through
+
+    // Output: blend state (SrcBlend=ONE, DstBlend=SRC_ALPHA):
+    //   SceneColor' = relitRGB + SceneColor * matteT
+    OutColor = float4(relitRGB, matteT);
+  }
+
+  else
+  {
+    // Legacy path (3DGS or 7DGS without DualSH):
+    // gs.rgb = pre-multiplied accumulated color (sum of c_i * alpha_i * T_i * PreExposure)
+    // gs.a   = final transmittance T = product(1 - alpha_i)
+    //
+    // Compositing with SceneColor (loaded in dst):
+    //   dst_new = gs.rgb + dst * gs.a
+
+    //***REngine Begin Modify added by tuckersu. [IndirectLight - add Lumen GI ambient at cloud centroid for legacy path]
+    float3 CompositedRGB = gs.rgb;
+    if (GSIndirectLightEnable > 0u)
+    {
+      float CloudOpacity = 1.0f - gs.a;
+      float3 IndirectLight = SampleIndirectLight(GSSourceWorldPos);
+      CompositedRGB += IndirectLight * CloudOpacity * GSIndirectLightIntensity;
+    }
+    OutColor = float4(CompositedRGB, gs.a);
+    //***REngine End Modify
+  }
+  //***REngine End Modify
+}
+//***REngine End Modify

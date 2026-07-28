@@ -1,0 +1,360 @@
+//***REngine Begin Modify added by tuckersu. [GS GPUSort+DirectBlend - HW Quad VS+PS, hardware alpha-blend, no K-Buffer]
+// GaussianSplattingHWRaster.usf
+//
+// Hardware-rasterized triangle-strip quads, one quad per visible gaussian.
+// Replaces the old Plan A K-Buffer / ROV / MLAB pipeline.
+//
+// Pipeline contract:
+//   - The VS reads a SORTED gaussian-id list (SortedGaussianIDs[InstanceID]),
+//     produced by the engine GPU RadixSort upstream. The list is ordered FAR
+//     to NEAR (BackToFront), see GaussianSplattingPreprocess.usf where the
+//     sort key is `~asuint(view_depth)`.
+//   - The PS evaluates the gaussian falloff and writes a SINGLE output:
+//         out.rgb = src_rgb_premult_preexposed
+//         out.a   = (1 - alpha)        // per-fragment transmittance factor
+//     paired with the C++ blend state:
+//         RGB:  out_rgb = src_rgb + dst_rgb * src_a
+//         A  :  out_a   = 0       + dst_a   * src_a
+//     and a transparent clear (0,0,0,1). After all sorted instances are drawn,
+//     RT contents are exactly:
+//         RT.rgb = sum_i  rgb_i * alpha_i * T_i * PreExposure
+//         RT.a   = product (1 - alpha_i)   == final transmittance T
+//     which is bit-for-bit equivalent to the FGSResolveCS output that the
+//     existing FGSCompositePS already consumes.
+//
+// Reads the existing Preprocess outputs (NO Preprocess change for VS-side data):
+//   VisiblePosOpacity[gid] = { screen.x, screen.y, view_depth, opacity }
+//   VisibleConicColor[gid] = { conic.xx, conic.xy, conic.yy, _ }
+//   VisibleColorExtra[gid] = { color.r, color.g, color.b, screen_radius_px }
+
+#include "/Engine/Private/Common.ush"
+
+StructuredBuffer<float4> VisiblePosOpacity;
+StructuredBuffer<float4> VisibleConicColor;
+StructuredBuffer<float4> VisibleColorExtra;
+//***REngine Begin Modify added by tuckersu. [Niagara-parity quad: per-gaussian ellipse-aligned BasisVectors written by Preprocess]
+// VisibleBasis[gid] = float4(BV1.xy, BV2.xy), in PIXEL units. BV1 along
+// the ellipse's major axis, BV2 along the minor axis. The VS uses these
+// to construct an ellipse-aligned quad in Clip space, exactly matching
+// the M_GaussianSplatting Niagara custom node.
+StructuredBuffer<float4> VisibleBasis;
+//***REngine End Modify
+//***REngine Begin Modify added by tuckersu. [GS GPUSort+DirectBlend - sorted gaussian-id list (BackToFront), typed PF_R32_UINT to match SortGPUBuffers' typed view]
+Buffer<uint>             SortedGaussianIDs;
+//***REngine End Modify
+//***REngine Begin Modify added by tuckersu. [7DRGS single-RT latent: per-gaussian T_view buffer for latent G-channel output]
+Buffer<float>            VisibleTView;
+uint                     GSDualSHEnable;   // kept for C++ param struct compatibility; PS writes latent unconditionally
+//***REngine End Modify
+
+uint2  GSScreenSize;
+float  GSOpacityMultiplier;
+float  GSOpacityPower;
+
+//***REngine Begin Modify added by tuckersu. [SceneDepth occlusion - bind SceneDepthTexture + sampler + control knobs from the C++ FGSHWQuadPS::FParameters block. The PS samples device-Z at the splat fragment's pixel coord, converts both sides to view-space depth (linear UU), and:
+//   GSDepthTestMode == 0  -> no test (legacy depth-blind path; matches prior behavior)
+//   GSDepthTestMode == 1  -> hard discard when splat is fully behind opaque scene depth
+//   GSDepthTestMode == 2  -> soft fade over GSDepthSoftFadeUU world units once the splat reaches scene depth, then full discard. Soft is preferred for volumetric GS clouds because hard tests pop along occluder silhouettes.
+// SceneDepthTexture is guaranteed bound (a black dummy is supplied when the engine has no depth this frame; the C++ side simultaneously sets GSDepthTestMode = 0 in that case so the dummy is never sampled meaningfully).]
+Texture2D     SceneDepthTexture;
+SamplerState  SceneDepthSampler;
+uint          GSDepthTestMode;
+float         GSDepthSoftFadeUU;
+//***REngine End Modify
+
+struct FQuadVSOut
+{
+  float4 SVPos                       : SV_POSITION;
+  //***REngine Begin Modify added by tuckersu. [Niagara-parity NDC offset: pass d (Y-up pixel offset from splat center) directly]
+  // Previous design read d from (SVPos.xy - ScreenCenter), which forced the
+  // PS to mix two coordinate frames:
+  //   * SVPos.xy / ScreenCenter — Y-DOWN pixels (UE SV_Position convention)
+  //   * Conic                   — Y-UP   (derived from a Y-up Cov2D)
+  // The mismatch had to be patched by negating d.y in the PS, but this only
+  // covered the symmetric case — anisotropic / off-axis splats still had
+  // their PS ellipse drawn at the wrong orientation, AND the quad geometry
+  // (Y-up BV1/BV2 added to Y-down ScreenCenter via NDCToPixel) suffered the
+  // same Y-flip pollution, producing the "splat flips orientation when the
+  // camera rotates" artefact and the visible triangle-strip seams in clouds.
+  //
+  // New design: the VS writes DPixel = QuadOffset.x*BV1 + QuadOffset.y*BV2
+  // at each of the 4 quad vertices (this is the Y-UP pixel offset of THAT
+  // vertex from the splat center). The hardware then linearly interpolates
+  // DPixel across the triangle, so each PS fragment receives the exact
+  // Y-UP pixel offset from the splat's center to that fragment — perfectly
+  // matching the Y-up frame of Conic. The PS just plugs DPixel into the
+  // gaussian quadratic form; no SVPos arithmetic, no Y-flip, no Y-down
+  // contamination.
+  //
+  // CRITICAL: DPixel MUST interpolate (no `nointerpolation` modifier),
+  // because its value is genuinely different at each of the 4 quad corners.
+  float2 DPixel                      : TEXCOORD0;
+  //***REngine End Modify
+  nointerpolation float3 Conic       : TEXCOORD1;
+  nointerpolation float3 Color       : TEXCOORD2;
+  nointerpolation float  Opacity     : TEXCOORD3;
+  nointerpolation uint   bValid      : TEXCOORD4;
+  //***REngine Begin Modify added by tuckersu. [SceneDepth occlusion - propagate the splat's view-space depth (in UU) from VS to PS so the fragment can compare against ConvertFromDeviceZ(SceneDepthTexture). nointerpolation because every fragment of the same splat shares one center depth.]
+  nointerpolation float  ViewDepth   : TEXCOORD5;
+  //***REngine End Modify
+  //***REngine Begin Modify added by tuckersu. [7DRGS Dual SH: per-gaussian T_view scalar propagated to PS for MRT output]
+  nointerpolation float  TViewK      : TEXCOORD6;
+  //***REngine End Modify
+};
+
+void MainVS(uint VertexID : SV_VertexID, uint InstanceID : SV_InstanceID, out FQuadVSOut Out)
+{
+  //***REngine Begin Modify added by tuckersu. [GS GPUSort+DirectBlend - indirect fetch through sorted list]
+  // The DrawIndirect InstanceCount is the GPU-side visible count, so every
+  // InstanceID in [0, count) maps to a real visible gaussian. SortedGaussianIDs
+  // is sorted far-to-near, so InstanceID 0 = farthest splat, drawn FIRST.
+  uint GaussianID = SortedGaussianIDs[InstanceID];
+  //***REngine End Modify
+
+  float4 PosOpa = VisiblePosOpacity[GaussianID];
+  float4 ConCol = VisibleConicColor[GaussianID];
+  float4 Extra  = VisibleColorExtra[GaussianID];
+  //***REngine Begin Modify added by tuckersu. [Niagara-parity quad: load ellipse-aligned BasisVectors]
+  float4 Basis  = VisibleBasis[GaussianID];
+  float2 BV1    = Basis.xy;   // major-axis basis (pixels, Y-up)
+  float2 BV2    = Basis.zw;   // minor-axis basis (pixels, Y-up)
+  //***REngine End Modify
+
+  float2 ScreenCenter = PosOpa.xy;
+  float  ViewDepth    = PosOpa.z;
+  float  Opacity      = PosOpa.w;
+  float3 Conic        = ConCol.xyz;
+  //***REngine Begin Modify added by tuckersu. [Niagara-parity NDC offset: read pos_clip.w packed into ConCol.w by Preprocess]
+  float  ClipW        = ConCol.w;
+  //***REngine End Modify
+  float3 Color        = Extra.xyz;
+  float  ScreenRadius = Extra.w;
+
+  // Defensive: Preprocess marks invisible via view_depth <= 0 / radius <= 0.
+  // With InstanceCount = visible_count this should be unreachable, but we
+  // still emit a degenerate triangle to be safe (e.g. if upstream count
+  // computation lags behind the actual list contents during readback debug).
+  bool bValid = (ViewDepth > 0.0f) && (ScreenRadius > 0.0f) && (ClipW > 0.0f);
+
+  // Triangle-strip quad: vertices 0..3 -> (-,-),(+,-),(-,+),(+,+).
+  float2 QuadOffset = float2(
+    (VertexID & 1) ? 1.0f : -1.0f,
+    (VertexID & 2) ? 1.0f : -1.0f);
+
+  //***REngine Begin Modify added by tuckersu. [Niagara-parity NDC-space quad — full Y-up consistency, no Pixel<->NDC Y-flip round-trip]
+  // ============================================================
+  // Niagara M_GaussianSplatting custom node (the reference path):
+  // ============================================================
+  //     ScreenOffset = BV1 * inOffset.x + BV2 * inOffset.y;        // Y-UP pixels
+  //     ResultInClip = PosInClip - float4(ScreenOffset/ViewSize, 0, 0);
+  //     ResultInWorld = mul(ResultInClip, ClipToTranslatedWorld);
+  //     return  ResultInWorld - PosInWorld;   // WPO output for the material
+  //
+  // Critical observation: the Niagara offset is applied in CLIP/NDC space
+  // BEFORE the perspective divide. NDC.y is conventionally Y-UP, BV is
+  // Y-UP pixels, so BV/ViewSize is a Y-UP NDC offset and the math is fully
+  // self-consistent. The hardware Y-flip from NDC to SV_Position happens
+  // silently inside the GPU's viewport transform; nobody on the shader
+  // side ever has to reconcile the two frames.
+  //
+  // ============================================================
+  // Why our previous pixel-space path was bug-prone
+  // ============================================================
+  // The previous code did:
+  //     PixelPos_yDOWN = ScreenCenter_yDOWN + QuadOffset * BV_yUP    (***)
+  //     NDC = PixelToNDC(PixelPos_yDOWN)         // Y flip happens here
+  // (***) literally adds a Y-up vector to a Y-down origin. The result
+  // depends on whether you also flip BV (we tried both ways) AND on
+  // whether the PS then re-flips d (we tried that too). Each combination
+  // covered some splats but broke others, because the underlying frame
+  // mismatch never went away — we just shifted it around.
+  //
+  // ============================================================
+  // The fix: stay in NDC the entire way (Niagara parity)
+  // ============================================================
+  // 1. Convert ScreenCenter (Y-DOWN pixel) to NDC center (Y-UP) — this is
+  //    the one and only Y-flip, applied to the splat CENTER once. After
+  //    this, every quantity touching geometry is Y-UP.
+  // 2. BV1, BV2 are Y-UP pixels. Convert to NDC offset by:
+  //        OffsetNDC = (QuadOffset.x*BV1 + QuadOffset.y*BV2) * (2/ViewSize)
+  //    The 2/ViewSize comes from NDC range [-1,1] (length 2) over ViewSize
+  //    pixels.  Note: NO Y-flip here — both NDC.y and BV.y are Y-UP.
+  // 3. NDC = CenterNDC + OffsetNDC (pure Y-UP arithmetic).
+  // 4. Build SVPos = float4(NDC*w, depth*w, w). After hardware perspective
+  //    divide we recover NDC; after viewport transform we recover Y-DOWN
+  //    pixel coords for SV_Position. The hardware does the Y-flip
+  //    correctly because NDC.y is in the canonical Y-UP frame it expects.
+  // 5. Pass DPixel = ScreenOffset_yup_px to the PS as a per-vertex
+  //    interpolant. At each quad corner, DPixel is the Y-UP pixel vector
+  //    from the splat center to that corner; the GPU linearly interpolates
+  //    it for fragments. The PS uses DPixel directly with the Y-UP Conic —
+  //    no SV_Position math, no ScreenCenter, no frame mismatch.
+  //
+  // After this change, the splat's elliptic falloff orientation is purely
+  // a function of the splat's own Cov2D (which depends on the camera, as
+  // it should, but ROTATES THE SAME WAY THE QUAD DOES). The user-reported
+  // "quad rotates with the camera" artefact comes from the OLD path's
+  // Y-mirror that flipped the ellipse's principal axis whenever the
+  // camera's tilt produced a non-zero CovXY; this fix removes the mirror.
+  // ============================================================
+
+  float2 InvScreen = float2(1.0f / max(GSScreenSize.x, 1u),
+                            1.0f / max(GSScreenSize.y, 1u));
+
+  // Step 1: ScreenCenter (Y-down pixel) -> CenterNDC (Y-up).
+  float2 CenterNDC = float2(
+    ScreenCenter.x * InvScreen.x * 2.0f - 1.0f,
+    1.0f - ScreenCenter.y * InvScreen.y * 2.0f);
+
+  // Step 2: Y-up pixel offset for THIS vertex.
+  // DPixel is what the PS will use as `d` (the splat-local Y-up pixel
+  // vector). At the 4 corners, DPixel = (±BV1.x ± BV2.x, ±BV1.y ± BV2.y).
+  float2 DPixel = QuadOffset.x * BV1 + QuadOffset.y * BV2;
+
+  // Step 3: convert DPixel to NDC offset (Y-UP, no flip).
+  // NDC unit covers ViewSize/2 pixels, so 1 pixel = 2/ViewSize NDC.
+  float2 OffsetNDC = DPixel * (2.0f * InvScreen);
+
+  // Step 4: NDC = center + offset (pure Y-UP arithmetic).
+  float2 NDC = CenterNDC + OffsetNDC;
+
+  // Step 5: build the clip-space position. Multiplying by ClipW means the
+  // hardware's perspective divide gives us back exactly NDC. We use 0.5*w
+  // for clip-z so NDC.z = 0.5 (mid-depth) — depth doesn't matter here
+  // because we already sort and disable depth-write on the raster pass.
+  float4 ClipPos;
+  if (bValid) {
+    ClipPos = float4(NDC * ClipW, 0.5f * ClipW, ClipW);
+  } else {
+    // Off-screen / degenerate -> hardware will cull the triangle.
+    ClipPos = float4(2.0f, 2.0f, 0.5f, 1.0f);
+  }
+
+  Out.SVPos    = ClipPos;
+  Out.DPixel   = DPixel;          // Y-UP pixel offset, interpolated to the fragment
+  //***REngine End Modify
+  Out.Conic    = Conic;
+  Out.Color    = Color;
+  Out.Opacity  = Opacity;
+  Out.bValid   = bValid ? 1u : 0u;
+  //***REngine Begin Modify added by tuckersu. [SceneDepth occlusion - hand the splat's view-space depth (UU, computed by Preprocess as PosOpa.z) down to the PS so it can compare against the scene depth buffer.]
+  Out.ViewDepth = ViewDepth;
+  //***REngine End Modify
+  //***REngine Begin Modify added by tuckersu. [7DRGS Dual SH: propagate per-gaussian T_view scalar to PS for MRT output]
+  Out.TViewK = VisibleTView[GaussianID];
+  //***REngine End Modify
+}
+
+//***REngine Begin Modify added by tuckersu. [7DRGS single-RT latent: unified PS output - J in R, TView in G, transmittance in A]
+// Single RT layout (replaces dual MRT):
+//   R = JAcc contribution = JMono * alpha  (latent, NOT multiplied by LightColor or PreExposure)
+//   G = TView absorption contribution = (1 - TViewK) * alpha
+//   B = 0 (reserved for future expansion)
+//   A = 1 - alpha (transmittance factor for alpha-blend accumulation)
+//
+// After all sorted fragments with blend state (RGB: One+SrcAlpha, A: Zero+SrcAlpha):
+//   RT.r = sum_i(J_i * alpha_i * T_i)          — accumulated J latent
+//   RT.g = sum_i((1-TViewK_i) * alpha_i * T_i) — accumulated TView absorption
+//   RT.a = product_i(1-alpha_i)                 — final transmittance T
+//
+// LightColor and PreExposure are applied once per-pixel in the Composite PS,
+// exploiting the linearity: L * sum(J_i * a_i * T_i) = sum(L * J_i * a_i * T_i).
+// This halves ROP traffic (1 RT instead of 2) and eliminates the dual MRT blend branch.
+
+void MainPS(FQuadVSOut In, out float4 OutColor : SV_Target0)
+{
+  if (In.bValid == 0u)
+  {
+    discard;
+  }
+
+  //***REngine Begin Modify added by tuckersu. [Niagara-parity NDC offset: d comes directly from interpolated DPixel, no Y-flip needed]
+  float2 d = In.DPixel;
+  //***REngine End Modify
+
+  // Gaussian power = -0.5 * dᵀ * Conic * d.
+  float Power = -0.5f * (In.Conic.x * d.x * d.x + In.Conic.z * d.y * d.y)
+              -        (In.Conic.y * d.x * d.y);
+
+  if (Power > 0.0f)
+  {
+    discard;
+  }
+
+  // Component-driven opacity remap (matches FGSRasterBlendCS semantics).
+  float Base    = saturate(In.Opacity * GSOpacityMultiplier);
+  float Remap   = pow(max(Base, 1e-6f), GSOpacityPower);
+  float Alpha   = min(0.99f, Remap * exp(Power));
+  if (Alpha < (1.0f / 255.0f))
+  {
+    discard;
+  }
+
+  uint2 Px = uint2(In.SVPos.xy);
+  if (any(Px >= GSScreenSize))
+  {
+    discard;
+  }
+
+  //***REngine Begin Modify added by tuckersu. [SceneDepth occlusion - per-fragment depth test]
+  if (GSDepthTestMode > 0u)
+  {
+    float2 ScreenUV   = (float2(Px) + 0.5f) * float2(1.0f / max(GSScreenSize.x, 1u),
+                                                     1.0f / max(GSScreenSize.y, 1u));
+    float  DeviceZ    = SceneDepthTexture.SampleLevel(SceneDepthSampler, ScreenUV, 0).r;
+    float  SceneDepth = ConvertFromDeviceZ(DeviceZ);
+    float  SplatDepth = In.ViewDepth;
+
+    if (GSDepthTestMode == 1u)
+    {
+      if (SplatDepth > SceneDepth)
+      {
+        discard;
+      }
+    }
+    else
+    {
+      float FadeBand = max(GSDepthSoftFadeUU, 1e-2f);
+      float Behind   = SplatDepth - SceneDepth;
+      if (Behind > FadeBand)
+      {
+        discard;
+      }
+      else if (Behind > 0.0f)
+      {
+        float Fade = saturate(1.0f - Behind / FadeBand);
+        Alpha *= Fade;
+        if (Alpha < (1.0f / 255.0f))
+        {
+          discard;
+        }
+      }
+    }
+  }
+  //***REngine End Modify
+
+  // Single-RT output: branch on GSDualSHEnable to select output semantics.
+  // GSDualSHEnable == 0 (3DGS legacy): write premultiplied pre-exposed true color.
+  // GSDualSHEnable == 1 (7DGS latent): write J in R, TView absorption in G.
+  // Both use the same blend state (One+SrcAlpha, Zero+SrcAlpha) and share one RT.
+  if (GSDualSHEnable == 0u)
+  {
+    // 3DGS path: In.Color is true RGB from SH evaluation.
+    // Pre-multiplied, pre-exposed (aligns with SceneColor exposure space).
+    float3 PremultRGBPreExp = In.Color * Alpha * View.PreExposure;
+    OutColor = float4(PremultRGBPreExp, 1.0f - Alpha);
+  }
+  else
+  {
+    // 7DGS latent path: In.Color is (JMono, JMono, JMono) — NOT multiplied by LightColor.
+    // R = JMono * Alpha (latent J accumulation, no LightColor, no PreExposure)
+    // G = (1 - TViewK) * Alpha (TView absorption accumulation)
+    // LightColor and PreExposure are applied once per-pixel in Composite PS.
+    float JLatent         = In.Color.r * Alpha;
+    float TViewAbsorption = (1.0f - In.TViewK) * Alpha;
+    OutColor = float4(JLatent, TViewAbsorption, 0.0f, 1.0f - Alpha);
+  }
+}
+//***REngine End Modify
+
+//***REngine End Modify

@@ -1,6 +1,6 @@
 # 云版本账本
 
-> 更新日期：2026-07-27
+> 更新日期：2026-07-28
 > 当前结论：Hero Congestus 主线已有 **14 个整云版本**，最新版本为 **H13**。旧 Smoke2 线另记录 **9 个 Gate 版本**。SVT 只作画质／资源参照，不计入云版本。
 
 ## 计数口径
@@ -25,8 +25,8 @@
 | H9  | 2026-07-27 |                            Directional Tau Basis；50,000 kernels | 离线烘焙 local ±X/±Y/±Z 六方向光程，运行时按灯向连续插值；Atmosphere Sun 只在地平线上半球发光；复用既有 48 B 布局的 12 B 空位 | 修复固定受光方向及地平线下太阳仍照亮云体；细节仍未通过视觉 Gate                                                                 | 触发 100K 诊断      |                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | H10 | 2026-07-27 |                        Adaptive Detail Capacity；100,000 kernels | 沿用 H7 的 global adaptive `mass^0.65` 分配规则重新生成 exact 100K，并烘焙同一六轴方向光程                  | 质量守恒误差 `1.52e-16`；300/400/600-step recovery 均因 held-out edge 回退未通过数值 Gate，因此 UE 只展示未训练 initializer | 容量诊断；当前已移出场景    |                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | H11 | 2026-07-27 |                      H4 Directional24 D2 4K；1,112,674 points | 从 H2 基线按 H4 原协议训练至 4K，只优化 light-conditioned J；2K/2.5K/3K/3.5K/4K 全部留档 | 4 个留出灯向 PSNR `22.715→23.181 dB`、L1 `0.03109→0.02864`，但 UE 中仍无可辨认内部自阴影；图像 PSNR 提升没有命中目标 | 视觉 Gate 失败；禁止原协议续训 | |
-| H12 | 2026-07-27 |                 H4 Pointwise Light T D2；1,112,674 points | 固定 H4 的全部空间／静态字段，直接从同源 density grid 为每点监督 24 个灯向的 light-space transmittance，并拟合 degree-2 `J` SH | 4 个留出灯向 T MAE/RMSE=`0.08067/0.13218`，静态参数误差=`0`；优于 D3 direct-T 与 D2 optical-depth 候选，UE 已部署 | 待用户视觉 Gate | |
-| H13 | 2026-07-27 |                   H6 Directional Tau Basis；50,000 kernels | 在 H6 initializer 上离线烘焙 local ±X/±Y/±Z 六方向光程，复用 48 B/kernel 现有 transport 空位 | 50,000 kernels 全部位于源 grid，六轴 τ median=`3.455/3.404/4.583/4.798/3.029/3.356`；UE 已部署 | 待用户视觉 Gate | |
+| H12 | 2026-07-27 |                 H4 Pointwise Light T D2；1,112,674 points | 固定 H4 的全部空间／静态字段，直接从同源 density grid 为每点监督 24 个灯向的 light-space transmittance，并拟合 degree-2 `J` SH | 4 个留出灯向 T MAE/RMSE=`0.08067/0.13218`，静态参数误差=`0`；现场 `Dual SH=false` 根因已修复为 `true` | 待修复后视觉复核 | |
+| H13 | 2026-07-27 |                   H6 Directional Tau Basis；50,000 kernels | 在 H6 initializer 上离线烘焙 local ±X/±Y/±Z 六方向光程，复用 48 B/kernel 现有 transport 空位 | 六轴 τ median=`3.455/3.404/4.583/4.798/3.029/3.356`；`LightTransmittance` debug 已显示明确方向梯度 | transport 已验证；待强度签字 | |
 
 H5–H7 是 initializer；H8 是第一版短程 τ/T recovery；H9 补齐任意方向内部透射／自阴影；H10 是唯一一次 100K 纯容量诊断，不属于最终 `≤50K` 性能目标；H11 证明 H4 原图像协议续训无效；H12 改为逐点 light-space T 监督；H13 把同一方向光程能力接回 H6 的 50K 布局。
 
@@ -35,8 +35,8 @@ H5–H7 是 initializer；H8 是第一版短程 τ/T recovery；H9 补齐任意�
 - `H12 | H4 PointwiseLight24 D2 1.112M`
 - `H13 | H6 Adaptive 50K Directional Tau`
 - `SVT | CGHEVEN Hero Congestus 50 U8`
-- 三者当前全部可见；H13 使用用户确认的 Density Multiplier=`0.416`、Density Gamma=`1.515627`、Directional/Sky Light Scale=`0.5/0.1`，并以 Directional Shadow Density Scale=`0.3` 预览。
-- 当前重开的关卡中没有 H0 Actor；本次没有隐藏或删除它。H12／H13 部署后关卡保持未保存。
+- 最后一次可靠读回中三者全部可见；H13 live override 为 Density Multiplier=`1.32799995`、Density Gamma=`1.245066`、Directional Shadow Density Scale=`0.304266`，Scene Lights/Depth=`true`；H12 为 `Dual SH=true`、ambient scale=`0`。
+- 当前关卡中没有 H0 Actor，本次没有隐藏或删除它。关卡、导入资产和 Actor 实例覆盖不在本仓库；是否已保存必须在 UE 内确认，不能由 Git 推断。
 - Smoke2、H7、H8、H9、H10 Actor 已从关卡删除，源 JSON／PLY／SVT 资产未删除。
 
 ## Smoke2 历史 Gate 版本

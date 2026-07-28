@@ -2,11 +2,11 @@
 
 > 云版本账本：[`CLOUD_VERSIONS.md`](CLOUD_VERSIONS.md)
 
-> 状态：2026-07-27，解析 B2 Ultra 仍是已签字的质量 teacher；`1.112M × 320 B` 7DRGS 只保留为质量参考，不再作为最终运行时候选
-> 当前 Gate：H12 已用逐点 light-space transmittance 监督替代 H11 的欠约束图像 loss，4 个留出灯向 T MAE/RMSE=`0.08067/0.13218`；H13 已给 H6 exact 50K 烘焙六轴 directional τ。两者均已部署 TechLab，等待用户旋转方向光验证内部透射／自阴影
-> 当前执行顺序：冻结 B2/VDB reference → 已完成 QIRF 负／混合 A/B → 已否决 hard-macroblock 50K → adaptive continuous partition exact `50K` → 用户先验视觉检查 → τ/T recovery → compact transport → SVT/NanoVDB working-set Gate。QIRF 不作为全局前置条件，Gabor 与完整 BiGS 均不进入主线
+> 状态：2026-07-28，解析 B2 Ultra 仍是已签字的质量 teacher；`1.112M × 320 B` H12 只保留为质量参考，H13 exact 50K／`48 B/kernel` 是唯一紧凑候选
+> 当前 Gate：H13 六轴 τ 的数据、上传和 shader 消费已由 `LightTransmittance` 方向梯度验证，只待用户签字 Final 强度；H12 的 `Dual SH=false` 现场覆盖已恢复为 `true`，只待修复后视觉复核
+> 当前执行顺序：H12 Final 复核 → H13 阴影强度签字 → matched-quality SVT/NanoVDB GPU time 与 working-set Gate。未完成视觉 Gate 前不启动 H14、正式 16×24 数据、新训练或裁剪
 > 当前用户调定的 UE appearance defaults：Density Multiplier=`0.416`、Density Gamma=`1.515627`、Support Tau Min=`0`、Use Scene Depth/Scene Lights=`true`、Directional Light Intensity Scale=`0.5`、Sky Light Intensity Scale=`0.1`；TechLab 默认绑定 `Light Source` 与 `SkyLight`
-> 版本化实现：`work/GaussianVolume/ue-plugin/GaussianVolume/`；本地 UE 部署：`D:/Work/Personal/Project/Abyss/Plugins/GaussianVolume/`
+> 版本化实现：`work/GaussianVolume/ue-plugin/GaussianVolume/` 与 `work/GaussianVolume/ue-plugin/GaussianSplattingForUnrealEngine/`；本地 UE 部署位于 `D:/Work/Personal/Project/Abyss/Plugins/`
 > 目标平台：UE 5.8、RTX 5060、1920×1080
 
 ## 1. 作品集命题

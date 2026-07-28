@@ -1,0 +1,410 @@
+//***REngine Begin Modify added by tuckersu. [GaussianSplatting preprocess CS - cull, EWA project, tile coverage]
+// GaussianSplattingPreprocess.usf
+// Phase 0: Per-gaussian preprocessing - frustum cull, EWA projection, conic computation, tile coverage.
+//
+// UE coordinate conventions used here (row-vector math: p' = p * M):
+//   - UE world is LH, cm units, +X forward, +Y right, +Z up.
+//   - UE view space shares that convention: +X right, +Y up, +Z forward
+//     (FLookAtMatrix produces this). So view_z > 0 == in front of camera.
+//     Equivalently, clip.w == view_z (see FPerspectiveMatrix), so we also use
+//     clip.w for the depth test.
+//   - Jacobian for EWA is therefore the standard DX-style
+//     J = [ fx/z, 0, -fx*x/z^2;
+//           0, fy/z, -fy*y/z^2;
+//           0, 0, 0 ]
+//     with z = view_z.
+//
+// Outputs:
+//   VisiblePosOpacity[i] = { screen.xy, view_depth, opacity }  (view_depth<=0 means culled)
+//   VisibleConicColor[i] = { conic.xx, conic.xy, conic.yy, 0 }
+//   VisibleColorExtra[i] = { r, g, b, radius }
+//   TilesTouched[i]      = number of tiles this gaussian covers
+//   VisibleRectMin[i]    = rect_min (packed as x|y<<16)
+//   VisibleRectMax[i]    = rect_max (packed as x|y<<16)
+
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/ComputeShaderUtils.ush"
+#include "GaussianSplattingCommon.ush"
+
+StructuredBuffer<float4> GaussianDataBuffer;
+
+RWStructuredBuffer<float4> VisiblePosOpacity;
+RWStructuredBuffer<float4> VisibleConicColor;
+RWStructuredBuffer<float4> VisibleColorExtra;
+//***REngine Begin Modify added by tuckersu. [Niagara-parity quad: per-gaussian ellipse-aligned BasisVectors for HW Raster VS]
+// VisibleBasis[idx] = float4(BasisVector1.xy, BasisVector2.xy), in PIXEL units.
+// BV1 is along the ellipse's major axis, BV2 along the minor axis. Both are
+// already capped at kMaxRadiusPixel inside ComputeConic. The HW Raster VS
+// uses these to construct an ellipse-aligned quad in Clip space (parity
+// with the M_GaussianSplatting Niagara custom node). The 6-Phase Compute
+// fallback path doesn't read this buffer; it only needs the axis-aligned
+// VisibleRectMin/Max for tile binning.
+RWStructuredBuffer<float4> VisibleBasis;
+//***REngine End Modify
+//***REngine Begin Modify added by tuckersu. [7DRGS Dual SH: per-gaussian T_view scalar passthrough to HW Raster PS]
+RWBuffer<float> VisibleTView;
+//***REngine End Modify
+RWBuffer<uint>             TilesTouched;
+RWBuffer<uint>             VisibleRectMin;   // packed: x | (y << 16)
+RWBuffer<uint>             VisibleRectMax;   // packed: x | (y << 16)
+
+//***REngine Begin Modify added by tuckersu. [GS GPUSort+DirectBlend - emit compact (sort_key, gaussian_id) pair]
+// Compact visible-list outputs for the GPU Sort + Direct Blend path.
+//   OutVisibleSortKey[slot]   = ~asuint(view_depth)
+//     - We use the bit-pattern of the IEEE-754 view-depth, then complement it
+//       so that the unsigned-ascending RadixSort produces a far-to-near order
+//       (BackToFront) — required by HW alpha-blend "over" composition.
+//     - Slots beyond the actual count are not written. The C++ side clears the
+//       buffers with a sentinel (0xFFFFFFFF) before Preprocess so that any
+//       leftover slot, if accidentally read by the sort, sorts to the very
+//       end (the InstanceCount in the indirect args still bounds drawing to
+//       the actual visible count).
+//   OutVisibleSortValue[slot] = gaussian_id (= source idx, same index used to
+//       fetch VisiblePosOpacity / VisibleConicColor / VisibleColorExtra).
+//   OutVisibleCount[0] is incremented atomically by every visible gaussian.
+//
+// NOTE: Buffer<uint> (typed PF_R32_UINT) is used here on purpose: the engine
+// SortGPUBuffers helper takes typed-buffer SRV/UAVs, so matching the shader
+// view type makes the C++-side RDG plumbing trivial (one view kind).
+RWBuffer<uint> OutVisibleSortKey;
+RWBuffer<uint> OutVisibleSortValue;
+RWBuffer<uint> OutVisibleCount;
+//***REngine Begin Modify added by tuckersu. [Per-source screen AABB atomic reduction for composite clipping]
+// Min/Max are split into two buffers to allow independent UAV clears:
+// - Min buffer clears to UINT_MAX
+// - Max buffer clears to 0
+RWBuffer<uint> OutSourceScreenAABBMin;  // [0]=minX, [1]=minY
+RWBuffer<uint> OutSourceScreenAABBMax;  // [0]=maxX(exclusive), [1]=maxY(exclusive)
+//***REngine End Modify
+//***REngine End Modify
+
+float4x4 GSViewMatrix;
+float4x4 GSProjMatrix;
+float4x4 GSViewProjMatrix;
+float2 GSTanHalfFov;
+// GSScreenSize is the backing SceneColor texture extent.
+uint2 GSScreenSize;
+//***REngine End Modify
+uint GSNumGaussians;
+float3 GSCameraPosition; // packed output rect: min.x, min.y, width
+//***REngine Begin Modify added by tuckersu. [Phase1/2 controls - coarse frustum cull and sub-pixel LOD cull]
+uint GSFrustumCullMode;
+float GSFrustumSlack;    // packed output rect height
+float GSSubPixelLodRadius;
+//***REngine End Modify
+
+//***REngine Begin Modify added by tuckersu. [Position is already in Translated World — subtraction done in FP64 on CPU]
+// NOTE: GData.Position is ALREADY in Translated World space
+// (= WorldPos - ViewOrigin, computed on the CPU in FP64 before upload).
+// GSViewMatrix / GSViewProjMatrix are the TranslatedView variants (pure
+// rotation, FP32-safe). So no further subtraction is needed here.
+// Kept as a marker so the old LWC uniform doesn't get re-introduced.
+//***REngine End Modify
+
+[numthreads(256, 1, 1)]
+void MainCS(uint3 GroupId : SV_GroupID, uint GroupThreadIndex : SV_GroupIndex)
+{
+  uint idx = GetUnWrappedDispatchThreadId(GroupId, GroupThreadIndex, 256u);
+  if (idx >= GSNumGaussians)
+    return;
+
+  // Mark as invisible by default
+  VisiblePosOpacity[idx] = float4(0, 0, -1, 0);
+  VisibleColorExtra[idx] = float4(0, 0, 0, 0);
+  //***REngine Begin Modify added by tuckersu. [Initialize VisibleBasis to zero so degenerate quads in HW Raster VS collapse safely]
+  VisibleBasis[idx] = float4(0, 0, 0, 0);
+  //***REngine End Modify
+  //***REngine Begin Modify added by tuckersu. [7DRGS Dual SH: initialize VisibleTView to 1.0 (neutral = fully transparent to bg)]
+  VisibleTView[idx] = 1.0f;
+  //***REngine End Modify
+  VisibleRectMin[idx] = 0;
+  VisibleRectMax[idx] = 0;
+  TilesTouched[idx] = 0;
+
+  // Load gaussian data (Translated-World position baked on CPU, world-space 3D covariance)
+  FGSGaussianData GData = LoadGaussianData(GaussianDataBuffer, idx);
+
+  //***REngine Begin Modify added by tuckersu. [Position is already Translated World — no further subtraction]
+  // GData.Position was computed as (WorldPos - ViewOrigin) on the CPU in FP64
+  // and then cast to FP32. Its magnitude is bounded by the gaussian-to-camera
+  // distance (typically metres), which is FP32-safe. GSViewMatrix is the
+  // Translated-View matrix (pure rotation, no large translation column).
+  float3 pos_tw = GData.Position;
+  //***REngine End Modify
+
+  // ---- World -> View ----
+  // UE row-vector convention: p' = p * M, so mul(vec4, matrix) in HLSL.
+  // In UE view space, +Z is forward — so view_z is the linear depth.
+  float4 pos_view4 = mul(float4(pos_tw, 1.0f), GSViewMatrix);
+  float3 pos_view = pos_view4.xyz;
+
+  //***REngine Begin Modify added by tuckersu. [Near-plane cull: only reject if gaussian CENTER is very close; gaussians near-plane can have their ellipses extend in front]
+  // CRITICAL: when camera moves into (or very near) a gaussian, the center's
+  // view_z becomes tiny. We MUST NOT reject based on a hard z<1cm rule because:
+  //   1. The gaussian's ellipse can extend beyond its center in all directions
+  //      (up to ~50-100 px on screen). If the center is at z=2cm but the ellipse
+  //      extends 50 px, pixels at the edge are still in front of the camera.
+  //   2. A 1cm near-plane makes sense for normal objects, but not for volumetric
+  //      splats that can be small but with large world-space covariance.
+  //   3. Culling here creates the "close-up holes / transparency" artifact.
+  //
+  // Strategy: use a very permissive cull to avoid close-up holes.
+  // NOTE: this shader path does not currently expose a near-clip scalar in
+  // its explicit parameter list, so we use a conservative fixed guard.
+  // 0.1cm (~1mm) is very soft while still avoiding invalid behind-camera
+  // perspective projection.
+  //***REngine Begin Modify added by tuckersu. [Phase1 - frustum cull + visible count reduction]
+  const float kCullNearThreshold = 0.1f;
+  if (pos_view.z < kCullNearThreshold)
+    return;
+  //***REngine End Modify
+
+
+  // ---- World -> Clip ----
+  float4 pos_clip = mul(float4(pos_tw, 1.0f), GSViewProjMatrix);
+  if (pos_clip.w <= 0.0f)
+    return;
+
+  float inv_w = 1.0f / pos_clip.w;
+  float3 pos_ndc = pos_clip.xyz * inv_w;
+
+  // ---- EWA: project 3D covariance to 2D ----
+  // Standard DX/CUDA-style EWA math works directly in UE view space because
+  // UE view space also has +Z forward (row-vector LookAt convention).
+  //
+  //***REngine Begin Modify added by tuckersu. [Method B - per-view focal length from View UB]
+  // FocalLength in pixels is determined by the per-view sub-rect size, not by
+  // the internal pre-upscale view size. The packed output rect is the current
+  // post-process output size; divide by 2*tan(fov/2). This is the
+  // correct per-view focal length for split-screen / PIE / SceneCapture / stereo
+  // — multi-view safe by construction.
+  float2 view_size_px = float2(GSCameraPosition.z, GSFrustumSlack);
+  float2 focal_length = float2(
+    view_size_px.x / (2.0f * GSTanHalfFov.x),
+    view_size_px.y / (2.0f * GSTanHalfFov.y));
+  //***REngine End Modify
+  //
+  //***REngine Begin Modify added by tuckersu. [Transpose view rotation to match CUDA EWA column-vector convention]
+  // CUDA / DirectX EWA reference uses COLUMN-vector math: p_view = W * p_world.
+  // UE uses ROW-vector math:                                p_view = p_world * ViewMatrix.
+  // The 3x3 rotation sub-block of UE's ViewMatrix therefore equals W^T in
+  // column-vector convention. `mul(J, W)` in HLSL is column-vector multiplication,
+  // so we must transpose the sub-block to get the correct W. Without this
+  // transpose, the 2D covariance ends up rotated by the inverse of the camera
+  // rotation, producing ellipses that point in the WRONG direction — visually
+  // this manifests as "needle / stretch" artifacts along structured edges
+  // (building facades, sharp silhouettes) because gaussian principal axes are
+  // no longer aligned with the geometry they were trained to represent.
+  float3x3 ViewRot = transpose((float3x3)GSViewMatrix);
+  //***REngine End Modify
+
+  float3 cov2d = ComputeCov2D(
+    pos_view,
+    focal_length.x, focal_length.y,
+    GSTanHalfFov.x, GSTanHalfFov.y,
+    GData.Cov3D_00, GData.Cov3D_01, GData.Cov3D_02,
+    GData.Cov3D_11, GData.Cov3D_12, GData.Cov3D_22,
+    ViewRot
+  );
+
+  // Compute conic and radius.
+  // Note: ComputeConic already clamps Cov2D eigenvalues to a sane range,
+  // so radius is naturally bounded (~48px for max-allowed eigenvalue=256).
+  // DO NOT additionally clamp `radius` here without also rescaling conic —
+  // mismatched radius/conic was the cause of the "solid tile square" artifact.
+  //***REngine Begin Modify added by tuckersu. [Niagara-parity quad: receive ellipse-aligned BasisVectors from ComputeConic]
+  float det, radius;
+  float4 basis;
+  float3 conic = ComputeConic(cov2d, det, radius, basis);
+  //***REngine End Modify
+  if (det <= 0.0f || radius <= 0.0f)
+    return;
+
+  //***REngine Begin Modify added by tuckersu. [Phase2 - sub-pixel LOD cull]
+  if (GSSubPixelLodRadius > 0.0f && radius < GSSubPixelLodRadius)
+    return;
+  //***REngine End Modify
+
+
+  // Screen position from NDC
+  //***REngine Begin Modify added by tuckersu. [Method B - emit SceneColor-RT-global pixel coords]
+  // We map NDC directly into the current post-process output texture.
+  // SceneColor-RT-global pixel coords. The downstream RasterBlend reads pixels
+  // in the same SceneColor-RT-global coord system, so screen_pos and pix line
+  // up exactly even when the view's sub-rect has a non-zero origin
+  // (split-screen / PIE / SceneCapture / stereo).
+  float2 view_rect_min_f = GSCameraPosition.xy;
+  float2 screen_pos = view_rect_min_f + NDCToPixel(pos_ndc.xy, view_size_px);
+  //***REngine End Modify
+
+  //***REngine Begin Modify added by tuckersu. [Accurate screen-radius-based frustum cull after conic is known]
+  // Now that we know the actual on-screen radius (in pixels), cull gaussians
+  // whose bounding box does NOT intersect the view's sub-rect.  This is the
+  // only frustum cull: an earlier center-only NDC cull would incorrectly reject
+  // close gaussians whose centers are off-screen but whose support is visible.
+  // This conservative, per-gaussian
+  // test.  Multi-view note: the cull range is the per-view sub-rect (not the
+  // full SceneColor RT) — gaussians from view A that happen to project into
+  // view B's sub-rect must NOT be drawn into view A's GSColorRT.
+  float2 view_rect_max_f = view_rect_min_f + view_size_px;
+  if (screen_pos.x + radius < view_rect_min_f.x ||
+      screen_pos.x - radius >= view_rect_max_f.x ||
+      screen_pos.y + radius < view_rect_min_f.y ||
+      screen_pos.y - radius >= view_rect_max_f.y)
+    return;
+  //***REngine End Modify
+
+  //***REngine Begin Modify added by tuckersu. [Per-source screen AABB atomic reduction in SceneColor-global pixel space]
+  // AABB is accumulated in SceneColor-RT-global pixel coordinates.
+  // Max uses exclusive upper bound to match composite-side [Min, Max) tests.
+  int2 screen_extent = int2(GSScreenSize);
+  int2 pixel_min = int2(floor(screen_pos - radius));
+  int2 pixel_max = int2(ceil(screen_pos + radius));
+  pixel_min = clamp(pixel_min, int2(0, 0), max(screen_extent - 1, int2(0, 0)));
+  pixel_max = clamp(pixel_max, int2(0, 0), max(screen_extent, int2(0, 0)));
+
+  InterlockedMin(OutSourceScreenAABBMin[0], (uint)pixel_min.x);
+  InterlockedMin(OutSourceScreenAABBMin[1], (uint)pixel_min.y);
+  InterlockedMax(OutSourceScreenAABBMax[0], (uint)pixel_max.x);
+  InterlockedMax(OutSourceScreenAABBMax[1], (uint)pixel_max.y);
+  //***REngine End Modify
+
+  // Tile coverage
+
+  //***REngine Begin Modify added by tuckersu. [Method B - tile_grid is global (over the whole SceneColor RT) so tile-id math is consistent across views]
+  // tile_grid stride must match the value used by Binning / TileRange / RasterBlend,
+  // which all key off GSScreenSize == SceneColor RT extent. The actual rect we
+  // emit will naturally fall inside the per-view sub-rect because screen_pos is
+  // already in SceneColor-RT-global coords above.
+  uint2 tile_grid = (GSScreenSize + GS_TILE_SIZE - 1) / GS_TILE_SIZE;
+  //***REngine End Modify
+  int2 rect_min, rect_max;
+  GetTileRect(screen_pos, radius, tile_grid, rect_min, rect_max);
+
+  //***REngine Begin Modify added by tuckersu. [Per-axis empty-rect check to avoid false-positive area from negative*negative]
+  // MUST check PER-AXIS, not via area: when gaussian center is far off-screen
+  // on (say) the right side, rect_min.x is clamped to tile_grid.x and
+  // rect_max.x is also clamped to tile_grid.x (since imax_t >= tile_grid.x),
+  // yielding rect_max.x - rect_min.x = 0.  But in pathological floating-point
+  // cases where one axis gives (neg, neg) and the other (neg, neg), the
+  // area (neg*neg) is POSITIVE and passes the `num_tiles <= 0` guard,
+  // producing bogus tile entries along the screen edge — visually a
+  // "rectangular brush stroke" artifact of wrong-color gaussians bleeding
+  // into neighboring screen-edge tiles.  Guard against both axes first.
+  if (rect_max.x <= rect_min.x || rect_max.y <= rect_min.y)
+    return;
+  int num_tiles = (rect_max.x - rect_min.x) * (rect_max.y - rect_min.y);
+  //***REngine End Modify
+
+  //***REngine Begin Modify added by tuckersu. [Proportional tile-rect shrink to fix close-up holes]
+  // ---- Clamp per-gaussian tile count to match the CPU buffer budget.
+  //
+  // CRITICAL INVARIANT: TilesTouched[i] MUST equal the exact number of tiles
+  // that the Binning CS will iterate over, i.e. rect area = (rect_max - rect_min).
+  // If they mismatch, prefix-sum reserves fewer slots than Binning writes,
+  // causing adjacent gaussians' entries to be overwritten.
+  //
+  // Sizing rationale:
+  //   * Raster cost per pixel scales with the number of gaussians whose
+  //     ellipse touches it, which is bounded by the per-gaussian tile rect
+  //     × density.  A 256-tile (16x16) cap equals a 256x256 px on-screen
+  //     footprint, which covers every reasonable near-camera splat.
+  //   * Pathological cases (e.g. gaussian center at z=1 cm) can produce
+  //     rects larger than 256 tiles.  We now handle this by PROPORTIONALLY
+  //     SHRINKING THE RECT AROUND THE ELLIPSE CENTER, not by replacing it
+  //     with a centered square patch.
+  //
+  // Previous behavior (centered-square truncation) caused the "close-up
+  // incomplete shape" artifact: when the gaussian's on-screen ellipse is
+  // off-center (the common case — most gaussians whose rect exceeds 256
+  // have their center near a screen edge, so the rect is lopsided), the
+  // 16x16 centered patch drops the ellipse's far side entirely.  A
+  // proportional shrink keeps the rect's center-of-mass intact.
+  //***REngine Begin Modify added by tuckersu. [Increased tile cap to 512 for better close-up coverage]
+  // 512 tiles = 22.6x22.6 tile region = ~360x360 px footprint (conservative).
+  // This accommodates very-close-up gaussians (z~1cm) without excessive loss,
+  // while still being well below the worst-case 2048x2048 square-raster sizes.
+  const int kMaxTilesPerGaussian = 512;
+  //***REngine End Modify
+  if (num_tiles > kMaxTilesPerGaussian)
+  {
+    // Compute the rect's center (in tile coords) and per-axis half-extents.
+    float2 rc = 0.5f * float2(rect_min + rect_max);
+    float2 rh = 0.5f * float2(rect_max - rect_min);  // half-extent per axis (positive)
+
+    // We want new area ≤ 256 with the same aspect ratio:
+    //   (2*rh.x*scale) * (2*rh.y*scale) ≤ 256
+    //   4*rh.x*rh.y*scale^2 ≤ 256
+    //   scale ≤ sqrt(64 / (rh.x*rh.y))
+    //***REngine Begin Modify added by tuckersu. [Updated proportional shrink denominator for 512-tile cap]
+    float target_scale = sqrt(128.0f / max(rh.x * rh.y, 1e-3f));
+    //***REngine End Modify
+    target_scale = min(target_scale, 1.0f);   // never grow
+
+    float2 new_half = rh * target_scale;
+    int2 new_min = int2(floor(rc - new_half));
+    int2 new_max = int2(ceil (rc + new_half));
+
+    // Re-clamp to screen tile grid and intersect with original rect.
+    new_min = max(new_min, rect_min);
+    new_max = min(new_max, rect_max);
+    new_min = max(new_min, int2(0, 0));
+    new_max = min(new_max, int2(tile_grid));
+
+    if (new_max.x > new_min.x && new_max.y > new_min.y) {
+      rect_min = new_min;
+      rect_max = new_max;
+    }
+    num_tiles = (rect_max.x - rect_min.x) * (rect_max.y - rect_min.y);
+    if (num_tiles <= 0)
+      return;
+    // Final safety cap: if proportional shrink still leaves > cap (can happen
+    // with extreme aspect ratios after clamping to the screen grid), drop.
+    // if (num_tiles > kMaxTilesPerGaussian)
+    //   return;
+  }
+  //***REngine End Modify
+
+  // Use view_z as depth (positive = farther, front-to-back sort = ascending).
+  VisiblePosOpacity[idx] = float4(screen_pos, pos_view.z, GData.Opacity);
+  //***REngine Begin Modify added by tuckersu. [Niagara-parity NDC-space quad: pack pos_clip.w into VisibleConicColor.w (was 0/unused)]
+  // The HW Raster VS needs the gaussian center's clip-space w to do the
+  // Niagara-style NDC offset:
+  //     ClipPos = float4(NDC * w + BV/ViewSize * 2 * w, depth*w, w)
+  //   => after perspective divide (handled by hardware): NDC' = NDC + BV/ViewSize*2
+  // i.e. the offset is applied DIRECTLY in NDC, completely bypassing the
+  // pixel-space round-trip that previously caused Y-flip mismatches between
+  // the quad geometry (Y-up) and the PS Conic (Y-up) vs SV_Position (Y-down).
+  //
+  // We piggyback on VisibleConicColor.w which was unused (always 0), so this
+  // adds zero memory bandwidth: the C++ binding, struct layout, and PS read
+  // pattern are all unchanged. The VS reads ConCol.w and treats it as the
+  // ClipW for that gaussian.
+  VisibleConicColor[idx] = float4(conic, pos_clip.w);
+  //***REngine End Modify
+  VisibleColorExtra[idx] = float4(GData.Color, radius);
+  //***REngine Begin Modify added by tuckersu. [Niagara-parity quad: write ellipse-aligned BasisVectors for HW Raster VS]
+  VisibleBasis[idx]      = basis;
+  //***REngine End Modify
+  //***REngine Begin Modify added by tuckersu. [7DRGS Dual SH: write T_view scalar for HW Raster PS MRT output]
+  VisibleTView[idx]      = GData.TViewSliced;
+  //***REngine End Modify
+  VisibleRectMin[idx]   = ((uint)rect_min.x & 0xFFFF) | (((uint)rect_min.y & 0xFFFF) << 16);
+  VisibleRectMax[idx]   = ((uint)rect_max.x & 0xFFFF) | (((uint)rect_max.y & 0xFFFF) << 16);
+  TilesTouched[idx]     = (uint)num_tiles;
+
+  //***REngine Begin Modify added by tuckersu. [GS GPUSort+DirectBlend - emit compact (sort_key, value) pair for visible gaussians]
+  // Compact list emission. We use ~asuint(view_z) so that an UNSIGNED ascending
+  // RadixSort produces a far-to-near (BackToFront) order, which is what HW
+  // alpha-blend "over" composition needs.
+  //
+  // pos_view.z > 1.0 here (we early-returned otherwise), so asuint(...) is
+  // a non-negative finite IEEE bit-pattern whose complement is monotone
+  // decreasing in depth (largest depth -> smallest complement -> sorted first).
+  uint slot;
+  InterlockedAdd(OutVisibleCount[0], 1u, slot);
+  OutVisibleSortKey[slot]   = ~asuint(pos_view.z);
+  OutVisibleSortValue[slot] = idx;
+  //***REngine End Modify
+}
+//***REngine End Modify

@@ -91,15 +91,20 @@ Q2 compact-pool 历史实测 requested/granted=`142,979/142,979`、capacity=`524
 - [x] 将 `lambda_sh_reg`、`lambda_sigma_reg`、B2 anchor 与 `J` 能量/非负约束接入 main loop；静态 covariance 已冻结，因此不再为它增加 condition-number optimizer 路径。
 - [x] 静态训练中冻结 opacity、TView、temporal block 与 spatial-condition cross covariance；light direction 只驱动 `J`，不允许改变 density、空间 mean/covariance。
 - [x] 将 `patches/7drgs-j-sh-light-direction.patch` 落到 UE runtime；`J` 使用 light direction，`TView` 保留 camera direction；D3D12 shader 冷重编译通过。
-- [ ] 建立 B2 teacher＋VDB anchor 数据：正式目标约 `16 cameras×24 lights×512`，首轮 `sh_degree=1`，相机与灯光方向各自完整留出。
+- [x] 原计划 `16 cameras×24 lights×512` 的 image-space 扩训已被 H11 负结果取代；不再盲目扩数据，H12 改为直接监督逐点 light-space T。
 - [x] 运行当前 8-view×6-light 数据的全量 `1K` 数值 smoke：静态参数零漂移、held-out/train J PSNR=`21.93/24.98 dB`、gap=`3.06 dB`、anchor drift RMSE=`0.01282`、六轴越界率=`8.54%`。
 - [x] degree-2 从已接受的 degree-1 PLY 零增量升级；全量 parity 为旧字段 max error=`0`、新增 5 系数 max abs=`0`，teacher anchor 只约束 PLY 中已有的系数前缀。
 - [x] 完成 3K degree-2 对照并按 held-out 选择 1K：held-out PSNR=`22.03→21.89→21.75 dB`，拒绝部署过拟合的 2K/3K。
-- [ ] degree-2 1K preview 已在 TechLab 加载且未保存；等待用户验收 live viewport。正式 16×24 数据再报告 foreground LPIPS、高频 residual 与跨光向稳定性，签字前不跑完整训练。
-- [ ] smoke 通过后训练 matched-quality `1.112M` student，再按 `1.112M→900K→800K` 确定性裁剪与恢复；600K 只在 800K 通过后进入。
+- [x] H11 已续训至 4K 并由用户判定没有可辨认内部自阴影；禁止继续同一 image-space 协议。
+- [x] H12 已直接拟合逐点 light-space T；held-out T MAE/RMSE=`0.08067/0.13218`，静态字段零漂移，并已部署 TechLab。
+- [x] H13 已为 exact 50K 烘焙六轴 τ；`LightTransmittance` debug view 出现明确方向梯度，证明数据、上传和 shader 消费链路成立。
+- [x] 修复 H12 现场 `Dual SH=false` 实例覆盖，恢复 `Dual SH=true`；ambient scale=`0`。
+- [ ] 用户复核 H12 Final：确认恢复 Dual SH 后是否出现足够自然的方向响应／内部自阴影。
+- [ ] 用户签字 H13 Final 的阴影强度；当前 live `DirectionalShadowDensityScale≈0.304266`，只调参数不增加 H 版本。
+- [ ] H12/H13 视觉 Gate 通过后，才决定是否训练／裁剪新 student；不预设 H14、900K、800K 或 600K。
 - [ ] 正式性能 A/B 前为静态资产接入 Slice cache：仅资产／Component transform／时间／灯光方向／切片参数变化时失效；缓存与强制重算输出必须一致。
 - [ ] 对通过画质的点预算分别记录 Slice、Preprocess、Sort、HW Raster、Composite 与完整 frame。
-- [ ] 在 matched quality 下重做 SVT/7DRGS GPU time、working set 与资产转换耗时对照。
+- [ ] 在 matched quality 下重做 SVT/H12/H13 GPU time、working set 与资产转换耗时对照。
 
 ## 已归档 — Gabor residual
 

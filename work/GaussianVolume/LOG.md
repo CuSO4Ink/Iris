@@ -831,3 +831,11 @@ H12 不再续跑 H11 的 image-space loss：固定 H4 的 `1,112,674` 个点及�
 H13 从 H6 exact 50K initializer 直接烘焙 local `±X/±Y/±Z` 六轴 optical depth，不改变 kernel 数量或 48 B/kernel 运行时布局。50,000 centers 全部位于源 grid，六轴 τ median=`3.455/3.404/4.583/4.798/3.029/3.356`；JSON=`21,648,913 B`，SHA256=`1B61B863ACF222B7557F44FD23EA8B5931ACA9543FCC5C41C44B7B689F69486D`。
 
 TechLab 已在不保存关卡的情况下把 H11/H6 替换为 `H12 | H4 PointwiseLight24 D2 1.112M` 与 `H13 | H6 Adaptive 50K Directional Tau`；两者和 SVT 均保持可见。重开时 H13 Actor 的 `Use Scene Lights=false` 且带旧的实例覆盖值，现已恢复用户确认的 Density=`0.416`、Gamma=`1.515627`、Direct/Sky=`0.5/0.1`、Scene Depth/Lights=`true`，方向阴影强度用 `0.3` 预览。当前关卡中没有 H0 Actor，本次未隐藏或删除它。最终画质与自阴影 Gate 由用户在 live viewport 旋转方向光确认。
+
+### 2026-07-28 — [现场诊断][运行时归档][待两项视觉签字] H12 Dual SH 与 H13 transport
+
+H13 切到 `LightTransmittance` debug view 后出现稳定、明显的黑白方向梯度；切回 `Final` 也有方向明暗。该证据把故障边界收窄为视觉强度调校：六轴 τ 资产、GPU 上传与 shader 消费链路均已接通，不再重复训练或重接 transport。最后可靠读回为 Density=`1.32799995`、Gamma=`1.245066`、Directional Shadow Density Scale=`0.304266`；最终强度仍由用户签字。
+
+H12 无自阴影的现场根因不是训练资产失效，而是 Actor 实例 `Dual SH=false`，导致 composite 不重建 light-conditioned `J`。实例已恢复 `Dual SH=true`，ambient scale=`0`；恢复后的 Final 视觉复核被中断，因此只记录“运行时根因已修复”，不冒充画质 Gate 通过。
+
+最后可靠现场状态为 H12、H13、SVT 均 visible，H0 不在当前关卡。UE 地图、导入 PLY/JSON 和 Actor 实例覆盖不属于 Iris Git；关卡是否已保存不能由仓库推断。为消除代码复现缺口，已把本地 clean-room `GaussianSplattingForUnrealEngine 0.1-reconstruction` 的 21 个源码／shader 文件（不含 Content 资产）快照到 `ue-plugin/GaussianSplattingForUnrealEngine/`。下一步只做 H12 Final 复核与 H13 强度签字；在此之前不创建 H14、不启动新训练。

@@ -1,0 +1,20 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1-reconstruction",
+	"FriendlyName": "Gaussian Splatting 7DRGS",
+	"Description": "Clean-room reconstruction of the documented native 7DRGS slicing and hardware splat runtime.",
+	"Category": "Rendering",
+	"CreatedBy": "Violina",
+	"CanContainContent": false,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": true,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "GaussianSplattingRuntime",
+			"Type": "Runtime",
+			"LoadingPhase": "PostConfigInit"
+		}
+	]
+}

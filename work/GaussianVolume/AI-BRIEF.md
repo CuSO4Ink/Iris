@@ -1,6 +1,17 @@
 # GaussianVolume AI Brief
 
-## 2026-07-27 Degree-2 视觉 Gate
+## 2026-07-28 当前交接状态
+
+- 当前只保留两个 Hero 候选：H12=`1,112,674` 点的 7DRGS 质量参考，H13=`50,000` kernels、`48 B/kernel` 的 Gaussian Volume 紧凑候选；同源 SVT 必须保持可见用于 A/B。
+- H13 的 `LightTransmittance` debug view 已显示稳定的黑白方向梯度，证明六轴 τ 数据、上传与 shader 消费链路均已接通；`Final` 也能看到方向明暗。尚未完成的只有用户对阴影强度的视觉签字，不再重复训练或重接 transport。
+- H12 首次没有自阴影的现场根因是 Actor 实例 `Dual SH=false`，因此走了不重建 light-conditioned `J` 的旧 composite；现已恢复 `Dual SH=true`，ambient scale=`0`。恢复后的最终视觉复核曾被中断，仍待用户签字。
+- 最后一次可靠现场读回：H13 Density=`1.32799995`、Gamma=`1.245066`、Directional Shadow Density Scale=`0.304266`；H12、H13、SVT 均 visible，H0 不在当前关卡。UE 地图、导入 PLY/JSON 和 Actor 实例覆盖值不在本仓库，不能从 Git 状态推断关卡是否已保存。
+- 下一步只做 H12 Final 复核与 H13 阴影强度签字；两项通过后再做 matched-quality SVT/NanoVDB GPU time 与 working-set A/B。不得默认启动 H14、正式 16×24 数据或新训练。
+- 两套运行时源码均已版本化：`ue-plugin/GaussianVolume/` 与 `ue-plugin/GaussianSplattingForUnrealEngine/`。后者是本项目的 clean-room `0.1-reconstruction`，提交源码／shader，不提交 Content 下的大体积资产。
+
+最后更新：2026-07-28
+
+## 2026-07-27 Degree-2 历史 Gate
 
 - 当前用户已接受 degree-1 预览作为继续训练基线；训练仍只更新 light-conditioned `J`，位置、density/opacity、空间 covariance、TView、temporal 与 cross-covariance 全部冻结。
 - degree-2 从已接受的 1K PLY 初始化：旧 4 个 SH 系数逐值复制，新增 5 个系数为零。全量 `1,112,674` 点 parity 检查为旧字段 max error=`0`、新增系数 max abs=`0`。
@@ -8,9 +19,7 @@
 - 选中 PLY 为 `271,494,101 B`、61 fields、SHA256=`0071EAAEAF2A4540333A0EE9FD54AEC8C4A5E7B25104DFEEC8408673148A5ADC`；静态参数相对已接受 degree-1 PLY 的 max error=`0`。
 - TechLab 当前未保存加载 `7DRGS CGHEVEN Hero Congestus 50 Degree 2 1K 1.112M PREVIEW`，保留 dual-HG `0.65/-0.2/0.1`、phase intensity=`0.35`。下一步只等待用户 live viewport 视觉确认；确认前不扩正式 16×24 数据、不裁剪。
 
-最后更新：2026-07-27
-
-## 2026-07-27 当前 Gate
+## 2026-07-27 历史 Gate
 
 - 唯一主线仍为 7DRGS。WDAS cloud 因源资产本身底部偏平、轮廓不适合最终展示而退出当前 Gate；边界检查证明不是转换器裁掉了半边。
 - 当前 quality reference 改用公开 CC0 的 CGHEVEN `Hero Congestus Cloud VDB - 50`。原始 density grid 有效分辨率为 `238×264×403`，转换前六面各加 `8 voxels` 空白，最终 dense grid=`254×280×419`，所有外边界 density=`0`。
@@ -49,7 +58,7 @@ GaussianVolume 是一个 UE 5.8 静态高细节体积代理案例。目标不是
 4. 助手不再维护固定机位、自动截图或截图微调；用户负责 live viewport 画面、transfer function 和截图，助手只推进云表示、shader、显存、性能与数值验证；
 5. pool-free 已确认真实覆盖云且解决 candidate tile 格，但 close-up Gate 已失败：full-res 细节可接受但贴脸 `50+ ms`；0.5× 仍约 `25 ms` 且细节不通过；0.25× 只会继续牺牲画质；该分支仅保留为负实验；
 6. Q2＋4K Gabor 已完成 step 1200 和最终导出，但用户确认画质太差，路线正式归档；不再做灯光调参、性能 A/B 或 residual 优化。Q3、Epanechnikov、pool-free 主线与固定机位截图仍冻结。
-7. 7DRGS 仍是唯一主线。B2 Ultra 解析质量 reference 已通过；15K 训练版因颗粒和模糊判负。六叶片 teacher 初始化、静态 light-conditioning、有界主 loss 和全量 1K smoke 已完成；当前只进入 UE 画质 Gate，未签字前不扩正式数据、不裁剪。
+7. 7DRGS 仍是唯一高质量参考；H11 已证明继续 image-space `J` loss 不会产生可辨认自阴影。当前只复核 H12 的 Dual SH 修复并签字 H13 阴影强度；两项未完成前不扩正式数据、不裁剪、不启动新版本。
 
 当前不继续堆启发式 VDB 聚合器、Spline FX、通用资产化或第二个研究问题。
 

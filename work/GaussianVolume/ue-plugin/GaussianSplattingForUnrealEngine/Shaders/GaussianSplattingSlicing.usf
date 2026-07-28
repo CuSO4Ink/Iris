@@ -1,0 +1,548 @@
+//***REngine Begin Modify added by tuckersu. [GS 7DGS Co-Pipeline - M3] 7DGS Slicing CS - GPU port of FUGaussianSplatting7DPointCloud::SliceAt
+// GaussianSplattingSlicing.usf
+//
+// GPU equivalent of UGaussianSplatting7DPointCloud::SliceAt (CPU implementation
+// in GaussianSplatting7DPointCloud.cpp:237-378). Reads 7DGS raw data, performs
+// the conditional slice at the current (Time, ViewDirection), and writes a
+// 3DGS-equivalent FGSGPUPoint into the output buffer. The downstream Preprocess
+// CS / HW raster path consumes the output transparently — they do not know the
+// data was synthesized this frame.
+//
+// 7DGS GPU input layout (20 x float4 = 320 bytes per gaussian, see CPU upload):
+//   D[0]  = { mu_p.x, mu_p.y, mu_p.z, mu_t }
+//   D[1]  = { mu_d.x, mu_d.y, mu_d.z, lambda_t }
+//   D[2]  = { lambda_d, opacity, color.r, color.g }
+//   D[3]  = { color.b, base_scale.x, base_scale.y, base_scale.z }
+//   D[4]  = { base_quat.x, base_quat.y, base_quat.z, base_quat.w }
+//   D[5]  = { CholDiag[0..3] }                            // Cholesky L diagonal
+//   D[6]  = { CholDiag[4..6], CholOffdiag[0] }
+//   D[7]  = { CholOffdiag[1..4] }                         // Cholesky L sub-diagonal (21 entries)
+//   D[8]  = { CholOffdiag[5..8] }
+//   D[9]  = { CholOffdiag[9..12] }
+//   D[10] = { CholOffdiag[13..16] }
+//   D[11] = { CholOffdiag[17..20] }
+//   D[12] = { j_sh[1],  j_sh[2],  j_sh[3],  j_sh[4]  }
+//   D[13] = { j_sh[5],  j_sh[6],  j_sh[7],  j_sh[8]  }
+//   D[14] = { j_sh[9],  j_sh[10], j_sh[11], j_sh[12] }
+//   D[15] = { j_sh[13], j_sh[14], j_sh[15], t_sh_dc   }
+//   D[16] = { t_sh[1],  t_sh[2],  t_sh[3],  t_sh[4]  }
+//   D[17] = { t_sh[5],  t_sh[6],  t_sh[7],  t_sh[8]  }
+//   D[18] = { t_sh[9],  t_sh[10], t_sh[11], t_sh[12] }
+//   D[19] = { t_sh[13], t_sh[14], t_sh[15], 0         }
+
+//
+// Output layout (matches FGSGPUPoint, 4 x float4 = 64 bytes):
+//   D[0] = { mu_cond.x, mu_cond.y, mu_cond.z, alpha_cond }
+//   D[1] = { Sigma_cond[00], Sigma_cond[01], Sigma_cond[02], Sigma_cond[11] }
+//   D[2] = { Sigma_cond[12], Sigma_cond[22], color.r, color.g }
+//   D[3] = { color.b, 0, 0, 0 }
+//
+// Sigma_cond matches GaussianSplattingCommon.ush::FGSGaussianData layout
+// (Cov3D_00, _01, _02, _11, _12, _22) so the existing Preprocess EWA path
+// works without any change.
+
+#include "/Engine/Public/Platform.ush"
+#include "/Engine/Private/ComputeShaderUtils.ush"
+//***REngine Begin Modify added by tuckersu. [GS 7DGS Slicing - matrix-form rewrite using UE's Matrices.ush]
+// Use UE's built-in float4x4 / float3x3 inverse helpers + native HLSL
+// matrix types (mul/transpose/dot/determinant). This replaces the previous
+// flat-array + triple-nested-loop implementation. The new form is shorter,
+// generates fewer local arrays (less register/spill pressure), and lets the
+// HLSL compiler emit dp4/MAD-fused instructions instead of unrolled scalar
+// MULs. Numerical results are identical for symmetric Sigma blocks; the
+// degenerate-case fallback (alpha=0 output) is preserved via determinant().
+#include "/Engine/Private/Matrices.ush"
+//***REngine End Modify
+
+StructuredBuffer<float4>   GaussianData7D;        // 20 float4 per gaussian (input)
+RWStructuredBuffer<float4> GaussianData3DEquiv;   //  4 float4 per gaussian (output, FGSGPUPoint)
+
+uint   GS7D_NumGaussians;
+//***REngine Begin Modify added by tuckersu. [Runtime 7D input stride in float4 units: 7DGS=24, 7DRGS=20]
+uint   GS7D_InputStrideFloat4;
+//***REngine End Modify
+float  GS7D_CurrentTime;       // normalized [0..1] or [TemporalRange.X..Y]
+float3 GS7D_ViewDirection;     // unit-length, world-space (UE)
+float3 GS7D_PreViewTranslation;  // -ViewOrigin (UE world cm). Output mu_cond is shifted into translated-world space (matches the 3DGS CPU bake in NativeRenderer).
+//***REngine Begin Modify added by tuckersu. [7DRGS component scale support - use full LocalToWorld linear part for covariance]
+// LocalToWorld lets the cloud follow its actor's transform. Both position and
+// covariance use this transform: position via mul(float4(pos,1), M), covariance
+// via Σ_world = A·Σ_local·A^T where A is M's 3x3 linear block.
+// Components written column-major; we use mul(localPos, M) with the row-vector
+// convention used elsewhere in this plugin (matches FMatrix44f layout).
+float4x4 GS7D_LocalToWorld;
+float3   GS7D_LocalCenterOffset;
+//***REngine End Modify
+
+//***REngine Begin Modify added by tuckersu. [7DRGS relight - recover light energy E·P·J in the slice CS.
+// 7DRGS is trained to regress J = the volume-rendering transmittance integral with the directional
+// light energy and the phase function factored OUT of the rendering equation (cf. HV LiveShading:
+// RadianceSample = Inscattering · ScatteringCoeff · Phase · T_view · dt). When Relightable is enabled
+// we put them back: final per-gaussian color = J · E_light · P(cosθ). Disabled (0) keeps J untouched,
+// so the vanilla / view-dependent 7DGS path is byte-for-byte unchanged.]
+uint   GS7D_RelightEnable;      // 0 = off (color stays = J), 1 = on (apply E-light recovery)
+float3 GS7D_RelightLightDirWS;  // UE world-space unit "toward-light" direction (directional light)
+float3 GS7D_RelightLightColor;  // directional light Color * Intensity * user scale (= E_light, linear)
+
+//***REngine End Modify
+
+//***REngine Begin Modify added by tuckersu. [7DRGS Dual SH: enable flag for T_view output to D[3].y]
+uint   GS7D_DualSHEnable;       // 0 = off (D[3].y = 0), 1 = on (D[3].y = evaluated T_view scalar)
+//***REngine End Modify
+//***REngine Begin Modify added by tuckersu. [7DRGS variable-order T_view SH degree (0..3)]
+uint   GS7D_TViewSHDegree;
+//***REngine End Modify
+//***REngine Begin Modify added by tuckersu. [Debug: visualize T_view SH degree truncation effect]
+// 0 = off (normal rendering)
+// 1 = |T_view(degree) - T_view(3)| heatmap in Color channel (red = large diff)
+// 2 = T_view(degree) as grayscale
+// 3 = RGB split: R=T_view(degree), G=T_view(3), B=abs_diff*10
+uint   GS7D_DebugSHDegree;
+//***REngine End Modify
+
+// ============================================================================
+// Helper: load Cholesky factor blocks directly into native HLSL matrices.
+//
+// L is 7x7 lower-triangular, stored on CPU as:
+//   CholDiag[i]    = L[i][i]            (already exp() activated on CPU side)
+//   CholOffdiag[k] = L[i][j] for i > j, ordered (1,0),(2,0),(2,1),(3,0)...(6,5)
+//                    (21 entries total).
+// To match the Python reference (slice_gaussian_dynamic in 7DGS paper supp.):
+//   normalized L[i][j] for i > j is multiplied by L[i][i] (row diagonal).
+//   See the CPU mirror at GaussianSplatting7DPointCloud.cpp:40 (* row diag).
+//
+// Block partition of L (rows 0..6, cols 0..6):
+//   Lp  = L[0..2][0..2]   (3x3 lower-tri, diag block for position dims)
+//   Lt  = L[3..6][0..2]   (4x3 dense block, position->{t,d} cross terms)
+//   Ltd = L[3..6][3..6]   (4x4 lower-tri, diag block for {t,d} dims)
+//
+// Sigma blocks recovered via Sigma = L * L^T:
+//   Sigma_p   = Lp  * Lp^T                              (3x3)
+//   Sigma_ptd = Lp  * Lt^T                              (3x4)
+//   Sigma_td  = Lt  * Lt^T + Ltd * Ltd^T                (4x4, symmetric)
+// ============================================================================
+
+void LoadCholeskyBlocks(uint Idx, out float3x3 Lp, out float4x3 Lt, out float4x4 Ltd)
+{
+  //***REngine Begin Modify added by tuckersu. [Use runtime stride to avoid 7DGS/7DRGS cross-layout misread]
+  uint Base = Idx * GS7D_InputStrideFloat4;
+  //***REngine End Modify
+
+
+
+  // Raw arrays first; keeps the offdiag-multiply-by-row-diag step explicit.
+  float CholDiag[7];
+  float CholOffdiag[21];
+
+  float4 D5  = GaussianData7D[Base + 5u];
+  float4 D6  = GaussianData7D[Base + 6u];
+  float4 D7  = GaussianData7D[Base + 7u];
+  float4 D8  = GaussianData7D[Base + 8u];
+  float4 D9  = GaussianData7D[Base + 9u];
+  float4 D10 = GaussianData7D[Base + 10u];
+  float4 D11 = GaussianData7D[Base + 11u];
+
+  CholDiag[0] = D5.x; CholDiag[1] = D5.y; CholDiag[2] = D5.z; CholDiag[3] = D5.w;
+  CholDiag[4] = D6.x; CholDiag[5] = D6.y; CholDiag[6] = D6.z;
+
+  CholOffdiag[ 0] = D6.w;
+  CholOffdiag[ 1] = D7.x;  CholOffdiag[ 2] = D7.y;  CholOffdiag[ 3] = D7.z;  CholOffdiag[ 4] = D7.w;
+  CholOffdiag[ 5] = D8.x;  CholOffdiag[ 6] = D8.y;  CholOffdiag[ 7] = D8.z;  CholOffdiag[ 8] = D8.w;
+  CholOffdiag[ 9] = D9.x;  CholOffdiag[10] = D9.y;  CholOffdiag[11] = D9.z;  CholOffdiag[12] = D9.w;
+  CholOffdiag[13] = D10.x; CholOffdiag[14] = D10.y; CholOffdiag[15] = D10.z; CholOffdiag[16] = D10.w;
+  CholOffdiag[17] = D11.x; CholOffdiag[18] = D11.y; CholOffdiag[19] = D11.z; CholOffdiag[20] = D11.w;
+
+  // Helper lambda-style index: L[i][j] for i>j is CholOffdiag[k] * CholDiag[i],
+  // where k counts row-major over the strict lower triangle:
+  //   (1,0)=0; (2,0..1)=1..2; (3,0..2)=3..5; (4,0..3)=6..9; (5,0..4)=10..14; (6,0..5)=15..20
+
+  // -- Lp (3x3 lower-tri) --
+  Lp = float3x3(
+    CholDiag[0],                    0.0f,                           0.0f,
+    CholOffdiag[ 0] * CholDiag[1],  CholDiag[1],                    0.0f,
+    CholOffdiag[ 1] * CholDiag[2],  CholOffdiag[ 2] * CholDiag[2],  CholDiag[2]);
+
+  // -- Lt (4 rows x 3 cols): rows 3..6 of L, cols 0..2 (all dense, all i>j) --
+  // row 3 cols 0..2 -> offdiag k = 3,4,5
+  // row 4 cols 0..2 -> offdiag k = 6,7,8
+  // row 5 cols 0..2 -> offdiag k = 10,11,12
+  // row 6 cols 0..2 -> offdiag k = 15,16,17
+  Lt = float4x3(
+    CholOffdiag[ 3] * CholDiag[3], CholOffdiag[ 4] * CholDiag[3], CholOffdiag[ 5] * CholDiag[3],
+    CholOffdiag[ 6] * CholDiag[4], CholOffdiag[ 7] * CholDiag[4], CholOffdiag[ 8] * CholDiag[4],
+    CholOffdiag[10] * CholDiag[5], CholOffdiag[11] * CholDiag[5], CholOffdiag[12] * CholDiag[5],
+    CholOffdiag[15] * CholDiag[6], CholOffdiag[16] * CholDiag[6], CholOffdiag[17] * CholDiag[6]);
+
+  // -- Ltd (4x4 lower-tri): rows 3..6 of L, cols 3..6 --
+  // row 3: diag only -> CholDiag[3]
+  // row 4 cols 3 -> offdiag k = 9 ; diag CholDiag[4]
+  // row 5 cols 3..4 -> offdiag k = 13,14 ; diag CholDiag[5]
+  // row 6 cols 3..5 -> offdiag k = 18,19,20 ; diag CholDiag[6]
+  Ltd = float4x4(
+    CholDiag[3],                    0.0f,                           0.0f,                           0.0f,
+    CholOffdiag[ 9] * CholDiag[4],  CholDiag[4],                    0.0f,                           0.0f,
+    CholOffdiag[13] * CholDiag[5],  CholOffdiag[14] * CholDiag[5],  CholDiag[5],                    0.0f,
+    CholOffdiag[18] * CholDiag[6],  CholOffdiag[19] * CholDiag[6],  CholOffdiag[20] * CholDiag[6],  CholDiag[6]);
+}
+
+// Write a degenerate 3DGS gaussian (alpha = 0) at slot Idx. Used as fallback
+// when the slice fails (e.g. Sigma_td not invertible).
+void WriteDegenerateOutput(uint Idx)
+{
+  uint OutBase = Idx * 4u;
+  GaussianData3DEquiv[OutBase + 0u] = float4(0, 0, 0, 0);
+  GaussianData3DEquiv[OutBase + 1u] = float4(1.0f, 0, 0, 1.0f);   // identity-ish cov to keep EWA stable
+  GaussianData3DEquiv[OutBase + 2u] = float4(0, 1.0f, 0, 0);
+  GaussianData3DEquiv[OutBase + 3u] = float4(0, 0, 0, 0);
+}
+
+//***REngine Begin Modify added by tuckersu. [7DRGS transmittance SH mono eval helper with runtime degree selector]
+// Reconstruct scalar value from mono SH coefficients with training-side basis order.
+// Degree supports 0..3:
+//   degree 0: DC only
+//   degree 1: DC + 3 coeffs
+//   degree 2: degree 1 + 5 coeffs
+//   degree 3: degree 2 + 7 coeffs
+float GS7D_EvalSH3Mono(float Sh0, float ShRest[15], float3 DirOCV, uint Degree)
+{
+  const float kC0 = 0.28209479177387814f;
+  const float kC1 = 0.4886025119029199f;
+  const float kC2_0 = 1.0925484305920792f;
+  const float kC2_1 = -1.0925484305920792f;
+  const float kC2_2 = 0.31539156525252005f;
+  const float kC2_3 = -1.0925484305920792f;
+  const float kC2_4 = 0.5462742152960396f;
+  const float kC3_0 = -0.5900435899266435f;
+  const float kC3_1 = 2.890611442640554f;
+  const float kC3_2 = -0.4570457994644658f;
+  const float kC3_3 = 0.3731763325901154f;
+  const float kC3_4 = -0.4570457994644658f;
+  const float kC3_5 = 1.445305721320277f;
+  const float kC3_6 = -0.5900435899266435f;
+
+  uint ClampedDegree = min(Degree, 3u);
+
+  float x = DirOCV.x;
+  float y = DirOCV.y;
+  float z = DirOCV.z;
+
+  float xx = x * x;
+  float yy = y * y;
+  float zz = z * z;
+  float xy = x * y;
+  float yz = y * z;
+  float xz = x * z;
+
+  float Result = kC0 * Sh0;
+
+  if (ClampedDegree >= 1u)
+  {
+    Result += (-kC1 * y) * ShRest[0];
+    Result += ( kC1 * z) * ShRest[1];
+    Result += (-kC1 * x) * ShRest[2];
+  }
+
+  if (ClampedDegree >= 2u)
+  {
+    Result += (kC2_0 * xy) * ShRest[3];
+    Result += (kC2_1 * yz) * ShRest[4];
+    Result += (kC2_2 * (2.0f * zz - xx - yy)) * ShRest[5];
+    Result += (kC2_3 * xz) * ShRest[6];
+    Result += (kC2_4 * (xx - yy)) * ShRest[7];
+  }
+
+  if (ClampedDegree >= 3u)
+  {
+    Result += (kC3_0 * y * (3.0f * xx - yy)) * ShRest[8];
+    Result += (kC3_1 * xy * z) * ShRest[9];
+    Result += (kC3_2 * y * (4.0f * zz - xx - yy)) * ShRest[10];
+    Result += (kC3_3 * z * (2.0f * zz - 3.0f * xx - 3.0f * yy)) * ShRest[11];
+    Result += (kC3_4 * x * (4.0f * zz - xx - yy)) * ShRest[12];
+    Result += (kC3_5 * z * (xx - yy)) * ShRest[13];
+    Result += (kC3_6 * x * (xx - 3.0f * yy)) * ShRest[14];
+  }
+
+  return max(Result + 0.5f, 0.0f);
+}
+//***REngine End Modify
+
+// ============================================================================
+
+// Slicing CS (one thread per gaussian, 64 threads per group).
+// ============================================================================
+
+[numthreads(64, 1, 1)]
+void MainCS(uint3 GroupId : SV_GroupID, uint GroupThreadIndex : SV_GroupIndex)
+{
+  uint Idx = GetUnWrappedDispatchThreadId(GroupId, GroupThreadIndex, 64u);
+  if (Idx >= GS7D_NumGaussians) return;
+
+  //***REngine Begin Modify added by tuckersu. [Use runtime stride to avoid 7DGS/7DRGS cross-layout misread]
+  uint Base = Idx * GS7D_InputStrideFloat4;
+  //***REngine End Modify
+
+
+  // ---- Load mean / lambda / opacity / color / base scale+quat ----
+  float4 D0 = GaussianData7D[Base + 0u];
+  float4 D1 = GaussianData7D[Base + 1u];
+  float4 D2 = GaussianData7D[Base + 2u];
+  float4 D3 = GaussianData7D[Base + 3u];
+  //***REngine Begin Modify added by tuckersu. [7DRGS dual mono-L3 SH payload: load J/T_view rest coefficients]
+  float4 D12 = GaussianData7D[Base + 12u];
+  float4 D13 = GaussianData7D[Base + 13u];
+  float4 D14 = GaussianData7D[Base + 14u];
+  float4 D15 = GaussianData7D[Base + 15u];
+  float4 D16 = GaussianData7D[Base + 16u];
+  float4 D17 = GaussianData7D[Base + 17u];
+  float4 D18 = GaussianData7D[Base + 18u];
+  float4 D19 = GaussianData7D[Base + 19u];
+  //***REngine End Modify
+
+  float3 MuP   = D0.xyz;
+  float  MuT   = D0.w;
+  float3 MuD   = D1.xyz;
+  float  LamT  = D1.w;
+  float  LamD  = D2.x;
+  float  Op    = D2.y;
+  float3 Color = float3(D2.z, D2.w, D3.x);
+
+  // BaseScale / BaseQuat (D3.yzw + D4) are unused in the GPU path; if Sigma_cond
+  // EWA fails the Preprocess EWA already has its own guard (see ComputeConic).
+
+  // ---- Build Sigma blocks via native matrix ops ----
+  // L partitioned into Lp(3x3), Lt(4x3), Ltd(4x4); see LoadCholeskyBlocks.
+  // Sigma_p   = Lp  * Lp^T                              (3x3)
+  // Sigma_ptd = Lp  * Lt^T                              (3x4)
+  // Sigma_td  = Lt  * Lt^T + Ltd * Ltd^T                (4x4, symmetric)
+  float3x3 Lp;
+  float4x3 Lt;
+  float4x4 Ltd;
+  LoadCholeskyBlocks(Idx, Lp, Lt, Ltd);
+
+  float3x3 SigmaP   = mul(Lp, transpose(Lp));
+  float3x4 SigmaPTD = mul(Lp, transpose(Lt));
+  float4x4 SigmaTD  = mul(Lt, transpose(Lt)) + mul(Ltd, transpose(Ltd));
+
+  // ---- Sigma_td^{-1} (UE Matrices.ush) with degenerate fallback ----
+  // determinant() guards against the rare singular case; UE's Inverse() does
+  // not check by itself. 1e-12 threshold matches the previous Cramer path.
+  float DetTD = determinant(SigmaTD);
+  if (abs(DetTD) < 1.0e-12f)
+  {
+    WriteDegenerateOutput(Idx);
+    return;
+  }
+  float4x4 SigmaTDInv = Inverse(SigmaTD);
+
+  // ---- Delta = [t-mu_t, d-mu_d] (4 vec) ----
+  float4 Delta = float4(GS7D_CurrentTime - MuT, GS7D_ViewDirection - MuD);
+
+  // ---- A = Sigma_ptd * Sigma_td^{-1}  (3x4) ----
+  float3x4 APtdInv = mul(SigmaPTD, SigmaTDInv);
+
+  //***REngine Begin Modify added by tuckersu. [GS GPUSort+DirectBlend - fix mu_cond GL->UE conversion to match CPU SliceAt]
+  // Position layout invariant (matches CPU FUGaussianSplatting7DPointCloud::SliceAt):
+  //
+  //   - MuP (= D[0].xyz, the per-gaussian "Position" loaded by 7DPointCloud
+  //     LoadPLY) is ALREADY IN UE COORDINATES (cm, left-handed):
+  //         Pt.Position = 100 * (px, -pz, -py)
+  //
+  //   - The Cholesky/sigma block lives in the original GL-frame, so the
+  //     conditional offset Sigma_ptd * Sigma_td^{-1} * Delta is computed in
+  //     GL space.
+  //
+  //   - Therefore the GL->UE flip (x, -z, -y) and the cm-scale (*100) must be
+  //     applied to the OFFSET ONLY, then added on top of the already-UE
+  //     MuP. Doing `(MuP + OffsetGL)` then a single GL->UE pass corrupts
+  //     MuP a second time and scatters every gaussian by a factor of 100
+  //     along bizarre axes.
+  float3 OffsetGL = mul(APtdInv, Delta);
+
+  // GL->UE flip: (x, y, z) -> (x, -z, -y), then cm-scale. Expressed as a
+  // permutation matrix P so the same P is used for the covariance block below.
+  static const float3x3 P_GL_TO_UE = float3x3(
+    1.0f,  0.0f,  0.0f,
+    0.0f,  0.0f, -1.0f,
+    0.0f, -1.0f,  0.0f);
+  static const float kCmScale  = 100.0f;
+  static const float kCmScale2 = kCmScale * kCmScale;
+
+  float3 OffsetUE = mul(P_GL_TO_UE, OffsetGL) * kCmScale;
+
+  // MuP is already in UE world-local space (cm). Subtract the recenter offset
+  // (cloud-local frame) to align the cloud's centroid with the component's
+  // pivot, then add the offset that captures the (t, d) conditional drift.
+  float3 MuCondLocal = (MuP - GS7D_LocalCenterOffset) + OffsetUE;
+
+  //***REngine Begin Modify added by tuckersu. [7DRGS component scale support - position transform uses full LocalToWorld]
+  // Apply the owning component's full World transform (rotation + scale +
+  // translation) so the cloud follows its actor.
+  // FMatrix44f layout: row-major in HLSL when bound via SHADER_PARAMETER, so
+  // mul(float4(localPos, 1), LocalToWorld) is the canonical row-vector form
+  // matching how UE's FMatrix44f maps to a float4x4 in shaders.
+  //***REngine End Modify
+  float4 WorldPos4 = mul(float4(MuCondLocal, 1.0f), GS7D_LocalToWorld);
+  float3 MuCondUE = WorldPos4.xyz;
+
+  // Bake into translated-world space so downstream Preprocess + HW raster
+  // (which use TranslatedViewMatrix without a large translation column) can
+  // operate in FP32-safe magnitudes.
+  MuCondUE += GS7D_PreViewTranslation;
+  //***REngine End Modify
+
+  // ---- Sigma_cond = Sigma_p - A * Sigma_ptd^T  (3x3, in GL space) ----
+  float3x3 SigmaCondGL = SigmaP - mul(APtdInv, transpose(SigmaPTD));
+
+  //***REngine Begin Modify added by tuckersu. [GS GPUSort+DirectBlend - Sigma GL->UE done below; MuCondUE was already shifted into TranslatedWorld above]
+  // Apply P · Σ · P^T to swap GL axes into UE convention, then cm^2 scale.
+  // Expressed as a single matrix triple-product instead of the previous
+  // hand-unrolled 6-component swap+negate; numerically identical because
+  // P is an orthogonal permutation/sign matrix.
+  float3x3 SigmaUE_Local = mul(P_GL_TO_UE, mul(SigmaCondGL, transpose(P_GL_TO_UE))) * kCmScale2;
+  //***REngine End Modify
+
+  //***REngine Begin Modify added by tuckersu. [7DRGS component scale support - apply full linear LocalToWorld to covariance]
+  // Support component scaling (including non-uniform scale) by using the full
+  // 3x3 linear block A of LocalToWorld:
+  //   Σ_world = A · Σ_local · A^T
+  // This avoids the previous double-scale path (matrix scale + WorldScaleSq)
+  // and keeps position/covariance transforms mathematically consistent.
+  float3x3 LinearLocalToWorld = (float3x3)GS7D_LocalToWorld;
+  float3x3 SigmaWorld = mul(LinearLocalToWorld, mul(SigmaUE_Local, transpose(LinearLocalToWorld)));
+
+  float Cov00_UE = SigmaWorld[0][0];
+  float Cov01_UE = SigmaWorld[0][1];
+  float Cov02_UE = SigmaWorld[0][2];
+  float Cov11_UE = SigmaWorld[1][1];
+  float Cov12_UE = SigmaWorld[1][2];
+  float Cov22_UE = SigmaWorld[2][2];
+  //***REngine End Modify
+
+  // ---- Opacity modulation ----
+  // F_temp = exp(-0.5 * lam_t * Delta_t^2 / Sigma_t)  (Sigma_t is the 1x1 block)
+  // F_dir  = exp(-0.5 * lam_d * Delta_d^T * Sigma_d^{-1} * Delta_d)
+  //
+  // Where Sigma_t = SigmaTD[0][0] (top-left 1x1 of Sigma_td) and Sigma_d^{-1}
+  // is the bottom-right 3x3 block of Sigma_td^{-1}.
+  float SigmaT = max(SigmaTD[0][0], 1.0e-8f);
+  float DeltaT = Delta.x;
+  float Ft = exp(-0.5f * LamT * DeltaT * DeltaT / SigmaT);
+
+  // Sigma_d^{-1} = bottom-right 3x3 of SigmaTDInv. HLSL row.swizzle gives us
+  // the right 3 columns of each of the lower 3 rows in one shot.
+  float3x3 SigDInv = float3x3(
+    SigmaTDInv[1].yzw,
+    SigmaTDInv[2].yzw,
+    SigmaTDInv[3].yzw);
+
+  float3 Dd = Delta.yzw;
+  float Quad = dot(Dd, mul(SigDInv, Dd));
+  float Fd = exp(-0.5f * LamD * Quad);
+
+  float AlphaCond = saturate(Op * sqrt(saturate(Ft * Fd)));
+
+  //***REngine Begin Modify added by tuckersu. [7DRGS J uses light direction; T_view uses camera direction]
+  float3 LightDirOCV = normalize(GS7D_ViewDirection);
+  float MuLen = length(MuCondUE);
+  float3 ViewRayDirUE = (MuLen > 1.0e-4f) ? (MuCondUE / MuLen) : float3(0.0f, 0.0f, 1.0f);
+  float3 ShDirOCV = float3(ViewRayDirUE.x, -ViewRayDirUE.z, -ViewRayDirUE.y);
+//***REngine End Modify
+
+  float Sh0 = (Color.r - 0.5f) / 0.28209479177387814f;
+  float ShRest[15];
+  ShRest[0] = D12.x;
+  ShRest[1] = D12.y;
+  ShRest[2] = D12.z;
+  ShRest[3] = D12.w;
+  ShRest[4] = D13.x;
+  ShRest[5] = D13.y;
+  ShRest[6] = D13.z;
+  ShRest[7] = D13.w;
+  ShRest[8] = D14.x;
+  ShRest[9] = D14.y;
+  ShRest[10] = D14.z;
+  ShRest[11] = D14.w;
+  ShRest[12] = D15.x;
+  ShRest[13] = D15.y;
+  ShRest[14] = D15.z;
+
+  float JMono = GS7D_EvalSH3Mono(Sh0, ShRest, LightDirOCV, 3u);
+  Color = float3(JMono, JMono, JMono);
+
+  //***REngine Begin Modify added by tuckersu. [7DRGS single-RT latent: LightColor deferred to Composite phase]
+  // Previously: Color *= GS7D_RelightLightColor here (per-gaussian).
+  // Since LightColor is a global constant and alpha-blend is linear, we can
+  // factor it out: sum(J_i * L * alpha_i * T_i) = L * sum(J_i * alpha_i * T_i).
+  // The multiply is now done once per-pixel in the Composite PS, saving
+  // per-fragment ALU and enabling a single-RT latent layout (J in R, TView in G).
+  // GS7D_RelightLightColor is forwarded to Composite via uniform instead.
+  //***REngine End Modify
+
+  //***REngine Begin Modify added by tuckersu. [7DRGS Dual SH: evaluate T_view with runtime variable SH degree]
+  // T_view uses the same mono evaluator as J, with runtime degree control (0..3).
+
+  //   - DC:   D[15].w
+  //   - Rest: D[16..19] => 15 coeffs
+  // Direction is ShDirOCV: T_view is camera-conditioned, unlike J above.
+  float TViewSliced = 1.0f;
+  if (GS7D_DualSHEnable != 0u)
+  {
+    float TViewRest[15];
+    TViewRest[0] = D16.x;
+    TViewRest[1] = D16.y;
+    TViewRest[2] = D16.z;
+    TViewRest[3] = D16.w;
+    TViewRest[4] = D17.x;
+    TViewRest[5] = D17.y;
+    TViewRest[6] = D17.z;
+    TViewRest[7] = D17.w;
+    TViewRest[8] = D18.x;
+    TViewRest[9] = D18.y;
+    TViewRest[10] = D18.z;
+    TViewRest[11] = D18.w;
+    TViewRest[12] = D19.x;
+    TViewRest[13] = D19.y;
+    TViewRest[14] = D19.z;
+    TViewSliced = GS7D_EvalSH3Mono(D15.w, TViewRest, ShDirOCV, GS7D_TViewSHDegree);
+
+    //***REngine Begin Modify added by tuckersu. [Debug T_view SH degree truncation visualization]
+    if (GS7D_DebugSHDegree != 0u)
+    {
+      float TViewFull = GS7D_EvalSH3Mono(D15.w, TViewRest, ShDirOCV, 3u);
+      if (GS7D_DebugSHDegree == 1u)
+      {
+        // Mode 1: |T_view(degree) - T_view(3)| heatmap → overwrite Color
+        // Red = abs diff scaled up, so any difference is immediately visible
+        float Diff = abs(TViewSliced - TViewFull);
+        float NormDiff = saturate(Diff * 10.0f);  // 10x scale for visibility
+        Color = float3(NormDiff, NormDiff * 0.15f, 0.0f);  // red-orange heatmap
+      }
+      else if (GS7D_DebugSHDegree == 2u)
+      {
+        // Mode 2: T_view(degree) value as grayscale → overwrite Color
+        // This directly shows what TViewSliced looks like at the current degree
+        Color = float3(TViewSliced, TViewSliced, TViewSliced);
+      }
+      else if (GS7D_DebugSHDegree == 3u)
+      {
+        // Mode 3: RGB split → R=T_view(degree), G=T_view(3), B=abs_diff*10
+        Color = float3(TViewSliced, TViewFull, abs(TViewSliced - TViewFull) * 10.0f);
+      }
+      // Neutralize TViewSliced in debug modes so Color output is not
+      // double-modulated by T_view in the downstream Raster/Composite pass.
+      TViewSliced = 1.0f;
+    }
+    //***REngine End Modify
+  }
+  //***REngine End Modify
+
+
+  // ---- Write FGSGPUPoint output ----
+  uint OutBase = Idx * 4u;
+  GaussianData3DEquiv[OutBase + 0u] = float4(MuCondUE, AlphaCond);
+  GaussianData3DEquiv[OutBase + 1u] = float4(Cov00_UE, Cov01_UE, Cov02_UE, Cov11_UE);
+  GaussianData3DEquiv[OutBase + 2u] = float4(Cov12_UE, Cov22_UE, Color.r, Color.g);
+  GaussianData3DEquiv[OutBase + 3u] = float4(Color.b, TViewSliced, 0, 0);
+}
+
+//***REngine End Modify
