@@ -1,0 +1,10 @@
+{
+  "action": "tool.call",
+  "tool": "VibeUE.NiagaraScratchPadService.GetCustomHlslCode",
+  "arguments": {
+    "systemPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest",
+    "emitterName": "ProjParticles",
+    "moduleName": "SSPR_Projection",
+    "nodeId": "E20AC4B842762D7503A03887C05B7CE8"
+  }
+}

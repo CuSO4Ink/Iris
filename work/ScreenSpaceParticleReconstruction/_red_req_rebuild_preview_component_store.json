@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\npath='/Engine/Transient.NiagaraComponent_2'\nasset=unreal.load_object(None,'/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest')\ncomp=unreal.load_object(None,path)\nif comp is None or asset is None: raise RuntimeError('Preview component or system missing')\ncomp.deactivate()\ncomp.set_asset(None, True)\ncomp.set_asset(asset, True)\ncomp.activate(True)\nprint('PREVIEW_COMPONENT_REBUILT=' + repr({'path':comp.get_path_name(),'asset':comp.get_asset().get_path_name() if comp.get_asset() else None,'active':bool(comp.is_active())}))"
+  }
+}

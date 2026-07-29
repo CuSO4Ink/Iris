@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "RT_PIE_VALIDATION={\"active\": true, \"component\": \"/Memory/UEDPIE_0_Untitled_1_BAMPWXQRFWPMYFNQEZVPDLSQZ.OpenWorld:PersistentLevel.NiagaraActor_UAID_18C04D87C619A5F202_1860273094.NiagaraComponent0\", \"copied\": true, \"fillStats\": {\"center\": 0, \"corner\": 0, \"nonzero\": 0, \"redMax\": 0, \"samples\": 65536}, \"sourceStats\": {\"center\": 209, \"corner\": 0, \"nonzero\": 4, \"redMax\": 209, \"samples\": 65536}, \"sourceTarget\": \"/Memory/UEDPIE_0_Untitled_1_BAMPWXQRFWPMYFNQEZVPDLSQZ.OpenWorld:PersistentLevel.NiagaraActor_UAID_18C04D87C619A5F202_1860273094.NiagaraComponent0.SSPR_RTWriteProbeSource\", \"system\": \"/Game/SSPR_Validation/Debug/NS_SSPR_RTWriteProbe_1785243895228.NS_SSPR_RTWriteProbe_1785243895228\", \"tick\": true, \"world\": \"/Temp/UEDPIE_0_Untitled_1.Untitled_1\"}",
+                 "result":  "None",
+                 "execution_time_ms":  380.4578857421875
+             },
+    "action":  "tool.call"
+}

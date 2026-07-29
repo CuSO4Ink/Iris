@@ -1,0 +1,9 @@
+{
+  "action": "tool.call",
+  "tool": "VibeUE.NiagaraScratchPadService.ListNodes",
+  "arguments": {
+    "systemPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest",
+    "emitterName": "ProjParticles",
+    "moduleName": "SSPR_Projection"
+  }
+}

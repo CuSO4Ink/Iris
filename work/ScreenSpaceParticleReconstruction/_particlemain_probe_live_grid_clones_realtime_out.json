@@ -1,0 +1,22 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  false,
+    "error":  {
+                  "toolError":  "{\r\n\t\"success\": false,\r\n\t\"error_code\": \"PYTHON_RUNTIME_ERROR\",\r\n\t\"error_message\": \"Traceback (most recent call last):\\n  File \\\"\u003cstring\u003e\\\", line 5, in \u003cmodule\u003e\\n  File \\\"C:\\\\\\\\Work\\\\\\\\AI\\\\\\\\Iris\\\\\\\\work\\\\\\\\ScreenSpaceParticleReconstruction\\\\\\\\_particlemain_probe_live_grid_clones.py\\\", line 108, in \u003cmodule\u003e\\n    raise RuntimeError(\\nRuntimeError: Every live Grid2D clone is empty: [{\u0027index\u0027: 25, \u0027grid\u0027: \u0027/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation.L_SSPR_ParticleTrails_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.NiagaraDataInterfaceGrid2DCollection_2\u0027, \u0027copied\u0027: True, \u0027nonzero\u0027: 0, \u0027redMax\u0027: 0}, {\u0027index\u0027: 36, \u0027grid\u0027: \u0027/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation.L_SSPR_ParticleTrails_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.NiagaraDataInterfaceGrid2DCollection_3\u0027, \u0027copied\u0027: True, \u0027nonzero\u0027: 0, \u0027redMax\u0027: 0}]\"\r\n}",
+                  "ok":  false
+              },
+    "raw":  {
+                "jsonrpc":  "2.0",
+                "id":  2,
+                "result":  {
+                               "content":  [
+                                               {
+                                                   "type":  "text",
+                                                   "text":  "{\r\n\t\"success\": false,\r\n\t\"error_code\": \"PYTHON_RUNTIME_ERROR\",\r\n\t\"error_message\": \"Traceback (most recent call last):\\n  File \\\"\u003cstring\u003e\\\", line 5, in \u003cmodule\u003e\\n  File \\\"C:\\\\\\\\Work\\\\\\\\AI\\\\\\\\Iris\\\\\\\\work\\\\\\\\ScreenSpaceParticleReconstruction\\\\\\\\_particlemain_probe_live_grid_clones.py\\\", line 108, in \u003cmodule\u003e\\n    raise RuntimeError(\\nRuntimeError: Every live Grid2D clone is empty: [{\u0027index\u0027: 25, \u0027grid\u0027: \u0027/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation.L_SSPR_ParticleTrails_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.NiagaraDataInterfaceGrid2DCollection_2\u0027, \u0027copied\u0027: True, \u0027nonzero\u0027: 0, \u0027redMax\u0027: 0}, {\u0027index\u0027: 36, \u0027grid\u0027: \u0027/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation.L_SSPR_ParticleTrails_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.NiagaraDataInterfaceGrid2DCollection_3\u0027, \u0027copied\u0027: True, \u0027nonzero\u0027: 0, \u0027redMax\u0027: 0}]\"\r\n}"
+                                               }
+                                           ],
+                               "isError":  true
+                           }
+            },
+    "action":  "tool.call"
+}

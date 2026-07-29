@@ -1,0 +1,12 @@
+{
+  "action": "tool.call",
+  "tool": "VibeUE.NiagaraScratchPadService.AddCustomHlslNode",
+  "arguments": {
+    "systemPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest",
+    "emitterName": "ProjParticles",
+    "moduleName": "SSPR_WriteOccupancy",
+    "code": "int W = 256; int H = 256;\nOccupancyRT.GetRenderTargetSize(W, H);\nint2 px = clamp(int2(ScreenUV * float2(W, H)), int2(0,0), int2(W-1, H-1));\nOccupancyRT.SetRenderTargetValue(true, px.x, px.y, float4(1.0, 0.0, 0.0, 1.0));\nOutDummy = 1.0;",
+    "posX": -160,
+    "posY": 200
+  }
+}

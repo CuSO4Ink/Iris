@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "RT_CONSTANT_PROBE={\"compileMessages\": [], \"componentActive\": true, \"copied\": false, \"gridPath\": \"/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main:NiagaraDataInterfaceGrid2DCollection_0\", \"max\": 0.0, \"nonzero\": 0, \"probeCompiled\": true, \"probeInstalled\": true, \"readbackBytes\": [0, 0, 0, 0, 0], \"readbackValues\": [0.0, 0.0, 0.0, 0.0, 0.0], \"restored\": true, \"samplePoints\": [[1024, 1024], [1016, 1016], [1032, 1032], [0, 0], [2047, 2047]], \"saved\": true, \"sourceValues\": [1.0, 1.0, 1.0, 1.0, 1.0], \"system\": \"/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main\"}",
+                 "result":  "None",
+                 "execution_time_ms":  854.476806640625
+             },
+    "action":  "tool.call"
+}

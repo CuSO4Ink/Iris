@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "V2_LIVE_SIMRT_RAW_QUADRANTS={\"active\": true, \"candidates\": [{\"nonzero\": 8129, \"path\": \"/Game/SSPR_Validation/M2/AnisotropicSplat_V2/L_SSPR_AnisotropicSplat_Validation.L_SSPR_AnisotropicSplat_Validation:TextureRenderTarget2D_20\", \"pixelCount\": 4194304, \"redMax\": 6.0, \"redMin\": 0.0, \"redSum\": 9917.0}, {\"nonzero\": 8, \"path\": \"/Game/SSPR_Validation/M2/AnisotropicSplat_V2/L_SSPR_AnisotropicSplat_Validation.L_SSPR_AnisotropicSplat_Validation:TextureRenderTarget2D_12\", \"pixelCount\": 4194304, \"redMax\": 4976.0, \"redMin\": 0.0, \"redSum\": 17689.75}]}",
+                 "result":  "None",
+                 "execution_time_ms":  6269.4072265625
+             },
+    "action":  "tool.call"
+}

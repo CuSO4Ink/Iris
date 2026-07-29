@@ -1,0 +1,10 @@
+{
+  "action": "tool.call",
+  "toolset": "SlateInspectorToolset.SlateInspectorToolset",
+  "tool": "Snapshot",
+  "arguments": {
+    "ref": "w1",
+    "maxDepth": 30,
+    "bIncludeSourceLocations": false
+  }
+}

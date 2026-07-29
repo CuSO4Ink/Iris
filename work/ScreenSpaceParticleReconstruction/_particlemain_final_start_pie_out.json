@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_SIMULATE_START={\"inPIE\": false, \"started\": false}",
+                 "result":  "None",
+                 "execution_time_ms":  12.932003021240234
+             },
+    "action":  "tool.call"
+}

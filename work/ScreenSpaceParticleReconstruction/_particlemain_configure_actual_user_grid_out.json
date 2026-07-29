@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_ACTUAL_USER_GRID={\"applied\": true, \"clear\": true, \"compileMessages\": [], \"numAttributes\": 1, \"numCells\": [2048, 2048], \"path\": \"/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main:NiagaraDataInterfaceGrid2DCollection_0\", \"saved\": true, \"targetParameter\": \"User.SSPR_TrajectoryRT\"}",
+                 "result":  "None",
+                 "execution_time_ms":  298.92709350585938
+             },
+    "action":  "tool.call"
+}

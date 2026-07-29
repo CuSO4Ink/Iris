@@ -1,0 +1,10 @@
+{
+  "action": "tool.call",
+  "tool": "editor_toolset.toolsets.blueprint.BlueprintTools.get_graph",
+  "arguments": {
+    "blueprint": {
+      "refPath": "/Game/SSPR_Validation/M2/BP_SSPR_TemporalOrchestrator.BP_SSPR_TemporalOrchestrator"
+    },
+    "graph_name": "EventGraph"
+  }
+}

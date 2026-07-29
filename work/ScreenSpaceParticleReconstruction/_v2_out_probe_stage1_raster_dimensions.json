@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "V2_STAGE1_RASTER_DIMENSIONS={\"applied\": true, \"compileMessages\": [], \"saved\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  1619.10400390625
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,12 @@
+{
+  "action": "tool.call",
+  "tool": "VibeUE.NiagaraScratchPadService.AddCustomHlslNode",
+  "arguments": {
+    "systemPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest",
+    "emitterName": "ProjParticles",
+    "moduleName": "SSPR_InitAttrs",
+    "code": "OutUV = float2(0.0, 0.0);\nOutDepth = 0.0;\nOutMark = 0.0;",
+    "posX": -160,
+    "posY": 200
+  }
+}

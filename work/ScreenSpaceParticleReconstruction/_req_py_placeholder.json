@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\n# Check ProjParticles interpolated spawning flag via emitter data is editor-only; try summary tool instead.\n# Just print guidance: interpolated spawn causes spawn script to run update logic.\nprint('probe placeholder')\n"
+  }
+}

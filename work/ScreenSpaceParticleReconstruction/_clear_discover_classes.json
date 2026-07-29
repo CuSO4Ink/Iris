@@ -1,0 +1,7 @@
+{
+  "class_name": "unreal.NiagaraEmitterService, unreal.NiagaraEmitter, unreal.VersionedNiagaraEmitterData, unreal.NiagaraSimulationStageBase",
+  "method_filter": "simulation|stage|version|property|script|emitter|merge|graph",
+  "max_methods": "200",
+  "include_inherited": "true",
+  "include_private": "false"
+}

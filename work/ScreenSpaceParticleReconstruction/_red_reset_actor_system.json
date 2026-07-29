@@ -1,0 +1,22 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  false,
+    "error":  {
+                  "toolError":  "New Niagara System is the same as the existing System.",
+                  "ok":  false
+              },
+    "raw":  {
+                "jsonrpc":  "2.0",
+                "id":  2,
+                "result":  {
+                               "content":  [
+                                               {
+                                                   "type":  "text",
+                                                   "text":  "New Niagara System is the same as the existing System."
+                                               }
+                                           ],
+                               "isError":  true
+                           }
+            },
+    "action":  "tool.call"
+}

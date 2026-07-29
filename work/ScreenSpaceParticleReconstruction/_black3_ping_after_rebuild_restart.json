@@ -1,0 +1,9 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "reachable":  true,
+                 "topLevelToolCount":  10
+             },
+    "action":  "ping"
+}

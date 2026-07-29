@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nsysa=unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest')\n# Try NiagaraSystem exposed parameters / editor-only API surfaces\ncands=[m for m in dir(sysa) if any(k in m.lower() for k in ['expose','parameter','user','variable','override'])]\nprint('SYS',cands)\n# Look for a niagara editor subsystem\nsubs=[n for n in dir(unreal) if 'Subsystem' in n and 'iagara' in n]\nprint('SUBS',subs)\n# NiagaraComponent has set_variable methods used at runtime; editor authoring uses NiagaraSystemFactory or scripts\nfac=[n for n in dir(unreal) if 'NiagaraDataInterface' in n and 'RenderTarget2D' in n]\nprint('DI',fac)\n"
+  }
+}

@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_ACTOR_TRANSFORM={\"actor\": \"/Game/Untitled.Untitled:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578\", \"location\": [480.0, 110.0, 570.0], \"rotation\": [0.0, 0.0, 0.0], \"scale\": [1.0, 1.0, 1.0]}",
+                 "result":  "None",
+                 "execution_time_ms":  8.6798038482666016
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,12 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "returnValue":  [
+                                     "[2026.07.26-11.27.28:092][997]LogNiagara: Warning: Disabling interpolated spawn because emitter flag and script type don\u0027t match. Did you adjust this value in the UI? Emitter may need recompile.. NiagaraEmitter /Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:ProjParticles_0",
+                                     "[2026.07.27-03.58.34:932][ 98]LogNiagara: Error: We do not support setting data interfaces in SetParameter_InternalUseOnly() currently.",
+                                     "[2026.07.27-04.22.45:181][269]LogNiagara: Error: We do not support setting data interfaces in SetParameter_InternalUseOnly() currently."
+                                 ]
+             },
+    "action":  "tool.call"
+}

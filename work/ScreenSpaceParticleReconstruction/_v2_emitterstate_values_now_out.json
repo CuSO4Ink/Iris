@@ -1,0 +1,285 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "returnValue":  {
+                                     "moduleName":  "EmitterState",
+                                     "inputs":  [
+                                                    {
+                                                        "name":  "Life Cycle Mode",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Enum"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "enum":  {
+                                                                                                 "refPath":  "/Niagara/Enums/ENiagaraEmitterLifeCycleMode.ENiagaraEmitterLifeCycleMode"
+                                                                                             },
+                                                                                    "enumName":  "ENiagaraEmitterLifeCycleMode::NewEnumerator1",
+                                                                                    "displayName":  "Self"
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Inactive Response",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Enum"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "enum":  {
+                                                                                                 "refPath":  "/Niagara/Enums/ENiagaraInactiveMode.ENiagaraInactiveMode"
+                                                                                             },
+                                                                                    "enumName":  "ENiagaraInactiveMode::NewEnumerator0",
+                                                                                    "displayName":  "Complete (Let Particles Finish then Kill Emitter)"
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Loop Behavior",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Enum"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "enum":  {
+                                                                                                 "refPath":  "/Niagara/Enums/ENiagara_EmitterStateOptions.ENiagara_EmitterStateOptions"
+                                                                                             },
+                                                                                    "enumName":  "ENiagara_EmitterStateOptions::NewEnumerator0",
+                                                                                    "displayName":  "Infinite"
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Loop Duration Mode",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Enum"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "enum":  {
+                                                                                                 "refPath":  "/Niagara/Enums/ENiagara_InfiniteLoopDuration.ENiagara_InfiniteLoopDuration"
+                                                                                             },
+                                                                                    "enumName":  "ENiagara_InfiniteLoopDuration::NewEnumerator0",
+                                                                                    "displayName":  "Fixed"
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Loop Count",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Loop Duration",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  2
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Recalculate Duration Each Loop",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  0
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "UseLoopDelay",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  0
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Loop Delay",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  0
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Delay First Loop Only",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Scalability Mode",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Enum"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "enum":  {
+                                                                                                 "refPath":  "/Niagara/Enums/ENiagaraEmitterScalabilityMode_Limited.ENiagaraEmitterScalabilityMode_Limited"
+                                                                                             },
+                                                                                    "enumName":  "ENiagaraEmitterScalabilityMode_Limited::NewEnumerator0",
+                                                                                    "displayName":  "System"
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Enable Distance Culling",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  0
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "MinDistance",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Min Distance Response",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "MaxDistance",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Max Distance Response",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Scale Spawn Count",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  0
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Spawn Count Scale",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Spawn Count Scale By Distance",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Enable Visibility Culling",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  0
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Visibility Cull Response",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Visibility Cull Delay",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Reset Age On Awaken",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_Unsupported"
+                                                                                 },
+                                                                      "value":  {
+
+                                                                                }
+                                                                  }
+                                                    }
+                                                ]
+                                 }
+             },
+    "action":  "tool.call"
+}

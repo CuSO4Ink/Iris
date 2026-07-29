@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nS='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\nE='ProjParticles'\nM='SSPR_WriteOccupancy'\nH='1877D2CA4F034875E12FFB8B17F65DEE'\nsvc=unreal.NiagaraScratchPadService\nnodes=svc.list_nodes(S,E,M)\nmapgets=[str(x.node_id) for x in nodes if str(x.node_type)=='MapGet']\nif len(mapgets)!=1: raise RuntimeError('Expected one MapGet, got ' + repr(mapgets))\ng=mapgets[0]\ncode=str(svc.get_custom_hlsl_code(S,E,M,H))\nprint('MAPGET=' + g)\nprint('PINS=' + repr([(str(x.pin_name),str(x.direction),str(x.type_name)) for x in svc.get_node_pins(S,E,M,g)]))\nprint('CONNECTIONS=' + repr([(str(x.from_node_id),str(x.from_pin),str(x.to_node_id),str(x.to_pin)) for x in svc.list_connections(S,E,M)]))\nprint('CODE_GETNUM=' + str('OccupancyGrid.GetNumCells' in code))\nprint('CODE_SET=' + str('OccupancyGrid.SetFloatValue<Attribute=Occupancy>' in code))\nprint('CODE_OLD_RT_SET=' + str('OccupancyRT.SetRenderTargetValue' in code))\nprint('MESSAGES=' + repr([str(x) for x in svc.get_compile_messages(S,False)]))"
+  }
+}

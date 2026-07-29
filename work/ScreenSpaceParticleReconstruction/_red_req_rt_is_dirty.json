@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "editor_toolset.toolsets.asset.AssetTools.is_dirty",
+  "arguments": {
+    "asset_path": "/Game/SSPR_Validation/RT_SSPR_Occupancy"
+  }
+}

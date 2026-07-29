@@ -1,0 +1,22 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  false,
+    "error":  {
+                  "toolError":  "{\r\n\t\"success\": false,\r\n\t\"error_code\": \"PYTHON_RUNTIME_ERROR\",\r\n\t\"error_message\": \"Traceback (most recent call last):\\n  File \\\"\u003cstring\u003e\\\", line 5, in \u003cmodule\u003e\\n  File \\\"C:\\\\\\\\Work\\\\\\\\AI\\\\\\\\Iris\\\\\\\\work\\\\\\\\ScreenSpaceParticleReconstruction\\\\\\\\_particlemain_validate_internal_simrt_pie.py\\\", line 91, in \u003cmodule\u003e\\n    raise RuntimeError(\\\"Niagara internal SimRT is empty: \\\" + repr(result))\\nRuntimeError: Niagara internal SimRT is empty: {\u0027rows\u0027: [{\u0027component\u0027: \u0027/Memory/UEDPIE_0_Untitled_1_BAMPWXQRFWPMYFNQEZVPDLSQZ.OpenWorld:PersistentLevel.NiagaraActor_UAID_18C04D87C619A8F202_1422086615.NiagaraComponent0\u0027, \u0027world\u0027: \u0027/Temp/UEDPIE_0_Untitled_1.Untitled_1\u0027, \u0027active\u0027: True, \u0027candidates\u0027: []}]}\"\r\n}",
+                  "ok":  false
+              },
+    "raw":  {
+                "jsonrpc":  "2.0",
+                "id":  2,
+                "result":  {
+                               "content":  [
+                                               {
+                                                   "type":  "text",
+                                                   "text":  "{\r\n\t\"success\": false,\r\n\t\"error_code\": \"PYTHON_RUNTIME_ERROR\",\r\n\t\"error_message\": \"Traceback (most recent call last):\\n  File \\\"\u003cstring\u003e\\\", line 5, in \u003cmodule\u003e\\n  File \\\"C:\\\\\\\\Work\\\\\\\\AI\\\\\\\\Iris\\\\\\\\work\\\\\\\\ScreenSpaceParticleReconstruction\\\\\\\\_particlemain_validate_internal_simrt_pie.py\\\", line 91, in \u003cmodule\u003e\\n    raise RuntimeError(\\\"Niagara internal SimRT is empty: \\\" + repr(result))\\nRuntimeError: Niagara internal SimRT is empty: {\u0027rows\u0027: [{\u0027component\u0027: \u0027/Memory/UEDPIE_0_Untitled_1_BAMPWXQRFWPMYFNQEZVPDLSQZ.OpenWorld:PersistentLevel.NiagaraActor_UAID_18C04D87C619A8F202_1422086615.NiagaraComponent0\u0027, \u0027world\u0027: \u0027/Temp/UEDPIE_0_Untitled_1.Untitled_1\u0027, \u0027active\u0027: True, \u0027candidates\u0027: []}]}\"\r\n}"
+                                               }
+                                           ],
+                               "isError":  true
+                           }
+            },
+    "action":  "tool.call"
+}

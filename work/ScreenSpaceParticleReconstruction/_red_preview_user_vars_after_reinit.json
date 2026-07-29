@@ -1,0 +1,72 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "returnValue":  [
+                                     {
+                                         "value":  {
+                                                       "struct":  {
+                                                                      "refPath":  "/Script/NiagaraEditor.NiagaraExt_VariableValue_Object"
+                                                                  },
+                                                       "value":  {
+                                                                     "objectClass":  {
+                                                                                         "refPath":  "/Script/Engine.TextureRenderTarget"
+                                                                                     },
+                                                                     "object":  {
+                                                                                    "refPath":  "/Game/SSPR_Validation/RT_SSPR_Occupancy.RT_SSPR_Occupancy"
+                                                                                }
+                                                                 }
+                                                   },
+                                         "name":  "OccupancyRTParam",
+                                         "type":  {
+                                                      "classStructOrEnum":  {
+                                                                                "refPath":  "/Script/Engine.TextureRenderTarget"
+                                                                            }
+                                                  }
+                                     },
+                                     {
+                                         "value":  {
+                                                       "struct":  {
+                                                                      "refPath":  "/Script/NiagaraEditor.NiagaraExt_VariableValue_DataInterface"
+                                                                  },
+                                                       "value":  {
+                                                                     "dataInterfaceClass":  {
+                                                                                                "refPath":  "/Script/Niagara.NiagaraDataInterfaceRenderTarget2D"
+                                                                                            },
+                                                                     "dataInterface":  {
+                                                                                           "refPath":  "/Engine/Transient.NiagaraComponent_2:NiagaraDataInterfaceRenderTarget2D_0"
+                                                                                       }
+                                                                 }
+                                                   },
+                                         "name":  "Render Target 2D",
+                                         "type":  {
+                                                      "classStructOrEnum":  {
+                                                                                "refPath":  "/Script/Niagara.NiagaraDataInterfaceRenderTarget2D"
+                                                                            }
+                                                  }
+                                     },
+                                     {
+                                         "value":  {
+                                                       "struct":  {
+                                                                      "refPath":  "/Script/NiagaraEditor.NiagaraExt_VariableValue_DataInterface"
+                                                                  },
+                                                       "value":  {
+                                                                     "dataInterfaceClass":  {
+                                                                                                "refPath":  "/Script/Niagara.NiagaraDataInterfaceGrid2DCollection"
+                                                                                            },
+                                                                     "dataInterface":  {
+                                                                                           "refPath":  "/Engine/Transient.NiagaraComponent_2:NiagaraDataInterfaceGrid2DCollection_0"
+                                                                                       }
+                                                                 }
+                                                   },
+                                         "name":  "SSPR_OccupancyGrid",
+                                         "type":  {
+                                                      "classStructOrEnum":  {
+                                                                                "refPath":  "/Script/Niagara.NiagaraDataInterfaceGrid2DCollection"
+                                                                            }
+                                                  }
+                                     }
+                                 ]
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nscript_path=r'C:\\\\Work\\\\AI\\\\Iris\\\\work\\\\ScreenSpaceParticleReconstruction\\\\_m2params_probe_blueprint_pins.py'\nwith open(script_path,'r',encoding='utf-8') as source_file:\n    script_code=source_file.read()\nexec(compile(script_code,script_path,'exec'),{'unreal':unreal})"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.SetStackInputData",
+  "arguments": {
+    "stackInputRef": {
+      "system": { "refPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest" },
+      "emitterName": "ProjParticles",
+      "scriptName": "ParticleSpawnScript",
+      "moduleName": "ShapeLocation",
+      "rendererIndex": -1,
+      "inputNameStack": ["Sphere Radius"]
+    },
+    "inputData": {
+      "struct": { "refPath": "/Script/Niagara.NiagaraFloat" },
+      "value": { "value": 300.0 }
+    }
+  }
+}

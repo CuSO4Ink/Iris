@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PIE_RUNNING=True\nMATCHING_COMPONENTS=[{\u0027component\u0027: \u0027/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871.NiagaraComponent0\u0027, \u0027world\u0027: \u0027/Temp/Untitled_1.Untitled_1\u0027, \u0027worldType\u0027: None, \u0027active\u0027: True, \u0027tick\u0027: False, \u0027solo\u0027: False, \u0027ageMode\u0027: \u0027\u003cNiagaraAgeUpdateMode.TICK_DELTA_TIME: 0\u003e\u0027, \u0027owner\u0027: \u0027/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871\u0027}, {\u0027component\u0027: \u0027/Engine/Transient.NiagaraComponent_2\u0027, \u0027world\u0027: None, \u0027worldType\u0027: None, \u0027active\u0027: False, \u0027tick\u0027: False, \u0027solo\u0027: True, \u0027ageMode\u0027: \u0027\u003cNiagaraAgeUpdateMode.TICK_DELTA_TIME: 0\u003e\u0027, \u0027owner\u0027: None}, {\u0027component\u0027: \u0027/Memory/UEDPIE_0_Untitled_1_BRN0QBBI672UKB91VRLSDJ1Y7.OpenWorld:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871.NiagaraComponent0\u0027, \u0027world\u0027: \u0027/Temp/UEDPIE_0_Untitled_1.Untitled_1\u0027, \u0027worldType\u0027: None, \u0027active\u0027: True, \u0027tick\u0027: False, \u0027solo\u0027: False, \u0027ageMode\u0027: \u0027\u003cNiagaraAgeUpdateMode.TICK_DELTA_TIME: 0\u003e\u0027, \u0027owner\u0027: \u0027/Memory/UEDPIE_0_Untitled_1_BRN0QBBI672UKB91VRLSDJ1Y7.OpenWorld:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871\u0027}, {\u0027component\u0027: \u0027/Temp/UEDPIE_0_Untitled_1.ActorContainer_0:NiagaraActor_UAID_18C04D87C619FFF102_1453982871.NiagaraComponent0\u0027, \u0027world\u0027: None, \u0027worldType\u0027: None, \u0027active\u0027: False, \u0027tick\u0027: False, \u0027solo\u0027: False, \u0027ageMode\u0027: \u0027\u003cNiagaraAgeUpdateMode.TICK_DELTA_TIME: 0\u003e\u0027, \u0027owner\u0027: \u0027/Temp/UEDPIE_0_Untitled_1.ActorContainer_0:NiagaraActor_UAID_18C04D87C619FFF102_1453982871\u0027}]",
+                 "result":  "None",
+                 "execution_time_ms":  23.136898040771484
+             },
+    "action":  "tool.call"
+}

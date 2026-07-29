@@ -1,0 +1,1 @@
+{"endpoint":"http://127.0.0.1:8000/mcp","ok":true,"data":{"success":true,"output":"V2_AB_SOURCE={\"active\": true, \"asset\": \"/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main\", \"tick\": true}","result":"None","execution_time_ms":23.417800903320312},"action":"tool.call"}

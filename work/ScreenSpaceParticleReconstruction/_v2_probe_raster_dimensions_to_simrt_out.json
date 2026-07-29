@@ -1,0 +1,1 @@
+{"endpoint":"http://127.0.0.1:8000/mcp","ok":true,"data":{"success":true,"output":"V2_RASTER_DIMENSIONS_PROBE={\"applied\": true, \"messages\": []}","result":"None","execution_time_ms":1672.4102783203125},"action":"tool.call"}

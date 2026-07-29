@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_STAGE_PROBE_INSTALLED={\"active\": true, \"hlsl\": \"0A8AF31C411E7C11AFA3C0A1695A51DA\", \"module\": \"SSPR_RasterizeWhiteParticles\"}",
+                 "result":  "None",
+                 "execution_time_ms":  6812.82861328125
+             },
+    "action":  "tool.call"
+}

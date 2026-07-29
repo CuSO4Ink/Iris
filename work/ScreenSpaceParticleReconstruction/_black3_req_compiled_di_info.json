@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\npaths=['/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:ProjParticles_0.GPUComputeScript','/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:ProjParticles_0.UpdateScript']\nfor p in paths:\n    s=unreal.load_object(None,p)\n    print('SCRIPT='+p+' found='+str(s is not None))\n    if s is None: continue\n    for prop in ['cached_script_vm','cached_default_data_interfaces']:\n        try:\n            v=s.get_editor_property(prop)\n            print(prop+'='+repr(v))\n            print(prop+'_DIR='+repr([x for x in dir(v) if any(k in x.lower() for k in ['interface','hlsl','compile','status','simulation','parameter'])]))\n            if prop=='cached_script_vm':\n                for q in ['data_interface_info','last_hlsl_translation_gpu','last_hlsl_translation','last_compile_status','simulation_stage_meta_data']:\n                    try: print(q+'='+repr(v.get_editor_property(q)))\n                    except Exception as e: print(q+'_ERR='+str(e))\n        except Exception as e:\n            print(prop+'_ERR='+str(e))\n    del s"
+  }
+}

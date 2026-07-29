@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nTARGET='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\nrows=[]\nfor comp in unreal.ObjectIterator(unreal.NiagaraComponent):\n    try:\n        asset=comp.get_editor_property('asset')\n        if asset and asset.get_path_name()==TARGET:\n            owner=comp.get_owner()\n            rows.append({'component':comp.get_path_name(),'owner':owner.get_path_name() if owner else None,'active':bool(comp.is_active()),'autoActivate':bool(comp.get_editor_property('auto_activate')),'asset':asset.get_path_name()})\n    except Exception as e:\n        pass\nprint('MATCHING_COMPONENTS=' + repr(rows))"
+  }
+}

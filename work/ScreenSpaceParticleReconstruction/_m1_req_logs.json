@@ -1,0 +1,5 @@
+{
+  "category": "",
+  "pattern": "(?i)(niagara|gpu|render.?target|hlsl|uav).*(error|warning|failed|invalid)|(error|warning|failed|invalid).*(niagara|gpu|render.?target|hlsl|uav)",
+  "maxEntries": 200
+}

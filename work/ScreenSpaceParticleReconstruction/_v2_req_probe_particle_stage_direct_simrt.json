@@ -1,0 +1,9 @@
+{
+  "action": "tool.call",
+  "endpoint": "http://127.0.0.1:8000/mcp",
+  "timeoutSec": 120,
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nexec(open(r'C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_v2_probe_particle_stage_direct_simrt.py', encoding='utf-8').read())"
+  }
+}

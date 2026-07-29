@@ -1,0 +1,9 @@
+{
+  "action": "tool.call",
+  "tool": "editor_toolset.toolsets.asset.AssetTools.find_assets",
+  "arguments": {
+    "folder_path": "/Game/SSPR_Validation/M2",
+    "name": "",
+    "recursive": true
+  }
+}

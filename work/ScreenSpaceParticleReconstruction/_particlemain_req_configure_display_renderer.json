@@ -1,0 +1,19 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.SetRendererData",
+  "arguments": {
+    "renderer": {
+      "system": {
+        "refPath": "/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main"
+      },
+      "emitterName": "Fountain",
+      "scriptName": "",
+      "moduleName": "",
+      "rendererIndex": 1,
+      "inputNameStack": []
+    },
+    "rendererData": {
+      "propertyValues": "{\"Material\":{\"refPath\":\"/Game/SSPR_Validation/M2/ParticleTrails/M_SSPR_ParticleTrails_Display.M_SSPR_ParticleTrails_Display\"},\"SourceMode\":\"Emitter\",\"Alignment\":\"Unaligned\",\"FacingMode\":\"FaceCameraPlane\",\"SortMode\":\"None\",\"bCastShadows\":false,\"bIncludeInHitProxy\":false,\"GpuTranslucentLatency\":\"Immediate\",\"MaterialParameters\":{\"attributeBindings\":[{\"materialParameterName\":\"TrajectoryTexture\",\"niagaraVariable\":{\"name\":\"User.SSPR_TrajectoryRT\",\"typeDefHandle\":{\"registeredTypeIndex\":3}},\"niagaraChildVariable\":{\"name\":\"None\",\"typeDefHandle\":{\"registeredTypeIndex\":105}}}],\"scalarParameters\":[],\"vectorParameters\":[],\"textureParameters\":[],\"staticBoolParameters\":[]},\"SortOrderHint\":100,\"MotionVectorSetting\":\"Disable\",\"bIsEnabled\":true}"
+    }
+  }
+}

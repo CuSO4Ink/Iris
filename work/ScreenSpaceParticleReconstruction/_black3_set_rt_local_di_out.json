@@ -1,0 +1,22 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  false,
+    "error":  {
+                  "toolError":  "SetObjectProperties on \u0027/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:ProjParticles_0.NiagaraScriptSource_0.NiagaraGraph_0.NiagaraNodeFunctionCall_10.NiagaraDataInterfaceRenderTarget2D_0\u0027 (NiagaraDataInterfaceRenderTarget2D): the following properties could not be set: inheritUserParameterSettings, overrideFormat\nFailed to set properties on NiagaraDataInterfaceRenderTarget2D \u0027NiagaraDataInterfaceRenderTarget2D_0\u0027. Check that property names and types are correct. Inspect the property schema for this class to discover valid property names.\nFailed to set data interface properties for input \u0027OccupancyRT\u0027. Stack reference: System(NS_SSPR_ProjTest) / Emitter(ProjParticles) / Script(ParticleUpdateScript) / Module(SSPR_WriteOccupancy) / Input(OccupancyRT)",
+                  "ok":  false
+              },
+    "raw":  {
+                "jsonrpc":  "2.0",
+                "id":  2,
+                "result":  {
+                               "content":  [
+                                               {
+                                                   "type":  "text",
+                                                   "text":  "SetObjectProperties on \u0027/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:ProjParticles_0.NiagaraScriptSource_0.NiagaraGraph_0.NiagaraNodeFunctionCall_10.NiagaraDataInterfaceRenderTarget2D_0\u0027 (NiagaraDataInterfaceRenderTarget2D): the following properties could not be set: inheritUserParameterSettings, overrideFormat\nFailed to set properties on NiagaraDataInterfaceRenderTarget2D \u0027NiagaraDataInterfaceRenderTarget2D_0\u0027. Check that property names and types are correct. Inspect the property schema for this class to discover valid property names.\nFailed to set data interface properties for input \u0027OccupancyRT\u0027. Stack reference: System(NS_SSPR_ProjTest) / Emitter(ProjParticles) / Script(ParticleUpdateScript) / Module(SSPR_WriteOccupancy) / Input(OccupancyRT)"
+                                               }
+                                           ],
+                               "isError":  true
+                           }
+            },
+    "action":  "tool.call"
+}

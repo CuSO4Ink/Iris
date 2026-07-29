@@ -1,0 +1,4 @@
+{
+  "class_name": "unreal.NiagaraScratchPadService",
+  "method_filter": "scratch|node|pin|connection|hlsl|apply|compile|save|module"
+}

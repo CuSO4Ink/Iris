@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "ADVANCE=x.advance_simulation(tick_count, tick_delta_seconds) -\u003e None\r\r\nAdvances this system\u0027s simulation by the specified number of ticks and delta time.\r\r\n\r\r\nArgs:\r\r\n    tick_count (int32): \r\r\n    tick_delta_seconds (float):\nAGE_MODE=x.set_age_update_mode(age_update_mode) -\u003e None\r\r\nSets the age update mode for the System instance.\r\r\n\r\r\nArgs:\r\r\n    age_update_mode (NiagaraAgeUpdateMode):\nSOLO=x.set_force_solo(force_solo) -\u003e None\r\r\nSet Forced Solo Mode\r\r\n\r\r\nArgs:\r\r\n    force_solo (bool):\nACTIVATE=x.activate(reset=False) -\u003e None\r\r\nActivates the SceneComponent, should be overridden by native child classes.\r\r\n\r\r\nArgs:\r\r\n    reset (bool): Whether the activation should happen even if ShouldActivate returns false.",
+                 "result":  "None",
+                 "execution_time_ms":  85.225204467773438
+             },
+    "action":  "tool.call"
+}

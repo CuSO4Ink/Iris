@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\ngrid=unreal.load_object(None,'/Engine/Transient.NiagaraComponent_2:NiagaraDataInterfaceGrid2DCollection_0')\ncomp=unreal.load_object(None,'/Engine/Transient.NiagaraComponent_2')\nif grid is None or comp is None: raise RuntimeError('Preview Grid or component missing')\ngrid.set_editor_property('num_attributes',1)\ncomp.reinitialize_system()\nprint('PREVIEW_GRID_FIXED=' + repr({'numAttributes':grid.get_editor_property('num_attributes'),'active':bool(comp.is_active())}))"
+  }
+}

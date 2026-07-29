@@ -1,0 +1,1 @@
+{"endpoint":"http://127.0.0.1:8000/mcp","ok":true,"data":{"returnValue":"OutUV = float2(0.0, 0.0);\nOutDepth = 0.0;\nOutMark = 0.0;"},"action":"tool.call"}

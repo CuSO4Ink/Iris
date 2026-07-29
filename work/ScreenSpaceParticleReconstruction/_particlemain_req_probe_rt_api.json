@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nprint('RAW_PIXEL_DOC='+str(unreal.RenderingLibrary.read_render_target_raw_pixel.__doc__))"
+  }
+}

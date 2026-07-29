@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_RUNTIME_GRID_TARGET={\"active\": true, \"component\": \"/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation.L_SSPR_ParticleTrails_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0\", \"forceSolo\": true, \"gridOverride\": \"system-default\", \"liveGrids\": [{\"attributes\": 1, \"clear\": true, \"path\": \"/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation.L_SSPR_ParticleTrails_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.NiagaraDataInterfaceGrid2DCollection_1\", \"targetParameter\": \"User.SSPR_TrajectoryRT\", \"x\": 2048, \"y\": 2048}, {\"attributes\": 1, \"clear\": true, \"path\": \"/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation.L_SSPR_ParticleTrails_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.NiagaraDataInterfaceGrid2DCollection_2\", \"targetParameter\": \"User.SSPR_TrajectoryRT\", \"x\": 2048, \"y\": 2048}, {\"attributes\": 1, \"clear\": true, \"path\": \"/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation.L_SSPR_ParticleTrails_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.NiagaraDataInterfaceGrid2DCollection_3\", \"targetParameter\": \"User.SSPR_TrajectoryRT\", \"x\": 2048, \"y\": 2048}], \"matchingGrid\": true, \"target\": \"/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation.L_SSPR_ParticleTrails_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.SSPR_TrajectoryRT_Runtime\", \"targetFormat\": \"\u003cTextureRenderTargetFormat.RTF_R32F: 7\u003e\", \"targetSize\": [2048, 2048]}",
+                 "result":  "None",
+                 "execution_time_ms":  31.717597961425781
+             },
+    "action":  "tool.call"
+}

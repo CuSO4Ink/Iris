@@ -1,0 +1,18 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.SetStackInputData",
+  "arguments": {
+    "stackInputRef": {
+      "system": { "refPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest" },
+      "emitterName": "ProjParticles",
+      "scriptName": "EmitterUpdateScript",
+      "moduleName": "SpawnRate",
+      "rendererIndex": -1,
+      "inputNameStack": ["SpawnRate"]
+    },
+    "inputData": {
+      "struct": { "refPath": "/Script/Niagara.NiagaraFloat" },
+      "value": { "value": 200.0 }
+    }
+  }
+}

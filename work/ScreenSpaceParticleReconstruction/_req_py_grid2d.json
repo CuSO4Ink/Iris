@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nc=unreal.NiagaraDataInterfaceGrid2DCollection\nfns=[f for f in dir(c) if not f.startswith('__')]\nprint('GRID2D_METHODS:')\nprint('\\n'.join(fns))\n"
+  }
+}

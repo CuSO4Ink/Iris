@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_RESOLVE_REPAIR={\"applied\": false, \"connected\": true, \"messages\": [\"Error: [Fountain/GPUComputeScript] Data interface \u0027TrajectoryGrid\u0027 does not contain function \u0027GetValue\u0027 as used in custom HLSL. - Node: Custom Hlsl - \", \"Error: [Fountain/GPUComputeScript] Data interface \u0027TrajectoryGrid\u0027 does not contain function \u0027GetValue\u0027 as used in custom HLSL. - Node: Custom Hlsl -  (node 4B7D7C2D4BFF6907D7A71A9887B51402)\"], \"saved\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  521.74407958984375
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "[\u0027add_asset_user_data_of_class\u0027, \u0027get_asset\u0027, \u0027get_asset_user_data_of_class\u0027, \u0027get_fx_system_asset\u0027, \u0027has_asset_user_data_of_class\u0027, \u0027reset_system\u0027, \u0027set_asset\u0027, \u0027set_system_fixed_bounds\u0027]",
+                 "result":  "None",
+                 "execution_time_ms":  14.709402084350586
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_INTERNAL_PIE={\"rows\": [{\"active\": true, \"candidates\": [{\"alphaMax\": 0, \"format\": \"\u003cTextureRenderTargetFormat.RTF_RGBA16F: 6\u003e\", \"nonzero\": 63, \"redMax\": 118, \"target\": \"/Temp/UEDPIE_0_Untitled_1.Untitled_1:TextureRenderTarget2D_0\"}], \"component\": \"/Memory/UEDPIE_0_Untitled_1_BAMPWXQRFWPMYFNQEZVPDLSQZ.OpenWorld:PersistentLevel.NiagaraActor_UAID_18C04D87C619A9F202_1095912791.NiagaraComponent0\", \"world\": \"/Temp/UEDPIE_0_Untitled_1.Untitled_1\"}]}",
+                 "result":  "None",
+                 "execution_time_ms":  379.91329956054688
+             },
+    "action":  "tool.call"
+}

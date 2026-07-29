@@ -1,0 +1,14 @@
+{
+  "action": "tool.call",
+  "toolset": "NiagaraToolsets.NiagaraToolset_Component",
+  "tool": "SetSystem",
+  "arguments": {
+    "niagaraComponent": {
+      "refPath": "/Engine/Transient.NiagaraComponent_2"
+    },
+    "system": {
+      "refPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest"
+    },
+    "bResetExistingOverrideParameters": true
+  }
+}

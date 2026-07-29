@@ -1,0 +1,11 @@
+{
+  "action": "tool.call",
+  "tool": "editor_toolset.toolsets.blueprint.BlueprintTools.create",
+  "arguments": {
+    "folder_path": "/Game/SSPR_Validation/M2",
+    "asset_name": "BP_SSPR_TemporalOrchestrator",
+    "asset_type": {
+      "refPath": "/Script/Engine.Actor"
+    }
+  }
+}

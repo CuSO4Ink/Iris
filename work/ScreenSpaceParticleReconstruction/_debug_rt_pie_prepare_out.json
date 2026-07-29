@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "RT_PIE_PREPARED={\"actor\": \"/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619A5F202_1860273094\", \"componentActive\": true, \"debugPackage\": \"/Game/SSPR_Validation/Debug/NS_SSPR_RTWriteProbe_1785243895228\", \"debugSystem\": \"/Game/SSPR_Validation/Debug/NS_SSPR_RTWriteProbe_1785243895228.NS_SSPR_RTWriteProbe_1785243895228\", \"pieRequested\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  556.13427734375
+             },
+    "action":  "tool.call"
+}

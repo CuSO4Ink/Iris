@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_TYPE_INSTANCES={\"handle\": {\"dict\": {}, \"export\": \"(RegisteredTypeIndex=-1)\", \"methods\": [\"assign\", \"cast\", \"copy\", \"export_text\", \"get_editor_property\", \"import_text\", \"set_editor_properties\", \"set_editor_property\", \"static_struct\", \"to_dict\", \"to_tuple\"], \"repr\": \"\u003cStruct \u0027NiagaraTypeDefinitionHandle\u0027 (0x000002456EB035E0) {}\u003e\", \"tuple\": []}, \"typeDefinition\": {\"dict\": {}, \"export\": \"(ClassStructOrEnum=\\\"/Script/CoreUObject.Class\u0027/Script/Niagara.NiagaraDataInterfaceGrid2DCollection\u0027\\\",UnderlyingType=0,Flags=0)\", \"methods\": [\"assign\", \"cast\", \"copy\", \"export_text\", \"get_editor_property\", \"import_text\", \"set_editor_properties\", \"set_editor_property\", \"static_struct\", \"to_dict\", \"to_tuple\"], \"repr\": \"\u003cStruct \u0027NiagaraTypeDefinition\u0027 (0x0000024728E122E0) {}\u003e\", \"str\": \"\u003cStruct \u0027NiagaraTypeDefinition\u0027 (0x0000024728E122E0) {}\u003e\", \"tuple\": []}}",
+                 "result":  "None",
+                 "execution_time_ms":  10.863698959350586
+             },
+    "action":  "tool.call"
+}

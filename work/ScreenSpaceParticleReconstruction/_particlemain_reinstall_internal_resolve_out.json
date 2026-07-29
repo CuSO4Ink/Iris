@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_INTERNAL_RESOLVE={\"applied\": true, \"compileMessages\": [], \"configured\": true, \"createdModule\": false, \"internalRT\": \"/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main:NiagaraDataInterfaceRenderTarget2D_0\", \"module\": \"SSPR_ResolveGridToSimRT\", \"saved\": true, \"stage\": \"SSPR Resolve Grid To Material\"}",
+                 "result":  "None",
+                 "execution_time_ms":  907.5625
+             },
+    "action":  "tool.call"
+}

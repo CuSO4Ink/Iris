@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nprint('SOURCES')\nfor obj in unreal.ObjectIterator(unreal.NiagaraScriptSourceBase):\n    p=obj.get_path_name()\n    if 'SSPR' in p: print('SOURCE=' + p + '|OUTER=' + (obj.get_outer().get_path_name() if obj.get_outer() else 'None'))\nprint('NODES')\nfor node in unreal.ObjectIterator(unreal.EdGraphNode):\n    p=node.get_path_name()\n    if 'SSPR_WriteOccupancy' not in p: continue\n    props={}\n    for key in ('node_guid','pins'):\n        try: props[key]=node.get_editor_property(key)\n        except Exception as exc: props[key]='ERR:' + str(exc)\n    pin_summary=[]\n    if not isinstance(props.get('pins'),str):\n        for pin in props.get('pins') or []:\n            try: pin_summary.append((str(pin.get_editor_property('pin_name')),str(pin.get_editor_property('direction'))))\n            except Exception as exc: pin_summary.append(('ERR',str(exc)))\n    print('NODE=' + p + '|CLASS=' + node.get_class().get_name() + '|GUID=' + str(props.get('node_guid')) + '|PINS=' + repr(pin_summary) + '|PINSRAW=' + (props.get('pins') if isinstance(props.get('pins'),str) else 'OK'))"
+  }
+}

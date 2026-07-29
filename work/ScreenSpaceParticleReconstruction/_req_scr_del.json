@@ -1,0 +1,10 @@
+{
+  "action": "tool.call",
+  "tool": "VibeUE.NiagaraScratchPadService.DeleteNode",
+  "arguments": {
+    "systemPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest",
+    "emitterName": "ProjParticles",
+    "moduleName": "SSPR_WriteOccupancy",
+    "nodeId": "BFF5B6F2477A2FAAA3AEE78933C9B19C"
+  }
+}

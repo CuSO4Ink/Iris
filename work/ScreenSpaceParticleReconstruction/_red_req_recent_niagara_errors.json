@@ -1,0 +1,10 @@
+{
+  "action": "tool.call",
+  "toolset": "EditorToolset.LogsToolset",
+  "tool": "GetLogEntries",
+  "arguments": {
+    "category": "LogNiagara",
+    "pattern": "(?i)(error|warning|failed|invalid|ensure)",
+    "maxEntries": 40
+  }
+}

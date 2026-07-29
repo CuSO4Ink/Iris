@@ -1,0 +1,10 @@
+{
+  "action": "tool.call",
+  "toolset": "EditorToolset.LogsToolset",
+  "tool": "GetLogEntries",
+  "arguments": {
+    "category": "",
+    "pattern": "(?i)(read.?render.?target|render.?target.*read|read.*texture).*",
+    "maxEntries": 50
+  }
+}

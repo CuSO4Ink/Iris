@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nSYSTEM='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\nservice=unreal.NiagaraScratchPadService\nprint('APPLIED=' + str(bool(service.apply_changes(SYSTEM))))\nprint('MESSAGES=' + repr([str(x) for x in service.get_compile_messages(SYSTEM, False)]))"
+  }
+}

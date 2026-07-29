@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "V2_SCREEN_UV_DIRECT_SIMRT={\"active\": true, \"applied\": true, \"compileMessages\": [], \"saved\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  1472.316650390625
+             },
+    "action":  "tool.call"
+}

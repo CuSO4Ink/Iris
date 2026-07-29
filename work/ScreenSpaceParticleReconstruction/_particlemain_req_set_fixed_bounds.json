@@ -1,0 +1,19 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.SetEmitterData",
+  "arguments": {
+    "emitter": {
+      "system": {
+        "refPath": "/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main"
+      },
+      "emitterName": "Fountain",
+      "scriptName": "",
+      "moduleName": "",
+      "rendererIndex": -1,
+      "inputNameStack": []
+    },
+    "emitterData": {
+      "propertyValues": "{\"CalculateBoundsMode\":\"Fixed\",\"FixedBounds\":{\"min\":{\"x\":-1000.0,\"y\":-1000.0,\"z\":-1000.0},\"max\":{\"x\":1000.0,\"y\":1000.0,\"z\":1000.0},\"isValid\":true}}"
+    }
+  }
+}

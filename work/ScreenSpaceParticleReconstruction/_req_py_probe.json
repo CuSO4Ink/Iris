@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nout=[]\nfor n in ['NiagaraDataInterfaceGrid2DCollection','NiagaraDataInterfaceRenderTarget2D','NiagaraDataInterfaceGrid2DCollectionReader']:\n    c=getattr(unreal,n,None)\n    out.append(n+' => '+('FOUND' if c else 'missing'))\nprint('\\n'.join(out))\nrt=getattr(unreal,'TextureRenderTarget2D',None)\nprint('TextureRenderTarget2D',bool(rt))\n"
+  }
+}

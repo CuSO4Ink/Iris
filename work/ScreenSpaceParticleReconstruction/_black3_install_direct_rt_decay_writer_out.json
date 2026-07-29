@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "DIRECT_RT_WRITER={\"applied\": true, \"messages\": [], \"saved\": true, \"stored\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  1717.8812255859375
+             },
+    "action":  "tool.call"
+}

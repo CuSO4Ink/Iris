@@ -1,0 +1,1 @@
+{"endpoint":"http://127.0.0.1:8000/mcp","ok":true,"data":{"success":true,"output":"SCRATCH_MODULES=SSPR_Projection,SSPR_WriteOccupancy,SSPR_InitAttrs","result":"None","execution_time_ms":3.0938014984130859},"action":"tool.call"}

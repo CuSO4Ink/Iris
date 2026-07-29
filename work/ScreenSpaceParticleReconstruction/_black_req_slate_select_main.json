@@ -1,0 +1,9 @@
+{
+  "action": "tool.call",
+  "toolset": "SlateInspectorToolset.SlateInspectorToolset",
+  "tool": "Windows",
+  "arguments": {
+    "action": "select",
+    "index": 0
+  }
+}

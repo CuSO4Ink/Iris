@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nactors=[]\nfor actor in unreal.ObjectIterator(unreal.Actor):\n    try:\n        world=actor.get_world()\n        if actor.get_actor_label()=='SSPR_M2A_TemporalOrchestrator' and world and 'UEDPIE' in world.get_path_name(): actors.append(actor)\n    except Exception: pass\nif len(actors)!=1: raise RuntimeError('Expected one M2-A runtime actor, found '+str(len(actors)))\na=actors[0]\ncomponents=a.get_components_by_class(unreal.NiagaraComponent)\nprint('M2A_FINAL_STATE='+repr({'actor':a.get_path_name(),'mid':a.get_editor_property('TemporalMID').get_path_name() if a.get_editor_property('TemporalMID') else None,'latest':a.get_editor_property('LatestHistory').get_path_name(),'historyValid':a.get_editor_property('HistoryValidValue'),'cameraValid':a.get_editor_property('CameraDataValid'),'decayRate':a.get_editor_property('DecayRate'),'reprojection':a.get_editor_property('ReprojectionValue'),'niagaraActive':[bool(c.is_active()) for c in components]}))"
+  }
+}

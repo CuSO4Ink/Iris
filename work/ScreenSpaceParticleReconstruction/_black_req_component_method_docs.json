@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nprint('ADVANCE=' + str(unreal.NiagaraComponent.advance_simulation.__doc__))\nprint('AGE_MODE=' + str(unreal.NiagaraComponent.set_age_update_mode.__doc__))\nprint('SOLO=' + str(unreal.NiagaraComponent.set_force_solo.__doc__))\nprint('ACTIVATE=' + str(unreal.NiagaraComponent.activate.__doc__))"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.AddModule",
+  "arguments": {
+    "moduleLocationRef": {
+      "system": { "refPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest" },
+      "emitterName": "ProjParticles",
+      "scriptName": "EmitterUpdateScript",
+      "moduleName": "",
+      "rendererIndex": -1,
+      "inputNameStack": []
+    },
+    "moduleAsset": { "refPath": "/Niagara/Modules/Emitter/SpawnRate.SpawnRate" }
+  }
+}

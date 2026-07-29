@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_GRID_WRITE_PROBE_INSTALLED={\"active\": true, \"component\": \"/Game/Untitled.Untitled:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0\", \"hlsl\": \"CBE36CA64181EA12F112F9B172AEB4FF\", \"target\": \"/Game/Untitled.Untitled:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.SSPR_TrajectoryRT_Runtime\"}",
+                 "result":  "None",
+                 "execution_time_ms":  1407.6947021484375
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "WRITER_HLSL_BEGIN\nWRITER_HLSL_END",
+                 "result":  "None",
+                 "execution_time_ms":  31.222600936889648
+             },
+    "action":  "tool.call"
+}

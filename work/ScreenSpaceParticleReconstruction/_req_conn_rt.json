@@ -1,0 +1,13 @@
+{
+  "action": "tool.call",
+  "tool": "VibeUE.NiagaraScratchPadService.ConnectPins",
+  "arguments": {
+    "systemPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest",
+    "emitterName": "ProjParticles",
+    "moduleName": "SSPR_WriteOccupancy",
+    "fromNodeId": "B47EA575449F2A202ABE6A81F7C87E33",
+    "fromPin": "Module.OccupancyRT",
+    "toNodeId": "1877D2CA4F034875E12FFB8B17F65DEE",
+    "toPin": "OccupancyRT"
+  }
+}

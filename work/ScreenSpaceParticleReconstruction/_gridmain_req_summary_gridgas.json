@@ -1,0 +1,9 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.GetSystemSummary",
+  "arguments": {
+    "system": {
+      "refPath": "/NiagaraFluids/Templates/Gas/2D/Systems/Grid2D_Gas_Smoke.Grid2D_Gas_Smoke"
+    }
+  }
+}

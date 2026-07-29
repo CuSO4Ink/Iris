@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_LOCAL_GRID_REMOVED={\"applied\": true, \"compileMessages\": [], \"hasLocalGridPin\": false, \"newMapGet\": \"F8747F4F4DC90ECB165925BEEEE35872\", \"oldMapGet\": \"B47EA575449F2A202ABE6A81F7C87E33\", \"pins\": [\"Source\", \"User.SSPR_TrajectoryGrid\", \"Particles.SSPR_ScreenUV\", \"None\", \"Particles.SSPR_ScreenVelocityUV\", \"None\", \"Add\", \"None\"], \"saved\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  6399.89599609375
+             },
+    "action":  "tool.call"
+}

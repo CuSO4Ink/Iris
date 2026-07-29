@@ -1,0 +1,19 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.SetRendererData",
+  "arguments": {
+    "renderer": {
+      "system": {
+        "refPath": "/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main"
+      },
+      "emitterName": "Fountain",
+      "scriptName": "",
+      "moduleName": "",
+      "rendererIndex": 1,
+      "inputNameStack": []
+    },
+    "rendererData": {
+      "propertyValues": "{\"Material\":{\"refPath\":\"/Game/SSPR_Validation/M2/ParticleTrails/MI_SSPR_ParticleTrails_HQ_Default.MI_SSPR_ParticleTrails_HQ_Default\"}}"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nrows=[]\nfor obj in unreal.ObjectIterator(unreal.NiagaraScript):\n    name=obj.get_name()\n    path=obj.get_path_name()\n    if 'SSPR' in name or 'NS_SSPR_ProjTest' in path:\n        source=None\n        try: source=obj.get_editor_property('source')\n        except Exception: pass\n        rows.append((name,path,source.get_path_name() if source else None,obj.get_outer().get_path_name() if obj.get_outer() else None))\nfor row in rows: print('SCRIPT=' + repr(row))\nprint('COUNT=' + str(len(rows)))"
+  }
+}

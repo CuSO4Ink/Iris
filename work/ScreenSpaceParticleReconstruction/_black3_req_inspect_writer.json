@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nS=unreal.NiagaraScratchPadService\nsystem='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\nemitter='ProjParticles'\nmodule='SSPR_WriteOccupancy'\nprint('NODES='+repr([(str(n.node_id),str(n.title),str(n.node_type)) for n in S.list_nodes(system,emitter,module)]))\nfor n in S.list_nodes(system,emitter,module):\n    nid=str(n.node_id)\n    title=str(n.title)\n    ntype=str(n.node_type)\n    pins=[(str(p.pin_name),str(p.direction),str(p.type_name),str(p.default_value)) for p in S.get_node_pins(system,emitter,module,nid)]\n    print('NODE='+repr((nid,title,ntype,pins)))\n    if 'CustomHlsl' in ntype or 'HLSL' in title:\n        print('HLSL_NODE='+nid)\n        print('HLSL='+repr(str(S.get_custom_hlsl_code(system,emitter,module,nid))))\nprint('CONNS='+repr([(str(c.from_node_id),str(c.from_pin),str(c.to_node_id),str(c.to_pin)) for c in S.list_connections(system,emitter,module)]))\nprint('MSGS='+repr([str(x) for x in S.get_compile_messages(system,False)]))"
+  }
+}

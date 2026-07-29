@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "METHODS=[\u0027get_viewport_info\u0027, \u0027get_viewport_layout\u0027, \u0027get_viewport_type\u0027, \u0027set_camera_speed\u0027, \u0027set_realtime\u0027, \u0027set_viewport_layout\u0027, \u0027set_viewport_type\u0027]\nGET_DOC=X.get_viewport_info() -\u003e ViewportInfo\r\r\nGet comprehensive information about the active level viewport.\r\r\n\r\r\nReturns:\r\r\n    ViewportInfo: Viewport state including type, camera transform, FOV, exposure, layout\nSET_REALTIME_DOC=X.set_realtime(realtime) -\u003e bool\r\r\nSet whether the viewport renders in realtime.\r\r\n\r\r\nArgs:\r\r\n    realtime (bool): True for realtime rendering, false for on-demand\r\r\n\r\r\nReturns:\r\r\n    bool: True if set successfully",
+                 "result":  "None",
+                 "execution_time_ms":  48.81500244140625
+             },
+    "action":  "tool.call"
+}

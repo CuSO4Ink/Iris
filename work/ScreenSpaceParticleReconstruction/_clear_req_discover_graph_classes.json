@@ -1,0 +1,10 @@
+{
+  "action": "tool.call",
+  "tool": "discover_python_class",
+  "arguments": {
+    "class_name": "unreal.NiagaraScript, unreal.NiagaraScriptSource, unreal.NiagaraGraph, unreal.EdGraphNode, unreal.EdGraphPin",
+    "method_filter": "graph|pin|node|outer|path|name|property|remove|destroy",
+    "include_inherited": "true",
+    "max_methods": "200"
+  }
+}

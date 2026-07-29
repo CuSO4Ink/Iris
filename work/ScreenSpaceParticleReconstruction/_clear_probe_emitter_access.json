@@ -1,0 +1,3 @@
+{
+  "code": "import unreal\nsysa=unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest')\nprint('SYSTEM_CLASS',sysa.get_class().get_path_name())\nprint('SYS_METHODS',[m for m in dir(sysa) if any(k in m.lower() for k in ['emitter','version','handle','script'])])\nfor p in ['emitter_handles','emitter_handles_internal','versioned_emitters','emitters']:\n    try:\n        v=sysa.get_editor_property(p)\n        print('PROP',p,type(v).__name__,len(v) if hasattr(v,'__len__') else str(v))\n        if hasattr(v,'__iter__'):\n            for i,x in enumerate(v): print(' ITEM',i,type(x).__name__,str(x))\n    except Exception as e: print('PROP_ERR',p,str(e)[:240])\nprint('DONE')"
+}

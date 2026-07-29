@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nCALL_PATH='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:ProjParticles_0.NiagaraScriptSource_0.NiagaraGraph_0.NiagaraNodeFunctionCall_6'\nACTIVE_PATH='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:SSPR_WriteOccupancy'\ncall_node=None\nactive_script=None\nfor obj in unreal.ObjectIterator(unreal.EdGraphNode):\n    if obj.get_path_name()==CALL_PATH: call_node=obj\nfor obj in unreal.ObjectIterator(unreal.NiagaraScript):\n    if obj.get_path_name()==ACTIVE_PATH: active_script=obj\nif not call_node or not active_script: raise RuntimeError('Writer refresh targets missing')\nif call_node.get_editor_property('function_script')!=active_script: raise RuntimeError('Unexpected writer script before reallocate')\ncall_node.set_editor_property('function_script', None)\ncall_node.set_editor_property('function_script', active_script)\nif call_node.get_editor_property('function_script')!=active_script: raise RuntimeError('Writer script restore failed')\nprint('REALLOCATED=' + call_node.get_path_name() + '|SCRIPT=' + active_script.get_path_name())"
+  }
+}

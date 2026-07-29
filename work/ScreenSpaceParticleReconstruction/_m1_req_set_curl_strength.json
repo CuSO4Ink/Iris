@@ -1,0 +1,18 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.SetStackInputData",
+  "arguments": {
+    "stackInputRef": {
+      "system": { "refPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest" },
+      "emitterName": "ProjParticles",
+      "scriptName": "ParticleUpdateScript",
+      "moduleName": "CurlNoiseForce",
+      "rendererIndex": -1,
+      "inputNameStack": ["Noise Strength"]
+    },
+    "inputData": {
+      "struct": { "refPath": "/Script/Niagara.NiagaraFloat" },
+      "value": { "value": 250.0 }
+    }
+  }
+}

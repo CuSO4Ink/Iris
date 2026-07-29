@@ -1,0 +1,6 @@
+{
+  "class_name": "unreal.NiagaraScratchPadService",
+  "method_filter": "grid|parameter|module|stage|input|render",
+  "max_methods": "0",
+  "include_inherited": "false"
+}

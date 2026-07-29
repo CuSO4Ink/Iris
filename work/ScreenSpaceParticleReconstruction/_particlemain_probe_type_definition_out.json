@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_TYPE_DEFINITION_API={\"NiagaraTypeDefinition\": {\"exists\": true, \"members\": [\"__class__\", \"__init_subclass__\", \"__subclasshook__\"]}, \"NiagaraTypeDefinitionHandle\": {\"exists\": true, \"members\": [\"__class__\", \"__init_subclass__\", \"__subclasshook__\"]}, \"NiagaraVariable\": {\"exists\": true, \"members\": [\"__class__\", \"__init_subclass__\", \"__subclasshook__\", \"type_def\"]}, \"NiagaraVariableBase\": {\"exists\": true, \"members\": [\"__class__\", \"__init_subclass__\", \"__subclasshook__\", \"type_def\"]}}",
+                 "result":  "None",
+                 "execution_time_ms":  12.374199867248535
+             },
+    "action":  "tool.call"
+}

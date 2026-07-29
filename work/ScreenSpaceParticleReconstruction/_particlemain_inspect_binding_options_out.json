@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_BINDING_OPTIONS={\"classes\": {\"NiagaraDataInterfaceGrid2DCollection\": {\"class\": \"\u003cclass \u0027NiagaraDataInterfaceGrid2DCollection\u0027\u003e\", \"default\": \"/Script/Niagara.Default__NiagaraDataInterfaceGrid2DCollection\", \"exists\": true, \"properties\": [\"fill_raw_texture2d\", \"fill_texture2d\", \"get_raw_texture_size\", \"get_texture_size\"]}, \"NiagaraGrid2DCollectionRendererProperties\": {\"exists\": false}, \"NiagaraSpriteRendererProperties\": {\"class\": \"\u003cclass \u0027NiagaraSpriteRendererProperties\u0027\u003e\", \"default\": \"/Script/Niagara.Default__NiagaraSpriteRendererProperties\", \"exists\": true, \"properties\": [\"use_material_cutout_texture\"]}}, \"systems\": {\"m1\": {\"loaded\": true, \"path\": \"/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest\", \"userVariablesError\": \"AttributeError(\\\"type object \u0027NiagaraToolset_System\u0027 has no attribute \u0027get_user_variables\u0027\\\")\"}, \"main\": {\"loaded\": true, \"path\": \"/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main\", \"userVariablesError\": \"AttributeError(\\\"type object \u0027NiagaraToolset_System\u0027 has no attribute \u0027get_user_variables\u0027\\\")\"}}}",
+                 "result":  "None",
+                 "execution_time_ms":  8.7170009613037109
+             },
+    "action":  "tool.call"
+}

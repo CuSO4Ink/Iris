@@ -1,0 +1,1 @@
+{"endpoint":"http://127.0.0.1:8000/mcp","ok":true,"data":{"success":true,"output":"M1_PATCH_RESULT={\"addedConnections\": 4, \"addedPins\": 8, \"initHlslPins\": 6, \"projectionHlslPins\": 8, \"writerHlslPins\": 6}","result":"None","execution_time_ms":27.706098556518555},"action":"tool.call"}

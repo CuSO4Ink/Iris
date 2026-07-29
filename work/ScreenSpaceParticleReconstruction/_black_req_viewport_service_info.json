@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nprint('METHODS=' + repr([n for n in dir(unreal.ViewportService) if any(k in n.lower() for k in ['viewport','realtime','camera'])]))\nprint('GET_DOC=' + str(unreal.ViewportService.get_viewport_info.__doc__))\nprint('SET_REALTIME_DOC=' + str(unreal.ViewportService.set_realtime.__doc__))"
+  }
+}

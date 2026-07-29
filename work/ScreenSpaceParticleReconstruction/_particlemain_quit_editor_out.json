@@ -1,0 +1,6 @@
+{
+    "ok":  false,
+    "code":  "exception",
+    "message":  "Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host.",
+    "raw":  null
+}

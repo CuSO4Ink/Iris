@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\n# find any niagara module script that references render target write\nar=unreal.AssetRegistryHelpers.get_asset_registry()\nassets=ar.get_assets_by_path('/Niagara/Modules',recursive=True)\nhits=[]\nfor a in assets:\n    n=str(a.asset_name)\n    if any(k in n.lower() for k in ['rendertarget','writetexture','settexture','exportto','grid2d','rasterize','depositto','scatter']):\n        hits.append(str(a.package_name))\nprint('COUNT',len(hits))\nprint('\\n'.join(sorted(set(hits))))\n"
+  }
+}

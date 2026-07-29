@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "VibeUE.MaterialNodeService.GetMaterialDiagnostics",
+  "arguments": {
+    "materialPath": "/Game/SSPR_Validation/M2/M_SSPR_SmokeResolve.M_SSPR_SmokeResolve"
+  }
+}

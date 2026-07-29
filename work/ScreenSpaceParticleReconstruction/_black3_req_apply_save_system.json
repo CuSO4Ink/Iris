@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nsystem_path='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\napplied=bool(unreal.NiagaraScratchPadService.apply_changes(system_path))\nmessages=[str(x) for x in unreal.NiagaraScratchPadService.get_compile_messages(system_path,False)]\nsaved=bool(unreal.EditorAssetLibrary.save_asset(system_path,False))\nprint('APPLY_SAVE='+repr({'applied':applied,'messages':messages,'saved':saved}))\nif not applied or messages: raise RuntimeError('Compile failed')"
+  }
+}

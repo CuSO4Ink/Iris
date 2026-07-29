@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_SCRATCH_REMOVE_API=[\"add_custom_hlsl_node\", \"add_module_input\", \"add_pin\", \"connect_pins\", \"delete_node\", \"disconnect_pin\", \"get_custom_hlsl_code\", \"get_node_pins\", \"set_custom_hlsl_code\"]",
+                 "result":  "None",
+                 "execution_time_ms":  7.3246994018554688
+             },
+    "action":  "tool.call"
+}

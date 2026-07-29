@@ -1,0 +1,53 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "returnValue":  {
+                                     "userVariables":  [
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/NiagaraEditor.NiagaraExt_VariableValue_DataInterface"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "dataInterfaceClass":  {
+                                                                                                                             "refPath":  "/Script/Niagara.NiagaraDataInterfaceGrid2DCollection"
+                                                                                                                         },
+                                                                                                  "dataInterface":  {
+                                                                                                                        "refPath":  "/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main:NiagaraDataInterfaceGrid2DCollection_0"
+                                                                                                                    }
+                                                                                              }
+                                                                                },
+                                                               "description":  "",
+                                                               "name":  "User.SSPR_TrajectoryGrid",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraDataInterfaceGrid2DCollection"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/NiagaraEditor.NiagaraExt_VariableValue_Object"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "objectClass":  {
+                                                                                                                      "refPath":  "/Script/Engine.TextureRenderTarget"
+                                                                                                                  },
+                                                                                                  "object":  "None"
+                                                                                              }
+                                                                                },
+                                                               "description":  "Runtime transient bridge from Grid2D to the material parameter; not a Content Browser render-target asset.",
+                                                               "name":  "User.SSPR_TrajectoryRT",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Engine.TextureRenderTarget"
+                                                                                                  }
+                                                                        }
+                                                           }
+                                                       ]
+                                 }
+             },
+    "action":  "tool.call"
+}

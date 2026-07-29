@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nworlds=[]\nfor world in unreal.ObjectIterator(unreal.World):\n    path=world.get_path_name()\n    if 'UEDPIE' not in path and '/Game/' not in path: continue\n    actors=[]\n    niagara=[]\n    for actor in unreal.GameplayStatics.get_all_actors_of_class(world, unreal.Actor):\n        try:\n            label=actor.get_actor_label()\n            cls=actor.get_class().get_name()\n            if 'SSPR' in label or 'Niagara' in cls or actor.get_components_by_class(unreal.NiagaraComponent):\n                actors.append({'label':label,'class':cls,'path':actor.get_path_name()})\n            for comp in actor.get_components_by_class(unreal.NiagaraComponent):\n                asset=comp.get_editor_property('asset')\n                niagara.append({'owner':label,'component':comp.get_path_name(),'asset':asset.get_path_name() if asset else None,'active':bool(comp.is_active())})\n        except Exception: pass\n    worlds.append({'world':path,'actors':actors,'niagara':niagara})\nprint('M2A_WORLDS='+repr(worlds))"
+  }
+}

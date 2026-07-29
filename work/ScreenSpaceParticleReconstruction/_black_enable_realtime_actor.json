@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "REALTIME_ACTOR={\u0027realtime\u0027: False, \u0027component\u0027: \u0027/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871.NiagaraComponent0\u0027, \u0027active\u0027: True, \u0027forceSolo\u0027: False, \u0027ageMode\u0027: \u0027\u003cNiagaraAgeUpdateMode.TICK_DELTA_TIME: 0\u003e\u0027, \u0027rt\u0027: \u0027/Game/SSPR_Validation/RT_SSPR_Occupancy.RT_SSPR_Occupancy\u0027}",
+                 "result":  "None",
+                 "execution_time_ms":  10.203801155090332
+             },
+    "action":  "tool.call"
+}

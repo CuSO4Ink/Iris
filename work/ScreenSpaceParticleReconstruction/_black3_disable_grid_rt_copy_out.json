@@ -1,0 +1,15 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "returnValue":  {
+                                     "struct":  {
+                                                    "refPath":  "/Script/NiagaraEditor.NiagaraExt_StackInputData_DataInterface"
+                                                },
+                                     "value":  {
+                                                   "propertyValues":  "{\"RenderTargetUserParameter\":{\"parameter\":{\"varData\":[],\"name\":\"None\",\"typeDefHandle\":{\"registeredTypeIndex\":3}}},\"OverrideBufferFormat\":\"Float\",\"bOverrideFormat\":false,\"bPreviewGrid\":false,\"PreviewAttribute\":\"None\",\"ClearBeforeNonIterationStage\":true,\"NumCellsX\":256,\"NumCellsY\":256,\"NumCellsMaxAxis\":256,\"NumAttributes\":1,\"SetGridFromMaxAxis\":false,\"WorldBBoxSize\":{\"x\":100,\"y\":100}}"
+                                               }
+                                 }
+             },
+    "action":  "tool.call"
+}

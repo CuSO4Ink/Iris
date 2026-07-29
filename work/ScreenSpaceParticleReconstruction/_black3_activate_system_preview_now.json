@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PREVIEW_WRITERS=[{\u0027component\u0027: \u0027/Engine/Transient.NiagaraComponent_0\u0027, \u0027active\u0027: True, \u0027tick\u0027: True, \u0027solo\u0027: True}]",
+                 "result":  "None",
+                 "execution_time_ms":  12.966699600219727
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,16 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.GetRendererData",
+  "arguments": {
+    "rendererRef": {
+      "system": {
+        "refPath": "/Game/SSPR_Validation/M2/GridTrails/NS_SSPR_GridTrails_Main.NS_SSPR_GridTrails_Main"
+      },
+      "emitterName": "Grid2D_Gas_SmokeFire_Emitter",
+      "scriptName": "",
+      "moduleName": "",
+      "rendererIndex": 1,
+      "inputNameStack": []
+    }
+  }
+}

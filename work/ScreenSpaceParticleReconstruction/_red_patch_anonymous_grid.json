@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "ANONYMOUS_GRID_PATCH={\"applied\": true, \"compileMessages\": [], \"numAttributes\": 1, \"usesAnonymousChannel\": true, \"usesNamedAttribute\": false, \"usesOldRTWrite\": false}",
+                 "result":  "None",
+                 "execution_time_ms":  1389.1695556640625
+             },
+    "action":  "tool.call"
+}

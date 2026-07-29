@@ -1,0 +1,23 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.AddUserVariables",
+  "arguments": {
+    "system": { "refPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest" },
+    "variablesToAdd": [
+      {
+        "name": "SSPROccupancyRT",
+        "description": "Screen-space occupancy buffer target (SSPR MVP)",
+        "type": {
+          "classStructOrEnum": { "refPath": "/Script/Niagara.NiagaraDataInterfaceRenderTarget2D" }
+        },
+        "defaultValue": {
+          "struct": { "refPath": "/Script/NiagaraEditor.NiagaraExt_VariableValue_DataInterface" },
+          "value": {
+            "dataInterfaceClass": { "refPath": "/Script/Niagara.NiagaraDataInterfaceRenderTarget2D" },
+            "dataInterface": { "refPath": "/Script/Niagara.Default__NiagaraDataInterfaceRenderTarget2D" }
+          }
+        }
+      }
+    ]
+  }
+}

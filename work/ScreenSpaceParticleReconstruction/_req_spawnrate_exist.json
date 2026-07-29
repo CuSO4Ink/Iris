@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "editor_toolset.toolsets.asset.AssetTools.exists",
+  "arguments": {
+    "path": "/Niagara/Modules/Emitter/SpawnRate.SpawnRate"
+  }
+}

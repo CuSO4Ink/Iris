@@ -1,0 +1,9 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.GetRendererSchema",
+  "arguments": {
+    "rendererClass": {
+      "refPath": "/Script/Niagara.NiagaraSpriteRendererProperties"
+    }
+  }
+}

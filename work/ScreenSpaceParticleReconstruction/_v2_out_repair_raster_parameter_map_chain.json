@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "V2_RASTER_PARAMETER_MAP_REPAIRED={\"added\": [[\"2B45B5F243A8A69A63BBD0B999312CF7\", \"Input\", \"E0BA53FC4644A7BAEC2D40867FD3A680\", \"Source\"], [\"E0BA53FC4644A7BAEC2D40867FD3A680\", \"Dest\", \"B70EDAEE475EAECA72637F85602F3DCC\", \"OutputMap\"]], \"applied\": true, \"compileMessages\": [], \"saved\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  1514.8094482421875
+             },
+    "action":  "tool.call"
+}

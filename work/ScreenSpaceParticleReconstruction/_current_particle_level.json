@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "NIAGARA_LEVEL_ACTORS=[{\u0027label\u0027: \u0027NS_SSPR_ParticleTrails_Main\u0027, \u0027actor\u0027: \u0027/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619A4F202_1125224912\u0027, \u0027component\u0027: \u0027/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619A4F202_1125224912.NiagaraComponent0\u0027, \u0027asset\u0027: \u0027/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main\u0027, \u0027active\u0027: True, \u0027visible\u0027: True}]",
+                 "result":  "None",
+                 "execution_time_ms":  15.863299369812012
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nmap_path='/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation'\nworld=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()\nif world is None: raise RuntimeError('Editor world unavailable')\nsaved=unreal.EditorLoadingAndSavingUtils.save_map(world,map_path)\nunreal.EditorLoadingAndSavingUtils.save_dirty_packages(True,True)\nprint('PARTICLEMAIN_LEVEL_SAVE='+repr({'world':world.get_path_name(),'map':map_path,'saved':bool(saved),'exists':unreal.EditorAssetLibrary.does_asset_exist(map_path)}))"
+  }
+}

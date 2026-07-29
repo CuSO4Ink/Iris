@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "V2_LIVE_SIMRT_RAW_CENTER={\"active\": true, \"candidates\": [{\"centerAreaCount\": 1065024, \"centerNonzero\": 1, \"centerRedMax\": 9912.0, \"centerRedSum\": 9912.0, \"path\": \"/Game/SSPR_Validation/M2/AnisotropicSplat_V2/L_SSPR_AnisotropicSplat_Validation.L_SSPR_AnisotropicSplat_Validation:TextureRenderTarget2D_12\"}]}",
+                 "result":  "None",
+                 "execution_time_ms":  788.37127685546875
+             },
+    "action":  "tool.call"
+}

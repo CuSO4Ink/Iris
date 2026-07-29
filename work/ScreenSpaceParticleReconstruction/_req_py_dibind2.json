@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\n# Inspect the RenderTarget2D DI input's binding options. The module OccupancyRT is a DI that\n# itself has a 'render_target_user_parameter' binding OR can own an internal RT.\n# Check what types the Niagara user-parameter add flow exposes for RenderTarget2D DI.\ndi=unreal.NiagaraDataInterfaceRenderTarget2D\ncdo=unreal.get_default_object(di)\n# The DI binds to a user param of type... print its RenderTargetUserParameter struct\nrtup=cdo.get_editor_property('render_target_user_parameter')\nprint('render_target_user_parameter:', rtup)\n# Also: is there an 'OverrideRenderTargetFormat'/size to make DI self-own an RT? For preview.\nfor p in ['size','override_render_target_format']:\n    try: print(p, cdo.get_editor_property(p))\n    except Exception as e: print(p,'err',str(e)[:60])\n"
+  }
+}

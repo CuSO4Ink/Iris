@@ -1,0 +1,10 @@
+{
+  "action": "tool.call",
+  "tool": "discover_python_class",
+  "arguments": {
+    "class_name": "unreal.NiagaraSystem",
+    "method_filter": "compile|refresh|wait|request|save|reset",
+    "include_inherited": "true",
+    "max_methods": "100"
+  }
+}

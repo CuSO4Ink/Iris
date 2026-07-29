@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_PIE_API=[\"acquire_editor_element_handle\", \"editor_get_game_view\", \"editor_invalidate_viewports\", \"editor_play_simulate\", \"editor_request_begin_play\", \"editor_request_end_play\", \"editor_set_game_view\", \"editor_set_viewport_realtime\", \"get_editor_property\", \"is_editor_property_overridden\", \"is_in_play_in_editor\", \"on_editor_camera_moved\", \"reset_editor_property\", \"set_editor_properties\", \"set_editor_property\"]",
+                 "result":  "None",
+                 "execution_time_ms":  10.880302429199219
+             },
+    "action":  "tool.call"
+}

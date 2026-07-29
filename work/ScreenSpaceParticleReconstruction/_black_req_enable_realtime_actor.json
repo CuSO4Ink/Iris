@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\ncomp=unreal.load_object(None,'/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871.NiagaraComponent0')\nrt=unreal.load_object(None,'/Game/SSPR_Validation/RT_SSPR_Occupancy.RT_SSPR_Occupancy')\nif comp is None or rt is None: raise RuntimeError('Actor component or RT missing')\nif not unreal.ViewportService.set_realtime(True): raise RuntimeError('Failed to enable viewport realtime')\ncomp.set_variable_texture_render_target('User.OccupancyRTParam',rt)\ncomp.set_force_solo(False)\ncomp.set_age_update_mode(unreal.NiagaraAgeUpdateMode.TICK_DELTA_TIME)\ncomp.set_auto_activate(True)\ncomp.reinitialize_system()\ncomp.activate(True)\ninfo=unreal.ViewportService.get_viewport_info()\nprint('REALTIME_ACTOR=' + repr({'realtime':bool(info.is_realtime),'component':comp.get_path_name(),'active':bool(comp.is_active()),'forceSolo':bool(comp.get_force_solo()),'ageMode':str(comp.get_age_update_mode()),'rt':rt.get_path_name()}))"
+  }
+}

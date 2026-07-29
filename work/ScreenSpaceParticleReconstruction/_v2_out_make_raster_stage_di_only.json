@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "V2_RASTER_STAGE_DI_ONLY={\"applied\": true, \"compileMessages\": [], \"deletedMapSets\": [\"AAF4A4F34C72C0DBD9B765B862231DF0\"], \"localOutput\": \"Output.SSPR_RasterizeWhiteParticles.OutMark\", \"newMapSet\": \"E0BA53FC4644A7BAEC2D40867FD3A680\", \"saved\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  1802.7640380859375
+             },
+    "action":  "tool.call"
+}

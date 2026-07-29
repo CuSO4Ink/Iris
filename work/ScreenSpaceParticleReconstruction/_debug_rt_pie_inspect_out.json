@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "RT_PIE_COMPONENTS=[{\"active\": false, \"asset\": \"/Game/SSPR_Validation/Debug/NS_SSPR_RTWriteProbe_1785243895228.NS_SSPR_RTWriteProbe_1785243895228\", \"component\": \"/Temp/UEDPIE_0_Untitled_1.ActorContainer_0:NiagaraActor_UAID_18C04D87C619A5F202_1860273094.NiagaraComponent0\", \"owner\": \"/Temp/UEDPIE_0_Untitled_1.ActorContainer_0:NiagaraActor_UAID_18C04D87C619A5F202_1860273094\", \"tick\": false, \"world\": null}, {\"active\": true, \"asset\": \"/Game/SSPR_Validation/Debug/NS_SSPR_RTWriteProbe_1785243895228.NS_SSPR_RTWriteProbe_1785243895228\", \"component\": \"/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619A5F202_1860273094.NiagaraComponent0\", \"owner\": \"/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619A5F202_1860273094\", \"tick\": true, \"world\": \"/Temp/Untitled_1.Untitled_1\"}, {\"active\": true, \"asset\": \"/Game/SSPR_Validation/Debug/NS_SSPR_RTWriteProbe_1785243895228.NS_SSPR_RTWriteProbe_1785243895228\", \"component\": \"/Memory/UEDPIE_0_Untitled_1_BAMPWXQRFWPMYFNQEZVPDLSQZ.OpenWorld:PersistentLevel.NiagaraActor_UAID_18C04D87C619A5F202_1860273094.NiagaraComponent0\", \"owner\": \"/Memory/UEDPIE_0_Untitled_1_BAMPWXQRFWPMYFNQEZVPDLSQZ.OpenWorld:PersistentLevel.NiagaraActor_UAID_18C04D87C619A5F202_1860273094\", \"tick\": false, \"world\": \"/Temp/UEDPIE_0_Untitled_1.Untitled_1\"}]",
+                 "result":  "None",
+                 "execution_time_ms":  25.122001647949219
+             },
+    "action":  "tool.call"
+}

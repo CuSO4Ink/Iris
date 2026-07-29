@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "INFO=\u003cStruct \u0027ViewportInfo\u0027 (0x0000017CD9FC8AB0) {viewport_type: \"perspective\", location: {x: 266.861608, y: -134.242781, z: 397.309225}, rotation: {pitch: -3.399899, yaw: -911.998189, roll: 0.000000}, fov: 90.000000, near_clip_plane: 10.000000, far_clip_plane: 0.000000, is_realtime: False, is_game_view: False, allow_cinematic_control: True, exposure_fixed: False, exposure_ev100: 1.000000, camera_speed_setting: 4, layout: \"FourPanes2x2\", viewport_index: 1}\u003e\nFIELDS=[\u0027allow_cinematic_control\u0027, \u0027assign\u0027, \u0027camera_speed_setting\u0027, \u0027cast\u0027, \u0027copy\u0027, \u0027export_text\u0027, \u0027exposure_ev100\u0027, \u0027exposure_fixed\u0027, \u0027far_clip_plane\u0027, \u0027fov\u0027, \u0027get_editor_property\u0027, \u0027import_text\u0027, \u0027is_game_view\u0027, \u0027is_realtime\u0027, \u0027layout\u0027, \u0027location\u0027, \u0027near_clip_plane\u0027, \u0027rotation\u0027, \u0027set_editor_properties\u0027, \u0027set_editor_property\u0027, \u0027static_struct\u0027, \u0027to_dict\u0027, \u0027to_tuple\u0027, \u0027viewport_index\u0027, \u0027viewport_type\u0027]\nACTOR={\u0027path\u0027: \u0027/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871\u0027, \u0027location\u0027: \"\u003cStruct \u0027Vector\u0027 (0x0000017CA3997F80) {x: -590.000000, y: 40.000000, z: 0.000000}\u003e\", \u0027rotation\u0027: \"\u003cStruct \u0027Rotator\u0027 (0x0000017CA3997F80) {pitch: 0.000000, yaw: 0.000000, roll: 0.000000}\u003e\"}",
+                 "result":  "None",
+                 "execution_time_ms":  36.306499481201172
+             },
+    "action":  "tool.call"
+}

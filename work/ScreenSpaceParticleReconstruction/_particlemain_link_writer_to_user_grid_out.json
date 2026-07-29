@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_WRITER_USER_GRID={\"applied\": true, \"compileMessages\": [], \"connectionPresent\": true, \"expectedConnection\": [\"B47EA575449F2A202ABE6A81F7C87E33\", \"User.SSPR_TrajectoryGrid\", \"CBE36CA64181EA12F112F9B172AEB4FF\", \"TrajectoryGrid\"], \"hlsl\": \"CBE36CA64181EA12F112F9B172AEB4FF\", \"mapGet\": \"B47EA575449F2A202ABE6A81F7C87E33\", \"saved\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  1696.185546875
+             },
+    "action":  "tool.call"
+}

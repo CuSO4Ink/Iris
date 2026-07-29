@@ -1,0 +1,1 @@
+{"endpoint":"http://127.0.0.1:8000/mcp","ok":true,"data":{"success":true,"output":"V2_CONSTANT_RESOLVE={\"applied\": true, \"messages\": []}","result":"None","execution_time_ms":1742.5155029296875},"action":"tool.call"}

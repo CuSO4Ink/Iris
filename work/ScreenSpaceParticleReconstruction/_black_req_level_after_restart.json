@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nworld=unreal.EditorLevelLibrary.get_editor_world()\nrows=[]\nfor actor in unreal.EditorLevelLibrary.get_all_level_actors():\n    rows.append((actor.get_actor_label(),actor.get_class().get_name(),actor.get_path_name()))\nprint('LEVEL_AFTER_RESTART='+repr({'world':world.get_path_name() if world else None,'actors':rows}))\ndel actor\ndel rows\ndel world"
+  }
+}

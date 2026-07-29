@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nrows=[]\nfor di in unreal.ObjectIterator(unreal.NiagaraDataInterfaceRenderTarget2D):\n p=di.get_path_name()\n if 'NS_SSPR_ProjTest' not in p and 'NiagaraComponent' not in p: continue\n b=di.get_editor_property('render_target_user_parameter')\n v=b.get_editor_property('parameter')\n rows.append({'path':p,'userParam':str(v.get_editor_property('name')),'inherit':bool(di.get_editor_property('inherit_user_parameter_settings')),'size':str(di.get_editor_property('size')),'format':str(di.get_editor_property('override_render_target_format')),'overrideFormat':bool(di.get_editor_property('override_format'))})\nprint('RT_DIS='+repr(rows))"
+  }
+}

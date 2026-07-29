@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_STAGE_WRITER_RESTORED={\"active\": true, \"applied\": true, \"compileMessages\": [], \"saved\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  481.31851196289062
+             },
+    "action":  "tool.call"
+}

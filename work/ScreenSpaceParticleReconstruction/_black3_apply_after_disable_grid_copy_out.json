@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "APPLY_SAVE={\u0027applied\u0027: True, \u0027messages\u0027: [], \u0027saved\u0027: True}",
+                 "result":  "None",
+                 "execution_time_ms":  285.19790649414062
+             },
+    "action":  "tool.call"
+}

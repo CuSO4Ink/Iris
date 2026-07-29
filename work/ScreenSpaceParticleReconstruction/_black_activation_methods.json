@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "[\u0027activate\u0027, \u0027auto_activate\u0027, \u0027deactivate\u0027, \u0027is_active\u0027, \u0027on_component_activated\u0027, \u0027on_component_deactivated\u0027, \u0027set_active\u0027, \u0027set_auto_activate\u0027, \u0027toggle_active\u0027]\nSET_ACTIVE=x.set_active(new_active, reset=False) -\u003e None\r\r\nSets whether the component is active or not\r\r\n\r\r\nArgs:\r\r\n    new_active (bool): The new active state of the component\r\r\n    reset (bool): Whether the activation should happen even if ShouldActivate returns false.",
+                 "result":  "None",
+                 "execution_time_ms":  35.407100677490234
+             },
+    "action":  "tool.call"
+}

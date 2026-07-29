@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "LIVE_B=/Engine/Transient.NiagaraComponent_0",
+                 "result":  "None",
+                 "execution_time_ms":  27.659397125244141
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nactors=unreal.EditorLevelLibrary.get_all_level_actors()\ncomp=None\nfor actor in actors:\n    for candidate in actor.get_components_by_class(unreal.NiagaraComponent):\n        asset=candidate.get_asset()\n        if asset and asset.get_path_name()=='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest':\n            comp=candidate\n            break\n    if comp: break\nif comp is None: raise RuntimeError('Level Niagara component not found')\nrt=unreal.load_asset('/Game/SSPR_Validation/RT_SSPR_Occupancy')\nif rt is None: raise RuntimeError('Occupancy RT not found')\ncomp.set_variable_texture_render_target('User.OccupancyRTParam',rt)\ncomp.set_force_solo(True)\ncomp.set_age_update_mode(unreal.NiagaraAgeUpdateMode.TICK_DELTA_TIME)\ncomp.reinitialize_system()\ncomp.activate(True)\ncomp.advance_simulation(120,1.0/60.0)\nprint('REACTIVATED='+repr({'component':comp.get_path_name(),'active':bool(comp.is_active()),'forceSolo':bool(comp.get_force_solo()),'rt':rt.get_path_name()}))\ndel candidate\ndel comp\ndel actor\ndel actors"
+  }
+}

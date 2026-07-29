@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nsysa=unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest')\n# Walk all objects within the system package to find RenderTarget2D DI instances\npkg=sysa.get_outermost()\ndis=[]\nfor o in unreal.find_all_objects_of_class(unreal.NiagaraDataInterfaceRenderTarget2D) if hasattr(unreal,'find_all_objects_of_class') else []:\n    dis.append(o.get_path_name())\nprint('via_findall',len(dis))\n# Fallback: use EditorAssetLibrary to list objects? Try get_asset_bundle. Instead enumerate via GetObjectsWithOuter equivalent not in py.\n# Try: iterate load and use 'get_typed_outer'\nprint('sys_path',sysa.get_path_name())\n"
+  }
+}

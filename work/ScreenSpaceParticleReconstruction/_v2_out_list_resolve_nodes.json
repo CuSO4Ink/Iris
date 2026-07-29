@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "V2_RESOLVE_NODES=[{\"id\": \"B70EDAEE475EAECA72637F85602F3DCC\", \"type\": \"Output\", \"title\": \"Output Module\"}, {\"id\": \"2B45B5F243A8A69A63BBD0B999312CF7\", \"type\": \"Input\", \"title\": \"InputMap\"}, {\"id\": \"B47EA575449F2A202ABE6A81F7C87E33\", \"type\": \"MapGet\", \"title\": \"Map Get\"}, {\"id\": \"AAF4A4F34C72C0DBD9B765B862231DF0\", \"type\": \"MapSet\", \"title\": \"Map Set\"}, {\"id\": \"B8D5FBEA441BE23BFAC7DDA6271274B0\", \"type\": \"MapGet\", \"title\": \"Map Get\"}, {\"id\": \"4B7D7C2D4BFF6907D7A71A9887B51402\", \"type\": \"CustomHlsl\", \"title\": \"Custom Hlsl\"}]",
+                 "result":  "None",
+                 "execution_time_ms":  9.5827016830444336
+             },
+    "action":  "tool.call"
+}

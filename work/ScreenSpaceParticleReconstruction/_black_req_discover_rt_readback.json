@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nprint('READ_METHODS=' + repr([n for n in dir(unreal.RenderingLibrary) if 'read' in n.lower() and 'render' in n.lower()]))\nfor n in dir(unreal.RenderingLibrary):\n    if 'read_render_target' in n.lower():\n        print(n + '=' + str(getattr(unreal.RenderingLibrary,n).__doc__))"
+  }
+}

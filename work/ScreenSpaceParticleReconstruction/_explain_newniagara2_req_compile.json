@@ -1,0 +1,9 @@
+{
+  "action": "tool.call",
+  "tool": "NiagaraToolsets.NiagaraToolset_System.GetSystemCompileState",
+  "arguments": {
+    "system": {
+      "refPath": "/Game/SSPR_Validation/M2/NewNiagaraSystem2.NewNiagaraSystem2"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nS='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\nE='ProjParticles'\nM='SSPR_WriteOccupancy'\nH='1877D2CA4F034875E12FFB8B17F65DEE'\nGRID=S+':NiagaraDataInterfaceGrid2DCollection_0'\nsvc=unreal.NiagaraScratchPadService\nnodes=svc.list_nodes(S,E,M)\nmapgets=[str(x.node_id) for x in nodes if str(x.node_type)=='MapGet']\nif len(mapgets)!=1: raise RuntimeError('Expected one MapGet, got ' + repr(mapgets))\ng=mapgets[0]\ncode=str(svc.get_custom_hlsl_code(S,E,M,H))\ngrid=unreal.load_object(None,GRID)\nif grid is None: raise RuntimeError('Source Grid missing')\nprint('WRITER=' + repr({'mapGet':g,'numAttributes':grid.get_editor_property('num_attributes'),'clearBeforeNonIterationStage':grid.get_editor_property('clear_before_non_iteration_stage'),'usesGetNumCells':'OccupancyGrid.GetNumCells' in code,'usesAnonymousChannel0':'OccupancyGrid.SetValueAtIndex' in code and 'writePx.x, writePx.y, 0, 1.0f' in code,'usesNamedAttribute':'Attribute=Occupancy' in code,'usesOldRTWrite':'OccupancyRT.SetRenderTargetValue' in code,'messages':[str(x) for x in svc.get_compile_messages(S,False)]}))"
+  }
+}

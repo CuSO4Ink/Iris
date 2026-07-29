@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_INTERNAL_SIMRT={\"created\": true, \"filter\": \"\u003cTextureFilter.TF_BILINEAR: 1\u003e\", \"format\": \"\u003cTextureRenderTargetFormat.RTF_RGBA16F: 6\u003e\", \"inherit\": false, \"path\": \"/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main:SSPR_SimRTDI\", \"size\": [2048, 2048]}",
+                 "result":  "None",
+                 "execution_time_ms":  423.322509765625
+             },
+    "action":  "tool.call"
+}

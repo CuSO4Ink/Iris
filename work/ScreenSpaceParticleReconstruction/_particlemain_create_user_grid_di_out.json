@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_USER_GRID_DI={\"clear\": true, \"created\": true, \"numAttributes\": 1, \"numCells\": [2048, 2048], \"path\": \"/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main:SSPR_TrajectoryGridDI\", \"targetParameter\": \"User.SSPR_TrajectoryRT\"}",
+                 "result":  "None",
+                 "execution_time_ms":  56.644500732421875
+             },
+    "action":  "tool.call"
+}

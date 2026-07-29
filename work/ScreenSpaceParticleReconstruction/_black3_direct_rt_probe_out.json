@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "DIRECT_RT_PROBE={\"applied\": true, \"messages\": [], \"stored\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  7261.35693359375
+             },
+    "action":  "tool.call"
+}

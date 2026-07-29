@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "WHITE_MAIN_ACTIVATED={\"active\": true, \"actor\": \"/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619A9F202_1095912791\", \"actorLabel\": \"SSPR_ParticleTrails_Main\", \"applied\": true, \"compileMessages\": [], \"component\": \"/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619A9F202_1095912791.NiagaraComponent0\", \"forceSolo\": true, \"saved\": true, \"system\": \"/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main.NS_SSPR_ParticleTrails_Main\"}",
+                 "result":  "None",
+                 "execution_time_ms":  551.27587890625
+             },
+    "action":  "tool.call"
+}

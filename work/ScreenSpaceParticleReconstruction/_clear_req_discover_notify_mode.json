@@ -1,0 +1,11 @@
+{
+  "action": "tool.call",
+  "tool": "discover_python_module",
+  "arguments": {
+    "module_name": "unreal",
+    "name_filter": "PropertyAccessChangeNotifyMode",
+    "max_items": "20",
+    "include_classes": "true",
+    "include_functions": "true"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nprint([n for n in dir(unreal.NiagaraScript) if any(k in n.lower() for k in ['data_interface','gpu','compile','execution','parameter'])])"
+  }
+}

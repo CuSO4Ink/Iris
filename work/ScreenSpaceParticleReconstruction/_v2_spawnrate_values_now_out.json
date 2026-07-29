@@ -1,0 +1,56 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "returnValue":  {
+                                     "moduleName":  "SpawnRate",
+                                     "inputs":  [
+                                                    {
+                                                        "name":  "SpawnRate",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  5000
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Use Spawn Probability",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  0
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "Spawn Probability",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  1
+                                                                                }
+                                                                  }
+                                                    },
+                                                    {
+                                                        "name":  "SpawnGroup",
+                                                        "value":  {
+                                                                      "struct":  {
+                                                                                     "refPath":  "/Script/Niagara.NiagaraInt32"
+                                                                                 },
+                                                                      "value":  {
+                                                                                    "value":  0
+                                                                                }
+                                                                  }
+                                                    }
+                                                ]
+                                 }
+             },
+    "action":  "tool.call"
+}

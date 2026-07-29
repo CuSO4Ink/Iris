@@ -1,0 +1,7 @@
+{
+  "class_name": "unreal.NiagaraSystem",
+  "method_filter": "emitter|version|handle|property|script|compile",
+  "max_methods": "200",
+  "include_inherited": "true",
+  "include_private": "false"
+}

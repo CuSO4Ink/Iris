@@ -1,0 +1,7 @@
+{
+  "class_name": "unreal.NiagaraScratchResult, unreal.NiagaraScratchPinInfo, unreal.NiagaraScratchConnectionInfo",
+  "method_filter": "",
+  "max_methods": "50",
+  "include_inherited": "false",
+  "include_private": "false"
+}

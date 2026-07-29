@@ -1,0 +1,22 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  false,
+    "error":  {
+                  "toolError":  "{\r\n\t\"success\": false,\r\n\t\"error_code\": \"PYTHON_RUNTIME_ERROR\",\r\n\t\"error_message\": \"Python execution caused a UE assertion failure: Assertion failed: false [File:C:\\\\Work\\\\UEEngine\\\\UnrealEngine-5.8.0-release\\\\Engine\\\\Source\\\\Editor\\\\UnrealEd\\\\Private\\\\PlayLevel.cpp] [Line: 553] \\nObject \u0027Package /Temp/UEDPIE_0_Untitled_1\u0027 from PIE level still referenced. Shortest path from root:  (root)  GCObjectReferencer /Engine/Transient.GCObjectReferencer_0\\r\\n -\u003e FPyReferenceCollector::AddReferencedObjects( NiagaraComponent /Temp/UEDPIE_0_Untitled_1.ActorContainer_0:NiagaraActor_UAID_18C04D87C619A8F202_1788341615.NiagaraComponent0)\\r\\n    ^ UE::ReferenceChainS NOTE: the post-crash probe failed — the interpreter is unstable; if further commands keep failing identically, restart the editor (BuildAndLaunch).\"\r\n}",
+                  "ok":  false
+              },
+    "raw":  {
+                "jsonrpc":  "2.0",
+                "id":  2,
+                "result":  {
+                               "content":  [
+                                               {
+                                                   "type":  "text",
+                                                   "text":  "{\r\n\t\"success\": false,\r\n\t\"error_code\": \"PYTHON_RUNTIME_ERROR\",\r\n\t\"error_message\": \"Python execution caused a UE assertion failure: Assertion failed: false [File:C:\\\\Work\\\\UEEngine\\\\UnrealEngine-5.8.0-release\\\\Engine\\\\Source\\\\Editor\\\\UnrealEd\\\\Private\\\\PlayLevel.cpp] [Line: 553] \\nObject \u0027Package /Temp/UEDPIE_0_Untitled_1\u0027 from PIE level still referenced. Shortest path from root:  (root)  GCObjectReferencer /Engine/Transient.GCObjectReferencer_0\\r\\n -\u003e FPyReferenceCollector::AddReferencedObjects( NiagaraComponent /Temp/UEDPIE_0_Untitled_1.ActorContainer_0:NiagaraActor_UAID_18C04D87C619A8F202_1788341615.NiagaraComponent0)\\r\\n    ^ UE::ReferenceChainS NOTE: the post-crash probe failed — the interpreter is unstable; if further commands keep failing identically, restart the editor (BuildAndLaunch).\"\r\n}"
+                                               }
+                                           ],
+                               "isError":  true
+                           }
+            },
+    "action":  "tool.call"
+}

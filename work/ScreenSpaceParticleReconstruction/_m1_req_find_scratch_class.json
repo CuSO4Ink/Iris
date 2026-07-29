@@ -1,0 +1,7 @@
+{
+  "module_name": "unreal",
+  "name_filter": "Scratch",
+  "max_items": "100",
+  "include_classes": "true",
+  "include_functions": "false"
+}

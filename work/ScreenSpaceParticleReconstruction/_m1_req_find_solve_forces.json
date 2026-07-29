@@ -1,0 +1,9 @@
+{
+  "folderPath": "",
+  "name": "Solve",
+  "usages": ["Module"],
+  "visibilities": ["Library", "Unexposed", "Hidden"],
+  "moduleUsageBitmask": 0,
+  "bRecursive": true,
+  "bIncludeDeprecated": false
+}

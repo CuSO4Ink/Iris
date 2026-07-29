@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\nsysa=unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest')\nhandles=sysa.get_editor_property('emitter_handles') if False else None\n# Access emitters via NiagaraSystem API\nnames=[]\ntry:\n    for h in sysa.get_editor_property('emitter_handles'):\n        names.append(str(h))\nexcept Exception as e:\n    print('handles ERR',str(e)[:100])\nprint('done-probe')\n"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "category": "LogNiagara",
+  "pattern": ".*",
+  "maxEntries": 30
+}

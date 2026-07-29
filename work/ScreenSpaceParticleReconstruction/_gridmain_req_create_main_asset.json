@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "__import__('runpy').run_path(r'C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_gridmain_create_main_asset.py')"
+  }
+}

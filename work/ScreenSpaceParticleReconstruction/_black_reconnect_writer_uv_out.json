@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "WRITER_UV_RECONNECT={\"addedConnections\": 2, \"addedPins\": 2, \"applied\": true, \"compileMessages\": [], \"expectedConnections\": [[\"BFD8FBC24B2DA1BEE89AF2889F618A0A\", \"Particles.SSPR_ScreenUV\", \"1877D2CA4F034875E12FFB8B17F65DEE\", \"ScreenUV\"], [\"BFD8FBC24B2DA1BEE89AF2889F618A0A\", \"Particles.SSPR_ScreenVelocityUV\", \"1877D2CA4F034875E12FFB8B17F65DEE\", \"ScreenVelocityUV\"]], \"missingConnections\": []}",
+                 "result":  "None",
+                 "execution_time_ms":  1565.90966796875
+             },
+    "action":  "tool.call"
+}

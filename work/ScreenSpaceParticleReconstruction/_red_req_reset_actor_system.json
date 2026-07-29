@@ -1,0 +1,14 @@
+{
+  "action": "tool.call",
+  "toolset": "NiagaraToolsets.NiagaraToolset_Component",
+  "tool": "SetSystem",
+  "arguments": {
+    "niagaraComponent": {
+      "refPath": "/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871.NiagaraComponent0"
+    },
+    "system": {
+      "refPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest"
+    },
+    "bResetExistingOverrideParameters": true
+  }
+}

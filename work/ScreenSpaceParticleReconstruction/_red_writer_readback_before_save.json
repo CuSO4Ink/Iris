@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "WRITER={\u0027mapGet\u0027: \u0027BFD8FBC24B2DA1BEE89AF2889F618A0A\u0027, \u0027numAttributes\u0027: 1, \u0027clearBeforeNonIterationStage\u0027: True, \u0027usesGetNumCells\u0027: True, \u0027usesAnonymousChannel0\u0027: True, \u0027usesNamedAttribute\u0027: False, \u0027usesOldRTWrite\u0027: False, \u0027messages\u0027: []}",
+                 "result":  "None",
+                 "execution_time_ms":  16.354099273681641
+             },
+    "action":  "tool.call"
+}

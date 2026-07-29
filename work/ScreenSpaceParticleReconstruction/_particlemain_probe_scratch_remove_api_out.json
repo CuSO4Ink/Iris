@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PARTICLE_SCRATCH_REMOVE_API=[\"add_module_input\", \"add_pin\", \"connect_pins\", \"delete_node\", \"disconnect_pin\", \"get_node_pins\"]",
+                 "result":  "None",
+                 "execution_time_ms":  6.5855979919433594
+             },
+    "action":  "tool.call"
+}

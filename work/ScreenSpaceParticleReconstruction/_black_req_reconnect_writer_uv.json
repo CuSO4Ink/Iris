@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import runpy\nrunpy.run_path(r'C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_black_reconnect_writer_uv.py', run_name='__main__')"
+  }
+}

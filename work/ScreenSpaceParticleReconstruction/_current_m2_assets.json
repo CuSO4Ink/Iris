@@ -1,0 +1,15 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "returnValue":  [
+                                     "/Game/SSPR_Validation/M2/ParticleTrails/M_SSPR_ParticleTrails_Display",
+                                     "/Game/SSPR_Validation/M2/NS_SSPR",
+                                     "/Game/SSPR_Validation/M2/ParticleTrails/NS_SSPR_ParticleTrails_Main",
+                                     "/Game/SSPR_Validation/M2/BP_SSPR_TemporalOrchestrator",
+                                     "/Game/SSPR_Validation/M2/GridTrails/BP_SSPR_GridTrails_Main",
+                                     "/Game/SSPR_Validation/M2/ParticleTrails/L_SSPR_ParticleTrails_Validation"
+                                 ]
+             },
+    "action":  "tool.call"
+}

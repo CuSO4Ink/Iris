@@ -1,0 +1,6 @@
+{
+  "action": "script.execute",
+  "endpoint": "http://127.0.0.1:8000/mcp",
+  "timeoutSec": 60,
+  "scriptFile": "C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_v2_inspect_core.py"
+}

@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "V2_OBJ_DUMP_STAGES_REQUESTED",
+                 "result":  "None",
+                 "execution_time_ms":  6.3946990966796875
+             },
+    "action":  "tool.call"
+}

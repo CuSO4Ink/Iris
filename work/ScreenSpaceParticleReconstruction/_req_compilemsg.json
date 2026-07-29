@@ -1,0 +1,8 @@
+{
+  "action": "tool.call",
+  "tool": "VibeUE.NiagaraScratchPadService.GetCompileMessages",
+  "arguments": {
+    "systemPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest",
+    "bErrorsOnly": false
+  }
+}

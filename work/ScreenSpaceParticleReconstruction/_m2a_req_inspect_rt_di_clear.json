@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\ncdo=unreal.get_default_object(unreal.NiagaraDataInterfaceRenderTarget2D)\nattrs=[n for n in dir(cdo) if 'clear' in n.lower() or 'preview' in n.lower() or 'inherit' in n.lower()]\nrows=[]\nfor di in unreal.ObjectIterator(unreal.NiagaraDataInterfaceRenderTarget2D):\n    p=di.get_path_name()\n    if 'NS_SSPR_ProjTest' not in p and 'NiagaraComponent' not in p: continue\n    props={}\n    for name in attrs:\n        try:\n            value=di.get_editor_property(name)\n            if isinstance(value,(bool,int,float,str)): props[name]=value\n            else: props[name]=str(value)\n        except Exception: pass\n    rows.append({'path':p,'props':props})\nprint('RT_DI_CLEAR_ATTRS='+repr(attrs))\nprint('RT_DI_CLEAR_STATE='+repr(rows))"
+  }
+}

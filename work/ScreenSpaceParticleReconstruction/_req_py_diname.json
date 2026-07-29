@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\n# The niagara type registry name for a DI is usually the UClass name w/ 'UNiagaraDataInterfaceRenderTarget2D' or the struct name.\n# Try common variants the VibeUE service might accept by checking the class display / cpp name.\nc=unreal.NiagaraDataInterfaceRenderTarget2D\nprint('name',c.static_class().get_name())\nprint('fname',c.static_class().get_fname())\nprint('path',c.static_class().get_path_name())\n"
+  }
+}

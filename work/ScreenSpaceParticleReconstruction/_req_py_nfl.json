@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\n# Try to add a user parameter via NiagaraSystem's editor data / exposed parameters store using low-level API.\nsysa=unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest')\n# NiagaraEditorParametersAdapter or system's exposed params - check what's reachable\nlib=unreal.NiagaraFunctionLibrary\nprint('NiagaraFunctionLibrary methods:', [m for m in dir(lib) if not m.startswith('_')][:40])\n"
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "returnValue":  "[{\"index\": 0, \"title\": \"precisefluid - Unreal Editor\"}, {\"index\": 1, \"title\": \"RT_SSPR_Occupancy\"}]"
+             },
+    "action":  "tool.call"
+}

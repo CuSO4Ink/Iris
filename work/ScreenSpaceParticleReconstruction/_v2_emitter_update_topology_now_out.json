@@ -1,0 +1,367 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "returnValue":  {
+                                     "scriptName":  "EmitterUpdateScript",
+                                     "modules":  [
+                                                     {
+                                                         "moduleName":  "EmitterState",
+                                                         "enabled":  true,
+                                                         "moduleScript":  {
+                                                                              "refPath":  "/Niagara/Modules/Emitter/EmitterState.EmitterState"
+                                                                          },
+                                                         "bIsSetParametersModule":  false,
+                                                         "inputs":  [
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  true,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  true,
+                                                                            "name":  "Life Cycle Mode",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Niagara/Enums/ENiagaraEmitterLifeCycleMode.ENiagaraEmitterLifeCycleMode"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  true,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  true,
+                                                                            "name":  "Inactive Response",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Niagara/Enums/ENiagaraInactiveMode.ENiagaraInactiveMode"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  true,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  true,
+                                                                            "name":  "Loop Behavior",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Niagara/Enums/ENiagara_EmitterStateOptions.ENiagara_EmitterStateOptions"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  true,
+                                                                            "name":  "Loop Duration Mode",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Niagara/Enums/ENiagara_InfiniteLoopDuration.ENiagara_InfiniteLoopDuration"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Loop Count",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraInt32"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  true,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Loop Duration",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  true,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Recalculate Duration Each Loop",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  true,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "UseLoopDelay",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Loop Delay",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Delay First Loop Only",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  true,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  true,
+                                                                            "name":  "Scalability Mode",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Niagara/Enums/ENiagaraEmitterScalabilityMode_Limited.ENiagaraEmitterScalabilityMode_Limited"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  true,
+                                                                            "name":  "Enable Distance Culling",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "MinDistance",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Min Distance Response",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.ENiagaraExecutionStateManagement"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "MaxDistance",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Max Distance Response",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.ENiagaraExecutionStateManagement"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  true,
+                                                                            "name":  "Scale Spawn Count",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Spawn Count Scale",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Spawn Count Scale By Distance",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraDataInterfaceCurve"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  true,
+                                                                            "name":  "Enable Visibility Culling",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Visibility Cull Response",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.ENiagaraExecutionStateManagement"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Visibility Cull Delay",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  false,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Reset Age On Awaken",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                                               }
+                                                                                     }
+                                                                        }
+                                                                    ]
+                                                     },
+                                                     {
+                                                         "moduleName":  "SpawnRate",
+                                                         "enabled":  true,
+                                                         "moduleScript":  {
+                                                                              "refPath":  "/Niagara/Modules/Emitter/SpawnRate.SpawnRate"
+                                                                          },
+                                                         "bIsSetParametersModule":  false,
+                                                         "inputs":  [
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  true,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "SpawnRate",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  true,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Use Spawn Probability",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraBool"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  false,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "Spawn Probability",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                               }
+                                                                                     }
+                                                                        },
+                                                                        {
+                                                                            "bIsVisible":  true,
+                                                                            "bIsEditable":  true,
+                                                                            "bIsDynamic":  false,
+                                                                            "bIsStaticSwitch":  false,
+                                                                            "name":  "SpawnGroup",
+                                                                            "type":  {
+                                                                                         "classStructOrEnum":  {
+                                                                                                                   "refPath":  "/Script/Niagara.NiagaraInt32"
+                                                                                                               }
+                                                                                     }
+                                                                        }
+                                                                    ]
+                                                     },
+                                                     {
+                                                         "moduleName":  "SSPR_DisplayCardSetup",
+                                                         "enabled":  true,
+                                                         "moduleScript":  {
+                                                                              "refPath":  "/Game/SSPR_Validation/M2/AnisotropicSplat_V2/NS_SSPR_AnisotropicSplat_Main.NS_SSPR_AnisotropicSplat_Main:SSPR_DisplayCardSetup"
+                                                                          },
+                                                         "bIsSetParametersModule":  false,
+                                                         "inputs":  [
+
+                                                                    ]
+                                                     }
+                                                 ]
+                                 }
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,7 @@
+{
+  "action": "tool.call",
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "import unreal\ntarget='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\nrt=unreal.load_asset('/Game/SSPR_Validation/RT_SSPR_Occupancy')\npreview=None\nfor c in unreal.ObjectIterator(unreal.NiagaraComponent):\n a=c.get_asset()\n if a and a.get_path_name()==target and c.get_owner() is None:\n  preview=c\n  break\nif preview is None or rt is None: raise RuntimeError('Preview or RT missing')\npreview.set_variable_texture_render_target('User.OccupancyRTParam',rt)\npreview.set_force_solo(True)\npreview.set_component_tick_enabled(True)\npreview.reinitialize_system()\npreview.activate(True)\npreview.advance_simulation(180,1.0/60.0)\nunreal.RenderingLibrary.export_render_target(preview,rt,unreal.Paths.project_saved_dir(),'SSPR_RT_Preview_FrameA')\npreview.advance_simulation(1,1.0/60.0)\nunreal.RenderingLibrary.export_render_target(preview,rt,unreal.Paths.project_saved_dir(),'SSPR_RT_Preview_FrameB')\nprint('PREVIEW_FRAMES='+repr({'component':preview.get_path_name(),'active':bool(preview.is_active()),'a':unreal.Paths.project_saved_dir()+'SSPR_RT_Preview_FrameA','b':unreal.Paths.project_saved_dir()+'SSPR_RT_Preview_FrameB'}))"
+  }
+}

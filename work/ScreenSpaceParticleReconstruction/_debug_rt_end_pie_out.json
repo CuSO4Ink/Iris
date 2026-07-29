@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "RT_PIE_END_REQUESTED={\u0027wasPlaying\u0027: True}",
+                 "result":  "None",
+                 "execution_time_ms":  13.168100357055664
+             },
+    "action":  "tool.call"
+}
