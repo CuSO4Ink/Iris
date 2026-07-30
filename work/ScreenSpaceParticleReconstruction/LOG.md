@@ -442,4 +442,8 @@ Connected MI 绑定后的严格 RT Gate 首次失败：System 编译、Renderer 
 
 候选不是靠空路径得到性能：生成候选 Actor 前记录关卡已有 RT，下一独立请求只读取之后新增的两张 2048² RGBA16F RT。新增 Main/Aux 均非零且签名唯一，Main G/B 含正负方向值，Aux B 恒零、A 最大 1，所有通道无 NaN/Inf。随后强制重绘视口取得有效 ProfileGPU：在 `251,667～254,167` 粒子下，四个 Fixed Tick 的 Raster 分别为 `0.715/0.697/0.706/0.703 ms`，Clear 为 `0.324～0.325 ms`，Resolve 为 `0.156～0.165 ms`，Particle Update 为 `0.111～0.132 ms`；Niagara GPU Compute 四步合计 `5.242 ms`，整帧 `15.945 ms`。相对 Dense Raster `17.70～18.88 ms/步`，有效 Raster 提速约 `24.8～27.1×`。
 
+2026-07-30 性能 Gate 纠正：用户指出当前近景仍明显卡顿后复核，确认上面的 Sparse V2 Profile 没有记录相机姿态，不能与用户提供的近景 Dense `.profViz` 直接相除，`24.8～27.1×` 结论撤回。资产/HLSL 修改本身真实存在：Sparse V2 的原子写入候选上限为 `33×7=231`，但为了精确质量守恒，每粒子仍额外执行 `49+11+33+7` 次一维高斯权重求和，并保留大量 `exp()`，所以原子候选减少 `57.14%` 不代表总 Stage 时间同幅下降。读回当前视口相机距 Niagara 约 `1194 uu` 后再次触发 ProfileGPU，只捕获到 Slate `0.09 ms`，没有 Niagara 场景事件；性能 Gate 重新打开，下一步必须由用户让关卡视口保持前台后，在完全相同相机下分别抓 Dense/Sparse V2。
+
+同日止血措施：本地 UE 5.8 源码 `NiagaraSystemSimulation.cpp` 显示 Fixed Tick 每帧补步上限由 `fx.Niagara.SystemSimulation.MaxTickSubsteps` 控制，默认值为 `100`。当前编辑器会话已通过 MCP 将其临时设为 `4`，日志确认 `LastSetBy: Console`。这保留 Niagara System 的 Fixed Tick `0.01667s`，但单帧最多执行 4 个子步，从机制上阻止旧 `.profViz` 的 24 步追帧螺旋。该 CVar 尚未持久化，重启恢复默认；单次 Raster 仍需继续优化。
+
 技术查询确认候选 `UpToDate`、零错误零警告，Renderer 仍绑定 `MI_SSPR_AnisotropicSplat_G5_HQ` 和两张 RT 子变量。资产级 User DI 严格为 `1 Raster + 2 RT + 1 Grid2D`；但 `NiagaraComponent` 在跨请求参数同步后仍生成第二套 override 子对象。运行时只创建两张新 RT，ProfileGPU 也只执行一套 Raster/Resolve，因此当前性能数据有效；该元数据重复仍需在视觉通过后收口，不能把候选直接视为最终封版。当前 User 标量及作用已整理到 `NIAGARA-USER-PARAMETERS.md`。

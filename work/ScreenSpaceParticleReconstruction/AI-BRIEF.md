@@ -8,13 +8,15 @@
 
 ## 当前状态
 
-活跃；正式主线仍是无 History 的 Niagara GPU 粒子→六属性 Raster→Main/Aux RT→屏幕空间重建。旧 `25×5` Sparse V1 因运行 RT 全零判失败；当前独立候选 `/Game/SSPR_Validation/Performance/DenseG5SparseV2/NS_SSPR_AnisotropicSplat_Main` 由可运行 Dense G5 二进制直接复制而来，使用保守质量守恒 `33×7` 核，保持 2048²、约 25 万粒子、Fixed Tick 与旧 `MI_SSPR_AnisotropicSplat_G5_HQ` 不变。候选新增的 Main/Aux 已跨请求独立读回非零；有效 ProfileGPU 中 Raster 为 `0.697～0.715 ms/步`，相对 Dense `17.70～18.88 ms/步` 提速约 `24.8～27.1×`。当前性能/RT Gate 已通过，视觉 Gate 与组件 override 序列化收口待用户确认。FieldRecon 仍为实验候选，不代表当前视觉基线。
+活跃；正式主线仍是无 History 的 Niagara GPU 粒子→六属性 Raster→Main/Aux RT→屏幕空间重建。旧 `25×5` Sparse V1 因运行 RT 全零判失败；当前独立候选 `/Game/SSPR_Validation/Performance/DenseG5SparseV2/NS_SSPR_AnisotropicSplat_Main` 由可运行 Dense G5 二进制直接复制而来，使用保守质量守恒 `33×7` 核，保持 2048²、约 25 万粒子、Fixed Tick 与旧 `MI_SSPR_AnisotropicSplat_G5_HQ` 不变。候选新增的 Main/Aux 已跨请求独立读回非零。此前得到的 `0.697～0.715 ms/步` Profile 没有记录相机姿态，不能与用户近景 Dense `.profViz` 的 `17.70～18.88 ms/步` 直接相除；随后在约 `1194 uu` 近景重抓时只捕获 Slate 帧。故 RT Gate 仍有效，但性能 Gate 已重新打开，`24.8～27.1×` 不再作为成立结论。FieldRecon 仍为实验候选，不代表当前视觉基线。
 
 当前高品质稳定基线：Main/Aux 均为 2048² RGBA16F、Bilinear、自动 Mip 关闭；Niagara System 开启 `Fixed Tick Delta=0.01667s`；旧 G5 HQ 使用无 History 的双向 RK2 Streamline 与原始低强度 DepthCue。Main/Aux 六属性仍完整生成，但 FieldRecon 的 Coverage 归一化和较强 DepthTransport 暂不参与最终显示。
 
 ## 当前焦点
 
-当前显示为旧 G5 HQ + Sparse V2；下一焦点是用户在相同近景、转镜、平移和拉远条件下确认 `33×7` 没有点列、缺口、宽度退化或边缘截断。通过后再解决 raw-copy 候选组件在跨请求参数同步后保留额外 DI override 子对象的问题，并做编辑器重启与 30/60/120 FPS 回归。参数定义见 `NIAGARA-USER-PARAMETERS.md`。
+当前显示为旧 G5 HQ + Sparse V2；下一焦点是固定同一近景相机，对 Dense 与 Sparse V2 分别抓取包含 Niagara 场景渲染的 ProfileGPU，再判断实际收益。`33×7` 还保留 `49+11+33+7` 次质量归一化循环和大量 `exp()`，理论原子候选下降 `57.14%` 并不等于 Stage 时间下降 `57.14%`。完成同机位 A/B 后再决定是否改为解析质量补偿和低样本 Streamline Kernel。参数定义见 `NIAGARA-USER-PARAMETERS.md`。
+
+当前编辑器会话已将 `fx.Niagara.SystemSimulation.MaxTickSubsteps` 从源码默认 `100` 临时设为 `4`。这不关闭 60 Hz Fixed Tick，只限制单个慢帧最多补做 4 步，避免旧 Profile 中 24 步追帧螺旋；该设置尚未写入项目配置，重启后会恢复默认，不能替代 Raster 本身的优化。
 
 ## 技术栈与硬约束
 

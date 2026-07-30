@@ -2,7 +2,7 @@
 
 - 版本：0.9
 - 日期：2026-07-30
-- 状态：Sparse V1 因跨帧运行全零未通过 Gate；保守 Sparse V2 `33×7` 已通过有效 RT 与 ProfileGPU Gate，当前绑定用户更偏好的旧 `MI_SSPR_AnisotropicSplat_G5_HQ`，等待人工视觉确认。FieldRecon Connected 仍为实验候选
+- 状态：Sparse V1 因跨帧运行全零未通过 Gate；保守 Sparse V2 `33×7` 已通过有效 RT Gate，当前绑定用户更偏好的旧 `MI_SSPR_AnisotropicSplat_G5_HQ`。先前 ProfileGPU 未记录相机姿态，不能与用户近景 Dense Profile 直接对比，性能 Gate 已重新打开。FieldRecon Connected 仍为实验候选
 - V1 冻结快照：`/Game/SSPR_Validation/Versions/V1_ParticleTrails_20260729`
 - V3 冻结快照：`/Game/SSPR_Validation/Versions/V3_AnisotropicSplat_20260730`
 - V2 当前开发目录：`/Game/SSPR_Validation/M2/AnisotropicSplat_V2`
@@ -524,7 +524,8 @@ PCA 作为后续可选升级：只在低速、方向不稳定或需要根据粒�
 
 - 首先冻结最高质量参数。
 - 最高质量通过后，再建立 High / Medium / Low 档位。
-- 保守 Sparse V2 已通过有效 Main/Aux 与 ProfileGPU Gate：最大候选 `539→231`，Raster `17.70～18.88→0.697～0.715 ms/步`。旧 G5 HQ 仍是人工偏好视觉基线；当前尚需用户视觉对照、组件 override 序列化收口、编辑器重启和完整 30/60/120 FPS 动态回归。
+- 保守 Sparse V2 已通过有效 Main/Aux Gate：最大原子写入候选 `539→231`。但候选为了精确质量守恒仍执行 `49+11+33+7` 次一维权重求和，并在写入循环中保留大量 `exp()`；此前 `0.697～0.715 ms/步` 的 Profile 没有相机姿态，不能与近景 Dense `17.70～18.88 ms/步` 直接比较。后续必须在固定近景相机下做 Dense/Sparse V2 A/B，性能 Gate 暂不判通过。
+- UE 5.8 源码确认 `fx.Niagara.SystemSimulation.MaxTickSubsteps` 控制 Fixed Tick 系统每帧最大子步数。当前会话临时设为 `4`，保留 `0.01667s` Fixed Tick，仅阻止慢帧扩张为几十次补步；同机位确认后再决定是否写入项目配置。
 
 当前尚未通过的视觉项：连续尖细流丝、中尺度连接、柔软但不糊的烟体、纵深与最终受光、静止/转镜头/拉远、屏幕边缘及关闭 TAA/TSR。Fixed Tick 已解决整片闪烁，但不能替代这些画面 Gate。
 

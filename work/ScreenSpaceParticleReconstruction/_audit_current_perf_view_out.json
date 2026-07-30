@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "SSPR_PERF_VIEW_AUDIT={\"cameraLocation\": [-1426.8398514444264, 3552.035571061711, 1230.2516895079764], \"cameraRotation\": [-21.999894766447994, 264.000010022521, 0.0], \"niagaraActors\": [{\"active\": true, \"actor\": \"/Game/SSPR_Validation/M2/AnisotropicSplat_V2/L_SSPR_AnisotropicSplat_Validation.L_SSPR_AnisotropicSplat_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61937F302_2074672804\", \"cameraDistanceUU\": 1149.395570735013, \"cameraKey\": \"LevelEditorViewport0\", \"label\": \"SSPR_ParticleTrails_Main\", \"location\": [-1410.0, 2560.0, 649.9999999999998], \"system\": \"/Game/SSPR_Validation/Performance/DenseG5SparseV2/NS_SSPR_AnisotropicSplat_Main.NS_SSPR_AnisotropicSplat_Main\", \"visible\": true}]}",
+                 "result":  "None",
+                 "execution_time_ms":  21.710102081298828
+             },
+    "action":  "tool.call"
+}
