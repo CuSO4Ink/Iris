@@ -8,13 +8,13 @@
 
 ## 当前状态
 
-活跃；正式主线仍是无 History 的 Niagara GPU 粒子→六属性 Raster→Main/Aux RT→屏幕空间重建。`25×5` Sparse Raster 虽曾在短时 Profile 中显示约 `0.56 ms`，但跨请求视觉 Gate 暴露出 System/运行 DI 全零，候选已判失败并回滚。当前验证关卡临时绑定原始二进制恢复副本 `/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main`，使用 `49×11` Dense Raster 与 `MI_SSPR_AnisotropicSplat_G5_HQ`；Main/Aux 已恢复非零。V1 与 V3 仍保留，但 V3 复制关卡存在共享外部 Actor 引用，不能单独作为运行回滚 Gate。
+活跃；正式主线仍是无 History 的 Niagara GPU 粒子→六属性 Raster→Main/Aux RT→屏幕空间重建。`25×5` Sparse Raster 虽曾在短时 Profile 中显示约 `0.56 ms`，但跨请求视觉 Gate 暴露出 System/运行 DI 全零，候选已判失败并回滚。当前验证关卡绑定原始二进制恢复副本 `/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main`，使用 `49×11` Dense Raster，Renderer 1 已恢复最新 `MI_SSPR_AnisotropicSplat_FieldRecon_V1_Connected_HQ`；Main/Aux 非零，最终组件为 `1 Raster + 2 RT`。V1 与 V3 仍保留，但 V3 复制关卡存在共享外部 Actor 引用，不能单独作为运行回滚 Gate。
 
 当前高品质稳定基线：SimRT 为 2048² RGBA16F、Bilinear、自动 Mip 关闭；材质使用 LOD0 的 7×7 Medium 与 13×13 Body 空间卷积；Niagara System 开启 `Fixed Tick Delta=0.01667s`。中央大块暗影已定位为密度梯度光照，当前 HQ 实例暂用 `Ambient=1 / LightStrength=0` 的中性光照，以便先验收密度连续性。
 
 ## 当前焦点
 
-当前焦点先收敛为 **Dense 恢复可见 Gate**：用户确认烟雾重新出现后，再恢复最新 FieldRecon 表现链并重新设计近景性能方案。后续性能候选必须在独立可运行 System 上完成跨请求、跨帧和编辑器重启 Gate；不再把同一次 Python 调用里的 `Apply/Compile → advance_simulation → RT 回读` 当作有效运行验证。
+Dense 恢复可见 Gate 已由用户确认，最新 FieldRecon 表现链也已恢复。当前焦点重新回到 **近景性能方案重构**：后续候选必须在独立可运行 System 上完成跨请求、跨帧和编辑器重启 Gate；不再把同一次 Python 调用里的 `Apply/Compile → advance_simulation → RT 回读` 当作有效运行验证，也不再原地修改当前恢复 System 的 Scratch。
 
 ## 技术栈与硬约束
 

@@ -2,7 +2,7 @@
 
 - 版本：0.9
 - 日期：2026-07-30
-- 状态：G5 字段与 FieldRecon 已落地；Sparse Raster 因跨帧运行全零未通过 Gate，当前回滚到原始 Dense G5 恢复副本，等待用户确认可见后再继续性能方案
+- 状态：G5 字段与 FieldRecon 已恢复；Sparse Raster 因跨帧运行全零未通过 Gate，当前使用原始 Dense G5 恢复副本并绑定最新 FieldRecon Connected MI，用户已确认恢复可见
 - V1 冻结快照：`/Game/SSPR_Validation/Versions/V1_ParticleTrails_20260729`
 - V3 冻结快照：`/Game/SSPR_Validation/Versions/V3_AnisotropicSplat_20260730`
 - V2 当前开发目录：`/Game/SSPR_Validation/M2/AnisotropicSplat_V2`
@@ -514,7 +514,7 @@ PCA 作为后续可选升级：只在低速、方向不稳定或需要根据粒�
 
 在约 `251,666～253,333` 个活动 GPU 粒子下，程序化 `ProfileGPU` 曾得到 Sparse Raster 首次 `0.930 ms`、随后 `0.559/0.563 ms`，Resolve 为 `0.153～0.158 ms`。但该数据来自同一自动化会话内的短时运行；用户随后观察到效果完全消失，跨请求回读证实全部 Main/Aux 为零，因此这组数字只能证明空/失效路径很快，不能证明有效 Raster 达到该性能。
 
-失败后发现活动组件累积为 `2 Raster + 4 RT`，原地恢复 Dense HLSL和替换干净 V2 组件仍全零；复制 System 与 V3 复制关卡也不能作为可靠运行回滚。最终从修改前同包名二进制建立 `/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main`，用两次独立 MCP 请求完成“生成候选→让渲染线程实际跑帧→RT 回读→替换 Actor”。恢复 Main 抽样非零 `33,517`、最大 `4.4921875`，Aux Coverage 非零 `33,517`，无 NaN/Inf；系统 `UpToDate`、零错误零警告。
+失败后发现活动组件累积为 `2 Raster + 4 RT`，原地恢复 Dense HLSL和替换干净 V2 组件仍全零；复制 System 与 V3 复制关卡也不能作为可靠运行回滚。最终从修改前同包名二进制建立 `/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main`，用两次独立 MCP 请求完成“生成候选→让渲染线程实际跑帧→RT 回读→替换 Actor”。用户确认 Dense G5 已恢复可见后，Renderer 1 单独改绑最新 `MI_SSPR_AnisotropicSplat_FieldRecon_V1_Connected_HQ`；再次跨请求回读通过，并在最终 Apply 后重建为严格 `1 Raster + 2 RT` 的干净组件。系统 `UpToDate`、零错误零警告。
 
 **Gate：** 用户在相同近景、转镜、平移和拉远条件下确认 Sparse 与修改前 V3 的主体宽度、细丝方向、密度连续性和纵深没有不可接受退化。若出现规则点列、核质量跳变或边缘缺口，优先调整 Sparse 样本布局/归一化，不降低粒子数或分辨率；必要时从 V3 或已记录的 Dense HLSL 恢复。
 
