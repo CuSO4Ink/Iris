@@ -651,7 +651,65 @@ UE 5.8 的 `FNiagaraSystemSimulation::Tick_GameThread` 会累积引擎时间，�
 - RT 同帧读写、错误 Mip 或 TAA/TSR 重投影问题仍需单独排查；
 - 调整固定频率时要重新检查性能，低帧率下可能触发多次补步。
 
-## 13. 当前结论
+## 13. 不要反复通过 `set_asset(None)` 重绑同一个 Niagara System
+
+现象：System、Renderer 和材质均编译正常，但多次 Apply 后为了“彻底 Rebind”反复执行：
+
+```python
+component.set_asset(None)
+component.set_asset(system)
+```
+
+关卡中的 NiagaraComponent 会逐代残留旧的 User DI override subobject。实际观察到同一组件从正常的 `1 RasterizationGrid3D + 2 RenderTarget2D` 累积为 `3 Raster + 5 RT`；随后最新活动 Main/Aux RT 变成全零，重新载入关卡也不能恢复。此时 System 资产仍是 `UpToDate`，所以只看 Compile State 会误判为材质或新 HLSL 导致空白。
+
+处理规则：
+
+1. System 资产未变、只改 Renderer/Material/MI 时，不要清空 Asset；只做 `deactivate → reinitialize_system → activate`。
+2. Scratch 图改动但 User DI 接口未变时，也优先原地 Reinitialize，并检查当前组件只有预期的 DI clone 数量。
+3. User DI 接口或模板确实改变时，不要在同一组件上反复制造新一代 override；创建一次干净 NiagaraActor/Component，绑定 System 一次，配置 Raster/Main/Aux，验证后再替换旧实例。
+4. 定点替换前记录 Actor Transform，并确保已有版本快照；替换后保存关卡、重新检查 Renderer 绑定、Compile State 与完整原分辨率 RT。
+5. 正常 G5 运行实例当前应只有 `1×RasterizationGrid3D + 2×RenderTarget2D`；额外的旧 Grid2D/RT/Raster 子对象需要先判断是否属于 System 正式接口，不能把“找到至少一份正确 DI”当作 Gate 通过。
+
+本次污染组件已在原坐标由干净 NiagaraActor 替换；严格 2048² 回读恢复为唯一 Main/Aux，非零覆盖 `84,757 / 4,194,304`，无 NaN/Inf。后续 Rebind 脚本已改为资产不变时原地 Reinitialize。
+
+## 14. `duplicate_asset(NiagaraSystem)` 成功且 UpToDate，不代表 Scratch Simulation Stage 能运行
+
+现象：在 UE 5.8 中用 `EditorAssetLibrary.duplicate_asset` 复制包含多个 Scratch Pad Simulation Stage 的 Niagara System。复制返回成功，新 System 能保存、能编译，Aggregate Status 为 `UpToDate`，图连接和常规模块输入与源资产逐项对比也一致；但把复制品绑定到干净运行组件后，Main/Aux RT 可能全零。
+
+本项目做了两个对照：
+
+- 完全不改 HLSL 的 System 复制品运行时 Main/Aux 全零；
+- 在复制品上安装 Sparse Raster 后，只在一个投影中心附近得到约 15 个非零像素，表明嵌入式 Scratch/GPU 运行状态发生了默认值坍缩，而不是 Sparse 核本身的正常输出。
+
+因此，对这类资产不能把“复制成功 + 编译绿色”当成可恢复备份或性能候选 Gate。至少还要：
+
+1. 把复制品绑定到一次性干净 NiagaraComponent；
+2. 重新初始化并推进足够模拟帧；
+3. 以原分辨率或有代表性的分区回读 Main/Aux，检查非零覆盖、方向正负、深度/覆盖签名和 NaN/Inf；
+4. 用未修改的复制对照排除新 HLSL 本身；
+5. 只有运行 RT Gate 通过后，才把复制品视为可执行版本。
+
+这是当前 UE 5.8、当前 Scratch Pad/Simulation Stage System 的实测陷阱，不应无条件外推到所有 Niagara 资产。本项目最终依靠自包含 V3、Dense HLSL 恢复文本和修改前哈希作为恢复点；Sparse 优化在原活动 V2 System 上原地 Apply/Compile/Save，而不是继续信任不可运行的复制品。
+
+## 15. Fixed Tick 的单次 GPU 阶段若超过固定步长，会形成补步追帧螺旋
+
+`.profViz` 中看到同名 Raster Stage 在一个渲染帧内累计超过 100 ms 时，先展开事件树，不要直接把累计值当成一次 Dispatch。
+
+本项目近景 Profile 的实际结构是：
+
+```text
+Fixed Tick Delta Time = 16.67 ms
+同一渲染帧补做 24 次 Niagara 模拟
+每次 Raster = 17.70～18.88 ms
+Resolve ≈ 0.19～0.20 ms
+Grid Clear ≈ 0.325 ms
+```
+
+单次 Raster 已经比固定步长更慢，渲染帧越慢，系统越需要补步；补步又增加 GPU 工作，形成追帧螺旋。正确处理不是关闭 Fixed Tick，因为它仍负责稳定 Spawn/Lifetime/密度；应先优化每个固定模拟步最重的阶段，使它明显低于固定步长，再复测补步次数。
+
+本项目用投影早剔除、`49×11 → 25×5` 稀疏高斯和单粒子质量归一化，在约 25.2 万粒子下把 Raster 稳态降到约 `0.56 ms`，同时保持分辨率、粒子数、字段语义和无 History 架构。性能 Gate 必须同时报告“单次阶段耗时”和“同一渲染帧执行次数”。
+
+## 16. 当前结论
 
 这次最关键的经验不是某一行投影公式，而是分清四个相互独立的层次：
 

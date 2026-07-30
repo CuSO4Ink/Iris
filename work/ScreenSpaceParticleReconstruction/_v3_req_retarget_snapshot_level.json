@@ -1,0 +1,9 @@
+{
+  "action": "tool.call",
+  "endpoint": "http://127.0.0.1:8000/mcp",
+  "timeoutSec": 120,
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "script_path=r'C:/Work/AI/Iris/work/ScreenSpaceParticleReconstruction/_v3_retarget_snapshot_level.py'\nwith open(script_path,'r',encoding='utf-8') as source_file:\n    source_code=source_file.read()\nexec(compile(source_code,script_path,'exec'),{'__name__':'__main__'})"
+  }
+}

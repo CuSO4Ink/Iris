@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "[warning] C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_g5_build_field_debug_material.py:416: DeprecationWarning: MaterialEditingLibrary: Function \u0027set_material_usage\u0027 on \u0027MaterialEditingLibrary\u0027 is deprecated: Use SetBaseMaterialUsage instead\n  material, material_result = build_material()\nG5_FIELD_DEBUG={\"debugModes\": {\"0\": \"Density\", \"1\": \"DirectionTensor\", \"2\": \"Coherence\", \"3\": \"MeanDepth\", \"4\": \"DepthSigma\", \"5\": \"FrontDepth\", \"6\": \"FourPanelDirectionMeanSigmaFront\"}, \"function\": {\"created\": false, \"path\": \"/Game/SSPR_Validation/M2/AnisotropicSplat_V2/Functions/G5/MF_SSPR_G5_FieldDebug.MF_SSPR_G5_FieldDebug\", \"saved\": true}, \"instance\": {\"created\": false, \"saved\": true}, \"material\": {\"compileErrors\": [], \"compiled\": true, \"created\": false, \"expressions\": 15, \"saved\": true}}",
+                 "result":  "None",
+                 "execution_time_ms":  1231.2186279296875
+             },
+    "action":  "tool.call"
+}

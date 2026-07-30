@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "V2_REBIND_COMPONENT_RASTER={\"active\": true, \"configured\": [{\"numCells\": [2048, 2048, 1], \"path\": \"/Game/SSPR_Validation/M2/AnisotropicSplat_V2/L_SSPR_AnisotropicSplat_Validation.L_SSPR_AnisotropicSplat_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.NiagaraDataInterfaceRasterizationGrid3D_0\"}, {\"numCells\": [2048, 2048, 1], \"path\": \"/Game/SSPR_Validation/M2/AnisotropicSplat_V2/L_SSPR_AnisotropicSplat_Validation.L_SSPR_AnisotropicSplat_Validation:PersistentLevel.NiagaraActor_UAID_18C04D87C61991F202_1718375578.NiagaraComponent0.NiagaraDataInterfaceRasterizationGrid3D_1\"}], \"saved\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  219.79640197753906
+             },
+    "action":  "tool.call"
+}

@@ -1,0 +1,233 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "returnValue":  {
+                                     "userVariables":  [
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "value":  0.25
+                                                                                              }
+                                                                                },
+                                                               "description":  "Density contribution per particle before Q10 quantization.",
+                                                               "name":  "User.SSPR_DensityPerParticle",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/NiagaraEditor.NiagaraExt_VariableValue_DataInterface"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "dataInterfaceClass":  {
+                                                                                                                             "refPath":  "/Script/Niagara.NiagaraDataInterfaceRasterizationGrid3D"
+                                                                                                                         },
+                                                                                                  "dataInterface":  {
+                                                                                                                        "refPath":  "/Game/SSPR_Validation/M2/AnisotropicSplat_V2/NS_SSPR_AnisotropicSplat_Main.NS_SSPR_AnisotropicSplat_Main:NiagaraDataInterfaceRasterizationGrid3D_0"
+                                                                                                                    }
+                                                                                              }
+                                                                                },
+                                                               "description":  "",
+                                                               "name":  "User.SSPR_DensityRaster",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraDataInterfaceRasterizationGrid3D"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "value":  2.5
+                                                                                              }
+                                                                                },
+                                                               "description":  "Gaussian kernel cutoff in standard deviations.",
+                                                               "name":  "User.SSPR_GaussianCutoffSigma",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "value":  48
+                                                                                              }
+                                                                                },
+                                                               "description":  "Maximum anisotropic splat length in pixels.",
+                                                               "name":  "User.SSPR_MaxLengthPx",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "value":  0.05000000074505806
+                                                                                              }
+                                                                                },
+                                                               "description":  "Minimum pixel displacement used to define a stable tangent.",
+                                                               "name":  "User.SSPR_MinDirectionSpeedPx",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "value":  2
+                                                                                              }
+                                                                                },
+                                                               "description":  "Minimum anisotropic splat length in pixels.",
+                                                               "name":  "User.SSPR_MinLengthPx",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/NiagaraEditor.NiagaraExt_VariableValue_DataInterface"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "dataInterfaceClass":  {
+                                                                                                                             "refPath":  "/Script/Niagara.NiagaraDataInterfaceRenderTarget2D"
+                                                                                                                         },
+                                                                                                  "dataInterface":  {
+                                                                                                                        "refPath":  "/Game/SSPR_Validation/M2/AnisotropicSplat_V2/NS_SSPR_AnisotropicSplat_Main.NS_SSPR_AnisotropicSplat_Main:NiagaraDataInterfaceRenderTarget2D_0"
+                                                                                                                    }
+                                                                                              }
+                                                                                },
+                                                               "description":  "",
+                                                               "name":  "User.SSPR_SimRT",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraDataInterfaceRenderTarget2D"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/NiagaraEditor.NiagaraExt_VariableValue_DataInterface"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "dataInterfaceClass":  {
+                                                                                                                             "refPath":  "/Script/Niagara.NiagaraDataInterfaceGrid2DCollection"
+                                                                                                                         },
+                                                                                                  "dataInterface":  {
+                                                                                                                        "refPath":  "/Game/SSPR_Validation/M2/AnisotropicSplat_V2/NS_SSPR_AnisotropicSplat_Main.NS_SSPR_AnisotropicSplat_Main:NiagaraDataInterfaceGrid2DCollection_0"
+                                                                                                                    }
+                                                                                              }
+                                                                                },
+                                                               "description":  "",
+                                                               "name":  "User.SSPR_TrajectoryGrid",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraDataInterfaceGrid2DCollection"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "value":  0
+                                                                                              }
+                                                                                },
+                                                               "description":  "",
+                                                               "name":  "User.SSPR_TrajectoryGrid.SSPR_ResolveMark",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/NiagaraEditor.NiagaraExt_VariableValue_Object"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "objectClass":  {
+                                                                                                                      "refPath":  "/Script/Engine.TextureRenderTarget"
+                                                                                                                  },
+                                                                                                  "object":  "None"
+                                                                                              }
+                                                                                },
+                                                               "description":  "Runtime transient bridge from Grid2D to the material parameter; not a Content Browser render-target asset.",
+                                                               "name":  "User.SSPR_TrajectoryRT",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Engine.TextureRenderTarget"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "value":  1.5
+                                                                                              }
+                                                                                },
+                                                               "description":  "Screen displacement to long-axis scale.",
+                                                               "name":  "User.SSPR_VelocityLengthScale",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                  }
+                                                                        }
+                                                           },
+                                                           {
+                                                               "defaultValue":  {
+                                                                                    "struct":  {
+                                                                                                   "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                               },
+                                                                                    "value":  {
+                                                                                                  "value":  1.25
+                                                                                              }
+                                                                                },
+                                                               "description":  "Short-axis Gaussian sigma in pixels.",
+                                                               "name":  "User.SSPR_WidthPx",
+                                                               "type":  {
+                                                                            "classStructOrEnum":  {
+                                                                                                      "refPath":  "/Script/Niagara.NiagaraFloat"
+                                                                                                  }
+                                                                        }
+                                                           }
+                                                       ]
+                                 }
+             },
+    "action":  "tool.call"
+}

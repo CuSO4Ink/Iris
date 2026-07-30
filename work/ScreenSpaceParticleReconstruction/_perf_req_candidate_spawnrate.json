@@ -1,0 +1,18 @@
+{
+  "action": "tool.call",
+  "endpoint": "http://127.0.0.1:8000/mcp",
+  "timeoutSec": 120,
+  "tool": "NiagaraToolsets.NiagaraToolset_System.GetModuleInputValues",
+  "arguments": {
+    "moduleRef": {
+      "system": {
+        "refPath": "/Game/SSPR_Validation/M2/AnisotropicSplat_V2/Performance/NS_SSPR_AnisotropicSplat_PerfSparseV1.NS_SSPR_AnisotropicSplat_PerfSparseV1"
+      },
+      "emitterName": "Fountain",
+      "scriptName": "EmitterUpdateScript",
+      "moduleName": "SpawnRate",
+      "rendererIndex": -1,
+      "inputNameStack": []
+    }
+  }
+}

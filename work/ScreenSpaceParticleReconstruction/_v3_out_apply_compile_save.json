@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "V3_APPLY_COMPILE_SAVE={\"applied\": true, \"messages\": [], \"saved\": true}",
+                 "result":  "None",
+                 "execution_time_ms":  440.21231079101562
+             },
+    "action":  "tool.call"
+}

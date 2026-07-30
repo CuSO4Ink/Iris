@@ -336,3 +336,84 @@ Fixed Tick 60 Hz 现作为 V2 高品质基线硬配置。仍需在最终封版�
 ### 2026-07-29 22:08 — [本地封存] UE、VibeUE、SSPR 资产与项目记录建立统一恢复点
 
 UE NiagaraEditor 修复已保持在干净分支 `sspr-niagaraeditor-fixes`，提交 `98d86a7` 并带标签 `sspr-niagaraeditor-fixes-ue5.8.0`。VibeUE 分支 `sspr-scratchpad-fixes` 将 Simulation Stage、内部 RT2D 和 RasterizationGrid3D MCP authoring API 提交为 `af697f9`。`Content/SSPR_Validation`、两个源码分支分别生成 ZIP/Git bundle，并在 `recovery/README.md` 记录 SHA-256。本次仅做本地提交与恢复快照，没有推送远端；该快照为 G4 视觉 Gate 前检查点，不替代 Gate 通过后的最终 V2 封版。
+
+### 2026-07-29 23:15 — [G4 候选/待人工视觉确认] 修正 7×7/13×13 未接入材质，并抑制无邻域支持的粒子核心
+用户截图显示轮廓锯齿、点链与白色饱和核心仍然严重。资产只读复核发现，`MF_SSPR_MipPyramidDensity` 已包含既定 LOD0 7×7 Medium + 13×13 Body 代码，但 `M_SSPR_AnisotropicSplat_Display` 实际仍连接旧的 `MF_SSPR_MipBodyDensity -> MF_SSPR_FilamentBodyBlend` 3×3/5×5 链；此前记录的 219-tap 基线并未真正进入最终 `DensityShape`。现已在不改 Niagara 数据链和既有函数接口的前提下，把高品质函数的 `Scales` 直接接入 `MF_SSPR_DensityShape`。
+
+`MF_SSPR_DensityShape` 保持原九输入接口，只修改内部整形：Raw Core 必须同时获得 Medium/Body 的相对与绝对邻域支持才可参与锐化，频段差值改为正值限定，避免孤立 splat 与负差分重新进入 Alpha。HQ 候选参数改为 Filament/Medium/Body=`0.06/0.58/0.36`、Medium/Body Radius=`16/52 px`、Detail=`0`、BlackPoint=`0.003`、DensityGain=`1.4`、Contrast=`1.10`、Extinction=`1.7`、OpacityScale=`0.82`；继续保持 Ambient=`1`、LightStrength=`0`、Fixed Tick=`0.01667s`、SimRT 2048² RGBA16F/Bilinear/无 Mip。
+
+修改前函数、父材质与 MI 已备份到 `recovery/G4_density_support_20260729_230547`。修改后材质编译通过；Niagara Apply/Compile/Save 成功，系统 `UpToDate`、零错误、零警告；组件重绑后两份 Raster clone 均为 `2048×2048×1`。活动 SimRT 连续两次各推进 120 帧后的原始回读总量约 `2,403,536.68` 与 `2,405,154.29`，非零像素约 `225,574` 与 `217,915`，没有随运行单调画满。当前只完成技术 Gate，最终锯齿、粒子感、拉丝/烟体平衡及关闭 TAA/TSR 的视觉结果仍必须由用户观察确认。
+
+### 2026-07-30 11:03 — [V2 冻结备份] G5 修改前建立完整 V2_pre_G5 恢复点
+
+在任何 G5 资产修改前，将 `/Game/SSPR_Validation/M2/AnisotropicSplat_V2` 整个内容目录及 `AI-BRIEF.md`、`WISPY-FLUID-SPEC.md`、`ANISOTROPIC-GAUSSIAN-SPLAT-SPEC.md`、`NIAGARA-RASTER-MCP-PITFALLS.md`、`LOG.md` 冻结到 `recovery/V2_pre_G5_20260730_110322`。共备份 29 个 UE 资产与 5 份设计文档；源/目标逐文件 SHA-256 对比为零缺失、零不一致。该目录是当前 G4 视觉候选进入 G5 前的正式回退点。
+
+### 2026-07-30 — [G5.1/G5.2 技术 Gate] 当前帧方向张量与粒子深度场进入 Main/Aux RT
+
+用户批准 v0.4 G5 方案后，第一实施步只落地方向/深度字段与 Debug，不接最终 Streamline 或纵深光照。`User.SSPR_DensityRaster` 扩展为 `2048×2048×1`、6 属性、Precision=`65535`：属性 0～4 为 Density Q10、双角度 TensorCos2/Sin2 Q10、DepthMoment1/2 Q16，属性 5 以原子最大值写入归一化 FrontInvDepth。新增 `User.SSPR_DepthNearUU=0`、`DepthFarUU=10000`、`FrontDepthWeightThreshold=0.1`。Raster 继续按当前相机重投影，保持纯 DI 副作用和 `WritesParticles=False`，未增加任何 History 读取或跨帧反馈。
+
+Resolve 现在完整覆盖两张 Niagara 自管当前帧 RT：Main `User.SSPR_SimRT = (Density, TensorCos2, TensorSin2, MeanDepth)`；新增 Aux `User.SSPR_AuxRT = (DepthSigma, FrontDepth, Reserved, Coverage)`。Aux 为 `2048×2048 RGBA16F`、Bilinear、Mip Disabled。Renderer 新增 `TrajectoryAuxTexture <- User.SSPR_AuxRT.RenderTarget`；独立新建 `Functions/G5/MF_SSPR_G5_FieldDebug`、`M_SSPR_G5_FieldDebug` 与 `MI_SSPR_G5_FieldDebug`，没有修改 G4 父材质接口。Debug MI 当前使用模式 6，一张视口四宫格同时显示方向/一致性、MeanDepth、DepthSigma、FrontDepth。
+
+Apply/Compile/Save、Renderer 双绑定核对、组件 Rebind/Reinitialize 与关卡保存均完成。Niagara 状态为 `UpToDate`、零错误、零警告；Fixed Tick 仍为 `true / 0.01667s`；HQ 与 Debug 材质均零编译错误。完整 2048² 原始回读可唯一识别 Main/Aux：Main R 最大约 `143.375`，G/B 均含 `[-1,1]` 的有符号方向分量，A MeanDepth 最大约 `0.0885`；Aux R DepthSigma 最大约 `0.05487`，G FrontDepth 最大约 `0.0885`，B 恒零，A Coverage 非零像素 `234,656 / 4,194,304`（约 5.6%）。连续推进数百帧后未画满，所有通道无 NaN/Inf。下一 Gate 只需用户观察当前四宫格是否方向连续、深度随前后层次变化、空区无伪值；通过后再实施 G5.3/G5.4。
+
+首次四宫格截图中方向场已呈连续彩色变化，但 MeanDepth、DepthSigma、FrontDepth 三格几乎全蓝。原始 RT 数值证明三场非空；进一步反射检查发现原型 `MF_SSPR_G5_FieldDebug` 被多次原地重建后残留两代 Custom 节点，父材质复制到了不含 `DepthDisplayGain` 的旧 HLSL。按既定“接口变化新建干净函数”规则，现新建 `MF_SSPR_G5_FieldDebugV2`、`M_SSPR_G5_FieldDebugV2`、`MI_SSPR_G5_FieldDebugV2`，新父材质只有 1 个 Custom 节点和 10 个表达式，代码明确包含 Depth/Sigma 显示增益；Renderer 已改绑 V2 MI。当前 Debug 参数为 `DepthDisplayGain=10`、`SigmaDisplayGain=32`，旧原型不再被引用，待字段视觉 Gate 后统一清理。
+
+第二张用户四宫格截图确认字段视觉 Gate 通过：方向张量颜色沿弯曲主流连续变化；MeanDepth 与 FrontDepth 呈稳定暖色色阶且轮廓同帧对齐；DepthSigma 大部分薄区域保持低值蓝色，而中央厚重叠区出现连续青色带。Mean/Front 接近符合当前喷流较窄的前后跨度，并非场失效。
+
+### 2026-07-30 — [G5.3/G5.4 首个生产候选] 无历史双向 RK2 Streamline 与粒子深度约束接入
+
+字段 Gate 通过后，先把当前完整 G5 字段状态冻结到 `recovery/G5_fields_pre_streamline_20260730_124836`；35 个资产逐文件 SHA-256 对比零不一致。随后只新建独立资产，不修改 G4 生产父材质与 MI：`MF_SSPR_G5_StreamlineDensityV1`、`MF_SSPR_G5_DepthCueV1`、`M_SSPR_AnisotropicSplat_G5`、`MI_SSPR_AnisotropicSplat_G5_HQ`。
+
+Streamline 为材质内当前帧双向 RK2：每侧编译上限 8 步、默认活动 6 步、3 px 步长；双角度张量解码后用前一步切线保持符号连续。3×3 邻域只扩展 Direction/Depth Guidance，不直接模糊密度；沿曲线 Gather 使用 Coherence、曲率、MeanDepth/DepthSigma 双边权重、渐细核、双侧支持和孤立 Core 衰减。Medium/Body 首候选收窄为 `12/40 px`，Filament/Medium/Body 权重为 `0.25/0.50/0.25`。`MF_SSPR_G5_DepthCueV1` 以低强度 Mean/FrontDepth 与 Sigma 厚度衰减提供纵深提示；仍不启用强密度梯度阴影、不写 PixelDepth、不使用 History。
+
+新 G5 父材质共 52 个表达式并零错误编译；Renderer 已绑定 `MI_SSPR_AnisotropicSplat_G5_HQ`，Main/Aux 子变量绑定均保留。Niagara Apply/Compile/Save、组件 Rebind/Reinitialize、关卡保存完成，系统 `UpToDate`、零错误、零警告；Fixed Tick、2048² Raster/Main/Aux、Bilinear 和禁用 Mip 均未改变。当前进入用户最终烟雾视觉 Gate。
+
+### 2026-07-30 — [G5 视觉失败复盘与 Visual V2 候选] 末端连通性门控和真实深度受光
+
+用户的首张 G5 生产近景截图确认初版未通过视觉 Gate：稀疏末端仍能辨认独立粒子簇，主体在高消光下接近纯白，几乎没有纵深。初版实际已经写入并采样方向/深度字段，但 `MF_SSPR_G5_DepthCueV1` 只对 Emissive 做低强度绝对深度、Sigma 和前后分离乘法；当前覆盖区平均 `MeanDepth≈0.0576`、`FrontDepth≈0.0553`、`DepthSigma≈0.0048`，按初版默认参数平均只造成约 2～3% 亮度变化。与此同时 `G5_IsolatedCoreScale=0.12` 明确保留了孤立核心，Medium/Body 也没有用 Streamline 连通性门控，因此字段技术 Gate 通过并不等价于最终画面获得了纵深或消除了粒子感。
+
+修改前将 39 个 V2 资产和 5 份文档冻结到 `recovery/G5_visual_v1_pre_fix_20260730_130435`，逐文件 SHA-256 为零差异。随后保持 G4 与 G5 初版不变，新建 `MF_SSPR_G5_StreamlineDensityV2`、`MF_SSPR_G5_DepthLightingV2`、`M_SSPR_AnisotropicSplat_G5_V2`、`MI_SSPR_AnisotropicSplat_G5_V2_HQ`。Streamline V2 使用每侧 8 步、4 px RK2，并在局部法线方向增加五通道窄带 Gather；孤立 Core 设为 0，Medium/Body 必须获得 Streamline 连通性后才可进入密度整形。DepthLighting V2 用 FrontDepth 四邻域梯度构造屏幕空间表面法线，并叠加 DepthSigma 与 Mean/Front 分离产生的当前帧自遮蔽；仍不读取 History、不写 PixelDepth。
+
+Visual V2 材质为 52 个表达式，编译零错误；Renderer 已绑定 `MI_SSPR_AnisotropicSplat_G5_V2_HQ`，Main/Aux 绑定完整。Niagara Apply/Compile/Save、Rebind/Reinitialize 与关卡保存成功，系统 `UpToDate`、零错误、零警告。活动 2048² RT 回读可唯一识别 Main/Aux，所有通道无 NaN/Inf，Coverage 未画满；Raster、Main/Aux 的分辨率、RGBA16F、Bilinear、Mip Disabled 和 Fixed Tick 均保持原基线。当前仅完成技术 Gate，近景末端、标准距离、转镜和平移仍需用户观察。
+
+### 2026-07-30 — [视觉结论/路线修正] Visual V2 仍保留粒子感，后续转入当前帧归一化场重建
+
+用户近景截图确认 Visual V2 仍未通过最终视觉 Gate：稀疏末端和外围仍能逐个辨认离散粒子，主体虽然比旧版连续，但宽糊、偏白，FrontDepth/MeanDepth/DepthSigma 对最终画面的纵深贡献仍不明显。当前已使用的手段包括各向异性粒子 Raster、LOD0 7×7/13×13 多尺度重建、方向张量、双向 RK2 Streamline、五通道横向 Gather、孤立 Core 清零、Medium/Body 连通性门控、深度双边权重与 FrontDepth 梯度受光；这些技术 Gate 均有效，但组合仍属于对离散密度的后处理，不能从根上形成稳定连续场。
+
+后续不再通过继续扩大 Blur、增加 History 或恢复 Ping-pong 处理。已批准的新顺序是：紧支撑当前帧粒子贡献 → Coverage/方向/深度矩正则化 → 自适应归一化场对齐卷积 → 同一连续场分频得到 Filament/Medium/Body → Front/Mean/Sigma 构造厚度、透射与可见纵深。Visual V2 保留为可回退资产，下一实现只在 V2 开发目录新增独立函数/材质。
+
+### 2026-07-30 — [V3 冻结快照] G5 Visual V2 输出链整理为自包含版本
+
+按用户要求，将当前最终出效果的相互引用闭包整理到 `/Game/SSPR_Validation/Versions/V3_AnisotropicSplat_20260730`，而不是简单复制整个开发目录。快照共 11 个资产：V3 Niagara System、V3 父材质、V3 HQ MI、V3 验证关卡，以及按 `Functions/RasterInput`、`Functions/Reconstruction`、`Functions/Shading`、`Functions/Utility` 分类的 7 个实际被父材质调用的函数。7 个 Material Function Call、MI Parent、Niagara Renderer 1 材质与验证关卡主 NiagaraComponent 均已重定向到 V3 内部；Renderer 继续保留 `TrajectoryTexture <- User.SSPR_SimRT.RenderTarget` 和 `TrajectoryAuxTexture <- User.SSPR_AuxRT.RenderTarget`。闭包审计未发现对 `/Game/SSPR_Validation/M2/AnisotropicSplat_V2` 的效果链引用。
+
+V3 Apply/Compile/Save 成功；Niagara `UpToDate`、零错误、零警告；材质零编译错误；Fixed Tick 保持 `true / 0.01667 s`。活动组件 Rebind/Reinitialize 后，Raster clone 为 `2048×2048×1`、Precision `65535`、Clear=true；Main/Aux 为 `2048×2048 RGBA16F`、Bilinear、Mip Disabled。完整 2048² 原始回读唯一识别一张 Main 和一张 Aux，两者非空、互异、无 NaN/Inf 且远未画满。V3 现冻结不再修改，编辑器已切回 `/Game/SSPR_Validation/M2/AnisotropicSplat_V2/L_SSPR_AnisotropicSplat_Validation` 继续开发。
+
+### 2026-07-30 — [FieldRecon V1/待人工视觉确认] Coverage 归一化场对齐卷积与深度传输接入
+
+V3 冻结后，在 V2 开发目录新增 `MF_SSPR_G5_NormalizedFieldReconstructionV1`、`MF_SSPR_G5_DepthTransportLightingV1`、`M_SSPR_AnisotropicSplat_FieldRecon_V1` 与 `MI_SSPR_AnisotropicSplat_FieldRecon_V1_HQ`。FieldRecon 不再调用旧 LOD0 7×7/13×13 `MipPyramidDensity`，也不调用 G5 Streamline V1/V2；查询点先以 3×3 Coverage/密度加权邻域正则化方向张量和深度，再以每侧 8 步、每步 5 横向通道做无历史场对齐采样。Filament/Medium/Body 各自积累密度分子、Coverage/一致性/深度置信度分母与支持包络；双侧支持负责连接间隙，单侧贡献只以分频受限比例保留尖端，Raw 单粒子不再作为可见兜底。
+
+DepthTransport 从正则化的 FrontDepth、MeanDepth、DepthSigma 推导 BackDepth、厚度与透射，并输出带近远色调、厚度染色、方向受光和自透射的 RGB 因子。首个 HQ 候选 SmokeColor 为 `(0.52, 0.58, 0.68)`，Ambient/Directional=`0.62/0.50`，使深度变化不再被纯白高环境光完全吞没。
+
+新材质 51 个表达式、零编译错误；实际函数闭包只有 FieldRecon、DepthTransport、DensityShape、SmokeResolve、ScreenEdgeMask，审计确认无旧 Mip/Streamline 调用和无 `History` token。Renderer 1 已绑定新 MI 且保留 Main/Aux 子变量映射；Niagara Apply/Compile/Save、组件 Rebind/Reinitialize 和关卡保存完成，系统 `UpToDate`、零错误、零警告，Fixed Tick 保持 `true / 0.01667 s`。完整 2048² 原始回读唯一识别 Main/Aux，当前覆盖 `82,158 / 4,194,304`，所有通道无 NaN/Inf、未画满。下一步必须由用户观察标准距离和稀疏末端，确认粒子感、模糊度、流丝连续性与纵深是否得到实质改善。
+
+### 2026-07-30 — [FieldRecon V1 首轮视觉结论/Connected MI] 圆点减少，但刷毛排线与孔洞仍未过 Gate
+
+用户提供标准距离和近景截图。相对 Visual V2，独立圆点/软泡已明显减少，离散贡献开始沿方向场形成短丝，证明 Coverage 归一化场对齐路线有效；但当前输出仍未通过最终 Gate：近景能看到大量方向一致的短刷毛和离散排线，主体透明度偏低，Medium/Body 支撑不足造成背景穿孔，纵深蓝灰变化虽已出现但被稀疏密度削弱。
+
+保留初始 `MI_SSPR_AnisotropicSplat_FieldRecon_V1_HQ` 不变，新建并绑定 `MI_SSPR_AnisotropicSplat_FieldRecon_V1_Connected_HQ`。主要调整为 StepPx `3.25→2.25`、GuideRadius `3.5→4.5`、Medium/Body Cross `4/13→2.75/8.5`、SupportGain `0.38→0.85`、OneSidedBlend `0.32→0.46`，Filament 权重/增益下调，Medium/Body 上调，Detail/Edge 设零，BlackPoint `0.006→0.001`，并提高低密度响应、消光与不透明度。目标是先消除刷毛采样节奏和孔洞，再恢复尖细 Filament 比例。
+
+### 2026-07-30 — [运行实例修复] 重复 Rebind 累积 DI clone 导致活动 RT 全零
+
+Connected MI 绑定后的严格 RT Gate 首次失败：System 编译、Renderer 材质和 Main/Aux 子变量绑定均正确，但活动 Main/Aux 全零。检查关卡组件发现反复执行 `set_asset(None) → set_asset(System)` 已把运行实例从预期的 `1 Raster + 2 RT` 累积为多代 DI override，最高观察到 `3 Raster + 5 RT`；重新载入关卡仍为空，说明污染已序列化到组件，而非一次冷启动延迟。
+
+在 V3 冻结快照可恢复的前提下，记录旧 Actor Transform，在同一 `Location=(480,110,570)` 创建干净 NiagaraActor，只绑定 V2 System 一次，配置 `1×2048²×1 RasterizationGrid3D` 与 `2×2048² RGBA16F/Bilinear/Mip Disabled RT`，激活验证后删除旧污染 Actor，并以原标签保存关卡。严格原始回读随后恢复：唯一 Main/Aux、非零覆盖 `84,757 / 4,194,304`、无 NaN/Inf、未画满。旧 Actor 已删除但可由 V3 恢复。`_g5_rebind_reinitialize.py` 已修改为同一 System 资产只原地 Reinitialize；真实 DI 接口变化今后使用一次性干净组件替换，不再积累 override。
+
+### 2026-07-30 — [近景性能 Gate] Dense Raster 追帧螺旋修复为质量守恒 Sparse Raster
+
+解析用户提供的 `precisefluid-0-2026.07.30-12.57.57.profViz` 后确认，“RasterGrid 100+ ms”不是单次迭代：该帧总 GPU 约 `467.993 ms`，Niagara 因 Fixed Tick 在一个渲染帧内补做了 24 次模拟；每次 Raster 为 `17.70～18.88 ms`，Resolve 约 `0.19～0.20 ms`，Grid Clear 约 `0.325 ms`，粒子 Dispatch 从 `280,839` 增至 `300,010`。单次 Raster 已超过 `16.67 ms` 固定步长，构成“帧慢→补步→GPU 更慢→继续补步”的追帧螺旋。资产读回同时确认当前真实配置为 `SpawnRate=50,000/s`、Lifetime=`5s`，约 25 万稳态粒子，而不是旧规格里的约 2.5 万。
+
+旧 Raster 每粒子固定枚举 `49×11=539` 个高斯候选，每个有效样本最多写入 5 个加法矩和 1 个前沿深度最大值。当前在不降低 `2048²`、粒子数、材质采样数，不关闭 Fixed Tick、不改变 Main/Aux 六属性语义且不引入 History 的前提下，改为质量守恒 Sparse Raster：投影/近平面/扩展屏幕边界先剔除，候选上限改为 `25×5=125`，并以 Dense 可见核的可分离权重和对 Sparse 权重和进行单粒子质量归一化。Dense HLSL SHA-256 为 `69dc67f6e9a58fa457982b6dfee3889e11e04f838b5934b56cb3891bec20598c`，Sparse HLSL SHA-256 为 `761b87f75279b469d6cd5628dffe3a4c1df04eaa351943e602438c6b438e92b4`；V3 仍是修改前自包含恢复点。
+
+曾先在 `Performance/NS_SSPR_AnisotropicSplat_PerfSparseV1` 上做候选，但发现当前 UE 5.8 对这套含嵌入式 Scratch Simulation Stage 的 Niagara System 执行 `duplicate_asset` 后，即使复制品 `UpToDate`、图连接与常规模块输入一致，未修改的复制对照运行时 Main/Aux 仍全零；Sparse 复制品也只在单一投影中心附近产生约 15 个非零像素。由此不能把 Niagara 资产复制成功视为可运行备份 Gate。关卡已恢复原 V2 System，Sparse HLSL 在原活动资产上原地 Apply/Compile/Save，并通过运行 RT Gate。
+
+程序化 `ProfileGPU` 在约 `251,666～253,333` 粒子下得到 Sparse Raster 首次 `0.930 ms`、随后 `0.559/0.563 ms`，稳态约 `0.56 ms`；Resolve 为 `0.153～0.158 ms`。相对旧 Dense Raster 单次降低约 `97%`，显著低于 60 Hz 固定步长。快速原始 Gate 在三块区域共抽样 `393,216` 像素：Main R 非零 `6,970`、最大 `4.2109375`，G/B 仍含正负方向值；Aux R 非零 `4,218`，G/A 非零 `6,970`、A 最大 `1.0`；无 NaN/Inf、未画满。最终系统 `UpToDate`、零错误、零警告，`SpawnRate=50,000/s`、Fixed Tick=`true / 0.01667s`、Main/Aux 2048² RGBA16F/Bilinear/Mip Disabled 均未改变。下一步只需用户在同一近景与动态转镜条件下确认 Sparse 核没有引入可见点列、缺口或密度宽度退化。

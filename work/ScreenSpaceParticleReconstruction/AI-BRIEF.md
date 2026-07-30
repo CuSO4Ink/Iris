@@ -8,13 +8,13 @@
 
 ## 当前状态
 
-活跃；正式主线已经从旧 Current/History Ping-pong 原型切换到 `/Game/SSPR_Validation/M2/AnisotropicSplat_V2`。当前链路为 **Niagara GPU 粒子 → 当前相机投影 → `RasterizationGrid3D(2048×2048×1)` Q10 原子密度 → Niagara 自管 RGBA16F SimRT → Emitter SourceMode Sprite Renderer → 屏幕空间材质重建**。V1 圆形轨迹版本已冻结到 `/Game/SSPR_Validation/Versions/V1_ParticleTrails_20260729`，旧 Ping-pong/多外部 RT 方案已归档，不再定义生产架构。V2 G0～G3 已完成并通过技术 Gate；G4 的 LOD0 多尺度烟雾材质已安装，等待最终视觉 Gate。
+活跃；正式主线已经从旧 Current/History Ping-pong 原型切换到 `/Game/SSPR_Validation/M2/AnisotropicSplat_V2`。当前链路为 **Niagara GPU 粒子 → 当前相机投影 → `RasterizationGrid3D(2048×2048×1)` 六属性原子场 → Niagara 自管 Main/Aux RGBA16F RT → Emitter SourceMode Sprite Renderer → FieldRecon 当前帧归一化场重建**。V1 圆形轨迹版本冻结在 `/Game/SSPR_Validation/Versions/V1_ParticleTrails_20260729`，G5 Visual V2 自包含恢复点冻结在 `/Game/SSPR_Validation/Versions/V3_AnisotropicSplat_20260730`；旧 Ping-pong/History 方案已归档。当前活动 Raster 已从 `49×11` Dense 核改为质量守恒 `25×5` Sparse 核，在约 25.2 万粒子下稳态约 `0.56 ms`，近景性能技术 Gate 已通过。
 
 当前高品质稳定基线：SimRT 为 2048² RGBA16F、Bilinear、自动 Mip 关闭；材质使用 LOD0 的 7×7 Medium 与 13×13 Body 空间卷积；Niagara System 开启 `Fixed Tick Delta=0.01667s`。中央大块暗影已定位为密度梯度光照，当前 HQ 实例暂用 `Ambient=1 / LightStrength=0` 的中性光照，以便先验收密度连续性。
 
 ## 当前焦点
 
-当前焦点是 **V2 G4 / M3 高品质烟雾视觉 Gate**：在固定 60 Hz Niagara 时间步下，确认独立粒子感是否消失，是否形成连续细丝、中尺度连接和柔软致密烟体，并检查静止、转镜头、拉远、屏幕边缘和长时间运行。若当前 LOD0 多尺度混合仍无法消除断裂，再进入可选 G5 方向张量/流向卷积；视觉 Gate 通过前不做降分辨率和低采样优化。
+当前焦点是 **V2 G5 FieldRecon 最终视觉 Gate 与近景动态性能回归**：Fixed Tick 保持 60 Hz，分辨率、约 25 万实际存活粒子和材质采样数均未降低。需要由用户在相同近景、标准距离、转镜、平移和拉远时确认 Sparse Raster 没有引入规则点列、缺口或主体宽度退化，同时继续检查独立粒子感、细丝/中尺度/烟体平衡、纵深、屏幕边缘、长时间运行和关闭 TAA/TSR 的连续性。
 
 ## 技术栈与硬约束
 

@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "G5_FOUR_PANEL_ACTIVE={\"active\": true, \"advancedFrames\": 120, \"asset\": \"/Game/SSPR_Validation/M2/AnisotropicSplat_V2/NS_SSPR_AnisotropicSplat_Main.NS_SSPR_AnisotropicSplat_Main\", \"debugInstance\": \"/Game/SSPR_Validation/M2/AnisotropicSplat_V2/MI_SSPR_G5_FieldDebugV2.MI_SSPR_G5_FieldDebugV2\", \"debugMode\": 6.0}",
+                 "result":  "None",
+                 "execution_time_ms":  11.488899230957031
+             },
+    "action":  "tool.call"
+}
