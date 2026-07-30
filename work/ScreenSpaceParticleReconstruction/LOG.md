@@ -427,3 +427,11 @@ Connected MI 绑定后的严格 RT Gate 首次失败：System 编译、Renderer 
 恢复 Gate 改为两个独立 MCP 请求：请求 A 只生成并保留严格 `1 Raster + 2 RT` 的干净候选，让异步 Niagara GPU 编译和渲染线程实际跑帧；请求 B 再推进 300 帧、回读并替换空白 Actor。最终 Main 抽样非零 `33,517`、最大 `4.4921875`，方向 G/B 含正负值；Aux R 非零 `17,742`、Coverage 非零 `33,517`、A 最大 `1`，无 NaN/Inf。恢复 System `UpToDate`、零错误零警告，关卡已保存。此前 `0.56 ms` 只代表失效/空路径的短时数据，Sparse 性能 Gate 正式判失败；下一步先由用户确认 Dense G5 重新可见，再恢复最新 FieldRecon 与重新设计性能方案。
 
 用户确认 Dense G5 已重新可见。随后只修改恢复 System 的 Renderer 1，将材质从旧 `MI_SSPR_AnisotropicSplat_G5_HQ` 切回 `MI_SSPR_AnisotropicSplat_FieldRecon_V1_Connected_HQ`，Main/Aux 子变量绑定保持不变。Apply/Compile/Save 后为 `UpToDate`、零错误零警告；独立下一请求推进 60 帧后 Main/Aux 仍非零。由于 Renderer Apply 会使已存在组件热重载并累积到 `3 Raster + 6 RT`，最后再以最终已编译 System 创建一次干净候选，跨请求回读通过后替换旧组件。当前活动组件严格为 `1 RasterizationGrid3D + 2 RenderTarget2D`，另有 1 个 System 正式遗留 Grid2D；关卡已保存，不再对该恢复 System 执行 Apply/Rebind。
+
+### 2026-07-30 — [视觉基线回退] 用户选择旧 G5 HQ，FieldRecon Connected 降为实验候选
+
+用户对恢复后的 FieldRecon Connected 近景截图做出明确判断：旧 `MI_SSPR_AnisotropicSplat_G5_HQ` 的表现更好。FieldRecon 的 Coverage/一致性/深度置信度归一化会在稀疏支撑处削薄 Medium/Body，较强的 DepthTransport 又进一步拉开局部亮度与色调，结果是短丝、孔洞和孤立贡献更容易被辨认，主观粒子感反而强于旧 G5。该结论不是否定 Main/Aux 深度字段，而是否定当前 FieldRecon 把深度传输与支撑归一化耦合到最终显示的方式。
+
+修改前已备份恢复 System 到 `Saved/CodexBackups/NS_SSPR_RecoveryDense_FieldRecon_before_G5_visual_restore_20260730.uasset`。Renderer 1 已切回 `/Game/SSPR_Validation/M2/AnisotropicSplat_V2/MI_SSPR_AnisotropicSplat_G5_HQ`，并保留 `TrajectoryTexture <- User.SSPR_SimRT.RenderTarget` 与 `TrajectoryAuxTexture <- User.SSPR_AuxRT.RenderTarget`。Apply/Compile/Save 后 System 为 `UpToDate`、零错误零警告。材质热重载把旧活动组件累积为 `2 Raster + 4 RT`，因此再次用最终已编译 System 生成一次干净 Actor，并在下一独立请求推进 300 帧、回读 Main/Aux 后替换旧 Actor。
+
+最终活动组件严格为 `1 RasterizationGrid3D + 2 RenderTarget2D`，另有 1 个正式遗留 `Grid2DCollection`。跨请求三块区域共抽样 `393,216` 像素：活动 Main R 非零 `41,201`、最大 `38.625`，G/B 含正负方向值；活动 Aux R 非零 `28,886`、Coverage 非零 `41,201`、A 最大 `1.0`；全部通道无 NaN/Inf、未画满。关卡已保存，当前人工视觉基线正式恢复为旧 G5 HQ；FieldRecon 资产保留但不再绑定。下一步近景性能优化必须以该基线做对照，且不得再次原地 Apply/Rebind 当前恢复 System。

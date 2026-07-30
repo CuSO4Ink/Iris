@@ -2,7 +2,7 @@
 
 - 版本：0.9
 - 日期：2026-07-30
-- 状态：G5 字段与 FieldRecon 已恢复；Sparse Raster 因跨帧运行全零未通过 Gate，当前使用原始 Dense G5 恢复副本并绑定最新 FieldRecon Connected MI，用户已确认恢复可见
+- 状态：Sparse Raster 因跨帧运行全零未通过 Gate；当前使用原始 Dense G5 恢复副本并绑定用户更偏好的旧 `MI_SSPR_AnisotropicSplat_G5_HQ`。FieldRecon Connected 因近景粒子感和孔洞更明显降为实验候选
 - V1 冻结快照：`/Game/SSPR_Validation/Versions/V1_ParticleTrails_20260729`
 - V3 冻结快照：`/Game/SSPR_Validation/Versions/V3_AnisotropicSplat_20260730`
 - V2 当前开发目录：`/Game/SSPR_Validation/M2/AnisotropicSplat_V2`
@@ -11,8 +11,10 @@
 - V2 调参实例：`MI_SSPR_AnisotropicSplat_HQ`
 - 当前 G5 Visual V2 材质：`M_SSPR_AnisotropicSplat_G5_V2`
 - 当前 G5 Visual V2 实例：`MI_SSPR_AnisotropicSplat_G5_V2_HQ`
-- 当前活动 FieldRecon V1 材质：`M_SSPR_AnisotropicSplat_FieldRecon_V1`
-- 当前活动 FieldRecon V1 实例：`MI_SSPR_AnisotropicSplat_FieldRecon_V1_Connected_HQ`
+- 当前活动显示材质：`M_SSPR_AnisotropicSplat_G5`
+- 当前活动显示实例：`MI_SSPR_AnisotropicSplat_G5_HQ`
+- 实验 FieldRecon V1 材质：`M_SSPR_AnisotropicSplat_FieldRecon_V1`
+- 实验 FieldRecon V1 实例：`MI_SSPR_AnisotropicSplat_FieldRecon_V1_Connected_HQ`
 
 ## 1. 目标画面
 
@@ -452,11 +454,11 @@ PCA 作为后续可选升级：只在低速、方向不稳定或需要根据粒�
 
 ### G5：方向张量、粒子深度场与无历史 Streamline
 
-- 状态：整体方案已批准。G5.1/G5.2 字段 Gate 已通过；G5.3/G5.4 已经演进为当前活动的 FieldRecon V1 当前帧归一化场重建与深度传输。Raster 近景性能优化已通过技术 Gate，最终烟雾视觉仍由用户确认。
+- 状态：整体方案已批准。G5.1/G5.2 字段 Gate 已通过；旧 G5 Streamline 是当前人工偏好显示基线。FieldRecon V1 的当前帧归一化场重建与强深度传输未通过用户视觉对照，已降为实验候选。Raster 近景性能 Gate 未通过。
 
 #### G5.1：方向/深度原子矩
 
-- 状态：已实施，等待字段 Debug 人工视觉确认。
+- 状态：已实施，字段 Debug Gate 已由用户确认。
 - 扩展 Raster Grid 属性，累积 Density、双角度方向张量、Depth Moment 1/2 与 FrontInvDepth。
 - 保持 Raster Stage `WritesParticles=False`。
 - 分别验证 1、4、16 粒子下密度与矩的确定性。
@@ -467,7 +469,7 @@ PCA 作为后续可选升级：只在低速、方向不稳定或需要根据粒�
 
 #### G5.2：Main/Aux Resolve 与绑定
 
-- 状态：已实施，等待字段 Debug 人工视觉确认。
+- 状态：已实施，字段 Debug Gate 已由用户确认。
 - Main RT 输出 Density、Tensor XY、MeanDepth。
 - Aux RT 输出 DepthSigma 与 FrontDepth。
 - 新增 Renderer 的 `TrajectoryAuxTexture` 子变量绑定。
@@ -514,7 +516,7 @@ PCA 作为后续可选升级：只在低速、方向不稳定或需要根据粒�
 
 在约 `251,666～253,333` 个活动 GPU 粒子下，程序化 `ProfileGPU` 曾得到 Sparse Raster 首次 `0.930 ms`、随后 `0.559/0.563 ms`，Resolve 为 `0.153～0.158 ms`。但该数据来自同一自动化会话内的短时运行；用户随后观察到效果完全消失，跨请求回读证实全部 Main/Aux 为零，因此这组数字只能证明空/失效路径很快，不能证明有效 Raster 达到该性能。
 
-失败后发现活动组件累积为 `2 Raster + 4 RT`，原地恢复 Dense HLSL和替换干净 V2 组件仍全零；复制 System 与 V3 复制关卡也不能作为可靠运行回滚。最终从修改前同包名二进制建立 `/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main`，用两次独立 MCP 请求完成“生成候选→让渲染线程实际跑帧→RT 回读→替换 Actor”。用户确认 Dense G5 已恢复可见后，Renderer 1 单独改绑最新 `MI_SSPR_AnisotropicSplat_FieldRecon_V1_Connected_HQ`；再次跨请求回读通过，并在最终 Apply 后重建为严格 `1 Raster + 2 RT` 的干净组件。系统 `UpToDate`、零错误零警告。
+失败后发现活动组件累积为 `2 Raster + 4 RT`，原地恢复 Dense HLSL和替换干净 V2 组件仍全零；复制 System 与 V3 复制关卡也不能作为可靠运行回滚。最终从修改前同包名二进制建立 `/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main`，用两次独立 MCP 请求完成“生成候选→让渲染线程实际跑帧→RT 回读→替换 Actor”。Dense 恢复与 FieldRecon Connected 都通过技术 Gate，但用户对照后明确认为 FieldRecon 的 Coverage/深度传输使近景稀疏支撑、短丝和孔洞更显眼，因此 Renderer 1 已切回 `MI_SSPR_AnisotropicSplat_G5_HQ`。最终组件严格为 `1 Raster + 2 RT`，另有 1 个正式遗留 Grid2D；System `UpToDate`、零错误零警告。
 
 **Gate：** 用户在相同近景、转镜、平移和拉远条件下确认 Sparse 与修改前 V3 的主体宽度、细丝方向、密度连续性和纵深没有不可接受退化。若出现规则点列、核质量跳变或边缘缺口，优先调整 Sparse 样本布局/归一化，不降低粒子数或分辨率；必要时从 V3 或已记录的 Dense HLSL 恢复。
 
@@ -522,7 +524,7 @@ PCA 作为后续可选升级：只在低速、方向不稳定或需要根据粒�
 
 - 首先冻结最高质量参数。
 - 最高质量通过后，再建立 High / Medium / Low 档位。
-- 当前 Niagara Raster 性能 Gate 未通过；Dense 恢复可见、最新 FieldRecon 恢复和完整 30/60/120 FPS 动态回归均需重新验收。
+- 当前 Niagara Raster 性能 Gate 未通过；旧 G5 HQ 是当前人工偏好视觉基线。下一性能候选必须先通过有效 Main/Aux、干净 DI、编辑器重启和旧 G5 HQ 同机视觉对照，再进行完整 30/60/120 FPS 动态回归。
 
 当前尚未通过的视觉项：连续尖细流丝、中尺度连接、柔软但不糊的烟体、纵深与最终受光、静止/转镜头/拉远、屏幕边缘及关闭 TAA/TSR。Fixed Tick 已解决整片闪烁，但不能替代这些画面 Gate。
 
@@ -658,3 +660,5 @@ Visual V2 的失败说明，仅在最终材质中对离散密度做更长 RK2 �
 首个候选 `MF_SSPR_G5_NormalizedFieldReconstructionV1` 已按该路线接入：查询点先用 3×3 Coverage/密度加权邻域正则化方向、MeanDepth、FrontDepth 与 DepthSigma，再执行每侧最多 8 步、每步 5 条横向通道的无历史场对齐采样；每个 Filament/Medium/Body 频段分别累积分子与置信度分母，并以双侧支持和支持包络抑制孤立粒子。它不调用旧 `MF_SSPR_MipPyramidDensity`，也不调用 G5 Streamline V1/V2。`MF_SSPR_G5_DepthTransportLightingV1` 由 Front/Mean/Sigma 推导 BackDepth、厚度与透射，并输出 RGB 深度色调/受光因子。初始 `MI_SSPR_AnisotropicSplat_FieldRecon_V1_HQ` 已完成技术 Gate，并由首轮用户截图进入下一轮 Connected 参数候选。
 
 首轮用户截图确认圆点已明显转化为顺流向短丝，但仍存在刷毛/排线、低密度区域过透明、背景穿孔和 Medium/Body 支撑不足。为隔离算法与参数问题，保留初始 MI 不变，新增并绑定 `MI_SSPR_AnisotropicSplat_FieldRecon_V1_Connected_HQ`：沿流步距由 `3.25` 收紧到 `2.25 px`，Medium/Body 横向通道由 `4/13` 收紧到 `2.75/8.5 px`，SupportGain 由 `0.38` 提高到 `0.85`，降低 Filament、提高 Medium/Body，关闭 Detail/Edge 锐化并把 BlackPoint 降到 `0.001`。该候选专门验证排线和孔洞能否收敛，不修改 Niagara 字段契约。
+
+后续用户在恢复 System 上直接对照旧 G5 HQ 与 FieldRecon Connected，明确选择旧 `MI_SSPR_AnisotropicSplat_G5_HQ` 作为当前视觉基线。判断依据是旧 G5 的主体与外缘更连续；FieldRecon 虽增强了深度色调和局部结构分离，却同时把稀疏 Coverage、短丝与孔洞显著化，主观粒子感更重。当前只撤下 FieldRecon 的 Coverage 归一化和强 DepthTransport，Main/Aux 的方向与深度字段仍继续生成；旧 G5 原有的低强度 `MF_SSPR_G5_DepthCueV1` 保留。若再推进深度表现，必须先在不削薄 Medium/Body 连续支撑的前提下做独立 A/B，不得直接覆盖该基线。
