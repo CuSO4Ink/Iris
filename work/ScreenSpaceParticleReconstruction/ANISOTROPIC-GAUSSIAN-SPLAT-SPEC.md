@@ -2,7 +2,7 @@
 
 - 版本：0.9
 - 日期：2026-07-30
-- 状态：Sparse Raster 因跨帧运行全零未通过 Gate；当前使用原始 Dense G5 恢复副本并绑定用户更偏好的旧 `MI_SSPR_AnisotropicSplat_G5_HQ`。FieldRecon Connected 因近景粒子感和孔洞更明显降为实验候选
+- 状态：Sparse V1 因跨帧运行全零未通过 Gate；保守 Sparse V2 `33×7` 已通过有效 RT 与 ProfileGPU Gate，当前绑定用户更偏好的旧 `MI_SSPR_AnisotropicSplat_G5_HQ`，等待人工视觉确认。FieldRecon Connected 仍为实验候选
 - V1 冻结快照：`/Game/SSPR_Validation/Versions/V1_ParticleTrails_20260729`
 - V3 冻结快照：`/Game/SSPR_Validation/Versions/V3_AnisotropicSplat_20260730`
 - V2 当前开发目录：`/Game/SSPR_Validation/M2/AnisotropicSplat_V2`
@@ -524,7 +524,7 @@ PCA 作为后续可选升级：只在低速、方向不稳定或需要根据粒�
 
 - 首先冻结最高质量参数。
 - 最高质量通过后，再建立 High / Medium / Low 档位。
-- 当前 Niagara Raster 性能 Gate 未通过；旧 G5 HQ 是当前人工偏好视觉基线。下一性能候选必须先通过有效 Main/Aux、干净 DI、编辑器重启和旧 G5 HQ 同机视觉对照，再进行完整 30/60/120 FPS 动态回归。
+- 保守 Sparse V2 已通过有效 Main/Aux 与 ProfileGPU Gate：最大候选 `539→231`，Raster `17.70～18.88→0.697～0.715 ms/步`。旧 G5 HQ 仍是人工偏好视觉基线；当前尚需用户视觉对照、组件 override 序列化收口、编辑器重启和完整 30/60/120 FPS 动态回归。
 
 当前尚未通过的视觉项：连续尖细流丝、中尺度连接、柔软但不糊的烟体、纵深与最终受光、静止/转镜头/拉远、屏幕边缘及关闭 TAA/TSR。Fixed Tick 已解决整片闪烁，但不能替代这些画面 Gate。
 

@@ -435,3 +435,11 @@ Connected MI 绑定后的严格 RT Gate 首次失败：System 编译、Renderer 
 修改前已备份恢复 System 到 `Saved/CodexBackups/NS_SSPR_RecoveryDense_FieldRecon_before_G5_visual_restore_20260730.uasset`。Renderer 1 已切回 `/Game/SSPR_Validation/M2/AnisotropicSplat_V2/MI_SSPR_AnisotropicSplat_G5_HQ`，并保留 `TrajectoryTexture <- User.SSPR_SimRT.RenderTarget` 与 `TrajectoryAuxTexture <- User.SSPR_AuxRT.RenderTarget`。Apply/Compile/Save 后 System 为 `UpToDate`、零错误零警告。材质热重载把旧活动组件累积为 `2 Raster + 4 RT`，因此再次用最终已编译 System 生成一次干净 Actor，并在下一独立请求推进 300 帧、回读 Main/Aux 后替换旧 Actor。
 
 最终活动组件严格为 `1 RasterizationGrid3D + 2 RenderTarget2D`，另有 1 个正式遗留 `Grid2DCollection`。跨请求三块区域共抽样 `393,216` 像素：活动 Main R 非零 `41,201`、最大 `38.625`，G/B 含正负方向值；活动 Aux R 非零 `28,886`、Coverage 非零 `41,201`、A 最大 `1.0`；全部通道无 NaN/Inf、未画满。关卡已保存，当前人工视觉基线正式恢复为旧 G5 HQ；FieldRecon 资产保留但不再绑定。下一步近景性能优化必须以该基线做对照，且不得再次原地 Apply/Rebind 当前恢复 System。
+
+### 2026-07-30 — [性能候选 V2/待视觉确认] Raw-copy 保守 Sparse 核通过有效 ProfileGPU Gate
+
+为避免再次把 UE `duplicate_asset(NiagaraSystem)` 的空运行副本误当性能结果，从当前可运行 Dense G5 `.uasset` 直接复制同名二进制到 `/Game/SSPR_Validation/Performance/DenseG5SparseV2/NS_SSPR_AnisotropicSplat_Main`，原恢复资产不修改，备份位于 `Saved/CodexBackups/NS_SSPR_RecoveryDense_G5HQ_before_perf_v2_20260730.uasset`。候选只替换 Raster Scratch HLSL：Dense 最大 `49×11=539` 改为保守质量守恒 `33×7=231`，最大候选/原子写入位置下降 `57.14%`；纵横最大间距约 `1.49/1.57 px`，并把中心剔除改为带核扩展范围的屏幕相交测试。粒子数、2048²、Main/Aux 六属性、Fixed Tick、Renderer 双绑定和旧 G5 HQ 均未修改。
+
+候选不是靠空路径得到性能：生成候选 Actor 前记录关卡已有 RT，下一独立请求只读取之后新增的两张 2048² RGBA16F RT。新增 Main/Aux 均非零且签名唯一，Main G/B 含正负方向值，Aux B 恒零、A 最大 1，所有通道无 NaN/Inf。随后强制重绘视口取得有效 ProfileGPU：在 `251,667～254,167` 粒子下，四个 Fixed Tick 的 Raster 分别为 `0.715/0.697/0.706/0.703 ms`，Clear 为 `0.324～0.325 ms`，Resolve 为 `0.156～0.165 ms`，Particle Update 为 `0.111～0.132 ms`；Niagara GPU Compute 四步合计 `5.242 ms`，整帧 `15.945 ms`。相对 Dense Raster `17.70～18.88 ms/步`，有效 Raster 提速约 `24.8～27.1×`。
+
+技术查询确认候选 `UpToDate`、零错误零警告，Renderer 仍绑定 `MI_SSPR_AnisotropicSplat_G5_HQ` 和两张 RT 子变量。资产级 User DI 严格为 `1 Raster + 2 RT + 1 Grid2D`；但 `NiagaraComponent` 在跨请求参数同步后仍生成第二套 override 子对象。运行时只创建两张新 RT，ProfileGPU 也只执行一套 Raster/Resolve，因此当前性能数据有效；该元数据重复仍需在视觉通过后收口，不能把候选直接视为最终封版。当前 User 标量及作用已整理到 `NIAGARA-USER-PARAMETERS.md`。
