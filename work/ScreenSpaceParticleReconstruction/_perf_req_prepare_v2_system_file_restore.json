@@ -1,0 +1,9 @@
+{
+  "action": "tool.call",
+  "endpoint": "http://127.0.0.1:8000/mcp",
+  "timeoutSec": 120,
+  "tool": "execute_python_code",
+  "arguments": {
+    "code": "exec(compile(open(r'C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_perf_prepare_v2_system_file_restore.py', encoding='utf-8').read(), r'C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_perf_prepare_v2_system_file_restore.py', 'exec'))"
+  }
+}

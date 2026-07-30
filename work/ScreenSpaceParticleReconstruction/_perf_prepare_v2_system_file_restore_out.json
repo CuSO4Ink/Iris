@@ -1,0 +1,11 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  true,
+    "data":  {
+                 "success":  true,
+                 "output":  "PERF_PREPARE_V2_SYSTEM_FILE_RESTORE={\"closedEditors\": true, \"neutralLevelLoaded\": true, \"world\": \"/Engine/Maps/Entry.Entry\"}",
+                 "result":  "None",
+                 "execution_time_ms":  374.1256103515625
+             },
+    "action":  "tool.call"
+}

@@ -417,3 +417,11 @@ Connected MI 绑定后的严格 RT Gate 首次失败：System 编译、Renderer 
 曾先在 `Performance/NS_SSPR_AnisotropicSplat_PerfSparseV1` 上做候选，但发现当前 UE 5.8 对这套含嵌入式 Scratch Simulation Stage 的 Niagara System 执行 `duplicate_asset` 后，即使复制品 `UpToDate`、图连接与常规模块输入一致，未修改的复制对照运行时 Main/Aux 仍全零；Sparse 复制品也只在单一投影中心附近产生约 15 个非零像素。由此不能把 Niagara 资产复制成功视为可运行备份 Gate。关卡已恢复原 V2 System，Sparse HLSL 在原活动资产上原地 Apply/Compile/Save，并通过运行 RT Gate。
 
 程序化 `ProfileGPU` 在约 `251,666～253,333` 粒子下得到 Sparse Raster 首次 `0.930 ms`、随后 `0.559/0.563 ms`，稳态约 `0.56 ms`；Resolve 为 `0.153～0.158 ms`。相对旧 Dense Raster 单次降低约 `97%`，显著低于 60 Hz 固定步长。快速原始 Gate 在三块区域共抽样 `393,216` 像素：Main R 非零 `6,970`、最大 `4.2109375`，G/B 仍含正负方向值；Aux R 非零 `4,218`，G/A 非零 `6,970`、A 最大 `1.0`；无 NaN/Inf、未画满。最终系统 `UpToDate`、零错误、零警告，`SpawnRate=50,000/s`、Fixed Tick=`true / 0.01667s`、Main/Aux 2048² RGBA16F/Bilinear/Mip Disabled 均未改变。下一步只需用户在同一近景与动态转镜条件下确认 Sparse 核没有引入可见点列、缺口或密度宽度退化。
+
+### 2026-07-30 — [性能候选失败/紧急恢复] Sparse 短时 Gate 为假阳性，回滚原始 Dense G5
+
+用户首次视觉检查发现烟雾完全消失。跨请求推进 60 帧后，活动组件所有 Main/Aux 均为零，证明此前“性能 Gate 已通过”的结论无效。当前组件已累积为 `2 Raster + 4 RT`；恢复 Dense HLSL、重新编译和替换为干净 V2 组件后仍全零。进一步发现 V3 复制关卡的主组件已随 V2 一起改回 V2 System，说明其外部 Actor 并未形成可靠隔离；`duplicate_asset(NiagaraSystem)` 与复制关卡都不能作为本轮运行恢复点。
+
+原 V2 `.uasset` 因编辑器进程锁定无法在线覆盖，先备份为 `Saved/CodexBackups/NS_SSPR_AnisotropicSplat_Main_broken_sparse_blank_20260730.uasset`。随后把 `recovery/G5_visual_v1_pre_fix_20260730_130435` 中 SHA-256=`E122D5266E1C10934696797DB45D39714A8B20D00862C46AD3A05AA865363E52` 的同包名原始二进制复制到 `/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main`。恢复 System 使用原 `49×11` Dense Raster，Renderer 绑定 `MI_SSPR_AnisotropicSplat_G5_HQ`，不是最新 FieldRecon。
+
+恢复 Gate 改为两个独立 MCP 请求：请求 A 只生成并保留严格 `1 Raster + 2 RT` 的干净候选，让异步 Niagara GPU 编译和渲染线程实际跑帧；请求 B 再推进 300 帧、回读并替换空白 Actor。最终 Main 抽样非零 `33,517`、最大 `4.4921875`，方向 G/B 含正负值；Aux R 非零 `17,742`、Coverage 非零 `33,517`、A 最大 `1`，无 NaN/Inf。恢复 System `UpToDate`、零错误零警告，关卡已保存。此前 `0.56 ms` 只代表失效/空路径的短时数据，Sparse 性能 Gate 正式判失败；下一步先由用户确认 Dense G5 重新可见，再恢复最新 FieldRecon 与重新设计性能方案。

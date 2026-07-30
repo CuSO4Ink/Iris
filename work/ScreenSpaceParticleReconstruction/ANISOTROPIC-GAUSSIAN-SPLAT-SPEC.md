@@ -1,8 +1,8 @@
 # 各向异性高斯 Splat 拉丝烟雾规格
 
-- 版本：0.8
+- 版本：0.9
 - 日期：2026-07-30
-- 状态：G5 字段与 FieldRecon 当前帧归一化重建已落地；V3 为修改前冻结快照；Sparse Raster 近景性能 Gate 已通过，最终画面仍待用户动态视觉确认
+- 状态：G5 字段与 FieldRecon 已落地；Sparse Raster 因跨帧运行全零未通过 Gate，当前回滚到原始 Dense G5 恢复副本，等待用户确认可见后再继续性能方案
 - V1 冻结快照：`/Game/SSPR_Validation/Versions/V1_ParticleTrails_20260729`
 - V3 冻结快照：`/Game/SSPR_Validation/Versions/V3_AnisotropicSplat_20260730`
 - V2 当前开发目录：`/Game/SSPR_Validation/M2/AnisotropicSplat_V2`
@@ -501,7 +501,7 @@ PCA 作为后续可选升级：只在低速、方向不稳定或需要根据粒�
 
 #### G5.5：Sparse Raster 近景性能 Gate
 
-- 状态：已实施并通过 GPU 性能、Compile State 与原始 RT 技术 Gate；视觉等价性待用户近景动态确认。
+- 状态：失败并已回滚。短时性能数据仅保留为诊断参考，不能作为通过结论。
 - 不降低 `2048×2048` Raster/Main/Aux 分辨率，不降低 `50,000/s` SpawnRate、5 秒 Lifetime 或当前材质采样数。
 - 不关闭 Fixed Tick，不引入 History，也不改变 Main/Aux 六属性语义、Q10/Q16 定点倍率或 Renderer 材质绑定。
 
@@ -512,9 +512,9 @@ PCA 作为后续可选升级：只在低速、方向不稳定或需要根据粒�
 1. 在进入候选循环前完成投影有效性、近平面和屏幕扩展边界剔除，完全离屏粒子不再执行空循环。
 2. 使用最多 `25×5=125` 个稀疏采样代表原 `49×11` Dense 核；先计算 Dense 可见核的可分离权重总和，再按 Sparse 权重总和做单粒子质量归一化，因此降低原子操作数量而不靠减少粒子、缩小 RT 或扩大后处理模糊换性能。
 
-在约 `251,666～253,333` 个活动 GPU 粒子下，程序化 `ProfileGPU` 得到 Sparse Raster 首次 `0.930 ms`、随后 `0.559/0.563 ms`，稳态约 `0.56 ms`；Resolve 为 `0.153～0.158 ms`。相对旧 Dense Raster 单次下降约 `97%`，已经显著低于 60 Hz Fixed Tick 的 `16.67 ms`，不再具备同一原因触发补步追帧螺旋的条件。
+在约 `251,666～253,333` 个活动 GPU 粒子下，程序化 `ProfileGPU` 曾得到 Sparse Raster 首次 `0.930 ms`、随后 `0.559/0.563 ms`，Resolve 为 `0.153～0.158 ms`。但该数据来自同一自动化会话内的短时运行；用户随后观察到效果完全消失，跨请求回读证实全部 Main/Aux 为零，因此这组数字只能证明空/失效路径很快，不能证明有效 Raster 达到该性能。
 
-活动 Main/Aux 快速原始 Gate 共抽样 `393,216` 像素：Main/Aux 都非空且可区分，方向分量仍包含正负值，Aux Coverage 有效，所有通道无 NaN/Inf、未画满。系统最终为 `UpToDate`、零错误、零警告，`SpawnRate=50,000/s`，Fixed Tick 仍为 `true / 0.01667 s`。
+失败后发现活动组件累积为 `2 Raster + 4 RT`，原地恢复 Dense HLSL和替换干净 V2 组件仍全零；复制 System 与 V3 复制关卡也不能作为可靠运行回滚。最终从修改前同包名二进制建立 `/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main`，用两次独立 MCP 请求完成“生成候选→让渲染线程实际跑帧→RT 回读→替换 Actor”。恢复 Main 抽样非零 `33,517`、最大 `4.4921875`，Aux Coverage 非零 `33,517`，无 NaN/Inf；系统 `UpToDate`、零错误零警告。
 
 **Gate：** 用户在相同近景、转镜、平移和拉远条件下确认 Sparse 与修改前 V3 的主体宽度、细丝方向、密度连续性和纵深没有不可接受退化。若出现规则点列、核质量跳变或边缘缺口，优先调整 Sparse 样本布局/归一化，不降低粒子数或分辨率；必要时从 V3 或已记录的 Dense HLSL 恢复。
 
@@ -522,7 +522,7 @@ PCA 作为后续可选升级：只在低速、方向不稳定或需要根据粒�
 
 - 首先冻结最高质量参数。
 - 最高质量通过后，再建立 High / Medium / Low 档位。
-- 当前 Niagara Raster 性能 Gate 已通过；最终画面与完整 30/60/120 FPS 动态回归仍未通过用户 Gate。
+- 当前 Niagara Raster 性能 Gate 未通过；Dense 恢复可见、最新 FieldRecon 恢复和完整 30/60/120 FPS 动态回归均需重新验收。
 
 当前尚未通过的视觉项：连续尖细流丝、中尺度连接、柔软但不糊的烟体、纵深与最终受光、静止/转镜头/拉远、屏幕边缘及关闭 TAA/TSR。Fixed Tick 已解决整片闪烁，但不能替代这些画面 Gate。
 

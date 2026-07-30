@@ -8,13 +8,13 @@
 
 ## 当前状态
 
-活跃；正式主线已经从旧 Current/History Ping-pong 原型切换到 `/Game/SSPR_Validation/M2/AnisotropicSplat_V2`。当前链路为 **Niagara GPU 粒子 → 当前相机投影 → `RasterizationGrid3D(2048×2048×1)` 六属性原子场 → Niagara 自管 Main/Aux RGBA16F RT → Emitter SourceMode Sprite Renderer → FieldRecon 当前帧归一化场重建**。V1 圆形轨迹版本冻结在 `/Game/SSPR_Validation/Versions/V1_ParticleTrails_20260729`，G5 Visual V2 自包含恢复点冻结在 `/Game/SSPR_Validation/Versions/V3_AnisotropicSplat_20260730`；旧 Ping-pong/History 方案已归档。当前活动 Raster 已从 `49×11` Dense 核改为质量守恒 `25×5` Sparse 核，在约 25.2 万粒子下稳态约 `0.56 ms`，近景性能技术 Gate 已通过。
+活跃；正式主线仍是无 History 的 Niagara GPU 粒子→六属性 Raster→Main/Aux RT→屏幕空间重建。`25×5` Sparse Raster 虽曾在短时 Profile 中显示约 `0.56 ms`，但跨请求视觉 Gate 暴露出 System/运行 DI 全零，候选已判失败并回滚。当前验证关卡临时绑定原始二进制恢复副本 `/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main`，使用 `49×11` Dense Raster 与 `MI_SSPR_AnisotropicSplat_G5_HQ`；Main/Aux 已恢复非零。V1 与 V3 仍保留，但 V3 复制关卡存在共享外部 Actor 引用，不能单独作为运行回滚 Gate。
 
 当前高品质稳定基线：SimRT 为 2048² RGBA16F、Bilinear、自动 Mip 关闭；材质使用 LOD0 的 7×7 Medium 与 13×13 Body 空间卷积；Niagara System 开启 `Fixed Tick Delta=0.01667s`。中央大块暗影已定位为密度梯度光照，当前 HQ 实例暂用 `Ambient=1 / LightStrength=0` 的中性光照，以便先验收密度连续性。
 
 ## 当前焦点
 
-当前焦点是 **V2 G5 FieldRecon 最终视觉 Gate 与近景动态性能回归**：Fixed Tick 保持 60 Hz，分辨率、约 25 万实际存活粒子和材质采样数均未降低。需要由用户在相同近景、标准距离、转镜、平移和拉远时确认 Sparse Raster 没有引入规则点列、缺口或主体宽度退化，同时继续检查独立粒子感、细丝/中尺度/烟体平衡、纵深、屏幕边缘、长时间运行和关闭 TAA/TSR 的连续性。
+当前焦点先收敛为 **Dense 恢复可见 Gate**：用户确认烟雾重新出现后，再恢复最新 FieldRecon 表现链并重新设计近景性能方案。后续性能候选必须在独立可运行 System 上完成跨请求、跨帧和编辑器重启 Gate；不再把同一次 Python 调用里的 `Apply/Compile → advance_simulation → RT 回读` 当作有效运行验证。
 
 ## 技术栈与硬约束
 

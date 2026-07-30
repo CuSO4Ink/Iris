@@ -1,0 +1,22 @@
+{
+    "endpoint":  "http://127.0.0.1:8000/mcp",
+    "ok":  false,
+    "error":  {
+                  "toolError":  "{\r\n\t\"success\": false,\r\n\t\"error_code\": \"PYTHON_RUNTIME_ERROR\",\r\n\t\"error_message\": \"Traceback (most recent call last):\\n  File \\\"\u003cstring\u003e\\\", line 1, in \u003cmodule\u003e\\n  File \\\"C:\\\\Work\\\\AI\\\\Iris\\\\work\\\\ScreenSpaceParticleReconstruction\\\\_perf_activate_raw_dense_recovery_system.py\\\", line 273, in \u003cmodule\u003e\\n    raise RuntimeError(\\nRuntimeError: Raw Dense recovery RT Gate failed: {\u0027newTargetCount\u0027: 0, \u0027rows\u0027: []}\"\r\n}",
+                  "ok":  false
+              },
+    "raw":  {
+                "jsonrpc":  "2.0",
+                "id":  2,
+                "result":  {
+                               "content":  [
+                                               {
+                                                   "type":  "text",
+                                                   "text":  "{\r\n\t\"success\": false,\r\n\t\"error_code\": \"PYTHON_RUNTIME_ERROR\",\r\n\t\"error_message\": \"Traceback (most recent call last):\\n  File \\\"\u003cstring\u003e\\\", line 1, in \u003cmodule\u003e\\n  File \\\"C:\\\\Work\\\\AI\\\\Iris\\\\work\\\\ScreenSpaceParticleReconstruction\\\\_perf_activate_raw_dense_recovery_system.py\\\", line 273, in \u003cmodule\u003e\\n    raise RuntimeError(\\nRuntimeError: Raw Dense recovery RT Gate failed: {\u0027newTargetCount\u0027: 0, \u0027rows\u0027: []}\"\r\n}"
+                                               }
+                                           ],
+                               "isError":  true
+                           }
+            },
+    "action":  "tool.call"
+}
