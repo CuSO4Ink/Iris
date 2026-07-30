@@ -1,0 +1,18 @@
+{
+  "action": "tool.call",
+  "endpoint": "http://127.0.0.1:8000/mcp",
+  "timeoutSec": 120,
+  "tool": "NiagaraToolsets.NiagaraToolset_System.GetRendererData",
+  "arguments": {
+    "rendererRef": {
+      "system": {
+        "refPath": "/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main.NS_SSPR_AnisotropicSplat_Main"
+      },
+      "emitterName": "Fountain",
+      "scriptName": "",
+      "moduleName": "",
+      "rendererIndex": 0,
+      "inputNameStack": []
+    }
+  }
+}

@@ -84,3 +84,7 @@ TrajectoryAuxTexture <- User.SSPR_AuxRT.RenderTarget
    `FrontDepthWeightThreshold`，不要同时改密度核。
 5. 只有经过同机视觉对照后才评估 Spawn Rate/Lifetime；它们直接改变
    稳态粒子数和视觉采样密度。
+
+## 6. 原始粒子对照模式
+
+默认 Renderer 0 只用于保活 Custom HLSL 读取的粒子属性，因此保持隐藏；Renderer 1 才是 G5 HQ 重建显示。需要对照原始粒子时，Renderer 0 应使用 `RendererVisibility=0` 和 `Particles.SpriteSize`。此前绑定 `Particles.SSPR_ScreenDeltaUV` 会使尺寸接近零，看起来像透明。该切换必须完成 Apply/Compile/Save/Reinitialize 后再进行视觉判断。

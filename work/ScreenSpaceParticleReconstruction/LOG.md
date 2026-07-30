@@ -446,4 +446,8 @@ Connected MI 绑定后的严格 RT Gate 首次失败：System 编译、Renderer 
 
 同日止血措施：本地 UE 5.8 源码 `NiagaraSystemSimulation.cpp` 显示 Fixed Tick 每帧补步上限由 `fx.Niagara.SystemSimulation.MaxTickSubsteps` 控制，默认值为 `100`。当前编辑器会话已通过 MCP 将其临时设为 `4`，日志确认 `LastSetBy: Console`。这保留 Niagara System 的 Fixed Tick `0.01667s`，但单帧最多执行 4 个子步，从机制上阻止旧 `.profViz` 的 24 步追帧螺旋。该 CVar 尚未持久化，重启恢复默认；单次 Raster 仍需继续优化。
 
+### 2026-07-30 — [原始粒子对照模式] Renderer 0 可见性修复待验证
+
+用户需要同时观察原始粒子输入与 G5 重建结果。检查恢复 Dense/Sparse 候选 Renderer 0 后确认：它并非简单关闭，而是 `RendererVisibility=1`，且 `SpriteSizeBinding` 错绑到 `Particles.SSPR_ScreenDeltaUV`；该值是屏幕位移量，通常很小，会让原始 Sprite 看起来像透明。当前已备份 Sparse V2 二进制到 `Saved/CodexBackups/NS_SSPR_SparseV2_before_raw_particle_compare_20260730.uasset`，并提交候选设置：`bIsEnabled=true`、`RendererVisibility=0`、`SpriteSizeBinding=Particles.SpriteSize`。设置尚未完成 Apply/Compile/Save/Reinitialize，故暂不宣称原始粒子已可见；Renderer 1 的 G5 HQ 与 Main/Aux 绑定保持不变。
+
 技术查询确认候选 `UpToDate`、零错误零警告，Renderer 仍绑定 `MI_SSPR_AnisotropicSplat_G5_HQ` 和两张 RT 子变量。资产级 User DI 严格为 `1 Raster + 2 RT + 1 Grid2D`；但 `NiagaraComponent` 在跨请求参数同步后仍生成第二套 override 子对象。运行时只创建两张新 RT，ProfileGPU 也只执行一套 Raster/Resolve，因此当前性能数据有效；该元数据重复仍需在视觉通过后收口，不能把候选直接视为最终封版。当前 User 标量及作用已整理到 `NIAGARA-USER-PARAMETERS.md`。

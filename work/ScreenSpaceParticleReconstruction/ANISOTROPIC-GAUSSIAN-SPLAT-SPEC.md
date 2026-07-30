@@ -112,7 +112,7 @@ Renderer 材质：
 实现约束：
 
 - Raster Stage 只写 `User.SSPR_DensityRaster`，必须保持 `WritesParticles=False`；不得为调试标记回写 `Particles.*`。
-- 当前 UE 5.8 编译器会裁掉“只在 Custom HLSL 副作用中读取、但没有 Renderer 消费”的粒子属性。V2 保留 Renderer 0 作为编译属性保活器：启用、`RendererVisibility=1` 隐藏，并把 `SpriteSizeBinding` 指向 `Particles.SSPR_ScreenDeltaUV`；正式显示仍由 Renderer 1 完成。
+- 当前 UE 5.8 编译器会裁掉“只在 Custom HLSL 副作用中读取、但没有 Renderer 消费”的粒子属性。默认 V2 保留 Renderer 0 作为编译属性保活器：启用、`RendererVisibility=1` 隐藏，并把 `SpriteSizeBinding` 指向 `Particles.SSPR_ScreenDeltaUV`；正式显示由 Renderer 1 完成。性能/视觉对照模式则把 Renderer 0 改为 `RendererVisibility=0`、`Particles.SpriteSize`，使原始粒子可见；该设置需要 Apply/Compile/Save/Reinitialize 后再验收，不能与默认隐藏状态混淆。
 - Stage1 不再依赖缓存的 `SSPR_ScreenUV` 作为中心位置，直接从持久化 `Particles.Position` 重投影；缓存 `SSPR_ScreenDeltaUV` 只控制高斯长轴。
 - `RasterizationGrid3D` 仅使用 Z=0 的一个切片，本质仍是二维屏幕密度场；选择该 DI 是为了使用 UE 5.8 已验证的整数原子加法。
 - `clear_before_non_iteration_stage=True`，每帧清空当前密度；连续轨迹来自大量不同年龄粒子的空间分布，不来自 RT 历史累积。

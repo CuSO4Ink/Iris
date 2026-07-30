@@ -18,6 +18,8 @@
 
 当前编辑器会话已将 `fx.Niagara.SystemSimulation.MaxTickSubsteps` 从源码默认 `100` 临时设为 `4`。这不关闭 60 Hz Fixed Tick，只限制单个慢帧最多补做 4 步，避免旧 Profile 中 24 步追帧螺旋；该设置尚未写入项目配置，重启后会恢复默认，不能替代 Raster 本身的优化。
 
+为方便性能与视觉对照，已定位原始粒子 Renderer 变透明的原因：Renderer 0 的 Visibility 为隐藏值，Sprite Size 又绑定到很小的 `Particles.SSPR_ScreenDeltaUV`。当前候选已备份，并提交了切回 `RendererVisibility=0`、`Particles.SpriteSize` 的待验证设置；仍需 Apply/Compile/Save/Reinitialize 后才算对照模式完成。最终 G5 Renderer 1 不变。
+
 ## 技术栈与硬约束
 
 - Unreal Engine / Niagara GPU Simulation / HLSL / Render Target 或 Grid Data Interface。
