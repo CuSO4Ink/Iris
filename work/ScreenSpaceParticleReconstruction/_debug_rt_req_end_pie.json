@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nlevel_editor=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)\nwas_playing=bool(level_editor.is_in_play_in_editor())\nif was_playing:\n    level_editor.editor_request_end_play()\nprint('RT_PIE_END_REQUESTED='+repr({'wasPlaying':was_playing}))"
-  }
-}

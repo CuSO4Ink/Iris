@@ -1,9 +1,0 @@
-{
-  "action": "tool.call",
-  "endpoint": "http://127.0.0.1:8000/mcp",
-  "timeoutSec": 120,
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nactors=unreal.get_editor_subsystem(unreal.EditorActorSubsystem).get_all_level_actors()\nactor=next(a for a in actors if a.get_actor_label()=='SSPR_ParticleTrails_Main')\ncomponent=actor.get_components_by_class(unreal.NiagaraComponent)[0]\nunreal.SystemLibrary.execute_console_command(component.get_world(), 'fx.Niagara.DumpComponents full filter=NS_SSPR_AnisotropicSplat_Main')\nprint('V2_RUNTIME_DUMP_REQUESTED')"
-  }
-}

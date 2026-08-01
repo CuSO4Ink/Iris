@@ -1,1 +1,0 @@
-{"endpoint":"http://127.0.0.1:8000/mcp","ok":true,"data":{"returnValue":"OutUV = float2(0.0f, 0.0f);\nOutDepth = 0.0f;\nOutMark = 0.0f;\nOutScreenVelocityUV = float2(0.0f, 0.0f);"},"action":"tool.call"}

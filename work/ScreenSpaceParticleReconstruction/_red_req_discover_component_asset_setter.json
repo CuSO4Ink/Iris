@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nprint([n for n in dir(unreal.NiagaraComponent) if 'asset' in n.lower() or ('set' in n.lower() and 'system' in n.lower())])"
-  }
-}

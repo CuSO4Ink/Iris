@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\n# dump the HLSL-exposed function signatures of RenderTarget2D DI via its class default / metadata is not in python.\n# Instead, print the RenderTarget2D DI editor properties to know param names.\nc=unreal.NiagaraDataInterfaceRenderTarget2D\ncdo=unreal.get_default_object(c)\nprops=[p for p in dir(cdo) if not p.startswith('_')]\nprint('RT2D_DI attrs sample:')\nprint([p for p in props if p in ('size','override_render_target_format','render_target_user_parameter','size_x','size_y','preview_render_target')])\n# also list Grid2DCollection buffer usage\nprint('---')\ntry:\n    print('RT2D size prop:', cdo.get_editor_property('size'))\nexcept Exception as e:\n    print('size err',e)\n"
-  }
-}

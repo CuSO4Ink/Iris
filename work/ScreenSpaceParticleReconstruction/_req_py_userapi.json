@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\n# Add a User Parameter of type RenderTarget2D pointing to our asset, via NiagaraSystem editor API.\nsysa=unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest')\nrt=unreal.load_asset('/Game/SSPR_Validation/RT_SSPR_Occupancy')\nprint('rt',rt)\n# Discover NiagaraSystem exposed methods for user parameters\nms=[m for m in dir(sysa) if 'param' in m.lower() or 'user' in m.lower() or 'expose' in m.lower()]\nprint('SYS_METHODS',ms)\n# NiagaraEditor library?\nlib=[n for n in dir(unreal) if 'NiagaraEditor' in n or 'NiagaraSystemEditor' in n or n=='NiagaraFunctionLibrary']\nprint('LIBS',lib[:20])\n"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "NiagaraToolsets.NiagaraToolset_System.GetUserVariables",
-  "arguments": {
-    "system": { "refPath": "/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest" }
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nprint(unreal.NiagaraComponent.set_variable_texture_render_target.__doc__)"
-  }
-}

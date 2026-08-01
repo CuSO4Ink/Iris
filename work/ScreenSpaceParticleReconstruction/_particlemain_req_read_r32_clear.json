@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nscript_path=r'C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_particlemain_read_r32_clear.py'\nwith open(script_path,'r',encoding='utf-8') as handle:\n    source=handle.read()\nexec(compile(source,script_path,'exec'))"
-  }
-}

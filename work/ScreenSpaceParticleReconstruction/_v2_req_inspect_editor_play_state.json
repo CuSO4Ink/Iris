@@ -1,9 +1,0 @@
-{
-  "action": "tool.call",
-  "endpoint": "http://127.0.0.1:8000/mcp",
-  "timeoutSec": 120,
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import json, unreal\nsubsystem=unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)\nworlds=[]\nfor world in unreal.ObjectIterator(unreal.World):\n    path=world.get_path_name()\n    if 'UEDPIE_' in path or '/Temp/' in path:\n        worlds.append(path)\nprint('V2_EDITOR_PLAY_STATE='+json.dumps({'inPIE':bool(subsystem.is_in_play_in_editor()),'playWorlds':worlds},sort_keys=True))"
-  }
-}

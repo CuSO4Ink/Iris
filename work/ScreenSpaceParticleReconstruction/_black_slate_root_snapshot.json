@@ -1,8 +1,0 @@
-{
-    "endpoint":  "http://127.0.0.1:8000/mcp",
-    "ok":  true,
-    "data":  {
-                 "returnValue":  "window \"precisefluid - Unreal Editor\" [pos=0,0 size=2560,1440] [ref=w1]\n  image [pos=0,0 size=2560,1440] [ref=i1]\n  image [pos=0,0 size=2560,1440] [ref=i2]\n  image [pos=3,3 size=2556,1436] [ref=i3]\nwindow \"RT_SSPR_Occupancy\" [pos=-3840,0 size=2560,1440] [ref=w135]\n  image [pos=-3840,0 size=2560,1440] [ref=i4]\n  image [pos=-3840,0 size=2560,1440] [ref=i5]\n  image [pos=-3837,3 size=2556,1436] [ref=i6]\n"
-             },
-    "action":  "tool.call"
-}

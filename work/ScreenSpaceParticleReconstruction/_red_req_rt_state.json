@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nrt=unreal.load_object(None,'/Game/SSPR_Validation/RT_SSPR_Occupancy.RT_SSPR_Occupancy')\nif rt is None: raise RuntimeError('RT missing')\nprint('RT_STATE=' + repr({'path':rt.get_path_name(),'sizeX':rt.get_editor_property('size_x'),'sizeY':rt.get_editor_property('size_y'),'clearColor':str(rt.get_editor_property('clear_color')),'format':str(rt.get_editor_property('render_target_format'))}))"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nCALL_PATH='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:ProjParticles_0.NiagaraScriptSource_0.NiagaraGraph_0.NiagaraNodeFunctionCall_6'\ncall_node=None\nfor obj in unreal.ObjectIterator(unreal.EdGraphNode):\n    if obj.get_path_name()==CALL_PATH:\n        call_node=obj\n        break\nif call_node is None: raise RuntimeError('Writer function call not found')\nscript=call_node.get_editor_property('function_script')\nif not script or script.get_path_name()!='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:SSPR_WriteOccupancy': raise RuntimeError('Unexpected writer script')\ncall_node.set_editor_property('function_script', script)\nunreal.EditorAssetLibrary.save_loaded_asset(unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest'))\nprint('REFRESHED=' + call_node.get_path_name() + '|SCRIPT=' + script.get_path_name())"
-  }
-}

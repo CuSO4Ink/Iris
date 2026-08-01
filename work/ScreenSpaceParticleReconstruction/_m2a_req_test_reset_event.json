@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nactor=None\nfor candidate in unreal.ObjectIterator(unreal.Actor):\n    try:\n        world=candidate.get_world()\n        if candidate.get_actor_label()=='SSPR_M2A_TemporalOrchestrator' and world and 'UEDPIE' in world.get_path_name(): actor=candidate; break\n    except Exception: pass\nif actor is None: raise RuntimeError('Runtime M2-A actor not found')\nmethods=[name for name in dir(actor) if 'reset' in name.lower() or 'temporal' in name.lower()]\ncalled=False\nerror=None\ntry:\n    if hasattr(actor,'reset_temporal_history'):\n        actor.reset_temporal_history(); called=True\nexcept Exception as exc:\n    error=str(exc)\nprint('M2A_RESET_EVENT='+repr({'methods':methods,'called':called,'error':error,'historyValid':actor.get_editor_property('HistoryValidValue'),'cameraValid':actor.get_editor_property('CameraDataValid'),'latest':actor.get_editor_property('LatestHistory').get_path_name()}))"
-  }
-}

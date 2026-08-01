@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nsysa=unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest')\n# System-level scratch pad scripts\ntry:\n    sysscratch=sysa.get_editor_property('scratch_pad_scripts')\n    print('SYS_SCRATCH count', len(sysscratch) if sysscratch else 0)\n    for s in (sysscratch or []):\n        print('  sys>',s.get_name())\nexcept Exception as e:\n    print('sys_scratch ERR',e)\n# try alternate prop names\nfor p in ['scratch_pad_scripts','editor_only_scratch_pad_scripts']:\n    try:\n        v=sysa.get_editor_property(p); print(p,'=',[x.get_name() for x in v] if v else v)\n    except Exception as e:\n        print(p,'ERR',str(e)[:80])\n"
-  }
-}

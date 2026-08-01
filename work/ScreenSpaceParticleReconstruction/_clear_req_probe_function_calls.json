@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nfor node in unreal.ObjectIterator(unreal.EdGraphNode):\n    if node.get_class().get_name() != 'NiagaraNodeFunctionCall': continue\n    p=node.get_path_name()\n    if 'NS_SSPR_ProjTest' not in p: continue\n    vals=[]\n    for key in ('function_script','function_name','signature'):\n        try:\n            v=node.get_editor_property(key)\n            vals.append((key,v.get_path_name() if hasattr(v,'get_path_name') and v else str(v)))\n        except Exception as exc: vals.append((key,'ERR:' + str(exc)))\n    print('CALL=' + p + '|VALS=' + repr(vals))"
-  }
-}

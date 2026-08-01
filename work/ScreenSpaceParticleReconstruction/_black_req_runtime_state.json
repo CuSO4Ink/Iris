@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nTARGET='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\nrows=[]\nfor comp in unreal.ObjectIterator(unreal.NiagaraComponent):\n    try:\n        asset=comp.get_asset()\n        if asset and asset.get_path_name()==TARGET:\n            owner=comp.get_owner()\n            row={'component':comp.get_path_name(),'owner':owner.get_path_name() if owner else None,'active':bool(comp.is_active()),'tickEnabled':bool(comp.is_component_tick_enabled()),'visible':bool(comp.is_visible()),'asset':asset.get_path_name()}\n            for method in ['get_num_active_particles','get_approx_memory_usage']:\n                if hasattr(comp,method):\n                    try: row[method]=getattr(comp,method)()\n                    except Exception as e: row[method]='ERR:'+str(e)\n            rows.append(row)\n    except Exception:\n        pass\nprint('COMPONENTS=' + repr(rows))\nprint('DIAGNOSTIC_METHODS=' + repr([n for n in dir(unreal.NiagaraComponent) if any(k in n.lower() for k in ['particle','count','simulation','tick','system_instance'])]))"
-  }
-}

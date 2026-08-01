@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\ncomponents=[]\nfor c in unreal.ObjectIterator(unreal.NiagaraComponent):\n    a=c.get_asset()\n    if a and a.get_path_name()=='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest':\n        components.append({'path':c.get_path_name(),'owner':c.get_owner().get_path_name() if c.get_owner() else None,'active':bool(c.is_active()),'tick':bool(c.is_component_tick_enabled()),'solo':bool(c.get_force_solo())})\ngrids=[]\nfor g in unreal.ObjectIterator(unreal.NiagaraDataInterfaceGrid2DCollection):\n    p=g.get_path_name()\n    if 'NS_SSPR_ProjTest' in p or 'NiagaraComponent' in p:\n        binding=g.get_editor_property('render_target_user_parameter')\n        parameter=binding.get_editor_property('parameter')\n        grids.append({'path':p,'outer':g.get_outer().get_path_name() if g.get_outer() else None,'x':g.get_editor_property('num_cells_x'),'y':g.get_editor_property('num_cells_y'),'attrs':g.get_editor_property('num_attributes'),'clear':bool(g.get_editor_property('clear_before_non_iteration_stage')),'rtParam':str(parameter.get_editor_property('name'))})\nprint('LIVE_COMPONENTS='+repr(components))\nprint('LIVE_GRIDS='+repr(grids))\ndel c\ndel g\ndel components\ndel grids"
-  }
-}

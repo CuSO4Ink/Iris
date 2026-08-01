@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "endpoint": "http://127.0.0.1:8000/mcp",
-  "timeoutSec": 120,
-  "tool": "EditorToolset.EditorAppToolset.CaptureEditorImage",
-  "arguments": {}
-}

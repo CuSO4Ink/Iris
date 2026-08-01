@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nS='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\nE='ProjParticles'\nM='SSPR_WriteOccupancy'\nsvc=unreal.NiagaraScratchPadService\nfor node in svc.list_nodes(S,E,M):\n    print('NODE=' + repr((str(node.node_type),str(node.node_id),str(node.title))))\n    if str(node.node_type)=='MapGet':\n        print('MAPGET_PINS=' + repr([(str(x.pin_name),str(x.direction),str(x.type_name)) for x in svc.get_node_pins(S,E,M,str(node.node_id))]))\nprint('CONNECTIONS=' + repr([(str(x.from_node_id),str(x.from_pin),str(x.to_node_id),str(x.to_pin)) for x in svc.list_connections(S,E,M)]))"
-  }
-}

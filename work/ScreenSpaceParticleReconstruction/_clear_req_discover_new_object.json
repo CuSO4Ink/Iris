@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "discover_python_function",
-  "arguments": {
-    "function_name": "unreal.new_object"
-  }
-}

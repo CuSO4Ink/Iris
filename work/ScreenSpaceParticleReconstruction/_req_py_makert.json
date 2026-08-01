@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\npkg='/Game/SSPR_Validation'\nname='RT_SSPR_Occupancy'\nfull=pkg+'/'+name\nif unreal.EditorAssetLibrary.does_asset_exist(full):\n    print('EXISTS',full)\nelse:\n    atools=unreal.AssetToolsHelpers.get_asset_tools()\n    factory=unreal.TextureRenderTargetFactoryNew()\n    a=atools.create_asset(name,pkg,unreal.TextureRenderTarget2D,factory)\n    a.set_editor_property('size_x',256)\n    a.set_editor_property('size_y',256)\n    try:\n        a.set_editor_property('render_target_format',unreal.TextureRenderTargetFormat.RTF_R16F)\n    except Exception as e:\n        print('fmt_warn',e)\n    unreal.EditorAssetLibrary.save_asset(full)\n    print('CREATED',full,'size',a.get_editor_property('size_x'),a.get_editor_property('size_y'))\n"
-  }
-}

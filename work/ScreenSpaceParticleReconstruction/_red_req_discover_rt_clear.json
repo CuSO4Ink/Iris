@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nprint('CLEAR_DOC=' + str(unreal.RenderingLibrary.clear_render_target2d.__doc__))\nprint('EDITOR_WORLD=' + repr([n for n in dir(unreal) if 'editor' in n.lower() and 'level' in n.lower() and 'libr' in n.lower()]))"
-  }
-}

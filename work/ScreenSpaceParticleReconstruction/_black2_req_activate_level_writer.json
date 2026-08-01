@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\npath='/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C6193CF202_1440689607.NiagaraComponent0'\ncomp=unreal.load_object(None,path)\nrt=unreal.load_asset('/Game/SSPR_Validation/RT_SSPR_Occupancy')\nif comp is None or rt is None: raise RuntimeError('Component or RT missing')\ncomp.set_variable_texture_render_target('User.OccupancyRTParam',rt)\ncomp.set_force_solo(True)\ncomp.set_age_update_mode(unreal.NiagaraAgeUpdateMode.TICK_DELTA_TIME)\ncomp.reinitialize_system()\ncomp.set_component_tick_enabled(True)\ncomp.set_active(True,True)\ncomp.activate(True)\ncomp.advance_simulation(120,1.0/60.0)\nprint('LEVEL_WRITER='+repr({'path':comp.get_path_name(),'active':bool(comp.is_active()),'tick':bool(comp.is_component_tick_enabled()),'solo':bool(comp.get_force_solo()),'asset':comp.get_asset().get_path_name() if comp.get_asset() else None,'rt':rt.get_path_name()}))\ndel comp\ndel rt"
-  }
-}

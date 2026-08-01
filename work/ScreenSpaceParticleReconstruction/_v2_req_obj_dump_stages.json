@@ -1,9 +1,0 @@
-{
-  "action": "tool.call",
-  "endpoint": "http://127.0.0.1:8000/mcp",
-  "timeoutSec": 120,
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nworld=unreal.EditorLevelLibrary.get_editor_world()\nbase='/Game/SSPR_Validation/M2/AnisotropicSplat_V2/NS_SSPR_AnisotropicSplat_Main.NS_SSPR_AnisotropicSplat_Main:Fountain.'\nunreal.SystemLibrary.execute_console_command(world, 'Obj.DumpProperties '+base+'NiagaraSimulationStageGeneric_0')\nunreal.SystemLibrary.execute_console_command(world, 'Obj.DumpProperties '+base+'NiagaraSimulationStageGeneric_1')\nprint('V2_OBJ_DUMP_STAGES_REQUESTED')"
-  }
-}

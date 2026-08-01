@@ -1,7 +1,0 @@
-{
-  "class_name": "unreal.NiagaraUserParameterBinding, unreal.NiagaraVariable, unreal.NiagaraTypeDefinitionHandle",
-  "method_filter": "property|name|type|parameter",
-  "max_methods": "100",
-  "include_inherited": "true",
-  "include_private": "false"
-}

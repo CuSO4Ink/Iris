@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import gc, unreal\n_script_path=r'C:\\\\Work\\\\AI\\\\Iris\\\\work\\\\ScreenSpaceParticleReconstruction\\\\_particlemain_probe_internal_simrt_pie.py'\nwith open(_script_path,'r',encoding='utf-8') as _handle:\n    _source=_handle.read()\n_scope={'__builtins__':__builtins__,'__name__':'__main__','unreal':unreal}\ntry:\n    exec(compile(_source,_script_path,'exec'),_scope,_scope)\nfinally:\n    _scope.clear()\n    del _scope\n    gc.collect()"
-  }
-}

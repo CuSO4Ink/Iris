@@ -1,9 +1,0 @@
-{
-  "action": "tool.call",
-  "endpoint": "http://127.0.0.1:8000/mcp",
-  "timeoutSec": 120,
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import json, unreal\nworld=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()\nrows=[]\nfor actor in unreal.get_editor_subsystem(unreal.EditorActorSubsystem).get_all_level_actors():\n    comps=actor.get_components_by_class(unreal.NiagaraComponent)\n    for comp in comps:\n        asset=comp.get_asset()\n        rows.append({'label':actor.get_actor_label(),'actor':actor.get_path_name(),'component':comp.get_path_name(),'asset':asset.get_path_name() if asset else None,'active':bool(comp.is_active()),'visible':bool(comp.is_visible())})\nprint('PERF_CURRENT_NIAGARA_ACTORS='+json.dumps({'world':world.get_path_name(),'actors':rows},sort_keys=True))"
-  }
-}

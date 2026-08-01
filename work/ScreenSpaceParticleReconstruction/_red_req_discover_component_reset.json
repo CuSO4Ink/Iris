@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nprint([n for n in dir(unreal.NiagaraComponent) if any(k in n.lower() for k in ['reset','reinit','activate','deactivate'])])"
-  }
-}

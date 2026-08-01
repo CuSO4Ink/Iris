@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nsub=unreal.get_editor_subsystem(unreal.EditorActorSubsystem)\nremoved=[]\nfor actor in sub.get_all_level_actors():\n    if actor.get_actor_label()=='SSPR_M2A_TemporalOrchestrator':\n        removed.append(actor.get_path_name())\n        sub.destroy_actor(actor)\nprint('M2A_TEMP_REMOVED='+repr(removed))"
-  }
-}

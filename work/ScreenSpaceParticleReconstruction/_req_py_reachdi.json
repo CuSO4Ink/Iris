@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nsysa=unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest')\n# The scratch script is now system-level: iterate System->ScratchPadScripts is editor-only.\n# Try to reach the DI via the loaded package's subobjects using EditorAssetLibrary won't enumerate.\n# Probe: does the scratch script object exist by path, and can we read its rapid iteration / DI?\nsp=unreal.load_object(None,'/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:SSPR_WriteOccupancy')\nprint('scratch_script',sp, type(sp).__name__ if sp else None)\nif sp:\n    ms=[m for m in dir(sp) if any(k in m.lower() for k in ['rapid','interface','override','param'])]\n    print('methods',ms[:30])\n"
-  }
-}

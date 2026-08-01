@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\ntarget='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\nrt=unreal.load_asset('/Game/SSPR_Validation/RT_SSPR_Occupancy')\ncomp=next((c for c in unreal.ObjectIterator(unreal.NiagaraComponent) if c.get_asset() and c.get_asset().get_path_name()==target and c.get_owner() is not None),None)\nif comp is None or rt is None: raise RuntimeError('Actor component or RT missing')\nunreal.RenderingLibrary.export_render_target(comp,rt,unreal.Paths.project_saved_dir(),'SSPR_RT_Actor_Realtime')\nprint('ACTOR_RT_EXPORT='+repr({'component':comp.get_path_name(),'active':bool(comp.is_active()),'path':unreal.Paths.project_saved_dir()+'SSPR_RT_Actor_Realtime'}))"
-  }
-}

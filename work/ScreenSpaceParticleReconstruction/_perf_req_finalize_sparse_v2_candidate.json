@@ -1,9 +1,0 @@
-{
-  "action": "tool.call",
-  "endpoint": "http://127.0.0.1:8000/mcp",
-  "timeoutSec": 240,
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "exec(open(r'C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_perf_finalize_sparse_v2_candidate.py', encoding='utf-8').read())"
-  }
-}

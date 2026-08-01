@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\ntarget=None\nfor obj in unreal.ObjectIterator(unreal.NiagaraScript):\n    if obj.get_path_name().endswith(':ProjParticles_0.NiagaraScratchPadContainer_0.SSPR_WriteOccupancy'):\n        target=obj\n        break\nprint('TARGET=' + (target.get_path_name() if target else 'None'))\ncontainer=target.get_outer() if target else None\nprint('CONTAINER=' + (container.get_path_name() if container else 'None'))\nfor key in ('scripts','Scripts'):\n    try:\n        values=container.get_editor_property(key)\n        print('PROP=' + key + '|' + repr([(x.get_name(),x.get_path_name()) for x in values]))\n    except Exception as exc: print('ERR=' + key + '|' + str(exc))"
-  }
-}

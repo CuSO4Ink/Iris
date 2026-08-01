@@ -1,6 +1,0 @@
-{
-  "action": "tool.call",
-  "toolset": "EditorToolset.EditorAppToolset",
-  "tool": "StopPIE",
-  "arguments": {}
-}

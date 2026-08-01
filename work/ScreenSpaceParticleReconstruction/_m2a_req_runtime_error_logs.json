@@ -1,5 +1,0 @@
-{
-  "category": "",
-  "pattern": "(?i)(accessed none|blueprint runtime error|BP_SSPR_TemporalOrchestrator.*(error|warning|failed)|M_SSPR_TemporalCombine.*(error|warning|failed)|NS_SSPR_ProjTest.*(compile error|gpu.*error))",
-  "maxEntries": 100
-}

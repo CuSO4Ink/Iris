@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nworld=unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem).get_editor_world()\nif world is None: raise RuntimeError('editor world missing')\nunreal.SystemLibrary.execute_console_command(world,'LiveCoding.Compile')\nprint('LIVE_CODING_REQUESTED')\ndel world"
-  }
-}

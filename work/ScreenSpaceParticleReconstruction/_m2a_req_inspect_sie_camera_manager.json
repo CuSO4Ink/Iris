@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nrows=[]\nfor manager in unreal.ObjectIterator(unreal.PlayerCameraManager):\n    try:\n        world=manager.get_world()\n        world_path=world.get_path_name() if world else ''\n        if 'UEDPIE' in world_path:\n            rows.append({'path':manager.get_path_name(),'world':world_path,'location':str(manager.get_camera_location()),'rotation':str(manager.get_camera_rotation())})\n    except Exception as error:\n        rows.append({'error':str(error)})\nprint('M2A_SIE_CAMERAS='+repr(rows))"
-  }
-}

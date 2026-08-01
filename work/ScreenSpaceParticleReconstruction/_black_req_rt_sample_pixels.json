@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\ncomp=unreal.load_object(None,'/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871.NiagaraComponent0')\nrt=unreal.load_object(None,'/Game/SSPR_Validation/RT_SSPR_Occupancy.RT_SSPR_Occupancy')\nworld=comp.get_world()\npoints=[(0,0),(64,64),(128,128),(192,192),(255,255),(128,64),(64,128),(192,128),(128,192)]\nrows=[]\nfor x,y in points:\n    try:\n        c=unreal.RenderingLibrary.read_render_target_raw_pixel(world,rt,x,y,False)\n        rows.append((x,y,float(c.r),float(c.g),float(c.b),float(c.a)))\n    except Exception as e:\n        rows.append((x,y,'ERR:'+str(e)))\nprint('RT_PIXEL_SAMPLES=' + repr(rows))"
-  }
-}

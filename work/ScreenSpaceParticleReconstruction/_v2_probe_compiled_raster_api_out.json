@@ -1,1 +1,0 @@
-{"endpoint":"http://127.0.0.1:8000/mcp","ok":true,"data":{"success":true,"output":"V2_RASTER_API={\"methods\": [\"create_internal_render_target2d_user_parameter\", \"create_rasterization_grid3d_user_parameter\"]}","result":"None","execution_time_ms":8.35260009765625},"action":"tool.call"}

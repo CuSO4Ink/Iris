@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nsub=unreal.get_editor_subsystem(unreal.AssetEditorSubsystem)\ncomp=unreal.load_object(None,'/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871.NiagaraComponent0')\nprint('ASSET_EDITOR_METHODS=' + repr([n for n in dir(sub) if any(k in n.lower() for k in ['edit','open','asset'])]))\nprint('COMP_METHODS=' + repr([n for n in dir(comp) if any(k in n.lower() for k in ['age','solo','execution','activate','advance','reset','reinit'])]))\nprint('COMP_PROPS=' + repr([n for n in dir(comp) if any(k in n.lower() for k in ['age','solo','execution','tick','active'])]))"
-  }
-}

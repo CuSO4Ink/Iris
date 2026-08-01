@@ -1,9 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "editor_toolset.toolsets.asset.AssetTools.find_assets",
-  "arguments": {
-    "folder_path": "",
-    "name": "Grid2D",
-    "recursive": true
-  }
-}

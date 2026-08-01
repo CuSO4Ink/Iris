@@ -1,9 +1,0 @@
-{
-  "action": "tool.call",
-  "endpoint": "http://127.0.0.1:8000/mcp",
-  "timeoutSec": 120,
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import json, unreal\nsystem='/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main.NS_SSPR_AnisotropicSplat_Main'\npackage='/Game/SSPR_Validation/Recovery/DenseG5_20260730/NS_SSPR_AnisotropicSplat_Main'\nservice=unreal.NiagaraScratchPadService\napplied=bool(service.apply_changes(system))\nmessages=[str(x) for x in service.get_compile_messages(system,False)]\nsaved=bool(unreal.EditorAssetLibrary.save_asset(package,False))\nprint('PERF_APPLY_COMPILE_RECOVERY_DENSE='+json.dumps({'applied':applied,'messages':messages,'saved':saved},sort_keys=True))"
-  }
-}

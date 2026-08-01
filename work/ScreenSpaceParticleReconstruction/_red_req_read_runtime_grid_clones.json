@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\npaths=['/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871.NiagaraComponent0.NiagaraDataInterfaceGrid2DCollection_0','/Engine/Transient.NiagaraComponent_2:NiagaraDataInterfaceGrid2DCollection_0']\nrows=[]\nfor path in paths:\n    grid=unreal.load_object(None,path)\n    if grid is None:\n        rows.append({'path':path,'found':False})\n        continue\n    binding=grid.get_editor_property('render_target_user_parameter')\n    parameter=binding.get_editor_property('parameter')\n    rows.append({'path':path,'found':True,'numCellsX':grid.get_editor_property('num_cells_x'),'numCellsY':grid.get_editor_property('num_cells_y'),'numAttributes':grid.get_editor_property('num_attributes'),'clearBeforeNonIterationStage':grid.get_editor_property('clear_before_non_iteration_stage'),'renderTargetParameterName':str(parameter.get_editor_property('name'))})\nprint('RUNTIME_GRIDS=' + repr(rows))"
-  }
-}

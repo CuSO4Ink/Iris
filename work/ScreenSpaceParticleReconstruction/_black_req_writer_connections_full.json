@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\ns=unreal.NiagaraScratchPadService\nsystem='/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest'\nemitter='ProjParticles'\nmodule='SSPR_WriteOccupancy'\nfor node_id in ['1877D2CA4F034875E12FFB8B17F65DEE','BFD8FBC24B2DA1BEE89AF2889F618A0A','2B45B5F243A8A69A63BBD0B999312CF7','AAF4A4F34C72C0DBD9B765B862231DF0']:\n    try:\n        print('PINS_'+node_id+'='+repr([(str(p.pin_name),str(p.direction),str(p.type_name)) for p in s.get_node_pins(system,emitter,module,node_id)]))\n    except Exception as e:\n        print('PINS_ERROR_'+node_id+'='+str(e))\nprint('CONNECTIONS='+repr([(str(c.from_node_id),str(c.from_pin),str(c.to_node_id),str(c.to_pin)) for c in s.list_connections(system,emitter,module)]))"
-  }
-}

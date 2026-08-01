@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\ninfo=unreal.ViewportService.get_viewport_info()\nactor=unreal.load_object(None,'/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871')\nprint('INFO=' + repr(info))\nprint('FIELDS=' + repr([n for n in dir(info) if not n.startswith('_')]))\nprint('ACTOR=' + repr({'path':actor.get_path_name() if actor else None,'location':str(actor.get_actor_location()) if actor else None,'rotation':str(actor.get_actor_rotation()) if actor else None}))"
-  }
-}

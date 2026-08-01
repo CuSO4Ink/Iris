@@ -1,7 +1,0 @@
-{
-  "module_name": "unreal",
-  "name_filter": "NiagaraEmitter",
-  "max_items": "100",
-  "include_classes": "true",
-  "include_functions": "true"
-}

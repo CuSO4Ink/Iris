@@ -1,9 +1,0 @@
-{
-  "action": "tool.call",
-  "endpoint": "http://127.0.0.1:8000/mcp",
-  "timeoutSec": 120,
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal, json\nS='/Game/SSPR_Validation/M2/AnisotropicSplat_V2/NS_SSPR_AnisotropicSplat_Main.NS_SSPR_AnisotropicSplat_Main'\nrows=[]\nfor n in unreal.NiagaraScratchPadService.list_nodes(S,'Fountain','SSPR_ResolveGridToSimRT'): rows.append({'id':str(n.node_id),'type':str(n.node_type),'title':str(n.title)})\nprint('V2_RESOLVE_NODES='+json.dumps(rows))"
-  }
-}

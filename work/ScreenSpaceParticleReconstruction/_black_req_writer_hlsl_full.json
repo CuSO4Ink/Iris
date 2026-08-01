@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\ns=unreal.NiagaraScratchPadService\ncode=s.get_custom_hlsl_code('/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest','ProjParticles','SSPR_WriteOccupancy','1877D2CA4F034875E12FFB8B17F65DEE')\nprint('WRITER_HLSL_BEGIN')\nprint(str(code))\nprint('WRITER_HLSL_END')"
-  }
-}

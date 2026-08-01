@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nsys_asset=unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest')\nprint('system',sys_asset)\n# inspect RenderTarget2D DI editor properties to find binding field\ncdo=unreal.get_default_object(unreal.NiagaraDataInterfaceRenderTarget2D)\nfor p in ['render_target_user_parameter','b_inherit_user_parameter_settings','size','override_render_target_format','b_preview_render_target']:\n    try:\n        print(p,'=',cdo.get_editor_property(p))\n    except Exception as e:\n        print(p,'ERR',e)\n"
-  }
-}

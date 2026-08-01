@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nworld=unreal.EditorLevelLibrary.get_editor_world()\nrt=unreal.load_object(None,'/Game/SSPR_Validation/RT_SSPR_Occupancy.RT_SSPR_Occupancy')\nif world is None or rt is None: raise RuntimeError('Editor world or M1 RT missing')\nunreal.RenderingLibrary.clear_render_target2d(world,rt,unreal.LinearColor(0.0,0.0,0.0,0.0))\nprint('M1_OCCUPANCY_CLEARED='+rt.get_path_name())"
-  }
-}

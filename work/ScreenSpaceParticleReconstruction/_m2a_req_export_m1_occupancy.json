@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nworld=None\nfor candidate in unreal.ObjectIterator(unreal.World):\n    if 'UEDPIE' in candidate.get_path_name():\n        actors=unreal.GameplayStatics.get_all_actors_of_class(candidate,unreal.NiagaraActor)\n        if actors:\n            world=candidate\n            break\nif world is None: raise RuntimeError('PIE world with Niagara actor not found')\nrt=unreal.load_object(None,'/Game/SSPR_Validation/RT_SSPR_Occupancy.RT_SSPR_Occupancy')\nif rt is None: raise RuntimeError('M1 RT missing')\nout=unreal.Paths.project_saved_dir()\nname='M1_CLEAR_REGRESSION'\nunreal.RenderingLibrary.export_render_target(world,rt,out,name)\nprint('M1_EXPORT='+out+name)"
-  }
-}

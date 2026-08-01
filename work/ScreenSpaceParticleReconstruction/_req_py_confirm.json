@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nsysa=unreal.load_asset('/Game/SSPR_Validation/NS_SSPR_ProjTest')\nrt=unreal.load_asset('/Game/SSPR_Validation/RT_SSPR_Occupancy')\nprint('system',bool(sysa),'| rt',bool(rt),rt.get_editor_property('size_x'),'x',rt.get_editor_property('size_y'))\n"
-  }
-}

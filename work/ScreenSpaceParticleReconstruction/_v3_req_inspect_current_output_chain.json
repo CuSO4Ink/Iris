@@ -1,9 +1,0 @@
-{
-  "action": "tool.call",
-  "endpoint": "http://127.0.0.1:8000/mcp",
-  "timeoutSec": 180,
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "exec(compile(open(r'C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_v3_inspect_current_output_chain.py', encoding='utf-8').read(), r'C:\\Work\\AI\\Iris\\work\\ScreenSpaceParticleReconstruction\\_v3_inspect_current_output_chain.py', 'exec'))"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\npaths=['/Game/SSPR_Validation/NS_SSPR_ProjTest.NS_SSPR_ProjTest:NiagaraDataInterfaceGrid2DCollection_0','/Temp/Untitled_1.Untitled_1:PersistentLevel.NiagaraActor_UAID_18C04D87C619FFF102_1453982871.NiagaraComponent0.NiagaraDataInterfaceGrid2DCollection_0','/Engine/Transient.NiagaraComponent_2:NiagaraDataInterfaceGrid2DCollection_1']\nrows=[]\nfor path in paths:\n    g=unreal.load_object(None,path)\n    if not g:\n        rows.append({'path':path,'found':False}); continue\n    b=g.get_editor_property('render_target_user_parameter')\n    p=b.get_editor_property('parameter')\n    rows.append({'path':path,'found':True,'numCellsX':g.get_editor_property('num_cells_x'),'numCellsY':g.get_editor_property('num_cells_y'),'numAttributes':g.get_editor_property('num_attributes'),'clear':g.get_editor_property('clear_before_non_iteration_stage'),'rtParam':str(p.get_editor_property('name'))})\nprint('GRID_PROPS=' + repr(rows))"
-  }
-}

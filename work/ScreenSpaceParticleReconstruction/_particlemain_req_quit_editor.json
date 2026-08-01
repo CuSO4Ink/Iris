@@ -1,7 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "execute_python_code",
-  "arguments": {
-    "code": "import unreal\nprint('PARTICLEMAIN_EDITOR_QUIT_REQUESTED')\nunreal.SystemLibrary.quit_editor()"
-  }
-}

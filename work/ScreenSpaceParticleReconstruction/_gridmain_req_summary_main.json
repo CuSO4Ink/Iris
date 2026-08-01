@@ -1,9 +1,0 @@
-{
-  "action": "tool.call",
-  "tool": "NiagaraToolsets.NiagaraToolset_System.GetSystemSummary",
-  "arguments": {
-    "system": {
-      "refPath": "/Game/SSPR_Validation/M2/GridTrails/NS_SSPR_GridTrails_Main.NS_SSPR_GridTrails_Main"
-    }
-  }
-}
