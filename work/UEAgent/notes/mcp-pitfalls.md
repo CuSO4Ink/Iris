@@ -21,6 +21,9 @@
 | K8 | ProgrammaticToolset 无法转发部分枚举参数 | 1 | 2026-07-15 | `execute_tool_script` 向 `MaterialTools.get_property_input` 传 `MP_BaseColor` 时把 `material_property` 变成 int 后无法 pythonize；同一调用改由原生 MCP 在脚本外执行成功。 |
 | K9 | `list_properties` 暴露只读字段为可设置候选 | 1 | 2026-07-15 | `MaterialExpressionCustom.showCode` 出现在属性 schema 中，但 `set_properties` 明确拒绝；其余同批属性仍已写入。后续不设置该字段。 |
 | K10 | 空 referencers 被实现为异常而非空数组 | 1 | 2026-07-15 | 新建且未引用的 `/Game/MCPTests/M_Bifrost_Cloud_CustomProbe` 调 `get_referencers` 返回 `'NoneType' object is not iterable`；按已知临时资产精确路径删除并用 `exists=false` 验证清理。 |
+| K11 | `NiagaraScratchPadService` 用 `AddPin`/`ConnectPins` 动态拼 scratch 图 → Niagara 编译/UI 遍历数组越界崩溃 | 2 | 2026-07-23 | UE5.8+VibeUE`271f487`。①第一次：MCP 拼 HLSL+4pin+多输出挂同一 MapSet，`ApplyChanges` 返 true 但保存后**打开编辑器即 Assert 崩**（Array.h:1339，栈全在 NiagaraEditor UI）②第二次：模式B下用最保守的单输入`WorldPos`+单输出`OutDepth`+逐个加 pin，资产全程关闭，仍在 `ApplyChanges` **编译阶段崩**（同一 Array.h:1339，栈底含 UnrealEditor-Niagara 编译帧）。空 scratch 模块 / 只加游离 HLSL 节点都不崩；**崩点在"加 pin+连线"之后**。结论：这条 MCP 动态拼 scratch pin 的路会稳定产出让 Niagara 编译越界的畸形图，非操作顺序问题。**【2026-07-23 已修复并验证】**根因=VibeUE 绕过引擎 `RequestNewTypedPin`，自己裸 `CreatePin`+手写签名重建，未维护 Add pin、pin 与 `Signature.Inputs/Outputs` 索引失配，编译期 `BuildParameterMapHistory` 的 `Signature.Inputs[i]` 越界。修复=改引擎 3 头加 `NIAGARAEDITOR_API`/`ReallocatePins` 提 public + VibeUE 改走 `RequestNewTypedPin`（详见 SSPR LOG 2026-07-23 修复条目）。重编后重跑同一必崩序列（AddHlsl+AddPin×2+ConnectPins+ApplyChanges）：**不再崩、编辑器存活**，`ApplyChanges` 正常返回，编译器改为正常报 shader 错误（View 在 CPUSim 不可用，属另一层逻辑问题）而非越界断言。 |
+| K17 | `ProgrammaticToolset` 嵌套调用 VibeUE Niagara Scratch toolset 长时间不返回 | 2 | 2026-07-26 | 在 `execute_tool_script` 内批量调用 `VibeUE.NiagaraScratchPadService.GetNodePins/AddPin/ConnectPins/SetCustomHlslCode`，两次分别在约 34s 与 204s 被客户端终止；终止后逐项读回确认零图修改，UE 端点仍健康。相同操作改走已发现签名的 `execute_python_code → unreal.NiagaraScratchPadService`，27.7ms 完成 8 Pin、4 连线和 3 段 HLSL，并经独立读回与原生编译验证。当前只记为 Observed；在隔离 Probe 复现前不毕业为通用规则。 |
+| K18 | `ApplyChanges=false` 且编译消息为空，真实原因只写进 `LogTemp` | 1 | 2026-07-27 | `NiagaraScratchPadService.apply_changes` 返回 false、`get_compile_messages` 为空、原生编译仍 UpToDate；查编辑器日志才发现 emitter 容器的旧孤立 Scratch 副本含重复匿名 MapGet pin，被 Apply 前置校验拒绝。精确清理日志给出的旧节点后 `ApplyChanges=true`。遇到“false + 空诊断”须同时查 `LogTemp: Error: ApplyChanges`，不能误判为异步编译。 |
 
 > [!NOTE] 新栈（UE 官方 MCP 插件）继续沿用本台账机制，后续每次真跑 MCP 命中同类坑 → 在这里 +1。
 > — ai 2026-07-09
@@ -88,3 +91,4 @@
 ### 2026-07-22 VibeUE integration additions
 
 - K16 count 3: `PerformanceService.frame_timing` via MCP twice reported about 3370 ms game thread outside PIE and about 7817 ms in PIE while render/GPU stayed near 1–3 ms. The interface is verified, but the data is rejected; game-thread blocking or stale-stat contamination is only a hypothesis until an independent trace/async sample agrees.
+
