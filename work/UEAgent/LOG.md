@@ -1,102 +1,304 @@
-# UEAgent · LOG
+# UEAgent decision log
 
-> 决策流水。追加式，新条目加在**文件末尾**。由 `/log` 命令维护。
+The current progressive-disclosure implementation and rollback map are maintained in
+`PROGRESSIVE-DISCLOSURE.md`; the dated implementation record is
+`notes/optimization-20260802-progressive.md`.
 
-## 条目格式
+The Gateway follow-up also pins UTF-8 BOM compatibility for Windows PowerShell 5.1 and keeps
+`DescribeDetail`/`DescribeToolName` plus the active MCP session in the schema-cache key; see the
+dated note for the checks.
 
-```
-### YYYY-MM-DD HH:MM — 标题
-（一句话结论，或决策理由 + 否决方案。3 行以内）
-```
+The current follow-up adds the optional UE v3 call view: Gateway/daemon discovery defaults to
+structured-only `detail=call`; explicit `detail=full` is still the exact-schema path. See
+`patches/ue58-mcp-tool-search-v3-call-view.patch` and the dated progressive note.
 
-## 条目分类标签（可选，加在标题前）
+This file keeps current-stack decisions only. Retired WorkBuddy /
+UnrealGenAISupport history remains available in Git history and is not operating guidance.
 
-- `[决策]` 选定了某方案
-- `[否决]` 排除了某方案及原因
-- `[发现]` 意外收获或反直觉观察
-- `[回滚]` 推翻之前的决策
+### 2026-08-02 — Make Gateway the default transport
 
----
+After the cache/route/doctor gate, UEAgent now routes live reads and authorized mutations through
+`mcp_gateway.ps1` by default; `-AutoDaemon` remains the optional warm path for repeated calls.
+The generated platform/native MCP client stays available as a transport fallback for a Gateway
+startup/pre-operation failure or a client-only feature. Both routes use the same UE endpoint and
+must obey the same schema, authority, one-writer, and readback rules. A possible mutation timeout
+is still `RESULT_UNKNOWN`, so transport switching cannot be used as an automatic retry.
 
-### 2026-04-27 10:45 — [决策] 选用 UnrealGenAISupport 而非 UnrealMCPBridge
-对比两个 UE MCP 插件：UnrealGenAISupport 功能更丰富（29 个工具）、架构更清晰（FastMCP + CommandDispatcher 模式）；UnrealMCPBridge 工具少且有明显 bug（接收缓冲区 16KB 截断、`execute_python` 代码被多余 `""` 包裹破坏传输）。
+### 2026-08-02 — Reuse live receipt and discovery evidence
 
-### 2026-04-27 11:20 — [发现] fastmcp 3.x 实测可用
-插件代码 `from fastmcp import FastMCP, Image` 按 1.x/2.x API 写，本以为要降级。实测 fastmcp 3.2.4 仍能 import `Image`，`mcp_server.py` 可正常启动并完成 MCP initialize 握手。不需要降级。
+`compact_context.ps1` now returns `NEEDS_DOCTOR` instead of `BLOCKED` for a missing/stale live
+receipt; the caller runs doctor once and uses its `allowed`/`blocked` result without a second
+compact pass. A healthy receipt remains valid while the stored listener PID, MCP session ID, and
+plugin binary fingerprint remain unchanged; TTL is only the identity-unavailable fallback.
+Gateway/daemon failures write a project-local invalidation marker, and explicit close/session
+replacement forces a new doctor.
 
-### 2026-04-27 11:52 — [发现] UE 插件面板 Start 按钮是假状态
-UnrealGenAISupport 面板上那个绿色 "Running ✓ localhost:9877" 是纯前端状态，**不真正 bind 端口**。必须在 UE Python 命令栏手动敲 `py "<unreal_socket_server.py 绝对路径>"` 才会真正监听 9877。验证方法：`netstat -ano | findstr :9877`。
+Reused-session `tools/list` results now feed `preflight`, `ping`, and `tools.list` directly, and
+schema-cache entries are keyed by MCP session ID. Normal successful Gateway replies prefer
+`structuredContent` and omit transport/session diagnostics unless requested. Known domain cards
+may skip `intent.list` and `toolsets.list` in favor of one selected-tool description. A trusted
+native MCP host may use direct transport as a performance override; the portable Gateway policy
+and all safety/readback rules remain unchanged.
 
-### 2026-04-27 12:00 — [决策] mcp.json 的 command 用 Python 绝对路径
-WorkBuddy spawn MCP 子进程时的环境不继承用户 shell PATH，裸 `python` 命令找不到。统一改成 `C:/Users/violinapeng/AppData/Local/Programs/Python/Python313/python.exe`。这是 WorkBuddy 下所有 stdio MCP 的通用解法。
+### 2026-07-09 — Use UE 5.8 native MCP
 
-### 2026-04-27 12:10 — [发现] WorkBuddy 把 MCP 叫「连接器」
-手改 `~/.workbuddy/mcp.json` 不会生效，WorkBuddy 不热扫描。正确入口是左侧栏「连接器」，在里面启用 `unreal-genai` 才会 spawn server 进程并登记到 `mcp-approvals.json`。工具前缀变成 `mcp__connector-proxy__unreal-genai_<name>`。
+Retired the TCP 9877 stack. The operating endpoint is loopback streamable HTTP on
+`http://127.0.0.1:8000/mcp`, with live tool discovery instead of fixed tool counts.
 
-### 2026-04-27 12:15 — [决策] 29 个工具先"用而不修"
-体检发现两个 handler 有 bug：`handshake_test` 线程违规、`get_all_scene_objects` 调废弃 API `EditorLevelLibrary.get_level()`。决策：先用 `execute_unreal_command` 和 `execute_python_script` 两个万能工具推进实际需求，碰到高频绕不过的坏工具再打补丁。
+### 2026-07-15 — Keep the workflow Skill inside UEAgent
 
-### 2026-04-27 12:15 — [发现] 链路健康体检命令
-`execute_unreal_command "stat fps"` 是最稳的体检：既走 game thread 又不碰废弃 API。能返回就说明 WorkBuddy → MCP server → UE socket → dispatcher → UE API 全链路活的。
+`skills/ue-mcp-workflows/` is the policy source. Platform/client files are thin adapters, not
+independent copies. Experience promotion is evidence → pitfall → isolated Probe → domain SOP.
 
-### 2026-04-27 12:20 — [决策] 把 UEAgent 立成独立项目
-决定用 `/project-init UEAgent` 建项目三件套，把调通过程中的上下文完整交接给之后所有接手的 AI。原因：旧对话 AI 用不了 MCP 工具（当前会话无法热加载），debug 不方便；新对话 AI 带项目简报进来就能直接调用工具实操。
+### 2026-07-22 — Official tools first, VibeUE for gaps
 
-### 2026-04-27 14:10 — [发现] 插件暴露的 C++ UCLASS 是读蓝图结构的正道
-前期误判：以为 Python 读蓝图内容必须扫 `.uasset` 二进制。实际上插件通过 `unreal.GenBlueprintUtils` 和 `unreal.GenBlueprintNodeCreator` 暴露了 C++ API，可在 `execute_python_script` 里直接调。**`unreal.GenBlueprintNodeCreator.get_all_nodes_in_graph(bp_path, 'EventGraph')` 传字面量 `"EventGraph"` 会自动取 `UbergraphPages[0]`**，返回 JSON（`node_guid` / `node_type` / `position`）。EUW_DyeBake 实测 71 节点 10KB。**缺点**：只有 guid/type/position，不带 Pin 和连线，要连线需改插件 `GenBlueprintNodeCreator.cpp:351-393`。
+Official typed toolsets own ordinary CRUD. VibeUE supplies confirmed gaps such as domain
+services and scoped Python. Every backend follows the same one-writer, readback, cleanup, and
+save-boundary rules.
 
-### 2026-04-27 14:25 — [决策] 读 Widget 结构走插件 `GenWidgetUtils` + 二进制辅助
-`WidgetTree.RootWidget` 是 protected，Python reflection 读不到。但插件 `unreal.GenWidgetUtils.edit_widget_property(bp, widget_name, prop, value)` 的错误消息能区分"widget 不存在"和"属性不存在"，由此反查 widget 名是否有效。配合二进制扫 uasset 的 Name Table 找候选名。**加 widget 走 `add_widget_to_user_widget(bp, ClassName, widget_name, parent_name)`**，Border 只能装 1 个 child，实际结构是 `Border → SizeBox → VerticalBox → SpinBox...`，必须 parent 到 VerticalBox 那层。用户手动在 EUW 里把 VerticalBox 命名为 `DiffuseVB / InitVB / BakeVB`。
+### 2026-07-23 — Make setup path-independent
 
-### 2026-04-27 14:35 — [发现] 二进制扫字符串会把引擎模板占位符当真相
-早期扫 NS_DyeBaker.uasset 拿到 57 个 `Module.*` 名，列给用户时混进了 `Damping / BaseDt / Gamma / g / InitSpeed / MinSpacing / ArrivalThreshold / MinGradientValue / DomainSize / SeedRadius` 等——**这些其实是 Niagara 内置模板（Diffusion 等）留在 uasset 里的 metadata，不是该 emitter 实际用到的 Input**。用户通过截图纠正：实际 DiffuseGrid 的 Input 只有图里那 13 条。**教训**：二进制扫给出的是"出现过的名字"，不是"当前生效参数"，以 UE UI 或 user 确认为准。
+UEAgent owns bootstrap, endpoint configuration, gateway fallback, and validation. UE/engine
+paths are machine inputs. Local engine branches and uncommitted plugin patches are not baseline
+dependencies.
 
-### 2026-04-27 14:45 — [决策] EUW 侧参数面板设计（final，基于 user 截图）
-按 sim stage 分三个 Border 分组（每 Border 下 `SizeBox > VerticalBox`）。**最终 20 个参数要加**（SeedCount / RandomSeed / ScatterRadius 已在 EUW 完成，NoiseSampler 用户自己做）：
-- **DiffuseSetting（10）**：BaseStep, NoiseIntensity, NoiseScale, ArcScale, NoiseOffset, ForceDirection(Vec2), ForceStrength, ForceDecay, SeedCenter(Vec2), DiffuseStrength
-- **InitSetting（?）**：等用户给 InitGrid 截图确认
-- **BakeSetting（?）**：用户说是"前后流程其他参数"，待定
-每组节点链照抄 ScatterRadius 的现成模板：`OnValueChanged(float) → [Truncate 仅 int 类型] → SetNiagaraVariable(Type)("User.X") → SetEditorProperty("bAutoActivate"=true, Always)`。Target/Object 全接 `SpawnedNiagaraBaker`（NiagaraComponent 变量）。
+### 2026-07-29 — Make Reflect Cache a source sidecar
 
-### 2026-04-27 14:55 — [否决] 用 Python 在 NS 侧批量 Promote Input → User Parameter
-扫遍 256 个 `unreal.Niagara*` 类，**无任何公开 UFUNCTION 支持 "Promote Input to User Parameter"**。该操作活在 Niagara 编辑器 Slate 层，不在 UObject 层。**决策**：Promote 步骤交给用户手工点（右键 Input → Promote to User Parameter），一个 5-10 秒，可接受。
+Saved-state caches live beside `.uasset` as `.uasset.ai.md`. UE is the only writer of truth;
+cache is one-way and disposable. Material v2 uses deterministic graph IR instead of semantic
+guessing, and external functions remain independent cache units.
 
-### 2026-04-27 15:00 — [发现] 插件 `add_node_to_blueprint` 只搜 10 个 Kismet 库
-`GenBlueprintNodeCreator.cpp:862` 的 `CommonLibraries` 硬编码列表只有 `KismetMathLibrary / KismetSystemLibrary / KismetStringLibrary / KismetArrayLibrary / KismetTextLibrary / GameplayStatics / BlueprintFunctionLibrary / Actor / Pawn / Character`，不含 NiagaraComponent / NiagaraFunctionLibrary，因此 `SetVariableFloat` 这类 Niagara 成员函数**找不到**。`FindFirstObject<UClass>(*Name)` 是运行时反射，不需要编译期依赖 Niagara 模块。
+### 2026-07-29 — Define Blueprint and Niagara cache boundaries
 
-### 2026-04-27 15:10 — [决策] 改插件 C++：给 `CommonLibraries` 加 Niagara 条目
-改 `GenBlueprintNodeCreator.cpp:862 / 995` 两处 `CommonLibraries`，加 `TEXT("NiagaraComponent"), TEXT("NiagaraFunctionLibrary")`。改前备份为 `GenBlueprintNodeCreator.cpp.bak.20260427`。插件有 git，双重兜底。**目的**：让 `add_node_to_blueprint "SetVariableFloat"` 能直接建 Niagara setter 节点，后续 20 个参数的节点链可完全自动化。
+Blueprint reuses official graph DSL. Niagara stores stack, effective inputs, renderers, and
+dependencies; packaged scripts are paths, while system-embedded scripts may inline compact IR
+and Custom HLSL. Compile/dirty/runtime state remains live-only.
 
-### 2026-04-27 15:15 — [发现] Live Coding 对静态数据改动不热加载
-`Ctrl+Alt+F11` Live Coding 报 "Patch succeeded"，但插件 `CommonLibraries`（static const TArray）未生效——`get_node_suggestions("SetVariableFloat")` 仍空返回。**教训**：Live Coding 可靠地热加载函数体，但对静态数据 / 类元数据可能不触发重新构造。改插件影响模块结构时必须关 UE 让它走正常 rebuild 流程。
+### 2026-07-29 — Add direct gateway calls
 
-### 2026-04-27 15:18 — [断点] 等 UE 重启加载新插件
-用户准备关 UE → 让弹窗选"Plugin out of date, rebuild?" → Yes → 等编译 → 重开项目 → Python 命令栏跑 `py "unreal_socket_server.py"` → WorkBuddy 新开对话。新会话接手的工作：用 `/project UEAgent` 接入，跑一次 `unreal.GenBlueprintNodeCreator.get_node_suggestions("SetVariableFloat")`，返回含 `NiagaraComponent.SetVariableFloat` 即确认改动生效，然后照下方"进度断点"继续做。
+Nested `ProgrammaticToolset` scene creation stalled while the equivalent direct typed call
+succeeded. The gateway gained the smallest `direct.call` route; no second protocol layer was
+introduced.
 
----
+### 2026-08-01 — Establish UEAgent as the mandatory project gate
 
-> 以上 04-27 各条均为**旧栈**（UnrealGenAISupport 插件 + TCP 9877）的调试历史，旧栈已于下条决策后作废，仅作历史参考保留，不再是操作依据。
+Every target project receives a thin `AGENTS.md` route and machine-local
+`Saved/UEAgent/route.json`. `doctor.ps1` separates configuration, listener, MCP discovery,
+and live read health before any UE-dependent work.
 
-### 2026-07-09 10:XX — [决策] 弃用旧栈（UnrealGenAISupport/9877），迁移到 UE 官方 MCP 插件新栈（streamable-http/:8000）
-Bifrost 项目已先行验证新栈可用且更稳定（3 个 meta-tool 间接路由 + `editor_toolset.*` 官方工具集），旧栈的两个 handler bug（`handshake_test` 线程违规、`get_all_scene_objects` 废弃 API）及插件 C++ 改动均不再有维护价值。**决策**：UEAgent 项目定位调整为"新栈操作入口 + 历史踩坑经验库"，`AI-BRIEF.md`/`BACKLOG.md` 已改写为新栈内容，旧栈技术细节只保留在本 LOG 的历史条目里，不再同步维护。`notes/mcp-pitfalls.md` 的通用经验（E1/E2）继续有效，跨栈通用。外部权威接入包 `D:\Work\AI\UE_MCP_Access_Pack`（只引用不复制）成为新栈调用规范的唯一来源。
+### 2026-08-01 — Integrate upstream Niagara evidence conditionally
 
-### 2026-07-15 14:29 — [决策] UE MCP Skill 以 UEAgent 为主源
-新增 `skills/ue-mcp-workflows/`，把已验证的 MCP Core、材质、蓝图与场景编辑流程固化为项目内 Skill；Codex 等平台目录只作为按需迁移目标，不承担主维护。外部 `UE_MCP_Access_Pack` 继续只引用、不复制。最终版 Custom 输入探针已在当前官方栈实跑通过：`MaterialExpressionCustom` 成功得到并连接 `A/B` 两个输入，临时资产及新建目录均独立回查为不存在。
+Imported SSPR K11/K17/K18 with source namespaces to avoid global ID collisions. The
+`RequestNewTypedPin` fix is verified only on its patched UE/VibeUE build; nested scratch calls
+remain Observed, and `ApplyChanges=false` now requires a `LogTemp` fallback when compile
+messages are empty.
 
-### 2026-07-15 14:49 — [决策] MCP 操作采用项目内自改进闭环
-每次真实 MCP 任务仅在出现重复调用、猜参重试、手工恢复、payload/延迟或能力缺口时做收尾复盘。项目内 Skill、探针、批处理脚本和坑册可在当前任务范围内经过验证后直接改进；外部 Access Pack、UE 插件、平台副本和生产资产仍不得静默修改。沉淀顺序固定为：现场证据 → 坑册计数 → 隔离 Probe → Verified SOP → 确有重复后才升格为脚本。
+### 2026-08-01 — Stream gateway responses by JSON-RPC id
 
-### 2026-07-15 15:05 — [决策] 用仓库级符号链接向 Codex 自动暴露 UE MCP Skill
-新增 `.agents/skills/ue-mcp-workflows`，符号链接到 `work/UEAgent/skills/ue-mcp-workflows`。Codex 新任务可按仓库 Skill 机制自动发现并隐式触发；UEAgent 仍是唯一主源，不维护平台副本。Skill 同时增加 Iris 项目路由：开始 UE 修改前按当前 `/Game/<Project>` 读取对应 `work/<Project>/AI-BRIEF.md` 与 `BACKLOG.md`。
+The buffered preflight took 16.3 seconds even after removing full toolset enumeration. Reading
+HTTP/SSE only until the matching response id reduced the same top-tools + current-level preflight
+to 1.1 seconds; complete doctor time was about 5.0 seconds. Sessions now receive best-effort
+`DELETE`, and timeout is reported as `result_unknown`.
 
-### 2026-07-22 — [发现] VibeUE 已在 Abyss 完成接入验证
-安装并编译 VibeUE `271f487` 后，官方 `:8000/mcp` 同端点实测暴露 10 个顶层工具、30 个 VibeUE service toolset 与 35 个核心 skill；技能加载、类发现、任意 Python、Transaction 查询和 PIE 启停均已验真，且没有创建或保存资产。
+### 2026-08-01 — Make local source extensions reproducible
 
-### 2026-07-22 — [决策] 当前采用“官方 MCP 底座 + VibeUE 按需扩展”
-UEAgent 继续承担项目路由、操作规范与证据治理；通用 CRUD 先走官方 typed tool，VibeUE 只补 transactions、Niagara scratchpad 等官方缺口，任意 Python 只作限域兜底。是否把 VibeUE 升为必装强依赖尚未由本人拍板，不写入正式依赖基线。
+Captured the exact VibeUE and UE 5.8 Niagara Toolsets diffs under `patches/`. Bootstrap applies
+the VibeUE extension by default, can preserve only a matching dirty checkout, and treats the
+engine extension as explicit and conflict-checked. Abyss static bootstrap, repeated-run hashes,
+VibeUE patch identity, MCP discovery, and `/Game/Bifrost/Maps/L_Bifrost` readback all passed; its
+doctor state is `HEALTHY` with advanced mutation capabilities still unverified.
 
-### 2026-07-22 — [发现] VibeUE 性能时序暂不可作为证据
-`PerformanceService.frame_timing` 在非 PIE 两次返回约 3370 ms game thread、PIE 返回约 7817 ms，而 render/GPU 约 1–3 ms；接口可用但数据明显受采样路径污染。完成独立 trace 或异步采样对齐前，拒绝将该结果写入作品性能结论。
+The optional deep doctor probe confirmed all six patched Niagara methods in the running editor.
+A real read resolved `NS_InfiniteMesh:SingleLoopingParticle.UpdateScript` and returned its native
+550-line, 156,356-character graph export without mutating or saving the asset.
 
-### 2026-07-23 — [决策] UEAgent 收口为路径无关的可迁移操作层
-安装、项目配置、gateway 与验收入口全部进入 UEAgent；外部只保留 UE 5.8 官方来源和固定 commit 的 VibeUE。本机绝对路径、外置 Access Pack、引擎私有分支及未提交 Niagara 修改不再构成运行基线。
+### 2026-08-01 — Compress the MCP hot path
+
+Added `HOTPATH.md` plus `compact_context.ps1`: cache-current reads now route to `CACHE_READ`
+before MCP, while live work receives one compact route/receipt/asset envelope. The gateway can
+optionally TTL-cache only discovery/schema responses; tool calls and mutations are never cached.
+The measured material live-read control context fell from about 3.8k to 1.83k estimated tokens;
+a current sidecar routes to `CACHE_READ` at about 0.72k control tokens.
+
+### 2026-08-01 — Resolve remote Niagara authoring overlap
+
+The upstream generic Niagara authoring patch overlaps the local VibeUE embedded-script/cache
+changes in `UNiagaraScratchPadService`. Kept the small core patch as the default, and generated
+one conflict-resolved advanced composite for the pinned `271f487` baseline. It combines System
+scratch registration, SimulationStage/Grid2D/RenderTarget2D/RasterizationGrid3D authoring, and
+the local embedded-script/cache behavior. The composite is opt-in and requires the matching
+engine API-export patch; neither source presence nor patch application proves runtime safety.
+
+### 2026-08-02 鈥?Compress server tool discovery
+
+The UE 5.8 MCP tool-search adapter now returns only one trimmed summary line per toolset from
+`list_toolsets`; `describe_toolset` remains the full schema path. The rebuilt Abyss editor returned
+5,605 characters instead of 50,951 (about 89% less by the bytes/4 estimate). The exact engine
+change is reversible through `patches/ue58-mcp-tool-search.patch`; the broader Iris hot-path edits
+still need a clean checkpoint before they can have a safe one-command rollback bundle.
+
+### 2026-08-02 鈳?Add opt-in result shaping
+
+`patches/ue58-mcp-tool-search-v2.patch` keeps the catalog reduction and adds summary/single-tool
+`describe_toolset`, plus server-side `call_tool.projection` for dotted fields, exclusions, array
+caps, and opt-in structured-only MCP results. Defaults remain text-compatible; HLSL strings are not
+silently truncated. Final Development link passed after the editor was closed, and live MCP probes
+passed: summary/single-tool discovery, default text compatibility, field projection, array cap,
+and structured-only output.
+
+### 2026-08-02 鈳?Sync VibeUE 5.8 branch
+
+Fetched VibeUE. `origin/master` stayed at the pinned `271f487`; `origin/5-8` advanced to `6a0617c`
+with the Fab engine-version filter only. The checkout was unshallowed, then merged without conflict
+as local commit `bf96d6b`; the dirty UEAgent cache/Niagara edits were preserved. Bootstrap pin stays
+unchanged for reproducibility.
+
+### 2026-08-02 - Make Gateway fallback session-aware
+
+`mcp_gateway.ps1` now accepts a project-scoped session file, probes reused sessions before an
+action, rebuilds stale sessions, and rejects non-loopback endpoints. It also forwards result
+projection and targeted toolset-description controls. Live Abyss checks passed: first ping created
+and persisted a session, the second reused it, projected Material output stayed structured-only,
+and a remote endpoint was rejected before network access. Native MCP remains available as a
+fallback; the Gateway path is now independently usable for repeated local calls.
+
+### 2026-08-02 - Add optional warm Gateway daemon
+
+Measured the remaining latency gap and added `scripts/mcp_gateway_daemon.ps1`. It binds only to
+127.0.0.1, reuses one MCP session and `HttpClient`, serializes requests, supports the same tool
+call/projection envelope, and exits through `shutdown`. Abyss measurements: native MCP 270–333 ms,
+one-shot Gateway 1,859–2,002 ms, session-file Gateway 1,334–1,347 ms, warm daemon 149–332 ms.
+The daemon is opt-in; the normal one-shot fallback remains unchanged.
+
+`-AutoDaemon` now warms the daemon in the background on the first call and uses the one-shot path
+for that call. The cold measured call was 2,338 ms; subsequent gateway-wrapper calls were about
+0.9–1.0 s, while direct daemon calls remained 0.15–0.33 s. This keeps startup transparent without
+making the first action wait for daemon readiness.
+
+### 2026-08-02 - Add compact token shaping presets
+
+Added Gateway `-ProjectionProfile refs|compact` and `-DataOnly`. Profiles are generic, bounded,
+structured projections; explicit projection remains authoritative and logic/HLSL is never guessed
+away. Static PowerShell checks passed. Live Abyss verification passed after startup (`doctor=HEALTHY`):
+data-only ping returned the two health fields, `compact` returned 64 refs/6,325 characters, and an
+explicit three-ref projection returned 330 characters. The refs preset returned all 164 refs because
+this source shape was already ref-only. No asset mutation or save was performed.
+
+### 2026-08-02 - Isolate Gateway daemon port
+
+Changed the daemon default from `8765` to `18765` because the former is occupied by an unrelated
+local service. AutoDaemon now requires the daemon-specific identity probe before forwarding; a
+foreign listener cannot receive gateway actions. Existing direct MCP and one-shot Gateway paths
+are unchanged.
+
+### 2026-08-02 - Live long-task benchmark
+
+With AbyssEditor PID 53448 and a stable MCP session, live `doctor -Profile live` took 4.6-4.7 s
+after the initial session establishment (the first cold run took 25.6 s). Ten read-only cycles of
+`compact_context` plus a warm Gateway daemon `level.current` call took 10.906 s total: compact
+was 0.41-0.55 s and Gateway was 0.55-0.78 s per cycle. One-shot `ping` was 0.92-0.96 s; a new
+PowerShell process with session reuse was 1.02-1.08 s because it still probes `tools/list`.
+The session-bound receipt remained `FRESH` even when its timestamp was artificially aged by two
+hours. The running editor rejected `detail=call`, so Gateway correctly fell back to `full`; the
+call-view token reduction is therefore not active until the v3 server patch is loaded.
+
+### 2026-08-02 - Reduce model-facing MCP payloads
+
+Non-`preflight` Gateway/daemon actions now default to data-only success responses; `-Envelope`
+restores the legacy wrapper and `-Diagnostics` is the only transport/raw-payload path. Default
+`ping` and `level.current` responses are now only 41 and 46 characters respectively in the live
+check. Gateway-to-daemon requests keep action/tool/arguments/projection/schema-cache fields and
+drop local endpoint, session-file, daemon, and timeout plumbing. The daemon now reads/writes the
+existing session-scoped schema cache. When the running v2 editor rejects `detail=call`, both
+clients fetch `full` once and locally project the compact call view; live Material discovery was
+291 bytes in the compact envelope versus 1,261 bytes for selected-tool full (about 77% smaller).
+Default tool errors now omit verbose `Available toolsets:` tails and cap residual text at 768
+characters; `-Diagnostics` still carries the raw MCP response. The daemon also retains the
+session probe's `tools/list` for the lifetime of that session, clearing it on session rebuild or
+error instead of issuing the same discovery request for every `ping`/`tools.list` action.
+
+### 2026-08-02 - Final progressive-disclosure regression
+
+After the payload changes, the running Abyss editor (PID 53448) passed the routed compact check
+(`LIVE_READ`, receipt `FRESH`) and live doctor (`HEALTHY`, 5.3 s). Direct Gateway checks passed:
+default `ping` 41 chars, default `level.current` 46 chars, legacy `-Envelope` and diagnostic
+`-Diagnostics` compatibility, and compact invalid-toolset errors (148 chars). The v2 editor's
+selected Material call view remained 291 chars versus 1,261 chars for `full`; the call/full/call
+sequence returned 291/1,261/290 chars, proving the detail/tool cache key separation. A temporary
+AutoDaemon test showed first ping 2.88 s, warm diagnostic ping 1.27 s, raw data-only ping 0.55 s;
+the temporary daemon was shut down and its port was closed. A temporary daemon schema test wrote
+the existing session-scoped cache (1,489 bytes) and returned the second selected-tool request as
+`cached=true` in 402 ms. No UE asset was mutated or saved.
+
+### 2026-08-03 - Load and verify UE v3 call view
+
+After a clean `AbyssEditor` rebuild, the engine's `ModelContextProtocolEditor` DLL loaded with
+the v3 call-view implementation. The first live startup was blocked by Unreal's `Restore Packages`
+modal; selecting `Skip Restore` allowed the normal editor loop to run. Doctor then returned
+`HEALTHY` with official tool search, VibeUE, and Niagara enabled. A raw MCP probe returned
+`text/event-stream` containing only `structuredContent` for `detail=call`; no legacy text payload
+was present. The selected Material `get_expressions` view was 285 Gateway characters, and the
+effect classifier correctly returned `read` after stripping the full toolset prefix. No asset was
+mutated or saved.
+The HEALTHY receipt was persisted to `Saved/UEAgent/doctor.json`; the routed compact context then
+returned `LIVE_READ` with `FRESH` age 0.
+
+### 2026-08-03 - Gateway daemon memory incident
+
+The overnight daemon PID 57704 was reported at roughly 134.5 GiB Private Commit, including about
+102.5 GiB LOH, exhausting system commit and cascading into desktop/D3D12 device removal. The PID
+was already gone when containment ran; port 18765 was closed. A separate UE-owned
+`LiveCodingConsole.exe` (PID 101896, parent AbyssEditor) held about 12.3 GiB and was terminated
+explicitly; UE itself was left running.
+
+Code review identifies an unbounded-risk chain rather than a proven single heap root: the daemon
+keeps an infinite-timeout shared `HttpClient`, manually waits on `SendAsync`/`ReadAsStringAsync`/
+`ReadLineAsync` without cancellation, leaves the per-request `StreamReader` and
+`HttpListenerContext` undisposed, and materializes each large MCP result repeatedly (JSON object,
+serialized string, UTF-8 byte array, and Gateway parse). Full Material/Blueprint/Niagara/HLSL
+responses can therefore create repeated LOH allocations; transport timeouts can leave pending
+tasks holding response buffers. The daemon has no request/response byte cap, memory watchdog, or
+automatic recycle budget. The 102.5 GiB LOH figure is consistent with this hazard, but needs a
+heap dump to attribute exact retained objects. Closing PID 57704 was incident containment, not a
+policy decision to abandon the daemon: daemon-first remains the target, with one-shot/native MCP
+as failure fallback after the guardrails are added.
+
+### 2026-08-03 - Daemon guardrails implemented and verified
+
+`mcp_gateway_daemon.ps1` now has process-level limits: optional UE `ParentPid` binding, 2 GiB
+private-memory budget, 1,000-request budget, 2-hour uptime budget, 15-minute idle budget, 8 MiB
+request cap, and 64 MiB response cap. Request bodies are read in bounded chunks and disposed;
+the Gateway MCP path cancels timed-out `SendAsync`/stream waits and disposes the request,
+response, reader, and cancellation source. A single pending `GetContextAsync` is reused while
+polling budgets, avoiding the previous accumulation of unobserved accept tasks.
+
+`-AutoDaemon` discovers the UE listener PID and passes it to the daemon. If UE exits, the daemon
+stops; if a budget is reached it finishes the current response and exits without retrying the
+operation. The next auto-daemon Gateway call can start a fresh bounded process; explicit
+`-DaemonUrl` callers receive the normal unavailable error and may use one-shot/native MCP as the
+fallback.
+
+Verification: PowerShell AST and `git diff --check` passed; a `MaxRequests=1` daemon served one
+`daemon.ping` and closed its port; an auto-daemon on port 18772 connected to UE PID 49816, showed
+all guard arguments including `-ParentPid 49816`, answered ping, and closed via `shutdown`; 32-byte
+request and response caps returned HTTP 500 and closed; a 1-second idle budget exited without a
+request.
+Ports 18772-18775 are closed, no daemon process remains, UE stayed PID 49816, and no UE asset was
+mutated or saved. Exact historical LOH retention still requires a dump; these guards limit blast
+radius without claiming a single proven retained object.
+
+### 2026-08-03 - Portable stack release and remote reproduction check
+
+The reproducible stack is now described by `STACK-MANIFEST.json`. Bootstrap accepts
+`-ApplyMcpToolSearchPatches`, applies the v2 then v3 engine patches, records both fingerprints in
+the route, and `-CheckOnly` verifies the same profile. Patch fingerprints normalize line endings,
+so Windows CRLF checkouts and Git LF archives resolve to the same SHA-256. The canonical VibeUE
+baseline remains public `271f48771d077179fb597dc285ab5b898c5e8038`; the local Abyss checkout's
+`bf96d6b` merge of the public `5-8` branch is intentionally treated as a local update, not the
+portable baseline.
+
+UEAgent changes were split into four functional commits and pushed to
+`origin/codex/ueagent-portable-setup` at `274be1f`. A clean archive of that remote branch was
+extracted independently: all seven PowerShell scripts parsed with zero errors, all manifest patch
+hashes matched after newline normalization, and the manifest, daemon, ReflectCache protocol, and
+patch profiles were present. No unrelated Iris project changes were staged or pushed.

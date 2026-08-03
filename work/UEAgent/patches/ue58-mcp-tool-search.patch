@@ -1,0 +1,50 @@
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.cpp b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.cpp
+index 1d7016f14..1d487c14b 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.cpp
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.cpp
+@@ -310,10 +310,27 @@ FString FToolsetRegistryToolAdapterManager::GetToolsetCatalogText() const
+ 	ToolsetRegistry->ForEachToolset(
+ 		[&Result](const FString& Name, const UE::ToolsetRegistry::FToolset& Toolset)
+ 		{
+ 			Result += FString::Printf(TEXT("- %s"), *Name);
+-			FString Description = Toolset.GetToolsetDescription();
+-			if (!Description.IsEmpty())
++
++			// Keep discovery cheap. Full toolset documentation and schemas remain available
++			// through describe_toolset; list_toolsets only needs one short routing hint.
++			FString Summary = Toolset.GetToolsetDescription();
++			Summary.ReplaceInline(TEXT("\r\n"), TEXT("\n"));
++			Summary.ReplaceInline(TEXT("\r"), TEXT("\n"));
++			int32 NewlineIndex = INDEX_NONE;
++			if (Summary.FindChar(TEXT('\n'), NewlineIndex))
++			{
++				Summary = Summary.Left(NewlineIndex);
++			}
++			Summary.TrimStartAndEndInline();
++			constexpr int32 MaxSummaryChars = 240;
++			if (Summary.Len() > MaxSummaryChars)
++			{
++				Summary = Summary.Left(MaxSummaryChars - 3) + TEXT("...");
++			}
++
++			if (!Summary.IsEmpty())
+ 			{
+-				Result += FString::Printf(TEXT(": %s"), *Description);
++				Result += FString::Printf(TEXT(": %s"), *Summary);
+ 			}
+ 			Result += TEXT("\n");
+ 		});
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.h b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.h
+index 89ee121d1..fa86ee59c 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.h
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.h
+@@ -50,7 +50,7 @@ private:
+ 	/** Register all tools from a toolset's JSON schema string. Returns the number of tools registered. */
+ 	int32 RegisterToolsFromSchema(const FString& ToolsetSchemaJson);
+ 
+-	/** Returns a compact text listing of all toolsets (name + description). */
++	/** Returns a compact text listing of all toolsets (name + first-line summary). */
+ 	FString GetToolsetCatalogText() const;
+ 
+ 	/** Returns the full JSON schema for a named toolset, or an error. */
+ 	TValueOrError<FString, FString> GetToolsetSchemaText(const FString& ToolsetName) const;

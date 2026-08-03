@@ -1,5 +1,22 @@
 # Material Editing SOP
 
+## Read the sidecar before MCP
+
+1. Resolve locally: `/Game/X` maps to `<Project>/Content/X.uasset`; do not use MCP merely
+   to find the package file.
+2. Try `<PackageFile>.ai.md`, for example `M_Wave_Base.uasset.ai.md`.
+3. Read `format`. A current `vibeue-material-cache-v2` or
+   `vibeue-material-function-cache-v1` with `## Logic` can replace a cold topology walk.
+   Old material v1 contains inventory only and cannot answer wiring or formula questions.
+4. Use graph MCP when the sidecar is missing, stale, v1, the live package is dirty, or the
+   requested detail is absent. Prefer one rebuild or one targeted region query over a full
+   per-node audit.
+5. Before mutation, verify only the target region and dirty state live. After an authorized
+   save, verify the sidecar timestamp advanced.
+
+The sidecar is saved-state context, not authority. Full implementation and recovery rules:
+[ReflectCache](../../../projects/ReflectCache/AI-BRIEF.md).
+
 ## Build from an audited baseline
 
 1. Duplicate a known material or create a scratch material.
@@ -65,6 +82,10 @@ Do not use several extreme overrides at once to attribute a failure.
 
 ## Material Instance checks
 
+- Try `vibeue-material-instance-cache-v1` first. It stores only parent and enabled
+  overrides; it must not repeat inherited values or parent graph logic.
+- Treat serialized overrides that the current parent no longer exposes as orphan history,
+  not active parameters.
 - Reparent deliberately and verify the new parent.
 - List or read parameters after the parent recompiles.
 - Verify texture refs and scalar/vector values.

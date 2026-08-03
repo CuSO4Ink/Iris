@@ -1,14 +1,33 @@
 # Core MCP SOP
 
-## Authority and connection
+## Start from the receipt
 
-Read the UEAgent project-root `SETUP.md` when installation or transport details matter. Use the project-root `scripts/mcp_gateway.ps1` for hosts without native MCP support.
+Run the UEAgent doctor before live work. Port listening alone is insufficient: the gate also
+checks MCP discovery and a cheap Game Thread read.
 
-Prefer native MCP when the host exposes `list_toolsets`, `describe_toolset`, and `call_tool`. Otherwise use the canonical gateway. For nested arguments, use `-ArgumentsFile`; do not fight PowerShell escaping.
+- `HEALTHY` proves the base live route, not every domain capability and not write authority.
+- `DEGRADED` is read-only.
+- `OFFLINE` forbids live-state claims and UE mutation.
+- Timeout after a possible mutation means `RESULT_UNKNOWN`; independently read state before
+  any retry.
+
+If the server requires a console action, stop and ask the user to perform the exact step. Do not
+drive Unreal UI with Computer Use.
+
+## Choose the narrowest backend
+
+1. Current cache for saved-state reads.
+2. Gateway as the default client route to an official typed tool confirmed by live schema.
+3. Platform/native MCP as a transport fallback when Gateway cannot start or complete a
+   pre-operation request while the receipt is still healthy; an unhealthy endpoint stays offline.
+4. VibeUE service for a confirmed official gap.
+5. Scoped `execute_python_code` fallback with exact pre/postconditions.
+
+Use `ProgrammaticToolset` only for deterministic repetition after the nested calls are known to
+work. Its sandbox cannot `import unreal`. Do not assume a tool that works directly is safe when
+nested; Scene creation and Niagara scratch calls have stalled in that shape.
 
 ## Identify objects precisely
-
-Keep these path forms distinct:
 
 ```text
 Asset path:     /Game/Folder/Asset
@@ -17,92 +36,75 @@ Subobject:      /Game/Folder/Asset.Asset:MaterialExpressionCustom_0
 Level object:   /Game/Maps/L_Map.L_Map:PersistentLevel.Actor.Component
 ```
 
-Use full `refPath` values returned by tools. Do not reconstruct short actor or component names.
+Use returned full `refPath` values. Do not reconstruct short actor/component names.
 
-## Discover before mutation
+Before mutation:
 
-1. Use `describe_toolset` for unfamiliar tools.
-2. Use `list_properties` before setting an unfamiliar UObject property.
-3. Use material input/output-name queries before connecting pins.
-4. Read existing array/struct values before modifying them.
-5. Record a cheap precondition such as asset existence, class, node count, parent, or current level.
+1. describe unfamiliar tools;
+2. list unfamiliar UObject properties;
+3. query material/graph pin names;
+4. read existing arrays/structs;
+5. record a cheap precondition such as class, parent, current level, node count, or existence.
 
 ## Modify arrays and structs safely
 
-`ObjectTools.set_properties` performs a structural diff. Changing existing elements while changing array size can fail with:
+`ObjectTools.set_properties` may reject simultaneous element changes and array resizing as an
+ambiguous structural diff. Use staged full read-modify-write:
 
-```text
-ArrayAdd: elements changed alongside the size change; insertion points are ambiguous
-```
+1. change existing elements without changing length;
+2. read the complete serialized value;
+3. preserve every nested field;
+4. append/remove in a separate call;
+5. read back order, names, and nested values.
 
-Use full read-modify-write:
+## Mutate once and verify independently
 
-1. Change existing elements without changing array length.
-2. Read the property back in its complete serialized form.
-3. Preserve every existing nested field exactly.
-4. Append or remove elements in a separate call.
-5. Read back and verify order, names, and nested values.
+- Keep one writer per UE object; never parallelize mutations against the same asset or level.
+- Assume an exception may leave a partial mutation.
+- Do not accept `true`, `success`, compile green, or a clean RPC response as proof.
+- Use a different signal:
+  - asset → existence, class, parent, dependency, property, or node count;
+  - material → wiring/output roots plus compile/log result;
+  - Blueprint → compile plus node/pin/connection or runtime readback;
+  - actor → transform/tags/folder/components/bounds;
+  - cleanup → `exists=false` or zero objects in the exact tag/folder scope.
+- Compare UE floats with tolerance.
 
-Do not assume a schema showing only one required field means omitted nested fields are irrelevant to the diff engine.
+For GPU/runtime work, end the mutation request and allow real frames before the validation
+request. A fast empty dispatch or stale runtime object is not success.
 
-## Batch without assuming transactions
+Read back the changed region, not the entire graph/system, unless the invariant crosses the whole
+asset. Include changed nodes/pins/properties and compile/dirty state.
 
-- Call `ProgrammaticToolset.get_execution_environment` before unfamiliar batch scripts.
-- Define `run()` and return a dictionary.
-- Call registered tools through `execute_tool`; do not `import unreal`.
-- Treat `_StrictDict` as direct-index only. Avoid `.get(key, default)`.
-- Assume an exception may leave partial mutations. Re-read state before retrying.
-- Keep one writer per UE object. Do not parallelize mutations against the same asset, actor, or component.
-- Add exact preconditions and postconditions to every nontrivial mutation script.
+## Keep save and destruction separate
 
-## Verify independently
+- Save, delete, move, merge, Undo/Redo, transaction reset, and level commit are high-risk.
+- Some VibeUE Niagara/Blueprint calls have hidden save behavior; the domain SOP must treat those
+  calls as save boundaries until the implementation is decoupled.
+- Reassign dependents before deleting a parent.
+- Query referencers and exact scope before deletion; zero registry referencers is not sole proof.
+- Distinguish Dirty memory, Autosave, and formal Content saves.
+- Never save the current level merely because an asset passed validation.
 
-Do not accept `true`, `success`, or a clean tool response as proof. Verify with a different signal:
+## Control payload and lifecycle
 
-- asset mutation -> `exists`, class, parent, property readback, dependency, or node count
-- material mutation -> input wiring, output root, compile/log result
-- Blueprint mutation -> compile plus node/pin/connection readback
-- actor mutation -> transform, tags, folder, components, or bounds readback
-- batch generation -> batch tag and folder query
-- cleanup -> `exists=false` or zero actors in the scoped tag/folder
+- Prefer filtered results and gateway `-OutFile` for large text.
+- Do not carry image/base64 payloads through MCP when the user can inspect the viewport.
+- A missing output file or client timeout does not prove UE did nothing.
+- Keep one gateway request in flight; wait for it instead of launching a duplicate.
+- Gateway is the default client route, not a second source of tool semantics; platform/native MCP
+  is the transport fallback. A possible mutation timeout requires independent readback first.
 
-Use floating-point tolerances for readback; do not compare serialized UE floats for exact equality.
+## Postflight only when useful
 
-## Control lifecycle and risk
+Record a pitfall when a task caused a schema retry, partial recovery, material latency/payload
+cost, or a real capability gap. Use this order:
 
-- Treat delete, move, save, merge, and level commit as high-risk.
-- Reassign dependents before deleting a parent asset.
-- Check referencers and exact scope before destructive changes.
-- Distinguish in-memory Dirty state, `Saved/Autosaves`, and formal `Content` assets.
-- Do not call an Autosave a completed deliverable.
-- Never save the current level merely because asset validation succeeded.
+1. reuse an existing tool/rule;
+2. tighten one domain rule;
+3. add one isolated Probe for fragile behavior;
+4. add a script only after repetition;
+5. propose plugin/engine work only when registered tools cannot express the operation.
 
-## Handle long results
-
-- Prefer `-OutFile` for large JSON and images when using the gateway.
-- A missing gateway output file does not prove UE did nothing; query editor state.
-- Large base64 payloads may be truncated by the host. Follow UEAgent's screenshot-consent rule and prefer direct viewport review.
-- Run gateway calls as separate shell invocations; do not assume commands after a gateway process will execute in the same shell.
-
-## Improve the workflow after real use
-
-Run a short postflight only when the task exposed material friction:
-
-- the same low-level call or code pattern was repeated three or more times
-- a guessed schema, property, pin, or return shape caused a retry
-- an exception required manual state recovery
-- latency, escaping, or payload size dominated the work
-- a capability was unavailable through the registered tools
-
-Use the first improvement that holds:
-
-1. Reuse an existing tool or recipe.
-2. Batch deterministic repetition with `ProgrammaticToolset`.
-3. Add or tighten one project-local Probe/script when the logic is fragile or repeatedly rewritten.
-4. Propose an MCP, gateway, or plugin extension only when registered tools cannot express the operation.
-
-Record observed friction in `notes/mcp-pitfalls.md` with the date, evidence, workaround, and count. Promote it into the relevant Skill reference only after an isolated Probe verifies the behavior. Promote a batch into `scripts/` only after real repetition; do not scaffold speculative tools.
-
-You may update this project-local Skill, its probes/scripts, gateway, and pitfalls ledger without another prompt when the change stays inside the current task, is reversible, and receives one representative check. Report the change to the user.
-
-Ask before changing UE/VibeUE plugins, platform-installed Skill copies, production assets, or save/delete behavior. Preserve evidence and propose the smallest patch instead of silently expanding authority.
+Use namespaced IDs and evidence states from `../../../notes/mcp-pitfalls.md`. Ask before
+changing UE/VibeUE code, production assets, or save/delete behavior.
