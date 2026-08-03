@@ -1,0 +1,337 @@
+diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp
+index cd03d8861..3f813b5ed 100644
+--- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp
++++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp
+@@ -7,7 +7,10 @@
+ 
+ #include "NiagaraSystem.h"
+ #include "NiagaraComponent.h"
++#include "NiagaraEmitterInstance.h"
+ #include "NiagaraParameterStore.h"
++#include "NiagaraSystemInstance.h"
++#include "NiagaraSystemInstanceController.h"
+ #include "NiagaraUserRedirectionParameterStore.h"
+ #include "NiagaraScriptVariable.h"
+ #include "NiagaraEditorUtilities.h"
+@@ -16,10 +19,64 @@
+ 
+ #include "Kismet/KismetSystemLibrary.h"
+ 
++#include "Serialization/JsonSerializer.h"
++#include "Serialization/JsonWriter.h"
++
+ #include UE_INLINE_GENERATED_CPP_BY_NAME(NiagaraToolset_Component)
+ 
+ #define LOCTEXT_NAMESPACE "UNiagaraToolset_Component"
+ 
++FString UNiagaraToolset_Component::GetRuntimeState(UNiagaraComponent* Component)
++{
++	if (!ValidateComponent(Component))
++	{
++		return {};
++	}
++
++	TSharedRef<FJsonObject> Root = MakeShared<FJsonObject>();
++	Root->SetStringField(TEXT("component"), Component->GetPathName());
++	Root->SetStringField(TEXT("system"), GetPathNameSafe(Component->GetAsset()));
++	Root->SetBoolField(TEXT("componentActive"), Component->IsActive());
++	Root->SetBoolField(TEXT("componentComplete"), Component->IsComplete());
++
++	FNiagaraSystemInstanceControllerPtr Controller = Component->GetSystemInstanceController();
++	Root->SetBoolField(TEXT("controllerValid"), Controller.IsValid() && Controller->IsValid());
++	if (Controller.IsValid() && Controller->IsValid())
++	{
++		Controller->WaitForConcurrentTickAndFinalize();
++		Root->SetStringField(TEXT("requestedState"), UEnum::GetValueAsString(Controller->GetRequestedExecutionState()));
++		Root->SetStringField(TEXT("actualState"), UEnum::GetValueAsString(Controller->GetActualExecutionState()));
++		Root->SetNumberField(TEXT("ageSeconds"), Controller->GetAge());
++
++		const FBox& Bounds = Controller->GetLocalBounds();
++		TSharedRef<FJsonObject> BoundsJson = MakeShared<FJsonObject>();
++		BoundsJson->SetBoolField(TEXT("valid"), Bounds.IsValid != 0);
++		BoundsJson->SetStringField(TEXT("min"), Bounds.Min.ToString());
++		BoundsJson->SetStringField(TEXT("max"), Bounds.Max.ToString());
++		Root->SetObjectField(TEXT("localBounds"), BoundsJson);
++
++		TArray<TSharedPtr<FJsonValue>> Emitters;
++		if (FNiagaraSystemInstance* Instance = Controller->GetSystemInstance_Unsafe())
++		{
++			for (const FNiagaraEmitterInstanceRef& Emitter : Instance->GetEmitters())
++			{
++				TSharedRef<FJsonObject> EmitterJson = MakeShared<FJsonObject>();
++				EmitterJson->SetStringField(TEXT("name"), Emitter->GetEmitterHandle().GetUniqueInstanceName());
++				EmitterJson->SetStringField(TEXT("executionState"), UEnum::GetValueAsString(Emitter->GetExecutionState()));
++				EmitterJson->SetStringField(TEXT("simTarget"), UEnum::GetValueAsString(Emitter->GetSimTarget()));
++				EmitterJson->SetNumberField(TEXT("numParticles"), Emitter->GetNumParticles());
++				Emitters.Add(MakeShared<FJsonValueObject>(EmitterJson));
++			}
++		}
++		Root->SetArrayField(TEXT("emitters"), Emitters);
++	}
++
++	FString Json;
++	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Json);
++	FJsonSerializer::Serialize(Root, Writer);
++	return Json;
++}
++
+ void UNiagaraToolset_Component::SetSystem(UNiagaraComponent* NiagaraComponent, UNiagaraSystem* System, bool bResetExistingOverrideParameters)
+ {
+ 	if(!ValidateSystem(System)) return;
+diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.h b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.h
+index 1012f0f78..3340ccf48 100644
+--- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.h
++++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.h
+@@ -25,6 +25,12 @@ class UNiagaraToolset_Component : public UNiagaraToolset
+ 	GENERATED_BODY()
+ 
+ public:
++	/**
++	 * Returns live execution state and per-emitter particle counts for a scene component.
++	 * GPU counts may lag the render thread by a frame.
++	 */
++	UFUNCTION(meta = (AICallable), Category = "Component")
++	static FString GetRuntimeState(UNiagaraComponent* Component);
+ 
+ 	/**
+ 	 * Sets the Niagara System for a component.
+diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
+index 9c1f55de7..107a96535 100644
+--- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
++++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
+@@ -4,9 +4,16 @@
+ #include "NiagaraToolsetsSettings.h"
+ 
+ #include "NiagaraExternalSystemEditorUtilities.h"
++#include "NiagaraEditorModule.h"
++#include "NiagaraEmitter.h"
++#include "NiagaraGraph.h"
++#include "INiagaraEditorTypeUtilities.h"
++#include "NiagaraNodeCustomHlsl.h"
++#include "NiagaraScriptSource.h"
+ #include "NiagaraSystem.h"
+ 
+ #include "Containers/Ticker.h"
++#include "EdGraphUtilities.h"
+ #include "Engine/Engine.h"
+ #include "Engine/EngineTypes.h"
+ 
+@@ -17,6 +24,7 @@
+ #include "JsonSchema/JsonSchemaGenerator.h"
+ #include "JsonObjectConverter.h"
+ #include "Serialization/JsonReader.h"
++#include "Serialization/JsonSerializer.h"
+ #include "Serialization/JsonWriter.h"
+ 
+ #include UE_INLINE_GENERATED_CPP_BY_NAME(NiagaraToolset_System)
+@@ -275,6 +283,179 @@ FNiagaraExt_DynamicInputChainRef UNiagaraToolset_System::GetDynamicInputChain(co
+ 	return Chain;
+ }
+ 
++FString UNiagaraToolset_System::GetScriptGraphText(const UNiagaraScript* Script)
++{
++	const UNiagaraScriptSource* Source = Script ? Cast<UNiagaraScriptSource>(Script->GetLatestSource()) : nullptr;
++	if (Source == nullptr || Source->NodeGraph == nullptr)
++	{
++		Error(TEXT("Script has no readable Niagara graph."));
++		return {};
++	}
++
++	TSet<UObject*> Nodes;
++	for (UEdGraphNode* Node : Source->NodeGraph->Nodes)
++	{
++		Nodes.Add(Node);
++	}
++	FString ExportedText;
++	FEdGraphUtilities::ExportNodesToText(MoveTemp(Nodes), ExportedText);
++	return ExportedText;
++}
++
++namespace
++{
++	UNiagaraNodeCustomHlsl* FindSingleCustomHlslNode(const UNiagaraScript* Script, FString& OutError)
++	{
++		const UNiagaraScriptSource* Source = Script ? Cast<UNiagaraScriptSource>(Script->GetLatestSource()) : nullptr;
++		if (Source == nullptr || Source->NodeGraph == nullptr)
++		{
++			OutError = TEXT("Script has no readable Niagara graph.");
++			return nullptr;
++		}
++
++		TArray<UNiagaraNodeCustomHlsl*> Nodes;
++		Source->NodeGraph->GetNodesOfClass(Nodes);
++		if (Nodes.Num() != 1)
++		{
++			OutError = FString::Printf(TEXT("Expected exactly one Custom HLSL node, found %d."), Nodes.Num());
++			return nullptr;
++		}
++		return Nodes[0];
++	}
++
++	FStrProperty* FindCustomHlslProperty(FString& OutError)
++	{
++		// UNiagaraNodeCustomHlsl is MinimalAPI, so its native Get/Set methods are not linkable here.
++		FStrProperty* Property = FindFProperty<FStrProperty>(UNiagaraNodeCustomHlsl::StaticClass(), TEXT("CustomHlsl"));
++		if (Property == nullptr)
++		{
++			OutError = TEXT("UNiagaraNodeCustomHlsl.CustomHlsl property was not found.");
++		}
++		return Property;
++	}
++
++	UNiagaraScript* ResolveScript(const FNiagaraExt_StackItemReference& Ref, FString& OutError)
++	{
++		if (Ref.System == nullptr)
++		{
++			OutError = TEXT("System is required.");
++			return nullptr;
++		}
++		if (Ref.EmitterName == NAME_None)
++		{
++			if (Ref.ScriptName == TEXT("SystemSpawnScript")) return Ref.System->GetSystemSpawnScript();
++			if (Ref.ScriptName == TEXT("SystemUpdateScript")) return Ref.System->GetSystemUpdateScript();
++			OutError = TEXT("System script must be SystemSpawnScript or SystemUpdateScript.");
++			return nullptr;
++		}
++
++		const FNiagaraEmitterHandle* Handle = Ref.System->GetEmitterHandles().FindByPredicate(
++			[&Ref](const FNiagaraEmitterHandle& Candidate) { return Candidate.GetName() == Ref.EmitterName; });
++		FVersionedNiagaraEmitterData* EmitterData = Handle ? Handle->GetInstance().GetEmitterData() : nullptr;
++		if (EmitterData == nullptr)
++		{
++			OutError = FString::Printf(TEXT("Emitter '%s' was not found."), *Ref.EmitterName.ToString());
++			return nullptr;
++		}
++		if (Ref.ScriptName == TEXT("GPUComputeScript")) return EmitterData->GetGPUComputeScript();
++
++		ENiagaraScriptUsage Usage;
++		if (Ref.ScriptName == TEXT("EmitterSpawnScript")) Usage = ENiagaraScriptUsage::EmitterSpawnScript;
++		else if (Ref.ScriptName == TEXT("EmitterUpdateScript")) Usage = ENiagaraScriptUsage::EmitterUpdateScript;
++		else if (Ref.ScriptName == TEXT("ParticleSpawnScript")) Usage = ENiagaraScriptUsage::ParticleSpawnScript;
++		else if (Ref.ScriptName == TEXT("ParticleUpdateScript")) Usage = ENiagaraScriptUsage::ParticleUpdateScript;
++		else
++		{
++			OutError = TEXT("Emitter script must be EmitterSpawnScript, EmitterUpdateScript, ParticleSpawnScript, ParticleUpdateScript, or GPUComputeScript.");
++			return nullptr;
++		}
++		return EmitterData->GetScript(Usage, FGuid());
++	}
++}
++
++FString UNiagaraToolset_System::GetScriptCustomHlsl(const UNiagaraScript* Script)
++{
++	FString ErrorText;
++	UNiagaraNodeCustomHlsl* Node = FindSingleCustomHlslNode(Script, ErrorText);
++	FStrProperty* Property = FindCustomHlslProperty(ErrorText);
++	if (Node == nullptr || Property == nullptr)
++	{
++		Error(ErrorText);
++		return {};
++	}
++	return Property->GetPropertyValue_InContainer(Node);
++}
++
++FString UNiagaraToolset_System::GetScriptRapidIterationParameters(const FNiagaraExt_StackItemReference& ScriptRef)
++{
++	FString ErrorText;
++	UNiagaraScript* Script = ResolveScript(ScriptRef, ErrorText);
++	if (Script == nullptr)
++	{
++		Error(ErrorText);
++		return {};
++	}
++
++	FNiagaraEditorModule& EditorModule = FModuleManager::GetModuleChecked<FNiagaraEditorModule>(TEXT("NiagaraEditor"));
++	TArray<FNiagaraVariable> Variables;
++	Script->RapidIterationParameters.GetParameters(Variables);
++	TArray<TSharedPtr<FJsonValue>> Rows;
++	for (const FNiagaraVariable& Variable : Variables)
++	{
++		FString Value = TEXT("(unsupported)");
++		TSharedPtr<INiagaraEditorTypeUtilities, ESPMode::ThreadSafe> TypeUtilities = EditorModule.GetTypeUtilities(Variable.GetType());
++		if (TypeUtilities.IsValid() && TypeUtilities->CanHandlePinDefaults())
++		{
++			FNiagaraVariable VariableWithValue = Variable;
++			VariableWithValue.SetData(Script->RapidIterationParameters.GetParameterData(Variable));
++			Value = TypeUtilities->GetPinDefaultStringFromValue(VariableWithValue);
++		}
++
++		TSharedRef<FJsonObject> Row = MakeShared<FJsonObject>();
++		Row->SetStringField(TEXT("name"), Variable.GetName().ToString());
++		Row->SetStringField(TEXT("type"), Variable.GetType().GetName());
++		Row->SetStringField(TEXT("value"), Value);
++		Rows.Add(MakeShared<FJsonValueObject>(Row));
++	}
++
++	FString Json;
++	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Json);
++	FJsonSerializer::Serialize(Rows, Writer);
++	return Json;
++}
++
++UNiagaraScript* UNiagaraToolset_System::GetScriptObject(const FNiagaraExt_StackItemReference& ScriptRef)
++{
++	FString ErrorText;
++	UNiagaraScript* Script = ResolveScript(ScriptRef, ErrorText);
++	if (Script == nullptr)
++	{
++		Error(ErrorText);
++	}
++	return Script;
++}
++
++FString UNiagaraToolset_System::SetScriptCustomHlsl(UNiagaraScript* Script, const FString& CustomHlsl)
++{
++	FString ErrorText;
++	UNiagaraNodeCustomHlsl* Node = FindSingleCustomHlslNode(Script, ErrorText);
++	FStrProperty* Property = FindCustomHlslProperty(ErrorText);
++	if (Node == nullptr || Property == nullptr)
++	{
++		Error(ErrorText);
++		return {};
++	}
++	if (Property->GetPropertyValue_InContainer(Node) != CustomHlsl)
++	{
++		FScopedTransaction Transaction(LOCTEXT("SetScriptCustomHlsl", "Set Niagara Custom HLSL"));
++		Node->Modify();
++		Property->SetPropertyValue_InContainer(Node, CustomHlsl);
++		FPropertyChangedEvent PropertyChangedEvent(Property);
++		Node->PostEditChangeProperty(PropertyChangedEvent);
++	}
++	return Property->GetPropertyValue_InContainer(Node);
++}
++
+ FNiagaraExt_SystemDependencies UNiagaraToolset_System::GetSystemDependencies(UNiagaraSystem* System)
+ {
+ 	FNiagaraExternalEditContext Context(System);
+diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
+index 6541a0e1e..7b94f7f5d 100644
+--- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
++++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
+@@ -380,6 +380,26 @@ public:
+ 	UFUNCTION(meta = (AICallable), Category = "Topology")
+ 	static FNiagaraExt_DynamicInputChainRef GetDynamicInputChain(const FNiagaraExt_StackItemReference& StackInputRef);
+ 
++	/** Returns Unreal's native text export of every node in a Niagara script graph. Read-only. */
++	UFUNCTION(meta = (AICallable), Category = "Topology")
++	static FString GetScriptGraphText(const UNiagaraScript* Script);
++
++	/** Returns the HLSL source when the script graph contains exactly one Custom HLSL node. */
++	UFUNCTION(meta = (AICallable), Category = "Data")
++	static FString GetScriptCustomHlsl(const UNiagaraScript* Script);
++
++	/** Returns the script stack's rapid-iteration parameters as a JSON array of name, type, and value strings. */
++	UFUNCTION(meta = (AICallable), Category = "Data")
++	static FString GetScriptRapidIterationParameters(const FNiagaraExt_StackItemReference& ScriptRef);
++
++	/** Resolves a system/emitter script stack reference to its underlying Niagara script object. */
++	UFUNCTION(meta = (AICallable), Category = "Data")
++	static UNiagaraScript* GetScriptObject(const FNiagaraExt_StackItemReference& ScriptRef);
++
++	/** Replaces the HLSL source when the script graph contains exactly one Custom HLSL node. */
++	UFUNCTION(meta = (AICallable), Category = "Edit")
++	static FString SetScriptCustomHlsl(UNiagaraScript* Script, const FString& CustomHlsl);
++
+ 	//////////////////////////////////////////////////////////////////////////
+ 	// Dependency endpoint
+ 

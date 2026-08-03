@@ -1,0 +1,803 @@
+diff --git a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
+index 6356ca8..7d6382a 100644
+--- a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
+@@ -16,6 +16,7 @@
+ #include "NiagaraScratchPadContainer.h"
+ #include "NiagaraScript.h"
+ #include "NiagaraScriptSourceBase.h"
++#include "NiagaraSimulationStageBase.h"
+ #include "NiagaraSystem.h"
+ #include "NiagaraTypes.h"
+ 
+@@ -23,6 +24,7 @@
+ #include "NiagaraDataInterfaceArrayFloat.h"
+ #include "NiagaraDataInterfaceArrayInt.h"
+ #include "NiagaraDataInterfaceGrid2DCollection.h"
++#include "NiagaraDataInterfaceRasterizationGrid3D.h"
+ #include "NiagaraDataInterfaceRenderTarget2D.h"
+ 
+ // Niagara editor.
+@@ -82,17 +84,35 @@ namespace
+ 		if (Stage.Equals(TEXT("ParticleUpdate"), ESearchCase::IgnoreCase)) return ENiagaraScriptUsage::ParticleUpdateScript;
+ 		if (Stage.Equals(TEXT("EmitterSpawn"),   ESearchCase::IgnoreCase)) return ENiagaraScriptUsage::EmitterSpawnScript;
+ 		if (Stage.Equals(TEXT("EmitterUpdate"),  ESearchCase::IgnoreCase)) return ENiagaraScriptUsage::EmitterUpdateScript;
++		if (Stage.StartsWith(TEXT("SimulationStage:"), ESearchCase::IgnoreCase)) return ENiagaraScriptUsage::ParticleSimulationStageScript;
+ 		// Default to particle update - matches the prior service's default
+ 		return ENiagaraScriptUsage::ParticleUpdateScript;
+ 	}
+ 
+-	UNiagaraScript* GetStageScript(FVersionedNiagaraEmitterData* EmitterData, ENiagaraScriptUsage Usage)
++	UNiagaraScript* GetStageScript(FVersionedNiagaraEmitterData* EmitterData, ENiagaraScriptUsage Usage, const FString& Stage)
+ 	{
+ 		if (!EmitterData) return nullptr;
+ 		switch (Usage)
+ 		{
+ 			case ENiagaraScriptUsage::ParticleSpawnScript:  return EmitterData->SpawnScriptProps.Script;
+ 			case ENiagaraScriptUsage::ParticleUpdateScript: return EmitterData->UpdateScriptProps.Script;
++			case ENiagaraScriptUsage::ParticleSimulationStageScript:
++			{
++				FString RequestedName;
++				if (!Stage.Split(TEXT(":"), nullptr, &RequestedName) || RequestedName.IsEmpty())
++				{
++					return nullptr;
++				}
++				for (UNiagaraSimulationStageBase* SimulationStage : EmitterData->GetSimulationStages())
++				{
++					if (SimulationStage
++						&& SimulationStage->SimulationStageName.ToString().Equals(RequestedName, ESearchCase::IgnoreCase))
++					{
++						return SimulationStage->Script;
++					}
++				}
++				return nullptr;
++			}
+ #if WITH_EDITORONLY_DATA
+ 			case ENiagaraScriptUsage::EmitterSpawnScript:   return EmitterData->EmitterSpawnScriptProps.Script;
+ 			case ENiagaraScriptUsage::EmitterUpdateScript:  return EmitterData->EmitterUpdateScriptProps.Script;
+@@ -173,6 +193,8 @@ namespace
+ 		    N.Equals(TEXT("ArrayInt32"),    ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceArrayInt32::StaticClass());    return true; }
+ 		if (N.Equals(TEXT("Grid2D"),        ESearchCase::IgnoreCase) ||
+ 		    N.Equals(TEXT("Grid2DCollection"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceGrid2DCollection::StaticClass()); return true; }
++		if (N.Equals(TEXT("RasterizationGrid3D"), ESearchCase::IgnoreCase) ||
++		    N.Equals(TEXT("RasterGrid3D"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceRasterizationGrid3D::StaticClass()); return true; }
+ 		if (N.Equals(TEXT("RenderTarget2D"), ESearchCase::IgnoreCase) ||
+ 		    N.Equals(TEXT("DynamicRT"),      ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceRenderTarget2D::StaticClass()); return true; }
+ 
+@@ -246,52 +268,6 @@ namespace
+ 		return FString();
+ 	}
+ 
+-	/**
+-	 * Replicate UNiagaraNodeCustomHlsl::RebuildSignatureFromPins (which is protected and not
+-	 * exported across modules). We rebuild the function signature from the current pin set
+-	 * using the exported Schema->PinToNiagaraVariable helper and the public Signature UPROPERTY
+-	 * on UNiagaraNodeFunctionCall. This is the ONLY way to make a freshly-added Custom HLSL
+-	 * pin survive a subsequent compile: the alternative (triggering PostEditChangeProperty)
+-	 * runs RefreshFromExternalChanges → ReallocatePins(false), which rebuilds pins from the
+-	 * stale signature and silently wipes any pin that isn't in it yet.
+-	 *
+-	 * UNiagaraNodeWithDynamicPins::IsAddPin is also unexported, so we open-code the same check
+-	 * (Misc category, "DynamicAddPin" subcategory) from NiagaraNodeWithDynamicPins.cpp.
+-	 */
+-	void RebuildCustomHlslSignatureFromPins(UEdGraphNode* HlslNode)
+-	{
+-		auto* FnCall = Cast<UNiagaraNodeFunctionCall>(HlslNode);
+-		if (!FnCall) return;
+-		const UEdGraphSchema_Niagara* Schema = Cast<UEdGraphSchema_Niagara>(HlslNode->GetSchema());
+-		if (!Schema) return;
+-
+-		HlslNode->Modify();
+-		FNiagaraFunctionSignature& Sig = FnCall->Signature;
+-		Sig.Inputs.Empty();
+-		Sig.Outputs.Empty();
+-
+-		static const FName AddPinSubCategory(TEXT("DynamicAddPin"));
+-
+-		for (UEdGraphPin* Pin : HlslNode->Pins)
+-		{
+-			if (!Pin) continue;
+-			// Skip "Add" placeholder pins (the "+" buttons on each side of the node).
+-			if (Pin->PinType.PinCategory == UEdGraphSchema_Niagara::PinCategoryMisc
+-				&& Pin->PinType.PinSubCategory == AddPinSubCategory)
+-			{
+-				continue;
+-			}
+-			if (Pin->Direction == EGPD_Input)
+-			{
+-				Sig.Inputs.Add(Schema->PinToNiagaraVariable(Pin, /*bNeedsValue*/true));
+-			}
+-			else
+-			{
+-				Sig.Outputs.Add(Schema->PinToNiagaraVariable(Pin, /*bNeedsValue*/false));
+-			}
+-		}
+-	}
+-
+ 	/** Build an FEdGraphPinType for a Niagara type using the exported schema helper. */
+ 	FEdGraphPinType MakeNiagaraPinType(const FNiagaraTypeDefinition& Type)
+ 	{
+@@ -401,12 +377,409 @@ namespace
+ 		}
+ 		return nullptr;
+ 	}
++
++	/**
++	 * Minimal exported-API equivalent of FNiagaraStackGraphUtilities::ResetGraphForOutput.
++	 * ResetGraphForOutput itself is public in the header but is not exported from NiagaraEditor.
++	 */
++	UNiagaraNodeOutput* CreateEmptyStageOutput(
++		UNiagaraGraph* Graph,
++		ENiagaraScriptUsage Usage,
++		const FGuid& UsageId)
++	{
++		if (!Graph) return nullptr;
++
++		Graph->Modify();
++		UNiagaraNodeOutput* OutputNode = NewObject<UNiagaraNodeOutput>(
++			Graph, UNiagaraNodeOutput::StaticClass(), NAME_None, RF_Transactional);
++		if (!OutputNode) return nullptr;
++		Graph->AddNode(OutputNode, false, false);
++		OutputNode->CreateNewGuid();
++		OutputNode->PostPlacedNewNode();
++		OutputNode->SetUsage(Usage);
++		OutputNode->SetUsageId(UsageId);
++		OutputNode->Outputs.Add(FNiagaraVariable(FNiagaraTypeDefinition::GetParameterMapDef(), TEXT("Out")));
++		OutputNode->AllocateDefaultPins();
++		OutputNode->NodePosX = 400;
++		OutputNode->NodePosY = 0;
++
++		UNiagaraNodeInput* InputNode = NewObject<UNiagaraNodeInput>(
++			Graph, UNiagaraNodeInput::StaticClass(), NAME_None, RF_Transactional);
++		if (!InputNode) return nullptr;
++		Graph->AddNode(InputNode, false, false);
++		InputNode->CreateNewGuid();
++		InputNode->PostPlacedNewNode();
++		InputNode->Input = FNiagaraVariable(FNiagaraTypeDefinition::GetParameterMapDef(), TEXT("InputMap"));
++		InputNode->Usage = ENiagaraInputNodeUsage::Parameter;
++		InputNode->AllocateDefaultPins();
++		InputNode->NodePosX = 0;
++		InputNode->NodePosY = 0;
++
++		UEdGraphPin* OutputInputPin = nullptr;
++		for (UEdGraphPin* Pin : OutputNode->Pins)
++		{
++			if (Pin && Pin->Direction == EGPD_Input)
++			{
++				OutputInputPin = Pin;
++				break;
++			}
++		}
++		UEdGraphPin* InputOutputPin = nullptr;
++		for (UEdGraphPin* Pin : InputNode->Pins)
++		{
++			if (Pin && Pin->Direction == EGPD_Output)
++			{
++				InputOutputPin = Pin;
++				break;
++			}
++		}
++		if (!OutputInputPin || !InputOutputPin)
++		{
++			return nullptr;
++		}
++		OutputInputPin->MakeLinkTo(InputOutputPin);
++		return OutputNode;
++	}
+ } // anonymous namespace
+ 
+ // =====================================================================
+ // Lifecycle
+ // =====================================================================
+ 
++FNiagaraScratchResult UNiagaraScratchPadService::CreateSimulationStage(
++	const FString& SystemPath,
++	const FString& EmitterName,
++	const FString& StageName)
++{
++	FNiagaraScratchResult Result;
++	UNiagaraSystem* System = LoadSystem(SystemPath);
++	if (!System) { Result.Message = TEXT("System not found"); return Result; }
++
++	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
++	if (!Handle) { Result.Message = TEXT("Emitter not found"); return Result; }
++
++	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
++	UNiagaraEmitter* Emitter = Handle->GetInstance().Emitter;
++	UNiagaraScriptSource* Source = EmitterData ? Cast<UNiagaraScriptSource>(EmitterData->GraphSource) : nullptr;
++	UNiagaraGraph* Graph = Source ? Source->NodeGraph : nullptr;
++	if (!EmitterData || !Emitter || !Source || !Graph)
++	{
++		Result.Message = TEXT("Emitter graph unavailable");
++		return Result;
++	}
++
++	const FName RequestedName = StageName.IsEmpty() ? FName(TEXT("Simulation Stage")) : FName(*StageName);
++	for (UNiagaraSimulationStageBase* ExistingStage : EmitterData->GetSimulationStages())
++	{
++		if (ExistingStage && ExistingStage->SimulationStageName == RequestedName)
++		{
++			Result.bSuccess = true;
++			Result.Message = TEXT("Simulation stage already exists");
++			Result.ModuleName = ExistingStage->SimulationStageName.ToString();
++			Result.ScriptPath = ExistingStage->Script ? ExistingStage->Script->GetPathName() : FString();
++			Result.NodeId = ExistingStage->Script ? ExistingStage->Script->GetUsageId().ToString() : FString();
++			return Result;
++		}
++	}
++
++	System->Modify();
++	Emitter->Modify();
++	Graph->Modify();
++
++	UNiagaraSimulationStageGeneric* NewStage = NewObject<UNiagaraSimulationStageGeneric>(
++		Emitter,
++		UNiagaraSimulationStageGeneric::StaticClass(),
++		NAME_None,
++		RF_Transactional);
++	if (!NewStage)
++	{
++		Result.Message = TEXT("Failed to create simulation stage");
++		return Result;
++	}
++
++	NewStage->SimulationStageName = RequestedName;
++	NewStage->IterationSource = ENiagaraIterationSource::Particles;
++	NewStage->Script = NewObject<UNiagaraScript>(
++		NewStage,
++		MakeUniqueObjectName(NewStage, UNiagaraScript::StaticClass(), TEXT("SimulationStage")),
++		RF_Transactional);
++	if (!NewStage->Script)
++	{
++		Result.Message = TEXT("Failed to create simulation stage script");
++		return Result;
++	}
++
++	NewStage->Script->SetUsage(ENiagaraScriptUsage::ParticleSimulationStageScript);
++	NewStage->Script->SetUsageId(NewStage->GetMergeId());
++	NewStage->Script->SetLatestSource(Source);
++	Emitter->AddSimulationStage(NewStage, Handle->GetInstance().Version);
++	if (!CreateEmptyStageOutput(
++		Graph,
++		ENiagaraScriptUsage::ParticleSimulationStageScript,
++		NewStage->Script->GetUsageId()))
++	{
++		Result.Message = TEXT("Failed to create simulation stage graph output");
++		return Result;
++	}
++
++	System->MarkPackageDirty();
++	System->RequestCompile(false);
++	System->WaitForCompilationComplete();
++
++	Result.bSuccess = true;
++	Result.Message = TEXT("Particle-iteration simulation stage created");
++	Result.ModuleName = NewStage->SimulationStageName.ToString();
++	Result.ScriptPath = NewStage->Script->GetPathName();
++	Result.NodeId = NewStage->Script->GetUsageId().ToString();
++	return Result;
++}
++
++FNiagaraScratchResult UNiagaraScratchPadService::ConfigureGrid2DSimulationStage(
++	const FString& SystemPath,
++	const FString& EmitterName,
++	const FString& StageName,
++	const FString& DataInterfaceVariable)
++{
++	FNiagaraScratchResult Result;
++	UNiagaraSystem* System = LoadSystem(SystemPath);
++	if (!System) { Result.Message = TEXT("System not found"); return Result; }
++
++	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
++	if (!Handle) { Result.Message = TEXT("Emitter not found"); return Result; }
++
++	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
++	if (!EmitterData) { Result.Message = TEXT("Emitter data unavailable"); return Result; }
++	if (DataInterfaceVariable.IsEmpty())
++	{
++		Result.Message = TEXT("Data interface variable is empty");
++		return Result;
++	}
++
++	UNiagaraSimulationStageGeneric* TargetStage = nullptr;
++	for (UNiagaraSimulationStageBase* Stage : EmitterData->GetSimulationStages())
++	{
++		if (Stage
++			&& Stage->SimulationStageName.ToString().Equals(StageName, ESearchCase::IgnoreCase))
++		{
++			TargetStage = Cast<UNiagaraSimulationStageGeneric>(Stage);
++			break;
++		}
++	}
++	if (!TargetStage)
++	{
++		Result.Message = TEXT("Generic simulation stage not found");
++		return Result;
++	}
++
++	System->Modify();
++	TargetStage->Modify();
++	TargetStage->IterationSource = ENiagaraIterationSource::DataInterface;
++	TargetStage->DataInterface.BoundVariable = FNiagaraVariable(
++		FNiagaraTypeDefinition(UNiagaraDataInterfaceGrid2DCollection::StaticClass()),
++		FName(*DataInterfaceVariable));
++
++	System->MarkPackageDirty();
++	System->RequestCompile(false);
++	System->WaitForCompilationComplete();
++
++	Result.bSuccess = true;
++	Result.Message = TEXT("Grid2D data-interface iteration configured");
++	Result.ModuleName = TargetStage->SimulationStageName.ToString();
++	Result.ScriptPath = TargetStage->Script ? TargetStage->Script->GetPathName() : FString();
++	Result.NodeId = TargetStage->Script ? TargetStage->Script->GetUsageId().ToString() : FString();
++	return Result;
++}
++
++FNiagaraScratchResult UNiagaraScratchPadService::CreateInternalRenderTarget2DUserParameter(
++	const FString& SystemPath,
++	const FString& VariableName,
++	int32 SizeX,
++	int32 SizeY)
++{
++	FNiagaraScratchResult Result;
++	UNiagaraSystem* System = LoadSystem(SystemPath);
++	if (!System) { Result.Message = TEXT("System not found"); return Result; }
++	if (VariableName.IsEmpty())
++	{
++		Result.Message = TEXT("Variable name is empty");
++		return Result;
++	}
++
++	const FName ParameterName(*VariableName);
++	const FName ObjectName(*FString::Printf(TEXT("%s_InternalDI"), *ParameterName.ToString().Replace(TEXT("."), TEXT("_"))));
++	UNiagaraDataInterfaceRenderTarget2D* RenderTargetDI =
++		FindObject<UNiagaraDataInterfaceRenderTarget2D>(System, *ObjectName.ToString());
++	if (!RenderTargetDI)
++	{
++		RenderTargetDI = NewObject<UNiagaraDataInterfaceRenderTarget2D>(
++			System,
++			UNiagaraDataInterfaceRenderTarget2D::StaticClass(),
++			ObjectName,
++			RF_Transactional);
++	}
++	if (!RenderTargetDI)
++	{
++		Result.Message = TEXT("Failed to create RenderTarget2D data interface");
++		return Result;
++	}
++
++	const FIntPoint RequestedSize(FMath::Max(SizeX, 1), FMath::Max(SizeY, 1));
++	auto ConfigureRenderTargetDI = [&RequestedSize](UNiagaraDataInterfaceRenderTarget2D* TargetDI)
++	{
++		if (!TargetDI) return;
++		TargetDI->Modify();
++		TargetDI->Size = RequestedSize;
++		TargetDI->bInheritUserParameterSettings = false;
++		TargetDI->bOverrideFormat = true;
++		TargetDI->OverrideRenderTargetFormat = ETextureRenderTargetFormat::RTF_RGBA16f;
++		TargetDI->OverrideRenderTargetFilter = TextureFilter::TF_Bilinear;
++#if WITH_EDITORONLY_DATA
++		TargetDI->bPreviewRenderTarget = true;
++#endif
++	};
++
++	System->Modify();
++	ConfigureRenderTargetDI(RenderTargetDI);
++
++	const FNiagaraVariable Variable(
++		FNiagaraTypeDefinition(UNiagaraDataInterfaceRenderTarget2D::StaticClass()),
++		ParameterName);
++	FNiagaraUserRedirectionParameterStore& ExposedParameters = System->GetExposedParameters();
++	int32 ParameterOffset = ExposedParameters.IndexOf(Variable);
++	if (ParameterOffset == INDEX_NONE)
++	{
++		ExposedParameters.AddParameter(Variable, false, true, &ParameterOffset);
++	}
++	UNiagaraDataInterfaceRenderTarget2D* StoredRenderTargetDI =
++		Cast<UNiagaraDataInterfaceRenderTarget2D>(
++			ExposedParameters.GetDataInterface(ParameterOffset));
++	if (!StoredRenderTargetDI)
++	{
++		ExposedParameters.SetDataInterface(RenderTargetDI, ParameterOffset);
++		StoredRenderTargetDI = RenderTargetDI;
++	}
++	ConfigureRenderTargetDI(StoredRenderTargetDI);
++
++	FPropertyChangedEvent PropertyChangedEvent(nullptr, EPropertyChangeType::ValueSet);
++	System->PostEditChangeProperty(PropertyChangedEvent);
++	System->MarkPackageDirty();
++	System->RequestCompile(false);
++	System->WaitForCompilationComplete();
++
++	Result.bSuccess = true;
++	Result.Message = TEXT("Internal RenderTarget2D user parameter created");
++	Result.ModuleName = ParameterName.ToString();
++	Result.ScriptPath = StoredRenderTargetDI
++		? StoredRenderTargetDI->GetPathName()
++		: RenderTargetDI->GetPathName();
++	return Result;
++}
++
++FNiagaraScratchResult UNiagaraScratchPadService::CreateRasterizationGrid3DUserParameter(
++	const FString& SystemPath,
++	const FString& VariableName,
++	int32 SizeX,
++	int32 SizeY,
++	int32 SizeZ,
++	int32 NumAttributes,
++	float Precision,
++	int32 ResetValue,
++	bool bClearBeforeNonIterationStage)
++{
++	FNiagaraScratchResult Result;
++	UNiagaraSystem* System = LoadSystem(SystemPath);
++	if (!System) { Result.Message = TEXT("System not found"); return Result; }
++	if (VariableName.IsEmpty())
++	{
++		Result.Message = TEXT("Variable name is empty");
++		return Result;
++	}
++
++	const FName ParameterName(*VariableName);
++	const FName ObjectName(*FString::Printf(
++		TEXT("%s_InternalDI"),
++		*ParameterName.ToString().Replace(TEXT("."), TEXT("_"))));
++	UNiagaraDataInterfaceRasterizationGrid3D* RasterDI =
++		FindObject<UNiagaraDataInterfaceRasterizationGrid3D>(
++			System, *ObjectName.ToString());
++	if (!RasterDI)
++	{
++		RasterDI = NewObject<UNiagaraDataInterfaceRasterizationGrid3D>(
++			System,
++			UNiagaraDataInterfaceRasterizationGrid3D::StaticClass(),
++			ObjectName,
++			RF_Transactional);
++	}
++	if (!RasterDI)
++	{
++		Result.Message = TEXT("Failed to create RasterizationGrid3D data interface");
++		return Result;
++	}
++
++	const FIntVector RequestedSize(
++		FMath::Max(SizeX, 1),
++		FMath::Max(SizeY, 1),
++		FMath::Max(SizeZ, 1));
++	const int32 RequestedAttributes = FMath::Max(NumAttributes, 1);
++	const float RequestedPrecision = FMath::Max(Precision, KINDA_SMALL_NUMBER);
++	auto ConfigureRasterDI = [
++		&RequestedSize,
++		RequestedAttributes,
++		RequestedPrecision,
++		ResetValue,
++		bClearBeforeNonIterationStage
++	](UNiagaraDataInterfaceRasterizationGrid3D* TargetDI)
++	{
++		if (!TargetDI) return;
++		TargetDI->Modify();
++		TargetDI->NumCells = RequestedSize;
++		TargetDI->NumAttributes = RequestedAttributes;
++		TargetDI->Precision = RequestedPrecision;
++		TargetDI->ResetValue = ResetValue;
++		TargetDI->ClearBeforeNonIterationStage = bClearBeforeNonIterationStage;
++	};
++
++	System->Modify();
++	ConfigureRasterDI(RasterDI);
++
++	const FNiagaraVariable Variable(
++		FNiagaraTypeDefinition(
++			UNiagaraDataInterfaceRasterizationGrid3D::StaticClass()),
++		ParameterName);
++	FNiagaraUserRedirectionParameterStore& ExposedParameters =
++		System->GetExposedParameters();
++	int32 ParameterOffset = ExposedParameters.IndexOf(Variable);
++	if (ParameterOffset == INDEX_NONE)
++	{
++		ExposedParameters.AddParameter(
++			Variable, false, true, &ParameterOffset);
++	}
++	UNiagaraDataInterfaceRasterizationGrid3D* StoredRasterDI =
++		Cast<UNiagaraDataInterfaceRasterizationGrid3D>(
++			ExposedParameters.GetDataInterface(ParameterOffset));
++	if (!StoredRasterDI)
++	{
++		ExposedParameters.SetDataInterface(RasterDI, ParameterOffset);
++		StoredRasterDI = RasterDI;
++	}
++	ConfigureRasterDI(StoredRasterDI);
++
++	FPropertyChangedEvent PropertyChangedEvent(
++		nullptr, EPropertyChangeType::ValueSet);
++	System->PostEditChangeProperty(PropertyChangedEvent);
++	System->MarkPackageDirty();
++	System->RequestCompile(false);
++	System->WaitForCompilationComplete();
++
++	Result.bSuccess = true;
++	Result.Message = TEXT("RasterizationGrid3D user parameter created");
++	Result.ModuleName = ParameterName.ToString();
++	Result.ScriptPath = StoredRasterDI
++		? StoredRasterDI->GetPathName()
++		: RasterDI->GetPathName();
++	return Result;
++}
++
+ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
+ 	const FString& SystemPath,
+ 	const FString& EmitterName,
+@@ -427,7 +800,7 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
+ 	if (!Container) { Result.Message = TEXT("Could not access scratch-pad container"); return Result; }
+ 
+ 	const ENiagaraScriptUsage TargetUsage = StageToUsage(Stage);
+-	UNiagaraScript* StageScript = GetStageScript(EmitterData, TargetUsage);
++	UNiagaraScript* StageScript = GetStageScript(EmitterData, TargetUsage, Stage);
+ 	UNiagaraGraph* EmitterGraph = GetEmitterGraph(EmitterData);
+ 	if (!StageScript || !EmitterGraph) { Result.Message = TEXT("Emitter stage graph unavailable"); return Result; }
+ 
+@@ -436,12 +809,27 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
+ 
+ 	// Build the scratch UNiagaraScript by duplicating the engine's default module template,
+ 	// matching what UNiagaraScratchPadViewModel::CreateNewScript does for Module-usage scripts.
+-	UObject* ScriptOuter = Container;
++	//
++	// IMPORTANT (VibeUE fix): The Niagara ScratchPad editor ViewModel picks the target
++	// script list based on the asset edit mode (see engine GetOuterAndTargetScripts):
++	//   - SystemAsset  mode -> UNiagaraSystem::ScratchPadScripts (system-level)
++	//   - EmitterAsset mode -> EmitterData->ScratchPads->Scripts (emitter-level)
++	// When a Niagara *System* asset is open, the editor ONLY scans System->ScratchPadScripts.
++	// A script placed only in the emitter container is functional/compilable but the UI never
++	// builds a ScriptViewModel for it -> no scratch icon, not double-clickable, empty details.
++	// So when editing a System asset we must register the script in System->ScratchPadScripts.
++	// This service always operates on a UNiagaraSystem loaded from an asset path (LoadSystem),
++	// i.e. the SystemAsset edit mode, so we always target the system-level scratch list. (The
++	// emitter-count heuristic was wrong: a System asset with a single emitter is still SystemAsset
++	// mode and the editor only scans System->ScratchPadScripts.)
++	const bool bSystemAssetMode = true;
++	UObject* ScriptOuter = bSystemAssetMode ? static_cast<UObject*>(System) : static_cast<UObject*>(Container);
+ 	if (!ScriptOuter->HasAnyFlags(RF_Transactional))
+ 	{
+ 		ScriptOuter->SetFlags(RF_Transactional);
+ 	}
+ 	ScriptOuter->Modify();
++	System->Modify();
+ 
+ 	const TCHAR* BaseName = DesiredName.IsEmpty() ? TEXT("ScratchModule") : *DesiredName;
+ 	const FName UniqueName = GetUniqueScriptName(ScriptOuter, BaseName);
+@@ -463,7 +851,15 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
+ 	if (!NewScript) { Result.Message = TEXT("Failed to duplicate default module script"); return Result; }
+ 
+ 	NewScript->ClearFlags(RF_Public | RF_Standalone);
+-	Container->Scripts.Add(NewScript);
++	if (bSystemAssetMode)
++	{
++		// Register in the system-level scratch list the editor scans in SystemAsset mode.
++		System->ScratchPadScripts.Add(NewScript);
++	}
++	else
++	{
++		Container->Scripts.Add(NewScript);
++	}
+ 
+ 	// Allow the script to live on the target stage's stack
+ 	if (FVersionedNiagaraScriptData* ScriptData = NewScript->GetLatestScriptData())
+@@ -521,12 +917,20 @@ TArray<FString> UNiagaraScratchPadService::ListScratchModules(
+ 	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
+ 	if (!Handle) return Out;
+ 	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
+-	if (!EmitterData || !EmitterData->ScratchPads) return Out;
++	if (!EmitterData) return Out;
+ 
+ 	UNiagaraGraph* Graph = GetEmitterGraph(EmitterData);
+ 	if (!Graph) return Out;
+ 
+-	TSet<UNiagaraScript*> ScratchScripts(EmitterData->ScratchPads->Scripts);
++	// Scratch scripts may live either in the emitter-level container (EmitterAsset mode) or in
++	// the system-level list (SystemAsset mode, see CreateScratchModule). Include both so modules
++	// created in SystemAsset mode are still listed.
++	TSet<UNiagaraScript*> ScratchScripts;
++	if (EmitterData->ScratchPads)
++	{
++		ScratchScripts.Append(EmitterData->ScratchPads->Scripts);
++	}
++	ScratchScripts.Append(System->ScratchPadScripts);
+ 
+ 	TArray<UNiagaraNodeFunctionCall*> Calls;
+ 	Graph->GetNodesOfClass<UNiagaraNodeFunctionCall>(Calls);
+@@ -770,6 +1174,10 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddCustomHlslNode(
+ 	N->NodePosX = PosX; N->NodePosY = PosY;
+ 	Creator.Finalize();
+ 	SetCustomHlslReflected(N, Code);
++	// Ensure the node has its input/output "Add" pins so that a subsequent AddPin() ->
++	// RequestNewTypedPin() can find an Add pin (RequestNewTypedPin checkf's on it). This mirrors
++	// the first step of the engine's UNiagaraNodeCustomHlsl::InitAsCustomHlslDynamicInput().
++	N->ReallocatePins();
+ 
+ 	Graph->NotifyGraphChanged();
+ 	System->MarkPackageDirty();
+@@ -848,37 +1256,25 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddPin(
+ 
+ 	Node->Modify();
+ 
+-	// We bypass UNiagaraNodeWithDynamicPins::AddParameterPin / RequestNewTypedPin (declared in a
+-	// public header but not exported across modules) and call UEdGraphNode::CreatePin directly
+-	// with the pin type produced by UEdGraphSchema_Niagara::TypeDefinitionToPinType (exported).
+-	// For parameter-map nodes the pin name IS the variable name (already namespaced); for the
+-	// Custom HLSL node we trigger a signature rebuild via PostEditChangeProperty on CustomHlsl.
+-	const FEdGraphPinType PinType = MakeNiagaraPinType(Type);
+-
+ 	UEdGraphPin* NewPin = nullptr;
+-	if (IsMapGet(Node))
++	if (auto* DynamicNode = Cast<UNiagaraNodeWithDynamicPins>(Node))
+ 	{
+-		const FString Namespaced = NormalizeNamespacedName(PinName, TEXT("Module"));
+-		NewPin = Node->CreatePin(EGPD_Output, PinType, FName(*Namespaced));
+-	}
+-	else if (IsMapSet(Node))
+-	{
+-		const FString Namespaced = NormalizeNamespacedName(PinName, TEXT("Output"));
+-		NewPin = Node->CreatePin(EGPD_Input, PinType, FName(*Namespaced));
+-	}
+-	else if (Node->IsA<UNiagaraNodeCustomHlsl>())
+-	{
+-		NewPin = Node->CreatePin(Dir, PinType, FName(*PinName));
+-		// Rebuild the script signature so the new pin participates in compilation.
+-		// Must NOT route through PostEditChangeProperty - that calls RefreshFromExternalChanges
+-		// which calls ReallocatePins(false) which rebuilds pins from the stale signature
+-		// and wipes the new pin. We rebuild Signature directly from the current pin set.
+-		RebuildCustomHlslSignatureFromPins(Node);
+-	}
+-	else if (Cast<UNiagaraNodeWithDynamicPins>(Node) != nullptr)
+-	{
+-		// Generic dynamic-pin node (Op, If, etc.)
+-		NewPin = Node->CreatePin(Dir, PinType, FName(*PinName));
++		FString RequestedName = PinName;
++		if (IsMapGet(Node))
++		{
++			RequestedName = NormalizeNamespacedName(PinName, TEXT("Module"));
++		}
++		else if (IsMapSet(Node))
++		{
++			RequestedName = NormalizeNamespacedName(PinName, TEXT("Output"));
++		}
++
++		// Always use Niagara's dynamic-pin path. Parameter Map Get in particular creates and
++		// pairs the hidden default-value input here; a raw CreatePin leaves the visible output
++		// orphaned, so it compiles in the scratch graph but is omitted from the module signature
++		// and never appears in the stack. RW data-interface inputs then silently bind a default
++		// 3x3/zero-attribute DI at runtime.
++		NewPin = DynamicNode->RequestNewTypedPin(Dir, Type, FName(*RequestedName));
+ 	}
+ 	else
+ 	{
+@@ -1089,8 +1485,8 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddModuleInput(
+ 	}
+ 
+ 	MapGet->Modify();
+-	const FEdGraphPinType PinType = MakeNiagaraPinType(Type);
+-	UEdGraphPin* NewPin = MapGet->CreatePin(EGPD_Output, PinType, FName(*Namespaced));
++	UEdGraphPin* NewPin = MapGet->RequestNewTypedPin(
++		EGPD_Output, Type, FName(*Namespaced));
+ 	if (!NewPin) { R.Message = TEXT("CreatePin returned null"); return R; }
+ 
+ 	Graph->NotifyGraphChanged();
+@@ -1298,6 +1694,20 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+ 		}
+ 	}
+ 
++	// Same notification for system-level scratch scripts (created in SystemAsset mode).
++	for (UNiagaraScript* Scratch : System->ScratchPadScripts)
++	{
++		if (!Scratch) continue;
++		if (auto* Src = Cast<UNiagaraScriptSource>(Scratch->GetLatestSource()))
++		{
++			if (Src->NodeGraph)
++			{
++				Src->NodeGraph->NotifyGraphChanged();
++			}
++		}
++		Scratch->MarkPackageDirty();
++	}
++
+ 	System->MarkPackageDirty();
+ 	System->RequestCompile(false);
+ 	System->WaitForCompilationComplete();
+diff --git a/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h b/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
+index 14c1f3c..1e95424 100644
+--- a/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
++++ b/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
+@@ -158,6 +158,61 @@ public:
+ 	// Scratch module lifecycle
+ 	// =================================================================
+ 
++	/**
++	 * Create a particle-iteration simulation stage on an emitter.
++	 *
++	 * The returned stage can receive scratch modules by passing
++	 * "SimulationStage:<StageName>" to CreateScratchModule.
++	 *
++	 * @param SystemPath  Full path to the Niagara system
++	 * @param EmitterName Name of the GPU emitter
++	 * @param StageName   Display name for the new stage
++	 */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Create Simulation Stage"))
++	static FNiagaraScratchResult CreateSimulationStage(
++		const FString& SystemPath,
++		const FString& EmitterName,
++		const FString& StageName);
++
++	/**
++	 * Configure an existing simulation stage to iterate a Grid2DCollection.
++	 *
++	 * @param DataInterfaceVariable Fully qualified Niagara variable name, for
++	 *        example "User.MyGrid".
++	 */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Configure Grid2D Simulation Stage"))
++	static FNiagaraScratchResult ConfigureGrid2DSimulationStage(
++		const FString& SystemPath,
++		const FString& EmitterName,
++		const FString& StageName,
++		const FString& DataInterfaceVariable);
++
++	/** Create or replace a self-managed RenderTarget2D data-interface user parameter. */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Create Internal RenderTarget2D User Parameter"))
++	static FNiagaraScratchResult CreateInternalRenderTarget2DUserParameter(
++		const FString& SystemPath,
++		const FString& VariableName,
++		int32 SizeX = 1024,
++		int32 SizeY = 1024);
++
++	/**
++	 * Create or replace a RasterizationGrid3D data-interface user parameter.
++	 *
++	 * This explicitly authors the subclass-only fields which are not exposed by
++	 * Unreal Python when the MinimalAPI class is wrapped as NiagaraDataInterface.
++	 */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Create RasterizationGrid3D User Parameter"))
++	static FNiagaraScratchResult CreateRasterizationGrid3DUserParameter(
++		const FString& SystemPath,
++		const FString& VariableName,
++		int32 SizeX = 1024,
++		int32 SizeY = 1024,
++		int32 SizeZ = 1,
++		int32 NumAttributes = 1,
++		float Precision = 1.0f,
++		int32 ResetValue = 0,
++		bool bClearBeforeNonIterationStage = true);
++
+ 	/**
+ 	 * Create a new (empty) scratch-pad module and add it to an emitter's stack.
+ 	 *
+@@ -166,7 +221,8 @@ public:
+ 	 *
+ 	 * @param SystemPath  Full path to the Niagara system
+ 	 * @param EmitterName Name of the emitter
+-	 * @param Stage       "ParticleSpawn", "ParticleUpdate", "EmitterSpawn", or "EmitterUpdate"
++	 * @param Stage       "ParticleSpawn", "ParticleUpdate", "EmitterSpawn", "EmitterUpdate",
++	 *                    or "SimulationStage:<StageName>"
+ 	 * @param DesiredName Suggested module name (a unique name is generated if empty/taken)
+ 	 * @return Result with module_name and script_path on success
+ 	 *
+@@ -345,7 +401,8 @@ public:
+ 	 *
+ 	 * @param Direction "Input" or "Output"
+ 	 * @param TypeName  "float","int","bool","Vector"/"vec3","vec2","vec4","Position","Color","LinearColor",
+-	 *                  or a data-interface type: "ArrayFloat","ArrayVector","ArrayInt","Grid2D","RenderTarget2D"
++	 *                  or a data-interface type: "ArrayFloat","ArrayVector","ArrayInt","Grid2D",
++	 *                  "RasterizationGrid3D","RenderTarget2D"
+ 	 * @return Result with pin info in Message on success
+ 	 *
+ 	 * Example:
+diff --git a/Source/VibeUE/VibeUE.Build.cs b/Source/VibeUE/VibeUE.Build.cs
+index 1b2d6e8..3a3b79b 100644
+--- a/Source/VibeUE/VibeUE.Build.cs
++++ b/Source/VibeUE/VibeUE.Build.cs
+@@ -86,6 +86,7 @@ public class VibeUE : ModuleRules
+ 				"InputCore",              // For input types
+ 				"ImageWrapper",           // For image encoding/decoding
+ 				"DesktopPlatform",        // For file dialogs
++				"NiagaraCore",            // For UNiagaraMergeable simulation-stage merge ids
+ 				"Niagara",                // For Niagara VFX runtime classes
+ 				"NiagaraEditor",          // For Niagara editor utilities and factories
+ 				"AnimGraph",              // For AnimGraphNode types (state machines, states)
