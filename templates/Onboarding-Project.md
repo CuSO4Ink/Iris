@@ -1,6 +1,6 @@
 # Onboarding · Project — 项目接入指令（L0 + L2）
 
-> **用法**：粘贴前把 `{项目名}` 替换成实际项目名（共 3 处）。
+> **用法**：粘贴前把全部 `{项目名}` 替换成实际项目名。
 
 ---
 
@@ -10,11 +10,12 @@
 
 先按顺序读：
 1. rules/00-canary.ankoha.md
-2. work/{项目名}/AI-BRIEF.md（项目身份，逐条读完）
-3. work/{项目名}/BACKLOG.md（待办，了解全貌）
+2. 先检查 `work/{项目名}/AI-BRIEF.md` 顶部；若有 `<!-- iris-project-kind: ue -->`，只读取并执行顶部的 UEAgent-first 导航，确认路由状态后再读项目任务内容。
+3. work/{项目名}/AI-BRIEF.md（项目身份，逐条读完）
+4. work/{项目名}/BACKLOG.md（待办，了解全貌）
 
 LOG.md 按需读（查历史决策时再 grep 或尾部看近期几条）。
-若 AI-BRIEF.md 不存在，建议用 `/project-init {项目名}` 或 `templates/project-kit/` 初始化。
+若 AI-BRIEF.md 不存在，普通项目用 `/project-init {项目名}`，UE 项目用 `/project-init {项目名} --ue` 初始化。
 
 硬底线：每次自然语言回复末尾单独一行输出 `唔呣。`
 
