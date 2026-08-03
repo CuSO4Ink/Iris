@@ -8,8 +8,9 @@ Only unresolved work lives here. Completed decisions belong in `LOG.md`.
       dispose request/context streams, cap request/response bytes, bind lifetime to the UE session,
       and recycle on a memory/request budget. One-shot/native MCP remain failure fallbacks. Verified
       with temporary guarded daemons; details in `LOG.md`.
-- [ ] Rebuild and live-probe the packaged advanced Niagara authoring profile; until then,
-      `RequestNewTypedPin`/SimulationStage mutation remains task-gated and unverified.
+- [x] Rebuild and live-probe the packaged advanced Niagara authoring profile. Bootstrap now
+      applies it with `-ApplyNiagaraAuthoringProfile`; the route and doctor gate the matching
+      `RequestNewTypedPin`/SimulationStage authoring surface.
 - [x] Rebuild the UE v2+v3 MCP tool-search patches and live-probe `detail=call`; v3 is loaded in
       Abyss and the raw response is structured-only. The effect classifier was corrected to use
       the tool leaf name, so `get_expressions` reports `read` instead of matching `editor`.

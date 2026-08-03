@@ -4,6 +4,10 @@ This document records reusable engineering knowledge for authoring Niagara graph
 
 Related patch package: `../patches/niagara-mcp-authoring/README.md`.
 
+The verified UEAgent profile is installed with `scripts/bootstrap.ps1 -ApplyNiagaraAuthoringProfile`.
+Bootstrap applies the revision-adapted engine export patch and the VibeUE composite together,
+records `vibeUEProfile=niagara-authoring`, and never applies the core VibeUE patch alongside it.
+
 ## 1. Why engine exports are required
 
 Niagara dynamic nodes maintain more state than their visible `UEdGraphPin` array. Custom HLSL and Parameter Map nodes also maintain Add pins, hidden default pins, type metadata, and function signatures.

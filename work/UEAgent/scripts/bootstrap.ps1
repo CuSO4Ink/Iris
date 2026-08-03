@@ -9,6 +9,7 @@ param(
     [string]$VibeUERef = '271f48771d077179fb597dc285ab5b898c5e8038',
     [string]$Endpoint = 'http://127.0.0.1:8000/mcp',
     [switch]$PreserveExistingVibeUE,
+    [switch]$ApplyNiagaraAuthoringProfile,
     [switch]$ApplyEngineNiagaraPatch,
     [switch]$ApplyMcpToolSearchPatches,
     [switch]$CheckOnly,
@@ -41,8 +42,14 @@ function Get-NormalizedFileSha256($Path) {
 }
 
 function Test-GitPatchApplied($Repository, $Patch) {
-    & git -C $Repository apply --reverse --check $Patch 2>$null
-    $LASTEXITCODE -eq 0
+    $previousErrorAction = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = 'Continue'
+        & git -C $Repository apply --reverse --check $Patch 2>$null
+        return ($LASTEXITCODE -eq 0)
+    } finally {
+        $ErrorActionPreference = $previousErrorAction
+    }
 }
 
 function Ensure-GitPatchApplied($Repository, $Patch, $Label) {
@@ -115,12 +122,17 @@ Offline source/cache/config/log analysis may proceed, but must not claim live ed
 $UProject = Resolve-RequiredPath $UProject 'UProject'
 $EngineRoot = Resolve-RequiredPath $EngineRoot 'Engine root'
 $ueAgentRoot = Split-Path $PSScriptRoot -Parent
-$vibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-ueagent.patch') 'UEAgent VibeUE patch'
+$coreVibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-ueagent.patch') 'UEAgent VibeUE patch'
+$authoringVibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\vibeue\vibeue-ueagent-authoring.patch') 'UEAgent Niagara authoring VibeUE patch'
 $engineNiagaraPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-niagara-toolsets.patch') 'UEAgent Niagara Toolsets patch'
+$engineNiagaraAuthoringPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\ue-5.8\niagaraeditor-export-authoring-apis-current.patch') 'UEAgent Niagara authoring engine patch'
 $mcpToolSearchV2PatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-tool-search-v2.patch') 'UEAgent MCP tool-search v2 patch'
 $mcpToolSearchV3PatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-tool-search-v3-call-view.patch') 'UEAgent MCP tool-search v3 patch'
+$vibeProfile = if ($ApplyNiagaraAuthoringProfile) { 'niagara-authoring' } else { 'base' }
+$vibePatchPath = if ($ApplyNiagaraAuthoringProfile) { $authoringVibePatchPath } else { $coreVibePatchPath }
 $vibePatchSha256 = Get-NormalizedFileSha256 $vibePatchPath
 $engineNiagaraPatchSha256 = Get-NormalizedFileSha256 $engineNiagaraPatchPath
+$engineNiagaraAuthoringPatchSha256 = Get-NormalizedFileSha256 $engineNiagaraAuthoringPatchPath
 $mcpToolSearchV2PatchSha256 = Get-NormalizedFileSha256 $mcpToolSearchV2PatchPath
 $mcpToolSearchV3PatchSha256 = Get-NormalizedFileSha256 $mcpToolSearchV3PatchPath
 $projectRoot = Split-Path $UProject -Parent
@@ -140,6 +152,10 @@ $buildVersion = Get-Content -Raw -LiteralPath $buildVersionPath | ConvertFrom-Js
 if ($buildVersion.MajorVersion -ne 5 -or $buildVersion.MinorVersion -ne 8) {
     throw "UE 5.8 is required; found $($buildVersion.MajorVersion).$($buildVersion.MinorVersion)."
 }
+$engineNiagaraAuthoringPatchApplied = Test-GitPatchApplied $EngineRoot $engineNiagaraAuthoringPatchPath
+if (-not $CheckOnly -and -not $ApplyNiagaraAuthoringProfile -and $engineNiagaraAuthoringPatchApplied) {
+    throw 'The engine has the Niagara authoring patch; rerun with -ApplyNiagaraAuthoringProfile so VibeUE uses the matching composite.'
+}
 
 if ($CheckOnly) {
     $mcpPath = Join-Path $projectRoot '.mcp.json'
@@ -158,9 +174,6 @@ if ($CheckOnly) {
     $actualRef = (& git -C $vibePath rev-parse HEAD).Trim()
     Assert-LastExitCode 'Could not read VibeUE revision'
     if ($actualRef -ne $VibeUERef) { throw "VibeUE revision is $actualRef; expected $VibeUERef" }
-    if (-not (Test-GitPatchApplied $vibePath $vibePatchPath)) {
-        throw 'The packaged UEAgent VibeUE patch is not applied.'
-    }
     $mcp = Get-Content -Raw -LiteralPath $mcpPath | ConvertFrom-Json
     if ($mcp.mcpServers.'ue-editor'.url -ne $Endpoint) { throw "MCP endpoint is not configured as $Endpoint." }
     $settings = Get-Content -Raw -LiteralPath $settingsPath
@@ -169,12 +182,33 @@ if ($CheckOnly) {
     }
     $route = Get-Content -Raw -LiteralPath $routePath | ConvertFrom-Json
     if ($route.schema -ne 'ueagent-route-v1') { throw "Unsupported UEAgent route schema: $($route.schema)" }
+    $routeVibeProfile = if ($route.PSObject.Properties.Name -contains 'vibeUEProfile') {
+        [string]$route.vibeUEProfile
+    } else {
+        'base'
+    }
+    if ($routeVibeProfile -notin @('base', 'niagara-authoring')) {
+        throw "Unsupported UEAgent VibeUE profile: $routeVibeProfile"
+    }
+    if ($ApplyNiagaraAuthoringProfile -and $routeVibeProfile -ne 'niagara-authoring') {
+        throw 'The route was not bootstrapped with -ApplyNiagaraAuthoringProfile.'
+    }
+    $expectedVibePatchPath = if ($routeVibeProfile -eq 'niagara-authoring') {
+        $authoringVibePatchPath
+    } else {
+        $coreVibePatchPath
+    }
+    $expectedVibePatchSha256 = if ($routeVibeProfile -eq 'niagara-authoring') {
+        Get-NormalizedFileSha256 $authoringVibePatchPath
+    } else {
+        Get-NormalizedFileSha256 $coreVibePatchPath
+    }
     foreach ($pair in @(
         @('ueAgentRoot', $ueAgentRoot),
         @('uProject', $UProject),
         @('engineRoot', $EngineRoot),
         @('endpoint', $Endpoint),
-        @('vibeUEPatchSha256', $vibePatchSha256)
+        @('vibeUEPatchSha256', $expectedVibePatchSha256)
     )) {
         if ([string]$route.($pair[0]) -ne [string]$pair[1]) {
             throw "UEAgent route mismatch for $($pair[0]): $($route.($pair[0]))"
@@ -183,6 +217,16 @@ if ($CheckOnly) {
     $agents = Get-Content -Raw -LiteralPath $agentsPath
     if ($agents -notmatch '(?m)^<!-- UEAGENT_GATE_START -->$') {
         throw "UEAgent gate is missing from $agentsPath"
+    }
+    if (-not (Test-GitPatchApplied $vibePath $expectedVibePatchPath)) {
+        throw "The routed UEAgent VibeUE profile is not applied: $routeVibeProfile"
+    }
+    if ($routeVibeProfile -eq 'niagara-authoring') {
+        if (-not $route.engineNiagaraAuthoringPatchSha256 -or
+            [string]$route.engineNiagaraAuthoringPatchSha256 -ne $engineNiagaraAuthoringPatchSha256 -or
+            -not (Test-GitPatchApplied $EngineRoot $engineNiagaraAuthoringPatchPath)) {
+            throw 'The routed UE 5.8 Niagara authoring profile does not match the installed engine.'
+        }
     }
     if ($route.engineNiagaraPatchSha256) {
         if ([string]$route.engineNiagaraPatchSha256 -ne $engineNiagaraPatchSha256 -or
@@ -246,6 +290,14 @@ if ($ApplyEngineNiagaraPatch -and -not $engineNiagaraPatchApplied) {
     }
     Ensure-GitPatchApplied $EngineRoot $engineNiagaraPatchPath 'UE 5.8 Niagara Toolsets patch'
     $engineNiagaraPatchApplied = $true
+}
+
+if ($ApplyNiagaraAuthoringProfile -and -not $engineNiagaraAuthoringPatchApplied) {
+    if (-not (Test-Path -LiteralPath (Join-Path $EngineRoot '.git'))) {
+        throw 'Applying the Niagara authoring profile requires a source-engine Git checkout.'
+    }
+    Ensure-GitPatchApplied $EngineRoot $engineNiagaraAuthoringPatchPath 'UE 5.8 Niagara authoring engine patch'
+    $engineNiagaraAuthoringPatchApplied = $true
 }
 
 $mcpToolSearchV3Applied = Test-GitPatchApplied $EngineRoot $mcpToolSearchV3PatchPath
@@ -315,10 +367,14 @@ $route = [ordered]@{
     engineRoot = $EngineRoot
     endpoint = $Endpoint
     vibeUERef = $VibeUERef
+    vibeUEProfile = $vibeProfile
     vibeUEPatchSha256 = $vibePatchSha256
 }
 if ($engineNiagaraPatchApplied) {
     $route['engineNiagaraPatchSha256'] = $engineNiagaraPatchSha256
+}
+if ($engineNiagaraAuthoringPatchApplied) {
+    $route['engineNiagaraAuthoringPatchSha256'] = $engineNiagaraAuthoringPatchSha256
 }
 if ($mcpToolSearchPatchesApplied) {
     $route['mcpToolSearchV2PatchSha256'] = $mcpToolSearchV2PatchSha256

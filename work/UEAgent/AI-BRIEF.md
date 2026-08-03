@@ -128,15 +128,17 @@ stays in `notes/mcp-pitfalls.md` with provenance.
 The reproducible base is UE 5.8 native MCP plus pinned VibeUE
 `271f48771d077179fb597dc285ab5b898c5e8038` and `patches/vibeue-ueagent.patch`. Bootstrap applies
 that extension and records its checksum in the target route. The optional
-`patches/ue58-niagara-toolsets.patch` is recorded only when present. Source presence is not runtime
-proof: doctor reports advanced hooks as `PRESENT_UNVERIFIED` until a task-specific live probe
-succeeds, and Niagara scratch-pin mutation remains blocked by default.
+`patches/ue58-niagara-toolsets.patch` is recorded only when present. Source presence alone is not
+runtime proof for that separate toolset extension; use `-ProbeAdvancedCapabilities` when it is
+routed.
 
 The remote Niagara authoring overlap is resolved under
 `patches/niagara-mcp-authoring/`: use the revision-adapted engine patch plus
-`vibeue/vibeue-ueagent-authoring.patch` as one advanced profile. That composite replaces the
-core VibeUE patch; never apply both. It is packaged for explicit opt-in only and remains
-`PRESENT_UNVERIFIED` until a clean rebuild and disposable-asset probe pass.
+`vibeue/vibeue-ueagent-authoring.patch` as one verified advanced profile. Bootstrap applies it
+with `-ApplyNiagaraAuthoringProfile`, records `vibeUEProfile=niagara-authoring` and the matching
+engine patch fingerprint, and never layers it on top of the core VibeUE patch. The profile is the
+required route for dynamic pin, Simulation Stage, Grid DI, RenderTarget2D, RasterizationGrid3D,
+and Custom HLSL authoring.
 
 `patches/ue58-mcp-tool-search-v2.patch` is the optional UE 5.8 catalog/projection optimization;
 `patches/ue58-mcp-tool-search-v3-call-view.patch` adds compact authoritative discovery. With v3,

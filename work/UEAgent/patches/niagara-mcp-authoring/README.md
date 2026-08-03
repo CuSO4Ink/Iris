@@ -39,9 +39,10 @@ git -C <VIBEUE_ROOT> apply --check <IRIS_ROOT>\work\UEAgent\patches\niagara-mcp-
 git -C <VIBEUE_ROOT> apply <IRIS_ROOT>\work\UEAgent\patches\niagara-mcp-authoring\vibeue\vibeue-ueagent-authoring.patch
 ```
 
-The composite VibeUE patch replaces `patches/vibeue-ueagent.patch` for an advanced authoring
-profile; never apply both. The normal UEAgent bootstrap still uses the smaller core patch and
-does not enable this unverified authoring profile automatically.
+The composite VibeUE patch replaces `patches/vibeue-ueagent.patch` for the verified advanced
+authoring profile; never apply both. UEAgent bootstrap applies it automatically when passed
+`-ApplyNiagaraAuthoringProfile` and records the selected profile and patch fingerprints in the
+target route. The normal profile continues to use the smaller core patch.
 
 Then rebuild the editor target with the patched engine:
 

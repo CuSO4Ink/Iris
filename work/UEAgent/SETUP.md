@@ -23,14 +23,23 @@ UEAgent on another checkout.
 
 This baseline supports official typed tools plus the portable ReflectCache implementation. The
 optional `patches/ue58-niagara-toolsets.patch` adds script graph/HLSL/rapid-iteration and live
-component-state calls to a UE source checkout. Niagara scratch-pin mutation remains gated until a
-live probe verifies the active binary.
+component-state calls to a UE source checkout.
 
-For the optional advanced Niagara authoring profile, apply the revision-adapted engine patch and
-the conflict-resolved `patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch`.
+The verified advanced Niagara authoring profile covers dynamic `RequestNewTypedPin`, Simulation
+Stage, Grid2D, RenderTarget2D, RasterizationGrid3D, and Custom HLSL authoring. Bootstrap applies
+the revision-adapted engine patch and the conflict-resolved
+`patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch` together.
+<!-- BEGIN SUPERSEDED MANUAL PROFILE NOTE: DO NOT FOLLOW -->
 That composite already contains the core cache/embedded-script changes, so it replaces—not
 layers on top of—`patches/vibeue-ueagent.patch`. It is not applied by bootstrap or accepted as
 verified by source presence alone.
+<!-- SUPERSEDED: current bootstrap applies and validates this profile with -ApplyNiagaraAuthoringProfile. -->
+
+<!-- END SUPERSEDED MANUAL PROFILE NOTE -->
+
+The verified authoring profile is applied automatically with `-ApplyNiagaraAuthoringProfile`.
+It applies the matching engine export patch, selects the composite VibeUE patch instead of the
+core patch, and records `vibeUEProfile` plus `engineNiagaraAuthoringPatchSha256` in the route.
 
 ## Configure a target project
 
@@ -48,11 +57,24 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1 -UPr
 ```
 
 The switch still rejects a dirty checkout whose `HEAD` differs from the pinned baseline or does
-not contain the packaged UEAgent patch.
+not contain the selected UEAgent VibeUE profile patch.
 
 For a UE source checkout, add `-ApplyEngineNiagaraPatch` when the optional Niagara Toolsets
 extension is required. Bootstrap first checks whether the exact patch is already present and
 refuses conflicts; it never resets engine changes.
+
+For the verified advanced Niagara authoring profile, pass `-ApplyNiagaraAuthoringProfile`:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1 `
+  -UProject "X:\Projects\MyGame\MyGame.uproject" `
+  -EngineRoot "X:\UnrealEngine" `
+  -ApplyNiagaraAuthoringProfile -ApplyMcpToolSearchPatches -Launch
+```
+
+The profile requires the pinned VibeUE baseline and a source-engine Git checkout. `-CheckOnly`
+reads the route profile and validates the selected composite and engine patch automatically; the
+profile switch is only needed when bootstrapping or when asserting the requested profile.
 
 The default reproducible engine profile is the compact MCP tool-search response. Pass
 `-ApplyMcpToolSearchPatches` to bootstrap; it applies v2 and then v3, records both SHA-256
@@ -95,16 +117,18 @@ The bootstrap:
    preserves the matching extension already present;
 3. optionally applies the default engine MCP tool-search profile and records its hashes;
 4. optionally applies the Niagara Toolsets profile and records its hash;
-5. enables the three plugins and writes the loopback MCP configuration;
-6. merges `ue-editor` into the target `.mcp.json`;
-7. writes machine-local `Saved/UEAgent/route.json`;
-8. creates or updates a small managed UEAgent gate in the target `AGENTS.md`;
-9. builds and optionally launches the editor.
+5. optionally applies the verified Niagara authoring profile and records both selected patch
+   fingerprints;
+6. enables the three plugins and writes the loopback MCP configuration;
+7. merges `ue-editor` into the target `.mcp.json`;
+8. writes machine-local `Saved/UEAgent/route.json`;
+9. creates or updates a small managed UEAgent gate in the target `AGENTS.md`;
+10. builds and optionally launches the editor.
 
 Use `-SkipBuild` only when matching binaries already exist. Use `-CheckOnly` to verify the
 installed state without changing it; add `-ApplyMcpToolSearchPatches` when that profile is
-required. The check compares route fingerprints, patch application state, plugins, endpoint, and
-the target-project gate.
+required. The check compares the route-selected VibeUE profile, patch fingerprints, patch
+application state, plugins, endpoint, and the target-project gate.
 
 ## Run the mandatory preflight
 

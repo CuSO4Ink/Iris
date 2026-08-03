@@ -28,7 +28,8 @@
         "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch",
         "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch"
       ],
-      "bootstrap": "explicit-opt-in",
+      "bootstrap_switch": "-ApplyNiagaraAuthoringProfile",
+      "status": "verified",
       "warning": "This replaces the core VibeUE patch; never apply both profiles together."
     }
   },
@@ -36,7 +37,9 @@
     "patches/vibeue-ueagent.patch": "F9B6511CC0382FC61497890A8235B97E8F4EB3C6B5BD8B2B1CA585FCD260A597",
     "patches/ue58-niagara-toolsets.patch": "C3EB3E4FC8205EDCF472EF4EE41DB6946D43DFE50E84A9AE548366E01E21D4EA",
     "patches/ue58-mcp-tool-search-v2.patch": "39D9772619871B28DEAA2729325C87516841DDCBEE2518C3DA7E1DFD7E0F4B7F",
-    "patches/ue58-mcp-tool-search-v3-call-view.patch": "41439CDFFC2C4CBA5752DDD0AF4C5A7C062E97852D71E4113373BCA829E8C37E"
+    "patches/ue58-mcp-tool-search-v3-call-view.patch": "41439CDFFC2C4CBA5752DDD0AF4C5A7C062E97852D71E4113373BCA829E8C37E",
+    "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch": "1BD0229E7748700E633E0AFABE6107734C9185F93133AFEB9BB68DD6F964A2CB",
+    "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch": "EEF95DCD904783BC11997A777B19C31DAD5245476B29A504E5E43B9EA0909B3E"
   },
   "runtime": {
     "endpoint": "http://127.0.0.1:8000/mcp",
@@ -57,6 +60,7 @@
   },
   "verification": {
     "bootstrap": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatches",
+    "bootstrap_niagara_authoring": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyNiagaraAuthoringProfile -ApplyMcpToolSearchPatches",
     "static": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatches -CheckOnly",
     "doctor": "scripts/doctor.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json -Profile live",
     "route": "scripts/compact_context.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json"

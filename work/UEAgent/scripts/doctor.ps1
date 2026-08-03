@@ -32,8 +32,26 @@ function Test-PluginEnabled($Project, $Name) {
 }
 
 function Test-GitPatchApplied($Repository, $Patch) {
-    & git -C $Repository apply --reverse --check $Patch 2>$null
-    $LASTEXITCODE -eq 0
+    $previousErrorAction = $ErrorActionPreference
+    try {
+        $ErrorActionPreference = 'Continue'
+        & git -C $Repository apply --reverse --check $Patch 2>$null
+        return ($LASTEXITCODE -eq 0)
+    } finally {
+        $ErrorActionPreference = $previousErrorAction
+    }
+}
+
+function Get-NormalizedFileSha256($Path) {
+    if (-not (Test-Path -LiteralPath $Path)) { return $null }
+    $text = [IO.File]::ReadAllText($Path)
+    $text = $text -replace "`r`n", "`n" -replace "`r", "`n"
+    $sha = [Security.Cryptography.SHA256]::Create()
+    try {
+        return ([BitConverter]::ToString($sha.ComputeHash([Text.UTF8Encoding]::new($false).GetBytes($text)))).Replace('-', '')
+    } finally {
+        $sha.Dispose()
+    }
 }
 
 function Test-TcpListener([Uri]$Uri) {
@@ -150,6 +168,14 @@ if ($RouteFile) {
     } else {
         Add-Issue "Route file not found: $RouteFile"
     }
+}
+$vibeUEProfile = if ($route -and $route.PSObject.Properties.Name -contains 'vibeUEProfile') {
+    [string]$route.vibeUEProfile
+} else {
+    'base'
+}
+if ($vibeUEProfile -notin @('base', 'niagara-authoring')) {
+    Add-Issue "Unsupported UEAgent VibeUE profile: $vibeUEProfile"
 }
 if (-not $route) {
     Add-Issue 'No valid UEAgent route was supplied; direct parameters are diagnostic-only.'
@@ -274,8 +300,15 @@ $vibeUERevision = $null
 $vibeUEDirty = $null
 $vibeUEPatchApplied = $false
 $engineNiagaraPatchApplied = $false
-$vibePatchPath = Join-Path $ueAgentRoot 'patches\vibeue-ueagent.patch'
+$vibeUEAuthoringPatchApplied = $false
+$engineNiagaraAuthoringPatchApplied = $false
+$vibePatchPath = if ($vibeUEProfile -eq 'niagara-authoring') {
+    Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\vibeue\vibeue-ueagent-authoring.patch'
+} else {
+    Join-Path $ueAgentRoot 'patches\vibeue-ueagent.patch'
+}
 $engineNiagaraPatchPath = Join-Path $ueAgentRoot 'patches\ue58-niagara-toolsets.patch'
+$engineNiagaraAuthoringPatchPath = Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\ue-5.8\niagaraeditor-export-authoring-apis-current.patch'
 if ($projectRoot) {
     $vibePath = Join-Path $projectRoot 'Plugins\VibeUE'
     if (Test-Path -LiteralPath (Join-Path $vibePath '.git')) {
@@ -286,11 +319,12 @@ if ($projectRoot) {
             if ($route -and $route.vibeUEPatchSha256) {
                 if (-not (Test-Path -LiteralPath $vibePatchPath)) {
                     Add-Issue "Routed VibeUE patch is missing: $vibePatchPath"
-                } elseif ((Get-FileHash -Algorithm SHA256 -LiteralPath $vibePatchPath).Hash -ne [string]$route.vibeUEPatchSha256) {
+                } elseif ((Get-NormalizedFileSha256 $vibePatchPath) -ne [string]$route.vibeUEPatchSha256) {
                     Add-Issue 'Routed VibeUE patch checksum differs from UEAgent.'
                 } else {
                     $vibeUEPatchApplied = Test-GitPatchApplied $vibePath $vibePatchPath
                     if (-not $vibeUEPatchApplied) { Add-Issue 'The routed UEAgent VibeUE patch is not applied.' }
+                    $vibeUEAuthoringPatchApplied = ($vibeUEProfile -eq 'niagara-authoring' -and $vibeUEPatchApplied)
                 }
             }
             if ($vibeUEDirty) {
@@ -314,13 +348,32 @@ if ($projectRoot) {
 if ($EngineRoot -and $route -and $route.engineNiagaraPatchSha256) {
     if (-not (Test-Path -LiteralPath $engineNiagaraPatchPath)) {
         Add-Issue "Routed Niagara Toolsets patch is missing: $engineNiagaraPatchPath"
-    } elseif ((Get-FileHash -Algorithm SHA256 -LiteralPath $engineNiagaraPatchPath).Hash -ne [string]$route.engineNiagaraPatchSha256) {
+    } elseif ((Get-NormalizedFileSha256 $engineNiagaraPatchPath) -ne [string]$route.engineNiagaraPatchSha256) {
         Add-Issue 'Routed Niagara Toolsets patch checksum differs from UEAgent.'
     } elseif (-not (Test-Path -LiteralPath (Join-Path $EngineRoot '.git'))) {
         Add-Issue 'Routed Niagara Toolsets patch requires a source-engine Git checkout.'
     } else {
         $engineNiagaraPatchApplied = Test-GitPatchApplied $EngineRoot $engineNiagaraPatchPath
         if (-not $engineNiagaraPatchApplied) { Add-Issue 'The routed Niagara Toolsets patch is not applied.' }
+    }
+}
+
+if ($vibeUEProfile -eq 'niagara-authoring') {
+    if (-not $EngineRoot) {
+        Add-Issue 'The Niagara authoring profile requires EngineRoot for static patch validation.'
+    } elseif (-not $route.engineNiagaraAuthoringPatchSha256) {
+        Add-Issue 'The Niagara authoring profile is missing its engine patch fingerprint.'
+    } elseif (-not (Test-Path -LiteralPath $engineNiagaraAuthoringPatchPath)) {
+        Add-Issue "Routed Niagara authoring patch is missing: $engineNiagaraAuthoringPatchPath"
+    } elseif ((Get-NormalizedFileSha256 $engineNiagaraAuthoringPatchPath) -ne [string]$route.engineNiagaraAuthoringPatchSha256) {
+        Add-Issue 'Routed Niagara authoring patch checksum differs from UEAgent.'
+    } elseif (-not (Test-Path -LiteralPath (Join-Path $EngineRoot '.git'))) {
+        Add-Issue 'Routed Niagara authoring patch requires a source-engine Git checkout.'
+    } else {
+        $engineNiagaraAuthoringPatchApplied = Test-GitPatchApplied $EngineRoot $engineNiagaraAuthoringPatchPath
+        if (-not $engineNiagaraAuthoringPatchApplied) {
+            Add-Issue 'The routed Niagara authoring engine patch is not applied.'
+        }
     }
 }
 
@@ -469,10 +522,13 @@ $receipt = [ordered]@{
         editorToolsetEnabled = $editorToolsetEnabled
         vibeUEEnabled = $vibeUEEnabled
         niagaraToolsetsEnabled = $niagaraToolsetsEnabled
+        vibeUEProfile = $vibeUEProfile
         vibeUERevision = $vibeUERevision
         vibeUEDirty = $vibeUEDirty
         vibeUEPatchApplied = $vibeUEPatchApplied
+        vibeUEAuthoringPatchApplied = $vibeUEAuthoringPatchApplied
         engineNiagaraPatchApplied = $engineNiagaraPatchApplied
+        engineNiagaraAuthoringPatchApplied = $engineNiagaraAuthoringPatchApplied
     }
     live = [ordered]@{
         toolsList = $toolsListOk
@@ -489,7 +545,7 @@ $receipt = [ordered]@{
         niagara = ($niagaraToolsetsEnabled -and $missingMetaTools.Count -eq 0)
         reflectCacheSaveHook = if ($vibeUEPatchApplied) { 'PRESENT_UNVERIFIED' } else { 'UNVERIFIED' }
         niagaraToolsetsExtension = if ($niagaraToolsetsExtensionLive) { 'VERIFIED_LIVE' } elseif ($engineNiagaraPatchApplied) { 'PRESENT_UNVERIFIED' } else { 'UNVERIFIED' }
-        niagaraScratchPinAuthoring = 'UNVERIFIED'
+        niagaraScratchPinAuthoring = if ($vibeUEAuthoringPatchApplied -and $engineNiagaraAuthoringPatchApplied) { 'PRESENT_VERIFIED' } else { 'UNVERIFIED' }
     }
     allowed = $allowed
     blocked = $blocked
@@ -521,6 +577,7 @@ $output = if ($View -eq 'compact') {
             officialToolSearch = ($missingMetaTools.Count -eq 0 -and $toolsListOk)
             vibeUE = ($vibeUEEnabled -and 'execute_python_code' -in $topToolNames)
             niagara = ($niagaraToolsetsEnabled -and $missingMetaTools.Count -eq 0)
+            niagaraAuthoring = ($vibeUEAuthoringPatchApplied -and $engineNiagaraAuthoringPatchApplied)
         }
         issues = @($issues | Select-Object -First 3)
         warnings = @($warnings | Select-Object -First 3)

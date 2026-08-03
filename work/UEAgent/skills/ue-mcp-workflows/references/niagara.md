@@ -40,9 +40,11 @@ Do not assume `AddPin` / `ConnectPins` is safe. In the SSPR incident, VibeUE use
 `Signature.Inputs/Outputs` and Niagara asserted during compile/UI traversal.
 
 The former crash sequence passed only after a UE 5.8 build exported the required Niagara editor
-APIs and VibeUE used `RequestNewTypedPin`. The pinned portable UEAgent baseline does not prove
-that patch. Unless the active build is explicitly verified, allow scratch inspection but block
-dynamic pin mutation or isolate it in a disposable system.
+APIs and VibeUE used `RequestNewTypedPin`. The verified UEAgent route is the
+`vibeUEProfile=niagara-authoring` bootstrap profile: it applies the revision-adapted engine patch
+and the conflict-resolved VibeUE composite as one unit. Require that profile and a healthy doctor
+receipt before dynamic pin mutation; otherwise allow scratch inspection but block mutation or
+isolate it in a disposable system.
 
 Do not call `NiagaraScratchPadService` from inside `ProgrammaticToolset`: two real runs timed
 out with no mutation. Prefer its discovered top-level route. If only Python exposes the needed

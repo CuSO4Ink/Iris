@@ -302,3 +302,14 @@ UEAgent changes were split into four functional commits and pushed to
 extracted independently: all seven PowerShell scripts parsed with zero errors, all manifest patch
 hashes matched after newline normalization, and the manifest, daemon, ReflectCache protocol, and
 patch profiles were present. No unrelated Iris project changes were staged or pushed.
+
+### 2026-08-03 - Promote verified Niagara authoring to bootstrap
+
+The validated UE 5.8 Niagara authoring build is now a first-class bootstrap profile. Pass
+`-ApplyNiagaraAuthoringProfile` to apply the revision-adapted engine export patch and the
+conflict-resolved VibeUE composite as one unit. The composite replaces the core VibeUE patch; it
+is never layered on top of it. Bootstrap records `vibeUEProfile` and
+`engineNiagaraAuthoringPatchSha256` in `Saved/UEAgent/route.json`, and `-CheckOnly` validates the
+selected VibeUE/engine pair. Doctor reports the profile and `niagaraAuthoring` capability so the
+Niagara SOP can permit dynamic pin, Simulation Stage, Grid DI, RenderTarget2D, RasterizationGrid3D,
+and Custom HLSL authoring only on the matching route.
