@@ -286,3 +286,19 @@ request.
 Ports 18772-18775 are closed, no daemon process remains, UE stayed PID 49816, and no UE asset was
 mutated or saved. Exact historical LOH retention still requires a dump; these guards limit blast
 radius without claiming a single proven retained object.
+
+### 2026-08-03 - Portable stack release and remote reproduction check
+
+The reproducible stack is now described by `STACK-MANIFEST.json`. Bootstrap accepts
+`-ApplyMcpToolSearchPatches`, applies the v2 then v3 engine patches, records both fingerprints in
+the route, and `-CheckOnly` verifies the same profile. Patch fingerprints normalize line endings,
+so Windows CRLF checkouts and Git LF archives resolve to the same SHA-256. The canonical VibeUE
+baseline remains public `271f48771d077179fb597dc285ab5b898c5e8038`; the local Abyss checkout's
+`bf96d6b` merge of the public `5-8` branch is intentionally treated as a local update, not the
+portable baseline.
+
+UEAgent changes were split into four functional commits and pushed to
+`origin/codex/ueagent-portable-setup` at `274be1f`. A clean archive of that remote branch was
+extracted independently: all seven PowerShell scripts parsed with zero errors, all manifest patch
+hashes matched after newline normalization, and the manifest, daemon, ReflectCache protocol, and
+patch profiles were present. No unrelated Iris project changes were staged or pushed.
