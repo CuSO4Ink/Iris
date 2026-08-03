@@ -28,6 +28,18 @@ function Assert-LastExitCode($Message) {
     if ($LASTEXITCODE -ne 0) { throw "$Message (exit $LASTEXITCODE)" }
 }
 
+function Get-NormalizedFileSha256($Path) {
+    $text = [IO.File]::ReadAllText($Path)
+    $text = $text -replace "`r`n", "`n" -replace "`r", "`n"
+    $sha = [Security.Cryptography.SHA256]::Create()
+    try {
+        $bytes = [Text.UTF8Encoding]::new($false).GetBytes($text)
+        return ([BitConverter]::ToString($sha.ComputeHash($bytes))).Replace('-', '')
+    } finally {
+        $sha.Dispose()
+    }
+}
+
 function Test-GitPatchApplied($Repository, $Patch) {
     & git -C $Repository apply --reverse --check $Patch 2>$null
     $LASTEXITCODE -eq 0
@@ -107,10 +119,10 @@ $vibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-ue
 $engineNiagaraPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-niagara-toolsets.patch') 'UEAgent Niagara Toolsets patch'
 $mcpToolSearchV2PatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-tool-search-v2.patch') 'UEAgent MCP tool-search v2 patch'
 $mcpToolSearchV3PatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-tool-search-v3-call-view.patch') 'UEAgent MCP tool-search v3 patch'
-$vibePatchSha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $vibePatchPath).Hash
-$engineNiagaraPatchSha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $engineNiagaraPatchPath).Hash
-$mcpToolSearchV2PatchSha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $mcpToolSearchV2PatchPath).Hash
-$mcpToolSearchV3PatchSha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $mcpToolSearchV3PatchPath).Hash
+$vibePatchSha256 = Get-NormalizedFileSha256 $vibePatchPath
+$engineNiagaraPatchSha256 = Get-NormalizedFileSha256 $engineNiagaraPatchPath
+$mcpToolSearchV2PatchSha256 = Get-NormalizedFileSha256 $mcpToolSearchV2PatchPath
+$mcpToolSearchV3PatchSha256 = Get-NormalizedFileSha256 $mcpToolSearchV3PatchPath
 $projectRoot = Split-Path $UProject -Parent
 $projectName = [IO.Path]::GetFileNameWithoutExtension($UProject)
 $buildScript = Join-Path $EngineRoot 'Engine\Build\BatchFiles\Build.bat'
