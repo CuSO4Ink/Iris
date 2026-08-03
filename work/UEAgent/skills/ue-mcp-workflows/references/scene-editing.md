@@ -2,47 +2,47 @@
 
 ## Establish scope
 
-1. Query the current level and viewport/editor context.
-2. Identify exact actor/component refs; never rely on labels alone.
-3. For generated batches, choose one batch tag, semantic tags, and a root Outliner folder.
-4. Define cleanup before generation.
-5. Confirm whether the task authorizes asset saves, level saves, or neither.
+1. Read current level and editor context.
+2. Resolve exact actor/component refs; labels are not identities.
+3. For generated content, choose one batch tag, semantic tags, and root Outliner folder.
+4. Define the cleanup query before generation.
+5. Confirm whether asset save, level save, both, or neither is authorised.
 
-Default to the currently open level. Do not assume blank-level creation exists.
+Do not assume blank-level creation exists.
 
 ## Mutate actors and components
 
-- Use ActorTools for actor transform, label, tags, bounds, hierarchy, and component discovery.
-- Use ObjectTools for component properties after `list_properties` or a known schema.
-- Distinguish actor transform from component relative transform.
-- After mutation, read back transforms, properties, folder, tags, and components.
-- Use full level-object `refPath` values for actors and components.
+- Use `ActorTools` for transforms, labels, tags, bounds, hierarchy, and components.
+- Use `ObjectTools` for component properties after schema discovery.
+- Distinguish actor world transform from component relative transform.
+- Read back transform, properties, folder, tags, and components after mutation.
+- Use full level-object `refPath` values.
 
-For repeated operations, use one `ProgrammaticToolset` script and return a compact summary. Do not issue concurrent writers against the active level.
+Prefer direct typed actor creation. A real nested
+`ProgrammaticToolset → SceneTools.add_to_scene_from_class` call stalled while the direct call
+succeeded; batch that path only after an isolated Probe verifies the active build.
+
+For otherwise verified deterministic repetition, one `ProgrammaticToolset` call may return a
+compact summary. Never issue concurrent writers against the active level.
 
 ## Generate reversible content
 
-Every generated actor batch must have:
+Every generated batch needs:
 
 ```text
 batch tag + semantic tags + root Outliner folder + cleanup query
 ```
 
-Before deletion, query the tag/folder and report the exact count and scope. Delete only that scoped set.
+Before deletion, query and report the exact tag/folder scope. Zero Asset Registry referencers is
+not sufficient proof that an asset is safe to delete.
 
-## Validate scene behavior
+## Validate and save
 
-- Use deterministic camera transforms for comparisons.
-- Change one parameter or scene variable at a time.
-- Let shaders and temporal effects settle before visual comparison.
-- Keep a known control actor/material/lighting state for A/B.
+- Change one scene variable at a time and keep a known control for A/B.
+- Let shaders and temporal effects settle before comparison.
 - Verify technical facts separately from aesthetic approval.
+- Asset save never authorises level save; a level save may capture unrelated user changes.
+- Report formal saves, Dirty objects, and Autosaves separately.
 
-Ask the user before any viewport screenshot or capture. If the user is in the editor, prefer direct viewport confirmation.
-
-## Save deliberately
-
-- Saving an asset does not authorize saving its level.
-- Saving a level can capture unrelated user changes; inspect current scope first.
-- Keep preview assignments in Dirty state until reviewed.
-- Report which assets and levels were formally saved and which remain in memory or Autosave.
+Do not use Computer Use or mouse automation for Unreal. For selection, editor panels, screenshots,
+or aesthetic review, stop and give the user exact manual steps. Prefer the user's live viewport.

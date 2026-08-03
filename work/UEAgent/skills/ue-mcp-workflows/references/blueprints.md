@@ -1,43 +1,51 @@
 # Blueprint SOP
 
-## Evidence boundary
+## Read the sidecar before MCP
 
-The current official MCP stack exposes `editor_toolset.toolsets.blueprint.BlueprintTools`, but UEAgent has not yet verified every general graph-authoring operation. Describe the live toolset before use and label newly observed behavior accurately.
+Try `<PackageFile>.uasset.ai.md` first. A current `vibeue-blueprint-cache-v1` may answer saved
+parent, variables/CDO defaults, component decisions, dependencies, and graph topology. Graph
+sections are the official `BlueprintTools.read_graph_dsl` representation; do not invent a
+second IR.
 
-Do not reuse operational instructions from the retired UnrealGenAISupport/TCP 9877 stack. Keep those entries in `LOG.md` as history only.
+`generator: manual-pilot` means there is no save hook. Use targeted live reads when the source
+is newer, the package is dirty, placed-instance state matters, or the requested field is absent.
 
-## Inspect user-exported graphs
+## Keep targets distinct
 
-Use the project-root tool when the user copies Blueprint nodes as text:
+Blueprint asset defaults, Class Default Object, component template, placed instance, and runtime
+instance are different targets. Construction Script may overwrite placed-instance state.
+
+Describe the live `BlueprintTools` schema before authoring. Do not reuse instructions from the
+retired TCP 9877 stack.
+
+## Inspect user-exported selections
+
+When the user copies Blueprint nodes as text:
 
 ```powershell
-From the UEAgent project root:
-
-```bash
-python ./bp_clipboard_to_ai.py blueprint_clipboard.txt --json-out simplified.json --summary-out summary.txt
-```
+python .\bp_clipboard_to_ai.py blueprint_clipboard.txt --json-out simplified.json --summary-out summary.txt
 ```
 
-The parser intentionally preserves node semantics, pin types/defaults, and link relationships while dropping editor serialization noise. Treat its output as a compact representation of the exported selection, not proof of the entire Blueprint asset.
+The parser preserves node semantics, pin types/defaults, and links while dropping editor
+serialization noise. It proves only the copied selection, not the full asset.
 
-## Modify a Blueprint cautiously
+## Modify cautiously
 
-1. Record Blueprint path, class, parent, graph name, component tree, and compile state.
-2. Describe `BlueprintTools` and use only schema-confirmed operations.
-3. Isolate uncertain node or pin creation in a disposable Blueprint.
-4. Create one node chain or component change at a time.
-5. Compile the Blueprint.
+1. Record path, class, parent, graph, component tree, and compile/dirty state.
+2. Use only schema-confirmed operations.
+3. Probe uncertain node/pin creation in a disposable Blueprint.
+4. Apply one node chain or component change.
+5. Compile.
 6. Read back nodes, pins, connections, defaults, variables, or components.
-7. Verify an instance or PIE behavior when the user requested functional behavior.
-8. Save only after compile and behavior checks pass.
+7. Verify an instance/PIE result when behavior matters.
+8. Save only after compile and behavioral checks.
 
-Do not treat `compile succeeded` as sufficient proof of logic. Verify the intended pin connections and runtime effect independently.
+Compile success is not proof of intended wiring or runtime behavior.
 
-## Keep editor layers distinct
+Some VibeUE Blueprint property operations have saved implicitly. Until the active implementation
+proves otherwise, treat those calls as save operations and do not use them outside an authorised
+save boundary. Prefer official typed operations with explicit lifecycle behavior.
 
-- Blueprint asset defaults, the Class Default Object, placed instances, and runtime instances are different mutation targets.
-- Construction Script changes may overwrite placed-instance state.
-- Widget, Niagara, and other specialized editor actions may live outside generic UObject/Blueprint APIs.
-- If the official toolset cannot expose a required operation, report the boundary before proposing plugin C++, Editor Utility, or manual work.
-
-Add a recipe here only after an isolated official-stack Probe passes and cleans up.
+Widget, Niagara, and other specialized editor actions may live outside generic
+Blueprint/UObject APIs. If the official surface lacks the operation, report the boundary before
+proposing VibeUE Python, plugin C++, or a manual editor step.
