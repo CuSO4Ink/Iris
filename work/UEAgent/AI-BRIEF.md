@@ -1,70 +1,154 @@
 # UEAgent
 
-> **L2 项目身份**。接手本项目的 AI 必读。
+UEAgent is the canonical onboarding and operating layer for AI access to Unreal Engine 5.8.
+It is not an engine fork or another MCP server. It routes an AI to the available execution
+backend, defines what is safe, and keeps verified cross-project experience in one place.
 
-## 一句话介绍
+The complete progressive-disclosure and rollback record is
+[PROGRESSIVE-DISCLOSURE.md](PROGRESSIVE-DISCLOSURE.md). It defines the only compact-to-full
+expansion order; this brief remains the authority boundary summary.
 
-用 AI + MCP 协议通过自然语言操控 Unreal Engine 5.8（`Abyss` 工程）编辑器进行开发——把"打开编辑器点鼠标敲菜单"换成"跟 AI 说一句话"。当前以 UE 官方 MCP 插件为底座；VibeUE 已作为同端点、按需能力扩展完成接入验证，旧栈（WorkBuddy + UnrealGenAISupport / TCP 9877）已作废。
+## Authority boundaries
 
-## 当前状态
-
-**活跃** · 2026-07-23 已收口为路径无关的可迁移流程：仓库内包含安装、连接和验收入口，外部只依赖 UE 5.8 官方源码/安装与固定 commit 的 VibeUE。`Abyss` 在线验证基线仍为 VibeUE `271f487`、10 个顶层工具、30 个 service toolset、35 个核心 skill；数量只作历史观测，不作验收常量。
-
-## 当前焦点
-
-用真实开发需求验证“官方工具优先、VibeUE 补能力缺口”的分层；在项目内 `skills/ue-mcp-workflows/` 持续固化已验证 SOP。VibeUE `PerformanceService` 当前只能证明接口可调用，返回时序数据不可信，未进入作品证据链。
-
-## 技术栈与硬约束
-
-- **UE 项目**：任意本机 UE 5.8 `.uproject`；路径通过 `scripts/bootstrap.ps1 -UProject/-EngineRoot` 显式传入
-- **MCP 端点**：`http://127.0.0.1:8000/mcp`（streamable-http），UE 侧是官方 ModelContextProtocol 插件
-- **协议形态**：官方 Tool Search 的 3 个 meta tool（`list_toolsets` / `describe_toolset` / `call_tool`）仍在；VibeUE 同时直挂 7 个 direct tool，当前合计 10 个。数量是启动期发现结果，不再写死为协议常量
-- **常用官方 toolset**：`SceneTools` / `ActorTools` / `AssetTools` / `ProgrammaticToolset`；VibeUE 只补 transactions、Niagara scratchpad、领域服务等官方缺口
-- **接入方式**：原生支持 MCP 的宿主直连 UE 项目根目录 `.mcp.json`；不支持的宿主走仓库内 PowerShell gateway 兜底
-- **Python 边界**：官方 `ProgrammaticToolset` sandbox 不可 `import unreal`；只有 VibeUE `execute_python_code` 已验证可导入。两者不可混淆，任一 mutation 都服从同一套验真、单写者、清理与保存规则
-- **能力路由**：通用资产/Actor/场景/材质 CRUD 先用官方 typed tool；官方缺能力时再选 VibeUE service；任意 Python 仅作已发现、已限域的兜底，不作默认路径
-- **硬规则**：不假设可直接新建空白关卡；多 Actor/重复调用走批量脚本；生成内容必须带 batch tag + semantic tag + Outliner folder + cleanup 方案；delete/move/save/merge 属高风险操作，需先限定 tag/folder 范围
-- **旧栈（已作废，仅存历史参考）**：UnrealGenAISupport 插件 + TCP 9877 + 29 工具直接展开，UE 5.7.3。技术细节不再维护，历史记录见 `LOG.md`；通用踩坑经验已沉淀进 `notes/mcp-pitfalls.md`
-
-## 安装与外部依赖
-
-- `SETUP.md` 是跨设备安装唯一入口
-- `scripts/bootstrap.ps1` 负责插件固定版本、项目配置与构建
-- `scripts/mcp_gateway.ps1` 是非原生 MCP 宿主的仓库内兜底；不再依赖本机外置 Access Pack
-- 外部仅保留稳定源码：UE 5.8 官方发行/源码，以及 VibeUE GitHub commit `271f48771d077179fb597dc285ab5b898c5e8038`
-- 本机引擎分支和未提交 NiagaraToolsets 修改不是 UEAgent 基线依赖
-
-## 术语表
-
-| 术语 | 含义 |
+| Authority | Owns |
 |---|---|
-| **meta tool** | 官方 Tool Search 保留的 3 个间接路由工具；安装扩展后不代表顶层只会有这 3 个 |
-| **toolset** | 按领域分组的真实工具集合，如 `editor_toolset.toolsets.scene.SceneTools` |
-| **VibeUE service** | VibeUE 暴露的领域服务；只在官方工具缺能力且 live discovery 确认 schema 后调用 |
-| **gateway** | `mcp_gateway.ps1`，给不支持原生 MCP 的宿主用的 PowerShell 兜底调用脚本 |
-| **batch tag** | 批量生成 Actor 时必须打的统一标签，用于后续查找/清理 |
+| Target UE project | Product intent, asset meaning, project conventions, visual goals |
+| Live Unreal Editor | Dirty/in-memory state, current level, compile and runtime state |
+| `.uasset` | Saved asset truth |
+| Reflect Cache | Disposable saved-state read model; never writes back to UE |
+| UEAgent | Connection gate, capability routing, safety rules, reusable MCP experience |
+| Native MCP / VibeUE | Replaceable execution adapters, not policy sources |
 
-## 文档地图
+## Mandatory route
 
-- `AI-BRIEF.md` — 本文件
-- `SETUP.md` — 跨设备安装、固定依赖与验收入口
-- `scripts/bootstrap.ps1` / `scripts/mcp_gateway.ps1` — 配置与连接实现
-- `LOG.md` — 决策流水，凡是选了/否决了/踩坑/发现 都在这里追加
-- `BACKLOG.md` — 待办
-- `notes/mcp-pitfalls.md` — MCP 调用踩坑台账 + 已毕业经验（E1/E2 通用，长期有效，跨旧新栈）
-- `skills/ue-mcp-workflows/` — UE MCP 工作流 Skill 主源；平台需要时再迁移，不在平台目录内主维护
+```text
+target project AGENTS.md
+-> HOTPATH.md + compact_context.ps1
+-> CACHE_READ or UEAgent doctor receipt
+-> cache or live capability route
+-> target project brief/task
+-> one scoped operation
+-> independent verification
+-> explicit save boundary
+-> verified experience back to UEAgent
+```
 
-## 协作约定
+Run the doctor once per new AI/editor session and again after an editor restart, reconnect,
+timeout, or transport failure. Do not run it before every tool call.
 
-- **先自检再选接入方式**：原生支持 MCP → 读 UE 项目根目录 `.mcp.json`；不确定 → 走仓库内 gateway，不要自己实现握手/SSE 解析
-- **参数复杂用 `-ArgumentsFile`**：避免 shell 转义坑，别硬凹 `-ArgumentsJson`
-- **踩坑统一入项目**：连接器、gateway 与 UE MCP 问题都记 `notes/mcp-pitfalls.md`
-- **真实任务后做摩擦检查**：仅在重复调用、猜参重试、手工恢复、payload/延迟或能力缺口实际发生时，按 `skills/ue-mcp-workflows/references/core.md` 的闭环记录或改进；项目内 Skill/探针/gateway 可验证后直接更新，UE/VibeUE 插件和生产资产仍需用户批准
-- **截图类操作先问用户，不擅自跑** → 见 `notes/mcp-pitfalls.md` E2（唯一详情源，不在此复述）
+If `compact_context.ps1` returns `NEEDS_DOCTOR`, run doctor once and use its receipt directly;
+do not rerun compact context for the same task. A healthy receipt follows the listener PID and MCP
+session ID; the age limit is only a fallback when identity cannot be checked.
 
----
+`doctor -Profile quick` is only a route/listener check. A live call requires
+`doctor -Profile live` and its receipt. `compact_context.ps1` defaults to a compact envelope;
+use `-View detail` only for diagnosis.
 
-## 维护
+## Receipt states
 
-- 阶段切换 / 插件补丁合入 / 新增常用工作流 → 更新本文件
-- ≤ 100 行，超了拆到 notes/
+| State | Allowed | Blocked |
+|---|---|---|
+| `HEALTHY` | Cache, live reads, and task-gated mutation | Unauthorised save/delete/move/merge; unverified capabilities |
+| `DEGRADED` | Cache and only the live reads that the receipt proved | Mutation and save |
+| `OFFLINE` | Source, cache, config, and log analysis | Live-state claims and UE mutation |
+| `BLOCKED` | Fix route/configuration inputs | MCP work |
+
+`RESULT_UNKNOWN` is an operation outcome, not a connection state. A timeout after a possible
+mutation means read back the target before retrying.
+
+## Transport priority
+
+After the gate, Gateway is the default live client route (`scripts/mcp_gateway.ps1`; use
+`-AutoDaemon` for repeated calls). The platform/native MCP client remains the fallback for a
+Gateway client/daemon failure, a pre-operation timeout, or a client-only capability while the
+receipt is still healthy. If the endpoint/Editor is unhealthy, repair or remain offline. Both
+routes hit the same loopback UE MCP endpoint and follow the same schema, authority, one-writer,
+and readback rules. A post-mutation timeout must be read back before any transport switch or retry.
+Hosts with a trusted native MCP client may bypass Gateway for ordinary calls as a performance
+override when no Gateway shaping/session/debug feature is needed; this does not change the gate or
+authority rules. Doctor receipts follow the listener PID, MCP session ID, and plugin binary
+fingerprint; their age limit is only a fallback when identity cannot be checked.
+
+## Capability ladder
+
+Stop at the first rung that answers the task:
+
+1. Current `.uasset.ai.md` sidecar for saved-state read questions.
+2. Official typed MCP tool discovered from the live schema.
+3. VibeUE service for a confirmed official-tool gap.
+4. Narrow, discovered `execute_python_code` fallback with exact pre/postconditions.
+5. User-performed editor UI step.
+
+Do not use fixed tool counts as a health check. Tool and toolset registration is dynamic.
+Do not nest a service inside `ProgrammaticToolset` merely to reduce calls; Scene actor creation
+and Niagara scratch operations have both produced long stalls in that shape.
+
+## Operating invariants
+
+- One writer per UE object; never parallelize mutations against the same asset or level.
+- Discover tool schema, UObject properties, and graph pin names before writing.
+- Make one logical mutation, then verify through an independent signal.
+- Treat save, delete, move, merge, Undo/Redo, and level commit as separate high-risk boundaries.
+- Compile success and tool `success=true` are not behavioral proof.
+- Structural evidence belongs to AI; visual/aesthetic approval belongs to the user.
+- UI interaction is manual: UEAgent does not use Computer Use to drive Unreal.
+
+## Knowledge lifecycle
+
+```text
+Observed friction -> namespaced pitfall -> isolated Probe -> Verified domain rule
+                  -> small script/plugin fix only after real repetition
+```
+
+Mandatory instructions contain only stable rules. Project-specific or version-specific evidence
+stays in `notes/mcp-pitfalls.md` with provenance.
+
+## Repository map
+
+- `skills/ue-mcp-workflows/HOTPATH.md`, `scripts/compact_context.ps1` — hot-path routing and
+  compact session/asset context.
+
+- `SETUP.md`, `scripts/bootstrap.ps1` — install and target-project routing.
+- `STACK-MANIFEST.json` — machine-independent profile, patch hashes, daemon defaults, and
+  verification commands for reproducing this stack on another checkout.
+- `scripts/doctor.ps1` — machine-readable preflight receipt.
+- `scripts/mcp_gateway.ps1` — default live client route; it can reuse a project-scoped MCP session
+  and apply server-side response projection.
+- `scripts/mcp_gateway_daemon.ps1` — optional loopback daemon for warm-call latency and HTTP-client
+  reuse; it is not required for the normal cache-first route.
+- `patches/` — exact portable source extensions consumed by bootstrap.
+- `skills/ue-mcp-workflows/` — mandatory router, Core rules, and domain SOPs.
+- `projects/ReflectCache/` — sidecar protocol and implementation evidence.
+- `notes/mcp-pitfalls.md` — observed/conditional/version-specific evidence.
+- `BACKLOG.md` — only unresolved UEAgent work.
+- `LOG.md` — concise current-stack decisions.
+
+## Portability boundary
+
+The reproducible base is UE 5.8 native MCP plus pinned VibeUE
+`271f48771d077179fb597dc285ab5b898c5e8038` and `patches/vibeue-ueagent.patch`. Bootstrap applies
+that extension and records its checksum in the target route. The optional
+`patches/ue58-niagara-toolsets.patch` is recorded only when present. Source presence is not runtime
+proof: doctor reports advanced hooks as `PRESENT_UNVERIFIED` until a task-specific live probe
+succeeds, and Niagara scratch-pin mutation remains blocked by default.
+
+The remote Niagara authoring overlap is resolved under
+`patches/niagara-mcp-authoring/`: use the revision-adapted engine patch plus
+`vibeue/vibeue-ueagent-authoring.patch` as one advanced profile. That composite replaces the
+core VibeUE patch; never apply both. It is packaged for explicit opt-in only and remains
+`PRESENT_UNVERIFIED` until a clean rebuild and disposable-asset probe pass.
+
+`patches/ue58-mcp-tool-search-v2.patch` is the optional UE 5.8 catalog/projection optimization;
+`patches/ue58-mcp-tool-search-v3-call-view.patch` adds compact authoritative discovery. With v3,
+Gateway and daemon discovery defaults to `detail=call`; direct native callers can request
+`detail=full` for exact JSON Schema. The call result is structured-only and omits repeated toolset
+metadata, long descriptions, and the single-tool `tools` wrapper. `structured=true` on
+`call_tool` remains available for large result data. Abyss runtime proof was completed on
+2026-08-03: the rebuilt editor returned v3 `detail=call` as structured-only data, with
+`get_expressions.effect=read`.
+
+The default remote-reproduction command is `scripts/bootstrap.ps1` with
+`-ApplyMcpToolSearchPatches`; it applies v2 then v3 and records both patch hashes in the target
+route. `scripts/bootstrap.ps1 -CheckOnly -ApplyMcpToolSearchPatches` verifies the same profile
+without changing the target. The daemon is a UEAgent-owned runtime script with bounded defaults;
+it is not an engine patch and does not require an editor rebuild when only the daemon changes.
