@@ -11,6 +11,9 @@ Only unresolved work lives here. Completed decisions belong in `LOG.md`.
 - [x] Rebuild and live-probe the packaged advanced Niagara authoring profile. Bootstrap now
       applies it with `-ApplyNiagaraAuthoringProfile`; the route and doctor gate the matching
       `RequestNewTypedPin`/SimulationStage authoring surface.
+- [ ] Abyss target: cold-start the rebuilt editor and smoke-test the reflected Niagara authoring
+      surface on the current VibeUE `bf96d6b` baseline; do not mark the route active until that
+      live check passes.
 - [x] Rebuild the UE v2+v3 MCP tool-search patches and live-probe `detail=call`; v3 is loaded in
       Abyss and the raw response is structured-only. The effect classifier was corrected to use
       the tool leaf name, so `get_expressions` reports `read` instead of matching `editor`.
@@ -23,7 +26,10 @@ Only unresolved work lives here. Completed decisions belong in `LOG.md`.
 
 - [ ] Validate the packaged save hook on disposable assets for all five cache types, including
       no-op, failure-path, and format-version checks.
-- [ ] Handle asset rename/delete orphan sidecars.
+- [x] Add bounded live intent projections (`identity`, `topology`, `logic`, `runtime`, `hlsl`,
+      `changed`) with Material/Blueprint/Niagara aliases; explicit projections remain available.
+- [x] Add cache lifecycle reconciliation: recognized-format checks, source-hash rename repair,
+      orphan quarantine, and a project-local cache manifest. Dirty Editor state remains live-only.
 - [ ] Add external Niagara script caches only when a real edit needs their internal logic.
 
 ## P2 — add only after evidence

@@ -334,15 +334,87 @@ function Invoke-GatewayDaemonRequest($Url, $Request) {
 }
 
 function Get-ProjectionProfile($Name) {
-    switch ([string]$Name) {
+    $key = ([string]$Name).Trim().ToLowerInvariant().Replace('_', '-').Replace('.', '-')
+    $aliases = @{
+        'material-identity' = 'identity'; 'blueprint-identity' = 'identity'; 'niagara-identity' = 'identity'
+        'material-topology' = 'topology'; 'blueprint-topology' = 'topology'; 'niagara-topology' = 'topology'
+        'material-logic' = 'logic'; 'blueprint-logic' = 'logic'; 'niagara-logic' = 'logic'
+        'material-runtime' = 'runtime'; 'blueprint-runtime' = 'runtime'; 'niagara-runtime' = 'runtime'
+        'material-hlsl' = 'hlsl'; 'blueprint-hlsl' = 'hlsl'; 'niagara-hlsl' = 'hlsl'
+        'material-script' = 'hlsl'; 'blueprint-script' = 'hlsl'; 'niagara-script' = 'hlsl'
+        'changed-region' = 'changed'; 'changed-readback' = 'changed'
+        'material-changed-region' = 'changed'; 'blueprint-changed-region' = 'changed'; 'niagara-changed-region' = 'changed'
+        'material-changed-readback' = 'changed'; 'blueprint-changed-readback' = 'changed'; 'niagara-changed-readback' = 'changed'
+    }
+    if ($aliases.ContainsKey($key)) { $key = $aliases[$key] }
+    switch ($key) {
         'refs' {
             return [ordered]@{ fields = @('returnValue.refPath'); max_items = 256; structured = $true }
         }
         'compact' {
             return [ordered]@{ fields = @('returnValue'); max_items = 64; structured = $true }
         }
-        default { throw "Unknown projection profile: $Name. Available profiles: refs, compact." }
+        'identity' {
+            return [ordered]@{ fields = @(
+                'returnValue.refPath', 'returnValue.assetPath', 'returnValue.package', 'returnValue.name',
+                'returnValue.class', 'returnValue.type', 'returnValue.parent', 'returnValue.material',
+                'returnValue.status', 'returnValue.compileStatus', 'returnValue.dirty', 'returnValue.saved'
+            ); max_items = 32; structured = $true }
+        }
+        'topology' {
+            return [ordered]@{ fields = @(
+                'returnValue.refPath', 'returnValue.assetPath', 'returnValue.name', 'returnValue.class',
+                'returnValue.nodes.id', 'returnValue.nodes.name', 'returnValue.nodes.class', 'returnValue.nodes.type',
+                'returnValue.expressions.id', 'returnValue.expressions.name', 'returnValue.expressions.class', 'returnValue.expressions.type',
+                'returnValue.connections', 'returnValue.links', 'returnValue.pinLinks', 'returnValue.outputs',
+                'returnValue.graphs.name', 'returnValue.graphs.refPath', 'returnValue.emitters.name', 'returnValue.emitters.refPath',
+                'returnValue.stages.name', 'returnValue.stages.refPath', 'returnValue.modules.name', 'returnValue.modules.refPath',
+                'returnValue.components.name', 'returnValue.components.refPath', 'returnValue.dependencies'
+            ); exclude = @('returnValue.nodes.properties', 'returnValue.expressions.properties'); max_items = 256; structured = $true }
+        }
+        'logic' {
+            return [ordered]@{ fields = @(
+                'returnValue.refPath', 'returnValue.assetPath', 'returnValue.nodes', 'returnValue.expressions',
+                'returnValue.graph', 'returnValue.graphs', 'returnValue.connections', 'returnValue.links',
+                'returnValue.pinLinks', 'returnValue.execution', 'returnValue.operations', 'returnValue.statements', 'returnValue.logic'
+            ); exclude = @(
+                'returnValue.nodes.layout', 'returnValue.nodes.properties', 'returnValue.nodes.hlsl', 'returnValue.nodes.hlslCode',
+                'returnValue.expressions.layout', 'returnValue.expressions.properties', 'returnValue.expressions.hlsl', 'returnValue.expressions.hlslCode'
+            ); max_items = 512; structured = $true }
+        }
+        'runtime' {
+            return [ordered]@{ fields = @(
+                'returnValue.refPath', 'returnValue.assetPath', 'returnValue.status', 'returnValue.compile',
+                'returnValue.compileStatus', 'returnValue.dirty', 'returnValue.saved', 'returnValue.runtime',
+                'returnValue.runtimeState', 'returnValue.component', 'returnValue.overrides', 'returnValue.effectiveInputs',
+                'returnValue.renderers', 'returnValue.parameters', 'returnValue.warnings', 'returnValue.errors'
+            ); max_items = 128; structured = $true }
+        }
+        'hlsl' {
+            return [ordered]@{ fields = @(
+                'returnValue.hlsl', 'returnValue.hlslCode', 'returnValue.generatedHlsl', 'returnValue.generated_hlsl',
+                'returnValue.customHlsl', 'returnValue.custom_hlsl', 'returnValue.script', 'returnValue.scriptText',
+                'returnValue.code', 'returnValue.source'
+            ); max_items = 64; structured = $true }
+        }
+        'changed' {
+            return [ordered]@{ fields = @(
+                'returnValue.refPath', 'returnValue.assetPath', 'returnValue.changed', 'returnValue.changedRegion',
+                'returnValue.changedNodes', 'returnValue.nodes', 'returnValue.changedPins', 'returnValue.pins',
+                'returnValue.changedProperties', 'returnValue.properties', 'returnValue.connections', 'returnValue.compile',
+                'returnValue.compileStatus', 'returnValue.dirty', 'returnValue.saved', 'returnValue.status',
+                'returnValue.errors', 'returnValue.warnings'
+            ); exclude = @('returnValue.nodes.properties', 'returnValue.nodes.hlsl', 'returnValue.nodes.hlslCode'); max_items = 128; structured = $true }
+        }
+        default { throw "Unknown projection profile: $Name. Available profiles: refs, compact, identity, topology, logic, runtime, hlsl, changed (domain.intent aliases supported)." }
     }
+}
+
+function Get-IntentProjectionProfile($IntentName) {
+    if (-not $IntentName) { return $null }
+    $key = ([string]$IntentName).Trim().ToLowerInvariant().Replace('_', '-').Replace('.', '-')
+    if ($key -match '(identity|topology|logic|runtime|hlsl|script|changed|changed-readback)$') { return $key }
+    return $null
 }
 
 function Get-CompactSchemaType($Schema, $Label = '') {
@@ -852,6 +924,10 @@ try {
     $Projection = if ($request.PSObject.Properties.Name -contains 'projection') { $request.projection } else { $null }
     if ($null -eq $Projection -and -not $ProjectionProfile -and $View -in @('summary', 'refs')) {
         $ProjectionProfile = if ($View -eq 'refs') { 'refs' } else { 'compact' }
+    }
+    if ($null -eq $Projection -and -not $ProjectionProfile) {
+        $intentProfile = Get-IntentProjectionProfile $Intent
+        if ($intentProfile) { $ProjectionProfile = $intentProfile }
     }
     if ($null -eq $Projection -and $ProjectionProfile) { $Projection = Get-ProjectionProfile $ProjectionProfile }
     $action = [string]$request.action

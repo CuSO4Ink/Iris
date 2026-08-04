@@ -15,6 +15,42 @@ structured-only `detail=call`; explicit `detail=full` is still the exact-schema 
 This file keeps current-stack decisions only. Retired WorkBuddy /
 UnrealGenAISupport history remains available in Git history and is not operating guidance.
 
+### 2026-08-04 - Make the MCP shutdown guard part of every environment
+
+The VibeUE GameThread shutdown guard is now a required tail patch for both the base and Niagara
+authoring profiles. Bootstrap applies it idempotently, records
+`vibeUEMcpShutdownGuardPatchSha256` in the route, and `-CheckOnly` plus doctor reject a missing,
+changed, or unapplied guard. ReflectCache includes that fingerprint in generator identity so a
+lifecycle-patched adapter cannot silently share cache provenance with an older environment.
+An isolated Niagara-profile bootstrap wrote hash
+`8638899C684BFB47AB18F29718099D322FE824484889A13ECED56A0D33758250`; `-CheckOnly` passed and
+quick doctor reported the guard applied with zero issues. The temporary fixture was removed.
+
+### 2026-08-03 - Compress the default AI context
+
+The default entry now keeps only navigation, route state, safety boundaries, and the next
+required action. `AGENTS.md`, `AI-BRIEF.md`, `HOTPATH.md`, and `SKILL.md` no longer repeat the
+full transport/projection/history explanation; `SETUP.md`, `LOG.md`, `BACKLOG.md`, the full
+protocol, and pitfall history are on-demand references. The measured entry is about 3.4k
+estimated tokens when all four files are needed, while ordinary cache routing reads only
+`AGENTS.md` + `HOTPATH.md` (about 1.3k); exact rules and rollback remain in the full contract.
+
+The safety gate is unchanged: cache-first, doctor receipt before live work, one writer,
+independent readback, explicit save, and no UI automation. This is a context-loading change,
+not a permission change.
+
+### 2026-08-03 - Trace one complete live MCP read
+
+With the Abyss Editor live and the receipt `HEALTHY`, a known Material read was traced without
+mutation: `initialize` request 160 chars, `notifications/initialized` 54, internal `tools/list`
+request 58 and response 11,207, one-tool `describe_toolset(detail=call)` request 207 and
+normalized result 183, then `call_tool` with the exact UObject ref and a server projection.
+The projection request was 364 chars. `get_expressions` with `max_items=3` returned 386 raw /
+330 normalized chars; the full 171-ref response was 16,757 raw / 16,701 normalized chars.
+The raw result contained `structuredContent` only (no duplicate text content), and Gateway's
+model-facing output was data-only. A current sidecar would have stopped before all of these live
+round trips with `CACHE_READ`.
+
 ### 2026-08-02 — Make Gateway the default transport
 
 After the cache/route/doctor gate, UEAgent now routes live reads and authorized mutations through
@@ -313,3 +349,23 @@ is never layered on top of it. Bootstrap records `vibeUEProfile` and
 selected VibeUE/engine pair. Doctor reports the profile and `niagaraAuthoring` capability so the
 Niagara SOP can permit dynamic pin, Simulation Stage, Grid DI, RenderTarget2D, RasterizationGrid3D,
 and Custom HLSL authoring only on the matching route.
+
+### 2026-08-03 - Add intent projections and cache lifecycle reconciliation
+
+Gateway/daemon `tool.call` now accepts bounded `identity`, `topology`, `logic`, `runtime`, `hlsl`,
+and `changed` projection profiles, including `material.*`, `blueprint.*`, and `niagara.*` aliases.
+Profiles use server-side dotted field projection and structured-only results; functions and
+referenced graphs remain separate assets. Logic excludes layout/properties/HLSL, while HLSL is an
+explicit view and is not silently truncated.
+
+`reflect_cache.ps1 -Action reconcile -ProjectRoot <PROJECT> -Repair` now maintains a project-local
+`Saved/UEAgent/cache-manifest.json`, rejects unsupported cache formats, rehomes a sidecar only on a
+unique source SHA-256 match, and quarantines unresolved orphan sidecars under
+`Saved/UEAgent/cache-orphans` instead of deleting them. `compact_context.ps1` exposes `FRESH`,
+`STALE`, `ORPHAN`, and `UNSUPPORTED_FORMAT` states and invalidates cache-first routing when the
+recorded plugin fingerprint changes. Dirty Editor memory remains a required live check.
+
+Verification: all seven PowerShell scripts parsed with zero errors; profile probes resolved the
+Material/Blueprint/Niagara aliases; an isolated fixture passed source-hash rename repair and
+orphan quarantine. A read-only Abyss audit reported 27 sidecars (21 fresh, 3 stale, 3 orphaned);
+no repair was applied to the user project.

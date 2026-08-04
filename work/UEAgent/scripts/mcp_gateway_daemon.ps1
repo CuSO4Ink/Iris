@@ -176,6 +176,10 @@ function Invoke-DaemonAction($Request) {
         $profile = if ($Request.view -eq 'refs') { 'refs' } else { 'compact' }
         $projection = Get-ProjectionProfile $profile
     }
+    if ($null -eq $projection -and $Request.intent) {
+        $intentProfile = Get-IntentProjectionProfile ([string]$Request.intent)
+        if ($intentProfile) { $projection = Get-ProjectionProfile $intentProfile }
+    }
     if ($null -eq $projection -and $Request.projectionProfile) {
         $projection = Get-ProjectionProfile ([string]$Request.projectionProfile)
     }

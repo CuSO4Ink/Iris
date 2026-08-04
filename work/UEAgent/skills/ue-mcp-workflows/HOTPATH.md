@@ -1,69 +1,58 @@
 # UEAgent hot path
 
-Use this card for ordinary AI work. Load `SKILL.md` and a domain reference only when the task
-needs live UE or mutation details. Do not load `SETUP.md`, `LOG.md`, `BACKLOG.md`, or the full
-pitfall ledger for a normal asset read.
+This is the default machine-facing card. For `CACHE_READ`, load only this card, the route,
+`compact_context.ps1`, and the sidecar view needed for the answer. Do not preload AI-BRIEF,
+SETUP, LOG, BACKLOG, Core, or every domain card. Full measurements and rollback are in
+[PROGRESSIVE-DISCLOSURE.md](../../PROGRESSIVE-DISCLOSURE.md).
 
-The complete progressive-disclosure contract, view bounds, receipts, measurements, and rollback
-map is [UEAgent/PROGRESSIVE-DISCLOSURE.md](../../PROGRESSIVE-DISCLOSURE.md).
+Budget before the MCP result: navigation <=1.5k estimated tokens, live read rules <=4k, mutation
+rules <=8k. If a task exceeds the budget, unload on-demand prose before weakening a safety gate.
 
-For an ordinary `CACHE_READ`, load only this card, `compact_context`, and the sidecar view needed
-for the answer. Do not pre-load `AI-BRIEF.md`, `SETUP.md`, `LOG.md`, `BACKLOG.md`, Core, or every
-domain card. Load Core plus one domain card only when the route reaches mutation/save or an
-unfamiliar live capability.
-
-## 1. Build one context envelope
+## Gate
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File `
-  <ueAgentRoot>\scripts\compact_context.ps1 `
-  -RouteFile <project>\Saved\UEAgent\route.json `
-  -AssetPath /Game/... -Domain material -Operation read `
-  -ReceiptFile <project>\Saved\UEAgent\doctor.json
+powershell -NoProfile -ExecutionPolicy Bypass -File <ueAgentRoot>\scripts\compact_context.ps1 `
+  -RouteFile <project>\Saved\UEAgent\route.json -AssetPath /Game/... `
+  -Domain material -Operation read -ReceiptFile <project>\Saved\UEAgent\doctor.json
 ```
 
-The default output is the compact view. Add `-View detail` only when the full route/asset block
-is needed. The envelope is a router, not authority. It reports `CACHE_READ`, `LIVE_READ`,
-`LIVE_MUTATE_TASK_GATED`, `LIVE_SAVE_EXPLICIT`, or `BLOCKED`.
+Default output is compact routing state, not live evidence. Use `-View detail` only for diagnosis.
 
-## 2. Route by result
+| Result | Next step |
+|---|---|
+| `CACHE_READ` | `reflect_cache.ps1 -Action read -View summary`; expand `refs -> detail -> full` only as needed; no MCP if answered |
+| `NEEDS_DOCTOR` | run `doctor.ps1` once; use its receipt directly; no second compact pass |
+| `LIVE_READ` | one targeted live read using cached schema when valid |
+| `LIVE_MUTATE_TASK_GATED` | load Skill + Core + one domain card; one writer, then independent readback |
+| `LIVE_SAVE_EXPLICIT` | save only inside the user boundary; verify asset and sidecar |
+| `BLOCKED` | repair route or request the exact manual UE console step |
 
-- `CACHE_READ`: read `reflect_cache.ps1 -View summary`, then `refs` or a named `detail` block;
-  do not call MCP while the cache answers the task.
-- `NEEDS_DOCTOR`: run `doctor.ps1` once, then use its `allowed`/`blocked` receipt directly; do
-  not rerun `compact_context.ps1` for the same task.
-- `LIVE_READ`: use the cached schema if present, then one targeted live read.
-- `LIVE_MUTATE_TASK_GATED`: load `SKILL.md`, Core, and the one relevant domain reference;
-  discover the exact tool once, then use one writer and independent readback.
-- `LIVE_SAVE_EXPLICIT`: save only inside the user boundary and verify the sidecar/asset state.
-- `BLOCKED`: repair the route or ask the user for the exact Unreal console action.
+## Live call bounds
 
-## 2a. Select the live transport
+- Gateway is the default live client; add `-AutoDaemon` for repeated calls. Use native/platform
+  MCP only for a healthy receipt when Gateway fails before the operation or lacks a needed feature.
+  A mutation timeout is `RESULT_UNKNOWN`: read back before retrying or switching transport.
+- If the domain/tool is known, skip `intent.list` and `toolsets.list`; describe one tool with
+  `detail=call`. Use `summary` for routing and `full` only for exact schema validation/recovery.
+- Request one projection: `identity`, `topology`, `logic`, `runtime`, `hlsl`, or `changed`.
+  Domain aliases (`material.*`, `blueprint.*`, `niagara.*`) are accepted. HLSL/script is explicit.
+- Prefer structured/data-only success. Use `-Envelope` only for legacy consumers and
+  `-Diagnostics` only for transport/session debugging. Never default to full graphs, images/base64,
+  recursive dependencies, or duplicated text+structured payloads.
+- Never cache calls or mutations. Discovery/schema cache is session-scoped with TTL fallback.
+  Combine only a known-safe logical mutation; compile once and read back changed nodes/pins/
+  properties plus compile/dirty state.
 
-For `LIVE_READ` and task-gated mutation, Gateway is the default (`mcp_gateway.ps1`; add
-`-AutoDaemon` for repeated calls). Use the platform/native MCP client only when the Gateway
-client/daemon fails before the operation starts and the receipt is still healthy, or when it
-cannot expose a required client feature. If the endpoint/Editor is unhealthy, repair or remain
-offline. A possible mutation timeout is `RESULT_UNKNOWN`: read back before switching transport or retrying.
-`CACHE_READ` never needs either transport.
+## Invalidation
 
-## 3. Payload rules
+Discard receipt/schema cache after Editor restart, reconnect, timeout, transport failure, plugin
+reload, or toolset change. A sidecar describes saved state; dirty Editor state always requires live
+read. After rename/delete/cache-generator change:
 
-- Request only the needed field projection: summary, topology, logic, or runtime.
-- Keep exact asset/refPath identities and mutation preconditions.
-- For unknown tools, use the compact structured `describe_toolset detail=call` view first; use
-  `summary` for routing and `full` only for argument validation or recovery.
-- When the domain card already names the toolset and tool, skip `intent.list` and `toolsets.list`;
-  describe only that tool.
-- Expand cache views in order: `summary -> refs -> detail -> full`; `full` is explicit only.
-- Never default to full graph text, image/base64 payloads, or recursive node inventories.
-- Never cache tool calls or mutations. Only discovery/schema results may use the gateway schema
-  cache, and only with an explicit TTL.
-- Combine a known-safe logical mutation into one request, compile once, and read back only the
-  changed nodes/pins/properties plus compile/dirty state. Do not batch unverified high-risk calls.
+```powershell
+powershell -File <ueAgentRoot>\scripts\reflect_cache.ps1 -Action reconcile `
+  -RouteFile <project>\Saved\UEAgent\route.json -Repair
+```
 
-## 4. Invalidation
-
-Re-run doctor and discard the receipt/schema cache after editor restart, reconnect, timeout,
-tool transport failure, plugin rebuild, or toolset version change. A sidecar is saved-state
-context; live dirty state still wins.
+The reconciler rehomes only a unique source-hash match and quarantines unresolved sidecars under
+`Saved\UEAgent\cache-orphans`; it never deletes them.

@@ -9,6 +9,8 @@
 
 # 会话输出产物（每台设备独立）
 output/
+work/UEAgent/out/
+work/UEAgent/_tmp/
 
 # 脱敏方案配置（会话级）
 .box-desens/

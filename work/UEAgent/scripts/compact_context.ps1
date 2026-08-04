@@ -22,6 +22,14 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
+$KnownCacheFormats = @(
+    'vibeue-material-cache-v2',
+    'vibeue-material-function-cache-v1',
+    'vibeue-material-instance-cache-v1',
+    'vibeue-blueprint-cache-v1',
+    'vibeue-niagara-system-cache-v1'
+)
+
 function Read-JsonFile($Path, $Label) {
     if (-not (Test-Path -LiteralPath $Path)) { throw "$Label not found: $Path" }
     try { return (Get-Content -Raw -LiteralPath $Path | ConvertFrom-Json) }
@@ -194,6 +202,10 @@ $assetInfo = [ordered]@{
     sidecarMtimeUtc = $null
     format = $null
     graphSha1 = $null
+    state = 'MISSING'
+    formatKnown = $false
+    liveDirtyCheck = $true
+    invalidation = $null
     hasLogic = $false
     current = $false
 }
@@ -219,14 +231,24 @@ if ($packagePath) {
         $hashMatch = [Regex]::Match($text, '(?m)^graph_sha1:\s*(\S+)')
         if ($formatMatch.Success) { $assetInfo.format = $formatMatch.Groups[1].Value }
         if ($hashMatch.Success) { $assetInfo.graphSha1 = $hashMatch.Groups[1].Value }
+        $assetInfo.formatKnown = $assetInfo.format -and $KnownCacheFormats -contains $assetInfo.format
         $declaredSizeMatches = -not $sizeMatch.Success -or
             ([int64]$sizeMatch.Groups[1].Value -eq [int64]$assetInfo.sourceBytes)
         $assetInfo.hasLogic = $text -match '(?m)^## Logic\s*$'
-        $assetInfo.current = [bool]$assetInfo.sourceBytes -and
+        $sourceMatches = [bool]$assetInfo.sourceBytes -and
             $sidecar.LastWriteTimeUtc -ge (Get-Item -LiteralPath $sourceFile).LastWriteTimeUtc -and
-            $declaredSizeMatches -and [bool]$assetInfo.format
+            $declaredSizeMatches
+        $assetInfo.state = if (-not $assetInfo.sourceBytes) { 'ORPHAN' }
+            elseif (-not $assetInfo.formatKnown) { 'UNSUPPORTED_FORMAT' }
+            elseif (-not $sourceMatches) { 'STALE' }
+            else { 'FRESH' }
+        if ($receiptIdentityReason -eq 'plugin_changed') { $assetInfo.invalidation = 'plugin_changed' }
+        $assetInfo.current = $assetInfo.state -eq 'FRESH' -and $receiptIdentityReason -ne 'plugin_changed'
     }
 }
+
+if ($assetInfo.state -eq 'MISSING' -and $packagePath) { $assetInfo.invalidation = 'sidecar_missing' }
+$assetInfo.liveDirtyCheck = $true
 
 $receiptFresh = $receiptState -eq 'FRESH'
 $healthy = $receiptFresh -and $receiptStatus -eq 'HEALTHY'
@@ -278,9 +300,13 @@ $output = if ($View -eq 'compact') {
         asset = [ordered]@{
             package = $assetInfo.package
             current = $assetInfo.current
+            state = $assetInfo.state
             sidecar = $assetInfo.sidecar
             format = $assetInfo.format
+            formatKnown = $assetInfo.formatKnown
             graphSha1 = $assetInfo.graphSha1
+            liveDirtyCheck = $assetInfo.liveDirtyCheck
+            invalidation = $assetInfo.invalidation
         }
         expand = 'compact_context.ps1 -View detail'
     }

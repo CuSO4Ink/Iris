@@ -17,7 +17,7 @@ UEAgent on another checkout.
 |---|---|
 | Unreal Engine | UE 5.8 with native `ModelContextProtocol` and `EditorToolset` plugins |
 | VibeUE | `271f48771d077179fb597dc285ab5b898c5e8038` |
-| UEAgent VibeUE extension | `patches/vibeue-ueagent.patch`, applied by bootstrap |
+| UEAgent VibeUE extension | selected profile patch plus `patches/vibeue-mcp-shutdown-guard.patch`, applied by bootstrap |
 | Default engine profile | MCP tool-search v2 + v3 call view |
 | Windows | Git and Windows PowerShell |
 
@@ -40,6 +40,9 @@ verified by source presence alone.
 The verified authoring profile is applied automatically with `-ApplyNiagaraAuthoringProfile`.
 It applies the matching engine export patch, selects the composite VibeUE patch instead of the
 core patch, and records `vibeUEProfile` plus `engineNiagaraAuthoringPatchSha256` in the route.
+Every VibeUE profile then applies the shared MCP shutdown guard and records
+`vibeUEMcpShutdownGuardPatchSha256`; `-CheckOnly` and doctor reject a missing, changed, or
+unapplied guard.
 
 ## Configure a target project
 
@@ -218,11 +221,26 @@ Gateway also exposes the v2 shaping controls: `-ProjectionJson` or `-ProjectionF
 alter JSON paths or dotted projection fields.
 
 For common ref-list reads, `-ProjectionProfile refs` keeps only `returnValue.refPath` (maximum 256)
-and uses structured output; `-ProjectionProfile compact` keeps `returnValue` (maximum 64). An
-explicit `projection` overrides a profile. Add `-DataOnly` when the caller wants only `data` and
+and uses structured output; `-ProjectionProfile compact` keeps `returnValue` (maximum 64). Intent
+profiles are `identity`, `topology`, `logic`, `runtime`, `hlsl`, and `changed`; domain aliases such
+as `material.topology`, `blueprint.logic`, and `niagara.runtime` are accepted. An explicit
+`-ProjectionJson` overrides a profile. Add `-DataOnly` when the caller wants only `data` and
 Model-facing successful Gateway actions are data-only by default; use `-Envelope` for the legacy
 diagnostic wrapper and `-Diagnostics` for transport/session details. Errors still retain a compact
 error envelope, while raw server payloads require diagnostics.
+Passing the dotted name through `-Intent` also selects the matching profile; a plain domain such as
+`material` remains only a routing hint.
+
+The profiles are progressive, not semantic authority: `identity`/`topology` omit node properties,
+`logic` omits layout and HLSL, `runtime` keeps state/overrides, `hlsl` is explicit for code, and
+`changed` is for mutation readback. Tool-specific fields remain authoritative; if a profile does
+not contain a required field, request an explicit projection or `compact`/`full`.
+
+Cache lifecycle maintenance is offline and cache-only. After an asset rename/delete or a cache
+format/plugin upgrade, run `reflect_cache.ps1 -Action reconcile -RouteFile <PROJECT>\Saved\UEAgent\route.json -Repair`.
+It writes `Saved\UEAgent\cache-manifest.json`, repairs only a unique source-hash rename match,
+and moves unresolved sidecars to `Saved\UEAgent\cache-orphans`; it never deletes them. The
+sidecar still describes saved state only; dirty Editor memory requires live MCP.
 
 If repeated Gateway latency matters, run the optional local daemon once and send the same request
 JSON over loopback HTTP. It keeps one MCP session and one HTTP client in memory:

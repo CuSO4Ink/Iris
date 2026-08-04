@@ -4,7 +4,8 @@
 > every session. This is not human documentation, a backup format, or cache-to-UE sync.
 >
 > Material v2 and MaterialFunction v1 automatic caches are verified. Blueprint,
-> MaterialInstance, and Niagara formats are real Wave pilots, not automatic yet.
+> MaterialInstance, and Niagara formats are real Wave pilots, wired into the save hook but not
+> production-verified yet.
 
 ## Contract
 
@@ -59,8 +60,10 @@ VibeUE.MaterialAICache.Rebuild /Game/Path/M_A /Game/Path/MF_B
 
 - UE Asset Registry, Content Browser, and default Cook ignore the `.md` sidecar.
   Source control policy and UE Migrate do not manage it automatically.
-- Current production-verified boundary: `UMaterial` and `UMaterialFunction`. Rename/delete
-  cleanup and automatic MaterialInstance/Blueprint/Niagara generation are deferred.
+- Current production-verified generation boundary: `UMaterial` and `UMaterialFunction`. The save
+  hook is wired for the five supported formats, but MaterialInstance/Blueprint/Niagara generation
+  still needs the disposable-asset verification in the backlog. Rename/delete cleanup is handled
+  by the offline reconciler below.
 
 ## Material compact format
 
@@ -191,6 +194,25 @@ user variables + emitter/sim target + stage/module order + meaningful inputs + r
   graphs with only 5–9 nodes.
 - Compile state, stack issues, and live component overrides remain targeted live queries.
 
+## Live intent projection
+
+Large live reads use Gateway projection profiles instead of returning a complete graph by
+default:
+
+```text
+identity -> asset/ref/class/settings/state
+topology -> nodes/expressions/pins/links/dependencies (properties omitted)
+logic -> graph/execution/connections (layout/properties/HLSL omitted)
+runtime -> compile/dirty/component/overrides/renderers/state
+hlsl -> generated/custom HLSL or script text (explicit only)
+changed -> changed nodes/pins/properties plus compile/dirty/save state
+```
+
+Call `-ProjectionProfile <name>` on Gateway/daemon `tool.call`; `material.*`, `blueprint.*`, and
+`niagara.*` aliases are accepted. Profiles are field bounds, not an alternate schema. Functions,
+Blueprint graphs, and Niagara scripts remain separate references/caches; they are never inlined by
+the projection layer.
+
 ## Freshness
 
 Stop at the first cheap check that answers the question:
@@ -199,14 +221,25 @@ Stop at the first cheap check that answers the question:
 2. Sidecar missing or older than the source -> run the asset type's regenerator when available.
 3. Sidecar current and recognized -> read it; no cold full-graph MCP.
 4. Material sidecar v1 is inventory only; rebuild with v2 or query the required graph region.
-5. Only Material/MaterialFunction have a save hook in this MVP. For manual-pilot formats,
-   stale means targeted MCP regeneration.
+5. The save hook is wired for all five supported formats; only Material/MaterialFunction are
+   production-verified in this MVP. For manual-pilot formats, stale means targeted MCP
+   regeneration.
 6. Before mutating UE, check live package dirty state and inspect only the region being
    changed. The cache describes the saved asset, not unsaved editor memory.
 7. After a successful save, verify the cache file timestamp advanced. Manual regeneration
    is fallback, not the normal path.
 
-SHA-256 is provenance/debug data, not the normal freshness check; mtime is cheaper.
+SHA-256 is provenance/debug data, not the normal freshness check; mtime is cheaper. For rename,
+delete, unsupported format, or generator/plugin changes, run:
+
+```powershell
+powershell -File ../../scripts/reflect_cache.ps1 -Action reconcile -RouteFile <PROJECT>\Saved\UEAgent\route.json -Repair
+```
+
+The reconciler writes `Saved/UEAgent/cache-manifest.json`, rehomes a sidecar only when its source
+hash matches exactly one current `.uasset`, and quarantines unresolved sidecars under
+`Saved/UEAgent/cache-orphans`; it never deletes cache files. The manifest is a routing aid, not
+asset truth, and unsaved Editor memory still requires live MCP.
 
 ## Export
 

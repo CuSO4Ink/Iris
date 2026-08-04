@@ -1,119 +1,80 @@
 ---
 name: ue-mcp-workflows
-description: Gate and operate Unreal Engine through UE 5.8 MCP with cache-first reads, live capability discovery, one-writer mutations, independent verification, and explicit save boundaries. Use before any AI task that depends on live UE state or modifies UE content.
+description: Safe, cache-first Unreal Engine 5.8 MCP workflow with bounded discovery/results, one-writer mutations, independent readback, and explicit save boundaries.
 ---
 
-# UE MCP Workflows
+# UE MCP workflows
 
-UEAgent is the policy source. A client or target project may contain only a thin route to this
-Skill; do not maintain a second copy.
+Read [HOTPATH.md](HOTPATH.md) first. It is the only default route. This Skill adds live operation
+rules; it does not replace the route or create a second project gate. The complete contract and
+rollback map is [PROGRESSIVE-DISCLOSURE.md](../../PROGRESSIVE-DISCLOSURE.md).
 
-For the token-saving contract and rollback map, use [UEAgent/PROGRESSIVE-DISCLOSURE.md](../../PROGRESSIVE-DISCLOSURE.md).
+## Gate and transport
 
-## Mandatory gate
+1. Read the target `Saved/UEAgent/route.json` and run `compact_context.ps1`.
+2. `CACHE_READ` means read the recognized sidecar and stop before MCP.
+3. `NEEDS_DOCTOR` means run `doctor.ps1` once and use that receipt directly.
+4. Reuse a receipt/schema cache only while Editor PID, MCP session, and plugin fingerprint match.
+   Restart, reconnect, timeout, transport failure, explicit close, plugin reload, or toolset change
+   invalidates them. TTL is fallback only.
+5. `HEALTHY` permits proven live reads and task-gated mutation; `DEGRADED` permits cache plus
+   proven reads; `OFFLINE` is local analysis; `BLOCKED` requires repair. A mutation timeout is
+   `RESULT_UNKNOWN`; read back before retrying.
 
-1. Read [HOTPATH.md](HOTPATH.md) and the target project's `Saved/UEAgent/route.json`.
-2. Run `../../scripts/compact_context.ps1 -RouteFile <route> -AssetPath <asset> -Operation <op>`
-   (default compact view; add `-View detail` only when required).
-3. If the envelope returns `CACHE_READ`, read the sidecar with the progressive views and stop
-   before MCP.
-4. If it returns `NEEDS_DOCTOR`, run `../../scripts/doctor.ps1 -RouteFile <route>` once and use
-   that receipt directly; do not run `compact_context.ps1` again for the same task.
-5. Reuse a healthy receipt while the Editor listener PID and MCP session ID stay unchanged. A
-   timeout, transport failure, explicit session close, plugin reload, or editor restart requires
-   a new doctor; the receipt TTL is only a fallback when identity cannot be checked.
-6. Follow the receipt:
-   - `HEALTHY`: live reads are available; mutation still needs task capability and authority.
-   - `DEGRADED`: cache plus only proven live reads; no mutation or save.
-   - `OFFLINE`: local source/cache/config/log analysis only.
-   - `BLOCKED`: repair the route/configuration before MCP work.
-7. A timeout after a possible mutation is `RESULT_UNKNOWN`: read back before retrying.
+Gateway (`../../scripts/mcp_gateway.ps1`) is the default live transport; `-AutoDaemon` is for
+repeated calls. Native/platform MCP is a fallback only when the receipt is healthy and Gateway
+fails before the operation or lacks a required client feature. A trusted native client may bypass
+Gateway for ordinary calls when no projection/session/debug shaping is needed. Neither transport
+bypasses authority, one-writer, or readback rules.
 
-For installation or recovery, read `../../SETUP.md`. After the mandatory gate, Gateway is the
-default live transport: use `../../scripts/mcp_gateway.ps1` (and `-AutoDaemon` for repeated calls).
-The platform/native MCP client is the fallback when the Gateway client/daemon is unavailable,
-times out before an operation starts, or lacks a required client-only feature while the receipt is
-still healthy. If the endpoint/Editor is unhealthy, repair or remain offline. Both routes use the
-same endpoint, schema, authority, one-writer rule, and independent readback; switching transport
-never bypasses the receipt or turns a mutation timeout into permission to retry.
+Pass `-SchemaCacheFile <project>\Saved\UEAgent\schema-cache.json` for discovery and, for repeated
+Gateway calls, project-local `mcp-session.json` with `-SessionFile ... -ReuseSession`; use
+`-CloseSession` only for explicit shutdown. Cache discovery only; never cache calls or mutations.
+Machine files remain uncommitted.
 
-On hosts with a trusted native MCP client, direct native transport is an optional performance
-override for ordinary calls that do not need Gateway projection/session/debug shaping. Keep the
-same receipt, schema, one-writer, and readback rules; do not treat this override as a new backend.
+## Minimize discovery and payload
 
-When using Gateway, pass `-SchemaCacheFile <project>\Saved\UEAgent\schema-cache.json`
-for discovery-only actions. With a valid project MCP session, entries are session-scoped and are
-discarded on session change; TTL remains the fallback when no session identity is available. The
-cache never stores tool calls or mutations. For
-repeated Gateway calls, also pass `-SessionFile <project>\Saved\UEAgent\mcp-session.json`
-`-ReuseSession`; the gateway probes the session before use and rebuilds it after an editor restart.
-Keep that file project-local and uncommitted. Use `-CloseSession` only for explicit shutdown.
-The sibling `doctor.invalidate.json` is also machine-local and should remain uncommitted.
+- Known domain/tool: skip `intent.list` and `toolsets.list`; describe one tool with `detail=call`.
+- Unknown entry: use `intent.list` only for routing, then authoritative `describe_toolset`.
+- `detail=summary` is for names/descriptions. `detail=full` is only for exact JSON Schema
+  validation or recovery.
+- Use `-ProjectionProfile identity|topology|logic|runtime|hlsl|changed` (domain aliases accepted).
+  Choose one view; HLSL/script is explicit and never silently truncated.
+- Prefer structured/data-only success. `-Envelope` is legacy compatibility; `-Diagnostics` is
+  transport/session debugging. Do not request full graphs, images/base64, recursive dependencies,
+  or duplicate text plus structured data by default.
+- Cache views expand `summary -> refs -> detail -> full`; functions/scripts remain references to
+  independent caches and are never inlined.
 
-Use `-Action intent.list -DataOnly` only when the domain or entry tool is unknown. If the project
-brief/domain card already identifies the candidate toolset and tool, go straight to a single-tool
-`describe_toolset` call; skip `intent.list` and `toolsets.list`. `intent.list` never replaces
-`describe_toolset`; verify the selected tool and arguments against the running schema. For saved
-sidecars use `summary -> refs -> detail -> full`, and use `reflect_cache.ps1 -Action receipt` after
-a save to summarize the cache delta before the independent live readback.
+## Load only the needed rules
 
-Use `-ProjectionJson`/`-ProjectionFile` on `tool.call`. Gateway/daemon `toolset.describe` defaults
-to the structured-only `detail=call` view; use `-DescribeDetail summary` for names/descriptions and
-`-DescribeDetail full` only to validate exact JSON Schema. If a host needs warm-call latency close
-to a native MCP client,
-run the optional `scripts/mcp_gateway_daemon.ps1` on loopback and POST the same request envelope;
-the daemon is serialized and must be explicitly shut down. `mcp_gateway.ps1 -AutoDaemon` can warm
-that daemon in the background while the first action remains one-shot; later gateway actions use
-the warm route automatically. Use `-ProjectionProfile refs|compact` when the caller is feeding
-the result directly into model context.
-Model-facing success responses are data-only by default. Use `-Envelope` for legacy `{ok, action,
-data}` consumers and `-Diagnostics` only for transport/session details. Errors keep a compact
-envelope; raw server payloads require diagnostics.
+For `LIVE_READ`, load one domain card after the receipt. For mutation/save or an unfamiliar/high-
+risk capability, also load `references/core.md` and the target project brief:
 
-## Load only the relevant rules
+- Material, MaterialFunction, MaterialInstance, Custom HLSL: `references/materials.md`
+- Blueprint: `references/blueprints.md`
+- Niagara: `references/niagara.md`
+- Actor/component/level/lighting/viewport: `references/scene-editing.md`
+- Cache implementation/freshness/save hooks: `../../projects/ReflectCache/AI-BRIEF.md`
 
-For `LIVE_READ`, load only the relevant domain reference after the receipt. For mutation, save,
-or an unfamiliar/high-risk operation, also load [references/core.md](references/core.md) and the
-target brief:
+Do not load the full ReflectCache protocol for an ordinary read.
 
-- Materials, functions, instances, Custom HLSL: [references/materials.md](references/materials.md)
-- Blueprints: [references/blueprints.md](references/blueprints.md)
-- Niagara: [references/niagara.md](references/niagara.md)
-- Actors, components, levels, lighting, viewport: [references/scene-editing.md](references/scene-editing.md)
-- Sidecar implementation/freshness/save hooks: [ReflectCache](../../projects/ReflectCache/AI-BRIEF.md)
+## Execute safely
 
-Do not load the full ReflectCache protocol for an ordinary asset read.
+1. Try `<Asset>.uasset.ai.md` first for saved-state reads; stop if current and sufficient.
+2. Read the target brief/task after the route is known.
+3. Discover exact tools, UObject properties, object paths, and graph pins; never guess.
+4. Classify read, reversible mutation, or high-risk save/delete/move/merge.
+5. Probe unverified capabilities outside production assets.
+6. Apply one logical mutation with one writer. Batch only a known-safe call shape.
+7. Verify independently through targeted readback, compile/log/invariant/runtime evidence.
+8. Clean probes (`exists=false`) and save only inside the user's explicit boundary.
 
-## Execute the routed task
+## Evidence and UI
 
-1. For Material, MaterialFunction, MaterialInstance, Blueprint, or Niagara saved-state reads,
-   try `<Asset>.uasset.ai.md` first. Stop before MCP when a current recognized cache answers.
-2. Read the target project's brief/task documents.
-3. Discover the active tool/toolset schema; never guess a tool, UObject property, or graph pin.
-4. Read exact asset/object/subobject/level paths and a cheap precondition.
-5. Classify the action: read, reversible mutation, or high-risk save/delete/move/merge.
-6. Probe an unverified capability outside production assets.
-7. Apply one logical mutation with one writer. Prefer direct typed tools. Batch through
-   `ProgrammaticToolset` only after that call shape is known safe for the domain.
-8. Verify through an independent readback, compile/log result, invariant, runtime result, or
-   user-visible check.
-9. Clean Probe state and verify `exists=false`.
-10. Save only inside the user's explicit boundary; report saved and still-dirty objects.
+Record friction in `../../notes/mcp-pitfalls.md` as Verified, Observed, or Hypothesis with
+provenance; promote only after controlled verification. Structural evidence belongs to AI and
+visual/aesthetic approval to the user. Never use Computer Use to drive Unreal UI; provide manual
+steps when an editor gesture or visual decision is required.
 
-## Evidence discipline
-
-- **Verified**: isolated or controlled reproduction with postconditions and cleanup.
-- **Observed**: real incident without isolated reproduction.
-- **Hypothesis**: possible cause; never an SOP.
-
-Record material friction in `../../notes/mcp-pitfalls.md` with provenance. Promote it only
-after verification. Structural evidence belongs to AI; aesthetic approval belongs to the user.
-
-Never control Unreal UI through Computer Use. When an editor gesture or visual decision is
-required, stop and give the user exact manual steps.
-
-## Bundled tools
-
-- `scripts/probe_custom_inputs.py`: isolated Material Custom-input array verification through
-  `ProgrammaticToolset`.
-- `../../bp_clipboard_to_ai.py`: compact parser for Blueprint text copied by the user.
+Bundled probes: `scripts/probe_custom_inputs.py` and `../../bp_clipboard_to_ai.py`.

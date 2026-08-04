@@ -299,6 +299,7 @@ if ($EngineRoot) {
 $vibeUERevision = $null
 $vibeUEDirty = $null
 $vibeUEPatchApplied = $false
+$vibeUEShutdownGuardPatchApplied = $false
 $engineNiagaraPatchApplied = $false
 $vibeUEAuthoringPatchApplied = $false
 $engineNiagaraAuthoringPatchApplied = $false
@@ -307,6 +308,7 @@ $vibePatchPath = if ($vibeUEProfile -eq 'niagara-authoring') {
 } else {
     Join-Path $ueAgentRoot 'patches\vibeue-ueagent.patch'
 }
+$vibeShutdownGuardPatchPath = Join-Path $ueAgentRoot 'patches\vibeue-mcp-shutdown-guard.patch'
 $engineNiagaraPatchPath = Join-Path $ueAgentRoot 'patches\ue58-niagara-toolsets.patch'
 $engineNiagaraAuthoringPatchPath = Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\ue-5.8\niagaraeditor-export-authoring-apis-current.patch'
 if ($projectRoot) {
@@ -325,6 +327,18 @@ if ($projectRoot) {
                     $vibeUEPatchApplied = Test-GitPatchApplied $vibePath $vibePatchPath
                     if (-not $vibeUEPatchApplied) { Add-Issue 'The routed UEAgent VibeUE patch is not applied.' }
                     $vibeUEAuthoringPatchApplied = ($vibeUEProfile -eq 'niagara-authoring' -and $vibeUEPatchApplied)
+                }
+            }
+            if (-not $route.vibeUEMcpShutdownGuardPatchSha256) {
+                Add-Issue 'The route is missing the VibeUE MCP shutdown guard patch fingerprint.'
+            } elseif (-not (Test-Path -LiteralPath $vibeShutdownGuardPatchPath)) {
+                Add-Issue "Routed VibeUE MCP shutdown guard patch is missing: $vibeShutdownGuardPatchPath"
+            } elseif ((Get-NormalizedFileSha256 $vibeShutdownGuardPatchPath) -ne [string]$route.vibeUEMcpShutdownGuardPatchSha256) {
+                Add-Issue 'Routed VibeUE MCP shutdown guard patch checksum differs from UEAgent.'
+            } else {
+                $vibeUEShutdownGuardPatchApplied = Test-GitPatchApplied $vibePath $vibeShutdownGuardPatchPath
+                if (-not $vibeUEShutdownGuardPatchApplied) {
+                    Add-Issue 'The routed VibeUE MCP shutdown guard patch is not applied.'
                 }
             }
             if ($vibeUEDirty) {
@@ -526,6 +540,7 @@ $receipt = [ordered]@{
         vibeUERevision = $vibeUERevision
         vibeUEDirty = $vibeUEDirty
         vibeUEPatchApplied = $vibeUEPatchApplied
+        vibeUEShutdownGuardPatchApplied = $vibeUEShutdownGuardPatchApplied
         vibeUEAuthoringPatchApplied = $vibeUEAuthoringPatchApplied
         engineNiagaraPatchApplied = $engineNiagaraPatchApplied
         engineNiagaraAuthoringPatchApplied = $engineNiagaraAuthoringPatchApplied

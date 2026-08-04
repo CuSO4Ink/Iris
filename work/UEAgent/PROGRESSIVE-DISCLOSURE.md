@@ -44,8 +44,11 @@ hatch, not a normal cache read. `reflect_cache` never expands a referenced Mater
 Blueprint, Niagara script, or dependency automatically; each asset has its own sidecar.
 Model-facing Gateway actions now default to data-only success responses. Use `-Envelope` for the
 legacy `{ok, action, data}` wrapper, and `-Diagnostics` only when transport details are needed.
-Pass `-View summary|refs`, a projection profile, or an explicit projection when a live call needs
-the same bounds. Errors retain a compact envelope; raw server payloads require diagnostics.
+Pass `-View summary|refs`, an intent projection profile, or an explicit projection when a live call
+needs the same bounds. Profiles are `identity`, `topology`, `logic`, `runtime`, `hlsl`, and
+`changed`; domain aliases (`material.topology`, `blueprint.logic`, `niagara.runtime`) are accepted.
+Passing a dotted profile through `intent` selects the same profile; a plain domain remains a local
+routing hint. Errors retain a compact envelope; raw server payloads require diagnostics.
 
 For live MCP, use the same idea:
 
@@ -72,6 +75,12 @@ powershell -File .\scripts\mcp_gateway.ps1 -Action toolset.describe `
 # shape only the fields required by the task
 powershell -File .\scripts\mcp_gateway.ps1 -Action tool.call `
   -Toolset <toolset> -Tool <tool> -ProjectionProfile refs -DataOnly
+
+# intent-scoped live views; choose one, never request the whole graph by default
+powershell -File .\scripts\mcp_gateway.ps1 -Action tool.call `
+  -Toolset <toolset> -Tool <tool> -ProjectionProfile material.topology -DataOnly
+powershell -File .\scripts\mcp_gateway.ps1 -Action tool.call `
+  -Toolset <toolset> -Tool <tool> -ProjectionProfile niagara.runtime -DataOnly
 ```
 
 `intent.list` and `toolsets.list` are routing indexes, not authoritative schemas. When a domain
@@ -103,7 +112,21 @@ recompute the same state.
 
 The sidecar is saved-state context. `.uasset` remains the only truth, and dirty editor memory is
 always a live query. The cheap freshness test is source/sidecar mtime plus the declared source
-size; `graph_sha1` and `sha256` are provenance, not permission to skip a required live check.
+size; the reader also rejects unsupported cache formats. `graph_sha1` and `sha256` are provenance,
+not permission to skip a required live check.
+
+Run lifecycle maintenance after a Content Browser rename/delete or a cache generator/plugin
+change:
+
+```powershell
+powershell -File .\scripts\reflect_cache.ps1 -Action reconcile `
+  -RouteFile <project>\Saved\UEAgent\route.json -Repair
+```
+
+The reconciler records a manifest, rehomes only a unique source-hash match, and quarantines
+unresolved sidecars under `Saved\UEAgent\cache-orphans`; it never deletes them. A sidecar remains
+saved-state context even when its lifecycle metadata is current; unsaved Editor memory always
+requires live MCP.
 
 After a save, compare the old and new sidecars without echoing the whole graph:
 
@@ -145,10 +168,13 @@ remove about 92–95% of this saved-state payload; the exact ratio changes with 
 | intent index | `mcp_gateway.ps1 intent.list` | opt-in | skip it and run normal discovery |
 | schema/detail selection | Gateway + UE v2/v3 call-view patches | call by default in Gateway/daemon | `-DescribeDetail full`; reverse v3, then v2 |
 | bounded response presets | Gateway `refs|compact` | opt-in | explicit projection or unshaped call |
+| intent result profiles | Gateway `identity|topology|logic|runtime|hlsl|changed` | opt-in | explicit projection or `compact`/`full` |
 | data-only success | Gateway default | model-facing default | `-Envelope` restores compatibility wrapper |
 | persistent session | project `Saved/UEAgent/mcp-session.json` | opt-in | omit session flags; `-CloseSession` removes the record |
 | warm daemon | loopback `18765` | opt-in | use one-shot gateway/native MCP; POST `shutdown` |
 | change receipt/audit | ReflectCache scripts | opt-in | retain normal readback and inspect raw sidecar |
+| cache lifecycle reconciliation | `reflect_cache.ps1 -Action reconcile` | opt-in after rename/delete/upgrade | leave sidecars in place and inspect the manifest |
+| default context entry compression | `AGENTS.md`, `AI-BRIEF.md`, `HOTPATH.md`, `SKILL.md` | navigation + only relevant rules | restore previous prose from Git if a client needs a human walkthrough |
 
 Gateway correctness guards are part of the contract: `mcp_gateway.ps1` is UTF-8 with BOM for
 Windows PowerShell 5.1, and schema cache keys include `DescribeDetail`, `DescribeToolName`, and
@@ -178,3 +204,14 @@ No UE asset was changed or saved.
 
 The Gateway follow-up passed a fresh daemon start/identity/ping/shutdown cycle on 18765 and a
 three-entry live schema-cache check (full, summary, single-tool) with distinct keys.
+
+The intent/lifecycle follow-up passed PowerShell 5.1 AST parsing for all seven scripts. Profile
+probes resolved `material.topology`, `blueprint.logic`, and `niagara.changed-readback` to bounded
+structured projections. An isolated fixture proved the reconciler's unique source-hash rename
+repair and orphan quarantine; it moved no real Abyss asset. A read-only Abyss audit found 27
+sidecars: 21 fresh, 3 stale, and 3 orphaned; no repair was run against the user project.
+
+The context-entry follow-up reduced the four UEAgent entry files to about 3.4k estimated tokens
+when all four are needed, and reduced ordinary navigation (`AGENTS.md` + `HOTPATH.md`) to about
+1.3k. These are stable `bytes/4` comparisons, not model-token counts. The same seven-script AST
+check and an Abyss `M_Wave_Base` `CACHE_READ` route passed after the documentation-only change.

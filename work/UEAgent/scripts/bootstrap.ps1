@@ -124,6 +124,7 @@ $EngineRoot = Resolve-RequiredPath $EngineRoot 'Engine root'
 $ueAgentRoot = Split-Path $PSScriptRoot -Parent
 $coreVibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-ueagent.patch') 'UEAgent VibeUE patch'
 $authoringVibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\vibeue\vibeue-ueagent-authoring.patch') 'UEAgent Niagara authoring VibeUE patch'
+$vibeShutdownGuardPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-mcp-shutdown-guard.patch') 'VibeUE MCP shutdown guard patch'
 $engineNiagaraPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-niagara-toolsets.patch') 'UEAgent Niagara Toolsets patch'
 $engineNiagaraAuthoringPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\ue-5.8\niagaraeditor-export-authoring-apis-current.patch') 'UEAgent Niagara authoring engine patch'
 $mcpToolSearchV2PatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-tool-search-v2.patch') 'UEAgent MCP tool-search v2 patch'
@@ -131,6 +132,7 @@ $mcpToolSearchV3PatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patche
 $vibeProfile = if ($ApplyNiagaraAuthoringProfile) { 'niagara-authoring' } else { 'base' }
 $vibePatchPath = if ($ApplyNiagaraAuthoringProfile) { $authoringVibePatchPath } else { $coreVibePatchPath }
 $vibePatchSha256 = Get-NormalizedFileSha256 $vibePatchPath
+$vibeShutdownGuardPatchSha256 = Get-NormalizedFileSha256 $vibeShutdownGuardPatchPath
 $engineNiagaraPatchSha256 = Get-NormalizedFileSha256 $engineNiagaraPatchPath
 $engineNiagaraAuthoringPatchSha256 = Get-NormalizedFileSha256 $engineNiagaraAuthoringPatchPath
 $mcpToolSearchV2PatchSha256 = Get-NormalizedFileSha256 $mcpToolSearchV2PatchPath
@@ -208,7 +210,8 @@ if ($CheckOnly) {
         @('uProject', $UProject),
         @('engineRoot', $EngineRoot),
         @('endpoint', $Endpoint),
-        @('vibeUEPatchSha256', $expectedVibePatchSha256)
+        @('vibeUEPatchSha256', $expectedVibePatchSha256),
+        @('vibeUEMcpShutdownGuardPatchSha256', $vibeShutdownGuardPatchSha256)
     )) {
         if ([string]$route.($pair[0]) -ne [string]$pair[1]) {
             throw "UEAgent route mismatch for $($pair[0]): $($route.($pair[0]))"
@@ -220,6 +223,9 @@ if ($CheckOnly) {
     }
     if (-not (Test-GitPatchApplied $vibePath $expectedVibePatchPath)) {
         throw "The routed UEAgent VibeUE profile is not applied: $routeVibeProfile"
+    }
+    if (-not (Test-GitPatchApplied $vibePath $vibeShutdownGuardPatchPath)) {
+        throw 'The routed VibeUE MCP shutdown guard patch is not applied.'
     }
     if ($routeVibeProfile -eq 'niagara-authoring') {
         if (-not $route.engineNiagaraAuthoringPatchSha256 -or
@@ -282,6 +288,7 @@ if ($dirty) {
     Assert-LastExitCode "Could not checkout VibeUE $VibeUERef"
     Ensure-GitPatchApplied $vibePath $vibePatchPath 'UEAgent VibeUE patch'
 }
+Ensure-GitPatchApplied $vibePath $vibeShutdownGuardPatchPath 'VibeUE MCP shutdown guard patch'
 
 $engineNiagaraPatchApplied = Test-GitPatchApplied $EngineRoot $engineNiagaraPatchPath
 if ($ApplyEngineNiagaraPatch -and -not $engineNiagaraPatchApplied) {
@@ -369,6 +376,7 @@ $route = [ordered]@{
     vibeUERef = $VibeUERef
     vibeUEProfile = $vibeProfile
     vibeUEPatchSha256 = $vibePatchSha256
+    vibeUEMcpShutdownGuardPatchSha256 = $vibeShutdownGuardPatchSha256
 }
 if ($engineNiagaraPatchApplied) {
     $route['engineNiagaraPatchSha256'] = $engineNiagaraPatchSha256

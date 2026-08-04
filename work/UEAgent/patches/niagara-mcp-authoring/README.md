@@ -19,8 +19,13 @@ This package contains only reusable UE 5.8 Niagara editor-authoring changes. It 
     authoring patch above. Use this file instead of applying the two VibeUE patches together.
 - `ue-5.8/niagaraeditor-export-authoring-apis-current.patch`
   - Revision-adapted engine export patch for the current UE 5.8 checkout used by UEAgent.
-  - `ReallocatePins` is already exported/public in this revision, so only the remaining
-    dynamic-pin and Custom HLSL declarations are changed.
+  - This revision already exports the symbol but keeps `ReallocatePins` protected; the patch
+    also moves it to the public section, alongside the dynamic-pin and Custom HLSL exports.
+- `../vibeue-mcp-shutdown-guard.patch`
+  - Independent VibeUE lifecycle hardening: rejects new and queued GameThread MCP work once
+    Unreal exit begins, preventing Python-backed calls from running after plugin teardown.
+  - Bootstrap applies it after either VibeUE profile and records its independent route fingerprint;
+    it is not folded into the Niagara composite.
 
 The VibeUE patch was produced against upstream commit `271f487`.
 The composite patch is also based on `271f487`; it is the resolved overlap between the local
@@ -37,12 +42,22 @@ git -C <UE_ROOT> apply <IRIS_ROOT>\work\UEAgent\patches\niagara-mcp-authoring\ue
 
 git -C <VIBEUE_ROOT> apply --check <IRIS_ROOT>\work\UEAgent\patches\niagara-mcp-authoring\vibeue\vibeue-ueagent-authoring.patch
 git -C <VIBEUE_ROOT> apply <IRIS_ROOT>\work\UEAgent\patches\niagara-mcp-authoring\vibeue\vibeue-ueagent-authoring.patch
+
+git -C <VIBEUE_ROOT> apply --check <IRIS_ROOT>\work\UEAgent\patches\vibeue-mcp-shutdown-guard.patch
+git -C <VIBEUE_ROOT> apply <IRIS_ROOT>\work\UEAgent\patches\vibeue-mcp-shutdown-guard.patch
 ```
 
 The composite VibeUE patch replaces `patches/vibeue-ueagent.patch` for the verified advanced
 authoring profile; never apply both. UEAgent bootstrap applies it automatically when passed
 `-ApplyNiagaraAuthoringProfile` and records the selected profile and patch fingerprints in the
 target route. The normal profile continues to use the smaller core patch.
+
+Bootstrap always applies the shutdown guard after the selected VibeUE profile. `-CheckOnly` and
+doctor validate both its normalized SHA-256 and reverse-applicability in the target checkout.
+
+The shutdown guard is deliberately separate and minimal. It blocks work that has not started;
+it does not wait for an already-running tool. Keep the MCP caller serialized during editor exit
+until a later patch adds an explicit in-flight counter if that stronger guarantee is required.
 
 Then rebuild the editor target with the patched engine:
 

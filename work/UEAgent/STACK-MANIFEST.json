@@ -16,7 +16,10 @@
       "bootstrap_switch": "-ApplyMcpToolSearchPatches"
     },
     "base": {
-      "apply": ["patches/vibeue-ueagent.patch"],
+      "apply": [
+        "patches/vibeue-ueagent.patch",
+        "patches/vibeue-mcp-shutdown-guard.patch"
+      ],
       "vibeue_ref": "271f48771d077179fb597dc285ab5b898c5e8038"
     },
     "niagara-toolsets": {
@@ -26,28 +29,33 @@
     "niagara-authoring": {
       "apply": [
         "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch",
-        "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch"
+        "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch",
+        "patches/vibeue-mcp-shutdown-guard.patch"
       ],
       "bootstrap_switch": "-ApplyNiagaraAuthoringProfile",
-      "status": "verified",
+      "status": "package_verified",
+      "target_activation": "smoke_required",
       "warning": "This replaces the core VibeUE patch; never apply both profiles together."
     }
   },
   "patches": {
     "patches/vibeue-ueagent.patch": "F9B6511CC0382FC61497890A8235B97E8F4EB3C6B5BD8B2B1CA585FCD260A597",
+    "patches/vibeue-mcp-shutdown-guard.patch": "8638899C684BFB47AB18F29718099D322FE824484889A13ECED56A0D33758250",
     "patches/ue58-niagara-toolsets.patch": "C3EB3E4FC8205EDCF472EF4EE41DB6946D43DFE50E84A9AE548366E01E21D4EA",
     "patches/ue58-mcp-tool-search-v2.patch": "39D9772619871B28DEAA2729325C87516841DDCBEE2518C3DA7E1DFD7E0F4B7F",
     "patches/ue58-mcp-tool-search-v3-call-view.patch": "41439CDFFC2C4CBA5752DDD0AF4C5A7C062E97852D71E4113373BCA829E8C37E",
-    "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch": "1BD0229E7748700E633E0AFABE6107734C9185F93133AFEB9BB68DD6F964A2CB",
+    "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch": "F8C48A44A3E913D421A9F30D7043E731BB8953E5CC52671B5ED67849C8231598",
     "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch": "EEF95DCD904783BC11997A777B19C31DAD5245476B29A504E5E43B9EA0909B3E"
   },
   "runtime": {
     "endpoint": "http://127.0.0.1:8000/mcp",
     "required_plugins": ["ModelContextProtocol", "EditorToolset", "VibeUE"],
     "gateway": "scripts/mcp_gateway.ps1",
+    "projection_profiles": ["identity", "topology", "logic", "runtime", "hlsl", "changed"],
+    "cache_lifecycle": "scripts/reflect_cache.ps1 -Action reconcile",
     "daemon": {
       "script": "scripts/mcp_gateway_daemon.ps1",
-      "auto_start": true,
+      "auto_start": false,
       "defaults": {
         "max_private_memory_mb": 2048,
         "max_requests": 1000,

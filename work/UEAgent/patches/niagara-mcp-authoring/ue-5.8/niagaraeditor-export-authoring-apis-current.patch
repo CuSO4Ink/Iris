@@ -32,3 +32,22 @@ index c85957325..98872215c 100644
  
  	/** Helper to identify if a pin is an Add pin.*/
  	bool IsExecPin(const UEdGraphPin* Pin) const;
+diff --git a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h
+index 5a745c8..8f30299 100644
+--- a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h
++++ b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h
+@@ -31,12 +31,12 @@ protected:
+ 	using FTranslator = TNiagaraHlslTranslator<FNiagaraCompilationGraphBridge>;
+ 
+-	NIAGARAEDITOR_API bool ReallocatePins(bool bMarkNeedsResynchronizeOnChange = true);
+ 	NIAGARAEDITOR_API bool CompileInputPins(FTranslator* Translator, TArray<int32>& OutCompiledInputs) const;
+ 
+ 	virtual void OnPostSynchronizationInReallocatePins() {}
+ 	
+ public:
+ 
++	/** Reallocates the pins on this node (public so external tools can rebuild a node's pin set, e.g. to spawn the Add pins). */
+ 	NIAGARAEDITOR_API bool ReallocatePins(bool bMarkNeedsResynchronizeOnChange = true);
+ 
+ 	DECLARE_MULTICAST_DELEGATE_OneParam(FOnNodeVisualsChanged, UNiagaraNode*);
+diff --git a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNodeCustomHlsl.h b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNodeCustomHlsl.h
