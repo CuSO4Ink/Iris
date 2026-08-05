@@ -46,6 +46,11 @@ function Test-GitPatchApplied($Repository, $Patch) {
     try {
         $ErrorActionPreference = 'Continue'
         & git -C $Repository apply --reverse --check $Patch 2>$null
+        if ($LASTEXITCODE -eq 0) { return $true }
+        # Line-ending tolerant retry: see doctor.ps1. Packaged patches are LF while a
+        # Windows working tree may hold CRLF, so a whitespace-only mismatch would
+        # otherwise report an already-applied patch as missing.
+        & git -C $Repository apply --reverse --check --ignore-whitespace $Patch 2>$null
         return ($LASTEXITCODE -eq 0)
     } finally {
         $ErrorActionPreference = $previousErrorAction

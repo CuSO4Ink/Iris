@@ -1640,10 +1640,12 @@ index 6356ca8..a63e78c 100644
  #include "NiagaraSystem.h"
  #include "NiagaraTypes.h"
  
-@@ -23,6 +24,7 @@
+@@ -23,6 +24,9 @@
  #include "NiagaraDataInterfaceArrayFloat.h"
  #include "NiagaraDataInterfaceArrayInt.h"
  #include "NiagaraDataInterfaceGrid2DCollection.h"
++#include "NiagaraDataInterfaceNeighborQuery.h"
++#include "NiagaraDataInterfaceParticleRead.h"
 +#include "NiagaraDataInterfaceRasterizationGrid3D.h"
  #include "NiagaraDataInterfaceRenderTarget2D.h"
  
@@ -1685,10 +1687,13 @@ index 6356ca8..a63e78c 100644
  #if WITH_EDITORONLY_DATA
  			case ENiagaraScriptUsage::EmitterSpawnScript:   return EmitterData->EmitterSpawnScriptProps.Script;
  			case ENiagaraScriptUsage::EmitterUpdateScript:  return EmitterData->EmitterUpdateScriptProps.Script;
-@@ -173,6 +193,8 @@ namespace
+@@ -173,6 +193,11 @@ namespace
  		    N.Equals(TEXT("ArrayInt32"),    ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceArrayInt32::StaticClass());    return true; }
  		if (N.Equals(TEXT("Grid2D"),        ESearchCase::IgnoreCase) ||
  		    N.Equals(TEXT("Grid2DCollection"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceGrid2DCollection::StaticClass()); return true; }
++		if (N.Equals(TEXT("NeighborQuery"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceNeighborQuery::StaticClass()); return true; }
++		if (N.Equals(TEXT("ParticleRead"), ESearchCase::IgnoreCase) ||
++		    N.Equals(TEXT("ParticleReader"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceParticleRead::StaticClass()); return true; }
 +		if (N.Equals(TEXT("RasterizationGrid3D"), ESearchCase::IgnoreCase) ||
 +		    N.Equals(TEXT("RasterGrid3D"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceRasterizationGrid3D::StaticClass()); return true; }
  		if (N.Equals(TEXT("RenderTarget2D"), ESearchCase::IgnoreCase) ||

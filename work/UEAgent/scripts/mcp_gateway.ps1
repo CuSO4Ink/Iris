@@ -479,11 +479,18 @@ function Get-CompactEffect($Name, $Description) {
 
 function Convert-ToCallView($Data, $Toolset, $ToolName = '') {
     if ($null -eq $Data) { return $null }
-    if ($Data.PSObject.Properties.Name -contains 'tool' -and
-        $Data.PSObject.Properties.Name -contains 'args' -and
-        $Data.PSObject.Properties.Name -contains 'returns') { return $Data }
-    if (-not ($Data.PSObject.Properties.Name -contains 'tools')) { return $Data }
+    $dataFields = if ($Data -is [Collections.IDictionary]) { @($Data.Keys) } else { @($Data.PSObject.Properties.Name) }
+    if ($dataFields -contains 'tool' -and
+        $dataFields -contains 'args' -and
+        $dataFields -contains 'returns') { return $Data }
+    if (-not ($dataFields -contains 'tools')) { return $Data }
     $tools = @($Data.tools)
+    if ($tools.Count -gt 0) {
+        $firstToolFields = if ($tools[0] -is [Collections.IDictionary]) { @($tools[0].Keys) } else { @($tools[0].PSObject.Properties.Name) }
+        if ($firstToolFields -contains 'tool' -and
+            $firstToolFields -contains 'args' -and
+            $firstToolFields -contains 'returns') { return $Data }
+    }
     if ($ToolName) {
         $tools = @($tools | Where-Object {
             $full = [string]$_.name

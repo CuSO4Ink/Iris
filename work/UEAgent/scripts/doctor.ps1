@@ -36,6 +36,12 @@ function Test-GitPatchApplied($Repository, $Patch) {
     try {
         $ErrorActionPreference = 'Continue'
         & git -C $Repository apply --reverse --check $Patch 2>$null
+        if ($LASTEXITCODE -eq 0) { return $true }
+        # Line-ending tolerant retry: packaged patches are LF while a Windows working
+        # tree may hold CRLF (or vice versa). Whitespace-only mismatches otherwise
+        # report an applied patch as missing. This only ever adds a positive result
+        # after the strict check has already failed, so it cannot mask a real gap.
+        & git -C $Repository apply --reverse --check --ignore-whitespace $Patch 2>$null
         return ($LASTEXITCODE -eq 0)
     } finally {
         $ErrorActionPreference = $previousErrorAction
@@ -303,7 +309,14 @@ $vibeUEShutdownGuardPatchApplied = $false
 $engineNiagaraPatchApplied = $false
 $vibeUEAuthoringPatchApplied = $false
 $engineNiagaraAuthoringPatchApplied = $false
-$vibePatchPath = if ($vibeUEProfile -eq 'niagara-authoring') {
+$vibeUEUsesCustomPatch = [bool](
+    $route -and
+    $route.PSObject.Properties.Name -contains 'vibeUEPatchPath' -and
+    [string]$route.vibeUEPatchPath
+)
+$vibePatchPath = if ($vibeUEUsesCustomPatch) {
+    [Environment]::ExpandEnvironmentVariables([string]$route.vibeUEPatchPath)
+} elseif ($vibeUEProfile -eq 'niagara-authoring') {
     Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\vibeue\vibeue-ueagent-authoring.patch'
 } else {
     Join-Path $ueAgentRoot 'patches\vibeue-ueagent.patch'
@@ -326,7 +339,18 @@ if ($projectRoot) {
                 } else {
                     $vibeUEPatchApplied = Test-GitPatchApplied $vibePath $vibePatchPath
                     if (-not $vibeUEPatchApplied) { Add-Issue 'The routed UEAgent VibeUE patch is not applied.' }
-                    $vibeUEAuthoringPatchApplied = ($vibeUEProfile -eq 'niagara-authoring' -and $vibeUEPatchApplied)
+                    $customPatchBaselineMatches = (
+                        -not $vibeUEUsesCustomPatch -or
+                        ($route.vibeUERef -and $vibeUERevision -eq [string]$route.vibeUERef)
+                    )
+                    if ($vibeUEUsesCustomPatch -and -not $customPatchBaselineMatches) {
+                        Add-Issue 'The routed custom VibeUE patch requires its exact pinned VibeUE revision.'
+                    }
+                    $vibeUEAuthoringPatchApplied = (
+                        $vibeUEProfile -eq 'niagara-authoring' -and
+                        $vibeUEPatchApplied -and
+                        $customPatchBaselineMatches
+                    )
                 }
             }
             if (-not $route.vibeUEMcpShutdownGuardPatchSha256) {
@@ -343,7 +367,7 @@ if ($projectRoot) {
             }
             if ($vibeUEDirty) {
                 if ($vibeUEPatchApplied) {
-                    Add-Warning 'VibeUE contains the packaged UEAgent patch and is intentionally dirty.'
+                    Add-Warning 'VibeUE contains the route-selected UEAgent patch and is intentionally dirty.'
                 } else {
                     Add-Warning 'VibeUE has local changes; capabilities may differ from the pinned baseline.'
                 }
@@ -448,8 +472,10 @@ if ($ProbeAdvancedCapabilities -and $Profile -eq 'live') {
     if (-not $listener -or -not $engineNiagaraPatchApplied) {
         Add-Issue 'Advanced Niagara capability probe requires a live endpoint and the routed engine patch.'
     } else {
-        $systemProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_System' $gatewaySessionFile 'full'
-        $componentProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_Component' $gatewaySessionFile 'full'
+        # Capability verification only needs tool names. Avoid full schemas here because the
+        # Niagara system toolset is large enough to exceed the bounded gateway response budget.
+        $systemProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_System' $gatewaySessionFile 'summary'
+        $componentProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_Component' $gatewaySessionFile 'summary'
         if (-not $systemProbe.ok -or -not $componentProbe.ok) {
             Add-Issue 'Advanced Niagara toolset description failed.'
         } else {
