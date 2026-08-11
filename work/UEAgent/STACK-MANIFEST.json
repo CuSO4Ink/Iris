@@ -22,6 +22,23 @@
       ],
       "vibeue_ref": "271f48771d077179fb597dc285ab5b898c5e8038"
     },
+    "project-unrealmcp-readonly": {
+      "apply": [],
+      "bootstrap_switch": "-UseProjectUnrealMcp",
+      "mcp_server_name_default": "unreal-project",
+      "transport": "project-unrealmcp-stdio -> tcp://127.0.0.1:55557",
+      "access": "read-only",
+      "tool_policy": "exact_allowlist",
+      "source_or_build_required": false,
+      "required_tools": [
+        "skill_index",
+        "get_project_info",
+        "read_blueprint_content",
+        "analyze_blueprint_graph",
+        "get_blueprint_variable_details",
+        "get_blueprint_function_details"
+      ]
+    },
     "niagara-toolsets": {
       "apply": ["patches/ue58-niagara-toolsets.patch"],
       "bootstrap_switch": "-ApplyEngineNiagaraPatch"
@@ -44,13 +61,17 @@
     "patches/ue58-niagara-toolsets.patch": "C3EB3E4FC8205EDCF472EF4EE41DB6946D43DFE50E84A9AE548366E01E21D4EA",
     "patches/ue58-mcp-tool-search-v2.patch": "39D9772619871B28DEAA2729325C87516841DDCBEE2518C3DA7E1DFD7E0F4B7F",
     "patches/ue58-mcp-tool-search-v3-call-view.patch": "41439CDFFC2C4CBA5752DDD0AF4C5A7C062E97852D71E4113373BCA829E8C37E",
-    "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch": "F8C48A44A3E913D421A9F30D7043E731BB8953E5CC52671B5ED67849C8231598",
+    "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch": "6C1038EDD528D360E95675CF5E407A93F8E954EC6F879A3D6FD4AA083920F1F0",
     "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch": "AEAE64EDDBB0F0E93D9F0ED36C10DDC0CC48FB6604A050C0DBD9122781B9E957"
   },
   "runtime": {
     "endpoint": "http://127.0.0.1:8000/mcp",
     "required_plugins": ["ModelContextProtocol", "EditorToolset", "VibeUE"],
     "gateway": "scripts/mcp_gateway.ps1",
+    "gateway_process_guard": {
+      "max_private_memory_mb": 2048,
+      "hard_deadline_grace_sec": 15
+    },
     "projection_profiles": ["identity", "topology", "logic", "runtime", "hlsl", "changed"],
     "cache_lifecycle": "scripts/reflect_cache.ps1 -Action reconcile",
     "daemon": {
@@ -58,6 +79,7 @@
       "auto_start": false,
       "defaults": {
         "max_private_memory_mb": 2048,
+        "hard_request_grace_sec": 15,
         "max_requests": 1000,
         "max_uptime_sec": 7200,
         "idle_ttl_sec": 900,
@@ -69,6 +91,7 @@
   "verification": {
     "bootstrap": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatches",
     "bootstrap_niagara_authoring": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyNiagaraAuthoringProfile -ApplyMcpToolSearchPatches",
+    "bootstrap_project_unrealmcp": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -UseProjectUnrealMcp -SkipBuild",
     "static": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatches -CheckOnly",
     "doctor": "scripts/doctor.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json -Profile live",
     "route": "scripts/compact_context.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json"

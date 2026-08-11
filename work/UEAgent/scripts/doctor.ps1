@@ -10,6 +10,7 @@ param(
     [switch]$ProbeAdvancedCapabilities,
     [ValidateSet('compact', 'detail')]
     [string]$View = 'compact',
+    [int]$ProcessGuardMaxPrivateMemoryMB = 1024,
     [switch]$Pretty
 )
 
@@ -73,7 +74,7 @@ function Test-TcpListener([Uri]$Uri) {
     }
 }
 
-function Invoke-GatewayProbe($Action, $Url, $Seconds, $Toolset = $null, $SessionFile = $null, $DescribeDetail = $null) {
+function Invoke-GatewayProbe($Action, $Url, $Seconds, $Toolset = $null, $SessionFile = $null, $DescribeDetail = $null, $MaxPrivateMemoryMB = 1024) {
     $hostExe = (Get-Command powershell.exe -ErrorAction Stop).Source
     $arguments = @(
         '-NoProfile', '-ExecutionPolicy', 'Bypass',
@@ -81,6 +82,7 @@ function Invoke-GatewayProbe($Action, $Url, $Seconds, $Toolset = $null, $Session
         '-Action', $Action,
         '-Endpoint', $Url,
         '-TimeoutSec', $Seconds,
+        '-ProcessGuardMaxPrivateMemoryMB', [string]$MaxPrivateMemoryMB,
         '-Envelope'
     )
     if ($Toolset) { $arguments += @('-Toolset', $Toolset) }
@@ -116,6 +118,51 @@ function Invoke-GatewayProbe($Action, $Url, $Seconds, $Toolset = $null, $Session
     }
 }
 
+function Invoke-UnrealMcpStdioProbe($Route, $Seconds, $ProbeScript) {
+    $command = [string]$Route.mcpServerCommand
+    $arguments = @(
+        '-B', $ProbeScript,
+        '--server-command', $command,
+        '--server-arg', [string]$Route.mcpServerScript,
+        '--server-cwd', [string]$Route.mcpServerCwd,
+        '--timeout', [string]$Seconds
+    )
+    foreach ($tool in @($Route.requiredTools)) {
+        $arguments += @('--required-tool', [string]$tool)
+    }
+    $previousErrorAction = $ErrorActionPreference
+    try {
+        # FastMCP writes ordinary lifecycle messages to stderr. Capture them for diagnostics,
+        # but decide success from the child exit code and its final JSON line.
+        $ErrorActionPreference = 'Continue'
+        $output = & $command @arguments 2>&1
+        $exitCode = $LASTEXITCODE
+    } finally {
+        $ErrorActionPreference = $previousErrorAction
+    }
+    $lines = @($output) | ForEach-Object { [string]$_ }
+    $text = $lines -join [Environment]::NewLine
+    $jsonLine = @($lines | Where-Object { $_.Trim() }) | Select-Object -Last 1
+    try {
+        $parsed = $jsonLine | ConvertFrom-Json
+        [pscustomobject]@{
+            ok = ($exitCode -eq 0 -and $parsed.ok -eq $true)
+            exitCode = $exitCode
+            data = $parsed
+            code = if ($parsed.ok) { $null } else { 'unrealmcp_stdio_probe_failed' }
+            message = [string]$parsed.liveError
+        }
+    } catch {
+        [pscustomobject]@{
+            ok = $false
+            exitCode = $exitCode
+            data = $null
+            code = 'invalid_unrealmcp_probe_output'
+            message = $text
+        }
+    }
+}
+
 function Read-McpSessionSnapshot($Path, $ExpectedEndpoint) {
     if (-not $Path -or -not (Test-Path -LiteralPath $Path)) { return $null }
     try {
@@ -131,6 +178,9 @@ function Read-McpSessionSnapshot($Path, $ExpectedEndpoint) {
 function Get-PluginFingerprint($ProjectRoot, $EngineRoot) {
     $patterns = @()
     if ($ProjectRoot) {
+        $patterns += (Join-Path $ProjectRoot 'Plugins\UnrealMCP\Binaries\Win64\*.dll')
+        $patterns += (Join-Path $ProjectRoot 'Plugins\UnrealMCP\*.uplugin')
+        $patterns += (Join-Path $ProjectRoot 'Plugins\UnrealMCP\Python\unreal_mcp_server_advanced.py')
         $patterns += (Join-Path $ProjectRoot 'Plugins\VibeUE\Binaries\Win64\*.dll')
         $patterns += (Join-Path $ProjectRoot 'Plugins\VibeUE\*.uplugin')
         $patterns += (Join-Path $ProjectRoot 'Plugins\NiagaraToolsets\Binaries\Win64\*.dll')
@@ -175,12 +225,21 @@ if ($RouteFile) {
         Add-Issue "Route file not found: $RouteFile"
     }
 }
+$routeTransport = if ($route -and $route.PSObject.Properties.Name -contains 'transport') {
+    [string]$route.transport
+} else {
+    'streamable-http'
+}
+$isProjectUnrealMcp = $routeTransport -eq 'project-unrealmcp-stdio'
+if ($isProjectUnrealMcp -and [string]$route.access -ne 'read-only') {
+    Add-Issue 'The project UnrealMCP route must be explicitly read-only.'
+}
 $vibeUEProfile = if ($route -and $route.PSObject.Properties.Name -contains 'vibeUEProfile') {
     [string]$route.vibeUEProfile
 } else {
     'base'
 }
-if ($vibeUEProfile -notin @('base', 'niagara-authoring')) {
+if (-not $isProjectUnrealMcp -and $vibeUEProfile -notin @('base', 'niagara-authoring')) {
     Add-Issue "Unsupported UEAgent VibeUE profile: $vibeUEProfile"
 }
 if (-not $route) {
@@ -209,42 +268,62 @@ if (-not $UProject) {
 
 $mcpPath = if ($projectRoot) { Join-Path $projectRoot '.mcp.json' } else { $null }
 $configuredEndpoint = $null
-if ($mcpPath -and (Test-Path -LiteralPath $mcpPath)) {
+if (-not $isProjectUnrealMcp -and $mcpPath -and (Test-Path -LiteralPath $mcpPath)) {
     try {
         $mcp = Get-Content -Raw -LiteralPath $mcpPath | ConvertFrom-Json
         $configuredEndpoint = [string]$mcp.mcpServers.'ue-editor'.url
     } catch {
         Add-Issue "Invalid .mcp.json: $($_.Exception.Message)"
     }
-} elseif ($projectRoot) {
+} elseif (-not $isProjectUnrealMcp -and $projectRoot) {
     Add-Issue "Missing project MCP config: $mcpPath"
 }
 if (-not $Endpoint) { $Endpoint = $configuredEndpoint }
-if (-not $Endpoint) { $Endpoint = 'http://127.0.0.1:8000/mcp' }
+if (-not $Endpoint) {
+    $Endpoint = if ($isProjectUnrealMcp -and [string]$route.codexMcpServer) {
+        "stdio://$([string]$route.codexMcpServer)"
+    } else {
+        'http://127.0.0.1:8000/mcp'
+    }
+}
 if ($configuredEndpoint -and $configuredEndpoint -ne $Endpoint) {
     Add-Issue "Route endpoint differs from project .mcp.json: $configuredEndpoint"
 }
 
 $uri = $null
 $endpointSafe = [Uri]::TryCreate($Endpoint, [UriKind]::Absolute, [ref]$uri)
-if (-not $endpointSafe -or $uri.Scheme -ne 'http' -or
-    $uri.Host -notin @('127.0.0.1', 'localhost', '::1')) {
-    Add-Issue "Endpoint must be unauthenticated loopback HTTP: $Endpoint"
-    $endpointSafe = $false
+if ($isProjectUnrealMcp) {
+    if (-not $endpointSafe -or $uri.Scheme -ne 'stdio' -or
+        $uri.Host -ne [string]$route.codexMcpServer) {
+        Add-Issue "Project UnrealMCP endpoint must identify its configured stdio server: $Endpoint"
+        $endpointSafe = $false
+    }
+} elseif (-not $endpointSafe -or $uri.Scheme -ne 'http' -or
+          $uri.Host -notin @('127.0.0.1', 'localhost', '::1')) {
+        Add-Issue "Endpoint must be unauthenticated loopback HTTP: $Endpoint"
+        $endpointSafe = $false
 }
 
 $nativeMcpEnabled = $false
 $editorToolsetEnabled = $false
 $vibeUEEnabled = $false
+$unrealMcpEnabled = $false
 $niagaraToolsetsEnabled = $false
 if ($project) {
     $nativeMcpEnabled = Test-PluginEnabled $project 'ModelContextProtocol'
     $editorToolsetEnabled = Test-PluginEnabled $project 'EditorToolset'
     $vibeUEEnabled = Test-PluginEnabled $project 'VibeUE'
+    $unrealMcpEnabled = Test-PluginEnabled $project 'UnrealMCP'
     $niagaraToolsetsEnabled = Test-PluginEnabled $project 'NiagaraToolsets'
-    if (-not $nativeMcpEnabled) { Add-Issue 'ModelContextProtocol is not enabled in the uproject.' }
-    if (-not $editorToolsetEnabled) { Add-Issue 'EditorToolset is not enabled in the uproject.' }
-    if (-not $vibeUEEnabled) { Add-Warning 'VibeUE is not enabled; official MCP may still be healthy.' }
+    if ($isProjectUnrealMcp) {
+        if (-not $unrealMcpEnabled) { Add-Issue 'UnrealMCP is not enabled in the uproject.' }
+        if ($vibeUEEnabled) { Add-Issue 'VibeUE must remain disabled on the project UnrealMCP route.' }
+        Add-Warning 'The project UnrealMCP route is intentionally read-only.'
+    } else {
+        if (-not $nativeMcpEnabled) { Add-Issue 'ModelContextProtocol is not enabled in the uproject.' }
+        if (-not $editorToolsetEnabled) { Add-Issue 'EditorToolset is not enabled in the uproject.' }
+        if (-not $vibeUEEnabled) { Add-Warning 'VibeUE is not enabled; official MCP may still be healthy.' }
+    }
 }
 
 $settingsPath = if ($projectRoot) {
@@ -252,7 +331,7 @@ $settingsPath = if ($projectRoot) {
 } else {
     $null
 }
-if ($settingsPath -and (Test-Path -LiteralPath $settingsPath) -and $endpointSafe) {
+if (-not $isProjectUnrealMcp -and $settingsPath -and (Test-Path -LiteralPath $settingsPath) -and $endpointSafe) {
     $settings = Get-Content -Raw -LiteralPath $settingsPath
     foreach ($expected in @(
         "ServerUrlPath=$($uri.AbsolutePath)",
@@ -264,7 +343,7 @@ if ($settingsPath -and (Test-Path -LiteralPath $settingsPath) -and $endpointSafe
             Add-Issue "Missing MCP project setting: $expected"
         }
     }
-} elseif ($projectRoot) {
+} elseif (-not $isProjectUnrealMcp -and $projectRoot) {
     Add-Issue "Missing MCP project settings: $settingsPath"
 }
 
@@ -286,13 +365,15 @@ if ($EngineRoot) {
         } else {
             Add-Issue "Missing engine Build.version: $buildVersionPath"
         }
-        foreach ($pluginPath in @(
-            'Engine\Plugins\Experimental\ModelContextProtocol\ModelContextProtocol.uplugin',
-            'Engine\Plugins\Experimental\Toolsets\EditorToolset\EditorToolset.uplugin'
-        )) {
-            $fullPluginPath = Join-Path $EngineRoot $pluginPath
-            if (-not (Test-Path -LiteralPath $fullPluginPath)) {
-                Add-Issue "Missing native MCP plugin: $fullPluginPath"
+        if (-not $isProjectUnrealMcp) {
+            foreach ($pluginPath in @(
+                'Engine\Plugins\Experimental\ModelContextProtocol\ModelContextProtocol.uplugin',
+                'Engine\Plugins\Experimental\Toolsets\EditorToolset\EditorToolset.uplugin'
+            )) {
+                $fullPluginPath = Join-Path $EngineRoot $pluginPath
+                if (-not (Test-Path -LiteralPath $fullPluginPath)) {
+                    Add-Issue "Missing native MCP plugin: $fullPluginPath"
+                }
             }
         }
     } else {
@@ -300,6 +381,55 @@ if ($EngineRoot) {
     }
 } else {
     Add-Warning 'EngineRoot was not supplied; engine/plugin files were not statically checked.'
+}
+
+$requiredProjectTools = @(
+    'skill_index',
+    'get_project_info',
+    'read_blueprint_content',
+    'analyze_blueprint_graph',
+    'get_blueprint_variable_details',
+    'get_blueprint_function_details'
+)
+$projectMcpStaticReady = $false
+if ($isProjectUnrealMcp) {
+    $projectMcpStaticReady = $true
+    foreach ($property in @('mcpServerCommand', 'mcpServerScript', 'mcpServerCwd', 'mcpServerSha256')) {
+        if (-not [string]$route.$property) {
+            Add-Issue "Project UnrealMCP route is missing $property."
+            $projectMcpStaticReady = $false
+        }
+    }
+    foreach ($pathProperty in @('mcpServerCommand', 'mcpServerScript', 'mcpServerCwd')) {
+        $candidate = [string]$route.$pathProperty
+        if ($candidate -and -not (Test-Path -LiteralPath $candidate)) {
+            Add-Issue "Project UnrealMCP path not found: $candidate"
+            $projectMcpStaticReady = $false
+        }
+    }
+    $missingRouteTools = @($requiredProjectTools | Where-Object { $_ -notin @($route.requiredTools) })
+    if ($missingRouteTools.Count) {
+        Add-Issue "Project UnrealMCP route is missing tools: $($missingRouteTools -join ', ')"
+        $projectMcpStaticReady = $false
+    }
+    if ($route.mcpServerScript -and (Test-Path -LiteralPath ([string]$route.mcpServerScript))) {
+        if ((Get-NormalizedFileSha256 ([string]$route.mcpServerScript)) -ne [string]$route.mcpServerSha256) {
+            Add-Issue 'Project UnrealMCP server checksum differs from the routed version.'
+            $projectMcpStaticReady = $false
+        }
+        $serverText = Get-Content -Raw -LiteralPath ([string]$route.mcpServerScript)
+        foreach ($tool in $requiredProjectTools) {
+            if ($serverText -notmatch "(?m)^def\s+$([regex]::Escape($tool))\s*\(") {
+                Add-Issue "Project UnrealMCP server does not expose $tool."
+                $projectMcpStaticReady = $false
+            }
+        }
+    }
+    if ([string]$route.unrealHost -notin @('127.0.0.1', 'localhost', '::1') -or
+        [int]$route.unrealPort -lt 1 -or [int]$route.unrealPort -gt 65535) {
+        Add-Issue 'Project UnrealMCP TCP bridge must remain on a valid loopback port.'
+        $projectMcpStaticReady = $false
+    }
 }
 
 $vibeUERevision = $null
@@ -425,9 +555,29 @@ $toolsListOk = $false
 $currentLevelRead = $false
 $currentLevel = $null
 $topToolNames = @()
-$missingMetaTools = @('list_toolsets', 'describe_toolset', 'call_tool')
+$unexpectedProjectTools = @()
+$projectToolAllowListOk = $false
+$requiredTopTools = if ($isProjectUnrealMcp) {
+    $requiredProjectTools
+} else {
+    @('list_toolsets', 'describe_toolset', 'call_tool')
+}
+$missingMetaTools = @($requiredTopTools)
 
-if ($endpointSafe) {
+if ($isProjectUnrealMcp -and $endpointSafe) {
+    $unrealTcpUri = [Uri]("tcp://$([string]$route.unrealHost):$([int]$route.unrealPort)")
+    $listener = Test-TcpListener $unrealTcpUri
+    if ($listener -and (Get-Command Get-NetTCPConnection -ErrorAction SilentlyContinue)) {
+        try {
+            $listenerPids = @(
+                Get-NetTCPConnection -State Listen -LocalPort ([int]$route.unrealPort) -ErrorAction Stop |
+                    Select-Object -ExpandProperty OwningProcess -Unique
+            )
+        } catch {
+            Add-Warning "Could not identify listener PID: $($_.Exception.Message)"
+        }
+    }
+} elseif ($endpointSafe) {
     $listener = Test-TcpListener $uri
     if ($listener -and (Get-Command Get-NetTCPConnection -ErrorAction SilentlyContinue)) {
         try {
@@ -442,24 +592,43 @@ if ($endpointSafe) {
 }
 
 if ($listener -and $Profile -eq 'live') {
-    $preflightProbe = Invoke-GatewayProbe 'preflight' $Endpoint $TimeoutSec $null $gatewaySessionFile
-    if ($preflightProbe.ok) {
-        $toolsListOk = [bool]$preflightProbe.data.toolsList
-        $currentLevelRead = [bool]$preflightProbe.data.currentLevelRead
-        $currentLevel = $preflightProbe.data.currentLevel
-        $topToolNames = @($preflightProbe.data.topLevelTools | Sort-Object -Unique)
-        $missingMetaTools = @(
-            @('list_toolsets', 'describe_toolset', 'call_tool') |
-                Where-Object { $_ -notin $topToolNames }
-        )
-        foreach ($probeError in @($preflightProbe.data.errors)) {
-            Add-Issue "MCP preflight: $probeError"
+    if ($isProjectUnrealMcp) {
+        $probeScript = Join-Path $ueAgentRoot 'scripts\unrealmcp_stdio_probe.py'
+        if (-not $projectMcpStaticReady -or -not (Test-Path -LiteralPath $probeScript)) {
+            Add-Issue "Project UnrealMCP probe is unavailable: $probeScript"
+        } else {
+            $preflightProbe = Invoke-UnrealMcpStdioProbe $route $TimeoutSec $probeScript
+            if ($preflightProbe.data) {
+                $toolsListOk = [bool]$preflightProbe.data.toolsList
+                $currentLevelRead = [bool]$preflightProbe.data.liveRead
+                $currentLevel = $preflightProbe.data.liveValue
+                $topToolNames = @($preflightProbe.data.topLevelTools | Sort-Object -Unique)
+                $missingMetaTools = @($requiredTopTools | Where-Object { $_ -notin $topToolNames })
+                $unexpectedProjectTools = @($preflightProbe.data.unexpectedTools)
+                $projectToolAllowListOk = ($missingMetaTools.Count -eq 0 -and $unexpectedProjectTools.Count -eq 0)
+            }
+            if (-not $preflightProbe.ok) {
+                Add-Issue "Project UnrealMCP preflight failed: $($preflightProbe.code) $($preflightProbe.message)"
+            }
         }
     } else {
-        Add-Issue "MCP preflight failed: $($preflightProbe.code) $($preflightProbe.message)"
+        $preflightProbe = Invoke-GatewayProbe 'preflight' $Endpoint $TimeoutSec $null $gatewaySessionFile $null $ProcessGuardMaxPrivateMemoryMB
+        if ($preflightProbe.ok) {
+            $toolsListOk = [bool]$preflightProbe.data.toolsList
+            $currentLevelRead = [bool]$preflightProbe.data.currentLevelRead
+            $currentLevel = $preflightProbe.data.currentLevel
+            $topToolNames = @($preflightProbe.data.topLevelTools | Sort-Object -Unique)
+            $missingMetaTools = @($requiredTopTools | Where-Object { $_ -notin $topToolNames })
+            foreach ($probeError in @($preflightProbe.data.errors)) {
+                Add-Issue "MCP preflight: $probeError"
+            }
+        } else {
+            Add-Issue "MCP preflight failed: $($preflightProbe.code) $($preflightProbe.message)"
+        }
     }
     if ($toolsListOk -and $missingMetaTools.Count -gt 0) {
-        Add-Issue "Missing MCP meta tools: $($missingMetaTools -join ', ')"
+        $label = if ($isProjectUnrealMcp) { 'read-only MCP tools' } else { 'MCP meta tools' }
+        Add-Issue "Missing $label`: $($missingMetaTools -join ', ')"
     }
 }
 
@@ -474,8 +643,8 @@ if ($ProbeAdvancedCapabilities -and $Profile -eq 'live') {
     } else {
         # Capability verification only needs tool names. Avoid full schemas here because the
         # Niagara system toolset is large enough to exceed the bounded gateway response budget.
-        $systemProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_System' $gatewaySessionFile 'summary'
-        $componentProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_Component' $gatewaySessionFile 'summary'
+        $systemProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_System' $gatewaySessionFile 'summary' $ProcessGuardMaxPrivateMemoryMB
+        $componentProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_Component' $gatewaySessionFile 'summary' $ProcessGuardMaxPrivateMemoryMB
         if (-not $systemProbe.ok -or -not $componentProbe.ok) {
             Add-Issue 'Advanced Niagara toolset description failed.'
         } else {
@@ -508,6 +677,8 @@ $status = if (-not $UProject -or -not $project -or -not $endpointSafe) {
 } elseif (-not $listener -or -not $preflightProbe -or -not $preflightProbe.ok -or -not $toolsListOk) {
     'OFFLINE'
 } elseif ($issues.Count -gt 0 -or $missingMetaTools.Count -gt 0 -or -not $currentLevelRead) {
+    'DEGRADED'
+} elseif ($isProjectUnrealMcp) {
     'DEGRADED'
 } else {
     'HEALTHY'
@@ -547,6 +718,7 @@ $receipt = [ordered]@{
     }
     endpoint = [ordered]@{
         url = $Endpoint
+        transport = $routeTransport
         loopbackSafe = $endpointSafe
         listener = $listener
         listenerPids = $listenerPids
@@ -558,8 +730,10 @@ $receipt = [ordered]@{
         pluginFingerprint = $pluginFingerprint
     }
     static = [ordered]@{
+        routeAccess = if ($route) { [string]$route.access } else { $null }
         nativeMcpEnabled = $nativeMcpEnabled
         editorToolsetEnabled = $editorToolsetEnabled
+        unrealMcpEnabled = $unrealMcpEnabled
         vibeUEEnabled = $vibeUEEnabled
         niagaraToolsetsEnabled = $niagaraToolsetsEnabled
         vibeUEProfile = $vibeUEProfile
@@ -575,13 +749,18 @@ $receipt = [ordered]@{
         toolsList = $toolsListOk
         topLevelTools = $topToolNames
         missingMetaTools = $missingMetaTools
+        unexpectedProjectTools = $unexpectedProjectTools
         toolsetDiscoveryAvailable = ('list_toolsets' -in $topToolNames -and 'describe_toolset' -in $topToolNames)
         currentLevelRead = $currentLevelRead
         currentLevel = $currentLevel
         advancedCapabilityProbe = $ProbeAdvancedCapabilities.IsPresent
     }
     capabilities = [ordered]@{
-        officialToolSearch = ($missingMetaTools.Count -eq 0 -and $toolsListOk)
+        officialToolSearch = (-not $isProjectUnrealMcp -and $missingMetaTools.Count -eq 0 -and $toolsListOk)
+        projectUnrealMcp = ($isProjectUnrealMcp -and $projectMcpStaticReady)
+        blueprintRead = ($isProjectUnrealMcp -and $preflightProbe -and $preflightProbe.ok -and
+            $projectToolAllowListOk -and $currentLevelRead)
+        readOnly = $isProjectUnrealMcp
         vibeUE = ($vibeUEEnabled -and 'execute_python_code' -in $topToolNames)
         niagara = ($niagaraToolsetsEnabled -and $missingMetaTools.Count -eq 0)
         reflectCacheSaveHook = if ($vibeUEPatchApplied) { 'PRESENT_UNVERIFIED' } else { 'UNVERIFIED' }
@@ -607,7 +786,7 @@ $output = if ($View -eq 'compact') {
             default { 'ROUTE_REPAIR_ONLY' }
         }
         checkedAtUtc = $receipt.checkedAtUtc
-        endpoint = [ordered]@{ url = $Endpoint; loopbackSafe = $endpointSafe; listener = $listener }
+        endpoint = [ordered]@{ url = $Endpoint; transport = $routeTransport; loopbackSafe = $endpointSafe; listener = $listener }
         identity = [ordered]@{
             listenerPids = $listenerPids
             mcpSessionId = if ($sessionSnapshot) { [string]$sessionSnapshot.sessionId } else { $null }
@@ -615,7 +794,11 @@ $output = if ($View -eq 'compact') {
         }
         engineVersion = $engineVersion
         capabilities = [ordered]@{
-            officialToolSearch = ($missingMetaTools.Count -eq 0 -and $toolsListOk)
+            officialToolSearch = (-not $isProjectUnrealMcp -and $missingMetaTools.Count -eq 0 -and $toolsListOk)
+            projectUnrealMcp = ($isProjectUnrealMcp -and $projectMcpStaticReady)
+            blueprintRead = ($isProjectUnrealMcp -and $preflightProbe -and $preflightProbe.ok -and
+                $projectToolAllowListOk -and $currentLevelRead)
+            readOnly = $isProjectUnrealMcp
             vibeUE = ($vibeUEEnabled -and 'execute_python_code' -in $topToolNames)
             niagara = ($niagaraToolsetsEnabled -and $missingMetaTools.Count -eq 0)
             niagaraAuthoring = ($vibeUEAuthoringPatchApplied -and $engineNiagaraAuthoringPatchApplied)

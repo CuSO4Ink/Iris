@@ -369,3 +369,70 @@ Verification: all seven PowerShell scripts parsed with zero errors; profile prob
 Material/Blueprint/Niagara aliases; an isolated fixture passed source-hash rename repair and
 orphan quarantine. A read-only Abyss audit reported 27 sidecars (21 fresh, 3 stale, 3 orphaned);
 no repair was applied to the user project.
+
+### 2026-08-08 - Bound one-shot Gateway and in-flight daemon requests
+
+Incident review found a Windows PowerShell 5.1 `mcp_gateway.ps1 script.execute` process that
+outlived its parent and reached 100.624 GiB working set, while Windows Event 2004 recorded several
+other large PowerShell processes. The exact retained allocation from that historical process is
+not recoverable, but the one-shot Gateway still parsed SSE one character at a time through the
+PowerShell pipeline and had no process-level memory or deadline guard. The daemon's existing
+budgets were checked only between requests, so one stuck request could also bypass them.
+
+`mcp_gateway.ps1` now parses SSE with `StreamReader.ReadLineAsync`, retains the 64 MiB network
+response cap, and arms an independent process guard with a 2 GiB private-memory ceiling and a hard
+deadline of `TimeoutSec + 15 s`. The guard runs on a .NET timer and terminates the process even when
+the PowerShell thread is blocked in `Invoke-WebRequest`, stream cleanup, or JSON handling.
+`mcp_gateway_daemon.ps1` arms the same guard around every accepted request and disarms it only
+after the response context closes. A hard-killed mutation remains `RESULT_UNKNOWN`; callers must
+read back before retrying.
+
+Offline loopback fixtures verified an exact 8 MiB single-line SSE round trip in 1.45 s at 396 MiB
+peak private memory, normal `tools/call` timeout at 98 MiB, an indefinitely open initialize body
+hard-killed at 88 MiB, a forced 64 MiB memory ceiling, and daemon hard timeout. Every run ended
+with zero Gateway or daemon PowerShell processes. PowerShell AST, Python AST, UTF-8 BOM, and
+`git diff --check` validation passed. Unreal Editor was not running and no UE asset was touched.
+
+### 2026-08-08 - Separate Programmatic scripts from isolated Unreal Python
+
+Follow-up diagnosis established that Gateway `script.execute` routes to
+`ProgrammaticToolset.execute_tool_script`, not `execute_python_code`. It now rejects explicit
+Unreal-Python imports with `wrong_script_backend` and points callers to the new `python.execute`
+action. `python.execute` routes to the top-level Python tool, evaluates the payload in a private
+globals dictionary, clears it in `finally`, and runs Python GC before returning.
+
+The isolation is required for PIE lifecycle safety, not only naming clarity. SSPR runtime probes
+previously loaded files with plain `exec` in the persistent interpreter namespace. Their global
+Niagara render-target wrappers rooted the PIE world; `StopPIE` reached teardown but UE 5.8 then
+asserted in `PlayLevel.cpp:553` because `FPyReferenceCollector` prevented the old package from
+being collected. Offline fixtures now verify the exact `execute_python_code` route, isolation
+bootstrap, explicit wrong-backend rejection before `tools/call`, transport timeouts/memory
+ceilings, and zero residual Gateway processes.
+
+After the helper/daemon refactor, the full formal 8 MiB suite was rerun on 2026-08-08. The exact
+single-line payload completed in 1.782 s at 397.46 MiB peak private memory; isolated
+`python.execute`, wrong-backend rejection, call/initialize hard timeouts, the forced memory guard,
+and the daemon hard-timeout case all passed, with zero leftover Gateway processes.
+
+### 2026-08-11 - Package and gate the read-only project UnrealMCP fallback
+
+The optional prebuilt-project fallback is now a portable `project-unrealmcp-stdio` profile rather
+than a target-named route. Bootstrap accepts a configurable Codex MCP server name and loopback TCP
+port, validates the UE/plugin BuildId pair, existing Python environment, server checksum, and six
+required Blueprint read tools, and writes only the machine-local route. Doctor validates that
+route, starts the routed STDIO server for an exact tool-list check plus one cheap live read, and
+always caps a successful result at `DEGRADED`; mutation and save remain blocked.
+
+The first regression exposed two packaging defects and both were fixed: normal FastMCP lifecycle
+messages on stderr no longer abort doctor before it parses the final JSON line, and an unexpected
+server tool now invalidates `blueprintRead` instead of being silently tolerated. The updated
+Niagara authoring patch fingerprint was also synchronized with `STACK-MANIFEST.json`.
+
+Offline verification used a disposable UE 5.8/project/plugin fixture, a temporary FastMCP STDIO
+server, and a loopback listener. Bootstrap and `-CheckOnly` passed; the exact six-tool server
+returned `DEGRADED` with `blueprintRead=true`; adding a synthetic `delete_asset` tool returned
+`OFFLINE` with `blueprintRead=false`; all seven manifest patch hashes matched. The formal Gateway
+suite was rerun unchanged: the exact 8 MiB SSE payload completed in 1.372 s at 399.08 MiB peak,
+Python routing and wrong-backend rejection passed, timeout/memory/daemon guards passed, and no
+Gateway process remained. No real Unreal Editor or UE asset was contacted; target activation
+remains an explicit backlog item.

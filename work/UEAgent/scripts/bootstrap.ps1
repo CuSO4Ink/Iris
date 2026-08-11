@@ -12,6 +12,11 @@ param(
     [switch]$ApplyNiagaraAuthoringProfile,
     [switch]$ApplyEngineNiagaraPatch,
     [switch]$ApplyMcpToolSearchPatches,
+    [switch]$UseProjectUnrealMcp,
+    [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9._-]*$')]
+    [string]$ProjectUnrealMcpServerName = 'unreal-project',
+    [ValidateRange(1, 65535)]
+    [int]$ProjectUnrealMcpPort = 55557,
     [switch]$CheckOnly,
     [switch]$SkipBuild,
     [switch]$Launch
@@ -127,6 +132,136 @@ Offline source/cache/config/log analysis may proceed, but must not claim live ed
 $UProject = Resolve-RequiredPath $UProject 'UProject'
 $EngineRoot = Resolve-RequiredPath $EngineRoot 'Engine root'
 $ueAgentRoot = Split-Path $PSScriptRoot -Parent
+
+if ($UseProjectUnrealMcp) {
+    if ($PreserveExistingVibeUE -or $ApplyNiagaraAuthoringProfile -or
+        $ApplyEngineNiagaraPatch -or $ApplyMcpToolSearchPatches) {
+        throw '-UseProjectUnrealMcp cannot be combined with VibeUE or engine-patch profiles.'
+    }
+    if ($Launch) {
+        throw '-UseProjectUnrealMcp never launches Unreal Editor; open the existing editor normally.'
+    }
+
+    $projectRoot = Split-Path $UProject -Parent
+    $projectName = [IO.Path]::GetFileNameWithoutExtension($UProject)
+    $buildVersionPath = Join-Path $EngineRoot 'Engine\Build\Build.version'
+    $engineModulesPath = Join-Path $EngineRoot 'Engine\Binaries\Win64\UnrealEditor.modules'
+    $unrealMcpRoot = Join-Path $projectRoot 'Plugins\UnrealMCP'
+    $unrealMcpManifest = Join-Path $unrealMcpRoot 'UnrealMCP.uplugin'
+    $unrealMcpBinary = Join-Path $unrealMcpRoot 'Binaries\Win64\UnrealEditor-UnrealMCP.dll'
+    $unrealMcpModulesPath = Join-Path $unrealMcpRoot 'Binaries\Win64\UnrealEditor.modules'
+    $mcpServerCommand = Join-Path $unrealMcpRoot 'Python\.venv\Scripts\python.exe'
+    $mcpServerScript = Join-Path $unrealMcpRoot 'Python\unreal_mcp_server_advanced.py'
+    $mcpServerCwd = Join-Path $projectRoot 'Saved\Logs'
+    $requiredTools = @(
+        'skill_index',
+        'get_project_info',
+        'read_blueprint_content',
+        'analyze_blueprint_graph',
+        'get_blueprint_variable_details',
+        'get_blueprint_function_details'
+    )
+
+    foreach ($required in @(
+        $buildVersionPath,
+        $engineModulesPath,
+        $unrealMcpManifest,
+        $unrealMcpBinary,
+        $unrealMcpModulesPath,
+        $mcpServerCommand,
+        $mcpServerScript,
+        $mcpServerCwd
+    )) {
+        if (-not (Test-Path -LiteralPath $required)) {
+            throw "Prebuilt UnrealMCP prerequisite not found: $required"
+        }
+    }
+
+    $buildVersion = Get-Content -Raw -LiteralPath $buildVersionPath | ConvertFrom-Json
+    if ($buildVersion.MajorVersion -ne 5 -or $buildVersion.MinorVersion -ne 8) {
+        throw "UE 5.8 is required; found $($buildVersion.MajorVersion).$($buildVersion.MinorVersion)."
+    }
+    $engineBuildId = [string](Get-Content -Raw -LiteralPath $engineModulesPath | ConvertFrom-Json).BuildId
+    $pluginBuildId = [string](Get-Content -Raw -LiteralPath $unrealMcpModulesPath | ConvertFrom-Json).BuildId
+    if (-not $engineBuildId -or $pluginBuildId -ne $engineBuildId) {
+        throw "UnrealMCP binary BuildId $pluginBuildId does not match engine BuildId $engineBuildId."
+    }
+
+    $project = Get-Content -Raw -LiteralPath $UProject | ConvertFrom-Json
+    if (-not @($project.Plugins | Where-Object { $_.Name -eq 'UnrealMCP' -and $_.Enabled }).Count) {
+        throw "UnrealMCP is not enabled in $UProject"
+    }
+    if (@($project.Plugins | Where-Object { $_.Name -eq 'VibeUE' -and $_.Enabled }).Count) {
+        throw "VibeUE must not be enabled for the project UnrealMCP route: $UProject"
+    }
+
+    $serverText = Get-Content -Raw -LiteralPath $mcpServerScript
+    foreach ($tool in $requiredTools) {
+        if ($serverText -notmatch "(?m)^def\s+$([regex]::Escape($tool))\s*\(") {
+            throw "Required read-only MCP tool is missing from the server: $tool"
+        }
+    }
+
+    $routeDir = Join-Path $projectRoot 'Saved\UEAgent'
+    $routePath = Join-Path $routeDir 'route.json'
+    $routeEndpoint = "stdio://$ProjectUnrealMcpServerName"
+    $serverSha256 = Get-NormalizedFileSha256 $mcpServerScript
+
+    if ($CheckOnly) {
+        if (-not (Test-Path -LiteralPath $routePath)) { throw "Configured route not found: $routePath" }
+        $route = Get-Content -Raw -LiteralPath $routePath | ConvertFrom-Json
+        foreach ($pair in @(
+            @('schema', 'ueagent-route-v1'),
+            @('transport', 'project-unrealmcp-stdio'),
+            @('access', 'read-only'),
+            @('ueAgentRoot', $ueAgentRoot),
+            @('uProject', $UProject),
+            @('engineRoot', $EngineRoot),
+            @('endpoint', $routeEndpoint),
+            @('codexMcpServer', $ProjectUnrealMcpServerName),
+            @('unrealHost', '127.0.0.1'),
+            @('unrealPort', $ProjectUnrealMcpPort),
+            @('mcpServerCommand', $mcpServerCommand),
+            @('mcpServerScript', $mcpServerScript),
+            @('mcpServerCwd', $mcpServerCwd),
+            @('mcpServerSha256', $serverSha256)
+        )) {
+            if ([string]$route.($pair[0]) -ne [string]$pair[1]) {
+                throw "UEAgent route mismatch for $($pair[0]): $($route.($pair[0]))"
+            }
+        }
+        $missingRouteTools = @($requiredTools | Where-Object { $_ -notin @($route.requiredTools) })
+        if ($missingRouteTools.Count) {
+            throw "UEAgent route is missing read-only tools: $($missingRouteTools -join ', ')"
+        }
+        Write-Host "UEAgent project UnrealMCP static check passed for $projectName." -ForegroundColor Green
+        exit 0
+    }
+
+    New-Item -ItemType Directory -Path $routeDir -Force | Out-Null
+    $route = [ordered]@{
+        schema = 'ueagent-route-v1'
+        transport = 'project-unrealmcp-stdio'
+        access = 'read-only'
+        ueAgentRoot = $ueAgentRoot
+        uProject = $UProject
+        engineRoot = $EngineRoot
+        endpoint = $routeEndpoint
+        codexMcpServer = $ProjectUnrealMcpServerName
+        unrealHost = '127.0.0.1'
+        unrealPort = $ProjectUnrealMcpPort
+        mcpServerCommand = $mcpServerCommand
+        mcpServerScript = $mcpServerScript
+        mcpServerCwd = $mcpServerCwd
+        mcpServerSha256 = $serverSha256
+        requiredTools = $requiredTools
+    }
+    Write-Utf8NoBom $routePath (($route | ConvertTo-Json -Depth 10) + [Environment]::NewLine)
+    Write-Host "UEAgent configured the read-only project UnrealMCP route for $projectName." -ForegroundColor Green
+    Write-Host 'No engine/project build or Unreal launch was performed.' -ForegroundColor Green
+    exit 0
+}
+
 $coreVibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-ueagent.patch') 'UEAgent VibeUE patch'
 $authoringVibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\vibeue\vibeue-ueagent-authoring.patch') 'UEAgent Niagara authoring VibeUE patch'
 $vibeShutdownGuardPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-mcp-shutdown-guard.patch') 'VibeUE MCP shutdown guard patch'

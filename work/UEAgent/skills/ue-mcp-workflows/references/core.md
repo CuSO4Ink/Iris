@@ -27,6 +27,13 @@ Use `ProgrammaticToolset` only for deterministic repetition after the nested cal
 work. Its sandbox cannot `import unreal`. Do not assume a tool that works directly is safe when
 nested; Scene creation and Niagara scratch calls have stalled in that shape.
 
+Gateway backend names are intentional: `script.execute` calls `ProgrammaticToolset`, while
+`python.execute` calls top-level `execute_python_code` and evaluates the payload in an isolated
+dictionary. Never send `import unreal` code through `script.execute`, and never use a plain
+`exec(payload)` in the persistent `execute_python_code` namespace. A PIE probe must not leave
+UObject wrappers in interpreter globals: execute it in a private scope, clear that scope in
+`finally`, and run Python garbage collection before stopping PIE.
+
 ## Identify objects precisely
 
 ```text
@@ -85,6 +92,11 @@ asset. Include changed nodes/pins/properties and compile/dirty state.
 - Query referencers and exact scope before deletion; zero registry referencers is not sole proof.
 - Distinguish Dirty memory, Autosave, and formal Content saves.
 - Never save the current level merely because an asset passed validation.
+- Top-level `execute_python_code` may save dirty content/world packages before user code runs.
+  After a call dirties a World Partition external Actor, do not issue another Python request to
+  inspect or clean it: that request can persist the package first. Use a verified typed route or,
+  after confirming there are no unrelated dirty packages, exit UE and restore the exact external
+  Actor file. A byte-identical `.umap` is not sufficient; check `Content/__ExternalActors__` too.
 
 ## Control payload and lifecycle
 

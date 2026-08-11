@@ -80,3 +80,13 @@ Use:
 
 `UpToDate` and a successful duplicated Niagara System do not prove embedded Simulation Stages
 run. When runtime behavior matters, validate a clean component and the actual current DI/output.
+
+For screen-space systems, set and record a deterministic test camera, then prove sampled
+ScreenUV values are finite/on-screen and depth is positive before interpreting an empty RT.
+Absolute markers and numerical statistics must use non-normalized raw readback; record that mode
+with the evidence.
+
+PIE Niagara DI identities can change after `reinitialize_system()`, especially with World
+Partition. Re-read the component's current User Variable DI refPaths after every reinitialize and
+verify the dimensions of the actual render targets owned by the PIE World. Do not infer identity
+from `_0`, `_1`, or another numeric UObject suffix, and do not retain a prior-generation wrapper.

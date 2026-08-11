@@ -66,6 +66,9 @@ function Read-McpSessionSnapshot($Path, $Endpoint) {
 function Get-PluginFingerprint($ProjectRoot, $EngineRoot) {
     $patterns = @()
     if ($ProjectRoot) {
+        $patterns += (Join-Path $ProjectRoot 'Plugins\UnrealMCP\Binaries\Win64\*.dll')
+        $patterns += (Join-Path $ProjectRoot 'Plugins\UnrealMCP\*.uplugin')
+        $patterns += (Join-Path $ProjectRoot 'Plugins\UnrealMCP\Python\unreal_mcp_server_advanced.py')
         $patterns += (Join-Path $ProjectRoot 'Plugins\VibeUE\Binaries\Win64\*.dll')
         $patterns += (Join-Path $ProjectRoot 'Plugins\VibeUE\*.uplugin')
         $patterns += (Join-Path $ProjectRoot 'Plugins\NiagaraToolsets\Binaries\Win64\*.dll')

@@ -34,11 +34,121 @@
     [switch]$Diagnostics,
     [string]$OutFile,
     [switch]$Pretty,
+    [int]$ProcessGuardMaxPrivateMemoryMB = 2048,
+    [int]$ProcessGuardGraceSec = 15,
+    [switch]$DisableProcessGuard,
     [switch]$AsLibrary
 )
 
 $ErrorActionPreference = 'Stop'
 Add-Type -AssemblyName System.Net.Http
+
+if (-not ('UEAgent.GatewayProcessGuard' -as [type])) {
+    Add-Type -Language CSharp -TypeDefinition @'
+using System;
+using System.Diagnostics;
+using System.Threading;
+
+namespace UEAgent
+{
+    public static class GatewayProcessGuard
+    {
+        private static readonly object Sync = new object();
+        private static Timer Timer;
+        private static DateTime DeadlineUtc;
+        private static long MaxPrivateBytes;
+        private static bool Armed;
+
+        public static void Arm(int timeoutMilliseconds, long maxPrivateBytes)
+        {
+            lock (Sync)
+            {
+                DeadlineUtc = timeoutMilliseconds > 0
+                    ? DateTime.UtcNow.AddMilliseconds(timeoutMilliseconds)
+                    : DateTime.MaxValue;
+                MaxPrivateBytes = maxPrivateBytes;
+                Armed = true;
+                if (Timer == null)
+                {
+                    Timer = new Timer(Check, null, 250, 250);
+                }
+                else
+                {
+                    Timer.Change(250, 250);
+                }
+            }
+        }
+
+        public static void Disarm()
+        {
+            lock (Sync)
+            {
+                Armed = false;
+                if (Timer != null)
+                {
+                    Timer.Change(Timeout.Infinite, Timeout.Infinite);
+                }
+            }
+        }
+
+        private static void Check(object state)
+        {
+            bool terminate = false;
+            lock (Sync)
+            {
+                if (!Armed)
+                {
+                    return;
+                }
+                if (DateTime.UtcNow >= DeadlineUtc)
+                {
+                    terminate = true;
+                }
+                else if (MaxPrivateBytes > 0)
+                {
+                    try
+                    {
+                        using (Process process = Process.GetCurrentProcess())
+                        {
+                            terminate = process.PrivateMemorySize64 >= MaxPrivateBytes;
+                        }
+                    }
+                    catch
+                    {
+                        terminate = true;
+                    }
+                }
+            }
+
+            if (!terminate)
+            {
+                return;
+            }
+
+            try
+            {
+                Process.GetCurrentProcess().Kill();
+            }
+            catch
+            {
+                Environment.FailFast("UEAgent gateway process guard terminated the process.");
+            }
+        }
+    }
+}
+'@
+}
+
+function Start-GatewayProcessGuard([int]$TimeoutSeconds, [int]$GraceSeconds, [int]$MaxPrivateMemoryMB) {
+    $hardSeconds = [Math]::Max(1, ([int64]$TimeoutSeconds + [int64][Math]::Max(0, $GraceSeconds)))
+    $hardMilliseconds = [int][Math]::Min([int]::MaxValue, ($hardSeconds * 1000L))
+    $maxPrivateBytes = if ($MaxPrivateMemoryMB -gt 0) { [int64]$MaxPrivateMemoryMB * 1MB } else { 0L }
+    [UEAgent.GatewayProcessGuard]::Arm($hardMilliseconds, $maxPrivateBytes)
+}
+
+function Stop-GatewayProcessGuard {
+    [UEAgent.GatewayProcessGuard]::Disarm()
+}
 
 function Write-JsonResult($Object) {
     $json = if ($Pretty) {
@@ -826,8 +936,6 @@ function Invoke-McpRpc($Url, $Headers, $Method, $Params = $null, $Id = 2, $Timeo
             throw [TimeoutException]::new("MCP $Method timed out opening the JSON-RPC stream for id $Id.")
         }
         $reader = [IO.StreamReader]::new($streamTask.Result)
-        $chars = New-Object char[] 8192
-        $lineBuilder = [Text.StringBuilder]::new()
         $responseBytes = 0L
         while ($true) {
             $remainingMs = [Math]::Max(1, [int](($Timeout * 1000) - $timer.ElapsedMilliseconds))
@@ -835,51 +943,31 @@ function Invoke-McpRpc($Url, $Headers, $Method, $Params = $null, $Id = 2, $Timeo
                 $cts.Cancel()
                 throw [TimeoutException]::new("MCP $Method timed out waiting for JSON-RPC id $Id.")
             }
-            $read = $reader.ReadAsync($chars, 0, $chars.Length)
+            $read = $reader.ReadLineAsync()
             if (-not $read.Wait($remainingMs)) {
                 $cts.Cancel()
                 throw [TimeoutException]::new("MCP $Method timed out waiting for JSON-RPC id $Id.")
             }
-            $count = $read.Result
-            if ($count -eq 0) {
-                if ($lineBuilder.Length -eq 0) {
-                    $preview = @($seenLines) -join ' | '
-                    throw "MCP $Method ended before JSON-RPC id $Id. Response preview: $preview"
-                }
-                $line = $lineBuilder.ToString()
-                $lineBuilder.Clear() | Out-Null
-                $line = $line.Trim()
-                if (-not $line) { continue }
-                if ($seenLines.Count -lt 3) { $seenLines.Add($line.Substring(0, [Math]::Min(200, $line.Length))) }
-                $json = if ($line.StartsWith('data:')) { $line.Substring(5).Trim() } else { $line }
-                if ($json -and $json -ne '[DONE]') {
-                    try { $message = $json | ConvertFrom-Json } catch { $message = $null }
-                    if ($message -and [string]$message.id -eq [string]$Id) { return $message }
-                }
+            $line = $read.Result
+            if ($null -eq $line) {
                 $preview = @($seenLines) -join ' | '
                 throw "MCP $Method ended before JSON-RPC id $Id. Response preview: $preview"
             }
             if ($MaxResponseBytes -gt 0) {
-                $responseBytes += [Text.Encoding]::UTF8.GetByteCount($chars, 0, $count)
+                # Count CRLF conservatively even when the peer used LF. The process guard is the
+                # independent memory ceiling if a single unterminated line grows pathologically.
+                $responseBytes += [Text.Encoding]::UTF8.GetByteCount([string]$line) + 2L
                 if ($responseBytes -gt $MaxResponseBytes) {
                     throw "MCP $Method response exceeds ${MaxResponseBytes} bytes. Use a projection or a smaller detail view."
                 }
             }
-            for ($index = 0; $index -lt $count; $index++) {
-                $char = $chars[$index]
-                if ($char -eq "`n") {
-                    $line = $lineBuilder.ToString().Trim()
-                    $lineBuilder.Clear() | Out-Null
-                    if (-not $line) { continue }
-                    if ($seenLines.Count -lt 3) { $seenLines.Add($line.Substring(0, [Math]::Min(200, $line.Length))) }
-                    $json = if ($line.StartsWith('data:')) { $line.Substring(5).Trim() } else { $line }
-                    if (-not $json -or $json -eq '[DONE]') { continue }
-                    try { $message = $json | ConvertFrom-Json } catch { continue }
-                    if ([string]$message.id -eq [string]$Id) { return $message }
-                } elseif ($char -ne "`r") {
-                    $lineBuilder.Append($char) | Out-Null
-                }
-            }
+            $line = $line.Trim()
+            if (-not $line) { continue }
+            if ($seenLines.Count -lt 3) { $seenLines.Add($line.Substring(0, [Math]::Min(200, $line.Length))) }
+            $json = if ($line.StartsWith('data:')) { $line.Substring(5).Trim() } else { $line }
+            if (-not $json -or $json -eq '[DONE]') { continue }
+            try { $message = $json | ConvertFrom-Json } catch { continue }
+            if ([string]$message.id -eq [string]$Id) { return $message }
         }
     } finally {
         try { $cts.Cancel() } catch { }
@@ -895,6 +983,32 @@ function Invoke-TopTool($Url, $Headers, $Name, $Arguments, $Timeout = 120, [Net.
     Invoke-McpRpc $Url $Headers 'tools/call' @{ name = $Name; arguments = $Arguments } 2 $Timeout $Client $MaxResponseBytes
 }
 
+function New-IsolatedPythonBootstrap([string]$ScriptText, [string]$ScriptName = '<ueagent-python>') {
+    $sourceBase64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($ScriptText))
+    $nameBase64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($ScriptName))
+    return @"
+import base64 as _ueagent_base64
+import gc as _ueagent_gc
+_ueagent_scope = {"__name__": "__main__"}
+try:
+    _ueagent_source = _ueagent_base64.b64decode("$sourceBase64").decode("utf-8")
+    _ueagent_filename = _ueagent_base64.b64decode("$nameBase64").decode("utf-8")
+    _ueagent_scope["__file__"] = _ueagent_filename
+    exec(compile(_ueagent_source, _ueagent_filename, "exec"), _ueagent_scope, _ueagent_scope)
+finally:
+    _ueagent_scope.clear()
+    try:
+        del _ueagent_source
+        del _ueagent_filename
+    except NameError:
+        pass
+    _ueagent_gc.collect()
+    del _ueagent_scope
+    del _ueagent_base64
+    del _ueagent_gc
+"@
+}
+
 if ($AsLibrary) { return }
 
 $headers = $null
@@ -905,10 +1019,18 @@ $sessionProbeMs = $null
 $reusedToolsList = $null
 $cachedSession = $null
 $autoDaemonWarning = $null
+$processGuardArmed = $false
+if (-not $DisableProcessGuard) {
+    Start-GatewayProcessGuard $TimeoutSec $ProcessGuardGraceSec $ProcessGuardMaxPrivateMemoryMB
+    $processGuardArmed = $true
+}
 try {
     $request = Parse-Request
     if ($request.endpoint) { $Endpoint = [string]$request.endpoint }
     if ($request.timeoutSec) { $TimeoutSec = [int]$request.timeoutSec }
+    if ($processGuardArmed) {
+        Start-GatewayProcessGuard $TimeoutSec $ProcessGuardGraceSec $ProcessGuardMaxPrivateMemoryMB
+    }
     if ($request.schemaCacheFile) { $SchemaCacheFile = [string]$request.schemaCacheFile }
     if ($request.schemaCacheTtlSec) { $SchemaCacheTtlSec = [int]$request.schemaCacheTtlSec }
     if ($request.sessionFile) { $SessionFile = [string]$request.sessionFile }
@@ -1164,11 +1286,36 @@ try {
                 $scriptText = Get-Content -Raw -LiteralPath $path
             }
             if (-not $scriptText) { Fail 'script.execute requires script or scriptFile.' 'missing_script' }
+            if ($scriptText -match '(?mi)^\s*(?:import\s+unreal(?:\s|,|$)|from\s+unreal(?:\s|\.|$))') {
+                Fail 'script.execute targets ProgrammaticToolset and cannot run Unreal Python. Use python.execute (isolated file/script execution) or direct.call -Tool execute_python_code.' 'wrong_script_backend'
+            }
             $raw = Invoke-TopTool $Endpoint $headers 'call_tool' @{
                 toolset_name = 'editor_toolset.toolsets.programmatic.ProgrammaticToolset'
                 tool_name = 'execute_tool_script'
                 arguments = @{ script = $scriptText }
                 projection = $Projection
+            } $TimeoutSec
+            $data = Normalize-ToolResult $raw
+        }
+        'python.execute' {
+            $scriptText = [string]$request.script
+            $scriptName = '<ueagent-python>'
+            if (-not $scriptText -and $request.scriptFile) {
+                $path = [string]$request.scriptFile
+                if (-not (Test-Path -LiteralPath $path)) { Fail "scriptFile not found: $path" 'script_file_not_found' }
+                $resolvedPath = (Resolve-Path -LiteralPath $path).Path
+                $scriptText = Get-Content -Raw -LiteralPath $resolvedPath
+                $scriptName = $resolvedPath
+            }
+            if (-not $scriptText) { Fail 'python.execute requires script or scriptFile.' 'missing_script' }
+
+            # execute_python_code evaluates in a persistent interpreter namespace. Running a
+            # probe there with plain exec(...) can leave UE Python wrappers rooted across calls;
+            # PIE teardown then asserts because the old PIE package cannot be collected. Put the
+            # payload in its own dictionary, clear it in finally, and collect before returning.
+            $pythonBootstrap = New-IsolatedPythonBootstrap $scriptText $scriptName
+            $raw = Invoke-TopTool $Endpoint $headers 'execute_python_code' @{
+                code = $pythonBootstrap
             } $TimeoutSec
             $data = Normalize-ToolResult $raw
         }
@@ -1228,4 +1375,5 @@ try {
             Remove-McpSessionFile $SessionFile
         }
     }
+    if ($processGuardArmed) { Stop-GatewayProcessGuard }
 }

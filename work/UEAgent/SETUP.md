@@ -48,6 +48,34 @@ unapplied guard.
 
 From the UEAgent root:
 
+### Prebuilt project UnrealMCP, read-only
+
+When a target already enables a binary-compatible `UnrealMCP` plugin and its Python FastMCP
+server exposes the approved read tools, bootstrap the project-owned TCP bridge without VibeUE:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1 `
+  -UProject "X:\Projects\MyGame\MyGame.uproject" `
+  -EngineRoot "X:\UnrealEngine" `
+  -UseProjectUnrealMcp `
+  -ProjectUnrealMcpServerName unreal-project `
+  -SkipBuild
+```
+
+This profile verifies the engine/plugin BuildId, the existing `UnrealMCP` enablement, the Python
+server checksum, and the exact six-tool read-only allow-list. It writes only the machine-local
+`Saved/UEAgent/route.json`; it does not clone VibeUE, patch engine/project C++, change startup
+maps, build, or launch Unreal. Doctor reports a healthy live connection as `DEGRADED` by design,
+which permits proven reads while keeping mutation and save blocked.
+
+Configure the same Python server as a Codex STDIO MCP using the
+`-ProjectUnrealMcpServerName` value (`unreal-project` by default), restrict `enabled_tools` to the
+route's `requiredTools`, and restart the local Codex client after changing its MCP configuration.
+The Unreal TCP bridge defaults to loopback port 55557; pass `-ProjectUnrealMcpPort` only when the
+compatible project plugin is configured for another loopback port.
+
+### Full native MCP and VibeUE profile
+
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1 -UProject "X:\Projects\MyGame\MyGame.uproject" -EngineRoot "X:\UnrealEngine" -Launch
 ```

@@ -19,6 +19,9 @@ Only unresolved work lives here. Completed decisions belong in `LOG.md`.
       the tool leaf name, so `get_expressions` reports `read` instead of matching `editor`.
 - [ ] Run bootstrap + doctor on a clean UE 5.8 machine and record one native-MCP read and one
       authorised reversible mutation with independent readback.
+- [ ] On one compatible prebuilt UnrealMCP project, run the `project-unrealmcp-readonly` bootstrap
+      and live doctor path, record the exact six-tool allow-list plus one `get_project_info` read,
+      and confirm the receipt remains `DEGRADED` with mutation/save blocked.
 - [ ] Decouple or explicitly parameterize hidden saves in Niagara `ApplyChanges` and VibeUE
       Blueprint property mutation.
 

@@ -7,6 +7,7 @@ param(
     [int]$TimeoutSec = 120,
     [int]$ParentPid = 0,
     [int]$MaxPrivateMemoryMB = 2048,
+    [int]$HardRequestGraceSec = 15,
     [int]$MaxRequests = 1000,
     [int]$MaxUptimeSec = 7200,
     [int]$IdleTtlSec = 900,
@@ -277,6 +278,9 @@ function Invoke-DaemonAction($Request) {
                 $scriptText = Get-Content -Raw -LiteralPath $Request.scriptFile
             }
             if (-not $scriptText) { throw 'script.execute requires script or scriptFile.' }
+            if ($scriptText -match '(?mi)^\s*(?:import\s+unreal(?:\s|,|$)|from\s+unreal(?:\s|\.|$))') {
+                throw 'wrong_script_backend: script.execute targets ProgrammaticToolset and cannot run Unreal Python. Use python.execute or direct.call execute_python_code.'
+            }
             $call = @{
                 toolset_name = 'editor_toolset.toolsets.programmatic.ProgrammaticToolset'
                 tool_name = 'execute_tool_script'
@@ -284,6 +288,19 @@ function Invoke-DaemonAction($Request) {
             }
             if ($null -ne $projection) { $call.projection = $projection }
             return (Normalize-ToolResult (Invoke-DaemonTopTool 'call_tool' $call $TimeoutSec))
+        }
+        'python.execute' {
+            $scriptText = [string]$Request.script
+            $scriptName = '<ueagent-python>'
+            if (-not $scriptText -and $Request.scriptFile) {
+                if (-not (Test-Path -LiteralPath $Request.scriptFile)) { throw "scriptFile not found: $($Request.scriptFile)" }
+                $resolvedPath = (Resolve-Path -LiteralPath $Request.scriptFile).Path
+                $scriptText = Get-Content -Raw -LiteralPath $resolvedPath
+                $scriptName = $resolvedPath
+            }
+            if (-not $scriptText) { throw 'python.execute requires script or scriptFile.' }
+            $bootstrap = New-IsolatedPythonBootstrap $scriptText $scriptName
+            return (Normalize-ToolResult (Invoke-DaemonTopTool 'execute_python_code' @{ code=$bootstrap } $TimeoutSec))
         }
         'level.current' {
             return (Normalize-ToolResult (Invoke-DaemonTopTool 'call_tool' @{
@@ -313,7 +330,10 @@ try {
         $lastRequestUtc = [DateTime]::UtcNow
         $requestCount++
         $stop = $false
+        $requestGuardArmed = $false
         try {
+            Start-GatewayProcessGuard $TimeoutSec $HardRequestGraceSec $MaxPrivateMemoryMB
+            $requestGuardArmed = $true
             if ($context.Request.HttpMethod -ne 'POST') {
                 Write-HttpJson $context @{ ok = $false; code = 'method_not_allowed' } 405
                 continue
@@ -381,6 +401,7 @@ try {
         } finally {
             try { $context.Response.Close() } catch { }
             try { $context.Close() } catch { }
+            if ($requestGuardArmed) { Stop-GatewayProcessGuard }
         }
         if ($stop -or (Get-DaemonBudgetFailure)) { break }
     }

@@ -46,6 +46,11 @@ operation or lacks a required client feature. Both routes use the same endpoint,
 one-writer rule, and readback. A trusted native client may be a performance override for ordinary
 calls when Gateway projection/session/debug shaping is unnecessary.
 
+The optional `project-unrealmcp-stdio` transport is a platform fallback for projects that already
+ship a compatible UnrealMCP binary. UEAgent verifies an exact STDIO read-tool allow-list and one
+loopback TCP live read, then deliberately issues a read-only `DEGRADED` receipt; it never grants
+mutation or save.
+
 ## Safety and capability order
 
 - One writer per UE object; never guess a tool, UObject property, or graph pin.

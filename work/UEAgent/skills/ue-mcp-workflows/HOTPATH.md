@@ -27,6 +27,10 @@ Default output is compact routing state, not live evidence. Use `-View detail` o
 | `LIVE_SAVE_EXPLICIT` | save only inside the user boundary; verify asset and sidecar |
 | `BLOCKED` | repair route or request the exact manual UE console step |
 
+The `project-unrealmcp-stdio` profile is intentionally read-only. Its successful live doctor
+receipt is `DEGRADED` with `blueprintRead=true` only after the exact tool allow-list and a cheap
+live read both pass; reads may continue, while mutation and save stay `BLOCKED`.
+
 ## Live call bounds
 
 - Gateway is the default live client; add `-AutoDaemon` for repeated calls. Use native/platform
