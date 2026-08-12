@@ -1,0 +1,32 @@
+diff --git a/Shaders/GaussianSplattingSlicing.usf b/Shaders/GaussianSplattingSlicing.usf
+--- a/Shaders/GaussianSplattingSlicing.usf
++++ b/Shaders/GaussianSplattingSlicing.usf
+@@ -444,7 +444,5 @@ void Slice7DGaussian(
+-  //***REngine Begin Modify added by tuckersu. [7DRGS SH eval direction: always use view direction after light-slice]
+-  // SH now always uses per-gaussian view direction (UE -> OCV), independent of
+-  // GS7D_RelightEnable. Light direction remains slice-only (Delta), which keeps
+-  // semantics aligned with: "already sliced by light, SH is view-dependent".
++  //***REngine Begin Modify added by tuckersu. [7DRGS J uses light direction; T_view uses camera direction]
++  float3 LightDirOCV = normalize(GS7D_ViewDirection);
+   float MuLen = length(MuCondUE);
+   float3 ViewRayDirUE = (MuLen > 1.0e-4f) ? (MuCondUE / MuLen) : float3(0.0f, 0.0f, 1.0f);
+   float3 ShDirOCV = float3(ViewRayDirUE.x, -ViewRayDirUE.z, -ViewRayDirUE.y);
+@@ -467,8 +465,8 @@ void Slice7DGaussian(
+   ShRest[12] = D15.x;
+   ShRest[13] = D15.y;
+   ShRest[14] = D15.z;
+ 
+-  float JMono = GS7D_EvalSH3Mono(Sh0, ShRest, ShDirOCV, 3u);
++  float JMono = GS7D_EvalSH3Mono(Sh0, ShRest, LightDirOCV, 3u);
+   Color = float3(JMono, JMono, JMono);
+ 
+   //***REngine Begin Modify added by tuckersu. [7DRGS single-RT latent: LightColor deferred to Composite phase]
+@@ -486,7 +484,7 @@ void Slice7DGaussian(
+ 
+   //   - DC:   D[15].w
+   //   - Rest: D[16..19] => 15 coeffs
+-  // Direction is the same ShDirOCV (view-direction) so J and T_view stay aligned.
++  // Direction is ShDirOCV: T_view is camera-conditioned, unlike J above.
+   float TViewSliced = 1.0f;
+   if (GS7D_DualSHEnable != 0u)
+   {

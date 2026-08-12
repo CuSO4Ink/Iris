@@ -1,0 +1,27 @@
+[
+    {
+        "Sample":  0,
+        "LocalMiB":  3305.140625,
+        "NonLocalMiB":  742.703125
+    },
+    {
+        "Sample":  1,
+        "LocalMiB":  3305.390625,
+        "NonLocalMiB":  742.765625
+    },
+    {
+        "Sample":  2,
+        "LocalMiB":  3310.85546875,
+        "NonLocalMiB":  969.765625
+    },
+    {
+        "Sample":  3,
+        "LocalMiB":  3310.890625,
+        "NonLocalMiB":  987.51953125
+    },
+    {
+        "Sample":  4,
+        "LocalMiB":  3311.2421875,
+        "NonLocalMiB":  1037.0859375
+    }
+]

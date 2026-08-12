@@ -1,5 +1,8 @@
 # UE 集成方案调研
 
+> [!CAUTION] **2026-07-22 审计后仅作历史架构草案。**
+> 当前插件实现已越过并改写本文多个阶段；执行依据为 `../SPEC.md`、实现记录和最新 LOG，不得按本文恢复旧 Phase 排期。
+
 > 目标：将 GaussianVolume renderer 集成到 Unreal Engine 5，作为 VDB 体积云的中远景 LOD / proxy 方案。
 
 ## 1. 现有 UE5 体积云生态

@@ -1,0 +1,305 @@
+//***REngine Begin Modify added by tuckersu. [GaussianSplatting common shader utilities - GPU data layout, EWA projection]
+// GaussianSplattingCommon.ush
+// Common structures and utilities for native Gaussian Splatting compute rasterizer.
+
+#pragma once
+
+#define GS_TILE_SIZE 16
+#define GS_TILE_PIXELS (GS_TILE_SIZE * GS_TILE_SIZE)
+
+// GPU data layout per gaussian: 4 x float4 = 64 bytes
+// [0] = {pos.x, pos.y, pos.z, opacity}
+// [1] = {cov3d[0], cov3d[1], cov3d[2], cov3d[3]}   // upper-triangle: [00,01,02,11]
+// [2] = {cov3d[4], cov3d[5], color.r, color.g}       // upper-triangle: [12,22], then rgb
+// [3] = {color.b, 0, 0, 0}                            // blue + padding
+
+struct FGSGaussianData
+{
+  float3 Position;
+  float Opacity;
+  float Cov3D_00, Cov3D_01, Cov3D_02;
+  float Cov3D_11, Cov3D_12, Cov3D_22;
+  float3 Color;
+  //***REngine Begin Modify added by tuckersu. [7DRGS Dual SH: per-gaussian T_view scalar from Slicing CS]
+  float TViewSliced;   // 7DRGS: saturate(SH_T DC eval); 3DGS/vanilla: 1.0 (neutral)
+  //***REngine End Modify
+};
+
+FGSGaussianData LoadGaussianData(StructuredBuffer<float4> InBuffer, uint Idx)
+{
+  FGSGaussianData Data;
+  float4 D0 = InBuffer[Idx * 4 + 0];
+  float4 D1 = InBuffer[Idx * 4 + 1];
+  float4 D2 = InBuffer[Idx * 4 + 2];
+  float4 D3 = InBuffer[Idx * 4 + 3];
+
+  Data.Position = D0.xyz;
+  Data.Opacity = D0.w;
+  Data.Cov3D_00 = D1.x;
+  Data.Cov3D_01 = D1.y;
+  Data.Cov3D_02 = D1.z;
+  Data.Cov3D_11 = D1.w;
+  Data.Cov3D_12 = D2.x;
+  Data.Cov3D_22 = D2.y;
+  Data.Color = float3(D2.z, D2.w, D3.x);
+  //***REngine Begin Modify added by tuckersu. [7DRGS Dual SH: load T_view from D[3].y]
+  Data.TViewSliced = D3.y;
+  //***REngine End Modify
+  return Data;
+}
+
+// EWA Splatting: project 3D covariance to 2D screen covariance
+// Returns float3(cov2d.xx, cov2d.xy, cov2d.yy)
+float3 ComputeCov2D(
+  float3 MeanView,
+  float FocalX, float FocalY,
+  float TanFovX, float TanFovY,
+  float Cov00, float Cov01, float Cov02,
+  float Cov11, float Cov12, float Cov22,
+  float3x3 ViewRotation)
+{
+  float limx = 1.3f * TanFovX;
+  float limy = 1.3f * TanFovY;
+
+  //***REngine Begin Modify added by tuckersu. [Lower-bound tz to avoid 1/tz^2 NaN explosion at extreme close-up]
+  // The Niagara M_GaussianSplatting custom node does PosInView /= PosInView.w
+  // (which equals 1 in standard view space). It does not explicitly clamp tz,
+  // but its quad extent is later capped at 1024 px so any J-blowup is harmless.
+  //
+  // In our compute path we use J directly to project Σ_3D → Σ_2D, so a
+  // near-zero tz creates float-overflow in J (1/tz² ≈ 1e8 at tz=1e-4 cm) →
+  // NaN propagates into Σ_2D → conic=0 → quad collapses → the gaussian
+  // disappears entirely. To match Niagara behaviour where the splat is still
+  // drawn (just at maximum quad size) we floor tz to 1mm here. This only
+  // affects pathological close-up cases; for any tz > 1mm the math is
+  // identical to before.
+  float tz = max(MeanView.z, 0.1f);   // 0.1 cm = 1 mm
+  //***REngine End Modify
+  float tx = clamp(MeanView.x / tz, -limx, limx) * tz;
+  float ty = clamp(MeanView.y / tz, -limy, limy) * tz;
+
+  // Jacobian of perspective projection
+  float3x3 J = float3x3(
+    FocalX / tz, 0.0f, -(FocalX * tx) / (tz * tz),
+    0.0f, FocalY / tz, -(FocalY * ty) / (tz * tz),
+    0.0f, 0.0f, 0.0f
+  );
+
+  // Combined transform T = J * W (row-major in UE HLSL)
+  float3x3 T = mul(J, ViewRotation);
+
+  // Reconstruct 3x3 symmetric covariance
+  float3x3 Sigma3D = float3x3(
+    Cov00, Cov01, Cov02,
+    Cov01, Cov11, Cov12,
+    Cov02, Cov12, Cov22
+  );
+
+  // Sigma_2D = T * Sigma_3D * T^T (take 2x2 sub-block)
+  float3x3 Cov2DFull = mul(T, mul(Sigma3D, transpose(T)));
+
+  return float3(Cov2DFull[0][0], Cov2DFull[0][1], Cov2DFull[1][1]);
+}
+
+// Invert 2x2 covariance to get conic (precision matrix)
+// Returns float3(conic.xx, conic.xy, conic.yy) or (0,0,0) if degenerate
+//
+// IMPORTANT: We clamp the eigenvalues of Cov2D to a reasonable upper bound BEFORE
+// inverting. This is mandatory because raw training data frequently contains
+// outlier gaussians with extremely large covariance (e.g. sky/background
+// gaussians). Without clamping, their conic becomes tiny (~1e-4) and the
+// resulting power = -0.5 * (co.x*dx^2 + ...) stays near zero across the full
+// tile rect, producing a solid "tile square" instead of a proper elliptic
+// falloff. Clamping the eigenvalues keeps conic values in a numerically sane
+// range and ensures exp(power) actually attenuates at the radius boundary.
+//***REngine Begin Modify added by tuckersu. [Niagara-parity quad: ComputeConic now also outputs ellipse-aligned BasisVectors for HW Raster VS]
+// OutBasis = float4(BV1.x, BV1.y, BV2.x, BV2.y), in PIXEL units, where:
+//   BV1 = EigenVector1 * min(sqrt(8) * sqrt(L1), kMaxRadiusPixel)
+//   BV2 = EigenVector2 * min(sqrt(8) * sqrt(L2), kMaxRadiusPixel)
+// EigenVector1 corresponds to the LARGER eigenvalue L1; EigenVector2 is its
+// 90-degree rotation (orthogonal, in 2D). BasisVectors are the parity
+// equivalent of the M_GaussianSplatting Niagara custom node — they let the
+// HW Raster VS construct a quad whose 4 corners trace the ellipse's
+// principal axes (instead of an axis-aligned bounding square), drastically
+// reducing on-screen footprint for elongated splats and eliminating the
+// close-up alpha-saturation flicker that came from oversized AABB quads.
+float3 ComputeConic(float3 Cov2D, out float OutDet, out float OutRadius, out float4 OutBasis)
+//***REngine End Modify
+{
+  // Low-pass filter for anti-aliasing
+  float CovXX = Cov2D.x + 0.3f;
+  float CovXY = Cov2D.y;
+  float CovYY = Cov2D.z + 0.3f;
+
+  //***REngine Begin Modify added by tuckersu. [Niagara parity: drop eigen-rebuild + anisotropy cap; keep ONLY +0.3 lowpass]
+  // The previous L1/L2 clamp + Σ-rebuild block was the cause of the
+  // "splat shape changes when camera moves" / close-up flicker:
+  // when L1 crosses the rebuild threshold, Σ_2D snaps to a different value,
+  // and conic = Σ⁻¹ inherits that snap. Across frames the threshold flips
+  // on/off → visible jitter.
+  //
+  // The Niagara reference (M_GaussianSplatting custom node) does NOT do any
+  // anisotropy / eigenvalue clamping. It only adds the +0.3 low-pass filter
+  // (already done above) and uses a max-1024px hard cap on the BasisVector
+  // length AFTERWARDS (in pixel space). That keeps Σ_2D and conic fully
+  // consistent and gives stable shapes regardless of camera distance.
+  //
+  // We mirror that: skip the rebuild path entirely. Numerical safety is
+  // covered by:
+  //   - +0.3 floor on the diagonal (above)
+  //   - max(...,0.1) on Disc and Lambda2 (below in radius computation)
+  //   - 1024px hard cap on BasisVector lengths (below)
+  //***REngine End Modify
+
+  float Det = CovXX * CovYY - CovXY * CovXY;
+  OutDet = Det;
+
+  if (Det <= 0.0f) {
+    OutRadius = 0.0f;
+    return float3(0, 0, 0);
+  }
+
+  float DetInv = 1.0f / Det;
+  float3 Conic = float3(CovYY * DetInv, -CovXY * DetInv, CovXX * DetInv);
+
+  //***REngine Begin Modify added by tuckersu. [Niagara-parity: sqrt(8)*sqrt(L1) sigma multiplier + 1024 px hard cap on screen radius]
+  // Radius derivation matches the M_GaussianSplatting Niagara custom node:
+  //
+  //     BasisVector1 = EigenVector1 * min(sqrt(8) * sqrt(L1), 1024.0)
+  //     BasisVector2 = EigenVector2 * min(sqrt(8) * sqrt(L2), 1024.0)
+  //
+  // Two intentional differences from the textbook 3DGS formulation:
+  //
+  //   1) sqrt(8) ≈ 2.83 sigma (instead of 3.0 sigma). At 2.83 sigma the
+  //      gaussian's exp(power) falls to exp(-4.0) ≈ 0.018 — the comment in
+  //      the Niagara code calls this "filter out more low-opacity points",
+  //      which on the rasterizer side means a slightly tighter quad and a
+  //      few percent fewer "tail-end" PS invocations per splat.
+  //
+  //   2) HARD CAP at 1024 px (independent of camera distance, focal length,
+  //      or covariance scale). This is the cap that makes the Niagara path
+  //      stable at close range:
+  //        * Without it, a single near-camera splat (z ~ 5 cm) can have
+  //          radius 1000+ px and cover the whole viewport. With ~100 such
+  //          splats overlapping every pixel and alpha ≈ 0.3, the alpha-over
+  //          accumulator T = Π(1-αi) collapses to FP32 zero.
+  //        * Capping eigenvalues of cov2D was the previous attempt; it
+  //          deformed conic = Σ⁻¹ and changed the per-pixel falloff shape,
+  //          producing visible "splat shape morphing with camera distance".
+  //        * Capping the radius (= the quad extent) leaves cov2D / conic
+  //          fully unmodified, so the falloff math is identical to the
+  //          uncapped case — only the far tails of close-up splats get
+  //          truncated. This is the parity-correct knob.
+  //
+  // We use `ceil` afterwards so that tile-grid computations downstream
+  // (GetTileRect) still work in integer pixel units.
+  const float kSigmaMul       = sqrt(8.0f);   // 2.83 sigma — Niagara parity
+  //***REngine Begin Modify added by tuckersu. [1024 px hard cap matches Niagara — quad is ellipse-aligned now so this no longer over-covers]
+  // With the new ellipse-aligned quad (Niagara parity), the on-screen
+  // footprint is at most kSigmaMul*sqrt(L1) x kSigmaMul*sqrt(L2) px (the
+  // quad rotates with the ellipse). For typical anisotropic splats this is
+  // ~1/4 the area of the old axis-aligned 2*radius x 2*radius square, so
+  // the 1024 px cap is no longer a footprint problem and we can use the
+  // same value as the Niagara reference. The cap mainly serves as a NaN /
+  // Inf safeguard for pathological close-up gaussians whose eigenvalues
+  // would otherwise overflow.
+  const float kMaxRadiusPixel = 1024.0f;
+  //***REngine End Modify
+
+  // Use the LARGER eigenvalue so the radius bounds the major-axis extent
+  // of the ellipse (so the axis-aligned quad covers the full ellipse).
+  float Mid = 0.5f * (CovXX + CovYY);
+  float Disc = max(0.1f, Mid * Mid - Det);
+  float Lambda1 = Mid + sqrt(Disc);     // largest eigenvalue
+  //***REngine Begin Modify added by tuckersu. [Compute Lambda2 and eigenvectors for ellipse-aligned BasisVectors]
+  float Lambda2 = max(Mid - sqrt(Disc), 0.1f);  // smallest eigenvalue (with floor)
+  //***REngine End Modify
+
+  //***REngine Begin Modify added by tuckersu. [Niagara-parity BasisVector computation]
+  // Eigenvector for L1 from the closed-form 2x2 formula (matches Niagara):
+  //     EV1 = normalize( float2(CovXY, L1 - CovXX) )
+  // EV2 = perpendicular = (EV1.y, -EV1.x).
+  // We use a small magnitude guard so degenerate (near-isotropic) gaussians
+  // — where (CovXY, L1-CovXX) is near-zero — fall back to (1, 0). The PS
+  // doesn't care about the eigenvector orientation in that case because the
+  // ellipse is a circle anyway.
+  float2 ev1_raw = float2(CovXY, Lambda1 - CovXX);
+  float ev1_len2 = dot(ev1_raw, ev1_raw);
+  float2 ev1 = (ev1_len2 > 1e-12f) ? (ev1_raw * rsqrt(ev1_len2)) : float2(1.0f, 0.0f);
+  float2 ev2 = float2(ev1.y, -ev1.x);
+
+  // Niagara-style basis vectors in PIXEL units, capped at kMaxRadiusPixel
+  // independently per-axis. These give the HW Raster VS the rotation +
+  // scale to construct a quad whose 4 corners are at
+  //   PixelPos +/- BV1 +/- BV2
+  // which is the smallest rectangle that fully encloses the ellipse at
+  // sqrt(8) sigma.
+  float bv1_len = min(kSigmaMul * sqrt(Lambda1), kMaxRadiusPixel);
+  float bv2_len = min(kSigmaMul * sqrt(Lambda2), kMaxRadiusPixel);
+  float2 BasisVector1 = ev1 * bv1_len;
+  float2 BasisVector2 = ev2 * bv2_len;
+  OutBasis = float4(BasisVector1, BasisVector2);
+  //***REngine End Modify
+
+  //***REngine Begin Modify added by tuckersu. [OutRadius is now the AABB radius of the ellipse-aligned quad]
+  // Tile rect downstream still needs an axis-aligned conservative radius
+  // (used in GetTileRect for binning + frustum cull). The conservative AABB
+  // half-extent of an oriented quad with basis vectors BV1, BV2 is
+  //     |BV1.x| + |BV2.x|   along X
+  //     |BV1.y| + |BV2.y|   along Y
+  // We take the max of these two half-extents as a single scalar radius
+  // (slightly conservative — overshoots by sqrt(2) in the worst case, but
+  // that's still smaller than the previous cap because we're now bounded
+  // by the ELLIPSE-ALIGNED basis lengths, not the major axis alone).
+  float aabb_hx = abs(BasisVector1.x) + abs(BasisVector2.x);
+  float aabb_hy = abs(BasisVector1.y) + abs(BasisVector2.y);
+  OutRadius = ceil(max(aabb_hx, aabb_hy));
+  //***REngine End Modify
+
+  return Conic;
+}
+
+// Convert NDC to pixel coordinates
+float2 NDCToPixel(float2 NDC, float2 ScreenSize)
+{
+  return float2(
+    (NDC.x * 0.5f + 0.5f) * ScreenSize.x,
+    (-NDC.y * 0.5f + 0.5f) * ScreenSize.y
+  );
+}
+
+//***REngine Begin Modify added by tuckersu. [Robust floor/ceil-based tile rect with correct negative handling]
+// Get tile rect for a gaussian with given screen center and radius.
+//
+// Correctness notes:
+//   - floor() for min and ceil() for max.  Using HLSL `int(...)` on a negative
+//     value truncates toward zero (e.g. -0.8 -> 0), which produces a WRONG
+//     rect_min when the gaussian center sits slightly to the left / above the
+//     screen origin.  Always use floor()/ceil() and cast after.
+//   - Clamp AFTER the floor/ceil, not before, so off-screen gaussians whose
+//     ellipses still reach into the viewport produce the correct in-viewport
+//     rect.  (Previously `max(0, ...)` on a float2 before int() conversion
+//     silently dropped fractional-tile coverage on the screen-edge side,
+//     which is one of the causes of the screen-edge "cutoff" artifact.)
+//   - The caller is responsible for checking rect_max > rect_min in BOTH
+//     axes (not via area), since (negative)*(negative) gives a false-positive
+//     area.
+void GetTileRect(float2 ScreenPos, float Radius, uint2 TileGridSize,
+  out int2 OutRectMin, out int2 OutRectMax)
+{
+  const float inv_tile = 1.0f / (float)GS_TILE_SIZE;
+  float2 fmin_t = floor((ScreenPos - Radius) * inv_tile);
+  float2 fmax_t = ceil ((ScreenPos + Radius) * inv_tile);
+
+  int2 imin_t = int2(fmin_t);
+  int2 imax_t = int2(fmax_t);
+
+  // Clamp to the valid tile grid.  If the ellipse is entirely off-screen on
+  // the left/top, imax_t becomes <= 0 ; if entirely off-screen on the
+  // right/bottom, imin_t becomes >= TileGridSize.  The caller must detect
+  // that via (imax > imin) per-axis.
+  OutRectMin = max(imin_t, int2(0, 0));
+  OutRectMax = min(imax_t, int2(TileGridSize));
+}
+//***REngine End Modify
+//***REngine End Modify

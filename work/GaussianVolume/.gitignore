@@ -1,0 +1,15 @@
+artifacts/
+Build/
+*.log
+*.bak
+*.nbi
+*.nbc
+mvp/output/
+**/__pycache__/
+*.npy
+*.npz
+*.ply
+*.vdb
+*.nvdb
+*.bin
+ue-plugin/GaussianVolume/Content/

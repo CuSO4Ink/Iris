@@ -1,0 +1,7 @@
+"Label","Map","ProcessId","Resolution","WarmupSeconds","SampleCount","DedicatedMedianMiB","DedicatedMinMiB","DedicatedMaxMiB","SharedMedianMiB","DedicatedDeltaVsEmptyMiB"
+"Empty","/Game/GaussianVolume/Maps/L_GaussianVolume_EmptyBaseline","39548","1920x1080","5","10","3281.23","3280.977","3281.23","425.883","0"
+"GaussianQ2","/Game/GaussianVolume/Maps/L_GaussianVolume_TechLab","85132","1920x1080","5","10","3309.252","3308.871","3309.379","211.91","28.022"
+"SVT_U8","/Game/GaussianVolume/Maps/L_GaussianVolume_SVT_U8","91824","1920x1080","5","10","3296.211","3295.949","3296.211","207.52","14.981"
+"SVT_F16","/Game/GaussianVolume/Maps/L_GaussianVolume_SVT_F16","95348","1920x1080","5","10","3315.957","3315.457","3316.215","213.129","34.727"
+"NanoVDB_Fp8","/Game/GaussianVolume/Maps/L_GaussianVolume_NanoVDB_Fp8","98820","1920x1080","5","10","3304.061","3303.852","3304.262","852.516","22.831"
+"NanoVDB_FpN","/Game/GaussianVolume/Maps/L_GaussianVolume_NanoVDB_FpN","55036","1920x1080","5","10","3306.346","3304.445","3306.473","911.549","25.116"

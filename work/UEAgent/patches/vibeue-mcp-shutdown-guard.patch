@@ -1,0 +1,73 @@
+diff --git a/Source/VibeUE/Private/Core/VibeUEMCPToolBridge.cpp b/Source/VibeUE/Private/Core/VibeUEMCPToolBridge.cpp
+index c857aec..b720b0e 100644
+--- a/Source/VibeUE/Private/Core/VibeUEMCPToolBridge.cpp
++++ b/Source/VibeUE/Private/Core/VibeUEMCPToolBridge.cpp
+@@ -14,9 +14,22 @@
+ #include "Serialization/JsonReader.h"
+ #include "Serialization/JsonSerializer.h"
+ #include "Serialization/JsonWriter.h"
++#include "CoreGlobals.h"
++#include "Templates/Atomic.h"
+ 
+ namespace
+ {
++	// Reject new and queued MCP work once Unreal begins shutting down. Without this
++	// gate, a GameThread lambda can call a Python-backed VibeUE tool after the
++	// PythonScriptPlugin has started teardown (the recurring EditorExit crash).
++	// ponytail: no in-flight drain; add a counter/wait only if shutdown still races an active call.
++	TAtomic<bool> GBridgeShuttingDown{ false };
++
++	FORCEINLINE bool IsBridgeShuttingDown()
++	{
++		return GBridgeShuttingDown.Load() || IsEngineExitRequested();
++	}
++
+ 	/** Map a VibeUE FToolParameter type string to a JSON Schema type. */
+ 	FString ToJsonSchemaType(const FString& VibeType)
+ 	{
+@@ -167,11 +180,23 @@ namespace
+ 			const TSharedPtr<FJsonObject>& Params,
+ 			const FResultCallback& OnComplete) override
+ 		{
++			if (IsBridgeShuttingDown())
++			{
++				OnComplete(UE::ModelContextProtocol::MakeErrorResult(TEXT("VibeUE MCP bridge is shutting down")));
++				return;
++			}
++
+ 			const FString ToolName = Name;
+ 			TMap<FString, FString> Args = JsonObjectToArgMap(Params);
+ 
+ 			auto Execute = [ToolName, Args = MoveTemp(Args), OnComplete]()
+ 			{
++				if (IsBridgeShuttingDown())
++				{
++					OnComplete(UE::ModelContextProtocol::MakeErrorResult(TEXT("VibeUE MCP bridge is shutting down")));
++					return;
++				}
++
+ 				const FString Result = FToolRegistry::Get().ExecuteTool(ToolName, Args);
+ 
+ 				// VibeUE tools report failure as {"success": false, ...}; surface that as an MCP error.
+@@ -217,6 +242,12 @@ namespace VibeUEMCPToolBridge
+ {
+ 	void RegisterAll()
+ 	{
++		if (IsEngineExitRequested())
++		{
++			return;
++		}
++		GBridgeShuttingDown.Store(false);
++
+ 		IModelContextProtocolModule* Module = IModelContextProtocolModule::Get();
+ 		if (!Module)
+ 		{
+@@ -256,6 +287,8 @@ namespace VibeUEMCPToolBridge
+ 
+ 	void UnregisterAll()
+ 	{
++		GBridgeShuttingDown.Store(true);
++
+ 		if (IModelContextProtocolModule* Module = IModelContextProtocolModule::Get())
+ 		{
+ 			for (const TSharedRef<IModelContextProtocolTool>& Tool : GRegisteredTools)

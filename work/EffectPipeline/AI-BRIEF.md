@@ -1,4 +1,4 @@
-﻿# EffectPipeline
+# EffectPipeline
 
 > **L2 项目身份**。接手本项目的 AI 必读。
 
@@ -17,17 +17,20 @@
 
 ## 当前状态
 
-活跃 — **外包返包上传中（6/9 已到），正在逐工程验收规范问题**。
+活跃 — **批量导入进行中（已完成 4/23，阻塞 4）**。
 
 ## 当前焦点
 
-**C50 试点已用 Spawnable 路线全流程跑通（2026-07-08）；同时等外包上传剩余 A45/B20/C80。**
+**已完成：C50（试点）、C40、B20、D10。阻塞：A45、D20、E20、E40。**
 
-试点结论：外包特效 Actor（ZibraVDB/Niagara）转 Spawnable → 删外包相机/CameraCuts → 主 Shot 加 Subsequences Track 引用外包 Sequence。此路线绕开 WP 下 Actor GUID 变动导致的红色轨道重绑问题，取代原 Data Layer + 逐条重绑方案（详见 LOG 2026-07-08 17:20）。批量脚本 integrate_fx_shots.py 已起草，待引擎组确认 5.7.3 convert-to-spawnable 的 Python API 签名。
+导入路线（Spawnable，C50 试点跑通）：外包特效 Actor（ZibraVDB/Niagara）转 Spawnable → 删外包相机/CameraCuts → 主 Shot 加 Subsequences Track 引用外包 Sequence。绕开 WP 下 Actor GUID 变动导致的红色轨道重绑问题。
 
-外包返包：已上传 C30、C50、C60、D20、E20、E40（6 个）。缺：A45、B20、C80（3 个尚未上传）。
+关键经验：
+- C40/C50：Spawnable 转换后需恢复 Scale（Y 轴 -1），ZibraVDB 运行时缩放由组件 Relative Scale 控制而非 Actor Template Scale。
+- B20：v03 外包切片体素量过大（1040×912×928）触发 GPU TDR 超时（非 OOM），已按体素分辨率切分为 11 段（000_050 ~ 501_534），通过 Spawned Track 互斥帧段避免同时加载爆显存。
+- D10：Spawnable 转换后组件缩放覆盖 Template Scale；保存超大 ZibraVDB 资产可能触发 32 位数组索引溢出（2147483648）。
 
-已上传 6 个工程的首轮验收扫描完成，发现若干规范问题（详见 BACKLOG）。待全部 9 个上传完毕后统一复核，再进入主工程导入。
+剩余 15 个镜头待导入（A50/B10/B30/B40/B50/B55/B60/C10/C11/C30/C60/C80/D30/D40/D50/D60/D70/E30/F50），阻塞 4 个待外部条件解除。
 
 ## 关键事实（实勘）
 

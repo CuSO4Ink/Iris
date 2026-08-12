@@ -15,13 +15,12 @@
 | 文件 | 适用 | 摘要 |
 |---|---|---|
 | [00-canary.ankoha](00-canary.ankoha.md) | 所有回复 | 末尾单独一行 `唔呣。` |
-| [commands](commands.md) | 用户发斜杠命令时 | `/general` `/maintainer` `/project` `/check` `/canary` `/help` |
-| [sync](sync.md) | 用户发 `/sync` 时 | 将当前对话进展同步到活跃项目三件套 |
+| [commands](commands.md) | 用户发斜杠命令时 | 命令触发、参数与接入/项目生产/维护流程 |
 | [annotation](annotation.md) | 所有文档协作 | `[!Q] / [!NOTE] / [!TODO] / [!FIX]` callout 格式 |
 | [naming](naming.md) | 新建文件/文件夹时 | 文件名/文件夹名不出现中文，一律用英文命名 |
 
 ## 维护
 
 - 新增 L0 规则 → 本表登记
-- 规则文件保持小而聚焦（50~150 行）
+- 规则文件保持小而聚焦；接近 150 行时考虑拆分，不为达到行数补内容
 - 废弃规则 → `archive/rules/<topic>.md`

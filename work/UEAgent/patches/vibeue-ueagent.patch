@@ -1,0 +1,1785 @@
+diff --git a/Source/VibeUE/Private/Module.cpp b/Source/VibeUE/Private/Module.cpp
+index 6f4c9e7..5eefd1c 100644
+--- a/Source/VibeUE/Private/Module.cpp
++++ b/Source/VibeUE/Private/Module.cpp
+@@ -19,9 +19,1480 @@
+ #include "Utils/VibeUEPaths.h"
+ #include "Misc/Paths.h"
+ #include "Misc/FileHelper.h"
++#include "Misc/ConfigCacheIni.h"
++#include "Misc/PackageName.h"
++#include "Misc/SecureHash.h"
++#include "Misc/Base64.h"
++#include "EditorAssetLibrary.h"
++#include "BlueprintEditorLibrary.h"
++#include "Engine/Blueprint.h"
++#include "Engine/SimpleConstructionScript.h"
++#include "Engine/SCS_Node.h"
++#include "EdGraph/EdGraph.h"
++#include "Components/SceneComponent.h"
++#include "Components/StaticMeshComponent.h"
++#include "Components/SceneCaptureComponent2D.h"
++#include "Engine/TextureRenderTarget2D.h"
++#include "AssetRegistry/AssetRegistryModule.h"
++#include "PythonScriptTypes.h"
++#include "Materials/Material.h"
++#include "Materials/MaterialFunction.h"
++#include "Materials/MaterialInstanceConstant.h"
++#include "StaticParameterSet.h"
++#include "PythonAPI/UMaterialNodeService.h"
++#include "Serialization/JsonReader.h"
++#include "Serialization/JsonSerializer.h"
++#include "Dom/JsonObject.h"
++#include "JsonObjectConverter.h"
++#include "NiagaraSystem.h"
++#include "NiagaraExternalSystemEditorUtilities.h"
++#include "PythonAPI/UNiagaraScratchPadService.h"
++#include "UObject/ObjectSaveContext.h"
++#include "UObject/Package.h"
++
++#if WITH_AUTOMATION_TESTS
++#include "Misc/AutomationTest.h"
++#endif
+ 
+ #define LOCTEXT_NAMESPACE "FModule"
+ 
++namespace MaterialAICache
++{
++	static constexpr const TCHAR* ConfigSection = TEXT("VibeUE.MaterialAICache");
++
++	static FString JsonString(const TSharedPtr<FJsonObject>& Object, const TCHAR* Field)
++	{
++		FString Value;
++		if (Object)
++		{
++			Object->TryGetStringField(Field, Value);
++		}
++		return Value;
++	}
++
++	static FString Sha1(const FString& Value)
++	{
++		FTCHARToUTF8 Utf8(*Value);
++		FSHAHash Hash;
++		FSHA1::HashBuffer(Utf8.Get(), Utf8.Length(), Hash.Hash);
++		return Hash.ToString().ToLower();
++	}
++
++	static FString ShortValue(FString Value, int32 MaxLength = 160)
++	{
++		Value.ReplaceInline(TEXT("\r"), TEXT(" "));
++		Value.ReplaceInline(TEXT("\n"), TEXT(" "));
++		while (Value.ReplaceInline(TEXT("  "), TEXT(" ")) > 0)
++		{
++		}
++		Value.TrimStartAndEndInline();
++		return Value.Len() > MaxLength ? Value.Left(MaxLength) + TEXT("...") : Value;
++	}
++
++	static FString StripEnumPrefix(const FString& Value)
++	{
++		int32 Separator = INDEX_NONE;
++		return Value.FindLastChar(TEXT(':'), Separator) ? Value.Mid(Separator + 1) : Value;
++	}
++
++	static bool IsEnabled()
++	{
++		bool bEnabled = true;
++		if (GConfig)
++		{
++			GConfig->GetBool(ConfigSection, TEXT("Enabled"), bEnabled, GEditorIni);
++		}
++		return bEnabled;
++	}
++
++	static FString GetCachePath(const FString& SourceFile)
++	{
++		if (SourceFile.IsEmpty())
++		{
++			return {};
++		}
++		FString CachePath = FPaths::ConvertRelativePathToFull(SourceFile);
++		FPaths::NormalizeFilename(CachePath);
++		return CachePath + TEXT(".ai.md");
++	}
++
++	static FString LogicNodeLabel(const TSharedPtr<FJsonObject>& Expression)
++	{
++		const FString Class = JsonString(Expression, TEXT("class"));
++		const FString ParameterName = JsonString(Expression, TEXT("parameter_name"));
++		const FString FunctionPath = JsonString(Expression, TEXT("function_path"));
++		const FString FunctionInput = JsonString(Expression, TEXT("input_name"));
++		const FString FunctionOutput = JsonString(Expression, TEXT("output_name"));
++		const FString RerouteName = JsonString(Expression, TEXT("named_reroute_name"));
++		const TSharedPtr<FJsonObject> Properties = Expression->GetObjectField(TEXT("properties"));
++
++		FString Label = Class;
++		if (!ParameterName.IsEmpty())
++		{
++			Label = TEXT("P:") + ParameterName;
++		}
++		else if (!FunctionPath.IsEmpty())
++		{
++			Label = TEXT("MF:") + FunctionPath;
++		}
++		else if (!FunctionInput.IsEmpty())
++		{
++			Label = TEXT("IN:") + FunctionInput + TEXT(":") + JsonString(Expression, TEXT("input_type_name"));
++		}
++		else if (!FunctionOutput.IsEmpty())
++		{
++			Label = TEXT("OUT:") + FunctionOutput;
++		}
++		else if (!RerouteName.IsEmpty())
++		{
++			Label = TEXT("R:") + RerouteName;
++		}
++		else if (Class == TEXT("Custom"))
++		{
++			const FString Description = JsonString(Properties, TEXT("Description"));
++			if (!Description.IsEmpty())
++			{
++				Label += TEXT(":") + Description;
++			}
++		}
++
++		static const TSet<FString> KeptProperties = {
++			TEXT("DefaultValue"), TEXT("Texture"), TEXT("R"), TEXT("G"), TEXT("B"), TEXT("A"),
++			TEXT("Constant"), TEXT("Period"), TEXT("MinDefault"), TEXT("MaxDefault"), TEXT("ClampMode"),
++			TEXT("SpeedX"), TEXT("SpeedY"), TEXT("CenterX"), TEXT("CenterY"), TEXT("Speed"),
++			TEXT("TransformSourceType"), TEXT("TransformType"), TEXT("MipValueMode"), TEXT("SamplerType"),
++			TEXT("PreviewValue"),
++		};
++		TArray<FString> PropertyParts;
++		for (const TPair<FString, TSharedPtr<FJsonValue>>& Pair : Properties->Values)
++		{
++			if (!Pair.Key.StartsWith(TEXT("Const")) && !KeptProperties.Contains(Pair.Key))
++			{
++				continue;
++			}
++			FString Value;
++			if (Pair.Value && Pair.Value->TryGetString(Value) && !Value.IsEmpty())
++			{
++				PropertyParts.Add(Pair.Key + TEXT("=") + ShortValue(Value, 100));
++			}
++		}
++		PropertyParts.Sort();
++		if (!PropertyParts.IsEmpty())
++		{
++			Label += TEXT("{") + FString::Join(PropertyParts, TEXT(",")) + TEXT("}");
++		}
++		return ShortValue(Label, 260);
++	}
++
++	static bool BuildDocument(
++		const FString& AssetPath,
++		const FString& SourceFile,
++		const FString& GraphJson,
++		FString& OutDocument,
++		FString& OutError)
++	{
++		TSharedPtr<FJsonObject> Root;
++		const TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(GraphJson);
++		if (!FJsonSerializer::Deserialize(Reader, Root) || !Root)
++		{
++			OutError = TEXT("material graph export returned invalid JSON");
++			return false;
++		}
++
++		const TArray<TSharedPtr<FJsonValue>>* Expressions = nullptr;
++		const TArray<TSharedPtr<FJsonValue>>* Connections = nullptr;
++		const TArray<TSharedPtr<FJsonValue>>* Outputs = nullptr;
++		static const TArray<TSharedPtr<FJsonValue>> EmptyOutputs;
++		if (!Root->TryGetArrayField(TEXT("expressions"), Expressions)
++			|| !Root->TryGetArrayField(TEXT("connections"), Connections))
++		{
++			OutError = TEXT("material graph export is missing required arrays");
++			return false;
++		}
++		if (!Root->TryGetArrayField(TEXT("output_connections"), Outputs))
++		{
++			Outputs = &EmptyOutputs;
++		}
++
++		const TSharedPtr<FJsonObject>* FunctionPtr = nullptr;
++		const TSharedPtr<FJsonObject> Function =
++			Root->TryGetObjectField(TEXT("function"), FunctionPtr) && FunctionPtr ? *FunctionPtr : nullptr;
++		const bool bIsFunction = Function.IsValid();
++
++		TMap<FString, int32> ParameterCounts;
++		TMap<FString, int32> Dependencies;
++		TMap<FString, FString> ExpressionLabels;
++		TMap<FString, FString> ExpressionAliases;
++		TSet<FString> ParameterNames;
++		TSet<FString> Reroutes;
++		TArray<FString> InterfaceLines;
++		TArray<FString> CustomLines;
++		int32 ParameterNodeCount = 0;
++
++		for (int32 Index = 0; Index < Expressions->Num(); ++Index)
++		{
++			const TSharedPtr<FJsonObject> Expression = (*Expressions)[Index] ? (*Expressions)[Index]->AsObject() : nullptr;
++			const FString Id = JsonString(Expression, TEXT("id"));
++			if (!Id.IsEmpty())
++			{
++				ExpressionAliases.Add(Id, FString::Printf(TEXT("n%03d"), Index));
++			}
++		}
++
++		for (const TSharedPtr<FJsonValue>& Value : *Expressions)
++		{
++			const TSharedPtr<FJsonObject> Expression = Value ? Value->AsObject() : nullptr;
++			if (!Expression)
++			{
++				continue;
++			}
++
++			const FString Id = JsonString(Expression, TEXT("id"));
++			const FString Class = JsonString(Expression, TEXT("class"));
++			const FString ParameterName = JsonString(Expression, TEXT("parameter_name"));
++			const FString FunctionPath = JsonString(Expression, TEXT("function_path"));
++			const TSharedPtr<FJsonObject> Properties = Expression->GetObjectField(TEXT("properties"));
++			const FString InputName = JsonString(Expression, TEXT("input_name"));
++			const FString OutputName = JsonString(Expression, TEXT("output_name"));
++			if (!InputName.IsEmpty())
++			{
++				bool bUsePreviewDefault = false;
++				Expression->TryGetBoolField(TEXT("use_preview_value_as_default"), bUsePreviewDefault);
++				FString Line = TEXT("in.") + InputName + TEXT(":") + JsonString(Expression, TEXT("input_type_name"));
++				const FString Preview = JsonString(Properties, TEXT("PreviewValue"));
++				if (bUsePreviewDefault && !Preview.IsEmpty())
++				{
++					Line += TEXT("=") + ShortValue(Preview, 100);
++				}
++				const FString Description = JsonString(Expression, TEXT("description"));
++				if (!Description.IsEmpty())
++				{
++					Line += TEXT(" // ") + ShortValue(Description, 100);
++				}
++				InterfaceLines.Add(Line);
++			}
++			else if (!OutputName.IsEmpty())
++			{
++				FString Line = TEXT("out.") + OutputName;
++				const FString Description = JsonString(Expression, TEXT("description"));
++				if (!Description.IsEmpty())
++				{
++					Line += TEXT(" // ") + ShortValue(Description, 100);
++				}
++				InterfaceLines.Add(Line);
++			}
++
++			FString Label = Class;
++			if (!ParameterName.IsEmpty())
++			{
++				Label += TEXT(":") + ParameterName;
++			}
++			else if (!FunctionPath.IsEmpty())
++			{
++				Label += TEXT(":") + FPackageName::GetShortName(FunctionPath);
++			}
++			ExpressionLabels.Add(Id, Label);
++
++			if (!ParameterName.IsEmpty())
++			{
++				FString Default = JsonString(Properties, TEXT("DefaultValue"));
++				if (Default.IsEmpty())
++				{
++					Default = JsonString(Properties, TEXT("Texture"));
++				}
++				if (Default.IsEmpty())
++				{
++					Default = TEXT("?");
++				}
++
++				const FString Group = JsonString(Expression, TEXT("group"));
++				const FString Line = FString::Printf(
++					TEXT("%s | %s %s=%s"),
++					Group.IsEmpty() || Group == TEXT("None") ? TEXT("-") : *Group,
++					*Class,
++					*ParameterName,
++					*ShortValue(Default));
++				ParameterCounts.FindOrAdd(Line)++;
++				ParameterNames.Add(ParameterName);
++				ParameterNodeCount++;
++			}
++
++			if (!FunctionPath.IsEmpty())
++			{
++				Dependencies.FindOrAdd(TEXT("MF: ") + FunctionPath)++;
++			}
++			const FString CollectionPath = JsonString(Expression, TEXT("collection_path"));
++			if (!CollectionPath.IsEmpty())
++			{
++				Dependencies.FindOrAdd(TEXT("MPC: ") + CollectionPath)++;
++			}
++			const FString Texture = JsonString(Properties, TEXT("Texture"));
++			if (!Texture.IsEmpty() && Texture != TEXT("None"))
++			{
++				Dependencies.FindOrAdd(TEXT("TEX: ") + ShortValue(Texture))++;
++			}
++
++			const FString RerouteName = JsonString(Expression, TEXT("named_reroute_name"));
++			if (!RerouteName.IsEmpty())
++			{
++				Reroutes.Add(RerouteName);
++			}
++
++			const FString Hlsl = JsonString(Expression, TEXT("hlsl_code"));
++			if (!Hlsl.IsEmpty())
++			{
++				FString Description = JsonString(Properties, TEXT("Description"));
++				if (Description.IsEmpty())
++				{
++					Description = TEXT("Custom");
++				}
++				CustomLines.Add(FString::Printf(
++					TEXT("%s | inputs=[%s] out=%s code_sha1=%s code~=%s"),
++					*ShortValue(Description, 80),
++					*JsonString(Expression, TEXT("custom_input_names")),
++					*StripEnumPrefix(JsonString(Expression, TEXT("output_type"))),
++					*Sha1(Hlsl).Left(12),
++					*ShortValue(Hlsl, 220)));
++			}
++		}
++
++		TArray<FString> ParameterLines;
++		ParameterCounts.GenerateKeyArray(ParameterLines);
++		ParameterLines.Sort();
++		for (FString& Line : ParameterLines)
++		{
++			const int32 Count = ParameterCounts[Line];
++			if (Count > 1)
++			{
++				Line += FString::Printf(TEXT(" x%d"), Count);
++			}
++		}
++
++		TArray<FString> DependencyLines;
++		Dependencies.GenerateKeyArray(DependencyLines);
++		DependencyLines.Sort();
++		for (FString& Line : DependencyLines)
++		{
++			const int32 Count = Dependencies[Line];
++			if (Count > 1)
++			{
++				Line += FString::Printf(TEXT(" x%d"), Count);
++			}
++		}
++
++		TArray<FString> OutputLines;
++		for (const TSharedPtr<FJsonValue>& Value : *Outputs)
++		{
++			const TSharedPtr<FJsonObject> Output = Value ? Value->AsObject() : nullptr;
++			if (!Output)
++			{
++				continue;
++			}
++			const FString Id = JsonString(Output, TEXT("expression_id"));
++			const FString* Label = ExpressionLabels.Find(Id);
++			FString Pin = JsonString(Output, TEXT("output_name"));
++			if (!Pin.IsEmpty())
++			{
++				Pin = TEXT(".") + Pin;
++			}
++			OutputLines.Add(FString::Printf(
++				TEXT("%s <- %s%s"),
++				*JsonString(Output, TEXT("property")),
++				Label ? **Label : *Id,
++				*Pin));
++		}
++
++		TMap<FString, TArray<FString>> LogicInputs;
++		for (const TSharedPtr<FJsonValue>& Value : *Connections)
++		{
++			const TSharedPtr<FJsonObject> Connection = Value ? Value->AsObject() : nullptr;
++			const FString SourceId = JsonString(Connection, TEXT("source_id"));
++			const FString TargetId = JsonString(Connection, TEXT("target_id"));
++			const FString* SourceAlias = ExpressionAliases.Find(SourceId);
++			if (!SourceAlias || !ExpressionAliases.Contains(TargetId))
++			{
++				continue;
++			}
++			FString Source = *SourceAlias;
++			const FString SourceOutput = JsonString(Connection, TEXT("source_output_name"));
++			if (!SourceOutput.IsEmpty())
++			{
++				Source += TEXT(".") + SourceOutput;
++			}
++			LogicInputs.FindOrAdd(TargetId).Add(
++				JsonString(Connection, TEXT("target_input")) + TEXT("=") + Source);
++		}
++
++		for (const TSharedPtr<FJsonValue>& Value : *Expressions)
++		{
++			const TSharedPtr<FJsonObject> Expression = Value ? Value->AsObject() : nullptr;
++			const FString DeclarationId = JsonString(Expression, TEXT("named_reroute_declaration_id"));
++			const FString* DeclarationAlias = ExpressionAliases.Find(DeclarationId);
++			if (DeclarationAlias)
++			{
++				LogicInputs.FindOrAdd(JsonString(Expression, TEXT("id"))).Add(
++					TEXT("Declaration=") + *DeclarationAlias);
++			}
++		}
++
++		TArray<FString> LogicLines;
++		for (const TSharedPtr<FJsonValue>& Value : *Expressions)
++		{
++			const TSharedPtr<FJsonObject> Expression = Value ? Value->AsObject() : nullptr;
++			const FString Id = JsonString(Expression, TEXT("id"));
++			const FString* Alias = ExpressionAliases.Find(Id);
++			if (!Alias)
++			{
++				continue;
++			}
++			TArray<FString>& Inputs = LogicInputs.FindOrAdd(Id);
++			Inputs.Sort();
++			const FString Class = JsonString(Expression, TEXT("class"));
++			const FString Prefix = Class.EndsWith(TEXT("Output")) ? TEXT("root.") : TEXT("");
++			const FString InputSuffix =
++				Inputs.IsEmpty() ? FString() : FString::Printf(TEXT("(%s)"), *FString::Join(Inputs, TEXT(",")));
++			LogicLines.Add(FString::Printf(
++				TEXT("%s%s=%s%s"),
++				*Prefix,
++				**Alias,
++				*LogicNodeLabel(Expression),
++				*InputSuffix));
++		}
++		for (const TSharedPtr<FJsonValue>& Value : *Outputs)
++		{
++			const TSharedPtr<FJsonObject> Output = Value ? Value->AsObject() : nullptr;
++			const FString* Alias = ExpressionAliases.Find(JsonString(Output, TEXT("expression_id")));
++			if (!Alias)
++			{
++				continue;
++			}
++			FString Source = *Alias;
++			const FString Pin = JsonString(Output, TEXT("output_name"));
++			if (!Pin.IsEmpty())
++			{
++				Source += TEXT(".") + Pin;
++			}
++			LogicLines.Add(TEXT("out.") + JsonString(Output, TEXT("property")) + TEXT("=") + Source);
++		}
++
++		TArray<FString> RerouteLines = Reroutes.Array();
++		RerouteLines.Sort();
++		CustomLines.Sort();
++
++		const TSharedPtr<FJsonObject>* MaterialPtr = nullptr;
++		const TSharedPtr<FJsonObject> Material =
++			Root->TryGetObjectField(TEXT("material"), MaterialPtr) && MaterialPtr ? *MaterialPtr : nullptr;
++		bool bTwoSided = false;
++		bool bUseMaterialAttributes = false;
++		if (Material)
++		{
++			Material->TryGetBoolField(TEXT("two_sided"), bTwoSided);
++			Material->TryGetBoolField(TEXT("use_material_attributes"), bUseMaterialAttributes);
++		}
++
++		FString NormalizedSource = SourceFile.IsEmpty() ? TEXT("?") : FPaths::ConvertRelativePathToFull(SourceFile);
++		FPaths::NormalizeFilename(NormalizedSource);
++		FString SourceMtime = TEXT("?");
++		int64 SourceSize = -1;
++		if (NormalizedSource != TEXT("?"))
++		{
++			const FDateTime Mtime = IFileManager::Get().GetTimeStamp(*NormalizedSource);
++			if (Mtime != FDateTime::MinValue())
++			{
++				SourceMtime = Mtime.ToIso8601();
++			}
++			SourceSize = IFileManager::Get().FileSize(*NormalizedSource);
++		}
++
++		const FString Format = bIsFunction
++			? TEXT("vibeue-material-function-cache-v1")
++			: TEXT("vibeue-material-cache-v2");
++		FString SettingsLine;
++		if (bIsFunction)
++		{
++			bool bExposeToLibrary = false;
++			Function->TryGetBoolField(TEXT("expose_to_library"), bExposeToLibrary);
++			SettingsLine = FString::Printf(
++				TEXT("function: {expose_to_library: %s, categories: %s, description: %s}"),
++				bExposeToLibrary ? TEXT("true") : TEXT("false"),
++				*ShortValue(JsonString(Function, TEXT("library_categories")), 120),
++				*ShortValue(JsonString(Function, TEXT("description")), 160));
++		}
++		else
++		{
++			SettingsLine = FString::Printf(
++				TEXT("material: {domain: %s, blend: %s, shading: %s, use_material_attributes: %s, two_sided: %s}"),
++				*StripEnumPrefix(JsonString(Material, TEXT("domain"))),
++				*StripEnumPrefix(JsonString(Material, TEXT("blend_mode"))),
++				*StripEnumPrefix(JsonString(Material, TEXT("shading_model"))),
++				bUseMaterialAttributes ? TEXT("true") : TEXT("false"),
++				bTwoSided ? TEXT("true") : TEXT("false"));
++		}
++
++		TArray<FString> Lines = {
++			FString::Printf(
++				TEXT("# %s | AI material%s cache"),
++				*FPackageName::GetShortName(AssetPath),
++				bIsFunction ? TEXT(" function") : TEXT("")),
++			TEXT(""),
++			TEXT("```yaml"),
++			TEXT("format: ") + Format,
++			TEXT("src: ") + AssetPath,
++			TEXT("file: ") + NormalizedSource,
++			TEXT("mtime: ") + SourceMtime,
++			FString::Printf(TEXT("size: %lld"), SourceSize),
++			TEXT("graph_sha1: ") + Sha1(FString::Join(LogicLines, TEXT("\n"))),
++			FString::Printf(
++				TEXT("graph: {expressions: %d, connections: %d, outputs: %d, parameter_nodes: %d, parameter_names: %d}"),
++				Expressions->Num(),
++				Connections->Num(),
++				Outputs->Num(),
++				ParameterNodeCount,
++				ParameterNames.Num()),
++			SettingsLine,
++			TEXT("```"),
++			TEXT(""),
++			TEXT("## Params"),
++			TEXT("```text"),
++			ParameterLines.IsEmpty() ? TEXT("-") : FString::Join(ParameterLines, TEXT("\n")),
++			TEXT("```"),
++			TEXT(""),
++			bIsFunction ? TEXT("## Interface") : TEXT("## Outputs"),
++			TEXT("```text"),
++			bIsFunction
++				? (InterfaceLines.IsEmpty() ? TEXT("-") : FString::Join(InterfaceLines, TEXT("\n")))
++				: (OutputLines.IsEmpty() ? TEXT("-") : FString::Join(OutputLines, TEXT("\n"))),
++			TEXT("```"),
++			TEXT(""),
++			TEXT("## Logic"),
++			TEXT("```text"),
++			LogicLines.IsEmpty() ? TEXT("-") : FString::Join(LogicLines, TEXT("\n")),
++			TEXT("```"),
++			TEXT(""),
++			TEXT("## Deps"),
++			TEXT("```text"),
++			DependencyLines.IsEmpty() ? TEXT("-") : FString::Join(DependencyLines, TEXT("\n")),
++			RerouteLines.IsEmpty() ? TEXT("REROUTE: -") : TEXT("REROUTE: ") + FString::Join(RerouteLines, TEXT(", ")),
++			TEXT("```"),
++		};
++		if (!CustomLines.IsEmpty())
++		{
++			Lines.Add(TEXT(""));
++			Lines.Add(TEXT("## Custom"));
++			Lines.Add(TEXT("```text"));
++			Lines.Add(FString::Join(CustomLines, TEXT("\n")));
++			Lines.Add(TEXT("```"));
++		}
++		Lines.Add(TEXT(""));
++		Lines.Add(TEXT("## Flags"));
++		Lines.Add(TEXT("```text"));
++		Lines.Add(TEXT("Logic preserves top-level topology and common constants; Material Function internals are boundaries. Query a target node for omitted class-specific properties or full Custom code before editing it."));
++		Lines.Add(TEXT("```"));
++		Lines.Add(TEXT(""));
++		OutDocument = FString::Join(Lines, TEXT("\n"));
++		return true;
++	}
++
++	static void GetSourceMetadata(
++		const FString& SourceFile,
++		FString& OutNormalizedSource,
++		FString& OutMtime,
++		int64& OutSize)
++	{
++		OutNormalizedSource = SourceFile.IsEmpty() ? TEXT("?") : FPaths::ConvertRelativePathToFull(SourceFile);
++		FPaths::NormalizeFilename(OutNormalizedSource);
++		OutMtime = TEXT("?");
++		OutSize = -1;
++		if (OutNormalizedSource != TEXT("?"))
++		{
++			const FDateTime Mtime = IFileManager::Get().GetTimeStamp(*OutNormalizedSource);
++			if (Mtime != FDateTime::MinValue())
++			{
++				OutMtime = Mtime.ToIso8601();
++			}
++			OutSize = IFileManager::Get().FileSize(*OutNormalizedSource);
++		}
++	}
++
++	static bool WriteDocument(
++		const FString& SourceFile,
++		const FString& Document,
++		FString& OutPath,
++		FString& OutError)
++	{
++		OutPath = GetCachePath(SourceFile);
++		if (OutPath.IsEmpty())
++		{
++			OutError = TEXT("package filename is unavailable");
++			return false;
++		}
++
++		FString Existing;
++		FFileHelper::LoadFileToString(Existing, *OutPath);
++		if (Existing == Document)
++		{
++			return true;
++		}
++
++		IFileManager& FileManager = IFileManager::Get();
++		FileManager.MakeDirectory(*FPaths::GetPath(OutPath), true);
++		const FString TemporaryPath = OutPath + TEXT(".tmp");
++		if (!FFileHelper::SaveStringToFile(
++				Document,
++				*TemporaryPath,
++				FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM)
++			|| !FileManager.Move(*OutPath, *TemporaryPath, true, true))
++		{
++			FileManager.Delete(*TemporaryPath, false, true);
++			OutError = FString::Printf(TEXT("failed to atomically write %s"), *OutPath);
++			return false;
++		}
++		return true;
++	}
++
++	static bool BuildMaterialInstanceDocument(
++		const FString& AssetPath,
++		const FString& SourceFile,
++		UMaterialInstanceConstant* Instance,
++		FString& OutDocument)
++	{
++		TArray<FMaterialParameterInfo> ValidScalar;
++		TArray<FMaterialParameterInfo> ValidVector;
++		TArray<FMaterialParameterInfo> ValidTexture;
++		TArray<FGuid> ParameterIds;
++		if (Instance->Parent)
++		{
++			Instance->Parent->GetAllScalarParameterInfo(ValidScalar, ParameterIds);
++			ParameterIds.Reset();
++			Instance->Parent->GetAllVectorParameterInfo(ValidVector, ParameterIds);
++			ParameterIds.Reset();
++			Instance->Parent->GetAllTextureParameterInfo(ValidTexture, ParameterIds);
++		}
++
++		TArray<FString> Overrides;
++		TArray<FString> Orphans;
++		for (const FScalarParameterValue& Parameter : Instance->ScalarParameterValues)
++		{
++			const FString Name = Parameter.ParameterInfo.Name.ToString();
++			if (ValidScalar.Contains(Parameter.ParameterInfo))
++			{
++				Overrides.Add(FString::Printf(TEXT("S: %s=%.6f"), *Name, Parameter.ParameterValue));
++			}
++			else
++			{
++				Orphans.Add(TEXT("S:") + Name);
++			}
++		}
++		for (const FVectorParameterValue& Parameter : Instance->VectorParameterValues)
++		{
++			const FString Name = Parameter.ParameterInfo.Name.ToString();
++			if (ValidVector.Contains(Parameter.ParameterInfo))
++			{
++				const FLinearColor& V = Parameter.ParameterValue;
++				Overrides.Add(FString::Printf(
++					TEXT("V: %s=(%.6f,%.6f,%.6f,%.6f)"),
++					*Name, V.R, V.G, V.B, V.A));
++			}
++			else
++			{
++				Orphans.Add(TEXT("V:") + Name);
++			}
++		}
++		for (const FTextureParameterValue& Parameter : Instance->TextureParameterValues)
++		{
++			const FString Name = Parameter.ParameterInfo.Name.ToString();
++			if (ValidTexture.Contains(Parameter.ParameterInfo))
++			{
++				Overrides.Add(FString::Printf(
++					TEXT("T: %s=%s"),
++					*Name,
++					Parameter.ParameterValue ? *Parameter.ParameterValue->GetPathName() : TEXT("None")));
++			}
++			else
++			{
++				Orphans.Add(TEXT("T:") + Name);
++			}
++		}
++
++		FStaticParameterSet StaticParameters;
++		Instance->GetStaticParameterValues(StaticParameters);
++		for (const FStaticSwitchParameter& Parameter : StaticParameters.StaticSwitchParameters)
++		{
++			if (Parameter.bOverride)
++			{
++				Overrides.Add(FString::Printf(
++					TEXT("B: %s=%s"),
++					*Parameter.ParameterInfo.Name.ToString(),
++					Parameter.Value ? TEXT("true") : TEXT("false")));
++			}
++		}
++		Overrides.Sort();
++		Orphans.Sort();
++
++		FString NormalizedSource;
++		FString SourceMtime;
++		int64 SourceSize = -1;
++		GetSourceMetadata(SourceFile, NormalizedSource, SourceMtime, SourceSize);
++		const FString ParentPath = Instance->Parent ? Instance->Parent->GetPathName() : TEXT("None");
++		TArray<FString> Lines = {
++			FString::Printf(TEXT("# %s | AI material-instance cache"), *FPackageName::GetShortName(AssetPath)),
++			TEXT(""),
++			TEXT("```yaml"),
++			TEXT("format: vibeue-material-instance-cache-v1"),
++			TEXT("src: ") + AssetPath,
++			TEXT("file: ") + NormalizedSource,
++			TEXT("mtime: ") + SourceMtime,
++			FString::Printf(TEXT("size: %lld"), SourceSize),
++			TEXT("parent: ") + ParentPath,
++			FString::Printf(TEXT("overrides: %d"), Overrides.Num()),
++			TEXT("```"),
++			TEXT(""),
++			TEXT("## Overrides"),
++			TEXT("```text"),
++			Overrides.IsEmpty() ? TEXT("-") : FString::Join(Overrides, TEXT("\n")),
++			TEXT("```"),
++			TEXT(""),
++			TEXT("## Flags"),
++			TEXT("```text"),
++			Orphans.IsEmpty()
++				? TEXT("-")
++				: TEXT("Ignored orphan serialized overrides: ") + FString::Join(Orphans, TEXT(", ")),
++			TEXT("```"),
++			TEXT(""),
++		};
++		OutDocument = FString::Join(Lines, TEXT("\n"));
++		return true;
++	}
++
++	static TArray<FString> GetPackageDependencies(const FString& PackageName)
++	{
++		TArray<FName> PackageDependencies;
++		FAssetRegistryModule& Registry =
++			FModuleManager::LoadModuleChecked<FAssetRegistryModule>(TEXT("AssetRegistry"));
++		Registry.Get().GetDependencies(
++			FName(*PackageName),
++			PackageDependencies,
++			UE::AssetRegistry::EDependencyCategory::Package);
++
++		TArray<FString> Result;
++		for (const FName Dependency : PackageDependencies)
++		{
++			const FString Path = Dependency.ToString();
++			if (Path == PackageName
++				|| Path == TEXT("/Script/CoreUObject")
++				|| Path == TEXT("/Script/Engine")
++				|| Path == TEXT("/Script/BlueprintGraph"))
++			{
++				continue;
++			}
++			if (Path.StartsWith(TEXT("/Game/")) || Path.StartsWith(TEXT("/Script/")))
++			{
++				Result.AddUnique(Path);
++			}
++		}
++		Result.Sort();
++		return Result;
++	}
++
++	static bool ReadBlueprintGraphDsl(
++		const FString& AssetPath,
++		const FString& GraphName,
++		FString& OutDsl,
++		FString& OutError)
++	{
++		IPythonScriptPlugin* Python = IPythonScriptPlugin::Get();
++		if (!Python || !Python->IsPythonInitialized())
++		{
++			OutError = TEXT("PythonScriptPlugin is not initialized");
++			return false;
++		}
++
++		const FString AssetPath64 = FBase64::Encode(AssetPath);
++		const FString GraphName64 = FBase64::Encode(GraphName);
++		FPythonCommandEx Command;
++		Command.ExecutionMode = EPythonCommandExecutionMode::EvaluateStatement;
++		Command.Command = FString::Printf(
++			TEXT("__import__('base64').b64encode(")
++			TEXT("__import__('editor_toolset.toolsets.blueprint',fromlist=['BlueprintTools']).BlueprintTools.read_graph_dsl(")
++			TEXT("next(g for g in __import__('unreal').BlueprintEditorLibrary.list_graphs(")
++			TEXT("__import__('unreal').load_asset(__import__('base64').b64decode('%s').decode())) ")
++			TEXT("if g.get_name()==__import__('base64').b64decode('%s').decode())).encode()).decode()"),
++			*AssetPath64,
++			*GraphName64);
++		if (!Python->ExecPythonCommandEx(Command))
++		{
++			OutError = Command.CommandResult;
++			return false;
++		}
++
++		FString Encoded = Command.CommandResult;
++		if (Encoded.Len() >= 2
++			&& ((Encoded[0] == TEXT('\'') && Encoded[Encoded.Len() - 1] == TEXT('\''))
++				|| (Encoded[0] == TEXT('"') && Encoded[Encoded.Len() - 1] == TEXT('"'))))
++		{
++			Encoded = Encoded.Mid(1, Encoded.Len() - 2);
++		}
++		if (!FBase64::Decode(Encoded, OutDsl))
++		{
++			OutError = TEXT("Blueprint DSL result was not valid base64");
++			return false;
++		}
++		return true;
++	}
++
++	static bool BuildBlueprintDocument(
++		const FString& AssetPath,
++		const FString& SourceFile,
++		UBlueprint* Blueprint,
++		FString& OutDocument,
++		FString& OutError)
++	{
++		TArray<FString> VariableLines;
++		UObject* DefaultObject = Blueprint->GeneratedClass
++			? Blueprint->GeneratedClass->GetDefaultObject(false)
++			: nullptr;
++		for (const FBPVariableDescription& Variable : Blueprint->NewVariables)
++		{
++			FString Value = Variable.DefaultValue;
++			if (DefaultObject && Blueprint->GeneratedClass)
++			{
++				if (FProperty* Property =
++					FindFProperty<FProperty>(Blueprint->GeneratedClass, Variable.VarName))
++				{
++					Property->ExportText_InContainer(
++						0,
++						Value,
++						DefaultObject,
++						DefaultObject,
++						DefaultObject,
++						PPF_SimpleObjectText);
++				}
++			}
++			const FString Type = Variable.VarType.PinSubCategoryObject.IsValid()
++				? Variable.VarType.PinSubCategoryObject->GetPathName()
++				: Variable.VarType.PinCategory.ToString();
++			VariableLines.Add(FString::Printf(
++				TEXT("%s:%s=%s"),
++				*Variable.VarName.ToString(),
++				*Type,
++				*ShortValue(Value.IsEmpty() ? TEXT("?") : Value, 300)));
++		}
++		VariableLines.Sort();
++
++		TArray<FString> ComponentLines;
++		if (Blueprint->SimpleConstructionScript)
++		{
++			const USCS_Node* RootNode = Blueprint->SimpleConstructionScript->GetDefaultSceneRootNode();
++			for (USCS_Node* Node : Blueprint->SimpleConstructionScript->GetAllNodes())
++			{
++				if (!Node || !Node->ComponentTemplate)
++				{
++					continue;
++				}
++				UActorComponent* Component = Node->ComponentTemplate;
++				TArray<FString> Parts = {
++					Node->GetVariableName().ToString() + TEXT(":") + Component->GetClass()->GetName()
++				};
++				if (Node == RootNode)
++				{
++					Parts.Add(TEXT("[root]"));
++				}
++				if (const USceneComponent* Scene = Cast<USceneComponent>(Component))
++				{
++					const FVector Location = Scene->GetRelativeLocation();
++					const FRotator Rotation = Scene->GetRelativeRotation();
++					const FVector Scale = Scene->GetRelativeScale3D();
++					if (!Location.IsNearlyZero())
++					{
++						Parts.Add(FString::Printf(
++							TEXT("loc=(%.3f,%.3f,%.3f)"),
++							Location.X, Location.Y, Location.Z));
++					}
++					if (!Rotation.IsNearlyZero())
++					{
++						Parts.Add(FString::Printf(
++							TEXT("rot=(%.3f,%.3f,%.3f)"),
++							Rotation.Pitch, Rotation.Yaw, Rotation.Roll));
++					}
++					if (!Scale.Equals(FVector::OneVector))
++					{
++						Parts.Add(FString::Printf(
++							TEXT("scale=(%.3f,%.3f,%.3f)"),
++							Scale.X, Scale.Y, Scale.Z));
++					}
++				}
++				if (const UStaticMeshComponent* Mesh = Cast<UStaticMeshComponent>(Component))
++				{
++					if (Mesh->GetStaticMesh())
++					{
++						Parts.Add(TEXT("mesh=") + Mesh->GetStaticMesh()->GetPathName());
++					}
++					for (int32 Index = 0; Index < Mesh->GetNumMaterials(); ++Index)
++					{
++						if (UMaterialInterface* Material = Mesh->GetMaterial(Index))
++						{
++							Parts.Add(FString::Printf(
++								TEXT("material%d=%s"),
++								Index,
++								*Material->GetPathName()));
++						}
++					}
++				}
++				if (const USceneCaptureComponent2D* Capture =
++					Cast<USceneCaptureComponent2D>(Component))
++				{
++					Parts.Add(TEXT("projection=") + UEnum::GetValueAsString(Capture->ProjectionType));
++					Parts.Add(FString::Printf(TEXT("ortho_width=%.3f"), Capture->OrthoWidth));
++					Parts.Add(TEXT("capture=") + UEnum::GetValueAsString(Capture->CaptureSource));
++					Parts.Add(TEXT("primitive_mode=") + UEnum::GetValueAsString(Capture->PrimitiveRenderMode));
++					if (Capture->TextureTarget)
++					{
++						Parts.Add(TEXT("target=") + Capture->TextureTarget->GetPathName());
++					}
++					Parts.Add(FString::Printf(
++						TEXT("every_frame=%s on_movement=%s"),
++						Capture->bCaptureEveryFrame ? TEXT("true") : TEXT("false"),
++						Capture->bCaptureOnMovement ? TEXT("true") : TEXT("false")));
++				}
++				ComponentLines.Add(FString::Join(Parts, TEXT(" ")));
++			}
++		}
++		ComponentLines.Sort();
++
++		TArray<UEdGraph*> Graphs = UBlueprintEditorLibrary::ListGraphs(Blueprint);
++		Graphs.Sort([](const UEdGraph& A, const UEdGraph& B)
++		{
++			return A.GetName() < B.GetName();
++		});
++		TArray<FString> GraphSections;
++		TArray<FString> GraphBodies;
++		for (UEdGraph* Graph : Graphs)
++		{
++			if (!Graph)
++			{
++				continue;
++			}
++			FString Dsl;
++			if (!ReadBlueprintGraphDsl(AssetPath, Graph->GetName(), Dsl, OutError))
++			{
++				return false;
++			}
++			Dsl.TrimStartAndEndInline();
++			GraphBodies.Add(Graph->GetName() + TEXT("\n") + Dsl);
++			GraphSections.Add(
++				TEXT("## Graph.") + Graph->GetName()
++				+ TEXT("\n```lisp\n")
++				+ (Dsl.IsEmpty() ? TEXT("-") : Dsl)
++				+ TEXT("\n```"));
++		}
++
++		const TArray<FString> Dependencies = GetPackageDependencies(Blueprint->GetOutermost()->GetName());
++		FString NormalizedSource;
++		FString SourceMtime;
++		int64 SourceSize = -1;
++		GetSourceMetadata(SourceFile, NormalizedSource, SourceMtime, SourceSize);
++		const FString ParentPath = Blueprint->ParentClass
++			? Blueprint->ParentClass->GetPathName()
++			: TEXT("None");
++		TArray<FString> Lines = {
++			FString::Printf(TEXT("# %s | AI Blueprint cache"), *FPackageName::GetShortName(AssetPath)),
++			TEXT(""),
++			TEXT("```yaml"),
++			TEXT("format: vibeue-blueprint-cache-v1"),
++			TEXT("src: ") + AssetPath,
++			TEXT("file: ") + NormalizedSource,
++			TEXT("mtime: ") + SourceMtime,
++			FString::Printf(TEXT("size: %lld"), SourceSize),
++			TEXT("graph_sha1: ") + Sha1(FString::Join(GraphBodies, TEXT("\n"))),
++			FString::Printf(
++				TEXT("blueprint: {parent: %s, graphs: %d, variables: %d, components: %d}"),
++				*ParentPath,
++				GraphSections.Num(),
++				VariableLines.Num(),
++				ComponentLines.Num()),
++			TEXT("```"),
++		};
++		if (!VariableLines.IsEmpty())
++		{
++			Lines.Append({
++				TEXT(""),
++				TEXT("## Vars"),
++				TEXT("```text"),
++				FString::Join(VariableLines, TEXT("\n")),
++				TEXT("```"),
++			});
++		}
++		Lines.Append({
++			TEXT(""),
++			TEXT("## Components"),
++			TEXT("```text"),
++			ComponentLines.IsEmpty() ? TEXT("-") : FString::Join(ComponentLines, TEXT("\n")),
++			TEXT("```"),
++		});
++		for (const FString& Section : GraphSections)
++		{
++			Lines.Add(TEXT(""));
++			Lines.Add(Section);
++		}
++		Lines.Append({
++			TEXT(""),
++			TEXT("## Deps"),
++			TEXT("```text"),
++			Dependencies.IsEmpty() ? TEXT("-") : FString::Join(Dependencies, TEXT("\n")),
++			TEXT("```"),
++			TEXT(""),
++			TEXT("## Flags"),
++			TEXT("```text"),
++			TEXT("Saved Blueprint only; compile state, placed-instance overrides, and dirty editor memory are live checks."),
++			TEXT("```"),
++			TEXT(""),
++		});
++		OutDocument = FString::Join(Lines, TEXT("\n"));
++		return true;
++	}
++
++	template<typename T>
++	static bool CompactStructJson(const T& Value, FString& OutJson)
++	{
++		return FJsonObjectConverter::UStructToJsonObjectString(
++			Value,
++			OutJson,
++			0,
++			0,
++			0,
++			nullptr,
++			false);
++	}
++
++	static FString BuildEmbeddedNiagaraSection(
++		const FString& AssetPath,
++		const FString& EmitterName,
++		const FString& ModuleName)
++	{
++		const TArray<FNiagaraScratchNodeInfo> Nodes =
++			UNiagaraScratchPadService::ListNodes(AssetPath, EmitterName, ModuleName);
++		if (Nodes.IsEmpty())
++		{
++			return {};
++		}
++
++		TMap<FString, FString> Aliases;
++		for (int32 Index = 0; Index < Nodes.Num(); ++Index)
++		{
++			Aliases.Add(Nodes[Index].NodeId, FString::Printf(TEXT("n%03d"), Index));
++		}
++
++		TArray<FString> GraphLines;
++		TArray<FString> HlslBlocks;
++		for (const FNiagaraScratchNodeInfo& Node : Nodes)
++		{
++			TArray<FString> Pins;
++			for (const FNiagaraScratchPinInfo& Pin :
++				UNiagaraScratchPadService::GetNodePins(
++					AssetPath,
++					EmitterName,
++					ModuleName,
++					Node.NodeId))
++			{
++				FString PinText = (Pin.Direction == TEXT("Input") ? TEXT("in.") : TEXT("out."))
++					+ Pin.PinName + TEXT(":") + Pin.TypeName;
++				if (!Pin.bIsConnected && !Pin.DefaultValue.IsEmpty())
++				{
++					PinText += TEXT("=") + ShortValue(Pin.DefaultValue, 100);
++				}
++				Pins.Add(PinText);
++			}
++			Pins.Sort();
++			GraphLines.Add(FString::Printf(
++				TEXT("%s=%s:%s%s%s"),
++				*Aliases.FindChecked(Node.NodeId),
++				*Node.NodeType,
++				*ShortValue(Node.Title, 120),
++				Node.bIsEnabled ? TEXT("") : TEXT("[disabled]"),
++				Pins.IsEmpty()
++					? TEXT("")
++					: *FString::Printf(TEXT("{%s}"), *FString::Join(Pins, TEXT(",")))));
++			if (Node.NodeType.Equals(TEXT("CustomHlsl"), ESearchCase::IgnoreCase))
++			{
++				const FString Hlsl = UNiagaraScratchPadService::GetCustomHlslCode(
++					AssetPath,
++					EmitterName,
++					ModuleName,
++					Node.NodeId);
++				if (!Hlsl.IsEmpty())
++				{
++					HlslBlocks.Add(
++						TEXT("// ") + Aliases.FindChecked(Node.NodeId)
++						+ TEXT("\n") + Hlsl);
++				}
++			}
++		}
++		for (const FNiagaraScratchConnectionInfo& Connection :
++			UNiagaraScratchPadService::ListConnections(AssetPath, EmitterName, ModuleName))
++		{
++			const FString* From = Aliases.Find(Connection.FromNodeId);
++			const FString* To = Aliases.Find(Connection.ToNodeId);
++			if (From && To)
++			{
++				GraphLines.Add(FString::Printf(
++					TEXT("%s.%s -> %s.%s"),
++					**From,
++					*Connection.FromPin,
++					**To,
++					*Connection.ToPin));
++			}
++		}
++
++		FString Section = FString::Printf(
++			TEXT("## Embedded.%s.%s\n```text\n%s\n```"),
++			*EmitterName,
++			*ModuleName,
++			*FString::Join(GraphLines, TEXT("\n")));
++		if (!HlslBlocks.IsEmpty())
++		{
++			Section += TEXT("\n```hlsl\n") + FString::Join(HlslBlocks, TEXT("\n\n")) + TEXT("\n```");
++		}
++		return Section;
++	}
++
++	static bool BuildNiagaraDocument(
++		const FString& AssetPath,
++		const FString& SourceFile,
++		UNiagaraSystem* System,
++		FString& OutDocument,
++		FString& OutError)
++	{
++		FNiagaraExternalEditContext Context(System);
++		FNiagaraExt_SystemSummary Summary;
++		UNiagaraExternalEditUtilities::GetSystemSummary(System, Summary, Context);
++		FString SummaryJson;
++		if (!CompactStructJson(Summary, SummaryJson))
++		{
++			OutError = TEXT("failed to serialize Niagara summary");
++			return false;
++		}
++
++		TArray<FString> EmitterSections;
++		TArray<FString> EmbeddedSections;
++		TArray<FString> HashParts = { SummaryJson };
++		TSet<FString> SeenEmbedded;
++		for (const FNiagaraExt_EmitterSummary& Emitter : Summary.Emitters)
++		{
++			const FString EmitterName = Emitter.EmitterName.ToString();
++			FNiagaraExt_StackItemReference EmitterRef(System, Emitter.EmitterName);
++			FNiagaraExt_EmitterTopology Topology;
++			UNiagaraExternalEditUtilities::GetEmitterTopology(EmitterRef, Topology, Context);
++			FString TopologyJson;
++			if (!CompactStructJson(Topology, TopologyJson))
++			{
++				OutError = TEXT("failed to serialize Niagara emitter topology");
++				return false;
++			}
++
++			TArray<FNiagaraExt_ModuleInputValues> InputValues;
++			UNiagaraExternalEditUtilities::GetEmitterInputValues(EmitterRef, InputValues, Context);
++			TArray<FString> InputJsonValues;
++			for (const FNiagaraExt_ModuleInputValues& Value : InputValues)
++			{
++				FString Json;
++				if (CompactStructJson(Value, Json))
++				{
++					InputJsonValues.Add(Json);
++				}
++			}
++			const FString InputsJson =
++				TEXT("[") + FString::Join(InputJsonValues, TEXT(",")) + TEXT("]");
++
++			TArray<FString> RendererJsonValues;
++			for (const FNiagaraExt_RendererRef& Renderer : Topology.Renderers)
++			{
++				FNiagaraExt_StackItemReference RendererRef(System, Emitter.EmitterName);
++				RendererRef.RendererIndex = Renderer.RendererIndex;
++				FNiagaraExt_RendererData RendererData;
++				UNiagaraExternalEditUtilities::GetRendererData(RendererRef, RendererData, Context);
++				RendererJsonValues.Add(FString::Printf(
++					TEXT("{\"index\":%d,\"class\":\"%s\",\"properties\":%s}"),
++					Renderer.RendererIndex,
++					Renderer.RendererClass ? *Renderer.RendererClass->GetPathName() : TEXT("None"),
++					RendererData.PropertyValues.IsEmpty()
++						? TEXT("{}")
++						: *RendererData.PropertyValues));
++			}
++			const FString RenderersJson =
++				TEXT("[") + FString::Join(RendererJsonValues, TEXT(",")) + TEXT("]");
++			EmitterSections.Add(FString::Printf(
++				TEXT("## Emitter.%s\n```json\n{\"topology\":%s,\"inputs\":%s,\"renderers\":%s}\n```"),
++				*EmitterName,
++				*TopologyJson,
++				*InputsJson,
++				*RenderersJson));
++			HashParts.Append({ TopologyJson, InputsJson, RenderersJson });
++
++			const FNiagaraExt_ScriptStackTopology* Stacks[] = {
++				&Topology.EmitterSpawnScript,
++				&Topology.EmitterUpdateScript,
++				&Topology.ParticleSpawnScript,
++				&Topology.ParticleUpdateScript,
++			};
++			for (const FNiagaraExt_ScriptStackTopology* Stack : Stacks)
++			{
++				for (const FNiagaraExt_ModuleTopology& Module : Stack->Modules)
++				{
++					if (!Module.ModuleScript
++						|| Module.ModuleScript->HasAnyFlags(RF_Public | RF_Standalone))
++					{
++						continue;
++					}
++					const FString Key = EmitterName + TEXT(".") + Module.ModuleName.ToString();
++					if (SeenEmbedded.Contains(Key))
++					{
++						continue;
++					}
++					SeenEmbedded.Add(Key);
++					const FString Section = BuildEmbeddedNiagaraSection(
++						AssetPath,
++						EmitterName,
++						Module.ModuleName.ToString());
++					if (!Section.IsEmpty())
++					{
++						EmbeddedSections.Add(Section);
++						HashParts.Add(Section);
++					}
++				}
++			}
++		}
++
++		FNiagaraExt_SystemDependencies Dependencies;
++		UNiagaraExternalEditUtilities::GetSystemDependencies(System, Dependencies, Context);
++		FString DependenciesJson;
++		if (!CompactStructJson(Dependencies, DependenciesJson))
++		{
++			OutError = TEXT("failed to serialize Niagara dependencies");
++			return false;
++		}
++		HashParts.Add(DependenciesJson);
++		if (Context.HasErrors())
++		{
++			TArray<FString> Errors;
++			for (const FText& Error : Context.Errors)
++			{
++				Errors.Add(Error.ToString());
++			}
++			OutError = FString::Join(Errors, TEXT("; "));
++			return false;
++		}
++
++		FString NormalizedSource;
++		FString SourceMtime;
++		int64 SourceSize = -1;
++		GetSourceMetadata(SourceFile, NormalizedSource, SourceMtime, SourceSize);
++		TArray<FString> Lines = {
++			FString::Printf(TEXT("# %s | AI Niagara System cache"), *FPackageName::GetShortName(AssetPath)),
++			TEXT(""),
++			TEXT("```yaml"),
++			TEXT("format: vibeue-niagara-system-cache-v1"),
++			TEXT("src: ") + AssetPath,
++			TEXT("file: ") + NormalizedSource,
++			TEXT("mtime: ") + SourceMtime,
++			FString::Printf(TEXT("size: %lld"), SourceSize),
++			TEXT("graph_sha1: ") + Sha1(FString::Join(HashParts, TEXT("\n"))),
++			FString::Printf(
++				TEXT("system: {emitters: %d, user_variables: %d, embedded: %d}"),
++				Summary.Emitters.Num(),
++				Summary.UserVariables.Num(),
++				EmbeddedSections.Num()),
++			TEXT("```"),
++			TEXT(""),
++			TEXT("## Summary"),
++			TEXT("```json"),
++			SummaryJson,
++			TEXT("```"),
++		};
++		for (const FString& Section : EmitterSections)
++		{
++			Lines.Append({ TEXT(""), Section });
++		}
++		for (const FString& Section : EmbeddedSections)
++		{
++			Lines.Append({ TEXT(""), Section });
++		}
++		Lines.Append({
++			TEXT(""),
++			TEXT("## Deps"),
++			TEXT("```json"),
++			DependenciesJson,
++			TEXT("```"),
++			TEXT(""),
++			TEXT("## Flags"),
++			TEXT("```text"),
++			TEXT("Saved system only; compile state, stack issues, and placed NiagaraComponent overrides are live checks."),
++			TEXT("```"),
++			TEXT(""),
++		});
++		OutDocument = FString::Join(Lines, TEXT("\n"));
++		return true;
++	}
++
++	static bool Write(const FString& AssetPath, const FString& SourceFile, FString& OutPath, FString& OutError)
++	{
++		UObject* Asset = UEditorAssetLibrary::LoadAsset(AssetPath);
++		if (UMaterialInstanceConstant* Instance = Cast<UMaterialInstanceConstant>(Asset))
++		{
++			FString Document;
++			BuildMaterialInstanceDocument(AssetPath, SourceFile, Instance, Document);
++			return WriteDocument(SourceFile, Document, OutPath, OutError);
++		}
++		if (UBlueprint* Blueprint = Cast<UBlueprint>(Asset))
++		{
++			FString Document;
++			if (!BuildBlueprintDocument(AssetPath, SourceFile, Blueprint, Document, OutError))
++			{
++				return false;
++			}
++			return WriteDocument(SourceFile, Document, OutPath, OutError);
++		}
++		if (UNiagaraSystem* System = Cast<UNiagaraSystem>(Asset))
++		{
++			FString Document;
++			if (!BuildNiagaraDocument(AssetPath, SourceFile, System, Document, OutError))
++			{
++				return false;
++			}
++			return WriteDocument(SourceFile, Document, OutPath, OutError);
++		}
++
++		FString GraphJson;
++		if (Cast<UMaterial>(Asset))
++		{
++			GraphJson = UMaterialNodeService::ExportMaterialGraph(AssetPath);
++		}
++		else if (Cast<UMaterialFunction>(Asset))
++		{
++			GraphJson = UMaterialNodeService::ExportFunctionGraph(AssetPath);
++		}
++		else
++		{
++			OutError = TEXT("unsupported AI cache asset type");
++			return false;
++		}
++		if (GraphJson.IsEmpty())
++		{
++			OutError = TEXT("material graph export failed");
++			return false;
++		}
++
++		FString Document;
++		if (!BuildDocument(AssetPath, SourceFile, GraphJson, Document, OutError))
++		{
++			return false;
++		}
++		return WriteDocument(SourceFile, Document, OutPath, OutError);
++	}
++
++	static void Rebuild(const TArray<FString>& Args, FOutputDevice& Ar)
++	{
++		if (Args.IsEmpty())
++		{
++			Ar.Log(TEXT("Usage: VibeUE.MaterialAICache.Rebuild /Game/Path/Asset [...]"));
++			return;
++		}
++
++		for (FString AssetPath : Args)
++		{
++			int32 Dot = INDEX_NONE;
++			if (AssetPath.FindChar(TEXT('.'), Dot))
++			{
++				AssetPath.LeftInline(Dot);
++			}
++			FString SourceFile;
++			FPackageName::TryConvertLongPackageNameToFilename(
++				AssetPath,
++				SourceFile,
++				FPackageName::GetAssetPackageExtension());
++
++			FString OutputPath;
++			FString Error;
++			if (Write(AssetPath, SourceFile, OutputPath, Error))
++			{
++				Ar.Logf(TEXT("VibeUE AI cache: %s"), *OutputPath);
++			}
++			else
++			{
++				Ar.Logf(TEXT("VibeUE AI cache ERROR: %s (%s)"), *AssetPath, *Error);
++			}
++		}
++	}
++}
++
++static FAutoConsoleCommandWithArgsAndOutputDevice RebuildMaterialAICacheCommand(
++	TEXT("VibeUE.MaterialAICache.Rebuild"),
++	TEXT("Rebuild compact AI caches for supported graph asset paths."),
++	FConsoleCommandWithArgsAndOutputDeviceDelegate::CreateStatic(MaterialAICache::Rebuild)
++);
++
++#if WITH_AUTOMATION_TESTS
++IMPLEMENT_SIMPLE_AUTOMATION_TEST(
++	FVibeUEMaterialAICacheRenderTest,
++	"VibeUE.MaterialAICache.Render",
++	EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
++bool FVibeUEMaterialAICacheRenderTest::RunTest(const FString&)
++{
++	const FString Json = TEXT(R"({
++		"material":{"domain":"MD_Surface","blend_mode":"BLEND_Opaque","shading_model":"MSM_DefaultLit","two_sided":false,"use_material_attributes":false},
++		"expressions":[
++			{"id":"p","class":"ScalarParameter","parameter_name":"Strength","group":"Cloud","properties":{"DefaultValue":"1.000000"}},
++			{"id":"f","class":"MaterialFunctionCall","function_path":"/Game/MF_Noise","properties":{}},
++			{"id":"m","class":"Multiply","properties":{"ConstB":"0.500000"}}
++		],
++		"connections":[
++			{"source_id":"p","source_output_name":"","target_id":"m","target_input":"A"},
++			{"source_id":"f","source_output_name":"Result","target_id":"m","target_input":"B"}
++		],
++		"output_connections":[{"property":"BaseColor","expression_id":"m","output_name":""}]
++	})");
++	FString Document;
++	FString Error;
++	TestTrue(TEXT("render succeeds"), MaterialAICache::BuildDocument(TEXT("/Game/M_Test"), TEXT(""), Json, Document, Error));
++	TestTrue(TEXT("v2 format retained"), Document.Contains(TEXT("format: vibeue-material-cache-v2")));
++	TestTrue(TEXT("parameter retained"), Document.Contains(TEXT("Cloud | ScalarParameter Strength=1.000000")));
++	TestTrue(TEXT("dependency retained"), Document.Contains(TEXT("MF: /Game/MF_Noise")));
++	TestTrue(TEXT("active output retained"), Document.Contains(TEXT("BaseColor <- Multiply")));
++	TestTrue(TEXT("logic topology retained"), Document.Contains(TEXT("n002=Multiply{ConstB=0.500000}(A=n000,B=n001.Result)")));
++	TestTrue(TEXT("logic output retained"), Document.Contains(TEXT("out.BaseColor=n002")));
++	FString AlternateJson = Json;
++	AlternateJson.ReplaceInline(TEXT("\"p\""), TEXT("\"session_p\""));
++	AlternateJson.ReplaceInline(TEXT("\"f\""), TEXT("\"session_f\""));
++	AlternateJson.ReplaceInline(TEXT("\"m\""), TEXT("\"session_m\""));
++	FString AlternateDocument;
++	TestTrue(
++		TEXT("alternate session ids render"),
++		MaterialAICache::BuildDocument(TEXT("/Game/M_Test"), TEXT(""), AlternateJson, AlternateDocument, Error));
++	TestEqual(TEXT("session pointer ids are omitted"), AlternateDocument, Document);
++	TestEqual(
++		TEXT("cache is a source sidecar"),
++		FPaths::GetCleanFilename(MaterialAICache::GetCachePath(TEXT("C:/Project/Content/M_Test.uasset"))),
++		FString(TEXT("M_Test.uasset.ai.md")));
++	const FString FunctionJson = TEXT(R"JSON({
++		"function":{"path":"/Game/MF_Test","description":"Test function","expose_to_library":true},
++		"expressions":[
++			{"id":"i","class":"FunctionInput","input_name":"UV","input_type_name":"Vector2","use_preview_value_as_default":true,"properties":{"PreviewValue":"(R=0,G=0,B=0,A=0)"}},
++			{"id":"f","class":"MaterialFunctionCall","function_path":"/Game/MF_Child","properties":{}},
++			{"id":"o","class":"FunctionOutput","output_name":"Result","properties":{}}
++		],
++		"connections":[{"source_id":"f","source_output_name":"Result","target_id":"o","target_input":"A"}]
++	})JSON");
++	FString FunctionDocument;
++	TestTrue(
++		TEXT("function render succeeds"),
++		MaterialAICache::BuildDocument(TEXT("/Game/MF_Test"), TEXT(""), FunctionJson, FunctionDocument, Error));
++	TestTrue(TEXT("function format retained"), FunctionDocument.Contains(TEXT("format: vibeue-material-function-cache-v1")));
++	TestTrue(TEXT("function interface retained"), FunctionDocument.Contains(TEXT("in.UV:Vector2")));
++	TestTrue(TEXT("nested function remains a dependency"), FunctionDocument.Contains(TEXT("MF: /Game/MF_Child")));
++	TestTrue(TEXT("function output remains a root"), FunctionDocument.Contains(TEXT("root.n002=OUT:Result(A=n001.Result)")));
++	return true;
++}
++#endif
++
+ // Console command to list all registered tools
+ static void ListVibeUETools()
+ {
+@@ -306,6 +1777,7 @@ void FModule::StartupModule()
+ 	}
+ 
+ 	bServicesInitialized = true;
++	OnPackageSavedHandle = UPackage::PackageSavedWithContextEvent.AddRaw(this, &FModule::HandleAssetPackageSaved);
+ 
+ 	// Clear screenshots directory from previous sessions to save disk space
+ 	FVibeUEPaths::ClearScreenshotsDir();
+@@ -436,6 +1908,11 @@ void FModule::ShutdownModule()
+ 	// Unregister PreExit / PostEngineInit callbacks
+ 	FCoreDelegates::OnPreExit.RemoveAll(this);
+ 	FCoreDelegates::GetOnPostEngineInit().RemoveAll(this);
++	if (OnPackageSavedHandle.IsValid())
++	{
++		UPackage::PackageSavedWithContextEvent.Remove(OnPackageSavedHandle);
++		OnPackageSavedHandle.Reset();
++	}
+ 
+ 	// Unregister service toolsets + MCP tools
+ 	UnregisterToolsets();
+@@ -446,6 +1923,38 @@ void FModule::ShutdownModule()
+ 	UE_LOG(LogTemp, Display, TEXT("VibeUE Module has shut down"));
+ }
+ 
++void FModule::HandleAssetPackageSaved(
++	const FString& PackageFileName,
++	UPackage* Package,
++	FObjectPostSaveContext SaveContext)
++{
++	if (!MaterialAICache::IsEnabled()
++		|| !Package
++		|| !SaveContext.SaveSucceeded()
++		|| SaveContext.IsCooking()
++		|| SaveContext.IsProceduralSave()
++		|| SaveContext.IsFromAutoSave()
++		|| (!Cast<UMaterial>(Package->FindAssetInPackage())
++			&& !Cast<UMaterialFunction>(Package->FindAssetInPackage())
++			&& !Cast<UMaterialInstanceConstant>(Package->FindAssetInPackage())
++			&& !Cast<UBlueprint>(Package->FindAssetInPackage())
++			&& !Cast<UNiagaraSystem>(Package->FindAssetInPackage())))
++	{
++		return;
++	}
++
++	FString OutputPath;
++	FString Error;
++	if (MaterialAICache::Write(Package->GetName(), PackageFileName, OutputPath, Error))
++	{
++		UE_LOG(LogTemp, Display, TEXT("VibeUE: refreshed AI cache %s"), *OutputPath);
++	}
++	else
++	{
++		UE_LOG(LogTemp, Warning, TEXT("VibeUE: AI cache failed for %s: %s"), *Package->GetName(), *Error);
++	}
++}
++
+ void FModule::OnPreExit()
+ {
+ 	UE_LOG(LogTemp, Display, TEXT("VibeUE OnPreExit - cleaning up Python services"));
+diff --git a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp b/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
+index 85a40a7..841cb56 100644
+--- a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
+@@ -1936,9 +1936,12 @@ FString UMaterialNodeService::ExportMaterialGraph(const FString& MaterialPath)
+ 
+ 	// Material settings
+ 	TSharedRef<FJsonObject> MatSettings = MakeShared<FJsonObject>();
++	MatSettings->SetStringField(TEXT("domain"), *UEnum::GetValueAsString(Material->MaterialDomain));
+ 	MatSettings->SetStringField(TEXT("blend_mode"), *UEnum::GetValueAsString(Material->BlendMode));
+ 	MatSettings->SetStringField(TEXT("shading_model"), *UEnum::GetValueAsString(Material->GetShadingModels().GetFirstShadingModel()));
+ 	MatSettings->SetBoolField(TEXT("two_sided"), Material->IsTwoSided());
++	MatSettings->SetBoolField(TEXT("use_material_attributes"), Material->bUseMaterialAttributes);
++	MatSettings->SetBoolField(TEXT("used_with_volumetric_cloud"), Material->GetUsageByFlag(MATUSAGE_VolumetricCloud));
+ 	Root->SetObjectField(TEXT("material"), MatSettings);
+ 
+ 	// All expressions
+@@ -2017,6 +2020,19 @@ FString UMaterialNodeService::ExportMaterialGraph(const FString& MaterialPath)
+ 			}
+ 		}
+ 
++		if (UMaterialExpressionNamedRerouteDeclaration* Declaration = Cast<UMaterialExpressionNamedRerouteDeclaration>(Expr))
++		{
++			ExprObj->SetStringField(TEXT("named_reroute_name"), Declaration->Name.ToString());
++		}
++		else if (UMaterialExpressionNamedRerouteUsage* Usage = Cast<UMaterialExpressionNamedRerouteUsage>(Expr))
++		{
++			if (Usage->Declaration)
++			{
++				ExprObj->SetStringField(TEXT("named_reroute_name"), Usage->Declaration->Name.ToString());
++				ExprObj->SetStringField(TEXT("named_reroute_declaration_id"), GetExpressionId(Usage->Declaration));
++			}
++		}
++
+ 		// Custom expression info (ISSUE-4: include custom_input_names)
+ 		if (UMaterialExpressionCustom* CustomExpr = Cast<UMaterialExpressionCustom>(Expr))
+ 		{
+@@ -2220,6 +2236,7 @@ FString UMaterialNodeService::ExportMaterialGraph(const FString& MaterialPath)
+ 	ExportOutput(MP_Refraction, TEXT("Refraction"));
+ 	ExportOutput(MP_PixelDepthOffset, TEXT("PixelDepthOffset"));
+ 	ExportOutput(MP_ShadingModel, TEXT("ShadingModel"));
++	ExportOutput(MP_MaterialAttributes, TEXT("MaterialAttributes"));
+ 	Root->SetArrayField(TEXT("output_connections"), OutputConnsArray);
+ 
+ 	// Serialize to string
+@@ -2891,6 +2908,40 @@ FString UMaterialNodeService::ExportFunctionGraph(const FString& FunctionPath)
+ 			}
+ 		}
+ 
++		if (UMaterialExpressionNamedRerouteDeclaration* Declaration = Cast<UMaterialExpressionNamedRerouteDeclaration>(Expr))
++		{
++			ExprObj->SetStringField(TEXT("named_reroute_name"), Declaration->Name.ToString());
++		}
++		else if (UMaterialExpressionNamedRerouteUsage* Usage = Cast<UMaterialExpressionNamedRerouteUsage>(Expr))
++		{
++			if (Usage->Declaration)
++			{
++				ExprObj->SetStringField(TEXT("named_reroute_name"), Usage->Declaration->Name.ToString());
++				ExprObj->SetStringField(TEXT("named_reroute_declaration_id"), GetExpressionId(Usage->Declaration));
++			}
++		}
++
++		if (UMaterialExpressionCustom* CustomExpr = Cast<UMaterialExpressionCustom>(Expr))
++		{
++			ExprObj->SetStringField(TEXT("hlsl_code"), CustomExpr->Code);
++			ExprObj->SetStringField(TEXT("output_type"), *UEnum::GetValueAsString(CustomExpr->OutputType));
++			TArray<FString> CustomInputNames;
++			for (const FCustomInput& Input : CustomExpr->Inputs)
++			{
++				CustomInputNames.Add(Input.InputName.ToString());
++			}
++			ExprObj->SetStringField(TEXT("custom_input_names"), FString::Join(CustomInputNames, TEXT(",")));
++		}
++
++		if (UMaterialExpressionCollectionParameter* Collection = Cast<UMaterialExpressionCollectionParameter>(Expr))
++		{
++			if (Collection->Collection)
++			{
++				ExprObj->SetStringField(TEXT("collection_path"), Collection->Collection->GetPathName());
++				ExprObj->SetStringField(TEXT("collection_parameter_name"), Collection->ParameterName.ToString());
++			}
++		}
++
+ 		// Parameter info
+ 		if (UMaterialExpressionParameter* ParamExpr = Cast<UMaterialExpressionParameter>(Expr))
+ 		{
+diff --git a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
+index 6356ca8..4fdaeec 100644
+--- a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
+@@ -344,7 +344,14 @@ namespace
+ 		return nullptr;
+ 	}
+ 
+-	/** Find the function-call (stack module) node by display name across all stage graphs of an emitter. */
++	bool IsEmbeddedModuleScript(const UNiagaraScript* Script)
++	{
++		// Packaged Niagara script assets are public/standalone. Scratch modules and legacy
++		// system-embedded module subobjects are not; both are safe for this service to inspect/edit.
++		return Script && !Script->HasAnyFlags(RF_Public | RF_Standalone);
++	}
++
++	/** Find an embedded function-call (stack module) node by display name across an emitter. */
+ 	UNiagaraNodeFunctionCall* FindModuleNodeOnEmitter(FVersionedNiagaraEmitterData* EmitterData, const FString& ModuleName)
+ 	{
+ 		UNiagaraGraph* Graph = GetEmitterGraph(EmitterData);
+@@ -353,7 +360,7 @@ namespace
+ 		Graph->GetNodesOfClass<UNiagaraNodeFunctionCall>(Calls);
+ 		for (UNiagaraNodeFunctionCall* Call : Calls)
+ 		{
+-			if (!Call) continue;
++			if (!Call || !IsEmbeddedModuleScript(Call->FunctionScript)) continue;
+ 			if (Call->GetFunctionName().Equals(ModuleName, ESearchCase::IgnoreCase))
+ 			{
+ 				return Call;
+@@ -507,7 +514,7 @@ FString UNiagaraScratchPadService::GetScratchScriptPath(
+ 	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
+ 	UNiagaraNodeFunctionCall* Call = FindModuleNodeOnEmitter(EmitterData, ModuleName);
+ 	if (!Call || !Call->FunctionScript) return FString();
+-	// Confirm it's a scratch script (i.e. transient outer = scratch container or system) vs. asset
++	// FindModuleNodeOnEmitter rejects external packaged scripts.
+ 	return Call->FunctionScript->GetPathName();
+ }
+ 
+@@ -521,22 +528,21 @@ TArray<FString> UNiagaraScratchPadService::ListScratchModules(
+ 	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
+ 	if (!Handle) return Out;
+ 	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
+-	if (!EmitterData || !EmitterData->ScratchPads) return Out;
++	if (!EmitterData) return Out;
+ 
+ 	UNiagaraGraph* Graph = GetEmitterGraph(EmitterData);
+ 	if (!Graph) return Out;
+ 
+-	TSet<UNiagaraScript*> ScratchScripts(EmitterData->ScratchPads->Scripts);
+-
+ 	TArray<UNiagaraNodeFunctionCall*> Calls;
+ 	Graph->GetNodesOfClass<UNiagaraNodeFunctionCall>(Calls);
+ 	for (UNiagaraNodeFunctionCall* Call : Calls)
+ 	{
+-		if (Call && Call->FunctionScript && ScratchScripts.Contains(Call->FunctionScript))
++		if (Call && IsEmbeddedModuleScript(Call->FunctionScript))
+ 		{
+-			Out.Add(Call->GetFunctionName());
++			Out.AddUnique(Call->GetFunctionName());
+ 		}
+ 	}
++	Out.Sort();
+ 	return Out;
+ }
+ 
+@@ -1171,9 +1177,20 @@ namespace
+ 	{
+ 		for (const FNiagaraEmitterHandle& Handle : System->GetEmitterHandles())
+ 		{
+-			const FVersionedNiagaraEmitterData* EmitterData = Handle.GetEmitterData();
+-			if (!EmitterData || !EmitterData->ScratchPads) continue;
+-			for (UNiagaraScript* Scratch : EmitterData->ScratchPads->Scripts)
++			FVersionedNiagaraEmitterData* EmitterData = Handle.GetEmitterData();
++			UNiagaraGraph* Graph = GetEmitterGraph(EmitterData);
++			if (!Graph) continue;
++			TArray<UNiagaraNodeFunctionCall*> Calls;
++			Graph->GetNodesOfClass<UNiagaraNodeFunctionCall>(Calls);
++			TSet<UNiagaraScript*> EmbeddedScripts;
++			for (UNiagaraNodeFunctionCall* Call : Calls)
++			{
++				if (Call && IsEmbeddedModuleScript(Call->FunctionScript))
++				{
++					EmbeddedScripts.Add(Call->FunctionScript);
++				}
++			}
++			for (UNiagaraScript* Scratch : EmbeddedScripts)
+ 			{
+ 				if (!Scratch) continue;
+ 				const auto* Src = Cast<UNiagaraScriptSource>(Scratch->GetLatestSource());
+@@ -1283,8 +1300,19 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+ 	for (FNiagaraEmitterHandle& Handle : System->GetEmitterHandles())
+ 	{
+ 		FVersionedNiagaraEmitterData* EmitterData = Handle.GetEmitterData();
+-		if (!EmitterData || !EmitterData->ScratchPads) continue;
+-		for (UNiagaraScript* Scratch : EmitterData->ScratchPads->Scripts)
++		UNiagaraGraph* Graph = GetEmitterGraph(EmitterData);
++		if (!Graph) continue;
++		TArray<UNiagaraNodeFunctionCall*> Calls;
++		Graph->GetNodesOfClass<UNiagaraNodeFunctionCall>(Calls);
++		TSet<UNiagaraScript*> EmbeddedScripts;
++		for (UNiagaraNodeFunctionCall* Call : Calls)
++		{
++			if (Call && IsEmbeddedModuleScript(Call->FunctionScript))
++			{
++				EmbeddedScripts.Add(Call->FunctionScript);
++			}
++		}
++		for (UNiagaraScript* Scratch : EmbeddedScripts)
+ 		{
+ 			if (!Scratch) continue;
+ 			if (auto* Src = Cast<UNiagaraScriptSource>(Scratch->GetLatestSource()))
+diff --git a/Source/VibeUE/Public/Module.h b/Source/VibeUE/Public/Module.h
+index 1641481..6c9bf04 100644
+--- a/Source/VibeUE/Public/Module.h
++++ b/Source/VibeUE/Public/Module.h
+@@ -5,6 +5,9 @@
+ #include "CoreMinimal.h"
+ #include "Modules/ModuleManager.h"
+ 
++class FObjectPostSaveContext;
++class UPackage;
++
+ class FModule : public IModuleInterface
+ {
+ public:
+@@ -33,10 +36,13 @@ public:
+ private:
+ 	/** Re-adds the bridged VibeUE tools after ModelContextProtocol.RefreshTools drops every registered MCP tool */
+ 	void HandleMCPRefreshTools();
++	/** Refresh the compact AI cache after a supported graph asset is successfully saved. */
++	void HandleAssetPackageSaved(const FString& PackageFileName, UPackage* Package, FObjectPostSaveContext SaveContext);
+ 
+ 	// False when running as a commandlet (cook, etc.) — services are skipped to
+ 	// avoid keeping UnrealEditor-Cmd.exe alive after the commandlet finishes.
+ 	bool bServicesInitialized = false;
+ 
+ 	FDelegateHandle OnRefreshToolsHandle;
++	FDelegateHandle OnPackageSavedHandle;
+ };
+diff --git a/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h b/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
+index 14c1f3c..9d92ce5 100644
+--- a/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
++++ b/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
+@@ -196,7 +196,10 @@ public:
+ 		const FString& ModuleName);
+ 
+ 	/**
+-	 * List the names of all scratch-pad modules present on an emitter's stacks.
++	 * List all editable embedded module calls present in an emitter graph.
++	 * Includes both current ScratchPads-container scripts and legacy system-embedded
++	 * module subobjects; excludes external packaged Niagara scripts. Use stack
++	 * topology separately when only currently effective modules are wanted.
+ 	 *
+ 	 * Example:
+ 	 *   mods = unreal.NiagaraScratchPadService.list_scratch_modules("/Game/VFX/NS_Fx", "Main")

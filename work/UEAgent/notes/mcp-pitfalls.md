@@ -1,64 +1,68 @@
-# UEAgent · MCP Pitfalls（坑册）
+# MCP evidence ledger
 
-> MCP / 连接器调用踩坑的**计数台账**。踩一次记一笔，同一类坑连续命中 3 次 → 归并成一条「经验」沉淀。
-> 台账只留**活跃计数**；毕业的经验单独成节，并优先反哺 `AI-BRIEF.md` 硬约束或跨项目 MEMORY。
+This is an evidence index, not mandatory operating context. Stable rules live in the relevant
+`skills/ue-mcp-workflows/references/` document.
 
-## 计数规则
+## Record policy
 
-- 一次调用踩一个坑 → 对应条目计数 +1，附日期 + 一句现场
-- 同类连续命中 **3 次** → 提炼成 §经验，台账条目归档
-- 「连续」按命中该类的时序算，中间夹别的坑**不算断**
-- 拿不准是否同类 → 先各记各的，别硬并；宁可晚毕业
+- Use `SOURCE-ID` for imported records and `DOMAIN-YYYYMMDD-SLUG` for new UEAgent records.
+  Never allocate another global K-number; parallel projects already collided on K11/K17/K18.
+- **Observed** means a real incident without an isolated reproduction.
+- **Verified** means a Probe or controlled rerun established the behavior and postconditions.
+- **Conditional** means verified only for the named UE/plugin build.
+- Promote behavior, not anecdotes, into an SOP. Keep source/version provenance here.
 
-## 活跃台账（未毕业）
+## Evidence index
 
-> 2026-07-09：旧栈（UnrealGenAISupport/TCP 9877）已弃用，其专属技术坑（原 K1 废弃 API / K2 插件覆盖不全 / K3 UObject 层无此操作 / K4 WorkBuddy 连接器机制 / K5 子进程环境不继承 shell）随旧栈一并归档删除，不再适用于新栈。已毕业的通用经验（E1/E2）不受影响，继续保留。
+| ID | State | Evidence and current route |
+|---|---|---|
+| `CORE-20260709-PAYLOAD` | Verified | Large base64/image results were truncated above the gateway despite larger output limits. Prefer user viewport or a tool-owned file path. Promoted to Core/Scene. |
+| `UEA-K7` | Verified | Changing existing UObject array elements while resizing caused ambiguous structural diffs. Full staged read-modify-write passed. Promoted to Core. |
+| `UEA-K8` | Observed ×2 | `ProgrammaticToolset` could not pythonize material-property enums such as `MP_BaseColor` and `MP_PixelDepthOffset`; direct typed calls worked. |
+| `UEA-K9` | Observed | `list_properties` exposed `MaterialExpressionCustom.showCode`, but `set_properties` rejected it as read-only. |
+| `UEA-K10` | Observed ×2 | `AssetTools.get_referencers` raised on an empty result instead of returning an empty list. Exact-path cleanup plus `exists=false` was used. |
+| `OCEAN-K11` | Observed | `MaterialTools.get_property_input` returned `expression` as a ref-path string although the schema described an object reference. Consumers must accept either shape. |
+| `OCEAN-K12` | Observed | `TextureTools.get_size` rejected render targets and volume textures; `ObjectTools.get_properties` supplied dimensions/format. |
+| `OCEAN-K13` | Observed | `find_assets.asset_type` rejected bare `NiagaraSystem`; omit an unverified class filter and verify returned classes. |
+| `OCEAN-K14` | Observed | Niagara compile-state query timed out on `NS_InfiniteMesh` while summary/topology/input/renderer reads worked. Treat timeout as unknown and use narrower diagnostics. |
+| `OCEAN-K15` | Observed | Large Niagara graph text containing escaped HLSL comments produced invalid gateway JSON. Return a smaller payload or extract raw text without JSON parsing. |
+| `OCEAN-20260803-FIND-ACTORS-REQUIRED-EMPTY` | Observed | Live `SceneTools.find_actors` required `tag` and `collision_channels` even when both filters were unused; discover the call schema and pass `tag=""`, `collision_channels=[]`. |
+| `BIFROST-20260805-LANDSCAPE-PROPERTY-ENUM-TIMEOUT` | Observed | `ObjectTools.list_properties` on a loaded 505x505 Landscape actor exceeded the gateway timeout, while `LandscapeService.ListLandscapes` returned its resolution, transform, material, and layers in a bounded response. Use the typed Landscape service and targeted property calls instead of enumerating the full actor. |
+| `OCEAN-20260803-FUNCTION-EXPORT-TIMEOUT` | Observed | `MaterialNodeService.ExportFunctionGraph` on the 101-node coastline function consumed a core until the 120 s gateway timeout. Use the saved sidecar plus targeted typed node reads for small edits instead of exporting the full graph live. |
+| `MATERIAL-20260803-VIBEUE-LIST-EXPRESSIONS-TIMEOUT` | Observed ×2 | `MaterialNodeService.ListExpressions` recursively expanded native `WorldAlignedTexture`/`WorldAlignedNormal` internals and hit the 120 s gateway timeout, while official `MaterialTools.get_expressions` returned the material's top-level refs in seconds. Prefer the official top-level read and targeted pin/property calls. |
+| `MATERIAL-20260804-MI-UPDATE-IMPLICIT-SAVE` | Verified / current UE-plugin build | In controlled single-variable A/B runs, `MaterialEditingLibrary.set_material_instance_scalar_parameter_value` returned `false` but changed the scalar and advanced the `.uasset` without an explicit save. The first run also refreshed the ReflectCache sidecar; a later run left that sidecar stale. Treat the setter as a save boundary, independently live-read the value, never retry from its boolean alone, and do not assume the cache hook ran. |
+| `MATERIAL-20260804-PACKAGE-MODIFY-IMPLICIT-SAVE` | Observed | After unsaved material graph edits, `Package.modify(true)` plus two material-instance scalar setters caused both the parent material and instance `.uasset` timestamps to advance and both packages to read back clean, without an explicit save/update/refresh call. Treat this combined path as a save boundary until isolated; do not use it to preserve a visual-approval checkpoint. |
+| `MATERIAL-20260804-RECOMPILE-DEFERRED-SAVE` | Observed / current UE-plugin build | Setting one `MaterialExpressionVolumetricAdvancedMaterialOutput` property and calling `MaterialEditingLibrary.recompile_material` returned with the parent material Dirty=true; about two seconds later it was clean and both `.uasset` and ReflectCache sidecar timestamps had advanced, without an explicit save. `GetMaterialDiagnostics` is read-only by source contract. Treat this edit/recompile path as a possible deferred save boundary and keep an exact rollback value. |
+| `CORE-20260805-PROGRAMMATIC-RUN-LATE-CHECK` | Observed / current UE-plugin build | `ProgrammaticToolset.execute_tool_script` ran top-level `execute_tool(...)` mutations before reporting `Script must define a callable run() function`; the material connections and recompile were persisted even though the outer call failed. Put every operation inside `run()` with no top-level side effects, and treat a missing-`run()` error as `RESULT_UNKNOWN`: read back before any retry. |
+| `CORE-20260805-PYTHON-READ-AUTOSAVE` | Verified by current plugin source; incident was safely skipped | `execute_python_code` attempts a headless save of every dirty content/world package before running even read-only Python, except after a prior Python crash, without `GEditor`, or in PIE. Prefer typed read tools; do not use Python merely to inspect dirty state. In this incident `Abyss.log` recorded the prior-crash skip and no `.uasset/.umap` changed in the call window. |
+| `CORE-20260807-GATEWAY-ORPHAN-MEMORY-EXHAUSTION` | Observed incident / guard verified | A Windows PowerShell 5.1 `mcp_gateway.ps1` `script.execute` process (PID 23564, `_purge_clean_v3.py`) outlived its parent and reached 100.624 GiB working set on a 127.92 GiB host, leaving 0.88 GiB free; after it exited, free RAM returned to 104.43 GiB. Windows Event 2004 also recorded several other PowerShell processes at 35–93 GiB concurrently and an earlier one at 220.86 GiB committed, although their command lines were no longer available. After a gateway timeout, inspect the exact PowerShell command, parent, and memory before attributing UE unresponsiveness or restarting UE; terminate only a confirmed orphan with user approval, release memory pressure, then recheck UE. The current one-shot and daemon paths arm a 2 GiB private-memory ceiling plus a hard request deadline, and SSE parsing now uses asynchronous whole-line reads instead of a per-character PowerShell pipeline. Offline regression verified an 8 MiB single-line SSE result in 1.45 s at 396 MiB peak, normal call timeout at 98 MiB, hard timeout at 88 MiB, a forced 64 MiB memory ceiling, daemon hard timeout, and zero leftover gateway processes. The original incident's exact retained-allocation root remains unisolated. |
+| `CORE-20260808-SCRIPT-BACKEND-MISMATCH` | Verified by gateway/plugin call shape | Gateway `script.execute` sends its payload to `editor_toolset.toolsets.programmatic.ProgrammaticToolset.execute_tool_script`; it does not invoke Unreal Python. Two `.py` diagnostics sent through that action timed out without any `LogPython` dispatch, while the same work routed to top-level `execute_python_code` completed in milliseconds. `script.execute` now rejects an explicit `import unreal`/`from unreal` payload with `wrong_script_backend`; use the isolated `python.execute` action for a file or script, or a deliberate `direct.call -Tool execute_python_code` when custom scoping is required. |
+| `CORE-20260809-GATEWAY-FULL-TOOLSET-NAME` | Verified / current gateway + EditorToolset build | `tool.call -Toolset EditorToolset -Tool EditorAppToolset.SetCameraTransform` failed before dispatch with `Toolset 'EditorToolset' not found`. The registered pair `-Toolset EditorToolset.EditorAppToolset -Tool SetCameraTransform` succeeded, and a separate `GetCameraTransform` readback matched exactly. Gateway calls require the full registry toolset name plus the tool name relative to that toolset; a plugin/module short name is not an alias. A `Toolset not found` response is pre-operation failure, not `RESULT_UNKNOWN`. |
+| `CORE-20260810-DOCTOR-MEMORY-GUARD-PASSTHROUGH` | Verified / SSPR route repair | `doctor.ps1` previously invoked `mcp_gateway.ps1` without forwarding a task-specific private-memory ceiling, so its probes silently used the Gateway 2 GiB default even when the active project required 1 GiB. `doctor.ps1` now exposes `-ProcessGuardMaxPrivateMemoryMB` with a 1024 MiB default and forwards it to preflight and advanced Niagara describe probes. A live route repair with the explicit 1024 MiB value returned `HEALTHY`, proving the bounded path. Keep the lower SSPR ceiling explicit on every direct Gateway call; this guard does not make full RT/SimCache payloads safe. |
+| `CORE-20260808-PIE-PYTHON-GLOBAL-REFERENCE` | Observed / current UE 5.8 build | Three runtime probes used plain `exec(compile(...))` inside the persistent `execute_python_code` namespace and left PIE Niagara data-interface/render-target wrappers in Python globals. `StopPIE` began teardown, then `FPyReferenceCollector` kept the old PIE package rooted; `PlayLevel.cpp:553` asserted and UE exited. Run Python files in a private globals dictionary, clear it in `finally`, call `gc.collect()` before returning, and never retain PIE UObjects across requests. Gateway `python.execute` implements that cleanup automatically. |
+| `NIAGARA-20260808-SCREENSPACE-FIXED-CAMERA` | Verified / SSPR P0 Gate | A low-load Gather marker returned Aux.A=1 everywhere while NeighborQuery verbose logs showed valid PreStage/PostStage and sorting. The inherited viewport camera did not cover the component. At a fixed camera, SimCache showed 512/512 finite on-screen ScreenUV samples and positive depth, and the same chain produced positive counts and production moments. A screen-space runtime Gate must record/set a deterministic camera and prove projected samples are valid before classifying a zero RT. |
+| `NIAGARA-20260808-RAW-READ-NORMALIZATION` | Verified / current UE 5.8 Python API | `RenderingLibrary.read_render_target_raw(world,target,True)` normalized an absolute Gather marker from its real `1..55` range to `0..1`, creating a false `CellCountZero` classification. Use `False` for markers, counts, density, depth, and numerical Gate statistics; report the normalization mode with the result. |
+| `NIAGARA-20260808-RAW-AREA-WIDTH-HEIGHT` | Verified / current UE 5.8 Python API | `RenderingLibrary.read_render_target_raw_pixel_area(world,target,min_x,min_y,arg5,arg6,False)` interprets `arg5/arg6` as Width/Height despite MaxX/MaxY-style API naming. A 2048×256 strip at `y0=256` is `(0,256,2048,256)`, not `(0,256,2048,512)`. Use bounded strips and validate the returned element count exactly. |
+| `NIAGARA-20260808-RT-READBACK-AGGREGATE-IN-UE` | Verified / SSPR 2048² Gate B | Returning two 2048² RGBA pixel arrays through Python→MCP→PowerShell would multiply compact GPU data into millions of wrappers and a huge JSON/object graph, recreating the PowerShell memory-exhaustion failure mode. Gate B succeeded by reading eight 2048×256 strips inside isolated UE Python, aggregating statistics there, deleting each strip, and returning only bounded summaries. Never JSON-serialize full RT pixels; for visual evidence let UE write a screenshot and return its path. |
+| `NIAGARA-20260808-PIE-DI-CLONE-GENERATIONS` | Verified / current UE 5.8 World Partition SIE | Reinitializing the PIE Niagara component switched User DI bindings across clone generations (`_0/_1` to `_2/_3`, with later stale generations still visible). Configuring the old generation left the actual PIE World RTs at 2048². After every reinitialize, resolve the current User Variable DI refPaths again and verify the actual world-owned render-target dimensions; numeric UObject suffixes are not identities. |
+| `SCENE-20260808-POST-PIE-PYTHON-PRESAVE` | Verified by editor log and binary recovery | A Python call restored a World Partition Niagara component but left its external Actor package dirty. The next `execute_python_code`, intended only to restore the viewport camera, logged `InternalPromptForCheckoutAndSave`, saved that external Actor to Content, and only then executed the script. This is the concrete post-PIE form of `CORE-20260805-PYTHON-READ-AUTOSAVE`: do not issue another Python read/cleanup while an external Actor may be dirty. Use a verified typed path or exit UE and restore the one exact package after checking no unrelated dirty state. The `.umap` can remain byte-identical while `Content/__ExternalActors__` changes. |
+| `BIFROST-20260804-VOLUME-POST-EDIT-CHANGE` | Observed | A synchronous Interchange VolumeTexture reimport completed before Python raised because `VolumeTexture` exposes no `post_edit_change()` wrapper. Treat this as possible partial mutation: do not retry; independently read back import source, dimensions, settings, and dirty state. The explicit property writes already mark the asset dirty. |
+| `OCEAN-20260803-OBJECT-PROPERTY-CALL-SHAPE` | Observed | `ObjectTools.get_properties` requires `instance={refPath}` rather than an `object` path, while `set_properties.values` is a serialized JSON string. Use the `detail=call` schema before property reads/writes. |
+| `OCEAN-20260803-MATERIAL-DIAGNOSTICS-D3D12-CRASH` | Observed | A live `MaterialNodeService.GetMaterialDiagnostics` call was dispatched; 3.4 s later UE 5.8 crashed during BasePass in `FD3D12ResourceBinder::SetTexture` with `EXCEPTION_ACCESS_VIOLATION`. The concurrent client and causality are not isolated, so avoid this broad diagnostic on the live SingleLayerWater chain; use saved graph cache plus targeted function-node reads and ordinary dirty/compile readback. |
+| `PERF-K16` | Rejected | `PerformanceService.frame_timing` reported multi-second game-thread values inconsistent with render/GPU timing. Do not use as performance evidence until an independent trace agrees. |
+| `NNE-K17` | Observed | `AssetImportTask.save=false` did not keep a referenced NNE import transient; treat NNE import probes as potentially persistent and clean exact paths. |
+| `NNE-K18` | Verified | Bulk deletion of a still-referenced Neural Profile chain crashed UE 5.8. Safe order: detach/read back → material → profile → model data → folder, verifying each deletion. |
+| `SCENE-K19` | Observed | Nested `SceneTools.add_to_scene_from_class` stalled for 120 s with no Actor; the direct typed call succeeded in 17.5 s. Prefer direct creation until isolated otherwise. |
+| `SSPR-K11` | Verified profile | Bare `CreatePin` plus manual signature rebuild produced Niagara pin/signature index mismatch and compile/UI Array asserts. The verified `niagara-authoring` profile exports the required UE 5.8 APIs and routes VibeUE through `RequestNewTypedPin`; use that profile for dynamic pin mutation. |
+| `SSPR-K17` | Observed ×2 | Calling `NiagaraScratchPadService` inside `ProgrammaticToolset` timed out at about 34 s and 204 s with no graph mutation. A scoped top-level `execute_python_code → unreal.NiagaraScratchPadService` call completed and was read back. |
+| `SSPR-K18` | Observed | `ApplyChanges=false` plus empty compile messages hid the real rejection in `LogTemp`: stale scratch copies contained duplicate anonymous MapGet pins. Inspect `LogTemp: Error: ApplyChanges` before assuming asynchronous compile. |
+| `SOURCE-UEAGENT-878558E-NIAGARA-AUTHORING` | Packaged / Unverified | Remote generic Niagara authoring overlapped local embedded-script/cache changes in `UNiagaraScratchPadService`. The resolved composite is under `patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch`; it replaces, rather than layers on, the core VibeUE patch and requires the matching engine export patch. Runtime/build proof is still pending. |
 
-| # | 坑类 | 计数 | 最近命中 | 现场（一句） |
-|---|---|---|---|---|
-| K6 | 大体量返回值在工具调用链路里被截断 | 3（已毕业→E2） | 2026-07-09 | `CaptureViewport` 返回的 base64 图片：①写入本地 `.b64` 文件后长度对4取模≠0 ②再次尝试同样失败 ③改设 `maxOutputLength=2000000` 重调，结果直接被上层标"Tool call output was truncated"——说明截断发生在工具调用结果传输/展示层，不是本地文件写入层，`maxOutputLength` 参数管不到这层 |
+## Promoted rules
 
-> [!NOTE] 新栈（UE 官方 MCP 插件）继续沿用本台账机制，后续每次真跑 MCP 命中同类坑 → 在这里 +1。
-> — ai 2026-07-09
-
-## 已毕业经验
-
-### E1 · 别信"自报成功"，一律用独立手段验真
-
-> [!Q] 这条是我按「连命中 3 次」规则归并的，三次算不算同一类你拍一下：
-> ① 面板绿色 "Running ✓ 9877" 是纯前端假状态、不真 bind 端口（04-27 11:52）
-> ② 二进制扫 uasset 把 Niagara 模板占位符当"当前生效参数"（04-27 14:35）
-> ③ Live Coding 报 "Patch succeeded" 但静态数据 `CommonLibraries` 没真生效（04-27 15:15）
-> 三者共性：**工具/系统自报的"成功/生效"都不可信**。合理就保留，不合理就拆回台账。
-> — ai 2026-07-07
-
-- **教训**：MCP 链路上任何"自报状态"（UI 灯、Patch succeeded、扫描出的名字）都只是"声称"，不是"事实"。
-- **验真手段清单**（认独立信号，不认自报）：
-  - 端口真监听 → `netstat -ano | findstr :9877`
-  - 全链路活着 → `execute_unreal_command "stat fps"`（走 game thread、不碰废弃 API）
-  - 插件改动生效 → `get_node_suggestions("SetVariableFloat")` 返回含目标才算数
-  - 参数/结构真相 → 以 UE UI 或 user 确认为准，二进制扫描只当"出现过的名字"
-
-### E2 · 大体量二进制/图片数据别走 MCP 工具调用返回值，走"人眼直接看"或落盘路径
-
-> K6 三次同类命中直接毕业：`CaptureViewport` 截图的 base64 图片数据反复在"返回值→本地文件"链路中损坏/截断，提高 `maxOutputLength` 也压不住（截断点在工具调用结果传输层，不在 execute_command 层）。
-> — ai 2026-07-09
-
-- **教训**：MCP 工具调用返回值这条通道，对大体量 payload（几十KB+ 的 base64 图片/二进制）不可靠，会被上层截断，且**没有参数能保证突破**（试过的 `maxOutputLength` 无效）。
-- **实践规律**：
-  - 需要"看画面效果"时，**别指望截图走 MCP 拿图**——直接让人在编辑器视口里肉眼确认最快最省 token，比"AI 截图→写文件→解码→read_file 验证"整条链路省 10 倍以上交互
-  - 只有当 MCP 工具本身支持"保存到磁盘文件路径"参数（返回文件路径而非 base64 内容）时，才走截图自动化；纯返回 base64 的工具对大图慎用
-  - 判断要不要用截图工具，先问一句"用户现在是不是就在编辑器里、能直接看"——能看就不用截图，省一整条排障循环
-- **硬规则（用户 2026-07-09 拍板）**：任何我判断为"截图 / CaptureViewport / 拿视觉画面"的操作，**先找用户二次确认要不要跑，不擅自执行**——用户默认不需要 AI 截图，需要看效果时会自己在编辑器里看。
-- **调用格式规律**（避免重复踩 arguments 格式坑）：
-  - `mcp_call_tool` 的 `arguments` 必须是**合法 JSON 对象**（不是字符串包一层），顶层要带 `toolset_name` + `tool_name` + `arguments`（内层才是真正传给工具的参数）
-  - actor 引用一律用**完整 refPath**（`/Game/Xxx/Maps/L_Xxx.L_Xxx:PersistentLevel.StaticMeshActor_51`），短名会解析失败
-  - 不确定某工具的参数 schema 时，先 `describe_toolset` 查一遍，比瞎猜省几轮 trial-and-error
-  - 有"必填但语义上想传空"的对象参数（如 `annotations`），得显式传全 0/null 的完整结构，不能省略字段
-
----
-
-## 维护
-
-- 新坑先进台账；毕业条目搬到本节并考虑反哺 `../AI-BRIEF.md`
-- 台账 > 8 行或经验 > 5 条 → 考虑拆分 / 归并到跨项目 MEMORY
+- Independent readback: `references/core.md`.
+- Large payload and manual visual approval: `references/core.md` and
+  `references/scene-editing.md`.
+- Material pin discovery: `references/materials.md`.
+- Niagara scratch capability, call shape, Apply diagnostics, and cross-frame validation:
+  `references/niagara.md`.

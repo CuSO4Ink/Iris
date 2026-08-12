@@ -78,7 +78,7 @@ uniform grid 对当前场景（密集 cloud、~45% candidate rate）不是正确
 ① prange 竞争修复：上一版 diff=0.81 的根因是线程写共享 color/od/trans/cand buffer。修复方案——每线程写唯一像素索引 j*W+i，无交叉。
 ② 正确性：tau 矩阵 NB vs NP diff=2.8e-9，color diff=1.5e-11，candidate diff=0。PASS。
 ③ 性能：N=1024 200x150，NB 0.04s（76万 ray/s）vs NP 6.41s（4682 ray/s），154x 加速。precompute NB 0.004s。
-④ N scaling：256→320万、512→214万、1024→76万 ray/s。N=1024 下 76万 ray/s 已达实时级（200x150 单帧 0.04ms）。
+④ N scaling：256→320万、512→214万、1024→76万 ray/s。N=1024、200×150 单帧约 `0.04 s`（约 `40 ms`），原 `0.04 ms` 为单位错误，不能据此声称目标分辨率实时。
 ⑤ 结论：prange 竞争 bug 已修，grid 版降优先级（BF+tau+Numba 已足够快，grid 不减少 actual candidate）。
 
 ### 2026-07-07 19:30 — [发现] VoGE 交叉阅读完成
@@ -396,3 +396,446 @@ G3 所需的四项渲染正确性工作（跨 Actor 共享渲染器、HDR 前合
 GaussianVolume 已达到作品集原型可落地状态：UE 5.8 编译、TechLab 加载、128 primitive PIE smoke test 均通过；G3 渲染技术前提收尾。Ribbon 并排场景正式取消，差异通过三维厚度、内部观察、逆光透射、交叉遮挡和口头说明表达。
 
 在正式 G4 性能取证前先完成两项静态可证明优化：删除主 pass 前重复的全屏 SceneColor copy；删除已不参与正确性、且 shader 会按 ray 重新排序的 CPU 中心深度排序。未提前引入 persistent buffer、half-res、tile candidate 或 LightTau cache：它们分别涉及跨帧 RHI 生命周期、画质/时域策略、候选架构和缓存失效条件，留给最终 profile 决定。
+
+### 2026-07-21 17:45 — [落地] 论文 Smoke 资产导入 UE；[发现] 835 规模主 pass 明显超预算
+
+以 Meta `volumetric_primitives` 官方预拟合 `resources/smoke.ply` 为可信论文资产，新增二进制 PLY → `GaussianVolume.Primitives.v1` JSON 转换器，并给 `AGaussianVolumeActor` 增加 JSON 导入与关卡重载时自动恢复。TechLab 中 `Paper Smoke 835` 已持久化并在重启后独立读回确认：835 primitives、debug default=false、rendering=true；插件通过 Editor/Development、Game/Development、Game/Shipping 构建。
+
+固定 1920×1080 GPU profile（TechLab 合计 963 primitives）：GPU frame 30.66 ms，`GaussianVolume LightTau Prepass` 0.22 ms，`GaussianVolume RayTrace CS` 23.31 ms。瓶颈不是 O(N²) LightTau，而是主 pass 每像素遍历全部 primitive；half-res 理论上单独只能将 23.31 ms 降到约 5.8 ms，仍高于 2 ms 目标。下一步优先做 PBF/tile candidate reduction，再结合 half-res/temporal；不把当前 835 规模实现宣称为实时。
+
+官方拟合脚本在现行 Mitsuba 3.9/3.7.1 可运行但所有优化变量梯度为零，因此未把 no-op 拟合冒充成功。本轮使用官方预拟合 PLY 完成渲染落地，旧 Mitsuba 分支复现作为独立上游兼容问题保留。
+
+### 2026-07-21 20:08 — [落地] OpenVDB `smoke2` 原生转换与 2K/4K TechLab；[发现] 视觉规模可用但实时路径必须先做 candidate reduction
+
+接入 UE 5.8 自带 OpenVDB 13，仅在 Editor target 启用读取、RTTI 和异常；Game/Shipping 不链接 OpenVDB，只消费已生成的 `GaussianVolume.Primitives.v1` JSON。`AGaussianVolumeActor` 新增一次性 VDB 转换入口：自动选择 `density` FloatGrid、读取 active voxel 与 grid transform、按索引空间占用网格聚合并以密度加权中心保留覆盖，避免 Top-K 只留下高密度核心。聚合单元密度按自身峰值归一化，使 `OpenVdbPeakSigmaT` 与实际输出峰值一致。组件渲染开关同时修正为动态注册/注销，可可靠做 2K/4K A/B。
+
+官方 OpenVDB `smoke2.vdb`（2,826,407 个有效 density voxels）生成两档：2K 目标得到 1,983 primitives（cell=15），4K 目标得到 3,510 primitives（cell=12）；整数网格尺寸导致数量不精确命中目标。两档最长轴覆盖约 982–983 cm，峰值 `sigma_t=0.04`，JSON 有限值/计数自检通过。TechLab 保留 `Smoke2 VDB 2K Diagnostic`（默认关闭）与 `Smoke2 VDB 4K Hero`（默认开启），旧 64/64/835 组默认关闭，关卡已保存。
+
+固定 1920×1080 profile：2K 档 GPU frame 55.72 ms、LightTau 0.38 ms、主射线 48.35 ms；4K 档 GPU frame 93.56 ms、LightTau 0.70 ms、主射线 85.89 ms。结论进一步强化：瓶颈是全屏逐 primitive traversal，LightTau 不是当前矛盾；4K 是 Hero 画质诊断而非实时档。插件独立 `BuildPlugin` 已通过 UnrealEditor Development、UnrealGame Development、UnrealGame Shipping。下一步只做 PBF/tile candidate reduction，之后再评估 half-res/temporal。
+
+### 2026-07-21 20:40 — [落地] 32×32 tile candidate 与 10K/30K 自适应 VDB；[发现] 全局 primitive 数已不再线性控制主 pass
+
+主渲染改为 GPU per-frame 保守投影：每个 Gaussian 的 3σ sphere 写入覆盖的 32×32 screen tile，主 CS 只遍历当前 tile 的候选并继续按每 ray `t_star` 保留最近 64 hits。固定表每 tile 上限 1,024，构建成本 1080p 为 0.43 ms；这是本轮最小 PBF-style association，未提前实现 CSR count/prefix/scatter。高于 4,096 primitives 时关闭 O(N²) `LightTauCS`，以 1.0 光透射降级；若高细节档的跨体积阴影成为画质瓶颈，再做 light-space candidate，而不是让诊断档被 N² 拖垮。
+
+VDB 转换改为一层自适应细分：先建立 coarse/fine 两级占用网格，用父块密度范围与中心差分梯度评分，只拆高分父块直到目标数量。`smoke2` 精确生成 10,000（base=16/fine=8，split=1,498）与 30,000（base=10/fine=5，split=4,010）两档；JSON 计数、有限值、空间覆盖、峰值 `sigma_t=0.04` 与双尺度分配自检通过。TechLab 批次 tag 为 `GAUSSIAN_VDB_ADAPTIVE_BATCH_20260721`，默认只开启 `Smoke2 VDB 30K Adaptive Hero`，10K 与 4K 留作同位置 A/B。
+
+固定 1920×1080 profile：10K 为 GPU frame 30.18 ms、tile build 0.43 ms、主射线 22.52 ms；30K 为 30.32 ms、0.43 ms、22.57 ms。相较旧 3.5K 全量遍历的主射线 85.89 ms，30K primitive 增加约 8.5 倍但主 pass 降约 74%；10K/30K 成本相同，表明当前成本由局部重叠与 64-hit 排序主导，不再由全局 primitive 数线性决定。视觉细节是否足够仍需用户在 live viewport 做 4K/10K/30K 审美 A/B；结构和性能不能替代该结论。独立 BuildPlugin 再次通过 Editor Development、Game Development、Game Shipping。
+
+### 2026-07-21 20:55 — [发现] Editor 200 ms 来自 30K Details 展开；[决策] 主 Pass 优化转向每像素固定工作量
+
+30K Actor 的 `Gaussians` 是 `EditAnywhere TArray<FGaussianVolumePrimitive>`；选中时 Details/Slate 为 30,000 个结构体生成属性树，Editor `Game` 飙到约 200 ms，进程工作集约 23.8 GB。取消选中后工作集回落到 4.49 GB，且组件只在 transform 变化时重传数据，故该问题与 Gaussian GPU Pass 分离。后续隐藏数组但保留序列化，Details 仅暴露摘要。
+
+GPU 侧 10K/30K 均约 22.5 ms，说明 PBF-style tile 已解决全局 N 扩展，却留下每像素最多 1,024 candidates、64-hit 插入排序和 post-TSR 输出分辨率的固定地板。下一批先做无损低风险优化：球体/深度剔除前置，CPU 预计算 inverse covariance/bound radius；同机位复测后才决定 16×16 tile 与 half-res/TSR，不用盲目降低 candidate cap 换假性能。
+
+### 2026-07-21 21:07 — [落地] inverse covariance CPU 预计算将 30K 主 Pass 降至 8.5 ms；[否决] 16×16 tile
+
+GPU packing 保持每 primitive 4×float4，但把 `scale+quat` 改为 CPU 预计算的对称 inverse covariance 六分量 + 3σ radius；shader 删除每候选四元数矩阵、平方倒数和未使用 self-shadow helper，并在解析积分中直接乘 packed covariance。随机 1,000 组 scale/quaternion 与旧公式等价，worst error `5.684e-14`；BuildPlugin 的 Editor Development、Game Development、Game Shipping 全通过。
+
+固定 1920×1080/30K profile 两次为：tile build 0.42/0.43 ms，主 Pass 8.55/8.49 ms；相对 22.57 ms 基线下降约 62%，整帧由约 30.3 ms 降至约 16.2 ms。16×16 tile A/B 的主 Pass 仅到 8.45 ms，但 build 升至 1.67 ms，净变慢约 1.2 ms且索引内存增加，故恢复 32×32。下一瓶颈是 post-TSR 全分辨率与逐像素 64-hit 排序，不再继续细化 tile。
+
+### 2026-07-21 21:35 — [落地] 运行时密度标定曲线
+
+`UGaussianVolumeComponent` 增加 `DensityMultiplier` 与 `DensityGamma`，在既有 CPU packing 入口按组件最大 `sigma_t` 归一化后调 Gamma，再统一缩放 extinction；默认 `1/1` 保持旧结果，渲染与 `SampleDensityAtWorldPosition` 共用同一曲线，无需改 JSON 或 shader。Editor Development 编译通过，`GaussianVolume.DensityCurve` 自动化测试通过。TechLab 30K Hero 暂设 `3.0/0.65` 并保持关卡 Dirty，等待用户 live viewport 确认；未将密度调节误当成高数量自阴影缺失的修复。
+
+### 2026-07-22 — [发现] 方格来自 tile candidate 静默溢出；[否决] 继续扩大固定容量
+
+用户在 30K Hero、密度 `3.0/0.65` 下观察到与屏幕 tile 对齐的方格，换视角后仍出现。代码复核确认：构建 pass 先对 `TileCandidateCounts` 原子加一，但只在 `slot < MaxTileCandidates` 时写索引；主 pass 又把 raw count 截到容量，因此溢出项静默丢弃。相邻 tile 的原子到达顺序不同，会保留不同 Gaussian 子集；提高密度不会增加候选数，但会把原本不明显的遗漏放大为可见边界。现有 CandidateCount debug 只统计截断后的逐 ray sphere hits，不能直接显示 raw overflow。
+
+将 `MaxTileCandidates` 从 1,024 临时提高到 2,048 并通过 `LiveCoding.CompileSync` 生效。用户 A/B 结果：换角度仍能看到方格，同时 Draw 与 GPU Time 升至几十毫秒。原因是每个相关像素现在最多扫描 2,048 candidates，并继续做 sphere test、Gaussian 数学与最多 64-hit 插入排序；索引表也翻倍。`stat unit` 的 Draw 是 render-thread 时间而非 draw-call 数，GPU 饱和时 RHI/present 回压会令 Draw 与 GPU 一同上升。`r.VSync=0`、`r.VSyncEditor=0`、`t.MaxFPS=0`，排除显式帧率上限。
+
+决策：2,048 是失败的诊断 A/B，不作为稳定配置。下一批按最小路线执行：恢复 1,024；让现有 CandidateCount debug 在 raw count 超容量时直接标红；针对 30K LightTau 已关闭、albedo/emission 一致的均质烟雾，用顺序无关的 optical-depth 累积移除 64-hit 插入排序；仍有 overflow 再只细分过载 32×32 tile；最后才做 half-res/temporal。完整 CSR 或 BVH 暂不进入本轮。
+
+### 2026-07-22 — [实现] 1,024 + raw overflow 诊断 + 均质 optical-depth 快路径
+
+源码把 `MaxTileCandidates` 恢复为 1,024。未增加新 Debug enum：复用 CandidateCount，在 raw `TileCandidateCounts[tile]` 超容量时直接输出纯红整 tile，未溢出区域继续显示原 candidate-count 颜色。这样一次 live viewport A/B 即可区分“固定 tile 溢出”与 Gaussian/VDB 自身结构。
+
+高数量路径新增自动 uniform 检测：GPU packed 数据中每个 primitive 的 `albedo.rgb + emission` 在容差内完全一致，且数量高于 4,096（此时 LightTau 本来就降级为 1）才走均质快路径。它仍遍历 tile candidates 并做解析 tau，把所有有效 tau 累加后一次计算 `T=exp(-sumTau)` 与散射；powder 用总 tau 近似。异质外观与低数量场景继续走原逐 ray 排序，避免改变交叉弧的遮挡语义。GPU event 标为 `GaussianVolume RayTrace CS Uniform`，便于后续 profile 确认实际选择。
+
+新增 `GaussianVolume.UniformAppearance` 小型自动化测试，覆盖一致外观命中与不同 albedo 回退。初版把快路径做成独立 shader permutation 1；C++ Live Coding 虽成功，却不会为运行中的 GlobalShaderMap 补齐新 permutation，首次调度即触发 `Failed to find permutation 1 of shader type FGaussianVolumeRayTraceCS` 断言。修复采用最小安全基线：删除静态 permutation，在原 permutation 0 内用 `bUseUniformFastPath` 动态分支跳过插入排序；因此当前仍声明 64-hit 数组，只先验证排序 ALU 的收益。动态版本已经以 `AbyssEditor Win64 Development -NoHotReloadFromIDE` 冷编译并成功链接。Restore Packages 后确认当前关卡为 TechLab，组件保持 `3.0/0.65/Final/enabled`，新进程日志无 permutation、assert 或 shader compile error。`GaussianVolume.UniformAppearance` 在独立 `AbyssEditor-Cmd -NullRHI` 和主 Editor 中均为 Success。主 Editor 因当前布局/焦点持续只有 3 FPS，ProfileGPU 仍只捕获 Slate 1.15 ms，不作为 Gaussian 性能证据；未截图、未保存正式关卡。下一步必须先让 Level Viewport 成为可见活动标签，再做 CandidateCount overflow 观察和固定机位 GPU profile。
+
+恢复验证完成后，组件临时切到 `CandidateCount` 并读回成功，密度仍为 `3.0/0.65`、渲染开启；当前 Dirty 未保存。用户需要在 Level Viewport 观察：整 tile 纯红代表 raw candidates 超过 1,024，非红区域保留原 candidate-count 色带。观察后恢复 `Final`，再决定是否只细分 overflow tile。
+
+### 2026-07-22 — [发现] 全屏 overflow 来自近相机包围球 fallback
+
+用户确认旧 CandidateCount 向右转时红色减少，向左转时增加直到全屏。代码追踪定位到 `BuildTileCandidatesCS`：只要 `depth <= radius`，3σ 包围球就跳过投影并覆盖全屏；当视角使大量 Gaussian 的 forward depth 变小时，会产生与真实屏幕覆盖无关的全屏 candidates。局部 16×16 无法降低这种候选，因此未直接实现第二套 tile 表。
+
+根因修复复用已有 `WorldToClip + CameraDirs`，按水平/垂直 2D 球切线角计算保守 NDC bounds；仅相机确实位于对应投影圆内时覆盖整轴。CandidateCount overflow 同时改为黄≈1×、红≈2×、紫≈4×以上。两次 `recompileshaders changed` 完成，第二次无 warning/error；组件保持 `3.0/0.65/CandidateCount/enabled`、Dirty 未保存，等待用户在同一左右视角复测。
+
+### 2026-07-22 — [落地] 30K/10K/4K 运行时屏幕尺寸 LOD
+
+切线角投影修复后，用户确认转视角时热力图稳定为黄色，但相机拉远会从黄变红/紫。该现象来自固定 30K 体积在远距收缩到更少 screen tiles 后的真实 candidate 集中，而非方向相关的假全屏投影。采用最小落地方案：Hero 继续持有 30K；现有禁用 10K/4K 组件只作为序列化数组来源，三档统一使用 Hero transform、`DensityMultiplier=3` 与 `DensityGamma=0.65` 重新 packing。
+
+LOD 以高档包围球的水平 NDC 半径选择，阈值为 High `0.35`、Medium `0.12`，相对滞回 `15%`；选择发生在 render thread 创建 StructuredBuffer 前，因此每帧仍只上传一档、构建一套 tile candidates、执行一个主 pass。未增加随机抽样、第二套 tile 表、CSR 或新 draw。当前单一共享 renderer 使用一个 LOD 状态；若未来同时显示多个独立 LOD 体积，再升级为 per-component 描述符与选择。
+
+新增 `GaussianVolume.ScreenSizeLod` 自动测试，覆盖三档初选和双阈值滞回；NullRHI 结果 Success。Editor/Game/Shipping 独立 BuildPlugin 与 `AbyssEditor Win64 Development -NoHotReloadFromIDE` 冷编译通过。TechLab Hero 已接入 30K/10K/4K，保持 `CandidateCount/enabled`；远处 4K、近处 30K、恢复机位约 10K 的三档冒烟均无 permutation、assert、fatal 或 shader error。相机已恢复，关卡 Dirty 未保存；画质与热力图仍由用户 live viewport 确认。
+
+用户复测确认 GPU 已基本无负载且 LOD 不来回闪烁，但旧 CandidateCount 用整 tile 纯色替换画面，无法知道紫色是否覆盖真实云。诊断输出改为在正常最终合成上半透明叠加负载色：当前 ray 没有命中候选时保留场景，命中后按实际体积不透明度增强叠加。该改动不增加 candidate 遍历；两次 `recompileshaders changed` 完成，第二次无 shader error/warning。后续只在紫色与可见云重合且 Final 模式出现方格/缺失时处理局部 overflow；云外保守 3σ candidate 溢出且 GPU 低负载不作为优化理由。
+
+### 2026-07-22 — [发现][修复] 可编辑同类组件引用导致 Details 栈溢出
+
+选中 `Smoke2 VDB 30K Adaptive Hero` 时编辑器立即崩溃。CrashContext 明确为 `Unhandled Exception: EXCEPTION_STACK_OVERFLOW`；调用栈反复循环于 PropertyEditor 的 `GenerateChildrenForPropertyNode`、`OnGenerateChildren` 与 `GenerateLayout`，崩溃时进程只占约 4.6 GB、系统仍有约 17.6 GB 可用，排除 30K 数据、GPU 与 OOM。
+
+根因是 LOD 把 `MediumLodSource`/`LowLodSource` 暴露成 `EditInstanceOnly TObjectPtr<UGaussianVolumeComponent>`。`UActorComponent` 带 `DefaultToInstanced`，因此 Details 会把这种属性当作内联实例对象继续生成同类属性树；当前跨组件引用图由此递归到线程栈耗尽。工程规则：跨 Actor 选择组件数据源时，不直接暴露 `DefaultToInstanced` 组件指针；优先暴露普通 Actor Picker，再在运行时取得其组件，需要通用组件寻址时才使用 `FComponentReference`。
+
+最小修复把两个来源改为 `TObjectPtr<AGaussianVolumeActor>`，packing 仍读取来源 Actor 的 `GaussianVolumeComponent->Gaussians`，不改 LOD、GPU 数据布局或渲染算法。新增 `GaussianVolume.LodSourceProperty` 反射测试，锁定两项属性必须指向 Actor 且不能带 `CPF_InstancedReference`。`AbyssEditor` 冷编译与测试通过；TechLab 重新接入 Hero→10K/4K、切回 `Final` 后实际选中 Hero 并保持 8 秒以上，编辑器响应正常、工作集约 4.1 GB、日志无 stack overflow/fatal，选中对象读回为 `GaussianVolumeActor_6`。关卡保持 Dirty，未保存正式关卡。
+
+### 2026-07-22 — [决策][落地] 用当前 LOD 全量容量建立无截断基线
+
+用户在 Final 画面确认仍有严重的 32×32 方格后，调整验证顺序：不再从 1,024 缓慢上调猜平衡点，而是先取消 candidate 截断，确认 renderer 在完整候选集下的正确画质，再向下回退找容量边界。新增 `r.GaussianVolume.MaxTileCandidates`；值为 `0` 时容量解析为当前活动 LOD 的 `NumGaussians`（High=30K、Medium=10K、Low=4K），正数则取 `min(requested, NumGaussians)`。因此 exact 模式下每个 Gaussian 对一个 tile 最多写入一次，raw count 不可能超过容量；它是 correctness reference，不是生产性能方案。
+
+`AbyssEditor Win64 Development -NoHotReloadFromIDE` 冷编译通过，`GaussianVolume.ScreenSizeLod` 自动化测试新增 exact/capped/clamped 三项并为 Success。TechLab 新进程已恢复 Hero→10K/4K、`Final`、密度 `3.0/0.65` 与原相机，CVar 读回为 `0`；编辑器持续响应，日志无 shader permutation、assert、GPU crash 或 fatal。关卡保持 Dirty，未保存。下一步只在用户确认 exact 画面无方格、断层或轮廓缺失后，按 8,192→4,096→2,048→1,024 回退；首个失败容量再进入局部 overflow tile 细分，不提前实现第二套表。
+
+### 2026-07-22 — [发现][决策] exact 方格消失；容量 A/B 固定 High 30K
+
+用户确认 CVar=0 exact 下屏幕方格完全消失，因此 tile candidate 截断根因成立；同时拉近/拉远出现一次性闪变。现有 `SelectScreenSizeLod` 的 15% 滞回只阻止阈值附近反复切换，不能让不同的 30K/10K/4K 密度场连续过渡，故该现象归为硬切档 pop，而非 overflow 或 TSR 闪烁。
+
+为保持容量回退只改变一个变量，未提前增加双档渲染或时域 cross-fade；直接复用 `bEnableScreenSizeLod` 将 Hero 固定为 High 30K，Medium/Low Actor 引用继续保留。随后通过编辑器控制台把 `r.GaussianVolume.MaxTileCandidates` 从 exact 调为 8,192，组件读回为 `Final`、`3.0/0.65`、LOD disabled，CVar 读回为 8,192；编辑器响应正常且日志无 shader/GPU/fatal。关卡 Dirty 未保存。用户确认 8,192 画质后再进入 4,096。
+
+用户在 8,192 下拉到很远时再次观察到方格；截图显示方格与缩小后的云覆盖重合，判定该档失败。由于 8,192 相对 exact 30K 是一次过大的下降，未直接实现局部细分，改用反向二分将 CVar 调为 16,384；固定 High 30K、Final 与 `3.0/0.65` 均保持不变，读回和日志正常。下一步由用户复测同一远距离机位：16,384 通过则向 12,288 收窄，失败则向 24,576 收窄。
+
+### 2026-07-22 — [落地] 屏幕尺寸 LOD 双档 cross-fade
+
+超级远距离仍会把固定 30K 压进少量 tile，继续提高全屏固定 candidate 表不是合理扩展方式。恢复现有 30K/10K/4K LOD，并把有状态硬切选择替换为按屏幕半径计算的连续权重：High 阈值 `0.35`、Medium 阈值 `0.12`，原 `15%` hysteresis 作为 blend half-band；带外只渲染一档，带内分别渲染相邻两档的完整 HDR 合成结果，再用 `FGaussianVolumeLodBlendCS` 线性过渡。这样 10K/4K 始终低于当前 16,384 cap，远处不会因固定 30K 集中而截断；双倍主 Pass 只存在于两个短过渡带。
+
+删除不再需要的单视图 `CurrentLod_RT` 状态，`GaussianVolume.ScreenSizeLod` 改为覆盖 High-only、High↔Medium 50%、Medium-only、Medium↔Low 50%、Low-only，并连同 candidate capacity 测试为 Success。`AbyssEditor` 冷编译通过；新 D3D12 编辑器已恢复用户超远机位、Hero→10K/4K、`Final`、`3.0/0.65`、LOD enabled 与 CVar=16,384，持续响应且日志无 Shader/permutation/assert/GPU/fatal。关卡 Dirty 未保存；结构正确不代替用户对连续拖动的审美确认。
+
+### 2026-07-22 — [否决][归档][决策] Spline/Structured Gaussian Field FX 从主线移除
+
+用户确认 Spline 驱动的体积能量带、极光和魔法烟流路线此前已经验证且不适合作为本项目落地方向；再次把它建议为下一步属于项目决策链丢失。该方向未证明相较 Niagara Ribbon、普通 raymarch 或 VDB 的可测量画质、性能或工作流优势，现作为失败分支归档。旧 Spec 与产品假设移至 `notes/archive/failed_spline_field_fx_spec.md` 和 `notes/archive/failed_spline_product_direction.md`；历史 LOG 保留事实，但不得据此恢复为当前任务。除非用户明确重开，后续 AI 不得继续建议 Spline/Structured Gaussian Field FX。
+
+主线改为验证论文 volumetric primitives 的实时工程扩展：离线优化各向异性/有限支撑 kernel 拟合，运行时保留解析主射线并采用近似光传输，产品边界限定为 VDB 中远景代理、显存降级、编辑器预览和多体积并存，近景 Hero 保留原 VDB。当前 30K/1080p 主 Pass 约 8.5 ms 已证明运行时内核可行，但 block/adaptive 聚合画质不足；下一 Gate 是多视角 transmittance、轮廓与梯度约束的层级拟合。拟合质量通过前，不继续堆 primitive 数或扩展渲染器功能。
+
+### 2026-07-22 — [发现] Gabor Fields 直接覆盖旧拟合与 LOD Gate
+
+SIGGRAPH 2026《Gabor Fields》是《Don't Splat Your Gaussians》的直接后续：Gaussian 低频基底 + Gabor 高频残差、分层回归、频率/方向裁剪和单资产连续 LOD，正面解决当前 30K 仍模糊及多档 cross-fade 问题。官方 MIT 代码含 Windows 安装、VDB 转换、训练与 Gaussian baseline；论文同时承认优化 voxel grid 更快、拟合需 0.1–2h、存在负密度/halo 与 traversal 瓶颈。
+
+### 2026-07-22 — [回滚][决策] 暂停纯 Gaussian 层级拟合，转为 Gabor × UE 实时验证
+
+原多视角纯 Gaussian 层级拟合、Epanechnikov A/B 与三套资产连续 LOD 不再作为研究主线；现有 30K/10K/4K renderer 保留为可运行保底和基线。下一 Gate 先复用官方训练资产，只在 UE 接入 Gaussian base + 一个 Gabor 频率层的 primary transmittance；通过等误差 GPU/画质验证后再做连续 LOD。可能的原创上探仅限 UE tile/candidate 成本感知拟合或调度，当前仍是工作假设。
+
+### 2026-07-22 — [回滚][审计] Gabor 自动升格不进入正式主线
+
+全量作品集审计确认：上一条“转为 Gabor × UE”没有足够的本人拍板与 UE 实验，属于 AI 基于新论文发现自动改线。论文发现保留为相关工作线索，但 Gabor 只可作待核验基线/候选，不触发训练、数据扩展或引擎实现。当前只继续 `SPEC.md` 的表示质量与 matched-error Gate；唯一研究候选为多视角 transmittance＋silhouette 层级拟合目标，仍需本人明确确认后才能实施。
+
+### 2026-07-22 — [修正] 产品声明与证据边界
+
+30K 主 Pass 约 8.5 ms 只证明 UE 内核优化，不证明相较 VDB 的等误差优势；inverse covariance 的 `5.684e-14` 只证明该变换等价，不代表整条路径无损。高数量档关闭 `LightTauCS`，故“可重光照”未成立。30K/10K/4K cross-fade 已接线，但现有用户画面确认记录互相冲突，正式视觉与过渡带峰值验收保持未完成。固定 High 30K/8,192 远景失败；exact 只作 correctness reference。Spline/Structured Gaussian Field FX 的归档决定继续有效。
+
+### 2026-07-23 — [落地][修复] Q2 高保真 Hero、紧凑候选池与可见性
+
+Q2 10K 导出 9,944 primitives。此前 any-hit 解析积分直接计算 `C-B²/A`，在远相机和小尺度 primitive 上发生灾难性消减；稳定 evaluator 改为显式最近点与非负垂距后，8 个未见视角、512×512、64 spp 得到 full-T `48.60 dB`、foreground-T `36.93 dB`、τ `28.07 dB`、silhouette IoU `0.629`、negative-τ fraction `0`。bundled PTX any-hit 在重新生成前默认关闭。Q2 已超过 Q1 4K 的 `36.11/24.22 dB` full/foreground-T 下限，作为当前高保真上限。
+
+TechLab 只保留 `Smoke2 GFields Q2 10K High Fidelity` 一个 Gaussian Actor；fixed 3σ、screen-size LOD disabled，固定相机为 `GaussianVolume Q2 Hero Camera`，位置 `(165,0,124)`、朝 `-X`、FOV 100、Player 0 自动激活。RTX 5060、D3D12、1920×1080、固定相机的 300 帧稳态结果为：GPU median/P95/P99=`9.34/9.87/9.97 ms`，frame median/P95=`9.83/10.92 ms`。该数据证明 60 FPS，但尚未隔离 Gaussian volume pass。
+
+固定 per-tile candidate matrix 已替换为 GPU `count → prefix scan → scatter` 紧凑全局池；默认容量 `4,194,304 IDs`，索引池 `16 MiB`、元数据约 `32 KiB`。Q2 Hero 读取 9,944 gaussians，requested/granted=`471,937/471,937`、overflow=`0`。这只建立 candidate 子系统的分配收益，尚不能替代对同画质 SVT/NanoVDB 总 GPU working set 的测量。
+
+用户确认默认云密度过淡后，UE 展示档保存为 `DensityMultiplier=20.0`；所有 Q2 PSNR 仍严格对应 `1.0` 原始拟合输出。Actor 关闭 Visible 后仍显示的根因是共享 SceneViewExtension 未读取 Actor/根组件可见性；组件现统一检查 runtime Hidden、editor Hidden 与根组件 Visible，并在状态变化时更新渲染注册。冷编译成功，既有 AdaptiveSupport、DensityCurve、LodSourceProperty、ScreenSizeLod、UniformAppearance 五项自动化测试通过，editor Hidden 与根组件 Visible 的 live toggle 均验证且最终恢复可见。
+
+下一 Gate 保持不变：补 NanoVDB 同源基线，测量 SVT/NanoVDB/Gaussian 的 matched-quality 总 working set 与 pass breakdown，再做 opacity/error-aware support 相对 fixed-3σ 的 matched-error A/B。高数量路径仍关闭 O(N²) `LightTauCS`，不声明实时重光照。
+
+### 2026-07-23 — [落地][取证] UE 5.8 GaussianVolume GPU stat
+
+此前各计算 Pass 只有 `RDG_EVENT_NAME`，可进入 `ProfileGPU` 事件树，但没有可供 `stat gpu` 汇总的 GPU stat。UE 5.8 已将旧 `RDG_GPU_STAT_SCOPE` 废弃为空操作；根修复是在 Gaussian 渲染公共入口注册 `DECLARE_GPU_STAT_NAMED(GaussianVolume, ...)`，并用 `RDG_EVENT_SCOPE_STAT` 包住完整 Count→Prefix→Scatter→LightTau→RayTrace→可选 LOD Blend 链路。未新增自定义计时系统或重复逐 Pass stat。
+
+独立 BuildPlugin 的 Editor/Game/Shipping 和项目 `AbyssEditor Win64 Development` 冷编译链接均成功。重启编辑器、加载 TechLab、执行 `stat gpu` 后，采集 `frame,cpu,gpu,log` Insights trace；`gaussian_volume_gpu_tag.utrace` 实际包含 `GaussianVolume` scope，证明新 DLL 与 GPU tag 已运行。验证时 Q3 外部训练占满同一 GPU，因此只签字 scope 可见性，不把当时数值作为性能证据；编辑器随后关闭，把 GPU 归还 Q3。
+
+### 2026-07-23 — [落地][基线] 独立 SVT 对照关卡与总显存取证方法
+
+Q3 24K GPU 训练继续运行时，并行完成不依赖训练输出的基线工作。UE NullRHI 命令行验证同源 SVT U8/F16 均为 `191×610×178`、1 帧、7 mip，frame transform scale=`0.1`；生成 `L_GaussianVolume_EmptyBaseline`、`L_GaussianVolume_SVT_U8`、`L_GaussianVolume_SVT_F16` 三个独立关卡。两个 SVT 关卡各只保留一个 Heterogeneous Volume，统一缩放 `16.393443`，得到 `(156.56, 500.0, 145.90) cm` extent，并与 Gaussian actor 的 padded-volume 中心 `(-390,0,300)` 对齐；空关卡不含 Gaussian/SVT actor。NullRHI 保存和边界断言通过。
+
+总 GPU working set 不再依赖磁盘资产大小或单一子系统估算。每个方案将用独立冷进程加载同环境关卡，以 EmptyBaseline 作差；`rhi.DumpMemory` 记录实际总 RHI allocation，`rhi.DumpResourceMemory ... Transient=all` 做资源归因，SVT 同时使用引擎原生 `SparseVolumeTexture Memory` 的 page table、tile data 和 total GPU memory。GPU 仍由 Q3 占用，当前只完成可复现关卡与取证方法，不提前写入显存结论。
+
+显存采集入口已固化为 `mvp/capture_memory_baselines.ps1`：各方案使用独立冷编辑器进程，统一 1920×1080、D3D12、离屏渲染，预热 300 帧后由 `capture_memory_probe.py` 输出带边界标记的 RHI/SVT 统计。脚本默认检测并拒绝与 VolPrim GPU 训练并发，避免把训练进程的显存压力带入对照。
+
+### 2026-07-23 — [落地][基线] NanoVDB Fp8/FpN＋HDDA UE reference
+
+直接复用 UE 5.8 源码树随附的 NanoVDB 32.9.0、OpenVDB、Boost、TBB、Blosc 与 zlib，编译官方 `nanovdb_convert`，没有引入新的第三方包。同源 `smoke2` 生成 Fp8 与 absolute-error=`0.001` 的 FpN；容器文件分别为 `7,048,392` / `4,821,128` bytes，UE 实际上传的 raw grid 分别为 `7,048,192` / `4,820,928` bytes。FpN 叶节点平均 `3.2 bits/value`。这些是资产/buffer 字节，不代替总 GPU working-set 结论。
+
+GaussianVolume 插件增加独立 `NanoVDB Volume Baseline` Actor/component：运行时读取无压缩 `.nvdb`、只上传 raw grid，compute shader 使用官方 `PNanoVDB` HLSL accessor，支持 Float/Fp8/FpN，并以 HDDA 跳过稀疏空节点；Pass 注册为 `NanoVDBBaseline` GPU tag。生成并保存 `L_GaussianVolume_NanoVDB_Fp8`、`L_GaussianVolume_NanoVDB_FpN` 两个关卡，与 SVT/Gaussian 使用相同中心、1000 cm 最长轴和 `10/610` 初始 extinction scale。`AbyssEditor` 冷编译通过，NullRHI 实际解析两种 grid、保存关卡且 0 shader/脚本错误；快速切图暴露的 queued render-command teardown 生命周期问题已通过 subsystem deinitialize 前 `FlushRenderingCommands` 修复。D3D12 live 画面、transfer function 和性能仍等待 Q3 释放同一 GPU 后签字。
+
+显存采集入口随之扩展为六个独立冷进程：Empty、Gaussian Q2、SVT U8/F16、NanoVDB Fp8/FpN。
+
+### 2026-07-23 20:32 — [进度] Q3 训练与 UE 基线同步
+
+Q3 使用 24,576 Gaussian、240 次 Gaussian optimization，明确关闭 Gabor 优化；同步时 PID 60916 健康运行，进度 `87/240`，尚未导出、评估或导入 UE。Empty、SVT U8/F16、NanoVDB Fp8/FpN 独立关卡及 NanoVDB HDDA/GPU tag 已完成 Editor/NullRHI 验证；D3D12 live 画面和六方案冷进程总显存取证仍待训练释放 GPU，因此尚无“同画质显存优于 SVT/NanoVDB”的结论。
+
+### 2026-07-23 21:57 — [修复] UE 5.8 NanoVDB 全局 Shader 启动失败
+
+`PNanoVDB.ush` 原样复制了 UE 随附的 C 头文件，其中 `PNANOVDB_GRID_TYPE_CAP=32`，但六个类型表与 constants table 只有 28 个显式初始化项；C/C++ 会隐式补零，UE 5.8 的 DXC/HLSL 拒绝该写法，导致 `FNanoVdbRayMarchCS` 全局 Shader 编译失败并阻止编辑器启动。插件副本现将 capacity 定义为当前实际表长 `PNANOVDB_GRID_TYPE_END + 1`，未改 NanoVDB ABI、数据布局或采样逻辑。启用 GaussianVolume 的 D3D12/SM6 冷启动已重新编译 `FNanoVdbRayMarchCS` 并完成引擎初始化，日志无 array、Shader compiler、assert 或 fatal 错误；此前“该问题不属于当前项目、临时禁用插件”的判断作废。
+
+### 2026-07-24 — [否决][Gate] Q3 24K@120 不晋升
+
+Q3 在原训练进程生成 120 checkpoint 后立即冻结为 `smoke2_q3_gaussian_24k_at120`；PLY SHA256=`30884AF46D11A8C6B4188A536C27F252A795B94BBB93BAFA14125434D4F5605D`。使用与 Q2 完全相同的 8 个 held-out Halton 视角、512×512、64 spp 与 reference cache 评估：Q3 full-T=`34.59 dB`、foreground-T=`22.42 dB`、τ=`5.65 dB`、τ MAE=`0.04547`、IoU=`0.686`；Q2 分别为 `48.60/36.93/28.07 dB`、τ MAE=`0.01022`、IoU=`0.629`。Q3 只有轮廓 IoU 提升 `0.057`，transmittance 与 optical depth 明显退化，质量 Gate 否决。
+
+曾按预案从 checkpoint 继续 60 次以确认 180 是否值得等待，但恢复脚本重新进入学习率 warmup，实际 step 很快回到分钟级；结合 held-out 负结果，不再消耗数小时。训练进程已停止，Q2 保留为主线，Gabor 未启动。Q3 的临时 UE JSON 已删除，checkpoint 与评估结果仅保留为负实验。
+
+### 2026-07-24 — [修正][取证] 显存采集必须进入真实 Play
+
+首轮六关卡冷进程采集使用普通编辑器世界；虽然关卡资产加载成功，但没有稳定进入 Play，Gaussian candidate pass、NanoVDB ray march 与 SVT streaming 的 runtime 统计不能同时成立。该轮 Empty 差分数字作废，不进入结论。
+
+`mvp/capture_memory_baselines.ps1` 已改为六个独立 `-game` D3D12 进程，统一 1920×1080、固定关卡与 warmup；外部读取 Windows `GPU Process Memory` 的 per-process dedicated/shared counters。插件新增只在明确 console command 下启用的延迟 memory dump，等 300 个 game tick 后记录 `rhi.DumpMemory`、带 transient 的命名资源汇总与 `stat dumpnonframe SparseVolumeTextureMemory`。进程总 dedicated memory 仍受 UE 大块 heap 与冷启动波动影响，必须以延迟资源归因和子系统原生统计解释，不能只看 Empty 差分。
+
+### 2026-07-24 — [落地][内存子 Gate] 512K candidate 池
+
+基于当前 Hero requested=`141,719` 与历史已观测峰值 `471,937`，默认 candidate pool 从 1M IDs 收到 `524,288 IDs`，索引分配从 `4 MiB` 降至 `2 MiB`；保留 `r.GaussianVolume.CandidatePoolCapacity` 可调入口与 GPU overflow readback。D3D12、1920×1080、固定 Q2 Hero 实测：9,944 gaussians、requested/granted=`141,719/141,719`、capacity=`524,288`、overflow=`0`。telemetry 现直接报告 candidate=`2,097,152`、primitive=`636,416`、auxiliary=`72,428 bytes`，逻辑缓冲总计 `2,805,996 bytes`（`2.676 MiB`）。`AbyssEditor` 冷编译成功，`GaussianVolume.ScreenSizeLod` 自动化测试 Success。
+
+同一 fixed-Hero warm-frame 取证：
+
+- Gaussian Q2：逻辑表示＋遍历缓冲 `2.676 MiB`；带共同输出纹理的 RHI `GaussianVolume` 命名资源共 `19.57 MiB`；
+- NanoVDB FpN：raw grid `4,820,928 bytes`（`4.598 MiB`）；同一自定义 post-process 路径的 `NanoVDB` 命名资源共 `29.94 MiB`；
+- UE SVT U8：引擎原生 runtime GPU memory `12.402 MiB`，其中 tile data=`12.312 MiB`、page table=`0.090 MiB`；源 frame streaming payload 另为 `2.976 MiB`，不拿它冒充 runtime GPU memory。
+
+因此固定 Hero 的内存子 Gate 首次成立：Gaussian 逻辑缓冲相对 NanoVDB FpN raw grid 低 `41.8%`，相对 UE SVT U8 runtime GPU memory 低 `78.4%`；Gaussian 与 NanoVDB 的同路径命名 RHI 资源低 `34.6%`。但最终作品集 Gate 仍未通过：SVT/NanoVDB transfer function 与用户画面尚未匹配签字，512K 池也尚未完成连续相机 P50/P95/峰值 overflow 与 1/4/16 实例曲线。当前可以说“内存方向有已运行的证据”，不能说“同画质全面优于 VDB”。
+
+### 2026-07-24 — [取证] 512K pool 性能无回退
+
+沿用此前完全相同的 500-frame CSV capture，并取最后 300 个有效稳态 frame。当前 `epsilon_tau=1e-5` adaptive support＋512K pool 得到 GPU median/P95/P99=`7.35/7.51/7.59 ms`，frame median/P95/P99=`7.88/8.64/9.10 ms`。相同 DLL、关卡与相机，只通过 CVar 把 pool 改回 1M IDs，得到 GPU=`7.34/7.51/7.62 ms`、frame=`7.85/8.73/9.32 ms`；差异在运行噪声内，因此 4 MiB→2 MiB 缩容没有可测性能代价。
+
+旧 4M-ID、fixed-3σ 基线的 GPU median=`9.34 ms`，当前组合低 `21.3%`；但这同时包含 opacity/error-aware support 将 Hero candidates 从历史 `471,937` 降到当前 `141,719` 的收益，不能归因给 pool 容量。fixed-3σ 与 adaptive support 的 matched-error 画质/GPU A/B 仍是下一项，当前只签字“512K 缩容不伤性能”。
+
+### 2026-07-24 — [落地] tight PBF、空间公平 overflow 与 128K pool
+
+tile coverage 从裁剪后椭球的 `max_scale` 球形投影改为保守 tight Particle Bounding Frustum。相同 Q2 视图关闭 tight PBF 时 requested candidates=`183,039`，开启后=`107,633`，减少 `41.2%`；该优化不增加第二份常驻 bounds 数据。默认 candidate pool 随后从 512K IDs 进一步收到 `131,072 IDs`（`0.5 MiB`），当前 requested/granted=`108,691/108,691`、overflow=`0`，保留约 `20.6%` 余量。
+
+overflow 不再用线性写入导致后半屏 tile 被整体饿死。scan 阶段按各 tile requested count 分配比例配额，并在总容量内分配余数；强制 64K pool 时 requested/granted=`107,633/65,536`、max tile=`4,797`、truncated tiles=`167`、max dropped/tile=`1,877`，证明过载会空间公平降级。telemetry 扩展为 requested、granted、capacity、max tile、truncated tiles 与 max dropped/tile 六项。
+
+### 2026-07-24 — [落地] 精确 32 B primitive 与 local-space 解析积分
+
+常驻 GPU primitive 从 64 B 压到精确 32 B：position 保留 FP32；scale、extinction、support 与 emission 使用 FP16；rotation 使用 SNORM8 单位四元数；albedo 使用 UNORM8。shader 直接把 ray 旋转并缩放到 Gaussian local space，不为每个 candidate 重建 inverse covariance，也不保留 64 B 解包副本。Q2 primitive buffer 从 `636,416 B` 降到 `318,208 B`。
+
+CPU packing 自动化测试覆盖结构大小、中心、half 字段、四元数方向与外观量化。D3D12 500 帧对照中，旧 64 B 版本 `GPU/GaussianVolume` median=`1.8834 ms`；32 B/local-space 版本=`1.5344 ms`，约快 `18.5%`，在减半字节的同时没有 decode 性能回退。
+
+### 2026-07-24 — [落地] 原位 scene-color 合成把自定义 working set 压到 0.88 MiB
+
+详细 RHI dump 定位到旧 Gaussian 命名资源中的主要浪费不是 candidate pool，而是两个跨帧保留的 `GaussianVolume.Output` 全屏纹理，各约 `8.4375 MiB`。主 Compute 每个 thread 只读写同一个 pixel、无跨像素依赖，因此默认 `r.GaussianVolume.InPlaceComposite=1` 直接把已有 scene color 绑定为 UAV，删除独立输出；`=0` 仍保留 copy 后计算的安全回退。D3D12/RDG 运行无 assert、resource hazard、shader error 或 GPU crash。
+
+原位主线的命名资源只剩 candidate、primitive、LightTau、tile scan/count/range 与 telemetry，总计约 `0.88 MiB`；旧路径为 `17.76 MiB`。对照 UE SVT U8 原生 runtime GPU memory=`12.402 MiB` 和 NanoVDB FpN raw grid=`4.598 MiB`，当前自定义 Gaussian working set 分别约小 `14.1×` 与 `5.2×`。500 帧结果为完整 GPU median/P95=`6.9685/7.0853 ms`、`GPU/GaussianVolume` median/P95=`1.5357/1.5977 ms`，删除输出没有性能回退。该比值仍需用户完成相同 transfer function 的画面签字，才能成为 matched-quality 作品集 headline。
+
+### 2026-07-24 — [实验][待人工画面签字] pool-free analytic raster
+
+实现默认关闭的 `r.GaussianVolume.PoolFreeRaster` 最小分支：instanced tight ellipsoid proxy 在 pixel shader 中计算解析 optical depth，以统一 source radiance 的次序无关 premultiplied blend 直接写 scene color，因此不生成 count/scan/scatter 或 candidate pool。它只覆盖 extinction/统一介质，不声称解决异质单散射或完整体积光照。
+
+该分支已在 D3D12 编译执行；原位模式下自定义资源理论上只剩约 `0.3125 MiB` primitive buffer，但测得 GPU tag 约 `0.06 ms`，低到可疑，不能在确认代理实际覆盖云之前视为成功。用户负责在 live viewport 中切换开关并肉眼判断；失败立即删除分支，不由助手恢复固定机位截图或自动微调。
+
+### 2026-07-24 — [范围裁决] 用户接管画面与截图，助手只推进云本体
+
+固定机位、自动截图 sweep 和截图微调从当前执行链路删除。用户在 UE live viewport 中移动相机、对齐 transfer function、判断画面并自行截图；助手只负责云表示、shader、显存、性能、telemetry、构建与离线数值正确性。Epanechnikov 与 Gabor residual 都保持条件项：只有当前 Gaussian-only 在用户签字后仍缺细节或预算时才启动，不能为了“把路线做全”而增加第二个研究赌注。
+
+六个 Gaussian/SVT/NanoVDB 基线关卡中残留的 `GaussianVolume Q2 Hero Camera` 已全部删除，原创建脚本也一并移除；这些相机此前会自动激活 Player 0，现不会再抢占用户视角。云 Actor 和基线 Actor 均未改动。
+
+### 2026-07-24 — [落地][边界] 1/4/16 平移实例共享
+
+`UGaussianVolumeComponent` 新增 `AdditionalInstanceOffsets`。对 `>4K` 且 albedo/emission 统一的云，renderer 只保留一份 32 B primitive buffer；每个平移副本增加一个 32 B 的 offset/range。count/scatter 改为 instance×primitive 二维 dispatch，candidate ID 使用 20 bit primitive＋12 bit instance；超过 `<1,048,576` unique primitives 或 `<4,096` instances 会显式拒绝，不静默截断。该最小路径不承担旋转、缩放、异质外观或独立 Actor 自动去重。
+
+D3D12 临时关卡实测：
+
+- 1 份：unique/virtual=`9,944/9,944`，primitive=`318,208 B`，instance=`32 B`，逻辑 working set=`897,048 B`；
+- 4 份：unique/virtual=`9,944/39,776`，primitive 仍为 `318,208 B`，instance=`128 B`，working set=`897,144 B`；
+- 16 份：unique/virtual=`9,944/159,104`，primitive 仍为 `318,208 B`，instance=`512 B`，working set=`897,528 B`。
+
+因此 16 份表示只比 1 份增加 `480 B`，没有线性复制 9,944 个 primitives。固定 128K candidate pool 不随实例扩容：4 份 requested/granted=`197,798/131,072`、overflow=`66,726`；16 份=`701,025/131,072`、overflow=`569,953`。这如实暴露同屏覆盖过高时的质量降级边界，不能宣称“16 份仍同画质”。临时 benchmark 关卡测试后已删除。
+
+最终 `AbyssEditor` 冷构建成功，5 项 `GaussianVolume.*` 自动化测试通过；默认 TechLab D3D12 smoke 为 unique/instances/virtual=`9,944/1/9,944`、capacity=`131,072`、overflow=`0`，无 shader、RDG、GPU crash 或 fatal。
+
+### 2026-07-24 — [修正][落地] RHI allocation 粒度审计与 uniform LightTau 删除
+
+首次实例实现虽然逻辑上只有 `32 B/instance`，详细 RHI dump 却显示单独 `GaussianVolume.InstanceBuffer` 实际分配 `64 KiB`；若只报逻辑字节会夸大多实例优势。主线现改为：单实例通过常量参数提供 offset/range，并把已有同 stride Gaussian buffer 作未读取的兼容绑定，因此默认云不再创建 instance buffer；只有 `NumInstances>1` 才创建外置表，并把 D3D12 的 `64 KiB` 最小 allocation 计入真实 RHI working set。
+
+同一审计还发现 Q2 uniform fast path 完全不读取 per-primitive LightTau，却仍分配 9,944 floats。该路径现只绑定并初始化 1 个 dummy float；异质或低数量路径保持原 LightTau 行为。1280×720 telemetry 的 auxiliary 从 `54,552 B` 降到 `14,748 B`，逻辑总计从 `897,048 B` 降到 `857,244 B`。按 1080p 的 2,040 tiles 计算，最终逻辑工作集为 `875,164 B`（`0.835 MiB`）。
+
+最终 D3D12 resource dump 已确认：没有单实例 `InstanceBuffer`；GaussianBuffer=`0.3125 MiB`、candidate pool=`0.5 MiB`、LightTau=`16 B` allocation report、其余 tile/telemetry 按分辨率增长。1080p 命名资源约 `0.844 MiB`，相对旧 `17.76 MiB` 约降低 `21×`。1/4/16 最终逻辑曲线为 `857,244/857,372/857,756 B`；真实 RHI 曲线必须额外说明 4/16 共用同一个 `64 KiB` instance allocation，不能写成只增加数百字节。
+
+### 2026-07-24 — [修复] 非 UAV SceneColor 自动回退
+
+用户在编辑器打开 TechLab 时触发 RDG assertion：`PostDOFTranslucency.SceneColor` 没有 `TexCreate_UAV`，但原位路径仍无条件调用 `CreateUAV`。根因修复集中在共享 post-process callback：只有 CVar 请求开启且输入 texture flags 包含 UAV 时才原位合成；否则自动复用现有 copy-to-UAV-output 回退。无需用户关闭 CVar。
+
+`AbyssEditor` 冷构建成功；D3D12 编辑器模式连续运行 481 帧，没有再次出现 `Attempted to create UAV`、assert 或 fatal。正式 `-game` resource dump 仍没有 `GaussianVolume.Output`，证明支持 UAV 的 runtime 路径继续使用原位合成，约 `0.844 MiB` 的 runtime working-set 结论不变。编辑器回退会重新分配全屏输出，因此不得用编辑器进程显存冒充作品集 runtime headline。
+
+### 2026-07-24 — [修复] 自由镜头 tile 格与消失
+
+用户自由转动编辑器视角时，云只在屏幕最右侧闪出并呈现明显 tile 方块。数据与 Actor 可见性均正常；telemetry 先确认旧 128K 固定机位为 requested/granted=`99,694/99,694`，但主射线使用 `ClipToWorld`，tile culling 却错误地从 `ViewToWorld.GetColumn(1/2)` 构造 right/up。两套坐标不一致，只有错误 candidate tile 与真实 ray footprint 偶然重叠时才会出现碎块。现已用 UE 官方 `InView.GetViewRight()/GetViewUp()` 统一 basis。
+
+正确投影后同一编辑器视角 requested 立即从错误的 `99,694` 变成 `136,764`，暴露 128K 池 overflow=`5,692`、truncated tiles=`213`。默认池因此恢复为原路线建议的 `524,288 IDs`（`2 MiB`），而不是继续为固定机位 headline 压到 128K。最终 D3D12、1920×1080 runtime requested/granted=`142,979/142,979`、overflow=`0`、truncated tiles=`0`；RHI 命名资源为 candidate `2.000 MiB`、primitive `0.3125 MiB`、四个 tile buffer 各 `0.007782 MiB`，合计 `2.344 MiB`。冷构建、Map Check 0/0 与无 fatal 运行通过；旧 128K／错误 basis 的画质、tight-PBF 与 500 帧性能数字不再作为最终证据。
+
+### 2026-07-24 — [落地][取证] Pool-free 低分辨率光深与原位 resolve
+
+用户确认 full-resolution pool-free 路径真实覆盖云、近景没有 candidate tile 格，但贴近体积时 GPU 可超过 `50 ms`。根因是紧椭球代理的屏幕覆盖面积随距离暴涨，属于 fill-rate/overdraw，而不是 Gaussian 数量或 candidate pool。最小修正没有引入 BVH 或第二套表示：proxy pixel shader 只向 R16F target 加法累积解析 optical depth；随后一个全分辨率 compute resolve 从总 `tau` 一次性恢复 `T`、alpha、统一介质光照与 powder，再合成 SceneColor。`r.GaussianVolume.PoolFreeResolutionScale` 提供 `[0.25,1]` 的线性内部尺度，当前默认 `0.5`。
+
+第一次实现无条件分配 full-resolution output，会重新吃回约 `8.4 MiB`，与项目显存目标冲突。根修复复用既有 UAV capability 检查：正式 runtime 直接读写同一个 SceneColor UAV；编辑器或不支持 UAV 的输入才创建 copy fallback。最终 1920×1080 `-game` RHI dump 只有 `GaussianVolumePoolFree.Tau=1.1875 MiB` 与 `GaussianBuffer=0.3125 MiB`，合计 `1.50 MiB`；没有 candidate/tile/LightTau 或额外 output。运行到 300 warm ticks 无 RDG assertion、fatal 或 GPU crash。
+
+同一 runtime 视角完成 full-res 与 0.5× 各 500 帧 CSV，最后 300 个稳态样本为：pool-free pass P50/P95=`1.9661/2.1377`→`0.5996/0.6007 ms`，完整 GPU P50/P95=`6.8625/7.5071`→`5.4609/5.5104 ms`。pass 中位数下降 `69.5%`，证明优化命中 fill cost。该视角不是用户报告 `50+ ms` 的贴脸最坏情况；当前编辑器以 0.5× 打开，最终由用户自由移动相机签字细节与 worst-case。Gabor 未被取消，但只在该实时底座通过后作为稀疏高频 residual 进入同预算 A/B。
+
+### 2026-07-24 — [Gate 失败][回退] pool-free close-up 收口
+
+用户完成真实贴脸视角验收：full-resolution pool-free 的细节可接受，但 GPU 超过 `50 ms`；0.5× 虽降低 fill cost，贴脸仍约 `25 ms`，且细节不通过。0.25× 可能继续提速，但画质只会比已失败的 0.5× 更差，因此不再测试。pool-free 在当前架构下形成“提高分辨率则性能失败、降低分辨率则画质失败”的死结，close-up Gate 正式否决；已有实现和数值只作为负实验，不进入主线或作品集优势结论。
+
+temporal、BVH 与自适应 raster 会构成新的执行架构，不在本轮收口范围；Gabor 只能增加表示精度，不能修复 proxy fill-rate，因此也不以 pool-free 为底座。项目主线回退已经成立的 512K compact-pool Compute：先完成 Gaussian／SVT／NanoVDB 的 matched-quality、总 working set、带宽与实时预算闭环；Compute Gate 通过后，才做同预算稀疏 Gabor residual A/B。Q3 与 Epanechnikov 继续冻结。
+
+### 2026-07-24 — [边界][取证] 512K Compute 贴脸全屏 candidate 截断
+
+用户关闭 pool-free 后在同一贴脸视角观察到整屏 32×32 格。GPU telemetry 确认 resolution=`1173×957`、requested/granted=`1,362,172/524,288`、overflow=`837,884`、max tile requested=`3,312`、truncated tiles=`1,110`、max tile drop=`2,038`；37×30 恰为全部 `1,110` tiles，因此格子来自全屏公平截断 `61.5%` candidates，不是 Q2 或 Gabor 的表示细节。当前 `GaussianVolume Max≈14 ms`、queue Max≈`16 ms` 是只处理 38.5% candidates 的假性能，不能签字。
+
+按该视角实际 requested 计算，无截断 candidate buffer 至少 `5.196 MiB`，连同 32 B primitives 与 auxiliary 的最低逻辑 working set=`5.517 MiB`，已经高于 NanoVDB FpN raw grid=`4.598 MiB`；完整遍历还会高于当前截断性能。决策是不扩池挽救近景、不把 Gabor 用作遮盖 traversal 问题：近景继续使用原 VDB，Gaussian Compute matched-quality 与实时 Gate 严格限定在中远景产品范围。
+
+### 2026-07-24 — [决策][实现中] 切换 quality-first Gabor 与重光照 reference
+
+用户明确改为先拉满细节、实现 Gabor 与重光照，再考虑优化。quality reference 因此把 candidate pool 默认改为 exact tile matrix、support 改为固定 3σ，并扩展 48 B primitive 以保存 FP32 `omega` 与 signed extinction；UE shader 接入有限段 Faddeeva Gabor 解析积分，Q2 9,944 Gaussian＋4,096 Gabor 训练已启动。Q3、Epanechnikov、pool-free 主线和固定机位截图仍冻结。
+
+### 2026-07-24 — [验证][进行中] 512² Gabor quality 训练改用内置视角 SGD
+
+首轮 32 视角 full-batch 实测约 `243 s/step`，1200 步 ETA 约 80 小时，10 步前无断点且已停止。保持 512×512、32 个 reference cameras、8192 spp reference、Q2 9,944＋Gabor 4,096 与 1200 步不变，仅启用训练器已有 `cam_subsample=4`；实测约 `31–32 s/step`，ETA 约 10.7 小时，最终质量仍以全部 32 视角评估。checkpoint 周期缩短为 20 步。重复的 32 视角初始诊断图改为存在即复用；该图不进入损失、梯度或最终资产。
+
+方向光与天光改为显式关卡 Actor 引用；Gaussian-base `LightT` 对高数量不再置 1，只在 primitive 数据或方向光变化时执行 O(N²) 重建并跨帧缓存。当前目标是最高画质与静态重光照正确性，首次重建成本和完整 frame 只记录，留到画质签字后优化。
+
+### 2026-07-25 — [检查点][待人工画面签字] Gabor step 720 预览已配置
+
+训练并未按最初约 `10.7 h` 的粗略 ETA 完成：检查时仍停留在 `719/1200` 后的 step-720 全视角 clean-PSNR／checkpoint 阶段，训练进程保持运行且 GPU 利用率为 `100%`。实际慢点是 `checkpoint_every=20` 同时触发昂贵的 best-checkpoint clean evaluation，不能继续用纯优化 step 时间估算总时长。
+
+已在不终止训练的前提下冻结 step-720 PLY，并导出 `9,944 Gaussian + 4,096 Gabor = 14,040` primitives；其中 `3,354` 个 Gabor 为负权重 residual。导出器的 4 项自检通过，UE NullRHI 导入和关卡保存通过。TechLab 现在保留两名同 transform Actor：`Smoke2 GFields Q2 10K High Fidelity` 已关闭渲染，`Smoke2 GFields Q2 10K + 4K Gabor Preview Step 0720` 已启用，固定 `3σ` support、关闭 screen-size LOD，其他密度与光照参数从 Q2 Actor 复制。
+
+当前没有启动 D3D12 viewport：训练仍占用约 `4.3 GiB` 显存和满 GPU，任何此时的 UE 帧时都无效且可能造成显存压力。`frames_pyr1/image_0720.exr` 只是该 step 最后一个随机 camera batch，不可与固定 reference tile 冒充配对画质证据；最终仍由用户在训练释放 GPU 后于 live viewport 做 Q2/Gabor A/B。
+
+### 2026-07-25 — [落地][验证] 真实 smoke2 VDB 解析转换并部署 7DRGS
+
+依据实现记录逆向完成 7DRGS PLY loader、方向切片、GPU preprocess/sort、硬件 raster 与 composite。新增 `lift_volprim_to_7drgs.py`，把同源 `smoke2_vdb.npy` 以 block=`4` 聚合为 `64,815` 个空间样本，再以 6 个轴向光照叶片展开为 `388,890` 个 7D Gaussian；最终 sharp 资产使用 angular sigma=`0.5`、spatial sigma=`0.55`、ambient=`0.12`。转换器自检覆盖输出行数、字段完整性和方向响应。
+
+UE runtime 新增 `RefreshRenderingParameters()`，解决 Python/editor property 已改变但 render thread 仍使用旧参数的问题；`LoadFromFile()` 保留项目相对 PLY 路径，避免 TechLab 保存绝对机器路径。`AbyssEditor` 冷构建成功（15.24 秒），TechLab 已保存 `7DRGS Smoke2 VDB B4 389K Sharp 6-Light` Actor。隔离显示确认原先被误判为 7DRGS 伪影的“大灰壳”本来就存在于同源 SVT 受光结果；此前异常主要来自 SVT、Q2、Gabor 与 7DRGS 四套体积叠加。当前代理整体轮廓和密度层级已接近 SVT，细边界仍更颗粒；`+X/-X` 手动光方向产生明确响应。
+
+### 2026-07-25 — [取证][负结论] 解析 7DRGS 未胜过同源 UE SVT U8
+
+在同一 TechLab、同机位、同分辨率下短暂进入 PIE，并用 UE 原生 `ProfileGPU` 分别隔离采样。7DRGS 帧为 `9.19 ms`，顶层 `GaussianSplatting 7DRGS 388890` 为 `1.799 ms`：Slice=`0.356 ms`、Preprocess=`0.103 ms`、Sort=`0.249 ms`、HW Raster=`1.039 ms`、Composite=`0.007 ms`。关闭 7DRGS CVar 后，同源 SVT U8 帧为 `8.43 ms`，HeterogeneousVolumes 合计约 `1.070 ms`，其中目标组件约 `0.992 ms`。
+
+因此当前高细节解析 7DRGS 的体积范围比 UE SVT U8 慢约 `0.73 ms`，整帧也慢约 `0.76 ms`；该结果不能包装为性能优势。7DRGS 的 world scene view extension 当前不服从 SceneComponent visibility，公平基线通过 `r.GaussianSplatting.Enable=0` 隔离；最终关卡已恢复 CVar=`1` 并保存所有 Actor 的正常 runtime visibility。
+
+### 2026-07-25 — [训练][自动跟进] Gabor 从 step 720 续跑至 1200
+
+断点 `optimized_asset_pyr1/npy_data/opt_state/meta.json` 确认 7 个 Adam 参数组均在 step `720`。原恢复路径会把 Gabor 迭代编号和学习率 warmup 重新从 0 开始，且每 20 步 checkpoint 都触发一次约 49 分钟的全 32 视角 clean-best 评估；这正是此前总耗时失控的主因。
+
+恢复路径现延续绝对迭代 `720..1199` 与原 1200-step 学习率调度，保留每 20 步断点，恢复阶段关闭重复 best 评估；训练结束仍执行一次完整 32 视角 clean render/PSNR 并导出最终资产。首次恢复 step 实测 `43.14 s`，GPU=`100%`、显存约 `3.8 GiB`，预计优化约 `5 h 45 min`、最终评估约 `50 min`，总计约 `6–7 h`。已建立 04:45 自动跟进：完成后继续最终导出、TechLab 配置、Q2/Gabor 与 SVT/7DRGS A/B 和文档收尾；Q3、Epanechnikov、pool-free 主线与固定机位截图继续冻结。
+
+### 2026-07-26 — [用户画质否决][归档] Gabor 结束，主线切换为 7DRGS
+
+Gabor 从 step 720 完成全部 480 个恢复步，总优化耗时 `5 h 38 min`；最终 32 视角 clean PSNR=`31.1497955 dB`。导出 JSON 自检通过：`14,040` primitives=`9,944 Gaussian + 4,096 Gabor`，其中 `3,544` 个 Gabor 为负权重 residual，SHA256=`A2276E77230A8E2BF8C909ADED64C410FF44BA727509BA08E48D35D81A42162E`。
+
+最终资产已在 UE 载入为 `Smoke2 GFields Q2 10K + 4K Gabor Final Step 1200`，用户直接判定画质太差并否决继续投入。Gabor 路线因此正式归档：训练资产、JSON、Actor、shader 与脚本保留为负实验证据，但不再进行灯光调参、性能 A/B、预算消融或 runtime 优化。Gabor 自动跟进任务已删除。
+
+项目唯一主线改为 7DRGS。TechLab 已关闭所有 GaussianVolume/Gabor 与 SVT 显示，恢复 `r.GaussianSplatting.Enable=1`，仅显示 `7DRGS Smoke2 VDB B4 389K Sharp 6-Light` 并保存关卡。后续 Gate 是先解决真实 VDB→7DRGS 的细节与方向重光照，再优化点数、方向叶片、Slice/Sort/HW Raster；当前解析版本 `1.799 ms` 仍慢于同源 SVT U8 约 `1.070 ms`，该负结论保持有效。
+
+### 2026-07-26 — [换源][最高质量部署] CC0 Hero Congestus 50 B2 Ultra
+
+用户指出 WDAS cloud 有一半像被削平。对 `wdas_cloud_quarter.npy` 检查后，active bbox 只有极少数边界 voxel，转换器没有裁掉半边；视觉问题来自源云本身偏平的底部与轮廓。该资产因此退出最终展示 Gate，不再继续生成 WDAS 更高档。
+
+公开资产改用 CGHEVEN `Hero Congestus Cloud VDB - 50`，页面标记为 CC0。下载包 `Hero_Cloud_02_v50.rar` SHA256=`C892217D115DDC9CBA4C9737C96476A1C88B1FD20D3E85A2DF75494960497A7C`。原 VDB 的 `readAll()` 会被附带内容触发 abort，但单独读取 `density` 正常；已重写为单 grid `Hero_Cloud_02_v50_density_only.vdb`，SHA256=`4511FAF0531D1FA02919C573415C368796B52E27660D6AF2615F9EA58421AAE4`。有效分辨率=`238×264×403`、active voxels=`8,536,415`、density range≈`[8.35e-7,1]`。
+
+转换前六面各加 `8 voxels` 空白，dense grid=`254×280×419`，六个外表面 density 均为 `0`；active longest axis 按 `403 voxels=1000 cm` 对齐同源 SVT。最高细节档采用 block=`2`、spatial sigma=`0.48`、angular sigma=`0.5`、density scale=`0.04`、ambient=`0`，生成 `1,112,674` 个独立空间样本和 `6,676,044` 个六方向 points。PLY=`2,136,336,393 B`，SHA256=`FD1E5F2B1895742611E1CD20452A76ABCB06B3BB42E8D231168BA6A3C7792A73`；header／payload size、10 万点 finite sample、方向响应 `[0,1]` 与 3 项转换测试均通过。
+
+7DRGS runtime 增加显式 SkyLight ambient：组件读取 SkyLight color×intensity×`AmbientLightIntensityScale`，通过 render parameters 和 composite shader 加入环境填充；DirectionalLight 继续由 editor tick 实时刷新。当前部署使用 dual HG，`g1=0.65`、`g2=-0.2`、blend=`0.1`、phase intensity=`0.35`。`AbyssEditor` 冷构建成功。
+
+NullRHI 部署成功并保存 TechLab：可见 Actor=`7DRGS CGHEVEN Hero Congestus 50 B2 Ultra 6.68M`，point-count readback=`6,676,044`；默认隐藏的同源 A/B=`CGHEVEN Hero Congestus 50 UE SVT U8 A-B`，SVT resolution=`238×264×403`、最长轴=`1000 cm`。DirectionLight=`Light Source`、SkyLight=`SkyLight` 均已绑定。下一步仍是用户 live viewport 画质与场景灯签字；签字前不做点数/叶片优化，也不沿用 smoke2 的 GPU 性能数字。该 PLY 仍是解析抬升代理，不等同于论文训练结果。
+
+### 2026-07-26 — [修复][D3D12 验证] 6.68M wrapped dispatch
+
+B2 Ultra 第一次在 D3D12 TechLab 打开时，`FGS7DSlicingCS` 以 `6,676,044 / 64 = 104,313` 个 X 组派发，超过 D3D12 单维 `65,535` 上限并触发 `ValidateGroupCount` ensure。根因不在资产或显存，而是 Slice 仍假设点数不超过约 `4.19M`。
+
+Slice 与 Preprocess 统一改用 UE 原生 `FComputeShaderUtils::GetGroupCountWrapped`；对应 shader 通过 `GetUnWrappedDispatchThreadId` 恢复线性索引。`AbyssEditor Win64 Development -NoHotReloadFromIDE` 冷编译成功（13.31 秒）。重启后直接打开 `L_GaussianVolume_TechLab`，进程保持响应、工作集约 `8.5 GiB`，日志无 dispatch ensure、shader compilation failure、GPU crash 或 fatal；编辑器保持打开供用户 live viewport 验收。
+
+### 2026-07-26 — [签字][决策] B2 细节／重光照通过，冻结训练 Spec
+
+用户确认 B2 Ultra 空间细节已无问题、方向重光照可用；轻微全局色差暂不阻塞。正式训练前按 `SPEC.md` 第 2.13 节先修复 stage、B2 geometry warm start、完整 resume、checkpoint/validation 解耦和确定性 contribution prune，再以 `500–1000` iterations 短程试跑验证；训练当前尚未启动。Gabor、Q3、Epanechnikov、pool-free 与固定机位截图继续冻结。
+
+### 2026-07-26 — [决策] 确定性正收益优化前置到 7DRGS 基线
+
+用户要求不要等预算训练结束才补做明确有正收益的优化。训练流程现固定为一个 `1.112M` 主检查点依次派生 `800K`、`600K`，不做三次独立重训；Stage 1 冻结参数从 optimizer param groups 移除，不创建 gradient/Adam state；checkpoint 与完整 held-out evaluation 解耦；Stage 1 在训练/验证集累计的 visibility/radiance/edge/residual score 复用于后续确定性裁剪，最终测试集保持不可见。正式 GPU A/B 前，UE Slicing 按资产、Component transform、时间、灯光方向和切片参数做失效缓存，静态输入不再每帧全量切片。
+
+多尺度／频域 loss、directional/spatial split、FP16/量化 packing、visible-only compaction 与 cluster culling 仍需误差或 profiler 证据，不伪装成确定收益。既有 Gabor runtime 实验画质已被用户否决，不接入 7DRGS 基线；只保留“低频基底＋局部残差”的误差驱动思想。
+
+### 2026-07-26 — [训练][Gate 通过] 111.2 万点 smoke 完成并启动 Stage 1
+
+已建立独立 Python 3.11／PyTorch 2.8.0+cu128 环境，并编译官方 `diff-gaussian-rasterization` 与 `simple-knn`。训练器现支持明确 stage、B2 spatial Cholesky 热启动、完整 model/optimizer/RNG/camera-stack resume、便宜 checkpoint、确定性 stable-sort prune 和最小中断恢复检查；恢复链已由 65,536 点 500-step 连续/250-step 恢复对照验证，iteration、stage、point count 与 finite PLY 均通过。
+
+真实 Hero Congestus density 生成 8 views×6 signed-axis lights×256、256 ray steps 的线性 `J/TView/depth/mask` 数据。全量 `1,112,674` 点 Stage 0 完成 500 steps，用时 `172 s`（约 `2.90 iter/s`）；最终 train total loss=`0.1635`、TView L1 EMA=`0.1672`，独立 held-out camera＋held-out light 的 J L1/PSNR=`0.03905 / 21.13 dB`。两个 checkpoint 各约 `1.02 GB`，最终 PLY=`271,494,101 B`、61 fields、点数准确且无 NaN/Inf。UE 同时打开时整卡峰值约 `7,584 MiB / 8,151 MiB`，余量仅约 `313 MiB`。
+
+Smoke 还暴露了一个冻结语义问题：空间和方向 Cholesky 原本共用 optimizer tensor，500 步已改变 B2 空间块。Stage 1 入口现从 `init_points.ply` 恢复前三个 spatial diagonal/off-diagonal，清零对应 Adam moments，并用 gradient mask 固定该空间块；xyz、scale、rotation、opacity 继续不进入 Stage 1 optimizer。当前已从 checkpoint 500 启动目标 step 15,000 的渐进 relight fit，PID=`39460`，约 `2.86 iter/s`，5K/10K/15K 才做完整 held-out 验证；不启用 densification、RAP、GNS、MU、Gabor 或自动截图。
+
+### 2026-07-27 — [训练完成][方向 Gate 失败] 15K held-out 与 UE 预览
+
+Stage 1 从 step 500 完成至 15,000，总耗时 `1:32:29`。最终训练 EMA loss/TView=`0.00729/0.00478`；held-out J PSNR 在 5K/10K/15K 为 `20.85/21.39/21.61 dB`，训练视角则达到 `48.10 dB`，泛化差距明确。最终 checkpoint 与 271,494,101 B PLY 均为 `1,112,674` 点、61 fields、零 NaN/Inf；spatial Cholesky diagonal/off-diagonal 相对 B2 init 的最大误差均为 `0`。
+
+独立完整 held-out 协议使用 2 个未见相机和 1 个完全留出的轴向光：J full/foreground PSNR=`21.43/16.54 dB`，TView full/foreground=`18.54/14.83 dB`，foreground τ L1=`3.806`，Mask IoU=`0.9505`，inverse-depth foreground L1=`0.00319`。相对 step 500，TView foreground 从 `10.79` 提升至 `14.83 dB`，但 J foreground 只从 `16.18` 提升至 `16.54 dB`。结论是空间、轮廓和训练链成立，当前 5-train/1-heldout 光向覆盖不足；继续同数据迭代不会替代方向监督，暂不进入 800K/600K。
+
+训练 PLY 已复制为 `CGHEVEN_HeroCongestus50_7DRGS_Trained15K_1p112M.ply`，SHA256=`BE486466F872C3F4640FA6FE0CCAEE659ACE1969F02EC686C6EA3C488C31923A`。UE TechLab 无保存加载成功：Actor=`7DRGS CGHEVEN Hero Congestus 50 Trained 15K 1.112M PREVIEW`，point readback=`1,112,674`，场景 DirectionalLight、Dual SH 与可见性有效，SVT 暂时隐藏；编辑器稳定，无 shader error、GPU crash 或 fatal。该状态只供用户 live viewport 验收，尚未保存关卡。
+
+### 2026-07-27 — [用户否决][根因审计][改线] 15K 不恢复，改为 B2 teacher distillation
+
+用户在 UE live viewport 确认 15K 训练版存在严重颗粒噪声和细节模糊，画质 Gate 失败。训练 PLY 的 `TView SH degree=1` 而预览曾继承为 `0`，部署脚本和当前预览已改为 `1`；修正后噪声仍在，因此不是 UE 抗锯齿、显卡或单一预览参数问题。B2 解析版保持完整，15K checkpoint/PLY 只作为负证据保留，禁止续跑、warm start 或进入点数裁剪。
+
+代码审计发现 `_write_init_from_b2` 只复制 xyz/scale/rotation/spatial Cholesky，并从六方向展开数据选第一组 `vertices[indices]`；B2 opacity、`J`、`TView`、`mu_d`、lambda 和 directional covariance 全部丢失。relight stage 又把统一冷启动为 `0.1` 的 opacity 冻结，迫使 appearance/conditional covariance 代偿。`lambda_sh_reg`、`lambda_sigma_reg` 虽有参数定义，但没有进入主训练 loop；静态 timestamp 恒为 `0` 时 temporal/cross covariance 仍可训练，light direction 还能改变有效 spatial mean/covariance。
+
+checkpoint `500→15K` 证据与此一致：xyz/scale/rotation/opacity 完全不变，opacity 始终 `0.1`；`J` DC std=`0.169→1.146`、最大系数=`10.236`，directional/full Cholesky diagonal p99 约 `2.081→106.747`、抽样最大=`4269.5`，`TView` DC std=`0.210→0.764`。训练 J PSNR=`48.10 dB`，held-out foreground J/TView 只有 `16.54/14.83 dB`，属于错误初始化与无约束过拟合，不能再归纳为“只需增加光方向”。
+
+公开方法横向审计后保持 7DRGS 主线但收紧边界：公开 7DGS 条件是 time/view direction，不是 light；BiGS 的 fixed geometry、light/view appearance 和物理/未见方向约束值得借用，但完整约 `1089 params/primitive` 不适合 1.112M 点；RNG/GS³ 需要 neural shader 或 hybrid pass；LightGaussian/PUP 类压缩都先得到高质量 teacher，再 prune/recover。项目不整体切换 BiGS 或第二套 renderer，改为解析 B2 teacher＋VDB ground-truth anchor 的固定几何 distillation。
+
+下一 Gate 固定为：聚合全部六叶片并保留/拟合 density、`J/TView` 与方向响应；冻结 temporal block 和 spatial-condition cross covariance；把 SH/covariance/能量/未见方向约束真正接入 main loop；以约 `16 cameras×24 lights×512` 为正式数据目标、`sh_degree=1` 起步，先做 `1–2K` smoke。只有参数健康、held-out 指标和用户 UE 画质同时通过，才训练 1.112M matched-quality student，并依次尝试 `900K→800K`；600K 不再预设。Gabor、Q3、Epanechnikov、pool-free 与固定机位截图继续冻结，所有改动保持未提交。
+
+### 2026-07-27 — [修复][全量资产验证] 六叶片 teacher 初始化与静态条件链
+
+`_write_init_from_b2` 不再抽取第一叶片：现在按 `1,112,674` 个空间点验证六叶片几何／TView 一致性，按 UE 的 `opacity × exp(-0.25 λq)` 语义重建六个轴向 teacher 响应，再将精确 alpha composite 的 `J` 拟合为 degree-1 light SH。Python slicing 同步修正为 UE 指数；训练 renderer 用 light direction 评估 `J`，camera direction 只评估 `TView`。静态训练从 optimizer 移除 temporal／directional covariance，cross-covariance 固定为零。
+
+主训练 loop 已接入 SH、teacher-anchor 与 `J∈[0,1]` 能量有界项；恢复训练会从 init PLY 重载 teacher anchors，不把副本塞进 checkpoint。6 项最小测试、`py_compile` 与 2→4 iteration 小规模 resume 均通过；小链健康检查为 geometry max error=`0`、cross covariance max=`0`、lambda max≈`1e-8`、所有字段 finite。
+
+全量初始化已写入 `artifacts/hero_b2_distill_smoke/init_points.ply`：`1,112,674` 点、53 fields、`235,888,349 B`、SHA256=`B65F489AC60A2E426C970F5C093A58D57B18CE43666F37E79D97EEBC34DDCC62`；cross covariance max=`0`，六方向 SH anchor RMSE=`0.0373711`、max error=`0.2875644`。UE shader 的 `J` light-direction 修复以可通过 `git apply --check` 的项目内 patch 保存，尚未修改外部插件。UE 编辑器当前约占 `6 GiB / 8 GiB` 显存，因此不与其并发启动全量 `1–2K` smoke；先等待用户保存并关闭 UE。
+
+### 2026-07-27 — [训练][数值 Gate 通过][待 UE] 111.27 万点 1K teacher smoke
+
+用户关闭 UE 后完成三次同数据短对照。首轮弱约束 smoke 虽把 held-out J PSNR 提到 `23.60 dB`，但 opacity 最高漂到 `0.9978`、六轴 `J` 越界率升到 `20.42%`，再次违反静态 density teacher，明确判负。第二轮冻结 opacity 并提高边界权重后，静态参数零漂移，但 teacher 约束仍偏松，六轴越界率=`12.21%`。
+
+源 B2 的 TView SH 实测恒为零色（DC=`-0.5/C0`、rest=`0`），真实视线透射由白背景上的静态 opacity 合成；此前所谓 TView 训练实际只能靠 opacity 漂移降低 loss。最终口径因此冻结 opacity、TView、几何、temporal 与 cross-covariance，静态 smoke 只训练 light-conditioned `J`，并跳过对任何可训练参数都无梯度的 mask/depth/TView loss。teacher-anchor 默认提高到 `10`、energy 默认提高到 `1`。
+
+最终全量 1K 用时约 `78 s`、约 `12.9 iter/s`，GPU 总占用约 `4.73/8.15 GiB`。输出为 `1,112,674` 点、56 fields、全部 finite；所有静态参数最大误差=`0`、cross covariance=`0`、activated lambda≤`1e-8`、opacity=`[1.56e-6, 0.17119]`。held-out/train J PSNR=`21.93/24.98 dB`，gap=`3.06 dB`；六轴 anchor drift RMSE=`0.01282`、越界率=`8.54%`（teacher 初始=`7.49%`），系数绝对值 p99/max=`1.7407/1.7641`。
+
+最终 PLY=`249,240,491 B`，SHA256=`488A90FD81BD80ABA9507DD1FA427F3A758024531D725734B40E3E54AED1A0AE`；`health.json` 与 `metrics.json` 位于 `artifacts/hero_b2_distill_smoke/run_1k_teacher/`。数值健康 Gate 通过，但尚未宣称画质通过：下一步必须先把 `patches/7drgs-j-sh-light-direction.patch` 应用到 UE runtime，再由用户 live viewport 验收；未签字前不扩正式 16×24 数据、不裁剪。
+
+### 2026-07-27 — [UE 部署][待用户签字] 1K teacher preview
+
+用户明确授权修改外部 Abyss 插件后，将 `J` SH 的评估方向从 camera `ShDirOCV` 改为组件传入的 light direction；`TView` 继续使用 camera direction。修改前 shader 已备份到 `artifacts/runtime_backups/2026-07-27/`。`AbyssEditor Win64 Development` 构建成功；D3D12 启动实际重编译 `FGS7DSlicingCS` 1 次并成功完成，无 shader error、ensure、GPU crash 或 fatal。
+
+最终 1K PLY 已复制到插件 `Content/Data/CGHEVEN_HeroCongestus50_7DRGS_Teacher1K_1p112M.ply`，复制后 SHA256 与训练输出一致。自动化 readback 成功：level=`L_GaussianVolume_TechLab`、Actor=`7DRGS CGHEVEN Hero Congestus 50 Teacher 1K 1.112M PREVIEW`、points=`1,112,674`、Dual SH=`true`、TView degree=`1`、saved=`false`。AbyssEditor 以持久 D3D12 窗口保持打开，进程响应正常，GPU 总占用约 `5.60/8.15 GiB`；下一步只等待用户 live viewport 画质签字。
+
+### 2026-07-27 — [Degree-2][数值 Gate 通过][待用户签字] 零增量升级与 1K 选择
+
+按用户确认的顺序，先固定渲染数学与当前画面，再只扩展 `J`。训练器新增可选 init PLY 和立即激活最大 SH degree 的入口；degree-1 PLY 中旧 4 个系数原样载入 degree-2，新增 5 个系数为零。teacher anchor 改为只约束 anchor PLY 实际存在的系数前缀，不会把新增 degree-2 系数压回零。7 项最小测试与 `py_compile` 通过；全量 parity PLY 为 `1,112,674` 点，全部旧字段 max error=`0`、新增系数 max abs=`0`。
+
+从已通过视觉 Gate 的 degree-1 1K PLY 启动 3K、只训练 `J` 的对照。1K/2K/3K held-out J PSNR=`22.03/21.89/21.75 dB`，train=`26.22/26.85/27.26 dB`；2K 后训练继续改善而 held-out 持续下降，因此选中 1K checkpoint，不部署更晚版本。选中 PLY 为 61 fields、`271,494,101 B`、全部 finite，静态参数 max error=`0`，新增 degree-2 系数绝对值 p95/p99/max=`0.03586/0.05223/0.08440`，SHA256=`0071EAAEAF2A4540333A0EE9FD54AEC8C4A5E7B25104DFEEC8408673148A5ADC`。
+
+PLY 已复制到插件 `Content/Data/CGHEVEN_HeroCongestus50_7DRGS_Degree2_1K_1p112M.ply`，源/目标哈希一致。TechLab 自动 readback 成功：Actor=`7DRGS CGHEVEN Hero Congestus 50 Degree 2 1K 1.112M PREVIEW`、points=`1,112,674`、phase=`dual HG 0.65/-0.2 blend 0.1, intensity 0.35`、saved=`false`。AbyssEditor 响应正常，日志无 shader error、ensure、GPU crash 或 fatal；下一 Gate 只由用户 live viewport 确认画面。
+### 2026-07-27 — [H9][修复][待用户签字] 50K 任意方向内部透射／自阴影
+
+根因是高数量 uniform 路径虽然消费 `LightTransmittance`，但旧 O(N²) `LightTauCS` 在 50K 不可执行，方向光移动后没有可用的逐核内部光程。H9 离线从同源 density grid 为每个 kernel 烘焙 local `±X/±Y/±Z` 六个 FP16 光程，运行时把世界灯向旋回资产局部空间并连续插值；六值复用 48 B primitive 的既有 `Data2.yzw`，不增加每核字节。50K 高数量路径只绑定单元素 dummy LightTau，不再构建 O(N²) 缓冲；`≤4096` 的旧精确路径保留。
+
+烘焙资产为 `artifacts/hero_tau_recovered50k_h9_directional/GaussianVolume_Hero_TauRecovered50K_Directional.json`，50,000 centers 全部位于源 grid，六轴 τ median=`3.450/3.403/4.582/4.800/3.024/3.359`。NumPy self-check、Python compile、`AbyssEditor Win64 Development -NoHotReloadFromIDE` 冷构建、shader compile 与 NullRHI `GaussianVolume.UniformAppearance` 自动化测试均通过。TechLab 已部署 `GaussianVolume Hero Directional Tau 50K H9 PREVIEW`，SVT 的 editor hidden/root visible 状态前后不变；物理强度 `1.0` 过暗，当前视觉校准 `DirectionalShadowDensityScale=0.3`。最终 Gate 只等待用户在 live viewport 移动灯光确认。
+
+用户随后发现太阳转入地平线下时场景已黑、Gaussian 仍被照亮。现场确认 `Light Source` 为 `AtmosphereSunLight=true`、朝光方向 `Z=-0.7869`，插件却仍把 `4.0548×0.2` 的直射强度送入 shader；六轴光程方向本身没有错，错误是把下半球镜像方向当成仍有能量。共享光照入口现按 Atmosphere Sun 标记做上半球门控：`Z≤0` 直射为零，地平线上约 3° 内平滑恢复；普通非太阳 Directional Light 保留从下方照明。冷构建与新增 horizon 自动化断言通过；重启并恢复同一机位后 H9 已由白亮变成只剩很暗的 SkyLight 蓝色填充，SVT 可见性未改变。
+
+### 2026-07-27 — [H11][训练完成][待 UE 视觉 Gate] H4 Directional24 D2 续训至 4K
+
+按用户要求先训练 H4，不修改结构、点数或 UE 对比场景。从同一个 H2 1K teacher 基线按 H4 原始 Directional24 协议重跑至 4K，只优化 light-conditioned `J`；几何、opacity、TView、temporal/cross covariance 保持冻结，densification、剪枝、LAS/EAS/RAP/MU/GC 均关闭。训练用时约 `7m20s`，保存 2K/2.5K/3K/3.5K/4K 五个 checkpoint。
+
+同一 4 个完全留出灯向的 PSNR 在 2K/2.5K/3K/3.5K/4K 为 `22.715/22.853/22.975/23.069/23.181 dB`，L1 为 `0.03109/0.03040/0.02972/0.02922/0.02864`，4K 仍未出现泛化回退，因此选择 4K。最终 PLY 为 `1,112,674` 点、61 fields、`271,494,101 B`、全部 finite，静态参数最大误差=`0`，SHA256=`1D7D06DF674F26221DA006319655FBAA9A6B40E471497F8D7018B66E89FA7694`。资产已复制到插件 `Content/Data/CGHEVEN_HeroCongestus50_7DRGS_Directional24_Degree2_4K_1p112M.ply`；编辑器当前关闭，未改 H0/H4/H6/SVT 的现有场景可见性。
+
+用户在 UE 中完成 H11 视觉检查；恢复 `Dual SH=true`、SkyLight scale=`0.1` 与正式 phase 参数后，仍没有可辨认的内部自阴影。该结果否定“继续同一 image-space J loss 即可学出自阴影”：沿视线的逐点 J 可以互相代偿，PSNR 改善主要反映整体图像拟合，并未唯一约束每点到光源的光程。H11 标记为视觉 Gate 失败，禁止继续原协议迭代；若继续 H4，必须改为直接监督逐点 light-space τ/T，再以图像 loss 微调。
+
+### 2026-07-27 — [H12/H13][训练／烘焙完成][待用户视觉 Gate] H4 点级光照与 H6 六轴光程
+
+H12 不再续跑 H11 的 image-space loss：固定 H4 的 `1,112,674` 个点及全部静态字段，直接从同源 density grid 计算 24 个灯向的逐点 light-space transmittance，以前 20 个方向闭式拟合 degree-2 `J` SH，并用后 4 个方向留出验证。最终 train MAE/RMSE=`0.04679/0.07677`，held-out MAE/RMSE=`0.08067/0.13218`，静态字段最大误差=`0`；degree-3 direct-T held-out RMSE=`0.18472`、degree-2 optical-depth held-out RMSE=`0.22260`，均否决。选中 PLY 为 `271,494,101 B`，SHA256=`9460AE185DFD7F4AE268F3B453D963A3AFDD8FA9A197C6E147204C34AAB861FD`。
+
+H13 从 H6 exact 50K initializer 直接烘焙 local `±X/±Y/±Z` 六轴 optical depth，不改变 kernel 数量或 48 B/kernel 运行时布局。50,000 centers 全部位于源 grid，六轴 τ median=`3.455/3.404/4.583/4.798/3.029/3.356`；JSON=`21,648,913 B`，SHA256=`1B61B863ACF222B7557F44FD23EA8B5931ACA9543FCC5C41C44B7B689F69486D`。
+
+TechLab 已在不保存关卡的情况下把 H11/H6 替换为 `H12 | H4 PointwiseLight24 D2 1.112M` 与 `H13 | H6 Adaptive 50K Directional Tau`；两者和 SVT 均保持可见。重开时 H13 Actor 的 `Use Scene Lights=false` 且带旧的实例覆盖值，现已恢复用户确认的 Density=`0.416`、Gamma=`1.515627`、Direct/Sky=`0.5/0.1`、Scene Depth/Lights=`true`，方向阴影强度用 `0.3` 预览。当前关卡中没有 H0 Actor，本次未隐藏或删除它。最终画质与自阴影 Gate 由用户在 live viewport 旋转方向光确认。
+
+### 2026-07-28 — [现场诊断][运行时归档][待两项视觉签字] H12 Dual SH 与 H13 transport
+
+H13 切到 `LightTransmittance` debug view 后出现稳定、明显的黑白方向梯度；切回 `Final` 也有方向明暗。该证据把故障边界收窄为视觉强度调校：六轴 τ 资产、GPU 上传与 shader 消费链路均已接通，不再重复训练或重接 transport。最后可靠读回为 Density=`1.32799995`、Gamma=`1.245066`、Directional Shadow Density Scale=`0.304266`；最终强度仍由用户签字。
+
+H12 无自阴影的现场根因不是训练资产失效，而是 Actor 实例 `Dual SH=false`，导致 composite 不重建 light-conditioned `J`。实例已恢复 `Dual SH=true`，ambient scale=`0`；恢复后的 Final 视觉复核被中断，因此只记录“运行时根因已修复”，不冒充画质 Gate 通过。
+
+最后可靠现场状态为 H12、H13、SVT 均 visible，H0 不在当前关卡。UE 地图、导入 PLY/JSON 和 Actor 实例覆盖不属于 Iris Git；关卡是否已保存不能由仓库推断。为消除代码复现缺口，已把本地 clean-room `GaussianSplattingForUnrealEngine 0.1-reconstruction` 的 21 个源码／shader 文件（不含 Content 资产）快照到 `ue-plugin/GaussianSplattingForUnrealEngine/`。下一步只做 H12 Final 复核与 H13 强度签字；在此之前不创建 H14、不启动新训练。

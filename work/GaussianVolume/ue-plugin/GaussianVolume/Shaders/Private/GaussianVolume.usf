@@ -1,0 +1,1165 @@
+// Copyright 2026 Violina. All Rights Reserved.
+
+#include "/Engine/Private/Common.ush"
+#include "/Engine/Private/SceneTexturesCommon.ush"
+
+// Phase 3: Ray-tracing renderer for Gaussian volume primitives.
+// Ported from mvp/gaussian_volume.py:
+//   - ray_gaussian_taus() → RayGaussianTau()
+//   - shade_ray()         → MainCS body (front-to-back compositing + single scatter)
+//   - candidates_along_ray() → adaptive support sphere cull per pixel
+//
+// GPU packing: 3 x uint4 = 48 bytes per primitive (see GaussianVolumeTypes.h).
+// FP32 center/omega; FP16 sigma/scale/support/emission; SNORM8 rotation; UNORM8 albedo.
+
+// --- Parameters filled by C++ FParameters ---
+
+// Max candidate Gaussians composited per ray. A global center-depth order (CPU
+// SortedIndices) is wrong for crossing anisotropic arcs, so we gather per-ray
+// candidates and sort them by t_star (peak contribution along THIS ray) before
+// compositing. When a ray exceeds this bounded working set, MainCS keeps the
+// nearest hits; farther hits are negligible once front-to-back T is exhausted.
+// ponytail: bounded 64-hit list; use tiled/global sorting if overflow is visible.
+#define MAX_GAUSSIAN_HITS 64
+
+#ifndef PI
+#define PI 3.14159265358979323846
+#endif
+
+struct FGaussianVolumePackedPrimitive
+{
+    uint4 Data0;
+    uint4 Data1;
+    uint4 Data2;
+};
+
+struct FGaussianVolumePackedInstance
+{
+    uint4 Data0;
+    uint4 Data1;
+};
+
+StructuredBuffer<FGaussianVolumePackedPrimitive> GaussianBuffer;
+StructuredBuffer<FGaussianVolumePackedInstance> InstanceBuffer;
+StructuredBuffer<uint> TileCandidateRawCounts;
+StructuredBuffer<uint> TileCandidateCounts;
+StructuredBuffer<uint> TileCandidateOffsets;
+StructuredBuffer<uint> TileCandidateIndices;
+// Per-primitive light transmittance from the LightTauCS prepass, indexed by GLOBAL gaussian
+// index (same order as GaussianBuffer). Encodes how much light reaches each primitive after
+// being occluded by ALL other primitives toward the light (cross-primitive shadowing).
+StructuredBuffer<float> LightTransmittance;
+
+// Scene color input for in-shader compositing (avoids PSO issues with pixel shaders)
+Texture2D SceneColorTexture;
+Texture2D LodATexture;
+Texture2D LodBTexture;
+Texture2D<float> PoolFreeTauTexture;
+SamplerState PoolFreeTauSampler;
+
+RWTexture2D<float4> OutputTexture;
+// LightTauCS output: per-primitive accumulated light transmittance (one float per primitive).
+RWStructuredBuffer<float> OutLightTau;
+RWStructuredBuffer<uint> OutTileCandidateCounts;
+RWStructuredBuffer<uint> OutTileCandidateOffsets;
+RWStructuredBuffer<uint> OutCandidateStats;
+RWStructuredBuffer<uint> TileWriteCursors;
+RWStructuredBuffer<uint> OutTileCandidateIndices;
+
+// Camera & render params (packed as float4s for alignment)
+float4 CameraPos;       // xyz = camera position (world)
+float4 CameraDirs;      // x = tanHalfFov, y = aspect, z, w unused
+float4 CameraForward;   // xyz = forward dir (normalized)
+float4 CameraRight;     // xyz = right dir (normalized)
+float4 CameraUp;        // xyz = up dir (normalized)
+float4 Resolution;      // x = width, y = height, z = 1/width, w = 1/height (viewport-local)
+float4 ViewRectMin;     // xy = viewport min offset in the full SceneColor texture
+float4 DepthViewRect;   // xy = primary depth ViewRect min (texels), zw = primary depth ViewRect size (texels)
+float4 DepthBufferInvSize; // xy = 1 / SceneDepth buffer extent
+float4x4 ClipToWorld;   // inverse view-projection: NDC -> world
+float4 UniformAppearance; // albedo.rgb, emission; valid when bUseUniformFastPath != 0
+uint   NumGaussians;
+uint   NumInstances;
+uint   NumTilesX;
+uint   NumTilesY;
+uint   NumTiles;
+uint   TileSize;
+uint   CandidatePoolCapacity;
+uint   bUseUniformFastPath;
+uint   bUseDirectionalLightTau;
+uint   bUseTightPBF;
+uint   bSingleInstance;
+uint   SinglePrimitiveOffset;
+uint   SinglePrimitiveCount;
+uint   SingleLightBasisRotation;
+float4 SingleInstanceOffset;
+
+// Lighting
+float4 LightDir;        // xyz = normalized light direction (toward light)
+float4 LightColor;      // rgb = light color * intensity
+float4 AmbientColor;    // rgb = ambient term
+float  PowderFactor;    // powder effect strength (default 0.5)
+float  MaxRayDistance;  // t_far for integration (default 1e5)
+
+// Debug: 0=off, 1=show ray hits as solid color (no lighting)
+uint bUseSceneDepth;
+uint DebugView;
+uint bPoolFreeInPlaceComposite;
+float LodBlendAlpha;
+
+// --- Math helpers ---
+
+float2 UnpackHalf2(uint packed)
+{
+    return float2(f16tof32(packed & 0xffffu), f16tof32(packed >> 16));
+}
+
+float UnpackSnorm8(uint packed, uint shift)
+{
+    uint byte_value = (packed >> shift) & 0xffu;
+    int signed_value = byte_value > 127u ? (int)byte_value - 256 : (int)byte_value;
+    return max((float)signed_value / 127.0, -1.0);
+}
+
+void DecodeGaussianGeometry(
+    uint index,
+    out float3 center,
+    out float sigma_t,
+    out float3 gaussian_scale,
+    out float4 quat,
+    out float bound_radius,
+    out float support_sigma)
+{
+    FGaussianVolumePackedPrimitive primitive = GaussianBuffer[index];
+    center = asfloat(primitive.Data0.xyz);
+    float2 sigma_support = UnpackHalf2(primitive.Data0.w);
+    sigma_t = sigma_support.x;
+    support_sigma = sigma_support.y;
+
+    float2 scale_xy = UnpackHalf2(primitive.Data1.x);
+    float2 scale_z_emission = UnpackHalf2(primitive.Data1.y);
+    gaussian_scale = max(float3(scale_xy, scale_z_emission.x), 1e-4);
+    quat = float4(
+        UnpackSnorm8(primitive.Data1.z, 0),
+        UnpackSnorm8(primitive.Data1.z, 8),
+        UnpackSnorm8(primitive.Data1.z, 16),
+        UnpackSnorm8(primitive.Data1.z, 24));
+    quat *= rsqrt(max(dot(quat, quat), 1e-12));
+    bound_radius = support_sigma * max(gaussian_scale.x, max(gaussian_scale.y, gaussian_scale.z));
+}
+
+void DecodeGaussianAppearance(uint index, out float3 albedo, out float emission)
+{
+    FGaussianVolumePackedPrimitive primitive = GaussianBuffer[index];
+    albedo = float3(
+        primitive.Data1.w & 0xffu,
+        (primitive.Data1.w >> 8) & 0xffu,
+        (primitive.Data1.w >> 16) & 0xffu) / 255.0;
+    emission = UnpackHalf2(primitive.Data1.y).y;
+}
+
+float DecodeGaussianOmega(uint index)
+{
+    return max(asfloat(GaussianBuffer[index].Data2.x), 0.0);
+}
+
+void DecodeInstance(
+    uint index,
+    out float3 world_offset,
+    out uint primitive_offset,
+    out uint primitive_count)
+{
+    if (bSingleInstance != 0)
+    {
+        world_offset = SingleInstanceOffset.xyz;
+        primitive_offset = SinglePrimitiveOffset;
+        primitive_count = SinglePrimitiveCount;
+        return;
+    }
+    FGaussianVolumePackedInstance instance = InstanceBuffer[index];
+    world_offset = asfloat(instance.Data0.xyz);
+    primitive_offset = instance.Data0.w;
+    primitive_count = instance.Data1.x;
+}
+
+uint DecodeInstanceLightBasisRotation(uint index)
+{
+    return bSingleInstance != 0
+        ? SingleLightBasisRotation
+        : InstanceBuffer[index].Data1.y;
+}
+
+#define GAUSSIAN_CANDIDATE_PRIMITIVE_BITS 20u
+#define GAUSSIAN_CANDIDATE_PRIMITIVE_MASK ((1u << GAUSSIAN_CANDIDATE_PRIMITIVE_BITS) - 1u)
+
+uint PackCandidateId(uint instance_index, uint gaussian_index)
+{
+    return (instance_index << GAUSSIAN_CANDIDATE_PRIMITIVE_BITS)
+        | (gaussian_index & GAUSSIAN_CANDIDATE_PRIMITIVE_MASK);
+}
+
+void DecodeCandidateId(uint candidate_id, out uint instance_index, out uint gaussian_index)
+{
+    instance_index = candidate_id >> GAUSSIAN_CANDIDATE_PRIMITIVE_BITS;
+    gaussian_index = candidate_id & GAUSSIAN_CANDIDATE_PRIMITIVE_MASK;
+}
+
+// Abramowitz-Stegun 7.1.26 approximation of erf(x).
+// Max absolute error ~1.5e-7 — sufficient for volume rendering.
+float Erf(float x)
+{
+    float t = 1.0 / (1.0 + 0.3275911 * abs(x));
+    float y = 1.0 - (((((1.061405429 * t - 1.453152027) * t)
+                       + 1.421413741) * t - 0.284496736) * t
+                       + 0.254829592) * t * exp(-x * x);
+    return (x >= 0.0) ? y : -y;
+}
+
+float3 UnrotateByQuaternion(float4 quat, float3 value)
+{
+    float3 t = 2.0 * cross(quat.xyz, value);
+    return value - quat.w * t + cross(quat.xyz, t);
+}
+
+float4 DecodePackedQuaternion(uint packed)
+{
+    float4 quat = float4(
+        UnpackSnorm8(packed, 0),
+        UnpackSnorm8(packed, 8),
+        UnpackSnorm8(packed, 16),
+        UnpackSnorm8(packed, 24));
+    return quat * rsqrt(max(dot(quat, quat), 1e-12));
+}
+
+float DecodeDirectionalLightTransmittance(uint gaussian_index, uint instance_index)
+{
+    uint4 transport = GaussianBuffer[gaussian_index].Data2;
+    float2 tau_x = UnpackHalf2(transport.y);
+    float2 tau_y = UnpackHalf2(transport.z);
+    float2 tau_z = UnpackHalf2(transport.w);
+    float3 local_light = UnrotateByQuaternion(
+        DecodePackedQuaternion(DecodeInstanceLightBasisRotation(instance_index)),
+        normalize(LightDir.xyz));
+    float3 axis_tau = float3(
+        local_light.x >= 0.0 ? tau_x.x : tau_x.y,
+        local_light.y >= 0.0 ? tau_y.x : tau_y.y,
+        local_light.z >= 0.0 ? tau_z.x : tau_z.y);
+    float3 weights = abs(local_light);
+    return exp(-dot(axis_tau, weights) / max(weights.x + weights.y + weights.z, 1e-6));
+}
+
+void BuildCovariance(float3 gaussian_scale, float4 quat, out float4 cov0, out float4 cov1)
+{
+    float x = quat.x, y = quat.y, z = quat.z, w = quat.w;
+    float3 axis_x = float3(
+        1.0 - 2.0 * (y * y + z * z),
+        2.0 * (x * y + z * w),
+        2.0 * (x * z - y * w));
+    float3 axis_y = float3(
+        2.0 * (x * y - z * w),
+        1.0 - 2.0 * (x * x + z * z),
+        2.0 * (y * z + x * w));
+    float3 axis_z = float3(
+        2.0 * (x * z + y * w),
+        2.0 * (y * z - x * w),
+        1.0 - 2.0 * (x * x + y * y));
+    float3 scale_squared = gaussian_scale * gaussian_scale;
+    cov0 = float4(
+        axis_x.x * axis_x.x * scale_squared.x + axis_y.x * axis_y.x * scale_squared.y + axis_z.x * axis_z.x * scale_squared.z,
+        axis_x.x * axis_x.y * scale_squared.x + axis_y.x * axis_y.y * scale_squared.y + axis_z.x * axis_z.y * scale_squared.z,
+        axis_x.x * axis_x.z * scale_squared.x + axis_y.x * axis_y.z * scale_squared.y + axis_z.x * axis_z.z * scale_squared.z,
+        0.0);
+    cov1 = float4(
+        axis_x.y * axis_x.y * scale_squared.x + axis_y.y * axis_y.y * scale_squared.y + axis_z.y * axis_z.y * scale_squared.z,
+        axis_x.y * axis_x.z * scale_squared.x + axis_y.y * axis_y.z * scale_squared.y + axis_z.y * axis_z.z * scale_squared.z,
+        axis_x.z * axis_x.z * scale_squared.x + axis_y.z * axis_y.z * scale_squared.y + axis_z.z * axis_z.z * scale_squared.z,
+        0.0);
+}
+
+float3 MulSigma(float4 cov0, float4 cov1, float3 v)
+{
+    return float3(
+        cov0.x * v.x + cov0.y * v.y + cov0.z * v.z,
+        cov0.y * v.x + cov1.x * v.y + cov1.y * v.z,
+        cov0.z * v.x + cov1.y * v.y + cov1.z * v.z
+    );
+}
+
+void ComplexMul(float ar, float ai, float br, float bi, out float rr, out float ri)
+{
+    rr = ar * br - ai * bi;
+    ri = ar * bi + ai * br;
+}
+
+void ComplexRcp(float br, float bi, out float rr, out float ri)
+{
+    float inv = rcp(br * br + bi * bi);
+    rr = br * inv;
+    ri = -bi * inv;
+}
+
+// Weideman N=16 rational approximation of the Faddeeva function for Im(z) >= 0.
+void FaddeevaW(float zr, float zi, out float wr, out float wi)
+{
+    const float L = 3.3635856610148585;
+    const float A[16] = {
+        9.939322536485169e-07, 3.9812875836769905e-06, -5.584233405904333e-06,
+        -2.734640461595305e-05, 2.170986793497348e-05, 2.107105644503535e-04,
+        8.703158429902436e-05, -1.527659738752297e-03, -3.881015190968905e-03,
+        3.682567321738441e-03, 5.182240244085487e-02, 1.912417266995708e-01,
+        4.692909009399138e-01, 8.864478296072821e-01, 1.362240823992100e+00,
+        1.748395894058383e+00
+    };
+    float lpr = L - zi, lpi = zr;
+    float lmr = L + zi, lmi = -zr;
+    float rlmr, rlmi;
+    ComplexRcp(lmr, lmi, rlmr, rlmi);
+    float Zr, Zi;
+    ComplexMul(lpr, lpi, rlmr, rlmi, Zr, Zi);
+    float pr = A[0], pi = 0.0;
+    [unroll] for (uint i = 1; i < 16; ++i)
+    {
+        float next_r, next_i;
+        ComplexMul(pr, pi, Zr, Zi, next_r, next_i);
+        pr = next_r + A[i];
+        pi = next_i;
+    }
+    float lm2r, lm2i, rlm2r, rlm2i, t1r, t1i;
+    ComplexMul(lmr, lmi, lmr, lmi, lm2r, lm2i);
+    ComplexRcp(lm2r, lm2i, rlm2r, rlm2i);
+    ComplexMul(2.0 * pr, 2.0 * pi, rlm2r, rlm2i, t1r, t1i);
+    wr = t1r + 0.5641895835477563 * rlmr;
+    wi = t1i + 0.5641895835477563 * rlmi;
+}
+
+void ErfFoldedComplex(float x, float w, out float re, out float im)
+{
+    float E = exp(min(w * w - x * x, 69.0775528));
+    bool pos = x >= 0.0;
+    float wr, wi;
+    FaddeevaW(pos ? w : -w, pos ? x : -x, wr, wi);
+    float c = cos(2.0 * x * w), s = sin(2.0 * x * w);
+    float p_re = c * wr - s * wi;
+    float p_im = c * wi + s * wr;
+    re = pos ? 1.0 - E * p_re : -1.0 + E * p_re;
+    im = pos ? -E * p_im : E * p_im;
+}
+
+void ErfPairDifference(float x1, float x0, float w, out float re_diff, out float im_diff)
+{
+    float re1, im1, re0, im0;
+    ErfFoldedComplex(x1, w, re1, im1);
+    ErfFoldedComplex(x0, w, re0, im0);
+    re_diff = 0.8862269254527580 * (re1 - re0);
+    im_diff = 0.8862269254527580 * (im1 - im0);
+}
+
+// Analytic optical depth through a Gaussian or signed Gabor residual.
+float RayGaussianTau(
+    float3 ray_o, float3 ray_d,
+    float3 center, float3 gaussian_scale, float4 quat, float sigma_t, float omega,
+    float t_near, float t_far,
+    out float t_star)
+{
+    float3 m = ray_o - center;
+    float3 inv_scale = rcp(gaussian_scale);
+    float3 local_d = UnrotateByQuaternion(quat, ray_d) * inv_scale;
+    float3 local_m = UnrotateByQuaternion(quat, m) * inv_scale;
+    float A = dot(local_d, local_d);
+    float B = dot(local_m, local_d);
+
+    A = max(A, 1e-12);
+    t_star = -B / A;
+
+    float sig1d = rsqrt(A);                // 1/sqrt(A)
+
+    if (omega > 1e-6)
+    {
+        float3 w_dir = local_d * sig1d;
+        float3 p = local_m + local_d * t_near;
+        float t_limit = max((t_far - t_near) / sig1d, 0.0);
+        float B_local = dot(w_dir, p);
+        float3 p_perp = p - w_dir * B_local;
+        float radial2 = max(dot(p_perp, p_perp), 0.0);
+        float beta = omega * (w_dir.x + w_dir.y + w_dir.z);
+        float phase = omega * (p_perp.x + p_perp.y + p_perp.z);
+        if (t_limit < 1e-4)
+        {
+            float3 p_mid = p + 0.5 * t_limit * w_dir;
+            return sigma_t * sig1d * t_limit * exp(-0.5 * dot(p_mid, p_mid))
+                * cos(omega * (p_mid.x + p_mid.y + p_mid.z));
+        }
+        float sqrt_half = sqrt(0.5);
+        float re_diff, im_diff;
+        ErfPairDifference(
+            sqrt_half * (t_limit + B_local), sqrt_half * B_local,
+            sqrt_half * beta, re_diff, im_diff);
+        float segment = exp(-0.5 * beta * beta)
+            * (cos(phase) * re_diff - sin(phase) * im_diff) / sqrt(PI);
+        return sigma_t * sig1d * sqrt(2.0 * PI) * exp(-0.5 * radial2) * segment;
+    }
+
+    float3 local_radial = local_m + local_d * t_star;
+    float radial2 = max(dot(local_radial, local_radial), 0.0);
+    float amp = sigma_t * exp(-0.5 * radial2);
+
+    // Integral of exp(-0.5*(t-t*)^2 / sig^2) dt over [t_near, t_far]
+    // = sig * sqrt(2*pi) * 0.5 * (erf(z1) - erf(z0))
+    float sqrt2_sig = sqrt(2.0) * sig1d;
+    float z0 = (t_near - t_star) / sqrt2_sig;
+    float z1 = (t_far  - t_star) / sqrt2_sig;
+    float integral = sig1d * sqrt(2.0 * PI) * 0.5 * (Erf(z1) - Erf(z0));
+
+    return amp * integral;
+}
+
+// --- Cross-primitive light transmittance prepass (SPEC §10) ---
+// For each primitive i, march from its center toward the light and accumulate optical depth
+// through ALL primitives (including itself). Store transmittance exp(-tau_sum) so the main
+// pass just looks it up (O(1)). This is the O(N^2) prepass; storage is O(N).
+// Replaces the old per-primitive self-only shadow, which could not represent one arc
+// shadowing another and had almost no dependence on light DIRECTION.
+[numthreads(64, 1, 1)]
+void LightTauCS(uint3 DTid : SV_DispatchThreadID)
+{
+    uint i = DTid.x;
+    if (i >= NumGaussians)
+        return;
+
+    float3 center_i;
+    float sigma_i, radius_i, support_i;
+    float3 scale_i;
+    float4 quat_i;
+    DecodeGaussianGeometry(i, center_i, sigma_i, scale_i, quat_i, radius_i, support_i);
+    float3 ray_o = center_i;
+    float3 ray_d = normalize(LightDir.xyz);
+
+    float tau_sum = 0.0;
+    for (uint j = 0; j < NumGaussians; j++)
+    {
+        if (DecodeGaussianOmega(j) > 1e-6)
+            continue; // signed residuals receive shadows but do not become shadow density
+        float3 center;
+        float sigma_t, bound_r, support_sigma;
+        float3 gaussian_scale;
+        float4 quat;
+        DecodeGaussianGeometry(j, center, sigma_t, gaussian_scale, quat, bound_r, support_sigma);
+        // Bounding-sphere reject along the light ray (skip occluders the ray misses / behind).
+        float3 oc = ray_o - center;
+        float b_coef = dot(oc, ray_d);
+        float c_coef = dot(oc, oc) - bound_r * bound_r;
+        float disc = b_coef * b_coef - c_coef;
+        if (disc < 0.0)
+            continue;
+        if (-b_coef + sqrt(disc) < 0.0)
+            continue;  // occluder entirely on the far side (away from the light)
+
+        float t_star;
+        // Integrate from the primitive center (t=0) outward toward the light.
+        tau_sum += RayGaussianTau(
+            ray_o, ray_d, center, gaussian_scale, quat, sigma_t, 0.0,
+            0.0, MaxRayDistance, t_star);
+    }
+
+    OutLightTau[i] = exp(-max(tau_sum, 0.0));
+}
+
+// One thread per Gaussian. A conservative screen-space adaptive support sphere is appended
+// to every overlapped tile, so MainCS no longer scans the global primitive array.
+// Count/prefix/scatter stores all tile lists in one fixed-budget global pool.
+bool ProjectSphereAxisBounds(float axis, float depth, float radius, float tan_half_fov,
+                             out float ndc_min, out float ndc_max)
+{
+    ndc_min = 0.0;
+    ndc_max = 0.0;
+    float axis_distance = length(float2(axis, depth));
+    if (axis_distance <= radius)
+    {
+        ndc_min = -1.0;
+        ndc_max = 1.0;
+        return true;
+    }
+
+    float center_angle = atan2(axis, depth);
+    float angular_radius = asin(saturate(radius / axis_distance));
+    float half_fov = atan(tan_half_fov);
+    float min_angle = center_angle - angular_radius;
+    float max_angle = center_angle + angular_radius;
+    if (max_angle < -half_fov || min_angle > half_fov)
+        return false;
+
+    ndc_min = tan(clamp(min_angle, -half_fov, half_fov)) / tan_half_fov;
+    ndc_max = tan(clamp(max_angle, -half_fov, half_fov)) / tan_half_fov;
+    return true;
+}
+
+bool ProjectEllipsoidAxisBounds(
+    float center_axis, float depth,
+    float cov_axis_axis, float cov_axis_depth, float cov_depth_depth,
+    float support_sigma, float tan_half_fov,
+    out float ndc_min, out float ndc_max)
+{
+    ndc_min = 0.0;
+    ndc_max = 0.0;
+    float k2 = support_sigma * support_sigma;
+    float a = depth * depth - k2 * cov_depth_depth;
+    if (a <= 1e-6)
+    {
+        ndc_min = -1.0;
+        ndc_max = 1.0;
+        return true;
+    }
+    float b = -2.0 * center_axis * depth + 2.0 * k2 * cov_axis_depth;
+    float c = center_axis * center_axis - k2 * cov_axis_axis;
+    float discriminant = b * b - 4.0 * a * c;
+    if (discriminant < 0.0)
+        return false;
+
+    float root = sqrt(max(discriminant, 0.0));
+    float slope0 = (-b - root) / (2.0 * a);
+    float slope1 = (-b + root) / (2.0 * a);
+    float slope_min = min(slope0, slope1);
+    float slope_max = max(slope0, slope1);
+    if (slope_max < -tan_half_fov || slope_min > tan_half_fov)
+        return false;
+    ndc_min = clamp(slope_min / tan_half_fov, -1.0, 1.0);
+    ndc_max = clamp(slope_max / tan_half_fov, -1.0, 1.0);
+    return true;
+}
+
+bool GetTileBounds(
+    uint instance_index,
+    uint gaussian_index,
+    out uint2 tile_min,
+    out uint2 tile_max)
+{
+    float3 center;
+    float sigma_t, radius, support_sigma;
+    float3 gaussian_scale;
+    float4 quat;
+    DecodeGaussianGeometry(
+        gaussian_index, center, sigma_t, gaussian_scale, quat, radius, support_sigma);
+    float3 instance_offset;
+    uint primitive_offset, primitive_count;
+    DecodeInstance(instance_index, instance_offset, primitive_offset, primitive_count);
+    center += instance_offset;
+    float3 camera_to_center = center - CameraPos.xyz;
+    float depth = dot(camera_to_center, CameraForward.xyz);
+    if (depth + radius <= 0.0)
+        return false;
+
+    float tan_half_fov_x = max(CameraDirs.x, 1e-6);
+    float tan_half_fov_y = tan_half_fov_x / max(CameraDirs.y, 1e-6);
+    float view_x = dot(camera_to_center, CameraRight.xyz);
+    float view_y = dot(camera_to_center, CameraUp.xyz);
+    float ndc_min_x, ndc_max_x, ndc_min_y, ndc_max_y;
+    bool projected = false;
+    if (bUseTightPBF != 0)
+    {
+        float4 cov0, cov1;
+        BuildCovariance(gaussian_scale, quat, cov0, cov1);
+        float3 cov_forward = MulSigma(cov0, cov1, CameraForward.xyz);
+        float cov_depth_depth = dot(CameraForward.xyz, cov_forward);
+        float3 cov_right = MulSigma(cov0, cov1, CameraRight.xyz);
+        float3 cov_up = MulSigma(cov0, cov1, CameraUp.xyz);
+        projected =
+            ProjectEllipsoidAxisBounds(
+                view_x, depth,
+                dot(CameraRight.xyz, cov_right),
+                dot(CameraRight.xyz, cov_forward),
+                cov_depth_depth, support_sigma, tan_half_fov_x,
+                ndc_min_x, ndc_max_x) &&
+            ProjectEllipsoidAxisBounds(
+                view_y, depth,
+                dot(CameraUp.xyz, cov_up),
+                dot(CameraUp.xyz, cov_forward),
+                cov_depth_depth, support_sigma, tan_half_fov_y,
+                ndc_min_y, ndc_max_y);
+        if (!projected)
+        {
+            // Numerical degeneracy must never drop a visible primitive. The
+            // support sphere is conservative and is also the reference path.
+            projected =
+                ProjectSphereAxisBounds(view_x, depth, radius, tan_half_fov_x, ndc_min_x, ndc_max_x) &&
+                ProjectSphereAxisBounds(view_y, depth, radius, tan_half_fov_y, ndc_min_y, ndc_max_y);
+        }
+    }
+    else
+    {
+        projected =
+            ProjectSphereAxisBounds(view_x, depth, radius, tan_half_fov_x, ndc_min_x, ndc_max_x) &&
+            ProjectSphereAxisBounds(view_y, depth, radius, tan_half_fov_y, ndc_min_y, ndc_max_y);
+    }
+    if (!projected)
+        return false;
+
+    float2 pixel_min = float2(
+        (ndc_min_x * 0.5 + 0.5) * Resolution.x,
+        (0.5 - ndc_max_y * 0.5) * Resolution.y);
+    float2 pixel_max = float2(
+        (ndc_max_x * 0.5 + 0.5) * Resolution.x,
+        (0.5 - ndc_min_y * 0.5) * Resolution.y);
+    pixel_min = clamp(pixel_min, 0.0, Resolution.xy - 1.0);
+    pixel_max = clamp(pixel_max, 0.0, Resolution.xy - 1.0);
+
+    tile_min = (uint2)pixel_min / TileSize;
+    tile_max = (uint2)pixel_max / TileSize;
+    tile_max = min(tile_max, uint2(NumTilesX - 1, NumTilesY - 1));
+    return true;
+}
+
+[numthreads(64, 1, 1)]
+void CountTileCandidatesCS(uint3 DTid : SV_DispatchThreadID)
+{
+    uint instance_index = DTid.y;
+    if (instance_index >= NumInstances)
+        return;
+    float3 instance_offset;
+    uint primitive_offset, primitive_count;
+    DecodeInstance(instance_index, instance_offset, primitive_offset, primitive_count);
+    uint local_primitive_index = DTid.x;
+    if (local_primitive_index >= primitive_count)
+        return;
+    uint gaussian_index = primitive_offset + local_primitive_index;
+
+    uint2 tile_min, tile_max;
+    if (!GetTileBounds(instance_index, gaussian_index, tile_min, tile_max))
+        return;
+
+    for (uint tile_y = tile_min.y; tile_y <= tile_max.y; ++tile_y)
+    {
+        for (uint tile_x = tile_min.x; tile_x <= tile_max.x; ++tile_x)
+        {
+            uint tile_index = tile_y * NumTilesX + tile_x;
+            InterlockedAdd(OutTileCandidateCounts[tile_index], 1);
+        }
+    }
+}
+
+[numthreads(1, 1, 1)]
+void PrefixTileCandidatesCS(uint3 DTid : SV_DispatchThreadID)
+{
+    uint requested = 0;
+    uint max_tile_requested = 0;
+    for (uint tile_index = 0; tile_index < NumTiles; ++tile_index)
+    {
+        uint raw_count = TileCandidateRawCounts[tile_index];
+        requested += raw_count;
+        max_tile_requested = max(max_tile_requested, raw_count);
+    }
+
+    uint allocated = 0;
+    if (requested <= CandidatePoolCapacity)
+    {
+        for (uint tile_index = 0; tile_index < NumTiles; ++tile_index)
+        {
+            uint count = TileCandidateRawCounts[tile_index];
+            OutTileCandidateCounts[tile_index] = count;
+            allocated += count;
+        }
+    }
+    else
+    {
+        // A sequential clamp blanks every tile after the pool fills. Give every
+        // visible tile a proportional quota first, then distribute the <NumTiles
+        // rounding remainder. ponytail: candidate choice inside a truncated tile
+        // remains atomic-order; add an importance threshold only if overflow is
+        // observed at the production capacity.
+        float quota_scale = (float)CandidatePoolCapacity / max((float)requested, 1.0);
+        for (uint tile_index = 0; tile_index < NumTiles; ++tile_index)
+        {
+            uint raw_count = TileCandidateRawCounts[tile_index];
+            uint count = min(raw_count, (uint)floor((float)raw_count * quota_scale));
+            OutTileCandidateCounts[tile_index] = count;
+            allocated += count;
+        }
+        uint remaining = allocated < CandidatePoolCapacity
+            ? CandidatePoolCapacity - allocated
+            : 0;
+        for (uint tile_index = 0; tile_index < NumTiles && remaining > 0; ++tile_index)
+        {
+            if (OutTileCandidateCounts[tile_index] < TileCandidateRawCounts[tile_index])
+            {
+                OutTileCandidateCounts[tile_index]++;
+                remaining--;
+            }
+        }
+    }
+
+    uint offset = 0;
+    uint truncated_tiles = 0;
+    uint max_tile_drop = 0;
+    for (uint tile_index = 0; tile_index < NumTiles; ++tile_index)
+    {
+        uint raw_count = TileCandidateRawCounts[tile_index];
+        uint available = offset < CandidatePoolCapacity ? CandidatePoolCapacity - offset : 0;
+        uint count = min(OutTileCandidateCounts[tile_index], available);
+        OutTileCandidateOffsets[tile_index] = offset;
+        OutTileCandidateCounts[tile_index] = count;
+        offset += count;
+        if (count < raw_count)
+        {
+            truncated_tiles++;
+            max_tile_drop = max(max_tile_drop, raw_count - count);
+        }
+    }
+    OutCandidateStats[0] = requested;
+    OutCandidateStats[1] = offset;
+    OutCandidateStats[2] = CandidatePoolCapacity;
+    OutCandidateStats[3] = max_tile_requested;
+    OutCandidateStats[4] = truncated_tiles;
+    OutCandidateStats[5] = max_tile_drop;
+}
+
+[numthreads(64, 1, 1)]
+void ScatterTileCandidatesCS(uint3 DTid : SV_DispatchThreadID)
+{
+    uint instance_index = DTid.y;
+    if (instance_index >= NumInstances)
+        return;
+    float3 instance_offset;
+    uint primitive_offset, primitive_count;
+    DecodeInstance(instance_index, instance_offset, primitive_offset, primitive_count);
+    uint local_primitive_index = DTid.x;
+    if (local_primitive_index >= primitive_count)
+        return;
+    uint gaussian_index = primitive_offset + local_primitive_index;
+
+    uint2 tile_min, tile_max;
+    if (!GetTileBounds(instance_index, gaussian_index, tile_min, tile_max))
+        return;
+
+    for (uint tile_y = tile_min.y; tile_y <= tile_max.y; ++tile_y)
+    {
+        for (uint tile_x = tile_min.x; tile_x <= tile_max.x; ++tile_x)
+        {
+            uint tile_index = tile_y * NumTilesX + tile_x;
+            uint slot;
+            InterlockedAdd(TileWriteCursors[tile_index], 1, slot);
+            if (slot < TileCandidateCounts[tile_index])
+            {
+                OutTileCandidateIndices[TileCandidateOffsets[tile_index] + slot] =
+                    PackCandidateId(instance_index, gaussian_index);
+            }
+        }
+    }
+}
+
+struct FPoolFreeVSToPS
+{
+    float4 Position : SV_POSITION;
+    nointerpolation uint GaussianIndex : TEXCOORD0;
+};
+
+FPoolFreeVSToPS PoolFreeVS(uint vertex_id : SV_VertexID, uint instance_id : SV_InstanceID)
+{
+    FPoolFreeVSToPS output;
+    output.GaussianIndex = instance_id;
+
+    float3 center;
+    float sigma_t, radius, support_sigma;
+    float3 gaussian_scale;
+    float4 quat;
+    DecodeGaussianGeometry(
+        instance_id, center, sigma_t, gaussian_scale, quat, radius, support_sigma);
+    float3 camera_to_center = center - CameraPos.xyz;
+    float depth = dot(camera_to_center, CameraForward.xyz);
+    float tan_half_fov_x = max(CameraDirs.x, 1e-6);
+    float tan_half_fov_y = tan_half_fov_x / max(CameraDirs.y, 1e-6);
+    float view_x = dot(camera_to_center, CameraRight.xyz);
+    float view_y = dot(camera_to_center, CameraUp.xyz);
+
+    float4 cov0, cov1;
+    BuildCovariance(gaussian_scale, quat, cov0, cov1);
+    float3 cov_forward = MulSigma(cov0, cov1, CameraForward.xyz);
+    float cov_depth_depth = dot(CameraForward.xyz, cov_forward);
+    float3 cov_right = MulSigma(cov0, cov1, CameraRight.xyz);
+    float3 cov_up = MulSigma(cov0, cov1, CameraUp.xyz);
+    float ndc_min_x, ndc_max_x, ndc_min_y, ndc_max_y;
+    bool visible = depth + radius > 0.0 &&
+        ProjectEllipsoidAxisBounds(
+            view_x, depth,
+            dot(CameraRight.xyz, cov_right),
+            dot(CameraRight.xyz, cov_forward),
+            cov_depth_depth, support_sigma, tan_half_fov_x,
+            ndc_min_x, ndc_max_x) &&
+        ProjectEllipsoidAxisBounds(
+            view_y, depth,
+            dot(CameraUp.xyz, cov_up),
+            dot(CameraUp.xyz, cov_forward),
+            cov_depth_depth, support_sigma, tan_half_fov_y,
+            ndc_min_y, ndc_max_y);
+    if (!visible)
+    {
+        output.Position = float4(-2.0, -2.0, 0.0, 1.0);
+        return output;
+    }
+
+    uint corner_id = vertex_id % 6u;
+    float2 corner =
+        corner_id == 0u ? float2(0, 0) :
+        corner_id == 1u ? float2(1, 0) :
+        corner_id == 2u ? float2(0, 1) :
+        corner_id == 3u ? float2(0, 1) :
+        corner_id == 4u ? float2(1, 0) : float2(1, 1);
+    float2 ndc = lerp(
+        float2(ndc_min_x, ndc_min_y),
+        float2(ndc_max_x, ndc_max_y),
+        corner);
+    output.Position = float4(ndc, 0.0, 1.0);
+    return output;
+}
+
+float4 PoolFreePS(FPoolFreeVSToPS input) : SV_TARGET0
+{
+    float2 local_pixel = input.Position.xy - ViewRectMin.xy;
+    float2 uv = local_pixel * Resolution.zw;
+    float2 ndc = float2(uv.x * 2.0 - 1.0, 1.0 - uv.y * 2.0);
+    float4 clip_near = float4(ndc, 1.0, 1.0);
+    float4 clip_mid = float4(ndc, 0.5, 1.0);
+    float4 world_near = mul(clip_near, ClipToWorld);
+    float4 world_mid = mul(clip_mid, ClipToWorld);
+    world_near.xyz /= world_near.w;
+    world_mid.xyz /= world_mid.w;
+    float3 ray_o = world_near.xyz;
+    float3 ray_dir = normalize(world_mid.xyz - world_near.xyz);
+
+    float scene_t = MaxRayDistance;
+    if (bUseSceneDepth != 0)
+    {
+        float2 depth_texel = DepthViewRect.xy + uv * DepthViewRect.zw;
+        float2 depth_uv = depth_texel * DepthBufferInvSize.xy;
+        float device_z = SceneTexturesStruct.SceneDepthTexture.SampleLevel(
+            SceneTexturesStruct.PointClampSampler, depth_uv, 0).r;
+        if (device_z > 1e-6)
+        {
+            float4 clip_scene = float4(ndc, device_z, 1.0);
+            float4 world_scene = mul(clip_scene, ClipToWorld);
+            world_scene.xyz /= world_scene.w;
+            scene_t = min(scene_t, length(world_scene.xyz - ray_o));
+        }
+    }
+
+    float3 center;
+    float sigma_t, bound_radius, support_sigma;
+    float3 gaussian_scale;
+    float4 quat;
+    DecodeGaussianGeometry(
+        input.GaussianIndex, center, sigma_t, gaussian_scale, quat,
+        bound_radius, support_sigma);
+    float3 oc = ray_o - center;
+    float b_coef = dot(oc, ray_dir);
+    float c_coef = dot(oc, oc) - bound_radius * bound_radius;
+    float discriminant = b_coef * b_coef - c_coef;
+    if (discriminant < 0.0)
+        discard;
+    float root = sqrt(discriminant);
+    float t_near = max(-b_coef - root, 0.0);
+    float t_far = min(min(-b_coef + root, MaxRayDistance), scene_t);
+    if (t_far <= t_near)
+        discard;
+
+    float t_star;
+    float tau = RayGaussianTau(
+        ray_o, ray_dir, center, gaussian_scale, quat, sigma_t,
+        DecodeGaussianOmega(input.GaussianIndex),
+        t_near, t_far, t_star);
+    if (tau == 0.0)
+        discard;
+
+    return tau.xxxx;
+}
+
+// The raster pass only accumulates optical depth. Resolving once keeps the
+// uniform-medium powder model order-independent and makes low-resolution
+// rasterization a controlled spatial approximation rather than alpha blending.
+[numthreads(THREADGROUP_SIZE_X, THREADGROUP_SIZE_Y, 1)]
+void PoolFreeCompositeCS(uint3 DTid : SV_DispatchThreadID)
+{
+    uint2 pixel = DTid.xy;
+    if (pixel.x >= (uint)Resolution.x || pixel.y >= (uint)Resolution.y)
+        return;
+
+    uint2 out_pix = pixel + (uint2)ViewRectMin.xy;
+    float2 uv = (float2(pixel) + 0.5) * Resolution.zw;
+    float total_tau = max(PoolFreeTauTexture.SampleLevel(PoolFreeTauSampler, uv, 0).r, 0.0);
+    float T = exp(-total_tau);
+    float alpha = 1.0 - T;
+    float powder = 1.0 - exp(-2.0 * total_tau) * PowderFactor;
+    float3 albedo = UniformAppearance.rgb;
+    float3 scatter = albedo * LightColor.rgb * powder;
+    scatter += albedo * AmbientColor.rgb;
+    scatter += albedo * UniformAppearance.a;
+    float3 scene_color = bPoolFreeInPlaceComposite != 0
+        ? OutputTexture[out_pix].rgb
+        : SceneColorTexture.Load(int3(out_pix, 0)).rgb;
+    OutputTexture[out_pix] = float4(alpha * scatter + scene_color * T, 1.0);
+}
+
+// --- Main compute shader ---
+[numthreads(8, 8, 1)]
+void MainCS(uint3 DTid : SV_DispatchThreadID)
+{
+    uint2 pixel = DTid.xy;
+    if (pixel.x >= (uint)Resolution.x || pixel.y >= (uint)Resolution.y)
+        return;
+
+    // Output pixel = viewport-local + viewport min offset in the full-extent texture.
+    uint2 outPix = pixel + (uint2)ViewRectMin.xy;
+
+
+    // 1. Generate camera ray via UE inverse view-projection (authoritative; no hand-built basis).
+    float2 uv = (pixel + 0.5) * Resolution.zw;     // [0,1]
+    // NDC: x left->right [-1,1]; y top = +1 -> use (1 - 2*uv.y).
+    float2 ndc = float2(uv.x * 2.0 - 1.0, 1.0 - uv.y * 2.0);
+    // UE clip space: Z=1 is NEAR plane, Z=0 is the INFINITE far plane.
+    // Never unproject z=0 (w -> 0 => divide-by-zero => NaN, sphere vanishes).
+    // Use near plane (z=1) and a finite mid-depth (z=0.5) to form the ray.
+    float4 clipNear = float4(ndc, 1.0, 1.0);
+    float4 clipMid  = float4(ndc, 0.5, 1.0);
+    float4 wNear = mul(clipNear, ClipToWorld); wNear.xyz /= wNear.w;
+    float4 wMid  = mul(clipMid,  ClipToWorld); wMid.xyz  /= wMid.w;
+    float3 ray_o   = wNear.xyz;
+    float3 ray_dir = normalize(wMid.xyz - wNear.xyz);
+
+	float scene_t = MaxRayDistance;
+	if (bUseSceneDepth != 0)
+	{
+		// SceneDepth is at the PRIMARY (pre-upscale) resolution, in a buffer whose extent
+		// differs from the post-tonemap SceneColor texture. Reusing outPix (a SceneColor
+		// texel) samples the WRONG depth texel under TSR / screen percentage, so a wall in
+		// the lower-right could occlude a Gaussian in the upper-left.
+		// Correct mapping: viewport-local pixel -> [0,1] uv -> primary depth ViewRect texel.
+		float2 depthTexel = DepthViewRect.xy + uv * DepthViewRect.zw;   // texel coords in depth buffer
+		float2 depthUV = depthTexel * DepthBufferInvSize.xy;            // -> [0,1] buffer UV
+		float device_z = SceneTexturesStruct.SceneDepthTexture.SampleLevel(
+			SceneTexturesStruct.PointClampSampler, depthUV, 0).r;
+		if (device_z > 1e-6)
+		{
+			float4 clipScene = float4(ndc, device_z, 1.0);
+			float4 worldScene = mul(clipScene, ClipToWorld);
+			worldScene.xyz /= worldScene.w;
+			scene_t = min(scene_t, length(worldScene.xyz - ray_o));
+		}
+	}
+
+    // (Removed UV-ramp debug short-circuit. DebugMode now falls through to the
+    //  albedo-only solid-color path inside the compositing loop below.)
+
+    // 2. Gather this tile's candidates, then sort per-ray by t_star (front-to-back).
+    //    A single global center-depth order (CPU SortedIndices) is WRONG where two
+    //    anisotropic arcs cross: along a given ray the true near-to-far order is by
+    //    t_star (point of maximum density contribution), which differs per pixel.
+    //    So we gather this ray's hits and insertion-sort them by t_star.
+    uint  hitIndex[MAX_GAUSSIAN_HITS];
+    float hitTStar[MAX_GAUSSIAN_HITS];
+    float hitTau[MAX_GAUSSIAN_HITS];
+    uint  hitCount = 0;
+
+    float total_tau = 0.0;
+    uint  candidate_count = 0;
+    float light_t_sum = 0.0;
+
+    uint2 tile_coord = pixel / TileSize;
+    uint tile_index = tile_coord.y * NumTilesX + tile_coord.x;
+    uint raw_tile_candidate_count = TileCandidateRawCounts[tile_index];
+    uint tile_candidate_count = TileCandidateCounts[tile_index];
+    uint tile_candidate_offset = TileCandidateOffsets[tile_index];
+    for (uint i = 0; i < tile_candidate_count; i++)
+    {
+        uint instance_index, gaussian_index;
+        DecodeCandidateId(
+            TileCandidateIndices[tile_candidate_offset + i],
+            instance_index, gaussian_index);
+        float3 center;
+        float sigma_t, bound_r, support_sigma;
+        float3 gaussian_scale;
+        float4 quat;
+        DecodeGaussianGeometry(
+            gaussian_index, center, sigma_t, gaussian_scale, quat, bound_r, support_sigma);
+        float3 instance_offset;
+        uint primitive_offset, primitive_count;
+        DecodeInstance(instance_index, instance_offset, primitive_offset, primitive_count);
+        center += instance_offset;
+        // Adaptive support sphere cull
+        float3 oc = ray_o - center;
+        float b_coef = dot(oc, ray_dir);
+        float c_coef = dot(oc, oc) - bound_r * bound_r;
+        float disc = b_coef * b_coef - c_coef;
+        if (disc < 0.0)
+            continue;  // ray misses bounding sphere
+
+        float sq_disc = sqrt(disc);
+        float t_enter = -b_coef - sq_disc;
+        float t_exit  = -b_coef + sq_disc;
+        if (t_exit < 0.0)
+            continue;  // entirely behind camera
+        candidate_count++;
+
+        float t_near = max(t_enter, 0.0);
+        float t_far  = min(min(t_exit, MaxRayDistance), scene_t);
+        if (t_far <= t_near)
+            continue;
+
+        // Analytic transmittance along view ray
+        float t_star;
+        float tau = RayGaussianTau(
+            ray_o, ray_dir, center, gaussian_scale, quat, sigma_t,
+            DecodeGaussianOmega(gaussian_index),
+            t_near, t_far, t_star);
+
+        if (tau == 0.0)
+            continue;
+
+        total_tau += tau;
+
+        if (bUseUniformFastPath != 0)
+        {
+            float Tl;
+            [branch] if (bUseDirectionalLightTau != 0)
+                Tl = DecodeDirectionalLightTransmittance(gaussian_index, instance_index);
+            else
+                Tl = LightTransmittance[gaussian_index];
+            light_t_sum += tau * Tl;
+        }
+        else
+        {
+            // Keep the nearest bounded set, sorted by t_star. Once full, a nearer hit
+            // replaces the farthest instead of depending on CPU traversal order.
+            if (hitCount < MAX_GAUSSIAN_HITS || t_star < hitTStar[MAX_GAUSSIAN_HITS - 1])
+            {
+                uint p = min(hitCount, (uint)(MAX_GAUSSIAN_HITS - 1));
+                [loop] while (p > 0 && hitTStar[p - 1] > t_star)
+                {
+                    hitTStar[p] = hitTStar[p - 1];
+                    hitTau[p]   = hitTau[p - 1];
+                    hitIndex[p] = hitIndex[p - 1];
+                    p--;
+                }
+                hitTStar[p] = t_star;
+                hitTau[p]   = tau;
+                hitIndex[p] = gaussian_index;
+                hitCount = min(hitCount + 1, (uint)MAX_GAUSSIAN_HITS);
+            }
+        }
+    }
+
+    // 3. Composite front-to-back in per-ray t_star order.
+    float3 color = float3(0, 0, 0);
+    float T = 1.0;  // transmittance
+    float physical_tau = max(total_tau, 0.0);
+    if (bUseUniformFastPath != 0)
+    {
+        // Homogeneous extinction is commutative. Collapse all hits into one optical-depth
+        // segment and skip insertion sorting. The dynamic branch is Live-Coding safe.
+        // ponytail: arrays remain allocated; switch back to a static permutation after an editor restart.
+        T = exp(-physical_tau);
+        float alpha = 1.0 - T;
+        float3 albedo = UniformAppearance.rgb;
+        float Tl = total_tau > 1e-5 ? saturate(light_t_sum / total_tau) : 1.0;
+        light_t_sum = Tl * candidate_count;
+        float powder = 1.0 - exp(-2.0 * physical_tau) * PowderFactor;
+        float3 scatter = albedo * LightColor.rgb * Tl * powder;
+        scatter += albedo * AmbientColor.rgb;  // fake ambient
+        scatter += albedo * UniformAppearance.a;
+        color = alpha * (DebugView == 1 ? albedo : scatter);
+    }
+    else
+    {
+        for (uint h = 0; h < hitCount && T > 0.001; h++)
+        {
+            float3 albedo;
+            float emission;
+            DecodeGaussianAppearance(hitIndex[h], albedo, emission);
+
+            float tau = hitTau[h];
+            float alpha = 1.0 - exp(-tau);
+
+            // Debug mode: solid color, no lighting math
+            if (DebugView == 1)
+            {
+                color += T * alpha * albedo;
+                T *= (1.0 - alpha);
+                continue;
+            }
+
+            // Single scattering: light attenuation reaching this Gaussian, INCLUDING occlusion by
+            // all other primitives toward the light (LightTauCS prepass). O(1) lookup by global index.
+            float Tl = LightTransmittance[hitIndex[h]];
+            light_t_sum += Tl;
+
+            // Powder effect (darkening in dense regions)
+            float powder = 1.0 - exp(-2.0 * tau) * PowderFactor;
+
+            float3 scatter = albedo * LightColor.rgb * Tl * powder;
+            scatter += albedo * AmbientColor.rgb;  // fake ambient
+            scatter += albedo * emission;
+
+            color += T * alpha * scatter;
+            T *= (1.0 - alpha);
+        }
+    }
+
+	if (DebugView == 2)
+	{
+		float v = 1.0 - exp(-physical_tau);
+		OutputTexture[outPix] = float4(v, v * v, 0.0, 1.0);
+		return;
+	}
+	if (DebugView == 3)
+	{
+		OutputTexture[outPix] = float4(T.xxx, 1.0);
+		return;
+	}
+	if (DebugView == 4)
+	{
+		float3 scene_color = OutputTexture[outPix].rgb;
+		float3 final_color = color + scene_color * T;
+		float overlay_alpha = candidate_count > 0
+			? lerp(0.2, 0.85, saturate((1.0 - T) * 4.0))
+			: 0.0;
+		if (raw_tile_candidate_count > tile_candidate_count)
+		{
+			float load = raw_tile_candidate_count / max((float)tile_candidate_count, 1.0);
+			float3 overflow_color = load < 2.0
+				? lerp(float3(1.0, 1.0, 0.0), float3(1.0, 0.0, 0.0), load - 1.0)
+				: lerp(float3(1.0, 0.0, 0.0), float3(1.0, 0.0, 1.0), saturate((load - 2.0) * 0.5));
+			OutputTexture[outPix] = float4(lerp(final_color, overflow_color, overlay_alpha), 1.0);
+			return;
+		}
+		float v = saturate(candidate_count / max((float)NumGaussians, 1.0));
+		float3 candidate_color = float3(v, 0.2 * v, 1.0 - v);
+		OutputTexture[outPix] = float4(lerp(final_color, candidate_color, overlay_alpha), 1.0);
+		return;
+	}
+	if (DebugView == 5)
+	{
+		float v = candidate_count > 0 ? light_t_sum / candidate_count : 1.0;
+		OutputTexture[outPix] = float4(v.xxx, 1.0);
+		return;
+	}
+
+    // Composite with scene color in-shader (no pixel shader needed)
+    float3 sceneColor = OutputTexture[outPix].rgb;
+	float3 finalColor = color + sceneColor * T;
+
+    OutputTexture[outPix] = float4(finalColor, 1.0);
+}
+
+[numthreads(THREADGROUP_SIZE_X, THREADGROUP_SIZE_Y, 1)]
+void BlendLodsCS(uint3 DTid : SV_DispatchThreadID)
+{
+    uint2 pixel = DTid.xy;
+    if (pixel.x >= (uint)Resolution.x || pixel.y >= (uint)Resolution.y)
+        return;
+    uint2 outPix = pixel + (uint2)ViewRectMin.xy;
+    OutputTexture[outPix] = lerp(
+        LodATexture.Load(int3(outPix, 0)),
+        LodBTexture.Load(int3(outPix, 0)),
+        saturate(LodBlendAlpha));
+}
+
+// ============================================================================
+// (Composite pixel shader removed — compositing now done in CS to avoid PSO
+//  RTV format mismatch between shader-declared format and actual SceneColor RT)
+// ============================================================================
