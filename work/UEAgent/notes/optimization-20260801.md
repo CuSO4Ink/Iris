@@ -78,10 +78,9 @@ Conflict markers under work/UEAgent -> none
 
 The UE 5.8 tool-search adapter previously concatenated every toolset's full multi-line
 documentation into the `list_toolsets` text result. A live call returned 50,951 characters
-(about 12,738 tokens using the same bytes/4 estimate). The source-level patch
-`patches/ue58-mcp-tool-search.patch` keeps the MCP envelope and the `describe_toolset` full
-schema unchanged, but makes `list_toolsets` emit only the toolset name plus its first trimmed
-line, capped at 240 characters.
+(about 12,738 tokens using the same bytes/4 estimate). The source-level change now lives in
+`patches/ue58-mcp-tool-search-v2.patch`; full schema discovery remains available while
+`list_toolsets` emits only the toolset name plus its first trimmed line, capped at 240 characters.
 
 Using the current live catalog as input, the compact projection is about 5,605 characters
 (about 1,402 estimated tokens), an estimated 89% reduction. After the editor rebuild and
@@ -96,7 +95,7 @@ on demand.
 |---|---|---|---|
 | Cache-first routing | `HOTPATH.md`, `compact_context.ps1`, gate/Skill references | Implemented and measured | The Iris worktree is dirty; no isolated reverse patch yet |
 | Gateway discovery cache | `mcp_gateway.ps1` (`tools.list`, `toolsets.list`, `toolset.describe`) | Implemented and tested | The Iris worktree is dirty; revert only the schema-cache block, not the whole file |
-| UE toolset catalog compression | UE 5.8 MCP adapter source | Implemented, rebuilt, and live-verified | Exact `patches/ue58-mcp-tool-search.patch`; use `git apply -R` |
+| UE toolset catalog compression | UE 5.8 MCP adapter source | Implemented, rebuilt, and live-verified | Reverse v3, then `patches/ue58-mcp-tool-search-v2.patch` |
 | Full tool-result projection | Generic server-side JSON `fields`/`exclude`/`max_items` | Implemented and live-verified | `git apply -R` v2 patch |
 | Structured MCP result migration | Explicit `call_tool.projection.structured` opt-in | Implemented and live-verified | `git apply -R` v2 patch; default text path unchanged |
 | Persistent Gateway sessions | Gateway transport lifecycle | Implemented and live-verified | `mcp-session.json` is disposable; `-CloseSession` removes it |

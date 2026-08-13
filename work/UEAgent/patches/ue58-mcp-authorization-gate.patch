@@ -1,0 +1,99 @@
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolModule.h b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolModule.h
+index bad296159..0f83afeeb 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolModule.h
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolModule.h
+@@ -20,6 +20,7 @@ public:
+ 	virtual bool AddTool(const TSharedRef<IModelContextProtocolTool>& Tool) override;
+ 	virtual bool RemoveTool(const TSharedRef<IModelContextProtocolTool>& Tool) override;
+ 	virtual FOnRefreshTools& OnRefreshTools() override { return OnRefreshToolsDelegate; }
++	virtual FToolCallAuthorizationGate& ToolCallAuthorizationGate() override { return ToolCallAuthorizationGateDelegate; }
+ 	virtual void RefreshTools() override;
+ 
+ 	[[nodiscard]] virtual FModelContextProtocolServer* GetServer() override;
+@@ -49,6 +50,7 @@ public:
+ protected:
+ 
+ 	FOnRefreshTools OnRefreshToolsDelegate;
++	FToolCallAuthorizationGate ToolCallAuthorizationGateDelegate;
+ 	TArray<TSharedRef<IModelContextProtocolTool>> Tools;
+ 	TArray<TSharedRef<IModelContextProtocolResourceProvider>> ResourceProviders;
+ 	TUniquePtr<FModelContextProtocolServer> Server;
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolServer.cpp b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolServer.cpp
+index 6c5067fa1..c1cc0258a 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolServer.cpp
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolServer.cpp
+@@ -801,7 +801,7 @@ bool FModelContextProtocolServer::ProcessToolCallJsonRpcCall(const FHttpServerRe
+ 		ToolArguments = Params->GetObjectField(TEXT("arguments"));
+ 	}
+ 
+-	const IModelContextProtocolModule& ModelContextProtocolModule = IModelContextProtocolModule::GetChecked();
++	IModelContextProtocolModule& ModelContextProtocolModule = IModelContextProtocolModule::GetChecked();
+ 	TSharedPtr<IModelContextProtocolTool> Tool = ModelContextProtocolModule.FindTool(ToolName);
+ 	if (!Tool.IsValid())
+ 	{
+@@ -809,6 +809,24 @@ bool FModelContextProtocolServer::ProcessToolCallJsonRpcCall(const FHttpServerRe
+ 		return true;
+ 	}
+ 
++	FString AuthorizationError;
++	IModelContextProtocolModule::FToolCallAuthorizationGate& AuthorizationGate =
++		ModelContextProtocolModule.ToolCallAuthorizationGate();
++	if (AuthorizationGate.IsBound()
++		&& !AuthorizationGate.Execute(ToolName, ToolArguments, AuthorizationError))
++	{
++		if (AuthorizationError.IsEmpty())
++		{
++			AuthorizationError = TEXT("Tool call rejected by the active editor execution policy");
++		}
++		UE::ModelContextProtocol::Private::CompleteWithError(
++			OnComplete,
++			RequestId,
++			UE::ModelContextProtocol::Private::EJsonRpcErrorCode::InvalidParams,
++			AuthorizationError);
++		return true;
++	}
++
+ 	UE_LOGF(LogModelContextProtocol, Log, "Running tool: '%ls'", *ToolName);
+ 	FString PrettyJson;
+ 	if (UE_LOG_ACTIVE(LogModelContextProtocol, VeryVerbose) && ToolArguments.IsValid() && FJsonSerializer::Serialize(ToolArguments.ToSharedRef(), TJsonWriterFactory<>::Create(&PrettyJson)))
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Public/IModelContextProtocolModule.h b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Public/IModelContextProtocolModule.h
+index f9a0c591f..3fc14e688 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Public/IModelContextProtocolModule.h
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Public/IModelContextProtocolModule.h
+@@ -6,6 +6,7 @@
+ #include "Modules/ModuleManager.h"
+ 
+ class FModelContextProtocolServer;
++class FJsonObject;
+ class IAnalyticsProviderET;
+ struct FAnalyticsEventAttribute;
+ struct IModelContextProtocolResourceProvider;
+@@ -17,6 +18,18 @@ struct IModelContextProtocolTool;
+ class IModelContextProtocolModule : public IModuleInterface
+ {
+ public:
++	/**
++	 * Optional process-wide authorization gate invoked for every tools/call request before the
++	 * selected tool runs. Returning false rejects the call with OutError. The gate receives the
++	 * top-level MCP tool name and its arguments, so dispatch tools can inspect nested targets.
++	 *
++	 * This is deliberately a single-cast delegate: an editor process must have one authoritative
++	 * execution policy instead of several independently composed security decisions.
++	 */
++	DECLARE_DELEGATE_RetVal_ThreeParams(bool, FToolCallAuthorizationGate,
++		const FString& /*ToolName*/,
++		const TSharedPtr<FJsonObject>& /*Arguments*/,
++		FString& /*OutError*/);
+ 
+ 	[[nodiscard]] UE_API static IModelContextProtocolModule* Get();
+ 	[[nodiscard]] UE_API static IModelContextProtocolModule& GetChecked();
+@@ -53,6 +66,9 @@ public:
+ 	 */
+ 	virtual FOnRefreshTools& OnRefreshTools() = 0;
+ 
++	/** Returns the process-wide tool-call authorization gate. Unbound means allow. */
++	virtual FToolCallAuthorizationGate& ToolCallAuthorizationGate() = 0;
++
+ 	/**
+ 	 * Called by ModelContextProtocol.RefreshTools console command. Releases all currently registered tools and broadcasts OnRefreshTools for tool
+ 	 * providers to re-add tools.

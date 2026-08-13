@@ -8,23 +8,40 @@ The Gateway follow-up also pins UTF-8 BOM compatibility for Windows PowerShell 5
 `DescribeDetail`/`DescribeToolName` plus the active MCP session in the schema-cache key; see the
 dated note for the checks.
 
-The current follow-up adds the optional UE v3 call view: Gateway/daemon discovery defaults to
-structured-only `detail=call`; explicit `detail=full` is still the exact-schema path. See
-`patches/ue58-mcp-tool-search-v3-call-view.patch` and the dated progressive note.
+The current UE MCP tool-search patch contains both compact toolset discovery and the structured
+call view. Gateway/daemon discovery defaults to `detail=call`; explicit `detail=full` remains the
+exact-schema path. See `patches/ue58-mcp-tool-search.patch` and the dated progressive note.
 
 This file keeps current-stack decisions only. Retired WorkBuddy /
 UnrealGenAISupport history remains available in Git history and is not operating guidance.
+
+### 2026-08-12 - Remove secondary compatibility paths
+
+Automatic GPU profiling remains part of the reliable command queue. Reflect Cache now exposes
+only `read` and `reconcile`; ordinary text/source-control diff plus the reliable receipt and live
+readback replace its unused index/diff/receipt views. Doctor now has one mandatory `RouteFile`
+live contract and reports only capabilities proven by the running Editor; offline project, source,
+Git, and patch verification belongs to `bootstrap.ps1 -CheckOnly`.
+The implementation dropped from 692 to 374 lines. Abyss passed the static check and live Doctor;
+one standard probe took 2.63 s and the opt-in Niagara probe took 5.27 s.
+
+The split MCP tool-search patches are squashed into `patches/ue58-mcp-tool-search.patch`, with one
+`mcpToolSearchPatchSha256` route field and singular `-ApplyMcpToolSearchPatch` bootstrap switch.
+Gateway and daemon accept only `projectionProfile`, `describeDetail`, and `describeToolName`; old
+`view`, `intent`, `detail`, and `toolName` request fields fail explicitly. Abyss static/bootstrap,
+clean-apply/current-reverse patch checks, Reflect Cache read, and Gateway transport checks passed.
 
 ### 2026-08-04 - Make the MCP shutdown guard part of every environment
 
 The VibeUE GameThread shutdown guard is now a required tail patch for both the base and Niagara
 authoring profiles. Bootstrap applies it idempotently, records
-`vibeUEMcpShutdownGuardPatchSha256` in the route, and `-CheckOnly` plus doctor reject a missing,
-changed, or unapplied guard. ReflectCache includes that fingerprint in generator identity so a
+`vibeUEMcpShutdownGuardPatchSha256` in the route, and `-CheckOnly` rejects a missing, changed, or
+unapplied guard. ReflectCache includes that fingerprint in generator identity so a
 lifecycle-patched adapter cannot silently share cache provenance with an older environment.
 An isolated Niagara-profile bootstrap wrote hash
 `8638899C684BFB47AB18F29718099D322FE824484889A13ECED56A0D33758250`; `-CheckOnly` passed and
-quick doctor reported the guard applied with zero issues. The temporary fixture was removed.
+the static check reported the guard applied and live Doctor returned zero issues. The temporary
+fixture was removed.
 
 ### 2026-08-03 - Compress the default AI context
 
@@ -72,7 +89,7 @@ replacement forces a new doctor.
 Reused-session `tools/list` results now feed `preflight`, `ping`, and `tools.list` directly, and
 schema-cache entries are keyed by MCP session ID. Normal successful Gateway replies prefer
 `structuredContent` and omit transport/session diagnostics unless requested. Known domain cards
-may skip `intent.list` and `toolsets.list` in favor of one selected-tool description. A trusted
+may skip `toolsets.list` in favor of one selected-tool description. A trusted
 native MCP host may use direct transport as a performance override; the portable Gateway policy
 and all safety/readback rules remain unchanged.
 
@@ -119,8 +136,8 @@ introduced.
 ### 2026-08-01 — Establish UEAgent as the mandatory project gate
 
 Every target project receives a thin `AGENTS.md` route and machine-local
-`Saved/UEAgent/route.json`. `doctor.ps1` separates configuration, listener, MCP discovery,
-and live read health before any UE-dependent work.
+`Saved/UEAgent/route.json`. `doctor.ps1` checks the route contract, listener, MCP discovery, and
+live read health before any UE-dependent work; bootstrap owns offline configuration checks.
 
 ### 2026-08-01 — Integrate upstream Niagara evidence conditionally
 
@@ -170,8 +187,8 @@ engine API-export patch; neither source presence nor patch application proves ru
 The UE 5.8 MCP tool-search adapter now returns only one trimmed summary line per toolset from
 `list_toolsets`; `describe_toolset` remains the full schema path. The rebuilt Abyss editor returned
 5,605 characters instead of 50,951 (about 89% less by the bytes/4 estimate). The exact engine
-change is reversible through `patches/ue58-mcp-tool-search.patch`; the broader Iris hot-path edits
-still need a clean checkpoint before they can have a safe one-command rollback bundle.
+change is contained in `patches/ue58-mcp-tool-search-v2.patch`; reverse v3 and then v2 using the
+manifested order.
 
 ### 2026-08-02 鈳?Add opt-in result shaping
 
@@ -346,9 +363,8 @@ The validated UE 5.8 Niagara authoring build is now a first-class bootstrap prof
 conflict-resolved VibeUE composite as one unit. The composite replaces the core VibeUE patch; it
 is never layered on top of it. Bootstrap records `vibeUEProfile` and
 `engineNiagaraAuthoringPatchSha256` in `Saved/UEAgent/route.json`, and `-CheckOnly` validates the
-selected VibeUE/engine pair. Doctor reports the profile and `niagaraAuthoring` capability so the
-Niagara SOP can permit dynamic pin, Simulation Stage, Grid DI, RenderTarget2D, RasterizationGrid3D,
-and Custom HLSL authoring only on the matching route.
+selected VibeUE/engine pair. Doctor's opt-in advanced probe reports only the patched methods
+actually exported by the running Editor before the Niagara SOP uses them.
 
 ### 2026-08-03 - Add intent projections and cache lifecycle reconciliation
 
@@ -410,29 +426,41 @@ bootstrap, explicit wrong-backend rejection before `tools/call`, transport timeo
 ceilings, and zero residual Gateway processes.
 
 After the helper/daemon refactor, the full formal 8 MiB suite was rerun on 2026-08-08. The exact
-single-line payload completed in 1.782 s at 397.46 MiB peak private memory; isolated
-`python.execute`, wrong-backend rejection, call/initialize hard timeouts, the forced memory guard,
-and the daemon hard-timeout case all passed, with zero leftover Gateway processes.
+single-line payload completed in 1.782 s at 397.46 MiB peak private memory; call/initialize hard
+timeouts, the forced memory guard, and the daemon hard-timeout case all passed, with zero leftover
+Gateway processes.
 
-### 2026-08-11 - Package and gate the read-only project UnrealMCP fallback
+### 2026-08-12 - Retire alternate execution routes
 
-The optional prebuilt-project fallback is now a portable `project-unrealmcp-stdio` profile rather
-than a target-named route. Bootstrap accepts a configurable Codex MCP server name and loopback TCP
-port, validates the UE/plugin BuildId pair, existing Python environment, server checksum, and six
-required Blueprint read tools, and writes only the machine-local route. Doctor validates that
-route, starts the routed STDIO server for an exact tool-list check plus one cheap live read, and
-always caps a successful result at `DEGRADED`; mutation and save remain blocked.
+Removed the experimental project-owned Python/TCP MCP profile and the Gateway script/Python
+actions. UEAgent now has one writable architecture: UE 5.8 native MCP, the process-wide
+authorization gate, and the Editor-local reliable command queue. Historical incidents remain in
+the pitfall ledger, but none of those execution routes are callable.
 
-The first regression exposed two packaging defects and both were fixed: normal FastMCP lifecycle
-messages on stderr no longer abort doctor before it parses the final JSON line, and an unexpected
-server tool now invalidates `blueprintRead` instead of being silently tolerated. The updated
-Niagara authoring patch fingerprint was also synchronized with `STACK-MANIFEST.json`.
+### 2026-08-12 - Move execution artifacts behind the workspace boundary
 
-Offline verification used a disposable UE 5.8/project/plugin fixture, a temporary FastMCP STDIO
-server, and a loopback listener. Bootstrap and `-CheckOnly` passed; the exact six-tool server
-returned `DEGRADED` with `blueprintRead=true`; adding a synthetic `delete_asset` tool returned
-`OFFLINE` with `blueprintRead=false`; all seven manifest patch hashes matched. The formal Gateway
-suite was rerun unchanged: the exact 8 MiB SSE payload completed in 1.372 s at 399.08 MiB peak,
-Python routing and wrong-backend rejection passed, timeout/memory/daemon guards passed, and no
-Gateway process remained. No real Unreal Editor or UE asset was contacted; target activation
-remains an explicit backlog item.
+Cleared the generated `out/` tree, stale install-smoke/reproduction copies, an obsolete Python
+cache, and completed UEAgent test directories under `tmp/`. Future temporary clones, captures,
+test output, and reproduction bundles use `tmp/UEAgent/<task>/`; `work/UEAgent/` retains only the
+durable routing layer, source, tests, patches, and verified documentation.
+
+### 2026-08-12 - Collapse Gateway to a machine-only call contract
+
+Gateway now binds endpoint/session/schema cache from the target route and infers direct call,
+registry call, toolset describe, structured-only transport, and data-only output. A known call
+therefore exposes only `tool`, non-empty `arguments`, and optional `toolset`/projection profile;
+raw JSON command-line parameters were removed. The shared result codec removes transport/MCP
+wrappers, duplicate text, positive success flags, lone `returnValue`, empty/derived reliable
+fields, timestamps, fixed-state diagnostics, and nested JSON escaping while preserving every
+reliable identity/outcome/hash/save/error field and semantic payload value.
+
+Daemon and one-shot paths now distinguish local validation, pre-operation transport failure,
+in-flight unknown result, and post-operation response formatting. A malformed daemon request no
+longer clears the MCP session or Doctor receipt, and a normal tool error retains the valid session.
+The constant `liveDirtyCheck`, duplicate `inspect` operation, Doctor's task-agnostic `next`, and
+compact-view expansion prose were removed.
+
+Verification passed the PowerShell contract suite and full 8 MiB JSON/SSE timeout/memory suite
+with no leftover Gateway process. Live Abyss 5.8.1 read-only checks were `HEALTHY`; the minimal
+`-Tool ueagent_state` call returned 183 bytes versus 441 bytes before result shaping (58.5% less),
+and a live validation error compressed to 216 bytes without changing Editor state.

@@ -8,7 +8,7 @@ param(
     [ValidateSet('', 'material', 'material-function', 'material-instance', 'blueprint', 'niagara', 'scene')]
     [string]$Domain = '',
 
-    [ValidateSet('read', 'inspect', 'mutate', 'save')]
+    [ValidateSet('read', 'mutate', 'save')]
     [string]$Operation = 'read',
 
     [ValidateSet('compact', 'detail')]
@@ -21,6 +21,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'ueagent_common.ps1')
 
 $KnownCacheFormats = @(
     'vibeue-material-cache-v2',
@@ -49,50 +50,6 @@ function Test-ListenerProcesses($Pids) {
     }
 }
 
-function Read-McpSessionSnapshot($Path, $Endpoint) {
-    if (-not $Path -or -not (Test-Path -LiteralPath $Path)) { return $null }
-    try {
-        $entry = Read-JsonFile $Path 'MCP session'
-        if ($entry.schema -ne 'ueagent-mcp-session-v1' -or
-            [string]$entry.endpoint -ne [string]$Endpoint -or -not $entry.sessionId) { return $null }
-        $expires = [DateTime]::Parse([string]$entry.expiresAtUtc).ToUniversalTime()
-        if ($expires -le [DateTime]::UtcNow) { return $null }
-        return $entry
-    } catch {
-        return $null
-    }
-}
-
-function Get-PluginFingerprint($ProjectRoot, $EngineRoot) {
-    $patterns = @()
-    if ($ProjectRoot) {
-        $patterns += (Join-Path $ProjectRoot 'Plugins\UnrealMCP\Binaries\Win64\*.dll')
-        $patterns += (Join-Path $ProjectRoot 'Plugins\UnrealMCP\*.uplugin')
-        $patterns += (Join-Path $ProjectRoot 'Plugins\UnrealMCP\Python\unreal_mcp_server_advanced.py')
-        $patterns += (Join-Path $ProjectRoot 'Plugins\VibeUE\Binaries\Win64\*.dll')
-        $patterns += (Join-Path $ProjectRoot 'Plugins\VibeUE\*.uplugin')
-        $patterns += (Join-Path $ProjectRoot 'Plugins\NiagaraToolsets\Binaries\Win64\*.dll')
-        $patterns += (Join-Path $ProjectRoot 'Plugins\NiagaraToolsets\*.uplugin')
-    }
-    if ($EngineRoot) {
-        $patterns += (Join-Path $EngineRoot 'Engine\Plugins\Experimental\ModelContextProtocol\Binaries\Win64\*.dll')
-        $patterns += (Join-Path $EngineRoot 'Engine\Plugins\Experimental\ModelContextProtocol\*.uplugin')
-        $patterns += (Join-Path $EngineRoot 'Engine\Plugins\Experimental\Toolsets\EditorToolset\Binaries\Win64\*.dll')
-        $patterns += (Join-Path $EngineRoot 'Engine\Plugins\Experimental\Toolsets\EditorToolset\*.uplugin')
-    }
-    $files = @($patterns | ForEach-Object { Get-ChildItem -Path $_ -File -ErrorAction SilentlyContinue })
-    if ($files.Count -eq 0) { return $null }
-    $stamp = @($files | Sort-Object FullName | ForEach-Object {
-        "$($_.FullName)|$($_.Length)|$($_.LastWriteTimeUtc.ToString('o'))"
-    }) -join "`n"
-    $sha = [Security.Cryptography.SHA256]::Create()
-    try {
-        return ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($stamp)))).Replace('-', '').ToLowerInvariant()
-    } finally {
-        $sha.Dispose()
-    }
-}
-
 function Get-ReceiptInvalidationPath($ReceiptPath) {
     if (-not $ReceiptPath) { return $null }
     $parent = Split-Path -Parent $ReceiptPath
@@ -115,7 +72,38 @@ $route = Read-JsonFile $RouteFile 'route file'
 if ($route.schema -ne 'ueagent-route-v1') { throw "Unsupported route schema: $($route.schema)" }
 
 $projectRoot = Split-Path ([string]$route.uProject) -Parent
-$pluginFingerprint = Get-PluginFingerprint $projectRoot ([string]$route.engineRoot)
+$projectName = [IO.Path]::GetFileNameWithoutExtension([string]$route.uProject)
+$pluginFingerprint = Get-PluginFingerprint $projectRoot ([string]$route.engineRoot) $projectName
+$kernelStatePath = Join-Path $projectRoot 'Saved\UEAgent\state.json'
+$kernelState = $null
+$kernelStateStatus = 'MISSING'
+if (Test-Path -LiteralPath $kernelStatePath) {
+    try {
+        $kernelState = Read-JsonFile $kernelStatePath 'UEAgent reliable state'
+        $kernelStateStatus = 'STALE'
+    } catch {
+        $kernelStateStatus = 'INVALID'
+    }
+}
+
+function Read-SidecarHeader($Path) {
+    $reader = [IO.File]::OpenText($Path)
+    try {
+        $lines = [Collections.Generic.List[string]]::new()
+        $fences = 0
+        while (-not $reader.EndOfStream -and $lines.Count -lt 64) {
+            $line = $reader.ReadLine()
+            $lines.Add($line)
+            if ($line.TrimStart().StartsWith('```')) {
+                $fences++
+                if ($fences -eq 2) { break }
+            }
+        }
+        return ($lines -join "`n")
+    } finally {
+        $reader.Dispose()
+    }
+}
 $receiptPath = if ($ReceiptFile) {
     (Resolve-Path -LiteralPath $ReceiptFile -ErrorAction SilentlyContinue).Path
 } else {
@@ -123,6 +111,7 @@ $receiptPath = if ($ReceiptFile) {
 }
 
 $receiptState = 'MISSING'
+$receipt = $null
 $receiptStatus = $null
 $receiptAgeSec = $null
 $receiptCheckedAt = $null
@@ -151,22 +140,6 @@ if ($receiptPath -and (Test-Path -LiteralPath $receiptPath)) {
             if ($listenerKnown) {
                 $receiptIdentityValid = $listenerAlive
                 $receiptIdentityReason = if ($receiptIdentityValid) { 'listener_unchanged' } else { 'editor_pid_changed' }
-            }
-
-            $sessionFile = Join-Path $projectRoot 'Saved\UEAgent\mcp-session.json'
-            $session = Read-McpSessionSnapshot $sessionFile ([string]$route.endpoint)
-            $storedSessionId = [string]$receipt.identity.mcpSessionId
-            if ($storedSessionId) {
-                if (-not $session) {
-                    $receiptIdentityValid = $false
-                    $receiptIdentityReason = 'mcp_session_missing_or_expired'
-                } elseif ([string]$session.sessionId -ne $storedSessionId) {
-                    $receiptIdentityValid = $false
-                    $receiptIdentityReason = 'mcp_session_changed'
-                } else {
-                    $receiptIdentityValid = if ($null -eq $receiptIdentityValid) { $true } else { $receiptIdentityValid }
-                    if ($receiptIdentityValid) { $receiptIdentityReason = 'session_unchanged' }
-                }
             }
 
             $storedPluginFingerprint = [string]$receipt.identity.pluginFingerprint
@@ -207,7 +180,6 @@ $assetInfo = [ordered]@{
     graphSha1 = $null
     state = 'MISSING'
     formatKnown = $false
-    liveDirtyCheck = $true
     invalidation = $null
     hasLogic = $false
     current = $false
@@ -226,7 +198,11 @@ if ($packagePath) {
     }
     if (Test-Path -LiteralPath $sidecarFile) {
         $sidecar = Get-Item -LiteralPath $sidecarFile
-        $text = Get-Content -Raw -LiteralPath $sidecarFile
+        $text = if ($View -eq 'detail') {
+            Get-Content -Raw -LiteralPath $sidecarFile
+        } else {
+            Read-SidecarHeader $sidecarFile
+        }
         $assetInfo.sidecarBytes = [int64]$sidecar.Length
         $assetInfo.sidecarMtimeUtc = $sidecar.LastWriteTimeUtc.ToString('o')
         $formatMatch = [Regex]::Match($text, '(?m)^format:\s*(\S+)')
@@ -237,7 +213,7 @@ if ($packagePath) {
         $assetInfo.formatKnown = $assetInfo.format -and $KnownCacheFormats -contains $assetInfo.format
         $declaredSizeMatches = -not $sizeMatch.Success -or
             ([int64]$sizeMatch.Groups[1].Value -eq [int64]$assetInfo.sourceBytes)
-        $assetInfo.hasLogic = $text -match '(?m)^## Logic\s*$'
+        if ($View -eq 'detail') { $assetInfo.hasLogic = $text -match '(?m)^## Logic\s*$' }
         $sourceMatches = [bool]$assetInfo.sourceBytes -and
             $sidecar.LastWriteTimeUtc -ge (Get-Item -LiteralPath $sourceFile).LastWriteTimeUtc -and
             $declaredSizeMatches
@@ -251,69 +227,85 @@ if ($packagePath) {
 }
 
 if ($assetInfo.state -eq 'MISSING' -and $packagePath) { $assetInfo.invalidation = 'sidecar_missing' }
-$assetInfo.liveDirtyCheck = $true
-
 $receiptFresh = $receiptState -eq 'FRESH'
-$healthy = $receiptFresh -and $receiptStatus -eq 'HEALTHY'
-$readOnlyRoute = $receiptFresh -and $receiptStatus -in @('HEALTHY', 'DEGRADED')
+$receiptEditorEpoch = if ($receipt -and $receipt.identity) { [string]$receipt.identity.editorEpoch } else { '' }
+$kernelEditorEpoch = if ($kernelState) { [string]$kernelState.editor_epoch } else { '' }
+$receiptEditorPid = if ($receipt -and @($receipt.identity.listenerPids).Count) { [int]@($receipt.identity.listenerPids)[0] } else { 0 }
+$kernelEditorPid = if ($kernelState -and [int]$kernelState.editor_pid -gt 0) { [int]$kernelState.editor_pid } else { $receiptEditorPid }
+$kernelCurrent = $receiptFresh -and $receiptEditorEpoch -and
+    $kernelEditorEpoch -eq $receiptEditorEpoch -and
+    [string]$kernelState.protocol_version -eq [string]$route.reliableProtocol
+if ($kernelCurrent) { $kernelStateStatus = 'CURRENT' }
+$healthy = $receiptFresh -and $receiptStatus -eq 'HEALTHY' -and $kernelCurrent
+$readOnlyRoute = $receiptFresh -and $receiptStatus -in @('HEALTHY', 'DEGRADED') -and $kernelCurrent
 $needsDoctor = -not $assetInfo.current -and (
     $receiptState -in @('MISSING', 'STALE', 'INVALID', 'INVALIDATED') -or
-    $receiptStatus -eq 'READY'
+    -not $kernelCurrent
 )
 $next = switch ($Operation) {
     'read' { if ($assetInfo.current) { 'CACHE_READ' } elseif ($needsDoctor) { 'NEEDS_DOCTOR' } elseif ($readOnlyRoute) { 'LIVE_READ' } else { 'BLOCKED' } }
-    'inspect' { if ($assetInfo.current) { 'CACHE_READ' } elseif ($needsDoctor) { 'NEEDS_DOCTOR' } elseif ($readOnlyRoute) { 'LIVE_READ' } else { 'BLOCKED' } }
-    'mutate' { if ($needsDoctor) { 'NEEDS_DOCTOR' } elseif ($healthy) { 'LIVE_MUTATE_TASK_GATED' } else { 'BLOCKED' } }
-    'save' { if ($needsDoctor) { 'NEEDS_DOCTOR' } elseif ($healthy) { 'LIVE_SAVE_EXPLICIT' } else { 'BLOCKED' } }
+    'mutate' { if ($needsDoctor) { 'NEEDS_DOCTOR' } elseif ($healthy) { 'LIVE_MUTATE_RELIABLE_QUEUE' } else { 'BLOCKED' } }
+    'save' { if ($needsDoctor) { 'NEEDS_DOCTOR' } elseif ($healthy) { 'LIVE_SAVE_CAPABILITY_REQUIRED' } else { 'BLOCKED' } }
+}
+$kernelBusy = $kernelCurrent -and (
+    [bool]$kernelState.performance_frozen -or [string]$kernelState.active_command_id
+)
+if ($kernelBusy -and $next -ne 'CACHE_READ' -and $Operation -in @('read', 'save')) {
+    $next = 'WAIT_RELIABLE_JOB'
 }
 
-$context = [ordered]@{
-    schema = 'ueagent-context-v1'
-    next = $next
-    route = [ordered]@{
-        endpoint = [string]$route.endpoint
-        project = [string]$route.uProject
-        engine = [string]$route.engineRoot
-        ueAgent = [string]$route.ueAgentRoot
-    }
-    receipt = [ordered]@{
-        file = $receiptPath
-        state = $receiptState
-        status = $receiptStatus
-        ageSec = $receiptAgeSec
-        checkedAtUtc = $receiptCheckedAt
-        maxAgeSec = $ReceiptMaxAgeSec
-        identity = $receiptIdentityReason
-    }
-    task = [ordered]@{
-        asset = $AssetPath
-        domain = $Domain
-        operation = $Operation
-    }
-    asset = $assetInfo
-}
-
-$output = if ($View -eq 'compact') {
+$output = if ($View -eq 'detail') {
     [ordered]@{
-        schema = 'ueagent-context-compact-v1'
+        schema = 'ueagent-context-v1'
         next = $next
-        task = [ordered]@{ asset = $AssetPath; domain = $Domain; operation = $Operation }
-        route = [ordered]@{ endpoint = [string]$route.endpoint; project = [string]$route.uProject }
-        receipt = [ordered]@{ state = $receiptState; status = $receiptStatus; ageSec = $receiptAgeSec }
-        asset = [ordered]@{
-            package = $assetInfo.package
-            current = $assetInfo.current
-            state = $assetInfo.state
-            sidecar = $assetInfo.sidecar
-            format = $assetInfo.format
-            formatKnown = $assetInfo.formatKnown
-            graphSha1 = $assetInfo.graphSha1
-            liveDirtyCheck = $assetInfo.liveDirtyCheck
-            invalidation = $assetInfo.invalidation
+        route = [ordered]@{
+            endpoint = [string]$route.endpoint
+            project = [string]$route.uProject
+            engine = [string]$route.engineRoot
+            ueAgent = [string]$route.ueAgentRoot
         }
-        expand = 'compact_context.ps1 -View detail'
+        receipt = [ordered]@{
+            file = $receiptPath
+            state = $receiptState
+            status = $receiptStatus
+            ageSec = $receiptAgeSec
+            checkedAtUtc = $receiptCheckedAt
+            maxAgeSec = $ReceiptMaxAgeSec
+            identity = $receiptIdentityReason
+        }
+        reliable = [ordered]@{
+            file = $kernelStatePath
+            state = $kernelStateStatus
+            protocolVersion = if ($kernelState) { [string]$kernelState.protocol_version } else { $null }
+            editorEpoch = $kernelEditorEpoch
+            editorPid = if ($kernelEditorPid -gt 0) { $kernelEditorPid } else { $null }
+            activeCommandId = if ($kernelState) { [string]$kernelState.active_command_id } else { $null }
+            lastReceiptId = if ($kernelState) { [string]$kernelState.last_receipt_id } else { $null }
+            queuedCommandIds = if ($kernelState) { @($kernelState.queued_command_ids) } else { @() }
+            performanceFrozen = if ($kernelState) { [bool]$kernelState.performance_frozen } else { $false }
+            dirtyPackageCount = if ($kernelState) { [int]$kernelState.dirty_package_count } else { $null }
+        }
+        task = [ordered]@{ asset = $AssetPath; domain = $Domain; operation = $Operation }
+        asset = $assetInfo
     }
-} else { $context }
+} elseif ($next -eq 'CACHE_READ') {
+    [ordered]@{ next = $next; sidecar = $assetInfo.sidecar }
+} elseif ($next -eq 'NEEDS_DOCTOR') {
+    [ordered]@{ next = $next; receipt = $receiptState; reliable = $kernelStateStatus; reason = $receiptIdentityReason }
+} elseif ($next -eq 'WAIT_RELIABLE_JOB') {
+    $compact = [ordered]@{ next = $next }
+    if ([string]$kernelState.active_command_id) { $compact.commandId = [string]$kernelState.active_command_id }
+    if (@($kernelState.queued_command_ids).Count) { $compact.queued = @($kernelState.queued_command_ids).Count }
+    if ([bool]$kernelState.performance_frozen) { $compact.performanceFrozen = $true }
+    $compact
+} elseif ($next -in @('LIVE_READ', 'LIVE_MUTATE_RELIABLE_QUEUE', 'LIVE_SAVE_CAPABILITY_REQUIRED')) {
+    [ordered]@{ next = $next }
+} else {
+    $compact = [ordered]@{ next = $next; receipt = $receiptState; reliable = $kernelStateStatus }
+    if ($receiptStatus) { $compact.status = $receiptStatus }
+    if ($receiptIdentityReason) { $compact.reason = $receiptIdentityReason }
+    $compact
+}
 $json = if ($Pretty) { $output | ConvertTo-Json -Depth 12 } else { $output | ConvertTo-Json -Depth 12 -Compress }
 if ($OutFile) {
     $parent = Split-Path $OutFile -Parent

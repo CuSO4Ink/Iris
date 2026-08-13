@@ -1,5 +1,8 @@
 # Progressive disclosure implementation ledger (2026-08-02)
 
+> Historical record: `progressive_audit.ps1` and the local `intent.list` index were retired on
+> 2026-08-12; the measurements below remain evidence for the surviving compact views.
+
 This phase implements the remaining high-value token reductions in the smallest additive form.
 The canonical operating contract is `../PROGRESSIVE-DISCLOSURE.md`.
 

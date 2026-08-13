@@ -4,33 +4,22 @@ This package contains only reusable UE 5.8 Niagara editor-authoring changes. It 
 
 ## Contents
 
-- `ue-5.8/niagaraeditor-export-authoring-apis.patch`
-  - Makes `UNiagaraNode::ReallocatePins` callable by external editor tooling.
-  - Exports `UNiagaraNodeWithDynamicPins::RequestNewTypedPin` and `IsAddPin`.
-  - Exports `UNiagaraNodeCustomHlsl::InitAsCustomHlslDynamicInput`.
-- `vibeue/scratchpad-simulation-stage-and-di-authoring.patch`
-  - Registers scratch scripts in the correct System-asset collection.
-  - Creates dynamic Niagara pins through the engine-supported API.
-  - Adds generic Simulation Stage creation and Grid2D iteration configuration.
-  - Adds self-managed RenderTarget2D and RasterizationGrid3D user-parameter authoring.
 - `vibeue/vibeue-ueagent-authoring.patch`
   - Conflict-resolved composite for the pinned VibeUE baseline.
-  - Includes the local UEAgent cache/material and embedded-script fixes plus the generic
-    authoring patch above. Use this file instead of applying the two VibeUE patches together.
+  - Includes the UEAgent cache/material fixes plus Niagara authoring support.
 - `ue-5.8/niagaraeditor-export-authoring-apis-current.patch`
-  - Revision-adapted engine export patch for the current UE 5.8 checkout used by UEAgent.
+  - Revision-adapted engine export patch verified against the official UE 5.8.1 release; it
+    remains in the `ue-5.8` compatibility family.
   - This revision already exports the symbol but keeps `ReallocatePins` protected; the patch
     also moves it to the public section, alongside the dynamic-pin and Custom HLSL exports.
 - `../vibeue-mcp-shutdown-guard.patch`
   - Independent VibeUE lifecycle hardening: rejects new and queued GameThread MCP work once
-    Unreal exit begins, preventing Python-backed calls from running after plugin teardown.
+    Unreal exit begins, preventing calls from running after plugin teardown.
   - Bootstrap applies it after either VibeUE profile and records its independent route fingerprint;
     it is not folded into the Niagara composite.
 
-The VibeUE patch was produced against upstream commit `271f487`.
-The composite patch is also based on `271f487`; it is the resolved overlap between the local
-UEAgent patch and the upstream Niagara authoring patch. The original files remain for provenance
-and upstream comparison.
+The composite patch is based on upstream commit `271f487` and is the only supported VibeUE
+Niagara-authoring patch.
 
 ## Apply
 

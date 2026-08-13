@@ -11,38 +11,42 @@ rollback map is [PROGRESSIVE-DISCLOSURE.md](../../PROGRESSIVE-DISCLOSURE.md).
 
 ## Gate and transport
 
-1. Read the target `Saved/UEAgent/route.json` and run `compact_context.ps1`.
+1. Locate the target `Saved/UEAgent/route.json` and run `compact_context.ps1`; load route or wrapper
+   contents only to diagnose a failure.
 2. `CACHE_READ` means read the recognized sidecar and stop before MCP.
 3. `NEEDS_DOCTOR` means run `doctor.ps1` once and use that receipt directly.
-4. Reuse a receipt/schema cache only while Editor PID, MCP session, and plugin fingerprint match.
-   Restart, reconnect, timeout, transport failure, explicit close, plugin reload, or toolset change
-   invalidates them. TTL is fallback only.
+4. Reuse a receipt while Editor PID/epoch and plugin fingerprint match. MCP sessions are disposable;
+   schema-cache entries remain scoped to the current session. Restart, ambiguous transport failure,
+   explicit close, plugin reload, or toolset change invalidates the relevant state. If identity
+   cannot be checked, discard the receipt.
 5. `HEALTHY` permits proven live reads and task-gated mutation; `DEGRADED` permits cache plus
    proven reads; `OFFLINE` is local analysis; `BLOCKED` requires repair. A mutation timeout is
    `RESULT_UNKNOWN`; read back before retrying.
 
-Gateway (`../../scripts/mcp_gateway.ps1`) is the default live transport; `-AutoDaemon` is for
-repeated calls. Native/platform MCP is a fallback only when the receipt is healthy and Gateway
-fails before the operation or lacks a required client feature. A trusted native client may bypass
-Gateway for ordinary calls when no projection/session/debug shaping is needed. Neither transport
-bypasses authority, one-writer, or readback rules.
+Gateway (`../../scripts/mcp_gateway.ps1`) is the only AI-facing live client; `-AutoDaemon` is a
+repeated-call optimization on that same path. Native MCP is the server behind Gateway, not another
+client route. If Gateway and the fixed `ueagent_*` surface cannot express the operation, add the
+missing typed operation or stop. Never bypass the canonical path.
 
 Pass `-SchemaCacheFile <project>\Saved\UEAgent\schema-cache.json` for discovery and, for repeated
-Gateway calls, project-local `mcp-session.json` with `-SessionFile ... -ReuseSession`; use
+Gateway calls, project-local `mcp-session.json` with `-SessionFile ...`; reuse is automatic. Use
 `-CloseSession` only for explicit shutdown. Cache discovery only; never cache calls or mutations.
 Machine files remain uncommitted.
 
 ## Minimize discovery and payload
 
-- Known domain/tool: skip `intent.list` and `toolsets.list`; describe one tool with `detail=call`.
-- Unknown entry: use `intent.list` only for routing, then authoritative `describe_toolset`.
+- Known domain/tool: skip `toolsets.list`; describe one tool with `detail=call`.
+- Unknown entry: use the cacheable `toolsets.list` result, then authoritative `describe_toolset`.
 - `detail=summary` is for names/descriptions. `detail=full` is only for exact JSON Schema
   validation or recovery.
+- Known calls expose only tool, non-empty arguments, and an optional toolset/projection profile;
+  Gateway infers the mechanical action, response mode, session route, and structured-only result.
 - Use `-ProjectionProfile identity|topology|logic|runtime|hlsl|changed` (domain aliases accepted).
   Choose one view; HLSL/script is explicit and never silently truncated.
-- Prefer structured/data-only success. `-Envelope` is legacy compatibility; `-Diagnostics` is
-  transport/session debugging. Do not request full graphs, images/base64, recursive dependencies,
-  or duplicate text plus structured data by default.
+- Default model output is sparse but semantic: standard envelopes, positive success flags, empty
+  reliable fields, derived success, timings, and nested JSON escaping are removed. Reliable
+  identity/outcome/hash/save/error fields are never removed. Use `-Diagnostics` only for a scoped
+  transport incident; do not expose raw transport envelopes during ordinary work.
 - Cache views expand `summary -> refs -> detail -> full`; functions/scripts remain references to
   independent caches and are never inlined.
 
@@ -76,5 +80,3 @@ Record friction in `../../notes/mcp-pitfalls.md` as Verified, Observed, or Hypot
 provenance; promote only after controlled verification. Structural evidence belongs to AI and
 visual/aesthetic approval to the user. Never use Computer Use to drive Unreal UI; provide manual
 steps when an editor gesture or visual decision is required.
-
-Bundled probes: `scripts/probe_custom_inputs.py` and `../../bp_clipboard_to_ai.py`.

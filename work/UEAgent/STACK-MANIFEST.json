@@ -10,34 +10,20 @@
     "default": {
       "name": "compact-mcp",
       "apply": [
-        "patches/ue58-mcp-tool-search-v2.patch",
-        "patches/ue58-mcp-tool-search-v3-call-view.patch"
+        "patches/ue58-mcp-tool-search.patch"
       ],
-      "bootstrap_switch": "-ApplyMcpToolSearchPatches"
+      "bootstrap_switch": "-ApplyMcpToolSearchPatch"
     },
     "base": {
       "apply": [
+        "patches/ue58-mcp-authorization-gate.patch",
         "patches/vibeue-ueagent.patch",
-        "patches/vibeue-mcp-shutdown-guard.patch"
+        "patches/vibeue-performance-monitor.patch",
+        "patches/vibeue-mcp-shutdown-guard.patch",
+        "patches/vibeue-reliable-kernel.patch"
       ],
-      "vibeue_ref": "271f48771d077179fb597dc285ab5b898c5e8038"
-    },
-    "project-unrealmcp-readonly": {
-      "apply": [],
-      "bootstrap_switch": "-UseProjectUnrealMcp",
-      "mcp_server_name_default": "unreal-project",
-      "transport": "project-unrealmcp-stdio -> tcp://127.0.0.1:55557",
-      "access": "read-only",
-      "tool_policy": "exact_allowlist",
-      "source_or_build_required": false,
-      "required_tools": [
-        "skill_index",
-        "get_project_info",
-        "read_blueprint_content",
-        "analyze_blueprint_graph",
-        "get_blueprint_variable_details",
-        "get_blueprint_function_details"
-      ]
+      "vibeue_ref": "bf96d6b141bb3ddd6ec531159ff987dcccf1d51c",
+      "source_engine_required": true
     },
     "niagara-toolsets": {
       "apply": ["patches/ue58-niagara-toolsets.patch"],
@@ -45,9 +31,12 @@
     },
     "niagara-authoring": {
       "apply": [
+        "patches/ue58-mcp-authorization-gate.patch",
         "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch",
         "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch",
-        "patches/vibeue-mcp-shutdown-guard.patch"
+        "patches/vibeue-performance-monitor.patch",
+        "patches/vibeue-mcp-shutdown-guard.patch",
+        "patches/vibeue-reliable-kernel.patch"
       ],
       "bootstrap_switch": "-ApplyNiagaraAuthoringProfile",
       "status": "package_verified",
@@ -56,17 +45,39 @@
     }
   },
   "patches": {
+    "patches/ue58-mcp-authorization-gate.patch": "32B14F0C76434CFC139136305F1FF37B778A5A21B9168067D90E1102CD07784A",
     "patches/vibeue-ueagent.patch": "F9B6511CC0382FC61497890A8235B97E8F4EB3C6B5BD8B2B1CA585FCD260A597",
+    "patches/vibeue-performance-monitor.patch": "5399F0FC6F1024F5D445242DF58190E7F3698BF8B18688FC2B1848333E6F71B5",
     "patches/vibeue-mcp-shutdown-guard.patch": "8638899C684BFB47AB18F29718099D322FE824484889A13ECED56A0D33758250",
+    "patches/vibeue-reliable-kernel.patch": "3F1BE63D6999BABB0578B83AE2F48A01596B78B6D25AA9C13F2E6A9BA8A042F1",
     "patches/ue58-niagara-toolsets.patch": "C3EB3E4FC8205EDCF472EF4EE41DB6946D43DFE50E84A9AE548366E01E21D4EA",
-    "patches/ue58-mcp-tool-search-v2.patch": "39D9772619871B28DEAA2729325C87516841DDCBEE2518C3DA7E1DFD7E0F4B7F",
-    "patches/ue58-mcp-tool-search-v3-call-view.patch": "41439CDFFC2C4CBA5752DDD0AF4C5A7C062E97852D71E4113373BCA829E8C37E",
-    "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch": "6C1038EDD528D360E95675CF5E407A93F8E954EC6F879A3D6FD4AA083920F1F0",
+    "patches/ue58-mcp-tool-search.patch": "65D942A5165C68B9BC1C057EFAB86FD84D71C79F140A6F294B3983AA630CE4AE",
+    "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch": "E568B91D3F612BA28E215191A41B4984923C2413C3C2646AB146536C18290E07",
     "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch": "AEAE64EDDBB0F0E93D9F0ED36C10DDC0CC48FB6604A050C0DBD9122781B9E957"
   },
   "runtime": {
     "endpoint": "http://127.0.0.1:8000/mcp",
-    "required_plugins": ["ModelContextProtocol", "EditorToolset", "VibeUE"],
+    "required_plugins": ["ModelContextProtocol", "EditorToolset", "VibeUE", "PlatformCrypto"],
+    "reliable_protocol": "2.0.0",
+    "mutation_transport": "ueagent-command-queue",
+    "control_tools": [
+      "ueagent_state",
+      "ueagent_submit",
+      "ueagent_get_job",
+      "ueagent_cancel",
+      "ueagent_snapshot",
+      "ueagent_batch_read",
+      "ueagent_save",
+      "ueagent_recover",
+      "ueagent_profile_gpu"
+    ],
+    "persistence": {
+      "state": "Saved/UEAgent/state.json",
+      "operations": "Saved/UEAgent/Operations",
+      "inbox": "Saved/UEAgent/Inbox",
+      "evidence": "Saved/UEAgent/Evidence"
+    },
+    "save_policy": "verified command receipt -> scoped one-use capability -> immutable save receipt",
     "gateway": "scripts/mcp_gateway.ps1",
     "gateway_process_guard": {
       "max_private_memory_mb": 2048,
@@ -89,11 +100,11 @@
     }
   },
   "verification": {
-    "bootstrap": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatches",
-    "bootstrap_niagara_authoring": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyNiagaraAuthoringProfile -ApplyMcpToolSearchPatches",
-    "bootstrap_project_unrealmcp": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -UseProjectUnrealMcp -SkipBuild",
-    "static": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatches -CheckOnly",
-    "doctor": "scripts/doctor.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json -Profile live",
+    "bootstrap": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatch",
+    "bootstrap_niagara_authoring": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyNiagaraAuthoringProfile -ApplyMcpToolSearchPatch",
+    "reliable_profile": "tests/test_reliable_profile.ps1 -VibeUEPath <PROJECT>/Plugins/VibeUE -EngineRoot <UE_ROOT>",
+    "static": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatch -CheckOnly",
+    "doctor": "scripts/doctor.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json",
     "route": "scripts/compact_context.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json"
   }
 }

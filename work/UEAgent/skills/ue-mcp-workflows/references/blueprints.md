@@ -18,17 +18,6 @@ instance are different targets. Construction Script may overwrite placed-instanc
 Describe the live `BlueprintTools` schema before authoring. Do not reuse instructions from the
 retired TCP 9877 stack.
 
-## Inspect user-exported selections
-
-When the user copies Blueprint nodes as text:
-
-```powershell
-python .\bp_clipboard_to_ai.py blueprint_clipboard.txt --json-out simplified.json --summary-out summary.txt
-```
-
-The parser preserves node semantics, pin types/defaults, and links while dropping editor
-serialization noise. It proves only the copied selection, not the full asset.
-
 ## Modify cautiously
 
 1. Record path, class, parent, graph, component tree, and compile/dirty state.
@@ -48,4 +37,4 @@ save boundary. Prefer official typed operations with explicit lifecycle behavior
 
 Widget, Niagara, and other specialized editor actions may live outside generic
 Blueprint/UObject APIs. If the official surface lacks the operation, report the boundary before
-proposing VibeUE Python, plugin C++, or a manual editor step.
+proposing a typed plugin operation or a manual editor step.

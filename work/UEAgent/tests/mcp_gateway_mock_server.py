@@ -16,6 +16,9 @@ class Server(ThreadingHTTPServer):
         super().__init__(address, Handler)
         self.mode = mode
         self.payload_bytes = payload_bytes
+        self.initialize_count = 0
+        self.current_session = ""
+        self.successful_call_count = 0
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -59,7 +62,8 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self) -> None:  # noqa: N802 - BaseHTTPRequestHandler API
         request = self._read_json()
         method = str(request.get("method", ""))
-        print(f"REQUEST {method}", flush=True)
+        session_id = self.headers.get("Mcp-Session-Id", "")
+        print(f"REQUEST {method} SESSION {session_id}", flush=True)
 
         if method == "initialize":
             if self.fixture.mode == "initialize_hang":
@@ -77,6 +81,13 @@ class Handler(BaseHTTPRequestHandler):
                 except (BrokenPipeError, ConnectionResetError):
                     return
 
+            self.fixture.initialize_count += 1
+            response_session = (
+                f"fixture-session-{self.fixture.initialize_count}"
+                if self.fixture.mode in ("session_lifecycle", "session_init_stale")
+                else "fixture-session"
+            )
+            self.fixture.current_session = response_session
             result = {
                 "jsonrpc": "2.0",
                 "id": request.get("id", 1),
@@ -90,15 +101,39 @@ class Handler(BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header("Content-Type", "application/json")
             self.send_header("Content-Length", str(len(body)))
-            self.send_header("Mcp-Session-Id", "fixture-session")
+            self.send_header("Mcp-Session-Id", response_session)
             self.send_header("Connection", "close")
             self.end_headers()
             self.wfile.write(body)
             self.close_connection = True
+            if self.fixture.mode == "session_init_stale" and self.fixture.initialize_count == 1:
+                self.fixture.current_session = "expired"
             return
 
         if method == "notifications/initialized":
             self._reply(202, b"", "application/json")
+            return
+
+        expected_session = self.fixture.current_session if self.fixture.mode in ("session_lifecycle", "session_init_stale") else "fixture-session"
+        if self.fixture.mode in ("stale_session", "session_lifecycle", "session_init_stale") and session_id != expected_session:
+            error = {
+                "jsonrpc": "2.0",
+                "id": request.get("id"),
+                "error": {
+                    "code": -32600,
+                    "message": f"Unknown session id '{session_id}' for '{method}'; client should reinitialize",
+                },
+            }
+            self._reply(404, json.dumps(error).encode("utf-8"), "application/json")
+            return
+
+        if method == "tools/list":
+            result = {
+                "jsonrpc": "2.0",
+                "id": request.get("id", 2),
+                "result": {"tools": [{"name": "fixture_tool", "inputSchema": {"type": "object"}}]},
+            }
+            self._reply(200, json.dumps(result).encode("utf-8"), "application/json")
             return
 
         if method == "tools/call":
@@ -120,8 +155,16 @@ class Handler(BaseHTTPRequestHandler):
                     "structuredContent": structured_content
                 },
             }
+            if self.fixture.mode == "json_success":
+                body = json.dumps(result, separators=(",", ":")).encode("utf-8")
+                self._reply(200, body, "application/json")
+                return
             event = "data: " + json.dumps(result, separators=(",", ":")) + "\n\n"
             self._reply(200, event.encode("utf-8"), "text/event-stream")
+            if self.fixture.mode == "session_lifecycle":
+                self.fixture.successful_call_count += 1
+                if self.fixture.successful_call_count == 1:
+                    self.fixture.current_session = "expired"
             return
 
         error = {
@@ -140,7 +183,7 @@ def main() -> None:
     parser.add_argument("--port", type=int, required=True)
     parser.add_argument(
         "--mode",
-        choices=("success", "echo", "call_hang", "initialize_hang"),
+        choices=("success", "json_success", "echo", "stale_session", "session_lifecycle", "session_init_stale", "call_hang", "initialize_hang"),
         required=True,
     )
     parser.add_argument("--payload-bytes", type=int, default=0)
