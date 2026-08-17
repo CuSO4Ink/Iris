@@ -10,7 +10,7 @@
 
 ## State
 
-`active`
+`waiting`
 
 ## Contract
 
@@ -62,7 +62,7 @@ SSS、Ramp、Style 或 Face SDF。G0 尚需冻结平台/RHI、输出设置和 To
   `SubstrateToonBSDF` 图，当前使用引擎内建 Profile 0；显式三套 `UToonProfile` 和验证关卡尚未创建。
 - **Runtime / external truth**: 2026-08-14 UEAgent 在 Editor epoch
   `057C7FF7-4483-6E26-10CA-CC94DC00328C` 完成鞋子 V8.2.1 接入、编译、保存和缓存回读；UE 资产名继续沿用
-  V8_2，避免创建无意义的版本资产。鞋实例当前有
+  V8_2，避免创建无意义的版本资产。鞋实例的已保存基线有
   8 个有效覆盖：`BaseColorTexture`、`PartNormal`、`MicroNormal`、`PackedPBR` 以及四个强度参数，
   制作基准均为 1。绑定资产为
   `T_AvatarSampleA_Shoes_N_Meso_V8_2`、`T_AvatarSampleA_Shoes_N_Micro_V8_2` 和
@@ -80,16 +80,25 @@ SSS、Ramp、Style 或 Face SDF。G0 尚需冻结平台/RHI、输出设置和 To
   AO 在没有网格烘焙时保持 1，Cavity 独立输出。TextureStreamingData 属派生数据，正式 Cook 前仍需
   重建并验证。PBR 数值和语义区域仍须用户在固定灯光下做视觉 Gate。原有四个 BLEND 叠层仍由
   Masked Toon 路径承载；UE 5.8 Toon 的目标画面与性能尚未验证。
+  2026-08-16 的单变量 A/B 已将整鞋异常变黑锁定到 Micro 运行分支：
+  `PartNormalStrength=1, MicroNormalStrength=0` 恢复正常明暗。最后一次实时快照中鞋实例为未保存状态，
+  `PartNormalStrength=1`、`MicroNormalStrength=0`、PBR 两个强度为 1；母材和 Micro Texture2D 保持干净。
+  从 UE 导出的 Micro PNG 与磁盘源图逐像素 100% 相同，RGB 均值为
+  `(127.743, 127.744, 254.912)`，因此不是黑图或导入源丢失。以两张源法线复现当前母材合成式时，
+  最小 Z 为 0.9404、负 Z 为 0，源数据和理论公式也不会产生翻面。未解范围已收窄到
+  UE GPU 纹理资源/采样或已编译的 Micro 材质分支；尚未修改母材。UEAgent 随后确认 Editor 离线，
+  GPU 资产预览需等待 Editor 重新打开。
 - **Compatibility truth**: Abyss 中 47 个仍序列化 `MSM_CustomToon` 的旧资产已备份并重存为
   `MSM_DefaultLit`；移除临时 Enum Redirect 后 47/47 可加载、哈希不再变化，项目内旧枚举标记为零；
   5.8.1 `UnrealEditor` 已完整重建，清除了旧 Renderer DLL 对已删除 Shader 的残留引用。
 
 ## Current Focus
 
-V8.2.1 已修复下鞋被位置规则过度分成 ToeCap/Rand、材质微表面在脚踝处突然截止的问题，并完成同名
-Texture2D 原位替换。当前先做固定灯光视觉 Gate：分别只开 Meso、只开
-Micro，再同时检查 PBR。贴图继续负责浅接缝、压槽、细缝线、浅折痕、鞋底小沟槽、PU/TPU/橡胶/
-织带微表面、Roughness/Specular/Metallic、Print 与 Cavity。
+V8.2.1 的语义分层与下鞋连续性已通过技术检查，当前只处理 Micro 运行分支变黑。
+Editor 恢复后先读取 GPU 资产预览：若 Texture2D 资源异常，修复导入/资源重建；若资源正常，
+则检查已编译的 Micro 采样与法线合成分支，只在根因确定后改母材。修复前鞋实例保持
+`MicroNormalStrength=0`，不再调整灯光或金属度来遮盖该问题。贴图仍负责浅接缝、压槽、细缝线、
+浅折痕、鞋底小沟槽、PU/TPU/橡胶/织带微表面、Roughness/Specular/Metallic、Print 与 Cavity。
 
 模型提升范围只保留会改变轮廓、侧壁、遮挡、叠压或投影的结构：大面积胫部 Guard 护板的厚度与间隙；
 厚 Strap/锚点的截面、悬空、压叠和受力；Outsole/Heel 的宏观分层与 Hero 防滑块；改变轮廓的扣具、

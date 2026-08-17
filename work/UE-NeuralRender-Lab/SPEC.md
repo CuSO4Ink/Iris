@@ -1,9 +1,21 @@
 # UE Neural Render Lab · SPEC
 
-> 状态：R1 pass / R2 performance fail / R4a pass / R4b allowed but not started  
-> 日期：2026-08-14  
+> 状态：R1 pass / R2 performance fail / R4a pass / R4c UE integration waiting for post-fix retest
+> 日期：2026-08-17
 > 硬件：NVIDIA GeForce RTX 5060 / 8 GB  
-> 当前范围：单个固定云体的离线 neural volumetric proxy 验证
+> 当前范围：单个固定云体的 world-box neural volumetric proxy 与 UE 实时推理验证
+
+## R4c 当前实现
+
+R4a 的代理球只用于离线可行性验证；当前唯一实现已切换为 world-box：训练 Teacher、held-out 射线、FP16 量化检查与 UE shader 都使用相同的归一化 AABB 域。Student 仍是 `3×32×32×8` triplane 加三层宽度 64 MLP，但输入改为 ray/AABB 入射点、观察方向、太阳方向和归一化盒内厚度。
+
+当前模型 held-out PSNR `33.983 dB`、Student/analytic log-RGB RMSE 比值 `0.14754`、alpha RMSE `0.007446`；FP16 为 `68,744 B`，导出 SHA256 `F416D6EF390A69D44EAC8EB5A5317740D961580EFEF968E2A3842C5F09B59225`。量化输出 RMSE `2.92e-5`、最大绝对误差 `0.001143`。证据位于 `tmp/UE-NeuralRender-Lab/neural-volume/r4c-box/`。
+
+Abyss 中的 `NeuralVolumeProxy` 0.2.0 Runtime 插件提供 `ANeuralVolumeProxyActor`、可编辑 Box Bounds、SceneViewExtension 和 SM6 Compute Shader。运行时按每个像素的相机射线与 Box 求交，执行一次 Student 并结合可选 Scene Depth 合成；Actor 暴露 `Strength`、`SunDirection`、`bUseSceneDepth` 与 Debug View。插件直接加载 FP16 权重，不依赖 NNE、材质资产或 `/Game/NeuralRenderLab`。
+
+首次接入已验证权重加载、Global Shader 编译、Actor 放置和横向世界锚定。本人随后发现固定相机下修改 `Location.Z` 时 Debug View 3 更像缩放；Debug 3 绕过神经网络，因此问题定位在射线／投影层。透视射线起点已改为真实 View Origin，C++ 源码编译和 2026-08-16 完整 DLL 链接均成功。编辑器热状态下曾因旧 DLL 参数结构配新 USF 出现一次 `ViewOriginAndPerspective` 绑定错误；关闭编辑器并完整链接后布局已同步，当前只等待重启编译与 Z 向人工复测。
+
+R4c 尚未通过的实时条件只有：修正后 Box 命中遮罩与线框一致、正常合成／深度遮挡／重光照目视正常，以及固定上下文中的插件开关 GPU A/B。完成前不声称 UE 实时性能优势，也不保存当前 dirty 的 `L_Demo`。
 
 ## R4a 合同：Neural Volumetric Proxy
 

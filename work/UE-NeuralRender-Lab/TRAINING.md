@@ -1,17 +1,22 @@
 # Neural Render Lab · 训练与调参
 
-## 当前入口：R4a Neural Volumetric Proxy
+## 当前入口：R4c World-Box Neural Volumetric Proxy
 
 在 `work/UE-NeuralRender-Lab/` 执行：
 
 ```powershell
 uv run --no-sync python train_neural_volume.py --smoke
 uv run --no-sync python train_neural_volume.py
+uv run --no-sync python export_neural_volume_rhi.py
 ```
 
-默认结果写到 `tmp/UE-NeuralRender-Lab/neural-volume/r4a/`：`best.pt`、`metrics.json`、`comparison.png` 和 `relight_sweep.gif`。默认配置是每个 camera/sun 组合 384 条训练射线、太阳方位 `±22.5°` 连续抖动、64 次视线步进 + 8 次太阳透射步进的 Teacher，以及 `3×32²×8` triplane + 三层宽度 64 MLP 的 Student。
+训练默认写到 `tmp/UE-NeuralRender-Lab/neural-volume/r4c-box/`：`best.pt`、`metrics.json`、`comparison.png` 和 `relight_sweep.gif`。导出器默认在其 `rhi/` 子目录生成 `NRL_R4c_Box.fp16.bin/json`。默认配置是每个 camera/sun 组合 384 条训练射线、太阳方位 `±22.5°` 连续抖动、64 次视线步进 + 8 次太阳透射步进的盒内 Teacher，以及解析 ray/AABB 入射点和厚度、`3×32²×8` triplane + 三层宽度 64 MLP 的 Student。
 
-当前候选在 RTX 5060 上训练 1200 steps，训练与 held-out 使用独立固定随机种子：held-out PSNR `34.44 dB`、Student/analytic log-RGB RMSE 比值 `0.1772`、alpha RMSE `0.00964`、FP16 表示 `0.0656 MiB`；连续 sweep 的平均／最差帧 RMSE 为 `0.00387/0.00451`，相邻帧变化 RMSE 为 `0.00223`。机器检查中侧／逆光亮环已经消失，未见明显跳变或轮廓漂移；本人已确认视觉 Gate 通过，R4a 完成。
+当前候选在 RTX 5060 上训练 1200 steps，数据生成 `46.68 s`、训练 `6.75 s`、峰值 CUDA 分配 `184.51 MiB`。held-out PSNR `33.983 dB`、Student/analytic log-RGB RMSE 比值 `0.14754`、alpha RMSE `0.007446`；连续 sweep 平均／最差／相邻帧变化 RMSE 为 `0.005707/0.007283/0.002684`。34,372 参数导出为 `68,744 B` FP16，SHA256 为 `F416D6EF390A69D44EAC8EB5A5317740D961580EFEF968E2A3842C5F09B59225`；量化输出 RMSE `2.92e-5`、最大绝对误差 `0.001143`。
+
+部署文件位于 Abyss 的 `Plugins/NeuralVolumeProxy/Resources/NRL_R4c_Box.fp16.bin`。UE 每帧只做推理，运行时读取相机射线、Actor Box、观察／太阳方向、厚度和可选 Scene Depth；不会根据 UE 画面在线训练。当前 DLL 已完整编译，等待重启后的 Z 向世界锚定复测和 GPU A/B。
+
+R4a 代理球结果是历史候选，已被 R4c world-box 训练域和部署路径取代。
 
 ## 历史入口：R1 Tiny Neural Material
 

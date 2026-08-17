@@ -54,9 +54,10 @@
 **P0 — 女性 Locomotion 质量 Gate（正确方向体态校正待验收）**：Abyss 整目标构建、HeroAnimation 加载、
 独立 Character、AnimBP 与 GameMode 链路已完成。首批 Idle/Walk/Run/Jump Loop 已正式保存但人工判定表现
 完全错误，属于已知坏产物。`FemaleMoveAnimSet` 的首版体态候选变化不明显，随后加强版因将 `Y Forward`
-误判为反向而加重后仰，均已被人工视觉 Gate 否决。正确方向保守版随后确认幅度太小；当前仅将 Idle 原位
-提高到五倍总量，并以 Shoulder 与 UpperArm 联合校正左右整臂，Walk_F/Run_F 暂保留一倍版本。Idle 视觉 Gate 通过前不批量同步、
-不接入 AnimBP，也不扩展到整库。
+误判为反向而加重后仰，均已被人工视觉 Gate 否决。正确方向保守版随后确认幅度太小；当前 `PostureMVP`
+的 Idle、Walk_F 与 Run_F 已统一为五倍上身体态，并以 Shoulder 与 UpperArm 联合校正左右整臂。用户已澄清
+此前截图中的过度后摆来自 Run，统一 Shoulder 基线确认为 `-25/-25` 度。三条候选均已保存，待并排视觉
+Gate；通过前不接入 AnimBP，也不扩展到整库。
 
 ### Secondary Motion Gate
 
@@ -95,11 +96,11 @@ Collider 无法让当前衣摆脱离腿部；下一 Gate 是在 DCC 重做衣摆
   `A_Kinesis_Walk_F_Anim`、`A_Kinesis_Run_F_Anim`、`A_Kinesis_Jump_Loop_Anim`；不修改 VRoid 导入目录
   中的原资产。该首批输出已于人工 Gate 判定无效，待原位覆盖；不得作为 Locomotion 输入。次轮候选位于
   `/Game/Neow/Kinesis/Animation/Preview/PostureMVP`，包含 `A_Kinesis_PostureMVP_Idle_Anim`、
-  `A_Kinesis_PostureMVP_Walk_F_Anim` 与 `A_Kinesis_PostureMVP_Run_F_Anim`。Idle 在完整帧范围内为
-  `J_Bip_C_Spine/Chest/UpperChest/Neck` 叠加本地 Roll `+10/+15/+20/-35` 度，并为
-  `J_Bip_L/R_Shoulder` 叠加本地 Roll `-75/-75` 度、`J_Bip_L/R_UpperArm` 叠加本地 Yaw
-  `+20/-20` 度以从肩根带动整条手臂前移；Walk_F/Run_F 仍为 `+2/+3/+4/-7` 度。Root、骨盆、腿、
-  肘、手腕与源动画不变。
+  `A_Kinesis_PostureMVP_Walk_F_Anim` 与 `A_Kinesis_PostureMVP_Run_F_Anim`。三条动画均在完整帧范围内为
+  `J_Bip_C_Spine/Chest/UpperChest/Neck` 叠加本地 Roll `+10/+15/+20/-35` 度，为
+  `J_Bip_L/R_Shoulder` 叠加本地 Roll `-25/-25` 度，并为 `J_Bip_L/R_UpperArm` 叠加本地 Yaw
+  `+20/-20` 度以从肩根带动整条手臂前移。Root、骨盆、腿、肘、手腕与源动画不变；Walk/Run 保留原有
+  Root Motion。
 - **Verification truth**: 第二个源码切片已再次通过 `BuildPlugin` 的 Win64 `UnrealEditor Development`、
   `UnrealGame Development` 与 `UnrealGame Shipping` 编译；已有两个窄回归检查通过。实际
   `AbyssEditor Win64 Development` 整目标构建成功，运行中的编辑器已加载 HeroAnimation；
@@ -118,17 +119,22 @@ Collider 无法让当前衣摆脱离腿部；下一 Gate 是在 DCC 重做衣摆
   骨的总增量均精确为 `+2/+3/+4/-7` 度，三项资产均为 `clean`。该版本视觉确认方向正确但幅度太小后，
   Idle 随后继续提高到 `+10/+15/+20/-35` 度，并将左右 UpperArm 以本地 Yaw `+20/-20` 度镜像前移；
   第 0 帧相对未校正 Idle 的旋转矩阵独立读回误差小于 `0.000002`。该版人工观察仍显手臂靠后后，左右
-  Shoulder 先以本地 Roll `-15/-15` 度从肩根前移整臂，再提高到 `-25/-25` 度；人工观察仍判定不足后，
-  按用户指定将当前前摆总量放大三倍至 `-75/-75` 度。独立读回确认躯干与 UpperArm 参数未被覆盖，
-  双手全局 Y 从三倍版约 `-25.7/-22.6` 最终前移到 `+30.3/+39.6`。资产正式保存、
-  `save_generation=21`、package SHA-256 为
-  `b22297518857c98ccf0e603f86ceb95237707df5a1c55d7dfa804d4430f1c802`，状态为 `clean`；未保存或修改
-  Walk_F、Run_F 与其他任务包。最终审美结论仍由人工 Gate 决定。截图工具
+  Shoulder 先以本地 Roll `-15/-15` 度从肩根前移整臂，再提高到 `-25/-25` 度。后续曾把 Run 的动态
+  后摆反馈误判为 Idle 静态体态，因而将 Idle 临时放大到 `-75/-75`、再回调到 `-45/-45`；用户澄清后，
+  Idle 已恢复为 `-25/-25`，Walk_F/Run_F 也从一倍躯干版本同步到同一完整校正。该同步共执行 18 个窄
+  `ApplyBoneRotation` 写入，每项均为 `succeeded/verified` 并由对应的一次性能力精确保存为 `saved`。
+  2026-08-14 最终磁盘资产 SHA-256 为 Idle
+  `606368D38A030EE4694059F75013ADE593A5471070E68EA655C05225E8E41E81`、Walk
+  `0896E1524618300420FFCC099D57ED7FEBCDAEABD11D9D86BE40B292E6D9313D`、Run
+  `2AC167F37A8214EB081E172F20EA6434A74BC006CF13F8DC4D09DCA0EEA1F90B`；未修改源 Locomotion、
+  Retargeter、关卡或其他任务包。最终同步后的姿态独立读回与审美结论仍待下一次 Editor 在线后完成。
+  截图工具
   曾使参考演示地图发生一次非预期重存；Editor 关闭后已用任务前同尺寸、同时间戳的原始文件恢复，恢复后
   SHA-256 为 `86A8322C36919BA811A87588627EC1738D254253B6ED95B8E17AC0E52DEC12D1`。
-- **Runtime / external truth**: `Saved/UEAgent/route.json` 已绑定；2026-08-14 当前 live receipt 为
-  `HEALTHY`，Editor epoch 为 `057C7FF7-4483-6E26-10CA-CC94DC00328C`。三条正确方向体态候选均已独立
-  读回并正式保存；本切片未保存或修改其他任务正在使用的关卡与材质包。当前日志确认 UE `5.8.1-0+UE5`。现有 Bifrost 测试动画绑定
+- **Runtime / external truth**: `Saved/UEAgent/route.json` 已绑定；最后一次成功写入使用的 Editor epoch 为
+  `057C7FF7-4483-6E26-10CA-CC94DC00328C`。2026-08-17 Doctor 返回 `OFFLINE` 且无 listener，旧 live receipt
+  已因 Editor PID 变化失效；这不影响上述已落盘的三条候选。下次 Editor 在线后须刷新 Doctor 并做最终
+  姿态读回。本切片未保存或修改其他任务正在使用的关卡与材质包。当前日志确认 UE `5.8.1-0+UE5`。现有 Bifrost 测试动画绑定
   `/Game/Bifrost/Animation/TestVroid/SKEL_1`，不能直接作为 AvatarSampleA 动画使用；在女性体态
   Retarget Pose 通过人工视觉 Gate 前不接入。目标硬件、DCC、Root/Capsule 与动画许可证尚未冻结。
 - **Source-control truth**: Abyss Git 仓库当前为 `master` 且没有 commit，`Abyss.uproject` 未跟踪；
@@ -138,9 +144,10 @@ Collider 无法让当前衣摆脱离腿部；下一 Gate 是在 DCC 重做衣摆
 
 ## Current Focus
 
-先人工检查 `PostureMVP` 五倍总量并带 Shoulder + UpperArm 整臂前移校正的 Idle，重点确认胸腰曲线、肩部松弛、手臂位置与头部补偿；
-通过后再同步到 Walk_F/Run_F，检查动态脚底接触并扩展到所需 Locomotion 子集，再决定 Movement/Capsule 对接并填充当前空的
-`Locomotion` State Machine；不改源动画、参考库或 VRoid 导入资产。
+先并排人工检查 `PostureMVP` 的 Idle、Walk_F、Run_F，重点确认共享 `-25/-25` Shoulder 基线下的胸腰曲线、
+肩部松弛、Run 后摆峰值与动态脚底接触。若仅 Run 仍过度后摆，则只修 Run 的动态摆臂，不再改共享静态
+体态；三条通过后再扩展到所需 Locomotion 子集，并决定 Movement/Capsule 对接与填充当前空的
+`Locomotion` State Machine。不改源动画、参考库或 VRoid 导入资产。
 
 ## Constraints
 

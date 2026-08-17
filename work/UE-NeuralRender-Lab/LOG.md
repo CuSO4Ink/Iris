@@ -241,3 +241,17 @@ RTX 5060 正式候选训练 1200 steps；held-out PSNR `31.87 dB`，Student/anal
 ### 2026-08-14 18:24 — [裁决] R4a 视觉 Gate 通过
 
 本人确认当前静态对比与连续重光照 sweep 可接受，R4a 数值、机器检查与视觉 Gate 至此全部通过。R4b UE RHI／Tensor 路径获得进入许可，但尚未启动；本次签字不构成 UE 实时性能结论，也未执行任何 UE live 操作。
+
+### 2026-08-14 20:57 — [执行] R4c 切换为 world-box 并接入 UE Runtime 插件
+
+早期相机相对／代理球预览在转动视角时像贴在屏幕上，不能表达关卡内固定体积，因此不保留为 fallback。训练域、held-out 射线与导出检查统一切换为归一化 AABB；`train_neural_volume.py` 默认结果改到 `tmp/UE-NeuralRender-Lab/neural-volume/r4c-box/`。新候选 held-out PSNR `33.983 dB`、Student/analytic log-RGB RMSE 比值 `0.14754`、alpha RMSE `0.007446`，连续重光照平均／最差／相邻帧变化 RMSE 为 `0.005707/0.007283/0.002684`。模型仍为 34,372 参数，FP16 `68,744 B`；PyTorch eager CUDA Student/Teacher median 为 `1.817/1164.178 ms`，只作离线余量证据。
+
+`export_neural_volume_rhi.py` 导出 `NRL_R4c_Box.fp16.bin/json`；SHA256 为 `F416D6EF390A69D44EAC8EB5A5317740D961580EFEF968E2A3842C5F09B59225`，量化输出 RMSE `2.92e-5`、最大绝对误差 `0.001143`。Abyss 新增 `NeuralVolumeProxy` 0.2.0 Runtime 插件：`ANeuralVolumeProxyActor` 以 `UBoxComponent` 提供世界范围，SceneViewExtension 在 SM6 Compute Shader 中完成 ray/AABB 求交、Student 推理、Scene Depth 遮挡与合成。运行时暴露 Enabled、Strength、SunDirection、Use Scene Depth 和 Debug View；权重从插件 Resources 直接加载，不依赖 NNE 或 `/Game/NeuralRenderLab`。
+
+插件首次启动日志确认 68,744 B 权重加载和 `FNeuralVolumeProxyCS` 编译成功。本人手动把 Actor 放入当前 dirty 的 `L_Demo`，确认左右移动的世界锚定正常；关卡未保存。`/Game/NeuralRenderLab/v00`、`v01`、`R2` 均已被当前路径废弃，但尚未执行资产删除。
+
+### 2026-08-16 19:10 — [修正] 透视射线改用真实相机起点，完整 DLL 链接成功
+
+本人报告固定相机下修改 Actor `Location.Z` 时 Debug View 3 表现为缩放而不是移动。Debug 3 在网络求值前直接输出 Box 命中遮罩，因此无需重训，问题限定在投影／射线层。组件回读确认 Box 世界位置与缩放会更新；实现随后把透视视图的 ray origin 从逐像素近裁剪面点改为 `ViewMatrices.GetViewOrigin()`，正交视图仍保留近面起点，射线方向继续由两个反投影点确定。
+
+编辑器尚加载旧 DLL 时，新 USF 的 `ViewOriginAndPerspective` 暂时落入 `$Globals`，与旧 `FParameters` 产生一次 Global Shader 绑定错误；这不是模型或 HLSL 算法错误。关闭编辑器后，`AbyssEditor Win64 Development` 完整链接成功并生成新 `AbyssEditor-NeuralVolumeProxy.dll`。当前验证停在“重启 UE、确认 Shader 编译与 Z 向 Debug 3 行为”，尚未将修正记为视觉通过，也未做 GPU A/B 或关卡保存。

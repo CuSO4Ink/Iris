@@ -2,9 +2,12 @@
 
 ## Doing
 
-- [ ] 用户在固定灯光下验收鞋子 V8.2.1，重点确认前掌、灰色护边和黑色鞋底不再在脚踝处断层：先设 `MicroNormalStrength=0` 检查 Meso，再设
-  `PartNormalStrength=0, MicroNormalStrength=1` 检查材质微表面，最后恢复两者为 1 并分别调节
-  `RoughnessStrength`、`MetallicStrength`；覆盖 Close、Gameplay Medium、Full Body 三个距离。
+- [ ] 重新打开 AbyssEditor 并通过 UEAgent gate，读取
+  `T_AvatarSampleA_Shoes_N_Micro_V8_2` 的 GPU 资产预览。若资源异常，修复导入/重建；若资源正常，
+  检查并修复已编译的 Micro 采样/合成分支。用同一灯光与机位对比
+  `PartNormalStrength=1, MicroNormalStrength=0/1`，修复前保持 Micro 为 0，不修改灯光或 PBR 参数。
+- [ ] Micro 分支修复后再验收鞋子 V8.2.1，重点确认前掌、灰色护边和黑色鞋底的连续性，
+  并覆盖 Close、Gameplay Medium、Full Body 三个距离。
 - [ ] 为大 Guard、厚 Strap/锚点、Outsole/Heel 宏观层和改变轮廓的 Hardware 建立实例级轮廓，执行
   “细分/重拓扑 → 贴合 → Solidify/Bevel → Skin Weight Transfer”；当前环境未安装 Blender，
   不手写第二套重拓扑器。

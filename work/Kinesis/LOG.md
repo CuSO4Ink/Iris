@@ -48,6 +48,10 @@ Niagara/材质/音效依赖或动画到表现的闭环；第一个真实消费�
 源文件有 80 根 `CoatSkirt` 骨，但衣服 section 对其权重接近零，下装主要由 Hips/UpperLeg 驱动；
 Spring 与 Collider 调参不能产生分离，下一修复层级是 DCC 蒙皮或明确切换 Chaos Cloth。
 
+### 2026-08-17 20:18 — [回滚] 统一 Shoulder 基线恢复为 -25 度
+用户澄清此前画面的问题来自 Run 而非 Idle；撤销 Idle 的 `-75/-45` 试调，并将 Idle、Walk、Run 统一到
+Shoulder `-25/-25`。若 Run 仍过度后摆，只修其动态摆臂，不再改变共享静态体态。
+
 Append only information that would otherwise be forgotten:
 
 ```markdown
