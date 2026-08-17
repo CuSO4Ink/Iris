@@ -1,0 +1,4 @@
+interface:
+  display_name: "Arknights Computer Use"
+  short_description: "Reliable continuous drag for Arknights PC"
+  default_prompt: "Use $arknights-computer-use to perform a continuous Arknights deployment drag."

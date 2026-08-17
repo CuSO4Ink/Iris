@@ -54,6 +54,31 @@ foreach ($script in @('ueagent_common.ps1', 'bootstrap.ps1', 'doctor.ps1', 'mcp_
     Assert-PowerShellParses (Join-Path $root "scripts\$script")
 }
 
+. (Join-Path $root 'scripts\ueagent_common.ps1')
+$pluginFixture = Join-Path ([IO.Path]::GetTempPath()) ('ueagent-plugin-inventory-' + [Guid]::NewGuid().ToString('N'))
+try {
+    $descriptorDir = Join-Path $pluginFixture 'Plugins\ExternalFixture'
+    $null = New-Item -ItemType Directory -Path $descriptorDir
+    $descriptorPath = Join-Path $descriptorDir 'ExternalFixture.uplugin'
+    [IO.File]::WriteAllText($descriptorPath, '{"Version":7,"VersionName":"7.1"}', [Text.UTF8Encoding]::new($false))
+    $anotherDir = Join-Path $pluginFixture 'Plugins\AnotherFixture'
+    $null = New-Item -ItemType Directory -Path $anotherDir
+    [IO.File]::WriteAllText((Join-Path $anotherDir 'AnotherFixture.uplugin'), '{"Version":1,"VersionName":"1.0"}', [Text.UTF8Encoding]::new($false))
+    $fixtureProject = [pscustomobject]@{ Plugins = @(
+        [pscustomobject]@{ Name = 'ExternalFixture'; Enabled = $true },
+        [pscustomobject]@{ Name = 'AnotherFixture'; Enabled = $true },
+        [pscustomobject]@{ Name = 'DisabledFixture'; Enabled = $false },
+        [pscustomobject]@{ Name = 'EngineFixture'; Enabled = $true },
+        [pscustomobject]@{ Name = 'VibeUE'; Enabled = $true }
+    ) }
+    $inventory = @(Get-EnabledExternalPluginInventory $fixtureProject $pluginFixture)
+    Assert-True ($inventory.Count -eq 2 -and $inventory[0].name -eq 'AnotherFixture') 'Bootstrap inventory did not isolate and sort enabled project-local plugins.'
+    Assert-True ($inventory[1].name -eq 'ExternalFixture' -and $inventory[1].descriptor -eq 'Plugins/ExternalFixture/ExternalFixture.uplugin') 'Bootstrap inventory lost external plugin identity.'
+    Assert-True ($inventory[1].version -eq 7 -and $inventory[1].versionName -eq '7.1' -and $inventory[1].descriptorSha256 -eq (Get-NormalizedFileSha256 $descriptorPath)) 'Bootstrap inventory lost external plugin version or fingerprint.'
+} finally {
+    Remove-Item -LiteralPath $pluginFixture -Recurse -Force -ErrorAction SilentlyContinue
+}
+
 $gatewayPath = Join-Path $root 'scripts\mcp_gateway.ps1'
 $gateway = Get-Content -Raw -LiteralPath $gatewayPath
 $gatewayParameters = (Get-Command $gatewayPath).Parameters.Keys
@@ -194,7 +219,9 @@ try {
         '## Logic',
         'line',
         '## Deps',
-        '- /Game/Fixture/Dep'
+        '- /Game/Fixture/Dep',
+        'PARENT: /Game/Fixture/M_Master | relation=Parent',
+        'TEX: /Game/Fixture/T_Normal | relation=TextureOverride | parameter=Normal'
     ) -join "`n"
     [IO.File]::WriteAllText($sidecar, $sidecarText, [Text.UTF8Encoding]::new($false))
     $summary = (& (Join-Path $root 'scripts\reflect_cache.ps1') -Sidecar $sidecar) | ConvertFrom-Json
@@ -202,6 +229,10 @@ try {
     foreach ($redundant in @('path', 'source', 'sourceFile', 'sha256', 'fresh', 'formatKnown')) {
         Assert-True (-not ($summary.cache.PSObject.Properties.Name -contains $redundant)) "Reflect summary still emits redundant field: $redundant"
     }
+    $refs = (& (Join-Path $root 'scripts\reflect_cache.ps1') -Sidecar $sidecar -View refs) | ConvertFrom-Json
+    Assert-True (@($refs.references).Count -eq 2) 'Reflect refs view lost semantic direct references.'
+    Assert-True ($refs.references[0].relation -eq 'Parent' -and $refs.references[0].target -eq '/Game/Fixture/M_Master') 'Reflect refs view lost the parent edge.'
+    Assert-True ($refs.references[1].relation -eq 'TextureOverride' -and $refs.references[1].parameter -eq 'Normal') 'Reflect refs view lost the texture-override reason.'
     $full = (& (Join-Path $root 'scripts\reflect_cache.ps1') -Sidecar $sidecar -View full) | ConvertFrom-Json
     Assert-True ([string]$full.cache.sha256 -and [string]$full.raw) 'Explicit full reflect view lost provenance hash or raw content.'
 } finally {

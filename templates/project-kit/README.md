@@ -1,22 +1,8 @@
-# Project Template Kit — 项目工作台模板组
+# Project kit
 
-> **用法**：普通项目用 `/project-init <项目名>`；UE 项目用 `/project-init <项目名> --ue`。也可手动把本目录下三份模板复制到 `work/<项目名>/`。
-> **定位**：L2 项目专属，叠加在 L0 之上。
+`/project-init <name>` copies the three Markdown templates into `work/<name>/`. Add `--ue` to
+insert the canonical UE marker and UEAgent-first block.
 
-## 三件套
-
-| 文件 | 定位 | 更新节奏 | 体积 |
-|---|---|---|---|
-| `AI-BRIEF.md` | 项目身份、技术栈、术语、当前焦点 | 阶段性（周/月） | 尽量 ≤100 行 |
-| `LOG.md` | 决策流水与否决方案（追加式） | 按需 | 追加无上限 |
-| `BACKLOG.md` | 待办清单（简单打勾） | 随时 | 默认一行一项 |
-
-`--ue` 是 UE 项目的唯一创建标记：初始化时在 `AI-BRIEF.md` 顶部加入
-`<!-- iris-project-kind: ue -->` 和 UEAgent-first 导航块。不要为项目另建一套 MCP gate。
-
-## 填充原则
-
-- **AI-BRIEF**：锚点类信息，变动频率低，AI 每次接手必读
-- **LOG**：只记"本来会忘"的东西——决策、否决方案、意外发现。不记流水账
-- **BACKLOG**：顺手加、做完打勾、完成的可归入 LOG
-- 按需增加 `SPEC.md`、`PROJECT.md` 或 `tasks/T-xxx.md`，不创建空壳；新增后在 AI-BRIEF 文档地图标明职责，避免多处回答同一问题
+The document roles and execution loop are defined once in
+[Project Progress Methodology](../../notes/project-progress-methodology.md). Add `SPEC.md`,
+`PROJECT.md`, or `tasks/` only after a real task needs them.

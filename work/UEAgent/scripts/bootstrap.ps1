@@ -202,6 +202,11 @@ if ($CheckOnly) {
     }
     $route = Get-Content -Raw -LiteralPath $routePath | ConvertFrom-Json
     if ($route.schema -ne 'ueagent-route-v1') { throw "Unsupported UEAgent route schema: $($route.schema)" }
+    $externalPlugins = @(Get-EnabledExternalPluginInventory $project $projectRoot)
+    if ((ConvertTo-Json -InputObject $externalPlugins -Depth 5 -Compress) -ne
+        (ConvertTo-Json -InputObject @($route.externalPlugins) -Depth 5 -Compress)) {
+        throw 'Enabled external plugins differ from the routed bootstrap inventory; rerun bootstrap.'
+    }
     if (-not $PSBoundParameters.ContainsKey('Endpoint')) { $Endpoint = [string]$route.endpoint }
     $actualRef = (& git -C $vibePath rev-parse HEAD).Trim()
     Assert-LastExitCode 'Could not read VibeUE revision'
@@ -441,6 +446,7 @@ $route = [ordered]@{
     vibeUEMcpShutdownGuardPatchSha256 = $vibeShutdownGuardPatchSha256
     vibeUEReliablePatchSha256 = $vibeReliablePatchSha256
     engineMcpAuthorizationPatchSha256 = $engineMcpAuthorizationPatchSha256
+    externalPlugins = @(Get-EnabledExternalPluginInventory $project $projectRoot)
 }
 if ($engineNiagaraPatchApplied) {
     $route['engineNiagaraPatchSha256'] = $engineNiagaraPatchSha256

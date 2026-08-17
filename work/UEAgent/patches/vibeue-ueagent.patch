@@ -1,8 +1,8 @@
 diff --git a/Source/VibeUE/Private/Module.cpp b/Source/VibeUE/Private/Module.cpp
-index 6f4c9e7..5eefd1c 100644
+index 6f4c9e7..48cc284 100644
 --- a/Source/VibeUE/Private/Module.cpp
 +++ b/Source/VibeUE/Private/Module.cpp
-@@ -19,9 +19,1480 @@
+@@ -19,9 +19,1520 @@
  #include "Utils/VibeUEPaths.h"
  #include "Misc/Paths.h"
  #include "Misc/FileHelper.h"
@@ -80,6 +80,13 @@ index 6f4c9e7..5eefd1c 100644
 +	{
 +		int32 Separator = INDEX_NONE;
 +		return Value.FindLastChar(TEXT(':'), Separator) ? Value.Mid(Separator + 1) : Value;
++	}
++
++	static FString PackagePath(const FString& Value)
++	{
++		const FString ObjectPath = FPackageName::ExportTextPathToObjectPath(Value);
++		const FString Result = FPackageName::ObjectPathToPackageName(ObjectPath);
++		return Result.IsEmpty() ? ObjectPath : Result;
 +	}
 +
 +	static bool IsEnabled()
@@ -207,7 +214,7 @@ index 6f4c9e7..5eefd1c 100644
 +		const bool bIsFunction = Function.IsValid();
 +
 +		TMap<FString, int32> ParameterCounts;
-+		TMap<FString, int32> Dependencies;
++		TArray<FString> DependencyLines;
 +		TMap<FString, FString> ExpressionLabels;
 +		TMap<FString, FString> ExpressionAliases;
 +		TSet<FString> ParameterNames;
@@ -241,6 +248,8 @@ index 6f4c9e7..5eefd1c 100644
 +			const TSharedPtr<FJsonObject> Properties = Expression->GetObjectField(TEXT("properties"));
 +			const FString InputName = JsonString(Expression, TEXT("input_name"));
 +			const FString OutputName = JsonString(Expression, TEXT("output_name"));
++			const FString* NodeAlias = ExpressionAliases.Find(Id);
++			const FString NodeDetail = NodeAlias ? TEXT(" | node=") + *NodeAlias : FString();
 +			if (!InputName.IsEmpty())
 +			{
 +				bool bUsePreviewDefault = false;
@@ -306,17 +315,34 @@ index 6f4c9e7..5eefd1c 100644
 +
 +			if (!FunctionPath.IsEmpty())
 +			{
-+				Dependencies.FindOrAdd(TEXT("MF: ") + FunctionPath)++;
++				DependencyLines.Add(
++					TEXT("MF: ") + PackagePath(FunctionPath) + TEXT(" | relation=FunctionCall") + NodeDetail);
 +			}
 +			const FString CollectionPath = JsonString(Expression, TEXT("collection_path"));
 +			if (!CollectionPath.IsEmpty())
 +			{
-+				Dependencies.FindOrAdd(TEXT("MPC: ") + CollectionPath)++;
++				FString Line = TEXT("MPC: ") + PackagePath(CollectionPath)
++					+ TEXT(" | relation=CollectionParameter") + NodeDetail;
++				const FString CollectionParameter = JsonString(Expression, TEXT("collection_parameter_name"));
++				if (!CollectionParameter.IsEmpty())
++				{
++					Line += TEXT(" | parameter=") + ShortValue(CollectionParameter, 80);
++				}
++				DependencyLines.Add(Line);
 +			}
 +			const FString Texture = JsonString(Properties, TEXT("Texture"));
 +			if (!Texture.IsEmpty() && Texture != TEXT("None"))
 +			{
-+				Dependencies.FindOrAdd(TEXT("TEX: ") + ShortValue(Texture))++;
++				FString Line = TEXT("TEX: ") + PackagePath(Texture)
++					+ (ParameterName.IsEmpty()
++						? TEXT(" | relation=TextureSample")
++						: TEXT(" | relation=TextureParameter"))
++					+ NodeDetail;
++				if (!ParameterName.IsEmpty())
++				{
++					Line += TEXT(" | parameter=") + ShortValue(ParameterName, 80);
++				}
++				DependencyLines.Add(Line);
 +			}
 +
 +			const FString RerouteName = JsonString(Expression, TEXT("named_reroute_name"));
@@ -355,17 +381,7 @@ index 6f4c9e7..5eefd1c 100644
 +			}
 +		}
 +
-+		TArray<FString> DependencyLines;
-+		Dependencies.GenerateKeyArray(DependencyLines);
 +		DependencyLines.Sort();
-+		for (FString& Line : DependencyLines)
-+		{
-+			const int32 Count = Dependencies[Line];
-+			if (Count > 1)
-+			{
-+				Line += FString::Printf(TEXT(" x%d"), Count);
-+			}
-+		}
 +
 +		TArray<FString> OutputLines;
 +		for (const TSharedPtr<FJsonValue>& Value : *Outputs)
@@ -658,6 +674,7 @@ index 6f4c9e7..5eefd1c 100644
 +
 +		TArray<FString> Overrides;
 +		TArray<FString> Orphans;
++		TArray<FString> DependencyLines;
 +		for (const FScalarParameterValue& Parameter : Instance->ScalarParameterValues)
 +		{
 +			const FString Name = Parameter.ParameterInfo.Name.ToString();
@@ -688,7 +705,8 @@ index 6f4c9e7..5eefd1c 100644
 +		for (const FTextureParameterValue& Parameter : Instance->TextureParameterValues)
 +		{
 +			const FString Name = Parameter.ParameterInfo.Name.ToString();
-+			if (ValidTexture.Contains(Parameter.ParameterInfo))
++			const bool bValid = ValidTexture.Contains(Parameter.ParameterInfo);
++			if (bValid)
 +			{
 +				Overrides.Add(FString::Printf(
 +					TEXT("T: %s=%s"),
@@ -698,6 +716,14 @@ index 6f4c9e7..5eefd1c 100644
 +			else
 +			{
 +				Orphans.Add(TEXT("T:") + Name);
++			}
++			if (Parameter.ParameterValue)
++			{
++				DependencyLines.Add(FString::Printf(
++					TEXT("TEX: %s | relation=%s | parameter=%s"),
++					*PackagePath(Parameter.ParameterValue->GetPathName()),
++					bValid ? TEXT("TextureOverride") : TEXT("OrphanTextureOverride"),
++					*ShortValue(Name, 80)));
 +			}
 +		}
 +
@@ -720,7 +746,12 @@ index 6f4c9e7..5eefd1c 100644
 +		FString SourceMtime;
 +		int64 SourceSize = -1;
 +		GetSourceMetadata(SourceFile, NormalizedSource, SourceMtime, SourceSize);
-+		const FString ParentPath = Instance->Parent ? Instance->Parent->GetPathName() : TEXT("None");
++		const FString ParentPath = Instance->Parent ? PackagePath(Instance->Parent->GetPathName()) : TEXT("None");
++		if (Instance->Parent)
++		{
++			DependencyLines.Add(TEXT("PARENT: ") + ParentPath + TEXT(" | relation=Parent"));
++		}
++		DependencyLines.Sort();
 +		TArray<FString> Lines = {
 +			FString::Printf(TEXT("# %s | AI material-instance cache"), *FPackageName::GetShortName(AssetPath)),
 +			TEXT(""),
@@ -737,6 +768,11 @@ index 6f4c9e7..5eefd1c 100644
 +			TEXT("## Overrides"),
 +			TEXT("```text"),
 +			Overrides.IsEmpty() ? TEXT("-") : FString::Join(Overrides, TEXT("\n")),
++			TEXT("```"),
++			TEXT(""),
++			TEXT("## Deps"),
++			TEXT("```text"),
++			DependencyLines.IsEmpty() ? TEXT("-") : FString::Join(DependencyLines, TEXT("\n")),
 +			TEXT("```"),
 +			TEXT(""),
 +			TEXT("## Flags"),
@@ -1428,8 +1464,10 @@ index 6f4c9e7..5eefd1c 100644
 +		"material":{"domain":"MD_Surface","blend_mode":"BLEND_Opaque","shading_model":"MSM_DefaultLit","two_sided":false,"use_material_attributes":false},
 +		"expressions":[
 +			{"id":"p","class":"ScalarParameter","parameter_name":"Strength","group":"Cloud","properties":{"DefaultValue":"1.000000"}},
-+			{"id":"f","class":"MaterialFunctionCall","function_path":"/Game/MF_Noise","properties":{}},
-+			{"id":"m","class":"Multiply","properties":{"ConstB":"0.500000"}}
++			{"id":"f","class":"MaterialFunctionCall","function_path":"/Game/MF_Noise.MF_Noise","properties":{}},
++			{"id":"m","class":"Multiply","properties":{"ConstB":"0.500000"}},
++			{"id":"t","class":"TextureSampleParameter2D","parameter_name":"Normal","properties":{"Texture":"Texture2D'/Game/T_Normal.T_Normal'"}},
++			{"id":"c","class":"CollectionParameter","collection_path":"/Game/MPC_Wind.MPC_Wind","collection_parameter_name":"Wind","properties":{}}
 +		],
 +		"connections":[
 +			{"source_id":"p","source_output_name":"","target_id":"m","target_input":"A"},
@@ -1442,7 +1480,9 @@ index 6f4c9e7..5eefd1c 100644
 +	TestTrue(TEXT("render succeeds"), MaterialAICache::BuildDocument(TEXT("/Game/M_Test"), TEXT(""), Json, Document, Error));
 +	TestTrue(TEXT("v2 format retained"), Document.Contains(TEXT("format: vibeue-material-cache-v2")));
 +	TestTrue(TEXT("parameter retained"), Document.Contains(TEXT("Cloud | ScalarParameter Strength=1.000000")));
-+	TestTrue(TEXT("dependency retained"), Document.Contains(TEXT("MF: /Game/MF_Noise")));
++	TestTrue(TEXT("function reference retained"), Document.Contains(TEXT("MF: /Game/MF_Noise | relation=FunctionCall | node=n001")));
++	TestTrue(TEXT("texture parameter reference retained"), Document.Contains(TEXT("TEX: /Game/T_Normal | relation=TextureParameter | node=n003 | parameter=Normal")));
++	TestTrue(TEXT("collection parameter reference retained"), Document.Contains(TEXT("MPC: /Game/MPC_Wind | relation=CollectionParameter | node=n004 | parameter=Wind")));
 +	TestTrue(TEXT("active output retained"), Document.Contains(TEXT("BaseColor <- Multiply")));
 +	TestTrue(TEXT("logic topology retained"), Document.Contains(TEXT("n002=Multiply{ConstB=0.500000}(A=n000,B=n001.Result)")));
 +	TestTrue(TEXT("logic output retained"), Document.Contains(TEXT("out.BaseColor=n002")));
@@ -1483,7 +1523,7 @@ index 6f4c9e7..5eefd1c 100644
  // Console command to list all registered tools
  static void ListVibeUETools()
  {
-@@ -306,6 +1777,7 @@ void FModule::StartupModule()
+@@ -306,6 +1817,7 @@ void FModule::StartupModule()
  	}
  
  	bServicesInitialized = true;
@@ -1491,7 +1531,7 @@ index 6f4c9e7..5eefd1c 100644
  
  	// Clear screenshots directory from previous sessions to save disk space
  	FVibeUEPaths::ClearScreenshotsDir();
-@@ -436,6 +1908,11 @@ void FModule::ShutdownModule()
+@@ -436,6 +1948,11 @@ void FModule::ShutdownModule()
  	// Unregister PreExit / PostEngineInit callbacks
  	FCoreDelegates::OnPreExit.RemoveAll(this);
  	FCoreDelegates::GetOnPostEngineInit().RemoveAll(this);
@@ -1503,7 +1543,7 @@ index 6f4c9e7..5eefd1c 100644
  
  	// Unregister service toolsets + MCP tools
  	UnregisterToolsets();
-@@ -446,6 +1923,38 @@ void FModule::ShutdownModule()
+@@ -446,6 +1963,38 @@ void FModule::ShutdownModule()
  	UE_LOG(LogTemp, Display, TEXT("VibeUE Module has shut down"));
  }
  

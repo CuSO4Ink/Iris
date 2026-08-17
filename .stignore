@@ -4,11 +4,8 @@
 // WorkBuddy 本地数据（另一台设备有自己的）
 .workbuddy/
 
-// 会话临时文件
-.session_tmps/
-
-// WorkBuddy 会话输出产物（仅本机有效，另一台有自己的）
-output/
+// 项目与概念的过程产物
+/tmp/
 
 // 脱敏方案配置（会话级）
 .box-desens/

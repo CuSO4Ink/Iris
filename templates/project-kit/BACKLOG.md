@@ -1,19 +1,12 @@
 # {项目名} · BACKLOG
 
-> 待办清单。顺手加，做完打勾。复杂任务可转成 `tasks/T-xxx.md`。
+## Doing
 
-## 进行中
+- [ ]
 
-- [ ] 
+## Next
 
-## 待办
+- [ ]
 
-- [ ] 
-
-## 已完成（近期，便于回忆）
-
-- [x] 
-
----
-
-普通任务的长期完成项可移出，并把有保留价值的决策写进 LOG.md；若本文件兼作进度或验收台账，则按项目约定保留完成项。
+Keep only unresolved, executable work. `/checkpoint` removes completed operations after durable
+facts are reflected in `AI-BRIEF.md` or `LOG.md`.

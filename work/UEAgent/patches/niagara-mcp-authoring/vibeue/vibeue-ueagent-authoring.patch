@@ -1,8 +1,8 @@
 diff --git a/Source/VibeUE/Private/Module.cpp b/Source/VibeUE/Private/Module.cpp
-index 6f4c9e7..5eefd1c 100644
+index 6f4c9e7..48cc284 100644
 --- a/Source/VibeUE/Private/Module.cpp
 +++ b/Source/VibeUE/Private/Module.cpp
-@@ -19,9 +19,1480 @@
+@@ -19,9 +19,1520 @@
  #include "Utils/VibeUEPaths.h"
  #include "Misc/Paths.h"
  #include "Misc/FileHelper.h"
@@ -80,6 +80,13 @@ index 6f4c9e7..5eefd1c 100644
 +	{
 +		int32 Separator = INDEX_NONE;
 +		return Value.FindLastChar(TEXT(':'), Separator) ? Value.Mid(Separator + 1) : Value;
++	}
++
++	static FString PackagePath(const FString& Value)
++	{
++		const FString ObjectPath = FPackageName::ExportTextPathToObjectPath(Value);
++		const FString Result = FPackageName::ObjectPathToPackageName(ObjectPath);
++		return Result.IsEmpty() ? ObjectPath : Result;
 +	}
 +
 +	static bool IsEnabled()
@@ -207,7 +214,7 @@ index 6f4c9e7..5eefd1c 100644
 +		const bool bIsFunction = Function.IsValid();
 +
 +		TMap<FString, int32> ParameterCounts;
-+		TMap<FString, int32> Dependencies;
++		TArray<FString> DependencyLines;
 +		TMap<FString, FString> ExpressionLabels;
 +		TMap<FString, FString> ExpressionAliases;
 +		TSet<FString> ParameterNames;
@@ -241,6 +248,8 @@ index 6f4c9e7..5eefd1c 100644
 +			const TSharedPtr<FJsonObject> Properties = Expression->GetObjectField(TEXT("properties"));
 +			const FString InputName = JsonString(Expression, TEXT("input_name"));
 +			const FString OutputName = JsonString(Expression, TEXT("output_name"));
++			const FString* NodeAlias = ExpressionAliases.Find(Id);
++			const FString NodeDetail = NodeAlias ? TEXT(" | node=") + *NodeAlias : FString();
 +			if (!InputName.IsEmpty())
 +			{
 +				bool bUsePreviewDefault = false;
@@ -306,17 +315,34 @@ index 6f4c9e7..5eefd1c 100644
 +
 +			if (!FunctionPath.IsEmpty())
 +			{
-+				Dependencies.FindOrAdd(TEXT("MF: ") + FunctionPath)++;
++				DependencyLines.Add(
++					TEXT("MF: ") + PackagePath(FunctionPath) + TEXT(" | relation=FunctionCall") + NodeDetail);
 +			}
 +			const FString CollectionPath = JsonString(Expression, TEXT("collection_path"));
 +			if (!CollectionPath.IsEmpty())
 +			{
-+				Dependencies.FindOrAdd(TEXT("MPC: ") + CollectionPath)++;
++				FString Line = TEXT("MPC: ") + PackagePath(CollectionPath)
++					+ TEXT(" | relation=CollectionParameter") + NodeDetail;
++				const FString CollectionParameter = JsonString(Expression, TEXT("collection_parameter_name"));
++				if (!CollectionParameter.IsEmpty())
++				{
++					Line += TEXT(" | parameter=") + ShortValue(CollectionParameter, 80);
++				}
++				DependencyLines.Add(Line);
 +			}
 +			const FString Texture = JsonString(Properties, TEXT("Texture"));
 +			if (!Texture.IsEmpty() && Texture != TEXT("None"))
 +			{
-+				Dependencies.FindOrAdd(TEXT("TEX: ") + ShortValue(Texture))++;
++				FString Line = TEXT("TEX: ") + PackagePath(Texture)
++					+ (ParameterName.IsEmpty()
++						? TEXT(" | relation=TextureSample")
++						: TEXT(" | relation=TextureParameter"))
++					+ NodeDetail;
++				if (!ParameterName.IsEmpty())
++				{
++					Line += TEXT(" | parameter=") + ShortValue(ParameterName, 80);
++				}
++				DependencyLines.Add(Line);
 +			}
 +
 +			const FString RerouteName = JsonString(Expression, TEXT("named_reroute_name"));
@@ -355,17 +381,7 @@ index 6f4c9e7..5eefd1c 100644
 +			}
 +		}
 +
-+		TArray<FString> DependencyLines;
-+		Dependencies.GenerateKeyArray(DependencyLines);
 +		DependencyLines.Sort();
-+		for (FString& Line : DependencyLines)
-+		{
-+			const int32 Count = Dependencies[Line];
-+			if (Count > 1)
-+			{
-+				Line += FString::Printf(TEXT(" x%d"), Count);
-+			}
-+		}
 +
 +		TArray<FString> OutputLines;
 +		for (const TSharedPtr<FJsonValue>& Value : *Outputs)
@@ -658,6 +674,7 @@ index 6f4c9e7..5eefd1c 100644
 +
 +		TArray<FString> Overrides;
 +		TArray<FString> Orphans;
++		TArray<FString> DependencyLines;
 +		for (const FScalarParameterValue& Parameter : Instance->ScalarParameterValues)
 +		{
 +			const FString Name = Parameter.ParameterInfo.Name.ToString();
@@ -688,7 +705,8 @@ index 6f4c9e7..5eefd1c 100644
 +		for (const FTextureParameterValue& Parameter : Instance->TextureParameterValues)
 +		{
 +			const FString Name = Parameter.ParameterInfo.Name.ToString();
-+			if (ValidTexture.Contains(Parameter.ParameterInfo))
++			const bool bValid = ValidTexture.Contains(Parameter.ParameterInfo);
++			if (bValid)
 +			{
 +				Overrides.Add(FString::Printf(
 +					TEXT("T: %s=%s"),
@@ -698,6 +716,14 @@ index 6f4c9e7..5eefd1c 100644
 +			else
 +			{
 +				Orphans.Add(TEXT("T:") + Name);
++			}
++			if (Parameter.ParameterValue)
++			{
++				DependencyLines.Add(FString::Printf(
++					TEXT("TEX: %s | relation=%s | parameter=%s"),
++					*PackagePath(Parameter.ParameterValue->GetPathName()),
++					bValid ? TEXT("TextureOverride") : TEXT("OrphanTextureOverride"),
++					*ShortValue(Name, 80)));
 +			}
 +		}
 +
@@ -720,7 +746,12 @@ index 6f4c9e7..5eefd1c 100644
 +		FString SourceMtime;
 +		int64 SourceSize = -1;
 +		GetSourceMetadata(SourceFile, NormalizedSource, SourceMtime, SourceSize);
-+		const FString ParentPath = Instance->Parent ? Instance->Parent->GetPathName() : TEXT("None");
++		const FString ParentPath = Instance->Parent ? PackagePath(Instance->Parent->GetPathName()) : TEXT("None");
++		if (Instance->Parent)
++		{
++			DependencyLines.Add(TEXT("PARENT: ") + ParentPath + TEXT(" | relation=Parent"));
++		}
++		DependencyLines.Sort();
 +		TArray<FString> Lines = {
 +			FString::Printf(TEXT("# %s | AI material-instance cache"), *FPackageName::GetShortName(AssetPath)),
 +			TEXT(""),
@@ -737,6 +768,11 @@ index 6f4c9e7..5eefd1c 100644
 +			TEXT("## Overrides"),
 +			TEXT("```text"),
 +			Overrides.IsEmpty() ? TEXT("-") : FString::Join(Overrides, TEXT("\n")),
++			TEXT("```"),
++			TEXT(""),
++			TEXT("## Deps"),
++			TEXT("```text"),
++			DependencyLines.IsEmpty() ? TEXT("-") : FString::Join(DependencyLines, TEXT("\n")),
 +			TEXT("```"),
 +			TEXT(""),
 +			TEXT("## Flags"),
@@ -1428,8 +1464,10 @@ index 6f4c9e7..5eefd1c 100644
 +		"material":{"domain":"MD_Surface","blend_mode":"BLEND_Opaque","shading_model":"MSM_DefaultLit","two_sided":false,"use_material_attributes":false},
 +		"expressions":[
 +			{"id":"p","class":"ScalarParameter","parameter_name":"Strength","group":"Cloud","properties":{"DefaultValue":"1.000000"}},
-+			{"id":"f","class":"MaterialFunctionCall","function_path":"/Game/MF_Noise","properties":{}},
-+			{"id":"m","class":"Multiply","properties":{"ConstB":"0.500000"}}
++			{"id":"f","class":"MaterialFunctionCall","function_path":"/Game/MF_Noise.MF_Noise","properties":{}},
++			{"id":"m","class":"Multiply","properties":{"ConstB":"0.500000"}},
++			{"id":"t","class":"TextureSampleParameter2D","parameter_name":"Normal","properties":{"Texture":"Texture2D'/Game/T_Normal.T_Normal'"}},
++			{"id":"c","class":"CollectionParameter","collection_path":"/Game/MPC_Wind.MPC_Wind","collection_parameter_name":"Wind","properties":{}}
 +		],
 +		"connections":[
 +			{"source_id":"p","source_output_name":"","target_id":"m","target_input":"A"},
@@ -1442,7 +1480,9 @@ index 6f4c9e7..5eefd1c 100644
 +	TestTrue(TEXT("render succeeds"), MaterialAICache::BuildDocument(TEXT("/Game/M_Test"), TEXT(""), Json, Document, Error));
 +	TestTrue(TEXT("v2 format retained"), Document.Contains(TEXT("format: vibeue-material-cache-v2")));
 +	TestTrue(TEXT("parameter retained"), Document.Contains(TEXT("Cloud | ScalarParameter Strength=1.000000")));
-+	TestTrue(TEXT("dependency retained"), Document.Contains(TEXT("MF: /Game/MF_Noise")));
++	TestTrue(TEXT("function reference retained"), Document.Contains(TEXT("MF: /Game/MF_Noise | relation=FunctionCall | node=n001")));
++	TestTrue(TEXT("texture parameter reference retained"), Document.Contains(TEXT("TEX: /Game/T_Normal | relation=TextureParameter | node=n003 | parameter=Normal")));
++	TestTrue(TEXT("collection parameter reference retained"), Document.Contains(TEXT("MPC: /Game/MPC_Wind | relation=CollectionParameter | node=n004 | parameter=Wind")));
 +	TestTrue(TEXT("active output retained"), Document.Contains(TEXT("BaseColor <- Multiply")));
 +	TestTrue(TEXT("logic topology retained"), Document.Contains(TEXT("n002=Multiply{ConstB=0.500000}(A=n000,B=n001.Result)")));
 +	TestTrue(TEXT("logic output retained"), Document.Contains(TEXT("out.BaseColor=n002")));
@@ -1483,7 +1523,7 @@ index 6f4c9e7..5eefd1c 100644
  // Console command to list all registered tools
  static void ListVibeUETools()
  {
-@@ -306,6 +1777,7 @@ void FModule::StartupModule()
+@@ -306,6 +1817,7 @@ void FModule::StartupModule()
  	}
  
  	bServicesInitialized = true;
@@ -1491,7 +1531,7 @@ index 6f4c9e7..5eefd1c 100644
  
  	// Clear screenshots directory from previous sessions to save disk space
  	FVibeUEPaths::ClearScreenshotsDir();
-@@ -436,6 +1908,11 @@ void FModule::ShutdownModule()
+@@ -436,6 +1948,11 @@ void FModule::ShutdownModule()
  	// Unregister PreExit / PostEngineInit callbacks
  	FCoreDelegates::OnPreExit.RemoveAll(this);
  	FCoreDelegates::GetOnPostEngineInit().RemoveAll(this);
@@ -1503,7 +1543,7 @@ index 6f4c9e7..5eefd1c 100644
  
  	// Unregister service toolsets + MCP tools
  	UnregisterToolsets();
-@@ -446,6 +1923,38 @@ void FModule::ShutdownModule()
+@@ -446,6 +1963,38 @@ void FModule::ShutdownModule()
  	UE_LOG(LogTemp, Display, TEXT("VibeUE Module has shut down"));
  }
  
@@ -1629,7 +1669,7 @@ index 85a40a7..841cb56 100644
  		if (UMaterialExpressionParameter* ParamExpr = Cast<UMaterialExpressionParameter>(Expr))
  		{
 diff --git a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
-index 6356ca8..a63e78c 100644
+index 6356ca8..c4f872d 100644
 --- a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
 +++ b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
 @@ -16,6 +16,7 @@
@@ -1650,7 +1690,7 @@ index 6356ca8..a63e78c 100644
  #include "NiagaraDataInterfaceRenderTarget2D.h"
  
  // Niagara editor.
-@@ -82,17 +84,35 @@ namespace
+@@ -82,17 +86,35 @@ namespace
  		if (Stage.Equals(TEXT("ParticleUpdate"), ESearchCase::IgnoreCase)) return ENiagaraScriptUsage::ParticleUpdateScript;
  		if (Stage.Equals(TEXT("EmitterSpawn"),   ESearchCase::IgnoreCase)) return ENiagaraScriptUsage::EmitterSpawnScript;
  		if (Stage.Equals(TEXT("EmitterUpdate"),  ESearchCase::IgnoreCase)) return ENiagaraScriptUsage::EmitterUpdateScript;
@@ -1687,7 +1727,7 @@ index 6356ca8..a63e78c 100644
  #if WITH_EDITORONLY_DATA
  			case ENiagaraScriptUsage::EmitterSpawnScript:   return EmitterData->EmitterSpawnScriptProps.Script;
  			case ENiagaraScriptUsage::EmitterUpdateScript:  return EmitterData->EmitterUpdateScriptProps.Script;
-@@ -173,6 +193,11 @@ namespace
+@@ -173,6 +195,11 @@ namespace
  		    N.Equals(TEXT("ArrayInt32"),    ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceArrayInt32::StaticClass());    return true; }
  		if (N.Equals(TEXT("Grid2D"),        ESearchCase::IgnoreCase) ||
  		    N.Equals(TEXT("Grid2DCollection"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceGrid2DCollection::StaticClass()); return true; }
@@ -1699,7 +1739,7 @@ index 6356ca8..a63e78c 100644
  		if (N.Equals(TEXT("RenderTarget2D"), ESearchCase::IgnoreCase) ||
  		    N.Equals(TEXT("DynamicRT"),      ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceRenderTarget2D::StaticClass()); return true; }
  
-@@ -246,52 +268,6 @@ namespace
+@@ -246,52 +273,6 @@ namespace
  		return FString();
  	}
  
@@ -1752,7 +1792,7 @@ index 6356ca8..a63e78c 100644
  	/** Build an FEdGraphPinType for a Niagara type using the exported schema helper. */
  	FEdGraphPinType MakeNiagaraPinType(const FNiagaraTypeDefinition& Type)
  	{
-@@ -344,7 +320,14 @@ namespace
+@@ -344,7 +325,14 @@ namespace
  		return nullptr;
  	}
  
@@ -1768,7 +1808,7 @@ index 6356ca8..a63e78c 100644
  	UNiagaraNodeFunctionCall* FindModuleNodeOnEmitter(FVersionedNiagaraEmitterData* EmitterData, const FString& ModuleName)
  	{
  		UNiagaraGraph* Graph = GetEmitterGraph(EmitterData);
-@@ -353,7 +336,7 @@ namespace
+@@ -353,7 +341,7 @@ namespace
  		Graph->GetNodesOfClass<UNiagaraNodeFunctionCall>(Calls);
  		for (UNiagaraNodeFunctionCall* Call : Calls)
  		{
@@ -1777,7 +1817,7 @@ index 6356ca8..a63e78c 100644
  			if (Call->GetFunctionName().Equals(ModuleName, ESearchCase::IgnoreCase))
  			{
  				return Call;
-@@ -401,12 +384,409 @@ namespace
+@@ -401,12 +389,409 @@ namespace
  		}
  		return nullptr;
  	}
@@ -2187,7 +2227,7 @@ index 6356ca8..a63e78c 100644
  FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
  	const FString& SystemPath,
  	const FString& EmitterName,
-@@ -427,7 +807,7 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
+@@ -427,7 +812,7 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
  	if (!Container) { Result.Message = TEXT("Could not access scratch-pad container"); return Result; }
  
  	const ENiagaraScriptUsage TargetUsage = StageToUsage(Stage);
@@ -2196,7 +2236,7 @@ index 6356ca8..a63e78c 100644
  	UNiagaraGraph* EmitterGraph = GetEmitterGraph(EmitterData);
  	if (!StageScript || !EmitterGraph) { Result.Message = TEXT("Emitter stage graph unavailable"); return Result; }
  
-@@ -436,12 +816,27 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
+@@ -436,12 +821,27 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
  
  	// Build the scratch UNiagaraScript by duplicating the engine's default module template,
  	// matching what UNiagaraScratchPadViewModel::CreateNewScript does for Module-usage scripts.
@@ -2225,7 +2265,7 @@ index 6356ca8..a63e78c 100644
  
  	const TCHAR* BaseName = DesiredName.IsEmpty() ? TEXT("ScratchModule") : *DesiredName;
  	const FName UniqueName = GetUniqueScriptName(ScriptOuter, BaseName);
-@@ -463,7 +858,15 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
+@@ -463,7 +863,15 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
  	if (!NewScript) { Result.Message = TEXT("Failed to duplicate default module script"); return Result; }
  
  	NewScript->ClearFlags(RF_Public | RF_Standalone);
@@ -2242,7 +2282,7 @@ index 6356ca8..a63e78c 100644
  
  	// Allow the script to live on the target stage's stack
  	if (FVersionedNiagaraScriptData* ScriptData = NewScript->GetLatestScriptData())
-@@ -507,7 +910,7 @@ FString UNiagaraScratchPadService::GetScratchScriptPath(
+@@ -507,7 +915,7 @@ FString UNiagaraScratchPadService::GetScratchScriptPath(
  	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
  	UNiagaraNodeFunctionCall* Call = FindModuleNodeOnEmitter(EmitterData, ModuleName);
  	if (!Call || !Call->FunctionScript) return FString();
@@ -2251,7 +2291,7 @@ index 6356ca8..a63e78c 100644
  	return Call->FunctionScript->GetPathName();
  }
  
-@@ -521,22 +924,21 @@ TArray<FString> UNiagaraScratchPadService::ListScratchModules(
+@@ -521,22 +929,21 @@ TArray<FString> UNiagaraScratchPadService::ListScratchModules(
  	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
  	if (!Handle) return Out;
  	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
@@ -2278,7 +2318,7 @@ index 6356ca8..a63e78c 100644
  	return Out;
  }
  
-@@ -770,6 +1172,10 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddCustomHlslNode(
+@@ -770,6 +1177,10 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddCustomHlslNode(
  	N->NodePosX = PosX; N->NodePosY = PosY;
  	Creator.Finalize();
  	SetCustomHlslReflected(N, Code);
@@ -2289,7 +2329,7 @@ index 6356ca8..a63e78c 100644
  
  	Graph->NotifyGraphChanged();
  	System->MarkPackageDirty();
-@@ -848,37 +1254,25 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddPin(
+@@ -848,37 +1259,25 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddPin(
  
  	Node->Modify();
  
@@ -2344,7 +2384,7 @@ index 6356ca8..a63e78c 100644
  	}
  	else
  	{
-@@ -1089,8 +1483,8 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddModuleInput(
+@@ -1089,8 +1488,8 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddModuleInput(
  	}
  
  	MapGet->Modify();
@@ -2355,7 +2395,7 @@ index 6356ca8..a63e78c 100644
  	if (!NewPin) { R.Message = TEXT("CreatePin returned null"); return R; }
  
  	Graph->NotifyGraphChanged();
-@@ -1171,9 +1565,20 @@ namespace
+@@ -1171,9 +1570,20 @@ namespace
  	{
  		for (const FNiagaraEmitterHandle& Handle : System->GetEmitterHandles())
  		{
@@ -2379,7 +2419,7 @@ index 6356ca8..a63e78c 100644
  			{
  				if (!Scratch) continue;
  				const auto* Src = Cast<UNiagaraScriptSource>(Scratch->GetLatestSource());
-@@ -1283,8 +1688,19 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+@@ -1283,8 +1693,19 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
  	for (FNiagaraEmitterHandle& Handle : System->GetEmitterHandles())
  	{
  		FVersionedNiagaraEmitterData* EmitterData = Handle.GetEmitterData();
@@ -2401,7 +2441,7 @@ index 6356ca8..a63e78c 100644
  		{
  			if (!Scratch) continue;
  			if (auto* Src = Cast<UNiagaraScriptSource>(Scratch->GetLatestSource()))
-@@ -1298,6 +1714,20 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+@@ -1298,6 +1719,20 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
  		}
  	}
  

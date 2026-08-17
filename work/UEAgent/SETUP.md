@@ -125,7 +125,8 @@ The bootstrap:
    fingerprints;
 7. enables the three plugins and writes the loopback MCP configuration;
 8. merges `ue-editor` into the target `.mcp.json`;
-9. writes machine-local `Saved/UEAgent/route.json`;
+9. records explicitly enabled project-local external plugin versions and descriptor hashes in the
+   machine-local `Saved/UEAgent/route.json`;
 10. creates or updates a small managed UEAgent gate in the target `AGENTS.md`;
 11. builds and optionally launches the editor.
 

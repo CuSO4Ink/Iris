@@ -1,1 +1,0 @@
-GeometryCache / Alembic 几何缓存（如有）。

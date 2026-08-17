@@ -1,0 +1,19 @@
+{
+  "name": "arknights-computer-use",
+  "version": "0.1.0",
+  "description": "Continuous, multi-point mouse drags for the Arknights PC client.",
+  "author": {
+    "name": "Violina Peng"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Arknights Computer Use",
+    "shortDescription": "Reliable multi-stage deployment drags for Arknights PC.",
+    "longDescription": "Adds an Arknights-only continuous mouse drag with configurable path points, timing, interruption checks, and guaranteed mouse release.",
+    "developerName": "Violina Peng",
+    "category": "Developer Tools",
+    "capabilities": ["Interactive"],
+    "defaultPrompt": "Use Arknights Computer Use to deploy an operator with a continuous drag."
+  },
+  "mcpServers": "./.mcp.json"
+}

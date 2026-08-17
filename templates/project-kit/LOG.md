@@ -1,21 +1,10 @@
 # {项目名} · LOG
 
-> 决策流水。追加式，新条目加在**文件末尾**。
+Append only information that would otherwise be forgotten:
 
-## 条目格式
-
-```
-### YYYY-MM-DD HH:MM — 标题
-（一句话结论，或决策理由 + 否决方案。3 行以内）
+```markdown
+### YYYY-MM-DD HH:MM — [决策|否决|发现|回滚] 标题
+结论，以及必要时的原因或回退点；三行以内。
 ```
 
-## 条目分类标签（可选，加在标题前）
-
-- `[决策]` 选定了某方案
-- `[否决]` 排除了某方案及原因
-- `[发现]` 意外收获或反直觉观察
-- `[回滚]` 推翻之前的决策
-
----
-
-<!-- 新条目追加在下方 -->
+Do not record command-by-command operations or duplicate current state from `AI-BRIEF.md`.

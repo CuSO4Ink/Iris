@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "arknights-continuous-input": {
+      "command": "dotnet",
+      "args": ["server/publish/ArknightsContinuousInput.dll"]
+    }
+  }
+}

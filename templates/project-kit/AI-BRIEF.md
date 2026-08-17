@@ -1,41 +1,45 @@
 # {项目名}
 
-<!-- /project-init --ue 会在此标题前插入 UE 标记 iris-project-kind: ue 和 UEAgent-first 导航块。 -->
+<!-- /project-init --ue inserts the UE marker and UEAgent-first block above this title. -->
 
-> **L2 项目身份**。接手本项目的 AI 必读。
+## State
 
-## 一句话介绍
+`candidate | active | waiting | blocked | archived`
 
-<!-- 做什么，解决什么问题 -->
+## Goal
 
-## 当前状态
+- **Problem**:
+- **Outcome**:
+- **Smallest working feature**:
 
-<!-- 活跃 / 冻结 / 等待依赖 / 已归档 -->
+## Current Focus
 
-## 当前焦点
+<!-- One next outcome. Executable details belong in BACKLOG.md. -->
 
-<!-- 本阶段最核心的一件事。其他待办见 BACKLOG.md -->
+## Truth
 
-## 技术栈与硬约束
+- **Implementation truth**:
+- **Runtime / external truth**:
 
-<!-- 3~5 条，AI 跑偏时拉回用 -->
+## Implementation
 
-## 术语表
+- **Canonical path**:
+- **Reused foundation**: <!-- Existing code/dependency, stdlib/platform, or maintained library. -->
 
-<!-- 项目特有名词 -->
+## Constraints
 
-## 文档地图
+<!-- Only project-specific constraints. -->
 
-<!-- 项目目录下关键文档，相对路径 -->
+## Artifact Policy
 
-## 协作约定
+- Durable source and final evidence: this project directory.
+- Disposable environments, runs, screenshots, generated evidence, and one-off scripts:
+  `../../tmp/{项目名}/`.
 
-<!-- 仅写与通用约定不同的部分 -->
+## Document Map
 
----
+- `AI-BRIEF.md`: goal and current truth.
+- `BACKLOG.md`: unresolved executable work.
+- `LOG.md`: durable decisions and findings.
 
-## 维护
-
-- 阶段切换 / 术语变更 / 技术栈升级 → 更新本文件
-- 以能快速接手为准；当前状态、焦点和硬约束置前，历史细节按需拆到已有专题文档
-- 项目归档时本文件随迁，保留
+Method: [Project Progress Methodology](../../notes/project-progress-methodology.md).

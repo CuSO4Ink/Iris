@@ -1,0 +1,1281 @@
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolModule.h b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolModule.h
+index bad29615964298b7d345651f28c18610e8e75fa6..0f83afeebe0db11b6d6257873271e1407e6177db 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolModule.h
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolModule.h
+@@ -20,6 +20,7 @@ public:
+ 	virtual bool AddTool(const TSharedRef<IModelContextProtocolTool>& Tool) override;
+ 	virtual bool RemoveTool(const TSharedRef<IModelContextProtocolTool>& Tool) override;
+ 	virtual FOnRefreshTools& OnRefreshTools() override { return OnRefreshToolsDelegate; }
++	virtual FToolCallAuthorizationGate& ToolCallAuthorizationGate() override { return ToolCallAuthorizationGateDelegate; }
+ 	virtual void RefreshTools() override;
+ 
+ 	[[nodiscard]] virtual FModelContextProtocolServer* GetServer() override;
+@@ -49,6 +50,7 @@ public:
+ protected:
+ 
+ 	FOnRefreshTools OnRefreshToolsDelegate;
++	FToolCallAuthorizationGate ToolCallAuthorizationGateDelegate;
+ 	TArray<TSharedRef<IModelContextProtocolTool>> Tools;
+ 	TArray<TSharedRef<IModelContextProtocolResourceProvider>> ResourceProviders;
+ 	TUniquePtr<FModelContextProtocolServer> Server;
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolServer.cpp b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolServer.cpp
+index e4b6db255626838a0dfce1adcc1d0794e88a900f..09fe3caae6d0ae00efcaf561d93755fc12760748 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolServer.cpp
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Private/ModelContextProtocolServer.cpp
+@@ -801,7 +801,7 @@ bool FModelContextProtocolServer::ProcessToolCallJsonRpcCall(const FHttpServerRe
+ 		ToolArguments = Params->GetObjectField(TEXT("arguments"));
+ 	}
+ 
+-	const IModelContextProtocolModule& ModelContextProtocolModule = IModelContextProtocolModule::GetChecked();
++	IModelContextProtocolModule& ModelContextProtocolModule = IModelContextProtocolModule::GetChecked();
+ 	TSharedPtr<IModelContextProtocolTool> Tool = ModelContextProtocolModule.FindTool(ToolName);
+ 	if (!Tool.IsValid())
+ 	{
+@@ -809,6 +809,24 @@ bool FModelContextProtocolServer::ProcessToolCallJsonRpcCall(const FHttpServerRe
+ 		return true;
+ 	}
+ 
++	FString AuthorizationError;
++	IModelContextProtocolModule::FToolCallAuthorizationGate& AuthorizationGate =
++		ModelContextProtocolModule.ToolCallAuthorizationGate();
++	if (AuthorizationGate.IsBound()
++		&& !AuthorizationGate.Execute(ToolName, ToolArguments, AuthorizationError))
++	{
++		if (AuthorizationError.IsEmpty())
++		{
++			AuthorizationError = TEXT("Tool call rejected by the active editor execution policy");
++		}
++		UE::ModelContextProtocol::Private::CompleteWithError(
++			OnComplete,
++			RequestId,
++			UE::ModelContextProtocol::Private::EJsonRpcErrorCode::InvalidParams,
++			AuthorizationError);
++		return true;
++	}
++
+ 	UE_LOGF(LogModelContextProtocol, Log, "Running tool: '%ls'", *ToolName);
+ 	FString PrettyJson;
+ 	if (UE_LOG_ACTIVE(LogModelContextProtocol, VeryVerbose) && ToolArguments.IsValid() && FJsonSerializer::Serialize(ToolArguments.ToSharedRef(), TJsonWriterFactory<>::Create(&PrettyJson)))
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Public/IModelContextProtocolModule.h b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Public/IModelContextProtocolModule.h
+index f9a0c591fb8f47b1c2eff4ab4d8356d021102eac..3fc14e6884539fb85c121e7a5ceef3861e7e4cf0 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Public/IModelContextProtocolModule.h
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocol/Public/IModelContextProtocolModule.h
+@@ -6,6 +6,7 @@
+ #include "Modules/ModuleManager.h"
+ 
+ class FModelContextProtocolServer;
++class FJsonObject;
+ class IAnalyticsProviderET;
+ struct FAnalyticsEventAttribute;
+ struct IModelContextProtocolResourceProvider;
+@@ -17,6 +18,18 @@ struct IModelContextProtocolTool;
+ class IModelContextProtocolModule : public IModuleInterface
+ {
+ public:
++	/**
++	 * Optional process-wide authorization gate invoked for every tools/call request before the
++	 * selected tool runs. Returning false rejects the call with OutError. The gate receives the
++	 * top-level MCP tool name and its arguments, so dispatch tools can inspect nested targets.
++	 *
++	 * This is deliberately a single-cast delegate: an editor process must have one authoritative
++	 * execution policy instead of several independently composed security decisions.
++	 */
++	DECLARE_DELEGATE_RetVal_ThreeParams(bool, FToolCallAuthorizationGate,
++		const FString& /*ToolName*/,
++		const TSharedPtr<FJsonObject>& /*Arguments*/,
++		FString& /*OutError*/);
+ 
+ 	[[nodiscard]] UE_API static IModelContextProtocolModule* Get();
+ 	[[nodiscard]] UE_API static IModelContextProtocolModule& GetChecked();
+@@ -53,6 +66,9 @@ public:
+ 	 */
+ 	virtual FOnRefreshTools& OnRefreshTools() = 0;
+ 
++	/** Returns the process-wide tool-call authorization gate. Unbound means allow. */
++	virtual FToolCallAuthorizationGate& ToolCallAuthorizationGate() = 0;
++
+ 	/**
+ 	 * Called by ModelContextProtocol.RefreshTools console command. Releases all currently registered tools and broadcasts OnRefreshTools for tool
+ 	 * providers to re-add tools.
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolSearch.cpp b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolSearch.cpp
+index e208e3bf744fa144b340301afc625c1469402665..93e538655c8264fc03fcd49b0fc34f1dca87ac08 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolSearch.cpp
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolSearch.cpp
+@@ -5,6 +5,8 @@
+ #include "Dom/JsonObject.h"
+ #include "ModelContextProtocol.h"
+ #include "ModelContextProtocolToolResults.h"
++#include "Serialization/JsonReader.h"
++#include "Serialization/JsonSerializer.h"
+ 
+ namespace UE::ModelContextProtocol::Private
+ {
+@@ -58,7 +60,24 @@ FDescribeToolsetTool::FDescribeToolsetTool(FDescribeToolsetDelegate InDelegate)
+ 
+ TSharedPtr<FJsonObject> FDescribeToolsetTool::GetInputJsonSchema() const
+ {
+-	return UE::ModelContextProtocol::Private::MakeToolsetNameSchema(TEXT("Name of the toolset to describe. Use list_toolsets to see available names."));
++	TSharedPtr<FJsonObject> Schema = UE::ModelContextProtocol::Private::MakeToolsetNameSchema(TEXT("Name of the toolset to describe. Use list_toolsets to see available names."));
++	TSharedPtr<FJsonObject> Properties = Schema->GetObjectField(TEXT("properties"));
++
++	TSharedPtr<FJsonObject> ToolNameProp = MakeShared<FJsonObject>();
++	ToolNameProp->SetStringField(TEXT("type"), TEXT("string"));
++	ToolNameProp->SetStringField(TEXT("description"), TEXT("Optional. Fully-qualified tool name, or the function name suffix, to describe one tool only."));
++	Properties->SetObjectField(TEXT("tool_name"), ToolNameProp);
++
++	TSharedPtr<FJsonObject> DetailProp = MakeShared<FJsonObject>();
++	DetailProp->SetStringField(TEXT("type"), TEXT("string"));
++	DetailProp->SetStringField(TEXT("description"), TEXT("Optional: call returns compact callable shapes; summary returns names/descriptions; full returns JSON schemas. Defaults to call."));
++	TArray<TSharedPtr<FJsonValue>> DetailValues;
++	DetailValues.Add(MakeShared<FJsonValueString>(TEXT("call")));
++	DetailValues.Add(MakeShared<FJsonValueString>(TEXT("summary")));
++	DetailValues.Add(MakeShared<FJsonValueString>(TEXT("full")));
++	DetailProp->SetArrayField(TEXT("enum"), DetailValues);
++	Properties->SetObjectField(TEXT("detail"), DetailProp);
++	return Schema;
+ }
+ 
+ FModelContextProtocolToolResult FDescribeToolsetTool::Run(const TSharedPtr<FJsonObject>& Params)
+@@ -74,12 +93,32 @@ FModelContextProtocolToolResult FDescribeToolsetTool::Run(const TSharedPtr<FJson
+ 		return UE::ModelContextProtocol::MakeErrorResult(TEXT("Missing required parameter: toolset_name"));
+ 	}
+ 
+-	TValueOrError<FString, FString> Result = DescribeDelegate(ToolsetName);
++	FString ToolName;
++	FString Detail;
++	Params->TryGetStringField(TEXT("tool_name"), ToolName);
++	Params->TryGetStringField(TEXT("detail"), Detail);
++	TValueOrError<FString, FString> Result = DescribeDelegate(ToolsetName, ToolName, Detail);
+ 	if (Result.HasError())
+ 	{
+ 		return UE::ModelContextProtocol::MakeErrorResult(Result.GetError());
+ 	}
+ 
++	// Compact discovery is machine-only: avoid returning the same JSON twice as text and structuredContent.
++	if (Detail.IsEmpty() || Detail.Equals(TEXT("call"), ESearchCase::IgnoreCase))
++	{
++		TSharedPtr<FJsonValue> Structured;
++		TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Result.GetValue());
++		if (FJsonSerializer::Deserialize(Reader, Structured) && Structured.IsValid())
++		{
++			FModelContextProtocolToolResult StructuredResult = UE::ModelContextProtocol::MakeStructuredContentResult(Structured);
++			if (StructuredResult.JsonObject.IsValid())
++			{
++				StructuredResult.JsonObject->RemoveField(TEXT("content"));
++			}
++			return StructuredResult;
++		}
++	}
++
+ 	return UE::ModelContextProtocol::MakeTextResult(Result.GetValue());
+ }
+ 
+@@ -112,6 +151,39 @@ TSharedPtr<FJsonObject> FCallTool::GetInputJsonSchema() const
+ 	ArgumentsProp->SetStringField(TEXT("description"), TEXT("Arguments to pass to the tool. Must match the tool's input schema. Defaults to an empty object."));
+ 	Properties->SetObjectField(TEXT("arguments"), ArgumentsProp);
+ 
++	TSharedPtr<FJsonObject> ProjectionProp = MakeShared<FJsonObject>();
++	ProjectionProp->SetStringField(TEXT("type"), TEXT("object"));
++	ProjectionProp->SetStringField(TEXT("description"), TEXT("Optional server-side response projection. It is not forwarded to the tool; use fields/exclude/max_items for large graph results, or structured=true for machine-readable output."));
++	TSharedPtr<FJsonObject> ProjectionProperties = MakeShared<FJsonObject>();
++	TSharedPtr<FJsonObject> FieldsProp = MakeShared<FJsonObject>();
++	FieldsProp->SetStringField(TEXT("type"), TEXT("array"));
++	FieldsProp->SetObjectField(TEXT("items"), MakeShared<FJsonObject>());
++	FieldsProp->GetObjectField(TEXT("items"))->SetStringField(TEXT("type"), TEXT("string"));
++	FieldsProp->SetStringField(TEXT("description"), TEXT("Dotted JSON field paths to keep, e.g. material,expressions.class,connections."));
++	ProjectionProperties->SetObjectField(TEXT("fields"), FieldsProp);
++	TSharedPtr<FJsonObject> ExcludeProp = MakeShared<FJsonObject>();
++	ExcludeProp->SetStringField(TEXT("type"), TEXT("array"));
++	ExcludeProp->SetObjectField(TEXT("items"), MakeShared<FJsonObject>());
++	ExcludeProp->GetObjectField(TEXT("items"))->SetStringField(TEXT("type"), TEXT("string"));
++	ExcludeProp->SetStringField(TEXT("description"), TEXT("Dotted JSON field paths to remove, e.g. expressions.properties,expressions.hlsl_code."));
++	ProjectionProperties->SetObjectField(TEXT("exclude"), ExcludeProp);
++	TSharedPtr<FJsonObject> MaxItemsProp = MakeShared<FJsonObject>();
++	MaxItemsProp->SetStringField(TEXT("type"), TEXT("integer"));
++	MaxItemsProp->SetNumberField(TEXT("minimum"), 1);
++	MaxItemsProp->SetNumberField(TEXT("maximum"), 4096);
++	MaxItemsProp->SetStringField(TEXT("description"), TEXT("Optional array cap. Omitted means no cap."));
++	ProjectionProperties->SetObjectField(TEXT("max_items"), MaxItemsProp);
++	TSharedPtr<FJsonObject> StructuredProp = MakeShared<FJsonObject>();
++	StructuredProp->SetStringField(TEXT("type"), TEXT("boolean"));
++	StructuredProp->SetStringField(TEXT("description"), TEXT("Return structuredContent instead of a text-only result when the tool returns valid JSON."));
++	ProjectionProperties->SetObjectField(TEXT("structured"), StructuredProp);
++	TSharedPtr<FJsonObject> IncludeTextProp = MakeShared<FJsonObject>();
++	IncludeTextProp->SetStringField(TEXT("type"), TEXT("boolean"));
++	IncludeTextProp->SetStringField(TEXT("description"), TEXT("When structured=true, also include the legacy text part. Defaults to false to avoid duplicating JSON."));
++	ProjectionProperties->SetObjectField(TEXT("include_text"), IncludeTextProp);
++	ProjectionProp->SetObjectField(TEXT("properties"), ProjectionProperties);
++	Properties->SetObjectField(TEXT("projection"), ProjectionProp);
++
+ 	Schema->SetObjectField(TEXT("properties"), Properties);
+ 
+ 	TArray<TSharedPtr<FJsonValue>> RequiredArray;
+@@ -142,6 +214,9 @@ void FCallTool::RunAsync(const FModelContextProtocolToolRequestId& RequestId, co
+ 	const TSharedPtr<FJsonObject>* ArgumentsObject = nullptr;
+ 	Params->TryGetObjectField(TEXT("arguments"), ArgumentsObject);
+ 	TSharedPtr<FJsonObject> Arguments = (ArgumentsObject && ArgumentsObject->IsValid()) ? *ArgumentsObject : MakeShared<FJsonObject>();
++	const TSharedPtr<FJsonObject>* ProjectionObject = nullptr;
++	Params->TryGetObjectField(TEXT("projection"), ProjectionObject);
++	TSharedPtr<FJsonObject> Projection = (ProjectionObject && ProjectionObject->IsValid()) ? *ProjectionObject : nullptr;
+ 
+-	CallDelegate(ToolsetName, ToolName, Arguments, RequestId, OnComplete);
++	CallDelegate(ToolsetName, ToolName, Arguments, Projection, RequestId, OnComplete);
+ }
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolSearch.h b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolSearch.h
+index 99aacb4957bff35bd53a9e1985d93fb2856b2ed4..a16c486b7b8bfb9064b54ba25d7e36ce214f63fc 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolSearch.h
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolSearch.h
+@@ -15,11 +15,11 @@ namespace UE::ModelContextProtocol
+ /** Callback: returns a text listing of all available toolsets (name + description). */
+ using FListToolsetsDelegate = TFunction<FString()>;
+ 
+-/** Callback: returns the full JSON schema for a named toolset, or an error string. */
+-using FDescribeToolsetDelegate = TFunction<TValueOrError<FString, FString>(const FString& ToolsetName)>;
++/** Callback: returns a full, summary, or single-tool schema for a named toolset. */
++using FDescribeToolsetDelegate = TFunction<TValueOrError<FString, FString>(const FString& ToolsetName, const FString& ToolName, const FString& Detail)>;
+ 
+-/** Callback: dispatches a tool call. ToolsetName may be empty (top-level tool). Arguments may be null (interpreted as empty object). Result is delivered asynchronously via OnComplete. */
+-using FCallToolDelegate = TFunction<void(const FString& ToolsetName, const FString& ToolName, const TSharedPtr<FJsonObject>& Arguments, const FModelContextProtocolToolRequestId& RequestId, const IModelContextProtocolTool::FResultCallback& OnComplete)>;
++/** Callback: dispatches a tool call. Projection is server-side metadata and is never forwarded to the tool. */
++using FCallToolDelegate = TFunction<void(const FString& ToolsetName, const FString& ToolName, const TSharedPtr<FJsonObject>& Arguments, const TSharedPtr<FJsonObject>& Projection, const FModelContextProtocolToolRequestId& RequestId, const IModelContextProtocolTool::FResultCallback& OnComplete)>;
+ 
+ /**
+  * Lists all available toolsets with their names and descriptions.
+@@ -49,7 +49,7 @@ struct FDescribeToolsetTool : IModelContextProtocolTool
+ 	virtual FString GetName() const override { return UE::ModelContextProtocol::DescribeToolsetName; }
+ 	virtual FString GetDescription() const override
+ 	{
+-		return TEXT("Get detailed information about a toolset including all tool names, descriptions, and input schemas.");
++		return TEXT("Describe a toolset; default is a compact callable view. Use detail=full for exact JSON Schema.");
+ 	}
+ 	virtual TSharedPtr<FJsonObject> GetInputJsonSchema() const override;
+ 	virtual FModelContextProtocolToolResult Run(const TSharedPtr<FJsonObject>& Params) override;
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.cpp b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.cpp
+index 1d7016f14f8382885f69cf80cecbf888f77c999c..960d39e0d48e37a580eaaeda21dc41c61c2e3b0d 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.cpp
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.cpp
+@@ -9,7 +9,9 @@
+ #include "ModelContextProtocolSettings.h"
+ #include "ModelContextProtocolToolResults.h"
+ 
++#include "Dom/JsonValue.h"
+ #include "Editor.h"
++#include "Policies/CondensedJsonPrintPolicy.h"
+ #include "Serialization/JsonReader.h"
+ #include "Serialization/JsonSerializer.h"
+ #include "ToolsetRegistry/Toolset.h"
+@@ -26,6 +28,406 @@ namespace UE::ModelContextProtocol::Private
+ 	}
+ }
+ 
++namespace
++{
++	struct FJsonProjection
++	{
++		TSet<FString> Fields;
++		TSet<FString> Excluded;
++		int32 MaxItems = 0;
++		bool bStructured = false;
++		bool bIncludeText = false;
++
++		bool IsActive() const
++		{
++			return Fields.Num() > 0 || Excluded.Num() > 0 || MaxItems > 0 || bStructured;
++		}
++	};
++
++	FJsonProjection ReadProjection(const TSharedPtr<FJsonObject>& Object)
++	{
++		FJsonProjection Projection;
++		if (!Object.IsValid())
++		{
++			return Projection;
++		}
++
++		const TArray<TSharedPtr<FJsonValue>>* Values = nullptr;
++		if (Object->TryGetArrayField(TEXT("fields"), Values) && Values)
++		{
++			for (const TSharedPtr<FJsonValue>& Value : *Values)
++			{
++				FString Path;
++				if (Value.IsValid() && Value->TryGetString(Path) && !Path.IsEmpty())
++				{
++					Projection.Fields.Add(Path);
++				}
++			}
++		}
++		if (Object->TryGetArrayField(TEXT("exclude"), Values) && Values)
++		{
++			for (const TSharedPtr<FJsonValue>& Value : *Values)
++			{
++				FString Path;
++				if (Value.IsValid() && Value->TryGetString(Path) && !Path.IsEmpty())
++				{
++					Projection.Excluded.Add(Path);
++				}
++			}
++		}
++
++		double MaxItems = 0.0;
++		if (Object->TryGetNumberField(TEXT("max_items"), MaxItems))
++		{
++			Projection.MaxItems = FMath::Clamp(static_cast<int32>(MaxItems), 1, 4096);
++		}
++		Object->TryGetBoolField(TEXT("structured"), Projection.bStructured);
++		Object->TryGetBoolField(TEXT("include_text"), Projection.bIncludeText);
++		return Projection;
++	}
++
++	bool IsIncludedPath(const FJsonProjection& Projection, const FString& Path)
++	{
++		if (Projection.Fields.Num() == 0 || Path.IsEmpty())
++		{
++			return true;
++		}
++		for (const FString& Field : Projection.Fields)
++		{
++			if (Path == Field || Path.StartsWith(Field + TEXT(".")) || Field.StartsWith(Path + TEXT(".")))
++			{
++				return true;
++			}
++		}
++		return false;
++	}
++
++	bool IsExcludedPath(const FJsonProjection& Projection, const FString& Path)
++	{
++		for (const FString& Excluded : Projection.Excluded)
++		{
++			if (Path == Excluded || Path.StartsWith(Excluded + TEXT(".")))
++			{
++				return true;
++			}
++		}
++		return false;
++	}
++
++	TSharedPtr<FJsonValue> ProjectJsonValue(const TSharedPtr<FJsonValue>& Value, const FJsonProjection& Projection, const FString& Path)
++	{
++		if (!Value.IsValid())
++		{
++			return Value;
++		}
++
++		if (Value->Type == EJson::Object)
++		{
++			TSharedRef<FJsonObject> Source = Value->AsObject().ToSharedRef();
++			TSharedRef<FJsonObject> Result = MakeShared<FJsonObject>();
++			for (const TPair<FString, TSharedPtr<FJsonValue>>& Pair : Source->Values)
++			{
++				const FString ChildPath = Path.IsEmpty() ? Pair.Key : Path + TEXT(".") + Pair.Key;
++				if (IsExcludedPath(Projection, ChildPath) || !IsIncludedPath(Projection, ChildPath))
++				{
++					continue;
++				}
++				Result->SetField(Pair.Key, ProjectJsonValue(Pair.Value, Projection, ChildPath));
++			}
++			return MakeShared<FJsonValueObject>(Result);
++		}
++
++		if (Value->Type == EJson::Array)
++		{
++			const TArray<TSharedPtr<FJsonValue>>& Source = Value->AsArray();
++			TArray<TSharedPtr<FJsonValue>> Result;
++			const int32 Count = Projection.MaxItems > 0 ? FMath::Min(Projection.MaxItems, Source.Num()) : Source.Num();
++			Result.Reserve(Count);
++			for (int32 Index = 0; Index < Count; ++Index)
++			{
++				Result.Add(ProjectJsonValue(Source[Index], Projection, Path));
++			}
++			return MakeShared<FJsonValueArray>(MoveTemp(Result));
++		}
++
++		// Scalar values are immutable and can be shared without copying.
++		return Value;
++	}
++
++	FString JsonValueToString(const TSharedPtr<FJsonValue>& Value)
++	{
++		FString Output;
++		TSharedRef<TJsonWriter<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>> Writer =
++			TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&Output);
++		FJsonSerializer::Serialize(Value.ToSharedRef(), FString(), Writer);
++		return Output;
++	}
++
++	FModelContextProtocolToolResult MakeProjectedToolResult(const FString& RawResult, const TSharedPtr<FJsonObject>& ProjectionObject)
++	{
++		const FJsonProjection Projection = ReadProjection(ProjectionObject);
++		if (!Projection.IsActive())
++		{
++			return UE::ModelContextProtocol::MakeTextResult(RawResult);
++		}
++
++		TSharedPtr<FJsonValue> Parsed;
++		TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(RawResult);
++		if (!FJsonSerializer::Deserialize(Reader, Parsed) || !Parsed.IsValid())
++		{
++			// A tool may legitimately return plain text. Projection is best-effort and never corrupts it.
++			return UE::ModelContextProtocol::MakeTextResult(RawResult);
++		}
++
++		TSharedPtr<FJsonValue> Projected = ProjectJsonValue(Parsed, Projection, FString());
++		if (!Projection.bStructured)
++		{
++			return UE::ModelContextProtocol::MakeTextResult(JsonValueToString(Projected));
++		}
++
++		FModelContextProtocolToolResult Result = UE::ModelContextProtocol::MakeStructuredContentResult(Projected);
++		if (!Projection.bIncludeText && Result.JsonObject.IsValid())
++		{
++			// Explicit structured mode is the opt-in token-saving path. Legacy text can be retained with include_text=true.
++			Result.JsonObject->RemoveField(TEXT("content"));
++		}
++		return Result;
++	}
++
++	FString CompactClassName(FString Title)
++	{
++		int32 Index = INDEX_NONE;
++		if (Title.FindChar(TEXT('@'), Index)) Title = Title.RightChop(Index + 1);
++		if (Title.FindLastChar(TEXT('.'), Index)) Title = Title.RightChop(Index + 1);
++		return Title.IsEmpty() ? TEXT("Object") : Title;
++	}
++
++	FString CompactSchemaType(const TSharedPtr<FJsonObject>& Schema, const FString& Label)
++	{
++		if (!Schema.IsValid()) return TEXT("json");
++		const TArray<TSharedPtr<FJsonValue>>* UnionValues = nullptr;
++		if ((!Schema->TryGetArrayField(TEXT("anyOf"), UnionValues) || !UnionValues) && Schema->TryGetArrayField(TEXT("oneOf"), UnionValues) && UnionValues)
++		{
++			TArray<FString> Types;
++			for (const TSharedPtr<FJsonValue>& Value : *UnionValues)
++			{
++				if (Value.IsValid() && Value->Type == EJson::Object)
++				{
++					const FString Type = CompactSchemaType(Value->AsObject(), Label);
++					if (!Type.IsEmpty() && Type != TEXT("null") && !Types.Contains(Type)) Types.Add(Type);
++				}
++			}
++			Types.Sort();
++			if (Types.Num() > 1)
++			{
++				TArray<FString> ReferenceTypes;
++				for (const FString& Type : Types)
++				{
++					if (Type.StartsWith(TEXT("ue_ref<")) && Type.EndsWith(TEXT(">"))) ReferenceTypes.Add(Type.Mid(7, Type.Len() - 8));
++				}
++				if (ReferenceTypes.Num() == Types.Num()) return TEXT("ue_ref<") + FString::Join(ReferenceTypes, TEXT("|")) + TEXT(">");
++			}
++			return Types.Num() == 0 ? TEXT("json") : FString::Join(Types, TEXT("|"));
++		}
++
++		FString Type;
++		Schema->TryGetStringField(TEXT("type"), Type);
++		if (Type.Equals(TEXT("array"), ESearchCase::IgnoreCase))
++		{
++			const TSharedPtr<FJsonObject>* Items = nullptr;
++			return Schema->TryGetObjectField(TEXT("items"), Items) && Items
++				? CompactSchemaType(*Items, Label) + TEXT("[]") : TEXT("json[]");
++		}
++		FString Title;
++		if (Schema->TryGetStringField(TEXT("title"), Title) && !Title.IsEmpty())
++		{
++			return TEXT("ue_ref<") + CompactClassName(Title) + TEXT(">");
++		}
++		if (Type.Equals(TEXT("object"), ESearchCase::IgnoreCase))
++		{
++			const TSharedPtr<FJsonObject>* Properties = nullptr;
++			if (Schema->TryGetObjectField(TEXT("properties"), Properties) && Properties && (*Properties)->HasField(TEXT("refPath")))
++			{
++				const FString LowerLabel = Label.ToLower();
++				if (LowerLabel.Contains(TEXT("material")) && (LowerLabel.Contains(TEXT("function")) || LowerLabel.Contains(TEXT("or"))))
++					return TEXT("ue_ref<Material|MaterialFunction>");
++				return TEXT("ue_ref<Object>");
++			}
++			return TEXT("object");
++		}
++		return Type.IsEmpty() ? TEXT("json") : Type;
++	}
++
++	FString CompactToolName(const FString& ToolsetName, const FString& FullToolName)
++	{
++		FString ToolsetLeaf = ToolsetName;
++		int32 Index = INDEX_NONE;
++		if (ToolsetLeaf.FindLastChar(TEXT('.'), Index)) ToolsetLeaf = ToolsetLeaf.RightChop(Index + 1);
++		FString ToolLeaf = FullToolName;
++		const FString Prefix = ToolsetName + TEXT(".");
++		if (ToolLeaf.StartsWith(Prefix, ESearchCase::IgnoreCase)) ToolLeaf = ToolLeaf.RightChop(Prefix.Len());
++		else if (ToolLeaf.FindLastChar(TEXT('.'), Index)) ToolLeaf = ToolLeaf.RightChop(Index + 1);
++		return ToolsetLeaf + TEXT(".") + ToolLeaf;
++	}
++
++	FString ClassifyEffect(const FString& Name, const FString& Description)
++	{
++		FString LeafName = Name;
++		int32 DotIndex = INDEX_NONE;
++		if (LeafName.FindLastChar(TEXT('.'), DotIndex)) LeafName = LeafName.RightChop(DotIndex + 1);
++		FString Lower = (LeafName + TEXT(" ") + Description).ToLower();
++		if (Lower.Contains(TEXT("save"))) return TEXT("save");
++		for (const TCHAR* Word : { TEXT("create"), TEXT("add"), TEXT("delete"), TEXT("remove"), TEXT("update"), TEXT("set_"), TEXT("write"), TEXT("modify"), TEXT("edit"), TEXT("rename"), TEXT("move"), TEXT("execute") })
++		{
++			if (Lower.StartsWith(Word) || Lower.Contains(FString(TEXT(" ")) + Word) || Lower.Contains(FString(TEXT("_")) + Word) || Lower.Contains(FString(TEXT(".")) + Word)) return TEXT("write");
++		}
++		for (const TCHAR* Word : { TEXT("get"), TEXT("list"), TEXT("find"), TEXT("read"), TEXT("describe"), TEXT("inspect"), TEXT("query"), TEXT("search"), TEXT("check"), TEXT("validate"), TEXT("discover") })
++		{
++			if (Lower.StartsWith(Word) || Lower.Contains(FString(TEXT(" ")) + Word) || Lower.Contains(FString(TEXT("_")) + Word) || Lower.Contains(FString(TEXT(".")) + Word)) return TEXT("read");
++		}
++		return TEXT("unknown");
++	}
++
++	TSharedRef<FJsonObject> MakeCallView(const TSharedPtr<FJsonObject>& Tool, const FString& ToolsetName)
++	{
++		TSharedRef<FJsonObject> View = MakeShared<FJsonObject>();
++		FString Name;
++		FString Description;
++		Tool->TryGetStringField(TEXT("name"), Name);
++		Tool->TryGetStringField(TEXT("description"), Description);
++		View->SetStringField(TEXT("tool"), CompactToolName(ToolsetName, Name));
++		View->SetStringField(TEXT("effect"), ClassifyEffect(Name, Description));
++
++		TSharedRef<FJsonObject> Args = MakeShared<FJsonObject>();
++		const TSharedPtr<FJsonObject>* InputSchema = nullptr;
++		const TSharedPtr<FJsonObject>* Properties = nullptr;
++		if (Tool->TryGetObjectField(TEXT("inputSchema"), InputSchema) && InputSchema && (*InputSchema)->TryGetObjectField(TEXT("properties"), Properties) && Properties)
++		{
++			TSet<FString> Required;
++			const TArray<TSharedPtr<FJsonValue>>* RequiredValues = nullptr;
++			if ((*InputSchema)->TryGetArrayField(TEXT("required"), RequiredValues) && RequiredValues)
++			{
++				for (const TSharedPtr<FJsonValue>& Value : *RequiredValues)
++				{
++					FString RequiredName;
++					if (Value.IsValid() && Value->TryGetString(RequiredName)) Required.Add(RequiredName);
++				}
++			}
++			for (const TPair<FString, TSharedPtr<FJsonValue>>& Pair : (*Properties)->Values)
++			{
++				if (Pair.Value.IsValid() && Pair.Value->Type == EJson::Object)
++				{
++					FString Type = CompactSchemaType(Pair.Value->AsObject(), Pair.Key);
++					if (Required.Contains(Pair.Key)) Type += TEXT("!");
++					Args->SetStringField(Pair.Key, Type);
++				}
++			}
++		}
++		View->SetObjectField(TEXT("args"), Args);
++
++		TSharedRef<FJsonObject> Returns = MakeShared<FJsonObject>();
++		const TSharedPtr<FJsonObject>* OutputSchema = nullptr;
++		if (Tool->TryGetObjectField(TEXT("outputSchema"), OutputSchema) && OutputSchema && (*OutputSchema)->TryGetObjectField(TEXT("properties"), Properties) && Properties)
++		{
++			for (const TPair<FString, TSharedPtr<FJsonValue>>& Pair : (*Properties)->Values)
++			{
++				if (Pair.Value.IsValid() && Pair.Value->Type == EJson::Object) Returns->SetStringField(Pair.Key, CompactSchemaType(Pair.Value->AsObject(), Pair.Key));
++			}
++		}
++		View->SetObjectField(TEXT("returns"), Returns);
++		return View;
++	}
++
++	TValueOrError<FString, FString> ProjectToolsetSchema(const FString& RawSchema, const FString& ToolName, const FString& Detail)
++	{
++		const bool bCall = Detail.IsEmpty() || Detail.Equals(TEXT("call"), ESearchCase::IgnoreCase);
++		const bool bSummary = Detail.Equals(TEXT("summary"), ESearchCase::IgnoreCase);
++		const bool bFull = Detail.Equals(TEXT("full"), ESearchCase::IgnoreCase);
++		if (!bCall && !bSummary && !bFull)
++		{
++			return MakeError(TEXT("detail must be 'call', 'summary', or 'full'"));
++		}
++		if (bFull && ToolName.IsEmpty())
++		{
++			return MakeValue(RawSchema);
++		}
++
++		TSharedPtr<FJsonObject> Schema;
++		TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(RawSchema);
++		if (!FJsonSerializer::Deserialize(Reader, Schema) || !Schema.IsValid())
++		{
++			return MakeError(TEXT("Toolset schema is not valid JSON"));
++		}
++
++		TSharedRef<FJsonObject> Result = MakeShared<FJsonObject>();
++		FString Value;
++		FString ToolsetSchemaName;
++		Schema->TryGetStringField(TEXT("name"), ToolsetSchemaName);
++		if (!bCall)
++		{
++			if (Schema->TryGetStringField(TEXT("name"), Value)) Result->SetStringField(TEXT("name"), Value);
++			if (Schema->TryGetStringField(TEXT("version"), Value)) Result->SetStringField(TEXT("version"), Value);
++			if (Schema->TryGetStringField(TEXT("description"), Value)) Result->SetStringField(TEXT("description"), Value);
++		}
++
++		const TArray<TSharedPtr<FJsonValue>>* Tools = nullptr;
++		if (!Schema->TryGetArrayField(TEXT("tools"), Tools) || !Tools)
++		{
++			return MakeError(TEXT("Toolset schema has no tools array"));
++		}
++
++		TArray<TSharedPtr<FJsonValue>> SelectedTools;
++		for (const TSharedPtr<FJsonValue>& ToolValue : *Tools)
++		{
++			if (!ToolValue.IsValid() || ToolValue->Type != EJson::Object)
++			{
++				continue;
++			}
++			TSharedPtr<FJsonObject> Tool = ToolValue->AsObject();
++			if (!Tool.IsValid())
++			{
++				continue;
++			}
++			FString Name;
++			Tool->TryGetStringField(TEXT("name"), Name);
++			const bool bMatches = ToolName.IsEmpty()
++				|| Name.Equals(ToolName, ESearchCase::IgnoreCase)
++				|| Name.EndsWith(TEXT(".") + ToolName, ESearchCase::IgnoreCase);
++			if (!bMatches)
++			{
++				continue;
++			}
++
++			if (bCall)
++			{
++				SelectedTools.Add(MakeShared<FJsonValueObject>(MakeCallView(Tool, ToolsetSchemaName)));
++			}
++			else if (bSummary)
++			{
++				TSharedRef<FJsonObject> Summary = MakeShared<FJsonObject>();
++				if (Tool->TryGetStringField(TEXT("name"), Value)) Summary->SetStringField(TEXT("name"), Value);
++				if (Tool->TryGetStringField(TEXT("description"), Value)) Summary->SetStringField(TEXT("description"), Value);
++				SelectedTools.Add(MakeShared<FJsonValueObject>(Summary));
++			}
++			else
++			{
++				SelectedTools.Add(MakeShared<FJsonValueObject>(Tool));
++			}
++		}
++
++		if (!ToolName.IsEmpty() && SelectedTools.Num() == 0)
++		{
++			return MakeError(FString::Printf(TEXT("Tool '%s' not found in toolset schema"), *ToolName));
++		}
++		if (bCall && !ToolName.IsEmpty() && SelectedTools.Num() == 1)
++		{
++			return MakeValue(JsonValueToString(SelectedTools[0]));
++		}
++		Result->SetArrayField(TEXT("tools"), MoveTemp(SelectedTools));
++		return MakeValue(JsonValueToString(MakeShared<FJsonValueObject>(Result)));
++	}
++}
++
+ FToolsetRegistryToolAdapter::FToolsetRegistryToolAdapter(const FString& InToolName, const FString& InDescription, TSharedPtr<FJsonObject> InInputSchema)
+ 	: ToolName(InToolName)
+ 	, Description(InDescription)
+@@ -169,15 +571,15 @@ void FToolsetRegistryToolAdapterManager::RegisterTools()
+ 			return GetToolsetCatalogText();
+ 		})));
+ 
+-		RegisterMetaTool(MakeShared<FDescribeToolsetTool>(FDescribeToolsetDelegate([this](const FString& ToolsetName)
++		RegisterMetaTool(MakeShared<FDescribeToolsetTool>(FDescribeToolsetDelegate([this](const FString& ToolsetName, const FString& ToolName, const FString& Detail)
+ 		{
+-			return GetToolsetSchemaText(ToolsetName);
++			return GetToolsetSchemaText(ToolsetName, ToolName, Detail);
+ 		})));
+ 
+ 		RegisterMetaTool(MakeShared<FCallTool>(FCallToolDelegate(
+-			[this](const FString& ToolsetName, const FString& ToolName, const TSharedPtr<FJsonObject>& Arguments, const FModelContextProtocolToolRequestId& RequestId, const IModelContextProtocolTool::FResultCallback& OnComplete)
++			[this](const FString& ToolsetName, const FString& ToolName, const TSharedPtr<FJsonObject>& Arguments, const TSharedPtr<FJsonObject>& Projection, const FModelContextProtocolToolRequestId& RequestId, const IModelContextProtocolTool::FResultCallback& OnComplete)
+ 		{
+-			DispatchToolCall(ToolsetName, ToolName, Arguments, RequestId, OnComplete);
++			DispatchToolCall(ToolsetName, ToolName, Arguments, Projection, RequestId, OnComplete);
+ 		})));
+ 
+ 		int32 ToolsetCount = 0;
+@@ -230,7 +632,7 @@ void FToolsetRegistryToolAdapterManager::DeregisterTools(bool bBroadcast)
+ 	}
+ }
+ 
+-void FToolsetRegistryToolAdapterManager::DispatchToolCall(const FString& ToolsetName, const FString& ToolName, const TSharedPtr<FJsonObject>& Arguments, const FModelContextProtocolToolRequestId& RequestId, const IModelContextProtocolTool::FResultCallback& OnComplete) const
++void FToolsetRegistryToolAdapterManager::DispatchToolCall(const FString& ToolsetName, const FString& ToolName, const TSharedPtr<FJsonObject>& Arguments, const TSharedPtr<FJsonObject>& Projection, const FModelContextProtocolToolRequestId& RequestId, const IModelContextProtocolTool::FResultCallback& OnComplete) const
+ {
+ 	if (!ToolsetName.IsEmpty())
+ 	{
+@@ -255,7 +657,7 @@ void FToolsetRegistryToolAdapterManager::DispatchToolCall(const FString& Toolset
+ 
+ 		UE_LOGF(LogModelContextProtocol, Log, "Dispatching toolset tool: '%ls.%ls'", *ToolsetName, *ToolName);
+ 
+-		ToolsetRegistry->ExecuteTool(UE::ToolsetRegistry::FToolDescriptor{ToolsetName, ToolName}, ArgumentsJson).Then([OnComplete](TFuture<TValueOrError<FString, FString>> Future)
++		ToolsetRegistry->ExecuteTool(UE::ToolsetRegistry::FToolDescriptor{ToolsetName, ToolName}, ArgumentsJson).Then([OnComplete, Projection](TFuture<TValueOrError<FString, FString>> Future)
+ 		{
+ 			TValueOrError<FString, FString> Result = Future.Get();
+ 			if (Result.HasError())
+@@ -264,7 +666,7 @@ void FToolsetRegistryToolAdapterManager::DispatchToolCall(const FString& Toolset
+ 			}
+ 			else
+ 			{
+-				OnComplete(UE::ModelContextProtocol::MakeTextResult(Result.GetValue()));
++				OnComplete(MakeProjectedToolResult(Result.GetValue(), Projection));
+ 			}
+ 		});
+ 		return;
+@@ -310,18 +712,35 @@ FString FToolsetRegistryToolAdapterManager::GetToolsetCatalogText() const
+ 		[&Result](const FString& Name, const UE::ToolsetRegistry::FToolset& Toolset)
+ 		{
+ 			Result += FString::Printf(TEXT("- %s"), *Name);
+-			FString Description = Toolset.GetToolsetDescription();
+-			if (!Description.IsEmpty())
++
++			// Keep discovery cheap. Full toolset documentation and schemas remain available
++			// through describe_toolset; list_toolsets only needs one short routing hint.
++			FString Summary = Toolset.GetToolsetDescription();
++			Summary.ReplaceInline(TEXT("\r\n"), TEXT("\n"));
++			Summary.ReplaceInline(TEXT("\r"), TEXT("\n"));
++			int32 NewlineIndex = INDEX_NONE;
++			if (Summary.FindChar(TEXT('\n'), NewlineIndex))
++			{
++				Summary = Summary.Left(NewlineIndex);
++			}
++			Summary.TrimStartAndEndInline();
++			constexpr int32 MaxSummaryChars = 240;
++			if (Summary.Len() > MaxSummaryChars)
++			{
++				Summary = Summary.Left(MaxSummaryChars - 3) + TEXT("...");
++			}
++
++			if (!Summary.IsEmpty())
+ 			{
+-				Result += FString::Printf(TEXT(": %s"), *Description);
++				Result += FString::Printf(TEXT(": %s"), *Summary);
+ 			}
+ 			Result += TEXT("\n");
+ 		});
+ 	return Result;
+ }
+ 
+-TValueOrError<FString, FString> FToolsetRegistryToolAdapterManager::GetToolsetSchemaText(
+-	const FString& ToolsetName) const
++	TValueOrError<FString, FString> FToolsetRegistryToolAdapterManager::GetToolsetSchemaText(
++	const FString& ToolsetName, const FString& ToolName, const FString& Detail) const
+ {
+ 	UE::ToolsetRegistry::FToolsetRegistry* ToolsetRegistry = UE::ModelContextProtocol::Private::GetToolsetRegistry();
+ 	if (!ToolsetRegistry)
+@@ -343,5 +762,5 @@ TValueOrError<FString, FString> FToolsetRegistryToolAdapterManager::GetToolsetSc
+ 			*ToolsetName, *FString::Join(Names, TEXT(", "))));
+ 	}
+ 
+-	return MakeValue(Toolset->GetJsonSchema());
++	return ProjectToolsetSchema(Toolset->GetJsonSchema(), ToolName, Detail);
+ }
+diff --git a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.h b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.h
+index 89ee121d119965a86950bdea3d7d0fb7f1648c57..131dc4f50667ef4eeefffe4dc9310f4be501bde9 100644
+--- a/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.h
++++ b/Engine/Plugins/Experimental/ModelContextProtocol/Source/ModelContextProtocolEditor/Private/ModelContextProtocolToolsetRegistryAdapter.h
+@@ -50,14 +50,14 @@ private:
+ 	/** Register all tools from a toolset's JSON schema string. Returns the number of tools registered. */
+ 	int32 RegisterToolsFromSchema(const FString& ToolsetSchemaJson);
+ 
+-	/** Returns a compact text listing of all toolsets (name + description). */
++	/** Returns a compact text listing of all toolsets (name + first-line summary). */
+ 	FString GetToolsetCatalogText() const;
+ 
+ 	/** Returns the full JSON schema for a named toolset, or an error. */
+-	TValueOrError<FString, FString> GetToolsetSchemaText(const FString& ToolsetName) const;
++	TValueOrError<FString, FString> GetToolsetSchemaText(const FString& ToolsetName, const FString& ToolName, const FString& Detail) const;
+ 
+ 	/** Dispatches a tool call through ToolsetRegistry (when ToolsetName is non-empty) or through the MCP module's top-level tool table (otherwise). Result is delivered via OnComplete. */
+-	void DispatchToolCall(const FString& ToolsetName, const FString& ToolName, const TSharedPtr<FJsonObject>& Arguments, const FModelContextProtocolToolRequestId& RequestId, const IModelContextProtocolTool::FResultCallback& OnComplete) const;
++	void DispatchToolCall(const FString& ToolsetName, const FString& ToolName, const TSharedPtr<FJsonObject>& Arguments, const TSharedPtr<FJsonObject>& Projection, const FModelContextProtocolToolRequestId& RequestId, const IModelContextProtocolTool::FResultCallback& OnComplete) const;
+ 
+ 	TArray<TSharedRef<FToolsetRegistryToolAdapter>> RegisteredAdapters;
+ 	TArray<TSharedRef<IModelContextProtocolTool>> MetaTools;
+diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp
+index cd03d88611a9cb8bf380622cea3209ab5a49c2d6..3f813b5ed24a46f889f0ff859841aa53a898b58b 100644
+--- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp
++++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp
+@@ -7,7 +7,10 @@
+ 
+ #include "NiagaraSystem.h"
+ #include "NiagaraComponent.h"
++#include "NiagaraEmitterInstance.h"
+ #include "NiagaraParameterStore.h"
++#include "NiagaraSystemInstance.h"
++#include "NiagaraSystemInstanceController.h"
+ #include "NiagaraUserRedirectionParameterStore.h"
+ #include "NiagaraScriptVariable.h"
+ #include "NiagaraEditorUtilities.h"
+@@ -16,10 +19,64 @@
+ 
+ #include "Kismet/KismetSystemLibrary.h"
+ 
++#include "Serialization/JsonSerializer.h"
++#include "Serialization/JsonWriter.h"
++
+ #include UE_INLINE_GENERATED_CPP_BY_NAME(NiagaraToolset_Component)
+ 
+ #define LOCTEXT_NAMESPACE "UNiagaraToolset_Component"
+ 
++FString UNiagaraToolset_Component::GetRuntimeState(UNiagaraComponent* Component)
++{
++	if (!ValidateComponent(Component))
++	{
++		return {};
++	}
++
++	TSharedRef<FJsonObject> Root = MakeShared<FJsonObject>();
++	Root->SetStringField(TEXT("component"), Component->GetPathName());
++	Root->SetStringField(TEXT("system"), GetPathNameSafe(Component->GetAsset()));
++	Root->SetBoolField(TEXT("componentActive"), Component->IsActive());
++	Root->SetBoolField(TEXT("componentComplete"), Component->IsComplete());
++
++	FNiagaraSystemInstanceControllerPtr Controller = Component->GetSystemInstanceController();
++	Root->SetBoolField(TEXT("controllerValid"), Controller.IsValid() && Controller->IsValid());
++	if (Controller.IsValid() && Controller->IsValid())
++	{
++		Controller->WaitForConcurrentTickAndFinalize();
++		Root->SetStringField(TEXT("requestedState"), UEnum::GetValueAsString(Controller->GetRequestedExecutionState()));
++		Root->SetStringField(TEXT("actualState"), UEnum::GetValueAsString(Controller->GetActualExecutionState()));
++		Root->SetNumberField(TEXT("ageSeconds"), Controller->GetAge());
++
++		const FBox& Bounds = Controller->GetLocalBounds();
++		TSharedRef<FJsonObject> BoundsJson = MakeShared<FJsonObject>();
++		BoundsJson->SetBoolField(TEXT("valid"), Bounds.IsValid != 0);
++		BoundsJson->SetStringField(TEXT("min"), Bounds.Min.ToString());
++		BoundsJson->SetStringField(TEXT("max"), Bounds.Max.ToString());
++		Root->SetObjectField(TEXT("localBounds"), BoundsJson);
++
++		TArray<TSharedPtr<FJsonValue>> Emitters;
++		if (FNiagaraSystemInstance* Instance = Controller->GetSystemInstance_Unsafe())
++		{
++			for (const FNiagaraEmitterInstanceRef& Emitter : Instance->GetEmitters())
++			{
++				TSharedRef<FJsonObject> EmitterJson = MakeShared<FJsonObject>();
++				EmitterJson->SetStringField(TEXT("name"), Emitter->GetEmitterHandle().GetUniqueInstanceName());
++				EmitterJson->SetStringField(TEXT("executionState"), UEnum::GetValueAsString(Emitter->GetExecutionState()));
++				EmitterJson->SetStringField(TEXT("simTarget"), UEnum::GetValueAsString(Emitter->GetSimTarget()));
++				EmitterJson->SetNumberField(TEXT("numParticles"), Emitter->GetNumParticles());
++				Emitters.Add(MakeShared<FJsonValueObject>(EmitterJson));
++			}
++		}
++		Root->SetArrayField(TEXT("emitters"), Emitters);
++	}
++
++	FString Json;
++	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Json);
++	FJsonSerializer::Serialize(Root, Writer);
++	return Json;
++}
++
+ void UNiagaraToolset_Component::SetSystem(UNiagaraComponent* NiagaraComponent, UNiagaraSystem* System, bool bResetExistingOverrideParameters)
+ {
+ 	if(!ValidateSystem(System)) return;
+diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.h b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.h
+index 1012f0f7817db3d7d4e255d349310afe47bf8a1d..3340ccf48ff304e60618d9f3f1c3a7b9db37b967 100644
+--- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.h
++++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.h
+@@ -25,6 +25,12 @@ class UNiagaraToolset_Component : public UNiagaraToolset
+ 	GENERATED_BODY()
+ 
+ public:
++	/**
++	 * Returns live execution state and per-emitter particle counts for a scene component.
++	 * GPU counts may lag the render thread by a frame.
++	 */
++	UFUNCTION(meta = (AICallable), Category = "Component")
++	static FString GetRuntimeState(UNiagaraComponent* Component);
+ 
+ 	/**
+ 	 * Sets the Niagara System for a component.
+diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
+index 9c1f55de79a4d466bfa025d40bd98c40e50cbcaa..107a96535ac01cf5c20df71a0841c0ce18317a72 100644
+--- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
++++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
+@@ -4,9 +4,16 @@
+ #include "NiagaraToolsetsSettings.h"
+ 
+ #include "NiagaraExternalSystemEditorUtilities.h"
++#include "NiagaraEditorModule.h"
++#include "NiagaraEmitter.h"
++#include "NiagaraGraph.h"
++#include "INiagaraEditorTypeUtilities.h"
++#include "NiagaraNodeCustomHlsl.h"
++#include "NiagaraScriptSource.h"
+ #include "NiagaraSystem.h"
+ 
+ #include "Containers/Ticker.h"
++#include "EdGraphUtilities.h"
+ #include "Engine/Engine.h"
+ #include "Engine/EngineTypes.h"
+ 
+@@ -17,6 +24,7 @@
+ #include "JsonSchema/JsonSchemaGenerator.h"
+ #include "JsonObjectConverter.h"
+ #include "Serialization/JsonReader.h"
++#include "Serialization/JsonSerializer.h"
+ #include "Serialization/JsonWriter.h"
+ 
+ #include UE_INLINE_GENERATED_CPP_BY_NAME(NiagaraToolset_System)
+@@ -275,6 +283,179 @@ FNiagaraExt_DynamicInputChainRef UNiagaraToolset_System::GetDynamicInputChain(co
+ 	return Chain;
+ }
+ 
++FString UNiagaraToolset_System::GetScriptGraphText(const UNiagaraScript* Script)
++{
++	const UNiagaraScriptSource* Source = Script ? Cast<UNiagaraScriptSource>(Script->GetLatestSource()) : nullptr;
++	if (Source == nullptr || Source->NodeGraph == nullptr)
++	{
++		Error(TEXT("Script has no readable Niagara graph."));
++		return {};
++	}
++
++	TSet<UObject*> Nodes;
++	for (UEdGraphNode* Node : Source->NodeGraph->Nodes)
++	{
++		Nodes.Add(Node);
++	}
++	FString ExportedText;
++	FEdGraphUtilities::ExportNodesToText(MoveTemp(Nodes), ExportedText);
++	return ExportedText;
++}
++
++namespace
++{
++	UNiagaraNodeCustomHlsl* FindSingleCustomHlslNode(const UNiagaraScript* Script, FString& OutError)
++	{
++		const UNiagaraScriptSource* Source = Script ? Cast<UNiagaraScriptSource>(Script->GetLatestSource()) : nullptr;
++		if (Source == nullptr || Source->NodeGraph == nullptr)
++		{
++			OutError = TEXT("Script has no readable Niagara graph.");
++			return nullptr;
++		}
++
++		TArray<UNiagaraNodeCustomHlsl*> Nodes;
++		Source->NodeGraph->GetNodesOfClass(Nodes);
++		if (Nodes.Num() != 1)
++		{
++			OutError = FString::Printf(TEXT("Expected exactly one Custom HLSL node, found %d."), Nodes.Num());
++			return nullptr;
++		}
++		return Nodes[0];
++	}
++
++	FStrProperty* FindCustomHlslProperty(FString& OutError)
++	{
++		// UNiagaraNodeCustomHlsl is MinimalAPI, so its native Get/Set methods are not linkable here.
++		FStrProperty* Property = FindFProperty<FStrProperty>(UNiagaraNodeCustomHlsl::StaticClass(), TEXT("CustomHlsl"));
++		if (Property == nullptr)
++		{
++			OutError = TEXT("UNiagaraNodeCustomHlsl.CustomHlsl property was not found.");
++		}
++		return Property;
++	}
++
++	UNiagaraScript* ResolveScript(const FNiagaraExt_StackItemReference& Ref, FString& OutError)
++	{
++		if (Ref.System == nullptr)
++		{
++			OutError = TEXT("System is required.");
++			return nullptr;
++		}
++		if (Ref.EmitterName == NAME_None)
++		{
++			if (Ref.ScriptName == TEXT("SystemSpawnScript")) return Ref.System->GetSystemSpawnScript();
++			if (Ref.ScriptName == TEXT("SystemUpdateScript")) return Ref.System->GetSystemUpdateScript();
++			OutError = TEXT("System script must be SystemSpawnScript or SystemUpdateScript.");
++			return nullptr;
++		}
++
++		const FNiagaraEmitterHandle* Handle = Ref.System->GetEmitterHandles().FindByPredicate(
++			[&Ref](const FNiagaraEmitterHandle& Candidate) { return Candidate.GetName() == Ref.EmitterName; });
++		FVersionedNiagaraEmitterData* EmitterData = Handle ? Handle->GetInstance().GetEmitterData() : nullptr;
++		if (EmitterData == nullptr)
++		{
++			OutError = FString::Printf(TEXT("Emitter '%s' was not found."), *Ref.EmitterName.ToString());
++			return nullptr;
++		}
++		if (Ref.ScriptName == TEXT("GPUComputeScript")) return EmitterData->GetGPUComputeScript();
++
++		ENiagaraScriptUsage Usage;
++		if (Ref.ScriptName == TEXT("EmitterSpawnScript")) Usage = ENiagaraScriptUsage::EmitterSpawnScript;
++		else if (Ref.ScriptName == TEXT("EmitterUpdateScript")) Usage = ENiagaraScriptUsage::EmitterUpdateScript;
++		else if (Ref.ScriptName == TEXT("ParticleSpawnScript")) Usage = ENiagaraScriptUsage::ParticleSpawnScript;
++		else if (Ref.ScriptName == TEXT("ParticleUpdateScript")) Usage = ENiagaraScriptUsage::ParticleUpdateScript;
++		else
++		{
++			OutError = TEXT("Emitter script must be EmitterSpawnScript, EmitterUpdateScript, ParticleSpawnScript, ParticleUpdateScript, or GPUComputeScript.");
++			return nullptr;
++		}
++		return EmitterData->GetScript(Usage, FGuid());
++	}
++}
++
++FString UNiagaraToolset_System::GetScriptCustomHlsl(const UNiagaraScript* Script)
++{
++	FString ErrorText;
++	UNiagaraNodeCustomHlsl* Node = FindSingleCustomHlslNode(Script, ErrorText);
++	FStrProperty* Property = FindCustomHlslProperty(ErrorText);
++	if (Node == nullptr || Property == nullptr)
++	{
++		Error(ErrorText);
++		return {};
++	}
++	return Property->GetPropertyValue_InContainer(Node);
++}
++
++FString UNiagaraToolset_System::GetScriptRapidIterationParameters(const FNiagaraExt_StackItemReference& ScriptRef)
++{
++	FString ErrorText;
++	UNiagaraScript* Script = ResolveScript(ScriptRef, ErrorText);
++	if (Script == nullptr)
++	{
++		Error(ErrorText);
++		return {};
++	}
++
++	FNiagaraEditorModule& EditorModule = FModuleManager::GetModuleChecked<FNiagaraEditorModule>(TEXT("NiagaraEditor"));
++	TArray<FNiagaraVariable> Variables;
++	Script->RapidIterationParameters.GetParameters(Variables);
++	TArray<TSharedPtr<FJsonValue>> Rows;
++	for (const FNiagaraVariable& Variable : Variables)
++	{
++		FString Value = TEXT("(unsupported)");
++		TSharedPtr<INiagaraEditorTypeUtilities, ESPMode::ThreadSafe> TypeUtilities = EditorModule.GetTypeUtilities(Variable.GetType());
++		if (TypeUtilities.IsValid() && TypeUtilities->CanHandlePinDefaults())
++		{
++			FNiagaraVariable VariableWithValue = Variable;
++			VariableWithValue.SetData(Script->RapidIterationParameters.GetParameterData(Variable));
++			Value = TypeUtilities->GetPinDefaultStringFromValue(VariableWithValue);
++		}
++
++		TSharedRef<FJsonObject> Row = MakeShared<FJsonObject>();
++		Row->SetStringField(TEXT("name"), Variable.GetName().ToString());
++		Row->SetStringField(TEXT("type"), Variable.GetType().GetName());
++		Row->SetStringField(TEXT("value"), Value);
++		Rows.Add(MakeShared<FJsonValueObject>(Row));
++	}
++
++	FString Json;
++	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Json);
++	FJsonSerializer::Serialize(Rows, Writer);
++	return Json;
++}
++
++UNiagaraScript* UNiagaraToolset_System::GetScriptObject(const FNiagaraExt_StackItemReference& ScriptRef)
++{
++	FString ErrorText;
++	UNiagaraScript* Script = ResolveScript(ScriptRef, ErrorText);
++	if (Script == nullptr)
++	{
++		Error(ErrorText);
++	}
++	return Script;
++}
++
++FString UNiagaraToolset_System::SetScriptCustomHlsl(UNiagaraScript* Script, const FString& CustomHlsl)
++{
++	FString ErrorText;
++	UNiagaraNodeCustomHlsl* Node = FindSingleCustomHlslNode(Script, ErrorText);
++	FStrProperty* Property = FindCustomHlslProperty(ErrorText);
++	if (Node == nullptr || Property == nullptr)
++	{
++		Error(ErrorText);
++		return {};
++	}
++	if (Property->GetPropertyValue_InContainer(Node) != CustomHlsl)
++	{
++		FScopedTransaction Transaction(LOCTEXT("SetScriptCustomHlsl", "Set Niagara Custom HLSL"));
++		Node->Modify();
++		Property->SetPropertyValue_InContainer(Node, CustomHlsl);
++		FPropertyChangedEvent PropertyChangedEvent(Property);
++		Node->PostEditChangeProperty(PropertyChangedEvent);
++	}
++	return Property->GetPropertyValue_InContainer(Node);
++}
++
+ FNiagaraExt_SystemDependencies UNiagaraToolset_System::GetSystemDependencies(UNiagaraSystem* System)
+ {
+ 	FNiagaraExternalEditContext Context(System);
+diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
+index 6541a0e1ed72dbed6003a483eeea617927c5b5e8..7b94f7f5df9bc20f6b96dd726f78f337a427ae2c 100644
+--- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
++++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
+@@ -380,6 +380,26 @@ public:
+ 	UFUNCTION(meta = (AICallable), Category = "Topology")
+ 	static FNiagaraExt_DynamicInputChainRef GetDynamicInputChain(const FNiagaraExt_StackItemReference& StackInputRef);
+ 
++	/** Returns Unreal's native text export of every node in a Niagara script graph. Read-only. */
++	UFUNCTION(meta = (AICallable), Category = "Topology")
++	static FString GetScriptGraphText(const UNiagaraScript* Script);
++
++	/** Returns the HLSL source when the script graph contains exactly one Custom HLSL node. */
++	UFUNCTION(meta = (AICallable), Category = "Data")
++	static FString GetScriptCustomHlsl(const UNiagaraScript* Script);
++
++	/** Returns the script stack's rapid-iteration parameters as a JSON array of name, type, and value strings. */
++	UFUNCTION(meta = (AICallable), Category = "Data")
++	static FString GetScriptRapidIterationParameters(const FNiagaraExt_StackItemReference& ScriptRef);
++
++	/** Resolves a system/emitter script stack reference to its underlying Niagara script object. */
++	UFUNCTION(meta = (AICallable), Category = "Data")
++	static UNiagaraScript* GetScriptObject(const FNiagaraExt_StackItemReference& ScriptRef);
++
++	/** Replaces the HLSL source when the script graph contains exactly one Custom HLSL node. */
++	UFUNCTION(meta = (AICallable), Category = "Edit")
++	static FString SetScriptCustomHlsl(UNiagaraScript* Script, const FString& CustomHlsl);
++
+ 	//////////////////////////////////////////////////////////////////////////
+ 	// Dependency endpoint
+ 
+diff --git a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h
+index ce63a3f88327d78216f74a492625a859c5de4ef0..8f30299a8a4573d4dbace4b3e2da8314e05cfca2 100644
+--- a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h
++++ b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h
+@@ -32,14 +32,15 @@ protected:
+ 
+ 	using FTranslator = TNiagaraHlslTranslator<FNiagaraCompilationGraphBridge>;
+ 
+-	NIAGARAEDITOR_API bool ReallocatePins(bool bMarkNeedsResynchronizeOnChange = true);
+-
+ 	NIAGARAEDITOR_API bool CompileInputPins(FTranslator* Translator, TArray<int32>& OutCompiledInputs) const;
+ 
+ 	virtual void OnPostSynchronizationInReallocatePins() {}
+ 	
+ public:
+ 
++	/** Reallocates the pins on this node (public so external tools can rebuild a node's pin set, e.g. to spawn the Add pins). */
++	NIAGARAEDITOR_API bool ReallocatePins(bool bMarkNeedsResynchronizeOnChange = true);
++
+ 	DECLARE_MULTICAST_DELEGATE_OneParam(FOnNodeVisualsChanged, UNiagaraNode*);
+ 
+ 	//~ Begin UObject interface
+diff --git a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNodeCustomHlsl.h b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNodeCustomHlsl.h
+index 4f7ed9f04052f7017b5ed3a1700c1e3651dc2b00..0ee2074264992d47e0e4648f1e20595b8056b3ca 100644
+--- a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNodeCustomHlsl.h
++++ b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNodeCustomHlsl.h
+@@ -52,7 +52,7 @@ public:
+ 
+ 	virtual void PostEditChangeProperty(struct FPropertyChangedEvent& PropertyChangedEvent) override;
+ 
+-	void InitAsCustomHlslDynamicInput(const FNiagaraTypeDefinition& OutputType);
++	NIAGARAEDITOR_API void InitAsCustomHlslDynamicInput(const FNiagaraTypeDefinition& OutputType);
+ 
+ 	bool CallsImpureDataInterfaceFunctions() const;
+ 
+diff --git a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNodeWithDynamicPins.h b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNodeWithDynamicPins.h
+index c8595732589027cbe22be36cbec004b983c28ee0..98872215c519bd20889fdedcb9269318b9929ccb 100644
+--- a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNodeWithDynamicPins.h
++++ b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNodeWithDynamicPins.h
+@@ -26,13 +26,13 @@ public:
+ 	virtual bool IncludeParentNodeContextMenu() const override { return true; }
+ 
+ 	/** Requests a new pin be added to the node with the specified direction, type, and name. */
+-	UEdGraphPin* RequestNewTypedPin(EEdGraphPinDirection Direction, const FNiagaraTypeDefinition& Type, FName InName);
++	NIAGARAEDITOR_API UEdGraphPin* RequestNewTypedPin(EEdGraphPinDirection Direction, const FNiagaraTypeDefinition& Type, FName InName);
+ 
+ 	/** Requests a new pin be added to the node with the specified direction and type. */
+-	UEdGraphPin* RequestNewTypedPin(EEdGraphPinDirection Direction, const FNiagaraTypeDefinition& Type);
++	NIAGARAEDITOR_API UEdGraphPin* RequestNewTypedPin(EEdGraphPinDirection Direction, const FNiagaraTypeDefinition& Type);
+ 
+ 	/** Helper to identify if a pin is an Add pin.*/
+-	static bool IsAddPin(const UEdGraphPin* Pin);
++	static NIAGARAEDITOR_API bool IsAddPin(const UEdGraphPin* Pin);
+ 
+ 	/** Helper to identify if a pin is an Add pin.*/
+ 	bool IsExecPin(const UEdGraphPin* Pin) const;
+diff --git a/Engine/Shaders/Private/VolumetricCloud.usf b/Engine/Shaders/Private/VolumetricCloud.usf
+index 88d01ae3b42d9c355e404c18a33ad1860b850b36..888b5fb6d2b4743c79c66a421cfb42b088c14baf 100644
+--- a/Engine/Shaders/Private/VolumetricCloud.usf
++++ b/Engine/Shaders/Private/VolumetricCloud.usf
+@@ -860,8 +860,19 @@ void MainCommon(in FMaterialPixelParameters MaterialParameters, in float4 SvPosi
+ #if MATERIAL_VOLUMETRIC_ADVANCED_CONSERVATIVE_DENSITY && !CLOUD_DEBUG_VIEW_MODE
+ 			if (MaterialParameters.VolumeSampleConservativeDensity.x <= 0.0f)
+ 			{
+-				i += StepSizeOnZeroConservativeDensity - 1;
+-				t += StepSizeOnZeroConservativeDensity * StepT;
++				uint EmptyStepCount = max(uint(StepSizeOnZeroConservativeDensity), 1u);
++			#if !SHADER_RENDERVIEW_CS_WITH_EMPTY_SPACE_SKIPPING
++				if (RenderVolumetricCloudParameters.ConservativeDensitySDFMaxStep > 1
++					&& MaterialParameters.VolumeSampleConservativeDensity.y > 0.0f)
++				{
++					const float SafeDistanceCm = MaterialParameters.VolumeSampleConservativeDensity.y * KILOMETER_TO_CENTIMETER;
++					EmptyStepCount = min(
++						max(uint(SafeDistanceCm / StepT), 1u),
++						uint(RenderVolumetricCloudParameters.ConservativeDensitySDFMaxStep));
++				}
++			#endif
++				i += EmptyStepCount - 1u;
++				t += float(EmptyStepCount) * StepT;
+ 
+ 			#if CLOUD_DEBUG_SAMPLES
+ 				if (bDrawDebugEnabled) AddCrossTWS(SampleTranslatedWorldPosition, 60000.0f, float4(1, 0, 0, 0.5));
+@@ -1110,6 +1121,19 @@ void MainCommon(in FMaterialPixelParameters MaterialParameters, in float4 SvPosi
+ #if MATERIAL_VOLUMETRIC_ADVANCED_CONSERVATIVE_DENSITY
+ 					if (MaterialParameters.VolumeSampleConservativeDensity.x <= 0.0f)
+ 					{
++						if (RenderVolumetricCloudParameters.ConservativeDensitySDFMaxStep > 1
++							&& MaterialParameters.VolumeSampleConservativeDensity.y > 0.0f)
++						{
++							const float SafeEndNormT = min(
++								ShadowSampleDistance / ShadowLengthTest
++								+ MaterialParameters.VolumeSampleConservativeDensity.y * KILOMETER_TO_CENTIMETER / ShadowLengthTest,
++								1.0f);
++							const uint AdditionalStepCount = min(
++								uint(max(floor((sqrt(SafeEndNormT) - ShadowT) / InvShadowStepCount), 0.0f)),
++								uint(RenderVolumetricCloudParameters.ConservativeDensitySDFMaxStep - 1));
++							ShadowT += float(AdditionalStepCount) * InvShadowStepCount;
++							PreviousNormT = ShadowT * ShadowT;
++						}
+ 					#if CLOUD_DEBUG_SAMPLES
+ 						if (bDrawDebugEnabled) AddCrossWS(ShadowSampleTranslatedWorldPos - DFDemote(ResolvedView.PreViewTranslation), 30000.0f, float4(1, 0, 1, 0.5));
+ 					#endif
+@@ -1184,6 +1208,19 @@ void MainCommon(in FMaterialPixelParameters MaterialParameters, in float4 SvPosi
+ #if MATERIAL_VOLUMETRIC_ADVANCED_CONSERVATIVE_DENSITY
+ 						if (MaterialParameters.VolumeSampleConservativeDensity.x <= 0.0f)
+ 						{
++							if (RenderVolumetricCloudParameters.ConservativeDensitySDFMaxStep > 1
++								&& MaterialParameters.VolumeSampleConservativeDensity.y > 0.0f)
++							{
++								const float SafeEndNormT = min(
++									ShadowSampleDistance / ShadowLengthTest
++									+ MaterialParameters.VolumeSampleConservativeDensity.y * KILOMETER_TO_CENTIMETER / ShadowLengthTest,
++									1.0f);
++								const uint AdditionalStepCount = min(
++									uint(max(floor((sqrt(SafeEndNormT) - ShadowT) / InvShadowStepCount), 0.0f)),
++									uint(RenderVolumetricCloudParameters.ConservativeDensitySDFMaxStep - 1));
++								ShadowT += float(AdditionalStepCount) * InvShadowStepCount;
++								PreviousNormT = ShadowT * ShadowT;
++							}
+ 							continue; // Conservative density is 0 so skip and go to the next sample
+ 						}
+ #endif
+diff --git a/Engine/Source/Runtime/Renderer/Private/VolumetricCloudRendering.cpp b/Engine/Source/Runtime/Renderer/Private/VolumetricCloudRendering.cpp
+index f8365d22d8ed60c2612d10e08be5ab180d4a2837..0eb5d730a5369d37686d2bf17e2bd485839a9162 100644
+--- a/Engine/Source/Runtime/Renderer/Private/VolumetricCloudRendering.cpp
++++ b/Engine/Source/Runtime/Renderer/Private/VolumetricCloudRendering.cpp
+@@ -79,6 +79,11 @@ static TAutoConsoleVariable<int32> CVarVolumetricCloudStepSizeOnZeroConservative
+ 	TEXT("Raymarch step size when a sample giving zero conservative density is encountered. If > 1, performance will likely improve but banding artifacts can show up if too large."),
+ 	ECVF_RenderThreadSafe | ECVF_Scalability);
+ 
++static TAutoConsoleVariable<int32> CVarVolumetricCloudConservativeDensitySDFMaxStep(
++	TEXT("r.VolumetricCloud.ConservativeDensity.SDFMaxStep"), 0,
++	TEXT("Maximum integer raymarch step count read from ConservativeDensity.y, interpreted as a safe empty-space distance in kilometers. 0 disables SDF stepping."),
++	ECVF_RenderThreadSafe | ECVF_Scalability);
++
+ static TAutoConsoleVariable<int32> CVarVolumetricCloudHighQualityAerialPerspective(
+ 	TEXT("r.VolumetricCloud.HighQualityAerialPerspective"), 0,
+ 	TEXT("Enable/disable a second pass to trace the aerial perspective per pixel on clouds instead of using the aerial persepctive texture. Only usable when r.VolumetricCloud.EnableAerialPerspectiveSampling=1 and only needed for extra quality when r.VolumetricRenderTarget=1."),
+@@ -683,6 +688,7 @@ BEGIN_GLOBAL_SHADER_PARAMETER_STRUCT(FRenderVolumetricCloudGlobalParameters, )
+ 	SHADER_PARAMETER(float, LocalLightsShadowSampleCount)
+ 	SHADER_PARAMETER(FVector4f, OutputSizeInvSize)
+ 	SHADER_PARAMETER(int32, StepSizeOnZeroConservativeDensity)
++	SHADER_PARAMETER(int32, ConservativeDensitySDFMaxStep)
+ 	SHADER_PARAMETER(int32, EnableAerialPerspectiveSampling)
+ 	SHADER_PARAMETER(int32, EnableDistantSkyLightSampling)
+ 	SHADER_PARAMETER(int32, EnableAtmosphericLightsSampling)
+@@ -735,6 +741,7 @@ void SetupDefaultRenderVolumetricCloudGlobalParameters(FRDGBuilder& GraphBuilder
+ 	VolumetricCloudParams.CloudDebugViewMode = GetVolumetricCloudDebugViewMode(ViewInfo.Family->EngineShowFlags);
+ 
+ 	VolumetricCloudParams.StepSizeOnZeroConservativeDensity = FMath::Max(CVarVolumetricCloudStepSizeOnZeroConservativeDensity.GetValueOnRenderThread(), 1);
++	VolumetricCloudParams.ConservativeDensitySDFMaxStep = FMath::Max(CVarVolumetricCloudConservativeDensitySDFMaxStep.GetValueOnRenderThread(), 0);
+ 
+ 	VolumetricCloudParams.EmptySpaceSkippingSliceDepth = GetEmptySpaceSkippingSliceDepth();
+ 
