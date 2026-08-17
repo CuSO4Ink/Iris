@@ -1,7 +1,7 @@
 <!-- iris-project-kind: ue -->
 # ReflectCache
 
-> **UEAgent first（UE live/MCP 强制前置）**：先导航到 [UEAgent 入口](../../AGENTS.md) 和 [HOTPATH](../../skills/ue-mcp-workflows/HOTPATH.md)，再处理本项目 brief。先读取目标项目 `Saved/UEAgent/route.json` 并运行 `compact_context.ps1`；只有 `CACHE_READ` 才停止 MCP，否则首次 live call 前运行 `doctor.ps1`。确认路由状态后才读取项目任务文档。纯离线源码/cache/config/log/文档分析可跳过 MCP，但不得声称 live editor 状态。
+> **UEAgent first（UE live/MCP 强制前置）**：先导航到 [UEAgent 入口](../../AGENTS.md) 和 [HOTPATH](../../skills/ue-mcp-workflows/HOTPATH.md)，再处理本项目 brief。定位目标项目 `Saved/UEAgent/route.json` 并运行 `compact_context.ps1`，仅在路由或脚本失败时读取其内容；只有 `CACHE_READ` 才停止 MCP，否则首次 live call 前运行 `doctor.ps1`。确认路由状态后才读取项目任务文档。纯离线源码/cache/config/log/文档分析可跳过 MCP，但不得声称 live editor 状态。
 
 > Material v2 与 MaterialFunction v1 自动化均已验证；五类生成器和统一 save handler
 > 已进入可迁移补丁，MaterialInstance/Blueprint/Niagara 的受控保存验证仍待完成。
@@ -43,8 +43,8 @@ sidecar 读取与格式分析不需要 MCP。
 4. 支持类型缺失或过期：运行一次
    `VibeUE.MaterialAICache.Rebuild /Game/...`；不支持的外部 Niagara script 才做目标化读取。
 5. live package dirty、请求字段未缓存或要写入时，才做局部 MCP 查询。
-6. 修改后按授权保存，并检查 sidecar 时间戳、格式和目标逻辑是否同步推进；需要记录差异
-   时用 `reflect_cache.ps1 -Action receipt`，它不能替代 live readback。
+6. 修改后按授权保存，并检查 sidecar 时间戳、格式和目标逻辑是否同步推进；用可靠命令
+   Receipt 加独立 live readback 验证结果，sidecar 文本差异只作为辅助证据。
 
 ## 部署
 

@@ -25,10 +25,9 @@
 
 Use `../../scripts/reflect_cache.ps1` as the offline reader. The default is `summary`; expand
 only as `refs`, a named `detail` section, then explicit `full`. `refs` contains direct
-dependencies only and never recursively expands another cache. `-Action index` builds a bounded
-asset/reverse-dependency index; it is not deletion proof. `-Action diff` returns bounded changed
-lines, while `-Action receipt` returns only before/after digests and changed-section counts and
-still requires independent MCP readback after a live save. See
+dependencies only and never recursively expands another cache. Use `-Action reconcile` when the
+sidecar needs to be checked against its source package. Ordinary source-control/text diff is
+enough for review; a reliable command receipt plus independent MCP readback verifies live saves. See
 `../../PROGRESSIVE-DISCLOSURE.md` for the shared route, measurement, and rollback contract.
 
 ## Automatic material MVP
@@ -194,7 +193,7 @@ user variables + emitter/sim target + stage/module order + meaningful inputs + r
   graphs with only 5–9 nodes.
 - Compile state, stack issues, and live component overrides remain targeted live queries.
 
-## Live intent projection
+## Live projection
 
 Large live reads use Gateway projection profiles instead of returning a complete graph by
 default:

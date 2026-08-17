@@ -1,24 +1,19 @@
 ﻿param(
+    [string]$RouteFile,
     [string]$RequestFile,
-    [string]$RequestJson,
     [string]$RequestBase64,
     [switch]$FromStdin,
     [string]$Action,
     [string]$Toolset,
     [string]$Tool,
-    [string]$ArgumentsJson = '{}',
     [string]$ArgumentsFile,
-    [string]$ScriptFile,
-    [string]$Script,
     [string]$Endpoint = 'http://127.0.0.1:8000/mcp',
     [int]$TimeoutSec = 120,
     [string]$SchemaCacheFile,
     [int]$SchemaCacheTtlSec = 300,
     [string]$SessionFile,
     [int]$SessionTtlSec = 900,
-    [switch]$ReuseSession,
     [switch]$CloseSession,
-    [string]$ProjectionJson,
     [string]$ProjectionFile,
     [string]$DescribeDetail,
     [string]$DescribeToolName,
@@ -26,28 +21,27 @@
     [int]$DaemonPort = 18765,
     [switch]$AutoDaemon,
     [string]$ProjectionProfile,
-    [ValidateSet('summary', 'refs', 'detail', 'full')]
-    [string]$View,
-    [string]$Intent,
-    [switch]$DataOnly,
     [switch]$Envelope,
     [switch]$Diagnostics,
     [string]$OutFile,
     [switch]$Pretty,
     [int]$ProcessGuardMaxPrivateMemoryMB = 2048,
     [int]$ProcessGuardGraceSec = 15,
-    [switch]$DisableProcessGuard,
     [switch]$AsLibrary
 )
 
 $ErrorActionPreference = 'Stop'
+$DataOnly = $false
 Add-Type -AssemblyName System.Net.Http
 
 if (-not ('UEAgent.GatewayProcessGuard' -as [type])) {
     Add-Type -Language CSharp -TypeDefinition @'
 using System;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace UEAgent
 {
@@ -135,6 +129,32 @@ namespace UEAgent
             }
         }
     }
+
+    public static class LimitedStreamReader
+    {
+        public static async Task<string> ReadUtf8Async(Stream stream, long maxBytes, CancellationToken cancellationToken)
+        {
+            byte[] chunk = new byte[81920];
+            using (MemoryStream buffer = new MemoryStream())
+            {
+                while (true)
+                {
+                    int count = await stream.ReadAsync(chunk, 0, chunk.Length, cancellationToken).ConfigureAwait(false);
+                    if (count == 0)
+                    {
+                        break;
+                    }
+                    long nextLength = buffer.Length + count;
+                    if ((maxBytes > 0 && nextLength > maxBytes) || nextLength > int.MaxValue)
+                    {
+                        throw new InvalidDataException("MCP response exceeds the configured byte limit.");
+                    }
+                    buffer.Write(chunk, 0, count);
+                }
+                return new UTF8Encoding(false, true).GetString(buffer.GetBuffer(), 0, (int)buffer.Length);
+            }
+        }
+    }
 }
 '@
 }
@@ -164,11 +184,13 @@ function Write-JsonResult($Object) {
 }
 
 function Fail($Message, $Code = 'gateway_error', $Raw = $null) {
-    if ($Code -in @('result_unknown', 'exception', 'missing_session_id', 'daemon_unavailable')) {
+    if ($Code -in @('result_unknown', 'exception', 'missing_session_id')) {
         Invalidate-DoctorReceipt $Code
         Remove-McpSessionFile $SessionFile
     }
-    Write-JsonResult @{ ok = $false; code = $Code; message = $Message; raw = $Raw }
+    $errorResult = [ordered]@{ ok = $false; code = $Code; message = $Message }
+    if ($null -ne $Raw) { $errorResult.raw = $Raw }
+    Write-JsonResult $errorResult
     exit 1
 }
 
@@ -181,25 +203,22 @@ function Parse-Request {
         $json = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($RequestBase64))
         return ($json | ConvertFrom-Json)
     }
-    if ($RequestJson) {
-        return ($RequestJson | ConvertFrom-Json)
-    }
     if ($FromStdin) {
         $json = [Console]::In.ReadToEnd()
         if (-not $json.Trim()) { Fail 'No JSON received from stdin.' 'empty_stdin' }
         return ($json | ConvertFrom-Json)
     }
-    if ($Action) {
-        $request = [ordered]@{ action = $Action; endpoint = $Endpoint; timeoutSec = $TimeoutSec }
+    if ($Action -or $Tool -or $Toolset) {
+        $request = [ordered]@{ endpoint = $Endpoint; timeoutSec = $TimeoutSec }
+        if ($Action) { $request.action = $Action }
         if ($Toolset) { $request.toolset = $Toolset }
         if ($Tool) { $request.tool = $Tool }
-        if ($ScriptFile) { $request.scriptFile = $ScriptFile }
-        if ($Script) { $request.script = $Script }
-        if ($SchemaCacheFile) { $request.schemaCacheFile = $SchemaCacheFile }
-        if ($SchemaCacheTtlSec) { $request.schemaCacheTtlSec = $SchemaCacheTtlSec }
+        if ($SchemaCacheFile) {
+            $request.schemaCacheFile = $SchemaCacheFile
+            $request.schemaCacheTtlSec = $SchemaCacheTtlSec
+        }
         if ($SessionFile) { $request.sessionFile = $SessionFile }
         if ($SessionTtlSec) { $request.sessionTtlSec = $SessionTtlSec }
-        if ($ReuseSession) { $request.reuseSession = $true }
         if ($CloseSession) { $request.closeSession = $true }
         if ($DescribeDetail) { $request.describeDetail = $DescribeDetail }
         if ($DescribeToolName) { $request.describeToolName = $DescribeToolName }
@@ -207,26 +226,19 @@ function Parse-Request {
         if ($DaemonPort) { $request.daemonPort = $DaemonPort }
         if ($AutoDaemon) { $request.autoDaemon = $true }
         if ($ProjectionProfile) { $request.projectionProfile = $ProjectionProfile }
-        if ($View) { $request.view = $View }
-        if ($Intent) { $request.intent = $Intent }
-        if ($DataOnly) { $request.dataOnly = $true }
         if ($Envelope) { $request.envelope = $true }
         if ($Diagnostics) { $request.diagnostics = $true }
-        $argsText = $ArgumentsJson
         if ($ArgumentsFile) {
             if (-not (Test-Path -LiteralPath $ArgumentsFile)) { Fail "ArgumentsFile not found: $ArgumentsFile" 'arguments_file_not_found' }
-            $argsText = Get-Content -Raw -LiteralPath $ArgumentsFile
+            $request.arguments = (Get-Content -Raw -LiteralPath $ArgumentsFile | ConvertFrom-Json)
         }
-        if ($argsText) { $request.arguments = ($argsText | ConvertFrom-Json) }
-        $projectionText = $ProjectionJson
         if ($ProjectionFile) {
             if (-not (Test-Path -LiteralPath $ProjectionFile)) { Fail "ProjectionFile not found: $ProjectionFile" 'projection_file_not_found' }
-            $projectionText = Get-Content -Raw -LiteralPath $ProjectionFile
+            $request.projection = (Get-Content -Raw -LiteralPath $ProjectionFile | ConvertFrom-Json)
         }
-        if ($projectionText -and $projectionText.Trim()) { $request.projection = ($projectionText | ConvertFrom-Json) }
         return [pscustomobject]$request
     }
-    Fail 'Provide -RequestFile, -RequestJson, -RequestBase64, -FromStdin, or -Action.' 'missing_request'
+    Fail 'Provide a request source, -Tool, -Toolset, or -Action.' 'missing_request'
 }
 
 function Try-ParseJsonText($Text) {
@@ -251,7 +263,7 @@ function Enter-SessionFileLock($Path, $TimeoutMs = 3000) {
     $watch = [Diagnostics.Stopwatch]::StartNew()
     while ($watch.ElapsedMilliseconds -lt $TimeoutMs) {
         try {
-            return [IO.File]::Open($lockPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
+            return [IO.File]::Open($lockPath, [IO.FileMode]::OpenOrCreate, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
         } catch [IO.IOException] {
             Start-Sleep -Milliseconds 40
         }
@@ -260,11 +272,7 @@ function Enter-SessionFileLock($Path, $TimeoutMs = 3000) {
 }
 
 function Exit-SessionFileLock($Path, $Lock) {
-    if ($Lock) {
-        $Lock.Dispose()
-        $lockPath = "$Path.lock"
-        Remove-Item -LiteralPath $lockPath -Force -ErrorAction SilentlyContinue
-    }
+    if ($Lock) { $Lock.Dispose() }
 }
 
 function Read-McpSession($Url, $Path) {
@@ -287,25 +295,47 @@ function Read-McpSession($Url, $Path) {
 }
 
 function Write-McpSession($Url, $Headers, $Path, $TtlSec) {
-    if (-not $Path -or -not $Headers -or -not $Headers['Mcp-Session-Id'] -or $TtlSec -le 0) { return $false }
+    if (-not $Path -or -not $Headers -or -not $Headers['Mcp-Session-Id'] -or $TtlSec -le 0) {
+        return [pscustomobject]@{ reusable = $false; written = $false }
+    }
     $parent = Split-Path -Parent $Path
-    if (-not $parent -or -not (Test-Path -LiteralPath $parent)) { return $false }
+    if (-not $parent -or -not (Test-Path -LiteralPath $parent)) {
+        return [pscustomobject]@{ reusable = $false; written = $false }
+    }
     $lock = $null
     try {
         $lock = Enter-SessionFileLock $Path
         $now = [DateTime]::UtcNow
+        $sessionId = [string]$Headers['Mcp-Session-Id']
+        $createdAtUtc = $now.ToString('o')
+        if (Test-Path -LiteralPath $Path) {
+            try {
+                $existing = Get-Content -Raw -LiteralPath $Path | ConvertFrom-Json
+                if ($existing.schema -eq 'ueagent-mcp-session-v1' -and
+                    [string]$existing.endpoint -eq [string]$Url -and
+                    [string]$existing.sessionId -eq $sessionId) {
+                    if ($existing.createdAtUtc) { $createdAtUtc = [string]$existing.createdAtUtc }
+                    $expires = [DateTime]::Parse([string]$existing.expiresAtUtc).ToUniversalTime()
+                    $refreshWindowSec = [Math]::Max(30, [int]($TtlSec / 3))
+                    if ($expires -gt $now.AddSeconds($refreshWindowSec)) {
+                        return [pscustomobject]@{ reusable = $true; written = $false }
+                    }
+                }
+            } catch {
+                # A malformed record is replaced below while the session lock is held.
+            }
+        }
         $entry = [ordered]@{
             schema = 'ueagent-mcp-session-v1'
             endpoint = [string]$Url
-            sessionId = [string]$Headers['Mcp-Session-Id']
-            createdAtUtc = $now.ToString('o')
-            lastUsedAtUtc = $now.ToString('o')
+            sessionId = $sessionId
+            createdAtUtc = $createdAtUtc
             expiresAtUtc = $now.AddSeconds($TtlSec).ToString('o')
         }
         [IO.File]::WriteAllText($Path, ($entry | ConvertTo-Json -Depth 10), [Text.UTF8Encoding]::new($false))
-        return $true
+        return [pscustomobject]@{ reusable = $true; written = $true }
     } catch {
-        return $false
+        return [pscustomobject]@{ reusable = $false; written = $false }
     } finally {
         Exit-SessionFileLock $Path $lock
     }
@@ -430,17 +460,10 @@ function Start-GatewayDaemon($Url, $Port, $McpUrl, $SessionPath, $TtlSec, $Timeo
 }
 
 function Invoke-GatewayDaemonRequest($Url, $Request) {
-    $json = (Get-DaemonRequest $Request) | ConvertTo-Json -Depth 80 -Compress
+    $json = (Get-DaemonRequest $Request $SchemaCacheFile $SchemaCacheTtlSec) | ConvertTo-Json -Depth 80 -Compress
     $response = Invoke-WebRequest -Uri $Url -Method Post -Headers @{ 'Content-Type' = 'application/json' } `
         -Body $json -UseBasicParsing -TimeoutSec $TimeoutSec
-    $parsed = $response.Content | ConvertFrom-Json
-    $hasOk = $parsed.PSObject.Properties.Name -contains 'ok'
-    if ($hasOk -and $parsed.ok -ne $true) {
-        Write-JsonResult $parsed
-        exit 1
-    }
-    Write-JsonResult $parsed
-    exit 0
+    return ($response.Content | ConvertFrom-Json)
 }
 
 function Get-ProjectionProfile($Name) {
@@ -516,153 +539,169 @@ function Get-ProjectionProfile($Name) {
                 'returnValue.errors', 'returnValue.warnings'
             ); exclude = @('returnValue.nodes.properties', 'returnValue.nodes.hlsl', 'returnValue.nodes.hlslCode'); max_items = 128; structured = $true }
         }
-        default { throw "Unknown projection profile: $Name. Available profiles: refs, compact, identity, topology, logic, runtime, hlsl, changed (domain.intent aliases supported)." }
+        default { throw "Unknown projection profile: $Name. Available profiles: refs, compact, identity, topology, logic, runtime, hlsl, changed." }
     }
 }
 
-function Get-IntentProjectionProfile($IntentName) {
-    if (-not $IntentName) { return $null }
-    $key = ([string]$IntentName).Trim().ToLowerInvariant().Replace('_', '-').Replace('.', '-')
-    if ($key -match '(identity|topology|logic|runtime|hlsl|script|changed|changed-readback)$') { return $key }
+function Resolve-GatewayProjection($Request) {
+    if ($Request.PSObject.Properties.Name -contains 'projection') { return $Request.projection }
+    if ([string]$Request.projectionProfile) { return (Get-ProjectionProfile ([string]$Request.projectionProfile)) }
+    if ([string]$Request.action -eq 'tool.call') { return [ordered]@{ structured = $true } }
     return $null
 }
 
-function Get-CompactSchemaType($Schema, $Label = '') {
-    if ($null -eq $Schema) { return 'json' }
-    $union = $null
-    if ($Schema.PSObject.Properties.Name -contains 'anyOf') { $union = @($Schema.anyOf) }
-    elseif ($Schema.PSObject.Properties.Name -contains 'oneOf') { $union = @($Schema.oneOf) }
-    if ($null -ne $union) {
-        $types = @($union | ForEach-Object { Get-CompactSchemaType $_ $Label } | Where-Object { $_ -and $_ -ne 'null' } | Select-Object -Unique)
-        if ($types.Count) { return ($types -join '|') }
-        return 'json'
-    }
-    $type = [string]$Schema.type
-    if ($type -eq 'array') {
-        $item = if ($Schema.PSObject.Properties.Name -contains 'items') { Get-CompactSchemaType $Schema.items $Label } else { 'json' }
-        return $item + '[]'
-    }
-    if ($type -eq 'object') {
-        $properties = $Schema.properties
-        if ($properties -and $properties.PSObject.Properties.Name -contains 'refPath') {
-            $lowerLabel = ([string]$Label).ToLowerInvariant()
-            if ($lowerLabel.Contains('material') -and ($lowerLabel.Contains('function') -or $lowerLabel.Contains('or'))) {
-                return 'ue_ref<Material|MaterialFunction>'
+function Resolve-GatewayRequest($Request) {
+    if ($null -eq $Request) { throw 'Request is empty.' }
+    $properties = @($Request.PSObject.Properties.Name)
+    $actionName = if ($properties -contains 'action') { ([string]$Request.action).Trim().ToLowerInvariant() } else { '' }
+    if ($actionName -eq 'call') { $actionName = '' }
+    if ($actionName -eq 'describe') { $actionName = 'toolset.describe' }
+    if (-not $actionName) {
+        if ($properties -contains 'describeToolName' -or $properties -contains 'describeDetail') {
+            $actionName = 'toolset.describe'
+        } elseif ([string]$Request.tool) {
+            $actionName = if ([string]$Request.toolset -or ([string]$Request.tool).Contains('.')) {
+                'tool.call'
+            } elseif (([string]$Request.tool).StartsWith('ueagent_', [StringComparison]::OrdinalIgnoreCase)) {
+                'direct.call'
+            } else {
+                'tool.call'
             }
-            return 'ue_ref<Object>'
+        } elseif ([string]$Request.toolset) {
+            $actionName = 'toolset.describe'
         }
-        return 'object'
     }
-    $title = [string]$Schema.title
-    if ($title) {
-        $leaf = ($title -split '[/.]')[-1]
-        return 'ue_ref<' + $leaf + '>'
-    }
-    if ($type) { return $type }
-    return 'json'
+    if ($properties -contains 'action') { $Request.action = $actionName }
+    else { $Request | Add-Member -NotePropertyName action -NotePropertyValue $actionName }
+    return $Request
 }
 
-function Get-CompactToolName($Toolset, $FullName) {
-    $toolsetLeaf = (([string]$Toolset) -split '\.')[-1]
-    $toolLeaf = [string]$FullName
-    $prefix = [string]$Toolset + '.'
-    if ($toolLeaf.StartsWith($prefix, [StringComparison]::OrdinalIgnoreCase)) {
-        $toolLeaf = $toolLeaf.Substring($prefix.Length)
-    } else {
-        $toolLeaf = (($toolLeaf -split '\.')[-1])
+function Get-GatewayRequestError($Request) {
+    $actionName = [string]$Request.action
+    if (-not $actionName) { return [ordered]@{ code = 'missing_action'; message = 'Request must identify a tool, toolset, or action.' } }
+    if ($actionName -notin @('preflight', 'ping', 'tools.list', 'toolsets.list', 'toolset.describe', 'tool.call', 'direct.call', 'daemon.ping', 'close', 'shutdown')) {
+        return [ordered]@{ code = 'unknown_action'; message = "Unknown action: $actionName" }
     }
-    return $toolsetLeaf + '.' + $toolLeaf
+    if ($actionName -eq 'toolset.describe' -and -not [string]$Request.toolset) {
+        return [ordered]@{ code = 'missing_toolset'; message = 'toolset.describe requires toolset.' }
+    }
+    if ($actionName -in @('tool.call', 'direct.call') -and -not [string]$Request.tool) {
+        return [ordered]@{ code = 'missing_tool'; message = "$actionName requires tool." }
+    }
+    return $null
 }
 
-function Get-CompactEffect($Name, $Description) {
-    $leafName = (([string]$Name) -split '\.')[-1]
-    $lower = ($leafName + ' ' + ([string]$Description)).ToLowerInvariant()
-    if ($lower.Contains('save')) { return 'save' }
-    foreach ($word in @('create', 'add', 'delete', 'remove', 'update', 'set_', 'write', 'modify', 'edit', 'rename', 'move', 'execute')) {
-        if ($lower.StartsWith($word) -or $lower.Contains(' ' + $word) -or $lower.Contains('_' + $word) -or $lower.Contains('.' + $word)) { return 'write' }
+function Test-GatewayFailure($Value) {
+    if ($null -eq $Value) { return $false }
+    if ($Value -is [Collections.IDictionary]) {
+        return (($Value.Contains('ok') -and $Value['ok'] -eq $false) -or
+            ($Value.Contains('success') -and $Value['success'] -eq $false))
     }
-    foreach ($word in @('get', 'list', 'find', 'read', 'describe', 'inspect', 'query', 'search', 'check', 'validate', 'discover')) {
-        if ($lower.StartsWith($word) -or $lower.Contains(' ' + $word) -or $lower.Contains('_' + $word) -or $lower.Contains('.' + $word)) { return 'read' }
-    }
-    return 'unknown'
+    $properties = @($Value.PSObject.Properties.Name)
+    return (($properties -contains 'ok' -and $Value.ok -eq $false) -or
+        ($properties -contains 'success' -and $Value.success -eq $false))
 }
 
-function Convert-ToCallView($Data, $Toolset, $ToolName = '') {
-    if ($null -eq $Data) { return $null }
-    $dataFields = if ($Data -is [Collections.IDictionary]) { @($Data.Keys) } else { @($Data.PSObject.Properties.Name) }
-    if ($dataFields -contains 'tool' -and
-        $dataFields -contains 'args' -and
-        $dataFields -contains 'returns') { return $Data }
-    if (-not ($dataFields -contains 'tools')) { return $Data }
-    $tools = @($Data.tools)
-    if ($tools.Count -gt 0) {
-        $firstToolFields = if ($tools[0] -is [Collections.IDictionary]) { @($tools[0].Keys) } else { @($tools[0].PSObject.Properties.Name) }
-        if ($firstToolFields -contains 'tool' -and
-            $firstToolFields -contains 'args' -and
-            $firstToolFields -contains 'returns') { return $Data }
-    }
-    if ($ToolName) {
-        $tools = @($tools | Where-Object {
-            $full = [string]$_.name
-            $full -eq ([string]$Toolset + '.' + [string]$ToolName) -or (($full -split '\.')[-1] -eq [string]$ToolName)
-        })
-    }
-    if ($tools.Count -eq 0) { return $Data }
-    $views = @()
-    foreach ($tool in $tools) {
-        $args = [ordered]@{}
-        $input = $tool.inputSchema
-        $required = @()
-        if ($input -and $input.PSObject.Properties.Name -contains 'required') { $required = @($input.required | ForEach-Object { [string]$_ }) }
-        if ($input -and $input.properties) {
-            foreach ($property in @($input.properties.PSObject.Properties)) {
-                $type = Get-CompactSchemaType $property.Value $property.Name
-                if ($required -contains $property.Name) { $type += '!' }
-                $args[$property.Name] = $type
-            }
-        }
-        $returns = [ordered]@{}
-        $output = $tool.outputSchema
-        if ($output -and $output.properties) {
-            foreach ($property in @($output.properties.PSObject.Properties)) {
-                $returns[$property.Name] = Get-CompactSchemaType $property.Value $property.Name
-            }
-        }
-        $views += [ordered]@{
-            tool = Get-CompactToolName $Toolset $tool.name
-            effect = Get-CompactEffect $tool.name $tool.description
-            args = $args
-            returns = $returns
+function Test-AiEmptyValue($Value) {
+    if ($null -eq $Value) { return $true }
+    if ($Value -is [string]) { return $Value.Length -eq 0 }
+    if ($Value -is [Collections.IDictionary]) { return $Value.Count -eq 0 }
+    if ($Value -is [pscustomobject]) { return @($Value.PSObject.Properties).Count -eq 0 }
+    if ($Value -is [Collections.IEnumerable]) { return @($Value).Count -eq 0 }
+    return $false
+}
+
+function Convert-ToAiValue($Value, [bool]$Sparse = $false, [string]$PropertyName = '') {
+    if ($null -eq $Value) { return $null }
+    if ($PropertyName -eq 'result' -and $Value -is [string]) {
+        $parsed = Try-ParseJsonText $Value
+        if ($parsed -isnot [string] -or [string]$parsed -ne [string]$Value) {
+            return (Convert-ToAiValue $parsed $false)
         }
     }
-    if ($ToolName -or $views.Count -eq 1) { return $views[0] }
-    return [ordered]@{ tools = $views }
+    if ($Value -is [Collections.IDictionary] -or $Value -is [pscustomobject]) {
+        $result = [ordered]@{}
+        $entries = if ($Value -is [Collections.IDictionary]) {
+            @($Value.Keys | ForEach-Object { [pscustomobject]@{ Name = [string]$_; Value = $Value[$_] } })
+        } else {
+            @($Value.PSObject.Properties | ForEach-Object { [pscustomobject]@{ Name = $_.Name; Value = $_.Value } })
+        }
+        foreach ($entry in $entries) {
+            $name = [string]$entry.Name
+            $raw = $entry.Value
+            if ($name -in @('ok', 'success') -and $raw -eq $true) { continue }
+            if ($Sparse -and $name -eq 'command_succeeded') { continue }
+            if ($Sparse -and $name -in @('performance_frozen', 'dirty_packages_truncated', 'replayed', 'automatic', 'allow_preexisting_dirty_save') -and $raw -eq $false) { continue }
+            if ($Sparse -and $name -eq 'enabled' -and $raw -eq $true) { continue }
+            if ($Sparse -and $name -in @('accepted_at', 'started_at', 'finished_at', 'saved_at', 'recovered_at')) { continue }
+            $childSparse = $Sparse -and $name -notin @('data', 'values', 'returnValue', 'result')
+            $child = Convert-ToAiValue $raw $childSparse $name
+            if ($Sparse -and (Test-AiEmptyValue $child)) { continue }
+            $result[$name] = $child
+        }
+        if ($result.Count -eq 1 -and $result.Contains('returnValue')) { return $result.returnValue }
+        if ($Sparse -and $result.Count -eq 0) { return $null }
+        return [pscustomobject]$result
+    }
+    if ($Value -is [Collections.IEnumerable] -and $Value -isnot [string]) {
+        $items = [Collections.Generic.List[object]]::new()
+        foreach ($item in $Value) {
+            $child = Convert-ToAiValue $item $Sparse
+            if (-not $Sparse -or -not (Test-AiEmptyValue $child)) { $items.Add($child) }
+        }
+        return ,$items.ToArray()
+    }
+    return $Value
+}
+
+function Compress-GatewayData($Data, $Request) {
+    $toolName = if ($Request) { [string]$Request.tool } else { '' }
+    $sparse = $toolName.StartsWith('ueagent_', [StringComparison]::OrdinalIgnoreCase)
+    $compressed = Convert-ToAiValue $Data $sparse
+    if ($toolName.Equals('ueagent_state', [StringComparison]::OrdinalIgnoreCase) -and $compressed -is [pscustomobject]) {
+        foreach ($diagnosticField in @('project', 'engine_version', 'job_count', 'read_only_tool_count')) {
+            $compressed.PSObject.Properties.Remove($diagnosticField)
+        }
+    }
+    return $compressed
+}
+
+function Test-ToolInputEnumValue($Tools, $ToolName, $PropertyName, $ExpectedValue) {
+    $tool = @($Tools | Where-Object { [string]$_.name -eq [string]$ToolName } | Select-Object -First 1)
+    if ($tool.Count -eq 0 -or -not $tool[0].inputSchema.properties) { return $false }
+    $property = $tool[0].inputSchema.properties.($PropertyName)
+    return $null -ne $property -and [string]$ExpectedValue -in @($property.enum | ForEach-Object { [string]$_ })
 }
 
 function Compress-ToolError($Text) {
     $value = [string]$Text
-    $marker = $value.IndexOf('Available toolsets:', [StringComparison]::OrdinalIgnoreCase)
-    if ($marker -ge 0) { $value = $value.Substring(0, $marker).TrimEnd() + ' Available toolsets omitted.' }
-    if ($value.Length -gt 768) { $value = $value.Substring(0, 768).TrimEnd() + '...' }
+    foreach ($label in @('Function schema Json -', 'Available toolsets:')) {
+        $marker = $value.IndexOf($label, [StringComparison]::OrdinalIgnoreCase)
+        if ($marker -ge 0) { $value = $value.Substring(0, $marker).TrimEnd(); break }
+    }
+    if ($value.Length -gt 384) { $value = $value.Substring(0, 384).TrimEnd() + '...' }
     return $value
 }
 
-function Get-DaemonRequest($Request) {
+function Get-DaemonRequest($Request, [string]$DefaultSchemaCacheFile, [int]$DefaultSchemaCacheTtlSec) {
     $allowed = @(
-        'action', 'toolset', 'tool', 'scriptFile', 'script', 'arguments',
-        'describeDetail', 'describeToolName', 'detail', 'toolName',
-        'projection', 'projectionProfile', 'view', 'intent',
-        'dataOnly', 'envelope', 'diagnostics', 'schemaCacheFile', 'schemaCacheTtlSec'
+        'action', 'toolset', 'tool', 'arguments',
+        'describeDetail', 'describeToolName', 'projection', 'projectionProfile',
+        'envelope', 'diagnostics'
     )
     $forward = [ordered]@{}
     foreach ($name in $allowed) {
         if ($Request.PSObject.Properties.Name -contains $name) { $forward[$name] = $Request.$name }
     }
+    if ([string]$Request.action -in @('tools.list', 'toolsets.list', 'toolset.describe')) {
+        $cacheFile = if ($Request.schemaCacheFile) { [string]$Request.schemaCacheFile } else { $DefaultSchemaCacheFile }
+        $cacheTtl = if ($Request.schemaCacheTtlSec) { [int]$Request.schemaCacheTtlSec } else { $DefaultSchemaCacheTtlSec }
+        if ($cacheFile) {
+            $forward.schemaCacheFile = $cacheFile
+            $forward.schemaCacheTtlSec = $cacheTtl
+        }
+    }
     return [pscustomobject]$forward
-}
-
-function Get-IntentIndex($Filter = $null) {
-    return (Get-IntentIndexData $Filter)
 }
 
 function Get-SchemaCacheKey($Action, $Url, $Toolset, $Detail = '', $ToolName = '', $SessionId = '') {
@@ -675,70 +714,6 @@ function Get-SchemaCacheKey($Action, $Url, $Toolset, $Detail = '', $ToolName = '
         "session=$([string]$SessionId)"
     )
     [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes(($parts -join '|')))
-}
-
-function Get-IntentIndexData($Filter = $null) {
-    $domains = [ordered]@{
-        material = [ordered]@{
-            summary = 'identity, material settings, cache freshness'
-            intents = [ordered]@{
-                expressions = [ordered]@{ toolset = 'MaterialTools'; tool = 'get_expressions' }
-                parameters = [ordered]@{ toolset = 'MaterialTools'; tool = $null; via = 'describe_toolset' }
-                references = [ordered]@{ toolset = 'MaterialTools'; tool = $null; via = 'describe_toolset' }
-            }
-        }
-        'material-function' = [ordered]@{
-            summary = 'function interface, call sites, function graph'
-            intents = [ordered]@{
-                interface = [ordered]@{ toolset = 'MaterialTools'; tool = $null; via = 'describe_toolset' }
-                graph = [ordered]@{ toolset = 'MaterialTools'; tool = 'get_expressions' }
-                references = [ordered]@{ toolset = 'MaterialTools'; tool = $null; via = 'describe_toolset' }
-            }
-        }
-        'material-instance' = [ordered]@{
-            summary = 'parent material and active overrides'
-            intents = [ordered]@{
-                overrides = [ordered]@{ toolset = 'MaterialTools'; tool = $null; via = 'describe_toolset' }
-                parent = [ordered]@{ toolset = 'MaterialTools'; tool = $null; via = 'describe_toolset' }
-            }
-        }
-        blueprint = [ordered]@{
-            summary = 'components, variables, event and function graphs'
-            intents = [ordered]@{
-                summary = [ordered]@{ toolset = 'BlueprintTools'; tool = $null; via = 'describe_toolset' }
-                graph = [ordered]@{ toolset = 'BlueprintTools'; tool = 'read_graph_dsl' }
-                references = [ordered]@{ toolset = 'BlueprintTools'; tool = $null; via = 'describe_toolset' }
-            }
-        }
-        niagara = [ordered]@{
-            summary = 'system, emitters, module order, runtime overrides'
-            intents = [ordered]@{
-                summary = [ordered]@{ toolset = 'NiagaraTools'; tool = $null; via = 'describe_toolset' }
-                stack = [ordered]@{ toolset = 'NiagaraTools'; tool = $null; via = 'describe_toolset' }
-                runtime = [ordered]@{ toolset = 'NiagaraTools'; tool = 'GetRuntimeState' }
-            }
-        }
-        scene = [ordered]@{
-            summary = 'level, components, actual overrides'
-            intents = [ordered]@{
-                level = [ordered]@{ toolset = 'SceneTools'; tool = 'get_current_level' }
-                references = [ordered]@{ toolset = 'SceneTools'; tool = $null; via = 'describe_toolset' }
-            }
-        }
-    }
-    $selected = if ($Filter) {
-        if (-not $domains.Contains($Filter)) { throw "Unknown intent domain: $Filter" }
-        [ordered]@{ $Filter = $domains[$Filter] }
-    } else { $domains }
-    return [ordered]@{
-        schema = 'ueagent-intent-index-v1'
-        source = 'local-routing-hint'
-        authority = 'running describe_toolset response'
-        defaultView = 'summary'
-        defaultDescribeDetail = 'call'
-        expansion = @('summary', 'refs', 'detail', 'full')
-        domains = $selected
-    }
 }
 
 function Read-SchemaCacheEntry($Action, $Url, $Toolset, $Path, $Detail = '', $ToolName = '', $SessionId = '') {
@@ -793,7 +768,7 @@ function Write-SchemaCacheEntry($Action, $Url, $Toolset, $Data, $Path, $TtlSec, 
     }
     $cache = [ordered]@{ schema = 'ueagent-schema-cache-v1'; entries = $entries }
     try {
-        [IO.File]::WriteAllText($Path, ($cache | ConvertTo-Json -Depth 80), [Text.UTF8Encoding]::new($false))
+        [IO.File]::WriteAllText($Path, ($cache | ConvertTo-Json -Depth 80 -Compress), [Text.UTF8Encoding]::new($false))
     } catch {
         # Discovery still succeeded; cache persistence is only an optimization.
     }
@@ -801,12 +776,12 @@ function Write-SchemaCacheEntry($Action, $Url, $Toolset, $Data, $Path, $TtlSec, 
 
 function Normalize-ToolResult($RpcMessage) {
     if ($null -eq $RpcMessage) { return $null }
-    if ($RpcMessage.error) { return @{ ok = $false; rpcError = $RpcMessage.error } }
+    if ($RpcMessage.error) { return [ordered]@{ ok = $false; code = 'rpc_error'; error = $RpcMessage.error } }
     $result = $RpcMessage.result
     if ($null -eq $result) { return $null }
     if ($result.isError -eq $true) {
         $texts = @($result.content | Where-Object type -eq 'text' | ForEach-Object { [string]$_.text })
-        return @{ ok = $false; toolError = (Compress-ToolError ($texts -join "`n")) }
+        return [ordered]@{ ok = $false; code = 'tool_error'; message = (Compress-ToolError ($texts -join "`n")) }
     }
     if ($null -ne $result.structuredContent) {
         return $result.structuredContent
@@ -817,6 +792,10 @@ function Normalize-ToolResult($RpcMessage) {
         if ($texts.Count -gt 1) { return @($texts | ForEach-Object { Try-ParseJsonText $_ }) }
     }
     return $result
+}
+
+function Test-McpSessionInvalidError($ErrorRecord) {
+    return [string]$ErrorRecord.Exception.Message -like 'MCP_SESSION_INVALID:*'
 }
 
 function Close-McpSession($Url, $Headers) {
@@ -888,7 +867,24 @@ function Invoke-McpRpc($Url, $Headers, $Method, $Params = $null, $Id = 2, $Timeo
             throw [TimeoutException]::new("MCP $Method timed out waiting for response headers.")
         }
         $response = $send.Result
-        $response.EnsureSuccessStatusCode() | Out-Null
+        if (-not $response.IsSuccessStatusCode) {
+            $errorRead = $response.Content.ReadAsStringAsync()
+            $errorRemainingMs = [Math]::Max(1, [int](($Timeout * 1000) - $timer.ElapsedMilliseconds))
+            $errorBody = if ($errorRead.Wait($errorRemainingMs)) { [string]$errorRead.Result } else { '<body timeout>' }
+            if ($errorBody.Length -gt 8192) { $errorBody = $errorBody.Substring(0, 8192) + '…' }
+            if ([int]$response.StatusCode -eq 404) {
+                try {
+                    $sessionError = $errorBody | ConvertFrom-Json
+                    if ([int]$sessionError.error.code -eq -32600 -and
+                        [string]$sessionError.error.message -match '^Unknown session id .+ client should reinitialize$') {
+                        throw "MCP_SESSION_INVALID: $Method"
+                    }
+                } catch {
+                    if (Test-McpSessionInvalidError $_) { throw }
+                }
+            }
+            throw "MCP $Method HTTP $([int]$response.StatusCode) $($response.ReasonPhrase): $errorBody"
+        }
         if ($MaxResponseBytes -gt 0 -and $response.Content.Headers.ContentLength -and
             $response.Content.Headers.ContentLength -gt $MaxResponseBytes) {
             throw "MCP $Method response exceeds ${MaxResponseBytes} bytes. Use a projection or a smaller detail view."
@@ -901,28 +897,13 @@ function Invoke-McpRpc($Url, $Headers, $Method, $Params = $null, $Id = 2, $Timeo
                 $cts.Cancel()
                 throw [TimeoutException]::new("MCP $Method timed out opening the JSON-RPC stream for id $Id.")
             }
-            $reader = [IO.StreamReader]::new($streamTask.Result)
-            $chars = New-Object char[] 8192
-            $messageBuilder = [Text.StringBuilder]::new()
-            $responseBytes = 0L
-            while ($true) {
-                $remainingMs = [Math]::Max(1, [int](($Timeout * 1000) - $timer.ElapsedMilliseconds))
-                $read = $reader.ReadAsync($chars, 0, $chars.Length)
-                if (-not $read.Wait($remainingMs)) {
-                    $cts.Cancel()
-                    throw [TimeoutException]::new("MCP $Method timed out reading JSON-RPC id $Id.")
-                }
-                $count = $read.Result
-                if ($count -eq 0) { break }
-                if ($MaxResponseBytes -gt 0) {
-                    $responseBytes += [Text.Encoding]::UTF8.GetByteCount($chars, 0, $count)
-                    if ($responseBytes -gt $MaxResponseBytes) {
-                        throw "MCP $Method response exceeds ${MaxResponseBytes} bytes. Use a projection or a smaller detail view."
-                    }
-                }
-                $messageBuilder.Append($chars, 0, $count) | Out-Null
+            $read = [UEAgent.LimitedStreamReader]::ReadUtf8Async($streamTask.Result, $MaxResponseBytes, $cts.Token)
+            $remainingMs = [Math]::Max(1, [int](($Timeout * 1000) - $timer.ElapsedMilliseconds))
+            if (-not $read.Wait($remainingMs)) {
+                $cts.Cancel()
+                throw [TimeoutException]::new("MCP $Method timed out reading JSON-RPC id $Id.")
             }
-            $messageText = $messageBuilder.ToString()
+            $messageText = $read.Result
             $message = $messageText | ConvertFrom-Json
             if ([string]$message.id -ne [string]$Id) {
                 throw "MCP $Method returned JSON-RPC id $($message.id), expected $Id."
@@ -983,49 +964,56 @@ function Invoke-TopTool($Url, $Headers, $Name, $Arguments, $Timeout = 120, [Net.
     Invoke-McpRpc $Url $Headers 'tools/call' @{ name = $Name; arguments = $Arguments } 2 $Timeout $Client $MaxResponseBytes
 }
 
-function New-IsolatedPythonBootstrap([string]$ScriptText, [string]$ScriptName = '<ueagent-python>') {
-    $sourceBase64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($ScriptText))
-    $nameBase64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($ScriptName))
-    return @"
-import base64 as _ueagent_base64
-import gc as _ueagent_gc
-_ueagent_scope = {"__name__": "__main__"}
-try:
-    _ueagent_source = _ueagent_base64.b64decode("$sourceBase64").decode("utf-8")
-    _ueagent_filename = _ueagent_base64.b64decode("$nameBase64").decode("utf-8")
-    _ueagent_scope["__file__"] = _ueagent_filename
-    exec(compile(_ueagent_source, _ueagent_filename, "exec"), _ueagent_scope, _ueagent_scope)
-finally:
-    _ueagent_scope.clear()
-    try:
-        del _ueagent_source
-        del _ueagent_filename
-    except NameError:
-        pass
-    _ueagent_gc.collect()
-    del _ueagent_scope
-    del _ueagent_base64
-    del _ueagent_gc
-"@
-}
-
 if ($AsLibrary) { return }
+
+$endpointExplicit = $PSBoundParameters.ContainsKey('Endpoint')
+$sessionExplicit = $PSBoundParameters.ContainsKey('SessionFile')
+$schemaCacheExplicit = $PSBoundParameters.ContainsKey('SchemaCacheFile')
+if (-not $RouteFile) {
+    $localRoute = Join-Path (Get-Location) 'Saved\UEAgent\route.json'
+    if (Test-Path -LiteralPath $localRoute) { $RouteFile = $localRoute }
+}
+if ($RouteFile) {
+    try {
+        $route = Get-Content -Raw -LiteralPath $RouteFile | ConvertFrom-Json
+        if ([string]$route.schema -ne 'ueagent-route-v1' -or -not [string]$route.endpoint -or -not [string]$route.uProject) {
+            throw 'Route must contain schema=ueagent-route-v1, endpoint, and uProject.'
+        }
+        if (-not $endpointExplicit) { $Endpoint = [string]$route.endpoint }
+        $savedRoot = Join-Path (Split-Path -Parent ([string]$route.uProject)) 'Saved\UEAgent'
+        if (-not $sessionExplicit) { $SessionFile = Join-Path $savedRoot 'mcp-session.json' }
+        if (-not $schemaCacheExplicit) { $SchemaCacheFile = Join-Path $savedRoot 'schema-cache.json' }
+    } catch {
+        Fail $_.Exception.Message 'route_invalid'
+    }
+}
 
 $headers = $null
 $sessionReused = $false
-$sessionPersisted = $false
+$sessionReusable = $false
+$sessionFileWritten = $false
 $sessionMode = 'ephemeral'
-$sessionProbeMs = $null
-$reusedToolsList = $null
+$sessionRecovered = $false
 $cachedSession = $null
 $autoDaemonWarning = $null
 $processGuardArmed = $false
-if (-not $DisableProcessGuard) {
-    Start-GatewayProcessGuard $TimeoutSec $ProcessGuardGraceSec $ProcessGuardMaxPrivateMemoryMB
-    $processGuardArmed = $true
-}
+$operationStarted = $false
+$operationCompleted = $false
+Start-GatewayProcessGuard $TimeoutSec $ProcessGuardGraceSec $ProcessGuardMaxPrivateMemoryMB
+$processGuardArmed = $true
 try {
-    $request = Parse-Request
+    try {
+        $request = Parse-Request
+    } catch {
+        Fail $_.Exception.Message 'request_invalid'
+    }
+    $request = Resolve-GatewayRequest $request
+    $legacyFields = @('view', 'intent', 'detail', 'toolName') | Where-Object {
+        $request.PSObject.Properties.Name -contains $_
+    }
+    if ($legacyFields) {
+        Fail "Unsupported request field(s): $($legacyFields -join ', '). Use projectionProfile, describeDetail, and describeToolName." 'unsupported_request_field'
+    }
     if ($request.endpoint) { $Endpoint = [string]$request.endpoint }
     if ($request.timeoutSec) { $TimeoutSec = [int]$request.timeoutSec }
     if ($processGuardArmed) {
@@ -1035,41 +1023,23 @@ try {
     if ($request.schemaCacheTtlSec) { $SchemaCacheTtlSec = [int]$request.schemaCacheTtlSec }
     if ($request.sessionFile) { $SessionFile = [string]$request.sessionFile }
     if ($request.sessionTtlSec) { $SessionTtlSec = [int]$request.sessionTtlSec }
-    if ($request.PSObject.Properties.Name -contains 'reuseSession') { $ReuseSession = [bool]$request.reuseSession }
     if ($request.PSObject.Properties.Name -contains 'closeSession') { $CloseSession = [bool]$request.closeSession }
     if ($request.daemonUrl) { $DaemonUrl = [string]$request.daemonUrl }
     if ($request.daemonPort) { $DaemonPort = [int]$request.daemonPort }
     if ($request.PSObject.Properties.Name -contains 'autoDaemon') { $AutoDaemon = [bool]$request.autoDaemon }
-    if ($request.projectionProfile) { $ProjectionProfile = [string]$request.projectionProfile }
-    if ($request.view) { $View = [string]$request.view }
-    if ($request.intent) { $Intent = [string]$request.intent }
-    if ($request.PSObject.Properties.Name -contains 'dataOnly') { $DataOnly = [bool]$request.dataOnly }
     if ($request.PSObject.Properties.Name -contains 'envelope') { $Envelope = [bool]$request.envelope }
     if ($request.PSObject.Properties.Name -contains 'diagnostics') { $Diagnostics = [bool]$request.diagnostics }
     if ($request.describeDetail) { $DescribeDetail = [string]$request.describeDetail }
     if ($request.describeToolName) { $DescribeToolName = [string]$request.describeToolName }
-    if ($request.detail) { $DescribeDetail = [string]$request.detail }
-    if ($request.toolName) { $DescribeToolName = [string]$request.toolName }
-    $Projection = if ($request.PSObject.Properties.Name -contains 'projection') { $request.projection } else { $null }
-    if ($null -eq $Projection -and -not $ProjectionProfile -and $View -in @('summary', 'refs')) {
-        $ProjectionProfile = if ($View -eq 'refs') { 'refs' } else { 'compact' }
-    }
-    if ($null -eq $Projection -and -not $ProjectionProfile) {
-        $intentProfile = Get-IntentProjectionProfile $Intent
-        if ($intentProfile) { $ProjectionProfile = $intentProfile }
-    }
-    if ($null -eq $Projection -and $ProjectionProfile) { $Projection = Get-ProjectionProfile $ProjectionProfile }
+    $requestError = Get-GatewayRequestError $request
+    if ($requestError) { Fail $requestError.message $requestError.code }
     $action = [string]$request.action
-    if (-not $action) { Fail 'Request must include action.' 'missing_action' }
-
-    $explicitResponseMode = ($request.PSObject.Properties.Name -contains 'dataOnly') -or
-        ($request.PSObject.Properties.Name -contains 'envelope')
-    if ($Envelope) { $DataOnly = $false }
-    elseif ($Diagnostics) { $DataOnly = $false }
-    elseif (-not $explicitResponseMode -and $action -ne 'preflight') {
-        $DataOnly = $true
-        $request | Add-Member -NotePropertyName dataOnly -NotePropertyValue $true
+    if ($request.projectionProfile) {
+        try { $null = Get-ProjectionProfile ([string]$request.projectionProfile) }
+        catch { Fail $_.Exception.Message 'projection_invalid' }
     }
+
+    $DataOnly = -not $Envelope -and -not $Diagnostics
 
     # Unknown discovery is compact by default; callers that need the old payload ask for full explicitly.
     if ($action -eq 'toolset.describe' -and -not $DescribeDetail) {
@@ -1078,21 +1048,12 @@ try {
         else { $request | Add-Member -NotePropertyName describeDetail -NotePropertyValue $DescribeDetail }
     }
 
-    if ($action -eq 'intent.list') {
-        $intentData = Get-IntentIndex $Intent
-        if ($DataOnly) { Write-JsonResult $intentData } else {
-            Write-JsonResult @{ ok = $true; action = $action; data = $intentData }
-        }
-        exit 0
-    }
     $null = Assert-LoopbackEndpoint $Endpoint
 
     if ($AutoDaemon -and -not $SessionFile -and $SchemaCacheFile) {
         $SessionFile = Join-Path (Split-Path -Parent $SchemaCacheFile) 'mcp-session.json'
     }
-    if ($SessionFile) { $ReuseSession = $true }
-
-    if ($ReuseSession -and $SessionFile) {
+    if ($SessionFile) {
         $cachedSession = Read-McpSession $Endpoint $SessionFile
     }
 
@@ -1102,7 +1063,8 @@ try {
     if ($schemaCacheable) {
         $cached = Read-SchemaCacheEntry $action $Endpoint $cacheToolset $SchemaCacheFile $DescribeDetail $DescribeToolName $cacheSessionId
         if ($cached) {
-            if ($DataOnly) { Write-JsonResult $cached.data } else {
+            $operationCompleted = $true
+            if ($DataOnly) { Write-JsonResult (Compress-GatewayData $cached.data $request) } else {
                 Write-JsonResult @{ ok = $true; action = $action; endpoint = $Endpoint; cached = $true; data = $cached.data }
             }
             exit 0
@@ -1133,36 +1095,23 @@ try {
             }
         }
         if ($forwardToDaemon) {
-            if ($request.PSObject.Properties.Name -notcontains 'endpoint') {
-                $request | Add-Member -NotePropertyName endpoint -NotePropertyValue $Endpoint
-            }
-            if ($request.PSObject.Properties.Name -notcontains 'sessionFile' -and $SessionFile) {
-                $request | Add-Member -NotePropertyName sessionFile -NotePropertyValue $SessionFile
-            }
-            if ($request.PSObject.Properties.Name -notcontains 'sessionTtlSec') {
-                $request | Add-Member -NotePropertyName sessionTtlSec -NotePropertyValue $SessionTtlSec
-            }
-            Invoke-GatewayDaemonRequest $DaemonUrl $request
+            $operationStarted = $true
+            $daemonResponse = Invoke-GatewayDaemonRequest $DaemonUrl $request
+            $operationCompleted = $true
+            Write-JsonResult $daemonResponse
+            if (Test-GatewayFailure $daemonResponse) { exit 1 }
+            exit 0
         }
     }
 
-    if ($ReuseSession -and $SessionFile) {
+    try { $Projection = Resolve-GatewayProjection $request }
+    catch { Fail $_.Exception.Message 'projection_invalid' }
+
+    if ($SessionFile) {
         if ($cachedSession) {
-            $probeTimer = [Diagnostics.Stopwatch]::StartNew()
-            $candidateHeaders = Get-McpSessionHeaders $cachedSession.sessionId
-            try {
-                $probe = Invoke-McpRpc $Endpoint $candidateHeaders 'tools/list' @{} 2 ([Math]::Min($TimeoutSec, 10))
-                if ($probe -and -not $probe.error) {
-                    $headers = $candidateHeaders
-                    $sessionReused = $true
-                    $sessionMode = 'reused'
-                    $reusedToolsList = $probe
-                }
-            } catch {
-                # Stale, expired, or editor-restart sessions are replaced below.
-            } finally {
-                $sessionProbeMs = [int]$probeTimer.ElapsedMilliseconds
-            }
+            $headers = Get-McpSessionHeaders $cachedSession.sessionId
+            $sessionReused = $true
+            $sessionMode = 'reused'
         }
     }
     if (-not $headers) {
@@ -1172,63 +1121,64 @@ try {
     $data = $null
     $raw = $null
 
-    switch ($action) {
+    while ($true) {
+        $operationStarted = $true
+        try {
+            switch ($action) {
         'preflight' {
             $probeErrors = [Collections.Generic.List[string]]::new()
             $topLevelTools = @()
-            $currentLevel = $null
+            $callViewAvailable = $false
+            $reliableState = $null
             $toolsListOk = $false
-            $currentLevelOk = $false
+            $reliableStateOk = $false
 
             try {
-                $toolsRaw = if ($reusedToolsList) { $reusedToolsList } else {
-                    Invoke-McpRpc $Endpoint $headers 'tools/list' @{} 2 $TimeoutSec
-                }
-                $reusedToolsList = $null
+                $toolsRaw = Invoke-McpRpc $Endpoint $headers 'tools/list' @{} 2 $TimeoutSec
                 if (-not $toolsRaw -or $toolsRaw.error) { throw 'tools/list returned no usable response.' }
-                $topLevelTools = @($toolsRaw.result.tools | ForEach-Object { [string]$_.name } | Sort-Object -Unique)
+                $listedTools = @($toolsRaw.result.tools)
+                $topLevelTools = @($listedTools | ForEach-Object { [string]$_.name } | Sort-Object -Unique)
+                $callViewAvailable = Test-ToolInputEnumValue $listedTools 'describe_toolset' 'detail' 'call'
                 $toolsListOk = $true
             } catch {
+                if (Test-McpSessionInvalidError $_) { throw }
                 $probeErrors.Add("tools/list: $($_.Exception.Message)")
             }
 
-            if ($toolsListOk -and 'call_tool' -in $topLevelTools) {
+            if ($toolsListOk -and 'ueagent_state' -in $topLevelTools) {
                 try {
-                    $levelRaw = Invoke-TopTool $Endpoint $headers 'call_tool' @{
-                        toolset_name = 'editor_toolset.toolsets.scene.SceneTools'
-                        tool_name = 'get_current_level'
-                        arguments = @{}
-                    } $TimeoutSec
-                    $currentLevel = Normalize-ToolResult $levelRaw
-                    if ($currentLevel -is [hashtable] -and $currentLevel.ok -eq $false) {
-                        throw ($currentLevel | ConvertTo-Json -Depth 10 -Compress)
+                    $stateRaw = Invoke-TopTool $Endpoint $headers 'ueagent_state' @{} $TimeoutSec
+                    $reliableState = Normalize-ToolResult $stateRaw
+                    if ($reliableState.ok -eq $false -or $reliableState.success -eq $false) {
+                        throw ($reliableState | ConvertTo-Json -Depth 10 -Compress)
                     }
-                    $currentLevelOk = $true
+                    if (-not $reliableState -or -not [string]$reliableState.protocol_version -or
+                        -not [string]$reliableState.editor_epoch) {
+                        throw 'ueagent_state returned no protocol_version or editor_epoch.'
+                    }
+                    $reliableStateOk = $true
                 } catch {
-                    $probeErrors.Add("current_level: $($_.Exception.Message)")
+                    if (Test-McpSessionInvalidError $_) { throw }
+                    $probeErrors.Add("ueagent_state: $($_.Exception.Message)")
                 }
             }
 
             $data = @{
                 toolsList = $toolsListOk
                 topLevelTools = $topLevelTools
-                currentLevelRead = $currentLevelOk
-                currentLevel = $currentLevel
+                callViewAvailable = $callViewAvailable
+                livenessRead = $reliableStateOk
+                reliableStateRead = $reliableStateOk
+                reliableState = $reliableState
                 errors = @($probeErrors)
             }
         }
         'ping' {
-            $raw = if ($reusedToolsList) { $reusedToolsList } else {
-                Invoke-McpRpc $Endpoint $headers 'tools/list' @{} 2 $TimeoutSec
-            }
-            $reusedToolsList = $null
+            $raw = Invoke-McpRpc $Endpoint $headers 'tools/list' @{} 2 $TimeoutSec
             $data = @{ reachable = $true; topLevelToolCount = @($raw.result.tools).Count }
         }
         'tools.list' {
-            $raw = if ($reusedToolsList) { $reusedToolsList } else {
-                Invoke-McpRpc $Endpoint $headers 'tools/list' @{} 2 $TimeoutSec
-            }
-            $reusedToolsList = $null
+            $raw = Invoke-McpRpc $Endpoint $headers 'tools/list' @{} 2 $TimeoutSec
             $data = $raw.result.tools
         }
         'toolsets.list' {
@@ -1242,16 +1192,6 @@ try {
             if ($DescribeToolName) { $describeArguments.tool_name = $DescribeToolName }
             $raw = Invoke-TopTool $Endpoint $headers 'describe_toolset' $describeArguments $TimeoutSec
             $data = Normalize-ToolResult $raw
-            if ($DescribeDetail -eq 'call' -and $data -is [hashtable] -and $data.ok -eq $false -and [string]$data.toolError -match "detail must") {
-                # v2 servers do not know call; keep the gateway usable until the editor is rebuilt.
-                $fallbackDetail = 'full'
-                $describeArguments.detail = $fallbackDetail
-                $raw = Invoke-TopTool $Endpoint $headers 'describe_toolset' $describeArguments $TimeoutSec
-                $data = Normalize-ToolResult $raw
-            }
-            if ($DescribeDetail -eq 'call' -and -not ($data -is [hashtable] -and $data.ok -eq $false)) {
-                $data = Convert-ToCallView $data $request.toolset $DescribeToolName
-            }
         }
         'tool.call' {
             $toolset = [string]$request.toolset
@@ -1278,59 +1218,35 @@ try {
             $raw = Invoke-TopTool $Endpoint $headers $tool $arguments $TimeoutSec
             $data = Normalize-ToolResult $raw
         }
-        'script.execute' {
-            $scriptText = [string]$request.script
-            if (-not $scriptText -and $request.scriptFile) {
-                $path = [string]$request.scriptFile
-                if (-not (Test-Path -LiteralPath $path)) { Fail "scriptFile not found: $path" 'script_file_not_found' }
-                $scriptText = Get-Content -Raw -LiteralPath $path
+                default { Fail "Unknown action: $action" 'unknown_action' }
             }
-            if (-not $scriptText) { Fail 'script.execute requires script or scriptFile.' 'missing_script' }
-            if ($scriptText -match '(?mi)^\s*(?:import\s+unreal(?:\s|,|$)|from\s+unreal(?:\s|\.|$))') {
-                Fail 'script.execute targets ProgrammaticToolset and cannot run Unreal Python. Use python.execute (isolated file/script execution) or direct.call -Tool execute_python_code.' 'wrong_script_backend'
+            break
+        } catch {
+            if (-not $sessionRecovered -and (Test-McpSessionInvalidError $_)) {
+                # UE rejects an unknown session before dispatching the JSON-RPC method.
+                $operationStarted = $false
+                $sessionRecovered = $true
+                $headers = New-McpSession $Endpoint ([Math]::Min($TimeoutSec, 30))
+                $sessionReused = $false
+                $sessionMode = 'recovered'
+                continue
             }
-            $raw = Invoke-TopTool $Endpoint $headers 'call_tool' @{
-                toolset_name = 'editor_toolset.toolsets.programmatic.ProgrammaticToolset'
-                tool_name = 'execute_tool_script'
-                arguments = @{ script = $scriptText }
-                projection = $Projection
-            } $TimeoutSec
-            $data = Normalize-ToolResult $raw
+            throw
         }
-        'python.execute' {
-            $scriptText = [string]$request.script
-            $scriptName = '<ueagent-python>'
-            if (-not $scriptText -and $request.scriptFile) {
-                $path = [string]$request.scriptFile
-                if (-not (Test-Path -LiteralPath $path)) { Fail "scriptFile not found: $path" 'script_file_not_found' }
-                $resolvedPath = (Resolve-Path -LiteralPath $path).Path
-                $scriptText = Get-Content -Raw -LiteralPath $resolvedPath
-                $scriptName = $resolvedPath
-            }
-            if (-not $scriptText) { Fail 'python.execute requires script or scriptFile.' 'missing_script' }
-
-            # execute_python_code evaluates in a persistent interpreter namespace. Running a
-            # probe there with plain exec(...) can leave UE Python wrappers rooted across calls;
-            # PIE teardown then asserts because the old PIE package cannot be collected. Put the
-            # payload in its own dictionary, clear it in finally, and collect before returning.
-            $pythonBootstrap = New-IsolatedPythonBootstrap $scriptText $scriptName
-            $raw = Invoke-TopTool $Endpoint $headers 'execute_python_code' @{
-                code = $pythonBootstrap
-            } $TimeoutSec
-            $data = Normalize-ToolResult $raw
-        }
-        'level.current' {
-            $raw = Invoke-TopTool $Endpoint $headers 'call_tool' @{
-                toolset_name = 'editor_toolset.toolsets.scene.SceneTools'
-                tool_name = 'get_current_level'
-                arguments = @{}
-            } $TimeoutSec
-            $data = Normalize-ToolResult $raw
-        }
-        default { Fail "Unknown action: $action" 'unknown_action' }
+    }
+    $operationCompleted = $true
+    if ($SessionFile) {
+        $persistence = Write-McpSession $Endpoint $headers $SessionFile $SessionTtlSec
+        $sessionReusable = [bool]$persistence.reusable
+        $sessionFileWritten = [bool]$persistence.written
     }
 
-    if ($data -is [hashtable] -and $data.ok -eq $false) {
+    if (Test-GatewayFailure $data) {
+        $modelError = Compress-GatewayData $data $request
+        if ($DataOnly) {
+            Write-JsonResult $modelError
+            exit 1
+        }
         $errorResult = [ordered]@{ ok = $false; action = $action; error = $data }
         if ($Diagnostics) {
             $errorResult.endpoint = $Endpoint
@@ -1338,9 +1254,6 @@ try {
         }
         Write-JsonResult $errorResult
         exit 1
-    }
-    if ($ReuseSession -and $SessionFile) {
-        $sessionPersisted = Write-McpSession $Endpoint $headers $SessionFile $SessionTtlSec
     }
     if ($schemaCacheable) {
         $cacheSessionId = if ($headers -and $headers['Mcp-Session-Id']) { [string]$headers['Mcp-Session-Id'] } else { '' }
@@ -1352,22 +1265,20 @@ try {
         $result.transport = @{
             sessionMode = $sessionMode
             sessionReused = $sessionReused
-            sessionPersisted = $sessionPersisted
-            sessionProbeMs = $sessionProbeMs
+            sessionReusable = $sessionReusable
+            sessionFileWritten = $sessionFileWritten
         }
         if ($autoDaemonWarning) { $result.transport.autoDaemonWarning = $autoDaemonWarning }
     }
-    if ($DataOnly) { Write-JsonResult $data } else { Write-JsonResult $result }
+    if ($DataOnly) { Write-JsonResult (Compress-GatewayData $data $request) } else { Write-JsonResult $result }
 } catch {
     $isTimeout = ($_.Exception -is [Net.WebException] -and
         $_.Exception.Status -eq [Net.WebExceptionStatus]::Timeout) -or
         $_.Exception.Message -match '(?i)timed? ?out|timeout|操作超时'
-    $code = if ($isTimeout) { 'result_unknown' } else { 'exception' }
-    Invalidate-DoctorReceipt $code
-    Remove-McpSessionFile $SessionFile
+    $code = if ($operationCompleted) { 'response_error' } elseif ($isTimeout -and $operationStarted) { 'result_unknown' } else { 'exception' }
     Fail $_.Exception.Message $code
 } finally {
-    $keepSession = $ReuseSession -and $SessionFile -and $sessionPersisted -and -not $CloseSession
+    $keepSession = $SessionFile -and $sessionReusable -and -not $CloseSession
     if (-not $keepSession) {
         Close-McpSession $Endpoint $headers
         if ($CloseSession) {

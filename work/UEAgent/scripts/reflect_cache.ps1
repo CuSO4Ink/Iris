@@ -1,12 +1,10 @@
 [CmdletBinding()]
 param(
-    [ValidateSet('read', 'diff', 'receipt', 'index', 'reconcile')]
+    [ValidateSet('read', 'reconcile')]
     [string]$Action = 'read',
 
     [string]$AssetPath,
     [string]$Sidecar,
-    [string]$BaseSidecar,
-    [string]$ChangeAction = 'cache.readback',
     [string]$ProjectRoot,
     [string]$RouteFile,
 
@@ -63,8 +61,7 @@ function Resolve-GeneratorFingerprint {
         $route = Read-JsonFile ((Resolve-Path -LiteralPath $RouteFile).Path) 'route file'
         $parts = @($route.vibeUEPatchSha256, $route.vibeUEMcpShutdownGuardPatchSha256,
             $route.engineNiagaraPatchSha256,
-            $route.engineNiagaraAuthoringPatchSha256, $route.mcpToolSearchV2PatchSha256,
-            $route.mcpToolSearchV3PatchSha256) | Where-Object { $_ }
+            $route.engineNiagaraAuthoringPatchSha256, $route.mcpToolSearchPatchSha256) | Where-Object { $_ }
         if ($parts.Count -eq 0) { return $null }
         $sha = [Security.Cryptography.SHA256]::Create()
         try { return ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes(($parts -join '|'))))).Replace('-', '').ToLowerInvariant() }
@@ -216,11 +213,10 @@ function Get-UsefulLines($Lines) {
     @($Lines | Where-Object { [string]$_ -and [string]$_ -ne '-' })
 }
 
-function Get-CacheRecord($CachePath) {
+function Get-CacheRecord($CachePath, [switch]$IncludeHash) {
     if (-not (Test-Path -LiteralPath $CachePath)) { throw "Cache sidecar not found: $CachePath" }
     $resolved = (Resolve-Path -LiteralPath $CachePath).Path
-    $lines = @(Get-Content -LiteralPath $resolved)
-    $text = Get-Content -Raw -LiteralPath $resolved
+    $lines = [IO.File]::ReadAllLines($resolved)
     $metadata = Get-Metadata $lines
     $sections = Get-Sections $lines
     $sourcePath = Get-SourcePath $resolved $metadata
@@ -236,13 +232,11 @@ function Get-CacheRecord($CachePath) {
         elseif (-not $formatKnown) { 'UNSUPPORTED_FORMAT' }
         elseif (-not $sourceMetadataCurrent) { 'STALE' }
         else { 'FRESH' }
-    $fresh = $state -eq 'FRESH'
-    $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath $resolved).Hash.ToLowerInvariant()
+    $hash = if ($IncludeHash) { (Get-FileHash -Algorithm SHA256 -LiteralPath $resolved).Hash.ToLowerInvariant() } else { $null }
     $logic = Get-UsefulLines (Get-SectionLines $sections 'Logic')
     $deps = Get-Dependencies $sections
     return [ordered]@{
         path = $resolved
-        text = $text
         lines = $lines
         metadata = $metadata
         sections = $sections
@@ -258,8 +252,6 @@ function Get-CacheRecord($CachePath) {
             sha256 = $hash
             graphSha1 = if ($metadata.graph_sha1) { [string]$metadata.graph_sha1 } else { $null }
             format = $format
-            formatKnown = [bool]$formatKnown
-            fresh = $fresh
             state = $state
         }
         stats = [ordered]@{
@@ -272,30 +264,18 @@ function Get-CacheRecord($CachePath) {
     }
 }
 
-function New-Summary($Record, $ViewName) {
-    $meta = $Record.metadata
-    return [ordered]@{
-        schema = 'reflect-cache-view-v1'
-        view = $ViewName
-        cache = [ordered]@{
-            path = $Record.path
-            source = $meta.src
-            sourceFile = $Record.sourcePath
-            format = $Record.cache.format
-            graphSha1 = $Record.cache.graphSha1
-            sha256 = $Record.cache.sha256
-            fresh = $Record.cache.fresh
-            state = $Record.cache.state
-            formatKnown = $Record.cache.formatKnown
-        }
-        stats = $Record.stats
-        availableViews = @('summary', 'refs', 'detail', 'full')
-        next = [ordered]@{
-            refs = 'read -View refs'
-            detail = 'read -View detail -Section <name>'
-            full = 'read -View full'
-        }
+function New-Summary($Record) {
+    $cache = [ordered]@{
+        format = $Record.cache.format
+        graphSha1 = $Record.cache.graphSha1
+        state = $Record.cache.state
     }
+    if ($Record.cache.sha256) { $cache.sha256 = $Record.cache.sha256 }
+    $stats = [ordered]@{ sections = $Record.stats.sections }
+    foreach ($name in @('logicLines', 'dependencyCount', 'parameterLines')) {
+        if ([int]$Record.stats[$name] -gt 0) { $stats[$name] = [int]$Record.stats[$name] }
+    }
+    return [ordered]@{ cache = $cache; stats = $stats }
 }
 
 function Add-SectionView($Target, $Record, $Names, $Limit) {
@@ -316,7 +296,7 @@ function Add-SectionView($Target, $Record, $Names, $Limit) {
 }
 
 function Get-ReadView($Record) {
-    $result = New-Summary $Record $View
+    $result = New-Summary $Record
     if ($View -eq 'refs') {
         $result.dependencies = @($Record.dependencies | Select-Object -First $MaxItems)
         $result.dependenciesTruncated = $Record.dependencies.Count -gt $MaxItems
@@ -333,112 +313,14 @@ function Get-ReadView($Record) {
             return $result
         } else {
             return [ordered]@{
-                schema = 'reflect-cache-view-v1'
-                view = 'full'
                 cache = $result.cache
                 stats = $result.stats
-                availableViews = @('summary', 'refs', 'detail', 'full')
-                next = [ordered]@{ detail = 'read -View detail -Section <name>'; refs = 'read -View refs' }
-                raw = [string]$Record.text
+                raw = [IO.File]::ReadAllText($Record.path)
             }
         }
         return $result
     }
     return $result
-}
-
-function Get-DiffView($Current, $Base) {
-    # ponytail: bounded line diff is enough for a receipt; structural graph diff is a later upgrade.
-    $sectionNames = @($Current.sections.Keys + $Base.sections.Keys | Sort-Object -Unique)
-    $changes = [ordered]@{}
-    $changed = $false
-    foreach ($name in $sectionNames) {
-        $old = @(Get-UsefulLines (Get-SectionLines $Base.sections $name))
-        $new = @(Get-UsefulLines (Get-SectionLines $Current.sections $name))
-        $added = @($new | Where-Object { $_ -notin $old } | Select-Object -First $MaxItems)
-        $removed = @($old | Where-Object { $_ -notin $new } | Select-Object -First $MaxItems)
-        if ($added.Count -or $removed.Count) {
-            $changed = $true
-            $changes[$name] = [ordered]@{
-                added = $added
-                removed = $removed
-                addedCount = @($new | Where-Object { $_ -notin $old }).Count
-                removedCount = @($old | Where-Object { $_ -notin $new }).Count
-            }
-        }
-    }
-    return [ordered]@{
-        schema = 'reflect-cache-diff-v1'
-        changed = $changed
-        from = [ordered]@{ path = $Base.path; sha256 = $Base.cache.sha256; graphSha1 = $Base.cache.graphSha1 }
-        to = [ordered]@{ path = $Current.path; sha256 = $Current.cache.sha256; graphSha1 = $Current.cache.graphSha1 }
-        sections = $changes
-        next = if ($changed) { @('read -View detail -Section <changed section>') } else { @() }
-    }
-}
-
-function Get-ReceiptView($Current, $Base) {
-    $diff = Get-DiffView $Current $Base
-    $changedSections = [Collections.Generic.List[object]]::new()
-    foreach ($name in @($diff.sections.Keys)) {
-        $section = $diff.sections[$name]
-        $changedSections.Add([ordered]@{
-            name = $name
-            added = [int]$section.addedCount
-            removed = [int]$section.removedCount
-        })
-    }
-    return [ordered]@{
-        schema = 'ueagent-change-receipt-v1'
-        source = 'reflect-cache'
-        action = $ChangeAction
-        changed = [bool]$diff.changed
-        before = $diff.from
-        after = $diff.to
-        changedSections = @($changedSections)
-        readback = [ordered]@{
-            required = $true
-            reason = 'cache describes saved state; live mutation still needs independent MCP readback'
-        }
-        next = if ($diff.changed) { @('inspect changedSections with read -View detail') } else { @('no cache delta') }
-    }
-}
-
-function Get-IndexView {
-    $root = Resolve-ProjectRoot
-    if (-not $root) { throw 'index requires -ProjectRoot or -RouteFile.' }
-    $content = Join-Path $root 'Content'
-    if (-not (Test-Path -LiteralPath $content)) { throw "Content directory not found: $content" }
-    $items = [Collections.Generic.List[object]]::new()
-    $reverse = @{}
-    foreach ($file in Get-ChildItem -LiteralPath $content -Filter '*.uasset.ai.md' -File -Recurse) {
-        try { $record = Get-CacheRecord $file.FullName } catch { continue }
-        $src = if ($record.metadata.src) { [string]$record.metadata.src } else { $file.Name }
-        $items.Add([ordered]@{
-            source = $src
-            format = $record.cache.format
-            formatKnown = $record.cache.formatKnown
-            state = $record.cache.state
-            fresh = $record.cache.fresh
-            sourceExists = $record.source.exists
-            sha256 = $record.cache.sha256
-            dependencies = $record.dependencies.Count
-        })
-        foreach ($dependency in $record.dependencies) {
-            if (-not $reverse.ContainsKey($dependency)) { $reverse[$dependency] = [Collections.Generic.List[string]]::new() }
-            if ($reverse[$dependency].Count -lt $MaxItems) { $reverse[$dependency].Add($src) }
-        }
-    }
-    $reverseView = [ordered]@{}
-    foreach ($key in @($reverse.Keys | Sort-Object | Select-Object -First $MaxItems)) { $reverseView[$key] = @($reverse[$key]) }
-    return [ordered]@{
-        schema = 'reflect-cache-index-v1'
-        root = $root
-        assetCount = $items.Count
-        assets = @($items | Select-Object -First $MaxItems)
-        reverseDependencies = $reverseView
-        truncated = $items.Count -gt $MaxItems
-    }
 }
 
 function Get-ReconcileView {
@@ -463,7 +345,7 @@ function Get-ReconcileView {
     $contentPrefix = $content.TrimEnd('\') + '\'
 
     foreach ($sidecar in $sidecars) {
-        try { $record = Get-CacheRecord $sidecar.FullName } catch { continue }
+        try { $record = Get-CacheRecord $sidecar.FullName -IncludeHash } catch { continue }
         $sourcePath = $record.sourcePath
         if ($record.source.exists) {
             $entrySource = (Resolve-Path -LiteralPath $sourcePath).Path
@@ -493,7 +375,7 @@ function Get-ReconcileView {
                 Move-Item -LiteralPath $record.path -Destination $targetSidecar
                 Set-CacheSourceMetadata $targetSidecar $root $targetSource
                 $renamed.Add([ordered]@{ from = $record.path; to = $targetSidecar; reason = 'source_sha256_match' })
-                $record = Get-CacheRecord $targetSidecar
+                $record = Get-CacheRecord $targetSidecar -IncludeHash
                 $entryState = if ($generatorChanged) { 'GENERATOR_CHANGED' } else { $record.cache.state }
                 $entries.Add([ordered]@{
                     sidecar = $record.path
@@ -563,7 +445,7 @@ function Get-ReconcileView {
 }
 
 function Write-Result($Object) {
-    $json = if ($Pretty) { $Object | ConvertTo-Json -Depth 30 } else { $Object | ConvertTo-Json -Depth 30 -Compress }
+    $json = if ($Pretty) { $Object | ConvertTo-Json -Depth 10 } else { $Object | ConvertTo-Json -Depth 10 -Compress }
     if ($OutFile) {
         $parent = Split-Path $OutFile -Parent
         if ($parent -and -not (Test-Path -LiteralPath $parent)) { throw "Output directory not found: $parent" }
@@ -571,26 +453,9 @@ function Write-Result($Object) {
     } else { $json }
 }
 
-if ($Action -eq 'index') {
-    Write-Result (Get-IndexView)
-    exit 0
-}
 if ($Action -eq 'reconcile') {
     Write-Result (Get-ReconcileView)
     exit 0
 }
 
-$cachePath = Resolve-SidecarPath
-$record = Get-CacheRecord $cachePath
-if ($Action -eq 'diff') {
-    if (-not $BaseSidecar) { throw 'diff requires -BaseSidecar.' }
-    Write-Result (Get-DiffView $record (Get-CacheRecord (Resolve-Path -LiteralPath $BaseSidecar).Path))
-    exit 0
-}
-if ($Action -eq 'receipt') {
-    if (-not $BaseSidecar) { throw 'receipt requires -BaseSidecar.' }
-    Write-Result (Get-ReceiptView $record (Get-CacheRecord (Resolve-Path -LiteralPath $BaseSidecar).Path))
-    exit 0
-}
-
-Write-Result (Get-ReadView $record)
+Write-Result (Get-ReadView (Get-CacheRecord (Resolve-SidecarPath) -IncludeHash:($View -eq 'full')))

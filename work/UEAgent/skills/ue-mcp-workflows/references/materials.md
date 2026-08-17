@@ -62,8 +62,6 @@ The node starts with one `None` input. Use this exact sequence:
 
 Do not append with only `inputName` fields after the first element has been renamed. The diff engine may interpret the old element as changed during expansion.
 
-Run `../scripts/probe_custom_inputs.py` to revalidate this recipe in isolation.
-
 ## Treat semantic outputs separately
 
 Do not mirror wiring into specialized outputs merely because types are compatible. For example, a volumetric conservative-density input represents a sampling bound, not ordinary display density. Audit its invariant and native consumers before modifying it.

@@ -1,0 +1,3034 @@
+diff --git a/Source/VibeUE/Private/Core/UEAgentReliableKernel.cpp b/Source/VibeUE/Private/Core/UEAgentReliableKernel.cpp
+new file mode 100644
+index 0000000..803560b
+--- /dev/null
++++ b/Source/VibeUE/Private/Core/UEAgentReliableKernel.cpp
+@@ -0,0 +1,2236 @@
++// Copyright Buckley Builds LLC 2026 All Rights Reserved.
++
++#include "Core/UEAgentReliableKernel.h"
++
++#include "Core/ToolRegistry.h"
++#include "PythonAPI/UPerformanceService.h"
++
++#include "AssetRegistry/AssetRegistryModule.h"
++#include "Containers/Ticker.h"
++#include "Dom/JsonObject.h"
++#include "Dom/JsonValue.h"
++#include "Editor.h"
++#include "Editor/UnrealEdEngine.h"
++#include "Engine/Selection.h"
++#include "EngineUtils.h"
++#include "FileHelpers.h"
++#include "HAL/FileManager.h"
++#include "HAL/PlatformProcess.h"
++#include "IModelContextProtocolModule.h"
++#include "LevelEditorViewport.h"
++#include "Misc/Base64.h"
++#include "Misc/ConfigCacheIni.h"
++#include "Misc/FileHelper.h"
++#include "Misc/PackageName.h"
++#include "Misc/Paths.h"
++#include "Misc/SecureHash.h"
++#include "PlatformCryptoContextIncludes.h"
++#include "Serialization/JsonReader.h"
++#include "Serialization/JsonSerializer.h"
++#include "Serialization/JsonWriter.h"
++#include "ToolsetRegistry/JsonValueOrError.h"
++#include "ToolsetRegistry/ToolCallAsyncResultFutureHandler.h"
++#include "ToolsetRegistry/ToolCallAsyncResultString.h"
++#include "ToolsetRegistry/UToolsetRegistry.h"
++#include "UObject/ObjectSaveContext.h"
++#include "UObject/Package.h"
++#include "UObject/UObjectIterator.h"
++#include "UObject/UnrealType.h"
++
++#if WITH_AUTOMATION_TESTS
++#include "Misc/AutomationTest.h"
++#endif
++
++namespace UEAgentReliable
++{
++	static constexpr const TCHAR* ConfigSection = TEXT("UEAgent.Reliable");
++	static constexpr const TCHAR* ProtocolVersion = TEXT("2.0.0");
++	static constexpr int32 MaxCommandBytes = 8 * 1024 * 1024;
++	static constexpr int32 MaxSnapshotBytes = 8 * 1024 * 1024;
++	static constexpr int32 MaxInlineResultBytes = 256 * 1024;
++	static constexpr int32 MaxBatchItems = 64;
++	static constexpr int32 MaxQueuedJobs = 256;
++	static constexpr int32 LargePayloadHashThreshold = 64 * 1024;
++
++	thread_local int32 GManagedMutationDepth = 0;
++
++	struct FManagedMutationScope
++	{
++		FManagedMutationScope() { ++GManagedMutationDepth; }
++		~FManagedMutationScope() { --GManagedMutationDepth; }
++	};
++
++	TSharedPtr<FJsonObject> Error(const FString& Code, const FString& Message)
++	{
++		TSharedPtr<FJsonObject> Result = MakeShared<FJsonObject>();
++		Result->SetBoolField(TEXT("success"), false);
++		Result->SetStringField(TEXT("error_code"), Code);
++		Result->SetStringField(TEXT("error"), Message);
++		return Result;
++	}
++
++	TSharedPtr<FJsonObject> Ok()
++	{
++		TSharedPtr<FJsonObject> Result = MakeShared<FJsonObject>();
++		Result->SetBoolField(TEXT("success"), true);
++		return Result;
++	}
++
++	void AppendEscapedJsonString(FStringBuilderBase& Out, const FString& Value)
++	{
++		Out.AppendChar(TEXT('"'));
++		for (const TCHAR Character : Value)
++		{
++			switch (Character)
++			{
++			case TEXT('"'): Out.Append(TEXT("\\\"")); break;
++			case TEXT('\\'): Out.Append(TEXT("\\\\")); break;
++			case TEXT('\b'): Out.Append(TEXT("\\b")); break;
++			case TEXT('\f'): Out.Append(TEXT("\\f")); break;
++			case TEXT('\n'): Out.Append(TEXT("\\n")); break;
++			case TEXT('\r'): Out.Append(TEXT("\\r")); break;
++			case TEXT('\t'): Out.Append(TEXT("\\t")); break;
++			default:
++				if (Character < 0x20)
++				{
++					Out.Appendf(TEXT("\\u%04x"), static_cast<uint32>(Character));
++				}
++				else
++				{
++					Out.AppendChar(Character);
++				}
++				break;
++			}
++		}
++		Out.AppendChar(TEXT('"'));
++	}
++
++	void AppendCanonicalJson(FStringBuilderBase& Out, const TSharedPtr<FJsonValue>& Value)
++	{
++		if (!Value.IsValid() || Value->Type == EJson::Null)
++		{
++			Out.Append(TEXT("null"));
++			return;
++		}
++
++		switch (Value->Type)
++		{
++		case EJson::String:
++			AppendEscapedJsonString(Out, Value->AsString());
++			break;
++		case EJson::Boolean:
++			Out.Append(Value->AsBool() ? TEXT("true") : TEXT("false"));
++			break;
++		case EJson::Number:
++		{
++			const double Number = Value->AsNumber();
++			Out.Append(Number == 0.0 ? TEXT("0") : *FString::Printf(TEXT("%.17g"), Number));
++			break;
++		}
++		case EJson::Array:
++		{
++			Out.AppendChar(TEXT('['));
++			const TArray<TSharedPtr<FJsonValue>>& Values = Value->AsArray();
++			for (int32 Index = 0; Index < Values.Num(); ++Index)
++			{
++				if (Index > 0) Out.AppendChar(TEXT(','));
++				AppendCanonicalJson(Out, Values[Index]);
++			}
++			Out.AppendChar(TEXT(']'));
++			break;
++		}
++		case EJson::Object:
++		{
++			Out.AppendChar(TEXT('{'));
++			TArray<FString> Keys;
++			for (const auto& Pair : Value->AsObject()->Values)
++			{
++				Keys.Add(FString(Pair.Key));
++			}
++			Keys.Sort();
++			for (int32 Index = 0; Index < Keys.Num(); ++Index)
++			{
++				if (Index > 0) Out.AppendChar(TEXT(','));
++				AppendEscapedJsonString(Out, Keys[Index]);
++				Out.AppendChar(TEXT(':'));
++				AppendCanonicalJson(Out, Value->AsObject()->TryGetField(Keys[Index]));
++			}
++			Out.AppendChar(TEXT('}'));
++			break;
++		}
++		default:
++			Out.Append(TEXT("null"));
++			break;
++		}
++	}
++
++	FString CanonicalJson(const TSharedPtr<FJsonValue>& Value)
++	{
++		TStringBuilder<4096> Builder;
++		AppendCanonicalJson(Builder, Value);
++		return Builder.ToString();
++	}
++
++	FString CanonicalJson(const TSharedPtr<FJsonObject>& Object)
++	{
++		return CanonicalJson(MakeShared<FJsonValueObject>(Object.IsValid() ? Object : MakeShared<FJsonObject>()));
++	}
++
++	FString Sha256Bytes(const void* Data, int64 NumBytes)
++	{
++		if (!Data || NumBytes < 0 || NumBytes > MAX_int32)
++		{
++			return {};
++		}
++		FEncryptionContext Context;
++		TArray<uint8> Digest;
++		if (!Context.CalcSHA256(
++			MakeArrayView(static_cast<const uint8*>(Data), static_cast<int32>(NumBytes)), Digest)
++			|| Digest.Num() != 32)
++		{
++			return {};
++		}
++		return BytesToHex(Digest.GetData(), Digest.Num()).ToLower();
++	}
++
++	FString Sha256String(const FString& Value)
++	{
++		FTCHARToUTF8 Utf8(*Value);
++		return Sha256Bytes(Utf8.Get(), Utf8.Length());
++	}
++
++	FString HmacSha1(const FString& Secret, const FString& Value)
++	{
++		FTCHARToUTF8 KeyUtf8(*Secret);
++		FTCHARToUTF8 ValueUtf8(*Value);
++		uint8 Digest[FSHA1::DigestSize]{};
++		FSHA1::HMACBuffer(
++			KeyUtf8.Get(), KeyUtf8.Length(),
++			ValueUtf8.Get(), ValueUtf8.Length(), Digest);
++		return BytesToHex(Digest, UE_ARRAY_COUNT(Digest)).ToLower();
++	}
++
++	bool ConstantTimeEquals(const FString& Left, const FString& Right)
++	{
++		if (Left.Len() != Right.Len()) return false;
++		TCHAR Difference = 0;
++		for (int32 Index = 0; Index < Left.Len(); ++Index)
++		{
++			Difference |= Left[Index] ^ Right[Index];
++		}
++		return Difference == 0;
++	}
++
++	bool ParseObject(const FString& Json, TSharedPtr<FJsonObject>& OutObject)
++	{
++		const TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Json);
++		return FJsonSerializer::Deserialize(Reader, OutObject) && OutObject.IsValid();
++	}
++
++	TSharedPtr<FJsonValue> ParseValue(const FString& Json)
++	{
++		TSharedPtr<FJsonValue> Value;
++		const TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Json);
++		return FJsonSerializer::Deserialize(Reader, Value) ? Value : nullptr;
++	}
++
++	TSharedPtr<FJsonObject> CloneObject(const TSharedPtr<FJsonObject>& Source)
++	{
++		TSharedPtr<FJsonObject> Copy = MakeShared<FJsonObject>();
++		if (Source.IsValid())
++		{
++			for (const auto& Pair : Source->Values)
++			{
++				Copy->SetField(FString(Pair.Key), Pair.Value);
++			}
++		}
++		return Copy;
++	}
++
++	FString JsonStringField(const TSharedPtr<FJsonObject>& Object, const TCHAR* Name)
++	{
++		FString Value;
++		if (Object.IsValid()) Object->TryGetStringField(Name, Value);
++		return Value;
++	}
++
++	TArray<FString> JsonStringArray(const TSharedPtr<FJsonObject>& Object, const TCHAR* Name)
++	{
++		TArray<FString> Result;
++		const TArray<TSharedPtr<FJsonValue>>* Values = nullptr;
++		if (!Object.IsValid() || !Object->TryGetArrayField(Name, Values) || !Values) return Result;
++		for (const TSharedPtr<FJsonValue>& Value : *Values)
++		{
++			FString String;
++			if (Value.IsValid() && Value->TryGetString(String)) Result.Add(String);
++		}
++		return Result;
++	}
++
++	bool IsGuid(const FString& Value)
++	{
++		FGuid Parsed;
++		return FGuid::ParseExact(Value, EGuidFormats::DigitsWithHyphens, Parsed)
++			&& Value.Equals(Parsed.ToString(EGuidFormats::DigitsWithHyphens), ESearchCase::IgnoreCase);
++	}
++
++	FString NormalizePackageScope(FString Scope)
++	{
++		Scope.TrimStartAndEndInline();
++		if (Scope.StartsWith(TEXT("object:"), ESearchCase::IgnoreCase))
++		{
++			Scope.RightChopInline(7);
++		}
++		if (!Scope.StartsWith(TEXT("/"))) return {};
++		const FString PackageName = FPackageName::ObjectPathToPackageName(Scope);
++		return FPackageName::IsValidLongPackageName(PackageName, true) ? PackageName : FString();
++	}
++
++	FString ObjectPathForScope(const FString& Scope, const FString& PackageName)
++	{
++		FString Value = Scope;
++		if (Value.StartsWith(TEXT("object:"), ESearchCase::IgnoreCase)) Value.RightChopInline(7);
++		if (Value.Contains(TEXT("."))) return Value;
++		return PackageName + TEXT(".") + FPackageName::GetShortName(PackageName);
++	}
++
++	bool IsSaveToolName(const FString& ToolName)
++	{
++		FString Leaf = ToolName;
++		int32 Dot = INDEX_NONE;
++		if (Leaf.FindLastChar(TEXT('.'), Dot)) Leaf.RightChopInline(Dot + 1);
++		return Leaf.StartsWith(TEXT("Save"), ESearchCase::IgnoreCase);
++	}
++
++	bool ResultIndicatesSuccess(FString RawResult, FString& OutNormalized, FString& OutError)
++	{
++		OutNormalized = RawResult;
++		TSharedPtr<FJsonValue> Value = ParseValue(RawResult);
++		if (Value.IsValid() && Value->Type == EJson::String)
++		{
++			const FString Nested = Value->AsString();
++			if (Nested.StartsWith(TEXT("{")) || Nested.StartsWith(TEXT("[")))
++			{
++				OutNormalized = Nested;
++				Value = ParseValue(Nested);
++			}
++		}
++		if (!Value.IsValid()) return true;
++		if (Value->Type == EJson::Boolean && !Value->AsBool())
++		{
++			OutError = TEXT("Tool returned false");
++			return false;
++		}
++		if (Value->Type == EJson::Object)
++		{
++			const TSharedPtr<FJsonObject> Object = Value->AsObject();
++			bool bSuccess = true;
++			const bool bHasSuccess = Object->TryGetBoolField(TEXT("success"), bSuccess)
++				|| Object->TryGetBoolField(TEXT("bSuccess"), bSuccess);
++			if (bHasSuccess && !bSuccess)
++			{
++				OutError = JsonStringField(Object, TEXT("error"));
++				if (OutError.IsEmpty()) OutError = JsonStringField(Object, TEXT("message"));
++				if (OutError.IsEmpty()) OutError = TEXT("Tool reported failure");
++				return false;
++			}
++		}
++		return true;
++	}
++}
++
++class FUEAgentReliableKernel::FImpl
++{
++public:
++	struct FSnapshot
++	{
++		FString Scope;
++		FString Hash;
++		FString PackageName;
++		FString ObjectPath;
++		FString Error;
++		bool bDirty = false;
++		int64 SaveGeneration = 0;
++		int32 PropertyCount = 0;
++		int32 Bytes = 0;
++		TSharedPtr<FJsonObject> Data;
++	};
++
++	struct FSaveToken
++	{
++		FString Token;
++		FString CommandId;
++		FDateTime ExpiresAt;
++		TArray<FString> Packages;
++		TMap<FString, FString> ScopeHashes;
++		TMap<FString, int64> PackageGenerations;
++		FString ReceiptPath;
++		bool bUsed = false;
++	};
++
++	struct FJob
++	{
++		FString CommandId;
++		FString Digest;
++		FString State = TEXT("accepted");
++		FString TargetType;
++		FString ToolsetName;
++		FString ToolName;
++		TSharedPtr<FJsonObject> Arguments;
++		TArray<FString> Scopes;
++		TArray<FString> Packages;
++		TArray<FString> DirtyPackages;
++		TArray<FString> PreexistingDirtyPackages;
++		TMap<FString, FString> ExpectedSnapshots;
++		TMap<FString, FSnapshot> BeforeSnapshots;
++		TMap<FString, FSnapshot> AfterSnapshots;
++		FString LeaseMode = TEXT("scoped");
++		FString VerifyMode = TEXT("changed_or_noop");
++		FString FaultInjection;
++		FString Outcome = TEXT("pending");
++		FString Effect = TEXT("unknown");
++		FString Verification = TEXT("pending");
++		FString Persistence = TEXT("not_applicable");
++		FString ErrorCode;
++		FString ErrorMessage;
++		FString RawResult;
++		FString SaveToken;
++		FDateTime AcceptedAt;
++		FDateTime StartedAt;
++		FDateTime FinishedAt;
++		double DeadlineSeconds = 0.0;
++		int32 Sequence = 0;
++		bool bCancelRequested = false;
++		bool bDeadlineReported = false;
++		bool bReceiptInterrupted = false;
++		bool bAllowPreexistingDirtySave = false;
++		bool bUnexpectedSave = false;
++		bool bUnexpectedDirty = false;
++		TArray<FString> UnexpectedSavedPackages;
++		TArray<FString> UnexpectedDirtyPackages;
++
++		bool bPerformanceProfile = false;
++		int32 WarmupFrames = 30;
++		int32 SampleFrames = 120;
++		int32 ElapsedProfileFrames = 0;
++		float TargetFPS = 60.0f;
++		float HitchThresholdMs = 50.0f;
++		FString ProfileStartResult;
++		FString ProfileCaptureResult;
++	};
++
++	void Initialize()
++	{
++		if (bInitialized.Load()) return;
++		bInitialized.Store(true);
++		bool bConfiguredEnabled = false;
++		if (GConfig)
++		{
++			GConfig->GetBool(UEAgentReliable::ConfigSection, TEXT("Enabled"), bConfiguredEnabled, GEditorIni);
++			GConfig->GetInt(UEAgentReliable::ConfigSection, TEXT("SaveTokenLifetimeSeconds"), SaveTokenLifetimeSeconds, GEditorIni);
++			GConfig->GetBool(UEAgentReliable::ConfigSection, TEXT("EnableFaultInjection"), bFaultInjectionEnabled, GEditorIni);
++		}
++		bEnabled.Store(bConfiguredEnabled);
++		SaveTokenLifetimeSeconds = FMath::Clamp(SaveTokenLifetimeSeconds, 30, 3600);
++		EditorEpoch = FGuid::NewGuid().ToString(EGuidFormats::DigitsWithHyphens);
++		TokenSecret = FGuid::NewGuid().ToString(EGuidFormats::Digits)
++			+ FGuid::NewGuid().ToString(EGuidFormats::Digits);
++
++		OperationsDir = FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir() / TEXT("UEAgent/Operations"));
++		EvidenceDir = FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir() / TEXT("UEAgent/Evidence"));
++		InboxDir = FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir() / TEXT("UEAgent/Inbox"));
++		IFileManager::Get().MakeDirectory(*OperationsDir, true);
++		IFileManager::Get().MakeDirectory(*EvidenceDir, true);
++		IFileManager::Get().MakeDirectory(*InboxDir, true);
++
++		BuildReadOnlyAllowlist();
++		PackageSavedHandle = UPackage::PackageSavedWithContextEvent.AddRaw(this, &FImpl::HandlePackageSaved);
++		PackageDirtyHandle = UPackage::PackageDirtyStateChangedEvent.AddRaw(this, &FImpl::HandlePackageDirty);
++		TickerHandle = FTSTicker::GetCoreTicker().AddTicker(
++			FTickerDelegate::CreateRaw(this, &FImpl::Tick), 0.0f);
++
++		RecoverIncomplete(true);
++		WriteStateFile();
++	}
++
++	void Shutdown()
++	{
++		if (!bInitialized.Load()) return;
++		bInitialized.Store(false);
++		if (TickerHandle.IsValid())
++		{
++			FTSTicker::GetCoreTicker().RemoveTicker(TickerHandle);
++			TickerHandle.Reset();
++		}
++		if (PackageSavedHandle.IsValid())
++		{
++			UPackage::PackageSavedWithContextEvent.Remove(PackageSavedHandle);
++			PackageSavedHandle.Reset();
++		}
++		if (PackageDirtyHandle.IsValid())
++		{
++			UPackage::PackageDirtyStateChangedEvent.Remove(PackageDirtyHandle);
++			PackageDirtyHandle.Reset();
++		}
++		if (!ActiveJobId.IsEmpty())
++		{
++			if (TSharedPtr<FJob>* Job = Jobs.Find(ActiveJobId))
++			{
++				(*Job)->State = TEXT("terminal");
++				(*Job)->Outcome = TEXT("result_unknown");
++				(*Job)->Effect = TEXT("unknown");
++				(*Job)->Verification = TEXT("not_run");
++				(*Job)->ErrorCode = TEXT("EDITOR_SHUTDOWN");
++				(*Job)->ErrorMessage = TEXT("Editor shut down while the command was active");
++				Finalize(*(*Job));
++			}
++		}
++		Queue.Reset();
++		ActiveJobId.Reset();
++		ActiveLeases.Reset();
++		bMutationActive.Store(false);
++		bPerformanceFrozen.Store(false);
++		bManagedSave = false;
++		ManagedSavePackages.Reset();
++		UnexpectedManagedSavePackages.Reset();
++	}
++
++	bool IsEnabled() const { return bEnabled.Load(); }
++	bool IsPerformanceFrozen() const { return bPerformanceFrozen.Load(); }
++
++	bool Authorize(const FString& ToolName, const TSharedPtr<FJsonObject>& Arguments, FString& OutError) const
++	{
++		if (!bEnabled.Load()) return true;
++		if (!bInitialized.Load())
++		{
++			OutError = TEXT("UEAgent reliable profile is enabled but its editor kernel is unavailable");
++			return false;
++		}
++
++		const FString LowerTool = ToolName.ToLower();
++		const bool bControlTool = LowerTool.StartsWith(TEXT("ueagent_"));
++		if (IsPerformanceFrozen())
++		{
++			const bool bFreezeSafe = LowerTool == TEXT("ueagent_state")
++				|| LowerTool == TEXT("ueagent_get_job")
++				|| LowerTool == TEXT("ueagent_cancel");
++			if (!bFreezeSafe)
++			{
++				OutError = TEXT("PERFORMANCE_FROZEN: a deterministic GPU profile owns the editor; poll or cancel that job");
++				return false;
++			}
++		}
++		if (bControlTool) return true;
++		if (LowerTool == TEXT("list_toolsets") || LowerTool == TEXT("describe_toolset")) return true;
++		if (bMutationActive.Load())
++		{
++			OutError = TEXT("EDITOR_BUSY: authoritative domain reads are paused while a mutation owns the editor; use ueagent_state or poll its job");
++			return false;
++		}
++
++		FString EffectiveName = ToolName;
++		if (LowerTool == TEXT("call_tool") && Arguments.IsValid())
++		{
++			const FString NestedTool = UEAgentReliable::JsonStringField(Arguments, TEXT("tool_name"));
++			const FString Toolset = UEAgentReliable::JsonStringField(Arguments, TEXT("toolset_name"));
++			EffectiveName = Toolset.IsEmpty() ? NestedTool : Toolset + TEXT(".") + NestedTool;
++			const FString NestedLower = EffectiveName.ToLower();
++			if (NestedLower.StartsWith(TEXT("ueagent_"))
++				|| NestedLower == TEXT("list_toolsets")
++				|| NestedLower == TEXT("describe_toolset"))
++			{
++				return true;
++			}
++		}
++
++		if (ReadOnlyTools.Contains(EffectiveName.ToLower())) return true;
++		OutError = FString::Printf(
++			TEXT("RELIABLE_COMMAND_REQUIRED: '%s' is not an explicitly read-only tool. Submit it through ueagent_submit with command_id, scopes, and OCC expectations; saves require ueagent_save."),
++			*EffectiveName);
++		return false;
++	}
++
++	TSharedPtr<FJsonObject> Invoke(const FString& Operation, const TSharedPtr<FJsonObject>& Parameters)
++	{
++		if (Operation == TEXT("ueagent_state")) return State();
++		if (!bEnabled.Load()) return UEAgentReliable::Error(TEXT("RELIABLE_PROFILE_DISABLED"), TEXT("Enable [UEAgent.Reliable] Enabled=True in DefaultEditor.ini"));
++		if (Operation == TEXT("ueagent_submit")) return Submit(Parameters, false);
++		if (Operation == TEXT("ueagent_profile_gpu")) return Submit(Parameters, true);
++		if (Operation == TEXT("ueagent_get_job")) return GetJob(Parameters);
++		if (Operation == TEXT("ueagent_cancel")) return Cancel(Parameters);
++		if (Operation == TEXT("ueagent_snapshot")) return SnapshotRequest(Parameters);
++		if (Operation == TEXT("ueagent_batch_read")) return BatchRead(Parameters);
++		if (Operation == TEXT("ueagent_save")) return Save(Parameters);
++		if (Operation == TEXT("ueagent_recover")) return RecoverIncomplete(false);
++		return UEAgentReliable::Error(TEXT("UNKNOWN_OPERATION"), Operation);
++	}
++
++private:
++	void BuildReadOnlyAllowlist()
++	{
++		// These entries were reviewed as state-only calls. Anything absent is a mutation by default.
++		static const TCHAR* BuiltIn[] = {
++			TEXT("VibeUE.ActorService.GetActorLockLocation"),
++			TEXT("VibeUE.ActorService.GetAbsoluteTransform"),
++			TEXT("VibeUE.ActorService.GetPreserveScaleRatio"),
++			TEXT("VibeUE.ActorService.CalculateActorView"),
++			TEXT("VibeUE.ActorService.GetAllProperties"),
++			TEXT("VibeUE.MaterialNodeService.GetMaterialDiagnostics"),
++			TEXT("VibeUE.MaterialNodeService.DiscoverTypes"),
++			TEXT("VibeUE.MaterialNodeService.GetCategories"),
++			TEXT("VibeUE.MaterialNodeService.ListExpressions"),
++			TEXT("VibeUE.MaterialNodeService.GetExpressionDetails"),
++			TEXT("VibeUE.MaterialNodeService.GetExpressionPins"),
++			TEXT("VibeUE.MaterialNodeService.ListConnections"),
++			TEXT("VibeUE.MaterialNodeService.GetExpressionProperty"),
++			TEXT("VibeUE.MaterialNodeService.ListExpressionProperties"),
++			TEXT("VibeUE.MaterialNodeService.GetOutputProperties"),
++			TEXT("VibeUE.MaterialNodeService.GetOutputConnections"),
++			TEXT("VibeUE.MaterialNodeService.ExportMaterialGraph"),
++			TEXT("VibeUE.MaterialNodeService.ExportMaterialGraphSummary"),
++			TEXT("VibeUE.MaterialNodeService.CompareMaterialGraphs"),
++			TEXT("VibeUE.MaterialNodeService.ExportFunctionGraph"),
++			TEXT("VibeUE.MaterialNodeService.GetFunctionInfo"),
++			TEXT("VibeUE.NiagaraService.CompareSystems"),
++			TEXT("VibeUE.NiagaraService.ListRapidIterationParams"),
++			TEXT("VibeUE.NiagaraService.GetEmitterLifecycle"),
++			TEXT("VibeUE.NiagaraEmitterService.GetColorCurveKeys"),
++			TEXT("VibeUE.NiagaraEmitterService.GetRapidIterationParameters"),
++			TEXT("VibeUE.NiagaraScratchPadService.GetScratchScriptPath"),
++			TEXT("VibeUE.NiagaraScratchPadService.ListScratchModules"),
++			TEXT("VibeUE.NiagaraScratchPadService.ListNodes"),
++			TEXT("VibeUE.NiagaraScratchPadService.GetNodePins"),
++			TEXT("VibeUE.NiagaraScratchPadService.ListConnections"),
++			TEXT("VibeUE.NiagaraScratchPadService.GetCustomHlslCode"),
++			TEXT("VibeUE.NiagaraScratchPadService.GetCompileMessages"),
++			TEXT("VibeUE.PerformanceService.FrameTiming"),
++			TEXT("VibeUE.PerformanceService.ReadMonitor"),
++			TEXT("VibeUE.PerformanceService.GetTraceStatus"),
++			TEXT("VibeUE.PerformanceService.Analyse"),
++			TEXT("VibeUE.PerformanceService.GetStandaloneStatus"),
++		};
++		for (const TCHAR* Name : BuiltIn) ReadOnlyTools.Add(FString(Name).ToLower());
++
++		TArray<FString> Configured;
++		if (GConfig) GConfig->GetArray(UEAgentReliable::ConfigSection, TEXT("ReadOnlyTools"), Configured, GEditorIni);
++		for (FString Name : Configured)
++		{
++			Name.TrimStartAndEndInline();
++			if (!Name.IsEmpty()) ReadOnlyTools.Add(Name.ToLower());
++		}
++	}
++
++	TSharedPtr<FJsonObject> State() const
++	{
++		TSharedPtr<FJsonObject> Result = UEAgentReliable::Ok();
++		Result->SetStringField(TEXT("protocol_version"), UEAgentReliable::ProtocolVersion);
++		Result->SetBoolField(TEXT("enabled"), bEnabled.Load());
++		Result->SetStringField(TEXT("editor_epoch"), EditorEpoch);
++		Result->SetNumberField(TEXT("editor_pid"), static_cast<double>(FPlatformProcess::GetCurrentProcessId()));
++		Result->SetStringField(TEXT("project"), FApp::GetProjectName());
++		Result->SetStringField(TEXT("engine_version"), FEngineVersion::Current().ToString());
++		Result->SetStringField(TEXT("active_command_id"), ActiveJobId);
++		Result->SetStringField(TEXT("last_receipt_id"), LastReceiptId);
++		Result->SetBoolField(TEXT("performance_frozen"), IsPerformanceFrozen());
++
++		TArray<TSharedPtr<FJsonValue>> Queued;
++		for (const FString& Id : Queue) Queued.Add(MakeShared<FJsonValueString>(Id));
++		Result->SetArrayField(TEXT("queued_command_ids"), Queued);
++
++		TArray<TSharedPtr<FJsonValue>> Leases;
++		for (const auto& Pair : ActiveLeases)
++		{
++			TSharedPtr<FJsonObject> Lease = MakeShared<FJsonObject>();
++			Lease->SetStringField(TEXT("scope"), Pair.Key);
++			Lease->SetStringField(TEXT("command_id"), Pair.Value);
++			Leases.Add(MakeShared<FJsonValueObject>(Lease));
++		}
++		Result->SetArrayField(TEXT("leases"), Leases);
++
++		TArray<FString> DirtyNames;
++		int32 DirtyPackageCount = 0;
++		for (TObjectIterator<UPackage> It; It; ++It)
++		{
++			UPackage* Package = *It;
++			if (Package && Package->IsDirty()
++				&& Package != GetTransientPackage()
++				&& !Package->HasAnyPackageFlags(PKG_CompiledIn)
++				&& FPackageName::IsValidLongPackageName(Package->GetName(), true))
++			{
++				++DirtyPackageCount;
++				if (DirtyNames.Num() < 256) DirtyNames.Add(Package->GetName());
++			}
++		}
++		DirtyNames.Sort();
++		TArray<TSharedPtr<FJsonValue>> Dirty;
++		for (const FString& Name : DirtyNames) Dirty.Add(MakeShared<FJsonValueString>(Name));
++		Result->SetArrayField(TEXT("dirty_packages"), Dirty);
++		Result->SetNumberField(TEXT("dirty_package_count"), DirtyPackageCount);
++		Result->SetBoolField(TEXT("dirty_packages_truncated"), DirtyPackageCount > DirtyNames.Num());
++		Result->SetNumberField(TEXT("job_count"), Jobs.Num());
++		Result->SetNumberField(TEXT("read_only_tool_count"), ReadOnlyTools.Num());
++		return Result;
++	}
++
++	TSharedPtr<FJsonObject> Submit(const TSharedPtr<FJsonObject>& Parameters, bool bPerformance)
++	{
++		if (!Parameters.IsValid()) return UEAgentReliable::Error(TEXT("INVALID_REQUEST"), TEXT("Parameters are required"));
++		const FString CommandId = UEAgentReliable::JsonStringField(Parameters, TEXT("command_id"));
++		if (!UEAgentReliable::IsGuid(CommandId))
++		{
++			return UEAgentReliable::Error(TEXT("INVALID_COMMAND_ID"), TEXT("command_id must be a canonical hyphenated UUID"));
++		}
++
++		TSharedPtr<FJob> Job = MakeShared<FJob>();
++		Job->CommandId = CommandId.ToLower();
++		Job->AcceptedAt = FDateTime::UtcNow();
++		Job->bPerformanceProfile = bPerformance;
++		Job->FaultInjection = UEAgentReliable::JsonStringField(Parameters, TEXT("fault_injection")).ToLower();
++		if (!Job->FaultInjection.IsEmpty() && !bFaultInjectionEnabled)
++		{
++			return UEAgentReliable::Error(TEXT("FAULT_INJECTION_DISABLED"), TEXT("EnableFaultInjection is false"));
++		}
++		if (!Job->FaultInjection.IsEmpty()
++			&& Job->FaultInjection != TEXT("after_accept")
++			&& Job->FaultInjection != TEXT("before_execute")
++			&& Job->FaultInjection != TEXT("after_execute")
++			&& Job->FaultInjection != TEXT("before_receipt"))
++		{
++			return UEAgentReliable::Error(TEXT("INVALID_FAULT_INJECTION"), TEXT("fault_injection must be after_accept, before_execute, after_execute, or before_receipt"));
++		}
++
++		if (bPerformance)
++		{
++			Job->TargetType = TEXT("profile_gpu");
++			Job->ToolName = TEXT("ProfileGPU");
++			Job->LeaseMode = TEXT("performance");
++			Job->VerifyMode = TEXT("success");
++			Parameters->TryGetNumberField(TEXT("warmup_frames"), Job->WarmupFrames);
++			Parameters->TryGetNumberField(TEXT("sample_frames"), Job->SampleFrames);
++			double Number = Job->TargetFPS;
++			if (Parameters->TryGetNumberField(TEXT("target_fps"), Number)) Job->TargetFPS = static_cast<float>(Number);
++			Number = Job->HitchThresholdMs;
++			if (Parameters->TryGetNumberField(TEXT("hitch_threshold_ms"), Number)) Job->HitchThresholdMs = static_cast<float>(Number);
++			Job->WarmupFrames = FMath::Clamp(Job->WarmupFrames, 0, 600);
++			Job->SampleFrames = FMath::Clamp(Job->SampleFrames, 30, 3600);
++			Job->TargetFPS = FMath::Clamp(Job->TargetFPS, 1.0f, 1000.0f);
++			Job->HitchThresholdMs = FMath::Clamp(Job->HitchThresholdMs, 1.0f, 10000.0f);
++		}
++		else
++		{
++			Job->TargetType = UEAgentReliable::JsonStringField(Parameters, TEXT("target_type")).ToLower();
++			Job->ToolsetName = UEAgentReliable::JsonStringField(Parameters, TEXT("toolset_name"));
++			Job->ToolName = UEAgentReliable::JsonStringField(Parameters, TEXT("tool_name"));
++			Job->LeaseMode = UEAgentReliable::JsonStringField(Parameters, TEXT("lease_mode")).ToLower();
++			Job->VerifyMode = UEAgentReliable::JsonStringField(Parameters, TEXT("verify")).ToLower();
++			Parameters->TryGetBoolField(TEXT("allow_preexisting_dirty_save"), Job->bAllowPreexistingDirtySave);
++			if (Job->TargetType.IsEmpty()) Job->TargetType = TEXT("toolset");
++			if (Job->LeaseMode.IsEmpty()) Job->LeaseMode = TEXT("scoped");
++			if (Job->VerifyMode.IsEmpty()) Job->VerifyMode = TEXT("changed_or_noop");
++			if (Job->ToolName.IsEmpty()
++				|| (Job->TargetType != TEXT("toolset") && Job->TargetType != TEXT("vibeue"))
++				|| (Job->TargetType == TEXT("toolset") && Job->ToolsetName.IsEmpty()))
++			{
++				return UEAgentReliable::Error(TEXT("INVALID_TARGET"), TEXT("target_type, toolset_name (for toolset), and tool_name are required"));
++			}
++			if (Job->VerifyMode != TEXT("changed_or_noop")
++				&& Job->VerifyMode != TEXT("changed")
++				&& Job->VerifyMode != TEXT("unchanged")
++				&& Job->VerifyMode != TEXT("success"))
++			{
++				return UEAgentReliable::Error(TEXT("INVALID_VERIFY_MODE"), TEXT("verify must be changed_or_noop, changed, unchanged, or success"));
++			}
++			if (UEAgentReliable::IsSaveToolName(Job->ToolName))
++			{
++				return UEAgentReliable::Error(TEXT("SAVE_REQUIRES_TOKEN"), TEXT("Direct save/apply tools are disabled; mutate first, then call ueagent_save with the issued token"));
++			}
++			if (Job->TargetType == TEXT("vibeue"))
++			{
++				const FToolMetadata* Tool = FToolRegistry::Get().FindTool(Job->ToolName);
++				if (!Tool) return UEAgentReliable::Error(TEXT("TOOL_NOT_FOUND"), Job->ToolName);
++				if (Tool->Category.Equals(TEXT("Python"), ESearchCase::IgnoreCase))
++				{
++					return UEAgentReliable::Error(TEXT("PYTHON_MUTATION_DISABLED"), TEXT("Python is not a reliable mutation transport; use a typed ToolsetRegistry service"));
++				}
++			}
++
++			const TSharedPtr<FJsonObject>* Arguments = nullptr;
++			if (Parameters->TryGetObjectField(TEXT("arguments"), Arguments) && Arguments && Arguments->IsValid())
++			{
++				Job->Arguments = UEAgentReliable::CloneObject(*Arguments);
++			}
++			else
++			{
++				Job->Arguments = MakeShared<FJsonObject>();
++			}
++			if (TSharedPtr<FJsonObject> AttachmentError = MaterializeAttachments(Parameters, *Job); AttachmentError.IsValid())
++			{
++				return AttachmentError;
++			}
++
++			Job->Scopes = UEAgentReliable::JsonStringArray(Parameters, TEXT("scopes"));
++			if (Job->Scopes.Num() > UEAgentReliable::MaxBatchItems)
++			{
++				return UEAgentReliable::Error(TEXT("TOO_MANY_SCOPES"), TEXT("a command may declare at most 64 scopes"));
++			}
++			Job->Scopes.Sort();
++			for (int32 Index = Job->Scopes.Num() - 1; Index > 0; --Index)
++			{
++				if (Job->Scopes[Index] == Job->Scopes[Index - 1]) Job->Scopes.RemoveAt(Index);
++			}
++			if (Job->Scopes.IsEmpty() && Job->LeaseMode != TEXT("exclusive"))
++			{
++				return UEAgentReliable::Error(TEXT("SCOPES_REQUIRED"), TEXT("Mutations need canonical scopes; use lease_mode=exclusive only when the target cannot be scoped"));
++			}
++			if (Job->Scopes.IsEmpty() && Job->VerifyMode != TEXT("success"))
++			{
++				return UEAgentReliable::Error(TEXT("VERIFY_REQUIRES_SCOPES"), TEXT("unscoped exclusive commands can only use verify=success"));
++			}
++			if (Job->LeaseMode != TEXT("scoped") && Job->LeaseMode != TEXT("exclusive"))
++			{
++				return UEAgentReliable::Error(TEXT("INVALID_LEASE_MODE"), TEXT("lease_mode must be scoped or exclusive"));
++			}
++			for (const FString& Scope : Job->Scopes)
++			{
++				if (!Scope.StartsWith(TEXT("editor:"), ESearchCase::IgnoreCase))
++				{
++					const FString PackageName = UEAgentReliable::NormalizePackageScope(Scope);
++					if (PackageName.IsEmpty()) return UEAgentReliable::Error(TEXT("INVALID_SCOPE"), Scope);
++					Job->Packages.AddUnique(PackageName);
++				}
++			}
++			Job->Packages.Sort();
++
++			const TSharedPtr<FJsonObject>* Expected = nullptr;
++			if (Parameters->TryGetObjectField(TEXT("expected_snapshots"), Expected) && Expected && Expected->IsValid())
++			{
++				for (const auto& Pair : (*Expected)->Values)
++				{
++					if (!Job->Scopes.Contains(FString(Pair.Key)))
++					{
++						return UEAgentReliable::Error(TEXT("EXPECTED_SCOPE_NOT_DECLARED"), FString(Pair.Key));
++					}
++					FString Hash;
++					if (!Pair.Value.IsValid() || !Pair.Value->TryGetString(Hash) || Hash.Len() != 64)
++					{
++						return UEAgentReliable::Error(TEXT("INVALID_EXPECTED_SNAPSHOT"), FString(Pair.Key));
++					}
++					Job->ExpectedSnapshots.Add(FString(Pair.Key), Hash.ToLower());
++				}
++			}
++
++			const FString ArgumentsJson = UEAgentReliable::CanonicalJson(Job->Arguments);
++			const FTCHARToUTF8 ArgumentsUtf8(*ArgumentsJson);
++			if (ArgumentsUtf8.Length() > UEAgentReliable::MaxCommandBytes)
++			{
++				return UEAgentReliable::Error(TEXT("COMMAND_TOO_LARGE"), TEXT("canonical arguments exceed 8 MiB"));
++			}
++			const FString ExpectedPayloadHash = UEAgentReliable::JsonStringField(Parameters, TEXT("payload_sha256")).ToLower();
++			if (ArgumentsUtf8.Length() >= UEAgentReliable::LargePayloadHashThreshold && ExpectedPayloadHash.IsEmpty())
++			{
++				return UEAgentReliable::Error(TEXT("PAYLOAD_HASH_REQUIRED"), TEXT("arguments >= 64 KiB require payload_sha256 (including large HLSL)"));
++			}
++			if (!ExpectedPayloadHash.IsEmpty()
++				&& !UEAgentReliable::ConstantTimeEquals(ExpectedPayloadHash, UEAgentReliable::Sha256String(ArgumentsJson)))
++			{
++				return UEAgentReliable::Error(TEXT("PAYLOAD_HASH_MISMATCH"), TEXT("payload_sha256 does not match canonical arguments"));
++			}
++		}
++
++		double TimeoutMs = bPerformance ? 300000.0 : 120000.0;
++		Parameters->TryGetNumberField(TEXT("timeout_ms"), TimeoutMs);
++		TimeoutMs = FMath::Clamp(TimeoutMs, 1000.0, 3600000.0);
++		Job->DeadlineSeconds = FPlatformTime::Seconds() + TimeoutMs / 1000.0;
++
++		TSharedPtr<FJsonObject> DigestObject = UEAgentReliable::CloneObject(Parameters);
++		DigestObject->RemoveField(TEXT("payload_sha256"));
++		Job->Digest = UEAgentReliable::Sha256String(UEAgentReliable::CanonicalJson(DigestObject));
++		if (const TSharedPtr<FJob>* Existing = Jobs.Find(Job->CommandId))
++		{
++			if ((*Existing)->Digest != Job->Digest)
++			{
++				return UEAgentReliable::Error(TEXT("COMMAND_ID_REUSED"), TEXT("command_id already belongs to a different digest"));
++			}
++			return JobJson(*(*Existing));
++		}
++		if (FPaths::FileExists(ReceiptPath(Job->CommandId)))
++		{
++			TSharedPtr<FJsonObject> Receipt = LoadObjectFile(ReceiptPath(Job->CommandId));
++			if (Receipt.IsValid() && UEAgentReliable::JsonStringField(Receipt, TEXT("command_digest")) == Job->Digest)
++			{
++				Receipt->SetBoolField(TEXT("replayed"), true);
++				return Receipt;
++			}
++			return UEAgentReliable::Error(TEXT("COMMAND_ID_REUSED"), TEXT("an immutable receipt exists for another digest"));
++		}
++		if (Queue.Num() >= UEAgentReliable::MaxQueuedJobs)
++		{
++			return UEAgentReliable::Error(TEXT("QUEUE_FULL"), TEXT("the editor command queue already contains 256 jobs"));
++		}
++
++		Jobs.Add(Job->CommandId, Job);
++		Transition(*Job, TEXT("accepted"), TEXT("command accepted and durably journaled"), true);
++		if (Job->FaultInjection == TEXT("after_accept"))
++		{
++			FailBeforeEffect(*Job, TEXT("FAULT_AFTER_ACCEPT"), TEXT("Injected failure after durable acceptance"));
++			return GetReceipt(Parameters);
++		}
++		Job->State = TEXT("queued");
++		Transition(*Job, TEXT("queued"), TEXT("waiting for compatible editor lease"));
++		Queue.Add(Job->CommandId);
++		WriteStateFile();
++		return JobJson(*Job);
++	}
++
++	TSharedPtr<FJsonObject> MaterializeAttachments(const TSharedPtr<FJsonObject>& Parameters, FJob& Job)
++	{
++		const TArray<TSharedPtr<FJsonValue>>* Attachments = nullptr;
++		if (!Parameters->TryGetArrayField(TEXT("attachments"), Attachments) || !Attachments) return nullptr;
++		int64 TotalBytes = 0;
++		for (const TSharedPtr<FJsonValue>& Value : *Attachments)
++		{
++			if (!Value.IsValid() || Value->Type != EJson::Object)
++				return UEAgentReliable::Error(TEXT("INVALID_ATTACHMENT"), TEXT("attachment must be an object"));
++			const TSharedPtr<FJsonObject> Attachment = Value->AsObject();
++			const FString Argument = UEAgentReliable::JsonStringField(Attachment, TEXT("argument"));
++			const FString RelativePath = UEAgentReliable::JsonStringField(Attachment, TEXT("path"));
++			const FString ExpectedHash = UEAgentReliable::JsonStringField(Attachment, TEXT("sha256")).ToLower();
++			if (Argument.IsEmpty() || RelativePath.IsEmpty() || ExpectedHash.Len() != 64)
++				return UEAgentReliable::Error(TEXT("INVALID_ATTACHMENT"), TEXT("argument, path, and sha256 are required"));
++
++			FString FullPath = FPaths::ConvertRelativePathToFull(InboxDir / RelativePath);
++			FPaths::NormalizeFilename(FullPath);
++			FString NormalizedInbox = InboxDir;
++			FPaths::NormalizeFilename(NormalizedInbox);
++			if (!FPaths::IsUnderDirectory(FullPath, NormalizedInbox))
++				return UEAgentReliable::Error(TEXT("ATTACHMENT_PATH_DENIED"), TEXT("attachments must stay under Saved/UEAgent/Inbox"));
++
++			TArray<uint8> Bytes;
++			if (!FFileHelper::LoadFileToArray(Bytes, *FullPath))
++				return UEAgentReliable::Error(TEXT("ATTACHMENT_NOT_FOUND"), RelativePath);
++			TotalBytes += Bytes.Num();
++			if (TotalBytes > UEAgentReliable::MaxCommandBytes)
++				return UEAgentReliable::Error(TEXT("ATTACHMENT_TOO_LARGE"), TEXT("combined attachments exceed 8 MiB"));
++			if (!UEAgentReliable::ConstantTimeEquals(ExpectedHash, UEAgentReliable::Sha256Bytes(Bytes.GetData(), Bytes.Num())))
++				return UEAgentReliable::Error(TEXT("ATTACHMENT_HASH_MISMATCH"), RelativePath);
++			if (Bytes.Contains(0))
++				return UEAgentReliable::Error(TEXT("ATTACHMENT_ENCODING"), TEXT("attachments must be UTF-8 text without NUL bytes"));
++			const FUTF8ToTCHAR Converted(reinterpret_cast<const ANSICHAR*>(Bytes.GetData()), Bytes.Num());
++			const FTCHARToUTF8 RoundTrip(Converted.Get(), Converted.Length());
++			if (RoundTrip.Length() != Bytes.Num()
++				|| FMemory::Memcmp(RoundTrip.Get(), Bytes.GetData(), Bytes.Num()) != 0)
++			{
++				return UEAgentReliable::Error(TEXT("ATTACHMENT_ENCODING"), TEXT("attachment is not canonical UTF-8"));
++			}
++			Job.Arguments->SetStringField(Argument, FString(Converted.Length(), Converted.Get()));
++		}
++		return nullptr;
++	}
++
++	bool Tick(float)
++	{
++		if (!bInitialized.Load() || !bEnabled.Load()) return true;
++		if (!ActiveJobId.IsEmpty())
++		{
++			TSharedPtr<FJob>* Found = Jobs.Find(ActiveJobId);
++			if (!Found)
++			{
++				ReleaseActive();
++				return true;
++			}
++			FJob& Job = *(*Found);
++			if (Job.bPerformanceProfile) TickPerformance(Job);
++			else if (Job.State == TEXT("waiting_external")
++				&& !Job.bDeadlineReported
++				&& FPlatformTime::Seconds() > Job.DeadlineSeconds)
++			{
++				Job.bDeadlineReported = true;
++				Job.ErrorCode = TEXT("DEADLINE_EXCEEDED");
++				Job.ErrorMessage = TEXT("Underlying tool has not completed; lease remains held to avoid overlapping unknown effects");
++				Transition(Job, TEXT("waiting_external"), Job.ErrorMessage);
++			}
++			return true;
++		}
++
++		if (!Queue.IsEmpty())
++		{
++			// ponytail: one game-thread writer is the safety ceiling; split by scope only when tool execution itself becomes isolated.
++			const FString Id = Queue[0];
++			Queue.RemoveAt(0);
++			if (TSharedPtr<FJob>* Job = Jobs.Find(Id)) Start(*(*Job));
++		}
++		return true;
++	}
++
++	void Start(FJob& Job)
++	{
++		ActiveJobId = Job.CommandId;
++		bMutationActive.Store(true);
++		bPerformanceFrozen.Store(Job.bPerformanceProfile);
++		if (Job.LeaseMode == TEXT("exclusive") || Job.bPerformanceProfile)
++			ActiveLeases.Add(TEXT("editor:*"), Job.CommandId);
++		else
++			for (const FString& Scope : Job.Scopes) ActiveLeases.Add(Scope, Job.CommandId);
++
++		Job.State = TEXT("preflight");
++		Job.StartedAt = FDateTime::UtcNow();
++		Transition(Job, TEXT("preflight"), TEXT("lease acquired; collecting authoritative editor snapshots"));
++		if (Job.FaultInjection == TEXT("before_execute"))
++		{
++			FailBeforeEffect(Job, TEXT("FAULT_BEFORE_EXECUTE"), TEXT("Injected failure before mutation"));
++			return;
++		}
++		if (!Job.bPerformanceProfile && !Preflight(Job)) return;
++
++		Job.State = TEXT("running");
++		Transition(Job, TEXT("running"), TEXT("dispatching on the editor game thread"));
++		if (Job.bPerformanceProfile)
++		{
++			UEAgentReliable::FManagedMutationScope Managed;
++			Job.ProfileStartResult = UPerformanceService::StartMonitor(
++				Job.TargetFPS, Job.WarmupFrames, Job.SampleFrames, Job.HitchThresholdMs);
++			FString Normalized, Error;
++			if (!UEAgentReliable::ResultIndicatesSuccess(Job.ProfileStartResult, Normalized, Error))
++			{
++				Complete(Job, false, Normalized, TEXT("PROFILE_START_FAILED"), Error);
++				return;
++			}
++			Job.ElapsedProfileFrames = 0;
++			return;
++		}
++
++		if (Job.TargetType == TEXT("vibeue"))
++		{
++			TMap<FString, FString> Arguments;
++			for (const auto& Pair : Job.Arguments->Values)
++			{
++				if (Pair.Value.IsValid() && Pair.Value->Type == EJson::String)
++					Arguments.Add(FString(Pair.Key), Pair.Value->AsString());
++				else
++					Arguments.Add(FString(Pair.Key), UEAgentReliable::CanonicalJson(Pair.Value));
++			}
++			FString Raw;
++			{
++				UEAgentReliable::FManagedMutationScope Managed;
++				Raw = FToolRegistry::Get().ExecuteTool(Job.ToolName, Arguments);
++			}
++			FString Normalized, Error;
++			const bool bSuccess = UEAgentReliable::ResultIndicatesSuccess(Raw, Normalized, Error);
++			Complete(Job, bSuccess, Normalized, bSuccess ? FString() : TEXT("TOOL_REPORTED_FAILURE"), Error);
++			return;
++		}
++
++		FString ArgumentsJson = UEAgentReliable::CanonicalJson(Job.Arguments);
++		UToolCallAsyncResultString* AsyncResult = nullptr;
++		{
++			UEAgentReliable::FManagedMutationScope Managed;
++			AsyncResult = UToolsetRegistry::ExecuteTool(Job.ToolsetName, Job.ToolName, ArgumentsJson);
++		}
++		if (!AsyncResult)
++		{
++			Complete(Job, false, FString(), TEXT("DISPATCH_FAILED"), TEXT("ToolsetRegistry returned no async result"));
++			return;
++		}
++		Job.State = TEXT("waiting_external");
++		Transition(Job, TEXT("waiting_external"), TEXT("ToolsetRegistry accepted the typed call"));
++		TStrongObjectPtr<UToolCallAsyncResultFutureHandler> Handler =
++			UToolCallAsyncResultFutureHandler::Create(AsyncResult);
++		Handler->GetValueAsJson().Next(
++			[this, CommandId = Job.CommandId](UE::ToolsetRegistry::FJsonValueOrError&& Result)
++			{
++				bool bSuccess = !Result.HasError();
++				FString Raw;
++				FString ErrorMessage;
++				if (Result.HasError())
++				{
++					ErrorMessage = Result.GetError();
++				}
++				else if (Result.GetValue().IsValid())
++				{
++					if (!Result.GetValue()->TryGetString(Raw)) Raw = UEAgentReliable::CanonicalJson(Result.GetValue());
++				}
++				AsyncTask(ENamedThreads::GameThread,
++					[this, CommandId, bSuccess, Raw = MoveTemp(Raw), ErrorMessage = MoveTemp(ErrorMessage)]()
++					{
++						if (!bInitialized.Load()) return;
++						TSharedPtr<FJob>* Found = Jobs.Find(CommandId);
++						if (!Found || ActiveJobId != CommandId) return;
++						FString Normalized, SemanticError;
++						const bool bSemanticSuccess = bSuccess
++							&& UEAgentReliable::ResultIndicatesSuccess(Raw, Normalized, SemanticError);
++						Complete(*(*Found), bSemanticSuccess, Normalized,
++							bSuccess ? (bSemanticSuccess ? FString() : TEXT("TOOL_REPORTED_FAILURE")) : TEXT("TOOLSET_ERROR"),
++							bSuccess ? SemanticError : ErrorMessage);
++					});
++			});
++	}
++
++	bool Preflight(FJob& Job)
++	{
++		for (const FString& Scope : Job.Scopes)
++		{
++			FSnapshot Snapshot = CaptureSnapshot(Scope, false);
++			if (!Snapshot.Error.IsEmpty())
++			{
++				FailBeforeEffect(Job, TEXT("SNAPSHOT_FAILED"), Snapshot.Error);
++				return false;
++			}
++			Job.BeforeSnapshots.Add(Scope, Snapshot);
++			if (!Snapshot.PackageName.IsEmpty())
++			{
++				Job.Packages.AddUnique(Snapshot.PackageName);
++				if (Snapshot.bDirty) Job.PreexistingDirtyPackages.AddUnique(Snapshot.PackageName);
++			}
++			if (const FString* Expected = Job.ExpectedSnapshots.Find(Scope);
++				Expected && !UEAgentReliable::ConstantTimeEquals(Expected->ToLower(), Snapshot.Hash))
++			{
++				Job.Effect = TEXT("none");
++				Job.Verification = TEXT("conflict");
++				FailBeforeEffect(Job, TEXT("SNAPSHOT_CONFLICT"),
++					FString::Printf(TEXT("scope %s expected %s but editor has %s"), *Scope, **Expected, *Snapshot.Hash));
++				return false;
++			}
++		}
++		Job.Packages.Sort();
++		Job.PreexistingDirtyPackages.Sort();
++		return true;
++	}
++
++	void Complete(FJob& Job, bool bToolSuccess, const FString& RawResult, const FString& ErrorCode, const FString& ErrorMessage)
++	{
++		if (Job.State == TEXT("terminal")) return;
++		Job.RawResult = RawResult;
++		Job.ErrorCode = ErrorCode;
++		Job.ErrorMessage = ErrorMessage;
++		if (Job.FaultInjection == TEXT("after_execute"))
++		{
++			Job.Outcome = TEXT("result_unknown");
++			Job.Effect = TEXT("unknown");
++			Job.Verification = TEXT("not_run");
++			Job.Persistence = Job.bUnexpectedSave ? TEXT("saved_out_of_band") : TEXT("unknown");
++			Job.ErrorCode = TEXT("FAULT_AFTER_EXECUTE");
++			Job.ErrorMessage = TEXT("Injected failure after execution and before verification");
++			Finalize(Job);
++			return;
++		}
++		Job.State = TEXT("verifying");
++		Transition(Job, TEXT("verifying"), TEXT("re-reading authoritative editor state"));
++
++		bool bSnapshotFailure = false;
++		bool bChanged = false;
++		for (const FString& Scope : Job.Scopes)
++		{
++			FSnapshot Snapshot = CaptureSnapshot(Scope, false);
++			if (!Snapshot.Error.IsEmpty()) bSnapshotFailure = true;
++			Job.AfterSnapshots.Add(Scope, Snapshot);
++			if (const FSnapshot* Before = Job.BeforeSnapshots.Find(Scope);
++				Before && !Snapshot.Hash.IsEmpty() && Snapshot.Hash != Before->Hash)
++			{
++				bChanged = true;
++			}
++		}
++
++		Job.Effect = Job.Scopes.IsEmpty() ? TEXT("unknown")
++			: (bChanged ? TEXT("changed") : (bSnapshotFailure ? TEXT("unknown") : TEXT("no_change")));
++		Job.Verification = bSnapshotFailure ? TEXT("failed") : (Job.Scopes.IsEmpty() ? TEXT("unverified") : TEXT("verified"));
++		bool bVerificationPolicySatisfied = !bSnapshotFailure || Job.VerifyMode == TEXT("success");
++		if (bVerificationPolicySatisfied && Job.VerifyMode == TEXT("changed") && !bChanged)
++		{
++			bVerificationPolicySatisfied = false;
++			Job.Verification = TEXT("failed");
++			Job.ErrorCode = TEXT("VERIFY_EXPECTED_CHANGE");
++			Job.ErrorMessage = TEXT("verify=changed required an authoritative state change, but none was observed");
++		}
++		else if (bVerificationPolicySatisfied && Job.VerifyMode == TEXT("unchanged") && bChanged)
++		{
++			bVerificationPolicySatisfied = false;
++			Job.Verification = TEXT("failed");
++			Job.ErrorCode = TEXT("VERIFY_UNEXPECTED_CHANGE");
++			Job.ErrorMessage = TEXT("verify=unchanged was violated by an authoritative state change");
++		}
++		if (Job.bUnexpectedSave)
++		{
++			Job.Outcome = TEXT("result_unknown");
++			Job.Persistence = TEXT("saved_out_of_band");
++			Job.ErrorCode = TEXT("UNEXPECTED_SAVE");
++			Job.ErrorMessage = TEXT("A domain tool saved during mutation; receipt cannot claim the save boundary was preserved");
++		}
++		else if (Job.bUnexpectedDirty)
++		{
++			Job.Outcome = TEXT("result_unknown");
++			Job.Persistence = TEXT("dirty_out_of_scope");
++			Job.ErrorCode = TEXT("WRITE_SCOPE_VIOLATION");
++			Job.ErrorMessage = TEXT("The command dirtied a package outside its declared write scopes");
++		}
++		else if (!bToolSuccess && (bChanged || bSnapshotFailure))
++		{
++			Job.Outcome = TEXT("result_unknown");
++		}
++		else if (!bToolSuccess)
++		{
++			Job.Outcome = TEXT("failed");
++		}
++		else if (bSnapshotFailure && Job.VerifyMode != TEXT("success"))
++		{
++			Job.Outcome = TEXT("result_unknown");
++			Job.ErrorCode = TEXT("VERIFY_SNAPSHOT_FAILED");
++			Job.ErrorMessage = TEXT("The tool returned success, but authoritative verification could not complete");
++		}
++		else if (!bVerificationPolicySatisfied)
++		{
++			Job.Outcome = TEXT("failed");
++		}
++		else
++		{
++			Job.Outcome = Job.bCancelRequested ? TEXT("completed_after_cancel_request") : TEXT("succeeded");
++		}
++
++		if (Job.bUnexpectedSave || Job.bUnexpectedDirty)
++		{
++			// The more specific persistence result was assigned with the boundary violation above.
++		}
++		else if (Job.Packages.IsEmpty())
++		{
++			Job.Persistence = TEXT("not_applicable");
++		}
++		else
++		{
++			Job.DirtyPackages.Reset();
++			for (const FString& PackageName : Job.Packages)
++			{
++				if (UPackage* Package = FindPackage(nullptr, *PackageName); Package && Package->IsDirty())
++					Job.DirtyPackages.Add(PackageName);
++			}
++			Job.DirtyPackages.Sort();
++			Job.Persistence = Job.DirtyPackages.IsEmpty() ? TEXT("clean")
++				: (!Job.PreexistingDirtyPackages.IsEmpty() && !Job.bAllowPreexistingDirtySave
++					? TEXT("dirty_preexisting_not_saved") : TEXT("dirty_not_saved"));
++		}
++
++		if ((Job.Outcome == TEXT("succeeded") || Job.Outcome == TEXT("completed_after_cancel_request"))
++			&& Job.Effect == TEXT("changed")
++			&& Job.Verification == TEXT("verified")
++			&& Job.Persistence == TEXT("dirty_not_saved")
++			&& Job.FaultInjection != TEXT("before_receipt"))
++		{
++			Job.SaveToken = IssueSaveToken(Job, Job.DirtyPackages);
++		}
++		if (Job.FaultInjection == TEXT("before_receipt"))
++		{
++			Job.SaveToken.Reset();
++			Job.bReceiptInterrupted = true;
++			Job.Outcome = TEXT("result_unknown");
++			Job.ErrorCode = TEXT("FAULT_BEFORE_RECEIPT");
++			Job.ErrorMessage = TEXT("Injected interruption before immutable receipt creation; run ueagent_recover");
++			Transition(Job, TEXT("receipt_interrupted"), Job.ErrorMessage);
++			Queue.Remove(Job.CommandId);
++			if (ActiveJobId == Job.CommandId) ReleaseActive();
++			WriteStateFile();
++			return;
++		}
++		Finalize(Job);
++	}
++
++	void TickPerformance(FJob& Job)
++	{
++		if (Job.State == TEXT("terminal")) return;
++		if (Job.bCancelRequested || FPlatformTime::Seconds() > Job.DeadlineSeconds)
++		{
++			UEAgentReliable::FManagedMutationScope Managed;
++			Job.RawResult = UPerformanceService::StopMonitor(TEXT("ueagent_profile_cancelled"), false);
++			Job.Outcome = Job.bCancelRequested ? TEXT("cancelled") : TEXT("failed");
++			Job.Effect = TEXT("none");
++			Job.Verification = TEXT("not_run");
++			Job.Persistence = TEXT("not_applicable");
++			Job.ErrorCode = Job.bCancelRequested ? TEXT("CANCELLED") : TEXT("DEADLINE_EXCEEDED");
++			Job.ErrorMessage = Job.bCancelRequested
++				? TEXT("Performance profile cancelled and its native monitor stopped")
++				: TEXT("Performance profile deadline exceeded and its native monitor stopped");
++			Finalize(Job);
++			return;
++		}
++		if (++Job.ElapsedProfileFrames == Job.WarmupFrames + 1)
++		{
++			UEAgentReliable::FManagedMutationScope Managed;
++			Job.ProfileCaptureResult = UPerformanceService::CaptureGPUProfile();
++			Transition(Job, TEXT("running"), TEXT("warmup complete; native ProfileGPU capture queued"));
++		}
++		if (Job.ElapsedProfileFrames < Job.WarmupFrames + Job.SampleFrames) return;
++
++		FString StopResult;
++		{
++			UEAgentReliable::FManagedMutationScope Managed;
++			StopResult = UPerformanceService::StopMonitor(
++				TEXT("ueagent_profile_") + Job.CommandId.Left(8), true);
++		}
++		TSharedPtr<FJsonObject> Profile = MakeShared<FJsonObject>();
++		Profile->SetNumberField(TEXT("warmup_frames"), Job.WarmupFrames);
++		Profile->SetNumberField(TEXT("sample_frames"), Job.SampleFrames);
++		Profile->SetNumberField(TEXT("target_fps"), Job.TargetFPS);
++		Profile->SetNumberField(TEXT("hitch_threshold_ms"), Job.HitchThresholdMs);
++		Profile->SetStringField(TEXT("monitor_start"), Job.ProfileStartResult);
++		Profile->SetStringField(TEXT("profile_gpu_capture"), Job.ProfileCaptureResult);
++		Profile->SetStringField(TEXT("monitor_stop"), StopResult);
++		Profile->SetBoolField(TEXT("performance_freeze"), true);
++		FString Error;
++		FString Normalized;
++		const bool bSuccess = UEAgentReliable::ResultIndicatesSuccess(StopResult, Normalized, Error);
++		Job.Scopes.Reset();
++		Complete(Job, bSuccess, UEAgentReliable::CanonicalJson(Profile),
++			bSuccess ? FString() : TEXT("PROFILE_STOP_FAILED"), Error);
++	}
++
++	void FailBeforeEffect(FJob& Job, const FString& Code, const FString& Message)
++	{
++		Job.Outcome = TEXT("failed");
++		Job.Effect = TEXT("none");
++		if (Job.Verification == TEXT("pending")) Job.Verification = TEXT("not_run");
++		Job.Persistence = TEXT("not_applicable");
++		Job.ErrorCode = Code;
++		Job.ErrorMessage = Message;
++		Finalize(Job);
++	}
++
++	void Finalize(FJob& Job)
++	{
++		const FString CommandId = Job.CommandId;
++		TSharedPtr<FJob> KeepAlive = Jobs.FindRef(CommandId);
++		Job.State = TEXT("terminal");
++		Job.FinishedAt = FDateTime::UtcNow();
++		Transition(Job, TEXT("terminal"), Job.ErrorMessage.IsEmpty() ? Job.Outcome : Job.ErrorMessage);
++		TSharedPtr<FJsonObject> Receipt = ReceiptJson(Job);
++		if (!WriteObjectAtomic(ReceiptPath(CommandId), Receipt, false))
++		{
++			if (!Job.SaveToken.IsEmpty()) SaveTokens.Remove(Job.SaveToken);
++			Job.SaveToken.Reset();
++			Job.bReceiptInterrupted = true;
++			Job.Outcome = TEXT("result_unknown");
++			Job.ErrorCode = TEXT("RECEIPT_WRITE_FAILED");
++			Job.ErrorMessage = TEXT("The mutation ended, but its immutable receipt could not be written; run ueagent_recover");
++			Transition(Job, TEXT("receipt_interrupted"), Job.ErrorMessage);
++			Queue.Remove(CommandId);
++			if (ActiveJobId == CommandId) ReleaseActive();
++			WriteStateFile();
++			return;
++		}
++		LastReceiptId = CommandId;
++		Queue.Remove(CommandId);
++		if (ActiveJobId == CommandId)
++		{
++			ReleaseActive();
++		}
++		Jobs.Remove(CommandId);
++		WriteStateFile();
++	}
++
++	void ReleaseActive()
++	{
++		ActiveLeases.Reset();
++		ActiveJobId.Reset();
++		bMutationActive.Store(false);
++		bPerformanceFrozen.Store(false);
++	}
++
++	FSnapshot CaptureSnapshot(const FString& Scope, bool bIncludeValues) const
++	{
++		FSnapshot Snapshot;
++		Snapshot.Scope = Scope;
++		Snapshot.Data = MakeShared<FJsonObject>();
++		Snapshot.Data->SetStringField(TEXT("scope"), Scope);
++		auto Finish = [&Snapshot, bIncludeValues]()
++		{
++			if (!Snapshot.Error.IsEmpty()) return;
++			Snapshot.Data->SetNumberField(TEXT("property_count"), Snapshot.PropertyCount);
++			const FString Canonical = UEAgentReliable::CanonicalJson(Snapshot.Data);
++			const FTCHARToUTF8 Utf8(*Canonical);
++			Snapshot.Bytes = Utf8.Length();
++			if (Snapshot.Bytes > UEAgentReliable::MaxSnapshotBytes)
++			{
++				Snapshot.Error = TEXT("authoritative snapshot exceeds 8 MiB: ") + Snapshot.Scope;
++				return;
++			}
++			Snapshot.Hash = UEAgentReliable::Sha256String(Canonical);
++			if (!bIncludeValues) Snapshot.Data->RemoveField(TEXT("properties"));
++			Snapshot.Data->SetStringField(TEXT("sha256"), Snapshot.Hash);
++			Snapshot.Data->SetNumberField(TEXT("snapshot_bytes"), Snapshot.Bytes);
++		};
++
++		if (Scope.StartsWith(TEXT("editor:"), ESearchCase::IgnoreCase))
++		{
++			CaptureEditorSnapshot(Scope.ToLower(), Snapshot);
++			Finish();
++			return Snapshot;
++		}
++
++		Snapshot.PackageName = UEAgentReliable::NormalizePackageScope(Scope);
++		if (Snapshot.PackageName.IsEmpty())
++		{
++			Snapshot.Error = TEXT("invalid package/object scope: ") + Scope;
++			return Snapshot;
++		}
++		Snapshot.ObjectPath = UEAgentReliable::ObjectPathForScope(Scope, Snapshot.PackageName);
++		UPackage* Package = FindPackage(nullptr, *Snapshot.PackageName);
++		if (!Package) Package = LoadPackage(nullptr, *Snapshot.PackageName, LOAD_NoWarn);
++		if (!Package)
++		{
++			Snapshot.SaveGeneration = PackageSaveGenerations.FindRef(Snapshot.PackageName);
++			Snapshot.Data->SetStringField(TEXT("package"), Snapshot.PackageName);
++			Snapshot.Data->SetStringField(TEXT("object"), Snapshot.ObjectPath);
++			Snapshot.Data->SetBoolField(TEXT("exists"), false);
++			Snapshot.Data->SetBoolField(TEXT("dirty"), false);
++			Snapshot.Data->SetNumberField(TEXT("save_generation"), static_cast<double>(Snapshot.SaveGeneration));
++			Finish();
++			return Snapshot;
++		}
++		UObject* Object = StaticFindObject(UObject::StaticClass(), nullptr, *Snapshot.ObjectPath);
++		if (!Object) Object = Package->FindAssetInPackage();
++		if (!Object)
++		{
++			Snapshot.bDirty = Package->IsDirty();
++			Snapshot.SaveGeneration = PackageSaveGenerations.FindRef(Snapshot.PackageName);
++			Snapshot.Data->SetStringField(TEXT("package"), Snapshot.PackageName);
++			Snapshot.Data->SetStringField(TEXT("object"), Snapshot.ObjectPath);
++			Snapshot.Data->SetBoolField(TEXT("exists"), false);
++			Snapshot.Data->SetBoolField(TEXT("dirty"), Snapshot.bDirty);
++			Snapshot.Data->SetNumberField(TEXT("save_generation"), static_cast<double>(Snapshot.SaveGeneration));
++			Finish();
++			return Snapshot;
++		}
++
++		Snapshot.ObjectPath = Object->GetPathName();
++		Snapshot.bDirty = Package->IsDirty();
++		Snapshot.SaveGeneration = PackageSaveGenerations.FindRef(Snapshot.PackageName);
++		Snapshot.Data->SetStringField(TEXT("package"), Snapshot.PackageName);
++		Snapshot.Data->SetStringField(TEXT("object"), Snapshot.ObjectPath);
++		Snapshot.Data->SetBoolField(TEXT("exists"), true);
++		Snapshot.Data->SetStringField(TEXT("class"), Object->GetClass()->GetPathName());
++		Snapshot.Data->SetBoolField(TEXT("dirty"), Snapshot.bDirty);
++		Snapshot.Data->SetNumberField(TEXT("save_generation"), static_cast<double>(Snapshot.SaveGeneration));
++
++		FString Filename;
++		if (FPackageName::DoesPackageExist(Snapshot.PackageName, &Filename))
++		{
++			Snapshot.Data->SetNumberField(TEXT("file_size"), static_cast<double>(IFileManager::Get().FileSize(*Filename)));
++			Snapshot.Data->SetStringField(TEXT("file_timestamp"), IFileManager::Get().GetTimeStamp(*Filename).ToIso8601());
++		}
++
++		TSharedPtr<FJsonObject> Properties = MakeShared<FJsonObject>();
++		int32 TotalCharacters = 0;
++		TArray<FProperty*> SortedProperties;
++		for (TFieldIterator<FProperty> It(Object->GetClass(), EFieldIteratorFlags::IncludeSuper); It; ++It)
++		{
++			FProperty* Property = *It;
++			if (!Property || Property->HasAnyPropertyFlags(CPF_Transient | CPF_DuplicateTransient | CPF_Deprecated)) continue;
++			SortedProperties.Add(Property);
++		}
++		SortedProperties.Sort([](const FProperty& Left, const FProperty& Right)
++		{
++			return Left.GetName() < Right.GetName();
++		});
++		for (FProperty* Property : SortedProperties)
++		{
++			FString Value;
++			Property->ExportText_InContainer(0, Value, Object, Object, Object, PPF_Copy);
++			TotalCharacters += Property->GetName().Len() + Value.Len();
++			if (TotalCharacters * sizeof(TCHAR) > UEAgentReliable::MaxSnapshotBytes)
++			{
++				Snapshot.Error = TEXT("authoritative snapshot exceeds 8 MiB: ") + Scope;
++				return Snapshot;
++			}
++			Properties->SetStringField(Property->GetName(), Value);
++			++Snapshot.PropertyCount;
++		}
++		Snapshot.Data->SetObjectField(TEXT("properties"), Properties);
++		Finish();
++		return Snapshot;
++	}
++
++	void CaptureEditorSnapshot(const FString& Scope, FSnapshot& Snapshot) const
++	{
++		if (Scope == TEXT("editor:world"))
++		{
++			UWorld* World = GEditor ? GEditor->GetEditorWorldContext().World() : nullptr;
++			if (!World) { Snapshot.Error = TEXT("editor world unavailable"); return; }
++			TArray<FString> ActorPaths;
++			for (TActorIterator<AActor> It(World); It && ActorPaths.Num() < 100000; ++It) ActorPaths.Add(It->GetPathName());
++			ActorPaths.Sort();
++			TArray<TSharedPtr<FJsonValue>> Actors;
++			for (const FString& Path : ActorPaths) Actors.Add(MakeShared<FJsonValueString>(Path));
++			Snapshot.Data->SetStringField(TEXT("world"), World->GetPathName());
++			Snapshot.Data->SetArrayField(TEXT("actors"), Actors);
++			Snapshot.PackageName = World->GetOutermost()->GetName();
++			Snapshot.bDirty = World->GetOutermost()->IsDirty();
++			Snapshot.Data->SetBoolField(TEXT("dirty"), Snapshot.bDirty);
++			return;
++		}
++		if (Scope == TEXT("editor:selection"))
++		{
++			TArray<FString> Paths;
++			if (GEditor && GEditor->GetSelectedActors())
++			{
++				for (FSelectionIterator It(*GEditor->GetSelectedActors()); It; ++It)
++					if (UObject* Object = Cast<UObject>(*It)) Paths.Add(Object->GetPathName());
++			}
++			Paths.Sort();
++			TArray<TSharedPtr<FJsonValue>> Values;
++			for (const FString& Path : Paths) Values.Add(MakeShared<FJsonValueString>(Path));
++			Snapshot.Data->SetArrayField(TEXT("selected"), Values);
++			return;
++		}
++		if (Scope == TEXT("editor:viewport"))
++		{
++			if (!GCurrentLevelEditingViewportClient) { Snapshot.Error = TEXT("level viewport unavailable"); return; }
++			const FVector Location = GCurrentLevelEditingViewportClient->GetViewLocation();
++			const FRotator Rotation = GCurrentLevelEditingViewportClient->GetViewRotation();
++			Snapshot.Data->SetStringField(TEXT("location"), Location.ToString());
++			Snapshot.Data->SetStringField(TEXT("rotation"), Rotation.ToString());
++			Snapshot.Data->SetBoolField(TEXT("realtime"), GCurrentLevelEditingViewportClient->IsRealtime());
++			return;
++		}
++		Snapshot.Error = TEXT("unsupported editor scope: ") + Scope;
++	}
++
++	TSharedPtr<FJsonObject> SnapshotRequest(const TSharedPtr<FJsonObject>& Parameters) const
++	{
++		if (bMutationActive.Load())
++			return UEAgentReliable::Error(TEXT("EDITOR_BUSY"), TEXT("authoritative snapshots are unavailable while a mutation owns the editor"));
++		const TArray<FString> Scopes = UEAgentReliable::JsonStringArray(Parameters, TEXT("scopes"));
++		if (Scopes.IsEmpty() || Scopes.Num() > UEAgentReliable::MaxBatchItems)
++			return UEAgentReliable::Error(TEXT("INVALID_SCOPES"), TEXT("provide 1-64 scopes"));
++		bool bIncludeValues = false;
++		if (Parameters.IsValid()) Parameters->TryGetBoolField(TEXT("include_values"), bIncludeValues);
++		TSharedPtr<FJsonObject> Result = UEAgentReliable::Ok();
++		Result->SetStringField(TEXT("editor_epoch"), EditorEpoch);
++		TArray<TSharedPtr<FJsonValue>> Values;
++		for (const FString& Scope : Scopes)
++		{
++			FSnapshot Snapshot = CaptureSnapshot(Scope, bIncludeValues);
++			if (!Snapshot.Error.IsEmpty())
++			{
++				TSharedPtr<FJsonObject> Failure = UEAgentReliable::Error(TEXT("SNAPSHOT_FAILED"), Snapshot.Error);
++				Failure->SetStringField(TEXT("scope"), Scope);
++				Values.Add(MakeShared<FJsonValueObject>(Failure));
++			}
++			else Values.Add(MakeShared<FJsonValueObject>(Snapshot.Data));
++		}
++		Result->SetArrayField(TEXT("snapshots"), Values);
++		return Result;
++	}
++
++	TSharedPtr<FJsonObject> BatchRead(const TSharedPtr<FJsonObject>& Parameters) const
++	{
++		const TArray<TSharedPtr<FJsonValue>>* Requests = nullptr;
++		if (!Parameters.IsValid() || !Parameters->TryGetArrayField(TEXT("requests"), Requests)
++			|| !Requests || Requests->IsEmpty() || Requests->Num() > UEAgentReliable::MaxBatchItems)
++		{
++			return UEAgentReliable::Error(TEXT("INVALID_BATCH"), TEXT("requests must contain 1-64 bounded read requests"));
++		}
++		TSharedPtr<FJsonObject> Result = UEAgentReliable::Ok();
++		Result->SetStringField(TEXT("editor_epoch"), EditorEpoch);
++		TArray<TSharedPtr<FJsonValue>> Results;
++		int32 ApproximateBytes = 0;
++		for (const TSharedPtr<FJsonValue>& Value : *Requests)
++		{
++			if (!Value.IsValid() || Value->Type != EJson::Object)
++			{
++				Results.Add(MakeShared<FJsonValueObject>(UEAgentReliable::Error(TEXT("INVALID_READ"), TEXT("request must be an object"))));
++				continue;
++			}
++			const TSharedPtr<FJsonObject> Request = Value->AsObject();
++			const FString Kind = UEAgentReliable::JsonStringField(Request, TEXT("kind")).ToLower();
++			TSharedPtr<FJsonObject> Item;
++			if (Kind == TEXT("snapshot")) Item = SnapshotRequest(Request);
++			else if (Kind == TEXT("job")) Item = GetJob(Request);
++			else if (Kind == TEXT("receipt")) Item = GetReceipt(Request);
++			else if (Kind == TEXT("state")) Item = State();
++			else Item = UEAgentReliable::Error(TEXT("READ_KIND_DENIED"), TEXT("kind must be snapshot, job, receipt, or state"));
++			const FTCHARToUTF8 ItemUtf8(*UEAgentReliable::CanonicalJson(Item));
++			ApproximateBytes += ItemUtf8.Length();
++			if (ApproximateBytes > UEAgentReliable::MaxSnapshotBytes)
++			{
++				Results.Add(MakeShared<FJsonValueObject>(UEAgentReliable::Error(TEXT("BATCH_LIMIT"), TEXT("batch response exceeded 8 MiB"))));
++				break;
++			}
++			Results.Add(MakeShared<FJsonValueObject>(Item));
++		}
++		Result->SetArrayField(TEXT("results"), Results);
++		return Result;
++	}
++
++	TSharedPtr<FJsonObject> GetJob(const TSharedPtr<FJsonObject>& Parameters) const
++	{
++		const FString CommandId = UEAgentReliable::JsonStringField(Parameters, TEXT("command_id")).ToLower();
++		if (const TSharedPtr<FJob>* Job = Jobs.Find(CommandId)) return JobJson(*(*Job));
++		if (FPaths::FileExists(ReceiptPath(CommandId))) return GetReceipt(Parameters);
++		return UEAgentReliable::Error(TEXT("JOB_NOT_FOUND"), CommandId);
++	}
++
++	TSharedPtr<FJsonObject> GetReceipt(const TSharedPtr<FJsonObject>& Parameters) const
++	{
++		const FString CommandId = UEAgentReliable::JsonStringField(Parameters, TEXT("command_id")).ToLower();
++		TSharedPtr<FJsonObject> Receipt = LoadObjectFile(ReceiptPath(CommandId));
++		return Receipt.IsValid() ? Receipt : UEAgentReliable::Error(TEXT("RECEIPT_NOT_FOUND"), CommandId);
++	}
++
++	TSharedPtr<FJsonObject> Cancel(const TSharedPtr<FJsonObject>& Parameters)
++	{
++		const FString CommandId = UEAgentReliable::JsonStringField(Parameters, TEXT("command_id")).ToLower();
++		TSharedPtr<FJob>* Found = Jobs.Find(CommandId);
++		if (!Found) return UEAgentReliable::Error(TEXT("JOB_NOT_FOUND"), CommandId);
++		FJob& Job = *(*Found);
++		if (Job.State == TEXT("terminal")) return JobJson(Job);
++		if (Queue.Remove(CommandId) > 0)
++		{
++			Job.Outcome = TEXT("cancelled");
++			Job.Effect = TEXT("none");
++			Job.Verification = TEXT("not_run");
++			Job.Persistence = TEXT("not_applicable");
++			Finalize(Job);
++			return GetReceipt(Parameters);
++		}
++		Job.bCancelRequested = true;
++		Job.State = TEXT("cancelling");
++		Transition(Job, TEXT("cancelling"), TEXT("underlying tool has no universal cancellation contract; lease remains until completion"));
++		return JobJson(Job);
++	}
++
++	FString IssueSaveToken(FJob& Job, const TArray<FString>& AuthorizedPackages)
++	{
++		for (auto It = SaveTokens.CreateIterator(); It; ++It)
++		{
++			if (!It.Value().bUsed && FDateTime::UtcNow() > It.Value().ExpiresAt) It.RemoveCurrent();
++		}
++		FSaveToken Record;
++		Record.CommandId = Job.CommandId;
++		Record.ExpiresAt = FDateTime::UtcNow() + FTimespan::FromSeconds(SaveTokenLifetimeSeconds);
++		Record.Packages = AuthorizedPackages;
++		for (const auto& Pair : Job.AfterSnapshots) Record.ScopeHashes.Add(Pair.Key, Pair.Value.Hash);
++		for (const FString& Package : Record.Packages) Record.PackageGenerations.Add(Package, PackageSaveGenerations.FindRef(Package));
++
++		TSharedPtr<FJsonObject> Payload = MakeShared<FJsonObject>();
++		Payload->SetStringField(TEXT("command_id"), Job.CommandId);
++		Payload->SetStringField(TEXT("editor_epoch"), EditorEpoch);
++		Payload->SetStringField(TEXT("expires_at"), Record.ExpiresAt.ToIso8601());
++		Payload->SetStringField(TEXT("nonce"), FGuid::NewGuid().ToString(EGuidFormats::Digits));
++		TArray<TSharedPtr<FJsonValue>> Packages;
++		for (const FString& Package : Record.Packages) Packages.Add(MakeShared<FJsonValueString>(Package));
++		Payload->SetArrayField(TEXT("packages"), Packages);
++		const FString PayloadJson = UEAgentReliable::CanonicalJson(Payload);
++		FString Encoded = FBase64::Encode(PayloadJson);
++		Encoded.ReplaceInline(TEXT("+"), TEXT("-"));
++		Encoded.ReplaceInline(TEXT("/"), TEXT("_"));
++		Encoded.ReplaceInline(TEXT("="), TEXT(""));
++		Record.Token = Encoded + TEXT(".") + UEAgentReliable::HmacSha1(TokenSecret, Encoded);
++		SaveTokens.Add(Record.Token, Record);
++		return Record.Token;
++	}
++
++	TSharedPtr<FJsonObject> Save(const TSharedPtr<FJsonObject>& Parameters)
++	{
++		if (IsPerformanceFrozen()) return UEAgentReliable::Error(TEXT("PERFORMANCE_FROZEN"), TEXT("saving would contaminate the active profile"));
++		if (bMutationActive.Load()) return UEAgentReliable::Error(TEXT("EDITOR_BUSY"), TEXT("saving cannot overlap an active mutation"));
++		const FString Token = UEAgentReliable::JsonStringField(Parameters, TEXT("save_token"));
++		FSaveToken* Record = SaveTokens.Find(Token);
++		if (!Record) return UEAgentReliable::Error(TEXT("INVALID_SAVE_TOKEN"), TEXT("unknown, tampered, or previous-epoch token"));
++		int32 Dot = INDEX_NONE;
++		if (!Token.FindLastChar(TEXT('.'), Dot)
++			|| !UEAgentReliable::ConstantTimeEquals(Token.Mid(Dot + 1), UEAgentReliable::HmacSha1(TokenSecret, Token.Left(Dot))))
++			return UEAgentReliable::Error(TEXT("INVALID_SAVE_TOKEN"), TEXT("signature mismatch"));
++		if (Record->bUsed)
++		{
++			TSharedPtr<FJsonObject> Previous = LoadObjectFile(Record->ReceiptPath);
++			if (!Previous.IsValid()) return UEAgentReliable::Error(TEXT("SAVE_RESULT_UNKNOWN"), TEXT("the token was consumed but its immutable receipt is unavailable"));
++			Previous->SetBoolField(TEXT("replayed"), true);
++			return Previous;
++		}
++		if (FDateTime::UtcNow() > Record->ExpiresAt) return UEAgentReliable::Error(TEXT("SAVE_TOKEN_EXPIRED"), Record->CommandId);
++
++		TArray<FString> RequestedPackages = UEAgentReliable::JsonStringArray(Parameters, TEXT("packages"));
++		RequestedPackages.Sort();
++		if (!RequestedPackages.IsEmpty() && RequestedPackages != Record->Packages)
++			return UEAgentReliable::Error(TEXT("PACKAGE_SET_MISMATCH"), TEXT("packages must exactly match the token"));
++		for (const auto& Pair : Record->PackageGenerations)
++		{
++			if (PackageSaveGenerations.FindRef(Pair.Key) != Pair.Value)
++				return UEAgentReliable::Error(TEXT("OUT_OF_BAND_SAVE"), Pair.Key);
++		}
++		for (const auto& Pair : Record->ScopeHashes)
++		{
++			const FSnapshot Current = CaptureSnapshot(Pair.Key, false);
++			if (!Current.Error.IsEmpty() || !UEAgentReliable::ConstantTimeEquals(Current.Hash, Pair.Value))
++				return UEAgentReliable::Error(TEXT("SAVE_SNAPSHOT_CONFLICT"), Pair.Key);
++		}
++
++		TArray<UPackage*> Packages;
++		for (const FString& Name : Record->Packages)
++		{
++			UPackage* Package = FindPackage(nullptr, *Name);
++			if (!Package) return UEAgentReliable::Error(TEXT("PACKAGE_NOT_LOADED"), Name);
++			if (!Package->IsDirty()) return UEAgentReliable::Error(TEXT("PACKAGE_NOT_DIRTY"), Name);
++			Packages.Add(Package);
++		}
++
++		Record->bUsed = true;
++		bManagedSave = true;
++		ManagedSavePackages = TSet<FString>(Record->Packages);
++		UnexpectedManagedSavePackages.Reset();
++		bool bSaved = UEditorLoadingAndSavingUtils::SavePackages(Packages, false);
++		bManagedSave = false;
++		ManagedSavePackages.Reset();
++		TArray<FString> UnexpectedPackages;
++		for (const FString& Name : UnexpectedManagedSavePackages) UnexpectedPackages.Add(Name);
++		UnexpectedPackages.Sort();
++		UnexpectedManagedSavePackages.Reset();
++		bool bAllClean = true;
++		for (UPackage* Package : Packages) bAllClean &= Package && !Package->IsDirty();
++		bSaved = bSaved && bAllClean && UnexpectedPackages.IsEmpty();
++
++		TSharedPtr<FJsonObject> Receipt;
++		if (bSaved)
++		{
++			Receipt = UEAgentReliable::Ok();
++		}
++		else if (!UnexpectedPackages.IsEmpty())
++		{
++			Receipt = UEAgentReliable::Error(TEXT("SAVE_SCOPE_VIOLATION"), TEXT("saving the authorized package set also saved undeclared packages"));
++		}
++		else
++		{
++			Receipt = UEAgentReliable::Error(TEXT("SAVE_RESULT_UNKNOWN"), TEXT("the native save did not confirm every authorized package as clean"));
++		}
++		Receipt->SetStringField(TEXT("receipt_type"), TEXT("save"));
++		Receipt->SetStringField(TEXT("command_id"), Record->CommandId);
++		Receipt->SetStringField(TEXT("editor_epoch"), EditorEpoch);
++		Receipt->SetStringField(TEXT("saved_at"), FDateTime::UtcNow().ToIso8601());
++		Receipt->SetStringField(TEXT("outcome"), bSaved ? TEXT("succeeded") : TEXT("result_unknown"));
++		Receipt->SetStringField(TEXT("verification"), bSaved ? TEXT("verified") : TEXT("failed"));
++		Receipt->SetStringField(TEXT("persistence"), bSaved ? TEXT("saved") : TEXT("unknown"));
++		TArray<TSharedPtr<FJsonValue>> PackageValues;
++		for (const FString& Name : Record->Packages) PackageValues.Add(MakeShared<FJsonValueString>(Name));
++		Receipt->SetArrayField(TEXT("packages"), PackageValues);
++		TArray<TSharedPtr<FJsonValue>> UnexpectedValues;
++		for (const FString& Name : UnexpectedPackages) UnexpectedValues.Add(MakeShared<FJsonValueString>(Name));
++		Receipt->SetArrayField(TEXT("unexpected_saved_packages"), UnexpectedValues);
++		Receipt->SetStringField(TEXT("mutation_receipt"), ReceiptPath(Record->CommandId));
++		Record->ReceiptPath = OperationsDir / FString::Printf(
++			TEXT("%s.save.%s.receipt.json"), *Record->CommandId, *FGuid::NewGuid().ToString(EGuidFormats::Digits).Left(12));
++		Receipt->SetStringField(TEXT("receipt_path"), Record->ReceiptPath);
++		if (!WriteObjectAtomic(Record->ReceiptPath, Receipt, false))
++		{
++			TSharedPtr<FJsonObject> Failure = UEAgentReliable::Error(TEXT("SAVE_RECEIPT_WRITE_FAILED"), TEXT("save may have completed, but its immutable receipt could not be written"));
++			Failure->SetStringField(TEXT("command_id"), Record->CommandId);
++			Failure->SetStringField(TEXT("outcome"), TEXT("result_unknown"));
++			Failure->SetStringField(TEXT("persistence"), TEXT("unknown"));
++			return Failure;
++		}
++		return Receipt;
++	}
++
++	void HandlePackageSaved(const FString&, UPackage* Package, FObjectPostSaveContext SaveContext)
++	{
++		if (!Package || !SaveContext.SaveSucceeded() || SaveContext.IsCooking() || SaveContext.IsProceduralSave()) return;
++		const FString Name = Package->GetName();
++		PackageSaveGenerations.FindOrAdd(Name)++;
++		if (bManagedSave)
++		{
++			if (!ManagedSavePackages.Contains(Name)) UnexpectedManagedSavePackages.Add(Name);
++			return;
++		}
++		if (!ActiveJobId.IsEmpty())
++		{
++			if (TSharedPtr<FJob>* Job = Jobs.Find(ActiveJobId))
++			{
++				(*Job)->bUnexpectedSave = true;
++				(*Job)->UnexpectedSavedPackages.AddUnique(Name);
++				Transition(*(*Job), (*Job)->State, TEXT("detected save outside ueagent_save"));
++			}
++		}
++	}
++
++	void HandlePackageDirty(UPackage* Package)
++	{
++		if (!Package || !Package->IsDirty() || ActiveJobId.IsEmpty()
++			|| Package == GetTransientPackage() || Package->HasAnyPackageFlags(PKG_CompiledIn)) return;
++		TSharedPtr<FJob>* Job = Jobs.Find(ActiveJobId);
++		if (!Job) return;
++		const FString Name = Package->GetName();
++		if ((*Job)->Packages.Contains(Name)) return;
++		(*Job)->bUnexpectedDirty = true;
++		if (!(*Job)->UnexpectedDirtyPackages.Contains(Name))
++		{
++			(*Job)->UnexpectedDirtyPackages.Add(Name);
++			Transition(*(*Job), (*Job)->State, TEXT("detected dirty package outside declared write scopes"));
++		}
++	}
++
++	TSharedPtr<FJsonObject> RecoverIncomplete(bool bAutomatic)
++	{
++		TArray<FString> Files;
++		IFileManager::Get().FindFiles(Files, *(OperationsDir / TEXT("*.journal.ndjson")), true, false);
++		TArray<TSharedPtr<FJsonValue>> Recovered;
++		for (const FString& File : Files)
++		{
++			FString CommandId = File;
++			CommandId.RemoveFromEnd(TEXT(".journal.ndjson"));
++			if (FPaths::FileExists(ReceiptPath(CommandId))) continue;
++			if (const TSharedPtr<FJob>* LiveJob = Jobs.Find(CommandId);
++				LiveJob && !(*LiveJob)->bReceiptInterrupted) continue;
++
++			TSharedPtr<FJsonObject> Accepted;
++			FString Journal;
++			TArray<FString> Lines;
++			if (FFileHelper::LoadFileToString(Journal, *(OperationsDir / File)))
++			{
++				Journal.ParseIntoArrayLines(Lines, true);
++				for (const FString& Line : Lines)
++				{
++					if (UEAgentReliable::ParseObject(Line, Accepted)) break;
++				}
++			}
++			TSharedPtr<FJsonObject> Receipt = UEAgentReliable::Ok();
++			Receipt->SetStringField(TEXT("receipt_type"), TEXT("mutation"));
++			Receipt->SetStringField(TEXT("command_id"), CommandId);
++			Receipt->SetStringField(TEXT("editor_epoch"), Accepted.IsValid()
++				? UEAgentReliable::JsonStringField(Accepted, TEXT("editor_epoch")) : TEXT("unknown"));
++			Receipt->SetStringField(TEXT("recovered_by_editor_epoch"), EditorEpoch);
++			if (Accepted.IsValid())
++			{
++				for (const TCHAR* Field : { TEXT("protocol_version"), TEXT("command_digest"), TEXT("target_type"), TEXT("toolset_name"), TEXT("tool_name") })
++				{
++					const FString Value = UEAgentReliable::JsonStringField(Accepted, Field);
++					if (!Value.IsEmpty()) Receipt->SetStringField(Field, Value);
++				}
++			}
++			Receipt->SetStringField(TEXT("state"), TEXT("terminal"));
++			Receipt->SetStringField(TEXT("outcome"), TEXT("result_unknown"));
++			Receipt->SetStringField(TEXT("effect"), TEXT("unknown"));
++			Receipt->SetStringField(TEXT("verification"), TEXT("not_run"));
++			Receipt->SetStringField(TEXT("persistence"), TEXT("unknown"));
++			Receipt->SetStringField(TEXT("error_code"), TEXT("RECOVERED_INCOMPLETE_JOURNAL"));
++			Receipt->SetStringField(TEXT("error"), TEXT("Editor epoch ended without an immutable terminal receipt; no exactly-once claim is possible"));
++			Receipt->SetStringField(TEXT("recovered_at"), FDateTime::UtcNow().ToIso8601());
++			if (WriteObjectAtomic(ReceiptPath(CommandId), Receipt, false))
++			{
++				Recovered.Add(MakeShared<FJsonValueString>(CommandId));
++				Jobs.Remove(CommandId);
++				Queue.Remove(CommandId);
++				LastReceiptId = CommandId;
++			}
++		}
++		if (!Recovered.IsEmpty()) WriteStateFile();
++		TSharedPtr<FJsonObject> Result = UEAgentReliable::Ok();
++		Result->SetBoolField(TEXT("automatic"), bAutomatic);
++		Result->SetStringField(TEXT("editor_epoch"), EditorEpoch);
++		Result->SetArrayField(TEXT("recovered_command_ids"), Recovered);
++		return Result;
++	}
++
++	TSharedPtr<FJsonObject> JobJson(const FJob& Job) const
++	{
++		TSharedPtr<FJsonObject> Result = UEAgentReliable::Ok();
++		Result->SetStringField(TEXT("command_id"), Job.CommandId);
++		Result->SetStringField(TEXT("command_digest"), Job.Digest);
++		Result->SetStringField(TEXT("editor_epoch"), EditorEpoch);
++		Result->SetStringField(TEXT("state"), Job.State);
++		Result->SetStringField(TEXT("outcome"), Job.Outcome);
++		Result->SetBoolField(TEXT("command_succeeded"), Job.Outcome == TEXT("succeeded") || Job.Outcome == TEXT("completed_after_cancel_request"));
++		Result->SetStringField(TEXT("effect"), Job.Effect);
++		Result->SetStringField(TEXT("verification"), Job.Verification);
++		Result->SetStringField(TEXT("persistence"), Job.Persistence);
++		if (!Job.ErrorCode.IsEmpty()) Result->SetStringField(TEXT("error_code"), Job.ErrorCode);
++		if (!Job.ErrorMessage.IsEmpty()) Result->SetStringField(TEXT("error"), Job.ErrorMessage);
++		if (!Job.SaveToken.IsEmpty()) Result->SetStringField(TEXT("save_token"), Job.SaveToken);
++		Result->SetStringField(TEXT("accepted_at"), Job.AcceptedAt.ToIso8601());
++		if (Job.StartedAt.GetTicks() > 0) Result->SetStringField(TEXT("started_at"), Job.StartedAt.ToIso8601());
++		if (Job.FinishedAt.GetTicks() > 0) Result->SetStringField(TEXT("finished_at"), Job.FinishedAt.ToIso8601());
++		return Result;
++	}
++
++	TSharedPtr<FJsonObject> ReceiptJson(const FJob& Job)
++	{
++		TSharedPtr<FJsonObject> Receipt = JobJson(Job);
++		Receipt->SetStringField(TEXT("receipt_type"), TEXT("mutation"));
++		Receipt->SetStringField(TEXT("target_type"), Job.TargetType);
++		Receipt->SetStringField(TEXT("toolset_name"), Job.ToolsetName);
++		Receipt->SetStringField(TEXT("tool_name"), Job.ToolName);
++		Receipt->SetStringField(TEXT("lease_mode"), Job.LeaseMode);
++		Receipt->SetStringField(TEXT("verify_mode"), Job.VerifyMode);
++		Receipt->SetBoolField(TEXT("allow_preexisting_dirty_save"), Job.bAllowPreexistingDirtySave);
++		if (!Job.FaultInjection.IsEmpty()) Receipt->SetStringField(TEXT("fault_injection"), Job.FaultInjection);
++
++		TSharedPtr<FJsonObject> Before = MakeShared<FJsonObject>();
++		for (const auto& Pair : Job.BeforeSnapshots) Before->SetStringField(Pair.Key, Pair.Value.Hash);
++		TSharedPtr<FJsonObject> After = MakeShared<FJsonObject>();
++		for (const auto& Pair : Job.AfterSnapshots) After->SetStringField(Pair.Key, Pair.Value.Hash);
++		Receipt->SetObjectField(TEXT("before_snapshots"), Before);
++		Receipt->SetObjectField(TEXT("after_snapshots"), After);
++
++		TArray<TSharedPtr<FJsonValue>> Packages;
++		for (const FString& Package : Job.Packages) Packages.Add(MakeShared<FJsonValueString>(Package));
++		Receipt->SetArrayField(TEXT("packages"), Packages);
++		TArray<TSharedPtr<FJsonValue>> DirtyPackages;
++		for (const FString& Package : Job.DirtyPackages) DirtyPackages.Add(MakeShared<FJsonValueString>(Package));
++		Receipt->SetArrayField(TEXT("dirty_packages"), DirtyPackages);
++		TArray<TSharedPtr<FJsonValue>> PreexistingDirty;
++		for (const FString& Package : Job.PreexistingDirtyPackages) PreexistingDirty.Add(MakeShared<FJsonValueString>(Package));
++		Receipt->SetArrayField(TEXT("preexisting_dirty_packages"), PreexistingDirty);
++		TArray<TSharedPtr<FJsonValue>> Unexpected;
++		for (const FString& Package : Job.UnexpectedSavedPackages) Unexpected.Add(MakeShared<FJsonValueString>(Package));
++		Receipt->SetArrayField(TEXT("unexpected_saved_packages"), Unexpected);
++		TArray<TSharedPtr<FJsonValue>> UnexpectedDirty;
++		for (const FString& Package : Job.UnexpectedDirtyPackages) UnexpectedDirty.Add(MakeShared<FJsonValueString>(Package));
++		Receipt->SetArrayField(TEXT("unexpected_dirty_packages"), UnexpectedDirty);
++
++		if (!Job.RawResult.IsEmpty())
++		{
++			const FTCHARToUTF8 Utf8(*Job.RawResult);
++			if (Utf8.Length() <= UEAgentReliable::MaxInlineResultBytes)
++			{
++				Receipt->SetStringField(TEXT("result"), Job.RawResult);
++			}
++			else
++			{
++				const FString EvidencePath = EvidenceDir / (Job.CommandId + TEXT(".result.json"));
++				FFileHelper::SaveStringToFile(Job.RawResult, *EvidencePath, FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM);
++				TSharedPtr<FJsonObject> Evidence = MakeShared<FJsonObject>();
++				Evidence->SetStringField(TEXT("path"), EvidencePath);
++				Evidence->SetStringField(TEXT("sha256"), UEAgentReliable::Sha256String(Job.RawResult));
++				Evidence->SetNumberField(TEXT("bytes"), Utf8.Length());
++				Receipt->SetObjectField(TEXT("result_evidence"), Evidence);
++			}
++		}
++		return Receipt;
++	}
++
++	void Transition(FJob& Job, const FString& State, const FString& Message, bool bIncludeIdentity = false)
++	{
++		Job.State = State;
++		TSharedPtr<FJsonObject> Entry = MakeShared<FJsonObject>();
++		Entry->SetStringField(TEXT("command_id"), Job.CommandId);
++		Entry->SetStringField(TEXT("command_digest"), Job.Digest);
++		Entry->SetStringField(TEXT("editor_epoch"), EditorEpoch);
++		Entry->SetNumberField(TEXT("sequence"), ++Job.Sequence);
++		Entry->SetStringField(TEXT("timestamp"), FDateTime::UtcNow().ToIso8601());
++		Entry->SetStringField(TEXT("state"), State);
++		Entry->SetStringField(TEXT("message"), Message);
++		if (bIncludeIdentity)
++		{
++			Entry->SetStringField(TEXT("protocol_version"), UEAgentReliable::ProtocolVersion);
++			Entry->SetStringField(TEXT("target_type"), Job.TargetType);
++			Entry->SetStringField(TEXT("toolset_name"), Job.ToolsetName);
++			Entry->SetStringField(TEXT("tool_name"), Job.ToolName);
++		}
++		FFileHelper::SaveStringToFile(
++			UEAgentReliable::CanonicalJson(Entry) + LINE_TERMINATOR,
++			*JournalPath(Job.CommandId),
++			FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM,
++			&IFileManager::Get(), FILEWRITE_Append);
++	}
++
++	FString JournalPath(const FString& CommandId) const { return OperationsDir / (CommandId + TEXT(".journal.ndjson")); }
++	FString ReceiptPath(const FString& CommandId) const { return OperationsDir / (CommandId + TEXT(".receipt.json")); }
++
++	bool WriteObjectAtomic(const FString& Path, const TSharedPtr<FJsonObject>& Object, bool bReplace) const
++	{
++		if (!bReplace && FPaths::FileExists(Path)) return false;
++		const FString Temp = Path + TEXT(".tmp.") + FGuid::NewGuid().ToString(EGuidFormats::Digits);
++		if (!FFileHelper::SaveStringToFile(UEAgentReliable::CanonicalJson(Object), *Temp,
++			FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM)) return false;
++		if (!IFileManager::Get().Move(*Path, *Temp, bReplace, true, false, true))
++		{
++			IFileManager::Get().Delete(*Temp, false, true);
++			return false;
++		}
++		return true;
++	}
++
++	TSharedPtr<FJsonObject> LoadObjectFile(const FString& Path) const
++	{
++		FString Json;
++		TSharedPtr<FJsonObject> Object;
++		return FFileHelper::LoadFileToString(Json, *Path) && UEAgentReliable::ParseObject(Json, Object) ? Object : nullptr;
++	}
++
++	void WriteStateFile() const
++	{
++		WriteObjectAtomic(FPaths::ProjectSavedDir() / TEXT("UEAgent/state.json"), State(), true);
++	}
++
++private:
++	TAtomic<bool> bInitialized{ false };
++	TAtomic<bool> bEnabled{ false };
++	TAtomic<bool> bMutationActive{ false };
++	TAtomic<bool> bPerformanceFrozen{ false };
++	bool bFaultInjectionEnabled = false;
++	bool bManagedSave = false;
++	int32 SaveTokenLifetimeSeconds = 300;
++	FString EditorEpoch;
++	FString TokenSecret;
++	FString OperationsDir;
++	FString EvidenceDir;
++	FString InboxDir;
++	FString ActiveJobId;
++	FString LastReceiptId;
++	TArray<FString> Queue;
++	TMap<FString, TSharedPtr<FJob>> Jobs;
++	TMap<FString, FString> ActiveLeases;
++	TMap<FString, int64> PackageSaveGenerations;
++	TMap<FString, FSaveToken> SaveTokens;
++	TSet<FString> ManagedSavePackages;
++	TSet<FString> UnexpectedManagedSavePackages;
++	TSet<FString> ReadOnlyTools;
++	FTSTicker::FDelegateHandle TickerHandle;
++	FDelegateHandle PackageSavedHandle;
++	FDelegateHandle PackageDirtyHandle;
++};
++
++FUEAgentReliableKernel& FUEAgentReliableKernel::Get()
++{
++	static FUEAgentReliableKernel Instance;
++	return Instance;
++}
++
++FUEAgentReliableKernel::FUEAgentReliableKernel()
++	: Impl(MakeUnique<FImpl>())
++{
++}
++
++FUEAgentReliableKernel::~FUEAgentReliableKernel() = default;
++
++void FUEAgentReliableKernel::Initialize() { Impl->Initialize(); }
++void FUEAgentReliableKernel::Shutdown() { Impl->Shutdown(); }
++bool FUEAgentReliableKernel::IsEnabled() const { return Impl->IsEnabled(); }
++bool FUEAgentReliableKernel::IsPerformanceFrozen() const { return Impl->IsPerformanceFrozen(); }
++
++TSharedPtr<FJsonObject> FUEAgentReliableKernel::Invoke(
++	const FString& Operation,
++	const TSharedPtr<FJsonObject>& Parameters)
++{
++	return Impl->Invoke(Operation, Parameters);
++}
++
++bool FUEAgentReliableKernel::AuthorizeMCPCall(
++	const FString& ToolName,
++	const TSharedPtr<FJsonObject>& Arguments,
++	FString& OutError) const
++{
++	return Impl->Authorize(ToolName, Arguments, OutError);
++}
++
++bool FUEAgentReliableKernel::IsManagedMutation()
++{
++	return UEAgentReliable::GManagedMutationDepth > 0;
++}
++
++bool FUEAgentReliableKernel::ShouldDeferDirectSave()
++{
++	return IsManagedMutation();
++}
++
++const TArray<FString>& FUEAgentReliableKernel::GetControlToolNames()
++{
++	static const TArray<FString> Names = {
++		TEXT("ueagent_state"),
++		TEXT("ueagent_submit"),
++		TEXT("ueagent_get_job"),
++		TEXT("ueagent_cancel"),
++		TEXT("ueagent_snapshot"),
++		TEXT("ueagent_batch_read"),
++		TEXT("ueagent_save"),
++		TEXT("ueagent_recover"),
++		TEXT("ueagent_profile_gpu"),
++	};
++	return Names;
++}
++
++FString FUEAgentReliableKernel::GetControlToolDescription(const FString& ToolName)
++{
++	if (ToolName == TEXT("ueagent_state")) return TEXT("Read the reliable editor epoch, queue, leases, dirty packages, and performance-freeze state.");
++	if (ToolName == TEXT("ueagent_submit")) return TEXT("Durably submit one typed ToolsetRegistry or VibeUE mutation with command identity, scopes, OCC snapshots, payload hash, and verification policy. Returns immediately with a job.");
++	if (ToolName == TEXT("ueagent_get_job")) return TEXT("Read a reliable command's current job state or immutable terminal receipt.");
++	if (ToolName == TEXT("ueagent_cancel")) return TEXT("Cancel a queued job or request cancellation of an active job without releasing an uncertain lease early.");
++	if (ToolName == TEXT("ueagent_snapshot")) return TEXT("Capture bounded authoritative live-editor snapshots and SHA-256 hashes for package, object, world, selection, or viewport scopes.");
++	if (ToolName == TEXT("ueagent_batch_read")) return TEXT("Execute up to 64 bounded state/snapshot/job/receipt reads in one MCP round trip.");
++	if (ToolName == TEXT("ueagent_save")) return TEXT("Validate a mutation-issued save token, recheck snapshots and package generations, then save exactly the authorized packages.");
++	if (ToolName == TEXT("ueagent_recover")) return TEXT("Scan durable journals and issue honest RESULT_UNKNOWN receipts for commands left incomplete by a previous editor epoch.");
++	if (ToolName == TEXT("ueagent_profile_gpu")) return TEXT("Queue a deterministic warmup/sample GPU profiling job under a global performance freeze and return structured evidence through its receipt.");
++	return TEXT("UEAgent reliable editor control tool.");
++}
++
++TSharedPtr<FJsonObject> FUEAgentReliableKernel::GetControlToolSchema(const FString& ToolName)
++{
++	TSharedPtr<FJsonObject> Schema = MakeShared<FJsonObject>();
++	Schema->SetStringField(TEXT("type"), TEXT("object"));
++	TSharedPtr<FJsonObject> Properties = MakeShared<FJsonObject>();
++	auto StringProperty = [&Properties](const TCHAR* Name, const TCHAR* Description)
++	{
++		TSharedPtr<FJsonObject> Property = MakeShared<FJsonObject>();
++		Property->SetStringField(TEXT("type"), TEXT("string"));
++		Property->SetStringField(TEXT("description"), Description);
++		Properties->SetObjectField(Name, Property);
++	};
++	auto NumberProperty = [&Properties](const TCHAR* Name, const TCHAR* Description)
++	{
++		TSharedPtr<FJsonObject> Property = MakeShared<FJsonObject>();
++		Property->SetStringField(TEXT("type"), TEXT("number"));
++		Property->SetStringField(TEXT("description"), Description);
++		Properties->SetObjectField(Name, Property);
++	};
++	auto BooleanProperty = [&Properties](const TCHAR* Name, const TCHAR* Description)
++	{
++		TSharedPtr<FJsonObject> Property = MakeShared<FJsonObject>();
++		Property->SetStringField(TEXT("type"), TEXT("boolean"));
++		Property->SetStringField(TEXT("description"), Description);
++		Properties->SetObjectField(Name, Property);
++	};
++	auto ArrayProperty = [&Properties](const TCHAR* Name, const TCHAR* ItemType, const TCHAR* Description)
++	{
++		TSharedPtr<FJsonObject> Property = MakeShared<FJsonObject>();
++		Property->SetStringField(TEXT("type"), TEXT("array"));
++		Property->SetStringField(TEXT("description"), Description);
++		TSharedPtr<FJsonObject> Items = MakeShared<FJsonObject>();
++		Items->SetStringField(TEXT("type"), ItemType);
++		Property->SetObjectField(TEXT("items"), Items);
++		Properties->SetObjectField(Name, Property);
++	};
++	auto ObjectProperty = [&Properties](const TCHAR* Name, const TCHAR* Description)
++	{
++		TSharedPtr<FJsonObject> Property = MakeShared<FJsonObject>();
++		Property->SetStringField(TEXT("type"), TEXT("object"));
++		Property->SetStringField(TEXT("description"), Description);
++		Properties->SetObjectField(Name, Property);
++	};
++
++	TArray<TSharedPtr<FJsonValue>> Required;
++	if (ToolName == TEXT("ueagent_submit"))
++	{
++		StringProperty(TEXT("command_id"), TEXT("Canonical hyphenated UUID, stable across retries."));
++		StringProperty(TEXT("target_type"), TEXT("toolset or vibeue."));
++		StringProperty(TEXT("toolset_name"), TEXT("Typed ToolsetRegistry name; required for target_type=toolset."));
++		StringProperty(TEXT("tool_name"), TEXT("Typed function/tool name."));
++		ObjectProperty(TEXT("arguments"), TEXT("Arguments validated by the underlying typed tool schema."));
++		ArrayProperty(TEXT("scopes"), TEXT("string"), TEXT("Canonical package/object/editor lease and snapshot scopes."));
++		ObjectProperty(TEXT("expected_snapshots"), TEXT("Optional scope to authoritative SHA-256 map for OCC."));
++		StringProperty(TEXT("lease_mode"), TEXT("scoped or exclusive."));
++		StringProperty(TEXT("verify"), TEXT("changed_or_noop, changed, unchanged, or success."));
++		StringProperty(TEXT("payload_sha256"), TEXT("SHA-256 of canonical arguments; mandatory at 64 KiB and above."));
++		ArrayProperty(TEXT("attachments"), TEXT("object"), TEXT("UTF-8 payload files under Saved/UEAgent/Inbox, each with argument/path/sha256."));
++		BooleanProperty(TEXT("allow_preexisting_dirty_save"), TEXT("Explicitly allow a later save token to persist pre-existing dirty edits in the declared packages; false by default."));
++		NumberProperty(TEXT("timeout_ms"), TEXT("Logical deadline in milliseconds; uncertain work keeps its lease."));
++		Required.Add(MakeShared<FJsonValueString>(TEXT("command_id")));
++		Required.Add(MakeShared<FJsonValueString>(TEXT("tool_name")));
++	}
++	else if (ToolName == TEXT("ueagent_profile_gpu"))
++	{
++		StringProperty(TEXT("command_id"), TEXT("Canonical hyphenated UUID, stable across retries."));
++		NumberProperty(TEXT("warmup_frames"), TEXT("Frames discarded before capture, 0-600."));
++		NumberProperty(TEXT("sample_frames"), TEXT("Measured frames, 30-3600."));
++		NumberProperty(TEXT("target_fps"), TEXT("Budget used by the structured verdict."));
++		NumberProperty(TEXT("hitch_threshold_ms"), TEXT("Frame threshold counted as a hitch."));
++		NumberProperty(TEXT("timeout_ms"), TEXT("Profile deadline in milliseconds."));
++		Required.Add(MakeShared<FJsonValueString>(TEXT("command_id")));
++	}
++	else if (ToolName == TEXT("ueagent_snapshot"))
++	{
++		ArrayProperty(TEXT("scopes"), TEXT("string"), TEXT("1-64 canonical scopes."));
++		BooleanProperty(TEXT("include_values"), TEXT("Include bounded reflected property values instead of hashes and metadata only."));
++		Required.Add(MakeShared<FJsonValueString>(TEXT("scopes")));
++	}
++	else if (ToolName == TEXT("ueagent_batch_read"))
++	{
++		ArrayProperty(TEXT("requests"), TEXT("object"), TEXT("1-64 state, snapshot, job, or receipt requests."));
++		Required.Add(MakeShared<FJsonValueString>(TEXT("requests")));
++	}
++	else if (ToolName == TEXT("ueagent_save"))
++	{
++		StringProperty(TEXT("save_token"), TEXT("Capability issued only by a verified mutation receipt."));
++		ArrayProperty(TEXT("packages"), TEXT("string"), TEXT("Optional exact package assertion; must equal the token set."));
++		Required.Add(MakeShared<FJsonValueString>(TEXT("save_token")));
++	}
++	else if (ToolName == TEXT("ueagent_get_job") || ToolName == TEXT("ueagent_cancel"))
++	{
++		StringProperty(TEXT("command_id"), TEXT("Canonical command UUID."));
++		Required.Add(MakeShared<FJsonValueString>(TEXT("command_id")));
++	}
++	Schema->SetObjectField(TEXT("properties"), Properties);
++	if (!Required.IsEmpty()) Schema->SetArrayField(TEXT("required"), Required);
++	return Schema;
++}
++
++#if WITH_AUTOMATION_TESTS
++IMPLEMENT_SIMPLE_AUTOMATION_TEST(
++	FUEAgentReliableCanonicalJsonTest,
++	"VibeUE.UEAgentReliable.CanonicalJson",
++	EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
++
++bool FUEAgentReliableCanonicalJsonTest::RunTest(const FString&)
++{
++	TSharedPtr<FJsonObject> First = MakeShared<FJsonObject>();
++	First->SetStringField(TEXT("z"), TEXT("line\nvalue"));
++	First->SetNumberField(TEXT("a"), 1.0);
++	TSharedPtr<FJsonObject> Second = MakeShared<FJsonObject>();
++	Second->SetNumberField(TEXT("a"), 1.0);
++	Second->SetStringField(TEXT("z"), TEXT("line\nvalue"));
++	TestEqual(TEXT("key order is canonical"), UEAgentReliable::CanonicalJson(First), UEAgentReliable::CanonicalJson(Second));
++	TestEqual(TEXT("hash is stable"), UEAgentReliable::Sha256String(UEAgentReliable::CanonicalJson(First)), UEAgentReliable::Sha256String(UEAgentReliable::CanonicalJson(Second)));
++	TestTrue(TEXT("canonical UUID accepted"), UEAgentReliable::IsGuid(TEXT("12345678-1234-1234-1234-1234567890ab")));
++	TestFalse(TEXT("noncanonical UUID rejected"), UEAgentReliable::IsGuid(TEXT("123456781234123412341234567890ab")));
++	TestTrue(TEXT("constant-time equality works"), UEAgentReliable::ConstantTimeEquals(TEXT("abc"), TEXT("abc")));
++	TestFalse(TEXT("constant-time inequality works"), UEAgentReliable::ConstantTimeEquals(TEXT("abc"), TEXT("abd")));
++	TestEqual(TEXT("native HMAC is stable"), UEAgentReliable::HmacSha1(TEXT("key"), TEXT("The quick brown fox jumps over the lazy dog")), TEXT("de7c9b85b8b78aa6bc8a7a36f70a90701c9db4d9"));
++	TestTrue(TEXT("save tools are recognized"), UEAgentReliable::IsSaveToolName(TEXT("VibeUE.USkeletonService.SaveAsset")));
++	TestFalse(TEXT("non-save mutations are not overblocked"), UEAgentReliable::IsSaveToolName(TEXT("ApplyChanges")));
++
++	FUEAgentReliableKernel& Kernel = FUEAgentReliableKernel::Get();
++	TSharedPtr<FJsonObject> State = Kernel.Invoke(TEXT("ueagent_state"), MakeShared<FJsonObject>());
++	bool bEnabled = false;
++	TestTrue(TEXT("reliable kernel is enabled"), State->TryGetBoolField(TEXT("enabled"), bEnabled) && bEnabled);
++
++	TSharedPtr<FJsonObject> SnapshotParams = MakeShared<FJsonObject>();
++	SnapshotParams->SetArrayField(TEXT("scopes"), { MakeShared<FJsonValueString>(TEXT("/Game/__UEAgentReliable_Missing__")) });
++	const TSharedPtr<FJsonObject> SnapshotA = Kernel.Invoke(TEXT("ueagent_snapshot"), SnapshotParams);
++	const TSharedPtr<FJsonObject> SnapshotB = Kernel.Invoke(TEXT("ueagent_snapshot"), SnapshotParams);
++	const TArray<TSharedPtr<FJsonValue>>* SnapshotsA = nullptr;
++	const TArray<TSharedPtr<FJsonValue>>* SnapshotsB = nullptr;
++	FString HashA, HashB;
++	if (SnapshotA->TryGetArrayField(TEXT("snapshots"), SnapshotsA) && SnapshotsA && SnapshotsA->Num() == 1)
++		(*SnapshotsA)[0]->AsObject()->TryGetStringField(TEXT("sha256"), HashA);
++	if (SnapshotB->TryGetArrayField(TEXT("snapshots"), SnapshotsB) && SnapshotsB && SnapshotsB->Num() == 1)
++		(*SnapshotsB)[0]->AsObject()->TryGetStringField(TEXT("sha256"), HashB);
++	TestTrue(TEXT("missing targets have deterministic snapshots"), !HashA.IsEmpty() && HashA == HashB);
++
++	FString AuthorizationError;
++	TestTrue(TEXT("reviewed read is allowed"), Kernel.AuthorizeMCPCall(TEXT("VibeUE.ActorService.GetAllProperties"), MakeShared<FJsonObject>(), AuthorizationError));
++	AuthorizationError.Reset();
++	TestFalse(TEXT("unknown direct call defaults to mutation"), Kernel.AuthorizeMCPCall(TEXT("VibeUE.UUnknownService.DoThing"), MakeShared<FJsonObject>(), AuthorizationError));
++
++	TSharedPtr<FJsonObject> Fault = MakeShared<FJsonObject>();
++	const FString CommandId = FGuid::NewGuid().ToString(EGuidFormats::DigitsWithHyphens).ToLower();
++	Fault->SetStringField(TEXT("command_id"), CommandId);
++	Fault->SetStringField(TEXT("target_type"), TEXT("toolset"));
++	Fault->SetStringField(TEXT("toolset_name"), TEXT("VibeUE.Automation"));
++	Fault->SetStringField(TEXT("tool_name"), TEXT("NeverRuns"));
++	Fault->SetStringField(TEXT("lease_mode"), TEXT("scoped"));
++	Fault->SetStringField(TEXT("verify"), TEXT("changed"));
++	Fault->SetStringField(TEXT("fault_injection"), TEXT("after_accept"));
++	Fault->SetArrayField(TEXT("scopes"), { MakeShared<FJsonValueString>(TEXT("/Game/__UEAgentReliable_Missing__")) });
++	TSharedPtr<FJsonObject> FaultReceipt = Kernel.Invoke(TEXT("ueagent_submit"), Fault);
++	FString FaultErrorCode;
++	FaultReceipt->TryGetStringField(TEXT("error_code"), FaultErrorCode);
++	if (FaultErrorCode == TEXT("FAULT_INJECTION_DISABLED"))
++	{
++		AddWarning(TEXT("Fault boundary check skipped; launch with -ini:Editor:[UEAgent.Reliable]:EnableFaultInjection=True"));
++	}
++	else
++	{
++		TestEqual(TEXT("after-accept fault is terminal"), UEAgentReliable::JsonStringField(FaultReceipt, TEXT("outcome")), TEXT("failed"));
++		TSharedPtr<FJsonObject> Replay = Kernel.Invoke(TEXT("ueagent_submit"), Fault);
++		bool bReplayed = false;
++		TestTrue(TEXT("same command is idempotently replayed"), Replay->TryGetBoolField(TEXT("replayed"), bReplayed) && bReplayed);
++		TSharedPtr<FJsonObject> Reused = UEAgentReliable::CloneObject(Fault);
++		Reused->SetStringField(TEXT("tool_name"), TEXT("DifferentDigest"));
++		TestEqual(TEXT("UUID reuse with another digest is rejected"), UEAgentReliable::JsonStringField(Kernel.Invoke(TEXT("ueagent_submit"), Reused), TEXT("error_code")), TEXT("COMMAND_ID_REUSED"));
++	}
++	return true;
++}
++#endif
+diff --git a/Source/VibeUE/Private/Core/VibeUEMCPToolBridge.cpp b/Source/VibeUE/Private/Core/VibeUEMCPToolBridge.cpp
+index b720b0e..8af330b 100644
+--- a/Source/VibeUE/Private/Core/VibeUEMCPToolBridge.cpp
++++ b/Source/VibeUE/Private/Core/VibeUEMCPToolBridge.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "Core/VibeUEMCPToolBridge.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "Core/ToolRegistry.h"
+ #include "Core/ToolMetadata.h"
+ 
+@@ -234,6 +235,57 @@ namespace
+ 		TSharedPtr<FJsonObject> InputSchema;
+ 	};
+ 
++	/** Small adapter for the editor-local reliable command kernel's fixed control surface. */
++	struct FUEAgentControlTool : IModelContextProtocolTool
++	{
++		explicit FUEAgentControlTool(const FString& InName)
++			: Name(InName)
++			, Description(FUEAgentReliableKernel::GetControlToolDescription(InName))
++			, InputSchema(FUEAgentReliableKernel::GetControlToolSchema(InName))
++		{
++		}
++
++		virtual FString GetName() const override { return Name; }
++		virtual FString GetDescription() const override { return Description; }
++		virtual TSharedPtr<FJsonObject> GetInputJsonSchema() const override { return InputSchema; }
++
++		virtual void RunAsync(
++			const FModelContextProtocolToolRequestId&,
++			const TSharedPtr<FJsonObject>& Params,
++			const FResultCallback& OnComplete) override
++		{
++			auto Execute = [ToolName = Name, Params, OnComplete]()
++			{
++				TSharedPtr<FJsonObject> Result = FUEAgentReliableKernel::Get().Invoke(ToolName, Params);
++				bool bSuccess = false;
++				if (!Result.IsValid() || !Result->TryGetBoolField(TEXT("success"), bSuccess))
++				{
++					OnComplete(UE::ModelContextProtocol::MakeErrorResult(TEXT("UEAgent reliable kernel returned an invalid result")));
++					return;
++				}
++				if (!bSuccess)
++				{
++					FString Json;
++					const TSharedRef<TJsonWriter<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>> Writer =
++						TJsonWriterFactory<TCHAR, TCondensedJsonPrintPolicy<TCHAR>>::Create(&Json);
++					FJsonSerializer::Serialize(Result.ToSharedRef(), Writer);
++					OnComplete(UE::ModelContextProtocol::MakeErrorResult(Json));
++					return;
++				}
++				TSharedPtr<FJsonValue> Structured = MakeShared<FJsonValueObject>(Result);
++				OnComplete(UE::ModelContextProtocol::MakeStructuredContentResult(Structured));
++			};
++
++			if (IsInGameThread()) Execute();
++			else AsyncTask(ENamedThreads::GameThread, MoveTemp(Execute));
++		}
++
++	private:
++		FString Name;
++		FString Description;
++		TSharedPtr<FJsonObject> InputSchema;
++	};
++
+ 	/** Tools we registered, so we can remove exactly those on shutdown. */
+ 	TArray<TSharedRef<IModelContextProtocolTool>> GRegisteredTools;
+ }
+@@ -258,10 +310,21 @@ namespace VibeUEMCPToolBridge
+ 
+ 		int32 Registered = 0;
+ 		int32 Skipped = 0;
++		for (const FString& ControlToolName : FUEAgentReliableKernel::GetControlToolNames())
++		{
++			TSharedRef<IModelContextProtocolTool> Tool = MakeShared<FUEAgentControlTool>(ControlToolName);
++			if (Module->AddTool(Tool))
++			{
++				GRegisteredTools.Add(Tool);
++				++Registered;
++			}
++		}
+ 		for (const FToolMetadata& Meta : FToolRegistry::Get().GetAllTools())
+ 		{
+ 			// Internal-only and editor-testing tools are not exposed to external MCP clients.
+-			if (Meta.bInternalOnly || Meta.bEditorTestingOnly)
++			if (Meta.bInternalOnly || Meta.bEditorTestingOnly
++				|| (FUEAgentReliableKernel::Get().IsEnabled()
++					&& Meta.Category.Equals(TEXT("Python"), ESearchCase::IgnoreCase)))
+ 			{
+ 				++Skipped;
+ 				continue;
+diff --git a/Source/VibeUE/Private/Module.cpp b/Source/VibeUE/Private/Module.cpp
+index 5eefd1c..530d3e9 100644
+--- a/Source/VibeUE/Private/Module.cpp
++++ b/Source/VibeUE/Private/Module.cpp
+@@ -13,6 +13,7 @@
+ #include "ToolsetRegistry/UToolsetRegistry.h"
+ #include "ToolsetRegistry/ToolsetDefinition.h"
+ #include "Core/VibeUEMCPToolBridge.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "IModelContextProtocolModule.h"
+ #include "UObject/UObjectHash.h"
+ #include "UObject/UObjectIterator.h"
+@@ -1777,6 +1778,7 @@ void FModule::StartupModule()
+ 	}
+ 
+ 	bServicesInitialized = true;
++	FUEAgentReliableKernel::Get().Initialize();
+ 	OnPackageSavedHandle = UPackage::PackageSavedWithContextEvent.AddRaw(this, &FModule::HandleAssetPackageSaved);
+ 
+ 	// Clear screenshots directory from previous sessions to save disk space
+@@ -1835,6 +1837,16 @@ static void GatherVibeUEToolsetClasses(TArray<UClass*>& OutClasses)
+ 
+ void FModule::RegisterToolsets()
+ {
++	// Install the process-wide policy before exposing any VibeUE mutation entry point.
++	if (IModelContextProtocolModule* MCPModule = IModelContextProtocolModule::Get();
++		MCPModule && !OnRefreshToolsHandle.IsValid())
++	{
++		MCPModule->ToolCallAuthorizationGate().BindRaw(
++			&FUEAgentReliableKernel::Get(),
++			&FUEAgentReliableKernel::AuthorizeMCPCall);
++		OnRefreshToolsHandle = MCPModule->OnRefreshTools().AddRaw(this, &FModule::HandleMCPRefreshTools);
++	}
++
+ 	// Service layer -> Epic's ToolsetRegistry (AICallable tools).
+ 	if (UToolsetRegistry::IsAvailable())
+ 	{
+@@ -1854,15 +1866,8 @@ void FModule::RegisterToolsets()
+ 	// Dynamic FToolRegistry tools -> Epic's MCP endpoint (independent of ToolsetRegistry).
+ 	VibeUEMCPToolBridge::RegisterAll();
+ 
+-	// ModelContextProtocol.RefreshTools drops every registered MCP tool and broadcasts
+-	// OnRefreshTools for providers to re-add themselves (Epic's editor module does this for
+-	// ToolsetRegistry adapters, so the service toolsets above survive on their own). Without
+-	// this subscription the bridged tools stay gone until the next editor restart.
+-	if (IModelContextProtocolModule* MCPModule = IModelContextProtocolModule::Get();
+-		MCPModule && !OnRefreshToolsHandle.IsValid())
+-	{
+-		OnRefreshToolsHandle = MCPModule->OnRefreshTools().AddRaw(this, &FModule::HandleMCPRefreshTools);
+-	}
++	// RefreshTools drops every registered MCP tool and broadcasts OnRefreshTools; the
++	// subscription above re-adds the dynamic bridge while native ToolsetRegistry re-adds itself.
+ }
+ 
+ void FModule::HandleMCPRefreshTools()
+@@ -1879,6 +1884,7 @@ void FModule::UnregisterToolsets()
+ 	{
+ 		if (IModelContextProtocolModule* MCPModule = IModelContextProtocolModule::Get())
+ 		{
++			MCPModule->ToolCallAuthorizationGate().Unbind();
+ 			MCPModule->OnRefreshTools().Remove(OnRefreshToolsHandle);
+ 		}
+ 		OnRefreshToolsHandle.Reset();
+@@ -1919,6 +1925,7 @@ void FModule::ShutdownModule()
+ 
+ 	// Shutdown Tool Registry
+ 	FToolRegistry::Get().Shutdown();
++	FUEAgentReliableKernel::Get().Shutdown();
+ 
+ 	UE_LOG(LogTemp, Display, TEXT("VibeUE Module has shut down"));
+ }
+diff --git a/Source/VibeUE/Private/PythonAPI/UAnimMontageService.cpp b/Source/VibeUE/Private/PythonAPI/UAnimMontageService.cpp
+index df9456e..7c44ec7 100644
+--- a/Source/VibeUE/Private/PythonAPI/UAnimMontageService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UAnimMontageService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UAnimMontageService.h"
++#include "Core/UEAgentReliableKernel.h"
+ 
+ #include "Animation/AnimMontage.h"
+ #include "Animation/AnimSequence.h"
+@@ -1596,7 +1597,7 @@ FString UAnimMontageService::CreateMontageFromAnimation(
+ 	NewMontage->BlendOutTriggerTime = -1.0f;
+ 
+ 	NewMontage->MarkPackageDirty();
+-	if (!UEditorAssetLibrary::SaveAsset(FullPath))
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave() && !UEditorAssetLibrary::SaveAsset(FullPath))
+ 	{
+ 		UE_LOG(LogTemp, Error, TEXT("UAnimMontageService::CreateMontageFromAnimation: Failed to save asset: %s"), *FullPath);
+ 		return FString();
+@@ -1668,7 +1669,7 @@ FString UAnimMontageService::CreateEmptyMontage(
+ 	NewMontage->BlendOut.SetBlendTime(0.25f);
+ 
+ 	NewMontage->MarkPackageDirty();
+-	if (!UEditorAssetLibrary::SaveAsset(FullPath))
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave() && !UEditorAssetLibrary::SaveAsset(FullPath))
+ 	{
+ 		UE_LOG(LogTemp, Error, TEXT("UAnimMontageService::CreateEmptyMontage: Failed to save asset: %s"), *FullPath);
+ 		return FString();
+diff --git a/Source/VibeUE/Private/PythonAPI/UAnimSequenceService.cpp b/Source/VibeUE/Private/PythonAPI/UAnimSequenceService.cpp
+index 25111c7..7fc06bd 100644
+--- a/Source/VibeUE/Private/PythonAPI/UAnimSequenceService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UAnimSequenceService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UAnimSequenceService.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "PythonAPI/USkeletonService.h"
+ 
+ #include "Animation/AnimSequence.h"
+@@ -600,7 +601,7 @@ FString UAnimSequenceService::CreateFromPose(
+ 
+ 	// Mark as modified and save
+ 	NewAnimSeq->MarkPackageDirty();
+-	if (!UEditorAssetLibrary::SaveAsset(FullPath))
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave() && !UEditorAssetLibrary::SaveAsset(FullPath))
+ 	{
+ 		UE_LOG(LogTemp, Error, TEXT("UAnimSequenceService::CreateFromPose: Failed to save asset: %s"), *FullPath);
+ 		return FString();
+@@ -830,7 +831,7 @@ FString UAnimSequenceService::CreateAnimSequence(
+ 
+ 	// Mark as modified and save
+ 	NewAnimSeq->MarkPackageDirty();
+-	if (!UEditorAssetLibrary::SaveAsset(FullPath))
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave() && !UEditorAssetLibrary::SaveAsset(FullPath))
+ 	{
+ 		UE_LOG(LogTemp, Error, TEXT("UAnimSequenceService::CreateAnimSequence: Failed to save asset: %s"), *FullPath);
+ 		return FString();
+diff --git a/Source/VibeUE/Private/PythonAPI/UAssetDiscoveryService.cpp b/Source/VibeUE/Private/PythonAPI/UAssetDiscoveryService.cpp
+index 342a8c4..da17199 100644
+--- a/Source/VibeUE/Private/PythonAPI/UAssetDiscoveryService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UAssetDiscoveryService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UAssetDiscoveryService.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "AssetRegistry/AssetRegistryModule.h"
+ #include "AssetRegistry/IAssetRegistry.h"
+ #include "EditorAssetLibrary.h"
+@@ -147,7 +148,7 @@ FString UAssetDiscoveryService::ImportAsset(
+ 
+ 	FAssetRegistryModule::AssetCreated(NewObj);
+ 	Package->MarkPackageDirty();
+-	if (!UEditorAssetLibrary::SaveLoadedAsset(NewObj, false))
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave() && !UEditorAssetLibrary::SaveLoadedAsset(NewObj, false))
+ 	{
+ 		OutError = FString::Printf(TEXT("Failed to save imported asset '%s'"), *NewObj->GetPathName());
+ 		return FString();
+diff --git a/Source/VibeUE/Private/PythonAPI/UBlueprintService.cpp b/Source/VibeUE/Private/PythonAPI/UBlueprintService.cpp
+index 53aa173..64216e8 100644
+--- a/Source/VibeUE/Private/PythonAPI/UBlueprintService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UBlueprintService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UBlueprintService.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "PythonAPI/BlueprintTypeParser.h"
+ #include "Engine/Blueprint.h"
+ #include "Engine/BlueprintGeneratedClass.h"
+@@ -5749,7 +5750,10 @@ bool UBlueprintService::SetProperty(
+ 	}
+ 
+ 	FBlueprintEditorUtils::MarkBlueprintAsModified(Blueprint);
+-	UEditorAssetLibrary::SaveAsset(BlueprintPath, false);
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave())
++	{
++		UEditorAssetLibrary::SaveAsset(BlueprintPath, false);
++	}
+ 
+ 	UE_LOG(LogTemp, Log, TEXT("SetProperty: Set property '%s' = '%s'"), *PropertyName, *PropertyValue);
+ 	return true;
+diff --git a/Source/VibeUE/Private/PythonAPI/UFoliageService.cpp b/Source/VibeUE/Private/PythonAPI/UFoliageService.cpp
+index 3301704..ace9d53 100644
+--- a/Source/VibeUE/Private/PythonAPI/UFoliageService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UFoliageService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UFoliageService.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "InstancedFoliageActor.h"
+ #include "FoliageType.h"
+ #include "FoliageType_InstancedStaticMesh.h"
+@@ -632,7 +633,8 @@ FFoliageTypeCreateResult UFoliageService::CreateFoliageType(
+ 	FString PackageFileName = FPackageName::LongPackageNameToFilename(PackageName, FPackageName::GetAssetPackageExtension());
+ 	FSavePackageArgs SaveArgs;
+ 	SaveArgs.TopLevelFlags = RF_Public | RF_Standalone;
+-	if (!UPackage::SavePackage(Package, FoliageType, *PackageFileName, SaveArgs))
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave()
++		&& !UPackage::SavePackage(Package, FoliageType, *PackageFileName, SaveArgs))
+ 	{
+ 		Result.ErrorMessage = FString::Printf(TEXT("Failed to save package '%s'"), *PackageName);
+ 		UE_LOG(LogTemp, Error, TEXT("UFoliageService::CreateFoliageType: %s"), *Result.ErrorMessage);
+diff --git a/Source/VibeUE/Private/PythonAPI/UInputService.cpp b/Source/VibeUE/Private/PythonAPI/UInputService.cpp
+index 5547599..d858d66 100644
+--- a/Source/VibeUE/Private/PythonAPI/UInputService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UInputService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UInputService.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "EditorAssetLibrary.h"
+ #include "AssetRegistry/AssetRegistryModule.h"
+ #include "AssetRegistry/IAssetRegistry.h"
+@@ -164,7 +165,8 @@ FInputCreateResult UInputService::CreateAction(
+ 	}
+ 	
+ 	// Save the asset
+-	Result.bSuccess = UEditorAssetLibrary::SaveAsset(FullPath, false);
++	Result.bSuccess = FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(FullPath, false);
+ 	if (!Result.bSuccess)
+ 	{
+ 		Result.ErrorMessage = FString::Printf(TEXT("Failed to save asset '%s'"), *FullPath);
+@@ -306,7 +308,8 @@ FInputCreateResult UInputService::CreateMappingContext(
+ 	}
+ 	
+ 	// Save the asset
+-	Result.bSuccess = UEditorAssetLibrary::SaveAsset(FullPath, false);
++	Result.bSuccess = FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(FullPath, false);
+ 	if (!Result.bSuccess)
+ 	{
+ 		Result.ErrorMessage = FString::Printf(TEXT("Failed to save asset '%s'"), *FullPath);
+@@ -848,4 +851,4 @@ bool UInputService::KeyMappingExists(const FString& ContextPath, const FString&
+ 	}
+ 
+ 	return false;
+-}
+\ No newline at end of file
++}
+diff --git a/Source/VibeUE/Private/PythonAPI/ULandscapeMaterialService.cpp b/Source/VibeUE/Private/PythonAPI/ULandscapeMaterialService.cpp
+index ad78f32..09003d2 100644
+--- a/Source/VibeUE/Private/PythonAPI/ULandscapeMaterialService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/ULandscapeMaterialService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/ULandscapeMaterialService.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "Materials/Material.h"
+ #include "Materials/MaterialInterface.h"
+ #include "Materials/MaterialExpression.h"
+@@ -771,7 +772,8 @@ FLandscapeLayerInfoCreateResult ULandscapeMaterialService::CreateLayerInfoObject
+ 	LayerInfoObj->MarkPackageDirty();
+ 
+ 	// Save the asset
+-	Result.bSuccess = UEditorAssetLibrary::SaveAsset(FullAssetPath, false);
++	Result.bSuccess = FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(FullAssetPath, false);
+ 	if (!Result.bSuccess)
+ 	{
+ 		Result.ErrorMessage = FString::Printf(TEXT("Failed to save layer info asset '%s'"), *FullAssetPath);
+@@ -1724,7 +1726,8 @@ FLandscapeAutoMaterialResult ULandscapeMaterialService::CreateAutoMaterial(
+ 	}
+ 
+ 	// Save the material
+-	Result.bSuccess = UEditorAssetLibrary::SaveAsset(Result.MaterialAssetPath, false);
++	Result.bSuccess = FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(Result.MaterialAssetPath, false);
+ 	if (!Result.bSuccess)
+ 	{
+ 		Result.ErrorMessage = FString::Printf(TEXT("Failed to save material asset '%s'"), *Result.MaterialAssetPath);
+diff --git a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp b/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
+index 841cb56..892466c 100644
+--- a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UMaterialNodeService.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "PythonAPI/UMaterialService.h"
+ #include "Core/JsonValueHelper.h"
+ #include "Materials/Material.h"
+@@ -3139,7 +3140,8 @@ FMaterialCreateResult UMaterialNodeService::CreateMaterialFunction(
+ 	Result.AssetPath = NewAsset->GetPathName();
+ 
+ 	// Save immediately
+-	Result.bSuccess = UEditorAssetLibrary::SaveAsset(Result.AssetPath, false);
++	Result.bSuccess = FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(Result.AssetPath, false);
+ 	if (!Result.bSuccess)
+ 	{
+ 		Result.ErrorMessage = FString::Printf(TEXT("Failed to save material function asset '%s'"), *Result.AssetPath);
+@@ -3196,7 +3198,7 @@ FString UMaterialNodeService::AddFunctionInput(
+ 	Function->PostEditChange();
+ 
+ 	// Save
+-	if (!UEditorAssetLibrary::SaveAsset(FunctionPath, false))
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave() && !UEditorAssetLibrary::SaveAsset(FunctionPath, false))
+ 	{
+ 		UE_LOG(LogTemp, Error, TEXT("UMaterialNodeService::AddFunctionInput: Failed to save '%s'"), *FunctionPath);
+ 		return FString();
+@@ -3245,7 +3247,7 @@ FString UMaterialNodeService::AddFunctionOutput(
+ 
+ 	Function->PostEditChange();
+ 
+-	if (!UEditorAssetLibrary::SaveAsset(FunctionPath, false))
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave() && !UEditorAssetLibrary::SaveAsset(FunctionPath, false))
+ 	{
+ 		UE_LOG(LogTemp, Error, TEXT("UMaterialNodeService::AddFunctionOutput: Failed to save '%s'"), *FunctionPath);
+ 		return FString();
+@@ -3521,7 +3523,7 @@ int32 UMaterialNodeService::CleanupUnusedExpressions(const FString& AssetPath)
+ 			Function->GetExpressionCollection().RemoveExpression(Expr);
+ 		}
+ 		Function->PostEditChange();
+-		if (!UEditorAssetLibrary::SaveAsset(AssetPath, false))
++		if (!FUEAgentReliableKernel::ShouldDeferDirectSave() && !UEditorAssetLibrary::SaveAsset(AssetPath, false))
+ 		{
+ 			UE_LOG(LogTemp, Warning, TEXT("UMaterialNodeService::CleanupUnusedExpressions: Failed to save '%s'"), *AssetPath);
+ 		}
+diff --git a/Source/VibeUE/Private/PythonAPI/UMaterialService.cpp b/Source/VibeUE/Private/PythonAPI/UMaterialService.cpp
+index 2af0927..84d6155 100644
+--- a/Source/VibeUE/Private/PythonAPI/UMaterialService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UMaterialService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UMaterialService.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "Core/JsonValueHelper.h"
+ #include "Materials/Material.h"
+ #include "Materials/MaterialInstance.h"
+@@ -376,7 +377,8 @@ TArray<FString> UMaterialService::GetEnumPropertyValues(const FEnumProperty* Enu
+ 
+ bool UMaterialService::SaveMaterial(const FString& MaterialPath)
+ {
+-	return UEditorAssetLibrary::SaveAsset(MaterialPath, false);
++	return FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(MaterialPath, false);
+ }
+ 
+ bool UMaterialService::CompileMaterial(const FString& MaterialPath)
+diff --git a/Source/VibeUE/Private/PythonAPI/UMetaSoundService.cpp b/Source/VibeUE/Private/PythonAPI/UMetaSoundService.cpp
+index cb5fb3a..af382eb 100644
+--- a/Source/VibeUE/Private/PythonAPI/UMetaSoundService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UMetaSoundService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UMetaSoundService.h"
++#include "Core/UEAgentReliableKernel.h"
+ 
+ // MetaSound Engine
+ #include "MetasoundBuilderSubsystem.h"
+@@ -289,7 +290,8 @@ bool UMetaSoundService::CommitEditing(const FString& AssetPath, UMetaSoundSource
+ 	// Notify any open MetaSound editor window to resync its graph view.
+ 	// Without this, the editor displays stale state until the asset is closed/reopened.
+ 	Source->PostEditChange();
+-	return UEditorAssetLibrary::SaveAsset(AssetPath, false);
++	return FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(AssetPath, false);
+ }
+ 
+ // ============================================================================
+@@ -401,7 +403,10 @@ FMetaSoundResult UMetaSoundService::CreateMetaSound(const FString& PackagePath,
+ 					UE_LOG(LogMetaSoundService, Warning,
+ 					       TEXT("CreateMetaSound: SaveAsset failed for '%s'"), *FullPath);
+ 				}
+-				UEditorAssetLibrary::SaveAsset(FullPath, false);
++				if (!FUEAgentReliableKernel::ShouldDeferDirectSave())
++				{
++					UEditorAssetLibrary::SaveAsset(FullPath, false);
++				}
+ 			}
+ 		}
+ 	}
+diff --git a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
+index c4f872d..924871e 100644
+--- a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UNiagaraScratchPadService.h"
++#include "Core/UEAgentReliableKernel.h"
+ 
+ #include "EditorAssetLibrary.h"
+ #include "EdGraph/EdGraph.h"
+@@ -1737,7 +1738,10 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+ 	System->RequestCompile(false);
+ 	System->WaitForCompilationComplete();
+ 
+-	UEditorAssetLibrary::SaveLoadedAsset(System);
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave())
++	{
++		UEditorAssetLibrary::SaveLoadedAsset(System);
++	}
+ 
+ 	// Surface the real compiler diagnostics instead of a bare true/false — a compile
+ 	// with errors is a failure the caller must see (issues #432, #352).
+diff --git a/Source/VibeUE/Private/PythonAPI/URuntimeVirtualTextureService.cpp b/Source/VibeUE/Private/PythonAPI/URuntimeVirtualTextureService.cpp
+index e1580ce..850ee81 100644
+--- a/Source/VibeUE/Private/PythonAPI/URuntimeVirtualTextureService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/URuntimeVirtualTextureService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/URuntimeVirtualTextureService.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "VT/RuntimeVirtualTexture.h"
+ #include "Components/RuntimeVirtualTextureComponent.h"
+ #include "VT/VirtualTextureBuilder.h"
+@@ -185,7 +186,8 @@ FRVTCreateResult URuntimeVirtualTextureService::CreateRuntimeVirtualTexture(
+ 	NewRVT->MarkPackageDirty();
+ 
+ 	// Save the asset
+-	Result.bSuccess = UEditorAssetLibrary::SaveAsset(FullAssetPath, false);
++	Result.bSuccess = FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(FullAssetPath, false);
+ 	if (!Result.bSuccess)
+ 	{
+ 		Result.ErrorMessage = FString::Printf(TEXT("Failed to save RVT asset '%s'"), *FullAssetPath);
+diff --git a/Source/VibeUE/Private/PythonAPI/USkeletonService.cpp b/Source/VibeUE/Private/PythonAPI/USkeletonService.cpp
+index 3b7b1fe..579b688 100644
+--- a/Source/VibeUE/Private/PythonAPI/USkeletonService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/USkeletonService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/USkeletonService.h"
++#include "Core/UEAgentReliableKernel.h"
+ #include "PythonAPI/UAnimSequenceService.h"
+ 
+ #include "Animation/Skeleton.h"
+@@ -634,7 +635,7 @@ bool USkeletonService::DuplicateSkeleton(const FString& SkeletalMeshPath, const
+ 	}
+ 
+ 	// Save the new skeleton
+-	if (!UEditorAssetLibrary::SaveAsset(NewSkeletonPath, false))
++	if (!FUEAgentReliableKernel::ShouldDeferDirectSave() && !UEditorAssetLibrary::SaveAsset(NewSkeletonPath, false))
+ 	{
+ 		UE_LOG(LogTemp, Warning, TEXT("USkeletonService::DuplicateSkeleton: Failed to save new skeleton: %s"), *NewSkeletonPath);
+ 	}
+@@ -1123,7 +1124,8 @@ bool USkeletonService::SaveAsset(const FString& AssetPath)
+ 		return false;
+ 	}
+ 
+-	return UEditorAssetLibrary::SaveAsset(AssetPath);
++	return FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(AssetPath);
+ }
+ 
+ // ============================================================================
+diff --git a/Source/VibeUE/Private/PythonAPI/USoundCueService.cpp b/Source/VibeUE/Private/PythonAPI/USoundCueService.cpp
+index 6385d17..7476ece 100644
+--- a/Source/VibeUE/Private/PythonAPI/USoundCueService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/USoundCueService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/USoundCueService.h"
++#include "Core/UEAgentReliableKernel.h"
+ 
+ // SoundCue.h declares an override of the deprecated
+ // Audio::ILegacyParameterTransmitter::GetReferencedObjects, which trips C4996
+@@ -287,7 +288,8 @@ bool USoundCueService::SaveSoundCue(const FString& AssetPath)
+ 	{
+ 		return false;
+ 	}
+-	return UEditorAssetLibrary::SaveAsset(AssetPath, false);
++	return FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(AssetPath, false);
+ }
+ 
+ FSoundCueResult USoundCueService::DuplicateSoundCue(const FString& SourcePath, const FString& DestPath)
+@@ -319,7 +321,8 @@ FSoundCueResult USoundCueService::DuplicateSoundCue(const FString& SourcePath, c
+ 		return Result;
+ 	}
+ 
+-	Result.bSuccess = UEditorAssetLibrary::SaveAsset(DestPath, false);
++	Result.bSuccess = FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(DestPath, false);
+ 	if (!Result.bSuccess)
+ 	{
+ 		Result.Message = FString::Printf(TEXT("SaveAsset failed for '%s'"), *DestPath);
+diff --git a/Source/VibeUE/Private/PythonAPI/UStateTreeService.cpp b/Source/VibeUE/Private/PythonAPI/UStateTreeService.cpp
+index 1eb325a..521a3d6 100644
+--- a/Source/VibeUE/Private/PythonAPI/UStateTreeService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UStateTreeService.cpp
+@@ -1,6 +1,7 @@
+ // Copyright Buckley Builds LLC 2026 All Rights Reserved.
+ 
+ #include "PythonAPI/UStateTreeService.h"
++#include "Core/UEAgentReliableKernel.h"
+ 
+ #include "EditorAssetLibrary.h"
+ #include "AssetRegistry/AssetRegistryModule.h"
+@@ -6793,7 +6794,8 @@ bool UStateTreeService::SaveStateTree(const FString& AssetPath)
+ 		return false;
+ 	}
+ 
+-	const bool bSaved = UEditorAssetLibrary::SaveAsset(AssetPath, false);
++	const bool bSaved = FUEAgentReliableKernel::ShouldDeferDirectSave()
++		|| UEditorAssetLibrary::SaveAsset(AssetPath, false);
+ 	if (bSaved)
+ 	{
+ 		UE_LOG(LogStateTreeService, Log, TEXT("SaveStateTree: Saved %s"), *AssetPath);
+diff --git a/Source/VibeUE/Public/Core/UEAgentReliableKernel.h b/Source/VibeUE/Public/Core/UEAgentReliableKernel.h
+new file mode 100644
+index 0000000..4c88487
+--- /dev/null
++++ b/Source/VibeUE/Public/Core/UEAgentReliableKernel.h
+@@ -0,0 +1,62 @@
++// Copyright Buckley Builds LLC 2026 All Rights Reserved.
++
++#pragma once
++
++#include "CoreMinimal.h"
++
++class FJsonObject;
++
++/**
++ * Editor-local reliable execution kernel used by UEAgent's MCP tools.
++ *
++ * The kernel is intentionally hosted inside VibeUE: Epic's MCP server remains the only transport,
++ * ToolsetRegistry remains the typed domain dispatcher, and every mutation still executes on the
++ * editor game thread. This class adds the missing durable command, OCC, lease, receipt, recovery,
++ * and validated-save boundaries without introducing a second server or broker.
++ */
++class VIBEUE_API FUEAgentReliableKernel
++{
++public:
++	static FUEAgentReliableKernel& Get();
++
++	void Initialize();
++	void Shutdown();
++
++	/** Invoke one of the ueagent_* MCP control operations and return structured JSON. */
++	TSharedPtr<FJsonObject> Invoke(
++		const FString& Operation,
++		const TSharedPtr<FJsonObject>& Parameters);
++
++	/** Process-wide MCP gate bound through IModelContextProtocolModule. */
++	bool AuthorizeMCPCall(
++		const FString& ToolName,
++		const TSharedPtr<FJsonObject>& Arguments,
++		FString& OutError) const;
++
++	bool IsEnabled() const;
++	bool IsPerformanceFrozen() const;
++
++	/** True while a command owned by the reliable kernel is executing. */
++	static bool IsManagedMutation();
++
++	/** Existing domain services use this to leave packages dirty instead of saving mid-command. */
++	static bool ShouldDeferDirectSave();
++
++	/** Names registered as top-level MCP control tools. */
++	static const TArray<FString>& GetControlToolNames();
++
++	/** Human-readable MCP description for a control tool. */
++	static FString GetControlToolDescription(const FString& ToolName);
++
++	/** Input schema for a control tool. */
++	static TSharedPtr<FJsonObject> GetControlToolSchema(const FString& ToolName);
++
++private:
++	FUEAgentReliableKernel();
++	~FUEAgentReliableKernel();
++	FUEAgentReliableKernel(const FUEAgentReliableKernel&) = delete;
++	FUEAgentReliableKernel& operator=(const FUEAgentReliableKernel&) = delete;
++
++	class FImpl;
++	TUniquePtr<FImpl> Impl;
++};
+diff --git a/Source/VibeUE/VibeUE.Build.cs b/Source/VibeUE/VibeUE.Build.cs
+index 3a3b79b..bf971ab 100644
+--- a/Source/VibeUE/VibeUE.Build.cs
++++ b/Source/VibeUE/VibeUE.Build.cs
+@@ -63,6 +63,7 @@ public class VibeUE : ModuleRules
+ 			new string[]
+ 			{
+ 				"UnrealEd",
++				"PlatformCryptoContext", // Cross-platform native SHA-256 for reliable command and snapshot identities
+ 				"EditorScriptingUtilities",
+ 				"EditorSubsystem",
+ 				"PythonScriptPlugin",   // For Python code execution
+diff --git a/VibeUE.uplugin b/VibeUE.uplugin
+index bc4751c..4045096 100644
+--- a/VibeUE.uplugin
++++ b/VibeUE.uplugin
+@@ -73,6 +73,10 @@
+ 			"Name": "ModelContextProtocol",
+ 			"Enabled": true
+ 		},
++		{
++			"Name": "PlatformCrypto",
++			"Enabled": true
++		},
+ 		{
+ 			"Name": "Fab",
+ 			"Enabled": true
+diff --git a/Source/VibeUE/Private/Tools/DeepResearchTools.cpp b/Source/VibeUE/Private/Tools/DeepResearchTools.cpp
+index 641a9a5..3a5d825 100644
+--- a/Source/VibeUE/Private/Tools/DeepResearchTools.cpp
++++ b/Source/VibeUE/Private/Tools/DeepResearchTools.cpp
+@@ -532,22 +532,14 @@ static FString ActionReverseGeocode(const TMap<FString, FString>& Params)
+ // Tool registration
+ // ---------------------------------------------------------------------------
+ REGISTER_VIBEUE_TOOL(deep_research,
+-	"Web research and GPS geocoding — no API key required. "
+-	"Use 'search' to look up any topic via DuckDuckGo and get real web results with titles, URLs, and snippets. "
+-	"Use 'fetch_page' to read the full content of any URL as clean markdown (great for Unreal Engine "
+-	"documentation, Dev Community posts, API references). "
+-	"Use 'geocode' to convert any place name or address into GPS coordinates (lat/lng) for use with "
+-	"the terrain_data tool. "
+-	"Use 'reverse_geocode' to convert GPS coordinates back into a human-readable place name. "
+-	"Typical deep research workflow: search → fetch_page on the best URL → synthesize. "
+-	"Typical terrain workflow: geocode 'Mount Fuji' → pass lat/lng to terrain_data.",
++	"Web search, page-to-markdown fetch, and GPS geocoding; no API key. Actions: search, fetch_page, geocode, reverse_geocode.",
+ 	"Research",
+ 	TOOL_PARAMS(
+-		TOOL_PARAM("action", "Action: search | fetch_page | geocode | reverse_geocode", "string", true),
+-		TOOL_PARAM("query",  "For search: topic or question. For geocode: place name or address (e.g. 'Mount Fuji', 'Grand Canyon South Rim').", "string", false),
+-		TOOL_PARAM("url",    "For fetch_page: the full URL to fetch and convert to markdown (e.g. https://dev.epicgames.com/documentation/...).", "string", false),
+-		TOOL_PARAM("lat",    "Latitude for reverse_geocode action.", "number", false),
+-		TOOL_PARAM("lng",    "Longitude for reverse_geocode action.", "number", false)
++		TOOL_PARAM("action", "search | fetch_page | geocode | reverse_geocode", "string", true),
++		TOOL_PARAM("query",  "Search text or place/address", "string", false),
++		TOOL_PARAM("url",    "URL for fetch_page", "string", false),
++		TOOL_PARAM("lat",    "For reverse_geocode", "number", false),
++		TOOL_PARAM("lng",    "For reverse_geocode", "number", false)
+ 	),
+ 	{
+ 		const FString Action = ExtractResearchParam(Params, TEXT("action")).ToLower().TrimStartAndEnd();
+diff --git a/Source/VibeUE/Private/Tools/TerrainDataTools.cpp b/Source/VibeUE/Private/Tools/TerrainDataTools.cpp
+index 55215ff..4f2500d 100644
+--- a/Source/VibeUE/Private/Tools/TerrainDataTools.cpp
++++ b/Source/VibeUE/Private/Tools/TerrainDataTools.cpp
+@@ -735,41 +735,28 @@ static FString ActionListStyles()
+ // Tool registration
+ // ---------------------------------------------------------------------------
+ REGISTER_VIBEUE_TOOL(terrain_data,
+-	"Generate heightmaps, map images, and water feature data from real-world terrain. "
+-	"Requires an active VibeUE API key. "
+-	"Actions: generate_heightmap, preview_elevation, get_map_image, list_styles, get_water_features. "
+-	"IMPORTANT: Use the 'resolution' parameter to match your landscape resolution. "
+-	"Heightmap workflow: 1) preview_elevation for suggested settings (returns suggestedZScale, suggestedXYScales by resolution). "
+-	"2) generate_heightmap with resolution matching your landscape. "
+-	"3) Import via ULandscapeService.import_heightmap() (auto-creates a matching landscape if missing, but explicit create_landscape is recommended for real-world XY/Z scale control). "
+-	"CRITICAL: Use suggestedXYScales[resolution] as the landscape X and Y scale — do NOT use the default 100. "
+-	"Water workflow (after heightmap is imported): "
+-	"1) get_water_features with the same lng/lat/map_size — saves JSON to Saved/Terrain/ and returns a summary with the file path. "
+-	"2) Read the saved JSON file: json_str = open(file_path).read() "
+-	"3) Water bodies use 'ue5_rings', waterways use 'ue5_points'. Both are origin-centered.",
++	"Real-world terrain heightmaps, maps, and water data; API key required. Actions: generate_heightmap, preview_elevation, get_map_image, list_styles, get_water_features. Preview first; keep lng/lat/map_size consistent and match landscape resolution/scale.",
+ 	"Terrain",
+ 	TOOL_PARAMS(
+-		TOOL_PARAM("action",          "Action: generate_heightmap | preview_elevation | get_map_image | list_styles | get_water_features", "string", true),
+-		TOOL_PARAM("lng",             "Longitude of center point (e.g. -122.4194 for San Francisco)", "number", false),
+-		TOOL_PARAM("lat",             "Latitude of center point (e.g. 37.7749 for San Francisco)", "number", false),
+-		TOOL_PARAM("map_size",        "Map size in km (default 17.28). Use the same value for heightmap and get_water_features.", "number", false),
+-		TOOL_PARAM("format",          "Output format for generate_heightmap: png (default), raw, zip", "string", false),
+-		TOOL_PARAM("resolution",      "Output resolution NxN pixels for generate_heightmap. MUST match landscape resolution. "
+-		                               "Use ULandscapeService.calculate_landscape_resolution() to compute. "
+-		                               "Common: 505 (8x8,63,1), 1009 (8x8,63,2 or 16x16,63,1), 1017 (8x8,127,1). Default: 1081", "number", false),
+-		TOOL_PARAM("base_level",      "Base elevation offset in meters (default 0; use preview_elevation for good value)", "number", false),
+-		TOOL_PARAM("height_scale",    "Height scale percentage 1-250 (default 100; use preview_elevation for good value)", "number", false),
+-		TOOL_PARAM("water_depth",     "Water depth in Cities: Skylines units (default 40)", "number", false),
+-		TOOL_PARAM("gravity_center",  "Water flow direction 0-13: 0=disabled, 1=center, 2=N, 3=NE, 4=E, 5=SE, 6=S, 7=SW, 8=W, 9=NW, 10=north side, 11=east side, 12=south side, 13=west side", "number", false),
+-		TOOL_PARAM("level_correction","Elevation curve style 0-9: 0=none, 2=coastline, 3=aggressive coastline (default 0)", "number", false),
+-		TOOL_PARAM("blur_passes",     "Smoothing passes for plains (default 10)", "number", false),
+-		TOOL_PARAM("blur_post_passes","Post-sharpening passes (default 2)", "number", false),
+-		TOOL_PARAM("sharpen",         "Apply sharpening kernel (default true)", "boolean", false),
+-		TOOL_PARAM("draw_streams",    "Re-etch waterways after smoothing (default true)", "boolean", false),
+-		TOOL_PARAM("stream_depth",    "Stream depth in meters (default 7)", "number", false),
+-		TOOL_PARAM("plains_height",   "Height threshold for plains smoothing in meters (default 140)", "number", false),
+-		TOOL_PARAM("style",           "Map image style for get_map_image: satellite-v9, outdoors-v11, streets-v11, light-v10, dark-v10", "string", false),
+-		TOOL_PARAM("save_path",       "File path to save output. Default: <ProjectDir>/Saved/Terrain/", "string", false)
++		TOOL_PARAM("action",          "generate_heightmap | preview_elevation | get_map_image | list_styles | get_water_features", "string", true),
++		TOOL_PARAM("lng",             "Center longitude", "number", false),
++		TOOL_PARAM("lat",             "Center latitude", "number", false),
++		TOOL_PARAM("map_size",        "Kilometers; default 17.28", "number", false),
++		TOOL_PARAM("format",          "png (default) | raw | zip", "string", false),
++		TOOL_PARAM("resolution",      "NxN; must match landscape; default 1081", "number", false),
++		TOOL_PARAM("base_level",      "Elevation offset meters; default 0", "number", false),
++		TOOL_PARAM("height_scale",    "Percent 1-250; default 100", "number", false),
++		TOOL_PARAM("water_depth",     "Cities: Skylines units; default 40", "number", false),
++		TOOL_PARAM("gravity_center",  "Flow 0-13; 0 off, 1 center, 2-9 compass, 10-13 sides", "number", false),
++		TOOL_PARAM("level_correction","Curve 0-9; 0 none, 2 coast, 3 aggressive coast", "number", false),
++		TOOL_PARAM("blur_passes",     "Smoothing passes; default 10", "number", false),
++		TOOL_PARAM("blur_post_passes","Post-sharpen passes; default 2", "number", false),
++		TOOL_PARAM("sharpen",         "Default true", "boolean", false),
++		TOOL_PARAM("draw_streams",    "Re-etch streams; default true", "boolean", false),
++		TOOL_PARAM("stream_depth",    "Meters; default 7", "number", false),
++		TOOL_PARAM("plains_height",   "Smoothing threshold meters; default 140", "number", false),
++		TOOL_PARAM("style",           "satellite-v9 | outdoors-v11 | streets-v11 | light-v10 | dark-v10", "string", false),
++		TOOL_PARAM("save_path",       "Default Saved/Terrain/", "string", false)
+ 	),
+ 	{
+ 		const FString Action = ExtractTerrainParam(Params, TEXT("action")).ToLower().TrimStartAndEnd();

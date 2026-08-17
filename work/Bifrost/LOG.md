@@ -192,3 +192,9 @@ MCP find_assets 实测：✅ NS_Slime 有 4 个变体（`/Game/Effects/Slime/NS_
 后续支撑结构最低应提供：① Actor 语义角色（焦点/框景/地形/水体/技术效果/参照）和锁定级别；② 真实尺度、world bounds、pivot/接地面、允许缩放区间；③ Hero 镜头 FOV/投影、屏占与安全区；④ 前中后景、焦点、负空间、轮廓、遮挡和视线通道约束；⑤ 水位、岸线、高差、接触关系等场景规则；⑥ 修改前 transform/材质快照与一键回退依据；⑦ 修改后穿插、接地、屏占、遮挡和可见性数值检查；⑧ 用户分阶段审美 Gate。完成前不再允许 AI 仅凭包围盒和单帧截图批量改摆位。
 
 本轮停止点：`L_Bifrost` 已有 400m×200m Hero 水面与 400m Height Capture；海岸地形改为约 4° 连续主坡、右侧沙嘴、水下浅滩和三块半浸岩石；沙材质改深冷湿沙，水材质提高最低粗糙度并压暗 BaseColor；Directional/Sky 工作值约 0.65/1.15；恒星约 2300 倍并上移，材质 CoreIntensity 0.35 / EdgeIntensity 0.4 / NoiseInfluence 0.65；Gaussian Actor 已设 `bGenerateFromSpline=true`、64 primitives、Thickness 180、Density 1.6、Emission 2.6，但最后一项在用户叫停前尚未完成画面复核。viewport 蓝色三角线为 Mesh Edges 编辑器覆盖，未解决，不属于水材质。
+
+### 2026-08-13 — [回滚] Gaussian 云路线退出 Bifrost 当前主线
+用户确认回到原生体积云方案。当前唯一云渲染路径为 UE `AVolumetricCloud` + 现有 Nubis 材质与 SDF 跳步；GaussianVolume、3DGS 和 VDB 只保留历史研究结论，不再作为运行时备选或混合层。
+
+### 2026-08-13 — [决策] 以单一天气状态主干重启项目
+Bifrost 从归档恢复到 `work/`。第一 Gate 只建立一个天气控制器、三种可平滑过渡预设、MPC/事件出口，并联动云、太阳/天空、雾和风；降水、湿润、海况、雷电与音频随后作为消费者逐项接入，不各建状态机。

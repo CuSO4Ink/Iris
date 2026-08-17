@@ -1,0 +1,1298 @@
+diff --git a/Content/Skills/profiling/SKILL.md b/Content/Skills/profiling/SKILL.md
+index 07fc829c51212eb7c84eb84d95518c3c96270239..a22a8fbd8f13f64e76dcb3521aded737c853a959 100644
+--- a/Content/Skills/profiling/SKILL.md
++++ b/Content/Skills/profiling/SKILL.md
+@@ -45,8 +45,9 @@ The whole API is small — read the live signatures once with
+ | Method | Purpose |
+ |--------|---------|
+ | `frame_timing(target_fps=60.0)` | Game/Render/GPU/RHI thread ms + a CPU-vs-GPU `bound` verdict + a `hint`, plus a per-thread `budget` breakdown gated against `target_fps` (`budget.meets_target` PASS/FAIL). **Run FIRST.** |
++| `start_monitor(...)` / `read_monitor()` / `stop_monitor(...)` | Sample PIE timing and process-local VRAM every frame. Returns thread distributions plus current/P95/peak VRAM, the OS/driver VRAM budget, peak time, and over-budget frame rate; stop can save a portable JSON snapshot. |
+ | `force_hitch(thread="game", ms=250.0, frames=1)` | Validation helper — deliberately stall a KNOWN thread (`"game"`/`"render"`/`"both"`/`"gpu"`) to confirm the verdict fires. CPU paths are self-measuring: validate from the SAME response (`observed_peak_*_ms`, `verdict_matched_expect`) — do NOT follow up with `frame_timing`. Only the async `gpu` path is read back on a following frame. Clamped (≤5000 ms, ~10 s total) for safety. |
+-| `report(title=..., source="both", file="")` | Write a self-contained, shareable HTML report (live verdict + budget + analyse stats + a data-driven "fix in this order" list) to `Saved/VibeUE/Performance/report_<timestamp>.html`. |
++| `report(title=..., source="both", file="")` | Write a self-contained, shareable HTML report (live verdict + budget + analyse stats + a data-driven "fix in this order" list) to `Saved/Logs/VibeUE/Performance/Reports/report_<timestamp>.html`. |
+ | `start_pie()` / `stop_pie()` | In-process PIE so `frame_timing`/`force_hitch` read a live game world (PIE starts on the next tick — read on a following frame, `pie_running` flips true). Quick checks only; prefer `start_standalone` when the numbers must be trusted. |
+ | `start_trace(name="mcp_capture", channels="")` | Start an Insights trace to file (default channel set if `channels` empty). |
+ | `stop_trace()` | Stop the active trace; returns the trace file path + size. |
+@@ -172,7 +173,7 @@ here is a category error; they will not move the number.
+    is not representative. Start PIE (`pie-testing` skill) or use `start_standalone()`.
+ 
+ 2. **Trace files are large** — a ~10 second trace with default channels is 30–50 MB.
+-   Traces land under `Saved/Profiling/` (already excluded from source control).
++   Traces land under `Saved/Logs/VibeUE/Performance/Traces/` (already excluded from source control).
+ 
+ 3. **A trace must be active before you bookmark / mark regions.** `bookmark()` and
+    `region_start()/region_end()` only do something while `get_trace_status()` reports a live
+@@ -240,7 +241,7 @@ summary = json.loads(unreal.PerformanceService.analyse("both"))   # "trace", "lo
+ print(summary)  # avg/p95/worst frame ms, hitches, notable log lines
+ 
+ # Analyse a specific file instead of the last trace started/stopped
+-unreal.PerformanceService.analyse("trace", "Saved/Profiling/combat_encounter.utrace")
++unreal.PerformanceService.analyse("trace", "Saved/Logs/VibeUE/Performance/Traces/combat_encounter.utrace")
+ ```
+ 
+ Remember: `analyse()` is frame-time aggregates only — use `frame_timing()` for the CPU/GPU split.
+@@ -342,5 +343,5 @@ Or from the command line:
+ 
+ Trace files are written under:
+ ```
+-<project root>/Saved/Profiling/<name>.utrace
++<project root>/Saved/Logs/VibeUE/Performance/Traces/<name>.utrace
+ ```
+diff --git a/Source/VibeUE/Private/PythonAPI/PerformanceServiceTests.cpp b/Source/VibeUE/Private/PythonAPI/PerformanceServiceTests.cpp
+index 70cffd7f0fd2a41b3bb78d80d005318ba0218967..f5b803597b87e85b4ae14bdee2a9d135f55c68f2 100644
+--- a/Source/VibeUE/Private/PythonAPI/PerformanceServiceTests.cpp
++++ b/Source/VibeUE/Private/PythonAPI/PerformanceServiceTests.cpp
+@@ -10,6 +10,7 @@
+ #include "Serialization/JsonSerializer.h"
+ #include "Dom/JsonObject.h"
+ #include "HAL/FileManager.h"
++#include "Misc/Paths.h"
+ 
+ // Pure verdict/budget logic (PerformanceVerdict.h) is exercised headless — no editor, no live frame
+ // globals — and FrameTiming routes through the same helpers, so green here means the shipping verdict
+@@ -212,6 +213,91 @@ bool FVibePerfBudgetPerThreadTest::RunTest(const FString&)
+ 	return true;
+ }
+ 
++// ---------------------------------------------------------------------------
++// Rolling monitor aggregation
++// ---------------------------------------------------------------------------
++
++IMPLEMENT_SIMPLE_AUTOMATION_TEST(FVibePerfDistributionTest,
++	"VibeUE.Performance.Monitor.Distribution", kPerfTestFlags)
++bool FVibePerfDistributionTest::RunTest(const FString&)
++{
++	using namespace PerformanceVerdict;
++	const FDistribution D = SummarizeDistribution({ 10.0, 20.0, 30.0, 40.0, 100.0, -1.0 });
++	TestEqual(TEXT("invalid values filtered"), D.SampleCount, 5);
++	TestEqual(TEXT("mean"), D.MeanMs, 40.0, 1e-6);
++	TestEqual(TEXT("p50 nearest-rank"), D.P50Ms, 30.0, 1e-6);
++	TestEqual(TEXT("p95 nearest-rank"), D.P95Ms, 100.0, 1e-6);
++	TestEqual(TEXT("p99 nearest-rank"), D.P99Ms, 100.0, 1e-6);
++	TestEqual(TEXT("max"), D.MaxMs, 100.0, 1e-6);
++	return true;
++}
++
++IMPLEMENT_SIMPLE_AUTOMATION_TEST(FVibePerfMonitorSummaryTest,
++	"VibeUE.Performance.Monitor.Summary", kPerfTestFlags)
++bool FVibePerfMonitorSummaryTest::RunTest(const FString&)
++{
++	using namespace PerformanceVerdict;
++	TArray<FTimingSample> Samples;
++	auto Add = [&Samples](double Game, double Render, double Gpu, uint64 VramUsedMB)
++	{
++		constexpr uint64 MB = 1024ull * 1024ull;
++		FTimingSample Sample;
++		Sample.TimeSeconds = Samples.Num();
++		Sample.GameMs = Game;
++		Sample.RenderMs = Render;
++		Sample.GpuMs = Gpu;
++		Sample.FrameMs = FMath::Max3(Game, Render, Gpu);
++		Sample.bGpuAvailable = true;
++		Sample.VramUsedBytes = VramUsedMB * MB;
++		Sample.VramBudgetBytes = 100ull * MB;
++		Sample.VramAvailableBytes = VramUsedMB < 100 ? (100 - VramUsedMB) * MB : 0;
++		Sample.VramDemotedBytes = VramUsedMB > 100 ? (VramUsedMB - 100) * MB : 0;
++		Sample.bVramAvailable = true;
++		Samples.Add(Sample);
++	};
++	Add(20.0, 10.0, 8.0, 80);
++	Add(25.0, 9.0, 8.0, 90);
++	Add(8.0, 9.0, 30.0, 120);
++	Samples.AddDefaulted(); // no timing: ignored rather than becoming a false pass
++
++	const FMonitorSummary S = SummarizeMonitor(Samples, 60.0f, 25.0f);
++	TestEqual(TEXT("valid samples"), S.SampleCount, 3);
++	TestEqual(TEXT("all frames exceed 60fps budget"), S.OverBudgetCount, 3);
++	TestEqual(TEXT("two frames meet hitch threshold"), S.HitchCount, 2);
++	TestEqual(TEXT("game wins two of three"), S.DominantBound, FString(TEXT("GameThread")));
++	TestEqual(TEXT("game bound count"), S.BoundCounts.FindRef(TEXT("GameThread")), 2);
++	TestEqual(TEXT("gpu bound count"), S.BoundCounts.FindRef(TEXT("GPU")), 1);
++	TestEqual(TEXT("frame p50"), S.Frame.P50Ms, 25.0, 1e-6);
++	TestEqual(TEXT("frame p95"), S.Frame.P95Ms, 30.0, 1e-6);
++	TestEqual(TEXT("unavailable RHI excluded"), S.Rhi.SampleCount, 0);
++	TestEqual(TEXT("VRAM samples"), S.VramUsed.SampleCount, 3);
++	TestEqual(TEXT("VRAM peak MB"), S.VramUsed.MaxMs, 120.0, 1e-6);
++	TestEqual(TEXT("VRAM peak percent"), S.VramUsage.MaxMs, 120.0, 1e-6);
++	TestEqual(TEXT("VRAM current MB"), S.VramCurrentUsedMB, 120.0, 1e-6);
++	TestEqual(TEXT("VRAM peak time"), S.VramPeakTimeSeconds, 2.0, 1e-6);
++	TestEqual(TEXT("VRAM over-budget frames"), S.VramOverBudgetCount, 1);
++	TestTrue(TEXT("VRAM current over budget"), S.bVramCurrentOverBudget);
++	return true;
++}
++
++IMPLEMENT_SIMPLE_AUTOMATION_TEST(FVibePerfGpuProfileRequiresPieTest,
++	"VibeUE.Performance.CaptureGPUProfile.RequiresPIE", kPerfTestFlags)
++bool FVibePerfGpuProfileRequiresPieTest::RunTest(const FString&)
++{
++	const FString Json = UPerformanceService::CaptureGPUProfile();
++
++	TSharedPtr<FJsonObject> Obj;
++	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Json);
++	if (!FJsonSerializer::Deserialize(Reader, Obj) || !Obj.IsValid())
++	{
++		AddError(FString::Printf(TEXT("CaptureGPUProfile did not return valid JSON: %s"), *Json.Left(200)));
++		return false;
++	}
++	TestFalse(TEXT("capture rejected outside PIE"), Obj->GetBoolField(TEXT("success")));
++	TestEqual(TEXT("error code"), Obj->GetStringField(TEXT("error_code")), FString(TEXT("PIE_REQUIRED")));
++	return true;
++}
++
+ // ---------------------------------------------------------------------------
+ // Live smoke tests — run in-editor, exercise the real AICallable surface
+ // ---------------------------------------------------------------------------
+@@ -398,9 +484,13 @@ bool FVibePerfReportSmokeTest::RunTest(const FString&)
+ 	// No trace is available headless, so the capture column must be absent.
+ 	TestFalse(TEXT("no capture headless"), Obj->GetBoolField(TEXT("included_capture")));
+ 
+-	// The reported path must point at a real, non-empty file on disk.
+-	const FString Path = Obj->GetStringField(TEXT("report_file"));
+-	TestTrue(TEXT("report_file non-empty"), !Path.IsEmpty());
++	// Public paths are project-relative; resolve only at the file-I/O boundary.
++	const FString RelativePath = Obj->GetStringField(TEXT("report_file"));
++	TestTrue(TEXT("report_file non-empty"), !RelativePath.IsEmpty());
++	TestTrue(TEXT("report_file is relative"), FPaths::IsRelative(RelativePath));
++	TestTrue(TEXT("report_file is under performance logs"),
++		RelativePath.StartsWith(TEXT("Saved/Logs/VibeUE/Performance/Reports/")));
++	const FString Path = FPaths::ConvertRelativePathToFull(FPaths::ProjectDir() / RelativePath);
+ 	IFileManager& FM = IFileManager::Get();
+ 	if (TestTrue(FString::Printf(TEXT("file exists: %s"), *Path), FM.FileExists(*Path)))
+ 	{
+diff --git a/Source/VibeUE/Private/PythonAPI/PerformanceVerdict.h b/Source/VibeUE/Private/PythonAPI/PerformanceVerdict.h
+index e4c558b80bae0efbf73bd17c256860cae09cd268..fe1c11b6620b97acd21ea3928b948d2f68b259cf 100644
+--- a/Source/VibeUE/Private/PythonAPI/PerformanceVerdict.h
++++ b/Source/VibeUE/Private/PythonAPI/PerformanceVerdict.h
+@@ -89,6 +89,192 @@ namespace PerformanceVerdict
+ 		return B;
+ 	}
+ 
++	struct FDistribution
++	{
++		int32 SampleCount = 0;
++		double MeanMs = 0.0;
++		double P50Ms = 0.0;
++		double P95Ms = 0.0;
++		double P99Ms = 0.0;
++		double MaxMs = 0.0;
++	};
++
++	inline FDistribution SummarizeDistribution(TArray<double> Values)
++	{
++		Values.RemoveAll([](double Value) { return !FMath::IsFinite(Value) || Value < 0.0; });
++		FDistribution Result;
++		Result.SampleCount = Values.Num();
++		if (Values.IsEmpty()) return Result;
++
++		double Total = 0.0;
++		for (double Value : Values) Total += Value;
++		Values.Sort();
++		auto Percentile = [&Values](double Quantile)
++		{
++			const int32 Index = FMath::Clamp(FMath::CeilToInt(Quantile * Values.Num()) - 1, 0, Values.Num() - 1);
++			return Values[Index];
++		};
++
++		Result.MeanMs = Total / Values.Num();
++		Result.P50Ms = Percentile(0.50);
++		Result.P95Ms = Percentile(0.95);
++		Result.P99Ms = Percentile(0.99);
++		Result.MaxMs = Values.Last();
++		return Result;
++	}
++
++	struct FTimingSample
++	{
++		double TimeSeconds = 0.0;
++		double GameMs = 0.0;
++		double RenderMs = 0.0;
++		double RhiMs = 0.0;
++		double GpuMs = 0.0;
++		double FrameMs = 0.0;
++		uint64 VramUsedBytes = 0;
++		uint64 VramBudgetBytes = 0;
++		uint64 VramAvailableBytes = 0;
++		uint64 VramDemotedBytes = 0;
++		bool bRhiAvailable = false;
++		bool bGpuAvailable = false;
++		bool bVramAvailable = false;
++	};
++
++	struct FMonitorSummary
++	{
++		int32 SampleCount = 0;
++		int32 OverBudgetCount = 0;
++		int32 HitchCount = 0;
++		int32 ContestedCount = 0;
++		double TargetFps = 60.0;
++		double BudgetMs = 1000.0 / 60.0;
++		double HitchThresholdMs = 50.0;
++		FDistribution Game;
++		FDistribution Render;
++		FDistribution Rhi;
++		FDistribution Gpu;
++		FDistribution Frame;
++		FDistribution VramUsed;
++		FDistribution VramUsage;
++		int32 VramOverBudgetCount = 0;
++		double VramCurrentTimeSeconds = 0.0;
++		double VramCurrentUsedMB = 0.0;
++		double VramCurrentBudgetMB = 0.0;
++		double VramCurrentAvailableMB = 0.0;
++		double VramCurrentDemotedMB = 0.0;
++		double VramPeakTimeSeconds = 0.0;
++		bool bVramCurrentOverBudget = false;
++		TMap<FString, int32> BoundCounts;
++		FString DominantBound;
++	};
++
++	inline FMonitorSummary SummarizeMonitor(
++		const TArray<FTimingSample>& Samples,
++		float TargetFPS,
++		float HitchThresholdMs)
++	{
++		FMonitorSummary Result;
++		Result.TargetFps = SafeTargetFps(TargetFPS);
++		Result.BudgetMs = 1000.0 / Result.TargetFps;
++		Result.HitchThresholdMs = FMath::IsFinite(HitchThresholdMs) && HitchThresholdMs > 0.0f
++			? HitchThresholdMs
++			: FMath::Max(50.0, Result.BudgetMs * 2.0);
++
++		TArray<double> GameValues;
++		TArray<double> RenderValues;
++		TArray<double> RhiValues;
++		TArray<double> GpuValues;
++		TArray<double> FrameValues;
++		TArray<double> VramUsedValues;
++		TArray<double> VramUsageValues;
++		GameValues.Reserve(Samples.Num());
++		RenderValues.Reserve(Samples.Num());
++		RhiValues.Reserve(Samples.Num());
++		GpuValues.Reserve(Samples.Num());
++		FrameValues.Reserve(Samples.Num());
++		VramUsedValues.Reserve(Samples.Num());
++		VramUsageValues.Reserve(Samples.Num());
++		double PeakVramUsedMB = -1.0;
++		bool bHasCurrentVram = false;
++
++		for (const FTimingSample& Sample : Samples)
++		{
++			if (!FMath::IsFinite(Sample.FrameMs) || Sample.FrameMs <= 0.0) continue;
++			GameValues.Add(Sample.GameMs);
++			RenderValues.Add(Sample.RenderMs);
++			if (Sample.bRhiAvailable) RhiValues.Add(Sample.RhiMs);
++			if (Sample.bGpuAvailable) GpuValues.Add(Sample.GpuMs);
++			FrameValues.Add(Sample.FrameMs);
++			Result.OverBudgetCount += Sample.FrameMs > Result.BudgetMs ? 1 : 0;
++			Result.HitchCount += Sample.FrameMs >= Result.HitchThresholdMs ? 1 : 0;
++
++			if (Sample.bVramAvailable && Sample.VramBudgetBytes > 0)
++			{
++				constexpr double BytesPerMB = 1024.0 * 1024.0;
++				const double UsedMB = Sample.VramUsedBytes / BytesPerMB;
++				const double UsagePct = 100.0 * Sample.VramUsedBytes / Sample.VramBudgetBytes;
++				const bool bOverBudget = Sample.VramDemotedBytes > 0
++					|| Sample.VramUsedBytes > Sample.VramBudgetBytes;
++				VramUsedValues.Add(UsedMB);
++				VramUsageValues.Add(UsagePct);
++				Result.VramOverBudgetCount += bOverBudget ? 1 : 0;
++				if (!bHasCurrentVram || Sample.TimeSeconds >= Result.VramCurrentTimeSeconds)
++				{
++					bHasCurrentVram = true;
++					Result.VramCurrentTimeSeconds = Sample.TimeSeconds;
++					Result.VramCurrentUsedMB = UsedMB;
++					Result.VramCurrentBudgetMB = Sample.VramBudgetBytes / BytesPerMB;
++					Result.VramCurrentAvailableMB = Sample.VramAvailableBytes / BytesPerMB;
++					Result.VramCurrentDemotedMB = Sample.VramDemotedBytes / BytesPerMB;
++					Result.bVramCurrentOverBudget = bOverBudget;
++				}
++				if (UsedMB > PeakVramUsedMB)
++				{
++					PeakVramUsedMB = UsedMB;
++					Result.VramPeakTimeSeconds = Sample.TimeSeconds;
++				}
++			}
++
++			const FVerdict Verdict = Classify(
++				Sample.GameMs,
++				Sample.RenderMs,
++				Sample.RhiMs,
++				Sample.GpuMs,
++				Sample.bRhiAvailable,
++				Sample.bGpuAvailable);
++			Result.BoundCounts.FindOrAdd(Verdict.Bound)++;
++			Result.ContestedCount += Verdict.bContested ? 1 : 0;
++		}
++
++		Result.SampleCount = FrameValues.Num();
++		Result.Game = SummarizeDistribution(MoveTemp(GameValues));
++		Result.Render = SummarizeDistribution(MoveTemp(RenderValues));
++		Result.Rhi = SummarizeDistribution(MoveTemp(RhiValues));
++		Result.Gpu = SummarizeDistribution(MoveTemp(GpuValues));
++		Result.Frame = SummarizeDistribution(MoveTemp(FrameValues));
++		Result.VramUsed = SummarizeDistribution(MoveTemp(VramUsedValues));
++		Result.VramUsage = SummarizeDistribution(MoveTemp(VramUsageValues));
++
++		int32 TopCount = 0;
++		bool bTie = false;
++		for (const TCHAR* Name : { TEXT("GameThread"), TEXT("RenderThread"), TEXT("RHIThread"), TEXT("GPU") })
++		{
++			const int32 Count = Result.BoundCounts.FindRef(Name);
++			if (Count > TopCount)
++			{
++				TopCount = Count;
++				Result.DominantBound = Name;
++				bTie = false;
++			}
++			else if (Count > 0 && Count == TopCount)
++			{
++				bTie = true;
++			}
++		}
++		if (bTie) Result.DominantBound = TEXT("Mixed");
++		return Result;
++	}
++
+ 	// Race-free self-validation for ForceHitch. Given the peak per-thread ms the hitch actually induced --
+ 	// measured synchronously by ForceHitch itself, NOT read back via a follow-up FrameTiming that races the
+ 	// stall on the game thread -- did the stall land on the thread(s) the caller asked for? MinExpectedMs is
+diff --git a/Source/VibeUE/Private/PythonAPI/UPerformanceService.cpp b/Source/VibeUE/Private/PythonAPI/UPerformanceService.cpp
+index ef4d3e9c001d673d8b106c62e811eee3d05435ed..8c2a2b143059bfd29835198797eb8bccbc85f92a 100644
+--- a/Source/VibeUE/Private/PythonAPI/UPerformanceService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UPerformanceService.cpp
+@@ -13,11 +13,17 @@
+ #include "Containers/Ticker.h"
+ #include "RenderingThread.h"   // ENQUEUE_RENDER_COMMAND
+ #include "RHICommandList.h"    // FRHICommandListImmediate
++#include "GPUProfiler.h"
+ #include "Modules/ModuleManager.h"
+ #include "ProfilingDebugging/TraceAuxiliary.h"
+ #include "ProfilingDebugging/MiscTrace.h"
+ #include "PlayInEditorDataTypes.h"
+ #include "Editor.h"
++#include "Engine/Engine.h"
++#include "Engine/GameViewportClient.h"
++#include "Engine/World.h"
++#include "GameFramework/PlayerController.h"
++#include "Misc/EngineVersion.h"
+ #include "TraceServices/ITraceServicesModule.h"
+ #include "TraceServices/AnalysisService.h"
+ #include "TraceServices/Model/AnalysisSession.h"
+@@ -37,6 +43,165 @@ static bool           GStandaloneRunning = false;
+ static FProcHandle    GStandaloneProcess;
+ static FDelegateHandle GStandalonePlayDelegateHandle;
+ 
++struct FPerfMonitorSample
++{
++	PerformanceVerdict::FTimingSample Timing;
++	FVector ViewLocation = FVector::ZeroVector;
++	FRotator ViewRotation = FRotator::ZeroRotator;
++	bool bHasViewpoint = false;
++};
++
++static bool GMonitorActive = false;
++static bool GMonitorHasSession = false;
++static bool GMonitorContextLost = false;
++static FTSTicker::FDelegateHandle GMonitorTickerHandle;
++static TArray<FPerfMonitorSample> GMonitorSamples;
++static int32 GMonitorNextIndex = 0;
++static int32 GMonitorMaxSamples = 600;
++static int32 GMonitorWarmupRemaining = 0;
++static int32 GMonitorSuppressFrames = 0;
++static int32 GMonitorWarmupSkipped = 0;
++static int32 GMonitorInstrumentationSkipped = 0;
++static int32 GMonitorInvalidSkipped = 0;
++static int64 GMonitorTotalSamples = 0;
++static float GMonitorTargetFps = 60.0f;
++static float GMonitorHitchThresholdMs = 50.0f;
++static double GMonitorStartSeconds = 0.0;
++static FDateTime GMonitorStartedAtUtc;
++static FString GMonitorStartMap;
++static FVector2D GMonitorStartViewportSize = FVector2D::ZeroVector;
++static TMap<FString, FString> GMonitorStartSettings;
++static bool GProfileGpuCapturePending = false;
++
++static bool IsPIERunning();
++
++static double RoundPerf(double Value)
++{
++	return FMath::RoundToDouble(Value * 100.0) / 100.0;
++}
++
++static UWorld* GetMonitorWorld()
++{
++	return GEditor ? GEditor->PlayWorld : nullptr;
++}
++
++static FString GetMonitorMap()
++{
++	const UWorld* World = GetMonitorWorld();
++	return World ? UWorld::RemovePIEPrefix(World->GetMapName()) : FString();
++}
++
++static FVector2D GetMonitorViewportSize()
++{
++	FVector2D Size = FVector2D::ZeroVector;
++	if (GEngine && GEngine->GameViewport) GEngine->GameViewport->GetViewportSize(Size);
++	return Size;
++}
++
++static TMap<FString, FString> GetMonitorSettings()
++{
++	static const TCHAR* Names[] = {
++		TEXT("r.ScreenPercentage"),
++		TEXT("r.DynamicRes.OperationMode"),
++		TEXT("r.VSync"),
++		TEXT("t.MaxFPS"),
++		TEXT("sg.ViewDistanceQuality"),
++		TEXT("sg.AntiAliasingQuality"),
++		TEXT("sg.ShadowQuality"),
++		TEXT("sg.GlobalIlluminationQuality"),
++		TEXT("sg.ReflectionQuality"),
++		TEXT("sg.PostProcessQuality"),
++		TEXT("sg.TextureQuality"),
++		TEXT("sg.EffectsQuality"),
++		TEXT("sg.FoliageQuality"),
++		TEXT("sg.ShadingQuality"),
++	};
++
++	TMap<FString, FString> Result;
++	for (const TCHAR* Name : Names)
++	{
++		if (const IConsoleVariable* Variable = IConsoleManager::Get().FindConsoleVariable(Name))
++		{
++			Result.Add(Name, Variable->GetString());
++		}
++	}
++	return Result;
++}
++
++static bool TickPerformanceMonitor(float)
++{
++	if (!GMonitorActive) return false;
++	if (!IsPIERunning())
++	{
++		GMonitorActive = false;
++		GMonitorContextLost = true;
++		return false;
++	}
++	if (GMonitorWarmupRemaining > 0)
++	{
++		--GMonitorWarmupRemaining;
++		++GMonitorWarmupSkipped;
++		return true;
++	}
++	if (GMonitorSuppressFrames > 0)
++	{
++		--GMonitorSuppressFrames;
++		++GMonitorInstrumentationSkipped;
++		return true;
++	}
++
++	FPerfMonitorSample Sample;
++	Sample.Timing.TimeSeconds = FPlatformTime::Seconds() - GMonitorStartSeconds;
++	Sample.Timing.GameMs = FPlatformTime::ToMilliseconds(GGameThreadTime);
++	Sample.Timing.RenderMs = FPlatformTime::ToMilliseconds(GRenderThreadTime);
++	Sample.Timing.RhiMs = FPlatformTime::ToMilliseconds(GRHIThreadTime);
++	Sample.Timing.GpuMs = FPlatformTime::ToMilliseconds(RHIGetGPUFrameCycles());
++	Sample.Timing.bRhiAvailable = Sample.Timing.RhiMs > 0.0;
++	Sample.Timing.bGpuAvailable = Sample.Timing.GpuMs > 0.0;
++	Sample.Timing.FrameMs = FMath::Max(
++		FMath::Max3(Sample.Timing.GameMs, Sample.Timing.RenderMs, Sample.Timing.GpuMs),
++		Sample.Timing.RhiMs);
++	if (!FMath::IsFinite(Sample.Timing.FrameMs)
++		|| Sample.Timing.FrameMs <= 0.0
++		|| Sample.Timing.FrameMs > 120000.0)
++	{
++		++GMonitorInvalidSkipped;
++		return true;
++	}
++
++	FRHIMemoryStats Vram;
++	RHIGetMemoryStats(Vram);
++	if (Vram.BudgetLocal > 0)
++	{
++		Sample.Timing.VramUsedBytes = Vram.UsedLocal;
++		Sample.Timing.VramBudgetBytes = Vram.BudgetLocal;
++		Sample.Timing.VramAvailableBytes = Vram.AvailableLocal;
++		Sample.Timing.VramDemotedBytes = Vram.DemotedLocal;
++		Sample.Timing.bVramAvailable = true;
++	}
++
++	if (UWorld* World = GetMonitorWorld())
++	{
++		if (APlayerController* Controller = World->GetFirstPlayerController())
++		{
++			Controller->GetPlayerViewPoint(Sample.ViewLocation, Sample.ViewRotation);
++			Sample.bHasViewpoint = true;
++		}
++	}
++
++	if (GMonitorSamples.Num() < GMonitorMaxSamples)
++	{
++		GMonitorSamples.Add(Sample);
++	}
++	else
++	{
++		GMonitorSamples[GMonitorNextIndex] = Sample;
++		GMonitorNextIndex = (GMonitorNextIndex + 1) % GMonitorMaxSamples;
++	}
++	++GMonitorTotalSamples;
++	return true;
++}
++
+ // ---------------------------------------------------------------------------
+ // JSON response helpers
+ // ---------------------------------------------------------------------------
+@@ -77,11 +242,274 @@ static FString ProjectSavedDirAbs()
+ 	return FPaths::ConvertRelativePathToFull(FPaths::ProjectSavedDir());
+ }
+ 
+-static FString BuildTraceFilePath(const FString& Name)
++static FString PerformanceOutputDirAbs(const TCHAR* Subdirectory)
+ {
+-	FString Dir = ProjectSavedDirAbs() / TEXT("Profiling");
++	FString Dir = ProjectSavedDirAbs() / TEXT("Logs/VibeUE/Performance");
++	if (Subdirectory && *Subdirectory) Dir /= Subdirectory;
+ 	IPlatformFile::GetPlatformPhysical().CreateDirectoryTree(*Dir);
+-	return Dir / Name;
++	return Dir;
++}
++
++static FString ProjectRelativePath(const FString& Path)
++{
++	if (Path.IsEmpty()) return Path;
++
++	FString FullPath = FPaths::ConvertRelativePathToFull(Path);
++	FPaths::NormalizeFilename(FullPath);
++	FString ProjectRoot = FPaths::ConvertRelativePathToFull(FPaths::ProjectDir());
++	FPaths::NormalizeDirectoryName(ProjectRoot);
++	const FString ProjectRootWithSlash = ProjectRoot + TEXT("/");
++	if (!FullPath.StartsWith(ProjectRootWithSlash, ESearchCase::IgnoreCase)) return FullPath;
++
++	FString RelativePath = FullPath;
++	FPaths::MakePathRelativeTo(RelativePath, *ProjectRootWithSlash);
++	FPaths::NormalizeFilename(RelativePath);
++	return RelativePath;
++}
++
++static FString ResolveProjectPath(const FString& Path)
++{
++	if (Path.IsEmpty() || !FPaths::IsRelative(Path)) return Path;
++	return FPaths::ConvertRelativePathToFull(FPaths::ProjectDir() / Path);
++}
++
++static FString BuildTraceFilePath(const FString& Name)
++{
++	return PerformanceOutputDirAbs(TEXT("Traces")) / Name;
++}
++
++static TSharedPtr<FJsonObject> DistributionJson(
++	const PerformanceVerdict::FDistribution& Distribution,
++	const TCHAR* Unit = TEXT("ms"))
++{
++	TSharedPtr<FJsonObject> Result = MakeShared<FJsonObject>();
++	Result->SetNumberField(TEXT("samples"), Distribution.SampleCount);
++	Result->SetBoolField(TEXT("available"), Distribution.SampleCount > 0);
++	if (Distribution.SampleCount > 0)
++	{
++		Result->SetNumberField(FString::Printf(TEXT("mean_%s"), Unit), RoundPerf(Distribution.MeanMs));
++		Result->SetNumberField(FString::Printf(TEXT("p50_%s"), Unit), RoundPerf(Distribution.P50Ms));
++		Result->SetNumberField(FString::Printf(TEXT("p95_%s"), Unit), RoundPerf(Distribution.P95Ms));
++		Result->SetNumberField(FString::Printf(TEXT("p99_%s"), Unit), RoundPerf(Distribution.P99Ms));
++		Result->SetNumberField(FString::Printf(TEXT("max_%s"), Unit), RoundPerf(Distribution.MaxMs));
++	}
++	return Result;
++}
++
++static TSharedPtr<FJsonObject> SettingsJson(const TMap<FString, FString>& Settings)
++{
++	TSharedPtr<FJsonObject> Result = MakeShared<FJsonObject>();
++	TArray<FString> Names;
++	Settings.GenerateKeyArray(Names);
++	Names.Sort();
++	for (const FString& Name : Names) Result->SetStringField(Name, Settings.FindChecked(Name));
++	return Result;
++}
++
++static TSharedPtr<FJsonObject> ViewportJson(const FVector2D& Size)
++{
++	TSharedPtr<FJsonObject> Result = MakeShared<FJsonObject>();
++	Result->SetNumberField(TEXT("width"), FMath::RoundToInt(Size.X));
++	Result->SetNumberField(TEXT("height"), FMath::RoundToInt(Size.Y));
++	return Result;
++}
++
++static TSharedPtr<FJsonObject> BuildMonitorContext()
++{
++	const FString CurrentMap = GetMonitorMap();
++	const FVector2D CurrentViewportSize = GetMonitorViewportSize();
++	const TMap<FString, FString> CurrentSettings = GetMonitorSettings();
++	const bool bMapChanged = CurrentMap != GMonitorStartMap;
++	const bool bResolutionChanged = FMath::RoundToInt(CurrentViewportSize.X) != FMath::RoundToInt(GMonitorStartViewportSize.X)
++		|| FMath::RoundToInt(CurrentViewportSize.Y) != FMath::RoundToInt(GMonitorStartViewportSize.Y);
++
++	TArray<TSharedPtr<FJsonValue>> Changes;
++	TArray<FString> Names;
++	GMonitorStartSettings.GenerateKeyArray(Names);
++	Names.Sort();
++	for (const FString& Name : Names)
++	{
++		const FString* Current = CurrentSettings.Find(Name);
++		const FString& Started = GMonitorStartSettings.FindChecked(Name);
++		if (!Current || *Current != Started)
++		{
++			TSharedPtr<FJsonObject> Change = MakeShared<FJsonObject>();
++			Change->SetStringField(TEXT("name"), Name);
++			Change->SetStringField(TEXT("start"), Started);
++			Change->SetStringField(TEXT("current"), Current ? *Current : TEXT("unavailable"));
++			Changes.Add(MakeShared<FJsonValueObject>(Change));
++		}
++	}
++
++	TSharedPtr<FJsonObject> Context = MakeShared<FJsonObject>();
++	Context->SetBoolField(TEXT("pie_running"), IsPIERunning());
++	Context->SetBoolField(TEXT("context_lost"), GMonitorContextLost);
++	Context->SetStringField(TEXT("map_start"), GMonitorStartMap);
++	Context->SetStringField(TEXT("map_current"), CurrentMap);
++	Context->SetBoolField(TEXT("map_changed"), bMapChanged);
++	Context->SetObjectField(TEXT("viewport_start"), ViewportJson(GMonitorStartViewportSize));
++	Context->SetObjectField(TEXT("viewport_current"), ViewportJson(CurrentViewportSize));
++	Context->SetBoolField(TEXT("resolution_changed"), bResolutionChanged);
++	Context->SetObjectField(TEXT("settings_start"), SettingsJson(GMonitorStartSettings));
++	Context->SetObjectField(TEXT("settings_current"), SettingsJson(CurrentSettings));
++	Context->SetArrayField(TEXT("settings_changes"), Changes);
++	Context->SetBoolField(TEXT("settings_changed"), !Changes.IsEmpty());
++	Context->SetBoolField(
++		TEXT("comparable"),
++		IsPIERunning() && !GMonitorContextLost && !bMapChanged && !bResolutionChanged && Changes.IsEmpty());
++	Context->SetStringField(TEXT("engine_version"), FEngineVersion::Current().ToString());
++	Context->SetStringField(TEXT("rhi"), FApp::GetGraphicsRHI());
++	Context->SetStringField(TEXT("cpu"), FPlatformMisc::GetCPUBrand());
++	Context->SetStringField(TEXT("gpu"), GRHIAdapterName.IsEmpty() ? FPlatformMisc::GetPrimaryGPUBrand() : GRHIAdapterName);
++	return Context;
++}
++
++static TSharedPtr<FJsonObject> BuildMonitorSnapshot(const FString& Status)
++{
++	TArray<PerformanceVerdict::FTimingSample> Timings;
++	Timings.Reserve(GMonitorSamples.Num());
++	for (const FPerfMonitorSample& Sample : GMonitorSamples) Timings.Add(Sample.Timing);
++	const PerformanceVerdict::FMonitorSummary Summary = PerformanceVerdict::SummarizeMonitor(
++		Timings,
++		GMonitorTargetFps,
++		GMonitorHitchThresholdMs);
++
++	double WindowStart = TNumericLimits<double>::Max();
++	double WindowEnd = 0.0;
++	for (const FPerfMonitorSample& Sample : GMonitorSamples)
++	{
++		WindowStart = FMath::Min(WindowStart, Sample.Timing.TimeSeconds);
++		WindowEnd = FMath::Max(WindowEnd, Sample.Timing.TimeSeconds);
++	}
++	const double WindowSeconds = GMonitorSamples.Num() > 1 ? FMath::Max(0.0, WindowEnd - WindowStart) : 0.0;
++	const double SampleDenominator = FMath::Max(1, Summary.SampleCount);
++
++	TSharedPtr<FJsonObject> Budget = MakeShared<FJsonObject>();
++	Budget->SetNumberField(TEXT("target_fps"), RoundPerf(Summary.TargetFps));
++	Budget->SetNumberField(TEXT("budget_ms"), RoundPerf(Summary.BudgetMs));
++	Budget->SetNumberField(TEXT("hitch_threshold_ms"), RoundPerf(Summary.HitchThresholdMs));
++	Budget->SetNumberField(TEXT("over_budget_frames"), Summary.OverBudgetCount);
++	Budget->SetNumberField(TEXT("over_budget_pct"), RoundPerf(100.0 * Summary.OverBudgetCount / SampleDenominator));
++	Budget->SetNumberField(TEXT("hitches"), Summary.HitchCount);
++	Budget->SetNumberField(TEXT("hitch_pct"), RoundPerf(100.0 * Summary.HitchCount / SampleDenominator));
++
++	TSharedPtr<FJsonObject> Threads = MakeShared<FJsonObject>();
++	Threads->SetObjectField(TEXT("game_thread"), DistributionJson(Summary.Game));
++	Threads->SetObjectField(TEXT("render_thread"), DistributionJson(Summary.Render));
++	Threads->SetObjectField(TEXT("rhi_thread"), DistributionJson(Summary.Rhi));
++	Threads->SetObjectField(TEXT("gpu"), DistributionJson(Summary.Gpu));
++	Threads->SetObjectField(TEXT("frame"), DistributionJson(Summary.Frame));
++
++	TSharedPtr<FJsonObject> BoundCounts = MakeShared<FJsonObject>();
++	for (const TCHAR* Name : { TEXT("GameThread"), TEXT("RenderThread"), TEXT("RHIThread"), TEXT("GPU") })
++	{
++		BoundCounts->SetNumberField(Name, Summary.BoundCounts.FindRef(Name));
++	}
++	TSharedPtr<FJsonObject> Verdict = MakeShared<FJsonObject>();
++	Verdict->SetStringField(TEXT("dominant_bound"), Summary.DominantBound);
++	Verdict->SetObjectField(TEXT("bound_counts"), BoundCounts);
++	Verdict->SetNumberField(TEXT("contested_frames"), Summary.ContestedCount);
++	Verdict->SetNumberField(TEXT("contested_pct"), RoundPerf(100.0 * Summary.ContestedCount / SampleDenominator));
++
++	const double VramDenominator = FMath::Max(1, Summary.VramUsed.SampleCount);
++	TSharedPtr<FJsonObject> Vram = MakeShared<FJsonObject>();
++	Vram->SetBoolField(TEXT("available"), Summary.VramUsed.SampleCount > 0);
++	Vram->SetStringField(TEXT("source"), TEXT("RHIGetMemoryStats"));
++	Vram->SetObjectField(TEXT("used"), DistributionJson(Summary.VramUsed, TEXT("mb")));
++	Vram->SetObjectField(TEXT("usage"), DistributionJson(Summary.VramUsage, TEXT("pct")));
++	Vram->SetNumberField(TEXT("current_time_seconds"), RoundPerf(Summary.VramCurrentTimeSeconds));
++	Vram->SetNumberField(TEXT("current_used_mb"), RoundPerf(Summary.VramCurrentUsedMB));
++	Vram->SetNumberField(TEXT("current_budget_mb"), RoundPerf(Summary.VramCurrentBudgetMB));
++	Vram->SetNumberField(TEXT("current_available_mb"), RoundPerf(Summary.VramCurrentAvailableMB));
++	Vram->SetNumberField(TEXT("current_demoted_mb"), RoundPerf(Summary.VramCurrentDemotedMB));
++	Vram->SetNumberField(TEXT("peak_time_seconds"), RoundPerf(Summary.VramPeakTimeSeconds));
++	Vram->SetBoolField(TEXT("current_over_budget"), Summary.bVramCurrentOverBudget);
++	Vram->SetNumberField(TEXT("over_budget_frames"), Summary.VramOverBudgetCount);
++	Vram->SetNumberField(
++		TEXT("over_budget_pct"),
++		RoundPerf(100.0 * Summary.VramOverBudgetCount / VramDenominator));
++	Vram->SetStringField(
++		TEXT("note"),
++		TEXT("Budget is the OS/driver local-memory budget for this process, not the adapter's physical capacity."));
++
++	TArray<FPerfMonitorSample> Worst = GMonitorSamples;
++	Worst.Sort([](const FPerfMonitorSample& A, const FPerfMonitorSample& B)
++	{
++		return A.Timing.FrameMs > B.Timing.FrameMs;
++	});
++	TArray<TSharedPtr<FJsonValue>> Hotspots;
++	for (int32 Index = 0; Index < FMath::Min(5, Worst.Num()); ++Index)
++	{
++		const FPerfMonitorSample& Sample = Worst[Index];
++		const PerformanceVerdict::FVerdict SampleVerdict = PerformanceVerdict::Classify(
++			Sample.Timing.GameMs,
++			Sample.Timing.RenderMs,
++			Sample.Timing.RhiMs,
++			Sample.Timing.GpuMs,
++			Sample.Timing.bRhiAvailable,
++			Sample.Timing.bGpuAvailable);
++		TSharedPtr<FJsonObject> Hotspot = MakeShared<FJsonObject>();
++		Hotspot->SetNumberField(TEXT("time_seconds"), RoundPerf(Sample.Timing.TimeSeconds));
++		Hotspot->SetNumberField(TEXT("frame_ms"), RoundPerf(Sample.Timing.FrameMs));
++		Hotspot->SetNumberField(TEXT("game_thread_ms"), RoundPerf(Sample.Timing.GameMs));
++		Hotspot->SetNumberField(TEXT("render_thread_ms"), RoundPerf(Sample.Timing.RenderMs));
++		Hotspot->SetNumberField(TEXT("rhi_thread_ms"), RoundPerf(Sample.Timing.RhiMs));
++		Hotspot->SetNumberField(TEXT("gpu_ms"), RoundPerf(Sample.Timing.GpuMs));
++		Hotspot->SetStringField(TEXT("bound"), SampleVerdict.Bound);
++		Hotspot->SetBoolField(TEXT("contested"), SampleVerdict.bContested);
++		if (Sample.Timing.bVramAvailable)
++		{
++			constexpr double BytesPerMB = 1024.0 * 1024.0;
++			Hotspot->SetNumberField(TEXT("vram_used_mb"), RoundPerf(Sample.Timing.VramUsedBytes / BytesPerMB));
++			Hotspot->SetNumberField(TEXT("vram_budget_mb"), RoundPerf(Sample.Timing.VramBudgetBytes / BytesPerMB));
++			Hotspot->SetNumberField(
++				TEXT("vram_usage_pct"),
++				RoundPerf(100.0 * Sample.Timing.VramUsedBytes / Sample.Timing.VramBudgetBytes));
++			Hotspot->SetBoolField(
++				TEXT("vram_over_budget"),
++				Sample.Timing.VramDemotedBytes > 0
++					|| Sample.Timing.VramUsedBytes > Sample.Timing.VramBudgetBytes);
++		}
++		Hotspot->SetBoolField(TEXT("has_viewpoint"), Sample.bHasViewpoint);
++		if (Sample.bHasViewpoint)
++		{
++			TSharedPtr<FJsonObject> Location = MakeShared<FJsonObject>();
++			Location->SetNumberField(TEXT("x"), RoundPerf(Sample.ViewLocation.X));
++			Location->SetNumberField(TEXT("y"), RoundPerf(Sample.ViewLocation.Y));
++			Location->SetNumberField(TEXT("z"), RoundPerf(Sample.ViewLocation.Z));
++			TSharedPtr<FJsonObject> Rotation = MakeShared<FJsonObject>();
++			Rotation->SetNumberField(TEXT("pitch"), RoundPerf(Sample.ViewRotation.Pitch));
++			Rotation->SetNumberField(TEXT("yaw"), RoundPerf(Sample.ViewRotation.Yaw));
++			Rotation->SetNumberField(TEXT("roll"), RoundPerf(Sample.ViewRotation.Roll));
++			Hotspot->SetObjectField(TEXT("location"), Location);
++			Hotspot->SetObjectField(TEXT("rotation"), Rotation);
++		}
++		Hotspots.Add(MakeShared<FJsonValueObject>(Hotspot));
++	}
++
++	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
++	Root->SetStringField(TEXT("schema"), TEXT("vibeue-performance-monitor-v1"));
++	Root->SetStringField(TEXT("status"), Status);
++	Root->SetBoolField(TEXT("monitoring"), GMonitorActive);
++	Root->SetStringField(TEXT("started_at_utc"), GMonitorStartedAtUtc.ToIso8601());
++	Root->SetNumberField(TEXT("elapsed_seconds"), RoundPerf(FPlatformTime::Seconds() - GMonitorStartSeconds));
++	Root->SetNumberField(TEXT("window_seconds"), RoundPerf(WindowSeconds));
++	Root->SetNumberField(TEXT("frames_total"), static_cast<double>(GMonitorTotalSamples));
++	Root->SetNumberField(TEXT("frames_kept"), GMonitorSamples.Num());
++	Root->SetNumberField(TEXT("warmup_frames_skipped"), GMonitorWarmupSkipped);
++	Root->SetNumberField(TEXT("instrumentation_frames_skipped"), GMonitorInstrumentationSkipped);
++	Root->SetNumberField(TEXT("invalid_frames_skipped"), GMonitorInvalidSkipped);
++	Root->SetObjectField(TEXT("context"), BuildMonitorContext());
++	Root->SetObjectField(TEXT("budget"), Budget);
++	Root->SetObjectField(TEXT("threads"), Threads);
++	Root->SetObjectField(TEXT("verdict"), Verdict);
++	Root->SetObjectField(TEXT("vram"), Vram);
++	Root->SetArrayField(TEXT("hotspots"), Hotspots);
++	if (Summary.SampleCount == 0)
++	{
++		Root->SetStringField(TEXT("warning"), TEXT("No valid samples yet. Wait for warmup to finish, then read again."));
++	}
++	return Root;
+ }
+ 
+ // Read StoreDir from the Unreal Trace Server settings file (used when -tracehost is set).
+@@ -144,7 +572,7 @@ static FString AnalyseTrace(const FString& TraceFile)
+ {
+ 	if (!FPaths::FileExists(TraceFile))
+ 	{
+-		return ErrJson(TEXT("FILE_NOT_FOUND"), FString::Printf(TEXT("Trace file not found: %s"), *TraceFile));
++		return ErrJson(TEXT("FILE_NOT_FOUND"), FString::Printf(TEXT("Trace file not found: %s"), *ProjectRelativePath(TraceFile)));
+ 	}
+ 
+ 	ITraceServicesModule* TraceModule = FModuleManager::LoadModulePtr<ITraceServicesModule>("TraceServices");
+@@ -167,7 +595,7 @@ static FString AnalyseTrace(const FString& TraceFile)
+ 	}
+ 
+ 	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+-	Root->SetStringField(TEXT("trace_file"), TraceFile);
++	Root->SetStringField(TEXT("trace_file"), ProjectRelativePath(TraceFile));
+ 
+ 	{
+ 		TraceServices::FAnalysisSessionReadScope Scope(*Session);
+@@ -268,16 +696,16 @@ static FString AnalyseLogs(const FString& LogFile)
+ 		// misled into thinking a present-but-locked log is missing.
+ 		if (FPaths::FileExists(LogFile))
+ 		{
+-			return ErrJson(TEXT("LOG_LOCKED"), FString::Printf(TEXT("Log file exists but could not be read (likely held open by another process): %s"), *LogFile));
++			return ErrJson(TEXT("LOG_LOCKED"), FString::Printf(TEXT("Log file exists but could not be read (likely held open by another process): %s"), *ProjectRelativePath(LogFile)));
+ 		}
+-		return ErrJson(TEXT("LOG_NOT_FOUND"), FString::Printf(TEXT("Log file not found: %s"), *LogFile));
++		return ErrJson(TEXT("LOG_NOT_FOUND"), FString::Printf(TEXT("Log file not found: %s"), *ProjectRelativePath(LogFile)));
+ 	}
+ 
+ 	TArray<FString> Lines;
+ 	Content.ParseIntoArrayLines(Lines);
+ 
+ 	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+-	Root->SetStringField(TEXT("log_file"), LogFile);
++	Root->SetStringField(TEXT("log_file"), ProjectRelativePath(LogFile));
+ 	Root->SetNumberField(TEXT("total_lines"), Lines.Num());
+ 
+ 	TArray<TSharedPtr<FJsonValue>> Notable;
+@@ -494,6 +922,210 @@ FString UPerformanceService::FrameTiming(float TargetFPS)
+ 	return OkJson(R);
+ }
+ 
++FString UPerformanceService::StartMonitor(
++	float TargetFPS,
++	int32 WarmupFrames,
++	int32 MaxSamples,
++	float HitchThresholdMs)
++{
++	if (!IsPIERunning())
++	{
++		return ErrJson(
++			TEXT("PIE_REQUIRED"),
++			TEXT("Start in-process PIE first. The monitor rejects editor-viewport timing so it cannot be mistaken for a game baseline."));
++	}
++	if (GMonitorActive)
++	{
++		return ErrJson(TEXT("ALREADY_MONITORING"), TEXT("A performance monitor is already active. Read or stop it first."));
++	}
++	if (GMonitorTickerHandle.IsValid())
++	{
++		FTSTicker::GetCoreTicker().RemoveTicker(GMonitorTickerHandle);
++		GMonitorTickerHandle.Reset();
++	}
++
++	GMonitorTargetFps = static_cast<float>(PerformanceVerdict::SafeTargetFps(TargetFPS));
++	const double BudgetMs = 1000.0 / GMonitorTargetFps;
++	GMonitorHitchThresholdMs = FMath::IsFinite(HitchThresholdMs) && HitchThresholdMs > 0.0f
++		? FMath::Clamp(HitchThresholdMs, 1.0f, 5000.0f)
++		: static_cast<float>(FMath::Max(50.0, BudgetMs * 2.0));
++	GMonitorMaxSamples = FMath::Clamp(MaxSamples, 30, 3600);
++	GMonitorWarmupRemaining = FMath::Clamp(WarmupFrames, 0, 600);
++	GMonitorSuppressFrames = 0;
++	GMonitorWarmupSkipped = 0;
++	GMonitorInstrumentationSkipped = 0;
++	GMonitorInvalidSkipped = 0;
++	GMonitorTotalSamples = 0;
++	GMonitorNextIndex = 0;
++	GMonitorSamples.Reset(GMonitorMaxSamples);
++	GMonitorStartSeconds = FPlatformTime::Seconds();
++	GMonitorStartedAtUtc = FDateTime::UtcNow();
++	GMonitorStartMap = GetMonitorMap();
++	GMonitorStartViewportSize = GetMonitorViewportSize();
++	GMonitorStartSettings = GetMonitorSettings();
++	GMonitorContextLost = false;
++	GMonitorHasSession = true;
++	GMonitorActive = true;
++	GMonitorTickerHandle = FTSTicker::GetCoreTicker().AddTicker(
++		FTickerDelegate::CreateStatic(&TickPerformanceMonitor));
++
++	TSharedPtr<FJsonObject> Root = BuildMonitorSnapshot(TEXT("monitoring"));
++	Root->SetNumberField(TEXT("warmup_frames_remaining"), GMonitorWarmupRemaining);
++	Root->SetNumberField(TEXT("max_samples"), GMonitorMaxSamples);
++	Root->SetStringField(
++		TEXT("note"),
++		TEXT("Monitoring started. Move through the representative route, then call ReadMonitor or StopMonitor."));
++	return OkJson(Root);
++}
++
++FString UPerformanceService::ReadMonitor()
++{
++	if (!GMonitorHasSession)
++	{
++		return ErrJson(TEXT("NOT_STARTED"), TEXT("No performance monitor session exists. Call StartMonitor first."));
++	}
++
++	TSharedPtr<FJsonObject> Root = BuildMonitorSnapshot(GMonitorActive ? TEXT("monitoring") : TEXT("stopped"));
++	Root->SetNumberField(TEXT("warmup_frames_remaining"), GMonitorWarmupRemaining);
++	if (GMonitorActive)
++	{
++		GMonitorSuppressFrames = FMath::Max(GMonitorSuppressFrames, 3);
++		Root->SetStringField(
++			TEXT("note"),
++			TEXT("The next three frames will be discarded so this MCP read cannot create a false GameThread hitch."));
++	}
++	return OkJson(Root);
++}
++
++FString UPerformanceService::StopMonitor(const FString& Name, bool SaveSnapshot)
++{
++	if (!GMonitorHasSession)
++	{
++		return ErrJson(TEXT("NOT_STARTED"), TEXT("No performance monitor session exists. Call StartMonitor first."));
++	}
++	if (GMonitorTickerHandle.IsValid())
++	{
++		FTSTicker::GetCoreTicker().RemoveTicker(GMonitorTickerHandle);
++		GMonitorTickerHandle.Reset();
++	}
++	GMonitorActive = false;
++
++	TSharedPtr<FJsonObject> Root = BuildMonitorSnapshot(GMonitorContextLost ? TEXT("context_lost") : TEXT("stopped"));
++	Root->SetStringField(TEXT("note"), TEXT("Monitoring stopped; final rolling statistics are retained until the next StartMonitor call."));
++	if (!SaveSnapshot) return OkJson(Root);
++
++	FString SafeName = FPaths::MakeValidFileName(Name.IsEmpty() ? TEXT("monitor") : Name, TEXT('_'));
++	if (SafeName.IsEmpty()) SafeName = TEXT("monitor");
++	const FString Directory = PerformanceOutputDirAbs(TEXT("Snapshots"));
++	const FString Path = Directory / FString::Printf(
++		TEXT("%s_%s.json"),
++		*SafeName,
++		*FDateTime::Now().ToString(TEXT("%Y%m%d_%H%M%S")));
++	Root->SetStringField(TEXT("snapshot_file"), ProjectRelativePath(Path));
++	const FString Json = OkJson(Root);
++	if (!FFileHelper::SaveStringToFile(Json, *Path, FFileHelper::EEncodingOptions::ForceUTF8WithoutBOM))
++	{
++		return ErrJson(TEXT("SNAPSHOT_WRITE_FAILED"), FString::Printf(TEXT("Could not write monitor snapshot: %s"), *ProjectRelativePath(Path)));
++	}
++	return Json;
++}
++
++FString UPerformanceService::CaptureGPUProfile()
++{
++	if (!IsPIERunning())
++	{
++		return ErrJson(TEXT("PIE_REQUIRED"), TEXT("Start in-process PIE first; ProfileGPU must capture the game world, not the editor viewport."));
++	}
++	if (GProfileGpuCapturePending || UE::RHI::GPUProfiler::IsProfiling())
++	{
++		return ErrJson(TEXT("PROFILEGPU_BUSY"), TEXT("A ProfileGPU capture is already in progress."));
++	}
++
++	IConsoleObject* const ProfileGpuCommand = IConsoleManager::Get().FindConsoleObject(TEXT("ProfileGPU"));
++	if (!ProfileGpuCommand || !ProfileGpuCommand->AsCommand())
++	{
++		return ErrJson(TEXT("PROFILEGPU_UNAVAILABLE"), TEXT("This editor build does not expose Unreal's ProfileGPU command."));
++	}
++
++	IConsoleVariable* const ShowUICVar = IConsoleManager::Get().FindConsoleVariable(TEXT("r.ProfileGPU.ShowUI"));
++	if (!ShowUICVar)
++	{
++		return ErrJson(TEXT("PROFILEGPU_UI_CVAR_UNAVAILABLE"), TEXT("r.ProfileGPU.ShowUI is unavailable; refusing a capture that may open editor UI."));
++	}
++	const int32 SavedShowUI = ShowUICVar->GetInt();
++	const EConsoleVariableFlags SavedShowUISetBy = static_cast<EConsoleVariableFlags>(ShowUICVar->GetFlags() & ECVF_SetByMask);
++	const auto RestoreShowUI = [ShowUICVar, SavedShowUI, SavedShowUISetBy]()
++	{
++		if (SavedShowUISetBy == ECVF_SetByConsole) ShowUICVar->Set(SavedShowUI != 0, ECVF_SetByConsole);
++		else ShowUICVar->Unset(ECVF_SetByConsole);
++	};
++	ShowUICVar->Set(false, ECVF_SetByConsole);
++	if (ShowUICVar->GetInt() != 0)
++	{
++		RestoreShowUI();
++		return ErrJson(TEXT("PROFILEGPU_UI_SUPPRESSION_FAILED"), TEXT("Could not suppress the ProfileGPU visualizer; capture was not requested."));
++	}
++
++	const FDateTime RequestedAtUtc = FDateTime::UtcNow();
++	const FString CaptureId = FGuid::NewGuid().ToString(EGuidFormats::Digits);
++	const FString LogMarker = FString::Printf(TEXT("VIBEUE_PROFILEGPU_BEGIN capture_id=%s"), *CaptureId);
++	const FString CompletionMarker = FString::Printf(TEXT("VIBEUE_PROFILEGPU_END capture_id=%s"), *CaptureId);
++	UE_LOG(LogPerformance, Display, TEXT("%s requested_at_utc=%s"), *LogMarker, *RequestedAtUtc.ToIso8601());
++
++	if (!IConsoleManager::Get().ProcessUserConsoleInput(TEXT("ProfileGPU"), *GLog, GEditor->PlayWorld))
++	{
++		RestoreShowUI();
++		UE_LOG(LogPerformance, Error, TEXT("%s status=rejected"), *CompletionMarker);
++		return ErrJson(TEXT("PROFILEGPU_REJECTED"), TEXT("Unreal rejected the native ProfileGPU command."));
++	}
++
++	GProfileGpuCapturePending = true;
++	constexpr double RestoreTimeoutSeconds = 30.0;
++	constexpr double LogQuietSeconds = 0.5;
++	const double RestoreDeadline = FPlatformTime::Seconds() + RestoreTimeoutSeconds;
++	// ponytail: one global capture plus a short post-profile quiet window; add a log sink only if a backend
++	// emits ProfileGPU rows after IsProfiling() clears for longer than this window.
++	FTSTicker::GetCoreTicker().AddTicker(FTickerDelegate::CreateLambda(
++		[RestoreShowUI, ShowUICVar, SavedShowUI, CaptureId, CompletionMarker, RestoreDeadline, CompletedAt = 0.0](float) mutable -> bool
++		{
++			const double Now = FPlatformTime::Seconds();
++			const bool bTimedOut = Now >= RestoreDeadline;
++			if (!bTimedOut && UE::RHI::GPUProfiler::IsProfiling())
++			{
++				CompletedAt = 0.0;
++				return true;
++			}
++			if (!bTimedOut && CompletedAt == 0.0)
++			{
++				CompletedAt = Now;
++				return true;
++			}
++			if (!bTimedOut && Now - CompletedAt < LogQuietSeconds) return true;
++
++			RestoreShowUI();
++			const bool bShowUIRestored = ShowUICVar->GetInt() == SavedShowUI;
++			GProfileGpuCapturePending = false;
++			UE_LOG(
++				LogPerformance,
++				Display,
++				TEXT("%s status=%s show_ui_restored=%s"),
++				*CompletionMarker,
++				bTimedOut ? TEXT("timeout") : TEXT("complete"),
++				bShowUIRestored ? TEXT("true") : TEXT("false"));
++			return false;
++		}));
++
++	TSharedPtr<FJsonObject> Result = MakeShared<FJsonObject>();
++	Result->SetStringField(TEXT("status"), TEXT("requested"));
++	Result->SetStringField(TEXT("capture_id"), CaptureId);
++	Result->SetStringField(TEXT("requested_at_utc"), RequestedAtUtc.ToIso8601());
++	Result->SetStringField(TEXT("log_marker"), LogMarker);
++	Result->SetStringField(TEXT("completion_marker"), CompletionMarker);
++	Result->SetBoolField(TEXT("show_ui_suppressed"), true);
++	Result->SetStringField(TEXT("note"), TEXT("The native GPU pass tree will be logged after the next rendered frame. Read the log between log_marker and completion_marker."));
++	return OkJson(Result);
++}
++
+ FString UPerformanceService::ForceHitch(const FString& Thread, float Milliseconds, int32 Frames)
+ {
+ 	const FString Mode = Thread.IsEmpty() ? TEXT("game") : Thread.ToLower();
+@@ -1017,21 +1649,21 @@ FString UPerformanceService::Report(const FString& Title, const FString& Source,
+ 	H += TEXT("</div></div>");
+ 
+ 	// --- Write the self-contained file ----------------------------------------------------------------
+-	const FString Dir = ProjectSavedDirAbs() / TEXT("VibeUE") / TEXT("Performance");
+-	IPlatformFile::GetPlatformPhysical().CreateDirectoryTree(*Dir);
++	const FString Dir = PerformanceOutputDirAbs(TEXT("Reports"));
+ 	const FString Path = Dir / FString::Printf(TEXT("report_%s.html"), *FDateTime::Now().ToString(TEXT("%Y%m%d_%H%M%S")));
+ 	if (!FFileHelper::SaveStringToFile(H, *Path, FFileHelper::EEncodingOptions::ForceUTF8))
+ 	{
+-		return ErrJson(TEXT("REPORT_WRITE_FAILED"), FString::Printf(TEXT("Could not write report to %s"), *Path));
++		return ErrJson(TEXT("REPORT_WRITE_FAILED"), FString::Printf(TEXT("Could not write report to %s"), *ProjectRelativePath(Path)));
+ 	}
+ 
+ 	TSharedPtr<FJsonObject> R = MakeShared<FJsonObject>();
+-	R->SetStringField(TEXT("report_file"), Path);
++	const FString RelativePath = ProjectRelativePath(Path);
++	R->SetStringField(TEXT("report_file"), RelativePath);
+ 	R->SetNumberField(TEXT("fix_count"), Fixes.Num());
+ 	R->SetBoolField(TEXT("included_capture"), bHasTrace);
+ 	R->SetStringField(TEXT("bound"), Bound);
+ 	R->SetStringField(TEXT("hint"), FString::Printf(
+-		TEXT("Self-contained HTML written. Open it in any browser or screenshot it to share: %s"), *Path));
++		TEXT("Self-contained HTML written. Open it in any browser or screenshot it to share: %s"), *RelativePath));
+ 	return OkJson(R);
+ }
+ 
+@@ -1051,12 +1683,12 @@ FString UPerformanceService::StartTrace(const FString& Name, const FString& Chan
+ 	bool bOk = FTraceAuxiliary::Start(FTraceAuxiliary::EConnectionType::File, *TracePath, *ChannelSet);
+ 	if (!bOk)
+ 	{
+-		return ErrJson(TEXT("TRACE_FAILED"), FString::Printf(TEXT("Failed to start trace. Path: %s"), *TracePath));
++		return ErrJson(TEXT("TRACE_FAILED"), FString::Printf(TEXT("Failed to start trace. Path: %s"), *ProjectRelativePath(TracePath)));
+ 	}
+ 
+ 	TSharedPtr<FJsonObject> R = MakeShared<FJsonObject>();
+ 	R->SetStringField(TEXT("status"),     TEXT("tracing"));
+-	R->SetStringField(TEXT("trace_file"), GLastTraceFilePath);
++	R->SetStringField(TEXT("trace_file"), ProjectRelativePath(GLastTraceFilePath));
+ 	R->SetStringField(TEXT("channels"),   ChannelSet);
+ 	R->SetStringField(TEXT("hint"),       TEXT("Call StopTrace when done, then Analyse to read results."));
+ 	return OkJson(R);
+@@ -1071,12 +1703,9 @@ FString UPerformanceService::StopTrace()
+ 	FTraceAuxiliary::Stop();
+ 
+ 	FString UTSTrace = FindLatestUTSTrace();
+-	if (!UTSTrace.IsEmpty())
++	if (!FPaths::FileExists(GLastTraceFilePath) && !UTSTrace.IsEmpty())
+ 	{
+-		FDateTime StoredTime = GLastTraceFilePath.IsEmpty() ? FDateTime::MinValue()
+-			: IFileManager::Get().GetTimeStamp(*GLastTraceFilePath);
+-		FDateTime UTSTime = IFileManager::Get().GetTimeStamp(*UTSTrace);
+-		if (UTSTime > StoredTime) GLastTraceFilePath = UTSTrace;
++		GLastTraceFilePath = UTSTrace;
+ 	}
+ 
+ 	int64 FileSizeBytes = GLastTraceFilePath.IsEmpty() ? 0
+@@ -1084,7 +1713,7 @@ FString UPerformanceService::StopTrace()
+ 
+ 	TSharedPtr<FJsonObject> R = MakeShared<FJsonObject>();
+ 	R->SetStringField(TEXT("status"),       TEXT("stopped"));
+-	R->SetStringField(TEXT("trace_file"),   GLastTraceFilePath);
++	R->SetStringField(TEXT("trace_file"),   ProjectRelativePath(GLastTraceFilePath));
+ 	R->SetNumberField(TEXT("file_size_mb"), FMath::RoundToFloat((float)FileSizeBytes / (1024.f * 1024.f) * 10.f) / 10.f);
+ 	R->SetStringField(TEXT("hint"),         TEXT("Call Analyse to read the results."));
+ 	return OkJson(R);
+@@ -1101,7 +1730,7 @@ FString UPerformanceService::GetTraceStatus()
+ 	R->SetBoolField(TEXT("tracing"),          bConnected);
+ 	R->SetStringField(TEXT("destination"),    Dest);
+ 	R->SetStringField(TEXT("active_channels"),ChannelSB.ToString());
+-	R->SetStringField(TEXT("last_trace_file"),GLastTraceFilePath);
++	R->SetStringField(TEXT("last_trace_file"), ProjectRelativePath(GLastTraceFilePath));
+ 	return OkJson(R);
+ }
+ 
+@@ -1139,7 +1768,7 @@ FString UPerformanceService::Analyse(const FString& Source, const FString& File)
+ {
+ 	const FString Src = Source.IsEmpty() ? TEXT("both") : Source.ToLower();
+ 
+-	FString TraceFile = File.IsEmpty() ? GLastTraceFilePath : File;
++	FString TraceFile = File.IsEmpty() ? GLastTraceFilePath : ResolveProjectPath(File);
+ 	FString LogFile   = GLastLogFilePath;
+ 	if (LogFile.IsEmpty())
+ 	{
+@@ -1175,8 +1804,7 @@ FString UPerformanceService::StartStandalone(const FString& Name, const FString&
+ 	// project's default <Project>.log. That file is held open by the running editor, so LoadFileToString
+ 	// fails on it (surfacing as a misleading LOG_NOT_FOUND) and a "newest log in the folder" guess picks
+ 	// the editor's live log instead of the standalone's. A dedicated, unique path is unlocked and exact.
+-	FString LogDir = ProjectSavedDirAbs() / TEXT("Logs");
+-	IPlatformFile::GetPlatformPhysical().CreateDirectoryTree(*LogDir);
++	FString LogDir = PerformanceOutputDirAbs(TEXT("Standalone"));
+ 	FString StandaloneLogPath = LogDir / FString::Printf(TEXT("%s_%s.log"),
+ 		*TraceName, *FDateTime::Now().ToString(TEXT("%Y%m%d_%H%M%S")));
+ 	GLastLogFilePath = StandaloneLogPath;
+@@ -1201,8 +1829,8 @@ FString UPerformanceService::StartStandalone(const FString& Name, const FString&
+ 
+ 	TSharedPtr<FJsonObject> R = MakeShared<FJsonObject>();
+ 	R->SetStringField(TEXT("status"), TEXT("standalone start requested"));
+-	R->SetStringField(TEXT("trace_file"), GLastTraceFilePath);
+-	R->SetStringField(TEXT("log_file"),   GLastLogFilePath);
++	R->SetStringField(TEXT("trace_file"), ProjectRelativePath(GLastTraceFilePath));
++	R->SetStringField(TEXT("log_file"),   ProjectRelativePath(GLastLogFilePath));
+ 	R->SetStringField(TEXT("channels"),   ChannelSet);
+ 	R->SetStringField(TEXT("hint"), TEXT("Call StopStandalone when done, then Analyse to read results."));
+ 	return OkJson(R);
+@@ -1237,7 +1865,7 @@ FString UPerformanceService::StopStandalone()
+ 	GStandaloneRunning = false;
+ 
+ 	FString UTSTrace = FindLatestUTSTrace();
+-	if (!UTSTrace.IsEmpty()) GLastTraceFilePath = UTSTrace;
++	if (!FPaths::FileExists(GLastTraceFilePath) && !UTSTrace.IsEmpty()) GLastTraceFilePath = UTSTrace;
+ 
+ 	// GLastLogFilePath was set to a dedicated timestamped file in StartStandalone (-abslog), so it is
+ 	// already the standalone's own log — no need to guess the newest log in the folder (which would
+@@ -1245,8 +1873,8 @@ FString UPerformanceService::StopStandalone()
+ 
+ 	TSharedPtr<FJsonObject> R = MakeShared<FJsonObject>();
+ 	R->SetStringField(TEXT("status"),     TEXT("standalone stop requested"));
+-	R->SetStringField(TEXT("trace_file"), GLastTraceFilePath);
+-	R->SetStringField(TEXT("log_file"),   GLastLogFilePath);
++	R->SetStringField(TEXT("trace_file"), ProjectRelativePath(GLastTraceFilePath));
++	R->SetStringField(TEXT("log_file"),   ProjectRelativePath(GLastLogFilePath));
+ 	R->SetStringField(TEXT("uts_store"),  GetUTSStoreDir());
+ 	R->SetStringField(TEXT("hint"),       TEXT("Allow a few seconds for the trace file to finalise, then call Analyse."));
+ 	return OkJson(R);
+@@ -1256,8 +1884,8 @@ FString UPerformanceService::GetStandaloneStatus()
+ {
+ 	TSharedPtr<FJsonObject> R = MakeShared<FJsonObject>();
+ 	R->SetBoolField(TEXT("running"), GStandaloneRunning);
+-	R->SetStringField(TEXT("last_trace_file"), GLastTraceFilePath);
+-	R->SetStringField(TEXT("last_log_file"),   GLastLogFilePath);
++	R->SetStringField(TEXT("last_trace_file"), ProjectRelativePath(GLastTraceFilePath));
++	R->SetStringField(TEXT("last_log_file"),   ProjectRelativePath(GLastLogFilePath));
+ 	return OkJson(R);
+ }
+ 
+diff --git a/Source/VibeUE/Public/PythonAPI/UPerformanceService.h b/Source/VibeUE/Public/PythonAPI/UPerformanceService.h
+index 2537f79e7e3e9a9c8966a924a17ad541ef0fdf85..85c075d94b43d4a53fd941e3593ddbe9ea2f2026 100644
+--- a/Source/VibeUE/Public/PythonAPI/UPerformanceService.h
++++ b/Source/VibeUE/Public/PythonAPI/UPerformanceService.h
+@@ -40,6 +40,49 @@ public:
+ 	UFUNCTION(BlueprintCallable, meta = (AICallable), Category = "VibeUE|Performance")
+ 	static FString FrameTiming(float TargetFPS = 60.0f);
+ 
++	/**
++	 * Start a low-overhead rolling timing and VRAM monitor for the current in-process PIE world. Sampling happens
++	 * once per editor tick inside the service, so MCP polling does not need to issue one request per frame.
++	 * The warmup and the frames immediately following ReadMonitor calls are discarded to keep tool overhead
++	 * out of the measurement. The monitor retains only the latest MaxSamples frames.
++	 *
++	 * @param TargetFPS        Frame-rate budget used for pass/fail percentages.
++	 * @param WarmupFrames     Initial frames to discard after the MCP start call. Clamped to [0, 600].
++	 * @param MaxSamples       Rolling sample capacity. Clamped to [30, 3600].
++	 * @param HitchThresholdMs Frames at or above this time count as hitches. Invalid values default to 50 ms.
++	 */
++	UFUNCTION(BlueprintCallable, meta = (AICallable), Category = "VibeUE|Performance")
++	static FString StartMonitor(
++		float TargetFPS = 60.0f,
++		int32 WarmupFrames = 60,
++		int32 MaxSamples = 600,
++		float HitchThresholdMs = 50.0f);
++
++	/**
++	 * Read compact rolling statistics from the active monitor: P50/P95/P99/max per thread, current/P95/peak
++	 * local VRAM usage against the OS/driver budget, hitch rates, dominant bottleneck, context fingerprint,
++	 * and the five worst frames with player view transforms. This call suppresses the following three samples
++	 * so its own MCP cost is not measured.
++	 */
++	UFUNCTION(BlueprintCallable, meta = (AICallable), Category = "VibeUE|Performance")
++	static FString ReadMonitor();
++
++	/**
++	 * Stop the monitor and return its final statistics. By default the same JSON is written under
++	 * Saved/Logs/VibeUE/Performance/Snapshots for later baseline comparison. Returned paths are
++	 * project-relative (Saved/...) so captures remain portable across machines.
++	 */
++	UFUNCTION(BlueprintCallable, meta = (AICallable), Category = "VibeUE|Performance")
++	static FString StopMonitor(const FString& Name = TEXT("monitor"), bool SaveSnapshot = true);
++
++	/**
++	 * Queue Unreal's native ProfileGPU capture for the next in-process PIE frame. The GPU pass tree is
++	 * written to the editor log between the returned markers; the visualizer UI is suppressed and its
++	 * previous setting restored automatically when the capture finishes.
++	 */
++	UFUNCTION(BlueprintCallable, meta = (AICallable), Category = "VibeUE|Performance")
++	static FString CaptureGPUProfile();
++
+ 	/**
+ 	 * TEST/VALIDATION HELPER — deliberately induce a frame hitch on a chosen thread to verify that
+ 	 * FrameTiming's verdict, budget gate and contested detection fire correctly against a KNOWN ground truth.
+@@ -67,7 +110,7 @@ public:
+ 
+ 	/**
+ 	 * Render a self-contained HTML performance report from the current verdict and the most recent capture,
+-	 * and write it to <Project>/Saved/VibeUE/Performance/report_<timestamp>.html — a shareable "printout" you
++	 * and write it to Saved/Logs/VibeUE/Performance/Reports/report_<timestamp>.html — a shareable "printout" you
+ 	 * can open in any browser, screenshot, or hand to the team. Pulls the live FrameTiming verdict + budget and
+ 	 * (when a trace/log is available) the Analyse frame stats, worst frames and PSO hitches, then builds a
+ 	 * data-driven "fix in this order" list — each fix carries the concrete stat/console commands to run and
+diff --git a/test_prompts/performance/performance_tests.md b/test_prompts/performance/performance_tests.md
+index 64a51da1f94e716691935a02aef8d9b6901d326c..d75df74cc9df6929e9f23b8505b8a9ca6848227f 100644
+--- a/test_prompts/performance/performance_tests.md
++++ b/test_prompts/performance/performance_tests.md
+@@ -34,6 +34,12 @@ Now gate against an absurd 1000 FPS target and confirm the gate fails, naming wh
+ 
+ ---
+ 
++## Rolling Monitor & VRAM
++
++Start the rolling monitor with no warmup, wait for several rendered frames, then read and stop it without saving. Report the VRAM current/P95/peak usage, local-memory budget, peak timestamp, and over-budget frame rate. (Expected: `vram.available=true` on D3D12/Vulkan with `used`, `usage`, `current_used_mb`, `current_budget_mb`, `peak_time_seconds`, and `over_budget_pct`; explain that budget is the OS/driver process budget, not physical card capacity.)
++
++---
++
+ ## Hitch Validation — CPU paths (self-measured, single response)
+ 
+ Force a 250 ms hitch on the game thread and validate the verdict from that same response. Do NOT follow up with a frame_timing call — the CPU stall blocks the game thread, so a follow-up read reliably lands on a clean frame and misses it. (Expected: observed_peak_game_ms ≈ 250 or more and verdict_matched_expect=true, in the force_hitch response itself.)
+@@ -78,7 +84,7 @@ Analyse the capture with source "both". Report the frame stats (avg/p95/worst),
+ 
+ ## HTML Report
+ 
+-Generate an HTML performance report titled "Perf Pack Report". (Expected: report() returns an output path under Saved/VibeUE/Performance/.)
++Generate an HTML performance report titled "Perf Pack Report". (Expected: report() returns a project-relative output path under Saved/Logs/VibeUE/Performance/Reports/.)
+ 
+ ---
+ 

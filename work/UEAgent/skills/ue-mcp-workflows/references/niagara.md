@@ -21,8 +21,8 @@ If the route includes `engineNiagaraPatchSha256`, run doctor with
 `-ProbeAdvancedCapabilities` before using the extension. A successful probe verifies live
 `GetScriptGraphText`, `GetScriptCustomHlsl`, `GetScriptRapidIterationParameters`,
 `GetScriptObject`, `SetScriptCustomHlsl`, and `GetRuntimeState`. The first four are read paths;
-the setter remains task-gated. `GetScriptGraphText` is an exact, high-volume fallback rather than
-a replacement for the compact sidecar.
+the setter remains task-gated. Use `GetScriptGraphText` only when the task explicitly requires the
+exact high-volume graph text; it does not replace the compact sidecar.
 
 ## Discover before editing
 
@@ -47,9 +47,8 @@ receipt before dynamic pin mutation; otherwise allow scratch inspection but bloc
 isolate it in a disposable system.
 
 Do not call `NiagaraScratchPadService` from inside `ProgrammaticToolset`: two real runs timed
-out with no mutation. Prefer its discovered top-level route. If only Python exposes the needed
-operation, use one scoped top-level `execute_python_code -> unreal.NiagaraScratchPadService`
-call, then independently read back the graph.
+out with no mutation. Use its discovered top-level typed route. If no typed operation exposes the
+required change, add that operation or stop; Python is not a fallback route.
 
 ## Apply, diagnose, and save
 

@@ -6,23 +6,19 @@ param(
     [Parameter(Mandatory)]
     [string]$EngineRoot,
 
-    [string]$VibeUERef = '271f48771d077179fb597dc285ab5b898c5e8038',
-    [string]$Endpoint = 'http://127.0.0.1:8000/mcp',
+    [string]$VibeUERef,
+    [string]$Endpoint,
     [switch]$PreserveExistingVibeUE,
     [switch]$ApplyNiagaraAuthoringProfile,
     [switch]$ApplyEngineNiagaraPatch,
-    [switch]$ApplyMcpToolSearchPatches,
-    [switch]$UseProjectUnrealMcp,
-    [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9._-]*$')]
-    [string]$ProjectUnrealMcpServerName = 'unreal-project',
-    [ValidateRange(1, 65535)]
-    [int]$ProjectUnrealMcpPort = 55557,
+    [switch]$ApplyMcpToolSearchPatch,
     [switch]$CheckOnly,
     [switch]$SkipBuild,
     [switch]$Launch
 )
 
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'ueagent_common.ps1')
 $VibeUERepository = 'https://github.com/kevinpbuckley/VibeUE.git'
 
 function Resolve-RequiredPath($Path, $Label) {
@@ -32,34 +28,6 @@ function Resolve-RequiredPath($Path, $Label) {
 
 function Assert-LastExitCode($Message) {
     if ($LASTEXITCODE -ne 0) { throw "$Message (exit $LASTEXITCODE)" }
-}
-
-function Get-NormalizedFileSha256($Path) {
-    $text = [IO.File]::ReadAllText($Path)
-    $text = $text -replace "`r`n", "`n" -replace "`r", "`n"
-    $sha = [Security.Cryptography.SHA256]::Create()
-    try {
-        $bytes = [Text.UTF8Encoding]::new($false).GetBytes($text)
-        return ([BitConverter]::ToString($sha.ComputeHash($bytes))).Replace('-', '')
-    } finally {
-        $sha.Dispose()
-    }
-}
-
-function Test-GitPatchApplied($Repository, $Patch) {
-    $previousErrorAction = $ErrorActionPreference
-    try {
-        $ErrorActionPreference = 'Continue'
-        & git -C $Repository apply --reverse --check $Patch 2>$null
-        if ($LASTEXITCODE -eq 0) { return $true }
-        # Line-ending tolerant retry: see doctor.ps1. Packaged patches are LF while a
-        # Windows working tree may hold CRLF, so a whitespace-only mismatch would
-        # otherwise report an already-applied patch as missing.
-        & git -C $Repository apply --reverse --check --ignore-whitespace $Patch 2>$null
-        return ($LASTEXITCODE -eq 0)
-    } finally {
-        $ErrorActionPreference = $previousErrorAction
-    }
 }
 
 function Ensure-GitPatchApplied($Repository, $Patch, $Label) {
@@ -94,6 +62,36 @@ function Write-Utf8NoBom($Path, $Text) {
     [IO.File]::WriteAllText($Path, $Text, [Text.UTF8Encoding]::new($false))
 }
 
+function Assert-UeAgentReliableConfig($ProjectRoot) {
+    $path = Join-Path $ProjectRoot 'Config\DefaultEditor.ini'
+    $body = Get-IniSectionBody $path 'UEAgent.Reliable'
+    if ($null -eq $body) { throw "UEAgent reliable config section is missing: $path" }
+    foreach ($expected in @('Enabled=True', 'SaveTokenLifetimeSeconds=300', 'EnableFaultInjection=False')) {
+        if ($body -notmatch "(?m)^$([Regex]::Escape($expected))\r?$") {
+            throw "UEAgent reliable config setting is missing: $expected"
+        }
+    }
+}
+
+function Set-UeAgentReliableConfig($ProjectRoot) {
+    $path = Join-Path $ProjectRoot 'Config\DefaultEditor.ini'
+    $block = @'
+[UEAgent.Reliable]
+Enabled=True
+SaveTokenLifetimeSeconds=300
+EnableFaultInjection=False
+'@
+    $existing = if (Test-Path -LiteralPath $path) { Get-Content -Raw -LiteralPath $path } else { '' }
+    $pattern = '(?ms)^\[UEAgent\.Reliable\]\r?\n.*?(?=^\[|\z)'
+    $updated = if ($existing -match $pattern) {
+        [Regex]::Replace($existing, $pattern, $block.Trim() + [Environment]::NewLine)
+    } else {
+        $existing.TrimEnd() + [Environment]::NewLine + [Environment]::NewLine +
+            $block.Trim() + [Environment]::NewLine
+    }
+    Write-Utf8NoBom $path $updated.TrimStart()
+}
+
 function Set-UeAgentGate($ProjectRoot) {
     $agentsPath = Join-Path $ProjectRoot 'AGENTS.md'
     $start = '<!-- UEAGENT_GATE_START -->'
@@ -105,11 +103,13 @@ function Set-UeAgentGate($ProjectRoot) {
 Before any work that reads live Unreal state or mutates UE:
 
 1. Read `ueAgentRoot/skills/ue-mcp-workflows/HOTPATH.md`.
-2. Read `Saved/UEAgent/route.json` and run `ueAgentRoot/scripts/compact_context.ps1` for the target.
+2. Locate `Saved/UEAgent/route.json` and pass it to `ueAgentRoot/scripts/compact_context.ps1` for the
+   target. Read the route or wrapper source only to diagnose a failure.
 3. If it returns `CACHE_READ`, do not call MCP. Otherwise run
    `ueAgentRoot/scripts/doctor.ps1 -RouteFile Saved/UEAgent/route.json`. For a live read, load only
    the relevant domain card; add the Skill and Core before mutation or save.
-4. Follow the receipt; do not mutate or save unless its state and the task-specific rules permit it.
+4. Follow the receipt. Writable work must use `ueagent_snapshot` -> `ueagent_submit` -> terminal
+   receipt -> independent snapshot; save only with the receipt-issued exact `ueagent_save` capability.
 
 Offline source/cache/config/log analysis may proceed, but must not claim live editor state.
 <!-- UEAGENT_GATE_END -->
@@ -132,155 +132,41 @@ Offline source/cache/config/log analysis may proceed, but must not claim live ed
 $UProject = Resolve-RequiredPath $UProject 'UProject'
 $EngineRoot = Resolve-RequiredPath $EngineRoot 'Engine root'
 $ueAgentRoot = Split-Path $PSScriptRoot -Parent
-
-if ($UseProjectUnrealMcp) {
-    if ($PreserveExistingVibeUE -or $ApplyNiagaraAuthoringProfile -or
-        $ApplyEngineNiagaraPatch -or $ApplyMcpToolSearchPatches) {
-        throw '-UseProjectUnrealMcp cannot be combined with VibeUE or engine-patch profiles.'
-    }
-    if ($Launch) {
-        throw '-UseProjectUnrealMcp never launches Unreal Editor; open the existing editor normally.'
-    }
-
-    $projectRoot = Split-Path $UProject -Parent
-    $projectName = [IO.Path]::GetFileNameWithoutExtension($UProject)
-    $buildVersionPath = Join-Path $EngineRoot 'Engine\Build\Build.version'
-    $engineModulesPath = Join-Path $EngineRoot 'Engine\Binaries\Win64\UnrealEditor.modules'
-    $unrealMcpRoot = Join-Path $projectRoot 'Plugins\UnrealMCP'
-    $unrealMcpManifest = Join-Path $unrealMcpRoot 'UnrealMCP.uplugin'
-    $unrealMcpBinary = Join-Path $unrealMcpRoot 'Binaries\Win64\UnrealEditor-UnrealMCP.dll'
-    $unrealMcpModulesPath = Join-Path $unrealMcpRoot 'Binaries\Win64\UnrealEditor.modules'
-    $mcpServerCommand = Join-Path $unrealMcpRoot 'Python\.venv\Scripts\python.exe'
-    $mcpServerScript = Join-Path $unrealMcpRoot 'Python\unreal_mcp_server_advanced.py'
-    $mcpServerCwd = Join-Path $projectRoot 'Saved\Logs'
-    $requiredTools = @(
-        'skill_index',
-        'get_project_info',
-        'read_blueprint_content',
-        'analyze_blueprint_graph',
-        'get_blueprint_variable_details',
-        'get_blueprint_function_details'
-    )
-
-    foreach ($required in @(
-        $buildVersionPath,
-        $engineModulesPath,
-        $unrealMcpManifest,
-        $unrealMcpBinary,
-        $unrealMcpModulesPath,
-        $mcpServerCommand,
-        $mcpServerScript,
-        $mcpServerCwd
-    )) {
-        if (-not (Test-Path -LiteralPath $required)) {
-            throw "Prebuilt UnrealMCP prerequisite not found: $required"
-        }
-    }
-
-    $buildVersion = Get-Content -Raw -LiteralPath $buildVersionPath | ConvertFrom-Json
-    if ($buildVersion.MajorVersion -ne 5 -or $buildVersion.MinorVersion -ne 8) {
-        throw "UE 5.8 is required; found $($buildVersion.MajorVersion).$($buildVersion.MinorVersion)."
-    }
-    $engineBuildId = [string](Get-Content -Raw -LiteralPath $engineModulesPath | ConvertFrom-Json).BuildId
-    $pluginBuildId = [string](Get-Content -Raw -LiteralPath $unrealMcpModulesPath | ConvertFrom-Json).BuildId
-    if (-not $engineBuildId -or $pluginBuildId -ne $engineBuildId) {
-        throw "UnrealMCP binary BuildId $pluginBuildId does not match engine BuildId $engineBuildId."
-    }
-
-    $project = Get-Content -Raw -LiteralPath $UProject | ConvertFrom-Json
-    if (-not @($project.Plugins | Where-Object { $_.Name -eq 'UnrealMCP' -and $_.Enabled }).Count) {
-        throw "UnrealMCP is not enabled in $UProject"
-    }
-    if (@($project.Plugins | Where-Object { $_.Name -eq 'VibeUE' -and $_.Enabled }).Count) {
-        throw "VibeUE must not be enabled for the project UnrealMCP route: $UProject"
-    }
-
-    $serverText = Get-Content -Raw -LiteralPath $mcpServerScript
-    foreach ($tool in $requiredTools) {
-        if ($serverText -notmatch "(?m)^def\s+$([regex]::Escape($tool))\s*\(") {
-            throw "Required read-only MCP tool is missing from the server: $tool"
-        }
-    }
-
-    $routeDir = Join-Path $projectRoot 'Saved\UEAgent'
-    $routePath = Join-Path $routeDir 'route.json'
-    $routeEndpoint = "stdio://$ProjectUnrealMcpServerName"
-    $serverSha256 = Get-NormalizedFileSha256 $mcpServerScript
-
-    if ($CheckOnly) {
-        if (-not (Test-Path -LiteralPath $routePath)) { throw "Configured route not found: $routePath" }
-        $route = Get-Content -Raw -LiteralPath $routePath | ConvertFrom-Json
-        foreach ($pair in @(
-            @('schema', 'ueagent-route-v1'),
-            @('transport', 'project-unrealmcp-stdio'),
-            @('access', 'read-only'),
-            @('ueAgentRoot', $ueAgentRoot),
-            @('uProject', $UProject),
-            @('engineRoot', $EngineRoot),
-            @('endpoint', $routeEndpoint),
-            @('codexMcpServer', $ProjectUnrealMcpServerName),
-            @('unrealHost', '127.0.0.1'),
-            @('unrealPort', $ProjectUnrealMcpPort),
-            @('mcpServerCommand', $mcpServerCommand),
-            @('mcpServerScript', $mcpServerScript),
-            @('mcpServerCwd', $mcpServerCwd),
-            @('mcpServerSha256', $serverSha256)
-        )) {
-            if ([string]$route.($pair[0]) -ne [string]$pair[1]) {
-                throw "UEAgent route mismatch for $($pair[0]): $($route.($pair[0]))"
-            }
-        }
-        $missingRouteTools = @($requiredTools | Where-Object { $_ -notin @($route.requiredTools) })
-        if ($missingRouteTools.Count) {
-            throw "UEAgent route is missing read-only tools: $($missingRouteTools -join ', ')"
-        }
-        Write-Host "UEAgent project UnrealMCP static check passed for $projectName." -ForegroundColor Green
-        exit 0
-    }
-
-    New-Item -ItemType Directory -Path $routeDir -Force | Out-Null
-    $route = [ordered]@{
-        schema = 'ueagent-route-v1'
-        transport = 'project-unrealmcp-stdio'
-        access = 'read-only'
-        ueAgentRoot = $ueAgentRoot
-        uProject = $UProject
-        engineRoot = $EngineRoot
-        endpoint = $routeEndpoint
-        codexMcpServer = $ProjectUnrealMcpServerName
-        unrealHost = '127.0.0.1'
-        unrealPort = $ProjectUnrealMcpPort
-        mcpServerCommand = $mcpServerCommand
-        mcpServerScript = $mcpServerScript
-        mcpServerCwd = $mcpServerCwd
-        mcpServerSha256 = $serverSha256
-        requiredTools = $requiredTools
-    }
-    Write-Utf8NoBom $routePath (($route | ConvertTo-Json -Depth 10) + [Environment]::NewLine)
-    Write-Host "UEAgent configured the read-only project UnrealMCP route for $projectName." -ForegroundColor Green
-    Write-Host 'No engine/project build or Unreal launch was performed.' -ForegroundColor Green
-    exit 0
-}
+$stackManifest = Read-UeAgentStackManifest $ueAgentRoot
+$manifestErrors = @(Get-UeAgentManifestPatchErrors $ueAgentRoot $stackManifest)
+if ($manifestErrors.Count) { throw ($manifestErrors -join '; ') }
+if (-not $PSBoundParameters.ContainsKey('VibeUERef')) { $VibeUERef = [string]$stackManifest.profiles.base.vibeue_ref }
+if (-not $PSBoundParameters.ContainsKey('Endpoint')) { $Endpoint = [string]$stackManifest.runtime.endpoint }
+$reliableProtocolVersion = [string]$stackManifest.runtime.reliable_protocol
+$mutationTransport = [string]$stackManifest.runtime.mutation_transport
 
 $coreVibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-ueagent.patch') 'UEAgent VibeUE patch'
 $authoringVibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\vibeue\vibeue-ueagent-authoring.patch') 'UEAgent Niagara authoring VibeUE patch'
+$vibePerformancePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-performance-monitor.patch') 'VibeUE performance monitor patch'
 $vibeShutdownGuardPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-mcp-shutdown-guard.patch') 'VibeUE MCP shutdown guard patch'
+$vibeReliablePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-reliable-kernel.patch') 'VibeUE reliable execution kernel patch'
+$engineMcpAuthorizationPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-authorization-gate.patch') 'UE 5.8 MCP authorization gate patch'
 $engineNiagaraPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-niagara-toolsets.patch') 'UEAgent Niagara Toolsets patch'
 $engineNiagaraAuthoringPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\ue-5.8\niagaraeditor-export-authoring-apis-current.patch') 'UEAgent Niagara authoring engine patch'
-$mcpToolSearchV2PatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-tool-search-v2.patch') 'UEAgent MCP tool-search v2 patch'
-$mcpToolSearchV3PatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-tool-search-v3-call-view.patch') 'UEAgent MCP tool-search v3 patch'
+$mcpToolSearchPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-tool-search.patch') 'UEAgent MCP tool-search patch'
 $vibeProfile = if ($ApplyNiagaraAuthoringProfile) { 'niagara-authoring' } else { 'base' }
 $vibePatchPath = if ($ApplyNiagaraAuthoringProfile) { $authoringVibePatchPath } else { $coreVibePatchPath }
-$vibePatchSha256 = Get-NormalizedFileSha256 $vibePatchPath
-$vibeShutdownGuardPatchSha256 = Get-NormalizedFileSha256 $vibeShutdownGuardPatchPath
-$engineNiagaraPatchSha256 = Get-NormalizedFileSha256 $engineNiagaraPatchPath
-$engineNiagaraAuthoringPatchSha256 = Get-NormalizedFileSha256 $engineNiagaraAuthoringPatchPath
-$mcpToolSearchV2PatchSha256 = Get-NormalizedFileSha256 $mcpToolSearchV2PatchPath
-$mcpToolSearchV3PatchSha256 = Get-NormalizedFileSha256 $mcpToolSearchV3PatchPath
+$vibePatchManifestPath = if ($ApplyNiagaraAuthoringProfile) {
+    'patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch'
+} else { 'patches/vibeue-ueagent.patch' }
+$vibePatchSha256 = [string]$stackManifest.patches.($vibePatchManifestPath)
+$vibePerformancePatchSha256 = [string]$stackManifest.patches.'patches/vibeue-performance-monitor.patch'
+$vibeShutdownGuardPatchSha256 = [string]$stackManifest.patches.'patches/vibeue-mcp-shutdown-guard.patch'
+$vibeReliablePatchSha256 = [string]$stackManifest.patches.'patches/vibeue-reliable-kernel.patch'
+$engineMcpAuthorizationPatchSha256 = [string]$stackManifest.patches.'patches/ue58-mcp-authorization-gate.patch'
+$engineNiagaraPatchSha256 = [string]$stackManifest.patches.'patches/ue58-niagara-toolsets.patch'
+$engineNiagaraAuthoringPatchSha256 = [string]$stackManifest.patches.'patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch'
+$mcpToolSearchPatchSha256 = [string]$stackManifest.patches.'patches/ue58-mcp-tool-search.patch'
 $projectRoot = Split-Path $UProject -Parent
 $projectName = [IO.Path]::GetFileNameWithoutExtension($UProject)
 $buildScript = Join-Path $EngineRoot 'Engine\Build\BatchFiles\Build.bat'
 $editor = Join-Path $EngineRoot 'Engine\Binaries\Win64\UnrealEditor.exe'
+$projectEditor = Join-Path $projectRoot "Binaries\Win64\$($projectName)Editor.exe"
 $nativeMcp = Join-Path $EngineRoot 'Engine\Plugins\Experimental\ModelContextProtocol\ModelContextProtocol.uplugin'
 $editorToolset = Join-Path $EngineRoot 'Engine\Plugins\Experimental\Toolsets\EditorToolset\EditorToolset.uplugin'
 $buildVersionPath = Join-Path $EngineRoot 'Engine\Build\Build.version'
@@ -302,9 +188,10 @@ if (-not $CheckOnly -and -not $ApplyNiagaraAuthoringProfile -and $engineNiagaraA
 if ($CheckOnly) {
     $mcpPath = Join-Path $projectRoot '.mcp.json'
     $settingsPath = Join-Path $projectRoot 'Config\DefaultEditorPerProjectUserSettings.ini'
+    $defaultEditorPath = Join-Path $projectRoot 'Config\DefaultEditor.ini'
     $routePath = Join-Path $projectRoot 'Saved\UEAgent\route.json'
     $agentsPath = Join-Path $projectRoot 'AGENTS.md'
-    foreach ($required in @($vibeManifest, $mcpPath, $settingsPath, $routePath, $agentsPath)) {
+    foreach ($required in @($vibeManifest, $mcpPath, $settingsPath, $defaultEditorPath, $routePath, $agentsPath)) {
         if (-not (Test-Path -LiteralPath $required)) { throw "Configured file not found: $required" }
     }
     $project = Get-Content -Raw -LiteralPath $UProject | ConvertFrom-Json
@@ -313,6 +200,9 @@ if ($CheckOnly) {
             throw "Plugin is not enabled in $UProject`: $plugin"
         }
     }
+    $route = Get-Content -Raw -LiteralPath $routePath | ConvertFrom-Json
+    if ($route.schema -ne 'ueagent-route-v1') { throw "Unsupported UEAgent route schema: $($route.schema)" }
+    if (-not $PSBoundParameters.ContainsKey('Endpoint')) { $Endpoint = [string]$route.endpoint }
     $actualRef = (& git -C $vibePath rev-parse HEAD).Trim()
     Assert-LastExitCode 'Could not read VibeUE revision'
     if ($actualRef -ne $VibeUERef) { throw "VibeUE revision is $actualRef; expected $VibeUERef" }
@@ -322,8 +212,6 @@ if ($CheckOnly) {
     foreach ($expected in @("ServerUrlPath=$(([Uri]$Endpoint).AbsolutePath)", "ServerPortNumber=$(([Uri]$Endpoint).Port)", 'bAutoStartServer=True', 'bEnableToolSearch=True')) {
         if ($settings -notmatch "(?m)^$([regex]::Escape($expected))`r?$") { throw "MCP project setting missing: $expected" }
     }
-    $route = Get-Content -Raw -LiteralPath $routePath | ConvertFrom-Json
-    if ($route.schema -ne 'ueagent-route-v1') { throw "Unsupported UEAgent route schema: $($route.schema)" }
     $routeVibeProfile = if ($route.PSObject.Properties.Name -contains 'vibeUEProfile') {
         [string]$route.vibeUEProfile
     } else {
@@ -341,53 +229,76 @@ if ($CheckOnly) {
         $coreVibePatchPath
     }
     $expectedVibePatchSha256 = if ($routeVibeProfile -eq 'niagara-authoring') {
-        Get-NormalizedFileSha256 $authoringVibePatchPath
-    } else {
-        Get-NormalizedFileSha256 $coreVibePatchPath
-    }
+        [string]$stackManifest.patches.'patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch'
+    } else { [string]$stackManifest.patches.'patches/vibeue-ueagent.patch' }
     foreach ($pair in @(
         @('ueAgentRoot', $ueAgentRoot),
         @('uProject', $UProject),
         @('engineRoot', $EngineRoot),
         @('endpoint', $Endpoint),
+        @('transport', 'native-http'),
+        @('access', 'task-gated-write'),
+        @('reliableProtocol', $reliableProtocolVersion),
+        @('mutationTransport', $mutationTransport),
         @('vibeUEPatchSha256', $expectedVibePatchSha256),
-        @('vibeUEMcpShutdownGuardPatchSha256', $vibeShutdownGuardPatchSha256)
+        @('vibeUEPerformancePatchSha256', $vibePerformancePatchSha256),
+        @('vibeUEMcpShutdownGuardPatchSha256', $vibeShutdownGuardPatchSha256),
+        @('vibeUEReliablePatchSha256', $vibeReliablePatchSha256),
+        @('engineMcpAuthorizationPatchSha256', $engineMcpAuthorizationPatchSha256)
     )) {
         if ([string]$route.($pair[0]) -ne [string]$pair[1]) {
             throw "UEAgent route mismatch for $($pair[0]): $($route.($pair[0]))"
         }
     }
     $agents = Get-Content -Raw -LiteralPath $agentsPath
-    if ($agents -notmatch '(?m)^<!-- UEAGENT_GATE_START -->$') {
+    if ($agents -notmatch '(?m)^<!-- UEAGENT_GATE_START -->\r?$') {
         throw "UEAgent gate is missing from $agentsPath"
     }
-    if (-not (Test-GitPatchApplied $vibePath $expectedVibePatchPath)) {
+    $vibeRuntimeBatchApplied = Test-GitPatchesApplied $vibePath @(
+        $vibePerformancePatchPath, $vibeShutdownGuardPatchPath, $vibeReliablePatchPath
+    )
+    $engineBatchPatches = @($engineMcpAuthorizationPatchPath)
+    if ($route.engineNiagaraPatchSha256) { $engineBatchPatches += $engineNiagaraPatchPath }
+    if ($routeVibeProfile -eq 'niagara-authoring') { $engineBatchPatches += $engineNiagaraAuthoringPatchPath }
+    if ($route.mcpToolSearchPatchSha256) { $engineBatchPatches += $mcpToolSearchPatchPath }
+    $engineBatchApplied = Test-GitPatchesApplied $EngineRoot $engineBatchPatches
+    if (-not (Test-VibeUEProfileApplied $vibePath $expectedVibePatchPath $routeVibeProfile)) {
         throw "The routed UEAgent VibeUE profile is not applied: $routeVibeProfile"
     }
-    if (-not (Test-GitPatchApplied $vibePath $vibeShutdownGuardPatchPath)) {
+    if (-not $vibeRuntimeBatchApplied -and -not (Test-GitPatchApplied $vibePath $vibePerformancePatchPath)) {
+        throw 'The routed VibeUE performance monitor patch is not applied.'
+    }
+    if (-not $vibeRuntimeBatchApplied -and -not (Test-GitPatchApplied $vibePath $vibeShutdownGuardPatchPath)) {
         throw 'The routed VibeUE MCP shutdown guard patch is not applied.'
     }
+    if (-not $vibeRuntimeBatchApplied -and -not (Test-GitPatchApplied $vibePath $vibeReliablePatchPath)) {
+        throw 'The routed VibeUE reliable execution kernel patch is not applied.'
+    }
+    if (-not (Test-Path -LiteralPath (Join-Path $EngineRoot '.git')) -or
+        (-not $engineBatchApplied -and -not (Test-GitPatchApplied $EngineRoot $engineMcpAuthorizationPatchPath))) {
+        throw 'The routed UE 5.8 MCP authorization gate patch is not applied.'
+    }
+    Assert-UeAgentReliableConfig $projectRoot
     if ($routeVibeProfile -eq 'niagara-authoring') {
         if (-not $route.engineNiagaraAuthoringPatchSha256 -or
             [string]$route.engineNiagaraAuthoringPatchSha256 -ne $engineNiagaraAuthoringPatchSha256 -or
-            -not (Test-GitPatchApplied $EngineRoot $engineNiagaraAuthoringPatchPath)) {
+            (-not $engineBatchApplied -and -not (Test-GitPatchApplied $EngineRoot $engineNiagaraAuthoringPatchPath))) {
             throw 'The routed UE 5.8 Niagara authoring profile does not match the installed engine.'
         }
     }
     if ($route.engineNiagaraPatchSha256) {
         if ([string]$route.engineNiagaraPatchSha256 -ne $engineNiagaraPatchSha256 -or
-            -not (Test-GitPatchApplied $EngineRoot $engineNiagaraPatchPath)) {
+            (-not $engineBatchApplied -and -not (Test-GitPatchApplied $EngineRoot $engineNiagaraPatchPath))) {
             throw 'The routed UE 5.8 Niagara Toolsets patch does not match the installed engine.'
         }
     }
-    if ($ApplyMcpToolSearchPatches -and (-not $route.mcpToolSearchV2PatchSha256 -or -not $route.mcpToolSearchV3PatchSha256)) {
-        throw 'The compact MCP tool-search profile is requested but the route has no patch fingerprints.'
+    if ($ApplyMcpToolSearchPatch -and -not $route.mcpToolSearchPatchSha256) {
+        throw 'The compact MCP tool-search profile is requested but the route has no patch fingerprint.'
     }
-    if ($route.mcpToolSearchV2PatchSha256 -or $route.mcpToolSearchV3PatchSha256) {
-        if ([string]$route.mcpToolSearchV2PatchSha256 -ne $mcpToolSearchV2PatchSha256 -or
-            [string]$route.mcpToolSearchV3PatchSha256 -ne $mcpToolSearchV3PatchSha256 -or
-            -not (Test-GitPatchApplied $EngineRoot $mcpToolSearchV3PatchPath)) {
-            throw 'The routed UE 5.8 MCP tool-search patches do not match the installed engine.'
+    if ($route.mcpToolSearchPatchSha256) {
+        if ([string]$route.mcpToolSearchPatchSha256 -ne $mcpToolSearchPatchSha256 -or
+            (-not $engineBatchApplied -and -not (Test-GitPatchApplied $EngineRoot $mcpToolSearchPatchPath))) {
+            throw 'The routed UE 5.8 MCP tool-search patch does not match the installed engine.'
         }
     }
     Write-Host "UEAgent static check passed for $projectName." -ForegroundColor Green
@@ -417,7 +328,7 @@ if ($dirty) {
     if ($actualRef -ne $VibeUERef) {
         throw "Dirty VibeUE revision is $actualRef; expected $VibeUERef. Refusing an ambiguous baseline."
     }
-    if (-not (Test-GitPatchApplied $vibePath $vibePatchPath)) {
+    if (-not (Test-VibeUEProfileApplied $vibePath $vibePatchPath $vibeProfile)) {
         throw 'Dirty VibeUE checkout does not contain the packaged UEAgent patch.'
     }
     Write-Warning "Preserving local VibeUE changes on baseline $VibeUERef."
@@ -428,7 +339,17 @@ if ($dirty) {
     Assert-LastExitCode "Could not checkout VibeUE $VibeUERef"
     Ensure-GitPatchApplied $vibePath $vibePatchPath 'UEAgent VibeUE patch'
 }
-Ensure-GitPatchApplied $vibePath $vibeShutdownGuardPatchPath 'VibeUE MCP shutdown guard patch'
+$vibeRuntimePatches = @($vibePerformancePatchPath, $vibeShutdownGuardPatchPath, $vibeReliablePatchPath)
+if (-not (Test-GitPatchesApplied $vibePath $vibeRuntimePatches)) {
+    Ensure-GitPatchApplied $vibePath $vibePerformancePatchPath 'VibeUE performance monitor patch'
+    Ensure-GitPatchApplied $vibePath $vibeShutdownGuardPatchPath 'VibeUE MCP shutdown guard patch'
+    Ensure-GitPatchApplied $vibePath $vibeReliablePatchPath 'VibeUE reliable execution kernel patch'
+}
+
+if (-not (Test-Path -LiteralPath (Join-Path $EngineRoot '.git'))) {
+    throw 'The reliable VibeUE profile requires a source-engine Git checkout for the MCP authorization gate.'
+}
+Ensure-GitPatchApplied $EngineRoot $engineMcpAuthorizationPatchPath 'UE 5.8 MCP authorization gate patch'
 
 $engineNiagaraPatchApplied = Test-GitPatchApplied $EngineRoot $engineNiagaraPatchPath
 if ($ApplyEngineNiagaraPatch -and -not $engineNiagaraPatchApplied) {
@@ -447,18 +368,13 @@ if ($ApplyNiagaraAuthoringProfile -and -not $engineNiagaraAuthoringPatchApplied)
     $engineNiagaraAuthoringPatchApplied = $true
 }
 
-$mcpToolSearchV3Applied = Test-GitPatchApplied $EngineRoot $mcpToolSearchV3PatchPath
-$mcpToolSearchV2Applied = Test-GitPatchApplied $EngineRoot $mcpToolSearchV2PatchPath
-$mcpToolSearchPatchesApplied = $mcpToolSearchV3Applied
-if ($ApplyMcpToolSearchPatches -and -not $mcpToolSearchPatchesApplied) {
+$mcpToolSearchPatchApplied = Test-GitPatchApplied $EngineRoot $mcpToolSearchPatchPath
+if ($ApplyMcpToolSearchPatch -and -not $mcpToolSearchPatchApplied) {
     if (-not (Test-Path -LiteralPath (Join-Path $EngineRoot '.git'))) {
         throw 'Applying the MCP tool-search profile requires a source-engine Git checkout.'
     }
-    if (-not $mcpToolSearchV2Applied) {
-        Ensure-GitPatchApplied $EngineRoot $mcpToolSearchV2PatchPath 'UE 5.8 MCP tool-search v2 patch'
-    }
-    Ensure-GitPatchApplied $EngineRoot $mcpToolSearchV3PatchPath 'UE 5.8 MCP tool-search v3 patch'
-    $mcpToolSearchPatchesApplied = $true
+    Ensure-GitPatchApplied $EngineRoot $mcpToolSearchPatchPath 'UE 5.8 MCP tool-search patch'
+    $mcpToolSearchPatchApplied = $true
 }
 
 $project = Get-Content -Raw -LiteralPath $UProject | ConvertFrom-Json
@@ -479,6 +395,7 @@ if ($uri.Scheme -ne 'http' -or $uri.Host -notin @('127.0.0.1', 'localhost', '::1
 }
 $configDir = Join-Path $projectRoot 'Config'
 New-Item -ItemType Directory -Path $configDir -Force | Out-Null
+Set-UeAgentReliableConfig $projectRoot
 $settingsPath = Join-Path $configDir 'DefaultEditorPerProjectUserSettings.ini'
 $settings = @"
 [/Script/ModelContextProtocolEngine.ModelContextProtocolSettings]
@@ -509,14 +426,21 @@ New-Item -ItemType Directory -Path $routeDir -Force | Out-Null
 $routePath = Join-Path $routeDir 'route.json'
 $route = [ordered]@{
     schema = 'ueagent-route-v1'
+    transport = 'native-http'
+    access = 'task-gated-write'
     ueAgentRoot = $ueAgentRoot
     uProject = $UProject
     engineRoot = $EngineRoot
     endpoint = $Endpoint
+    reliableProtocol = $reliableProtocolVersion
+    mutationTransport = $mutationTransport
     vibeUERef = $VibeUERef
     vibeUEProfile = $vibeProfile
     vibeUEPatchSha256 = $vibePatchSha256
+    vibeUEPerformancePatchSha256 = $vibePerformancePatchSha256
     vibeUEMcpShutdownGuardPatchSha256 = $vibeShutdownGuardPatchSha256
+    vibeUEReliablePatchSha256 = $vibeReliablePatchSha256
+    engineMcpAuthorizationPatchSha256 = $engineMcpAuthorizationPatchSha256
 }
 if ($engineNiagaraPatchApplied) {
     $route['engineNiagaraPatchSha256'] = $engineNiagaraPatchSha256
@@ -524,9 +448,8 @@ if ($engineNiagaraPatchApplied) {
 if ($engineNiagaraAuthoringPatchApplied) {
     $route['engineNiagaraAuthoringPatchSha256'] = $engineNiagaraAuthoringPatchSha256
 }
-if ($mcpToolSearchPatchesApplied) {
-    $route['mcpToolSearchV2PatchSha256'] = $mcpToolSearchV2PatchSha256
-    $route['mcpToolSearchV3PatchSha256'] = $mcpToolSearchV3PatchSha256
+if ($mcpToolSearchPatchApplied) {
+    $route['mcpToolSearchPatchSha256'] = $mcpToolSearchPatchSha256
 }
 Write-Utf8NoBom $routePath (($route | ConvertTo-Json -Depth 10) + [Environment]::NewLine)
 Set-UeAgentGate $projectRoot
@@ -536,7 +459,8 @@ if (-not $SkipBuild) {
     Assert-LastExitCode "$projectName editor build failed"
 }
 if ($Launch) {
-    Start-Process -FilePath $editor -ArgumentList "`"$UProject`""
+    $launchEditor = if (Test-Path -LiteralPath $projectEditor) { $projectEditor } else { $editor }
+    Start-Process -FilePath $launchEditor -ArgumentList "`"$UProject`""
 }
 
 Write-Host "UEAgent configured $projectName. Run doctor.ps1 with $routePath before live work." -ForegroundColor Green
