@@ -4,6 +4,8 @@
     "family": "UnrealEngine",
     "major": 5,
     "minor": 8,
+    "patch": 1,
+    "compatible_changelist": 55116800,
     "source_required_for_engine_patches": true
   },
   "profiles": {
@@ -20,9 +22,11 @@
         "patches/vibeue-ueagent.patch",
         "patches/vibeue-performance-monitor.patch",
         "patches/vibeue-mcp-shutdown-guard.patch",
-        "patches/vibeue-reliable-kernel.patch"
+        "patches/vibeue-reliable-kernel.patch",
+        "patches/vibeue-material-diagnostic-doc.patch"
       ],
-      "vibeue_ref": "bf96d6b141bb3ddd6ec531159ff987dcccf1d51c",
+      "vibeue_ref": "6a0617cfb05aaced82d6613e88b1572fe7452eaa",
+      "vibeue_fetch_ref": "refs/heads/5-8",
       "source_engine_required": true
     },
     "niagara-toolsets": {
@@ -32,16 +36,90 @@
     "niagara-authoring": {
       "apply": [
         "patches/ue58-mcp-authorization-gate.patch",
+        "patches/ue58-niagara-toolsets.patch",
         "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch",
         "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch",
         "patches/vibeue-performance-monitor.patch",
         "patches/vibeue-mcp-shutdown-guard.patch",
-        "patches/vibeue-reliable-kernel.patch"
+        "patches/vibeue-reliable-kernel.patch",
+        "patches/vibeue-material-diagnostic-doc.patch"
       ],
       "bootstrap_switch": "-ApplyNiagaraAuthoringProfile",
       "status": "package_verified",
       "target_activation": "smoke_required",
       "warning": "This replaces the core VibeUE patch; never apply both profiles together."
+    },
+    "abyss": {
+      "name": "abyss-full",
+      "project_name": "Abyss",
+      "apply": [
+        "patches/ue58-mcp-authorization-gate.patch",
+        "patches/ue58-mcp-tool-search.patch",
+        "patches/ue58-niagara-toolsets.patch",
+        "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch",
+        "patches/ue58-abyss-engine-extensions.patch",
+        "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch",
+        "patches/vibeue-performance-monitor.patch",
+        "patches/vibeue-mcp-shutdown-guard.patch",
+        "patches/vibeue-reliable-kernel.patch",
+        "patches/vibeue-material-diagnostic-doc.patch",
+        "patches/vibeue-abyss-compatibility.patch"
+      ],
+      "bootstrap_switch": "-ApplyAbyssProfile",
+      "external_plugins": [
+        {
+          "name": "GaussianSplattingForUnrealEngine",
+          "descriptor": "Plugins/GaussianSplattingForUnrealEngine/GaussianSplattingForUnrealEngine.uplugin",
+          "version": 1,
+          "versionName": "0.1-reconstruction",
+          "descriptorSha256": "FF31F626FEE24490B90A56EB778BEDEE8C94E442AE9849177649E15AF5C30149"
+        },
+        {
+          "name": "GaussianVolume",
+          "descriptor": "Plugins/GaussianVolume/GaussianVolume.uplugin",
+          "version": 1,
+          "versionName": "0.1",
+          "descriptorSha256": "061A6C294B0D97F7ED9DC67E68CD22EE9418D62F53E9D597DD2029EAB51ECFD8"
+        },
+        {
+          "name": "KawaiiPhysics",
+          "descriptor": "Plugins/KawaiiPhysics/KawaiiPhysics.uplugin",
+          "version": 1,
+          "versionName": "1.21.0",
+          "descriptorSha256": "F2BFC1982A4044DE1552AA1517085EA1FE5B5EFD638D488D4178262B2724ADC7"
+        },
+        {
+          "name": "NeuralVolumeProxy",
+          "descriptor": "Plugins/NeuralVolumeProxy/NeuralVolumeProxy.uplugin",
+          "version": 2,
+          "versionName": "0.2.0",
+          "descriptorSha256": "6A97F53AC5213102BBD51AA5783A3EF2AC92A61C695681EEEE608DE6F13B8551"
+        },
+        {
+          "name": "SideFX_Labs",
+          "descriptor": "Plugins/SideFX_Labs/SideFX_Labs.uplugin",
+          "version": 21,
+          "versionName": "21.0",
+          "descriptorSha256": "702437A0EFC6D02792FC0B1C50DE92CAA62689C81AE916099303A5554F42BADE"
+        },
+        {
+          "name": "UsfLoader",
+          "descriptor": "Plugins/UsfLoader/UsfLoader.uplugin",
+          "version": 1,
+          "versionName": "1.0",
+          "descriptorSha256": "5DB15A17E1EBEEF626385675FA3B45896FABF7A39F854A388664D6DFC4D880CF"
+        },
+        {
+          "name": "VRM4U",
+          "descriptor": "Plugins/VRM4U/VRM4U.uplugin",
+          "version": 1,
+          "versionName": "1.0",
+          "descriptorSha256": "E31A0BC1FDAFA959C26453A84E3ED23DFCA221F1E20F16614AEC7594169857A4"
+        }
+      ],
+      "project_settings": {
+        "r.VolumetricCloud.ConservativeDensity.SDFMaxStep": 32
+      }
     }
   },
   "patches": {
@@ -53,7 +131,10 @@
     "patches/ue58-niagara-toolsets.patch": "C3EB3E4FC8205EDCF472EF4EE41DB6946D43DFE50E84A9AE548366E01E21D4EA",
     "patches/ue58-mcp-tool-search.patch": "65D942A5165C68B9BC1C057EFAB86FD84D71C79F140A6F294B3983AA630CE4AE",
     "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch": "E568B91D3F612BA28E215191A41B4984923C2413C3C2646AB146536C18290E07",
-    "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch": "5CC5B835F048DAD4F8D7F2B2E6E6FF6EBBD288677CC1D0370CC08D24DB87AE2C"
+    "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch": "5CC5B835F048DAD4F8D7F2B2E6E6FF6EBBD288677CC1D0370CC08D24DB87AE2C",
+    "patches/ue58-abyss-engine-extensions.patch": "A1888676F0E95F9D18FE2EEF41C3324200EA1969FC2CCD838AFCF6EC11C2B11A",
+    "patches/vibeue-material-diagnostic-doc.patch": "F8BE250F84EFECFF2CC9CCA581D8FEF02E51D6FE12354CAA46937F9FB7A077A7",
+    "patches/vibeue-abyss-compatibility.patch": "DDA51112985B67BD0A4AFC4FDF20A223D6DF7987E93050F387C0BEFBEEF70EC6"
   },
   "runtime": {
     "endpoint": "http://127.0.0.1:8000/mcp",
@@ -102,8 +183,10 @@
   "verification": {
     "bootstrap": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatch",
     "bootstrap_niagara_authoring": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyNiagaraAuthoringProfile -ApplyMcpToolSearchPatch",
+    "bootstrap_abyss": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyAbyssProfile -ExternalPluginSourceRoot <ABYSS_PLUGIN_BUNDLE>",
     "reliable_profile": "tests/test_reliable_profile.ps1 -VibeUEPath <PROJECT>/Plugins/VibeUE -EngineRoot <UE_ROOT>",
     "static": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatch -CheckOnly",
+    "static_abyss": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyAbyssProfile -CheckOnly",
     "doctor": "scripts/doctor.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json",
     "route": "scripts/compact_context.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json"
   }

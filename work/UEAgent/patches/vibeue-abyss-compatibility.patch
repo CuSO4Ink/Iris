@@ -1,0 +1,39 @@
+diff --git a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp b/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
+index 892466c..e6c5a64 100644
+--- a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
+@@ -64,8 +64,9 @@ FMaterialDiagnostics UMaterialNodeService::GetMaterialDiagnostics(const FString&
+ 	}
+ 	Result.bSuccess = true;
+ 
+-	// Force the latest compile state.
+-	Material->ForceRecompileForRendering();
++	// Read-only by contract. MaterialTools.recompile is the explicit compile
++	// boundary; diagnostics must not replace render resources while the renderer
++	// may still be using them.
+ 
+ 	// Compile status / errors via the active material resource.
+ 	const EShaderPlatform ShaderPlatform = GMaxRHIShaderPlatform;
+diff --git a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
+index 924871e..48ffa31 100644
+--- a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
+@@ -25,8 +25,6 @@
+ #include "NiagaraDataInterfaceArrayFloat.h"
+ #include "NiagaraDataInterfaceArrayInt.h"
+ #include "NiagaraDataInterfaceGrid2DCollection.h"
+-#include "NiagaraDataInterfaceNeighborQuery.h"
+-#include "NiagaraDataInterfaceParticleRead.h"
+ #include "NiagaraDataInterfaceRasterizationGrid3D.h"
+ #include "NiagaraDataInterfaceRenderTarget2D.h"
+ 
+@@ -196,9 +194,6 @@ namespace
+ 		    N.Equals(TEXT("ArrayInt32"),    ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceArrayInt32::StaticClass());    return true; }
+ 		if (N.Equals(TEXT("Grid2D"),        ESearchCase::IgnoreCase) ||
+ 		    N.Equals(TEXT("Grid2DCollection"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceGrid2DCollection::StaticClass()); return true; }
+-		if (N.Equals(TEXT("NeighborQuery"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceNeighborQuery::StaticClass()); return true; }
+-		if (N.Equals(TEXT("ParticleRead"), ESearchCase::IgnoreCase) ||
+-		    N.Equals(TEXT("ParticleReader"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceParticleRead::StaticClass()); return true; }
+ 		if (N.Equals(TEXT("RasterizationGrid3D"), ESearchCase::IgnoreCase) ||
+ 		    N.Equals(TEXT("RasterGrid3D"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceRasterizationGrid3D::StaticClass()); return true; }
+ 		if (N.Equals(TEXT("RenderTarget2D"), ESearchCase::IgnoreCase) ||

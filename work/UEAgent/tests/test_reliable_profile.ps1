@@ -35,10 +35,17 @@ $manifest = Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json
 Assert-True ($manifest.runtime.reliable_protocol -eq '2.0.0') 'Manifest reliable protocol is not 2.0.0.'
 Assert-True ($manifest.runtime.mutation_transport -eq 'ueagent-command-queue') 'Manifest mutation transport is not the command queue.'
 Assert-True (@($manifest.runtime.control_tools).Count -eq 9) 'Manifest must expose exactly nine reliable control tools.'
+Assert-True ($manifest.engine.patch -eq 1 -and $manifest.engine.compatible_changelist -eq 55116800) 'Manifest does not pin the verified UE 5.8.1 baseline.'
+Assert-True ($manifest.profiles.base.vibeue_fetch_ref -eq 'refs/heads/5-8') 'Manifest does not fetch VibeUE from the public 5-8 branch.'
 Assert-True (-not ($manifest.profiles.PSObject.Properties.Name -contains 'project-unrealmcp-readonly')) 'Manifest still exposes the retired UnrealMCP compatibility profile.'
 Assert-True ('patches/ue58-mcp-authorization-gate.patch' -in @($manifest.profiles.base.apply)) 'Base profile misses the MCP authorization gate.'
 Assert-True ('patches/vibeue-reliable-kernel.patch' -in @($manifest.profiles.base.apply)) 'Base profile misses the reliable kernel.'
 Assert-True ('patches/vibeue-reliable-kernel.patch' -in @($manifest.profiles.'niagara-authoring'.apply)) 'Niagara authoring profile misses the reliable kernel.'
+Assert-True ('patches/ue58-niagara-toolsets.patch' -in @($manifest.profiles.'niagara-authoring'.apply)) 'Niagara authoring profile misses the Niagara Toolsets extension.'
+Assert-True ('patches/ue58-abyss-engine-extensions.patch' -in @($manifest.profiles.abyss.apply)) 'Abyss profile misses the engine extensions.'
+Assert-True ('patches/vibeue-abyss-compatibility.patch' -in @($manifest.profiles.abyss.apply)) 'Abyss profile misses the VibeUE compatibility patch.'
+Assert-True ($manifest.profiles.abyss.bootstrap_switch -eq '-ApplyAbyssProfile') 'Abyss profile has no canonical bootstrap switch.'
+Assert-True (@($manifest.profiles.abyss.external_plugins).Count -eq 7) 'Abyss profile does not pin all enabled external plugins.'
 Assert-True (@($manifest.profiles.default.apply).Count -eq 1 -and $manifest.profiles.default.apply[0] -eq 'patches/ue58-mcp-tool-search.patch') 'Default MCP tool-search profile is not one current patch.'
 $reliablePatchText = Get-Content -Raw -LiteralPath (Join-Path $root 'patches\vibeue-reliable-kernel.patch')
 Assert-True (-not $reliablePatchText.Contains('TEXT("ueagent_get_receipt")')) 'Reliable patch still publishes the redundant receipt tool.'
@@ -160,7 +167,7 @@ Assert-True ($bootstrap -match 'Test-Path -LiteralPath \$projectEditor') 'Bootst
 Assert-True (-not $bootstrap.Contains('UseProjectUnrealMcp')) 'Bootstrap still exposes the retired UnrealMCP compatibility route.'
 Assert-True ($bootstrap -match "PSBoundParameters\.ContainsKey\('Endpoint'\).+route\.endpoint") 'Bootstrap CheckOnly does not inherit the routed endpoint.'
 Assert-True ($bootstrap -match 'Read-UeAgentStackManifest') 'Bootstrap does not use STACK-MANIFEST.json as its protocol source.'
-foreach ($staticAuditMarker in @('Get-UeAgentManifestPatchErrors', 'Assert-UeAgentReliableConfig', 'Test-GitPatchesApplied', 'Build.version', '.mcp.json')) {
+foreach ($staticAuditMarker in @('Get-UeAgentManifestPatchErrors', 'Assert-UeAgentReliableConfig', 'Test-GitPatchesApplied', 'Build.version', '.mcp.json', 'ApplyAbyssProfile', 'ExternalPluginSourceRoot', 'engineAbyssExtensionsPatchSha256')) {
     Assert-True ($bootstrap.Contains($staticAuditMarker)) "Bootstrap lost static audit coverage: $staticAuditMarker"
 }
 $doctor = Get-Content -Raw -LiteralPath (Join-Path $root 'scripts\doctor.ps1')
@@ -247,7 +254,9 @@ if ($VibeUEPath) {
     $runtimePatches = @(
         (Join-Path $root 'patches\vibeue-performance-monitor.patch'),
         (Join-Path $root 'patches\vibeue-mcp-shutdown-guard.patch'),
-        $patch
+        $patch,
+        (Join-Path $root 'patches\vibeue-material-diagnostic-doc.patch'),
+        (Join-Path $root 'patches\vibeue-abyss-compatibility.patch')
     )
     Assert-True (Test-GitPatchesApplied $VibeUEPath $runtimePatches) 'VibeUE runtime patch batch does not match the supplied checkout.'
 }
@@ -255,6 +264,9 @@ if ($EngineRoot) {
     $patch = Join-Path $root 'patches\ue58-mcp-authorization-gate.patch'
     & git -C $EngineRoot apply --reverse --check $patch
     Assert-True ($LASTEXITCODE -eq 0) 'MCP authorization patch does not match the supplied engine.'
+    $abyssPatch = Join-Path $root 'patches\ue58-abyss-engine-extensions.patch'
+    & git -C $EngineRoot apply --reverse --check --ignore-space-change --ignore-whitespace $abyssPatch
+    Assert-True ($LASTEXITCODE -eq 0) 'Abyss engine extensions patch does not match the supplied engine.'
 }
 
 [ordered]@{
