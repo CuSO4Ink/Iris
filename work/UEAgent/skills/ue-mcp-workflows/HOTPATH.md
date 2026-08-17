@@ -9,6 +9,21 @@ domain card. Full measurements and rollback are in
 Budget before the MCP result: navigation <=1.5k estimated tokens, live read rules <=4k, mutation
 rules <=8k. If a task exceeds the budget, unload on-demand prose before weakening a safety gate.
 
+## Non-negotiable pre-dispatch rules
+
+- Do not send raw JSON through a child `powershell.exe`. Build the complete request as a PowerShell
+  object, serialize it with `ConvertTo-Json`, UTF-8/Base64 encode it, and call Gateway with
+  `-RequestBase64`. Use `-RequestFile` for large/multiline requests and `-ScriptFile` only for
+  Gateway actions that support it; otherwise keep Custom HLSL/code inside the encoded request.
+  Never hand-escape `-RequestJson`, `-ArgumentsJson`, or `-ProjectionJson` across a process
+  boundary, even for read-only calls.
+- A parameter or `ConvertFrom-Json` failure before MCP dispatch is a known pre-dispatch failure.
+  UE was not contacted: do not label it `RESULT_UNKNOWN`, claim asset access, or retry a mutation.
+- A hash-guarded mutation must derive every expected HLSL/pass hash from one named asset version's
+  complete manifest. Never mix historical baselines. On mismatch, stop before the first setter and
+  confirm the expected version from recorded source/history; the current live hash alone is not
+  authority to update the lock.
+
 ## Gate
 
 ```powershell

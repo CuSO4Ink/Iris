@@ -49,6 +49,23 @@ Do not create a second project-specific MCP gate or claim a route for a target t
 bootstrapped. If a UE-related project is offline-only or uses a different MCP (for example
 RenderDoc), the block may be conditional, but any live Unreal work still enters through UEAgent.
 
+## UE pre-dispatch invariants
+
+These rules apply before any UEAgent Gateway request, including read-only calls:
+
+- AI-generated Gateway requests that cross a `powershell.exe` process boundary must encode the
+  complete UTF-8 JSON request with `-RequestBase64`, or use `-RequestFile` for large/multiline
+  payloads. Never pass raw JSON through `-RequestJson`, `-ArgumentsJson`, or `-ProjectionJson` to a
+  child PowerShell process. Use `-ScriptFile` only for Gateway actions that support script files;
+  otherwise keep code such as Custom HLSL inside the encoded request. Build JSON from objects with
+  `ConvertTo-Json`; do not hand-escape it.
+- A local parameter/JSON parse failure before MCP dispatch is a known pre-dispatch failure: do not
+  describe it as `RESULT_UNKNOWN`, do not claim UE was contacted, and do not retry a mutation.
+- Any mutation preflight that locks HLSL/pass hashes must use one named asset version and one
+  complete manifest generated from that version. Never mix hashes from historical baselines. On a
+  mismatch, stop before the first mutation and verify against versioned source/history; do not
+  accept the live hash merely because it is current.
+
 For any task that reads live Unreal state or mutates a UE project:
 
 1. Read `work/UEAgent/skills/ue-mcp-workflows/HOTPATH.md`.

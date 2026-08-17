@@ -1,0 +1,4 @@
+interface:
+  display_name: "RenderDoc 特效拆解"
+  short_description: "从 RenderDoc 截帧生成可验证的特效技术拆解与完整交付规范"
+  default_prompt: "Use $renderdoc-vfx-breakdown to analyze the loaded RenderDoc capture and produce an evidence-backed VFX breakdown delivery."

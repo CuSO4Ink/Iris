@@ -1,0 +1,86 @@
+diff --git a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp b/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
+index 85a40a7..841cb56 100644
+--- a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
+@@ -1936,9 +1936,12 @@ FString UMaterialNodeService::ExportMaterialGraph(const FString& MaterialPath)
+ 
+ 	// Material settings
+ 	TSharedRef<FJsonObject> MatSettings = MakeShared<FJsonObject>();
++	MatSettings->SetStringField(TEXT("domain"), *UEnum::GetValueAsString(Material->MaterialDomain));
+ 	MatSettings->SetStringField(TEXT("blend_mode"), *UEnum::GetValueAsString(Material->BlendMode));
+ 	MatSettings->SetStringField(TEXT("shading_model"), *UEnum::GetValueAsString(Material->GetShadingModels().GetFirstShadingModel()));
+ 	MatSettings->SetBoolField(TEXT("two_sided"), Material->IsTwoSided());
++	MatSettings->SetBoolField(TEXT("use_material_attributes"), Material->bUseMaterialAttributes);
++	MatSettings->SetBoolField(TEXT("used_with_volumetric_cloud"), Material->GetUsageByFlag(MATUSAGE_VolumetricCloud));
+ 	Root->SetObjectField(TEXT("material"), MatSettings);
+ 
+ 	// All expressions
+@@ -2017,6 +2020,19 @@ FString UMaterialNodeService::ExportMaterialGraph(const FString& MaterialPath)
+ 			}
+ 		}
+ 
++		if (UMaterialExpressionNamedRerouteDeclaration* Declaration = Cast<UMaterialExpressionNamedRerouteDeclaration>(Expr))
++		{
++			ExprObj->SetStringField(TEXT("named_reroute_name"), Declaration->Name.ToString());
++		}
++		else if (UMaterialExpressionNamedRerouteUsage* Usage = Cast<UMaterialExpressionNamedRerouteUsage>(Expr))
++		{
++			if (Usage->Declaration)
++			{
++				ExprObj->SetStringField(TEXT("named_reroute_name"), Usage->Declaration->Name.ToString());
++				ExprObj->SetStringField(TEXT("named_reroute_declaration_id"), GetExpressionId(Usage->Declaration));
++			}
++		}
++
+ 		// Custom expression info (ISSUE-4: include custom_input_names)
+ 		if (UMaterialExpressionCustom* CustomExpr = Cast<UMaterialExpressionCustom>(Expr))
+ 		{
+@@ -2220,6 +2236,7 @@ FString UMaterialNodeService::ExportMaterialGraph(const FString& MaterialPath)
+ 	ExportOutput(MP_Refraction, TEXT("Refraction"));
+ 	ExportOutput(MP_PixelDepthOffset, TEXT("PixelDepthOffset"));
+ 	ExportOutput(MP_ShadingModel, TEXT("ShadingModel"));
++	ExportOutput(MP_MaterialAttributes, TEXT("MaterialAttributes"));
+ 	Root->SetArrayField(TEXT("output_connections"), OutputConnsArray);
+ 
+ 	// Serialize to string
+@@ -2891,6 +2908,40 @@ FString UMaterialNodeService::ExportFunctionGraph(const FString& FunctionPath)
+ 			}
+ 		}
+ 
++		if (UMaterialExpressionNamedRerouteDeclaration* Declaration = Cast<UMaterialExpressionNamedRerouteDeclaration>(Expr))
++		{
++			ExprObj->SetStringField(TEXT("named_reroute_name"), Declaration->Name.ToString());
++		}
++		else if (UMaterialExpressionNamedRerouteUsage* Usage = Cast<UMaterialExpressionNamedRerouteUsage>(Expr))
++		{
++			if (Usage->Declaration)
++			{
++				ExprObj->SetStringField(TEXT("named_reroute_name"), Usage->Declaration->Name.ToString());
++				ExprObj->SetStringField(TEXT("named_reroute_declaration_id"), GetExpressionId(Usage->Declaration));
++			}
++		}
++
++		if (UMaterialExpressionCustom* CustomExpr = Cast<UMaterialExpressionCustom>(Expr))
++		{
++			ExprObj->SetStringField(TEXT("hlsl_code"), CustomExpr->Code);
++			ExprObj->SetStringField(TEXT("output_type"), *UEnum::GetValueAsString(CustomExpr->OutputType));
++			TArray<FString> CustomInputNames;
++			for (const FCustomInput& Input : CustomExpr->Inputs)
++			{
++				CustomInputNames.Add(Input.InputName.ToString());
++			}
++			ExprObj->SetStringField(TEXT("custom_input_names"), FString::Join(CustomInputNames, TEXT(",")));
++		}
++
++		if (UMaterialExpressionCollectionParameter* Collection = Cast<UMaterialExpressionCollectionParameter>(Expr))
++		{
++			if (Collection->Collection)
++			{
++				ExprObj->SetStringField(TEXT("collection_path"), Collection->Collection->GetPathName());
++				ExprObj->SetStringField(TEXT("collection_parameter_name"), Collection->ParameterName.ToString());
++			}
++		}
++
+ 		// Parameter info
+ 		if (UMaterialExpressionParameter* ParamExpr = Cast<UMaterialExpressionParameter>(Expr))
+ 		{

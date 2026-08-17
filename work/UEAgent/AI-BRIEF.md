@@ -52,10 +52,19 @@ never execute through a Python/CLI side-channel: `ueagent_submit` journals and q
 ToolsetRegistry or VibeUE call inside the Editor, while state, snapshots, jobs, and receipts provide
 bounded readback.
 
+AI-generated Gateway calls crossing a child `powershell.exe` boundary always pass the complete
+request through UTF-8 `-RequestBase64`, or `-RequestFile` for large/multiline input. Use
+`-ScriptFile` only for Gateway actions that support it; otherwise keep code such as Custom HLSL in
+the encoded request. Never hand-escape raw JSON into command-line `-RequestJson`, `-ArgumentsJson`,
+or `-ProjectionJson`. A local parse error before MCP dispatch is a known pre-dispatch failure, not
+`RESULT_UNKNOWN`, and must not be reported as UE or asset access.
+
 ## Safety and capability order
 
 - One global logical writer is the deliberate reliability ceiling; declared scopes and OCC hashes
   prevent stale or undeclared writes.
+- Hash-guarded mutations use one named asset version's complete expected-hash manifest. Never mix
+  historical baselines; resolve mismatches from recorded versioned source before the first setter.
 - Make one logical queued mutation, require a terminal receipt, verify independently, and use the
   receipt-issued one-use capability to save exactly its package set.
 - Stop at the first sufficient source: current sidecar -> `ueagent_snapshot`/bounded typed read ->

@@ -181,6 +181,10 @@ Before any work that reads live Unreal state or mutates UE:
    the relevant domain card; add the Skill and Core before mutation or save.
 4. Follow the receipt. Writable work must use `ueagent_snapshot` -> `ueagent_submit` -> terminal
    receipt -> independent snapshot; save only with the receipt-issued exact `ueagent_save` capability.
+5. For Gateway calls crossing child PowerShell, serialize the complete request and use UTF-8
+   `-RequestBase64` (or `-RequestFile`); never pass hand-escaped raw JSON command-line arguments.
+6. Hash-guarded mutations must use one complete manifest from one named asset version; never mix
+   historical baselines, and resolve a mismatch before the first mutation.
 
 Offline source/cache/config/log analysis may proceed, but must not claim live editor state.
 <!-- UEAGENT_GATE_END -->
@@ -357,6 +361,11 @@ if ($CheckOnly) {
     $agents = Get-Content -Raw -LiteralPath $agentsPath
     if ($agents -notmatch '(?m)^<!-- UEAGENT_GATE_START -->\r?$') {
         throw "UEAgent gate is missing from $agentsPath"
+    }
+    foreach ($requiredGateRule in @('`-RequestBase64`', 'Hash-guarded mutations')) {
+        if (-not $agents.Contains($requiredGateRule)) {
+            throw "UEAgent gate is stale or incomplete in $agentsPath`: missing $requiredGateRule"
+        }
     }
     $vibeRuntimeBatchApplied = Test-GitPatchesApplied $vibePath @(
         $vibePerformancePatchPath, $vibeShutdownGuardPatchPath, $vibeReliablePatchPath

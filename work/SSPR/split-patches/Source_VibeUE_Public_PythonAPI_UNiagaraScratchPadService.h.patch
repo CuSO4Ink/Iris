@@ -1,0 +1,98 @@
+diff --git a/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h b/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
+index 14c1f3c..6208f8e 100644
+--- a/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
++++ b/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
+@@ -158,6 +158,61 @@ public:
+ 	// Scratch module lifecycle
+ 	// =================================================================
+ 
++	/**
++	 * Create a particle-iteration simulation stage on an emitter.
++	 *
++	 * The returned stage can receive scratch modules by passing
++	 * "SimulationStage:<StageName>" to CreateScratchModule.
++	 *
++	 * @param SystemPath  Full path to the Niagara system
++	 * @param EmitterName Name of the GPU emitter
++	 * @param StageName   Display name for the new stage
++	 */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Create Simulation Stage"))
++	static FNiagaraScratchResult CreateSimulationStage(
++		const FString& SystemPath,
++		const FString& EmitterName,
++		const FString& StageName);
++
++	/**
++	 * Configure an existing simulation stage to iterate a Grid2DCollection.
++	 *
++	 * @param DataInterfaceVariable Fully qualified Niagara variable name, for
++	 *        example "User.MyGrid".
++	 */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Configure Grid2D Simulation Stage"))
++	static FNiagaraScratchResult ConfigureGrid2DSimulationStage(
++		const FString& SystemPath,
++		const FString& EmitterName,
++		const FString& StageName,
++		const FString& DataInterfaceVariable);
++
++	/** Create or replace a self-managed RenderTarget2D data-interface user parameter. */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Create Internal RenderTarget2D User Parameter"))
++	static FNiagaraScratchResult CreateInternalRenderTarget2DUserParameter(
++		const FString& SystemPath,
++		const FString& VariableName,
++		int32 SizeX = 1024,
++		int32 SizeY = 1024);
++
++	/**
++	 * Create or replace a RasterizationGrid3D data-interface user parameter.
++	 *
++	 * This explicitly authors the subclass-only fields which are not exposed by
++	 * Unreal Python when the MinimalAPI class is wrapped as NiagaraDataInterface.
++	 */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Create RasterizationGrid3D User Parameter"))
++	static FNiagaraScratchResult CreateRasterizationGrid3DUserParameter(
++		const FString& SystemPath,
++		const FString& VariableName,
++		int32 SizeX = 1024,
++		int32 SizeY = 1024,
++		int32 SizeZ = 1,
++		int32 NumAttributes = 1,
++		float Precision = 1.0f,
++		int32 ResetValue = 0,
++		bool bClearBeforeNonIterationStage = true);
++
+ 	/**
+ 	 * Create a new (empty) scratch-pad module and add it to an emitter's stack.
+ 	 *
+@@ -166,7 +221,8 @@ public:
+ 	 *
+ 	 * @param SystemPath  Full path to the Niagara system
+ 	 * @param EmitterName Name of the emitter
+-	 * @param Stage       "ParticleSpawn", "ParticleUpdate", "EmitterSpawn", or "EmitterUpdate"
++	 * @param Stage       "ParticleSpawn", "ParticleUpdate", "EmitterSpawn", "EmitterUpdate",
++	 *                    or "SimulationStage:<StageName>"
+ 	 * @param DesiredName Suggested module name (a unique name is generated if empty/taken)
+ 	 * @return Result with module_name and script_path on success
+ 	 *
+@@ -196,7 +252,10 @@ public:
+ 		const FString& ModuleName);
+ 
+ 	/**
+-	 * List the names of all scratch-pad modules present on an emitter's stacks.
++	 * List all editable embedded module calls present in an emitter graph.
++	 * Includes both current ScratchPads-container scripts and legacy system-embedded
++	 * module subobjects; excludes external packaged Niagara scripts. Use stack
++	 * topology separately when only currently effective modules are wanted.
+ 	 *
+ 	 * Example:
+ 	 *   mods = unreal.NiagaraScratchPadService.list_scratch_modules("/Game/VFX/NS_Fx", "Main")
+@@ -345,7 +404,8 @@ public:
+ 	 *
+ 	 * @param Direction "Input" or "Output"
+ 	 * @param TypeName  "float","int","bool","Vector"/"vec3","vec2","vec4","Position","Color","LinearColor",
+-	 *                  or a data-interface type: "ArrayFloat","ArrayVector","ArrayInt","Grid2D","RenderTarget2D"
++	 *                  or a data-interface type: "ArrayFloat","ArrayVector","ArrayInt","Grid2D",
++	 *                  "RasterizationGrid3D","RenderTarget2D"
+ 	 * @return Result with pin info in Message on success
+ 	 *
+ 	 * Example:

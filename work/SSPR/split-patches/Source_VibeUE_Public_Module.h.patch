@@ -1,0 +1,28 @@
+diff --git a/Source/VibeUE/Public/Module.h b/Source/VibeUE/Public/Module.h
+index 1641481..6c9bf04 100644
+--- a/Source/VibeUE/Public/Module.h
++++ b/Source/VibeUE/Public/Module.h
+@@ -5,6 +5,9 @@
+ #include "CoreMinimal.h"
+ #include "Modules/ModuleManager.h"
+ 
++class FObjectPostSaveContext;
++class UPackage;
++
+ class FModule : public IModuleInterface
+ {
+ public:
+@@ -33,10 +36,13 @@ public:
+ private:
+ 	/** Re-adds the bridged VibeUE tools after ModelContextProtocol.RefreshTools drops every registered MCP tool */
+ 	void HandleMCPRefreshTools();
++	/** Refresh the compact AI cache after a supported graph asset is successfully saved. */
++	void HandleAssetPackageSaved(const FString& PackageFileName, UPackage* Package, FObjectPostSaveContext SaveContext);
+ 
+ 	// False when running as a commandlet (cook, etc.) — services are skipped to
+ 	// avoid keeping UnrealEditor-Cmd.exe alive after the commandlet finishes.
+ 	bool bServicesInitialized = false;
+ 
+ 	FDelegateHandle OnRefreshToolsHandle;
++	FDelegateHandle OnPackageSavedHandle;
+ };

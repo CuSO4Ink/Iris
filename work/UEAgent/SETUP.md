@@ -250,10 +250,13 @@ under `Saved\UEAgent` and must not be committed or copied between projects. Use 
 an explicit shutdown. The gateway rejects non-loopback HTTP endpoints.
 
 Gateway exposes `-ProjectionFile` on inferred registry calls, plus `-DescribeDetail summary` and
-`-DescribeToolName <suffix>` when `-Toolset` infers describe. Use
-`-RequestBase64`/`-RequestFile` when the caller has a typed request object; serialization is a
-transport concern and the model-facing object needs only `tool`, `arguments`, optional `toolset`,
-and optional `projectionProfile`.
+`-DescribeToolName <suffix>` when `-Toolset` infers describe. Every AI-generated request crossing a
+child `powershell.exe` boundary must be built as an object, serialized with `ConvertTo-Json`, and
+passed as UTF-8 `-RequestBase64`; use `-RequestFile` for large/multiline requests and `-ScriptFile`
+only for actions that support it. Otherwise keep code such as Custom HLSL inside the encoded
+request. Never hand-escape raw JSON into `-RequestJson`, `-ArgumentsJson`, or `-ProjectionJson`
+across that boundary, even for read-only calls. The model-facing object itself needs only `tool`,
+`arguments`, optional `toolset`, and optional `projectionProfile`.
 
 For common ref-list reads, `-ProjectionProfile refs` keeps only `returnValue.refPath` (maximum 256)
 and uses structured output; `-ProjectionProfile compact` keeps `returnValue` (maximum 64).

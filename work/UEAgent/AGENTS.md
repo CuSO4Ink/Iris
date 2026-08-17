@@ -11,6 +11,8 @@ this entry plus `skills/ue-mcp-workflows/HOTPATH.md`:
 > **UEAgent first.** Locate the route, run `compact_context.ps1`, and stop on `CACHE_READ`.
 > On `NEEDS_DOCTOR`, run `doctor.ps1` once before the first live call. Repair `BLOCKED`.
 > Offline source/cache/config/log analysis may skip MCP but must not claim live UE state.
+> Encode complete Gateway requests as UTF-8 Base64 (or use a request file); never pass raw JSON
+> across a child PowerShell boundary. Mutation hash guards use one named asset-version manifest.
 
 ## Entry order
 
@@ -25,12 +27,22 @@ this entry plus `skills/ue-mcp-workflows/HOTPATH.md`:
 
 ## Transport and safety
 
+- For every AI-generated Gateway call crossing a `powershell.exe` boundary, build the complete
+  request as an object, serialize it with `ConvertTo-Json`, and pass UTF-8 `-RequestBase64`.
+  Use `-RequestFile` for large or multiline content and `-ScriptFile` only for actions that support
+  it. Never hand-escape or pass raw JSON through `-RequestJson`, `-ArgumentsJson`, or
+  `-ProjectionJson` to child PowerShell.
+- Treat local parameter/JSON parse errors as known pre-dispatch failures, not `RESULT_UNKNOWN`.
+  Do not claim UE was contacted or retry a mutation after such a failure.
 - `CACHE_READ` uses no transport. Live calls use `scripts/mcp_gateway.ps1`; `-AutoDaemon` is
   only a repeated-call optimization. Gateway is the sole AI-facing live client; native MCP is the
   server it reaches, not an alternate client route. If the canonical typed surface cannot express
   the operation, stop at `BLOCKED` and add that operation or request the exact user step.
 - A possible mutation timeout keeps its command identity and lease: poll, recover if needed, then
   read back before retrying.
+- Hash-guarded mutations must use a complete expected-hash manifest from one named asset version.
+  Never mix historical baselines; resolve a mismatch against versioned source/history before the
+  first mutation instead of trusting the current live value.
 - The Editor kernel is the single writer. Direct/Python mutations are denied. Discover tools,
   properties, pins, and OCC snapshots before queueing; save is a separate capability boundary.
 - Do not use Computer Use to drive Unreal UI. Stop and give the user manual steps when UI or

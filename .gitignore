@@ -22,3 +22,10 @@ __pycache__/
 Thumbs.db
 desktop.ini
 /tmp/
+
+# SSPR local historical archive (never commit generated cleanup history)
+work/SSPR/archive/2026-08-05-cleanup/
+
+# RenderDoc generated captures/results (keep the workflow and source tools only)
+work/RenderDocMCP/captures/
+work/RenderDocMCP/outputs/
