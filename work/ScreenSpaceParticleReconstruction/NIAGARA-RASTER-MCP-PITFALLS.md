@@ -13,7 +13,7 @@
 
 - 算法规格：`ANISOTROPIC-GAUSSIAN-SPLAT-SPEC.md`
 - 主规格：`WISPY-FLUID-SPEC.md`
-- 旧 Grid/RT 调试记录：`RT-WRITE-DEBUG.md`
+- 旧 Grid/RT 调试结论：已收敛到本文与 `LOG.md`
 - 时间线：`LOG.md`
 
 ## 1. 当前确认可用的正式结构

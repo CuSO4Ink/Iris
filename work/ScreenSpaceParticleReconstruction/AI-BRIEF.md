@@ -1,4 +1,12 @@
+<!-- iris-project-kind: ue -->
 # Screen Space Particle Reconstruction
+
+> **UEAgent first.** Before reading or changing live Unreal state, read
+> [UEAgent](../UEAgent/AGENTS.md) and the
+> [HOTPATH](../UEAgent/skills/ue-mcp-workflows/HOTPATH.md), then locate the target project's
+> `Saved/UEAgent/route.json` and run `compact_context.ps1` without loading either file unless it fails. Stop on `CACHE_READ`; on
+> `NEEDS_DOCTOR`, run the routed `doctor.ps1` once and use its receipt. Offline
+> source/cache/config/log analysis may skip MCP but must not claim live Editor state.
 
 > **L2 项目身份**。接手本项目的 AI 必读。
 
@@ -53,15 +61,21 @@
 - `WISPY-FLUID-SPEC.md`：正式主线总体规格与 M0～M5 里程碑。
 - `ANISOTROPIC-GAUSSIAN-SPLAT-SPEC.md`：V2 各向异性 Splat 与 G0～G6 规格。
 - `NIAGARA-RASTER-MCP-PITFALLS.md`：UE 5.8 Niagara Raster、MCP 与资产自动化排坑手册。
-- `RT-WRITE-DEBUG.md`：旧 Direct RT/历史写入实验记录，仅作归档参考。
-- `VISUAL-GATE-HANDOFF-PROMPT.md`：切换到新任务继续 V2 G4 视觉验收时可直接粘贴的上下文提示词。
+- `tools/install-direct-rt-writer.py`：需要重建旧 Direct RT Writer 时使用的可复用安装工具。
+- `tools/reinitialize-g5-runtime.py`：不重新绑定资产、只重初始化 G5 运行实例的安全工具。
+
+## 文件边界
+
+- `work/ScreenSpaceParticleReconstruction/` 只保留正式文档与可复用工具。
+- 截图、回读、恢复副本、Profile、一次性脚本和其他实验过程文件写入 `tmp/ScreenSpaceParticleReconstruction/`，验证完成后删除。
+- 完成项和失败实验只追加到 `LOG.md`，不继续堆在 `BACKLOG.md`。
 
 ## 协作约定
 
 - 当前阶段不提前绑定某一种密度/边缘重建算法；先保证模块接口可替换。
 - 技术讨论先写清几何前提、复杂度与适用范围，再进入 Niagara/HLSL 操作步骤。
 - 文档中的算法示例必须做数学自洽检查；参考资料不直接视为可运行实现。
-- 项目文件改动限定在本目录；新文件名只用英文。
+- 正式项目文件改动限定在本目录；过程产物按上面的文件边界进入 `tmp/`。新文件名只用英文。
 
 ---
 

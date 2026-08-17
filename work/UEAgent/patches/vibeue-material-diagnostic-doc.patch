@@ -1,0 +1,16 @@
+diff --git a/Source/VibeUE/Public/PythonAPI/UMaterialNodeService.h b/Source/VibeUE/Public/PythonAPI/UMaterialNodeService.h
+index d8b2e23..c0660bf 100644
+--- a/Source/VibeUE/Public/PythonAPI/UMaterialNodeService.h
++++ b/Source/VibeUE/Public/PythonAPI/UMaterialNodeService.h
+@@ -428,8 +428,9 @@ public:
+ 	 * Comprehensive material diagnostic — compile status, errors, and the textures the
+ 	 * shader actually references. Reliable replacement for `get_used_textures`.
+ 	 *
+-	 * Use this after building a material graph to verify it compiles cleanly and samples
+-	 * the expected textures. Particularly useful for materials with `MaterialFunctionCall`
++	 * Use this after `MaterialTools.recompile` has completed to verify the current compile
++	 * result and samples. This query is read-only and never starts a compilation. Particularly
++	 * useful for materials with `MaterialFunctionCall`
+ 	 * nodes (triplanar / world-aligned), where `MaterialEditingLibrary.get_used_textures`
+ 	 * silently returns 0.
+ 	 */

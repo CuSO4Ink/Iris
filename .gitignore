@@ -7,7 +7,7 @@
 # 会话临时文件
 .session_tmps/
 
-# 会话输出产物（每台设备独立）
+# 会话输出产物（会话级）
 output/
 work/UEAgent/out/
 work/UEAgent/_tmp/
@@ -21,11 +21,22 @@ work/UEAgent/_tmp/
 # 缓存和编译产物
 __pycache__/
 *.pyc
+.arknights-plugin-edit/server/bin/
+.arknights-plugin-edit/server/obj/
+.arknights-plugin-edit/server/publish/
 
 # 系统文件
 .DS_Store
 Thumbs.db
 desktop.ini
+/tmp/
+
+# SSPR local historical archive (never commit generated cleanup history)
+work/SSPR/archive/2026-08-05-cleanup/
+
+# RenderDoc generated captures/results (keep the workflow and source tools only)
+work/RenderDocMCP/captures/
+work/RenderDocMCP/outputs/
 
 # Violina private local project
 work/violina/

@@ -25,7 +25,8 @@
 
 Use `../../scripts/reflect_cache.ps1` as the offline reader. The default is `summary`; expand
 only as `refs`, a named `detail` section, then explicit `full`. `refs` contains direct
-dependencies only and never recursively expands another cache. Use `-Action reconcile` when the
+dependencies plus available `relation/node/parameter` facts and never recursively expands another
+cache. Use `-Action reconcile` when the
 sidecar needs to be checked against its source package. Ordinary source-control/text diff is
 enough for review; a reliable command receipt plus independent MCP readback verifies live saves. See
 `../../PROGRESSIVE-DISCLOSURE.md` for the shared route, measurement, and rollback contract.
@@ -102,8 +103,9 @@ root.n003=VolumetricAdvancedMaterialOutput(PhaseG=n004)
 
 ## Deps
 ```text
-MF: /Game/MF_X x3
-TEX: /Game/T_X x2
+MF: /Game/MF_X | relation=FunctionCall | node=n012
+TEX: /Game/T_X | relation=TextureParameter | node=n020 | parameter=Normal
+MPC: /Game/MPC_Wind | relation=CollectionParameter | node=n024 | parameter=Wind
 REROUTE: SignalA, SignalB
 ```
 
@@ -130,6 +132,8 @@ Rules:
 - Named Reroute declarations/usages form explicit IR links. Do not invent semantic names
   for anonymous nodes.
 - Keep exact asset paths for dependencies.
+- Keep one direct semantic edge per referencing node. `relation`, deterministic `node`, and
+  `parameter` are emitted only when the exported asset proves them; do not cache reverse edges.
 - For a master material, record called MaterialFunctions and call counts; do not expand
   their internal graphs into the master cache.
 - For a `Custom`/HLSL node, keep its inputs and compact semantic formula; do not copy
@@ -161,7 +165,8 @@ pin connection; it never expands the called function. `Custom` nodes use the mat
 
 ```text
 format: vibeue-material-instance-cache-v1
-parent + enabled scalar/vector/texture/static-switch overrides + orphan-override flags
+parent + enabled scalar/vector/texture/static-switch overrides + direct parent/texture-override
+Deps + orphan-override flags
 ```
 
 Do not repeat inherited parameters or parent graph logic. Determine enabled overrides through

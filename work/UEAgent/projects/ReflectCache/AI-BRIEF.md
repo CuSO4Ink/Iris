@@ -28,6 +28,8 @@ sidecar 读取与格式分析不需要 MCP。
   和 NiagaraSystem 原子刷新对应 sidecar；未通过受控保存验证的类型仍视为
   `PRESENT_UNVERIFIED`。
 - v2 `## Logic` 保存真实顶层节点、pin、连线和常用常量；不生成臆测语义。
+- `## Deps` 保存直接资产边及可证实的 `relation/node/parameter`；Asset Registry 仍是全项目引用真源，
+  cache 不保存反向图或第二套引用状态。
 - 先读 cache；写 UE 前只验证目标局部和 dirty state；保存后检查 cache 时间戳。
 - Blueprint cache 复用官方 graph DSL；Niagara cache 保存 stack/有效输入/renderer，
   external scripts 只存路径，embedded scripts 才内联紧凑 IR/HLSL。

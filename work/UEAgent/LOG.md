@@ -464,3 +464,9 @@ Verification passed the PowerShell contract suite and full 8 MiB JSON/SSE timeou
 with no leftover Gateway process. Live Abyss 5.8.1 read-only checks were `HEALTHY`; the minimal
 `-Tool ueagent_state` call returned 183 bytes versus 441 bytes before result shaping (58.5% less),
 and a live validation error compressed to 216 bytes without changing Editor state.
+
+### 2026-08-13 - Record enabled external plugins at bootstrap
+
+Bootstrap now records each explicitly enabled project-local external plugin's relative descriptor,
+version, and normalized descriptor hash in `route.json`; `-CheckOnly` rejects drift. VibeUE remains
+covered by its existing Git revision and patch hashes instead of a duplicate inventory entry.

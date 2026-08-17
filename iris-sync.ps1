@@ -1,57 +1,168 @@
-# iris-sync.ps1 - 一键同步当前git仓库: commit -> fetch -> rebase pull -> push
-# 用法(在任意git仓库目录下):
-#   powershell -File iris-sync.ps1                    # 自动生成commit信息
-#   powershell -File iris-sync.ps1 -m "本次说明"       # 自定义commit信息
-#   powershell -File iris-sync.ps1 -PushOnly          # 跳过commit,只pull+push
-param([string]$m = "", [switch]$PushOnly)
-$ErrorActionPreference = "Continue"
-git config i18n.commitEncoding utf-8 | Out-Null
+# Scoped Iris sync: commit selected paths, fetch, rebase when safe, then push.
+# Examples:
+#   powershell -File iris-sync.ps1 -Paths work/MyProject
+#   powershell -File iris-sync.ps1 -Paths work/MyProject,README.md -m "update"
+#   powershell -File iris-sync.ps1 -Paths work/MyProject -Check
+[CmdletBinding()]
+param(
+    [string]$m = '',
+    [string[]]$Paths = @(),
+    [switch]$PushOnly,
+    [switch]$Check
+)
 
-# 0. 确认在git仓库内
-$inRepo = (git rev-parse --is-inside-work-tree 2>$null)
-if ($inRepo -ne "true") { Write-Host "[X] 当前目录不是git仓库: $(Get-Location)" -ForegroundColor Red; exit 1 }
-$branch = (git branch --show-current).Trim()
-Write-Host "=== iris-sync @ $branch ($(Get-Location)) ===" -ForegroundColor Cyan
+$ErrorActionPreference = 'Stop'
 
-# 1. commit本地改动
-if (-not $PushOnly) {
-    $dirty = git status --porcelain
-    if ($dirty) {
-        git add -A
-        if (-not $m) { $m = "sync: " + (Get-Date -Format "yyyy-MM-dd HH:mm") }
-        git commit -m $m | Out-Null
-        Write-Host "[1] committed: $m" -ForegroundColor Green
-    } else { Write-Host "[1] 无本地改动,跳过commit" -ForegroundColor DarkGray }
-} else { Write-Host "[1] PushOnly模式,跳过commit" -ForegroundColor DarkGray }
+function Invoke-Git {
+    param([Parameter(Mandatory = $true)][string[]]$Arguments)
 
-# 2. fetch + 检查落后
-git fetch origin 2>$null
-$counts = (git rev-list --left-right --count "origin/$branch...HEAD" 2>$null) -split "\s+"
-$behind = if ($counts.Count -ge 1) { [int]$counts[0] } else { 0 }
-$ahead  = if ($counts.Count -ge 2) { [int]$counts[1] } else { 0 }
-Write-Host "[2] 远端对比: behind=$behind ahead=$ahead" -ForegroundColor Yellow
-
-# 3. 落后则rebase pull
-if ($behind -gt 0) {
-    Write-Host "[3] 落后$behind个commit,执行 rebase pull..." -ForegroundColor Yellow
-    git pull --rebase origin $branch 2>&1 | Out-Host
-    # 检测rebase是否卡在冲突
-    if (Test-Path (Join-Path (git rev-parse --git-dir) "rebase-merge")) {
-        Write-Host "[X] rebase遇到冲突!已停止。请手动解决冲突后:" -ForegroundColor Red
-        Write-Host "    解决文件 -> git add <文件> -> git rebase --continue -> 再次运行本脚本" -ForegroundColor Red
-        Write-Host "    或放弃: git rebase --abort" -ForegroundColor Red
-        exit 2
+    & git @Arguments
+    if ($LASTEXITCODE -ne 0) {
+        throw "git $($Arguments -join ' ') failed with exit code $LASTEXITCODE"
     }
-    Write-Host "[3] rebase完成,无冲突" -ForegroundColor Green
-} else { Write-Host "[3] 未落后,无需pull" -ForegroundColor DarkGray }
+}
 
-# 4. push
-$ahead2 = (git rev-list --count "origin/$branch..HEAD" 2>$null)
-if ([int]$ahead2 -gt 0) {
-    Write-Host "[4] 推送$ahead2个commit..." -ForegroundColor Yellow
-    git push origin $branch 2>&1 | Out-Host
-    Write-Host "[4] push完成" -ForegroundColor Green
-} else { Write-Host "[4] 无待推送,已是最新" -ForegroundColor DarkGray }
+function Assert-ProjectBoundary {
+    param(
+        [Parameter(Mandatory = $true)][string]$RepoRoot,
+        [Parameter(Mandatory = $true)][string[]]$ScopedPaths
+    )
 
-Write-Host "=== 同步完成 ===" -ForegroundColor Cyan
-git status -sb 2>$null | Out-Host
+    $projectNames = @(
+        $ScopedPaths | ForEach-Object {
+            if ($_ -match '^work/([^/]+)(?:/|$)') { $Matches[1] }
+        } | Select-Object -Unique
+    )
+
+    foreach ($projectName in $projectNames) {
+        $projectRoot = Join-Path $RepoRoot "work\$projectName"
+        if (-not (Test-Path -LiteralPath $projectRoot -PathType Container)) { continue }
+
+        if (-not (Test-Path -LiteralPath (Join-Path $projectRoot 'AI-BRIEF.md') -PathType Leaf)) {
+            throw "work/$projectName is missing AI-BRIEF.md."
+        }
+        if (Test-Path -LiteralPath (Join-Path $RepoRoot "archive\$projectName") -PathType Container) {
+            throw "$projectName exists in both work/ and archive/."
+        }
+
+        $completed = @(
+            Get-ChildItem -LiteralPath $projectRoot -Recurse -File -Filter 'BACKLOG.md' |
+                Select-String -Pattern '^\s*[-*]\s+\[[xX]\]'
+        )
+        if ($completed.Count -gt 0) {
+            $locations = $completed | ForEach-Object {
+                "$($_.Path.Substring($RepoRoot.Length + 1).Replace('\', '/')):$($_.LineNumber)"
+            }
+            throw "Completed items remain in active BACKLOG files: $($locations -join ', ')"
+        }
+
+        $processDirs = @(
+            Get-ChildItem -LiteralPath $projectRoot -Recurse -Directory -Force |
+                Where-Object { $_.Name -in @('.venv', '__pycache__', '.pytest_cache', '.session_tmps', '.runtime', 'runs') }
+        )
+        if ($processDirs.Count -gt 0) {
+            $locations = $processDirs | ForEach-Object {
+                $_.FullName.Substring($RepoRoot.Length + 1).Replace('\', '/')
+            }
+            throw "Process directories belong under tmp/: $($locations -join ', ')"
+        }
+    }
+
+    if ($projectNames.Count -gt 0) {
+        Write-Host "boundary OK: $($projectNames -join ', ')" -ForegroundColor Green
+    }
+}
+
+try {
+    $repoRoot = (& git rev-parse --show-toplevel 2>$null).Trim()
+    if ($LASTEXITCODE -ne 0 -or -not $repoRoot) { throw 'Current directory is not a Git repository.' }
+
+    Push-Location $repoRoot
+    try {
+        $branch = (& git branch --show-current).Trim()
+        if ($LASTEXITCODE -ne 0 -or -not $branch) { throw 'Detached HEAD is not supported.' }
+
+        $scopedPaths = @()
+        foreach ($path in @($Paths | ForEach-Object { [string]$_ -split ',' })) {
+            $candidate = ([string]$path).Trim().Replace('\', '/')
+            if ($candidate.StartsWith('./')) { $candidate = $candidate.Substring(2) }
+            if (-not $candidate -or [IO.Path]::IsPathRooted($candidate) -or
+                $candidate -in @('.', '/', '.\') -or $candidate.StartsWith('../') -or
+                $candidate.Contains('/../') -or $candidate.IndexOfAny([char[]]'*?[') -ge 0 -or
+                $candidate.StartsWith(':')) {
+                throw "Unsafe or repository-wide path scope: '$path'"
+            }
+            $scopedPaths += $candidate.TrimEnd('/')
+        }
+        $scopedPaths = @($scopedPaths | Select-Object -Unique)
+
+        if (($Check -or -not $PushOnly) -and $scopedPaths.Count -eq 0) {
+            throw 'Provide at least one project or explicit shared path with -Paths.'
+        }
+
+        Assert-ProjectBoundary -RepoRoot $repoRoot -ScopedPaths $scopedPaths
+
+        Write-Host "=== iris-sync @ $branch ===" -ForegroundColor Cyan
+
+        if ($Check) {
+            Invoke-Git -Arguments (@('status', '--short', '--') + $scopedPaths)
+            Write-Host "scope OK: $($scopedPaths -join ', ')" -ForegroundColor Green
+            return
+        }
+
+        if (-not $PushOnly) {
+            & git diff --cached --quiet
+            if ($LASTEXITCODE -eq 1) { throw 'Index already contains staged changes; commit or unstage them first.' }
+            if ($LASTEXITCODE -gt 1) { throw 'Could not inspect the Git index.' }
+
+            Invoke-Git -Arguments (@('add', '-A', '--') + $scopedPaths)
+
+            & git diff --cached --quiet
+            if ($LASTEXITCODE -eq 1) {
+                if (-not $m) { $m = 'sync: ' + (Get-Date -Format 'yyyy-MM-dd HH:mm') }
+                Invoke-Git -Arguments @('commit', '-m', $m)
+            } elseif ($LASTEXITCODE -gt 1) {
+                throw 'Could not inspect staged changes.'
+            } else {
+                Write-Host 'No scoped changes to commit.' -ForegroundColor DarkGray
+            }
+        }
+
+        Invoke-Git -Arguments @('fetch', 'origin')
+
+        & git show-ref --verify --quiet "refs/remotes/origin/$branch"
+        $hasRemoteBranch = $LASTEXITCODE -eq 0
+        if ($LASTEXITCODE -gt 1) { throw 'Could not inspect the remote branch.' }
+
+        $behind = 0
+        if ($hasRemoteBranch) {
+            $counts = ((& git rev-list --left-right --count "origin/$branch...HEAD").Trim() -split '\s+')
+            if ($LASTEXITCODE -ne 0 -or $counts.Count -lt 2) { throw 'Could not compare local and remote history.' }
+            $behind = [int]$counts[0]
+            Write-Host "remote: behind=$behind ahead=$([int]$counts[1])" -ForegroundColor Yellow
+        }
+
+        if ($behind -gt 0) {
+            if (@(& git status --porcelain).Count -gt 0) {
+                throw 'Remote is ahead and unrelated working-tree changes remain; rebase was not attempted.'
+            }
+            Invoke-Git -Arguments @('pull', '--rebase', 'origin', $branch)
+        }
+
+        if ($hasRemoteBranch) {
+            $ahead = [int]((& git rev-list --count "origin/$branch..HEAD").Trim())
+            if ($LASTEXITCODE -ne 0) { throw 'Could not inspect commits pending push.' }
+            if ($ahead -gt 0) { Invoke-Git -Arguments @('push', 'origin', $branch) }
+            else { Write-Host 'Already synchronized.' -ForegroundColor DarkGray }
+        } else {
+            Invoke-Git -Arguments @('push', '--set-upstream', 'origin', $branch)
+        }
+
+        Invoke-Git -Arguments @('status', '-sb')
+    } finally {
+        Pop-Location
+    }
+} catch {
+    Write-Host "[X] $($_.Exception.Message)" -ForegroundColor Red
+    exit 1
+}

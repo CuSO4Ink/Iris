@@ -16,15 +16,16 @@ UEAgent on another checkout.
 | Dependency | Requirement |
 |---|---|
 | Unreal Engine | UE 5.8 (verified on 5.8.1) with native `ModelContextProtocol` and `EditorToolset` plugins |
-| VibeUE | `bf96d6b141bb3ddd6ec531159ff987dcccf1d51c` |
+| VibeUE | public `5-8` commit `6a0617cfb05aaced82d6613e88b1572fe7452eaa` |
 | UEAgent VibeUE extension | selected profile + performance + shutdown guard + reliable kernel |
 | UE native MCP extension | process-wide `tools/call` authorization gate |
 | Default engine profile | current MCP tool-search + call-view patch |
+| Abyss full profile | Niagara authoring + Niagara Toolsets + engine extensions + pinned project plugins |
 | Windows | Git and Windows PowerShell |
 
 This baseline supports official typed tools plus the portable ReflectCache implementation. The
-optional `patches/ue58-niagara-toolsets.patch` adds script graph/HLSL/rapid-iteration and live
-component-state calls to a UE source checkout.
+`-ApplyAbyssProfile` switch applies the complete current Abyss stack, including script
+graph/HLSL/rapid-iteration and live component-state calls.
 
 The verified advanced Niagara authoring profile covers dynamic `RequestNewTypedPin`, Simulation
 Stage, Grid2D, RenderTarget2D, RasterizationGrid3D, and Custom HLSL authoring. Bootstrap applies
@@ -64,9 +65,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1 -UPr
 The switch still rejects a dirty checkout whose `HEAD` differs from the pinned baseline or does
 not contain the selected UEAgent VibeUE profile patch.
 
-For a UE source checkout, add `-ApplyEngineNiagaraPatch` when the optional Niagara Toolsets
-extension is required. Bootstrap first checks whether the exact patch is already present and
-refuses conflicts; it never resets engine changes.
+For a UE source checkout, `-ApplyNiagaraAuthoringProfile` includes the Niagara Toolsets
+extension. Bootstrap first checks whether the exact patch is already present and refuses
+conflicts; it never resets engine changes.
 
 For the verified advanced Niagara authoring profile, pass `-ApplyNiagaraAuthoringProfile`:
 
@@ -76,6 +77,25 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1 `
   -EngineRoot "X:\UnrealEngine" `
   -ApplyNiagaraAuthoringProfile -ApplyMcpToolSearchPatch -Launch
 ```
+
+For the exact current Abyss environment, use the canonical full profile. The source root must
+contain `Plugins\<PluginName>` for the seven pinned project plugins; bootstrap copies only missing
+plugin directories and refuses to merge or overwrite an existing mismatched directory:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1 `
+  -UProject "X:\Projects\Abyss\Abyss.uproject" `
+  -EngineRoot "X:\UnrealEngine" `
+  -ApplyAbyssProfile `
+  -ExternalPluginSourceRoot "X:\Bundles\Abyss" `
+  -SkipBuild
+```
+
+The full profile requires UE 5.8.1 compatible changelist `55116800`, applies the current engine
+and VibeUE patches (including the read-only material diagnostics and UE 5.8 Niagara compatibility
+fixes), writes the volumetric-cloud setting, and pins the seven enabled external plugin
+descriptors. It fails closed when the external plugin bundle is absent or differs; it does not
+guess public/private plugin origins or silently substitute another version.
 
 Every writable profile requires the pinned VibeUE baseline and a source-engine Git checkout.
 `-CheckOnly`
@@ -115,17 +135,19 @@ source schema does not declare side effects. Use explicit `full` only for exact 
 
 The bootstrap:
 
-1. validates UE 5.8 and the native MCP plugins;
+1. validates the pinned UE 5.8.1 baseline and the native MCP plugins;
 2. installs the pinned VibeUE checkout and applies the selected profile plus performance monitor,
    shutdown guard, and reliable execution kernel;
 3. applies the native MCP authorization gate and writes the reliable Editor config;
 4. optionally applies the default engine MCP tool-search profile and records its hash;
-5. optionally applies the Niagara Toolsets profile and records its hash;
-6. optionally applies the verified Niagara authoring profile and records both selected patch
-   fingerprints;
+5. optionally applies the verified Niagara authoring profile, including its Niagara Toolsets
+   extension;
+6. optionally applies the Abyss engine/VibeUE compatibility extensions, project setting, and
+   external-plugin inventory;
 7. enables the three plugins and writes the loopback MCP configuration;
 8. merges `ue-editor` into the target `.mcp.json`;
-9. writes machine-local `Saved/UEAgent/route.json`;
+9. records explicitly enabled project-local external plugin versions and descriptor hashes in the
+   machine-local `Saved/UEAgent/route.json`;
 10. creates or updates a small managed UEAgent gate in the target `AGENTS.md`;
 11. builds and optionally launches the editor.
 
@@ -228,10 +250,13 @@ under `Saved\UEAgent` and must not be committed or copied between projects. Use 
 an explicit shutdown. The gateway rejects non-loopback HTTP endpoints.
 
 Gateway exposes `-ProjectionFile` on inferred registry calls, plus `-DescribeDetail summary` and
-`-DescribeToolName <suffix>` when `-Toolset` infers describe. Use
-`-RequestBase64`/`-RequestFile` when the caller has a typed request object; serialization is a
-transport concern and the model-facing object needs only `tool`, `arguments`, optional `toolset`,
-and optional `projectionProfile`.
+`-DescribeToolName <suffix>` when `-Toolset` infers describe. Every AI-generated request crossing a
+child `powershell.exe` boundary must be built as an object, serialized with `ConvertTo-Json`, and
+passed as UTF-8 `-RequestBase64`; use `-RequestFile` for large/multiline requests and `-ScriptFile`
+only for actions that support it. Otherwise keep code such as Custom HLSL inside the encoded
+request. Never hand-escape raw JSON into `-RequestJson`, `-ArgumentsJson`, or `-ProjectionJson`
+across that boundary, even for read-only calls. The model-facing object itself needs only `tool`,
+`arguments`, optional `toolset`, and optional `projectionProfile`.
 
 For common ref-list reads, `-ProjectionProfile refs` keeps only `returnValue.refPath` (maximum 256)
 and uses structured output; `-ProjectionProfile compact` keeps `returnValue` (maximum 64).

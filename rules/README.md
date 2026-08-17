@@ -1,26 +1,20 @@
-# Rules · L0 — 工作区通用规则索引
+# Rules
 
-> ⚡ 最高优先级：先读 [00-canary.ankoha](00-canary.ankoha.md)。
+`AGENTS.md` is the only bootstrap. Load these rules only when the task needs them.
 
-## 分层
-
-| 层 | 位置 | 读者 |
+| Layer | Location | Purpose |
 |---|---|---|
-| **L0** | 本目录根 | 所有 AI |
-| **L1** | [maintainer/](maintainer/README.md) | 维护者 AI |
-| **L2** | `work/<项目>/AI-BRIEF.md` | 项目 AI |
+| L0 | `rules/` | Shared command, naming, and annotation rules |
+| L1 | `rules/maintainer/` | Workspace governance |
+| L2 | `work/<project>/AI-BRIEF.md` | Project goal and current state |
 
-## L0 规则清单
+## L0 rules
 
-| 文件 | 适用 | 摘要 |
-|---|---|---|
-| [00-canary.ankoha](00-canary.ankoha.md) | 所有回复 | 末尾单独一行 `唔呣。` |
-| [commands](commands.md) | 用户发斜杠命令时 | 命令触发、参数与接入/项目生产/维护流程 |
-| [annotation](annotation.md) | 所有文档协作 | `[!Q] / [!NOTE] / [!TODO] / [!FIX]` callout 格式 |
-| [naming](naming.md) | 新建文件/文件夹时 | 文件名/文件夹名不出现中文，一律用英文命名 |
+| File | Use when |
+|---|---|
+| [commands](commands.md) | A registered slash command is invoked |
+| [annotation](annotation.md) | Editing collaborative Markdown callouts |
+| [naming](naming.md) | Creating or renaming files and directories |
 
-## 维护
-
-- 新增 L0 规则 → 本表登记
-- 规则文件保持小而聚焦；接近 150 行时考虑拆分，不为达到行数补内容
-- 废弃规则 → `archive/rules/<topic>.md`
+Add a rule only when an existing source cannot own the behavior. When a rule is replaced, update
+all active references in the same change and delete the obsolete rule; Git owns its history.

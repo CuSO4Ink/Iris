@@ -1,0 +1,12 @@
+diff --git a/Source/VibeUE/VibeUE.Build.cs b/Source/VibeUE/VibeUE.Build.cs
+index 1b2d6e8..3a3b79b 100644
+--- a/Source/VibeUE/VibeUE.Build.cs
++++ b/Source/VibeUE/VibeUE.Build.cs
+@@ -86,6 +86,7 @@ public class VibeUE : ModuleRules
+ 				"InputCore",              // For input types
+ 				"ImageWrapper",           // For image encoding/decoding
+ 				"DesktopPlatform",        // For file dialogs
++				"NiagaraCore",            // For UNiagaraMergeable simulation-stage merge ids
+ 				"Niagara",                // For Niagara VFX runtime classes
+ 				"NiagaraEditor",          // For Niagara editor utilities and factories
+ 				"AnimGraph",              // For AnimGraphNode types (state machines, states)

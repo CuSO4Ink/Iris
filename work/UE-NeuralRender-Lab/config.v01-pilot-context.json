@@ -1,0 +1,43 @@
+{
+  "data": {
+    "train": "../../tmp/UE-NeuralRender-Lab/data/v01_pilot/train",
+    "val": "../../tmp/UE-NeuralRender-Lab/data/v01_pilot/val",
+    "crop_size": 512,
+    "repeats": 16,
+    "focus_candidates": 4,
+    "focus_probability": 0.75
+  },
+  "model": {
+    "channels": 48,
+    "blocks": 6,
+    "wide_context": true
+  },
+  "train": {
+    "epochs": 40,
+    "batch_size": 1,
+    "learning_rate": 0.0001,
+    "workers": 0,
+    "seed": 42,
+    "amp": true,
+    "preview_every": 2,
+    "output_dir": "../../tmp/UE-NeuralRender-Lab/runs/v01_pilot_r3_context"
+  },
+  "loss": {
+    "teacher": 1.0,
+    "blocks": 0.2,
+    "structure": 0.05,
+    "texture": 0.05,
+    "palette": 0.0,
+    "flatness": 0.0
+  },
+  "style": {
+    "palette": ["#173E49"],
+    "flat_edge_threshold": 0.08
+  },
+  "export": {
+    "checkpoint": "../../tmp/UE-NeuralRender-Lab/runs/v01_pilot_r3_context/best.pt",
+    "onnx": "../../tmp/UE-NeuralRender-Lab/exports/NRL_Student_v01_pilot_context_512.onnx",
+    "size": 512,
+    "opset": 17
+  }
+}

@@ -28,6 +28,12 @@ repeated-call optimization on that same path. Native MCP is the server behind Ga
 client route. If Gateway and the fixed `ueagent_*` surface cannot express the operation, add the
 missing typed operation or stop. Never bypass the canonical path.
 
+For AI-generated calls crossing a child `powershell.exe` boundary, serialize the complete request
+object with `ConvertTo-Json` and use UTF-8 `-RequestBase64`; use `-RequestFile` for large or
+multiline requests and `-ScriptFile` only for actions that support it. Never hand-escape raw JSON
+into `-RequestJson`, `-ArgumentsJson`, or `-ProjectionJson`. A local parse failure before dispatch
+is known not to have reached UE and is not `RESULT_UNKNOWN`.
+
 Pass `-SchemaCacheFile <project>\Saved\UEAgent\schema-cache.json` for discovery and, for repeated
 Gateway calls, project-local `mcp-session.json` with `-SessionFile ...`; reuse is automatic. Use
 `-CloseSession` only for explicit shutdown. Cache discovery only; never cache calls or mutations.
@@ -69,10 +75,12 @@ Do not load the full ReflectCache protocol for an ordinary read.
 2. Read the target brief/task after the route is known.
 3. Discover exact tools, UObject properties, object paths, and graph pins; never guess.
 4. Classify read, reversible mutation, or high-risk save/delete/move/merge.
-5. Probe unverified capabilities outside production assets.
-6. Apply one logical mutation with one writer. Batch only a known-safe call shape.
-7. Verify independently through targeted readback, compile/log/invariant/runtime evidence.
-8. Clean probes (`exists=false`) and save only inside the user's explicit boundary.
+5. For hash-guarded mutations, require one named asset version and a complete manifest derived from
+   that version; never combine historical baselines. Resolve any mismatch before the first setter.
+6. Probe unverified capabilities outside production assets.
+7. Apply one logical mutation with one writer. Batch only a known-safe call shape.
+8. Verify independently through targeted readback, compile/log/invariant/runtime evidence.
+9. Clean probes (`exists=false`) and save only inside the user's explicit boundary.
 
 ## Evidence and UI
 

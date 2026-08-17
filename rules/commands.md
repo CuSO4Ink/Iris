@@ -1,43 +1,52 @@
-# Commands — 斜杠指令协议（L0）
+# Commands
 
-> 用户通过斜杠命令触发固定流程。见到命令按表执行，不要反问。
+A command triggers only at the start of a standalone, non-code-block line. Run multiple command
+lines in order. Unknown commands return `未注册指令 /<name>，发 /help 查看可用指令`.
 
-## 协议
+## Routing
 
-- 命令只在非代码块中的独立行行首触发，例如 `/project DyeSplashBaker`；正文、引用、路径或示例中的 `/xxx` 不触发
-- 多个独立命令行按先后顺序执行
-- 命令后可带参数，用空格分隔：`/project DyeSplashBaker`
-- `/project-init` 支持可选 `--ue` 标记：`/project-init Bifrost --ue`
-- `--ue` 只对 `/project-init` 生效；其他未注册参数按未注册指令处理，不猜测含义
-- 参数本身含空格时用下划线或驼峰（如 `/project My_Project`），不支持引号
-- 未注册的 `/xxx`：回复"未注册指令 `/xxx`，发 `/help` 查看可用指令"，不猜
-
-## 接入与角色类
-
-| 命令 | 参数 | 行为 |
+| Command | Argument | Behavior |
 |---|---|---|
-| `/general` | — | 按 `templates/Onboarding-General.md` 方框内容执行 |
-| `/maintainer` | — | 按 `templates/Onboarding-Maintainer.md` 方框内容执行 |
-| `/project` | `<项目名>` | 按 `templates/Onboarding-Project.md` 方框执行，`{项目名}` 替换为参数 |
+| `/general` | — | Use `rules/README.md` and the root `README.md` |
+| `/maintainer` | — | Read and follow `rules/maintainer/README.md` |
+| `/project` | `<name>` | Enter `work/<name>/`; execute a UEAgent-first block before reading project content |
 
-## 项目生产类
+## Project lifecycle
 
-**前提**：除 `/project-init` 外，当前会话已通过 `/project <名>` 接入项目，AI 知道活跃项目。若未接入，其他命令报错"请先 `/project <项目名>` 接入项目"。
+Except `/project-init`, these commands require an active project. Arguments containing spaces use
+underscores or camel case; quoted arguments are unsupported.
 
-| 命令 | 参数 | 行为 |
+| Command | Argument | Behavior |
 |---|---|---|
-| `/project-init` | `<项目名> [--ue]` | 把 `templates/project-kit/` 下三份模板复制到 `work/<项目名>/`，替换 `{项目名}` 占位符；带 `--ue` 时在 `AI-BRIEF.md` 顶部写入 `<!-- iris-project-kind: ue -->` 和 `work/UEAgent/AGENTS.md` 的标准 UEAgent-first 导航块，报告建成 |
-| `/push` | `[一句话]` | git 同步(纯git,不改文档内容): ① 在仓库根 git add -A ② commit(有参数用作message,否则自动"sync: 时间戳") ③ git fetch + 检测落后 → pull --rebase ④ 冲突则停下报告冲突文件不强推 ⑤ 无冲突则 push ⑥ 报告最终状态 |
-| `/checkpoint` | — | 收工快照：① 读当天 LOG 新增条目 → 提炼 1~3 条有长期价值的更新到 AI-BRIEF ② 把有长期价值的已完成普通任务提炼进 LOG 后移出 BACKLOG；项目约定保留的状态/验收记录不移动 ③ 报告摘要给用户确认 |
+| `/project-init` | `<name> [--ue]` | Copy the three project-kit Markdown templates to `work/<name>/`; `--ue` adds the canonical UE marker and UEAgent-first block |
+| `/checkpoint` | — | Flush verified progress from the current session into every project actually touched |
+| `/push` | `[message]` | Run `iris-sync.ps1` for the active project plus explicitly touched shared paths; never stage the repository root |
 
-## 帮助
+### `/checkpoint`
 
-| 命令 | 参数 | 行为 |
+Treat it as an in-flight sync point, not a completion review: when invoked, update immediately from
+the evidence available at that moment, then continue the original task. Do not wait for project
+completion.
+
+Use the current conversation, tool results, actual workspace state, and existing project documents
+as sources. For each project actually touched:
+
+1. Update `AI-BRIEF.md` with the current state, focus, and verified facts.
+2. Update `BACKLOG.md` so it contains only unresolved, executable work.
+3. Append only durable decisions, discoveries, rejections, and rollbacks to `LOG.md`.
+4. Report what changed; write nothing when there is no material progress.
+
+It does not commit or push Git, archive a project, delete process files, modify technical assets,
+or grant user acceptance.
+
+### `/push`
+
+Invoke `iris-sync.ps1 -Paths <active-project>[,<explicit-shared-path>...]`. The script validates
+the scoped project boundary, refuses an empty or repository-wide scope, and aborts on any Git
+failure. `/push` synchronizes existing scoped work; it does not edit project documents.
+
+## Help
+
+| Command | Argument | Behavior |
 |---|---|---|
-| `/help` | — | 完整复述本文件所有指令表的三列（命令 / 参数 / 行为），不省略 |
-
-## 扩展
-
-- 新增命令 → 对应分组表加一行
-- 保持"命令 → 现有流程"的映射，不在命令层定义新逻辑，逻辑放对应规则文件
-- 废弃命令 → 直接从本表及专用文档删除
+| `/help` | — | Reproduce all command tables from this file |

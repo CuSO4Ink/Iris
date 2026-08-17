@@ -9,9 +9,11 @@ param(
     [string]$VibeUERef,
     [string]$Endpoint,
     [switch]$PreserveExistingVibeUE,
+    [switch]$ApplyAbyssProfile,
     [switch]$ApplyNiagaraAuthoringProfile,
     [switch]$ApplyEngineNiagaraPatch,
     [switch]$ApplyMcpToolSearchPatch,
+    [string]$ExternalPluginSourceRoot,
     [switch]$CheckOnly,
     [switch]$SkipBuild,
     [switch]$Launch
@@ -92,6 +94,75 @@ EnableFaultInjection=False
     Write-Utf8NoBom $path $updated.TrimStart()
 }
 
+function Assert-AbyssProjectSettings($ProjectRoot) {
+    $path = Join-Path $ProjectRoot 'Config\DefaultEngine.ini'
+    $body = Get-IniSectionBody $path 'SystemSettings'
+    if ($null -eq $body -or $body -notmatch '(?m)^r\.VolumetricCloud\.ConservativeDensity\.SDFMaxStep=32\r?$') {
+        throw "Abyss volumetric-cloud setting is missing: $path"
+    }
+}
+
+function Set-AbyssProjectSettings($ProjectRoot) {
+    $path = Join-Path $ProjectRoot 'Config\DefaultEngine.ini'
+    $line = 'r.VolumetricCloud.ConservativeDensity.SDFMaxStep=32'
+    $existing = if (Test-Path -LiteralPath $path) { Get-Content -Raw -LiteralPath $path } else { '' }
+    $linePattern = '(?m)^r\.VolumetricCloud\.ConservativeDensity\.SDFMaxStep=.*\r?$'
+    if ($existing -match $linePattern) {
+        $updated = [Regex]::Replace($existing, $linePattern, $line)
+    } elseif ($existing -match '(?m)^\[SystemSettings\]\r?$') {
+        $updated = [Regex]::Replace($existing, '(?m)^\[SystemSettings\]\r?$', "[SystemSettings]$([Environment]::NewLine)$line")
+    } else {
+        $updated = $existing.TrimEnd() + [Environment]::NewLine + [Environment]::NewLine +
+            "[SystemSettings]$([Environment]::NewLine)$line$([Environment]::NewLine)"
+    }
+    Write-Utf8NoBom $path $updated.TrimStart()
+}
+
+function Get-AbyssProfile($Manifest) {
+    $profile = $Manifest.profiles.abyss
+    if ($null -eq $profile -or [string]$profile.project_name -ne 'Abyss') {
+        throw 'UEAgent stack manifest is missing the verified Abyss profile.'
+    }
+    return $profile
+}
+
+function Assert-AbyssExternalPlugins($Project, $ProjectRoot, $Manifest) {
+    $profile = Get-AbyssProfile $Manifest
+    $expected = @($profile.external_plugins)
+    $actual = @(Get-EnabledExternalPluginInventory $Project $ProjectRoot)
+    if ((ConvertTo-Json -InputObject $actual -Depth 5 -Compress) -ne
+        (ConvertTo-Json -InputObject $expected -Depth 5 -Compress)) {
+        throw 'Abyss external plugins are missing or differ from the pinned bootstrap inventory.'
+    }
+    return $actual
+}
+
+function Ensure-AbyssExternalPlugins($Project, $ProjectRoot, $Manifest, $SourceRoot) {
+    $profile = Get-AbyssProfile $Manifest
+    $expected = @($profile.external_plugins)
+    $resolvedSourceRoot = if ($SourceRoot) { Resolve-RequiredPath $SourceRoot 'External plugin source root' } else { $null }
+    if ($resolvedSourceRoot) {
+        foreach ($plugin in $expected) {
+            $relativeDescriptor = ([string]$plugin.descriptor).Replace('/', '\')
+            $relativeDirectory = Split-Path $relativeDescriptor -Parent
+            $destinationDirectory = Join-Path $ProjectRoot $relativeDirectory
+            if (Test-Path -LiteralPath (Join-Path $destinationDirectory (Split-Path $relativeDescriptor -Leaf))) {
+                continue
+            }
+            if (Test-Path -LiteralPath $destinationDirectory) {
+                throw "External plugin directory is incomplete; refusing to merge: $destinationDirectory"
+            }
+            $sourceDirectory = Join-Path $resolvedSourceRoot $relativeDirectory
+            if (-not (Test-Path -LiteralPath $sourceDirectory)) {
+                throw "External plugin source is missing: $sourceDirectory"
+            }
+            New-Item -ItemType Directory -Path (Split-Path $destinationDirectory -Parent) -Force | Out-Null
+            Copy-Item -LiteralPath $sourceDirectory -Destination (Split-Path $destinationDirectory -Parent) -Recurse
+        }
+    }
+    Assert-AbyssExternalPlugins $Project $ProjectRoot $Manifest | Out-Null
+}
+
 function Set-UeAgentGate($ProjectRoot) {
     $agentsPath = Join-Path $ProjectRoot 'AGENTS.md'
     $start = '<!-- UEAGENT_GATE_START -->'
@@ -110,6 +181,10 @@ Before any work that reads live Unreal state or mutates UE:
    the relevant domain card; add the Skill and Core before mutation or save.
 4. Follow the receipt. Writable work must use `ueagent_snapshot` -> `ueagent_submit` -> terminal
    receipt -> independent snapshot; save only with the receipt-issued exact `ueagent_save` capability.
+5. For Gateway calls crossing child PowerShell, serialize the complete request and use UTF-8
+   `-RequestBase64` (or `-RequestFile`); never pass hand-escaped raw JSON command-line arguments.
+6. Hash-guarded mutations must use one complete manifest from one named asset version; never mix
+   historical baselines, and resolve a mismatch before the first mutation.
 
 Offline source/cache/config/log analysis may proceed, but must not claim live editor state.
 <!-- UEAGENT_GATE_END -->
@@ -136,7 +211,22 @@ $stackManifest = Read-UeAgentStackManifest $ueAgentRoot
 $manifestErrors = @(Get-UeAgentManifestPatchErrors $ueAgentRoot $stackManifest)
 if ($manifestErrors.Count) { throw ($manifestErrors -join '; ') }
 if (-not $PSBoundParameters.ContainsKey('VibeUERef')) { $VibeUERef = [string]$stackManifest.profiles.base.vibeue_ref }
+$vibeUEFetchRef = if ($PSBoundParameters.ContainsKey('VibeUERef')) {
+    $VibeUERef
+} else {
+    [string]$stackManifest.profiles.base.vibeue_fetch_ref
+}
+if (-not $vibeUEFetchRef) { $vibeUEFetchRef = $VibeUERef }
 if (-not $PSBoundParameters.ContainsKey('Endpoint')) { $Endpoint = [string]$stackManifest.runtime.endpoint }
+$projectRoot = Split-Path $UProject -Parent
+$projectName = [IO.Path]::GetFileNameWithoutExtension($UProject)
+if ($ApplyAbyssProfile) {
+    if ($projectName -ne 'Abyss') { throw "-ApplyAbyssProfile requires Abyss.uproject; found $projectName." }
+    $ApplyNiagaraAuthoringProfile = $true
+    $ApplyEngineNiagaraPatch = $true
+    $ApplyMcpToolSearchPatch = $true
+}
+if ($ApplyNiagaraAuthoringProfile) { $ApplyEngineNiagaraPatch = $true }
 $reliableProtocolVersion = [string]$stackManifest.runtime.reliable_protocol
 $mutationTransport = [string]$stackManifest.runtime.mutation_transport
 
@@ -145,10 +235,13 @@ $authoringVibePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\
 $vibePerformancePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-performance-monitor.patch') 'VibeUE performance monitor patch'
 $vibeShutdownGuardPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-mcp-shutdown-guard.patch') 'VibeUE MCP shutdown guard patch'
 $vibeReliablePatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-reliable-kernel.patch') 'VibeUE reliable execution kernel patch'
+$vibeMaterialDiagnosticDocPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-material-diagnostic-doc.patch') 'VibeUE material diagnostic patch'
+$vibeAbyssCompatibilityPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\vibeue-abyss-compatibility.patch') 'VibeUE Abyss compatibility patch'
 $engineMcpAuthorizationPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-authorization-gate.patch') 'UE 5.8 MCP authorization gate patch'
 $engineNiagaraPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-niagara-toolsets.patch') 'UEAgent Niagara Toolsets patch'
 $engineNiagaraAuthoringPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\niagara-mcp-authoring\ue-5.8\niagaraeditor-export-authoring-apis-current.patch') 'UEAgent Niagara authoring engine patch'
 $mcpToolSearchPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-mcp-tool-search.patch') 'UEAgent MCP tool-search patch'
+$abyssEngineExtensionsPatchPath = Resolve-RequiredPath (Join-Path $ueAgentRoot 'patches\ue58-abyss-engine-extensions.patch') 'Abyss engine extensions patch'
 $vibeProfile = if ($ApplyNiagaraAuthoringProfile) { 'niagara-authoring' } else { 'base' }
 $vibePatchPath = if ($ApplyNiagaraAuthoringProfile) { $authoringVibePatchPath } else { $coreVibePatchPath }
 $vibePatchManifestPath = if ($ApplyNiagaraAuthoringProfile) {
@@ -158,12 +251,13 @@ $vibePatchSha256 = [string]$stackManifest.patches.($vibePatchManifestPath)
 $vibePerformancePatchSha256 = [string]$stackManifest.patches.'patches/vibeue-performance-monitor.patch'
 $vibeShutdownGuardPatchSha256 = [string]$stackManifest.patches.'patches/vibeue-mcp-shutdown-guard.patch'
 $vibeReliablePatchSha256 = [string]$stackManifest.patches.'patches/vibeue-reliable-kernel.patch'
+$vibeMaterialDiagnosticDocPatchSha256 = [string]$stackManifest.patches.'patches/vibeue-material-diagnostic-doc.patch'
+$vibeAbyssCompatibilityPatchSha256 = [string]$stackManifest.patches.'patches/vibeue-abyss-compatibility.patch'
 $engineMcpAuthorizationPatchSha256 = [string]$stackManifest.patches.'patches/ue58-mcp-authorization-gate.patch'
 $engineNiagaraPatchSha256 = [string]$stackManifest.patches.'patches/ue58-niagara-toolsets.patch'
 $engineNiagaraAuthoringPatchSha256 = [string]$stackManifest.patches.'patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch'
 $mcpToolSearchPatchSha256 = [string]$stackManifest.patches.'patches/ue58-mcp-tool-search.patch'
-$projectRoot = Split-Path $UProject -Parent
-$projectName = [IO.Path]::GetFileNameWithoutExtension($UProject)
+$abyssEngineExtensionsPatchSha256 = [string]$stackManifest.patches.'patches/ue58-abyss-engine-extensions.patch'
 $buildScript = Join-Path $EngineRoot 'Engine\Build\BatchFiles\Build.bat'
 $editor = Join-Path $EngineRoot 'Engine\Binaries\Win64\UnrealEditor.exe'
 $projectEditor = Join-Path $projectRoot "Binaries\Win64\$($projectName)Editor.exe"
@@ -177,8 +271,11 @@ foreach ($required in @($buildScript, $editor, $nativeMcp, $editorToolset, $buil
     if (-not (Test-Path -LiteralPath $required)) { throw "UE 5.8 MCP prerequisite not found: $required" }
 }
 $buildVersion = Get-Content -Raw -LiteralPath $buildVersionPath | ConvertFrom-Json
-if ($buildVersion.MajorVersion -ne 5 -or $buildVersion.MinorVersion -ne 8) {
-    throw "UE 5.8 is required; found $($buildVersion.MajorVersion).$($buildVersion.MinorVersion)."
+if ($buildVersion.MajorVersion -ne $stackManifest.engine.major -or
+    $buildVersion.MinorVersion -ne $stackManifest.engine.minor -or
+    $buildVersion.PatchVersion -ne $stackManifest.engine.patch -or
+    $buildVersion.CompatibleChangelist -ne $stackManifest.engine.compatible_changelist) {
+    throw "UE $($stackManifest.engine.major).$($stackManifest.engine.minor).$($stackManifest.engine.patch) changelist $($stackManifest.engine.compatible_changelist) is required; found $($buildVersion.MajorVersion).$($buildVersion.MinorVersion).$($buildVersion.PatchVersion) changelist $($buildVersion.CompatibleChangelist)."
 }
 $engineNiagaraAuthoringPatchApplied = Test-GitPatchApplied $EngineRoot $engineNiagaraAuthoringPatchPath
 if (-not $CheckOnly -and -not $ApplyNiagaraAuthoringProfile -and $engineNiagaraAuthoringPatchApplied) {
@@ -202,6 +299,16 @@ if ($CheckOnly) {
     }
     $route = Get-Content -Raw -LiteralPath $routePath | ConvertFrom-Json
     if ($route.schema -ne 'ueagent-route-v1') { throw "Unsupported UEAgent route schema: $($route.schema)" }
+    $externalPlugins = @(Get-EnabledExternalPluginInventory $project $projectRoot)
+    if ($route.environmentProfile -eq 'abyss-full') {
+        Assert-AbyssExternalPlugins $project $projectRoot $stackManifest | Out-Null
+    } elseif ((ConvertTo-Json -InputObject $externalPlugins -Depth 5 -Compress) -ne
+        (ConvertTo-Json -InputObject @($route.externalPlugins) -Depth 5 -Compress)) {
+        throw 'Enabled external plugins differ from the routed bootstrap inventory; rerun bootstrap.'
+    }
+    if ($ApplyAbyssProfile -and $route.environmentProfile -ne 'abyss-full') {
+        throw 'The route was not bootstrapped with -ApplyAbyssProfile.'
+    }
     if (-not $PSBoundParameters.ContainsKey('Endpoint')) { $Endpoint = [string]$route.endpoint }
     $actualRef = (& git -C $vibePath rev-parse HEAD).Trim()
     Assert-LastExitCode 'Could not read VibeUE revision'
@@ -244,6 +351,7 @@ if ($CheckOnly) {
         @('vibeUEPerformancePatchSha256', $vibePerformancePatchSha256),
         @('vibeUEMcpShutdownGuardPatchSha256', $vibeShutdownGuardPatchSha256),
         @('vibeUEReliablePatchSha256', $vibeReliablePatchSha256),
+        @('vibeUEMaterialDiagnosticDocPatchSha256', $vibeMaterialDiagnosticDocPatchSha256),
         @('engineMcpAuthorizationPatchSha256', $engineMcpAuthorizationPatchSha256)
     )) {
         if ([string]$route.($pair[0]) -ne [string]$pair[1]) {
@@ -254,6 +362,11 @@ if ($CheckOnly) {
     if ($agents -notmatch '(?m)^<!-- UEAGENT_GATE_START -->\r?$') {
         throw "UEAgent gate is missing from $agentsPath"
     }
+    foreach ($requiredGateRule in @('`-RequestBase64`', 'Hash-guarded mutations')) {
+        if (-not $agents.Contains($requiredGateRule)) {
+            throw "UEAgent gate is stale or incomplete in $agentsPath`: missing $requiredGateRule"
+        }
+    }
     $vibeRuntimeBatchApplied = Test-GitPatchesApplied $vibePath @(
         $vibePerformancePatchPath, $vibeShutdownGuardPatchPath, $vibeReliablePatchPath
     )
@@ -261,6 +374,7 @@ if ($CheckOnly) {
     if ($route.engineNiagaraPatchSha256) { $engineBatchPatches += $engineNiagaraPatchPath }
     if ($routeVibeProfile -eq 'niagara-authoring') { $engineBatchPatches += $engineNiagaraAuthoringPatchPath }
     if ($route.mcpToolSearchPatchSha256) { $engineBatchPatches += $mcpToolSearchPatchPath }
+    if ($route.environmentProfile -eq 'abyss-full') { $engineBatchPatches += $abyssEngineExtensionsPatchPath }
     $engineBatchApplied = Test-GitPatchesApplied $EngineRoot $engineBatchPatches
     if (-not (Test-VibeUEProfileApplied $vibePath $expectedVibePatchPath $routeVibeProfile)) {
         throw "The routed UEAgent VibeUE profile is not applied: $routeVibeProfile"
@@ -273,6 +387,9 @@ if ($CheckOnly) {
     }
     if (-not $vibeRuntimeBatchApplied -and -not (Test-GitPatchApplied $vibePath $vibeReliablePatchPath)) {
         throw 'The routed VibeUE reliable execution kernel patch is not applied.'
+    }
+    if (-not (Test-GitPatchApplied $vibePath $vibeMaterialDiagnosticDocPatchPath)) {
+        throw 'The routed VibeUE material diagnostic patch is not applied.'
     }
     if (-not (Test-Path -LiteralPath (Join-Path $EngineRoot '.git')) -or
         (-not $engineBatchApplied -and -not (Test-GitPatchApplied $EngineRoot $engineMcpAuthorizationPatchPath))) {
@@ -300,6 +417,17 @@ if ($CheckOnly) {
             (-not $engineBatchApplied -and -not (Test-GitPatchApplied $EngineRoot $mcpToolSearchPatchPath))) {
             throw 'The routed UE 5.8 MCP tool-search patch does not match the installed engine.'
         }
+    }
+    if ($route.environmentProfile -eq 'abyss-full') {
+        if ([string]$route.vibeUEAbyssCompatibilityPatchSha256 -ne $vibeAbyssCompatibilityPatchSha256 -or
+            -not (Test-GitPatchApplied $vibePath $vibeAbyssCompatibilityPatchPath)) {
+            throw 'The routed Abyss VibeUE compatibility patch is not applied.'
+        }
+        if ([string]$route.engineAbyssExtensionsPatchSha256 -ne $abyssEngineExtensionsPatchSha256 -or
+            (-not $engineBatchApplied -and -not (Test-GitPatchApplied $EngineRoot $abyssEngineExtensionsPatchPath))) {
+            throw 'The routed Abyss engine extensions do not match the installed engine.'
+        }
+        Assert-AbyssProjectSettings $projectRoot
     }
     Write-Host "UEAgent static check passed for $projectName." -ForegroundColor Green
     exit 0
@@ -333,8 +461,8 @@ if ($dirty) {
     }
     Write-Warning "Preserving local VibeUE changes on baseline $VibeUERef."
 } else {
-    & git -C $vibePath fetch origin $VibeUERef
-    Assert-LastExitCode "Could not fetch VibeUE $VibeUERef"
+    & git -C $vibePath fetch origin $vibeUEFetchRef
+    Assert-LastExitCode "Could not fetch VibeUE $vibeUEFetchRef"
     & git -C $vibePath checkout --detach $VibeUERef
     Assert-LastExitCode "Could not checkout VibeUE $VibeUERef"
     Ensure-GitPatchApplied $vibePath $vibePatchPath 'UEAgent VibeUE patch'
@@ -344,6 +472,10 @@ if (-not (Test-GitPatchesApplied $vibePath $vibeRuntimePatches)) {
     Ensure-GitPatchApplied $vibePath $vibePerformancePatchPath 'VibeUE performance monitor patch'
     Ensure-GitPatchApplied $vibePath $vibeShutdownGuardPatchPath 'VibeUE MCP shutdown guard patch'
     Ensure-GitPatchApplied $vibePath $vibeReliablePatchPath 'VibeUE reliable execution kernel patch'
+}
+Ensure-GitPatchApplied $vibePath $vibeMaterialDiagnosticDocPatchPath 'VibeUE material diagnostic patch'
+if ($ApplyAbyssProfile) {
+    Ensure-GitPatchApplied $vibePath $vibeAbyssCompatibilityPatchPath 'VibeUE Abyss compatibility patch'
 }
 
 if (-not (Test-Path -LiteralPath (Join-Path $EngineRoot '.git'))) {
@@ -376,8 +508,19 @@ if ($ApplyMcpToolSearchPatch -and -not $mcpToolSearchPatchApplied) {
     Ensure-GitPatchApplied $EngineRoot $mcpToolSearchPatchPath 'UE 5.8 MCP tool-search patch'
     $mcpToolSearchPatchApplied = $true
 }
+$abyssEngineExtensionsPatchApplied = Test-GitPatchApplied $EngineRoot $abyssEngineExtensionsPatchPath
+if ($ApplyAbyssProfile -and -not $abyssEngineExtensionsPatchApplied) {
+    if (-not (Test-Path -LiteralPath (Join-Path $EngineRoot '.git'))) {
+        throw 'Applying the Abyss engine extensions requires a source-engine Git checkout.'
+    }
+    Ensure-GitPatchApplied $EngineRoot $abyssEngineExtensionsPatchPath 'Abyss engine extensions patch'
+    $abyssEngineExtensionsPatchApplied = $true
+}
 
 $project = Get-Content -Raw -LiteralPath $UProject | ConvertFrom-Json
+if ($ApplyAbyssProfile) {
+    Ensure-AbyssExternalPlugins $project $projectRoot $stackManifest $ExternalPluginSourceRoot
+}
 $projectChanged = $false
 foreach ($plugin in @('ModelContextProtocol', 'EditorToolset', 'VibeUE')) {
     if (-not @($project.Plugins | Where-Object { $_.Name -eq $plugin -and $_.Enabled }).Count) {
@@ -396,6 +539,7 @@ if ($uri.Scheme -ne 'http' -or $uri.Host -notin @('127.0.0.1', 'localhost', '::1
 $configDir = Join-Path $projectRoot 'Config'
 New-Item -ItemType Directory -Path $configDir -Force | Out-Null
 Set-UeAgentReliableConfig $projectRoot
+if ($ApplyAbyssProfile) { Set-AbyssProjectSettings $projectRoot }
 $settingsPath = Join-Path $configDir 'DefaultEditorPerProjectUserSettings.ini'
 $settings = @"
 [/Script/ModelContextProtocolEngine.ModelContextProtocolSettings]
@@ -424,6 +568,7 @@ Write-Utf8NoBom $mcpPath (($mcp | ConvertTo-Json -Depth 20) + [Environment]::New
 $routeDir = Join-Path $projectRoot 'Saved\UEAgent'
 New-Item -ItemType Directory -Path $routeDir -Force | Out-Null
 $routePath = Join-Path $routeDir 'route.json'
+$externalPlugins = @(Get-EnabledExternalPluginInventory $project $projectRoot)
 $route = [ordered]@{
     schema = 'ueagent-route-v1'
     transport = 'native-http'
@@ -440,7 +585,9 @@ $route = [ordered]@{
     vibeUEPerformancePatchSha256 = $vibePerformancePatchSha256
     vibeUEMcpShutdownGuardPatchSha256 = $vibeShutdownGuardPatchSha256
     vibeUEReliablePatchSha256 = $vibeReliablePatchSha256
+    vibeUEMaterialDiagnosticDocPatchSha256 = $vibeMaterialDiagnosticDocPatchSha256
     engineMcpAuthorizationPatchSha256 = $engineMcpAuthorizationPatchSha256
+    externalPlugins = $externalPlugins
 }
 if ($engineNiagaraPatchApplied) {
     $route['engineNiagaraPatchSha256'] = $engineNiagaraPatchSha256
@@ -450,6 +597,11 @@ if ($engineNiagaraAuthoringPatchApplied) {
 }
 if ($mcpToolSearchPatchApplied) {
     $route['mcpToolSearchPatchSha256'] = $mcpToolSearchPatchSha256
+}
+if ($ApplyAbyssProfile) {
+    $route['environmentProfile'] = 'abyss-full'
+    $route['vibeUEAbyssCompatibilityPatchSha256'] = $vibeAbyssCompatibilityPatchSha256
+    $route['engineAbyssExtensionsPatchSha256'] = $abyssEngineExtensionsPatchSha256
 }
 Write-Utf8NoBom $routePath (($route | ConvertTo-Json -Depth 10) + [Environment]::NewLine)
 Set-UeAgentGate $projectRoot

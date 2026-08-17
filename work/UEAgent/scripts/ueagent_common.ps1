@@ -82,6 +82,31 @@ function Get-UeAgentManifestPatchErrors($UeAgentRoot, $Manifest) {
     })
 }
 
+function Get-EnabledExternalPluginInventory($Project, $ProjectRoot) {
+    $pluginRoot = Join-Path $ProjectRoot 'Plugins'
+    if (-not [IO.Directory]::Exists($pluginRoot)) { return @() }
+    $descriptors = @{}
+    foreach ($path in [IO.Directory]::EnumerateFiles($pluginRoot, '*.uplugin', [IO.SearchOption]::AllDirectories)) {
+        $name = [IO.Path]::GetFileNameWithoutExtension($path)
+        if ($descriptors.ContainsKey($name)) { throw "Duplicate project plugin descriptor: $name" }
+        $descriptors[$name] = $path
+    }
+    @($Project.Plugins | Where-Object { $_.Enabled -and $_.Name -ne 'VibeUE' } | ForEach-Object {
+        $name = [string]$_.Name
+        if ($descriptors.ContainsKey($name)) {
+            $path = [string]$descriptors[$name]
+            $descriptor = [IO.File]::ReadAllText($path) | ConvertFrom-Json
+            [pscustomobject][ordered]@{
+                name = $name
+                descriptor = $path.Substring($ProjectRoot.TrimEnd('\').Length + 1).Replace('\', '/')
+                version = [int]$descriptor.Version
+                versionName = [string]$descriptor.VersionName
+                descriptorSha256 = Get-NormalizedFileSha256 $path
+            }
+        }
+    } | Sort-Object name)
+}
+
 function Get-PluginFingerprint($ProjectRoot, $EngineRoot, $ProjectName) {
     $patterns = @()
     if ($ProjectRoot) {

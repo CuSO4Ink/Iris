@@ -1,62 +1,34 @@
-# Repository Agent Instructions
+# Iris agent bootstrap
 
-## Violina 固定小说生产
+This file is the single AI bootstrap for the Iris workspace. Use the repository root as truth.
 
-本节适用于 `work/violina/literature/novels/` 下固定小说的创建、续写、正文重写与生成实验。只读解释、规范分析或状态汇报不强制调用子代理。
+## Always on
 
-### 项目目标
+- End every natural-language response with `唔呣。` on its own final line. Tool-only, pure-code,
+  and pure-data responses are exempt.
+- New file and directory names use English only; details are in `rules/naming.md`.
+- Unreal Engine source branches created by the agent use the exact `Aether/` prefix unless the
+  user specifies a different branch name.
+- Preserve unrelated dirty work. Do not read `USAGE.ankoha.md` unless the user explicitly asks.
 
-固定小说默认由纯 AI 生成。目标不是伪造真实人类作者经历，而是在守住事实、人物、视角与女女关系硬边界的前提下，使匿名读者判断“更像 AI 生成”的概率稳定低于 50%，并通过跨文本回归测试继续压低。
+## Route by task
 
-作者来源判断是读者感知，不是真实来源鉴定。不得用“AI 写的所以不可能通过”循环论证，也不得把 HumanDraft、人类持续共写或人类来源感设为正式正文的必要条件。用户文本可以作为可选素材或共同创作输入，但不是默认起点。
+- Slash command: read `rules/commands.md` and execute the registered flow.
+- Workspace governance: read `rules/maintainer/README.md` and its required references.
+- Project work: read `notes/project-progress-methodology.md`, then `work/<project>/AI-BRIEF.md`
+  and the task-related part of `BACKLOG.md`. Read `LOG.md` only when history is needed.
+- General work: use `rules/README.md` and the root `README.md` as navigation.
 
-### 三层闸门
+Disposable environments, generated evidence, screenshots, runs, and one-off scripts belong under
+`tmp/<project-or-task>/`, not in `work/`. `/checkpoint` flushes verified session progress into every
+project touched; it does not commit, archive, or clean files.
 
-1. **有效性硬闸门**：隔离审校检查事实、连续性、视角与认知、人物主体性、空间时流、硬边界、输出完整性、接口泄漏和语义退化。只有这些问题足以拒绝候选。
-2. **来源风险画像**：同一审校可以报告素材巡检、等密度小单元、理想他者、感官意义化、时间尺度饱和和整齐收束，但这些只预测盲测风险，不单独阻止候选进入来源盲测。
-3. **零上下文来源盲测**：有效候选以 5 个相互隔离、看不到项目与审校术语的读者为目标。当前基础通过线为 AI 概率中位数 `< 50%`，且多数读者判为“更像人写”。正式登记的试验可先冻结 3 份回答；只有五人失败已经数学锁死时才停止后两名，且不得伪造完整样本统计。报告同时保留均值、分布、最早形成判断的位置、反证与分歧。
+For implementation and architecture decisions, prioritize the smallest working end-to-end feature
+and forward progress. Add special controls only for concrete failures that could cause severe,
+hard-to-recover harm; otherwise fix observed or reproducible bugs at the root cause. Keep one
+current path, reuse existing foundations, and delete superseded paths in the same cutover. The
+methodology is the full authority for these choices.
 
-内审不得替盲测回答“像不像 AI”。像 AI 的风险很高仍可送测；只有实际盲测结果决定来源目标是否通过。
-
-### 正式生产路径
-
-- **根代理**：唯一统筹者、权威上下文持有者和正式文件写入者。它维护 Canon、CommittedEvents、CurrentState、长期压力与认知边界。
-- **隔离写手**：任务最前依次逐字接收 `skills/violina-fiction/references/writer-system-baseline.md`、`writer-system-calibration-epoch-02.md` 与 `writer-system-default-prose-profile.md` 的标记范围，再逐字接收冻结的最小 GenerationFrame。严格复现历史 Epoch 时才按当时登记栈省略默认画像。写手不搜索工作区，不读取文学守门、试验日志、盲测提示、审校结论或完整 Skill，直接生成 CandidateProse。根代理只能附加隔离、一次生成、读写边界和纯正文输出等程序说明；所有任务层文学方向必须先进入 Frame，不得临场口头加料。
-- **隔离审校员**：只读取白名单事实、必要近期正文、CandidateProse 与 `prose-generation-guard.md`；默认只输出硬闸门结论和非阻断风险画像，不写文件。Epoch 02 是已登记的唯一例外：首次报告冻结且硬闸门通过后，同一审校员可以依据自己的逐字证据做一次三片段／15% 的受限局部修订，再交给全新审校员复核。
-- **盲测读者**：只看匿名正文与来源判读问题，不接触项目后台、模型信息、生成提示或内审报告。
-
-默认顺序：
-
-1. 根代理从权威历史形成最小场景包：硬事实、主受当前可见状态与认知边界、仍在运行的外部压力、必要 `voice.md` 范围、少量必要近期正文和用户本轮方向。不得预写 EventRecord、逐段节拍、道具用途、必须对白、关系回报、结尾、完整人格/伦理卡、成组拒绝项或他者行为白名单。
-2. 以 `fork_turns: "none"` 启动隔离写手，按“Baseline—Calibration—DefaultProseProfile—冻结 Frame—输出边界”的顺序生成纯 AI CandidateProse。候选不是历史。
-3. 候选完成后串行启动隔离审校。硬闸门拒绝则回到生成架构或事实包；硬闸门通过后，Epoch 02 审校员须在见盲测前明确选择 `LOCAL_REVISION` 或 `NO_LOCAL_REVISION`。修订可以删除、缩短或改写被报告定位的心理、神态、外貌和其他局部，但修订后的整篇仍须通过全新审校员的完整硬闸门。
-4. 盲测未过 `< 50%` 时，先汇总重复证据，再把一个预登记、可完整撤销的架构差异施加到冻结直写基线；不得从失败架构继续叠加，也不得把审校清单逐句塞回同一稿做表面反优化。
-5. 盲测通过且用户接受版本后，根代理从实际正文抽取 EventRecord 与 StateDelta，按“追加事件—刷新状态—更新读者 TXT”提交。
-
-同一候选的生成、内审、盲测与提交必须串行。不同候选或不同作品可以并行，但不得共享候选正文写入权。所有正式文件始终只由根代理写入。
-
-### 架构迭代与收敛
-
-`trials/ai-detection-loop.md` 保存历史证据，不是永久停止纯 AI 的授权文件。开始新一轮实质性实验前，完整读取该日志，登记最相近旧实验、真正新增量、反证、候选固定方式和评价指标。
-
-允许探索的变量包括模型族与训练目标、上下文切片、GenerationFrame 结构、计划可见性、候选池与选择器、生成/修订拓扑、解码和多读者评价。提示同义改写、随机添废话、故意犯错、机械乱序或删掉漂亮句子不算实质性架构。
-
-实验默认以至少两个不同文本截面做回归；只有盲测中位数、均值或多数判断出现可复现改善，才把变量视为有效。连续三次没有改善只说明当前支路达到经验平台，不得上升为纯 AI 目标不可能。
-
-正文写手的 `WriterSystemBaseline`、`WriterSystemCalibration` 与 `WriterSystemDefaultProseProfile` 在一个 Epoch 内不可自修改。失败轮次只封存其相对基线的任务层差异；文学评价上升不能覆盖来源指标恶化，也不能成为保留失败差异的理由。
-
-`fork_turns: "none"` 只隔离对话上下文，各代理仍共享工作区。子代理任务必须写明白名单路径和读写边界；写手与审校员均不得自行搜索项目。
-
-### 已完成的 Epoch 02 复现边界
-
-Epoch 02 已在 Round 03 完成并停止；下列条款只用于严格复现该 Epoch。普通生产与新 Epoch 使用前述 `WriterSystemDefaultProseProfile` 默认栈。
-
-- 当前 Epoch 最多 5 轮，每轮固定 H/L 两个文本截面；Round 01 是校准后直写基线。
-- 写手、审校员、来源读者与弱文学参考读者统一冻结为 `gpt-5.6-sol / high`。更换模型只能作为某轮唯一预登记变量。
-- H/L GenerationFrame 在 Round 01 前冻结，五轮不推进事实。Round 02—05 的差异只写入 trials overlay，不在 Epoch 内修改 `WriterSystemBaseline`、`WriterSystemCalibration` 或正式 Skill。
-- 局部修订稿在盲测前只保留一个正式版本。修订稿复审失败时丢弃修订，由第三名全新审校员复审原稿；不得二次修订。
-- 确认 A、B 均以 7 名读者为完整成功样本；可以先取 4 名并在失败数学锁死时早停，不能成功早停。
-- 文学六维 A/B 只在 Round 01 与 Epoch 结束时作为弱参考运行，不参与通过、拒绝、版本选择、变量保留、确认或停止。
 # Unreal live-work gate
 
 ## UE-related project brief rule
@@ -77,14 +49,33 @@ Do not create a second project-specific MCP gate or claim a route for a target t
 bootstrapped. If a UE-related project is offline-only or uses a different MCP (for example
 RenderDoc), the block may be conditional, but any live Unreal work still enters through UEAgent.
 
+## UE pre-dispatch invariants
+
+These rules apply before any UEAgent Gateway request, including read-only calls:
+
+- AI-generated Gateway requests that cross a `powershell.exe` process boundary must encode the
+  complete UTF-8 JSON request with `-RequestBase64`, or use `-RequestFile` for large/multiline
+  payloads. Never pass raw JSON through `-RequestJson`, `-ArgumentsJson`, or `-ProjectionJson` to a
+  child PowerShell process. Use `-ScriptFile` only for Gateway actions that support script files;
+  otherwise keep code such as Custom HLSL inside the encoded request. Build JSON from objects with
+  `ConvertTo-Json`; do not hand-escape it.
+- A local parameter/JSON parse failure before MCP dispatch is a known pre-dispatch failure: do not
+  describe it as `RESULT_UNKNOWN`, do not claim UE was contacted, and do not retry a mutation.
+- Any mutation preflight that locks HLSL/pass hashes must use one named asset version and one
+  complete manifest generated from that version. Never mix hashes from historical baselines. On a
+  mismatch, stop before the first mutation and verify against versioned source/history; do not
+  accept the live hash merely because it is current.
+
 For any task that reads live Unreal state or mutates a UE project:
 
 1. Read `work/UEAgent/skills/ue-mcp-workflows/HOTPATH.md`.
-2. Read the target project's `Saved/UEAgent/route.json` and run `work/UEAgent/scripts/compact_context.ps1`.
+2. Locate the target project's `Saved/UEAgent/route.json` and pass that path to
+   `work/UEAgent/scripts/compact_context.ps1`; read the route or wrapper source only to diagnose
+   a route/script failure.
 3. On `CACHE_READ`, stop before MCP. On `NEEDS_DOCTOR`, run the routed `scripts/doctor.ps1` once
    and use its receipt directly. A `BLOCKED` result requires route repair. For `LIVE_READ`, load
-   only the relevant domain card; add `AI-BRIEF.md`, the workflow Skill, and Core for mutation/save work.
-4. Follow the receipt and the relevant domain SOP; cache/source/config/log analysis may proceed
+   only the relevant domain card; add `AI-BRIEF.md`, the workflow Skill, and Core for mutation/save.
+4. Follow the receipt and the relevant domain SOP. Cache/source/config/log analysis may proceed
    offline, but live mutation or save requires an allowed, task-gated path.
 
 If the route is missing, bootstrap the target or remain offline. Do not use Computer Use to drive

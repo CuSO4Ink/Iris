@@ -33,4 +33,4 @@
 ## 清理
 
 - `.workbuddy/backups/` 下超过 30 天的目录可删
-- 需要长期保存的关键版本，移到 `archive/rules-history/` 或自行处理
+- 长期版本历史只由 Git 保存，不把旧规则复制进 `archive/`

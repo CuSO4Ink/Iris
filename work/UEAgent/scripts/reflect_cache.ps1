@@ -209,6 +209,32 @@ function Get-Dependencies($Sections) {
     return @($deps)
 }
 
+function Get-SemanticReferences($Sections) {
+    $references = [Collections.Generic.List[object]]::new()
+    if (-not $Sections.Contains('Deps')) { return @() }
+    foreach ($line in @($Sections['Deps'])) {
+        if ([string]$line -notmatch '^\s*([A-Z][A-Z0-9_]*):\s+(/Game/[^\s|]+)(?:\s+\|\s+(.+))?$') { continue }
+        $kind = $matches[1]
+        $target = $matches[2]
+        $details = $matches[3]
+        $reference = [ordered]@{ target = $target }
+        foreach ($detail in @($details -split '\s+\|\s+')) {
+            if ($detail -match '^([a-z_][a-z0-9_]*)=(.+)$') { $reference[$matches[1]] = $matches[2] }
+        }
+        if (-not $reference.Contains('relation')) {
+            $reference.relation = switch ($kind) {
+                'MF' { 'FunctionCall' }
+                'MPC' { 'CollectionParameter' }
+                'TEX' { 'Texture' }
+                'PARENT' { 'Parent' }
+                default { $kind }
+            }
+        }
+        $references.Add([pscustomobject]$reference)
+    }
+    return @($references)
+}
+
 function Get-UsefulLines($Lines) {
     @($Lines | Where-Object { [string]$_ -and [string]$_ -ne '-' })
 }
@@ -235,6 +261,7 @@ function Get-CacheRecord($CachePath, [switch]$IncludeHash) {
     $hash = if ($IncludeHash) { (Get-FileHash -Algorithm SHA256 -LiteralPath $resolved).Hash.ToLowerInvariant() } else { $null }
     $logic = Get-UsefulLines (Get-SectionLines $sections 'Logic')
     $deps = Get-Dependencies $sections
+    $references = @(Get-SemanticReferences $sections)
     return [ordered]@{
         path = $resolved
         lines = $lines
@@ -258,9 +285,11 @@ function Get-CacheRecord($CachePath, [switch]$IncludeHash) {
             sections = @($sections.Keys)
             logicLines = $logic.Count
             dependencyCount = $deps.Count
+            referenceCount = $references.Count
             parameterLines = (Get-UsefulLines (Get-SectionLines $sections 'Params')).Count
         }
         dependencies = $deps
+        references = $references
     }
 }
 
@@ -272,7 +301,7 @@ function New-Summary($Record) {
     }
     if ($Record.cache.sha256) { $cache.sha256 = $Record.cache.sha256 }
     $stats = [ordered]@{ sections = $Record.stats.sections }
-    foreach ($name in @('logicLines', 'dependencyCount', 'parameterLines')) {
+    foreach ($name in @('logicLines', 'dependencyCount', 'referenceCount', 'parameterLines')) {
         if ([int]$Record.stats[$name] -gt 0) { $stats[$name] = [int]$Record.stats[$name] }
     }
     return [ordered]@{ cache = $cache; stats = $stats }
@@ -300,6 +329,10 @@ function Get-ReadView($Record) {
     if ($View -eq 'refs') {
         $result.dependencies = @($Record.dependencies | Select-Object -First $MaxItems)
         $result.dependenciesTruncated = $Record.dependencies.Count -gt $MaxItems
+        if ($Record.references.Count -gt 0) {
+            $result.references = @($Record.references | Select-Object -First $MaxItems)
+            $result.referencesTruncated = $Record.references.Count -gt $MaxItems
+        }
         return $result
     }
     if ($View -eq 'detail') {
