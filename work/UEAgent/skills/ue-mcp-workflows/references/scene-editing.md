@@ -14,6 +14,10 @@ Do not assume blank-level creation exists.
 
 - Use `ActorTools` for transforms, labels, tags, bounds, hierarchy, and components.
 - Use `ObjectTools` for component properties after schema discovery.
+- For large actors (for example a 505x505 Landscape), full-actor property enumeration via
+  `ObjectTools.list_properties` can exceed the gateway timeout. Use the typed domain service
+  (such as `LandscapeService.ListLandscapes`) and targeted property calls instead
+  (BIFROST-20260805-LANDSCAPE-PROPERTY-ENUM-TIMEOUT).
 - Distinguish actor world transform from component relative transform.
 - Read back transform, properties, folder, tags, and components after mutation.
 - Use full level-object `refPath` values.

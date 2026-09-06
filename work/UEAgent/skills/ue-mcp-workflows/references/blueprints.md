@@ -31,6 +31,18 @@ retired TCP 9877 stack.
 
 Compile success is not proof of intended wiring or runtime behavior.
 
+## CDO mutation pitfalls
+
+- A CDO write can show the new value in an independent object snapshot while the package-scope
+  before/after snapshot stays equal and the job ends `VERIFY_EXPECTED_CHANGE`. Treat that mismatch
+  as `RESULT_UNKNOWN`; independently read the exact object and package dirty state before retry or
+  save (BLUEPRINT-20260814-CDO-PACKAGE-SNAPSHOT-GAP).
+- Direct writes to a generated CDO's native inherited component (for example
+  `SkeletalMeshComponent`) can persist yet leave generated/transient component state dirty,
+  producing a compile/save loop. Restore the source component defaults, express the runtime
+  override in an authoritative Blueprint graph, save once, then fully reload the Editor/package
+  before trusting any state cache (BLUEPRINT-20260814-NATIVE-COMPONENT-CDO-DIRTY-LOOP).
+
 Some VibeUE Blueprint property operations have saved implicitly. Until the active implementation
 proves otherwise, treat those calls as save operations and do not use them outside an authorised
 save boundary. Prefer official typed operations with explicit lifecycle behavior.

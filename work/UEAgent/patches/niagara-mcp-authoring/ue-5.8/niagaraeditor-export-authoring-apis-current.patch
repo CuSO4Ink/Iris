@@ -1,3 +1,269 @@
+diff --git a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/NiagaraExternalSystemEditorUtilities.cpp b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/NiagaraExternalSystemEditorUtilities.cpp
+index 6c0f2f3..fd12857 100644
+--- a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/NiagaraExternalSystemEditorUtilities.cpp
++++ b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/NiagaraExternalSystemEditorUtilities.cpp
+@@ -6,6 +6,8 @@
+ #include "NiagaraSystemEditorData.h"
+ #include "NiagaraScriptMergeManager.h"
+ #include "ViewModels/Stack/NiagaraStackGraphUtilities.h"
++#include "DataHierarchyViewModelBase.h"
++#include "ViewModels/HierarchyEditor/NiagaraUserParametersHierarchyViewModel.h"
+ 
+ #include "ScopedTransaction.h"
+ 
+@@ -2065,6 +2067,208 @@ void UNiagaraExternalEditUtilities::AddUserVariable(UNiagaraSystem* System, cons
+ 	System->PostEditChangeProperty(PropertyChangedEvent);
+ }
+ 
++void UNiagaraExternalEditUtilities::GetUserParameterHierarchy(UNiagaraSystem* System, FNiagaraExt_UserParameterHierarchy& OutHierarchy, FNiagaraExternalEditContext& Context)
++{
++	if (!Context.CheckSystem(System))
++	{
++		return;
++	}
++
++	UHierarchyRoot* Root = nullptr;
++	if (UNiagaraSystemEditorData* EditorData = Cast<UNiagaraSystemEditorData>(System->GetEditorData()))
++	{
++		Root = EditorData->UserParameterHierarchy;
++	}
++
++	TMap<FString, int32> CategoryIndex;
++	auto BucketFor = [&OutHierarchy, &CategoryIndex](const FString& CategoryName) -> FNiagaraExt_UserParameterCategory&
++	{
++		if (int32* Found = CategoryIndex.Find(CategoryName))
++		{
++			return OutHierarchy.Categories[*Found];
++		}
++		FNiagaraExt_UserParameterCategory NewEntry;
++		NewEntry.Category = CategoryName;
++		CategoryIndex.Add(CategoryName, OutHierarchy.Categories.Add(NewEntry));
++		return OutHierarchy.Categories.Last();
++	};
++
++	if (Root != nullptr)
++	{
++		for (const TObjectPtr<UHierarchyElement>& Child : Root->GetChildren())
++		{
++			if (const UHierarchyCategory* Category = Cast<UHierarchyCategory>(Child))
++			{
++				FNiagaraExt_UserParameterCategory& Bucket = BucketFor(Category->GetCategoryName().ToString());
++				for (const TObjectPtr<UHierarchyElement>& CatChild : Category->GetChildren())
++				{
++					if (CatChild->IsA<UNiagaraHierarchyUserParameter>())
++					{
++						Bucket.ParameterNames.Add(CatChild->ToString());
++					}
++				}
++			}
++			else if (Child->IsA<UNiagaraHierarchyUserParameter>())
++			{
++				BucketFor(TEXT("")).ParameterNames.Add(Child->ToString());
++			}
++		}
++	}
++
++	TArray<FNiagaraVariable> UserParameters;
++	System->GetExposedParameters().GetUserParameters(UserParameters);
++	for (const FNiagaraVariable& UserParameter : UserParameters)
++	{
++		const FString RawName = UserParameter.GetName().ToString();
++		FString ShortName = RawName;
++		ShortName.RemoveFromStart(TEXT("User."));
++		bool bFound = false;
++		for (const FNiagaraExt_UserParameterCategory& Entry : OutHierarchy.Categories)
++		{
++			for (const FString& Existing : Entry.ParameterNames)
++			{
++				FString ExistingShort = Existing;
++				ExistingShort.RemoveFromStart(TEXT("User."));
++				if (ExistingShort == ShortName)
++				{
++					bFound = true;
++					break;
++				}
++			}
++			if (bFound)
++			{
++				break;
++			}
++		}
++		if (!bFound)
++		{
++			BucketFor(TEXT("")).ParameterNames.Add(RawName.StartsWith(TEXT("User.")) ? RawName : TEXT("User.") + RawName);
++		}
++	}
++}
++
++void UNiagaraExternalEditUtilities::SetUserParameterCategory(UNiagaraSystem* System, const TArray<FString>& ParameterNames, const FString& Category, FNiagaraExternalEditContext& Context)
++{
++	if (!Context.CheckSystem(System))
++	{
++		return;
++	}
++
++	UNiagaraSystemEditorData* EditorData = Cast<UNiagaraSystemEditorData>(System->GetEditorData());
++	if (EditorData == nullptr)
++	{
++		Context.Error(LOCTEXT("SetCategoryNoEditorData", "SetUserParameterCategory: system has no UNiagaraSystemEditorData."));
++		return;
++	}
++
++	const FScopedTransaction Transaction(LOCTEXT("ExternalSetUserParameterCategory", "External System Set User Parameter Category"));
++	System->Modify();
++	EditorData->Modify();
++
++	if (EditorData->UserParameterHierarchy == nullptr)
++	{
++		EditorData->UserParameterHierarchy = NewObject<UHierarchyRoot>(EditorData, TEXT("UserParameterHierarchyRoot"), RF_Transactional);
++	}
++	UHierarchyRoot* Root = EditorData->UserParameterHierarchy;
++	Root->Modify();
++
++	UHierarchyElement* TargetParent = Root;
++	if (!Category.IsEmpty())
++	{
++		UHierarchyCategory* Found = nullptr;
++		for (const TObjectPtr<UHierarchyElement>& Child : Root->GetChildren())
++		{
++			UHierarchyCategory* Candidate = Cast<UHierarchyCategory>(Child);
++			if (Candidate != nullptr && Candidate->GetCategoryName().ToString() == Category)
++			{
++				Found = Candidate;
++				break;
++			}
++		}
++		if (Found == nullptr)
++		{
++			Found = Root->AddChild<UHierarchyCategory>();
++			Found->SetCategoryName(FName(*Category));
++			Found->SetIdentity(UHierarchyCategory::ConstructIdentity());
++			Found->Modify();
++		}
++		TargetParent = Found;
++	}
++
++	TArray<UNiagaraHierarchyUserParameter*> AllElements;
++	Root->GetChildrenOfType<UNiagaraHierarchyUserParameter>(AllElements, true);
++
++	for (const FString& NameRaw : ParameterNames)
++	{
++		FString ShortName = NameRaw;
++		ShortName.RemoveFromStart(TEXT("User."));
++
++		UNiagaraHierarchyUserParameter* Existing = nullptr;
++		for (UNiagaraHierarchyUserParameter* Element : AllElements)
++		{
++			FString ElementShort = Element->ToString();
++			ElementShort.RemoveFromStart(TEXT("User."));
++			if (ElementShort == ShortName)
++			{
++				Existing = Element;
++				break;
++			}
++		}
++
++		if (Existing != nullptr)
++		{
++			if (Existing->GetOuter() != TargetParent)
++			{
++				if (UHierarchyElement* OldParent = Cast<UHierarchyElement>(Existing->GetOuter()))
++				{
++					OldParent->Modify();
++					OldParent->GetChildrenMutable().Remove(Existing);
++				}
++				TargetParent->Modify();
++				TargetParent->GetChildrenMutable().Add(Existing);
++				Existing->Rename(nullptr, TargetParent, REN_DoNotDirty | REN_DontCreateRedirectors);
++			}
++			continue;
++		}
++
++		FNiagaraVariable FoundVar;
++		bool bFoundVar = false;
++		TArray<FNiagaraVariable> UserParameters;
++		System->GetExposedParameters().GetUserParameters(UserParameters);
++		for (const FNiagaraVariable& Candidate : UserParameters)
++		{
++			FString CandidateShort = Candidate.GetName().ToString();
++			CandidateShort.RemoveFromStart(TEXT("User."));
++			if (CandidateShort == ShortName)
++			{
++				FoundVar = Candidate;
++				bFoundVar = true;
++				break;
++			}
++		}
++		if (!bFoundVar)
++		{
++			Context.Error(FText::Format(LOCTEXT("SetCategoryUnknownParam", "SetUserParameterCategory: no user parameter named '{0}'."), FText::FromString(NameRaw)));
++			continue;
++		}
++
++		UNiagaraScriptVariable* ScriptVariable = FNiagaraEditorUtilities::UserParameters::GetScriptVariableForUserParameter(FoundVar, *System);
++		if (ScriptVariable == nullptr)
++		{
++			Context.Error(FText::Format(LOCTEXT("SetCategoryNoScriptVar", "SetUserParameterCategory: no script variable for '{0}'."), FText::FromString(NameRaw)));
++			continue;
++		}
++
++		TargetParent->Modify();
++		UNiagaraHierarchyUserParameter* NewElement = TargetParent->AddChild<UNiagaraHierarchyUserParameter>();
++		NewElement->SetFlags(RF_Transactional);
++		NewElement->Initialize(*ScriptVariable);
++		NewElement->Modify();
++	}
++
++	FPropertyChangedEvent PropertyChangedEvent(nullptr, EPropertyChangeType::ValueSet);
++	System->PostEditChangeProperty(PropertyChangedEvent);
++}
+ void UNiagaraExternalEditUtilities::RemoveUserVariable(UNiagaraSystem* System, const FNiagaraExt_Variable& Variable, FNiagaraExternalEditContext& Context)
+ {
+ 	if (!Context.CheckSystem(System)) return;
+diff --git a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraExternalSystemEditorUtilities.h b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraExternalSystemEditorUtilities.h
+index ea47a3d..983c03f 100644
+--- a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraExternalSystemEditorUtilities.h
++++ b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraExternalSystemEditorUtilities.h
+@@ -205,6 +205,29 @@ struct FNiagaraExt_UserVariables
+ 	TArray<FNiagaraExt_UserVariable> UserVariables;
+ };
+ 
++/** One Parameters-panel category of user parameters; empty Category = ungrouped root level. */
++USTRUCT(BlueprintInternalUseOnly)
++struct FNiagaraExt_UserParameterCategory
++{
++	GENERATED_BODY()
++
++	UPROPERTY(EditAnywhere, Category="Category")
++	FString Category;
++
++	UPROPERTY(EditAnywhere, Category="Category")
++	TArray<FString> ParameterNames;
++};
++
++/** The full Parameters-panel grouping of a system's user parameters. */
++USTRUCT(BlueprintInternalUseOnly)
++struct FNiagaraExt_UserParameterHierarchy
++{
++	GENERATED_BODY()
++
++	UPROPERTY(EditAnywhere, Category="Categories")
++	TArray<FNiagaraExt_UserParameterCategory> Categories;
++};
++
+ 
+ /* We expose the internals of Niagara in 3 layers.
+ *
+@@ -1383,6 +1406,9 @@ public:
+ 	UE_API static void AddUserVariable(UNiagaraSystem* System, const FNiagaraExt_UserVariable& Variable, FNiagaraExternalEditContext& Context);
+ 	UE_API static void RemoveUserVariable(UNiagaraSystem* System, const FNiagaraExt_Variable& Variable, FNiagaraExternalEditContext& Context);
+ 
++	UE_API static void GetUserParameterHierarchy(UNiagaraSystem* System, FNiagaraExt_UserParameterHierarchy& OutHierarchy, FNiagaraExternalEditContext& Context);
++	UE_API static void SetUserParameterCategory(UNiagaraSystem* System, const TArray<FString>& ParameterNames, const FString& Category, FNiagaraExternalEditContext& Context);
++
+ 	UE_API static void AddEmitter(UNiagaraEmitter* TemplateEmitter, FName EmitterName, FNiagaraExt_EmitterTopology& OutTopology, FNiagaraExternalEditContext& Context);
+  	UE_API static void RemoveEmitter(const FNiagaraExt_StackItemReference& EmitterToRemoveRef, FNiagaraExternalEditContext& Context);
+ 
 diff --git a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h
 index ce63a3f..8f30299 100644
 --- a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Public/NiagaraNode.h

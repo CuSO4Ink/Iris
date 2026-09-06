@@ -60,6 +60,9 @@ SSS、Ramp、Style 或 Face SDF。G0 尚需冻结平台/RHI、输出设置和 To
   各槽独立 Base Color 与 `SK_AvatarSample_A` 的 23/23 绑定均保留。
   Toon 母材复用项目内成熟的
   `SubstrateToonBSDF` 图，当前使用引擎内建 Profile 0；显式三套 `UToonProfile` 和验证关卡尚未创建。
+  2026-08-27 发现其 Toon BSDF 从未连接 Front Material（修复前唯一输出为 OpacityMask），已在当会话
+  接线并编译通过（诊断引用 T__10 等 3 张贴图），脸部经 Face → `MI_NPR_AvatarSampleA_Face` → 母材链路
+  以原生 Toon 渲染确认生效；母材与分类实例当前为未保存脏状态。
 - **Runtime / external truth**: 2026-08-14 UEAgent 在 Editor epoch
   `057C7FF7-4483-6E26-10CA-CC94DC00328C` 完成鞋子 V8.2.1 接入、编译、保存和缓存回读；UE 资产名继续沿用
   V8_2，避免创建无意义的版本资产。鞋实例的已保存基线有
@@ -87,17 +90,27 @@ SSS、Ramp、Style 或 Face SDF。G0 尚需冻结平台/RHI、输出设置和 To
   `(127.743, 127.744, 254.912)`，因此不是黑图或导入源丢失。以两张源法线复现当前母材合成式时，
   最小 Z 为 0.9404、负 Z 为 0，源数据和理论公式也不会产生翻面。未解范围已收窄到
   UE GPU 纹理资源/采样或已编译的 Micro 材质分支；尚未修改母材。UEAgent 随后确认 Editor 离线，
-  GPU 资产预览需等待 Editor 重新打开。
+  GPU 资产预览需等待 Editor 重新打开。2026-08-27 Editor 上线（epoch
+  `A4F54B9C-4657-0C57-E467-7DA76CB652F8`，PID 14912，doctor HEALTHY），唯一脏包为无关的
+  `/Game/Neow/World/L_Demo`；鞋实例 live 回读 8 参数齐全，`PartNormalStrength=1`、
+  `MicroNormalStrength=0`、Roughness/Metallic=1，与保存态哈希 `76590f…` 一致，
+  用户现场确认变黑不再出现，Micro 根因排查关闭。
+  同日 SSS Probe：`M_NPR_CharacterSkin` 已基于 Toon 母材副本建成（Slab + 复用 `SP_AvatarSample_A` +
+  `SSSMFPScale` 参数），但会话内新建 Substrate BSDF 接根在 Epic/VibeUE 两条编译路径均报算子注册错误；
+  载入态节点接根正常。 Probe 卡在编译环节，待保存材质并重启 Editor 后复验，仍失败则按硬阻塞升级。
 - **Compatibility truth**: Abyss 中 47 个仍序列化 `MSM_CustomToon` 的旧资产已备份并重存为
   `MSM_DefaultLit`；移除临时 Enum Redirect 后 47/47 可加载、哈希不再变化，项目内旧枚举标记为零；
   5.8.1 `UnrealEditor` 已完整重建，清除了旧 Renderer DLL 对已删除 Shader 的残留引用。
 
 ## Current Focus
 
-V8.2.1 的语义分层与下鞋连续性已通过技术检查，当前只处理 Micro 运行分支变黑。
-Editor 恢复后先读取 GPU 资产预览：若 Texture2D 资源异常，修复导入/资源重建；若资源正常，
-则检查已编译的 Micro 采样与法线合成分支，只在根因确定后改母材。修复前鞋实例保持
-`MicroNormalStrength=0`，不再调整灯光或金属度来遮盖该问题。贴图仍负责浅接缝、压槽、细缝线、
+V8.2.1 的语义分层与下鞋连续性已通过技术检查。2026-08-27 用户确认整鞋变黑在
+`MicroNormalStrength=0`（已保存）下不再出现，Micro 根因排查关闭、不再恢复 Micro；
+鞋实例 live 回读 8 参数与保存哈希 `76590f…` 一致。当前焦点转为皮肤 SSS 单次 Probe（用户已批准）：
+源码确认 Toon BSDF 无 SSS 输入，SSS 仅 Substrate Slab 路径（`SSSMFP`/`SSSPhaseAnisotropy`/
+`SubsurfaceProfile`/`SubSurfaceType`）；Probe 只切换 Face 单实例到新建的 `M_NPR_CharacterSkin`
+并复用已有 `SP_AvatarSample_A`（/Script/Engine.SubsurfaceProfile），同机位同灯光 A/B，
+过 Gate 才推广 Body，失败删除回退。贴图仍负责浅接缝、压槽、细缝线、
 浅折痕、鞋底小沟槽、PU/TPU/橡胶/织带微表面、Roughness/Specular/Metallic、Print 与 Cavity。
 
 模型提升范围只保留会改变轮廓、侧壁、遮挡、叠压或投影的结构：大面积胫部 Guard 护板的厚度与间隙；

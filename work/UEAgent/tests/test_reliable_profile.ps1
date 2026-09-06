@@ -36,25 +36,44 @@ Assert-True ($manifest.runtime.reliable_protocol -eq '2.0.0') 'Manifest reliable
 Assert-True ($manifest.runtime.mutation_transport -eq 'ueagent-command-queue') 'Manifest mutation transport is not the command queue.'
 Assert-True (@($manifest.runtime.control_tools).Count -eq 9) 'Manifest must expose exactly nine reliable control tools.'
 Assert-True ($manifest.engine.patch -eq 1 -and $manifest.engine.compatible_changelist -eq 55116800) 'Manifest does not pin the verified UE 5.8.1 baseline.'
-Assert-True ($manifest.profiles.base.vibeue_fetch_ref -eq 'refs/heads/5-8') 'Manifest does not fetch VibeUE from the public 5-8 branch.'
+Assert-True ($manifest.profiles.base.vibeue_fetch_ref -eq '6a0617cfb05aaced82d6613e88b1572fe7452eaa') 'Manifest does not pin the verified VibeUE 5-8 commit; a moving branch ref would shift the patch baseline.'
+Assert-True ($manifest.profiles.base.vibeue_merge_base_ref -eq '271f48771d077179fb597dc285ab5b898c5e8038') 'Manifest lost the pinned VibeUE merge-base commit.'
+Assert-True ($manifest.profiles.base.vibeue_merged_tree -eq '4612cc048aff5a7db4233877ec5140690d000183') 'Manifest lost the verified VibeUE merged baseline tree.'
 Assert-True (-not ($manifest.profiles.PSObject.Properties.Name -contains 'project-unrealmcp-readonly')) 'Manifest still exposes the retired UnrealMCP compatibility profile.'
 Assert-True ('patches/ue58-mcp-authorization-gate.patch' -in @($manifest.profiles.base.apply)) 'Base profile misses the MCP authorization gate.'
 Assert-True ('patches/vibeue-reliable-kernel.patch' -in @($manifest.profiles.base.apply)) 'Base profile misses the reliable kernel.'
 Assert-True ('patches/vibeue-reliable-kernel.patch' -in @($manifest.profiles.'niagara-authoring'.apply)) 'Niagara authoring profile misses the reliable kernel.'
 Assert-True ('patches/ue58-niagara-toolsets.patch' -in @($manifest.profiles.'niagara-authoring'.apply)) 'Niagara authoring profile misses the Niagara Toolsets extension.'
-Assert-True ('patches/ue58-abyss-engine-extensions.patch' -in @($manifest.profiles.abyss.apply)) 'Abyss profile misses the engine extensions.'
-Assert-True ('patches/vibeue-abyss-compatibility.patch' -in @($manifest.profiles.abyss.apply)) 'Abyss profile misses the VibeUE compatibility patch.'
-Assert-True ($manifest.profiles.abyss.bootstrap_switch -eq '-ApplyAbyssProfile') 'Abyss profile has no canonical bootstrap switch.'
-Assert-True (@($manifest.profiles.abyss.external_plugins).Count -eq 7) 'Abyss profile does not pin all enabled external plugins.'
+$targetNames = @($manifest.targets.PSObject.Properties.Name)
+Assert-True ($targetNames.Count -ge 1) 'Manifest declares no target overrides.'
+foreach ($targetProperty in $manifest.targets.PSObject.Properties) {
+    $targetProfile = $targetProperty.Value
+    foreach ($requiredField in @('project_name', 'capabilities', 'extra_patches', 'external_plugins', 'project_settings', 'bootstrap_switch')) {
+        Assert-True ($targetProfile.PSObject.Properties.Name -contains $requiredField) "Target '$($targetProperty.Name)' is missing required field: $requiredField"
+    }
+    Assert-True ($targetProfile.bootstrap_switch -eq "-TargetProfile $($targetProperty.Name)") "Target '$($targetProperty.Name)' bootstrap switch is not the canonical -TargetProfile entry."
+    foreach ($group in @('engine', 'vibeue')) {
+        foreach ($relative in @($targetProfile.extra_patches.$group)) {
+            Assert-True ($manifest.patches.PSObject.Properties.Name -contains [string]$relative) "Target '$($targetProperty.Name)' extra patch has no pinned hash: $relative"
+        }
+    }
+}
+$abyssTarget = $manifest.targets.Abyss
+Assert-True ($null -ne $abyssTarget) 'Manifest targets lost the verified Abyss instance.'
+Assert-True ('patches/ue58-abyss-engine-extensions.patch' -in @($abyssTarget.extra_patches.engine)) 'Abyss target misses the engine extensions.'
+Assert-True ('patches/vibeue-abyss-compatibility.patch' -in @($abyssTarget.extra_patches.vibeue)) 'Abyss target misses the VibeUE compatibility patch.'
+Assert-True (@($abyssTarget.external_plugins).Count -eq 7) 'Abyss target does not pin all enabled external plugins.'
 Assert-True (@($manifest.profiles.default.apply).Count -eq 1 -and $manifest.profiles.default.apply[0] -eq 'patches/ue58-mcp-tool-search.patch') 'Default MCP tool-search profile is not one current patch.'
 $reliablePatchText = Get-Content -Raw -LiteralPath (Join-Path $root 'patches\vibeue-reliable-kernel.patch')
 Assert-True (-not $reliablePatchText.Contains('TEXT("ueagent_get_receipt")')) 'Reliable patch still publishes the redundant receipt tool.'
 Assert-True (-not $reliablePatchText.Contains('StringProperty(TEXT("fault_injection")')) 'Reliable patch still publishes test-only fault injection fields.'
 
 foreach ($property in $manifest.patches.PSObject.Properties) {
-    $path = Join-Path $root ([string]$property.Name).Replace('/', '\')
+    $relative = [string]$property.Name
+    $path = Join-Path $root $relative.Replace('/', '\')
     Assert-True (Test-Path -LiteralPath $path) "Manifest patch is missing: $path"
-    Assert-True ((Get-NormalizedSha256 $path) -eq [string]$property.Value) "Manifest hash differs: $($property.Name)"
+    Assert-True ((Get-NormalizedSha256 $path) -eq [string]$property.Value.sha256) "Manifest hash differs: $relative"
+    Assert-True ([string]$property.Value.repo -in @('engine', 'vibeue')) "Manifest patch declares an unknown repo: $relative"
 }
 
 foreach ($script in @('ueagent_common.ps1', 'bootstrap.ps1', 'doctor.ps1', 'mcp_gateway.ps1', 'mcp_gateway_daemon.ps1', 'compact_context.ps1', 'reflect_cache.ps1')) {
@@ -62,6 +81,66 @@ foreach ($script in @('ueagent_common.ps1', 'bootstrap.ps1', 'doctor.ps1', 'mcp_
 }
 
 . (Join-Path $root 'scripts\ueagent_common.ps1')
+
+$authoringPatchText = Get-Content -Raw -LiteralPath (Join-Path $root 'patches\niagara-mcp-authoring\vibeue\vibeue-ueagent-authoring.patch')
+foreach ($requiredOp in @(
+    'CreateSimulationStage', 'ConfigureGrid2DSimulationStage',
+    'CreateInternalRenderTarget2DUserParameter', 'CreateRasterizationGrid3DUserParameter',
+    'AddParameterInputNode', 'AddParticleReadNode', 'CreateEmitterAsset',
+    'RegisterScratchModuleForEmitter', 'bNotConnectable'
+)) {
+    Assert-True $authoringPatchText.Contains($requiredOp) "Niagara authoring patch lost a required op: $requiredOp"
+}
+foreach ($requiredBlock in @('b/Source/VibeUE/Public/Module.h', 'b/Source/VibeUE/VibeUE.Build.cs')) {
+    Assert-True $authoringPatchText.Contains($requiredBlock) "Niagara authoring patch lost a required file block: $requiredBlock"
+}
+$refreshPatchText = Get-Content -Raw -LiteralPath (Join-Path $root 'patches\niagara-mcp-authoring\vibeue\vibeue-refresh-module-call-nodes.patch')
+foreach ($requiredOp in @('RefreshModuleCallNodes', 'RemoveScratchPin')) {
+    Assert-True $refreshPatchText.Contains($requiredOp) "Niagara refresh patch lost a required op: $requiredOp"
+}
+
+$expectedAuthoringVibeOrder = @(
+    'patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch',
+    'patches/niagara-mcp-authoring/vibeue/vibeue-refresh-module-call-nodes.patch',
+    'patches/vibeue-performance-monitor.patch',
+    'patches/vibeue-mcp-shutdown-guard.patch',
+    'patches/vibeue-reliable-kernel.patch',
+    'patches/vibeue-material-diagnostic-doc.patch'
+) -join '|'
+foreach ($case in @(
+    [pscustomobject]@{ label = 'base'; core = 'base'; capabilities = @(); target = $null },
+    [pscustomobject]@{ label = 'niagara-authoring'; core = 'niagara-authoring'; capabilities = @('mcp-tool-search'); target = $null },
+    [pscustomobject]@{ label = 'Abyss'; core = 'niagara-authoring'; capabilities = @('mcp-tool-search'); target = $manifest.targets.Abyss }
+)) {
+    $caseProfiles = @(Get-UeAgentSelectedProfiles $manifest $case.core $case.capabilities)
+    Assert-UeAgentProfileRequirements $manifest $caseProfiles
+    $plan = @(Get-UeAgentPatchPlan $manifest $root $caseProfiles $case.target)
+    Assert-True ($plan.Count -ge 1) "Patch plan '$($case.label)' resolved no patch."
+    $seenRelatives = @{}
+    $seenRouteFields = @{}
+    foreach ($entry in $plan) {
+        Assert-True (Test-Path -LiteralPath $entry.path) "Patch plan '$($case.label)' resolved a missing patch: $($entry.relative)"
+        Assert-True (-not $seenRelatives.ContainsKey($entry.relative)) "Patch plan '$($case.label)' applies a patch twice: $($entry.relative)"
+        $seenRelatives[$entry.relative] = $true
+        if ($entry.routeField) {
+            Assert-True (-not $seenRouteFields.ContainsKey($entry.routeField)) "Patch plan '$($case.label)' overwrites route field $($entry.routeField)."
+            $seenRouteFields[$entry.routeField] = $entry.relative
+        }
+    }
+    Assert-True (@($plan | Where-Object { $_.repo -eq 'engine' }).Count -ge 1) "Patch plan '$($case.label)' resolved no engine patch."
+    if ($case.core -eq 'niagara-authoring') {
+        $allowed = $expectedAuthoringVibeOrder.Split('|')
+        $vibeOrder = (@($plan | Where-Object { $_.repo -eq 'vibeue' } | ForEach-Object { $_.relative }) |
+            Where-Object { $allowed -contains $_ }) -join '|'
+        Assert-True ($vibeOrder -eq $expectedAuthoringVibeOrder) "Niagara authoring VibeUE patches are not in the verified baseline order: $vibeOrder"
+    }
+}
+$requiresRejected = $false
+try {
+    Assert-UeAgentProfileRequirements $manifest @(Get-UeAgentSelectedProfiles $manifest 'base' @('niagara-toolsets'))
+} catch { $requiresRejected = $true }
+Assert-True $requiresRejected 'A capability profile that is not self-sufficient was accepted without its requirement.'
+
 $pluginFixture = Join-Path ([IO.Path]::GetTempPath()) ('ueagent-plugin-inventory-' + [Guid]::NewGuid().ToString('N'))
 try {
     $descriptorDir = Join-Path $pluginFixture 'Plugins\ExternalFixture'
@@ -167,8 +246,12 @@ Assert-True ($bootstrap -match 'Test-Path -LiteralPath \$projectEditor') 'Bootst
 Assert-True (-not $bootstrap.Contains('UseProjectUnrealMcp')) 'Bootstrap still exposes the retired UnrealMCP compatibility route.'
 Assert-True ($bootstrap -match "PSBoundParameters\.ContainsKey\('Endpoint'\).+route\.endpoint") 'Bootstrap CheckOnly does not inherit the routed endpoint.'
 Assert-True ($bootstrap -match 'Read-UeAgentStackManifest') 'Bootstrap does not use STACK-MANIFEST.json as its protocol source.'
-foreach ($staticAuditMarker in @('Get-UeAgentManifestPatchErrors', 'Assert-UeAgentReliableConfig', 'Test-GitPatchesApplied', 'Build.version', '.mcp.json', 'ApplyAbyssProfile', 'ExternalPluginSourceRoot', 'engineAbyssExtensionsPatchSha256')) {
+foreach ($staticAuditMarker in @('Get-UeAgentManifestPatchErrors', 'Assert-UeAgentReliableConfig', 'Test-GitPatchesApplied', 'Build.version', '.mcp.json', 'TargetProfile', 'ExternalPluginSourceRoot', 'targetPatchSha256', 'Get-UeAgentPatchPlan', 'Get-UeAgentProfilePlugins', 'Assert-UeAgentProfileRequirements', 'Assert-KnownIniSection', 'Get-EngineIniSectionNames', 'EditorPerProjectUserSettings.ini')) {
     Assert-True ($bootstrap.Contains($staticAuditMarker)) "Bootstrap lost static audit coverage: $staticAuditMarker"
+}
+Assert-True (-not $bootstrap.Contains('patches\')) 'Bootstrap hardcodes a patch path, so the manifest apply lists are not the authority it consumes.'
+foreach ($retiredMarker in @('ApplyAbyssProfile', 'Get-AbyssProfile', 'Assert-AbyssProjectSettings', 'Assert-AbyssExternalPlugins')) {
+    Assert-True (-not $bootstrap.Contains($retiredMarker)) "Bootstrap still contains a project-named specialization: $retiredMarker"
 }
 $doctor = Get-Content -Raw -LiteralPath (Join-Path $root 'scripts\doctor.ps1')
 $doctorParameters = (Get-Command (Join-Path $root 'scripts\doctor.ps1')).Parameters.Keys
@@ -248,25 +331,46 @@ try {
 
 if ($VibeUEPath) {
     $patch = Join-Path $root 'patches\vibeue-reliable-kernel.patch'
-    & git -C $VibeUEPath apply --reverse --check $patch
+    & git -C $VibeUEPath apply --reverse --check --ignore-whitespace $patch
     Assert-True ($LASTEXITCODE -eq 0) 'Reliable VibeUE patch does not match the supplied checkout.'
     . (Join-Path $root 'scripts\ueagent_common.ps1')
-    $runtimePatches = @(
-        (Join-Path $root 'patches\vibeue-performance-monitor.patch'),
-        (Join-Path $root 'patches\vibeue-mcp-shutdown-guard.patch'),
-        $patch,
-        (Join-Path $root 'patches\vibeue-material-diagnostic-doc.patch'),
-        (Join-Path $root 'patches\vibeue-abyss-compatibility.patch')
-    )
-    Assert-True (Test-GitPatchesApplied $VibeUEPath $runtimePatches) 'VibeUE runtime patch batch does not match the supplied checkout.'
+    $abyssProfiles = @(Get-UeAgentSelectedProfiles $manifest 'niagara-authoring' @('mcp-tool-search'))
+    $abyssVibePlan = @(Get-UeAgentPatchPlan $manifest $root $abyssProfiles $manifest.targets.Abyss |
+        Where-Object { $_.repo -eq 'vibeue' })
+
+    $mergedTree = [string]$manifest.profiles.base.vibeue_merged_tree
+    $corePatch = $abyssVibePlan[0]
+    $declaredBaseline = ''
+    foreach ($line in [IO.File]::ReadAllLines($corePatch.path)) {
+        if ($line.StartsWith('index ')) { $declaredBaseline = ($line.Substring(6) -split '\.\.')[0]; continue }
+        if (-not $line.StartsWith('+++ b/')) { continue }
+        $currentPath = $line.Substring(6)
+        $pinnedBlob = (& git -C $VibeUEPath rev-parse ($mergedTree + ':' + $currentPath) 2>$null).Trim()
+        Assert-True ($LASTEXITCODE -eq 0) "Pinned VibeUE merged tree has no such file: $currentPath"
+        Assert-True ($pinnedBlob.StartsWith($declaredBaseline)) "Patch '$($corePatch.relative)' was regenerated against the wrong baseline for ${currentPath}: declares $declaredBaseline, pinned merged tree has $pinnedBlob"
+        $declaredBaseline = ''
+    }
+
+    Assert-True (Test-GitPatchesApplied $VibeUEPath @($abyssVibePlan | ForEach-Object { $_.path })) 'VibeUE plan patch batch does not match the supplied checkout; rerun bootstrap for this target.'
 }
 if ($EngineRoot) {
+    $knownSections = Get-EngineIniSectionNames $EngineRoot
+    Assert-True ($knownSections.Count -gt 0) 'Engine config hierarchy yielded no section names.'
+    Assert-True ($knownSections.Contains('SystemSettings')) 'Engine config hierarchy does not define [SystemSettings].'
+    Assert-True (-not $knownSections.Contains('SystemSettingz')) 'Section-name authority accepts a misspelled section.'
+    foreach ($targetProperty in $manifest.targets.PSObject.Properties) {
+        foreach ($section in @($targetProperty.Value.project_settings.PSObject.Properties)) {
+            Assert-True ($knownSections.Contains($section.Name)) "Target '$($targetProperty.Name)' declares a section the engine config hierarchy does not define: [$($section.Name)]"
+        }
+    }
     $patch = Join-Path $root 'patches\ue58-mcp-authorization-gate.patch'
-    & git -C $EngineRoot apply --reverse --check $patch
+    & git -C $EngineRoot apply --reverse --check --ignore-whitespace $patch
     Assert-True ($LASTEXITCODE -eq 0) 'MCP authorization patch does not match the supplied engine.'
-    $abyssPatch = Join-Path $root 'patches\ue58-abyss-engine-extensions.patch'
-    & git -C $EngineRoot apply --reverse --check --ignore-space-change --ignore-whitespace $abyssPatch
-    Assert-True ($LASTEXITCODE -eq 0) 'Abyss engine extensions patch does not match the supplied engine.'
+    foreach ($relative in @($manifest.targets.Abyss.extra_patches.engine)) {
+        $targetPatch = Join-Path $root ([string]$relative).Replace('/', '\')
+        & git -C $EngineRoot apply --reverse --check --ignore-space-change --ignore-whitespace $targetPatch
+        Assert-True ($LASTEXITCODE -eq 0) "Target engine patch does not match the supplied engine: $relative"
+    }
 }
 
 [ordered]@{

@@ -48,3 +48,18 @@ T__12–T__22 各生成一张 R/G Normal XY、B Metallic、A Roughness 的启发
 ### 2026-08-13 23:26 — [发现] Base Color 梯度不能产生布料微表面
 PackedNMR 的 R/G 只能放大 Base Color 已有边缘，平坦色块仍接近中性法线；改为在 UV0 叠加一张共享
 `TechnicalWeave` 切线空间细节法线，以 `1 - Metallic` 遮罩并保留 Scale/Strength 两个视觉校准参数。
+
+### 2026-08-27 18:50 — [发现] 原生 Toon 母材从未接线，接线后生效
+`M_NPR_CharacterToon` 的 Toon BSDF 此前从未连接 Front Material（唯一输出连接是 OpacityMask），
+脸部长期走无 Substrate 根的回退路径——「表现一般」的部分根因。接线后编译干净、诊断引用 3 张贴图，
+脸部以原生 Toon 渲染确认生效（内建 Profile 0）。
+
+### 2026-08-27 18:50 — [发现] 会话内新建 Substrate BSDF 接根编译失败
+Epic `add_expression` 与 VibeUE `BatchCreateExpressions` 新建的 Slab 接 Front Material 均报
+`Invalid SubstrateSlabBSDF operator and BSDF indices during promotion`；同一材质上从资产载入的
+Toon 节点接根可编译。疑似新建节点算子注册缺陷，与 SSS 无关。后续：保存材质 + 重启 Editor
+使节点成为载入态后再编译验证；若仍失败按硬阻塞升级评估。
+
+### 2026-08-27 18:50 — [决策] 脸部链路恢复为分类实例中继
+叶子直连母材仅为临时验证，已恢复 Face → `MI_NPR_AvatarSampleA_Face` → `M_NPR_CharacterToon`，
+恢复后实例哈希与探针前一致（`6c75e5b8…`），分类层的贴图覆盖不绕过。

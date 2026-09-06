@@ -64,6 +64,7 @@ risk capability, also load `references/core.md` and the target project brief:
 - Material, MaterialFunction, MaterialInstance, Custom HLSL: `references/materials.md`
 - Blueprint: `references/blueprints.md`
 - Niagara: `references/niagara.md`
+- AnimSequence, VibeUE animation services: `references/animation.md`
 - Actor/component/level/lighting/viewport: `references/scene-editing.md`
 - Cache implementation/freshness/save hooks: `../../projects/ReflectCache/AI-BRIEF.md`
 

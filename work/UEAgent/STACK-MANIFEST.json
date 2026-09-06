@@ -10,6 +10,8 @@
   },
   "profiles": {
     "default": {
+      "kind": "capability",
+      "capability": "mcp-tool-search",
       "name": "compact-mcp",
       "apply": [
         "patches/ue58-mcp-tool-search.patch"
@@ -17,6 +19,8 @@
       "bootstrap_switch": "-ApplyMcpToolSearchPatch"
     },
     "base": {
+      "kind": "core",
+      "capability": "base",
       "apply": [
         "patches/ue58-mcp-authorization-gate.patch",
         "patches/vibeue-ueagent.patch",
@@ -26,46 +30,54 @@
         "patches/vibeue-material-diagnostic-doc.patch"
       ],
       "vibeue_ref": "6a0617cfb05aaced82d6613e88b1572fe7452eaa",
-      "vibeue_fetch_ref": "refs/heads/5-8",
+      "vibeue_fetch_ref": "6a0617cfb05aaced82d6613e88b1572fe7452eaa",
+      "vibeue_merge_base_ref": "271f48771d077179fb597dc285ab5b898c5e8038",
+      "vibeue_merged_tree": "4612cc048aff5a7db4233877ec5140690d000183",
       "source_engine_required": true
     },
     "niagara-toolsets": {
+      "kind": "capability",
+      "capability": "niagara-toolsets",
       "apply": ["patches/ue58-niagara-toolsets.patch"],
-      "bootstrap_switch": "-ApplyEngineNiagaraPatch"
+      "bootstrap_switch": "-ApplyEngineNiagaraPatch",
+      "requires": ["niagara-authoring"],
+      "required_plugins": ["NiagaraToolsets"],
+      "warning": "Not self-sufficient: the toolset wrappers call UNiagaraExternalEditUtilities::GetUserParameterHierarchy/SetUserParameterCategory, which ship in patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch. Apply that patch too or the engine will not compile. No target currently uses this profile alone."
     },
     "niagara-authoring": {
+      "kind": "core",
+      "capability": "niagara-authoring",
       "apply": [
         "patches/ue58-mcp-authorization-gate.patch",
         "patches/ue58-niagara-toolsets.patch",
         "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch",
         "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch",
+        "patches/niagara-mcp-authoring/vibeue/vibeue-refresh-module-call-nodes.patch",
         "patches/vibeue-performance-monitor.patch",
         "patches/vibeue-mcp-shutdown-guard.patch",
         "patches/vibeue-reliable-kernel.patch",
         "patches/vibeue-material-diagnostic-doc.patch"
       ],
       "bootstrap_switch": "-ApplyNiagaraAuthoringProfile",
+      "required_plugins": ["NiagaraToolsets"],
       "status": "package_verified",
       "target_activation": "smoke_required",
       "warning": "This replaces the core VibeUE patch; never apply both profiles together."
-    },
-    "abyss": {
+    }
+  },
+  "targets": {
+    "Abyss": {
       "name": "abyss-full",
       "project_name": "Abyss",
-      "apply": [
-        "patches/ue58-mcp-authorization-gate.patch",
-        "patches/ue58-mcp-tool-search.patch",
-        "patches/ue58-niagara-toolsets.patch",
-        "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch",
-        "patches/ue58-abyss-engine-extensions.patch",
-        "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch",
-        "patches/vibeue-performance-monitor.patch",
-        "patches/vibeue-mcp-shutdown-guard.patch",
-        "patches/vibeue-reliable-kernel.patch",
-        "patches/vibeue-material-diagnostic-doc.patch",
-        "patches/vibeue-abyss-compatibility.patch"
-      ],
-      "bootstrap_switch": "-ApplyAbyssProfile",
+      "capabilities": ["niagara-authoring", "mcp-tool-search"],
+      "extra_patches": {
+        "engine": ["patches/ue58-abyss-engine-extensions.patch"],
+        "vibeue": ["patches/vibeue-abyss-compatibility.patch"]
+      },
+      "bootstrap_switch": "-TargetProfile Abyss",
+      "status": "package_verified",
+      "target_activation": "smoke_required",
+      "warning": "Target overrides are additive data on top of capability profiles; never mix two targets.",
       "external_plugins": [
         {
           "name": "GaussianSplattingForUnrealEngine",
@@ -118,23 +130,76 @@
         }
       ],
       "project_settings": {
-        "r.VolumetricCloud.ConservativeDensity.SDFMaxStep": 32
+        "SystemSettings": {
+          "r.VolumetricCloud.ConservativeDensity.SDFMaxStep": "32"
+        }
       }
     }
   },
   "patches": {
-    "patches/ue58-mcp-authorization-gate.patch": "32B14F0C76434CFC139136305F1FF37B778A5A21B9168067D90E1102CD07784A",
-    "patches/vibeue-ueagent.patch": "D22BA23163C59069A74ABCC86433E808DD1F8AADA718A6C2E0D246C265737FDB",
-    "patches/vibeue-performance-monitor.patch": "5399F0FC6F1024F5D445242DF58190E7F3698BF8B18688FC2B1848333E6F71B5",
-    "patches/vibeue-mcp-shutdown-guard.patch": "8638899C684BFB47AB18F29718099D322FE824484889A13ECED56A0D33758250",
-    "patches/vibeue-reliable-kernel.patch": "3F1BE63D6999BABB0578B83AE2F48A01596B78B6D25AA9C13F2E6A9BA8A042F1",
-    "patches/ue58-niagara-toolsets.patch": "C3EB3E4FC8205EDCF472EF4EE41DB6946D43DFE50E84A9AE548366E01E21D4EA",
-    "patches/ue58-mcp-tool-search.patch": "65D942A5165C68B9BC1C057EFAB86FD84D71C79F140A6F294B3983AA630CE4AE",
-    "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch": "E568B91D3F612BA28E215191A41B4984923C2413C3C2646AB146536C18290E07",
-    "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch": "5CC5B835F048DAD4F8D7F2B2E6E6FF6EBBD288677CC1D0370CC08D24DB87AE2C",
-    "patches/ue58-abyss-engine-extensions.patch": "A1888676F0E95F9D18FE2EEF41C3324200EA1969FC2CCD838AFCF6EC11C2B11A",
-    "patches/vibeue-material-diagnostic-doc.patch": "F8BE250F84EFECFF2CC9CCA581D8FEF02E51D6FE12354CAA46937F9FB7A077A7",
-    "patches/vibeue-abyss-compatibility.patch": "DDA51112985B67BD0A4AFC4FDF20A223D6DF7987E93050F387C0BEFBEEF70EC6"
+    "patches/ue58-mcp-authorization-gate.patch": {
+      "sha256": "32B14F0C76434CFC139136305F1FF37B778A5A21B9168067D90E1102CD07784A",
+      "repo": "engine",
+      "route_field": "engineMcpAuthorizationPatchSha256"
+    },
+    "patches/vibeue-ueagent.patch": {
+      "sha256": "D22BA23163C59069A74ABCC86433E808DD1F8AADA718A6C2E0D246C265737FDB",
+      "repo": "vibeue",
+      "route_field": "vibeUEPatchSha256"
+    },
+    "patches/vibeue-performance-monitor.patch": {
+      "sha256": "5399F0FC6F1024F5D445242DF58190E7F3698BF8B18688FC2B1848333E6F71B5",
+      "repo": "vibeue",
+      "route_field": "vibeUEPerformancePatchSha256"
+    },
+    "patches/vibeue-mcp-shutdown-guard.patch": {
+      "sha256": "8638899C684BFB47AB18F29718099D322FE824484889A13ECED56A0D33758250",
+      "repo": "vibeue",
+      "route_field": "vibeUEMcpShutdownGuardPatchSha256"
+    },
+    "patches/vibeue-reliable-kernel.patch": {
+      "sha256": "3F1BE63D6999BABB0578B83AE2F48A01596B78B6D25AA9C13F2E6A9BA8A042F1",
+      "repo": "vibeue",
+      "route_field": "vibeUEReliablePatchSha256"
+    },
+    "patches/ue58-niagara-toolsets.patch": {
+      "sha256": "7870BC1A77D0541198E6203F455B28E4A925E70EDBBB3DD19D0B399FB0A784DB",
+      "repo": "engine",
+      "route_field": "engineNiagaraPatchSha256"
+    },
+    "patches/ue58-mcp-tool-search.patch": {
+      "sha256": "65D942A5165C68B9BC1C057EFAB86FD84D71C79F140A6F294B3983AA630CE4AE",
+      "repo": "engine",
+      "route_field": "mcpToolSearchPatchSha256"
+    },
+    "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch": {
+      "sha256": "67D5F95179E008619570C78D7A06D485E7B3BDF8685990CB79089CCDCF3F306D",
+      "repo": "engine",
+      "route_field": "engineNiagaraAuthoringPatchSha256"
+    },
+    "patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch": {
+      "sha256": "DCAA075436061982FC6F8EDDAE63CC10BB455BD183AC68F847F5B6D553AA3A2A",
+      "repo": "vibeue",
+      "route_field": "vibeUEPatchSha256"
+    },
+    "patches/niagara-mcp-authoring/vibeue/vibeue-refresh-module-call-nodes.patch": {
+      "sha256": "3DA0BDF9241DCD105E0A39B3C71839483471B1B5CD4965037AB011D2B234AB3A",
+      "repo": "vibeue",
+      "route_field": "vibeUERefreshModuleCallNodesPatchSha256"
+    },
+    "patches/ue58-abyss-engine-extensions.patch": {
+      "sha256": "A1888676F0E95F9D18FE2EEF41C3324200EA1969FC2CCD838AFCF6EC11C2B11A",
+      "repo": "engine"
+    },
+    "patches/vibeue-material-diagnostic-doc.patch": {
+      "sha256": "F8BE250F84EFECFF2CC9CCA581D8FEF02E51D6FE12354CAA46937F9FB7A077A7",
+      "repo": "vibeue",
+      "route_field": "vibeUEMaterialDiagnosticDocPatchSha256"
+    },
+    "patches/vibeue-abyss-compatibility.patch": {
+      "sha256": "DDA51112985B67BD0A4AFC4FDF20A223D6DF7987E93050F387C0BEFBEEF70EC6",
+      "repo": "vibeue"
+    }
   },
   "runtime": {
     "endpoint": "http://127.0.0.1:8000/mcp",
@@ -183,10 +248,12 @@
   "verification": {
     "bootstrap": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatch",
     "bootstrap_niagara_authoring": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyNiagaraAuthoringProfile -ApplyMcpToolSearchPatch",
-    "bootstrap_abyss": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyAbyssProfile -ExternalPluginSourceRoot <ABYSS_PLUGIN_BUNDLE>",
+    "bootstrap_target": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -TargetProfile <NAME> [-ExternalPluginSourceRoot <PLUGIN_BUNDLE>]",
+    "bootstrap_abyss": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -TargetProfile Abyss -ExternalPluginSourceRoot <ABYSS_PLUGIN_BUNDLE>",
     "reliable_profile": "tests/test_reliable_profile.ps1 -VibeUEPath <PROJECT>/Plugins/VibeUE -EngineRoot <UE_ROOT>",
     "static": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyMcpToolSearchPatch -CheckOnly",
-    "static_abyss": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ApplyAbyssProfile -CheckOnly",
+    "static_target": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -TargetProfile <NAME> -CheckOnly",
+    "static_abyss": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -TargetProfile Abyss -CheckOnly",
     "doctor": "scripts/doctor.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json",
     "route": "scripts/compact_context.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json"
   }

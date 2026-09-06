@@ -204,6 +204,14 @@ Prototype Content Root 固定为 `/Game/Neow/NPRRendering`。测试证据写入
 
 每次只允许一次最小 Probe；通过后替换当前路径，失败则删除 Probe，不留兼容层。
 
+### 已批准 Probe
+
+- 2026-08-27 用户批准皮肤 SSS Probe：新建 `M_NPR_CharacterSkin`（Substrate Slab，复用
+  `SP_AvatarSample_A` SubsurfaceProfile），仅切换 Face 单实例做同机位同灯光 A/B；
+  通过用户视觉 Gate 后推广 Body 并纳入基线，失败删除并回退 Toon。源码已确认 Toon BSDF
+  无 SSS 输入，SSS 只有 Slab 路径，故皮肤部位在此 Probe 期间脱离 Toon 母材；
+  这不构成第二个 Toon 母材。
+
 ### 回滚
 
 1. 测试 Actor 恢复原 Material；

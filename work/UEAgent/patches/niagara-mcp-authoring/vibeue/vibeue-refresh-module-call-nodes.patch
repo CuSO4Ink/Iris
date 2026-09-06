@@ -1,0 +1,150 @@
+diff --git a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
+index e7f2773..b7ba9b9 100644
+--- a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
++++ b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
+@@ -1996,6 +1996,91 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+ 	return true;
+ }
+ 
++FNiagaraScratchResult UNiagaraScratchPadService::RefreshModuleCallNodes(
++	const FString& SystemPath,
++	const FString& EmitterName,
++	const FString& ModuleName)
++{
++	FNiagaraScratchResult R;
++	UNiagaraSystem* System = LoadSystem(SystemPath);
++	if (!System) { R.Message = TEXT("System not found"); return R; }
++	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
++	if (!Handle) { R.Message = TEXT("Emitter not found"); return R; }
++	UNiagaraGraph* StackGraph = GetEmitterGraph(Handle->GetEmitterData());
++	if (!StackGraph) { R.Message = TEXT("Emitter graph not found"); return R; }
++
++	TArray<UNiagaraNodeFunctionCall*> Calls;
++	StackGraph->GetNodesOfClass<UNiagaraNodeFunctionCall>(Calls);
++
++	int32 Refreshed = 0;
++	for (UNiagaraNodeFunctionCall* Call : Calls)
++	{
++		if (!Call || !IsEmbeddedModuleScript(Call->FunctionScript)) continue;
++		const bool bMatch = Call->GetFunctionName().Equals(ModuleName, ESearchCase::IgnoreCase) ||
++			(Call->FunctionScript && Call->FunctionScript->GetName().Equals(ModuleName, ESearchCase::IgnoreCase));
++		if (!bMatch) continue;
++		Call->Modify();
++		Call->RefreshFromExternalChanges();
++		++Refreshed;
++	}
++
++	System->MarkPackageDirty();
++	R.bSuccess = true;
++	R.Message = FString::Printf(TEXT("refreshed %d call node(s) for module '%s'"), Refreshed, *ModuleName);
++	return R;
++}
++
++FNiagaraScratchResult UNiagaraScratchPadService::RemoveScratchPin(
++	const FString& SystemPath,
++	const FString& EmitterName,
++	const FString& ModuleName,
++	const FString& NodeId,
++	const FString& PinName)
++{
++	FNiagaraScratchResult R;
++	UNiagaraSystem* System = LoadSystem(SystemPath);
++	if (!System) { R.Message = TEXT("System not found"); return R; }
++	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
++	if (!Handle) { R.Message = TEXT("Emitter not found"); return R; }
++	UNiagaraNodeFunctionCall* Call = FindModuleNodeOnEmitter(Handle->GetEmitterData(), ModuleName);
++	UNiagaraGraph* Graph = GetScratchGraphFromCall(Call);
++	if (!Graph) { R.Message = TEXT("Scratch module not found"); return R; }
++	UEdGraphNode* Node = FindNodeByGuid(Graph, NodeId);
++	if (!Node) { R.Message = TEXT("Node not found"); return R; }
++
++	UEdGraphPin* Target = FindPinByName(Node, PinName, EGPD_Output, /*constrain*/ true);
++	if (!Target) { Target = FindPinByName(Node, PinName, EGPD_Input, /*constrain*/ true); }
++	if (!Target) { R.Message = FString::Printf(TEXT("Pin '%s' not found"), *PinName); return R; }
++
++	// RequestNewTypedPin pairs every mapped-variable output with a hidden default-value input pin
++	// directly after it (named "None"); leaving the pair behind would keep the map entry alive.
++	TArray<UEdGraphPin*> ToRemove;
++	ToRemove.Add(Target);
++	const int32 Idx = Node->Pins.IndexOfByKey(Target);
++	if (Idx != INDEX_NONE && Idx + 1 < Node->Pins.Num())
++	{
++		UEdGraphPin* Next = Node->Pins[Idx + 1];
++		if (Next && Next != Target && Next->Direction == EGPD_Input && Next->PinName == TEXT("None"))
++		{
++			ToRemove.Add(Next);
++		}
++	}
++
++	Graph->Modify();
++	Node->Modify();
++	for (UEdGraphPin* Pin : ToRemove)
++	{
++		Pin->BreakAllPinLinks();
++		Node->RemovePin(Pin);
++	}
++	Graph->NotifyGraphChanged();
++	System->MarkPackageDirty();
++
++	R.bSuccess = true;
++	R.Message = FString::Printf(TEXT("removed %d pin(s)"), ToRemove.Num());
++	return R;
++}
++
+ TArray<FString> UNiagaraScratchPadService::GetCompileMessages(const FString& SystemPath, bool bErrorsOnly)
+ {
+ 	TArray<FString> Messages;
+diff --git a/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h b/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
+index b2d4936..6a67df9 100644
+--- a/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
++++ b/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
+@@ -581,6 +581,49 @@ public:
+ 	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Apply Scratch Changes"))
+ 	static bool ApplyChanges(const FString& SystemPath);
+ 
++	/**
++	 * Refresh the stack-level function-call node(s) that reference a scratch module, so a
++	 * signature change made headlessly reaches the emitter stack and the new inputs become
++	 * addressable by SetStackInputData.
++	 *
++	 * Adding or removing a module input (AddParameterInputNode) changes the embedded module
++	 * script's signature. Inside the Niagara editor the stack view model heals the resulting
++	 * stale call node; headless tool calls have no such listener, and ApplyChanges deliberately
++	 * skips this refresh, so the compile fails with "Function call is stale and needs to be
++	 * refreshed" and the new input never appears in the stack. Call this after the graph edit
++	 * and before ApplyChanges.
++	 *
++	 * @return Result; Message reports how many call nodes actually reloaded
++	 *
++	 * Example:
++	 *   unreal.NiagaraScratchPadService.refresh_module_call_nodes(S, E, "LG_RMDPath")
++	 */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Refresh Module Call Nodes"))
++	static FNiagaraScratchResult RefreshModuleCallNodes(
++		const FString& SystemPath,
++		const FString& EmitterName,
++		const FString& ModuleName);
++
++	/**
++	 * Remove a dynamic pin from a Map Get / Map Set node, together with the paired hidden
++	 * default-value input pin that RequestNewTypedPin created beside it. Dangling mapped-variable
++	 * pins make Niagara recreate the matching system User parameter on every recompile, so this
++	 * is the only way to make a RemoveUserVariables cleanup stick. Follow with
++	 * RefreshModuleCallNodes + ApplyChanges so the scratch script drops the map read.
++	 *
++	 * @param PinName Name of the mapped-variable output pin, e.g. "User.BranchPercent"
++	 * @return Result; bSuccess true when the pin (and its pair) were removed
++	 *
++	 * Example:
++	 *   unreal.NiagaraScratchPadService.remove_scratch_pin(S, E, mod, mapget_id, "User.BranchPercent")
++	 */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Remove Scratch Pin"))
++	static FNiagaraScratchResult RemoveScratchPin(
++		const FString& SystemPath,
++		const FString& EmitterName,
++		const FString& ModuleName,
++		const FString& NodeId,
++		const FString& PinName);
+ 	/**
+ 	 * Get the real Niagara compiler diagnostics from the system's last compile — one line per issue,
+ 	 * formatted "Severity: [Script] Message". Replaces the useless catch-all "System is invalid after

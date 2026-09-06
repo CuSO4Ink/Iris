@@ -20,25 +20,41 @@ UEAgent on another checkout.
 | UEAgent VibeUE extension | selected profile + performance + shutdown guard + reliable kernel |
 | UE native MCP extension | process-wide `tools/call` authorization gate |
 | Default engine profile | current MCP tool-search + call-view patch |
-| Abyss full profile | Niagara authoring + Niagara Toolsets + engine extensions + pinned project plugins |
+| Target overrides | per-project `targets` declarations in the manifest (instance: Abyss) |
 | Windows | Git and Windows PowerShell |
 
-This baseline supports official typed tools plus the portable ReflectCache implementation. The
-`-ApplyAbyssProfile` switch applies the complete current Abyss stack, including script
-graph/HLSL/rapid-iteration and live component-state calls.
+This baseline supports official typed tools plus the portable ReflectCache implementation.
+Bootstrap is a generic interface: any UE 5.8 project bootstraps with the default capability
+switches alone. Only a project declared under `targets` in STACK-MANIFEST.json receives extra
+patches, pinned external plugins, or project settings, selected with `-TargetProfile <name>`.
+The Abyss instance currently adds Niagara authoring + Niagara Toolsets + engine extensions +
+pinned project plugins, including script graph/HLSL/rapid-iteration and live component-state
+calls.
 
 The verified advanced Niagara authoring profile covers dynamic `RequestNewTypedPin`, Simulation
-Stage, Grid2D, RenderTarget2D, RasterizationGrid3D, and Custom HLSL authoring. Bootstrap applies
-the revision-adapted engine patch and the conflict-resolved
-`patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch` together.
-The verified authoring profile is applied automatically with `-ApplyNiagaraAuthoringProfile`.
-It applies the matching engine export patch, selects the composite VibeUE patch instead of the
-core patch, and records `vibeUEProfile` plus `engineNiagaraAuthoringPatchSha256` in the route.
-Every VibeUE profile then applies the shared performance monitor, shutdown guard, and
+Stage, Grid2D, RenderTarget2D, RasterizationGrid3D and Custom HLSL authoring, plus
+`AddParameterInputNode`, `AddParticleReadNode`, `CreateEmitterAsset`,
+`RegisterScratchModuleForEmitter`, `RefreshModuleCallNodes` and `RemoveScratchPin`. It is applied
+with `-ApplyNiagaraAuthoringProfile`, which selects the composite VibeUE patch instead of the core
+patch, adds the matching engine export and Niagara Toolsets patches, and records `vibeUEProfile`
+in the route.
+
+`STACK-MANIFEST.json` is the authority bootstrap consumes. Each `profiles.<name>.apply` list names
+the patches that profile installs, and `patches.<path>` pins each one's `sha256`, target `repo`
+(`engine` or `vibeue`) and `route_field`. Bootstrap resolves exactly one `kind: core` profile
+(`niagara-authoring` when requested, otherwise `base`), unions the selected `kind: capability`
+profiles, appends the target's `extra_patches`, then applies each repo's subsequence in manifest
+order. Add or reorder a patch by editing the manifest; no script change is needed. A profile that
+is not self-sufficient declares `requires` and is refused without them, and `required_plugins` is
+unioned into the `.uproject` plugin set the same way.
+
+Every VibeUE profile applies the shared performance monitor, shutdown guard, and
 `patches/vibeue-reliable-kernel.patch`; every writable profile also applies
 `patches/ue58-mcp-authorization-gate.patch` to the source engine. Bootstrap writes
-`[UEAgent.Reliable]`, and the route records protocol `2.0.0` plus both fingerprints. `-CheckOnly`
-rejects a missing, changed, disabled, or unapplied component; Doctor verifies the loaded runtime.
+`[UEAgent.Reliable]`, and the route records protocol `2.0.0` plus one fingerprint per planned
+patch. `-CheckOnly` compares every route fingerprint against the manifest before inspecting the
+working tree, so a drifted patch is named exactly, then rejects a missing, changed, disabled, or
+unapplied component; Doctor verifies the loaded runtime.
 See
 [RELIABLE-EXECUTION.md](RELIABLE-EXECUTION.md) for the command/receipt/save contract.
 
@@ -78,24 +94,32 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1 `
   -ApplyNiagaraAuthoringProfile -ApplyMcpToolSearchPatch -Launch
 ```
 
-For the exact current Abyss environment, use the canonical full profile. The source root must
-contain `Plugins\<PluginName>` for the seven pinned project plugins; bootstrap copies only missing
+### Target profiles (optional specialization)
+
+The generic path needs no target profile. A target profile is a data declaration under
+`targets` in STACK-MANIFEST.json: capabilities, extra engine/VibeUE patches, pinned external
+plugins, and project settings. Bootstrap consumes it generically; there is no project-named
+code path. Add a new UE project by adding one `targets.<Name>` entry, not by editing scripts.
+
+Example instance: the verified Abyss target. Its declared source root must contain
+`Plugins\<PluginName>` for the seven pinned project plugins; bootstrap copies only missing
 plugin directories and refuses to merge or overwrite an existing mismatched directory:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\bootstrap.ps1 `
   -UProject "X:\Projects\Abyss\Abyss.uproject" `
   -EngineRoot "X:\UnrealEngine" `
-  -ApplyAbyssProfile `
+  -TargetProfile Abyss `
   -ExternalPluginSourceRoot "X:\Bundles\Abyss" `
   -SkipBuild
 ```
 
-The full profile requires UE 5.8.1 compatible changelist `55116800`, applies the current engine
-and VibeUE patches (including the read-only material diagnostics and UE 5.8 Niagara compatibility
-fixes), writes the volumetric-cloud setting, and pins the seven enabled external plugin
-descriptors. It fails closed when the external plugin bundle is absent or differs; it does not
-guess public/private plugin origins or silently substitute another version.
+The Abyss target declares `niagara-authoring` and `mcp-tool-search` capabilities; explicit
+capability switches that the target does not declare are rejected as drift. The target applies
+its declared engine and VibeUE patches (including the read-only material diagnostics and UE 5.8
+Niagara compatibility fixes), writes its declared project settings, and pins the enabled
+external plugin descriptors. It fails closed when the external plugin bundle is absent or
+differs; it does not guess public/private plugin origins or silently substitute another version.
 
 Every writable profile requires the pinned VibeUE baseline and a source-engine Git checkout.
 `-CheckOnly`
@@ -142,9 +166,12 @@ The bootstrap:
 4. optionally applies the default engine MCP tool-search profile and records its hash;
 5. optionally applies the verified Niagara authoring profile, including its Niagara Toolsets
    extension;
-6. optionally applies the Abyss engine/VibeUE compatibility extensions, project setting, and
-   external-plugin inventory;
-7. enables the three plugins and writes the loopback MCP configuration;
+6. optionally applies the declared `-TargetProfile` overrides: extra engine/VibeUE patches,
+   project settings, and external-plugin inventory;
+7. enables the required plugins in the `.uproject` (ModelContextProtocol, EditorToolset, VibeUE,
+   plus NiagaraToolsets when a Niagara capability is selected), writes the MCP settings into both
+   the Default and the per-user ini layer so `bAutoStartServer=True` survives stale user state,
+   and writes the loopback MCP configuration;
 8. merges `ue-editor` into the target `.mcp.json`;
 9. records explicitly enabled project-local external plugin versions and descriptor hashes in the
    machine-local `Saved/UEAgent/route.json`;
