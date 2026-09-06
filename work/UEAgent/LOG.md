@@ -15,6 +15,64 @@ exact-schema path. See `patches/ue58-mcp-tool-search.patch` and the dated progre
 This file keeps current-stack decisions only. Retired WorkBuddy /
 UnrealGenAISupport history remains available in Git history and is not operating guidance.
 
+### 2026-09-02 - User-parameter hierarchy authoring APIs
+
+`NiagaraExternalSystemEditorUtilities` gained the `FNiagaraExt_UserParameterCategory` /
+`FNiagaraExt_UserParameterHierarchy` DTOs plus `GetUserParameterHierarchy` (pure read: no `Modify`,
+transaction, or package dirtying) and `SetUserParameterCategory` (creates the category when missing,
+re-parents existing elements, empty category moves parameters back to the ungrouped root).
+`NiagaraToolset_System` exposes both as `AICallable`; `NiagaraToolsets.Build.cs` gained the
+`DataHierarchyEditor` dependency that `NiagaraEditor.Build.cs` already carried. There is no
+remove-category API, so renaming a category the user created by hand leaves an empty shell in the
+Parameters panel - fill the existing category instead of inventing a parallel name.
+
+Back-flow regenerated the two existing engine patches rather than adding a third file. Each patch
+keeps its own `index` abbreviation width (toolsets 9 chars, authoring 7), so every file block the
+change did not touch stays byte-identical and the reviewable delta is exactly the new work; verify
+that way before overwriting a shared patch. Live Coding is not a substitute for the build: it never
+runs UHT, so new `UFUNCTION`/`USTRUCT` reflection does not land.
+
+### 2026-09-02 - Read/write classification is two independent layers
+
+The `effect` field from `toolset.describe` is ToolsetRegistry inference and is not the gate. The gate
+is the reliable kernel's explicit `ReadOnlyTools` allow-list, whose built-in entries are all
+`VibeUE.*`; no `NiagaraToolsets.*` tool is listed, so every call on that toolset - including pure
+reads - must go through `ueagent_submit`. The list is extensible from `[UEAgent.Reliable]
+ReadOnlyTools` in the project's `Config/DefaultEditor.ini` with no rebuild, but the kernel reads it
+once at construction, so it takes an editor restart. A getter reporting `effect: write` is
+pre-existing (`GetEmitterTopology` does too), not a regression to chase.
+
+### 2026-09-02 - Patch hashes flow manifest to route, and bootstrap refresh needs the right switches
+
+bootstrap reads patch hashes from `STACK-MANIFEST.json`, writes them into `route.json`, then verifies
+route against manifest - so any patch regeneration must be followed by a bootstrap run or the next
+run throws "does not match the installed engine". `-CheckOnly` exits before the VibeUE git section,
+which makes it a safe full-consistency validator. A dirty VibeUE checkout (Lightning carries 32
+modified files) makes plain bootstrap throw; `-PreserveExistingVibeUE` takes the validate-and-warn
+branch with no fetch, detach, or merge, and `-SkipBuild` avoids the editor-target build.
+`-Endpoint` is equally mandatory for any project whose port differs from the manifest default:
+`runtime.endpoint` is 8000, so a bootstrap run without `-Endpoint` silently rewrote Lightning's
+`route.json` from 8001 to 8000, after which every Gateway call failed with a connection error while
+the editor and its 8001 listener were healthy and responding. `-CheckOnly` does not catch this
+because it validates files and hashes, not connectivity. The authoritative port is in the editor log
+(`LogModelContextProtocol: Starting MCP server on port N` plus the `LogHttpListener` line), not in
+the manifest. bootstrap does not iterate the manifest profile `apply` lists - they are declarative.
+Each engine patch is
+threaded individually through six sites (path, hash, batch-applied, route verify, apply, route
+write), so adding a new patch file costs six bootstrap edits; prefer extending an existing patch.
+
+### 2026-08-31 - AddParticleReadNode flowed into the Niagara authoring composite
+
+The Lightning V5 ECS spike needed a particle-read DI authoring path, so the VibeUE scratchpad
+service gained `AddParticleReadNode` (DI-typed input pin on a Custom HLSL node plus a
+`UNiagaraNodeInput` carrying a `UNiagaraDataInterfaceParticleRead` bound by `EmitterBinding`,
+auto-linked). Flowed into `patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch`;
+manifest hash is now `BF3A47D3ACD878576817E2226BCA11598F76430294C28154C2ADACD556D2BCF1` and the
+Lightning route hash was synced; the Satris checkout still carries the previous composite
+(`E2AE5C63…`) until re-bootstrap. Build constraints hit: NiagaraEditor `MinimalAPI` classes do not
+export member functions (worked around with public member writes + UPROPERTY reflection) and
+`UNiagaraDataInterface::BuildObjectFlagsForOwner` is private (flag logic inlined).
+
 ### 2026-08-12 - Remove secondary compatibility paths
 
 Automatic GPU profiling remains part of the reliable command queue. Reflect Cache now exposes
@@ -470,3 +528,249 @@ and a live validation error compressed to 216 bytes without changing Editor stat
 Bootstrap now records each explicitly enabled project-local external plugin's relative descriptor,
 version, and normalized descriptor hash in `route.json`; `-CheckOnly` rejects drift. VibeUE remains
 covered by its existing Git revision and patch hashes instead of a duplicate inventory entry.
+
+### 2026-08-25 - Generic interface with declarative target overrides
+
+UEAgent is a generic system interface; per-project specialization exists only as declared data.
+STACK-MANIFEST gained a top-level `targets` section beside the capability `profiles` (now marked
+`kind: capability`). The former `profiles.abyss` became the `targets.Abyss` data instance:
+`capabilities`, `extra_patches` (engine/vibeue), `external_plugins`, and sectioned
+`project_settings`. Bootstrap replaced `-ApplyAbyssProfile` and every `*-Abyss*` function with
+generic `Get-TargetProfile`, `Assert/Set-ProjectSettings`, `Assert/Ensure-ExternalPlugins`, and
+`-TargetProfile <name>`; explicit capability switches that a target does not declare are rejected
+as drift. Routes now record `targetProfile` plus a `targetPatchSha256` fingerprint table. The old
+`environmentProfile: abyss-full` route keeps a one-time compatibility read with a warning until
+Abyss reruns bootstrap; the legacy branch is then deleted (BACKLOG P0). Verified pitfall rules
+(CDO snapshot gap, native component CDO dirty loop, landscape enumeration timeout, VibeUE animation
+GC scope) were promoted into the Blueprint, scene-editing, and new animation domain cards; the
+pitfall ledger keeps the full incident records. No patch file changed; all manifest hashes are
+unchanged.
+
+### 2026-08-25 - Remove the manual plugin enable / MCP auto-start gap
+
+Two bootstrap gaps forced a manual Plugins-window enable plus editor restart before the MCP port
+listened. First, `NiagaraToolsets` was never written into the `.uproject`; bootstrap now enables it
+whenever a Niagara capability is selected (apply path uses the capability switches, `-CheckOnly`
+uses the routed patch fingerprint or `vibeUEProfile`). Second, `bAutoStartServer=True` was written
+only to the Default ini layer while the per-user layer `Saved/Config/WindowsEditor/
+EditorPerProjectUserSettings.ini` outranks it and the plugin native default is False, so a stale
+serialized False silently disabled auto-start on every launch. Bootstrap now writes the MCP
+settings block into both layers via the shared `Set-McpSettingsFile`, and `-CheckOnly` rejects a
+user-layer `bAutoStartServer=False` with a repair hint. VibeUE remains a bootstrap-managed
+dependency (clone plus pinned `5-8` ref plus patches); target external plugins still come from the
+local bundle root.
+
+### 2026-08-25 - Satris bootstrap: hardened the generic path end to end
+
+First full generic-path bootstrap of a new project (F:\Omni\Project\Satris\Satris against the
+F:\Omni\Enigine UE 5.8.1 source engine) exposed and fixed five real defects. Machine unblock:
+Smart App Control evaluation (WDAC UMCI audit) forced every PowerShell session into
+ConstrainedLanguage; the user turned SAC off and bootstrap removed the machine-level
+`__PSLockdownPolicy=4` value, restoring FullLanguage. Git hardening: every native git call now
+runs through `Invoke-GitQuiet` (child-scope EAP Continue, stderr suppressed, exit-code verdict)
+because EAP Stop turns git stderr into terminating errors; `Ensure-GitPatchApplied` and
+`Test-GitPatchesApplied` gained a `-C1 --ignore-space-change --ignore-whitespace` fallback tier.
+VibeUE baseline: the packaged patches were generated on the local merge of master `271f487` plus
+5-8 `6a0617c`, so bootstrap now replays that exact merge from two pinned public SHAs and verifies
+the merged TREE `4612cc04` (commit SHAs vary with committer identity; upstream master also moved,
+so branch refs were replaced with pinned SHAs in the manifest). Empty-file null bug:
+`Get-Content -Raw` on a present-but-empty ini returns `$null` in PS 5.1 and `[string]` casts do
+not survive empty pipeline output, so all ini/AGENTS readers coerce with `+ ''`; Satris shipped an
+empty `DefaultEditor.ini`, which crashed `Set-UeAgentReliableConfig`. Live results without any
+manual plugin step: plugins (including NiagaraToolsets) enabled via `.uproject`, dual-layer MCP
+inis written, editor built in 123 s, port 8000 auto-listening, doctor `HEALTHY` receipt persisted,
+compact router returned `LIVE_READ`, and a Gateway `ueagent_state` live read returned protocol
+2.0.0 with the matching editor epoch and zero dirty packages.
+
+### 2026-08-25 - Lightning onboarded as the second generic-path project
+
+G:\Work\Project\Lightning was a content-only project (no Source, hence no .sln could exist and
+VibeUE source plugin could never load), so a minimal Runtime module was scaffolded first
+(Lightning.Target.cs, LightningEditor.Target.cs, Lightning.Build.cs, empty module pair, plus the
+Modules entry in the .uproject). Two build fixes surfaced: UE 5.8.1 requires
+`BuildSettingsVersion.V7` targets because LightningEditor shares the UnrealEditor build
+environment (V5 defaults were rejected), and the MCP endpoint had to move to port 8001 because
+the Satris editor already owns 8000 (`-Endpoint http://127.0.0.1:8001/mcp`; both inis, .mcp.json,
+and the route record 8001). The rerun reused the patched VibeUE checkout via
+`-PreserveExistingVibeUE` (merged-baseline tree plus profile markers accepted), skipped the
+already-applied engine patches, built LightningEditor, and launched. Results: port 8001
+auto-listening within 30 s, doctor `HEALTHY` (PID 36412), `ueagent_state` live read protocol 2.0.0
+with matching epoch, and `GenerateProjectFiles.bat` produced Lightning.sln.
+### 2026-08-26 - Abyss route reactivated after F:\Omni migration
+
+The Abyss project and the 5.8.1 source engine moved from D:\Work to F:\Omni (project `F:\Omni\Project\Abyss`, engine root `F:\Omni\Enigine`). The copied `Plugins/VibeUE` had lost `.git` in transit, so bootstrap re-cloned the pinned merge and re-applied the packaged patches (verified merged tree `4612cc04`); the old copy is parked under Iris `tmp/abyss-restore-20260825/`. The route was regenerated in `targetProfile` format via `bootstrap -TargetProfile Abyss -SkipBuild`, and a full `AbyssEditor Win64 Development` rebuild succeeded (4198 actions, ~2.7 h). After cold start, doctor reports HEALTHY (PID 14912, epoch A4F54B9C-4657-0C57-E467-7DA76CB652F8, fingerprint 18422b7b) and `-ProbeAdvancedCapabilities` returns `niagaraToolsetsExtension: true`, satisfying the Abyss smoke gate on port 8000 while the Lightning editor stays on 8001.
+
+### 2026-08-27 - Delete the legacy environmentProfile compatibility branch
+
+With the Abyss route regenerated in `targetProfile` format (2026-08-25) and smoke-verified (2026-08-26), the one-time legacy read in `bootstrap.ps1` was removed: the `environmentProfile: abyss-full` elseif in route parsing and the `$routedLegacyTarget`/`$legacyRouteShaFieldByPatch` verification branch. Only `targetProfile` routes with the `targetPatchSha256` fingerprint table are accepted now. PowerShell AST, `test_reliable_profile.ps1`, and a live Abyss `-CheckOnly` (targetProfile path with two target extra patches) all passed.
+
+### 2026-08-27 - Satris write path verified end to end
+
+Closed the portable-baseline mutation gap on the Satris route. Route repair first: port 8000 was owned by the Abyss editor, so Satris was re-bootstrapped onto `http://127.0.0.1:8002/mcp` (both ini layers, `.mcp.json`, route record). Two build blocks surfaced: UBT's Live Coding guard keys on a per-running-process named mutex (`Global\\LiveCoding_<exe-path>` held by the editor process itself, not by LiveCodingConsole — consoles were terminated with user consent but the guard persists while an editor runs), bypassed for this build with `-NoHotReloadFromIDE` (engine binaries were already current; only project modules compiled); and an `UnrealEditor-NetCore.dll` relink locked by the running Abyss/Lightning editors, unblocked by renaming the in-use DLL (running editors keep their mapped copy; leftover `UnrealEditor-NetCore.dll.locked-20260827` deletes after those editors restart). The verified chain on a disposable material: OCC `exists=false` snapshot -> `ueagent_submit` `MaterialTools.create_material` -> terminal receipt (succeeded/changed/verified/dirty_not_saved) -> independent `ueagent_snapshot` (exists, `/Script/Engine.Material`, dirty) -> save capability -> immutable save receipt -> `.uasset` plus ReflectCache sidecar on disk (packaged save hook fired) -> referencer-free `AssetTools.delete` -> `exists=false`, file gone. Receipts persist under Satris `Saved/UEAgent/Operations` (`1bd5432a` create, `373e7423`/`a4ef0c70` property flips, the latter with the save receipt, `74eea195` delete). One incident became new evidence: the editor Autosave fired ~82 s after the create receipt, latching OUT_OF_BAND_SAVE and killing the 5-minute token; recovery required a fresh mutation with explicit `allow_preexisting_dirty_save=true` (same-task-owned dirty state) followed by an immediate `ueagent_save`. Recorded as `CORE-20260827-AUTOSAVE-SAVE-TOKEN-RACE`.
+
+### 2026-08-27 - Hidden-save audit closes P0; K02 fix flowed into the composite patch
+
+Exhaustive save-site audit across the reachable surface: all 16 VibeUE service saves — including the two P0-named paths, `UNiagaraScratchPadService::ApplyChanges` and `UBlueprintService::SetProperty` — are guarded by `FUEAgentReliableKernel::ShouldDeferDirectSave()` inside the packaged `vibeue-reliable-kernel.patch`; the engine NiagaraToolsets/MCP plugins contain zero save calls; official EditorToolset exposes only explicit `Save*` tools, which the kernel rejects by name (`SAVE_REQUIRES_TOKEN`); the only unguarded site is the `execute_python_code` pre-save, unreachable on this stack (no registered toolset, no Gateway action, gate blocks direct calls). Live behavior matched the audit: official `create_material`/`set_properties` on Satris ended `persistence=dirty_not_saved`. The one real baseline gap found by the audit — LIGHTNING-K02's ApplyChanges validator fix (skip `Input`+`None`+`bNotConnectable` shadow pins) living only in Lightning's project copy — was flowed back: the composite was regenerated from a pristine pinned-merge replay (`git diff --output` to avoid PowerShell codepage mojibake in patch context), applied-tree A/B against the old composite differs only in the 5-line skip, and the packaged `vibeue-ueagent-authoring.patch` is now sha256 `E2AE5C6353CE4850A9E0ADC73A25629D020A603820871BF0912BCDDE9C3EA17F` (manifest updated; `test_reliable_profile.ps1` passed). Satris adopted it (route rewritten, VibeUE recompiled — the fix compiles — doctor HEALTHY, `-CheckOnly` passed). Abyss and Lightning routes still record the previous composite hash and will fail `-CheckOnly` until re-bootstrap; their running editors are unaffected since the false positive only triggers on `ApplyChanges` with a Map Get carrying two or more typed reads.
+
+### 2026-09-05 - Niagara authoring composite rebuilt; CRLF patches were the silent-misapply mechanism
+
+The 2026-08-27 entry above records the authoring composite as sha256 `E2AE5C63...` carrying the
+LIGHTNING-K02 shadow-pin skip. That state never reached any committed artifact: no revision of
+`vibeue-ueagent-authoring.patch` in Iris history contains `bNotConnectable`, and neither did the
+working-tree version found at the start of this session. K02 survived only in the
+`G:/Work/Project/Lightning/Plugins/VibeUE` working copy, which is the fullest state on the box
+(DI ops + the four new ops + `RefreshModuleCallNodes`/`RemoveScratchPin` + K02, all uncommitted).
+
+The working-tree authoring patch was a **chained regeneration**: it had been diffed against a tree
+that already carried the four DI ops *and* `vibeue-reliable-kernel.patch`, so those ops degraded
+from carried content into baseline, the `Public/Module.h` and `VibeUE.Build.cs` blocks vanished
+(6 file blocks -> 4), and its declared baselines (`NSP.cpp 2b6a57d`, `NSP.h 6208f8e`) exist nowhere
+in the pinned stack. `NSP.h 6208f8e` is the *result* blob of the previous good patch, which is the
+fingerprint of chaining. It could not apply to `merged_tree 4612cc0` even under bootstrap's full
+`-C1 --ignore-space-change --ignore-whitespace` tolerance, so `-ApplyNiagaraAuthoringProfile` was
+hard-broken. STACK-MANIFEST's sha had been re-pinned to match it (`C8318013...`), so
+`test_reliable_profile.ps1` passed throughout.
+
+Root cause of the whole class: `.gitattributes` held `*.patch -whitespace` with no `eol=lf`, and the
+repo runs `core.autocrlf=true`, so all 23 tracked patch files were `i/lf w/crlf`. A CRLF patch
+against an LF source tree fails strict `git apply --check`, so `Invoke-GitPatch` took its relaxed
+branch on *every* patch, every time - context reduced to one line, hunks free to land in the wrong
+place. `bootstrap.ps1:584` already claimed "Packaged patches are LF"; the attribute gap made that
+false. Now `*.patch text eol=lf -whitespace`.
+
+Rebuilt by union rather than by choosing a lineage: pristine `4612cc0` -> previous good authoring
+content (DI ops, `Module.h`, `Build.cs`) -> the four new ops from the broken patch's `NSP` blocks
+-> K02 from the Lightning copy -> `RefreshModuleCallNodes`/`RemoveScratchPin`. Two mechanical
+context repairs were needed, both because the new content was authored against a later chain
+position: the broken patch's first hunk carried `#include "Core/UEAgentReliableKernel.h"` as
+context (reliable-kernel is applied *after* authoring), and its new
+`#include "AssetRegistry/AssetRegistryModule.h"` landed between `EditorAssetLibrary.h` and
+`EdGraph/EdGraph.h`, which is exactly reliable-kernel's own include-hunk context - so it moved below
+`Misc/Guid.h`. All six VibeUE patches now **strict**-apply in manifest order from `4612cc0`, and the
+terminal tree carries all ten ops plus K02. Authoring is `DCAA0754...`, refresh `3DA0BDF9...`.
+
+Consequence to clear: Abyss's `route.json` is stale four ways and `-CheckOnly` now fails on the
+first of them - `engineNiagaraPatchSha256` (`C3EB3E4F...` routed vs `7870BC1A...` pinned) and
+`engineNiagaraAuthoringPatchSha256` (`E568B91D...` vs `67D5F951...`) were already drifted by other
+sessions' uncommitted patch edits before this one; `vibeUEPatchSha256` moved with this rebuild; and
+`vibeUERefreshModuleCallNodesPatchSha256` is new because refresh is now actually applied. Its VibeUE
+checkout is 32 files dirty, so a re-bootstrap needs `-PreserveExistingVibeUE` and an explicit
+`-Endpoint`.
+
+### 2026-09-05 - STACK-MANIFEST apply lists became the authority bootstrap consumes
+
+`profiles.*.apply` had zero consumers in `scripts/`: eleven positions in `bootstrap.ps1` hardcoded
+patch paths, sha lookups, CheckOnly assertions, apply order and route fields, and the switch
+`if ($ApplyNiagaraAuthoringProfile)` chose the composite. `apply` was read only by four test
+membership assertions. The concrete cost was that
+`patches/niagara-mcp-authoring/vibeue/vibeue-refresh-module-call-nodes.patch` sat in the
+niagara-authoring apply list while bootstrap never applied it at all - adding an entry to `apply`
+did nothing, and the manifest looked authoritative while the script was.
+
+Chosen fix (over deleting the list or over a route-schema break): the manifest now carries the axes
+bootstrap needs. `patches.<path>` is a record of `sha256`, `repo` (`engine`/`vibeue`) and
+`route_field`; profiles carry `kind` (`core` for the mutually exclusive `base`/`niagara-authoring`
+pair, `capability` for additive ones), an explicit `capability` name, optional `requires` and
+optional `required_plugins`. `ueagent_common.ps1` gained `Get-UeAgentPatchPlan` and friends;
+bootstrap resolves one plan and iterates it for resolution, application, CheckOnly and route
+emission. The capability-to-switch table and `Get-TargetExtraPatches` are gone, and bootstrap
+contains zero patch-path literals. Route field *names* are unchanged, so `reflect_cache.ps1` and
+existing routes keep their schema - deliberately, since the alternative invalidates live targets.
+
+Two behaviours changed on purpose. `-ApplyEngineNiagaraPatch` alone now throws, because
+`niagara-toolsets` declares `requires: ["niagara-authoring"]`; the profile's warning string about
+not compiling alone had no consumer and was fail-open. And the old single-patch guard ("the engine
+has the Niagara authoring patch") generalised to: the engine must carry no pinned engine patch
+outside the selected plan.
+
+Defence added so a re-pinned hash cannot again hide semantic loss: the test asserts the authoring
+patch's carried ops (all eight plus `bNotConnectable`) and its `Module.h`/`Build.cs` file blocks,
+asserts each plan resolves, applies no patch twice and overwrites no route field, pins the verified
+niagara-authoring VibeUE order, and - given `-VibeUEPath` - asserts every declared `index` baseline
+blob equals that path's blob in `merged_tree 4612cc0`. That last one is the direct detector: it
+reports 2 mismatches and 4 file blocks on the broken patch, 0 and 6 on the rebuild. CheckOnly also
+compares fingerprints before touching the working tree, so a stale checkout no longer masks which
+patch actually drifted.
+
+### 2026-09-05 - Two fail-open corners closed: profile requirements and project_settings section names
+
+`niagara-toolsets` carried a manifest `warning` explaining it does not compile alone, and nothing in
+`scripts/` or `tests/` read it - a comment, not a gate. Taken the second of the two backlog options:
+the profile now declares `requires: ["niagara-authoring"]` and `Assert-UeAgentProfileRequirements`
+refuses it otherwise, so `-ApplyEngineNiagaraPatch` alone throws. What is left is narrower and stays
+in the backlog: the profile is now a no-op alias whose one patch already ships in niagara-authoring's
+apply list, so it could be deleted together with the switch and the only consumer of `requires`.
+
+`project_settings` was the one place the design did not fail closed. `Set-IniSectionSettings`
+appends a section that does not exist rather than erroring, and `Assert-ProjectSettings` read the
+same manifest-supplied name back, so a misspelled section passed `-CheckOnly` while the setting never
+reached the engine - consistently wrong on both sides of the same source. The fix is to consult an
+authority that is neither the manifest nor bootstrap's own write: `Get-EngineIniSectionNames` reads
+every `Engine/Config/**.ini` section header, and both the write and the read-back path refuse a
+declared section the hierarchy does not define. Against UE 5.8.1 that yields 1044 known sections;
+`SystemSettings` and `/Script/Engine.RendererSettings` are recognised, `SystemSettingz` and
+`System_Settings` are not, so class-config sections are covered without a hardcoded allowlist.
+
+### 2026-09-05 — Local sync keeps engine installation separate from project routing
+
+The imported installer/profile/hash-routing entries above describe the source machine. This
+workspace retains engine-scoped VibeUE and route-only Bootstrap; the new Niagara packages,
+source revisions, diagnostics and package tests are merged into that path without restoring
+the retired project installer. `SETUP.md` and the manifest describe the current installation.
+
+### 2026-09-06 — Daemon binding, engine installer and incident dispositions aligned
+
+A two-endpoint mock reproduced daemon misrouting: requesting B reached A because forwarding
+removed endpoint identity. Gateway and daemon now enforce endpoint/project-session binding;
+explicit mismatch rejects before dispatch and AutoDaemon keeps the requested one-shot target.
+The transport suite passes all 14 cases, including both binding boundaries and no stray calls.
+
+`install_engine.ps1` owns manifest-ordered engine/VibeUE installation, scoped defaults and build
+invocation; Bootstrap retains project routing. Shared validation stays in `ueagent_common.ps1`.
+Ten isolated install checks cover dependency order, conflict preservation, repeat/additive
+installation, build dispatch, consumer bootstrap, and unchanged user indexes/dirty work. The base
+and Niagara authoring VibeUE packages strictly apply to separate public-source checkouts (5 and
+6 patches respectively). No production engine was rebuilt or live-verified in this session.
+
+The redundant standalone Niagara Toolsets profile was removed; its wrappers and required exports
+remain in the complete authoring profile. Sixteen pitfalls now state historical/current
+applicability and preserve actual receipt semantics. Current SOPs no longer recommend unrelated
+writes or reparenting to manufacture save tokens, or hiding out-of-scope dirty effects. CDO scope
+coverage and asynchronous Niagara/save lifecycle failures remain explicit target probes.
+
+### 2026-09-06 — real-engine reliability and save verification
+
+The selected engine installation at `E:/work/engine_work/Enigne/UE` was upgraded without resetting
+its pre-existing dirty source or Git index, then rebuilt and cold-started against UEAgentProbe.
+The public-source base and authoring composites were regenerated and strictly replayed.
+
+Protocol 2.0.1 fixes exact-object fallback. Scratch operations enforce same-package private
+ownership; apply invalidates the script source before compiling. Niagara data-processing views
+no longer compile on initialization, and SetStackInputData completes compilation before receipt
+snapshots. Eight specifically reviewed Python/Niagara readers now avoid the mutation queue.
+Gateway preserves empty/singleton arrays and null, and Doctor separately reports reflected
+scratch authoring and parameter-hierarchy capability. Blueprint sidecars include inherited CDO
+overrides. These replace the older operational claims about all getters requiring submission.
+
+Five cache types, CDO mutation/reload, shared-package isolation, four added authoring operations,
+refresh/pin removal, compile completion, exact save and save replay/rejection were exercised.
+The detailed result and limitations are in `notes/runtime-verification-20260906.md`.
+
+Abyss's project-local VibeUE descriptor was moved to `Saved/UEAgent/RetiredVibeUE` with its bytes
+preserved; project source remains in place, and bootstrap checks the engine installation route.
+VRM4U is its sole missing enabled plugin, so Abyss-specific activation still requires that dependency.
+No commits were made and unrelated dirty work was retained.
+
+### 2026-09-06 — user-approved five-boundary simplification
+
+Implemented K1–K5 and R01–R25 as protocol 3.0. Generic snapshots/OCC, hashes, signed save tokens,
+per-transition journals, the read whitelist/engine authorization delegate, profiling freeze,
+session/schema TTL and per-call daemon probes were removed or replaced on one current path.
+Gateway now handles local waiting, one typed readback and optional task-owned saving. Acceptance
+and evidence write failures are checked. Exact values, including false/null/arrays and Niagara
+instanced cache inputs, are preserved. Mandatory navigation was reduced to one short card plus
+its pointer. Existing domain crash fixes and ordinary implementation bounds remain.
+
+Actual build, native/transport/installer tests, cold Blueprint/Niagara reload, replay, readback
+failure, exact save scope and acceptance-write failure were verified. No dirty test packages
+remained. See `notes/minimal-execution-20260906.md` for measured scope and accepted limitations.

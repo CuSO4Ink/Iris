@@ -1,14 +1,12 @@
 diff --git a/Source/VibeUE/Private/Module.cpp b/Source/VibeUE/Private/Module.cpp
-index 6f4c9e7..48cc284 100644
 --- a/Source/VibeUE/Private/Module.cpp
 +++ b/Source/VibeUE/Private/Module.cpp
-@@ -19,9 +19,1520 @@
+@@ -19,8 +19,1534 @@
  #include "Utils/VibeUEPaths.h"
  #include "Misc/Paths.h"
  #include "Misc/FileHelper.h"
 +#include "Misc/ConfigCacheIni.h"
 +#include "Misc/PackageName.h"
-+#include "Misc/SecureHash.h"
 +#include "Misc/Base64.h"
 +#include "EditorAssetLibrary.h"
 +#include "BlueprintEditorLibrary.h"
@@ -42,7 +40,7 @@ index 6f4c9e7..48cc284 100644
 +#endif
  
  #define LOCTEXT_NAMESPACE "FModule"
- 
++
 +namespace MaterialAICache
 +{
 +	static constexpr const TCHAR* ConfigSection = TEXT("VibeUE.MaterialAICache");
@@ -57,13 +55,7 @@ index 6f4c9e7..48cc284 100644
 +		return Value;
 +	}
 +
-+	static FString Sha1(const FString& Value)
-+	{
-+		FTCHARToUTF8 Utf8(*Value);
-+		FSHAHash Hash;
-+		FSHA1::HashBuffer(Utf8.Get(), Utf8.Length(), Hash.Hash);
-+		return Hash.ToString().ToLower();
-+	}
++
 +
 +	static FString ShortValue(FString Value, int32 MaxLength = 160)
 +	{
@@ -360,11 +352,10 @@ index 6f4c9e7..48cc284 100644
 +					Description = TEXT("Custom");
 +				}
 +				CustomLines.Add(FString::Printf(
-+					TEXT("%s | inputs=[%s] out=%s code_sha1=%s code~=%s"),
++					TEXT("%s | inputs=[%s] out=%s code~=%s"),
 +					*ShortValue(Description, 80),
 +					*JsonString(Expression, TEXT("custom_input_names")),
 +					*StripEnumPrefix(JsonString(Expression, TEXT("output_type"))),
-+					*Sha1(Hlsl).Left(12),
 +					*ShortValue(Hlsl, 220)));
 +			}
 +		}
@@ -544,7 +535,6 @@ index 6f4c9e7..48cc284 100644
 +			TEXT("file: ") + NormalizedSource,
 +			TEXT("mtime: ") + SourceMtime,
 +			FString::Printf(TEXT("size: %lld"), SourceSize),
-+			TEXT("graph_sha1: ") + Sha1(FString::Join(LogicLines, TEXT("\n"))),
 +			FString::Printf(
 +				TEXT("graph: {expressions: %d, connections: %d, outputs: %d, parameter_nodes: %d, parameter_names: %d}"),
 +				Expressions->Num(),
@@ -902,6 +892,29 @@ index 6f4c9e7..48cc284 100644
 +		}
 +		VariableLines.Sort();
 +
++		// NewVariables excludes inherited defaults (for example Actor.InitialLifeSpan).
++		// Record only editable inherited values which differ from the parent CDO.
++		TArray<FString> DefaultLines;
++		UObject* ParentDefault = Blueprint->ParentClass
++			? Blueprint->ParentClass->GetDefaultObject(false) : nullptr;
++		if (DefaultObject && ParentDefault)
++		{
++			for (TFieldIterator<FProperty> It(Blueprint->ParentClass, EFieldIteratorFlags::IncludeSuper); It; ++It)
++			{
++				FProperty* Property = *It;
++				if (!Property->HasAnyPropertyFlags(CPF_Edit)
++					|| Property->HasAnyPropertyFlags(CPF_Transient | CPF_DuplicateTransient | CPF_Deprecated | CPF_DisableEditOnTemplate)
++					|| Property->Identical_InContainer(DefaultObject, ParentDefault))
++				{
++					continue;
++				}
++				FString Value;
++				Property->ExportText_InContainer(0, Value, DefaultObject, ParentDefault, DefaultObject, PPF_SimpleObjectText);
++				DefaultLines.Add(Property->GetName() + TEXT("=") + ShortValue(Value, 300));
++			}
++		}
++		DefaultLines.Sort();
++
 +		TArray<FString> ComponentLines;
 +		if (Blueprint->SimpleConstructionScript)
 +		{
@@ -1026,7 +1039,6 @@ index 6f4c9e7..48cc284 100644
 +			TEXT("file: ") + NormalizedSource,
 +			TEXT("mtime: ") + SourceMtime,
 +			FString::Printf(TEXT("size: %lld"), SourceSize),
-+			TEXT("graph_sha1: ") + Sha1(FString::Join(GraphBodies, TEXT("\n"))),
 +			FString::Printf(
 +				TEXT("blueprint: {parent: %s, graphs: %d, variables: %d, components: %d}"),
 +				*ParentPath,
@@ -1045,6 +1057,13 @@ index 6f4c9e7..48cc284 100644
 +				TEXT("```"),
 +			});
 +		}
++		Lines.Append({
++			TEXT(""),
++			TEXT("## Defaults"),
++			TEXT("```text"),
++			DefaultLines.IsEmpty() ? TEXT("-") : FString::Join(DefaultLines, TEXT("\n")),
++			TEXT("```"),
++		});
 +		Lines.Append({
 +			TEXT(""),
 +			TEXT("## Components"),
@@ -1197,7 +1216,6 @@ index 6f4c9e7..48cc284 100644
 +
 +		TArray<FString> EmitterSections;
 +		TArray<FString> EmbeddedSections;
-+		TArray<FString> HashParts = { SummaryJson };
 +		TSet<FString> SeenEmbedded;
 +		for (const FNiagaraExt_EmitterSummary& Emitter : Summary.Emitters)
 +		{
@@ -1249,7 +1267,6 @@ index 6f4c9e7..48cc284 100644
 +				*TopologyJson,
 +				*InputsJson,
 +				*RenderersJson));
-+			HashParts.Append({ TopologyJson, InputsJson, RenderersJson });
 +
 +			const FNiagaraExt_ScriptStackTopology* Stacks[] = {
 +				&Topology.EmitterSpawnScript,
@@ -1279,7 +1296,6 @@ index 6f4c9e7..48cc284 100644
 +					if (!Section.IsEmpty())
 +					{
 +						EmbeddedSections.Add(Section);
-+						HashParts.Add(Section);
 +					}
 +				}
 +			}
@@ -1293,7 +1309,6 @@ index 6f4c9e7..48cc284 100644
 +			OutError = TEXT("failed to serialize Niagara dependencies");
 +			return false;
 +		}
-+		HashParts.Add(DependenciesJson);
 +		if (Context.HasErrors())
 +		{
 +			TArray<FString> Errors;
@@ -1318,7 +1333,6 @@ index 6f4c9e7..48cc284 100644
 +			TEXT("file: ") + NormalizedSource,
 +			TEXT("mtime: ") + SourceMtime,
 +			FString::Printf(TEXT("size: %lld"), SourceSize),
-+			TEXT("graph_sha1: ") + Sha1(FString::Join(HashParts, TEXT("\n"))),
 +			FString::Printf(
 +				TEXT("system: {emitters: %d, user_variables: %d, embedded: %d}"),
 +				Summary.Emitters.Num(),
@@ -1519,11 +1533,10 @@ index 6f4c9e7..48cc284 100644
 +	return true;
 +}
 +#endif
-+
+ 
  // Console command to list all registered tools
  static void ListVibeUETools()
- {
-@@ -306,6 +1817,7 @@ void FModule::StartupModule()
+@@ -306,6 +1832,7 @@
  	}
  
  	bServicesInitialized = true;
@@ -1531,7 +1544,7 @@ index 6f4c9e7..48cc284 100644
  
  	// Clear screenshots directory from previous sessions to save disk space
  	FVibeUEPaths::ClearScreenshotsDir();
-@@ -436,6 +1948,11 @@ void FModule::ShutdownModule()
+@@ -436,6 +1963,11 @@
  	// Unregister PreExit / PostEngineInit callbacks
  	FCoreDelegates::OnPreExit.RemoveAll(this);
  	FCoreDelegates::GetOnPostEngineInit().RemoveAll(this);
@@ -1543,10 +1556,12 @@ index 6f4c9e7..48cc284 100644
  
  	// Unregister service toolsets + MCP tools
  	UnregisterToolsets();
-@@ -446,6 +1963,38 @@ void FModule::ShutdownModule()
- 	UE_LOG(LogTemp, Display, TEXT("VibeUE Module has shut down"));
- }
+@@ -444,6 +1976,38 @@
+ 	FToolRegistry::Get().Shutdown();
  
+ 	UE_LOG(LogTemp, Display, TEXT("VibeUE Module has shut down"));
++}
++
 +void FModule::HandleAssetPackageSaved(
 +	const FString& PackageFileName,
 +	UPackage* Package,
@@ -1577,11 +1592,9 @@ index 6f4c9e7..48cc284 100644
 +	{
 +		UE_LOG(LogTemp, Warning, TEXT("VibeUE: AI cache failed for %s: %s"), *Package->GetName(), *Error);
 +	}
-+}
-+
+ }
+ 
  void FModule::OnPreExit()
- {
- 	UE_LOG(LogTemp, Display, TEXT("VibeUE OnPreExit - cleaning up Python services"));
 diff --git a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp b/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
 index 85a40a7..841cb56 100644
 --- a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
@@ -1669,10 +1682,18 @@ index 85a40a7..841cb56 100644
  		if (UMaterialExpressionParameter* ParamExpr = Cast<UMaterialExpressionParameter>(Expr))
  		{
 diff --git a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
-index 6356ca8..c4f872d 100644
+index 6356ca8..981323e 100644
 --- a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
 +++ b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
-@@ -16,6 +16,7 @@
+@@ -8,6 +8,7 @@
+ #include "EdGraph/EdGraphSchema.h"
+ #include "UObject/UObjectGlobals.h"
+ #include "Misc/Guid.h"
++#include "AssetRegistry/AssetRegistryModule.h"
+ 
+ // Niagara runtime
+ #include "NiagaraCommon.h"
+@@ -16,6 +17,7 @@
  #include "NiagaraScratchPadContainer.h"
  #include "NiagaraScript.h"
  #include "NiagaraScriptSourceBase.h"
@@ -1680,7 +1701,7 @@ index 6356ca8..c4f872d 100644
  #include "NiagaraSystem.h"
  #include "NiagaraTypes.h"
  
-@@ -23,6 +24,9 @@
+@@ -23,6 +25,9 @@
  #include "NiagaraDataInterfaceArrayFloat.h"
  #include "NiagaraDataInterfaceArrayInt.h"
  #include "NiagaraDataInterfaceGrid2DCollection.h"
@@ -1690,7 +1711,79 @@ index 6356ca8..c4f872d 100644
  #include "NiagaraDataInterfaceRenderTarget2D.h"
  
  // Niagara editor.
-@@ -82,17 +86,35 @@ namespace
+@@ -39,9 +44,17 @@
+ #include "NiagaraNodeOp.h"
+ #include "NiagaraNodeOutput.h"
+ #include "NiagaraNodeWithDynamicPins.h"
++#include "NiagaraEmitterFactoryNew.h"
++#include "NiagaraSystemFactoryNew.h"
+ #include "NiagaraScriptSource.h"
+ #include "ViewModels/Stack/NiagaraStackGraphUtilities.h"
+ 
++#if WITH_AUTOMATION_TESTS
++#include "Misc/AutomationTest.h"
++#include "Misc/ScopeExit.h"
++#include "UObject/Package.h"
++#endif
++
+ #define LOCTEXT_NAMESPACE "NiagaraScratchPadService"
+ 
+ // =====================================================================
+@@ -50,6 +63,25 @@
+ 
+ namespace
+ {
++	UNiagaraSystem* GetOrCreateEmitterWrapper(UNiagaraEmitter* Emitter)
++	{
++		if (!Emitter) { return nullptr; }
++		const FName WrapperName(TEXT("UEA_ScratchHost"));
++		if (UNiagaraSystem* Existing = FindObject<UNiagaraSystem>(Emitter, *WrapperName.ToString()))
++		{
++			return Existing;
++		}
++		UNiagaraSystem* Wrapper = NewObject<UNiagaraSystem>(Emitter, UNiagaraSystem::StaticClass(), WrapperName, RF_Transactional);
++		UNiagaraSystemFactoryNew::InitializeSystem(Wrapper, false);
++		FNiagaraEmitterHandle Handle(*Emitter, Emitter->GetExposedVersion().VersionGuid);
++		Wrapper->AddEmitterHandleDirect(Handle);
++		if (Wrapper->GetEmitterHandles().Num() > 0)
++		{
++			Wrapper->GetEmitterHandles()[0].SetName(FName(*Emitter->GetUniqueEmitterName()), *Wrapper);
++		}
++		return Wrapper;
++	}
++
+ 	UNiagaraSystem* LoadSystem(const FString& SystemPath)
+ 	{
+ 		if (SystemPath.IsEmpty())
+@@ -57,7 +89,15 @@ namespace
+ 			return nullptr;
+ 		}
+ 		UObject* Loaded = UEditorAssetLibrary::LoadAsset(SystemPath);
+-		return Cast<UNiagaraSystem>(Loaded);
++		if (UNiagaraSystem* System = Cast<UNiagaraSystem>(Loaded))
++		{
++			return System;
++		}
++		if (UNiagaraEmitter* Emitter = Cast<UNiagaraEmitter>(Loaded))
++		{
++			return GetOrCreateEmitterWrapper(Emitter);
++		}
++		return nullptr;
+ 	}
+ 
+ 	FNiagaraEmitterHandle* FindEmitterHandle(UNiagaraSystem* System, const FString& EmitterName)
+@@ -73,6 +113,10 @@ namespace
+ 				return &Handle;
+ 			}
+ 		}
++		if (System->GetEmitterHandles().Num() == 1)
++		{
++			return &System->GetEmitterHandles()[0];
++		}
+ 		return nullptr;
+ 	}
+ 
+@@ -82,17 +126,35 @@ namespace
  		if (Stage.Equals(TEXT("ParticleUpdate"), ESearchCase::IgnoreCase)) return ENiagaraScriptUsage::ParticleUpdateScript;
  		if (Stage.Equals(TEXT("EmitterSpawn"),   ESearchCase::IgnoreCase)) return ENiagaraScriptUsage::EmitterSpawnScript;
  		if (Stage.Equals(TEXT("EmitterUpdate"),  ESearchCase::IgnoreCase)) return ENiagaraScriptUsage::EmitterUpdateScript;
@@ -1727,7 +1820,7 @@ index 6356ca8..c4f872d 100644
  #if WITH_EDITORONLY_DATA
  			case ENiagaraScriptUsage::EmitterSpawnScript:   return EmitterData->EmitterSpawnScriptProps.Script;
  			case ENiagaraScriptUsage::EmitterUpdateScript:  return EmitterData->EmitterUpdateScriptProps.Script;
-@@ -173,6 +195,11 @@ namespace
+@@ -173,6 +235,11 @@ namespace
  		    N.Equals(TEXT("ArrayInt32"),    ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceArrayInt32::StaticClass());    return true; }
  		if (N.Equals(TEXT("Grid2D"),        ESearchCase::IgnoreCase) ||
  		    N.Equals(TEXT("Grid2DCollection"), ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceGrid2DCollection::StaticClass()); return true; }
@@ -1739,7 +1832,7 @@ index 6356ca8..c4f872d 100644
  		if (N.Equals(TEXT("RenderTarget2D"), ESearchCase::IgnoreCase) ||
  		    N.Equals(TEXT("DynamicRT"),      ESearchCase::IgnoreCase)) { OutType = FNiagaraTypeDefinition(UNiagaraDataInterfaceRenderTarget2D::StaticClass()); return true; }
  
-@@ -246,52 +273,6 @@ namespace
+@@ -246,52 +313,6 @@ namespace
  		return FString();
  	}
  
@@ -1792,7 +1885,7 @@ index 6356ca8..c4f872d 100644
  	/** Build an FEdGraphPinType for a Niagara type using the exported schema helper. */
  	FEdGraphPinType MakeNiagaraPinType(const FNiagaraTypeDefinition& Type)
  	{
-@@ -344,7 +325,14 @@ namespace
+@@ -344,7 +365,14 @@ namespace
  		return nullptr;
  	}
  
@@ -1808,7 +1901,7 @@ index 6356ca8..c4f872d 100644
  	UNiagaraNodeFunctionCall* FindModuleNodeOnEmitter(FVersionedNiagaraEmitterData* EmitterData, const FString& ModuleName)
  	{
  		UNiagaraGraph* Graph = GetEmitterGraph(EmitterData);
-@@ -353,7 +341,7 @@ namespace
+@@ -353,7 +381,7 @@ namespace
  		Graph->GetNodesOfClass<UNiagaraNodeFunctionCall>(Calls);
  		for (UNiagaraNodeFunctionCall* Call : Calls)
  		{
@@ -1817,7 +1910,19 @@ index 6356ca8..c4f872d 100644
  			if (Call->GetFunctionName().Equals(ModuleName, ESearchCase::IgnoreCase))
  			{
  				return Call;
-@@ -401,12 +389,409 @@ namespace
+@@ -368,7 +396,10 @@ namespace
+ 
+ 	UNiagaraGraph* GetScratchGraphFromCall(UNiagaraNodeFunctionCall* Call)
+ 	{
+-		if (!Call || !Call->FunctionScript) return nullptr;
++		// This service edits private scratch graphs, never public library graphs or a
++		// private module owned by another package through a cross-package reference.
++		if (!Call || !IsEmbeddedModuleScript(Call->FunctionScript) ||
++			Call->GetOutermost() != Call->FunctionScript->GetOutermost()) return nullptr;
+ 		auto* Src = Cast<UNiagaraScriptSource>(Call->FunctionScript->GetLatestSource());
+ 		return Src ? Src->NodeGraph : nullptr;
+ 	}
+@@ -401,12 +432,409 @@ namespace
  		}
  		return nullptr;
  	}
@@ -2227,7 +2332,7 @@ index 6356ca8..c4f872d 100644
  FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
  	const FString& SystemPath,
  	const FString& EmitterName,
-@@ -427,7 +812,7 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
+@@ -427,7 +855,7 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
  	if (!Container) { Result.Message = TEXT("Could not access scratch-pad container"); return Result; }
  
  	const ENiagaraScriptUsage TargetUsage = StageToUsage(Stage);
@@ -2236,7 +2341,7 @@ index 6356ca8..c4f872d 100644
  	UNiagaraGraph* EmitterGraph = GetEmitterGraph(EmitterData);
  	if (!StageScript || !EmitterGraph) { Result.Message = TEXT("Emitter stage graph unavailable"); return Result; }
  
-@@ -436,12 +821,27 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
+@@ -436,12 +864,28 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
  
  	// Build the scratch UNiagaraScript by duplicating the engine's default module template,
  	// matching what UNiagaraScratchPadViewModel::CreateNewScript does for Module-usage scripts.
@@ -2254,7 +2359,8 @@ index 6356ca8..c4f872d 100644
 +	// i.e. the SystemAsset edit mode, so we always target the system-level scratch list. (The
 +	// emitter-count heuristic was wrong: a System asset with a single emitter is still SystemAsset
 +	// mode and the editor only scans System->ScratchPadScripts.)
-+	const bool bSystemAssetMode = true;
++	const bool bWrapperMode = Cast<UNiagaraEmitter>(System->GetOuter()) != nullptr;
++	const bool bSystemAssetMode = !bWrapperMode;
 +	UObject* ScriptOuter = bSystemAssetMode ? static_cast<UObject*>(System) : static_cast<UObject*>(Container);
  	if (!ScriptOuter->HasAnyFlags(RF_Transactional))
  	{
@@ -2265,7 +2371,7 @@ index 6356ca8..c4f872d 100644
  
  	const TCHAR* BaseName = DesiredName.IsEmpty() ? TEXT("ScratchModule") : *DesiredName;
  	const FName UniqueName = GetUniqueScriptName(ScriptOuter, BaseName);
-@@ -463,7 +863,15 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
+@@ -463,7 +907,15 @@ FNiagaraScratchResult UNiagaraScratchPadService::CreateScratchModule(
  	if (!NewScript) { Result.Message = TEXT("Failed to duplicate default module script"); return Result; }
  
  	NewScript->ClearFlags(RF_Public | RF_Standalone);
@@ -2282,7 +2388,7 @@ index 6356ca8..c4f872d 100644
  
  	// Allow the script to live on the target stage's stack
  	if (FVersionedNiagaraScriptData* ScriptData = NewScript->GetLatestScriptData())
-@@ -507,7 +915,7 @@ FString UNiagaraScratchPadService::GetScratchScriptPath(
+@@ -507,7 +959,7 @@ FString UNiagaraScratchPadService::GetScratchScriptPath(
  	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
  	UNiagaraNodeFunctionCall* Call = FindModuleNodeOnEmitter(EmitterData, ModuleName);
  	if (!Call || !Call->FunctionScript) return FString();
@@ -2291,7 +2397,7 @@ index 6356ca8..c4f872d 100644
  	return Call->FunctionScript->GetPathName();
  }
  
-@@ -521,22 +929,21 @@ TArray<FString> UNiagaraScratchPadService::ListScratchModules(
+@@ -521,22 +973,21 @@ TArray<FString> UNiagaraScratchPadService::ListScratchModules(
  	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
  	if (!Handle) return Out;
  	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
@@ -2318,7 +2424,183 @@ index 6356ca8..c4f872d 100644
  	return Out;
  }
  
-@@ -770,6 +1177,10 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddCustomHlslNode(
+@@ -710,6 +1161,77 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddNode(
+ 	return R;
+ }
+ 
++FNiagaraScratchResult UNiagaraScratchPadService::AddParameterInputNode(
++	const FString& SystemPath,
++	const FString& EmitterName,
++	const FString& ModuleName,
++	const FString& VariableName,
++	const FString& TypeName,
++	int32 PosX,
++	int32 PosY)
++{
++	FNiagaraScratchResult R;
++	UNiagaraSystem* System = LoadSystem(SystemPath);
++	if (!System) { R.Message = TEXT("System not found"); return R; }
++	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
++	if (!Handle) { R.Message = TEXT("Emitter not found"); return R; }
++	UNiagaraNodeFunctionCall* Call = FindModuleNodeOnEmitter(Handle->GetEmitterData(), ModuleName);
++	UNiagaraGraph* Graph = GetScratchGraphFromCall(Call);
++	if (!Graph) { R.Message = TEXT("Scratch module not found"); return R; }
++
++	FNiagaraTypeDefinition Type;
++	if (!ResolveType(TypeName, Type)) { R.Message = FString::Printf(TEXT("Unknown TypeName '%s'"), *TypeName); return R; }
++
++	Graph->Modify();
++	FGraphNodeCreator<UNiagaraNodeInput> Creator(*Graph);
++	UNiagaraNodeInput* N = Creator.CreateNode();
++	N->Input = FNiagaraVariable(Type, FName(*VariableName));
++	N->Usage = ENiagaraInputNodeUsage::Parameter;
++	N->ExposureOptions.bExposed = true;
++	N->ExposureOptions.bRequired = false;
++	N->ExposureOptions.bCanAutoBind = false;
++	N->ExposureOptions.bHidden = false;
++	N->NodePosX = PosX;
++	N->NodePosY = PosY;
++	Creator.Finalize();
++	Graph->NotifyGraphChanged();
++	System->MarkPackageDirty();
++	R.bSuccess = true;
++	R.Message = TEXT("Parameter input added");
++	R.NodeId = N->NodeGuid.ToString();
++	return R;
++}
++
++FNiagaraScratchResult UNiagaraScratchPadService::RegisterScratchModuleForEmitter(
++	const FString& SystemPath,
++	const FString& EmitterName,
++	const FString& ModuleName)
++{
++	FNiagaraScratchResult R;
++	UNiagaraSystem* System = LoadSystem(SystemPath);
++	if (!System) { R.Message = TEXT("System not found"); return R; }
++	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
++	if (!Handle) { R.Message = TEXT("Emitter not found"); return R; }
++	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
++	if (!EmitterData) { R.Message = TEXT("Emitter has no editable data"); return R; }
++	UNiagaraNodeFunctionCall* Call = FindModuleNodeOnEmitter(EmitterData, ModuleName);
++	if (!Call || !Call->FunctionScript) { R.Message = TEXT("Module not found"); return R; }
++	UNiagaraScratchPadContainer* Container = GetOrCreateScratchContainer(Handle, EmitterData);
++	if (!Container) { R.Message = TEXT("Could not access scratch-pad container"); return R; }
++	if (Container->FindIndexForScript(Call->FunctionScript) != INDEX_NONE)
++	{
++		R.bSuccess = true;
++		R.Message = TEXT("already registered");
++		return R;
++	}
++	Container->Modify();
++	Container->Scripts.Add(Call->FunctionScript);
++	System->MarkPackageDirty();
++	R.bSuccess = true;
++	R.Message = TEXT("registered");
++	return R;
++}
++
+ FNiagaraScratchResult UNiagaraScratchPadService::AddOpNode(
+ 	const FString& SystemPath,
+ 	const FString& EmitterName,
+@@ -747,6 +1269,97 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddOpNode(
+ 	return R;
+ }
+ 
++FNiagaraScratchResult UNiagaraScratchPadService::CreateEmitterAsset(const FString& AssetPath)
++{
++	FNiagaraScratchResult R;
++	const FString AssetName = FPaths::GetBaseFilename(AssetPath);
++	if (AssetName.IsEmpty() || !AssetPath.StartsWith(TEXT("/Game/")))
++	{
++		R.Message = TEXT("Asset path must be a /Game/ asset path");
++		return R;
++	}
++	if (UEditorAssetLibrary::DoesAssetExist(AssetPath))
++	{
++		R.Message = TEXT("Asset already exists");
++		return R;
++	}
++
++	UPackage* Package = CreatePackage(*AssetPath);
++	UNiagaraEmitter* Emitter = NewObject<UNiagaraEmitter>(Package, UNiagaraEmitter::StaticClass(), FName(*AssetName), RF_Public | RF_Standalone | RF_Transactional);
++	UNiagaraEmitterFactoryNew::InitializeEmitter(Emitter, false);
++	Emitter->SetUniqueEmitterName(AssetName);
++
++	FAssetRegistryModule& AssetRegistryModule = FModuleManager::LoadModuleChecked<FAssetRegistryModule>(TEXT("AssetRegistry"));
++	AssetRegistryModule.Get().AssetCreated(Emitter);
++	Emitter->PostEditChange();
++	Package->MarkPackageDirty();
++
++	R.bSuccess = true;
++	R.Message = FString::Printf(TEXT("Emitter asset created: %s"), *AssetPath);
++	return R;
++}
++FNiagaraScratchResult UNiagaraScratchPadService::AddParticleReadNode(
++	const FString& SystemPath,
++	const FString& EmitterName,
++	const FString& ModuleName,
++	const FString& NodeId,
++	const FString& SourceEmitterName,
++	const FString& PinName,
++	int32 PosX,
++	int32 PosY)
++{
++	FNiagaraScratchResult R;
++	UNiagaraSystem* System = LoadSystem(SystemPath);
++	if (!System) { R.Message = TEXT("System not found"); return R; }
++	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
++	if (!Handle) { R.Message = TEXT("Emitter not found"); return R; }
++	UNiagaraNodeFunctionCall* Call = FindModuleNodeOnEmitter(Handle->GetEmitterData(), ModuleName);
++	UNiagaraGraph* Graph = GetScratchGraphFromCall(Call);
++	if (!Graph) { R.Message = TEXT("Scratch module not found"); return R; }
++	UNiagaraNodeCustomHlsl* HlslNode = Cast<UNiagaraNodeCustomHlsl>(FindNodeByGuid(Graph, NodeId));
++	if (!HlslNode) { R.Message = TEXT("Custom HLSL node not found"); return R; }
++
++	const FNiagaraTypeDefinition ReadType(UNiagaraDataInterfaceParticleRead::StaticClass());
++
++	Graph->Modify();
++	HlslNode->Modify();
++
++	UEdGraphPin* HlslInPin = HlslNode->RequestNewTypedPin(EGPD_Input, ReadType, FName(*PinName));
++	if (!HlslInPin) { R.Message = TEXT("Failed to create DI input pin on HLSL node"); return R; }
++
++	FGraphNodeCreator<UNiagaraNodeInput> Creator(*Graph);
++	UNiagaraNodeInput* InputNode = Creator.CreateNode();
++	InputNode->Input = FNiagaraVariable(ReadType, FName(*PinName));
++	InputNode->Usage = ENiagaraInputNodeUsage::Parameter;
++	InputNode->ExposureOptions.bExposed = false;
++	InputNode->NodePosX = PosX;
++	InputNode->NodePosY = PosY;
++
++	EObjectFlags DIFlags = RF_Transactional;
++	if (InputNode->HasAnyFlags(RF_Public) || InputNode->IsTemplate()) { DIFlags |= RF_Public; }
++	UNiagaraDataInterfaceParticleRead* ReadDI = NewObject<UNiagaraDataInterfaceParticleRead>(
++		InputNode, UNiagaraDataInterfaceParticleRead::StaticClass(), NAME_None, DIFlags);
++	ReadDI->EmitterBinding.BindingMode = ENiagaraDataInterfaceEmitterBindingMode::Other;
++	ReadDI->EmitterBinding.EmitterName = FName(*SourceEmitterName);
++	if (FObjectPropertyBase* DIProp = CastField<FObjectPropertyBase>(UNiagaraNodeInput::StaticClass()->FindPropertyByName(TEXT("DataInterface"))))
++	{
++		DIProp->SetObjectPropertyValue_InContainer(InputNode, ReadDI);
++	}
++	Creator.Finalize();
++
++	if (UEdGraphPin* OutPin = InputNode->GetOutputPin(0))
++	{
++		OutPin->MakeLinkTo(HlslInPin);
++	}
++
++	Graph->NotifyGraphChanged();
++	System->MarkPackageDirty();
++
++	R.bSuccess = true;
++	R.Message = FString::Printf(TEXT("ParticleRead input '%s' bound to emitter '%s'"), *PinName, *SourceEmitterName);
++	R.NodeId = InputNode->NodeGuid.ToString();
++	return R;
++}
+ FNiagaraScratchResult UNiagaraScratchPadService::AddCustomHlslNode(
+ 	const FString& SystemPath,
+ 	const FString& EmitterName,
+@@ -770,6 +1383,10 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddCustomHlslNode(
  	N->NodePosX = PosX; N->NodePosY = PosY;
  	Creator.Finalize();
  	SetCustomHlslReflected(N, Code);
@@ -2329,7 +2611,7 @@ index 6356ca8..c4f872d 100644
  
  	Graph->NotifyGraphChanged();
  	System->MarkPackageDirty();
-@@ -848,37 +1259,25 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddPin(
+@@ -848,37 +1465,25 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddPin(
  
  	Node->Modify();
  
@@ -2347,13 +2629,13 @@ index 6356ca8..c4f872d 100644
 -		NewPin = Node->CreatePin(EGPD_Output, PinType, FName(*Namespaced));
 -	}
 -	else if (IsMapSet(Node))
-+	if (auto* DynamicNode = Cast<UNiagaraNodeWithDynamicPins>(Node))
- 	{
+-	{
 -		const FString Namespaced = NormalizeNamespacedName(PinName, TEXT("Output"));
 -		NewPin = Node->CreatePin(EGPD_Input, PinType, FName(*Namespaced));
 -	}
 -	else if (Node->IsA<UNiagaraNodeCustomHlsl>())
--	{
++	if (auto* DynamicNode = Cast<UNiagaraNodeWithDynamicPins>(Node))
+ 	{
 -		NewPin = Node->CreatePin(Dir, PinType, FName(*PinName));
 -		// Rebuild the script signature so the new pin participates in compilation.
 -		// Must NOT route through PostEditChangeProperty - that calls RefreshFromExternalChanges
@@ -2384,7 +2666,7 @@ index 6356ca8..c4f872d 100644
  	}
  	else
  	{
-@@ -1089,8 +1488,8 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddModuleInput(
+@@ -1089,8 +1694,8 @@ FNiagaraScratchResult UNiagaraScratchPadService::AddModuleInput(
  	}
  
  	MapGet->Modify();
@@ -2395,7 +2677,7 @@ index 6356ca8..c4f872d 100644
  	if (!NewPin) { R.Message = TEXT("CreatePin returned null"); return R; }
  
  	Graph->NotifyGraphChanged();
-@@ -1171,9 +1570,20 @@ namespace
+@@ -1171,9 +1776,20 @@ namespace
  	{
  		for (const FNiagaraEmitterHandle& Handle : System->GetEmitterHandles())
  		{
@@ -2419,7 +2701,71 @@ index 6356ca8..c4f872d 100644
  			{
  				if (!Scratch) continue;
  				const auto* Src = Cast<UNiagaraScriptSource>(Scratch->GetLatestSource());
-@@ -1283,8 +1693,19 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+@@ -1188,6 +1804,11 @@ namespace
+ 					for (const UEdGraphPin* Pin : Node->Pins)
+ 					{
+ 						if (!Pin) continue;
++						// Map Get default-value shadow pins are auto-created per output pin with an
++						// empty name (NAME_None) and bNotConnectable=true; every healthy engine graph
++						// has them. Skip them, otherwise any Map Get with two or more typed reads is
++						// rejected as a bogus duplicate-None (issue-#432 garbage is on named pins).
++						if (Pin->Direction == EGPD_Input && Pin->PinName.IsNone() && Pin->bNotConnectable) continue;
+ 						TSet<FName>& Names = (Pin->Direction == EGPD_Input) ? InputNames : OutputNames;
+ 						bool bAlreadyThere = false;
+ 						Names.Add(Pin->PinName, &bAlreadyThere);
+@@ -1270,7 +1891,50 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+ 		return false;
+ 	}
+ 
+-	// Notify each scratch script graph that it has changed so its ChangeID bumps. This is what
++	// Heal DI-typed input nodes that were exposed by older builds: an exposed ParticleRead
++	// input becomes a stack input with no caller-side value, which corrupts the module compile
++	// (stale function call + broken parameter-map history). Hide them before compiling.
++	for (FNiagaraEmitterHandle& HealHandle : System->GetEmitterHandles())
++	{
++		FVersionedNiagaraEmitterData* HealData = HealHandle.GetEmitterData();
++		if (!HealData) continue;
++		TArray<UNiagaraScript*> HealScripts;
++		if (HealData->SpawnScriptProps.Script) HealScripts.Add(HealData->SpawnScriptProps.Script);
++		if (HealData->UpdateScriptProps.Script) HealScripts.Add(HealData->UpdateScriptProps.Script);
++#if WITH_EDITORONLY_DATA
++		if (HealData->EmitterSpawnScriptProps.Script) HealScripts.Add(HealData->EmitterSpawnScriptProps.Script);
++		if (HealData->EmitterUpdateScriptProps.Script) HealScripts.Add(HealData->EmitterUpdateScriptProps.Script);
++#endif
++		for (UNiagaraScript* HealScript : HealScripts)
++		{
++			auto* HealSrc = Cast<UNiagaraScriptSource>(HealScript ? HealScript->GetLatestSource() : nullptr);
++			if (!HealSrc || !HealSrc->NodeGraph) continue;
++			TArray<UNiagaraNodeFunctionCall*> HealCalls;
++			HealSrc->NodeGraph->GetNodesOfClass<UNiagaraNodeFunctionCall>(HealCalls);
++			for (UNiagaraNodeFunctionCall* HealCall : HealCalls)
++			{
++				UNiagaraGraph* ModGraph = GetScratchGraphFromCall(HealCall);
++				if (!ModGraph) continue;
++				TArray<UNiagaraNodeInput*> ModInputs;
++				ModGraph->GetNodesOfClass<UNiagaraNodeInput>(ModInputs);
++				for (UNiagaraNodeInput* ModInput : ModInputs)
++				{
++					UClass* InputClass = ModInput ? ModInput->Input.GetType().GetClass() : nullptr;
++					const bool bIsDI = InputClass && InputClass->IsChildOf(UNiagaraDataInterface::StaticClass());
++					if (ModInput && bIsDI && ModInput->ExposureOptions.bExposed)
++					{
++						ModInput->Modify();
++						ModInput->ExposureOptions.bExposed = false;
++					}
++				}
++			}
++		}
++	}
++
++	// Generic graph notification does not change Niagara's compile identity. Explicitly
++	// invalidate it so edited data-interface defaults reach compiled instances.
++
++	// Notify each owned scratch script graph so its ChangeID bumps. This is what
+ 	// triggers callers (the stack function-call nodes that reference it) to pick up the new
+ 	// signature on next compile/refresh.
+ 	//
+@@ -1283,14 +1947,26 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
  	for (FNiagaraEmitterHandle& Handle : System->GetEmitterHandles())
  	{
  		FVersionedNiagaraEmitterData* EmitterData = Handle.GetEmitterData();
@@ -2432,28 +2778,37 @@ index 6356ca8..c4f872d 100644
 +		TSet<UNiagaraScript*> EmbeddedScripts;
 +		for (UNiagaraNodeFunctionCall* Call : Calls)
 +		{
-+			if (Call && IsEmbeddedModuleScript(Call->FunctionScript))
++			if (Call && GetScratchGraphFromCall(Call))
 +			{
 +				EmbeddedScripts.Add(Call->FunctionScript);
 +			}
 +		}
 +		for (UNiagaraScript* Scratch : EmbeddedScripts)
  		{
- 			if (!Scratch) continue;
+-			if (!Scratch) continue;
++			if (!Scratch || Scratch->GetOutermost() != System->GetOutermost()) continue;
  			if (auto* Src = Cast<UNiagaraScriptSource>(Scratch->GetLatestSource()))
-@@ -1298,6 +1719,20 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+ 			{
+ 				if (Src->NodeGraph)
+ 				{
++					Scratch->GetLatestSource()->MarkNotSynchronized(TEXT("UEAgent scratch apply"));
+ 					Src->NodeGraph->NotifyGraphChanged();
+ 				}
+ 			}
+@@ -1298,6 +1974,21 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
  		}
  	}
  
 +	// Same notification for system-level scratch scripts (created in SystemAsset mode).
 +	for (UNiagaraScript* Scratch : System->ScratchPadScripts)
 +	{
-+		if (!Scratch) continue;
++		if (!Scratch || Scratch->GetOutermost() != System->GetOutermost()) continue;
 +		if (auto* Src = Cast<UNiagaraScriptSource>(Scratch->GetLatestSource()))
 +		{
 +			if (Src->NodeGraph)
 +			{
-+				Src->NodeGraph->NotifyGraphChanged();
++				Scratch->GetLatestSource()->MarkNotSynchronized(TEXT("UEAgent scratch apply"));
++					Src->NodeGraph->NotifyGraphChanged();
 +			}
 +		}
 +		Scratch->MarkPackageDirty();
@@ -2462,6 +2817,54 @@ index 6356ca8..c4f872d 100644
  	System->MarkPackageDirty();
  	System->RequestCompile(false);
  	System->WaitForCompilationComplete();
+@@ -1333,3 +2024,47 @@ TArray<FString> UNiagaraScratchPadService::GetCompileMessages(const FString& Sys
+ }
+ 
+ #undef LOCTEXT_NAMESPACE
++
++#if WITH_AUTOMATION_TESTS
++IMPLEMENT_SIMPLE_AUTOMATION_TEST(
++	FUEAgentScratchOwnershipTest,
++	"VibeUE.UEAgentReliable.ScratchOwnership",
++	EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
++
++bool FUEAgentScratchOwnershipTest::RunTest(const FString&)
++{
++	const FString Root = TEXT("/Game/__UEAgentTests/Ownership_") + FGuid::NewGuid().ToString(EGuidFormats::Digits);
++	UPackage* OwnerPackage = CreatePackage(*Root);
++	UPackage* OtherPackage = CreatePackage(*(Root + TEXT("_Other")));
++	OwnerPackage->SetFlags(RF_Transient);
++	OtherPackage->SetFlags(RF_Transient);
++	TArray<UNiagaraScript*> Scripts;
++	ON_SCOPE_EXIT
++	{
++		for (UNiagaraScript* Script : Scripts) Script->ClearFlags(RF_Public | RF_Standalone);
++		OwnerPackage->SetDirtyFlag(false);
++		OtherPackage->SetDirtyFlag(false);
++		OwnerPackage->MarkAsGarbage();
++		OtherPackage->MarkAsGarbage();
++	};
++	auto CreateScript = [&Scripts](UObject* Outer, const TCHAR* Name, EObjectFlags Flags)
++	{
++		UNiagaraScript* Script = NewObject<UNiagaraScript>(Outer, FName(Name), Flags);
++		Scripts.Add(Script);
++		UNiagaraScriptSource* Source = NewObject<UNiagaraScriptSource>(Script);
++		Source->NodeGraph = NewObject<UNiagaraGraph>(Source);
++		Script->SetLatestSource(Source);
++		return Script;
++	};
++	UNiagaraGraph* CallerGraph = NewObject<UNiagaraGraph>(OwnerPackage);
++	UNiagaraNodeFunctionCall* Call = NewObject<UNiagaraNodeFunctionCall>(CallerGraph);
++	UNiagaraScript* Local = CreateScript(OwnerPackage, TEXT("PrivateLocal"), RF_Transactional);
++	Call->FunctionScript = Local;
++	TestNotNull(TEXT("local private scratch graph remains editable"), GetScratchGraphFromCall(Call));
++	Call->FunctionScript = CreateScript(OtherPackage, TEXT("PublicLibrary"), RF_Public | RF_Standalone);
++	TestNull(TEXT("public library graph is excluded from scratch healing"), GetScratchGraphFromCall(Call));
++	Call->FunctionScript = CreateScript(OtherPackage, TEXT("PrivateForeign"), RF_Transactional);
++	TestNull(TEXT("foreign private graph cannot be edited through the caller"), GetScratchGraphFromCall(Call));
++	return true;
++}
++#endif
 diff --git a/Source/VibeUE/Public/Module.h b/Source/VibeUE/Public/Module.h
 index 1641481..6c9bf04 100644
 --- a/Source/VibeUE/Public/Module.h
@@ -2491,7 +2894,7 @@ index 1641481..6c9bf04 100644
 +	FDelegateHandle OnPackageSavedHandle;
  };
 diff --git a/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h b/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
-index 14c1f3c..6208f8e 100644
+index 14c1f3c..b2d4936 100644
 --- a/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
 +++ b/Source/VibeUE/Public/PythonAPI/UNiagaraScratchPadService.h
 @@ -158,6 +158,61 @@ public:
@@ -2578,7 +2981,60 @@ index 14c1f3c..6208f8e 100644
  	 *
  	 * Example:
  	 *   mods = unreal.NiagaraScratchPadService.list_scratch_modules("/Game/VFX/NS_Fx", "Main")
-@@ -345,7 +404,8 @@ public:
+@@ -271,6 +330,22 @@ public:
+ 		int32 PosX = 0,
+ 		int32 PosY = 0);
+ 
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Add Parameter Input Node"))
++	static FNiagaraScratchResult AddParameterInputNode(
++		const FString& SystemPath,
++		const FString& EmitterName,
++		const FString& ModuleName,
++		const FString& VariableName,
++		const FString& TypeName,
++		int32 PosX = 0,
++		int32 PosY = 0);
++
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Register Scratch Module For Emitter"))
++	static FNiagaraScratchResult RegisterScratchModuleForEmitter(
++		const FString& SystemPath,
++		const FString& EmitterName,
++		const FString& ModuleName);
++
+ 	/**
+ 	 * Create a math operation node (UNiagaraNodeOp).
+ 	 *
+@@ -290,6 +365,29 @@ public:
+ 		const FString& OpName,
+ 		int32 PosX = 0,
+ 		int32 PosY = 0);
++	/**
++	 * Add a Particle Read data-interface input to a Custom HLSL node and bind it to a source emitter.
++	 * Creates a DI-typed input pin on the HLSL node plus a UNiagaraNodeInput carrying a
++	 * UNiagaraDataInterfaceParticleRead instance bound to SourceEmitterName, and links the two.
++	 * HLSL can then call e.g. PinName.Get Vector By Index<Attribute=AttrName>(Index, Valid, Value).
++	 */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Add Particle Read Input"))
++	static FNiagaraScratchResult AddParticleReadNode(
++		const FString& SystemPath,
++		const FString& EmitterName,
++		const FString& ModuleName,
++		const FString& NodeId,
++		const FString& SourceEmitterName,
++		const FString& PinName,
++		int32 PosX = 0,
++		int32 PosY = 0);
++
++	/**
++	 * Create a standalone NiagaraEmitter asset (empty skeleton: CPU sim, no modules, no renderers).
++	 * Scratch-pad tools accept the emitter asset path as systemPath afterwards.
++	 */
++	UFUNCTION(BlueprintCallable, Category = "VibeUE|NiagaraScratch", meta = (AICallable, DisplayName = "Create Emitter Asset"))
++	static FNiagaraScratchResult CreateEmitterAsset(const FString& AssetPath);
+ 
+ 	/**
+ 	 * Create a Custom HLSL node and set its code. Add typed input/output pins afterwards with add_pin.
+@@ -345,7 +443,8 @@ public:
  	 *
  	 * @param Direction "Input" or "Output"
  	 * @param TypeName  "float","int","bool","Vector"/"vec3","vec2","vec4","Position","Color","LinearColor",

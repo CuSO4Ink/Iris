@@ -1,14 +1,12 @@
 diff --git a/Source/VibeUE/Private/Module.cpp b/Source/VibeUE/Private/Module.cpp
-index 6f4c9e7..48cc284 100644
 --- a/Source/VibeUE/Private/Module.cpp
 +++ b/Source/VibeUE/Private/Module.cpp
-@@ -19,9 +19,1520 @@
+@@ -19,8 +19,1534 @@
  #include "Utils/VibeUEPaths.h"
  #include "Misc/Paths.h"
  #include "Misc/FileHelper.h"
 +#include "Misc/ConfigCacheIni.h"
 +#include "Misc/PackageName.h"
-+#include "Misc/SecureHash.h"
 +#include "Misc/Base64.h"
 +#include "EditorAssetLibrary.h"
 +#include "BlueprintEditorLibrary.h"
@@ -42,7 +40,7 @@ index 6f4c9e7..48cc284 100644
 +#endif
  
  #define LOCTEXT_NAMESPACE "FModule"
- 
++
 +namespace MaterialAICache
 +{
 +	static constexpr const TCHAR* ConfigSection = TEXT("VibeUE.MaterialAICache");
@@ -57,13 +55,7 @@ index 6f4c9e7..48cc284 100644
 +		return Value;
 +	}
 +
-+	static FString Sha1(const FString& Value)
-+	{
-+		FTCHARToUTF8 Utf8(*Value);
-+		FSHAHash Hash;
-+		FSHA1::HashBuffer(Utf8.Get(), Utf8.Length(), Hash.Hash);
-+		return Hash.ToString().ToLower();
-+	}
++
 +
 +	static FString ShortValue(FString Value, int32 MaxLength = 160)
 +	{
@@ -360,11 +352,10 @@ index 6f4c9e7..48cc284 100644
 +					Description = TEXT("Custom");
 +				}
 +				CustomLines.Add(FString::Printf(
-+					TEXT("%s | inputs=[%s] out=%s code_sha1=%s code~=%s"),
++					TEXT("%s | inputs=[%s] out=%s code~=%s"),
 +					*ShortValue(Description, 80),
 +					*JsonString(Expression, TEXT("custom_input_names")),
 +					*StripEnumPrefix(JsonString(Expression, TEXT("output_type"))),
-+					*Sha1(Hlsl).Left(12),
 +					*ShortValue(Hlsl, 220)));
 +			}
 +		}
@@ -544,7 +535,6 @@ index 6f4c9e7..48cc284 100644
 +			TEXT("file: ") + NormalizedSource,
 +			TEXT("mtime: ") + SourceMtime,
 +			FString::Printf(TEXT("size: %lld"), SourceSize),
-+			TEXT("graph_sha1: ") + Sha1(FString::Join(LogicLines, TEXT("\n"))),
 +			FString::Printf(
 +				TEXT("graph: {expressions: %d, connections: %d, outputs: %d, parameter_nodes: %d, parameter_names: %d}"),
 +				Expressions->Num(),
@@ -902,6 +892,29 @@ index 6f4c9e7..48cc284 100644
 +		}
 +		VariableLines.Sort();
 +
++		// NewVariables excludes inherited defaults (for example Actor.InitialLifeSpan).
++		// Record only editable inherited values which differ from the parent CDO.
++		TArray<FString> DefaultLines;
++		UObject* ParentDefault = Blueprint->ParentClass
++			? Blueprint->ParentClass->GetDefaultObject(false) : nullptr;
++		if (DefaultObject && ParentDefault)
++		{
++			for (TFieldIterator<FProperty> It(Blueprint->ParentClass, EFieldIteratorFlags::IncludeSuper); It; ++It)
++			{
++				FProperty* Property = *It;
++				if (!Property->HasAnyPropertyFlags(CPF_Edit)
++					|| Property->HasAnyPropertyFlags(CPF_Transient | CPF_DuplicateTransient | CPF_Deprecated | CPF_DisableEditOnTemplate)
++					|| Property->Identical_InContainer(DefaultObject, ParentDefault))
++				{
++					continue;
++				}
++				FString Value;
++				Property->ExportText_InContainer(0, Value, DefaultObject, ParentDefault, DefaultObject, PPF_SimpleObjectText);
++				DefaultLines.Add(Property->GetName() + TEXT("=") + ShortValue(Value, 300));
++			}
++		}
++		DefaultLines.Sort();
++
 +		TArray<FString> ComponentLines;
 +		if (Blueprint->SimpleConstructionScript)
 +		{
@@ -1026,7 +1039,6 @@ index 6f4c9e7..48cc284 100644
 +			TEXT("file: ") + NormalizedSource,
 +			TEXT("mtime: ") + SourceMtime,
 +			FString::Printf(TEXT("size: %lld"), SourceSize),
-+			TEXT("graph_sha1: ") + Sha1(FString::Join(GraphBodies, TEXT("\n"))),
 +			FString::Printf(
 +				TEXT("blueprint: {parent: %s, graphs: %d, variables: %d, components: %d}"),
 +				*ParentPath,
@@ -1045,6 +1057,13 @@ index 6f4c9e7..48cc284 100644
 +				TEXT("```"),
 +			});
 +		}
++		Lines.Append({
++			TEXT(""),
++			TEXT("## Defaults"),
++			TEXT("```text"),
++			DefaultLines.IsEmpty() ? TEXT("-") : FString::Join(DefaultLines, TEXT("\n")),
++			TEXT("```"),
++		});
 +		Lines.Append({
 +			TEXT(""),
 +			TEXT("## Components"),
@@ -1197,7 +1216,6 @@ index 6f4c9e7..48cc284 100644
 +
 +		TArray<FString> EmitterSections;
 +		TArray<FString> EmbeddedSections;
-+		TArray<FString> HashParts = { SummaryJson };
 +		TSet<FString> SeenEmbedded;
 +		for (const FNiagaraExt_EmitterSummary& Emitter : Summary.Emitters)
 +		{
@@ -1249,7 +1267,6 @@ index 6f4c9e7..48cc284 100644
 +				*TopologyJson,
 +				*InputsJson,
 +				*RenderersJson));
-+			HashParts.Append({ TopologyJson, InputsJson, RenderersJson });
 +
 +			const FNiagaraExt_ScriptStackTopology* Stacks[] = {
 +				&Topology.EmitterSpawnScript,
@@ -1279,7 +1296,6 @@ index 6f4c9e7..48cc284 100644
 +					if (!Section.IsEmpty())
 +					{
 +						EmbeddedSections.Add(Section);
-+						HashParts.Add(Section);
 +					}
 +				}
 +			}
@@ -1293,7 +1309,6 @@ index 6f4c9e7..48cc284 100644
 +			OutError = TEXT("failed to serialize Niagara dependencies");
 +			return false;
 +		}
-+		HashParts.Add(DependenciesJson);
 +		if (Context.HasErrors())
 +		{
 +			TArray<FString> Errors;
@@ -1318,7 +1333,6 @@ index 6f4c9e7..48cc284 100644
 +			TEXT("file: ") + NormalizedSource,
 +			TEXT("mtime: ") + SourceMtime,
 +			FString::Printf(TEXT("size: %lld"), SourceSize),
-+			TEXT("graph_sha1: ") + Sha1(FString::Join(HashParts, TEXT("\n"))),
 +			FString::Printf(
 +				TEXT("system: {emitters: %d, user_variables: %d, embedded: %d}"),
 +				Summary.Emitters.Num(),
@@ -1519,11 +1533,10 @@ index 6f4c9e7..48cc284 100644
 +	return true;
 +}
 +#endif
-+
+ 
  // Console command to list all registered tools
  static void ListVibeUETools()
- {
-@@ -306,6 +1817,7 @@ void FModule::StartupModule()
+@@ -306,6 +1832,7 @@
  	}
  
  	bServicesInitialized = true;
@@ -1531,7 +1544,7 @@ index 6f4c9e7..48cc284 100644
  
  	// Clear screenshots directory from previous sessions to save disk space
  	FVibeUEPaths::ClearScreenshotsDir();
-@@ -436,6 +1948,11 @@ void FModule::ShutdownModule()
+@@ -436,6 +1963,11 @@
  	// Unregister PreExit / PostEngineInit callbacks
  	FCoreDelegates::OnPreExit.RemoveAll(this);
  	FCoreDelegates::GetOnPostEngineInit().RemoveAll(this);
@@ -1543,10 +1556,12 @@ index 6f4c9e7..48cc284 100644
  
  	// Unregister service toolsets + MCP tools
  	UnregisterToolsets();
-@@ -446,6 +1963,38 @@ void FModule::ShutdownModule()
- 	UE_LOG(LogTemp, Display, TEXT("VibeUE Module has shut down"));
- }
+@@ -444,6 +1976,38 @@
+ 	FToolRegistry::Get().Shutdown();
  
+ 	UE_LOG(LogTemp, Display, TEXT("VibeUE Module has shut down"));
++}
++
 +void FModule::HandleAssetPackageSaved(
 +	const FString& PackageFileName,
 +	UPackage* Package,
@@ -1577,11 +1592,9 @@ index 6f4c9e7..48cc284 100644
 +	{
 +		UE_LOG(LogTemp, Warning, TEXT("VibeUE: AI cache failed for %s: %s"), *Package->GetName(), *Error);
 +	}
-+}
-+
+ }
+ 
  void FModule::OnPreExit()
- {
- 	UE_LOG(LogTemp, Display, TEXT("VibeUE OnPreExit - cleaning up Python services"));
 diff --git a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp b/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
 index 85a40a7..841cb56 100644
 --- a/Source/VibeUE/Private/PythonAPI/UMaterialNodeService.cpp
@@ -1669,10 +1682,23 @@ index 85a40a7..841cb56 100644
  		if (UMaterialExpressionParameter* ParamExpr = Cast<UMaterialExpressionParameter>(Expr))
  		{
 diff --git a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
-index 6356ca8..4fdaeec 100644
+index 6356ca8..0dc4235 100644
 --- a/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
 +++ b/Source/VibeUE/Private/PythonAPI/UNiagaraScratchPadService.cpp
-@@ -344,7 +344,14 @@ namespace
+@@ -42,6 +42,12 @@
+ #include "NiagaraScriptSource.h"
+ #include "ViewModels/Stack/NiagaraStackGraphUtilities.h"
+ 
++#if WITH_AUTOMATION_TESTS
++#include "Misc/AutomationTest.h"
++#include "Misc/ScopeExit.h"
++#include "UObject/Package.h"
++#endif
++
+ #define LOCTEXT_NAMESPACE "NiagaraScratchPadService"
+ 
+ // =====================================================================
+@@ -344,7 +350,14 @@ namespace
  		return nullptr;
  	}
  
@@ -1688,7 +1714,7 @@ index 6356ca8..4fdaeec 100644
  	UNiagaraNodeFunctionCall* FindModuleNodeOnEmitter(FVersionedNiagaraEmitterData* EmitterData, const FString& ModuleName)
  	{
  		UNiagaraGraph* Graph = GetEmitterGraph(EmitterData);
-@@ -353,7 +360,7 @@ namespace
+@@ -353,7 +366,7 @@ namespace
  		Graph->GetNodesOfClass<UNiagaraNodeFunctionCall>(Calls);
  		for (UNiagaraNodeFunctionCall* Call : Calls)
  		{
@@ -1697,7 +1723,19 @@ index 6356ca8..4fdaeec 100644
  			if (Call->GetFunctionName().Equals(ModuleName, ESearchCase::IgnoreCase))
  			{
  				return Call;
-@@ -507,7 +514,7 @@ FString UNiagaraScratchPadService::GetScratchScriptPath(
+@@ -368,7 +381,10 @@ namespace
+ 
+ 	UNiagaraGraph* GetScratchGraphFromCall(UNiagaraNodeFunctionCall* Call)
+ 	{
+-		if (!Call || !Call->FunctionScript) return nullptr;
++		// This service edits private scratch graphs, never public library graphs or a
++		// private module owned by another package through a cross-package reference.
++		if (!Call || !IsEmbeddedModuleScript(Call->FunctionScript) ||
++			Call->GetOutermost() != Call->FunctionScript->GetOutermost()) return nullptr;
+ 		auto* Src = Cast<UNiagaraScriptSource>(Call->FunctionScript->GetLatestSource());
+ 		return Src ? Src->NodeGraph : nullptr;
+ 	}
+@@ -507,7 +523,7 @@ FString UNiagaraScratchPadService::GetScratchScriptPath(
  	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
  	UNiagaraNodeFunctionCall* Call = FindModuleNodeOnEmitter(EmitterData, ModuleName);
  	if (!Call || !Call->FunctionScript) return FString();
@@ -1706,7 +1744,7 @@ index 6356ca8..4fdaeec 100644
  	return Call->FunctionScript->GetPathName();
  }
  
-@@ -521,22 +528,21 @@ TArray<FString> UNiagaraScratchPadService::ListScratchModules(
+@@ -521,22 +537,21 @@ TArray<FString> UNiagaraScratchPadService::ListScratchModules(
  	FNiagaraEmitterHandle* Handle = FindEmitterHandle(System, EmitterName);
  	if (!Handle) return Out;
  	FVersionedNiagaraEmitterData* EmitterData = Handle->GetEmitterData();
@@ -1733,7 +1771,7 @@ index 6356ca8..4fdaeec 100644
  	return Out;
  }
  
-@@ -1171,9 +1177,20 @@ namespace
+@@ -1171,9 +1186,20 @@ namespace
  	{
  		for (const FNiagaraEmitterHandle& Handle : System->GetEmitterHandles())
  		{
@@ -1757,7 +1795,19 @@ index 6356ca8..4fdaeec 100644
  			{
  				if (!Scratch) continue;
  				const auto* Src = Cast<UNiagaraScriptSource>(Scratch->GetLatestSource());
-@@ -1283,8 +1300,19 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+@@ -1270,7 +1296,10 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
+ 		return false;
+ 	}
+ 
+-	// Notify each scratch script graph that it has changed so its ChangeID bumps. This is what
++	// Generic graph notification does not change Niagara's compile identity. Explicitly
++	// invalidate it so edited data-interface defaults reach compiled instances.
++
++	// Notify each owned scratch script graph so its ChangeID bumps. This is what
+ 	// triggers callers (the stack function-call nodes that reference it) to pick up the new
+ 	// signature on next compile/refresh.
+ 	//
+@@ -1283,14 +1312,26 @@ bool UNiagaraScratchPadService::ApplyChanges(const FString& SystemPath)
  	for (FNiagaraEmitterHandle& Handle : System->GetEmitterHandles())
  	{
  		FVersionedNiagaraEmitterData* EmitterData = Handle.GetEmitterData();
@@ -1769,16 +1819,72 @@ index 6356ca8..4fdaeec 100644
 +		Graph->GetNodesOfClass<UNiagaraNodeFunctionCall>(Calls);
 +		TSet<UNiagaraScript*> EmbeddedScripts;
 +		for (UNiagaraNodeFunctionCall* Call : Calls)
-+		{
-+			if (Call && IsEmbeddedModuleScript(Call->FunctionScript))
+ 		{
+-			if (!Scratch) continue;
++			if (Call && GetScratchGraphFromCall(Call))
 +			{
 +				EmbeddedScripts.Add(Call->FunctionScript);
 +			}
 +		}
 +		for (UNiagaraScript* Scratch : EmbeddedScripts)
- 		{
- 			if (!Scratch) continue;
++		{
++			if (!Scratch || Scratch->GetOutermost() != System->GetOutermost()) continue;
  			if (auto* Src = Cast<UNiagaraScriptSource>(Scratch->GetLatestSource()))
+ 			{
+ 				if (Src->NodeGraph)
+ 				{
++					Scratch->GetLatestSource()->MarkNotSynchronized(TEXT("UEAgent scratch apply"));
+ 					Src->NodeGraph->NotifyGraphChanged();
+ 				}
+ 			}
+@@ -1333,3 +1374,47 @@ TArray<FString> UNiagaraScratchPadService::GetCompileMessages(const FString& Sys
+ }
+ 
+ #undef LOCTEXT_NAMESPACE
++
++#if WITH_AUTOMATION_TESTS
++IMPLEMENT_SIMPLE_AUTOMATION_TEST(
++	FUEAgentScratchOwnershipTest,
++	"VibeUE.UEAgentReliable.ScratchOwnership",
++	EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
++
++bool FUEAgentScratchOwnershipTest::RunTest(const FString&)
++{
++	const FString Root = TEXT("/Game/__UEAgentTests/Ownership_") + FGuid::NewGuid().ToString(EGuidFormats::Digits);
++	UPackage* OwnerPackage = CreatePackage(*Root);
++	UPackage* OtherPackage = CreatePackage(*(Root + TEXT("_Other")));
++	OwnerPackage->SetFlags(RF_Transient);
++	OtherPackage->SetFlags(RF_Transient);
++	TArray<UNiagaraScript*> Scripts;
++	ON_SCOPE_EXIT
++	{
++		for (UNiagaraScript* Script : Scripts) Script->ClearFlags(RF_Public | RF_Standalone);
++		OwnerPackage->SetDirtyFlag(false);
++		OtherPackage->SetDirtyFlag(false);
++		OwnerPackage->MarkAsGarbage();
++		OtherPackage->MarkAsGarbage();
++	};
++	auto CreateScript = [&Scripts](UObject* Outer, const TCHAR* Name, EObjectFlags Flags)
++	{
++		UNiagaraScript* Script = NewObject<UNiagaraScript>(Outer, FName(Name), Flags);
++		Scripts.Add(Script);
++		UNiagaraScriptSource* Source = NewObject<UNiagaraScriptSource>(Script);
++		Source->NodeGraph = NewObject<UNiagaraGraph>(Source);
++		Script->SetLatestSource(Source);
++		return Script;
++	};
++	UNiagaraGraph* CallerGraph = NewObject<UNiagaraGraph>(OwnerPackage);
++	UNiagaraNodeFunctionCall* Call = NewObject<UNiagaraNodeFunctionCall>(CallerGraph);
++	UNiagaraScript* Local = CreateScript(OwnerPackage, TEXT("PrivateLocal"), RF_Transactional);
++	Call->FunctionScript = Local;
++	TestNotNull(TEXT("local private scratch graph remains editable"), GetScratchGraphFromCall(Call));
++	Call->FunctionScript = CreateScript(OtherPackage, TEXT("PublicLibrary"), RF_Public | RF_Standalone);
++	TestNull(TEXT("public library graph is excluded from scratch healing"), GetScratchGraphFromCall(Call));
++	Call->FunctionScript = CreateScript(OtherPackage, TEXT("PrivateForeign"), RF_Transactional);
++	TestNull(TEXT("foreign private graph cannot be edited through the caller"), GetScratchGraphFromCall(Call));
++	return true;
++}
++#endif
 diff --git a/Source/VibeUE/Public/Module.h b/Source/VibeUE/Public/Module.h
 index 1641481..6c9bf04 100644
 --- a/Source/VibeUE/Public/Module.h

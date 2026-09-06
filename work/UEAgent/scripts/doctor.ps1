@@ -1,12 +1,12 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [Parameter(Mandatory)]
     [string]$RouteFile,
     [int]$TimeoutSec = 30,
+    [switch]$ProbeCapabilities,
     [switch]$ProbeAdvancedCapabilities,
     [ValidateSet('compact', 'detail')]
     [string]$View = 'compact',
-    [int]$ProcessGuardMaxPrivateMemoryMB = 1024,
     [string]$OutFile,
     [switch]$Pretty
 )
@@ -28,23 +28,19 @@ try {
     Add-Issue $_.Exception.Message
 }
 $reliableProtocolVersion = if ($stackManifest) { [string]$stackManifest.runtime.reliable_protocol } else { '' }
-$mutationTransport = if ($stackManifest) { [string]$stackManifest.runtime.mutation_transport } else { '' }
-$requiredReliableTools = if ($stackManifest) { @($stackManifest.runtime.control_tools | ForEach-Object { [string]$_ }) } else { @() }
+$authoritativeReadTools = @('ueagent_snapshot', 'ueagent_batch_read')
+$mutationTools = @('ueagent_submit', 'ueagent_get_job')
+$saveTools = @('ueagent_save')
+$recoveryTools = @('ueagent_recover', 'ueagent_cancel')
 
-function Test-TcpListener([Uri]$Uri) {
-    $client = [Net.Sockets.TcpClient]::new()
-    try {
-        $task = $client.ConnectAsync($Uri.Host, $Uri.Port)
-        if (-not $task.Wait(1000)) { return $false }
-        return $client.Connected
-    } catch {
-        return $false
-    } finally {
-        $client.Dispose()
-    }
+function Test-ToolInputEnumValue($Tools, $ToolName, $PropertyName, $ExpectedValue) {
+    $tool = @($Tools | Where-Object { [string]$_.name -eq [string]$ToolName } | Select-Object -First 1)
+    if ($tool.Count -eq 0 -or -not $tool[0].inputSchema.properties) { return $false }
+    $property = $tool[0].inputSchema.properties.($PropertyName)
+    return $null -ne $property -and [string]$ExpectedValue -in @($property.enum | ForEach-Object { [string]$_ })
 }
 
-function Invoke-GatewayProbe($Action, $Url, $Seconds, $Toolset = $null, $SessionFile = $null, $DescribeDetail = $null, $MaxPrivateMemoryMB = 1024) {
+function Invoke-GatewayProbe($Action, $Url, $Seconds, $Toolset = $null, $SessionFile = $null, $DescribeDetail = $null, $Tool = $null) {
     $hostExe = (Get-Command powershell.exe -ErrorAction Stop).Source
     $arguments = @(
         '-NoProfile', '-ExecutionPolicy', 'Bypass',
@@ -52,10 +48,10 @@ function Invoke-GatewayProbe($Action, $Url, $Seconds, $Toolset = $null, $Session
         '-Action', $Action,
         '-Endpoint', $Url,
         '-TimeoutSec', $Seconds,
-        '-ProcessGuardMaxPrivateMemoryMB', [string]$MaxPrivateMemoryMB,
         '-Envelope'
     )
     if ($Toolset) { $arguments += @('-Toolset', $Toolset) }
+    if ($Tool) { $arguments += @('-Tool', $Tool) }
     if ($SessionFile) { $arguments += @('-SessionFile', $SessionFile) }
     if ($DescribeDetail) { $arguments += @('-DescribeDetail', $DescribeDetail) }
     $output = & $hostExe @arguments 2>&1
@@ -93,23 +89,11 @@ try { $route = Get-Content -Raw -LiteralPath $RouteFile | ConvertFrom-Json }
 catch { throw "Invalid route file: $($_.Exception.Message)" }
 if ($route.schema -ne 'ueagent-route-v1') { throw "Unsupported route schema: $($route.schema)" }
 
-$routeTransport = [string]$route.transport
-foreach ($pair in @(
-    @('transport', 'native-http'),
-    @('access', 'task-gated-write'),
-    @('reliableProtocol', $reliableProtocolVersion),
-    @('mutationTransport', $mutationTransport)
-)) {
-    if ([string]$route.($pair[0]) -ne [string]$pair[1]) {
-        Add-Issue "Reliable route mismatch for $($pair[0]); expected $($pair[1])."
-    }
-}
 $UProject = [string]$route.uProject
 $EngineRoot = [string]$route.engineRoot
 $Endpoint = [string]$route.endpoint
 
 $projectRoot = $null
-$projectName = $null
 if (-not $UProject) {
     Add-Issue 'Route uProject is required.'
 } elseif (-not (Test-Path -LiteralPath $UProject)) {
@@ -117,15 +101,6 @@ if (-not $UProject) {
 } else {
     $UProject = (Resolve-Path -LiteralPath $UProject).Path
     $projectRoot = Split-Path $UProject -Parent
-    $projectName = [IO.Path]::GetFileNameWithoutExtension($UProject)
-}
-
-if (-not $EngineRoot) {
-    Add-Issue 'Route engineRoot is required.'
-} elseif (-not (Test-Path -LiteralPath $EngineRoot)) {
-    Add-Issue "Engine root not found: $EngineRoot"
-} else {
-    $EngineRoot = (Resolve-Path -LiteralPath $EngineRoot).Path
 }
 
 if (-not $Endpoint) { Add-Issue 'Route endpoint is required.' }
@@ -137,50 +112,47 @@ if (-not $endpointSafe -or $uri.Scheme -ne 'http' -or
     $endpointSafe = $false
 }
 
-$listener = $false
 $gatewaySessionFile = if ($projectRoot) { Join-Path $projectRoot 'Saved\UEAgent\mcp-session.json' } else { $null }
-$pluginFingerprint = Get-PluginFingerprint $projectRoot $EngineRoot $projectName
-$listenerPids = @()
-$preflightProbe = $null
+$stateProbe = $null
+$capabilityProbe = $null
+$capabilitiesProbed = $ProbeCapabilities.IsPresent -or $ProbeAdvancedCapabilities.IsPresent
 $toolsListOk = $false
 $callViewAvailable = $false
 $reliableStateRead = $false
 $editorPidAvailable = $false
+$editorPid = 0
 $reliableState = $null
 $topToolNames = @()
 $requiredTopTools = @('list_toolsets', 'describe_toolset', 'call_tool')
 $missingMetaTools = @($requiredTopTools)
-$missingReliableTools = @($requiredReliableTools)
 
 if ($endpointSafe) {
-    $listener = Test-TcpListener $uri
-}
-
-if ($listener) {
-    $preflightProbe = Invoke-GatewayProbe 'preflight' $Endpoint $TimeoutSec $null $gatewaySessionFile $null $ProcessGuardMaxPrivateMemoryMB
-    if ($preflightProbe.ok) {
-        $toolsListOk = [bool]$preflightProbe.data.toolsList
-        $callViewAvailable = [bool]$preflightProbe.data.callViewAvailable
-        $reliableStateRead = [bool]$preflightProbe.data.reliableStateRead
-        $reliableState = $preflightProbe.data.reliableState
-        $topToolNames = @($preflightProbe.data.topLevelTools | Sort-Object -Unique)
-        $missingMetaTools = @($requiredTopTools | Where-Object { $_ -notin $topToolNames })
-        $missingReliableTools = @($requiredReliableTools | Where-Object { $_ -notin $topToolNames })
-        foreach ($probeError in @($preflightProbe.data.errors)) {
-            Add-Issue "MCP preflight: $probeError"
+    $stateProbe = Invoke-GatewayProbe 'direct.call' $Endpoint $TimeoutSec $null $gatewaySessionFile $null 'ueagent_state'
+    if ($stateProbe.ok) {
+        $reliableState = $stateProbe.data
+        if ($reliableState -and [string]$reliableState.protocol_version -and
+            [string]$reliableState.editor_epoch) {
+            $reliableStateRead = $true
+        } else {
+            Add-Issue 'ueagent_state returned no protocol_version or editor_epoch.'
         }
     } else {
-        Add-Issue "MCP preflight failed: $($preflightProbe.code) $($preflightProbe.message)"
+        Add-Issue "MCP state read failed: $($stateProbe.code) $($stateProbe.message)"
     }
-    if ($toolsListOk -and $missingMetaTools.Count -gt 0) {
-        Add-Issue "Missing MCP meta tools: $($missingMetaTools -join ', ')"
+
+    if ($capabilitiesProbed) {
+        $capabilityProbe = Invoke-GatewayProbe 'tools.list' $Endpoint $TimeoutSec $null $gatewaySessionFile
+        if ($capabilityProbe.ok) {
+            $listedTools = @($capabilityProbe.data)
+            $topToolNames = @($listedTools | ForEach-Object { [string]$_.name } | Sort-Object -Unique)
+            $toolsListOk = $true
+            $callViewAvailable = Test-ToolInputEnumValue $listedTools 'describe_toolset' 'detail' 'call'
+            $missingMetaTools = @($requiredTopTools | Where-Object { $_ -notin $topToolNames })
+        } else {
+            Add-Issue "MCP capability probe failed: $($capabilityProbe.code) $($capabilityProbe.message)"
+        }
     }
-    if ($toolsListOk -and $missingReliableTools.Count -gt 0) {
-        Add-Issue "Missing reliable UEAgent control tools: $($missingReliableTools -join ', ')"
-    }
-    if ($toolsListOk -and -not $callViewAvailable) {
-        Add-Issue 'The running editor does not expose the native MCP detail=call schema.'
-    }
+
     if ($reliableStateRead) {
         if (-not [bool]$reliableState.enabled) {
             Add-Issue 'The editor reliable execution kernel is present but disabled.'
@@ -194,25 +166,26 @@ if ($listener) {
         $editorPid = [int]$reliableState.editor_pid
         if ($editorPid -gt 0) {
             $editorPidAvailable = $true
-            $listenerPids = @($editorPid)
         } else {
             Add-Issue 'Reliable state has no editor PID.'
         }
-        if ($projectRoot -and [string]$reliableState.project -ne [IO.Path]::GetFileNameWithoutExtension($UProject)) {
-            Add-Issue "Reliable state belongs to another project: $([string]$reliableState.project)"
+        if ($projectRoot -and ([IO.Path]::GetFullPath([string]$reliableState.project_file)).Replace('\','/') -ine ([IO.Path]::GetFullPath($UProject)).Replace('\','/')) {
+            Add-Issue "Reliable state belongs to another project: $([string]$reliableState.project_file)"
         }
     }
 }
 
 $niagaraToolsetsExtensionLive = $false
+$niagaraParameterHierarchyLive = $false
+$niagaraScratchAuthoringLive = $false
 if ($ProbeAdvancedCapabilities) {
-    if (-not $listener -or -not $preflightProbe -or -not $preflightProbe.ok) {
-        Add-Issue 'Advanced Niagara capability probe requires a healthy live MCP preflight.'
+    if (-not $stateProbe -or -not $stateProbe.ok -or -not $capabilityProbe -or -not $capabilityProbe.ok) {
+        Add-Issue 'Advanced Niagara capability probe requires a healthy live route and capability probe.'
     } else {
         # Capability verification only needs tool names. Avoid full schemas here because the
         # Niagara system toolset is large enough to exceed the bounded gateway response budget.
-        $systemProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_System' $gatewaySessionFile 'summary' $ProcessGuardMaxPrivateMemoryMB
-        $componentProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_Component' $gatewaySessionFile 'summary' $ProcessGuardMaxPrivateMemoryMB
+        $systemProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_System' $gatewaySessionFile 'summary'
+        $componentProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'NiagaraToolsets.NiagaraToolset_Component' $gatewaySessionFile 'summary'
         if (-not $systemProbe.ok -or -not $componentProbe.ok) {
             Add-Issue 'Advanced Niagara toolset description failed.'
         } else {
@@ -230,39 +203,77 @@ if ($ProbeAdvancedCapabilities) {
             } else {
                 $niagaraToolsetsExtensionLive = $true
             }
+            $niagaraParameterHierarchyLive = @('GetUserParameterHierarchy', 'SetUserParameterCategory' | Where-Object {
+                $suffix = ".$_"
+                -not @($systemNames | Where-Object { ([string]$_).EndsWith($suffix) }).Count
+            }).Count -eq 0
+            if (-not $niagaraParameterHierarchyLive) {
+                Add-Issue 'Running editor is missing Niagara user-parameter hierarchy tools.'
+            }
+        }
+        $scratchProbe = Invoke-GatewayProbe 'toolset.describe' $Endpoint $TimeoutSec 'VibeUE.NiagaraScratchPadService' $gatewaySessionFile 'summary'
+        if ($scratchProbe.ok) {
+            $scratchNames = @($scratchProbe.data.tools.name)
+            $missingScratchTools = @(
+                @('CreateEmitterAsset', 'AddParameterInputNode', 'AddParticleReadNode',
+                  'CreateRasterizationGrid3DUserParameter', 'RefreshModuleCallNodes', 'RemoveScratchPin') |
+                    Where-Object {
+                        $suffix = ".$_"
+                        -not @($scratchNames | Where-Object { ([string]$_).EndsWith($suffix) }).Count
+                    }
+            )
+            $niagaraScratchAuthoringLive = $missingScratchTools.Count -eq 0
+            if ($missingScratchTools.Count) {
+                Add-Issue "Running editor is missing scratch authoring tools: $($missingScratchTools -join ', ')"
+            }
+        } else {
+            Add-Issue 'Advanced scratch authoring description failed.'
         }
     }
 }
 
+$reliableProjectMatches = -not $reliableStateRead -or -not $projectRoot -or
+    ([IO.Path]::GetFullPath([string]$reliableState.project_file)).Replace('\','/') -ieq ([IO.Path]::GetFullPath($UProject)).Replace('\','/')
+$editorLive = ($reliableStateRead -and [bool]$reliableState.enabled -and
+    [string]$reliableState.protocol_version -eq $reliableProtocolVersion -and
+    -not [string]::IsNullOrWhiteSpace([string]$reliableState.editor_epoch) -and
+    $editorPidAvailable -and $reliableProjectMatches)
+$authoritativeReadLive = if ($capabilitiesProbed) {
+    $editorLive -and (@($authoritativeReadTools | Where-Object { $_ -in $topToolNames }).Count -gt 0)
+} else { $null }
+$mutationLive = if ($capabilitiesProbed) {
+    $editorLive -and (@($mutationTools | Where-Object { $_ -notin $topToolNames }).Count -eq 0)
+} else { $null }
+$saveLive = if ($capabilitiesProbed) {
+    $mutationLive -and (@($saveTools | Where-Object { $_ -notin $topToolNames }).Count -eq 0)
+} else { $null }
+$recoveryLive = if ($capabilitiesProbed) {
+    $editorLive -and (@($recoveryTools | Where-Object { $_ -notin $topToolNames }).Count -eq 0)
+} else { $null }
 $status = if (-not $projectRoot -or -not $endpointSafe) {
     'BLOCKED'
-} elseif (-not $listener -or -not $preflightProbe -or -not $preflightProbe.ok -or -not $toolsListOk) {
+} elseif (-not $stateProbe -or -not $stateProbe.ok -or -not $reliableStateRead) {
     'OFFLINE'
-} elseif ($issues.Count -gt 0 -or $missingMetaTools.Count -gt 0 -or
-          $missingReliableTools.Count -gt 0 -or -not $reliableStateRead) {
+} elseif (-not $editorLive) {
     'DEGRADED'
 } else {
     'HEALTHY'
 }
 
-if ($status -eq 'HEALTHY' -and $projectRoot) {
-    $invalidationPath = Join-Path $projectRoot 'Saved\UEAgent\doctor.invalidate.json'
-    Remove-Item -LiteralPath $invalidationPath -Force -ErrorAction SilentlyContinue
-}
-
-$reliableKernelLive = ($reliableStateRead -and [bool]$reliableState.enabled -and
-    [string]$reliableState.protocol_version -eq $reliableProtocolVersion -and
-    -not [string]::IsNullOrWhiteSpace([string]$reliableState.editor_epoch) -and
-    $editorPidAvailable -and $missingReliableTools.Count -eq 0)
 $capabilities = [ordered]@{
-    officialToolSearch = ($toolsListOk -and $missingMetaTools.Count -eq 0 -and $callViewAvailable)
-    compactCallView = $callViewAvailable
-    reliableKernel = $reliableKernelLive
+    officialToolSearch = if ($capabilitiesProbed) { ($toolsListOk -and $missingMetaTools.Count -eq 0 -and $callViewAvailable) } else { $null }
+    compactCallView = if ($capabilitiesProbed) { $callViewAvailable } else { $null }
+    editorLive = $editorLive
+    authoritativeRead = $authoritativeReadLive
+    mutation = $mutationLive
+    save = $saveLive
+    recovery = $recoveryLive
     niagaraToolsetsExtension = if ($ProbeAdvancedCapabilities) { $niagaraToolsetsExtensionLive } else { $null }
+    niagaraParameterHierarchy = if ($ProbeAdvancedCapabilities) { $niagaraParameterHierarchyLive } else { $null }
+    niagaraScratchAuthoring = if ($ProbeAdvancedCapabilities) { $niagaraScratchAuthoringLive } else { $null }
 }
 $identity = [ordered]@{
-    listenerPids = $listenerPids
-    pluginFingerprint = $pluginFingerprint
+    editorPid = if ($editorPidAvailable) { $editorPid } else { $null }
     editorEpoch = if ($reliableStateRead) { [string]$reliableState.editor_epoch } else { $null }
 }
 $checkedAtUtc = [DateTime]::UtcNow.ToString('o')
@@ -272,31 +283,20 @@ $output = if ($View -eq 'compact') {
         status = $status
         checkedAtUtc = $checkedAtUtc
         identity = $identity
+        capabilities = $capabilities
     }
     if ($ProbeAdvancedCapabilities) { $compact.niagaraToolsetsExtension = $niagaraToolsetsExtensionLive }
     if ($reliableStateRead) {
         $busy = [ordered]@{}
         if ([string]$reliableState.active_command_id) { $busy.activeCommandId = [string]$reliableState.active_command_id }
-        if (@($reliableState.queued_command_ids).Count) { $busy.queued = @($reliableState.queued_command_ids).Count }
+        if ([int]$reliableState.queued_jobs -gt 0) { $busy.queued = [int]$reliableState.queued_jobs }
         if ([bool]$reliableState.performance_frozen) { $busy.performanceFrozen = $true }
         if ([int]$reliableState.dirty_package_count) { $busy.dirtyPackageCount = [int]$reliableState.dirty_package_count }
         if ($busy.Count) { $compact.reliable = $busy }
     }
-    if ($status -ne 'HEALTHY' -and $issues.Count) { $compact.issues = @($issues | Select-Object -First 3) }
+    if ($issues.Count) { $compact.issues = @($issues | Select-Object -First 3) }
     $compact
 } else {
-    $allowed = @(switch ($status) {
-        'HEALTHY' { @('CACHE_ONLY', 'LIVE_READ', 'RELIABLE_MUTATION_QUEUE', 'SAVE_CAPABILITY_GATED') }
-        'DEGRADED' { @('CACHE_ONLY', 'PROVEN_LIVE_READ_ONLY') }
-        'OFFLINE' { @('SOURCE_CACHE_CONFIG_LOG_ONLY') }
-        default { @('ROUTE_REPAIR_ONLY') }
-    })
-    $blocked = @(switch ($status) {
-        'HEALTHY' { @('DIRECT_MUTATION_BYPASS', 'UNAUTHORISED_SAVE_DELETE_MOVE_MERGE', 'UNVERIFIED_CAPABILITY', 'UI_AUTOMATION') }
-        'DEGRADED' { @('LIVE_MUTATION', 'SAVE', 'DESTRUCTIVE_ACTION', 'UI_AUTOMATION') }
-        'OFFLINE' { @('LIVE_STATE_CLAIMS', 'LIVE_MUTATION', 'SAVE', 'UI_AUTOMATION') }
-        default { @('MCP_OPERATION', 'UI_AUTOMATION') }
-    })
     $detailReliable = if ($reliableStateRead) {
         [ordered]@{
             protocolVersion = [string]$reliableState.protocol_version
@@ -304,7 +304,7 @@ $output = if ($View -eq 'compact') {
             editorPid = [int]$reliableState.editor_pid
             activeCommandId = [string]$reliableState.active_command_id
             lastReceiptId = [string]$reliableState.last_receipt_id
-            queued = @($reliableState.queued_command_ids).Count
+            queued = [int]$reliableState.queued_jobs
             performanceFrozen = [bool]$reliableState.performance_frozen
             dirtyPackageCount = [int]$reliableState.dirty_package_count
         }
@@ -315,13 +315,17 @@ $output = if ($View -eq 'compact') {
         status = $status
         checkedAtUtc = $checkedAtUtc
         project = [ordered]@{ uproject = $UProject; engineRoot = $EngineRoot; routeFile = $RouteFile }
-        endpoint = [ordered]@{ url = $Endpoint; transport = $routeTransport; loopbackSafe = $endpointSafe; listener = $listener }
+        endpoint = [ordered]@{ url = $Endpoint; loopbackSafe = $endpointSafe; gatewayPreflight = [bool]($stateProbe -and $stateProbe.ok) }
         identity = $identity
         live = [ordered]@{
-            toolsList = $toolsListOk
+            capabilitiesProbed = $capabilitiesProbed
+            toolsList = if ($capabilitiesProbed) { $toolsListOk } else { $null }
             topLevelTools = $topToolNames
-            missingMetaTools = $missingMetaTools
-            missingReliableTools = $missingReliableTools
+            missingMetaTools = if ($capabilitiesProbed) { $missingMetaTools } else { $null }
+            missingAuthoritativeReadTools = if ($capabilitiesProbed) { @($authoritativeReadTools | Where-Object { $_ -notin $topToolNames }) } else { $null }
+            missingMutationTools = if ($capabilitiesProbed) { @($mutationTools | Where-Object { $_ -notin $topToolNames }) } else { $null }
+            missingSaveTools = if ($capabilitiesProbed) { @($saveTools | Where-Object { $_ -notin $topToolNames }) } else { $null }
+            missingRecoveryTools = if ($capabilitiesProbed) { @($recoveryTools | Where-Object { $_ -notin $topToolNames }) } else { $null }
             toolsetDiscoveryAvailable = ('list_toolsets' -in $topToolNames -and 'describe_toolset' -in $topToolNames)
             callViewAvailable = $callViewAvailable
             reliableStateRead = $reliableStateRead
@@ -329,9 +333,6 @@ $output = if ($View -eq 'compact') {
             advancedCapabilityProbe = $ProbeAdvancedCapabilities.IsPresent
         }
         capabilities = $capabilities
-        allowed = $allowed
-        blocked = $blocked
-        resultUnknownRule = 'Poll the command receipt first; if it is unavailable, recover/read back before retrying. Never blind-retry a mutation.'
         issues = @($issues)
     }
 }

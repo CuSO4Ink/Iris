@@ -1,10 +1,11 @@
 <!-- iris-project-kind: ue -->
 # ReflectCache
 
-> **UEAgent first（UE live/MCP 强制前置）**：先导航到 [UEAgent 入口](../../AGENTS.md) 和 [HOTPATH](../../skills/ue-mcp-workflows/HOTPATH.md)，再处理本项目 brief。定位目标项目 `Saved/UEAgent/route.json` 并运行 `compact_context.ps1`，仅在路由或脚本失败时读取其内容；只有 `CACHE_READ` 才停止 MCP，否则首次 live call 前运行 `doctor.ps1`。确认路由状态后才读取项目任务文档。纯离线源码/cache/config/log/文档分析可跳过 MCP，但不得声称 live editor 状态。
+> **UEAgent first**: Use [UEAgent](../../AGENTS.md) and [HOTPATH](../../skills/ue-mcp-workflows/HOTPATH.md). For live work locate `Saved/UEAgent/route.json` and call the routed Gateway; it binds the project/Editor session. Optional saved-state cache routing returns CACHE_READ or LIVE_CALL. Doctor is diagnostic only. Offline source/cache/config/log analysis needs no MCP and makes no live-state claim.
 
-> Material v2 与 MaterialFunction v1 自动化均已验证；五类生成器和统一 save handler
-> 已进入可迁移补丁，MaterialInstance/Blueprint/Niagara 的受控保存验证仍待完成。
+> 五类生成器和统一 save handler 已在 2026-09-06 的 UE 5.8.1 临时工程中完成受控保存、
+> 字段核验与重启验证。Blueprint 新增继承 CDO 覆盖值的 `## Defaults`；详细范围见
+> [运行验证](../../notes/runtime-verification-20260906.md)。这不代替 Abyss 生产资产验证。
 
 渐进式读取、MCP 路由、差异 receipt、大小审计和回滚表统一记录在
 `../../PROGRESSIVE-DISCLOSURE.md`；本项目只补充 cache 的格式与边界。
@@ -17,7 +18,7 @@
 - 要维护材质反射格式、VibeUE save hook 或回填命令。
 
 普通材质 CRUD 仍走 `../../skills/ue-mcp-workflows/references/materials.md`。
-任何 live rebuild、save-hook 验证或 UE 资产修改都必须先通过 UEAgent doctor；离线
+任何 live rebuild、save-hook 验证或 UE 资产修改都通过项目路由调用 Gateway；Doctor 仅用于诊断；离线
 sidecar 读取与格式分析不需要 MCP。
 
 ## 契约
@@ -25,13 +26,14 @@ sidecar 读取与格式分析不需要 MCP。
 - `.uasset` 是唯一真相；只允许 UE -> cache。
 - 每份 cache 是源文件同目录的 sidecar：`X.uasset.ai.md`。
 - VibeUE 的 package-save handler 为 Material、MaterialFunction、MaterialInstance、Blueprint
-  和 NiagaraSystem 原子刷新对应 sidecar；未通过受控保存验证的类型仍视为
-  `PRESENT_UNVERIFIED`。
+  和 NiagaraSystem 原子刷新对应 sidecar；五种类型已通过受控资产 smoke，
+  新目标仍须先核对安装版本和实际保存结果。
 - v2 `## Logic` 保存真实顶层节点、pin、连线和常用常量；不生成臆测语义。
 - `## Deps` 保存直接资产边及可证实的 `relation/node/parameter`；Asset Registry 仍是全项目引用真源，
   cache 不保存反向图或第二套引用状态。
 - 先读 cache；写 UE 前只验证目标局部和 dirty state；保存后检查 cache 时间戳。
-- Blueprint cache 复用官方 graph DSL；Niagara cache 保存 stack/有效输入/renderer，
+- Blueprint cache 复用官方 graph DSL，`## Vars` 保存自有变量默认值，`## Defaults` 保存
+  相对父类 CDO 的可编辑继承属性覆盖；Niagara cache 保存 stack/有效输入/renderer，
   external scripts 只存路径，embedded scripts 才内联紧凑 IR/HLSL。
 - 协议与验证证据见 `PROTOCOL.md`、`WAVE-PILOT.md`，后续边界见 `BACKLOG.md`。
 
@@ -52,5 +54,7 @@ sidecar 读取与格式分析不需要 MCP。
 
 sidecar 不需要输出目录配置；UE 默认不会把 `.md` 注册为资产或 Cook。源码控制和
 UE Migrate 不会自动管理它。精确源码差异只保存在
-`../../patches/vibeue-ueagent.patch`，bootstrap 将它应用到目标项目的 VibeUE checkout，
-不维护第二套手写实现。route 记录补丁 SHA256，doctor 同时检查源码存在与运行时证明。
+基础 profile 的 `../../patches/vibeue-ueagent.patch`，Niagara profile 使用其作者工具复合补丁。
+`install_engine.ps1` 按 manifest 将选定补丁安装到引擎级 VibeUE；Bootstrap 只绑定项目路由。
+route 记录 profile 与引擎/VibeUE revision。`install_engine.ps1 -CheckOnly` 验证源码补丁和
+引擎默认配置，`bootstrap.ps1 -CheckOnly` 验证项目绑定；Doctor 证明运行时路由。

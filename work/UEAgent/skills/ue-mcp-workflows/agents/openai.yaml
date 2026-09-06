@@ -1,4 +1,4 @@
 interface:
   display_name: "UE MCP Workflows"
-  short_description: "Gate and operate UE through MCP"
-  default_prompt: "Use $ue-mcp-workflows: run the UEAgent doctor first, then choose cache, live read, or task-gated mutation from the receipt."
+  short_description: "Operate UE through Gateway"
+  default_prompt: "Use $ue-mcp-workflows via HOTPATH. Doctor is diagnostic only."

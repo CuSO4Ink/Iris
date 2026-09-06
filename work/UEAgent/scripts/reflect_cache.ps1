@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [ValidateSet('read', 'reconcile')]
     [string]$Action = 'read',
@@ -13,9 +13,6 @@ param(
     [string[]]$Section,
     [int]$MaxItems = 64,
     [string]$OutFile,
-    [string]$Manifest,
-    [string]$GeneratorFingerprint,
-    [switch]$Repair,
     [switch]$Pretty
 )
 
@@ -45,89 +42,6 @@ function Resolve-ProjectRoot {
         return (Split-Path ([string]$route.uProject) -Parent)
     }
     return $null
-}
-
-function Resolve-ManifestPath {
-    if ($Manifest) { return [IO.Path]::GetFullPath($Manifest) }
-    $root = Resolve-ProjectRoot
-    if (-not $root) { throw 'reconcile requires -ProjectRoot or -RouteFile.' }
-    return (Join-Path $root 'Saved\UEAgent\cache-manifest.json')
-}
-
-function Resolve-GeneratorFingerprint {
-    if ($GeneratorFingerprint) { return [string]$GeneratorFingerprint }
-    if (-not $RouteFile) { return $null }
-    try {
-        $route = Read-JsonFile ((Resolve-Path -LiteralPath $RouteFile).Path) 'route file'
-        $parts = @($route.vibeUEPatchSha256, $route.vibeUEMcpShutdownGuardPatchSha256,
-            $route.engineNiagaraPatchSha256,
-            $route.engineNiagaraAuthoringPatchSha256, $route.mcpToolSearchPatchSha256) | Where-Object { $_ }
-        if ($parts.Count -eq 0) { return $null }
-        $sha = [Security.Cryptography.SHA256]::Create()
-        try { return ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes(($parts -join '|'))))).Replace('-', '').ToLowerInvariant() }
-        finally { $sha.Dispose() }
-    } catch { return $null }
-}
-
-function Get-GamePackagePath($ProjectRoot, $SourceFile) {
-    if (-not $ProjectRoot -or -not $SourceFile) { return $null }
-    $content = (Resolve-Path -LiteralPath (Join-Path $ProjectRoot 'Content')).Path
-    $source = (Resolve-Path -LiteralPath $SourceFile).Path
-    $prefix = $content.TrimEnd('\') + '\'
-    if (-not $source.StartsWith($prefix, [StringComparison]::OrdinalIgnoreCase) -or
-        -not $source.EndsWith('.uasset', [StringComparison]::OrdinalIgnoreCase)) { return $null }
-    $relative = $source.Substring($prefix.Length, $source.Length - $prefix.Length - '.uasset'.Length)
-    return '/Game/' + $relative.Replace('\', '/')
-}
-
-function Get-SourceHash($Path) {
-    if (-not $Path -or -not (Test-Path -LiteralPath $Path)) { return $null }
-    try { return (Get-FileHash -Algorithm SHA256 -LiteralPath $Path).Hash.ToLowerInvariant() }
-    catch { return $null }
-}
-
-function Read-CacheManifest($Path) {
-    if (-not $Path -or -not (Test-Path -LiteralPath $Path)) { return $null }
-    try {
-        $value = Read-JsonFile $Path 'cache manifest'
-        if ($value.schema -eq 'ueagent-cache-manifest-v1') { return $value }
-    } catch { }
-    return $null
-}
-
-function Write-CacheManifest($Path, $ManifestObject) {
-    $parent = Split-Path -Parent $Path
-    if ($parent -and -not (Test-Path -LiteralPath $parent)) {
-        New-Item -ItemType Directory -Path $parent -Force | Out-Null
-    }
-    [IO.File]::WriteAllText($Path, ($ManifestObject | ConvertTo-Json -Depth 20), [Text.UTF8Encoding]::new($false))
-}
-
-function Set-CacheSourceMetadata($Path, $ProjectRoot, $SourceFile) {
-    $source = Get-Item -LiteralPath $SourceFile
-    $package = Get-GamePackagePath $ProjectRoot $SourceFile
-    if (-not $package) { throw "Cannot derive /Game package path for $SourceFile" }
-    $fileValue = ((Resolve-Path -LiteralPath $SourceFile).Path).Replace('\', '/')
-    $text = Get-Content -Raw -LiteralPath $Path
-    $replacements = @{
-        '(?m)^src:\s*.*$' = "src: $package"
-        '(?m)^file:\s*.*$' = "file: $fileValue"
-        '(?m)^mtime:\s*.*$' = "mtime: $($source.LastWriteTimeUtc.ToString('o'))"
-        '(?m)^size:\s*.*$' = "size: $([int64]$source.Length)"
-    }
-    foreach ($pattern in $replacements.Keys) {
-        $text = [Regex]::Replace($text, $pattern, $replacements[$pattern])
-    }
-    [IO.File]::WriteAllText($Path, $text, [Text.UTF8Encoding]::new($false))
-}
-
-function Get-OrphanTarget($SourceFiles, $ManifestEntry) {
-    if (-not $ManifestEntry -or -not $ManifestEntry.sourceSha256 -or $null -eq $ManifestEntry.sourceBytes) { return @() }
-    $matches = [Collections.Generic.List[string]]::new()
-    foreach ($source in $SourceFiles | Where-Object { [int64]$_.Length -eq [int64]$ManifestEntry.sourceBytes }) {
-        if ((Get-SourceHash $source.FullName) -eq [string]$ManifestEntry.sourceSha256) { $matches.Add($source.FullName) }
-    }
-    return @($matches)
 }
 
 function Get-PackagePath($Path) {
@@ -239,7 +153,7 @@ function Get-UsefulLines($Lines) {
     @($Lines | Where-Object { [string]$_ -and [string]$_ -ne '-' })
 }
 
-function Get-CacheRecord($CachePath, [switch]$IncludeHash) {
+function Get-CacheRecord($CachePath) {
     if (-not (Test-Path -LiteralPath $CachePath)) { throw "Cache sidecar not found: $CachePath" }
     $resolved = (Resolve-Path -LiteralPath $CachePath).Path
     $lines = [IO.File]::ReadAllLines($resolved)
@@ -258,7 +172,6 @@ function Get-CacheRecord($CachePath, [switch]$IncludeHash) {
         elseif (-not $formatKnown) { 'UNSUPPORTED_FORMAT' }
         elseif (-not $sourceMetadataCurrent) { 'STALE' }
         else { 'FRESH' }
-    $hash = if ($IncludeHash) { (Get-FileHash -Algorithm SHA256 -LiteralPath $resolved).Hash.ToLowerInvariant() } else { $null }
     $logic = Get-UsefulLines (Get-SectionLines $sections 'Logic')
     $deps = Get-Dependencies $sections
     $references = @(Get-SemanticReferences $sections)
@@ -276,8 +189,6 @@ function Get-CacheRecord($CachePath, [switch]$IncludeHash) {
         cache = [ordered]@{
             bytes = [int64]$sidecarInfo.Length
             mtimeUtc = $sidecarInfo.LastWriteTimeUtc.ToString('o')
-            sha256 = $hash
-            graphSha1 = if ($metadata.graph_sha1) { [string]$metadata.graph_sha1 } else { $null }
             format = $format
             state = $state
         }
@@ -296,10 +207,8 @@ function Get-CacheRecord($CachePath, [switch]$IncludeHash) {
 function New-Summary($Record) {
     $cache = [ordered]@{
         format = $Record.cache.format
-        graphSha1 = $Record.cache.graphSha1
         state = $Record.cache.state
     }
-    if ($Record.cache.sha256) { $cache.sha256 = $Record.cache.sha256 }
     $stats = [ordered]@{ sections = $Record.stats.sections }
     foreach ($name in @('logicLines', 'dependencyCount', 'referenceCount', 'parameterLines')) {
         if ([int]$Record.stats[$name] -gt 0) { $stats[$name] = [int]$Record.stats[$name] }
@@ -358,123 +267,15 @@ function Get-ReadView($Record) {
 
 function Get-ReconcileView {
     $root = Resolve-ProjectRoot
-    if (-not $root) { throw 'reconcile requires -ProjectRoot or -RouteFile.' }
+    if (-not $root) { throw 'reconcile requires a project root or route.' }
     $content = Join-Path $root 'Content'
-    if (-not (Test-Path -LiteralPath $content)) { throw "Content directory not found: $content" }
-    $manifestPath = Resolve-ManifestPath
-    $previous = Read-CacheManifest $manifestPath
-    $previousEntries = @()
-    if ($previous) { $previousEntries = @($previous.entries) }
-    $currentGenerator = Resolve-GeneratorFingerprint
-    $generatorChanged = $previous -and $previous.generatorFingerprint -and $currentGenerator -and
-        [string]$previous.generatorFingerprint -ne [string]$currentGenerator
-    $sourceFiles = @(Get-ChildItem -LiteralPath $content -Filter '*.uasset' -File -Recurse)
-    $sidecars = @(Get-ChildItem -LiteralPath $content -Filter '*.uasset.ai.md' -File -Recurse)
-    $entries = [Collections.Generic.List[object]]::new()
-    $renamed = [Collections.Generic.List[object]]::new()
-    $quarantined = [Collections.Generic.List[object]]::new()
-    $orphans = [Collections.Generic.List[object]]::new()
-    $stamp = [DateTime]::UtcNow.ToString('yyyyMMddTHHmmssfffZ')
-    $contentPrefix = $content.TrimEnd('\') + '\'
-
-    foreach ($sidecar in $sidecars) {
-        try { $record = Get-CacheRecord $sidecar.FullName -IncludeHash } catch { continue }
-        $sourcePath = $record.sourcePath
-        if ($record.source.exists) {
-            $entrySource = (Resolve-Path -LiteralPath $sourcePath).Path
-            $entryState = if ($generatorChanged) { 'GENERATOR_CHANGED' } else { $record.cache.state }
-            $entries.Add([ordered]@{
-                sidecar = $record.path
-                source = $entrySource
-                package = Get-GamePackagePath $root $entrySource
-                sourceBytes = [int64]$record.source.bytes
-                sourceMtimeUtc = $record.source.mtimeUtc
-                sourceSha256 = Get-SourceHash $entrySource
-                cacheSha256 = $record.cache.sha256
-                format = $record.cache.format
-                state = $entryState
-            })
-            continue
-        }
-
-        $oldEntry = @($previousEntries | Where-Object {
-            [string]$_.sidecar -and [IO.Path]::GetFullPath([string]$_.sidecar) -eq $record.path
-        }) | Select-Object -First 1
-        $candidatePaths = @(Get-OrphanTarget $sourceFiles $oldEntry)
-        if ($Repair -and $candidatePaths.Count -eq 1) {
-            $targetSource = [string]$candidatePaths[0]
-            $targetSidecar = $targetSource + '.ai.md'
-            if (-not (Test-Path -LiteralPath $targetSidecar)) {
-                Move-Item -LiteralPath $record.path -Destination $targetSidecar
-                Set-CacheSourceMetadata $targetSidecar $root $targetSource
-                $renamed.Add([ordered]@{ from = $record.path; to = $targetSidecar; reason = 'source_sha256_match' })
-                $record = Get-CacheRecord $targetSidecar -IncludeHash
-                $entryState = if ($generatorChanged) { 'GENERATOR_CHANGED' } else { $record.cache.state }
-                $entries.Add([ordered]@{
-                    sidecar = $record.path
-                    source = (Resolve-Path -LiteralPath $targetSource).Path
-                    package = Get-GamePackagePath $root $targetSource
-                    sourceBytes = [int64]$record.source.bytes
-                    sourceMtimeUtc = $record.source.mtimeUtc
-                    sourceSha256 = Get-SourceHash $targetSource
-                    cacheSha256 = $record.cache.sha256
-                    format = $record.cache.format
-                    state = $entryState
-                })
-                continue
-            }
-        }
-
-        $orphan = [ordered]@{ sidecar = $record.path; src = $record.metadata.src; candidates = @($candidatePaths); state = 'ORPHAN' }
-        $orphans.Add($orphan)
-        $entries.Add([ordered]@{
-            sidecar = $record.path
-            source = $null
-            package = if ($record.metadata.src) { [string]$record.metadata.src } else { $null }
-            sourceBytes = if ($record.metadata.Contains('size')) { [int64]$record.metadata.size } else { $null }
-            sourceMtimeUtc = if ($record.metadata.mtime) { [string]$record.metadata.mtime } else { $null }
-            sourceSha256 = if ($oldEntry -and $oldEntry.sourceSha256) { [string]$oldEntry.sourceSha256 } else { $null }
-            cacheSha256 = $record.cache.sha256
-            format = $record.cache.format
-            state = 'ORPHAN'
-        })
-        if ($Repair -and $candidatePaths.Count -eq 0) {
-            # ponytail: quarantine cache-only files; never delete user context.
-            $relative = if ($record.path.StartsWith($contentPrefix, [StringComparison]::OrdinalIgnoreCase)) {
-                $record.path.Substring($contentPrefix.Length)
-            } else { Split-Path -Leaf $record.path }
-            $destination = Join-Path (Join-Path $root "Saved\UEAgent\cache-orphans\$stamp") $relative
-            $destinationParent = Split-Path -Parent $destination
-            New-Item -ItemType Directory -Path $destinationParent -Force | Out-Null
-            Move-Item -LiteralPath $record.path -Destination $destination
-            $quarantined.Add([ordered]@{ from = $record.path; to = $destination; reason = 'source_missing' })
-        }
+    $items = [Collections.Generic.List[object]]::new()
+    foreach ($sidecar in Get-ChildItem -LiteralPath $content -Filter '*.uasset.ai.md' -Recurse -File) {
+        $record = Get-CacheRecord $sidecar.FullName
+        $items.Add((New-Summary $record))
     }
-
-    $manifestObject = [ordered]@{
-        schema = 'ueagent-cache-manifest-v1'
-        projectRoot = $root
-        generatedAtUtc = [DateTime]::UtcNow.ToString('o')
-        generatorFingerprint = $currentGenerator
-        entries = @($entries)
-    }
-    Write-CacheManifest $manifestPath $manifestObject
-    return [ordered]@{
-        schema = 'ueagent-cache-reconcile-v1'
-        projectRoot = $root
-        manifest = $manifestPath
-        repair = [bool]$Repair
-        sidecarCount = $sidecars.Count
-        sourceCount = $sourceFiles.Count
-        generatorChanged = [bool]$generatorChanged
-        freshCount = @($entries | Where-Object { $_.state -eq 'FRESH' }).Count
-        staleCount = @($entries | Where-Object { $_.state -in @('STALE', 'UNSUPPORTED_FORMAT', 'GENERATOR_CHANGED') }).Count
-        orphanCount = $orphans.Count
-        repairedRenames = @($renamed)
-        quarantined = @($quarantined)
-        orphans = @($orphans)
-        next = if ($orphans.Count -and -not $Repair) { @('rerun with -Repair to rehome unique hash matches and quarantine unresolved sidecars') } else { @() }
-    }
+    # Caches are disposable. Report stale/orphan entries; never infer renames or move files.
+    return [ordered]@{ action = 'reconcile'; entries = @($items); next = 'Regenerate stale or missing caches on the next asset save.' }
 }
 
 function Write-Result($Object) {
@@ -491,4 +292,4 @@ if ($Action -eq 'reconcile') {
     exit 0
 }
 
-Write-Result (Get-ReadView (Get-CacheRecord (Resolve-SidecarPath) -IncludeHash:($View -eq 'full')))
+Write-Result (Get-ReadView (Get-CacheRecord (Resolve-SidecarPath)))

@@ -1,3 +1,15 @@
+diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/NiagaraToolsets.Build.cs b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/NiagaraToolsets.Build.cs
+index 7d0d5ee32..ebfd89cc5 100644
+--- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/NiagaraToolsets.Build.cs
++++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/NiagaraToolsets.Build.cs
+@@ -41,6 +41,7 @@ namespace UnrealBuildTool.Rules
+ 					{
+ 						"UnrealEd",
+ 						"StructUtilsEditor",
++"DataHierarchyEditor",
+ 					}
+ 				);
+ 			}
 diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp
 index cd03d8861..3f813b5ed 100644
 --- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_Component.cpp
@@ -96,7 +108,7 @@ index 1012f0f78..3340ccf48 100644
  	/**
  	 * Sets the Niagara System for a component.
 diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
-index 9c1f55de7..107a96535 100644
+index 9c1f55d..db7c6c6 100644
 --- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
 +++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
 @@ -4,9 +4,16 @@
@@ -124,7 +136,30 @@ index 9c1f55de7..107a96535 100644
  #include "Serialization/JsonWriter.h"
  
  #include UE_INLINE_GENERATED_CPP_BY_NAME(NiagaraToolset_System)
-@@ -275,6 +283,179 @@ FNiagaraExt_DynamicInputChainRef UNiagaraToolset_System::GetDynamicInputChain(co
+@@ -203,6 +211,22 @@ FNiagaraExt_UserVariables UNiagaraToolset_System::GetUserVariables(UNiagaraSyste
+ 	return Variables;
+ }
+ 
++FNiagaraExt_UserParameterHierarchy UNiagaraToolset_System::GetUserParameterHierarchy(UNiagaraSystem* System)
++{
++	FNiagaraExternalEditContext Context(System);
++	FNiagaraExt_UserParameterHierarchy Hierarchy;
++	UNiagaraExternalEditUtilities::GetUserParameterHierarchy(System, Hierarchy, Context);
++	Error(Context.Errors);
++	return Hierarchy;
++}
++
++void UNiagaraToolset_System::SetUserParameterCategory(UNiagaraSystem* System, const TArray<FString>& ParameterNames, const FString& Category)
++{
++	FNiagaraExternalEditContext Context(System);
++	UNiagaraExternalEditUtilities::SetUserParameterCategory(System, ParameterNames, Category, Context);
++	Error(Context.Errors);
++}
++
+ FNiagaraExt_SystemData UNiagaraToolset_System::GetSystemData(UNiagaraSystem* System)
+ {
+ 	FNiagaraExternalEditContext Context(System);
+@@ -275,6 +299,179 @@ FNiagaraExt_DynamicInputChainRef UNiagaraToolset_System::GetDynamicInputChain(co
  	return Chain;
  }
  
@@ -304,8 +339,21 @@ index 9c1f55de7..107a96535 100644
  FNiagaraExt_SystemDependencies UNiagaraToolset_System::GetSystemDependencies(UNiagaraSystem* System)
  {
  	FNiagaraExternalEditContext Context(System);
+@@ -436,6 +633,12 @@ FNiagaraExt_StackInputValue UNiagaraToolset_System::SetStackInputData(const FNia
+ 	FNiagaraExternalEditContext Context(InputItemRef);
+ 	UNiagaraExternalEditUtilities::SetStackInputData(InputItemRef, InputData, Context);
+ 	Error(Context.Errors);
++	// Finish the compile triggered by the edited input before the caller takes its
++	// post-mutation snapshot and derives a save capability.
++	if (UNiagaraSystem* System = InputItemRef.GetSystem(Context))
++	{
++		System->WaitForCompilationComplete();
++	}
+ 	FNiagaraExt_StackInputValue Result;
+ 	UNiagaraExternalEditUtilities::GetStackInputData(InputItemRef, Result, Context);
+ 	return Result;
 diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
-index 6541a0e1e..7b94f7f5d 100644
+index 6541a0e1e..1920794c6 100644
 --- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
 +++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
 @@ -380,6 +380,26 @@ public:
@@ -335,3 +383,48 @@ index 6541a0e1e..7b94f7f5d 100644
  	//////////////////////////////////////////////////////////////////////////
  	// Dependency endpoint
  
+@@ -449,6 +469,29 @@ public:
+ 	UFUNCTION(meta = (AICallable), Category = "Edit")
+ 	static void RemoveUserVariables(UNiagaraSystem* System, const TArray<FNiagaraExt_Variable>& VariablesToRemove);
+ 
++/**
++	 * Returns the Parameters-panel grouping of a system's user parameters.
++	 * One entry per category with member parameter names (User.*); uncategorized parameters are
++	 * listed under an empty category name. Editor-side organization data; does not affect runtime.
++	 *
++	 * @param System The Niagara System to inspect
++	 * @return Category list with member parameter names
++	 */
++	UFUNCTION(meta = (AICallable), Category = "Data")
++	static FNiagaraExt_UserParameterHierarchy GetUserParameterHierarchy(UNiagaraSystem* System);
++
++	/**
++	 * Moves user parameters into a Parameters-panel category, creating the category when missing.
++	 * Pass an empty Category to move parameters back to the ungrouped root. Editor-side
++	 * organization only; does not affect runtime or wiring.
++	 *
++	 * @param System The Niagara System to modify
++	 * @param ParameterNames User parameter names (with or without the User. prefix)
++	 * @param Category Target category name; empty string = ungrouped root
++	 */
++	UFUNCTION(meta = (AICallable), Category = "Edit")
++	static void SetUserParameterCategory(UNiagaraSystem* System, const TArray<FString>& ParameterNames, const FString& Category);
++
+ 	/**
+ 	 * Adds an emitter to a Niagara System.
+ 	 * The new emitter will be based on the template emitter, inheriting its configuration and modules.
+diff --git a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/ViewModels/NiagaraSystemViewModel.cpp b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/ViewModels/NiagaraSystemViewModel.cpp
+index a1257fe..d3f73a7 100644
+--- a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/ViewModels/NiagaraSystemViewModel.cpp
++++ b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/ViewModels/NiagaraSystemViewModel.cpp
+@@ -2038,7 +2038,9 @@ void FNiagaraSystemViewModel::SetupPreviewComponentAndInstance()
+ 
+ void FNiagaraSystemViewModel::RefreshAll()
+ {
+-	if (GetSystem().HasOutstandingCompilationRequests() == false)
++	// Data-processing views do not simulate. Merely inspecting their stacks must not
++	// start a compile or replace the system's runtime compiled-data objects.
++	if (!bIsForDataProcessingOnly && GetSystem().HasOutstandingCompilationRequests() == false)
+ 	{
+ 		// Data changes which require full refreshes can cause stability problems when resetting the accompanying system, especially
+ 		// when used in conjunction with warm up.  This is a temporary fix for these crashes.

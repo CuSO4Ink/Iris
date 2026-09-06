@@ -1,88 +1,37 @@
 # UEAgent
 
-UEAgent is the policy and routing layer for AI access to Unreal Engine 5.8. It is not an
-engine fork or a second MCP server. The full token/rollback record is
-[PROGRESSIVE-DISCLOSURE.md](PROGRESSIVE-DISCLOSURE.md); this brief is the compact authority map.
+UEAgent is the routing and task execution layer for Unreal Engine 5.8.1. Native MCP remains
+the server; Gateway is the AI-facing client; VibeUE hosts the typed task executor.
 
-## Authority
+Use [HOTPATH](skills/ue-mcp-workflows/HOTPATH.md) as the single entry. The user authorized the
+K1–K5 simplification and R01–R25 cuts on 2026-09-06. Protocol 3.0 removes universal snapshots,
+OCC/hash checks, signed save tokens, duplicated discovery gates and model-driven polling.
+See [execution semantics](RELIABLE-EXECUTION.md). The cutover passed real build, cold reload, typed mutation/readback/save and negative-path
+tests. See [current evidence](notes/minimal-execution-20260906.md); the older runtime note below
+describes the preceding 2.0.1 installation.
 
-| Source | Authority |
-|---|---|
-| Target project | intent, conventions, visual goals |
-| Live Editor | dirty/in-memory state, compile/runtime/current level |
-| `.uasset` | saved asset truth |
-| Reflect Cache | disposable saved-state read model; never writes UE |
-| UEAgent reliable kernel | editor epoch, command queue, leases/OCC, immutable receipts, scoped save capabilities |
-| UEAgent | route, capability discovery, safety, reusable MCP practice |
-| Gateway | sole AI-facing live client; route binding, bounded requests, and result shaping |
-| Native MCP server | canonical server transport reached through Gateway |
-| ToolsetRegistry / VibeUE | typed Editor operations executed under the reliable kernel |
+Authority: live Editor for dirty/runtime state; .uasset for saved truth; sidecars for disposable
+saved-state context; task records for command results and exact save eligibility.
 
-## Required route
+## Installation and local verification
 
-```text
-project gate -> HOTPATH + route -> CACHE_READ or doctor receipt
--> cache or authoritative snapshot -> target brief -> ueagent_submit
--> job/receipt -> independent snapshot -> optional save capability -> save receipt
-```
+`scripts/install_engine.ps1` consumes the manifest's selected engine patch lists, installs VibeUE
+under `Engine/Plugins/AI/VibeUE`, enables engine defaults, and invokes the engine editor build.
+`-CheckOnly` validates installed source/defaults; project `bootstrap.ps1` writes and checks routing.
+The standalone Niagara Toolsets profile was folded into `niagara-authoring`, which includes its
+required engine exports. Project-specific external plugins remain project-owned.
 
-`compact_context.ps1` is a router, not live evidence. `CACHE_READ` stops before MCP. On
-`NEEDS_DOCTOR`, run `doctor.ps1` once and use its receipt; do not rerun compact context for the
-same task. Reuse a receipt while Editor listener PID/epoch and plugin fingerprint match; an MCP
-session is only a disposable client lease. Restart, ambiguous transport failure, explicit close,
-or plugin reload invalidates the receipt. If identity cannot be revalidated, discard the receipt.
+The 2026-09-06 verification includes an actual UE 5.8.1 rebuild, native regressions, cold starts,
+typed authoring and controlled saves on a disposable project. Protocol 3.0 subsequently replaced
+mandatory Doctor/independent snapshot rounds with session binding and targeted readback.
+All five cache types refreshed with their changed fields. Exact CDO snapshots, private scratch
+ownership, Niagara compile completion/invalidation, and eight reviewed direct readers were
+verified. Gateway preserves empty/singleton arrays, null, false, and empty receipt payloads.
+See [runtime evidence](notes/runtime-verification-20260906.md) for scope and limitations.
 
-| Receipt | Allowed |
-|---|---|
-| `HEALTHY` | cache, proven live reads, task-gated mutation |
-| `DEGRADED` | cache and only proven live reads |
-| `OFFLINE` | source/cache/config/log analysis |
-| `BLOCKED` | route repair only |
-
-`RESULT_UNKNOWN` means the journal proves acceptance but not a terminal outcome. Query the receipt,
-then use `ueagent_recover` and authoritative readback before any retry; the same `command_id` is the
-only legal replay identity.
-
-## Default live transport
-
-Gateway (`scripts/mcp_gateway.ps1`) is the only AI-facing client; native MCP remains the only
-server. Gateway calls the fixed `ueagent_*` control surface. If that surface lacks a required
-operation, add one typed operation or stop—do not bypass Gateway with another client. Mutations
-never execute through a Python/CLI side-channel: `ueagent_submit` journals and queues a typed
-ToolsetRegistry or VibeUE call inside the Editor, while state, snapshots, jobs, and receipts provide
-bounded readback.
-
-AI-generated Gateway calls crossing a child `powershell.exe` boundary always pass the complete
-request through UTF-8 `-RequestBase64`, or `-RequestFile` for large/multiline input. Use
-`-ScriptFile` only for Gateway actions that support it; otherwise keep code such as Custom HLSL in
-the encoded request. Never hand-escape raw JSON into command-line `-RequestJson`, `-ArgumentsJson`,
-or `-ProjectionJson`. A local parse error before MCP dispatch is a known pre-dispatch failure, not
-`RESULT_UNKNOWN`, and must not be reported as UE or asset access.
-
-## Safety and capability order
-
-- One global logical writer is the deliberate reliability ceiling; declared scopes and OCC hashes
-  prevent stale or undeclared writes.
-- Hash-guarded mutations use one named asset version's complete expected-hash manifest. Never mix
-  historical baselines; resolve mismatches from recorded versioned source before the first setter.
-- Make one logical queued mutation, require a terminal receipt, verify independently, and use the
-  receipt-issued one-use capability to save exactly its package set.
-- Stop at the first sufficient source: current sidecar -> `ueagent_snapshot`/bounded typed read ->
-  queued typed ToolsetRegistry or VibeUE operation -> exact user UI step.
-- Structural evidence belongs to AI; visual/aesthetic approval belongs to the user. UEAgent never
-  drives Unreal UI with Computer Use.
-
-## Context policy
-
-Always load only `work/UEAgent/AGENTS.md` and `skills/ue-mcp-workflows/HOTPATH.md` for routing.
-Load one domain card after a live receipt. Add the workflow Skill, Core, and target brief only for
-mutation/save or an unfamiliar capability. Do not preload `SETUP.md`, `LOG.md`, `BACKLOG.md`, the
-full pitfall ledger, or the full ReflectCache protocol.
-
-For exact profiles, patch hashes, daemon limits, and reproduction commands use
-[STACK-MANIFEST.json](STACK-MANIFEST.json). For cache lifecycle use
-`scripts/reflect_cache.ps1 -Action reconcile`; it is offline-only, preserves orphaned sidecars,
-and never represents dirty Editor state.
+Abyss now routes to the engine-level VibeUE; its duplicate project descriptor was preserved under
+`Saved/UEAgent/RetiredVibeUE`. Its project source is intact. VRM4U is still missing, so Abyss itself
+has not been cold-started or live-verified on this installation.
 
 ## File boundary
 
@@ -94,7 +43,7 @@ under `tmp/UEAgent/<task>/` and are removed after verification; do not recreate 
 ## On-demand map
 
 - `skills/ue-mcp-workflows/`: hot path, Skill, Core, and domain cards.
-- `scripts/`: route, doctor, Gateway, daemon, cache reader/reconciler.
+- `scripts/`: engine installation, project routing, Doctor, Gateway, daemon, cache reader/reconciler.
 - `patches/`: portable UE/VibeUE extensions recorded in the manifest.
 - `RELIABLE-EXECUTION.md`: command queue, OCC, receipts, recovery, and save capability contract.
 - `projects/ReflectCache/`: cache implementation and evidence.

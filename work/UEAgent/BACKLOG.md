@@ -2,24 +2,19 @@
 
 Only unresolved work lives here. Completed decisions belong in `LOG.md`.
 
-## P0 — portable capability baseline
+## P0 — finish the Abyss target
 
-- [ ] Abyss target: cold-start the rebuilt editor and smoke-test the reflected Niagara authoring
-      surface on the current VibeUE `bf96d6b` baseline; do not mark the route active until that
-      live check passes.
-- [ ] Run bootstrap + doctor on a clean UE 5.8 machine and record one native-MCP read and one
-      authorised reversible mutation with independent readback.
-- [ ] Decouple or explicitly parameterize hidden saves in Niagara `ApplyChanges` and VibeUE
-      Blueprint property mutation.
+- [ ] Restore the exact VRM4U dependency for `E:/work/engine_work/ue/abyss/Abyss.uproject`,
+      cold-start Abyss, then run Doctor and one task-relevant representative asset check.
+      The engine installation and disposable UEAgentProbe passed; this does not prove Abyss.
+- [ ] If the recorded complex-Blueprint parent/save or inherited-component dirty loop recurs,
+      reproduce on an isolated copy of that exact asset. The plain Actor-to-Pawn/CDO probes
+      passed and do not establish a fix for every Blueprint subclass.
 
-## P1 — finish proven read models
+## P1 — first installation on another machine
 
-- [ ] Validate the packaged save hook on disposable assets for all five cache types, including
-      no-op, failure-path, and format-version checks.
-- [ ] Add external Niagara script caches only when a real edit needs their internal logic.
+- [ ] Run the documented installer/bootstrap/Doctor flow on the next clean UE 5.8.1 workstation.
+      Strict source replay and the installed local engine passed; a second machine was not tested.
 
-## P2 — add only after evidence
-
-- [ ] Add another AI-client rule adapter only when that client is used.
-- [ ] Add timing/queue observability only when a concrete performance investigation needs it.
-- [ ] Replace packaged source patches with upstream commits only when they are accepted upstream.
+External Niagara-script caches and additional client adapters require a real consumer task before
+implementation. They are not prerequisites for the current stack.

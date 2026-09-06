@@ -1,15 +1,10 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [int]$ListenPort = 18765,
     [string]$Endpoint = 'http://127.0.0.1:8000/mcp',
     [string]$SessionFile,
-    [int]$SessionTtlSec = 900,
     [int]$TimeoutSec = 120,
     [int]$ParentPid = 0,
-    [int]$MaxPrivateMemoryMB = 2048,
-    [int]$HardRequestGraceSec = 15,
-    [int]$MaxRequests = 1000,
-    [int]$MaxUptimeSec = 7200,
     [int]$IdleTtlSec = 900,
     [int64]$MaxRequestBytes = 8388608,
     [int64]$MaxResponseBytes = 67108864,
@@ -22,12 +17,10 @@ Add-Type -AssemblyName System.Net.Http
 $gateway = Join-Path $PSScriptRoot 'mcp_gateway.ps1'
 $daemonEndpoint = $Endpoint
 $daemonSessionFile = $SessionFile
-$daemonSessionTtlSec = $SessionTtlSec
 $daemonTimeoutSec = $TimeoutSec
 . $gateway -AsLibrary
 $Endpoint = $daemonEndpoint
 $SessionFile = $daemonSessionFile
-$SessionTtlSec = $daemonSessionTtlSec
 $TimeoutSec = $daemonTimeoutSec
 $null = Assert-LoopbackEndpoint $Endpoint
 if (-not $SessionFile) {
@@ -35,8 +28,9 @@ if (-not $SessionFile) {
 }
 
 function Convert-ToJson($Object) {
-    if ($Pretty) { return ($Object | ConvertTo-Json -Depth 80) }
-    return ($Object | ConvertTo-Json -Depth 80 -Compress)
+    if ($null -eq $Object) { return 'null' }
+    if ($Pretty) { return (ConvertTo-Json -InputObject $Object -Depth 80) }
+    return (ConvertTo-Json -InputObject $Object -Depth 80 -Compress)
 }
 
 function Write-HttpJson($Context, $Object, $StatusCode = 200) {
@@ -79,9 +73,7 @@ function Read-HttpRequestBody($Context) {
 
 $client = [Net.Http.HttpClient]::new()
 $client.Timeout = [Threading.Timeout]::InfiniteTimeSpan
-$daemonStartedUtc = [DateTime]::UtcNow
-$lastRequestUtc = $daemonStartedUtc
-$requestCount = 0
+$lastRequestUtc = [DateTime]::UtcNow
 $headers = $null
 $sessionReused = $false
 $sessionMode = 'new'
@@ -94,24 +86,15 @@ function Invoke-DaemonTopTool($Name, $Arguments, $Timeout = $daemonTimeoutSec) {
     Invoke-TopTool $Endpoint $script:headers $Name $Arguments $Timeout $script:client $MaxResponseBytes
 }
 
-function Get-DaemonBudgetFailure {
+function Get-DaemonStopReason {
     if ($ParentPid -gt 0) {
         try {
             $parent = Get-Process -Id $ParentPid -ErrorAction Stop
             if ($parent.ProcessName -notmatch '(?i)(Editor|UnrealEditor)$') { return 'parent_invalid' }
         } catch { return 'parent_exited' }
     }
-    if ($MaxRequests -gt 0 -and $requestCount -ge $MaxRequests) { return 'request_budget' }
-    $uptime = ([DateTime]::UtcNow - $daemonStartedUtc).TotalSeconds
-    if ($MaxUptimeSec -gt 0 -and $uptime -ge $MaxUptimeSec) { return 'uptime_budget' }
     $idle = ([DateTime]::UtcNow - $lastRequestUtc).TotalSeconds
-    if ($IdleTtlSec -gt 0 -and $idle -ge $IdleTtlSec) { return 'idle_budget' }
-    if ($MaxPrivateMemoryMB -gt 0) {
-        try {
-            $privateMb = (Get-Process -Id $PID -ErrorAction Stop).PrivateMemorySize64 / 1MB
-            if ($privateMb -ge $MaxPrivateMemoryMB) { return 'memory_budget' }
-        } catch { return 'daemon_exited' }
-    }
+    if ($IdleTtlSec -gt 0 -and $idle -ge $IdleTtlSec) { return 'idle_ttl' }
     return $null
 }
 
@@ -134,7 +117,6 @@ function Invoke-DaemonAction($Request) {
     if (-not $action) { throw 'Request must include action.' }
     $schemaCacheable = $action -in @('tools.list', 'toolsets.list', 'toolset.describe')
     $schemaPath = if ($Request.schemaCacheFile) { [string]$Request.schemaCacheFile } else { $null }
-    $schemaTtl = if ($Request.schemaCacheTtlSec) { [int]$Request.schemaCacheTtlSec } else { 300 }
     $schemaToolset = if ($action -eq 'toolset.describe') { [string]$Request.toolset } else { '' }
     $schemaDetail = if ($action -eq 'toolset.describe') {
         if ($Request.describeDetail) { [string]$Request.describeDetail }
@@ -169,7 +151,7 @@ function Invoke-DaemonAction($Request) {
                 if (Test-McpSessionInvalidError $_) { throw }
                 $errors.Add("tools/list: $($_.Exception.Message)")
             }
-            if ($toolsOk -and 'ueagent_state' -in $top) {
+            if (-not $toolsOk -or 'ueagent_state' -in $top) {
                 try {
                     $raw = Invoke-DaemonTopTool 'ueagent_state' @{} $TimeoutSec
                     $reliableState = Normalize-ToolResult $raw
@@ -200,13 +182,13 @@ function Invoke-DaemonAction($Request) {
         'tools.list' {
             $raw = Invoke-DaemonMcpRpc 'tools/list' @{} 2 $TimeoutSec
             $data = $raw.result.tools
-            if ($schemaPath) { Write-SchemaCacheEntry $action $Endpoint $schemaToolset $data $schemaPath $schemaTtl $schemaDetail $schemaToolName $schemaSessionId }
-            return $data
+            if ($schemaPath) { Write-SchemaCacheEntry $action $Endpoint $schemaToolset $data $schemaPath $schemaDetail $schemaToolName $schemaSessionId }
+            return ,$data
         }
         'toolsets.list' {
             $data = Normalize-ToolResult (Invoke-DaemonTopTool 'list_toolsets' @{} $TimeoutSec)
-            if ($schemaPath) { Write-SchemaCacheEntry $action $Endpoint $schemaToolset $data $schemaPath $schemaTtl $schemaDetail $schemaToolName $schemaSessionId }
-            return $data
+            if ($schemaPath) { Write-SchemaCacheEntry $action $Endpoint $schemaToolset $data $schemaPath $schemaDetail $schemaToolName $schemaSessionId }
+            return ,$data
         }
         'toolset.describe' {
             if (-not $Request.toolset) { throw 'toolset.describe requires toolset.' }
@@ -215,28 +197,11 @@ function Invoke-DaemonAction($Request) {
             $describe.detail = $describeDetail
             if ($Request.describeToolName) { $describe.tool_name = [string]$Request.describeToolName }
             $data = Normalize-ToolResult (Invoke-DaemonTopTool 'describe_toolset' $describe $TimeoutSec)
-            if ($schemaPath) { Write-SchemaCacheEntry $action $Endpoint $schemaToolset $data $schemaPath $schemaTtl $schemaDetail $schemaToolName $schemaSessionId }
-            return $data
+            if ($schemaPath) { Write-SchemaCacheEntry $action $Endpoint $schemaToolset $data $schemaPath $schemaDetail $schemaToolName $schemaSessionId }
+            return ,$data
         }
-        'tool.call' {
-            $toolset = [string]$Request.toolset
-            $tool = [string]$Request.tool
-            if (-not $tool) { throw 'tool.call requires tool.' }
-            if (-not $toolset -and $tool.Contains('.')) {
-                $index = $tool.LastIndexOf('.')
-                $toolset = $tool.Substring(0, $index)
-                $tool = $tool.Substring($index + 1)
-            }
-            $arguments = if ($Request.PSObject.Properties.Name -contains 'arguments') { $Request.arguments } else { @{} }
-            $call = @{ tool_name = $tool; arguments = $arguments }
-            if ($toolset) { $call.toolset_name = $toolset }
-            if ($null -ne $projection) { $call.projection = $projection }
-            return (Normalize-ToolResult (Invoke-DaemonTopTool 'call_tool' $call $TimeoutSec))
-        }
-        'direct.call' {
-            if (-not $Request.tool) { throw 'direct.call requires tool.' }
-            $arguments = if ($Request.PSObject.Properties.Name -contains 'arguments') { $Request.arguments } else { @{} }
-            return (Normalize-ToolResult (Invoke-DaemonTopTool ([string]$Request.tool) $arguments $TimeoutSec))
+        { $_ -in @('tool.call','direct.call') } {
+            return ,(Invoke-TaskCall $Request { param($name,$argsObject) Normalize-ToolResult (Invoke-DaemonTopTool $name $argsObject $TimeoutSec) })
         }
         default { throw "Unknown action: $action" }
     }
@@ -251,21 +216,17 @@ Write-Output (Convert-ToJson @{ ready = $true; listen = $prefix; endpoint = $End
 try {
     $pendingContext = $null
     while ($listener.IsListening) {
-        if (Get-DaemonBudgetFailure) { break }
+        if (Get-DaemonStopReason) { break }
         if (-not $pendingContext) { $pendingContext = $listener.GetContextAsync() }
         if (-not $pendingContext.Wait(1000)) { continue }
         $context = $pendingContext.Result
         $pendingContext = $null
         $lastRequestUtc = [DateTime]::UtcNow
-        $requestCount++
         $stop = $false
-        $requestGuardArmed = $false
         $transportStarted = $false
         $operationStarted = $false
         $operationCompleted = $false
         try {
-            Start-GatewayProcessGuard $TimeoutSec $HardRequestGraceSec $MaxPrivateMemoryMB
-            $requestGuardArmed = $true
             if ($context.Request.HttpMethod -ne 'POST') {
                 Write-HttpJson $context @{ ok = $false; code = 'method_not_allowed' } 405
                 continue
@@ -285,8 +246,13 @@ try {
                 Write-HttpJson $context ([ordered]@{ ok = $false; code = 'unsupported_request_field'; message = "Unsupported request field(s): $($legacyFields -join ', ')." }) 400
                 continue
             }
-            if ($request.endpoint -and [string]$request.endpoint -ne $Endpoint) {
+            if ($request.endpoint -and [string]$request.endpoint -cne $Endpoint) {
                 Write-HttpJson $context @{ ok = $false; code = 'endpoint_mismatch'; message = 'Daemon endpoint is fixed at startup.' } 400
+                continue
+            }
+            if ($request.sessionFile -and
+                [IO.Path]::GetFullPath([string]$request.sessionFile) -ine [IO.Path]::GetFullPath($SessionFile)) {
+                Write-HttpJson $context @{ ok = $false; code = 'session_mismatch'; message = 'Daemon session file is fixed at startup.' } 400
                 continue
             }
             $requestError = Get-GatewayRequestError $request
@@ -304,9 +270,11 @@ try {
                 continue
             }
             if ($request.action -eq 'daemon.ping') {
-                Write-HttpJson $context @{ ok = $true; service = 'ueagent-gateway-daemon'; protocol = 'ueagent-gateway-daemon-v1' }
+                Write-HttpJson $context @{
+                    ok = $true; service = 'ueagent-gateway-daemon'; protocol = 'ueagent-gateway-daemon-v1'
+                    endpoint = $Endpoint; sessionFile = [IO.Path]::GetFullPath($SessionFile)
+                }
             } elseif ($request.action -in @('close', 'shutdown')) {
-                Invalidate-DoctorReceipt 'session_closed'
                 Close-McpSession $Endpoint $script:headers
                 Remove-McpSessionFile $SessionFile
                 Write-HttpJson $context @{ ok = $true; action = [string]$request.action; closed = $true }
@@ -334,7 +302,7 @@ try {
                     }
                 }
                 $operationCompleted = $true
-                $persistence = Write-McpSession $Endpoint $script:headers $SessionFile $SessionTtlSec
+                $persistence = Write-McpSession $Endpoint $script:headers $SessionFile
                 if ($dataOnly) {
                     Write-HttpJson $context (Compress-GatewayData $data $request)
                 } else {
@@ -358,7 +326,6 @@ try {
         } catch {
             $code = if ($operationCompleted) { 'response_error' } elseif ($operationStarted) { 'result_unknown' } elseif ($transportStarted) { 'daemon_unavailable' } else { 'daemon_error' }
             if (-not $operationCompleted -and $transportStarted) {
-                Invalidate-DoctorReceipt $code
                 $script:headers = $null
                 Remove-McpSessionFile $SessionFile
             }
@@ -375,9 +342,8 @@ try {
         } finally {
             try { $context.Response.Close() } catch { }
             try { $context.Close() } catch { }
-            if ($requestGuardArmed) { Stop-GatewayProcessGuard }
         }
-        if ($stop -or (Get-DaemonBudgetFailure)) { break }
+        if ($stop -or (Get-DaemonStopReason)) { break }
     }
 } finally {
     Close-McpSession $Endpoint $script:headers

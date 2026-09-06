@@ -31,9 +31,22 @@ retired TCP 9877 stack.
 
 Compile success is not proof of intended wiring or runtime behavior.
 
-Some VibeUE Blueprint property operations have saved implicitly. Until the active implementation
-proves otherwise, treat those calls as save operations and do not use them outside an authorised
-save boundary. Prefer official typed operations with explicit lifecycle behavior.
+## CDO mutation pitfalls
+
+- Protocol 2.0.1 preserves exact object identity: a missing CDO/subobject stays `exists=false`
+  instead of falling back to the main asset. CDO writes with the returned CDO scope plus package
+  scope passed mutation, independent property readback, save, and reload on UE 5.8.1.
+- A package root is not the CDO. Resolve the actual default object and read back the changed
+  property there. Use that typed read as the task's verification before exact-package saving.
+  Do not reparent or make unrelated changes to acquire save permission.
+
+The reliable-kernel patch guards the direct `SaveAsset(BlueprintPath, false)` in the VibeUE
+Blueprint property path with `ShouldDeferDirectSave()` while a managed mutation is active. The
+guard passed a controlled UE 5.8.1 live smoke: the CDO changed while Content bytes stayed equal,
+then the verified task saved the Blueprint and refreshed its sidecar. Prefer official typed
+operations with explicit lifecycle behavior. Blueprint cache `## Defaults` records editable
+inherited CDO overrides against the parent CDO; older sidecars without that section require a
+targeted live read for inherited defaults.
 
 Widget, Niagara, and other specialized editor actions may live outside generic
 Blueprint/UObject APIs. If the official surface lacks the operation, report the boundary before
