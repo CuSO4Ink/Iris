@@ -4,7 +4,7 @@ This document records reusable engineering knowledge for authoring Niagara graph
 
 Related patch package: `../patches/niagara-mcp-authoring/README.md`.
 
-Current Abyss source status (2026-08-04): the revision-adapted UE 5.8 export patch and the
+Recorded Abyss source status (2026-08-04; not current-target verification): the revision-adapted UE 5.8 export patch and the
 advanced VibeUE Niagara delta (Simulation Stage, Grid2D, RenderTarget2D, RasterizationGrid3D,
 and dynamic Custom HLSL pins) are applied to the local working tree. The VibeUE tree is at
 `bf96d6b` with pre-existing UEAgent edits, so the pinned composite patch was reconciled rather
@@ -14,9 +14,10 @@ during Unreal shutdown; it is a lifecycle guard, not a full in-flight drain. The
 found that this UE revision exported but still protected `ReallocatePins`; the current engine
 patch now moves that declaration to `public`, and the incremental `AbyssEditor` build succeeds.
 
-The verified UEAgent profile is installed with `scripts/bootstrap.ps1 -ApplyNiagaraAuthoringProfile`.
-Bootstrap applies the revision-adapted engine export patch and the VibeUE composite together,
-records `vibeUEProfile=niagara-authoring`, and never applies the core VibeUE patch alongside it.
+Install the UEAgent profile once with `scripts/install_engine.ps1 -Profile niagara-authoring`: the revision-adapted engine
+export patch and the VibeUE composite live in the engine plugin tree. `scripts/bootstrap.ps1` then
+only records the target project's route, using `-Profile niagara-authoring` when that capability
+needs to be named. It never applies project-local VibeUE or plugin patches.
 
 ## 1. Why engine exports are required
 

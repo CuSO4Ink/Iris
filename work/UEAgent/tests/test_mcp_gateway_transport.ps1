@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [int]$SuccessPayloadBytes = 8388608,
     [switch]$KeepArtifacts
@@ -9,7 +9,7 @@ Add-Type -AssemblyName System.Net.Http
 $gateway = Join-Path (Split-Path -Parent $PSScriptRoot) 'scripts\mcp_gateway.ps1'
 $fixture = Join-Path $PSScriptRoot 'mcp_gateway_mock_server.py'
 $python = (Get-Command python -ErrorAction Stop).Source
-$tempBase = [IO.Path]::GetTempPath().TrimEnd('\')
+$tempBase = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../../tmp/UEAgent'))
 $testRoot = Join-Path $tempBase ('ueagent-gateway-test-' + [Guid]::NewGuid().ToString('N'))
 $null = New-Item -ItemType Directory -Path $testRoot
 
@@ -41,8 +41,8 @@ function Wait-LoopbackPort([int]$Port, [int]$TimeoutMs = 5000) {
 
 function Start-Fixture([string]$Mode, [int]$PayloadBytes) {
     $port = Get-FreePort
-    $stdout = Join-Path $testRoot "$Mode-server.stdout.txt"
-    $stderr = Join-Path $testRoot "$Mode-server.stderr.txt"
+    $stdout = Join-Path $testRoot "$Mode-$port-server.stdout.txt"
+    $stderr = Join-Path $testRoot "$Mode-$port-server.stderr.txt"
     $process = Start-Process -FilePath $python -ArgumentList @(
         $fixture,
         '--port', [string]$port,
@@ -70,8 +70,7 @@ function Write-TestSession([string]$Path, [int]$Port, [string]$SessionId, [DateT
         schema = 'ueagent-mcp-session-v1'
         endpoint = "http://127.0.0.1:$Port/mcp"
         sessionId = $SessionId
-        createdAtUtc = $CreatedAtUtc.ToUniversalTime().ToString('o')
-        expiresAtUtc = $ExpiresAtUtc.ToUniversalTime().ToString('o')
+        binding = $null
     }
     [IO.File]::WriteAllText($Path, ($entry | ConvertTo-Json -Depth 4 -Compress), [Text.UTF8Encoding]::new($false))
 }
@@ -80,11 +79,9 @@ function Invoke-GatewayProbe(
     [string]$Name,
     [int]$Port,
     [int]$TimeoutSec,
-    [int]$GuardGraceSec,
-    [int]$MaxPrivateMemoryMB,
     [int]$MaxWaitMs,
     [string]$Action = 'direct.call',
-    [string]$Tool = 'fixture_tool',
+    [string]$Tool = 'ueagent_state',
     [string]$SessionFile
 ) {
     $stdout = Join-Path $testRoot "$Name-gateway.stdout.txt"
@@ -99,8 +96,6 @@ function Invoke-GatewayProbe(
         '-RequestBase64', $requestBase64,
         '-Endpoint', "http://127.0.0.1:$Port/mcp",
         '-TimeoutSec', [string]$TimeoutSec,
-        '-ProcessGuardGraceSec', [string]$GuardGraceSec,
-        '-ProcessGuardMaxPrivateMemoryMB', [string]$MaxPrivateMemoryMB,
         '-OutFile', $output
     )
     if ($SessionFile) { $gatewayArguments += @('-SessionFile', $SessionFile) }
@@ -134,92 +129,6 @@ function Invoke-GatewayProbe(
         Output=$output
         Stdout=$stdout
         Stderr=$stderr
-    }
-}
-
-function Invoke-DaemonHangProbe([int]$McpPort, [int]$MaxWaitMs) {
-    $daemon = Join-Path (Split-Path -Parent $PSScriptRoot) 'scripts\mcp_gateway_daemon.ps1'
-    $listenPort = Get-FreePort
-    $sessionFile = Join-Path $testRoot 'daemon-session.json'
-    $process = Start-Process -FilePath 'powershell.exe' -ArgumentList @(
-        '-NoProfile',
-        '-ExecutionPolicy', 'Bypass',
-        '-File', $daemon,
-        '-ListenPort', [string]$listenPort,
-        '-Endpoint', "http://127.0.0.1:$McpPort/mcp",
-        '-SessionFile', $sessionFile,
-        '-TimeoutSec', '1',
-        '-HardRequestGraceSec', '1',
-        '-MaxPrivateMemoryMB', '2048',
-        '-IdleTtlSec', '60'
-    ) -PassThru -WindowStyle Hidden
-
-    try {
-        Wait-LoopbackPort $listenPort 5000
-        $client = [Net.Http.HttpClient]::new()
-        $client.Timeout = [TimeSpan]::FromSeconds(5)
-        $clientResult = 'not_started'
-        try {
-            $body = '{"action":"direct.call","tool":"fixture_tool","arguments":{}}'
-            $content = [Net.Http.StringContent]::new($body, [Text.Encoding]::UTF8, 'application/json')
-            try {
-                $request = $client.PostAsync("http://127.0.0.1:$listenPort/", $content)
-                try {
-                    if ($request.Wait(5000)) {
-                        if ($request.Status -eq [Threading.Tasks.TaskStatus]::RanToCompletion) {
-                            $response = $request.Result
-                            try {
-                                $responseText = $response.Content.ReadAsStringAsync().Result
-                                $clientResult = "status=$([int]$response.StatusCode) body=$responseText"
-                            } finally {
-                                $response.Dispose()
-                            }
-                        } else {
-                            $clientResult = "task_status=$($request.Status)"
-                        }
-                    } else {
-                        $clientResult = 'client_wait_timeout'
-                    }
-                } catch {
-                    $clientResult = "client_exception=$($_.Exception.Message)"
-                }
-            } finally {
-                $content.Dispose()
-            }
-        } finally {
-            $client.Dispose()
-        }
-
-        $watch = [Diagnostics.Stopwatch]::StartNew()
-        $peakPrivateBytes = 0L
-        while (-not $process.HasExited -and $watch.ElapsedMilliseconds -lt $MaxWaitMs) {
-            try {
-                $process.Refresh()
-                $peakPrivateBytes = [Math]::Max($peakPrivateBytes, $process.PrivateMemorySize64)
-            } catch {
-            }
-            Start-Sleep -Milliseconds 25
-        }
-        if (-not $process.HasExited) {
-            Stop-Process -Id $process.Id -Force
-            $process.WaitForExit(2000) | Out-Null
-            throw "Daemon did not terminate within the ${MaxWaitMs}ms hard deadline. client=$clientResult"
-        }
-        $process.WaitForExit()
-        $process.Refresh()
-        return [pscustomobject]@{
-            Name='daemon_initialize_hang'
-            Pid=$process.Id
-            ExitCode=[int]$process.ExitCode
-            ElapsedMs=$watch.ElapsedMilliseconds
-            PeakPrivateMB=[Math]::Round($peakPrivateBytes / 1MB, 2)
-            ClientResult=$clientResult
-        }
-    } finally {
-        if (-not $process.HasExited) {
-            Stop-Process -Id $process.Id -Force
-            $process.WaitForExit(2000) | Out-Null
-        }
     }
 }
 
@@ -278,8 +187,8 @@ function Invoke-DaemonLifecycleProbe([int]$McpPort) {
         $client = [Net.Http.HttpClient]::new()
         try {
             foreach ($requestText in @(
-                '{"action":"direct.call","tool":"fixture_tool","arguments":{}}',
-                '{"action":"direct.call","tool":"fixture_tool","arguments":{}}'
+                '{"action":"direct.call","tool":"ueagent_state","arguments":{}}',
+                '{"action":"direct.call","tool":"ueagent_state","arguments":{}}'
             )) {
                 $content = [Net.Http.StringContent]::new($requestText, [Text.Encoding]::UTF8, 'application/json')
                 try { $response = $client.PostAsync("http://127.0.0.1:$listenPort/", $content).Result }
@@ -342,45 +251,145 @@ function Invoke-DaemonDiscoveryCacheProbe([int]$McpPort) {
     }
 }
 
-function Invoke-DaemonBudgetExitProbe([int]$McpPort) {
-    $daemon = Join-Path (Split-Path -Parent $PSScriptRoot) 'scripts\mcp_gateway_daemon.ps1'
-    $listenPort = Get-FreePort
-    $sessionFile = Join-Path $testRoot 'daemon-budget-session.json'
-    $process = Start-Process -FilePath 'powershell.exe' -ArgumentList @(
-        '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $daemon,
-        '-ListenPort', [string]$listenPort,
-        '-Endpoint', "http://127.0.0.1:$McpPort/mcp",
-        '-SessionFile', $sessionFile,
-        '-TimeoutSec', '10',
-        '-MaxRequests', '1'
-    ) -PassThru -WindowStyle Hidden
+function Invoke-DaemonTargetBindingProbe {
+    $serverA = $null
+    $serverB = $null
+    $process = $null
     try {
+        $serverA = Start-Fixture 'json_success' 16
+        $serverB = Start-Fixture 'json_success' 32
+        $endpointA = "http://127.0.0.1:$($serverA.Port)/mcp"
+        $endpointB = "http://127.0.0.1:$($serverB.Port)/mcp"
+        $listenPort = Get-FreePort
+        $daemonUrl = "http://127.0.0.1:$listenPort/"
+        $sessionA = Join-Path $testRoot 'binding-A-session.json'
+        $sessionB = Join-Path $testRoot 'binding-B-session.json'
+        $daemon = Join-Path (Split-Path -Parent $PSScriptRoot) 'scripts\mcp_gateway_daemon.ps1'
+        $process = Start-Process -FilePath 'powershell.exe' -ArgumentList @(
+            '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $daemon,
+            '-ListenPort', [string]$listenPort, '-Endpoint', $endpointA,
+            '-SessionFile', $sessionA, '-TimeoutSec', '10', '-IdleTtlSec', '60'
+        ) -PassThru -WindowStyle Hidden
         Wait-LoopbackPort $listenPort 5000
+
+        $requestJson = @{ tool = 'ueagent_state'; arguments = @{} } | ConvertTo-Json -Compress
+        $requestBase64 = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($requestJson))
+        $invoke = {
+            param($TargetEndpoint, $TargetSession, [string[]]$Extra)
+            $arguments = @(
+                '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $gateway,
+                '-RequestBase64', $requestBase64, '-Endpoint', $TargetEndpoint,
+                '-SessionFile', $TargetSession, '-TimeoutSec', '10'
+            ) + $Extra
+            $raw = & powershell.exe @arguments
+            $exitCode = $LASTEXITCODE
+            [pscustomobject]@{ ExitCode = $exitCode; Body = ($raw | ConvertFrom-Json) }
+        }
+        $direct = & $invoke $endpointB $sessionB @()
+        if ($direct.ExitCode -ne 0 -or $direct.Body.payloadBytes -ne 32) { throw 'Binding control did not reach fixture B.' }
+        $matching = & $invoke $endpointA $sessionA @('-DaemonUrl', $daemonUrl)
+        if ($matching.ExitCode -ne 0 -or $matching.Body.payloadBytes -ne 16) { throw 'Matching daemon target failed.' }
+        $callsBefore = @(Select-String -LiteralPath $serverA.Stdout -Pattern '^REQUEST tools/call ').Count
+
+        $wrongEndpoint = & $invoke $endpointB $sessionB @('-DaemonUrl', $daemonUrl)
+        if ($wrongEndpoint.ExitCode -eq 0 -or $wrongEndpoint.Body.code -ne 'endpoint_mismatch') {
+            throw 'An explicit daemon accepted another endpoint.'
+        }
+        $wrongSession = & $invoke $endpointA $sessionB @('-DaemonUrl', $daemonUrl)
+        if ($wrongSession.ExitCode -eq 0 -or $wrongSession.Body.code -ne 'session_mismatch') {
+            throw 'An explicit daemon accepted another project session.'
+        }
+        $automatic = & $invoke $endpointB $sessionB @('-AutoDaemon', '-DaemonPort', [string]$listenPort)
+        if ($automatic.ExitCode -ne 0 -or $automatic.Body.payloadBytes -ne 32) {
+            throw 'AutoDaemon did not keep the requested target when its port belonged to another target.'
+        }
+
+        # Check the receiving boundary too: a daemon can be replaced between discovery and submit.
         $client = [Net.Http.HttpClient]::new()
         try {
-            $content = [Net.Http.StringContent]::new('{"action":"direct.call","tool":"fixture_tool","arguments":{}}', [Text.Encoding]::UTF8, 'application/json')
-            try { $response = $client.PostAsync("http://127.0.0.1:$listenPort/", $content).Result }
-            finally { $content.Dispose() }
-            try {
-                $body = $response.Content.ReadAsStringAsync().Result | ConvertFrom-Json
-                if (-not $response.IsSuccessStatusCode -or [int]$body.payloadBytes -ne 0) {
-                    throw "Daemon budget-exit call failed: status=$([int]$response.StatusCode)"
-                }
-            } finally { $response.Dispose() }
+            foreach ($case in @(
+                @{ endpoint = $endpointB; sessionFile = $sessionA; expectedCode = 'endpoint_mismatch' },
+                @{ endpoint = $endpointA; sessionFile = $sessionB; expectedCode = 'session_mismatch' }
+            )) {
+                $body = @{ tool = 'ueagent_state'; arguments = @{}; endpoint = $case.endpoint; sessionFile = $case.sessionFile } | ConvertTo-Json -Compress
+                $content = [Net.Http.StringContent]::new($body, [Text.Encoding]::UTF8, 'application/json')
+                try { $response = $client.PostAsync($daemonUrl, $content).Result }
+                finally { $content.Dispose() }
+                try {
+                    $rejected = $response.Content.ReadAsStringAsync().Result | ConvertFrom-Json
+                    if ([int]$response.StatusCode -ne 400 -or $rejected.code -ne $case.expectedCode) {
+                        throw "Daemon receiving boundary missed $($case.expectedCode)."
+                    }
+                } finally { $response.Dispose() }
+            }
         } finally { $client.Dispose() }
-        if (-not $process.WaitForExit(5000)) { throw 'Daemon did not exit after its request budget.' }
-        if (Test-Path -LiteralPath $sessionFile) { throw 'Daemon left a session file after closing that session.' }
-        return [pscustomobject]@{ Name='daemon_budget_exit_removes_session'; ExitCode=0 }
+        $callsAfter = @(Select-String -LiteralPath $serverA.Stdout -Pattern '^REQUEST tools/call ').Count
+        if ($callsAfter -ne $callsBefore) { throw 'A rejected target-binding request reached fixture A.' }
+        return [pscustomobject]@{ Name = 'daemon_endpoint_and_project_binding'; ExitCode = 0 }
     } finally {
-        if (-not $process.HasExited) {
+        if ($process -and -not $process.HasExited) {
             Stop-Process -Id $process.Id -Force
             $process.WaitForExit(2000) | Out-Null
+        }
+        Stop-Fixture $serverA
+        Stop-Fixture $serverB
+    }
+}
+
+function Test-SemanticValueShapes([int]$McpPort, [bool]$UseDaemon) {
+    $sessionFile = Join-Path $testRoot 'value-shapes-session.json'
+    $daemonProcess = $null
+    $modeName = if ($UseDaemon) { 'daemon' } else { 'direct' }
+    $extra = @()
+    if ($UseDaemon) {
+        $listenPort = Get-FreePort
+        $daemon = Join-Path (Split-Path -Parent $PSScriptRoot) 'scripts/mcp_gateway_daemon.ps1'
+        $daemonProcess = Start-Process -FilePath 'powershell.exe' -ArgumentList @(
+            '-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $daemon,
+            '-ListenPort', [string]$listenPort, '-Endpoint', "http://127.0.0.1:$McpPort/mcp",
+            '-SessionFile', $sessionFile, '-IdleTtlSec', '60'
+        ) -PassThru -WindowStyle Hidden
+        Wait-LoopbackPort $listenPort
+        $extra = @('-DaemonUrl', "http://127.0.0.1:$listenPort/")
+    }
+    try {
+        foreach ($case in @(
+            @{ shape='empty'; expected='[]' },
+            @{ shape='single'; expected='["one"]' },
+            @{ shape='null'; expected='null' },
+            @{ shape='false'; expected='false' },
+            @{ shape='nested'; expected='{"values":[],"single":[1]}' },
+            @{ shape='receipt'; expected='{"state":"terminal","result":[]}' }
+        )) {
+            $targetTool = 'ueagent_state' # Mock control isolates wire/value-shape behavior from task execution.
+            $request = @{ action='direct.call'; tool=$targetTool; arguments=@{shape=$case.shape} } | ConvertTo-Json -Compress
+            $encoded = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($request))
+            $output = Join-Path $testRoot ("$modeName-$($case.shape).json")
+            & powershell.exe -NoProfile -ExecutionPolicy Bypass -File $gateway -RequestBase64 $encoded `
+                -Endpoint "http://127.0.0.1:$McpPort/mcp" -SessionFile $sessionFile -OutFile $output @extra
+            if ($LASTEXITCODE -ne 0) { throw "$modeName $($case.shape) failed" }
+            $actual = (Get-Content -Raw -LiteralPath $output).Trim()
+            if ($actual -cne $case.expected) { throw "$modeName $($case.shape) changed JSON shape: $actual" }
+        }
+        return [pscustomobject]@{ Name=($modeName + '_semantic_value_shapes'); ExitCode=0 }
+    } finally {
+        if ($daemonProcess -and -not $daemonProcess.HasExited) {
+            Stop-Process -Id $daemonProcess.Id -Force
+            $daemonProcess.WaitForExit(2000) | Out-Null
         }
     }
 }
 
 $results = [Collections.Generic.List[object]]::new()
 try {
+    $server = Start-Fixture 'value_shapes' 0
+    try {
+        $results.Add((Test-SemanticValueShapes $server.Port $false))
+        $results.Add((Test-SemanticValueShapes $server.Port $true))
+    } finally {
+        Stop-Fixture $server
+    }
+    $results.Add((Invoke-DaemonTargetBindingProbe))
     $invalidSession = Join-Path $testRoot 'request-invalid-session.json'
     $sessionMarker = 'preserve-local-parse-failure'
     [IO.File]::WriteAllText($invalidSession, $sessionMarker, [Text.UTF8Encoding]::new($false))
@@ -454,7 +463,7 @@ try {
         $createdAt = [DateTime]::UtcNow.AddMinutes(-2)
         Write-TestSession $sessionFile $server.Port 'fixture-session' $createdAt ([DateTime]::UtcNow.AddMinutes(10))
         $before = [IO.File]::ReadAllText($sessionFile)
-        $probe = Invoke-GatewayProbe 'reused_without_probe' $server.Port 10 2 1024 15000 'direct.call' 'fixture_tool' $sessionFile
+        $probe = Invoke-GatewayProbe 'reused_without_probe' $server.Port 10 15000 'direct.call' 'ueagent_state' $sessionFile
         if ($probe.ExitCode -ne 0) { throw "Direct cached-session call exited $($probe.ExitCode)." }
         $after = [IO.File]::ReadAllText($sessionFile)
         if ($after -ne $before) { throw 'A fresh reusable session was unnecessarily rewritten.' }
@@ -471,7 +480,7 @@ try {
     try {
         $sessionFile = Join-Path $testRoot 'stale-session.json'
         Write-TestSession $sessionFile $server.Port 'stale-session' ([DateTime]::UtcNow.AddMinutes(-2)) ([DateTime]::UtcNow.AddMinutes(10))
-        $probe = Invoke-GatewayProbe 'stale_session_recovery' $server.Port 10 2 1024 15000 'direct.call' 'fixture_tool' $sessionFile
+        $probe = Invoke-GatewayProbe 'stale_session_recovery' $server.Port 10 15000 'direct.call' 'ueagent_state' $sessionFile
         if ($probe.ExitCode -ne 0) { throw "Stale-session recovery exited $($probe.ExitCode)." }
         $stored = Get-Content -Raw -LiteralPath $sessionFile | ConvertFrom-Json
         if ([string]$stored.sessionId -ne 'fixture-session') { throw 'Recovered session was not persisted.' }
@@ -517,7 +526,7 @@ try {
     $server = Start-Fixture 'session_init_stale' 0
     try {
         $sessionFile = Join-Path $testRoot 'new-session-stale-before-call.json'
-        $probe = Invoke-GatewayProbe 'new_session_stale_before_call' $server.Port 10 2 1024 15000 'direct.call' 'fixture_tool' $sessionFile
+        $probe = Invoke-GatewayProbe 'new_session_stale_before_call' $server.Port 10 15000 'direct.call' 'ueagent_state' $sessionFile
         if ($probe.ExitCode -ne 0) { throw "New-session stale recovery exited $($probe.ExitCode)." }
         $stored = Get-Content -Raw -LiteralPath $sessionFile | ConvertFrom-Json
         $requests = Get-Content -Raw -LiteralPath $server.Stdout
@@ -544,17 +553,10 @@ try {
         Stop-Fixture $server
     }
 
-    $server = Start-Fixture 'success' 0
-    try {
-        $results.Add((Invoke-DaemonBudgetExitProbe $server.Port))
-    } finally {
-        Stop-Fixture $server
-    }
-
     foreach ($mode in @('success', 'json_success')) {
         $server = Start-Fixture $mode $SuccessPayloadBytes
         try {
-            $probe = Invoke-GatewayProbe $mode $server.Port 20 5 2048 30000
+            $probe = Invoke-GatewayProbe $mode $server.Port 20 30000
             if ($null -eq $probe.ExitCode -or $probe.ExitCode -ne 0) {
                 $stdoutText = if (Test-Path -LiteralPath $probe.Stdout) { Get-Content -Raw -LiteralPath $probe.Stdout } else { '' }
                 $stderrText = if (Test-Path -LiteralPath $probe.Stderr) { Get-Content -Raw -LiteralPath $probe.Stderr } else { '' }
@@ -577,7 +579,7 @@ try {
     $server = Start-Fixture 'echo' 0
     try {
         foreach ($removedAction in @('python.execute', 'script.execute', 'level.current')) {
-            $probe = Invoke-GatewayProbe "removed_$($removedAction.Replace('.', '_'))" $server.Port 10 2 1024 15000 $removedAction
+            $probe = Invoke-GatewayProbe "removed_$($removedAction.Replace('.', '_'))" $server.Port 10 15000 $removedAction
             if ($probe.ExitCode -eq 0) { throw "$removedAction unexpectedly remained callable." }
             if (-not (Test-Path -LiteralPath $probe.Output)) { throw "$removedAction wrote no rejection result." }
             $data = Get-Content -Raw -LiteralPath $probe.Output | ConvertFrom-Json
@@ -590,58 +592,6 @@ try {
         if ($serverRequests -match 'REQUEST tools/call') {
             throw 'A removed Gateway action reached tools/call before rejection.'
         }
-    } finally {
-        Stop-Fixture $server
-    }
-
-    $server = Start-Fixture 'call_hang' 0
-    try {
-        $probe = Invoke-GatewayProbe 'call_hang' $server.Port 1 1 2048 6000
-        if ($probe.ExitCode -eq 0) { throw 'Call-hang probe unexpectedly succeeded.' }
-        if ($probe.ElapsedMs -ge 6000) { throw 'Call-hang probe did not terminate within the hard deadline.' }
-        if ($probe.PeakPrivateMB -ge 512) {
-            throw "Call-hang probe exceeded 512 MiB: $($probe.PeakPrivateMB) MiB."
-        }
-        $results.Add($probe)
-    } finally {
-        Stop-Fixture $server
-    }
-
-    $server = Start-Fixture 'initialize_hang' 0
-    try {
-        $probe = Invoke-GatewayProbe 'initialize_hang' $server.Port 1 1 2048 6000
-        if ($probe.ExitCode -eq 0) { throw 'Initialize-hang probe unexpectedly succeeded.' }
-        if ($probe.ElapsedMs -ge 6000) { throw 'Initialize-hang probe did not terminate within the hard deadline.' }
-        if ($probe.PeakPrivateMB -ge 512) {
-            throw "Initialize-hang probe exceeded 512 MiB: $($probe.PeakPrivateMB) MiB."
-        }
-        $results.Add($probe)
-    } finally {
-        Stop-Fixture $server
-    }
-
-    $server = Start-Fixture 'call_hang' 0
-    try {
-        $probe = Invoke-GatewayProbe 'memory_guard' $server.Port 10 1 64 6000
-        if ($probe.ExitCode -eq 0) { throw 'Memory-guard probe unexpectedly succeeded.' }
-        if ($probe.ElapsedMs -ge 3000) { throw 'Memory guard did not terminate promptly.' }
-        if ($probe.PeakPrivateMB -ge 256) {
-            throw "Memory-guard probe exceeded 256 MiB: $($probe.PeakPrivateMB) MiB."
-        }
-        $results.Add($probe)
-    } finally {
-        Stop-Fixture $server
-    }
-
-    $server = Start-Fixture 'initialize_hang' 0
-    try {
-        $probe = Invoke-DaemonHangProbe $server.Port 6000
-        if ($probe.ExitCode -eq 0) { throw 'Daemon initialize-hang probe unexpectedly succeeded.' }
-        if ($probe.ElapsedMs -ge 6000) { throw 'Daemon initialize-hang probe did not terminate within the hard deadline.' }
-        if ($probe.PeakPrivateMB -ge 512) {
-            throw "Daemon initialize-hang probe exceeded 512 MiB: $($probe.PeakPrivateMB) MiB."
-        }
-        $results.Add($probe)
     } finally {
         Stop-Fixture $server
     }

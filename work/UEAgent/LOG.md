@@ -710,3 +710,67 @@ every `Engine/Config/**.ini` section header, and both the write and the read-bac
 declared section the hierarchy does not define. Against UE 5.8.1 that yields 1044 known sections;
 `SystemSettings` and `/Script/Engine.RendererSettings` are recognised, `SystemSettingz` and
 `System_Settings` are not, so class-config sections are covered without a hardcoded allowlist.
+
+### 2026-09-05 — Local sync keeps engine installation separate from project routing
+
+The imported installer/profile/hash-routing entries above describe the source machine. This
+workspace retains engine-scoped VibeUE and route-only Bootstrap; the new Niagara packages,
+source revisions, diagnostics and package tests are merged into that path without restoring
+the retired project installer. `SETUP.md` and the manifest describe the current installation.
+
+### 2026-09-06 — Daemon binding, engine installer and incident dispositions aligned
+
+A two-endpoint mock reproduced daemon misrouting: requesting B reached A because forwarding
+removed endpoint identity. Gateway and daemon now enforce endpoint/project-session binding;
+explicit mismatch rejects before dispatch and AutoDaemon keeps the requested one-shot target.
+The transport suite passes all 14 cases, including both binding boundaries and no stray calls.
+
+`install_engine.ps1` owns manifest-ordered engine/VibeUE installation, scoped defaults and build
+invocation; Bootstrap retains project routing. Shared validation stays in `ueagent_common.ps1`.
+Ten isolated install checks cover dependency order, conflict preservation, repeat/additive
+installation, build dispatch, consumer bootstrap, and unchanged user indexes/dirty work. The base
+and Niagara authoring VibeUE packages strictly apply to separate public-source checkouts (5 and
+6 patches respectively). No production engine was rebuilt or live-verified in this session.
+
+The redundant standalone Niagara Toolsets profile was removed; its wrappers and required exports
+remain in the complete authoring profile. Sixteen pitfalls now state historical/current
+applicability and preserve actual receipt semantics. Current SOPs no longer recommend unrelated
+writes or reparenting to manufacture save tokens, or hiding out-of-scope dirty effects. CDO scope
+coverage and asynchronous Niagara/save lifecycle failures remain explicit target probes.
+
+### 2026-09-06 — real-engine reliability and save verification
+
+The selected engine installation at `E:/work/engine_work/Enigne/UE` was upgraded without resetting
+its pre-existing dirty source or Git index, then rebuilt and cold-started against UEAgentProbe.
+The public-source base and authoring composites were regenerated and strictly replayed.
+
+Protocol 2.0.1 fixes exact-object fallback. Scratch operations enforce same-package private
+ownership; apply invalidates the script source before compiling. Niagara data-processing views
+no longer compile on initialization, and SetStackInputData completes compilation before receipt
+snapshots. Eight specifically reviewed Python/Niagara readers now avoid the mutation queue.
+Gateway preserves empty/singleton arrays and null, and Doctor separately reports reflected
+scratch authoring and parameter-hierarchy capability. Blueprint sidecars include inherited CDO
+overrides. These replace the older operational claims about all getters requiring submission.
+
+Five cache types, CDO mutation/reload, shared-package isolation, four added authoring operations,
+refresh/pin removal, compile completion, exact save and save replay/rejection were exercised.
+The detailed result and limitations are in `notes/runtime-verification-20260906.md`.
+
+Abyss's project-local VibeUE descriptor was moved to `Saved/UEAgent/RetiredVibeUE` with its bytes
+preserved; project source remains in place, and bootstrap checks the engine installation route.
+VRM4U is its sole missing enabled plugin, so Abyss-specific activation still requires that dependency.
+No commits were made and unrelated dirty work was retained.
+
+### 2026-09-06 — user-approved five-boundary simplification
+
+Implemented K1–K5 and R01–R25 as protocol 3.0. Generic snapshots/OCC, hashes, signed save tokens,
+per-transition journals, the read whitelist/engine authorization delegate, profiling freeze,
+session/schema TTL and per-call daemon probes were removed or replaced on one current path.
+Gateway now handles local waiting, one typed readback and optional task-owned saving. Acceptance
+and evidence write failures are checked. Exact values, including false/null/arrays and Niagara
+instanced cache inputs, are preserved. Mandatory navigation was reduced to one short card plus
+its pointer. Existing domain crash fixes and ordinary implementation bounds remain.
+
+Actual build, native/transport/installer tests, cold Blueprint/Niagara reload, replay, readback
+failure, exact save scope and acceptance-write failure were verified. No dirty test packages
+remained. See `notes/minimal-execution-20260906.md` for measured scope and accepted limitations.

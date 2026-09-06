@@ -1,0 +1,4 @@
+interface:
+  display_name: "Violina 小说统筹"
+  short_description: "统筹纯 AI 固定小说生成、分层审校、来源盲测、架构迭代与正式提交"
+  default_prompt: "使用 $violina-fiction 按纯 AI 生产路径生成并验证这项 Violina 固定小说任务。"

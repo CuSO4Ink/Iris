@@ -11,13 +11,17 @@
 4. Use graph MCP when the sidecar is missing, stale, v1, the live package is dirty, or the
    requested detail is absent. Prefer one rebuild or one targeted region query over a full
    per-node audit.
-5. Before mutation, verify only the target region and dirty state live. After an authorized
-   save, verify the sidecar timestamp advanced.
+5. Read only the target fields needed by the operation. Use the returned editor-only data object
+   for output wiring and exact expression objects for properties. A root object does not
+   describe every referenced subobject.
+   After an authorized save, verify the sidecar's changed semantic fields and source metadata.
 
 The sidecar is saved-state context, not authority. Full implementation and recovery rules:
 [ReflectCache](../../../projects/ReflectCache/AI-BRIEF.md).
 
-## Build from an audited baseline
+## Structural or hard-to-reverse material changes
+
+For simple scalar edits, use one targeted readback. For structural or hard-to-reverse changes:
 
 1. Duplicate a known material or create a scratch material.
 2. Record the original expression count and every material output root that matters.

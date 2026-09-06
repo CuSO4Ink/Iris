@@ -108,7 +108,7 @@ index 1012f0f78..3340ccf48 100644
  	/**
  	 * Sets the Niagara System for a component.
 diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
-index 9c1f55de7..752ae49a5 100644
+index 9c1f55d..db7c6c6 100644
 --- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
 +++ b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.cpp
 @@ -4,9 +4,16 @@
@@ -339,6 +339,19 @@ index 9c1f55de7..752ae49a5 100644
  FNiagaraExt_SystemDependencies UNiagaraToolset_System::GetSystemDependencies(UNiagaraSystem* System)
  {
  	FNiagaraExternalEditContext Context(System);
+@@ -436,6 +633,12 @@ FNiagaraExt_StackInputValue UNiagaraToolset_System::SetStackInputData(const FNia
+ 	FNiagaraExternalEditContext Context(InputItemRef);
+ 	UNiagaraExternalEditUtilities::SetStackInputData(InputItemRef, InputData, Context);
+ 	Error(Context.Errors);
++	// Finish the compile triggered by the edited input before the caller takes its
++	// post-mutation snapshot and derives a save capability.
++	if (UNiagaraSystem* System = InputItemRef.GetSystem(Context))
++	{
++		System->WaitForCompilationComplete();
++	}
+ 	FNiagaraExt_StackInputValue Result;
+ 	UNiagaraExternalEditUtilities::GetStackInputData(InputItemRef, Result, Context);
+ 	return Result;
 diff --git a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h b/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
 index 6541a0e1e..1920794c6 100644
 --- a/Engine/Plugins/Experimental/Toolsets/NiagaraToolsets/Source/NiagaraToolsets/Private/NiagaraToolset_System.h
@@ -400,3 +413,18 @@ index 6541a0e1e..1920794c6 100644
  	/**
  	 * Adds an emitter to a Niagara System.
  	 * The new emitter will be based on the template emitter, inheriting its configuration and modules.
+diff --git a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/ViewModels/NiagaraSystemViewModel.cpp b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/ViewModels/NiagaraSystemViewModel.cpp
+index a1257fe..d3f73a7 100644
+--- a/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/ViewModels/NiagaraSystemViewModel.cpp
++++ b/Engine/Plugins/FX/Niagara/Source/NiagaraEditor/Private/ViewModels/NiagaraSystemViewModel.cpp
+@@ -2038,7 +2038,9 @@ void FNiagaraSystemViewModel::SetupPreviewComponentAndInstance()
+ 
+ void FNiagaraSystemViewModel::RefreshAll()
+ {
+-	if (GetSystem().HasOutstandingCompilationRequests() == false)
++	// Data-processing views do not simulate. Merely inspecting their stacks must not
++	// start a compile or replace the system's runtime compiled-data objects.
++	if (!bIsForDataProcessingOnly && GetSystem().HasOutstandingCompilationRequests() == false)
+ 	{
+ 		// Data changes which require full refreshes can cause stability problems when resetting the accompanying system, especially
+ 		// when used in conjunction with warm up.  This is a temporary fix for these crashes.

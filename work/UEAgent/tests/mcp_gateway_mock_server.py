@@ -148,6 +148,12 @@ class Handler(BaseHTTPRequestHandler):
             }
             if self.fixture.mode == "echo":
                 structured_content["request"] = request
+            if self.fixture.mode == "value_shapes":
+                shape = request.get("params", {}).get("arguments", {}).get("shape", "empty")
+                values = {"empty": [], "single": ["one"], "null": None, "false": False,
+                          "nested": {"values": [], "single": [1]},
+                          "receipt": {"state": "terminal", "result": []}}
+                structured_content = values[shape] if shape == "receipt" else {"returnValue": values[shape]}
             result = {
                 "jsonrpc": "2.0",
                 "id": request.get("id", 2),
@@ -183,7 +189,7 @@ def main() -> None:
     parser.add_argument("--port", type=int, required=True)
     parser.add_argument(
         "--mode",
-        choices=("success", "json_success", "echo", "stale_session", "session_lifecycle", "session_init_stale", "call_hang", "initialize_hang"),
+        choices=("success", "json_success", "echo", "value_shapes", "stale_session", "session_lifecycle", "session_init_stale", "call_hang", "initialize_hang"),
         required=True,
     )
     parser.add_argument("--payload-bytes", type=int, default=0)

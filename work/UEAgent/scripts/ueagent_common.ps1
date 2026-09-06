@@ -1,17 +1,4 @@
-function Get-NormalizedFileSha256($Path) {
-    if (-not (Test-Path -LiteralPath $Path)) { return $null }
-    $text = [IO.File]::ReadAllText($Path) -replace "`r`n", "`n" -replace "`r", "`n"
-    $sha = [Security.Cryptography.SHA256]::Create()
-    try {
-        return ([BitConverter]::ToString(
-            $sha.ComputeHash([Text.UTF8Encoding]::new($false).GetBytes($text))
-        )).Replace('-', '')
-    } finally {
-        $sha.Dispose()
-    }
-}
-
-function Test-GitPatchesApplied($Repository, [string[]]$Patches) {
+﻿function Test-GitPatchesApplied($Repository, [string[]]$Patches) {
     if (-not $Patches -or $Patches.Count -eq 0) { return $true }
     $previousErrorAction = $ErrorActionPreference
     try {
@@ -20,8 +7,7 @@ function Test-GitPatchesApplied($Repository, [string[]]$Patches) {
         if ($LASTEXITCODE -eq 0) { return $true }
         & git -C $Repository apply --reverse --check --ignore-space-change --ignore-whitespace @Patches 2>$null
         if ($LASTEXITCODE -eq 0) { return $true }
-        # Relaxed-application fallback: patches applied with reduced context still reverse-check
-        # when the context requirement is lowered to match.
+        # Match patches installed with reduced context after surrounding source changes.
         & git -C $Repository apply --reverse --check -C1 --ignore-space-change --ignore-whitespace @Patches 2>$null
         return ($LASTEXITCODE -eq 0)
     } finally {
@@ -92,220 +78,115 @@ function Read-UeAgentStackManifest($UeAgentRoot) {
     return $manifest
 }
 
-function Get-UeAgentManifestPatchErrors($UeAgentRoot, $Manifest) {
-    $errors = [System.Collections.Generic.List[string]]::new()
-    foreach ($property in $Manifest.patches.PSObject.Properties) {
-        $relative = [string]$property.Name
-        $path = Join-Path $UeAgentRoot $relative.Replace('/', '\')
-        if (-not (Test-Path -LiteralPath $path)) {
-            $errors.Add("Manifest patch is missing: $relative")
-        } elseif ((Get-NormalizedFileSha256 $path) -ne [string]$property.Value.sha256) {
-            $errors.Add("Manifest patch hash differs: $relative")
-        }
-        if ([string]$property.Value.repo -notin @('engine', 'vibeue')) {
-            $errors.Add("Manifest patch declares an unknown repo: $relative")
-        }
-    }
-    $referenced = [System.Collections.Generic.List[string]]::new()
-    foreach ($property in $Manifest.profiles.PSObject.Properties) {
-        foreach ($relative in @($property.Value.apply) | Where-Object { $_ }) { $referenced.Add([string]$relative) }
-    }
-    if ($Manifest.targets) {
-        foreach ($property in $Manifest.targets.PSObject.Properties) {
-            foreach ($group in @('engine', 'vibeue')) {
-                foreach ($relative in @($property.Value.extra_patches.$group) | Where-Object { $_ }) {
-                    $referenced.Add([string]$relative)
-                }
-            }
-        }
-    }
-    foreach ($relative in @($referenced | Select-Object -Unique)) {
-        if (-not ($Manifest.patches.PSObject.Properties.Name -contains $relative)) {
-            $errors.Add("Manifest apply list names an unpinned patch: $relative")
-        }
-    }
-    return @($errors)
-}
-
-function Get-UeAgentCapabilitySwitches($Manifest) {
-    $switches = [ordered]@{}
-    foreach ($property in $Manifest.profiles.PSObject.Properties) {
-        $profile = $property.Value
-        if (-not ($profile.PSObject.Properties.Name -contains 'bootstrap_switch')) { continue }
-        $switches[[string]$profile.capability] = ([string]$profile.bootstrap_switch).TrimStart('-')
-    }
-    return $switches
-}
-
-function Get-UeAgentCoreCapabilities($Manifest) {
-    @($Manifest.profiles.PSObject.Properties |
-        Where-Object { [string]$_.Value.kind -eq 'core' } |
-        ForEach-Object { [string]$_.Value.capability })
-}
-
-function Get-UeAgentCoreFallback($Manifest) {
-    $switchless = @($Manifest.profiles.PSObject.Properties | Where-Object {
-        [string]$_.Value.kind -eq 'core' -and
-        -not ($_.Value.PSObject.Properties.Name -contains 'bootstrap_switch')
-    } | ForEach-Object { [string]$_.Value.capability })
-    if ($switchless.Count -ne 1) {
-        throw "UEAgent stack manifest must declare exactly one switchless core profile; found $($switchless.Count)."
-    }
-    return $switchless[0]
-}
-
-function Get-UeAgentPatchEntry($Manifest, $UeAgentRoot, [string]$Relative) {
-    $record = $Manifest.patches.PSObject.Properties[$Relative]
-    if ($null -eq $record) { throw "UEAgent stack manifest has no pinned patch: $Relative" }
-    $repo = [string]$record.Value.repo
-    if ($repo -notin @('engine', 'vibeue')) {
-        throw "UEAgent stack manifest patch '$Relative' declares an unknown repo: $repo"
-    }
-    [pscustomobject]@{
-        relative   = $Relative
-        path       = (Join-Path $UeAgentRoot $Relative.Replace('/', '\'))
-        sha256     = [string]$record.Value.sha256
-        repo       = $repo
-        routeField = if ($record.Value.PSObject.Properties.Name -contains 'route_field') {
-            [string]$record.Value.route_field
-        } else { '' }
+function Get-EnginePluginPaths($EngineRoot) {
+    [ordered]@{
+        ModelContextProtocol = Join-Path $EngineRoot 'Engine\Plugins\Experimental\ModelContextProtocol\ModelContextProtocol.uplugin'
+        EditorToolset = Join-Path $EngineRoot 'Engine\Plugins\Experimental\Toolsets\EditorToolset\EditorToolset.uplugin'
+        VibeUE = Join-Path $EngineRoot 'Engine\Plugins\AI\VibeUE\VibeUE.uplugin'
     }
 }
 
-function Get-UeAgentSelectedProfiles($Manifest, [string]$CoreCapability, [string[]]$Capabilities) {
-    $core = @()
-    $additive = @()
-    foreach ($property in $Manifest.profiles.PSObject.Properties) {
-        $capability = [string]$property.Value.capability
-        if (-not $capability) { throw "UEAgent profile '$($property.Name)' declares no capability name." }
-        if ([string]$property.Value.kind -eq 'core') {
-            if ($capability -eq $CoreCapability) { $core += $property.Name }
-        } elseif ($Capabilities -contains $capability) {
-            $additive += $property.Name
-        }
+function Resolve-RequiredPath($Path, $Label) {
+    if (-not (Test-Path -LiteralPath $Path)) {
+        throw "$Label not found: $Path"
     }
-    if ($core.Count -ne 1) {
-        throw "UEAgent stack manifest resolved $($core.Count) core profiles for capability '$CoreCapability'; exactly one is required."
-    }
-    return @($core + $additive)
+    (Resolve-Path -LiteralPath $Path).Path
 }
 
-function Assert-UeAgentProfileRequirements($Manifest, [string[]]$ProfileNames) {
-    $provided = @($ProfileNames | ForEach-Object { [string]$Manifest.profiles.$_.capability })
-    foreach ($name in $ProfileNames) {
-        $profile = $Manifest.profiles.$name
-        if (-not ($profile.PSObject.Properties.Name -contains 'requires')) { continue }
-        foreach ($required in @($profile.requires) | Where-Object { $_ }) {
-            if ($provided -notcontains [string]$required) {
-                throw "UEAgent profile '$name' is not self-sufficient: it requires capability '$required', which is not selected."
-            }
-        }
+function Write-Utf8NoBom($Path, $Text) {
+    [IO.File]::WriteAllText($Path, $Text, [Text.UTF8Encoding]::new($false))
+}
+
+function Set-JsonProperty($Object, $Name, $Value) {
+    if ($Object.PSObject.Properties.Name -contains $Name) {
+        $Object.$Name = $Value
+    } else {
+        $Object | Add-Member -NotePropertyName $Name -NotePropertyValue $Value
     }
 }
 
-function Get-UeAgentProfilePlugins($Manifest, [string[]]$ProfileNames) {
-    @($ProfileNames | ForEach-Object {
-        $profile = $Manifest.profiles.$_
-        if ($profile.PSObject.Properties.Name -contains 'required_plugins') { @($profile.required_plugins) }
-    } | Where-Object { $_ } | Select-Object -Unique)
+function Get-GitRevision($Repository, $Label, $Fallback) {
+    $gitDir = Join-Path $Repository '.git'
+    if (Test-Path -LiteralPath $gitDir) {
+        $revision = (& git -C $Repository rev-parse HEAD 2>$null).Trim()
+        if ($LASTEXITCODE -eq 0 -and $revision) {
+            return $revision
+        }
+    }
+    if ($Fallback) {
+        return $Fallback
+    }
+    throw "Could not identify $Label revision: $Repository"
 }
 
-function Get-UeAgentPatchPlan($Manifest, $UeAgentRoot, [string[]]$ProfileNames, $Target) {
-    $entries = [ordered]@{}
-    $append = {
-        param($Relative)
-        $Relative = [string]$Relative
-        if (-not $Relative -or $entries.Contains($Relative)) { return }
-        $entries[$Relative] = Get-UeAgentPatchEntry $Manifest $UeAgentRoot $Relative
+function Get-Descriptor($Path, $Label) {
+    if (-not (Test-Path -LiteralPath $Path)) {
+        throw "$Label descriptor not found: $Path"
     }
-    foreach ($name in $ProfileNames) {
-        $profile = $Manifest.profiles.$name
-        if ($null -eq $profile) { throw "UEAgent stack manifest has no declared profile: $name" }
-        foreach ($relative in @($profile.apply)) { & $append $relative }
-    }
-    if ($Target -and $Target.extra_patches) {
-        foreach ($group in @('engine', 'vibeue')) {
-            foreach ($relative in @($Target.extra_patches.$group)) { & $append $relative }
-        }
-    }
-    return @($entries.Values)
-}
-
-function Get-EnabledExternalPluginInventory($Project, $ProjectRoot) {
-    $pluginRoot = Join-Path $ProjectRoot 'Plugins'
-    if (-not [IO.Directory]::Exists($pluginRoot)) { return @() }
-    $descriptors = @{}
-    foreach ($path in [IO.Directory]::EnumerateFiles($pluginRoot, '*.uplugin', [IO.SearchOption]::AllDirectories)) {
-        $name = [IO.Path]::GetFileNameWithoutExtension($path)
-        if ($descriptors.ContainsKey($name)) { throw "Duplicate project plugin descriptor: $name" }
-        $descriptors[$name] = $path
-    }
-    @($Project.Plugins | Where-Object { $_.Enabled -and $_.Name -ne 'VibeUE' } | ForEach-Object {
-        $name = [string]$_.Name
-        if ($descriptors.ContainsKey($name)) {
-            $path = [string]$descriptors[$name]
-            $descriptor = [IO.File]::ReadAllText($path) | ConvertFrom-Json
-            [pscustomobject][ordered]@{
-                name = $name
-                descriptor = $path.Substring($ProjectRoot.TrimEnd('\').Length + 1).Replace('\', '/')
-                version = [int]$descriptor.Version
-                versionName = [string]$descriptor.VersionName
-                descriptorSha256 = Get-NormalizedFileSha256 $path
-            }
-        }
-    } | Sort-Object name)
-}
-
-function Get-PluginFingerprint($ProjectRoot, $EngineRoot, $ProjectName) {
-    $patterns = @()
-    if ($ProjectRoot) {
-        $patterns += (Join-Path $ProjectRoot 'Plugins\VibeUE\Binaries\Win64\*.dll')
-        $patterns += (Join-Path $ProjectRoot 'Plugins\VibeUE\*.uplugin')
-        $patterns += (Join-Path $ProjectRoot 'Plugins\NiagaraToolsets\Binaries\Win64\*.dll')
-        $patterns += (Join-Path $ProjectRoot 'Plugins\NiagaraToolsets\*.uplugin')
-        if ($ProjectName) {
-            $patterns += (Join-Path $ProjectRoot "Binaries\Win64\${ProjectName}Editor-VibeUE*.dll")
-            $patterns += (Join-Path $ProjectRoot "Binaries\Win64\${ProjectName}Editor-VibeUE.patch_*.exe")
-            $patterns += (Join-Path $ProjectRoot "Binaries\Win64\${ProjectName}Editor-NiagaraToolsets*.dll")
-            $patterns += (Join-Path $ProjectRoot "Binaries\Win64\${ProjectName}Editor-NiagaraToolsets.patch_*.exe")
-            $patterns += (Join-Path $ProjectRoot "Binaries\Win64\${ProjectName}Editor-ModelContextProtocol*.dll")
-            $patterns += (Join-Path $ProjectRoot "Binaries\Win64\${ProjectName}Editor-ModelContextProtocol*.patch_*.exe")
-            $patterns += (Join-Path $ProjectRoot "Binaries\Win64\${ProjectName}Editor-EditorToolset*.dll")
-            $patterns += (Join-Path $ProjectRoot "Binaries\Win64\${ProjectName}Editor-EditorToolset*.patch_*.exe")
-        }
-    }
-    if ($EngineRoot) {
-        $patterns += (Join-Path $EngineRoot 'Engine\Plugins\Experimental\ModelContextProtocol\Binaries\Win64\*.dll')
-        $patterns += (Join-Path $EngineRoot 'Engine\Plugins\Experimental\ModelContextProtocol\*.uplugin')
-        $patterns += (Join-Path $EngineRoot 'Engine\Plugins\Experimental\Toolsets\EditorToolset\Binaries\Win64\*.dll')
-        $patterns += (Join-Path $EngineRoot 'Engine\Plugins\Experimental\Toolsets\EditorToolset\*.uplugin')
-    }
-    $paths = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
-    foreach ($pattern in $patterns) {
-        $directory = [IO.Path]::GetDirectoryName($pattern)
-        if (-not [IO.Directory]::Exists($directory)) { continue }
-        try {
-            foreach ($path in [IO.Directory]::EnumerateFiles($directory, [IO.Path]::GetFileName($pattern), [IO.SearchOption]::TopDirectoryOnly)) {
-                $null = $paths.Add($path)
-            }
-        } catch {
-            # A concurrently replaced plugin directory simply contributes no fingerprint entries.
-        }
-    }
-    if ($paths.Count -eq 0) { return $null }
-    $orderedPaths = [string[]]::new($paths.Count)
-    $paths.CopyTo($orderedPaths)
-    [Array]::Sort($orderedPaths, [StringComparer]::OrdinalIgnoreCase)
-    $stampLines = [string[]]::new($orderedPaths.Length)
-    for ($index = 0; $index -lt $orderedPaths.Length; $index++) {
-        $file = [IO.FileInfo]::new($orderedPaths[$index])
-        $stampLines[$index] = "$($file.FullName)|$($file.Length)|$($file.LastWriteTimeUtc.ToString('o'))"
-    }
-    $stamp = [string]::Join("`n", $stampLines)
-    $sha = [Security.Cryptography.SHA256]::Create()
     try {
-        return ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($stamp)))).Replace('-', '').ToLowerInvariant()
-    } finally {
-        $sha.Dispose()
+        return Get-Content -Raw -LiteralPath $Path | ConvertFrom-Json
+    } catch {
+        throw "$Label descriptor is invalid JSON: $Path"
+    }
+}
+
+function Assert-DefaultEnginePlugin($Path, $Name) {
+    $descriptor = Get-Descriptor $Path $Name
+    if ($descriptor.EnabledByDefault -ne $true) {
+        throw "Engine plugin $Name is not EnabledByDefault: $Path"
+    }
+    return $descriptor
+}
+
+function Assert-IniSettings($Path, $Section, $Expected) {
+    $body = Get-IniSectionBody $Path $Section
+    if ($null -eq $body) {
+        throw "Engine configuration section is missing: [$Section] in $Path"
+    }
+    foreach ($line in $Expected) {
+        if ($body -notmatch "(?m)^$([Regex]::Escape($line))\r?$") {
+            throw "Engine configuration setting is missing: $line in [$Section]"
+        }
+    }
+}
+
+function Assert-EngineInstallation($EngineRoot, $StackManifest) {
+    $buildVersionPath = Join-Path $EngineRoot 'Engine\Build\Build.version'
+    $buildVersion = Get-Content -Raw -LiteralPath $buildVersionPath | ConvertFrom-Json
+    if ($buildVersion.MajorVersion -ne $StackManifest.engine.major -or
+        $buildVersion.MinorVersion -ne $StackManifest.engine.minor -or
+        $buildVersion.PatchVersion -ne $StackManifest.engine.patch -or
+        $buildVersion.CompatibleChangelist -ne $StackManifest.engine.compatible_changelist) {
+        throw "UE $($StackManifest.engine.major).$($StackManifest.engine.minor).$($StackManifest.engine.patch) changelist $($StackManifest.engine.compatible_changelist) is required; found $($buildVersion.MajorVersion).$($buildVersion.MinorVersion).$($buildVersion.PatchVersion) changelist $($buildVersion.CompatibleChangelist)."
+    }
+
+    $pluginPaths = Get-EnginePluginPaths $EngineRoot
+    $descriptors = [ordered]@{}
+    foreach ($name in $pluginPaths.Keys) {
+        $descriptors[$name] = Assert-DefaultEnginePlugin $pluginPaths[$name] $name
+    }
+
+    $mcpSettings = Join-Path $EngineRoot 'Engine\Config\BaseEditorPerProjectUserSettings.ini'
+    Assert-IniSettings $mcpSettings '/Script/ModelContextProtocolEngine.ModelContextProtocolSettings' @(
+        'ServerUrlPath=/mcp',
+        'ServerPortNumber=8000',
+        'bAutoStartServer=True',
+        'bEnableToolSearch=True'
+    )
+    $reliableSettings = Join-Path $EngineRoot 'Engine\Config\BaseEditor.ini'
+    Assert-IniSettings $reliableSettings 'UEAgent.Reliable' @(
+        'Enabled=True'
+    )
+
+    $vibePath = Split-Path $pluginPaths.VibeUE -Parent
+    $vibeRevisionFallback = "descriptor:$($descriptors.VibeUE.Version)-$($descriptors.VibeUE.VersionName)"
+    [pscustomobject]@{
+        BuildVersion = $buildVersion
+        ModelContextProtocol = $descriptors.ModelContextProtocol
+        EditorToolset = $descriptors.EditorToolset
+        VibeUE = $descriptors.VibeUE
+        VibeUEPath = $vibePath
+        VibeUERevision = Get-GitRevision $vibePath 'VibeUE' $vibeRevisionFallback
+        EngineRevision = Get-GitRevision $EngineRoot 'UE 5.8 engine' ("cl-$($buildVersion.CompatibleChangelist)")
     }
 }

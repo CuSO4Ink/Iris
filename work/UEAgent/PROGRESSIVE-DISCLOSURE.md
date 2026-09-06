@@ -1,32 +1,35 @@
+> Current execution: the user-approved protocol 3.0 cutover is documented in [HOTPATH](skills/ue-mcp-workflows/HOTPATH.md). Older snapshot/token/Doctor/TTL recommendations below are historical measurements and do not govern current tasks.
+
 # UEAgent progressive disclosure contract
 
-This is the canonical record for the token-reduction route. It is an operational contract, not
+This is the canonical record for bounded context routing. It is an operational contract, not
 an additional MCP server or a second project gate.
 
 ## One route
 
 ```text
 route.json
-  -> compact_context.ps1 -View compact
-  -> CACHE_READ: read sidecar
-  -> NEEDS_DOCTOR: doctor.ps1 once, then use its receipt directly
-  -> LIVE_READ / LIVE_MUTATE_RELIABLE_QUEUE from that receipt
+  -> optional compact_context.ps1 -View compact
+     -> CACHE_READ: read sidecar
+     -> NEEDS_DOCTOR: stop the router
+  -> live work: doctor.ps1 once, then use its receipt directly
   -> live client: Gateway (-AutoDaemon only for repeated calls on the same path)
      -> native MCP server -> fixed ueagent_* surface
   -> describe one known tool detail=call (structured-only)
   -> summary / one-tool call view only when routing needs it
-  -> targeted read projection, or snapshot -> ueagent_submit -> receipt
+     -> snapshot declared scopes immediately before ueagent_submit -> receipt -> readback
   -> detail only for the missing block
   -> full only when explicitly justified
 ```
 
 The target project still enters through `work/UEAgent/AGENTS.md` and
-`skills/ue-mcp-workflows/HOTPATH.md`. `compact_context` is a router, not evidence of live UE
-state. Doctor has one RouteFile-based live profile; use `bootstrap -CheckOnly` for offline setup
-validation. Gateway is the only AI-facing client; native MCP is its server, not an alternate client
-route. If Gateway or the fixed `ueagent_*` surface cannot express an operation, extend that
-canonical typed surface or stop at `BLOCKED`. A mutation timeout keeps its command identity: poll
-its receipt, recover an older-epoch journal if needed, then read back before any replay.
+`skills/ue-mcp-workflows/HOTPATH.md`. `compact_context` is optional saved-state routing, not
+evidence of live UE state. Live work runs one RouteFile-based Doctor directly; use
+`install_engine -CheckOnly` for source/default validation and `bootstrap -CheckOnly` for project binding. Gateway is the only AI-facing client; native
+MCP is its server, not an alternate client route. If Gateway or the fixed `ueagent_*` surface
+cannot express an operation, extend that canonical typed surface or stop at `BLOCKED`. A mutation
+timeout keeps its command identity: poll its receipt, recover an older-epoch journal if needed,
+then read back before any replay.
 
 ## Views and bounds
 
@@ -99,18 +102,19 @@ object (`tool`, `effect`, `args`, `returns`), not `tools:[...]`; an all-tool cal
 become `ue_ref<Class>` and unions remain `|`-joined. `effect` is a conservative server heuristic
 and may be `unknown`; never treat it as permission. `full` remains the only source for exact JSON
 Schema validation. Gateway/daemon require the native call-view response and do not reconstruct it
-client-side. Doctor checks the running `describe_toolset.detail` enum before granting a live route.
+client-side. Doctor reports the running `describe_toolset.detail` enum as capability metadata; a
+missing optional call view does not by itself invalidate the reliable live route.
 
-Successful doctor receipts are editor-bound. `compact_context.ps1` reuses them while the stored
-Editor PID from `ueagent_state`, loaded project binary fingerprint, and reliable kernel epoch remain
-unchanged. If that identity cannot be checked, discard the receipt. MCP session IDs are disposable
-client leases and do not invalidate an otherwise current editor receipt.
-Gateway/daemon ambiguous transport failures write a small invalidation marker beside the receipt;
-editor restart, explicit close, plugin rebuild/reload, and a changed fingerprint require a new
-doctor. Normal session replacement invalidates its discovery/schema cache, not the matching editor
-receipt. A `NEEDS_DOCTOR` result is
-terminal for that routing pass: run doctor once and do not rerun compact_context merely to
-recompute the same state.
+Successful doctor receipts are editor-bound. Live work uses the receipt directly; `compact_context.ps1`
+only decides whether a saved sidecar is sufficient and otherwise hands off to Doctor. If the stored
+Editor PID or reliable kernel epoch cannot be checked, discard the receipt. MCP session IDs are
+disposable client leases and do not invalidate an otherwise current editor receipt.
+Gateway/daemon ambiguous mutation transport failures keep the command identity for polling and
+recovery; they do not create a second invalidation protocol. Editor restart or epoch change
+requires a new doctor. Normal session replacement invalidates its discovery/schema cache, not the
+matching editor receipt. A `NEEDS_DOCTOR` result is terminal for
+that routing pass: run doctor once and do not rerun compact_context merely to recompute the same
+state.
 
 ## Freshness and lifecycle
 
@@ -147,7 +151,7 @@ remove about 92–95% of this saved-state payload; the exact ratio changes with 
 | Concern | Current contract |
 |---|---|
 | context route | compact result first; expand only the missing block |
-| live identity | exact Editor PID/epoch/fingerprint match; unverifiable identity is invalid |
+| live identity | exact Editor PID/epoch match; unverifiable identity is invalid |
 | doctor handoff | run once on `NEEDS_DOCTOR` and use that receipt directly |
 | discovery | one known-tool call view; full schema only for validation or recovery |
 | saved-state reads | current Reflect Cache first; live state always requires authoritative read |

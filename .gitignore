@@ -4,6 +4,14 @@
 # CodeBuddy 本地工具数据（每台设备独立：plan缓存/MCP调试临时文件）
 .codebuddy/
 
+# 会话临时文件
+.session_tmps/
+
+# 会话输出产物（会话级）
+output/
+work/UEAgent/out/
+work/UEAgent/_tmp/
+
 # 脱敏方案配置（会话级）
 .box-desens/
 
@@ -29,3 +37,6 @@ work/SSPR/archive/2026-08-05-cleanup/
 # RenderDoc generated captures/results (keep the workflow and source tools only)
 work/RenderDocMCP/captures/
 work/RenderDocMCP/outputs/
+
+# Violina private local project
+work/violina/
