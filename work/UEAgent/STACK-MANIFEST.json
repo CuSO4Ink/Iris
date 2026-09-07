@@ -10,8 +10,6 @@
   },
   "profiles": {
     "default": {
-      "kind": "capability",
-      "capability": "mcp-tool-search",
       "name": "compact-mcp",
       "apply": [
         "patches/ue58-mcp-tool-search.patch"
@@ -19,8 +17,6 @@
       "install_scope": "engine"
     },
     "base": {
-      "kind": "core",
-      "capability": "base",
       "apply": [
         "patches/vibeue-ueagent.patch",
         "patches/vibeue-performance-monitor.patch",
@@ -35,8 +31,6 @@
       "source_engine_required": true
     },
     "niagara-authoring": {
-      "kind": "core",
-      "capability": "niagara-authoring",
       "apply": [
         "patches/ue58-niagara-toolsets.patch",
         "patches/niagara-mcp-authoring/ue-5.8/niagaraeditor-export-authoring-apis-current.patch",

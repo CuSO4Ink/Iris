@@ -26,28 +26,6 @@ function Invoke-InstallGit($Repository, [string[]]$Arguments, [switch]$Check) {
     if ($code -ne 0) { throw "Git $($Arguments -join ' ') failed in ${Repository}: $($output -join [Environment]::NewLine)" }
 }
 
-function Set-EngineIniSettings($Path, $Section, $Settings) {
-    $text = if (Test-Path -LiteralPath $Path) { [IO.File]::ReadAllText($Path) } else { '' }
-    $pattern = "(?ms)^\[$([Regex]::Escape($Section))\]\r?\n(?<body>.*?)(?=^\[|\z)"
-    $match = [Regex]::Match($text, $pattern)
-    $body = if ($match.Success) { $match.Groups['body'].Value } else { '' }
-    foreach ($name in $Settings.Keys) {
-        $line = "$name=$($Settings[$name])"
-        $linePattern = "(?m)^$([Regex]::Escape($name))=.*\r?$"
-        if ($body -match $linePattern) {
-            $body = [Regex]::Replace($body, $linePattern, [Text.RegularExpressions.MatchEvaluator]{ param($unusedMatch) $line })
-        } else {
-            $body = $body.TrimEnd("`r", "`n") + "`n$line`n"
-        }
-    }
-    $sectionText = "[$Section]`n" + $body.TrimStart("`r", "`n")
-    $updated = if ($match.Success) {
-        $text.Substring(0, $match.Index) + $sectionText + $text.Substring($match.Index + $match.Length)
-    } else { $text.TrimEnd("`r", "`n") + "`n`n" + $sectionText }
-    $updated = $updated.TrimStart("`r", "`n")
-    if ($updated -cne $text) { Write-Utf8NoBom $Path $updated }
-}
-
 function Test-InstallPatchSequence($Repository, [string[]]$Patches, [switch]$Reverse) {
     if (-not $Patches.Count) { return $true }
     # Git's temporary index replays dependent patches without touching either working tree/index.
@@ -160,10 +138,10 @@ if (-not $CheckOnly) {
         }
     }
     $endpoint = [Uri]$manifest.runtime.endpoint
-    Set-EngineIniSettings (Join-Path $EngineRoot ([string]$manifest.runtime.mcp_engine_config).Replace('/', '\')) '/Script/ModelContextProtocolEngine.ModelContextProtocolSettings' ([ordered]@{
+    Set-IniSectionSettings (Join-Path $EngineRoot ([string]$manifest.runtime.mcp_engine_config).Replace('/', '\')) '/Script/ModelContextProtocolEngine.ModelContextProtocolSettings' ([ordered]@{
         ServerUrlPath = $endpoint.AbsolutePath; ServerPortNumber = $endpoint.Port; bAutoStartServer = 'True'; bEnableToolSearch = 'True'
     })
-    Set-EngineIniSettings (Join-Path $EngineRoot 'Engine\Config\BaseEditor.ini') 'UEAgent.Reliable' ([ordered]@{
+    Set-IniSectionSettings (Join-Path $EngineRoot 'Engine\Config\BaseEditor.ini') 'UEAgent.Reliable' ([ordered]@{
         Enabled = 'True'
     })
 }

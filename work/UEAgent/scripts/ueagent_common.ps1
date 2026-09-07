@@ -70,6 +70,34 @@ function Get-IniSectionBody($Path, $Section) {
     return $null
 }
 
+function Set-IniSectionSettings($Path, $Section, $Settings) {
+    $text = if (Test-Path -LiteralPath $Path) { [IO.File]::ReadAllText($Path) } else { '' }
+    $pattern = "(?ms)^\[$([Regex]::Escape($Section))\]\r?\n(?<body>.*?)(?=^\[|\z)"
+    $match = [Regex]::Match($text, $pattern)
+    $body = if ($match.Success) { $match.Groups['body'].Value } else { '' }
+    foreach ($name in $Settings.Keys) {
+        $line = "$name=$($Settings[$name])"
+        $linePattern = "(?m)^$([Regex]::Escape($name))=.*\r?$"
+        if ($body -match $linePattern) {
+            $body = [Regex]::Replace($body, $linePattern, [Text.RegularExpressions.MatchEvaluator]{ param($unusedMatch) $line })
+        } else {
+            $body = $body.TrimEnd("`r", "`n") + "`n$line`n"
+        }
+    }
+    $sectionText = "[$Section]`n" + $body.TrimStart("`r", "`n")
+    $updated = if ($match.Success) {
+        $text.Substring(0, $match.Index) + $sectionText + $text.Substring($match.Index + $match.Length)
+    } else { $text.TrimEnd("`r", "`n") + "`n`n" + $sectionText }
+    $updated = $updated.TrimStart("`r", "`n")
+    if ($updated -cne $text) { Write-Utf8NoBom $Path $updated }
+}
+
+# A consistently misspelled section name passes every read-back, so the engine config hierarchy is the only authority that catches it.
+function Assert-KnownIniSection($KnownSections, $Section, $Label) {
+    if ($KnownSections.Contains($Section)) { return }
+    throw "$Label declares an ini section the engine config hierarchy does not define: [$Section]"
+}
+
 function Read-UeAgentStackManifest($UeAgentRoot) {
     $path = Join-Path $UeAgentRoot 'STACK-MANIFEST.json'
     if (-not (Test-Path -LiteralPath $path)) { throw "UEAgent stack manifest not found: $path" }
@@ -141,11 +169,11 @@ function Assert-DefaultEnginePlugin($Path, $Name) {
 function Assert-IniSettings($Path, $Section, $Expected) {
     $body = Get-IniSectionBody $Path $Section
     if ($null -eq $body) {
-        throw "Engine configuration section is missing: [$Section] in $Path"
+        throw "Configuration section is missing: [$Section] in $Path"
     }
     foreach ($line in $Expected) {
         if ($body -notmatch "(?m)^$([Regex]::Escape($line))\r?$") {
-            throw "Engine configuration setting is missing: $line in [$Section]"
+            throw "Configuration setting is missing: $line in [$Section] in $Path"
         }
     }
 }

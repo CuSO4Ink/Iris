@@ -101,6 +101,36 @@ function Assert-ProjectRoute($ProjectRoot, $UProject, $EngineRoot, $Endpoint, $P
     }
 }
 
+function Get-ProfileProjectSettings($StackManifest, $Profile) {
+    $entry = $StackManifest.project_profiles.$Profile
+    if ($null -eq $entry) { return $null }
+    $entry.project_settings
+}
+
+function Assert-ProjectSettings($ProjectRoot, $EngineRoot, $ProjectSettings, $Label) {
+    $path = Join-Path $ProjectRoot 'Config\DefaultEngine.ini'
+    $knownSections = Get-EngineIniSectionNames $EngineRoot
+    foreach ($section in $ProjectSettings.PSObject.Properties) {
+        Assert-KnownIniSection $knownSections $section.Name $Label
+        $expected = @($section.Value.PSObject.Properties | ForEach-Object { "$($_.Name)=$($_.Value)" })
+        Assert-IniSettings $path $section.Name $expected
+    }
+}
+
+function Set-ProjectSettings($ProjectRoot, $EngineRoot, $ProjectSettings, $Label) {
+    $path = Join-Path $ProjectRoot 'Config\DefaultEngine.ini'
+    $knownSections = Get-EngineIniSectionNames $EngineRoot
+    foreach ($section in $ProjectSettings.PSObject.Properties) {
+        Assert-KnownIniSection $knownSections $section.Name $Label
+        $settings = [ordered]@{}
+        foreach ($setting in $section.Value.PSObject.Properties) {
+            $settings[[string]$setting.Name] = [string]$setting.Value
+        }
+        Set-IniSectionSettings $path $section.Name $settings
+    }
+    return $path
+}
+
 $UProject = Resolve-RequiredPath $UProject 'UProject'
 $EngineRoot = Resolve-RequiredPath $EngineRoot 'Engine root'
 $projectRoot = Split-Path $UProject -Parent
@@ -131,15 +161,24 @@ $engineState = if ($CheckOnly) {
 } else {
     Get-RouteEngineState $EngineRoot $stackManifest
 }
+$projectSettings = Get-ProfileProjectSettings $stackManifest $Profile
+$settingsLabel = "Profile '$Profile'"
 if ($CheckOnly) {
     Assert-ProjectRoute $projectRoot $UProject $EngineRoot $Endpoint $Profile $engineState
+    if ($null -ne $projectSettings) {
+        Assert-ProjectSettings $projectRoot $EngineRoot $projectSettings $settingsLabel
+    }
     Write-Host "UEAgent generic static check passed for $([IO.Path]::GetFileNameWithoutExtension($UProject))." -ForegroundColor Green
     exit 0
 }
 
 $mcpPath = Write-McpClientConfig $projectRoot $Endpoint
 $routePath = Write-UeAgentRoute $projectRoot $UProject $EngineRoot $Endpoint $Profile $engineState
+$settingsPath = if ($null -ne $projectSettings) {
+    Set-ProjectSettings $projectRoot $EngineRoot $projectSettings $settingsLabel
+} else { $null }
 Write-Host "UEAgent route configured for $([IO.Path]::GetFileNameWithoutExtension($UProject))." -ForegroundColor Green
 Write-Host "MCP client: $mcpPath"
 Write-Host "Route: $routePath"
+if ($settingsPath) { Write-Host "Project settings: $settingsPath" }
 Write-Host "Engine plugins and MCP defaults are installed globally; use Gateway with $routePath. Doctor is available for diagnostics."
