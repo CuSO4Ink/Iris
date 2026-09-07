@@ -15,6 +15,34 @@ exact-schema path. See `patches/ue58-mcp-tool-search.patch` and the dated progre
 This file keeps current-stack decisions only. Retired WorkBuddy /
 UnrealGenAISupport history remains available in Git history and is not operating guidance.
 
+### 2026-09-08 - Protocol 3.0 migration landed on the F engine
+
+Engine-level VibeUE now lives at `Engine\Plugins\AI\VibeUE` on branch `Aether/ueagent` (clone at the
+pinned merge base merged with `vibeue_ref`, six vibe patches applied), the engine ini carries the
+single 8000 endpoint with `UEAgent.Reliable` enabled, four plugin descriptors are enabled by default,
+and the editor build succeeded in 122 s.
+
+The engine could not be reconciled at first. Its tree held three clusters of additions that no
+packaged patch contained - the MCP process-wide tool-call authorization gate behind
+`task-gated-write`, the IRIS-FIX size-aware compare for 12/24-byte position override payloads, and a
+NiagaraToolset_System addition - and it lacked one `ue58-niagara-toolsets` hunk
+(`NiagaraSystemViewModel.cpp`). The additions are now packaged as
+`patches/ue58-local-engine-extras.patch`, appended last to the `engine-extensions` apply list so
+installed-prefix verification reverses it first; the missing hunk was applied so the engine is exactly
+HEAD plus the packaged set plus the supplement.
+
+Project-local 2.0.0 VibeUE copies moved out of Abyss, Satris and Lightning to
+`F:\Omni\retired-vibeue-2.0\*` and `G:\Work\retired-vibeue-2.0\Lightning`, because bootstrap 3.0
+refuses a project-local VibeUE. Their content stays reconstructible from `patches/local-delta/*`
+plus each project's VibeUE HEAD. All three projects re-bootstrapped to the 3.0 minimal route schema at
+the single endpoint `http://127.0.0.1:8000/mcp` and pass `-CheckOnly`. Consequence to remember: one
+engine means one MCP port, so only one editor can be live at a time.
+
+Protocol versions stay at 3.0.0; the 2.0.0 payload-hash and journaling features remain retired by
+design (the UDP-like direction), with the `save_policy` targeted readback as the workflow-level
+substitute. Live verification still needs an editor session: open a project and run
+`doctor.ps1 -RouteFile <project>\Saved\UEAgent\route.json`.
+
 ### 2026-09-07 - Project provisioning is its own command, not a bootstrap side effect
 
 Protocol 3.0 cut `bootstrap.ps1` down to route binding: SETUP.md pins its write scope to `.mcp.json`
