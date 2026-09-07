@@ -2644,8 +2644,7 @@ index 6356ca8..981323e 100644
 -		RebuildCustomHlslSignatureFromPins(Node);
 -	}
 -	else if (Cast<UNiagaraNodeWithDynamicPins>(Node) != nullptr)
-+	if (auto* DynamicNode = Cast<UNiagaraNodeWithDynamicPins>(Node))
- 	{
+-	{
 -		// Generic dynamic-pin node (Op, If, etc.)
 -		NewPin = Node->CreatePin(Dir, PinType, FName(*PinName));
 +		FString RequestedName = PinName;
