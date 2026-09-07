@@ -48,7 +48,8 @@
     },
     "engine-extensions": {
       "apply": [
-        "patches/ue58-engine-extensions.patch"
+        "patches/ue58-engine-extensions.patch",
+        "patches/ue58-local-engine-extras.patch"
       ],
       "install_scope": "engine",
       "status": "package_verified"
