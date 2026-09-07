@@ -122,6 +122,7 @@ $reliableStateRead = $false
 $editorPidAvailable = $false
 $editorPid = 0
 $reliableState = $null
+$stateProjectFile = ''
 $topToolNames = @()
 $requiredTopTools = @('list_toolsets', 'describe_toolset', 'call_tool')
 $missingMetaTools = @($requiredTopTools)
@@ -130,9 +131,13 @@ if ($endpointSafe) {
     $stateProbe = Invoke-GatewayProbe 'direct.call' $Endpoint $TimeoutSec $null $gatewaySessionFile $null 'ueagent_state'
     if ($stateProbe.ok) {
         $reliableState = $stateProbe.data
+        $stateProjectFile = [string]$reliableState.project_file
         if ($reliableState -and [string]$reliableState.protocol_version -and
             [string]$reliableState.editor_epoch) {
             $reliableStateRead = $true
+            if (-not $stateProjectFile) {
+                Add-Issue 'ueagent_state returned no project_file; project identity cannot be checked.'
+            }
         } else {
             Add-Issue 'ueagent_state returned no protocol_version or editor_epoch.'
         }
@@ -169,7 +174,7 @@ if ($endpointSafe) {
         } else {
             Add-Issue 'Reliable state has no editor PID.'
         }
-        if ($projectRoot -and ([IO.Path]::GetFullPath([string]$reliableState.project_file)).Replace('\','/') -ine ([IO.Path]::GetFullPath($UProject)).Replace('\','/')) {
+        if ($projectRoot -and $stateProjectFile -and ([IO.Path]::GetFullPath($stateProjectFile)).Replace('\','/') -ine ([IO.Path]::GetFullPath($UProject)).Replace('\','/')) {
             Add-Issue "Reliable state belongs to another project: $([string]$reliableState.project_file)"
         }
     }
@@ -232,8 +237,8 @@ if ($ProbeAdvancedCapabilities) {
     }
 }
 
-$reliableProjectMatches = -not $reliableStateRead -or -not $projectRoot -or
-    ([IO.Path]::GetFullPath([string]$reliableState.project_file)).Replace('\','/') -ieq ([IO.Path]::GetFullPath($UProject)).Replace('\','/')
+$reliableProjectMatches = -not $reliableStateRead -or -not $projectRoot -or -not $stateProjectFile -or
+    ([IO.Path]::GetFullPath($stateProjectFile)).Replace('\','/') -ieq ([IO.Path]::GetFullPath($UProject)).Replace('\','/')
 $editorLive = ($reliableStateRead -and [bool]$reliableState.enabled -and
     [string]$reliableState.protocol_version -eq $reliableProtocolVersion -and
     -not [string]::IsNullOrWhiteSpace([string]$reliableState.editor_epoch) -and
