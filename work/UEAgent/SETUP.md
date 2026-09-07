@@ -117,6 +117,22 @@ Abyss external plugins remain project-owned content. The generic Bootstrap does 
 version, or claim VRM4U/Gaussian/other Abyss dependencies. Handle those dependencies separately
 before using an Abyss project.
 
+Project ini settings declared by a manifest `project_profiles` entry are applied separately too,
+because Bootstrap binds a route and provisions nothing:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\apply_project_profile.ps1 `
+  -UProject "X:\Projects\MyGame\MyGame.uproject" `
+  -EngineRoot "X:\UnrealEngine" `
+  -ProjectProfile abyss
+```
+
+This writes or updates only the project's `Config\DefaultEngine.ini`, then reads back the sections it
+wrote. Each declared section name is checked against the engine config hierarchy before any write, so
+a consistently misspelled section fails instead of recording a setting nothing reads. Use
+`-CheckOnly` to verify without writing. `-ProjectProfile` selects a `project_profiles` entry and is
+unrelated to Bootstrap's `-Profile`, which labels an already-installed engine capability.
+
 The installed engine target can be built with:
 
 ```powershell
@@ -126,8 +142,9 @@ The installed engine target can be built with:
 
 After the first engine installation or any plugin/engine change, restart the editor before live
 work. `install_engine.ps1 -CheckOnly` validates selected source patches and engine defaults;
-`bootstrap.ps1 -CheckOnly` validates defaults and project route files; `doctor.ps1` validates the
-running editor.
+`bootstrap.ps1 -CheckOnly` validates defaults and project route files;
+`apply_project_profile.ps1 -CheckOnly` validates the project ini settings a `project_profiles` entry
+declares; `doctor.ps1` validates the running editor.
 
 ## Run the mandatory preflight
 

@@ -163,6 +163,8 @@
     "check_engine": "scripts/install_engine.ps1 -EngineRoot <UE_ROOT> -Profile <base|niagara-authoring> -CheckOnly",
     "bootstrap": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT>",
     "bootstrap_profile": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -Profile <PROFILE>",
+    "project_profile": "scripts/apply_project_profile.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ProjectProfile <PROFILE>",
+    "check_project_profile": "scripts/apply_project_profile.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -ProjectProfile <PROFILE> -CheckOnly",
     "reliable_profile": "tests/test_reliable_profile.ps1 -VibeUEPath <UE_ROOT>/Engine/Plugins/AI/VibeUE -EngineRoot <UE_ROOT>",
     "static": "scripts/bootstrap.ps1 -UProject <PROJECT> -EngineRoot <UE_ROOT> -CheckOnly",
     "doctor": "scripts/doctor.ps1 -RouteFile <PROJECT>/Saved/UEAgent/route.json",
