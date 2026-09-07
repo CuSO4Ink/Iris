@@ -15,6 +15,38 @@ exact-schema path. See `patches/ue58-mcp-tool-search.patch` and the dated progre
 This file keeps current-stack decisions only. Retired WorkBuddy /
 UnrealGenAISupport history remains available in Git history and is not operating guidance.
 
+### 2026-09-07 - Project provisioning is its own command, not a bootstrap side effect
+
+Protocol 3.0 cut `bootstrap.ps1` down to route binding: SETUP.md pins its write scope to `.mcp.json`
+and `Saved/UEAgent/route.json`, states that `-Profile` only labels an already-installed engine
+capability, and retires the old `-ApplyAbyssProfile` family. That left every `project_profiles`
+declaration without a consumer, so Abyss's `r.VolumetricCloud.ConservativeDensity.SDFMaxStep=32`
+survived in the live `Config/DefaultEngine.ini` from an August run while nothing rewrote or verified
+it. A regenerated ini would have fallen back to the engine CVar default of 0 that
+`patches/ue58-engine-extensions.patch` defines, silently.
+
+`apply_project_profile.ps1` now owns that layer with its own `-ProjectProfile` namespace, so engine
+capability names and project profile names no longer collide inside one flag. It writes only the
+project's `Config/DefaultEngine.ini`, checks each declared section against the engine config
+hierarchy before writing, then reads the written sections back; `-CheckOnly` asserts without writing.
+The section check matters because a consistently misspelled section name passes every read-back, so
+the engine hierarchy is the only authority that catches it. `external_plugins` stays data: SETUP.md
+keeps Abyss plugin dependencies project-owned, so no code copies, enables or versions them.
+
+One ini writer now serves both engine and project config. `install_engine.ps1`'s section-scoped
+implementation moved to `ueagent_common.ps1` as `Set-IniSectionSettings`; the retired bootstrap
+variant matched `^name=.*$` file-wide and would rewrite a same-named key sitting in a different
+section. The `kind` and `capability` profile fields were deleted, because manifest-derived capability
+routing is exactly what 3.0 replaced with the opaque label, so re-adding it would be the less
+general design.
+
+Merging 3.0 with `-X theirs` also interleaved hunks *inside*
+`patches/niagara-mcp-authoring/vibeue/vibeue-ueagent-authoring.patch` and produced a file that
+`git apply` rejects as corrupt, which the manifest then applies. After any `-X theirs` merge touching
+`patches/`, validate every patch with `git apply --numstat`. A hunk-count checker that tolerates
+blank lines also flags the bare empty line between diff sections; that false positive over-counts
+both sides equally, while real corruption is asymmetric.
+
 ### 2026-09-02 - User-parameter hierarchy authoring APIs
 
 `NiagaraExternalSystemEditorUtilities` gained the `FNiagaraExt_UserParameterCategory` /
