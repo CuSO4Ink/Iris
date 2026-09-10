@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>OARK.RatkinKnightOrderFurniture</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OARO_Melee_EdgeSword&quot;]/tools/li[1]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OARO_Melee_EdgeSword&quot;]/tools/li[1]/power</xpath>
+          <value>
+            <power>26.6</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OARO_Melee_EdgeSword"]/tools/li[1]</xpath>
+          <value>
+            <power>26.6</power>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

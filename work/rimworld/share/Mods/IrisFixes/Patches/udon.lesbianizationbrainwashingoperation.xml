@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- fix-01:百合洗脳手術改为「不指定部位的手术」,避免顶掉 Brain 上的修仙灵根。
+       只改 RecipeDef;HediffDef 不动(它的 hediffClass 本就是 HediffWithComps,
+       不是 Hediff_AddedPart,无部位后 addedPartProps 自然惰性)。 -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>udon.lesbianizationbrainwashingoperation</li>
+      <li>レズ化洗脳手術</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+
+        <!-- 1) worker:安装人造部件 -> 添加 hediff 的普通手术 -->
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/RecipeDef[defName="LBW_Recipe_Surgery_Lesbianization"]/workerClass</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/RecipeDef[defName="LBW_Recipe_Surgery_Lesbianization"]/workerClass</xpath>
+            <value>
+              <workerClass>Recipe_AddHediff</workerClass>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/RecipeDef[defName="LBW_Recipe_Surgery_Lesbianization"]</xpath>
+            <value>
+              <workerClass>Recipe_AddHediff</workerClass>
+            </value>
+          </nomatch>
+        </li>
+
+        <!-- 2) 不再指定身体部位(hediff 的 Part 为 null,就不会与灵根相撞) -->
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/RecipeDef[defName="LBW_Recipe_Surgery_Lesbianization"]/targetsBodyPart</xpath>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/RecipeDef[defName="LBW_Recipe_Surgery_Lesbianization"]</xpath>
+            <value>
+              <targetsBodyPart>false</targetsBodyPart>
+            </value>
+          </nomatch>
+        </li>
+
+        <!-- 3) 界面不再显示部位名(照搬原版 Sterilize / BlissLobotomy) -->
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/RecipeDef[defName="LBW_Recipe_Surgery_Lesbianization"]/hideBodyPartNames</xpath>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/RecipeDef[defName="LBW_Recipe_Surgery_Lesbianization"]</xpath>
+            <value>
+              <hideBodyPartNames>true</hideBodyPartNames>
+            </value>
+          </nomatch>
+        </li>
+
+        <!-- 4) 删掉 Brain 部位限定 -->
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/RecipeDef[defName="LBW_Recipe_Surgery_Lesbianization"]/appliedOnFixedBodyParts</xpath>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/RecipeDef[defName="LBW_Recipe_Surgery_Lesbianization"]/appliedOnFixedBodyParts</xpath>
+          </match>
+        </li>
+
+      </operations>
+    </match>
+  </Operation>
+</Patch>

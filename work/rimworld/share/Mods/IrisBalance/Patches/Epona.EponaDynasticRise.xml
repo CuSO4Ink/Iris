@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Epona.EponaDynasticRise</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_RecycleBazooka_Proj&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_RecycleBazooka_Proj&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>60</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_RecycleBazooka_Proj"]/projectile</xpath>
+          <value>
+            <damageAmountBase>60</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_HuntingRifle_Proj&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_HuntingRifle_Proj&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_HuntingRifle_Proj"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_Grenade_Proj&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_Grenade_Proj&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>60</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_Grenade_Proj"]/projectile</xpath>
+          <value>
+            <damageAmountBase>60</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_laserrifle_Proj&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_laserrifle_Proj&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>17</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_laserrifle_Proj"]/projectile</xpath>
+          <value>
+            <damageAmountBase>17</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_M1915_Proj&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_M1915_Proj&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>9</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_M1915_Proj"]/projectile</xpath>
+          <value>
+            <damageAmountBase>9</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_mace&quot;]/tools/li[1]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_mace&quot;]/tools/li[1]/power</xpath>
+          <value>
+            <power>22.4</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_mace"]/tools/li[1]</xpath>
+          <value>
+            <power>22.4</power>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_HellsphereCannonGun&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_HellsphereCannonGun&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>33</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_HellsphereCannonGun"]/projectile</xpath>
+          <value>
+            <damageAmountBase>33</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Apparel_ArmorPowerBase&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Apparel_ArmorPowerBase&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Apparel_ArmorPowerBase"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Apparel_Hat_ImperatorPowerArmorHa&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Apparel_Hat_ImperatorPowerArmorHa&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Apparel_Hat_ImperatorPowerArmorHa"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_laserrifle&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_laserrifle&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_laserrifle"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_laserrifle&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_laserrifle&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_laserrifle"]/statBases</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_laserrifle&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_laserrifle&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_laserrifle"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_flak&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_flak&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_flak"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_flak&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_flak&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_flak"]/statBases</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_flak&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Epona_Weapon_flak&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Epona_Weapon_flak"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

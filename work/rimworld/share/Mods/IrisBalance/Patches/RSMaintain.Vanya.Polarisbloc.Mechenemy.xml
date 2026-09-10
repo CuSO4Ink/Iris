@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>RSMaintain.Vanya.Polarisbloc.Mechenemy</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Vanya_DestoryerShocker&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Vanya_DestoryerShocker&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.90</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Vanya_DestoryerShocker"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.90</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Vanya_DestoryerShocker&quot;]/statBases/AccuracyMedium</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Vanya_DestoryerShocker&quot;]/statBases/AccuracyMedium</xpath>
+          <value>
+            <AccuracyMedium>0.90</AccuracyMedium>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Vanya_DestoryerShocker"]/statBases</xpath>
+          <value>
+            <AccuracyMedium>0.90</AccuracyMedium>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Vanya_DestoryerShocker&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Vanya_DestoryerShocker&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.75</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Vanya_DestoryerShocker"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.75</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Vanya_HellSong&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Vanya_HellSong&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Vanya_HellSong"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Vanya_HellSong&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Vanya_HellSong&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Vanya_HellSong"]/statBases</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Vanya_HellSong&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Vanya_HellSong&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Vanya_HellSong"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>NY.SmeltedLoong</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;NY_SLBB_HornbillArmor&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;NY_SLBB_HornbillArmor&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="NY_SLBB_HornbillArmor"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;NY_SLBB_StarlingPioneerArmor&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;NY_SLBB_StarlingPioneerArmor&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="NY_SLBB_StarlingPioneerArmor"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;NY_SLBB_PeregrineArmor&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;NY_SLBB_PeregrineArmor&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="NY_SLBB_PeregrineArmor"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;NY_BB_VolantHelmet&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;NY_BB_VolantHelmet&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="NY_BB_VolantHelmet"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;NY_SLBB_GyrfalconArmor&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;NY_SLBB_GyrfalconArmor&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="NY_SLBB_GyrfalconArmor"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;NY_LoongFlyNeedle&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;NY_LoongFlyNeedle&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>1.00</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="NY_LoongFlyNeedle"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>1.00</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName=&quot;NY_gene_LoongFireResistant&quot;]/statOffsets/ArmorRating_Heat</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName=&quot;NY_gene_LoongFireResistant&quot;]/statOffsets/ArmorRating_Heat</xpath>
+          <value>
+            <ArmorRating_Heat>0.2</ArmorRating_Heat>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="NY_gene_LoongFireResistant"]/statOffsets</xpath>
+          <value>
+            <ArmorRating_Heat>0.2</ArmorRating_Heat>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

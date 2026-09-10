@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>sleepycot.wingsofdemocracy</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;MiliraBullet_AntiMaterielRifle&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;MiliraBullet_AntiMaterielRifle&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="MiliraBullet_AntiMaterielRifle"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

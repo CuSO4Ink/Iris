@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Nyar.NCLvsTW</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_Annihilator_Wildfire&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_Annihilator_Wildfire&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_Annihilator_Wildfire"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

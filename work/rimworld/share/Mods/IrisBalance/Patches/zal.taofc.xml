@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>zal.taofc</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Melee_ExecutionerAxe&quot;]/tools/li[2]/armorPenetration</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Melee_ExecutionerAxe&quot;]/tools/li[2]/armorPenetration</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Melee_ExecutionerAxe"]/tools/li[2]</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Melee_BloodLetterMace&quot;]/tools/li[1]/armorPenetration</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Melee_BloodLetterMace&quot;]/tools/li[1]/armorPenetration</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Melee_BloodLetterMace"]/tools/li[1]</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_Cleansing&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_Cleansing&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>5</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_Cleansing"]/projectile</xpath>
+          <value>
+            <damageAmountBase>5</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_BoneshardAutoCannon&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_BoneshardAutoCannon&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>16</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_BoneshardAutoCannon"]/projectile</xpath>
+          <value>
+            <damageAmountBase>16</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_MachineGunz&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_MachineGunz&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>9</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_MachineGunz"]/projectile</xpath>
+          <value>
+            <damageAmountBase>9</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_CleansingAutocannon&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_CleansingAutocannon&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>22</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_CleansingAutocannon"]/projectile</xpath>
+          <value>
+            <damageAmountBase>22</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_BoneshardAvenger&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_BoneshardAvenger&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>8</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_BoneshardAvenger"]/projectile</xpath>
+          <value>
+            <damageAmountBase>8</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Apparel_StalkerPowerArmor_Empire&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Apparel_StalkerPowerArmor_Empire&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Apparel_StalkerPowerArmor_Empire"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

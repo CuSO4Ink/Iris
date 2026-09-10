@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>com.zoshsgahdnkc.WRMegaCorpEdition</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;WRMC_PowerfulChargeBullet&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;WRMC_PowerfulChargeBullet&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>24</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="WRMC_PowerfulChargeBullet"]/projectile</xpath>
+          <value>
+            <damageAmountBase>24</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;WRMC_HiNRGChargeShrapnel&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;WRMC_HiNRGChargeShrapnel&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>16</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="WRMC_HiNRGChargeShrapnel"]/projectile</xpath>
+          <value>
+            <damageAmountBase>16</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;WRMC_HighSpeedChargeBullet&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;WRMC_HighSpeedChargeBullet&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>14</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="WRMC_HighSpeedChargeBullet"]/projectile</xpath>
+          <value>
+            <damageAmountBase>14</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

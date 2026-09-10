@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>TOT.CeleTech.MKIII</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;CMC_TangDao_Plasma&quot;]/tools/li[1]/armorPenetration</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;CMC_TangDao_Plasma&quot;]/tools/li[1]/armorPenetration</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="CMC_TangDao_Plasma"]/tools/li[1]</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;CMC_EMPsword_sevenstars&quot;]/tools/li[2]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;CMC_EMPsword_sevenstars&quot;]/tools/li[2]/power</xpath>
+          <value>
+            <power>35.0</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="CMC_EMPsword_sevenstars"]/tools/li[2]</xpath>
+          <value>
+            <power>35.0</power>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;CMC_EMPsword_sevenstars&quot;]/tools/li[2]/armorPenetration</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;CMC_EMPsword_sevenstars&quot;]/tools/li[2]/armorPenetration</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="CMC_EMPsword_sevenstars"]/tools/li[2]</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;CMC_HPA_Base&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;CMC_HPA_Base&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="CMC_HPA_Base"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;CMC_HPA_Heavy&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;CMC_HPA_Heavy&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="CMC_HPA_Heavy"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;CMChelmetM&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;CMChelmetM&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="CMChelmetM"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

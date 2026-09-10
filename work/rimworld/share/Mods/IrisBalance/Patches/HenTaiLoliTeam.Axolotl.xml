@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>HenTaiLoliTeam.Axolotl</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Axolotl_Flame_VermilionBird_Machete&quot;]/tools/li[1]/armorPenetration</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Axolotl_Flame_VermilionBird_Machete&quot;]/tools/li[1]/armorPenetration</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Axolotl_Flame_VermilionBird_Machete"]/tools/li[1]</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Axolotl_WindWrappingSword&quot;]/tools/li[2]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Axolotl_WindWrappingSword&quot;]/tools/li[2]/power</xpath>
+          <value>
+            <power>18.2</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Axolotl_WindWrappingSword"]/tools/li[2]</xpath>
+          <value>
+            <power>18.2</power>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Axolotl_IndigoFlower&quot;]/tools/li[2]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Axolotl_IndigoFlower&quot;]/tools/li[2]/power</xpath>
+          <value>
+            <power>28.0</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Axolotl_IndigoFlower"]/tools/li[2]</xpath>
+          <value>
+            <power>28.0</power>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Axolotl_Rockforge_Halberd&quot;]/tools/li[1]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Axolotl_Rockforge_Halberd&quot;]/tools/li[1]/power</xpath>
+          <value>
+            <power>30.8</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Axolotl_Rockforge_Halberd"]/tools/li[1]</xpath>
+          <value>
+            <power>30.8</power>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Axolotl_FlameVermilionBirdCrown&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Axolotl_FlameVermilionBirdCrown&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Axolotl_FlameVermilionBirdCrown"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Axolotl_FlameVermilionBirdArmour&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Axolotl_FlameVermilionBirdArmour&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Axolotl_FlameVermilionBirdArmour"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

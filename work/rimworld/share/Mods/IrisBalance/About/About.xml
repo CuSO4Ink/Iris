@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>IrisBalance</name>
+  <author>iris</author>
+  <packageId>local.irisbalance</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>按 BALANCE-STANDARD.md 自动收敛的 Def 层数值补丁。源文件不动,工坊更新不丢。</description>
+  <loadAfter>
+    <li>Ancot.KiiroRace</li>
+    <li>Ancot.MiliraRace</li>
+    <li>Ariandel.MiliraImperium</li>
+    <li>BreadMo.Cinders</li>
+    <li>EoralMilk.RatkinMoustate</li>
+    <li>Epona.EponaDynasticRise</li>
+    <li>HAR.MugirlRace</li>
+    <li>HenTaiLoliTeam.Axolotl</li>
+    <li>MelonDove.WolfeinRace</li>
+    <li>NY.SmeltedLoong</li>
+    <li>Nyar.NCLvsTW</li>
+    <li>OARK.RatkinFaction.GeneExpand</li>
+    <li>OARK.RatkinFaction.OberoniaAurea</li>
+    <li>OARK.RatkinKnightOrderFurniture</li>
+    <li>Pakerwot.MiliraEventandStortExpandTheTaleofMilira</li>
+    <li>RH2.Faction.VOID</li>
+    <li>RI.RimImmortal.Exorcism</li>
+    <li>RI.RimImmortal.Forge</li>
+    <li>RI.RimImmortals.SeasonsOfRule</li>
+    <li>RID.miliramoreThings</li>
+    <li>RKK.RatKnights.Core</li>
+    <li>RSMaintain.Vanya.Polarisbloc.Mechenemy</li>
+    <li>RatKin.Extraordinary.Mechanic</li>
+    <li>TOT.CeleTech.MKIII</li>
+    <li>Valeries.miliraexpansion</li>
+    <li>XXK.HollowKnight.Core</li>
+    <li>bbb.ratkinweapon.morefailure</li>
+    <li>com.zoshsgahdnkc.WRMegaCorpEdition</li>
+    <li>fxz.ratkinanomaly.update</li>
+    <li>heimu.LittleRedRidingHood</li>
+    <li>miho.fortifiedoutremer</li>
+    <li>sleepycot.wingsofdemocracy</li>
+    <li>src.Core.markeazzyh</li>
+    <li>zal.taofc</li>
+  </loadAfter>
+</ModMetaData>

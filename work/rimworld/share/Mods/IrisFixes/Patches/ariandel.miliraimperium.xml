@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- fix-06:放宽死锁场景的必需兵种校验,使开局页可完成。 -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Ariandel.MiliraImperium</li>
+      <li>Milira Faction: Milira Imperium</li>
+    </mods>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/ScenarioDef[defName="Milira_Imperium_ScenariosII"]/scenario/parts/li/kindCounts/li/requiredAtStart[text()="true"]</xpath>
+      <match Class="PatchOperationReplace">
+        <xpath>Defs/ScenarioDef[defName="Milira_Imperium_ScenariosII"]/scenario/parts/li/kindCounts/li/requiredAtStart[text()="true"]</xpath>
+        <value>
+          <requiredAtStart>false</requiredAtStart>
+        </value>
+      </match>
+    </match>
+  </Operation>
+</Patch>

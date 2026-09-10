@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>RH2.Faction.VOID</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RNBullet_50BMG_Sniper&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RNBullet_50BMG_Sniper&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>32</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RNBullet_50BMG_Sniper"]/projectile</xpath>
+          <value>
+            <damageAmountBase>32</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RNMelee_DFGrinder_Chainsaw&quot;]/tools/li[1]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RNMelee_DFGrinder_Chainsaw&quot;]/tools/li[1]/power</xpath>
+          <value>
+            <power>11.6</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RNMelee_DFGrinder_Chainsaw"]/tools/li[1]</xpath>
+          <value>
+            <power>11.6</power>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RHBullet_57CalFMJ_HMG&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RHBullet_57CalFMJ_HMG&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>17</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RHBullet_57CalFMJ_HMG"]/projectile</xpath>
+          <value>
+            <damageAmountBase>17</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RHBullet_50CalFMJ_HMG&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RHBullet_50CalFMJ_HMG&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>18</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RHBullet_50CalFMJ_HMG"]/projectile</xpath>
+          <value>
+            <damageAmountBase>18</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

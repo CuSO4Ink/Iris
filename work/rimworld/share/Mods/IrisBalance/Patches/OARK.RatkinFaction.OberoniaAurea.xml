@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>OARK.RatkinFaction.OberoniaAurea</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_Mountain_Stick_AA&quot;]/tools/li[2]/armorPenetration</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_Mountain_Stick_AA&quot;]/tools/li[2]/armorPenetration</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_Mountain_Stick_AA"]/tools/li[2]</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeDriverBullet&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeDriverBullet&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>60</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_UnstableChargeDriverBullet"]/projectile</xpath>
+          <value>
+            <damageAmountBase>60</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeDriverBullet&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeDriverBullet&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_UnstableChargeDriverBullet"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzAMRBullet&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzAMRBullet&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_BlitzAMRBullet"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzAMRBullet_C&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzAMRBullet_C&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>60</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_BlitzAMRBullet_C"]/projectile</xpath>
+          <value>
+            <damageAmountBase>60</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzAMRBullet_C&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzAMRBullet_C&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_BlitzAMRBullet_C"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzAMRBullet_B&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzAMRBullet_B&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_BlitzAMRBullet_B"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzAMLMGBullet&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzAMLMGBullet&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>14</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_BlitzAMLMGBullet"]/projectile</xpath>
+          <value>
+            <damageAmountBase>14</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_AdvancedBlitzSMGBullet&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_AdvancedBlitzSMGBullet&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>10</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_AdvancedBlitzSMGBullet"]/projectile</xpath>
+          <value>
+            <damageAmountBase>10</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_ChargeSSRBullet&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_ChargeSSRBullet&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>37</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_ChargeSSRBullet"]/projectile</xpath>
+          <value>
+            <damageAmountBase>37</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzSMGBullet&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzSMGBullet&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>10</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_BlitzSMGBullet"]/projectile</xpath>
+          <value>
+            <damageAmountBase>10</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeThrowerBullet&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeThrowerBullet&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>37</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_UnstableChargeThrowerBullet"]/projectile</xpath>
+          <value>
+            <damageAmountBase>37</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzLMGBullet&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_BlitzLMGBullet&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>9</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_BlitzLMGBullet"]/projectile</xpath>
+          <value>
+            <damageAmountBase>9</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_New_Windbreaker_FangzhiBUGdehouzhui_ACC&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_New_Windbreaker_FangzhiBUGdehouzhui_ACC&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_New_Windbreaker_FangzhiBUGdehouzhui_ACC"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_New_Windbreaker_G&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_New_Windbreaker_G&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_New_Windbreaker_G"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_AT&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_AT&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_AT"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_AT&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_AT&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_AT"]/statBases</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_AT&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_AT&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_AT"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeDriver&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeDriver&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_UnstableChargeDriver"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeDriver&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeDriver&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_UnstableChargeDriver"]/statBases</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeDriver&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeDriver&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_UnstableChargeDriver"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeThrower&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeThrower&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_UnstableChargeThrower"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeThrower&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeThrower&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_UnstableChargeThrower"]/statBases</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeThrower&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;OA_RK_UnstableChargeThrower&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="OA_RK_UnstableChargeThrower"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

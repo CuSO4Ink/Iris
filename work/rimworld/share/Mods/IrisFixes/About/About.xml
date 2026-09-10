@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>IrisFixes</name>
+  <author>iris</author>
+  <packageId>local.irisfixes</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>mod 间兼容性与 bug 修复的 Def 层补丁(与 IrisBalance 的数值补丁分开,可各自停用)。源文件不动,工坊更新不丢,停用即回滚。</description>
+  <loadAfter>
+    <li>udon.lesbianizationbrainwashingoperation</li>
+    <li>ri.rimimmortal.core</li>
+    <li>miho.fortifiedoutremer</li>
+  </loadAfter>
+</ModMetaData>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>OARK.RatkinFaction.GeneExpand</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName=&quot;OAGene_UltraDenseMuscles&quot;]/statOffsets/ArmorRating_Blunt</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName=&quot;OAGene_UltraDenseMuscles&quot;]/statOffsets/ArmorRating_Blunt</xpath>
+          <value>
+            <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="OAGene_UltraDenseMuscles"]/statOffsets</xpath>
+          <value>
+            <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName=&quot;OAGene_AgilityAction&quot;]/statOffsets/MeleeDodgeChance</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName=&quot;OAGene_AgilityAction&quot;]/statOffsets/MeleeDodgeChance</xpath>
+          <value>
+            <MeleeDodgeChance>0.25</MeleeDodgeChance>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="OAGene_AgilityAction"]/statOffsets</xpath>
+          <value>
+            <MeleeDodgeChance>0.25</MeleeDodgeChance>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName=&quot;OAGene_RatkinTail&quot;]/statOffsets/MeleeDodgeChance</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName=&quot;OAGene_RatkinTail&quot;]/statOffsets/MeleeDodgeChance</xpath>
+          <value>
+            <MeleeDodgeChance>0.25</MeleeDodgeChance>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="OAGene_RatkinTail"]/statOffsets</xpath>
+          <value>
+            <MeleeDodgeChance>0.25</MeleeDodgeChance>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

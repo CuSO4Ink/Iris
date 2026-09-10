@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>src.Core.markeazzyh</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;SR_Gladius&quot;]/tools/li[3]/armorPenetration</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;SR_Gladius&quot;]/tools/li[3]/armorPenetration</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="SR_Gladius"]/tools/li[3]</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

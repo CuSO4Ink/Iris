@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>HAR.MugirlRace</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_Mugirl_Militia_Rifle&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_Mugirl_Militia_Rifle&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_Mugirl_Militia_Rifle"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_Mugirl_AR_Standard&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_Mugirl_AR_Standard&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>7</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_Mugirl_AR_Standard"]/projectile</xpath>
+          <value>
+            <damageAmountBase>7</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_PMC_LMG&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_PMC_LMG&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>14</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_PMC_LMG"]/projectile</xpath>
+          <value>
+            <damageAmountBase>14</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_Mugirl_MP_Standard&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_Mugirl_MP_Standard&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>8</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_Mugirl_MP_Standard"]/projectile</xpath>
+          <value>
+            <damageAmountBase>8</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;PMC_DMR&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;PMC_DMR&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.73</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="PMC_DMR"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.73</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;PMC_DMR&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;PMC_DMR&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>0.88</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="PMC_DMR"]/statBases</xpath>
+          <value>
+            <AccuracyShort>0.88</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

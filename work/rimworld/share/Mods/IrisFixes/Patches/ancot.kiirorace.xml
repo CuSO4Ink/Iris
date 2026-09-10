@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- fix-05:关掉强制抽取,避免空池 NRE 中断 WorldGenStep_Factions。 -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>Ancot.KiiroRace</li>
+      <li>Kiiro Race</li>
+    </mods>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/PawnKindDef[defName="Kiiro_WoundedSoldier"]/techHediffsMoney</xpath>
+      <match Class="PatchOperationSequence">
+        <operations>
+          <li Class="PatchOperationConditional">
+            <xpath>Defs/PawnKindDef[defName="Kiiro_WoundedSoldier"]/techHediffsChance</xpath>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/PawnKindDef[defName="Kiiro_WoundedSoldier"]/techHediffsChance</xpath>
+              <value>
+                <techHediffsChance>0</techHediffsChance>
+              </value>
+            </match>
+            <nomatch Class="PatchOperationAdd">
+              <xpath>Defs/PawnKindDef[defName="Kiiro_WoundedSoldier"]</xpath>
+              <value>
+                <techHediffsChance>0</techHediffsChance>
+              </value>
+            </nomatch>
+          </li>
+        </operations>
+      </match>
+    </match>
+  </Operation>
+</Patch>

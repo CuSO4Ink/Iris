@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>RID.miliramoreThings</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;MiliraBullet_HandRailGun&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;MiliraBullet_HandRailGun&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="MiliraBullet_HandRailGun"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;MiliraBullet_MagneticRailRifle&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;MiliraBullet_MagneticRailRifle&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>6</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="MiliraBullet_MagneticRailRifle"]/projectile</xpath>
+          <value>
+            <damageAmountBase>6</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;MiliraChainsawssword&quot;]/tools/li[1]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;MiliraChainsawssword&quot;]/tools/li[1]/power</xpath>
+          <value>
+            <power>2.1</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="MiliraChainsawssword"]/tools/li[1]</xpath>
+          <value>
+            <power>2.1</power>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;MiliraFALRR&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;MiliraFALRR&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="MiliraFALRR"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.75</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;MiliraFALRR&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;MiliraFALRR&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="MiliraFALRR"]/statBases</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;MiliraFALRR&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;MiliraFALRR&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="MiliraFALRR"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.95</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

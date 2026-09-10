@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>XXK.HollowKnight.Core</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Aspid_Bullet&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Aspid_Bullet&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Aspid_Bullet"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;XXK_Gun_MinerWeapon&quot;]/tools/li[1]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;XXK_Gun_MinerWeapon&quot;]/tools/li[1]/power</xpath>
+          <value>
+            <power>16.8</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="XXK_Gun_MinerWeapon"]/tools/li[1]</xpath>
+          <value>
+            <power>16.8</power>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Bullet_XXKMechanoidDungBall&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Bullet_XXKMechanoidDungBall&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>8</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Bullet_XXKMechanoidDungBall"]/projectile</xpath>
+          <value>
+            <damageAmountBase>8</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;XXK_Gun_NaiLance&quot;]/tools/li[1]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;XXK_Gun_NaiLance&quot;]/tools/li[1]/power</xpath>
+          <value>
+            <power>25.2</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="XXK_Gun_NaiLance"]/tools/li[1]</xpath>
+          <value>
+            <power>25.2</power>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;Aspid_Bullet&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;Aspid_Bullet&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>12</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="Aspid_Bullet"]/projectile</xpath>
+          <value>
+            <damageAmountBase>12</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;XXK_FireDamageHat&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;XXK_FireDamageHat&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="XXK_FireDamageHat"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;HollowSuper_A_Helmet&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;HollowSuper_A_Helmet&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="HollowSuper_A_Helmet"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;HollowSuper_A_Apparel&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;HollowSuper_A_Apparel&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="HollowSuper_A_Apparel"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;XXK_Crystal_Apparel&quot;]/statBases/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;XXK_Crystal_Apparel&quot;]/statBases/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="XXK_Crystal_Apparel"]/statBases</xpath>
+          <value>
+            <ArmorRating_Sharp>1.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;XXK_AspidLauncher&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;XXK_AspidLauncher&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.70</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="XXK_AspidLauncher"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.70</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;XXK_AspidLauncher&quot;]/statBases/AccuracyMedium</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;XXK_AspidLauncher&quot;]/statBases/AccuracyMedium</xpath>
+          <value>
+            <AccuracyMedium>0.70</AccuracyMedium>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="XXK_AspidLauncher"]/statBases</xpath>
+          <value>
+            <AccuracyMedium>0.70</AccuracyMedium>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;XXK_AspidLauncher&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;XXK_AspidLauncher&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.55</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="XXK_AspidLauncher"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.55</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName=&quot;XXK_Crystalskin&quot;]/statOffsets/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName=&quot;XXK_Crystalskin&quot;]/statOffsets/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="XXK_Crystalskin"]/statOffsets</xpath>
+          <value>
+            <ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName=&quot;XXK_Shrumal_Head&quot;]/statOffsets/ArmorRating_Blunt</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName=&quot;XXK_Shrumal_Head&quot;]/statOffsets/ArmorRating_Blunt</xpath>
+          <value>
+            <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="XXK_Shrumal_Head"]/statOffsets</xpath>
+          <value>
+            <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName=&quot;XXK_Mantis_Head&quot;]/statOffsets/ArmorRating_Sharp</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName=&quot;XXK_Mantis_Head&quot;]/statOffsets/ArmorRating_Sharp</xpath>
+          <value>
+            <ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="XXK_Mantis_Head"]/statOffsets</xpath>
+          <value>
+            <ArmorRating_Sharp>0.2</ArmorRating_Sharp>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName=&quot;XXK_Mantis_Head&quot;]/statOffsets/ArmorRating_Blunt</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName=&quot;XXK_Mantis_Head&quot;]/statOffsets/ArmorRating_Blunt</xpath>
+          <value>
+            <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="XXK_Mantis_Head"]/statOffsets</xpath>
+          <value>
+            <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName=&quot;XXK_Mantis_Head&quot;]/statOffsets/ArmorRating_Heat</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName=&quot;XXK_Mantis_Head&quot;]/statOffsets/ArmorRating_Heat</xpath>
+          <value>
+            <ArmorRating_Heat>0.2</ArmorRating_Heat>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="XXK_Mantis_Head"]/statOffsets</xpath>
+          <value>
+            <ArmorRating_Heat>0.2</ArmorRating_Heat>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName=&quot;XXK_VoidHeart&quot;]/statFactors/MeleeDamageFactor</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName=&quot;XXK_VoidHeart&quot;]/statFactors/MeleeDamageFactor</xpath>
+          <value>
+            <MeleeDamageFactor>1.75</MeleeDamageFactor>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="XXK_VoidHeart"]/statFactors</xpath>
+          <value>
+            <MeleeDamageFactor>1.75</MeleeDamageFactor>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

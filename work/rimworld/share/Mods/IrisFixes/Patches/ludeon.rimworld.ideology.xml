@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- fix-02:给 GenericContent 补 cultureLeaderTitle,使 r_leaderTitle 的第 4
+       分支恒可解析,避免「Astropolitan + 无 leader 规则 meme」组合下中文解析
+       全分支死掉、回退英文时 GetRulesResolved 抛 NRE 中断 WorldGenStep_Factions。 -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>ludeon.rimworld.ideology</li>
+      <li>Ideology</li>
+    </mods>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/RulePackDef[defName="LeaderTitleMaker_GenericContent"]/rulePack/rulesStrings/li[text()="cultureLeaderTitle->[cultureLeaderAdjective] [cultureLeaderNoun]"]</xpath>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/RulePackDef[defName="LeaderTitleMaker_GenericContent"]/rulePack/rulesStrings</xpath>
+        <value>
+          <li>cultureLeaderTitle->[cultureLeaderAdjective] [cultureLeaderNoun]</li>
+        </value>
+      </nomatch>
+    </match>
+  </Operation>
+</Patch>

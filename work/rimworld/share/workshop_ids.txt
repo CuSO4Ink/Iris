@@ -1,0 +1,259 @@
+# 加载顺序 pfid  packageId  name(共 258 个工坊 mod)
+2009463077  brrainz.harmony  Harmony
+818773962  UnlimitedHugs.HugsLib  HugsLib
+761421485  UnlimitedHugs.AllowTool  Allow Tool
+1541460369  VouLT.BetterPawnControl  Better Pawn Control
+3033901359  adaptive.storage.framework  Adaptive Storage Framework
+2574315206  imranfish.xmlextensions  XML Extensions
+2023507013  OskarPotocki.VanillaFactionsExpanded.Core  Vanilla Expanded Framework
+3713589764  OARK.OberoniaAurea.Framework  [OA]Oberonia Aurea Framework
+2988801276  Ancot.AncotLibrary  Ancot Library
+3665997350  Ariandel.AriandelLibrary  Ariandel Library
+2978572782  HaiLuan.CustomQuestFramework  Custom Quest Framework
+2552002158  ccl.patchoperation.highlander  PatchOperationHighlander
+839005762  erdelf.HumanoidAlienRaces  Humanoid Alien Races
+3247685844  EoralMilk.MeowFramework  Meow Framework
+3578882219  HAR.MugirlRace  Mugirl Race
+3391128917  Mlie.NWNRealFogOfWar  (NWN) Real Fog of War (Continued)
+3285178686  defaults.1trickPwnyta  1trickPwnyta's Defaults
+3578444636  odysseypatch.1trickPwnyta  1trickPwnyta's Odyssey Patch
+3357749890  Arylice.Rimworld.AutomaticStumpChopping  [ARY] Automatic Stump Chopping [1.5 - 1.6]
+1508341791  FrozenSnowFox.FilthVanishesWithRainAndTime  [FSF] Filth Vanishes With Rain And Time
+2345493945  DerekBickley.LTOColonyGroupsFinal  [LTO] Colony Groups
+1635901197  Nals.FacialAnimation  [NL] Facial Animation - WIP
+2920337086  Oganesson.Secondary.Immune.Response  [Og] Secondary Immune Response
+2883208829  RH2.Faction.VOID  [RH2] Faction: V.O.I.D.
+2130957394  RH2.VOID.Storyteller  [RH2] V.O.I.D. Storyteller
+3486264784  sbz.NeatStorageFridge  [sbz] Fridge
+3416243474  sbz.NeatStorage  [sbz] Neat Storage
+3264193512  seekiworksmod.no17  AAAA(Allowed Area Automatic Adapter)
+2800155563  Mlie.AllMemoriesFade  All Memories Fade
+2426119067  avilmask.AnimalControls  Animal Controls
+1098354593  Oblitus.AnimalsLogic  Animals Logic
+2059389912  automatic.autolinks  Auto links
+3493889625  rabiosus.autoblink  AutoBlink
+2011794898  Meltup.BeautifulOutdoors  Beautiful Outdoors
+2896613924  InertialMage.BeautyStatMod  Beauty Matters
+2982026860  GwinnBleidd.MothballedAndDeadPawns  Better GC: Mothballed and World Pawns
+935982361  falconne.BWM  Better Workbench Management
+3522759531  RedMattis.BiggerGravship  Bigger Gravships (and other Odyssey spaceship related settings)
+2590854091  Udon.BouquetOfLove  Bouquet of Love
+3523011187  buildfromstorage.programmerlily.com  Build From Storage
+867467808  brrainz.cameraplus  Camera+
+3446237098  TOT.CeleTech.MKIII  CeleTech Arsenal MKIII
+3503450120  TOT.CeleTech.Sub.FBS  CeleTech Subsonic Disruptor
+1874644848  void.charactereditor  Character Editor
+3562954061  kirimin.ChatLogOverlay  Chatlog Overlay
+2878376981  Udon.ChildbirthPrayer  Child Birth Prayer
+3537970831  kearril.ChooseWhereToLand  Choose Where To Land
+3566639513  Leo.CleanResearchSort  Clean Research Sort
+3227796435  godlyannihilator.CompletelyClueless  Completely Clueless
+1235181370  Merthsoft.DesignatorShapes  Designator Shapes
+2423311270  Garwel.DestroyItem  Destroy Item
+3587277884  HaiLuan.VoidUniverse  Dlc collaboration - Void universe
+1896806569  gguake.ai.dsfi  Do Something for Idle
+3689911226  assssssqwww.DSFIASQMoreJob  Do Something for Idle - More Actions
+1505423207  dracoix.doormat.r12a  Door Mat
+1446523594  Dubwise.DubsMintMenus  Dubs Mint Menus
+1127530465  Dubwise.Rimatomics  Dubs Rimatomics
+3213994174  Thumb.DurableSpikeTraps  Durable Spike Traps
+3492954974  trigger.eliteRaid  Elite Raid 精英化袭击
+2894401734  SlimeSenpai.EndlessGrowth  EndlessGrowth
+3550544871  fxz.glitterworlddestroyer.mk5  Glitterworld Destroyer 5 - Mechanoid Addon
+1678847247  Telefonmast.GraphicsSettings  Graphics Settings+
+3290742314  Mlie.HiddenEnemyBio  Hidden Enemy Bio (Continued)
+3296362231  ilyvion.laboratory  ilyvion's Laboratory
+3782667656  heimu.RimMomotalk  The Grand Library of 「Mirrored」
+3543873568  dev.soeur.imageopt  Image Opt
+2888037450  Aoba.Fortress.Industrial.Concrete  Industrial concrete
+1516158345  Jaxe.Bubbles  Interaction Bubbles
+3461478214  Linnun.KeepConverting  Keep Converting
+1362098265  kahdeg.Killfeed  Killfeed
+3545384484  nep.landonanything  Land On Anything
+3042607045  ordpus.leftovers  Leftovers
+872762753  erdelf.MinifyEverything  MinifyEverything
+3558393733  msm.moodstressandmotivation  Mood Stress and Motivation
+2891797130  doll.nevergeneraterelations  Never Generate Relations
+2572993856  ordpus.noexplosiononslaughter  No Explosion On Slaughter 移除屠宰死亡爆炸
+2964282061  cedaro.NoHopelessRomance  No Hopeless Romance
+2870045856  Vesper.NotMyFault  Not My Fault
+3524116050  Arkymn.SlowerPawnTickRate  Performance - Slower Pawn Tick Rate
+1279012058  Mehni.PickUpAndHaul  Pick Up And Haul
+2919759689  RSMaintain.Vanya.Polarisbloc.Mechenemy  Polarisbloc - Mechenemy
+3367310887  ponpeco.PFKidsRoom  Ponpeco Furnitures : Kids' Room
+3367534692  ponpeco.PFKSchoolDesk  Ponpeco Furnitures : School Desk
+3513846773  DawnsGlow.qualcolor  Quality Colors (Continued)
+3512466087  hatti.qualitybuilder  QualityBuilder Unofficial 1.6
+2280250569  Mlie.RealDining  RealDining (Continued)
+1555355332  Wemd.RealisticDarknessLight  Realistic Darkness (Light)
+3236257897  ilyvion.RealisticOrbitalTrade  Realistic Orbital Trade
+3001121619  kongkim.ResearchData  Research Data
+858744731  brrainz.reversecommands  Reverse Commands
+1508850027  Jaxe.RimHUD  RimHUD
+3535112473  Maux36.Rimpsyche  Rimpsyche - Personality Core
+2478833213  Sandy.RPGStyleInventory.avilmask.Revamped  RPG Style Inventory Revamped
+3562365100  MemeGoddess.RunAndGun  RunAndGun - Continued
+2878580643  StormShark.SameSexIVF  Samesex IVF
+3225403693  HellRevenger.ScheduledArea  Scheduled Area
+3232242247  MemeGoddess.SearchAndDestroy  Search and Destroy (Continued)
+3255379190  RaccoonCuddler.ShowHair  Show Hair Under Stuff
+2475965842  Mlie.ShowMeYourHands  Show Me Your Hands
+3238976509  Sl4vP0weR.SleepMeditation.1.5  Sleep Meditation
+3220129183  Owlchemist.SmartFarming  Smart Farming
+1504723424  sarg.smartspeed  Smart Speed
+1319782555  weilbyte.snapout  Snap Out!
+3273463237  PureMJ.MjRimMods.StorageRefillHysteresis  Storage Refill Hysteresis
+3597124120  zal.taofc  The Army Of Fetid Corpses (Continued)
+3526934473  rw.mod.transmog  Transmog (Fork)
+3540066516  trigger.universalblueprints  Universal Blueprints
+3396308787  Mlie.UseThisInstead  Use This Instead
+3268401022  VanillaExpanded.VanillaAspirationsExpanded  Vanilla Aspirations Expanded
+2134308519  VanillaExpanded.VCookE  Vanilla Cooking Expanded
+1938420742  VanillaExpanded.VEE  Vanilla Events Expanded
+3309003431  OskarPotocki.VFE.Insectoid2  Vanilla Factions Expanded - Insectoids 2
+1914064942  VanillaExpanded.VCEF  Vanilla Fishing Expanded
+3334272487  VanillaExpanded.VanillaFoodVarietyExpanded  Vanilla Food Variety Expanded
+2688941031  vanillaexpanded.outposts  Vanilla Outposts Expanded
+2134308522  VanillaExpanded.VPlantsE  Vanilla Plants Expanded
+2198652536  VanillaExpanded.VPlantsESucculents  Vanilla Plants Expanded - Succulents
+2842502659  VanillaExpanded.VPsycastsE  Vanilla Psycasts Expanded
+2454918354  VanillaExpanded.VWENL  Vanilla Weapons Expanded - Non-Lethal
+3461137081  visiblewealth.1trickPwnyta  Visible Wealth
+3241577976  gguake.race.vivi  Vivi Race
+3286518227  Xercaine.WallHeater  Wall Heater
+2898431155  Mlie.WeaponMastery  Weapon Mastery (Continued)
+2258431182  co.uk.epicguru.whatsthatmod  What's That Mod
+3504909699  winggar.meaningfulparties  Wing's Meaningful Parties
+2556299118  Udon.LesbianDevotee  レズビアン信奉者
+2556298432  Udon.LesbianizationBrainWashingOperation  レズ化洗脳手術
+3248890712  XXK.HollowKnight.Core  空洞骑士
+2451340446  PuPa.InsectGirls  虫娘 Insect Girls
+3326145525  RI.RimImmortal.Living  边缘仙路-俗世仙工 RimImmortal-Living[1.6]
+3296476341  RI.RimImmortal.Core  边缘仙路-羽化登仙 RimImmortal-Core[1.6]
+3478098371  RI.RimImmortal.Furniture  边缘仙路-雕梁画栋 RimImmortal-Furniture[1.6]
+3225933653  Q.M  青的更多特性【More Traits】
+3613092072  momo.stayinbed  [MOMO]Stay in bed
+2581693737  Nals.FacialAnimationExperimentals  [NL] Facial Animation - Experimentals
+730936602  brrainz.achtung  Achtung!
+3574400467  f1995.ambientlight  Ambient Light
+2039480177  nathanielcwm.BeautifulWater  Beautiful Water (Fork)
+3529844914  Ianlee.CeleTechFaction  CeleTech Faction
+2865361569  IH.Clean.Textures  Clean Textures
+1561769193  avilmask.CommonSense  Common Sense
+3550578949  qiuci.GD5.Expansion  Glitterworld Destroyer 5 Expansion
+3333841184  HaiLuan.Insect  Insectoids 2 - More and stronger insectoids
+3493717994  rabiosus.jumplifter  JumpLifter
+3266224389  fxz.myafufu  Mya's fufu
+2868392160  PeteTimesSix.ResearchReinvented  Research Reinvented
+3578212339  Maux36.Rimpsyche.Disposition  Rimpsyche - Disposition
+3551203752  cj.rimtalk  RimTalk
+2654432921  telardo.RomanceOnTheRim  Romance On The Rim
+3455694362  VanillaExpanded.VCookEHaute  Vanilla Cooking Expanded - Haute
+2134312965  VanillaExpanded.VCookEStews  Vanilla Cooking Expanded - Stews
+2158539170  VanillaExpanded.VCookESushi  Vanilla Cooking Expanded - Sushi
+2468543398  VanillaExpanded.VCEFAddon  Vanilla Fishing Expanded - Fishing Treasures AddOn
+2748889667  VanillaExpanded.VPlantsEMore  Vanilla Plants Expanded - More Plants
+3006389281  VanillaExpanded.VPlantsEMushrooms  Vanilla Plants Expanded - Mushrooms
+2990596478  VanillaExpanded.VPE.Hemosage  Vanilla Psycasts Expanded - Hemosage
+3033779606  VanillaExpanded.VPE.Puppeteer  Vanilla Psycasts Expanded - Puppeteer
+3339063087  Chairheir.VPERunesmith  Vanilla Psycasts Expanded - Runesmith
+3308873789  RI.RimImmortal.Forge  边缘仙路-神机天纵 RimImmortal-Forge[1.6]
+3325655760  nz.RimImmortal.bizarre  边缘仙路-道诡异仙 RimImmortal-Bizarre
+3549106170  atri.mygo.fufu  BanG Dream! MyGO'sfufu
+1722398508  Dubwise.DubsBreakMod  Dubs Break Mod
+3245374432  hekmo.FlavorText  Flavor Text
+3590863552  ferny.ProgressionEducation  Progression: Education
+2868389782  PeteTimesSix.ResearchReinvented.SteppingStones  Research Reinvented: Stepping Stones
+3110971925  Danzen.VPE.BiotechIntegration  Vanilla Psycast Expanded - Biotech Integration
+3400246558  vanillaexpanded.skills  Vanilla Skills Expanded
+3508457318  xerohexa.ViviRaceFacialAnimation  Vivi Race Facial Animation
+3534275396  KRguojiang.fufu  精灵之森的少女茶话会-fufu expanded
+3439473215  RI.RimImmortal.FiveElements  边缘仙路-五行流转 RimImmortal-FiveElements[1.6]
+3323186008  RI.RimImmortal.LRE  边缘仙路-归墟前传
+3414794353  RI.RimImmortal.Faction  边缘仙路-百家争鸣 RimImmortal-Faction[1.6]
+3421959154  BreadMo.Cinders  Cinders of the Embergarden
+3514746737  Epona.EponaDynasticRise  Epona Dynastic Rise
+2960593459  RooAndGloomy.DragonianRaceMod  Gloomy Dragonian race
+2961683592  kalospacer.DragonianMix  Dragonian Mix
+2988200143  Ancot.KiiroRace  Kiiro Race
+2988200826  Ancot.KiiroRaceGenePatch  Kiiro Race Gene Patch
+3674298993  ZuoYao.KiiroOrangeCat  Kiiro Race - Orange Cat Xenotype (绮罗橘猫异种)
+3706665681  ZuoYao.KiiroMaineCoon  Kiiro Race - Maine Coon Xenotype (绮罗缅因异种)
+3739674393  ZuoYao.KiiroRagdoll  Kiiro Race - Ragdoll Xenotype (绮罗布偶异种)
+2944488802  co.uk.epicguru.meleeanimation  Melee Animation
+2816826107  miho.fortifiedoutremer  Miho, the celestial fox
+3256974620  Ancot.MiliraRace  Milira Race
+3257000248  Ancot.MiliraRaceGenePatch  Milira Race Gene Patch
+2477501851  SutSutMan.MinchoTheMintChocoSlimeHARver  Mincho, The Mint Choco Slime ~ HAR ver.
+3292351432  HenTaiLoliTeam.Axolotl  MoeLotl Race
+3473140562  MelonDove.WolfeinRace  Wolfein Race
+3687841204  com.zoshsgahdnkc.WRMegaCorpEdition  Wolfein Race MegaCorp Edition
+3728916624  com.zoshsgahdnkc.WRExtraBackstories  Wolfein Race Extra Backstories
+3473178683  Ancot.WolfeinRaceGenePatch  Wolfein Race Gene Patch
+3728917646  com.zoshsgahdnkc.WRExtraGenes  Wolfein Race Extra Genes
+3578170180  NY.SmeltedLoong  中式龙娘——冶龍 SMELTED LOONG
+3308877707  RI.RimImmortals.SeasonsOfRule  [1.6]边缘仙路-四象之争 RimImmortals-SeasonsOfRule
+3534748687  src.Core.markeazzyh  [SRC]Miho,Star Ring Corporation
+2866467227  tc3wikieditor.compat.AlienTailor  Alien Tailor
+2991489003  Ancot.KiiroFacialAnimation  Kiiro Race Facial Animation
+3555799437  Nyar.NCLvsTW  Mechanoids: Total Warfare
+3260848700  Ancot.MiliraRaceFacialAnimation  Milira Race Facial Animation
+3496629836  Ancot.MilianModification  Milira Tech: Milian Modification
+3292354961  HenTaiLoliTeam.Axolotl.FA  MoeLotl Facial Animation
+3412260468  HenTaiLoliTeam.Axolotl.FactionExpand  MoeLotl Faction Expand
+3413342283  Sanity.MoeLotlSeries.MeleeAnimation  MoeLotl-FactionExpand-MeleeAnimationPatch
+3552083629  MYgongfa.illmime  MoeLotl_gongfa
+3302328100  Andromeda.NiceHands  Nice Hands Retexture
+3473147120  MelonDove.WolfeinRace.FA  Wolfein Race Facial Animation
+3422615030  Valeries.miliraexpansion  瓦莱丽的米莉拉扩展包
+3425427670  Valeries.MoeLotlexpansion  瓦莱丽的萌螈扩展包
+3457113697  RID.miliramoreThings  米莉拉轻工业扩展
+3497791778  mingyue.bao4  绮罗-背景故事拓展
+3036480100  Ancot.KiiroStoryEventsExpanded  Kiiro Story: Events Expanded
+3477405110  Pakerwot.MiliraEventandStortExpandTheTaleofMilira  Milira Event Story Expand: The Tale of Milira
+3454053400  fxz.moelotlzombie.update  MoeLotl: Rigor Mortis
+3560043283  XiyueYM.MiliraExpandedXY  Xiyue's Milira Expanded
+3588393755  Ariandel.MiliraImperium  Milira Faction: Milira Imperium
+3545907507  moqi.Telefonmast.GraphicsSettings.zh  Graphics Settings+ 汉化
+2976632810  cn.zhuzijun.WealthCorrector  WealthCorrector
+3459339805  zh.kahdeg.Killfeed  Killfeed_zh
+3701480464  Matathias.Empire  Empire Refactored
+2785616901  VanillaExpanded.VanillaTradingExpanded  Vanilla Trading Expanded
+2554469600  dame.arcanetechnology  Arcane Technology
+1578693166  Solaris.RatkinRaceMod  NewRatkinPlus
+3715845771  EoralMilk.PawnTextureOffsetAdjuster  Pawn Texture Offset Adjuster
+3043354134  EoralMilk.RatkinGeneExpanded  Ratkin Gene Expanded
+3204817310  EoralMilk.RatkinMoustate  Ratkin: Promised land Ruleless Moustate
+2779404660  bbb.ratkinweapon.morefailure  Ratkin Weapons+
+3318518996  Bendan.RatkinPsycast  [Bendan]RatkinPsycast
+3497716501  Bendan.RatkinPsycast.FuluExpanded  [Bendan]RatkinPsycast Fulu Expanded
+3497720301  Bendan.RatkinPsycast.GlintOfTheBladeExpanded  [Bendan]RatkinPsycast GlintOfTheBlade Expanded
+3497722288  Bendan.RatkinPsycast.MechanicalAscensionExpanded  [Bendan]RatkinPsycast Mechanical Ascension
+3497724828  Bendan.RatkinPsycast.PharmacistExpanded  [Bendan]RatkinPsycast Pharmacist Expanded
+3159926804  OARK.RatkinFaction.OberoniaAurea  [OA]Ratkin Faction: Oberonia aurea
+3300291918  OARK.RatkinFaction.GeneExpand  [OA]Ratkin Gene Expand
+3381392312  OARK.RatkinFaction.ScenarioExpand.Snowstorm  [OA]Ratkin Scenario: Snowstorm Orphan
+3492088220  OARK.RatkinKnightOrderFurniture  [OA]Ratkin : Knight Order(Furniture)
+3394862242  RKK.RatKnights.Core  Ratkin Knights+
+3293914637  fxz.ratkinanomaly.update  Ratkin Anomaly+
+3421431725  RatKin.Extraordinary.Mechanic  RatKin Extraordinary Mechanic
+3383002343  MoManaCha.RatkinTextureUpgrade  Ratkin Texture Upgrade
+3505290557  arodoid.semirandomprogression  Semi Random Research: Progression Fork
+836308268  Dubwise.DubsBadHygiene  Dubs Bad Hygiene
+3603632744  DBH.DrinkPatches1.6Fix  Dubs' Bad Hygiene - More Drinkables 1.6 Fix
+2619214952  Dubwise.DubsCentralHeating  Dubs Central Heating
+3655037598  KogasaStudio.MiliraKiiroCuddle  MiliraKiiroCuddle
+3721760745  Barbariank.MiliraHair  Milira extra hair
+3745917303  YourName.MiliraTonyHair  米莉拉托尼老师发型包
+3626456960  sleepycot.wingsofdemocracy  Milira:Wings of Democracy
+2075974335  psyche.kemomimihouse  kemomimihouse
+2574995438  Moo.Hardworking.Kz  kemomimihouse HardworkingKz
+2211305406  Moo.kemomimihouse.Kz  kemomimihouse Kz
+1778821244  avilmask.NonUnoPinata  Non uno Pinata (don't drop items)
+3663824172  RI.RimImmortal.Exorcism  边缘仙路-镇邪诛鬼 RimImmortal-Exorcism[1.6]
+3698641606  heimu.LittleRedRidingHood  Wolfein extension:"Little Red Riding Hood"
+3707497233  leopoko.wolfeinallegiance  Wolfein Allegiance
+2664723367  Taranchuk.PerformanceOptimizer  Performance Optimizer
+3529433984  Memegoddess.TDSBugFixes  TDS Bug Fixes - Continued
+3697920753  MRK.architectmenuoptimizer  Architect Menu Optimizer
+3692498711  sakurata.ideotickopt  Ideo Tick Optimization

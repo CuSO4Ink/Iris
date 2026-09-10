@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>heimu.LittleRedRidingHood</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_otto&quot;]/tools/li[1]/armorPenetration</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_otto&quot;]/tools/li[1]/armorPenetration</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_otto"]/tools/li[1]</xpath>
+          <value>
+            <armorPenetration>0.9</armorPenetration>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_14mm_syringe&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_14mm_syringe&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_14mm_syringe"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_throwing_knife_Projectile&quot;]/projectile/armorPenetrationBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_throwing_knife_Projectile&quot;]/projectile/armorPenetrationBase</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_throwing_knife_Projectile"]/projectile</xpath>
+          <value>
+            <armorPenetrationBase>0.9</armorPenetrationBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_762_45mm&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_762_45mm&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>22</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_762_45mm"]/projectile</xpath>
+          <value>
+            <damageAmountBase>22</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_Door_Breaking_Axe&quot;]/tools/li[1]/power</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_Door_Breaking_Axe&quot;]/tools/li[1]/power</xpath>
+          <value>
+            <power>28.0</power>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_Door_Breaking_Axe"]/tools/li[1]</xpath>
+          <value>
+            <power>28.0</power>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_9_19mm&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_9_19mm&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>5</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_9_19mm"]/projectile</xpath>
+          <value>
+            <damageAmountBase>5</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_762_51mm&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_762_51mm&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>16</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_762_51mm"]/projectile</xpath>
+          <value>
+            <damageAmountBase>16</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_EMP_20gauge&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_EMP_20gauge&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>19</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_EMP_20gauge"]/projectile</xpath>
+          <value>
+            <damageAmountBase>19</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_E762_51mm&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_E762_51mm&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>13</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_E762_51mm"]/projectile</xpath>
+          <value>
+            <damageAmountBase>13</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_556_45mm&quot;]/projectile/damageAmountBase</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_556_45mm&quot;]/projectile/damageAmountBase</xpath>
+          <value>
+            <damageAmountBase>11</damageAmountBase>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_556_45mm"]/projectile</xpath>
+          <value>
+            <damageAmountBase>11</damageAmountBase>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_XAR_14A&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_XAR_14A&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.55</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_XAR_14A"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.55</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_XAR_14A&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_XAR_14A&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>0.70</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_XAR_14A"]/statBases</xpath>
+          <value>
+            <AccuracyShort>0.70</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_XAR_14A&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_XAR_14A&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.75</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_XAR_14A"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.75</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_HG_XHG_14A&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_HG_XHG_14A&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>0.90</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_HG_XHG_14A"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>0.90</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_HG_XHG_14A&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_HG_XHG_14A&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>1.00</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_HG_XHG_14A"]/statBases</xpath>
+          <value>
+            <AccuracyShort>1.00</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_HG_XHG_14A&quot;]/statBases/AccuracyMedium</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_HG_XHG_14A&quot;]/statBases/AccuracyMedium</xpath>
+          <value>
+            <AccuracyMedium>0.90</AccuracyMedium>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_HG_XHG_14A"]/statBases</xpath>
+          <value>
+            <AccuracyMedium>0.90</AccuracyMedium>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_HG_XHG_14A&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_HG_XHG_14A&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.75</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_HG_XHG_14A"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.75</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_throwing_knife&quot;]/statBases/AccuracyTouch</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_throwing_knife&quot;]/statBases/AccuracyTouch</xpath>
+          <value>
+            <AccuracyTouch>1.00</AccuracyTouch>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_throwing_knife"]/statBases</xpath>
+          <value>
+            <AccuracyTouch>1.00</AccuracyTouch>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_throwing_knife&quot;]/statBases/AccuracyShort</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_throwing_knife&quot;]/statBases/AccuracyShort</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_throwing_knife"]/statBases</xpath>
+          <value>
+            <AccuracyShort>0.90</AccuracyShort>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_throwing_knife&quot;]/statBases/AccuracyMedium</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_throwing_knife&quot;]/statBases/AccuracyMedium</xpath>
+          <value>
+            <AccuracyMedium>0.80</AccuracyMedium>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_throwing_knife"]/statBases</xpath>
+          <value>
+            <AccuracyMedium>0.80</AccuracyMedium>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName=&quot;RW_throwing_knife&quot;]/statBases/AccuracyLong</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName=&quot;RW_throwing_knife&quot;]/statBases/AccuracyLong</xpath>
+          <value>
+            <AccuracyLong>0.70</AccuracyLong>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="RW_throwing_knife"]/statBases</xpath>
+          <value>
+            <AccuracyLong>0.70</AccuracyLong>
+          </value>
+        </nomatch>
+      </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>
