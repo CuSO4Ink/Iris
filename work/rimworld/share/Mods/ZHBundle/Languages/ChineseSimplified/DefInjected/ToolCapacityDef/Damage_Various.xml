@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: necronoid cut -->
+  <NecronoidCut.label>殁疫割伤</NecronoidCut.label>
+  
+  <!-- EN: necronoid severe cut -->
+  <NecronoidCutMajor.label>殁疫割伤</NecronoidCutMajor.label>
+  
+  <!-- EN: necronoid stab -->
+  <NecronoidStab.label>殁疫刺伤</NecronoidStab.label>
+  
+</LanguageData>

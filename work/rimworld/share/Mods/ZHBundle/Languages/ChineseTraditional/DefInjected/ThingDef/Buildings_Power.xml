@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: hamster wheel generator -->
+  <RK_HamsterWheelGenerator.label>倉鼠輪發電機</RK_HamsterWheelGenerator.label>
+  <!-- EN: Produces electricity from a hamster wheel. The amount of power generated is proportional to the running speed. -->
+  <RK_HamsterWheelGenerator.description>通過人力跑輪發電。它的電力輸出與運行速度成正比。</RK_HamsterWheelGenerator.description>
+  
+</LanguageData>

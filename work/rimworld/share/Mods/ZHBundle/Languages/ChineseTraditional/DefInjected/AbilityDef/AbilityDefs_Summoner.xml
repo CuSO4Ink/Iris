@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 사냥매 날리기 -->
+  <Miho_Ability_Hawk.label>獵鷹襲擾</Miho_Ability_Hawk.label>
+  <!-- EN: 사냥매를 날립니다. 사냥매가 적을 끈질기게 괴롭힐것 입니다. -->
+  <Miho_Ability_Hawk.description>在目標點處拋出一只秘靈獵鷹，它會自動對周圍的敵人發起攻擊。秘靈獵鷹將在7小時後自動消散。</Miho_Ability_Hawk.description>
+  
+  <!-- EN: 메카나이트 혐오체 소환 -->
+  <Miho_Ability_Spawn_Abomi.label>魔械現形</Miho_Ability_Spawn_Abomi.label>
+  <!-- EN: 여우들이 상상 할 수 있는 가장 끔찍한 전쟁병기를 소환합니다. -->
+  <Miho_Ability_Spawn_Abomi.description>在目標點處召喚一只駭憎魔械，它是美狐們所能想象出的最恐怖的戰爭機器。駭憎魔械將在7小時後自動消散。</Miho_Ability_Spawn_Abomi.description>
+  
+  <!-- EN: 칼날나비때 소환 -->
+  <Miho_Ability_Spawn_Butterfly.label>刃蝶翩舞</Miho_Ability_Spawn_Butterfly.label>
+  <!-- EN: 굉장히 날카로운 날개를 지닌 나비때를 소환합니다. -->
+  <Miho_Ability_Spawn_Butterfly.description>在目標點處召喚一群刃舞蝶，它們會自動對周圍的敵人發起攻擊。刃舞蝶將在7小時後自動消散。</Miho_Ability_Spawn_Butterfly.description>
+  
+  <!-- EN: 운반여우 소환 -->
+  <Miho_Ability_Spawn_Fox.label>靈狐躍動</Miho_Ability_Spawn_Fox.label>
+  <!-- EN: 정착지의 짐들을 운반하는 작은 도우미를 소환합니다. -->
+  <Miho_Ability_Spawn_Fox.description>在目標點處召喚一隻秘靈狐，它會自動協助搬運物品。秘靈狐將在7天後自動消散。</Miho_Ability_Spawn_Fox.description>
+  
+  <!-- EN: 나약의 창 소환 -->
+  <Miho_Ability_Spawn_Turret.label>弱化禦槍</Miho_Ability_Spawn_Turret.label>
+  <!-- EN: 적을 약화시키는 자동포탑을 소환합니다. -->
+  <Miho_Ability_Spawn_Turret.description>在目標點處召喚一台形似長槍的自動砲塔，它發射的弱化激光會增加敵人所受的傷害。</Miho_Ability_Spawn_Turret.description>
+  
+</LanguageData>

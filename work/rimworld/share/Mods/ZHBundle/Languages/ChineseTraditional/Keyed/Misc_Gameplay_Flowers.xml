@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+
+	
+	<!-- EN: Blooming Flower Zone -->
+  <VPE_BloomingFlowerZone>開花植物種植區</VPE_BloomingFlowerZone>
+	<!-- EN: Create a zone where your colonists will try to grow blooming flowers. -->
+  <VPE_BloomingFlowerZoneDesc>創建一個區域，殖民者會在其中嘗試種植當季開放的花卉。</VPE_BloomingFlowerZoneDesc>
+	
+
+</LanguageData>

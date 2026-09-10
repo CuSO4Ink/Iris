@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: MoeLotl LingXing Hair Ornament -->
+  <TAWM_Axolotl_LingXing.label>萌螈 棂星发卡</TAWM_Axolotl_LingXing.label>
+  <!-- EN: Not the dynasty's mainstream style... It seems to create a subtle connection between the wearer and the world. This technique was later shared with the dynasty without compensation.\n(TAWM's LitteMoeLotlExpended) -->
+  <TAWM_Axolotl_LingXing.description>并非王朝主流风格样式的头部装饰...想要复刻原主对它的独特改造会比较困难。</TAWM_Axolotl_LingXing.description>
+  
+  <!-- EN: MoeLotl MuLan Robe -->
+  <TAWM_Axolotl_MuLan.label>萌螈 暮澜袍</TAWM_Axolotl_MuLan.label>
+  <!-- EN: Compared to the TianMing Shirt, it carries a heavier sense of melancholy. It uses the same enhancement techniques as the TianMing Shirt. The MoeLotl have mixed opinions about this modification.\n(TAWM's LitteMoeLotlExpended) -->
+  <TAWM_Axolotl_MuLan.description>经由原主个人改造后的灵衣外套，制作上会比普通衣物稍难一些。</TAWM_Axolotl_MuLan.description>
+  
+  <!-- EN: MoeLotl QingFeng Shirt -->
+  <TAWM_Axolotl_QingFeng.label>萌螈 清风灵衣</TAWM_Axolotl_QingFeng.label>
+  <!-- EN: It is said to be a shirt that pairs with the MuLan Robe. The original owner mixed something special into the garment during its modification... After it spread through the dynasty, people found its aura when worn alone differs entirely from when worn as a set.\n(TAWM's LitteMoeLotlExpended) -->
+  <TAWM_Axolotl_QingFeng.description>是与暮澜袍成套的灵衣...显然单独穿这件衣服的气质会完全不一样。</TAWM_Axolotl_QingFeng.description>
+  
+  <Axolotl_Sunglasses_TAWM.label>萌螈 墨镜</Axolotl_Sunglasses_TAWM.label>
+  <Axolotl_Sunglasses_TAWM.description>经过开光的墨镜，能够帮助佩戴者识别风水宝地，保佑财运亨通...但目前它主人的境况已经说明了这种效果可信度不高。</Axolotl_Sunglasses_TAWM.description>
+</LanguageData>

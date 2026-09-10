@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Longshot PP-10 -->
+
+  <RNGun_Longshot_PP10AMR.label>远射型PP-10</RNGun_Longshot_PP10AMR.label>
+  <RNGun_Longshot_PP10AMR.description>远射型PP-10，装有14.5x115mm反器材步枪子弹。该步枪基于Ironsight 33-F部件，由Fairview公司幸存的最优秀的工程师和武器技术人员进行了大幅改进。它与幽灵大炮发展过程得到了内城中最强大派系的赞助。</RNGun_Longshot_PP10AMR.description>
+  <RNGun_Longshot_PP10AMR.tools.0.label>枪托</RNGun_Longshot_PP10AMR.tools.0.label>
+  <RNGun_Longshot_PP10AMR.tools.1.label>枪管</RNGun_Longshot_PP10AMR.tools.1.label>
+  <RNGun_Longshot_PP10AMR.tools.2.label>刺刀</RNGun_Longshot_PP10AMR.tools.2.label>
+
+
+  <!-- Wraith Cannon -->
+
+  <RNGun_WraithCannon_HMG.label>幽灵大炮</RNGun_WraithCannon_HMG.label>
+  <RNGun_WraithCannon_HMG.description>“无限”幽灵大炮，装有14.5x115mm反器材步枪子弹。它以加特林的原始设计为基础，是由以“AdminPwn”为名的世界穿越者在逃离受困的死亡世界前，创造的最后一件武器。他在制造过程中融入了高精尖科技，使这种武器具备了弹药内部自我复制系统的能力，从而使这种武器被称为“无限”幽灵大炮。\n\n这款机枪在病毒爆发后创造了历史，成为Fairview自给自足世界中第一款超越GAU-19的武器。它是通过幸存的工程师和武器技术人员的共同努力开发出来的，旨在武装内城最强大的幸存者以应对恶魔猎犬的威胁。\n\n它被命名为“幽灵大炮”，因为最早的武器测试是针对Nerotonin-4型幽灵变体进行的。</RNGun_WraithCannon_HMG.description>
+  <RNGun_WraithCannon_HMG.tools.0.label>枪尖</RNGun_WraithCannon_HMG.tools.0.label>
+  <RNGun_WraithCannon_HMG.tools.1.label>巨型枪管</RNGun_WraithCannon_HMG.tools.1.label>
+
+
+  <!-- Death Machine -->
+
+  <RNGun_GAU19_HMG.label>GAU-19</RNGun_GAU19_HMG.label>
+  <RNGun_GAU19_HMG.description>GAU-19/A被设计用于接收标准NATO .50口径M9连发弹药。射速可选择为每分钟1000发或2000发，悍马装备套件版本的射击速度为每分钟1300发。射击时的平均后座力为1.7kN、2.2kN或2.8kN，具体取决于射击速度。</RNGun_GAU19_HMG.description>
+  <RNGun_GAU19_HMG.tools.0.label>枪管</RNGun_GAU19_HMG.tools.0.label>
+
+
+  <!-- FN MAG -->
+
+  <RNGun_DuskMAG_HMG.label>薄暝MAG</RNGun_DuskMAG_HMG.label>
+  <RNGun_DuskMAG_HMG.description>薄暝MAG是一种便携式重机枪，12.7x99mm。\n\n作为薄暝系列的一部分，这些罕见的武器系统笼罩在神秘之中。传说在其示意图被解锁复制之前，获得它的唯一途径是在一个因病毒爆发而失去的古老世界——Fairview这个封闭的世界——赢得一个生还者的血痕。一个仅被知道名为“AdminPwn”的世界穿越者是薄暝装备的作者，他同时也是在Fairview中心将装备授予胜利者的人。</RNGun_DuskMAG_HMG.description>
+  <RNGun_DuskMAG_HMG.tools.0.label>枪托</RNGun_DuskMAG_HMG.tools.0.label>
+  <RNGun_DuskMAG_HMG.tools.1.label>枪管</RNGun_DuskMAG_HMG.tools.1.label>
+
+
+  <!-- Corpse Blaster -->
+
+  <RNGun_CorpseBlaster_Shotgun.label>尸体起爆器</RNGun_CorpseBlaster_Shotgun.label>
+  <RNGun_CorpseBlaster_Shotgun.description>一把怪异的半自动霰弹枪，由保存下来的N-4“活尸”遗骸制成。它使用10号口径弹药。目睹过这种武器表演的生还者声称，在发射这种武器时，仍然可以听到亡灵的尖啸。</RNGun_CorpseBlaster_Shotgun.description>
+  <RNGun_CorpseBlaster_Shotgun.tools.0.label>枪托</RNGun_CorpseBlaster_Shotgun.tools.0.label>
+  <RNGun_CorpseBlaster_Shotgun.tools.1.label>枪管</RNGun_CorpseBlaster_Shotgun.tools.1.label>
+
+
+  <!-- AA-12 -->
+
+  <RNGun_DuskStriker_Shotgun.label>薄暝突击步枪</RNGun_DuskStriker_Shotgun.label>
+  <RNGun_DuskStriker_Shotgun.description>薄暝突击步枪是一种全自动霰弹枪，装有10号口径炮弹。\n\n作为薄暝系列的一部分，这些罕见的武器系统笼罩在神秘之中。传说在其示意图被解锁复制之前，获得它的唯一途径是在一个因病毒爆发而失去的古老世界——Fairview这个封闭的世界——赢得一个生还者的血痕。一个仅被知道名为“AdminPwn”的世界穿越者是薄暝装备的作者，他同时也是在Fairview中心将装备授予胜利者的人。</RNGun_DuskStriker_Shotgun.description>
+  <RNGun_DuskStriker_Shotgun.tools.0.label>枪托</RNGun_DuskStriker_Shotgun.tools.0.label>
+  <RNGun_DuskStriker_Shotgun.tools.1.label>枪管</RNGun_DuskStriker_Shotgun.tools.1.label>
+
+
+  <!-- Dusk Enforcer -->
+
+  <RNGun_DuskEnforcer_Revolver.label>薄暝执法者</RNGun_DuskEnforcer_Revolver.label>
+  <RNGun_DuskEnforcer_Revolver.description>薄暝执法者，一把令人费解的半自动手枪。能够无限开火而不需弹药，除了制造者之外，所有人都不知道这是如何做到的。通过弹道研究，击发时从枪管中射出的子弹在进入和退出伤口的损伤程度类似于.50口径手枪子弹。\n\n作为薄暝系列的一部分，这些罕见的武器系统笼罩在神秘之中。传说在其示意图被解锁复制之前，获得它的唯一途径是在一个因病毒爆发而失去的古老世界——Fairview这个封闭的世界——赢得一个生还者的血痕。一个仅被知道名为“AdminPwn”的世界穿越者是薄暝装备的作者，他同时也是在Fairview中心将装备授予胜利者的人。</RNGun_DuskEnforcer_Revolver.description>
+  <RNGun_DuskEnforcer_Revolver.tools.0.label>握把</RNGun_DuskEnforcer_Revolver.tools.0.label>
+  <RNGun_DuskEnforcer_Revolver.tools.1.label>枪管</RNGun_DuskEnforcer_Revolver.tools.1.label>
+
+
+  <!-- M60 -->
+
+  <RNGun_CorpseDestroyer_GPMG.label>尸体摧毁者</RNGun_CorpseDestroyer_GPMG.label>
+  <RNGun_CorpseDestroyer_GPMG.description>兼具破坏性和让人憎恶的程度，没有人知道这种武器是如何制造的，是谁设计以及在何处制造的。这是一款通用机枪，7.62x51mm。它是由保存下来的N-4“活尸”遗骸制成的，传言称他们仍有自己的想法，感染者的尖啸构成了发射时仍能听到的武器部件。</RNGun_CorpseDestroyer_GPMG.description>
+  <RNGun_CorpseDestroyer_GPMG.tools.0.label>枪托</RNGun_CorpseDestroyer_GPMG.tools.0.label>
+  <RNGun_CorpseDestroyer_GPMG.tools.1.label>枪管</RNGun_CorpseDestroyer_GPMG.tools.1.label>
+
+
+  <!-- dusk carbine -->
+
+  <RNGun_DuskCarbine_DMR.label>薄暝卡宾枪</RNGun_DuskCarbine_DMR.label>
+  <RNGun_DuskCarbine_DMR.description>薄暝卡宾枪。一种光滑的半自动长枪管武器，12.7x99mm。\n\n作为薄暝系列的一部分，这些罕见的武器系统笼罩在神秘之中。传说在其示意图被解锁复制之前，获得它的唯一途径是在一个因病毒爆发而失去的古老世界——Fairview这个封闭的世界——赢得一个生还者的血痕。一个仅被知道名为“AdminPwn”的世界穿越者是薄暝装备的作者，他同时也是在Fairview中心将装备授予胜利者的人。</RNGun_DuskCarbine_DMR.description>
+  <RNGun_DuskCarbine_DMR.tools.0.label>枪托</RNGun_DuskCarbine_DMR.tools.0.label>
+  <RNGun_DuskCarbine_DMR.tools.1.label>枪管</RNGun_DuskCarbine_DMR.tools.1.label>
+
+
+  <!-- GAUSS -->
+
+  <RNGun_DFGAUSSRifle_AMR.label>GAUSS步枪</RNGun_DFGAUSSRifle_AMR.label>
+  <RNGun_DFGAUSSRifle_AMR.description>一种步枪，最初是为V.O.I.D内的某人定制的。\n\n一位以AdminPwn为名的世界穿越者在发现外星资源后，为这个人制作了这把步枪。GAUSS步枪在对付那些于内城肆虐的Nerotonin-4型变体展现出明显优势，这是一个地狱般的地方，生还者们每天都要为生存而战。</RNGun_DFGAUSSRifle_AMR.description>
+  <RNGun_DFGAUSSRifle_AMR.tools.0.label>枪托</RNGun_DFGAUSSRifle_AMR.tools.0.label>
+  <RNGun_DFGAUSSRifle_AMR.tools.1.label>枪管</RNGun_DFGAUSSRifle_AMR.tools.1.label>
+
+
+</LanguageData>

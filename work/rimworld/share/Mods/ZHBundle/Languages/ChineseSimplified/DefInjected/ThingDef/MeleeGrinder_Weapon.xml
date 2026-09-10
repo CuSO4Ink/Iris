@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- USE TOOLS/CAPACITIES TO MAKE CUSTOM MELEE SOUNDS (Thank you to O-Negative) -->
+
+  <RNMelee_DFGrinder_Chainsaw.label>研磨机</RNMelee_DFGrinder_Chainsaw.label>
+  <RNMelee_DFGrinder_Chainsaw.description>研磨机，一种具有神秘起源的链锯。“ASH”一词用深红色字母写在它的侧面。传言说，被杀害的敌人的灵魂是这把电锯的高功率引擎的动力来源。</RNMelee_DFGrinder_Chainsaw.description>
+  <RNMelee_DFGrinder_Chainsaw.tools.0.label>锯尖</RNMelee_DFGrinder_Chainsaw.tools.0.label>
+  <RNMelee_DFGrinder_Chainsaw.tools.1.label>锯刃</RNMelee_DFGrinder_Chainsaw.tools.1.label>
+
+
+</LanguageData>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: pellet count -->
+  <VV_BulletPelletCount.label>弹丸数量</VV_BulletPelletCount.label>
+  <!-- EN: The amount of bullet pellets each time the weapon is fired. -->
+  <VV_BulletPelletCount.description>每次武器开火发射的弹丸数量。</VV_BulletPelletCount.description>
+  
+  <!-- EN: growth points multiplier -->
+  <VV_GrowthPointsFactor.label>成长点乘数</VV_GrowthPointsFactor.label>
+  <!-- EN: It shows how many growth points a child acquires. -->
+  <VV_GrowthPointsFactor.description>显示一个儿童能获得多少成长点。</VV_GrowthPointsFactor.description>
+  
+  <!-- EN: melee mana cost -->
+  <VV_MeleeWeapon_ManaCost.label>近战魔能消耗</VV_MeleeWeapon_ManaCost.label>
+  <!-- EN: The amount of mana consumed each time the weapon used in melee combat. Even if mana is insufficient, it can still be used but it won't perform at its full potential. -->
+  <VV_MeleeWeapon_ManaCost.description>每次在近战中使用该武器时消耗的魔能量。魔能不足时不能发挥其全部潜力，但武器本身仍可使用。</VV_MeleeWeapon_ManaCost.description>
+  
+  <!-- EN: ranged mana cost -->
+  <VV_RangedWeapon_ManaCost.label>远程魔能消耗</VV_RangedWeapon_ManaCost.label>
+  <!-- EN: The amount of mana consumed each time the weapon is fired. If mana is insufficient, weapon can no longer shoot. -->
+  <VV_RangedWeapon_ManaCost.description>每次在使用该武器开火时消耗的魔能量，魔能不足时无法开火。</VV_RangedWeapon_ManaCost.description>
+  
+</LanguageData>

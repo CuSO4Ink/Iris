@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: gather animal resource -->
+  <VEF_AnimalResource.label>收获动物产物</VEF_AnimalResource.label>
+  <!-- EN: gathering animal resource from -->
+  <VEF_AnimalResource.gerund>收获动物产物</VEF_AnimalResource.gerund>
+  <!-- EN: gather animal resource from -->
+  <VEF_AnimalResource.verb>收获动物产物</VEF_AnimalResource.verb>
+  
+  <!-- EN: destroy items -->
+  <VEF_DestroyItems.label>摧毁物品</VEF_DestroyItems.label>
+  <!-- EN: destroying items -->
+  <VEF_DestroyItems.gerund>摧毁物品</VEF_DestroyItems.gerund>
+  <!-- EN: destroy items -->
+  <VEF_DestroyItems.verb>摧毁物品</VEF_DestroyItems.verb>
+  
+</LanguageData>

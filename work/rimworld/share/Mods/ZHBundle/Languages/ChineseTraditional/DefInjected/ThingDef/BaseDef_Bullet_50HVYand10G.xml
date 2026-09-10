@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Miscellaneous -->
+
+  <RHBullet_50CalFMJ_HMG.label>.50 BMG 子彈</RHBullet_50CalFMJ_HMG.label>
+
+
+  <!-- 14mm (Nerfed) -->
+
+  <RHBullet_57CalFMJ_HMG.label>14.5x114mm 子彈</RHBullet_57CalFMJ_HMG.label>
+  <RHBullet_57CalFMJ.label>14.5x114mm 子彈</RHBullet_57CalFMJ.label>
+
+
+  <!-- 10 Gauge -->
+
+  <RNBullet_10Gauge_Shotgun.label>霰彈槍沖擊</RNBullet_10Gauge_Shotgun.label>
+
+
+  <!-- Rail -->
+
+  <RNBullet_DF_GAUSSRifle.label>高斯來復槍</RNBullet_DF_GAUSSRifle.label>
+
+
+</LanguageData>

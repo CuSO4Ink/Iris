@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 율령제 -->
+  <Miho_MihoicCodeofLaw.label>美狐礼律</Miho_MihoicCodeofLaw.label>
+  <!-- EN: 가장 보편적인 미호들의 법치. -->
+  <Miho_MihoicCodeofLaw.description>美狐族社会所普遍遵循的仪礼与律法。</Miho_MihoicCodeofLaw.description>
+  <!-- EN:
+    <li>episode(tag=meme_Miho_MihoicCodeofLaw)  ->저 계집들이 제노휴먼이 아니라고? 마치 음침한 펭귄놈들이 인간이라는 것 보다 웃긴 소리같군.\n\n...\n\n항성에게 축복받은 여우들의 성간 봉건제국, 여우들은 그 은혜를 갚기위해 기약없는 탐사를 떠납니다...</li>
+    <li>episode(tag=meme_Miho_MihoicCodeofLaw)  ->아무래도 인간놈들을 애완동물로 삼아버리는게 좋겠어. 딱히 복수의 영역은 아니야! 그냥 너희들이 귀여울 뿐이라고.\n\n...\n\n항성에게 축복받은 여우들의 성간 봉건제국, 여우들은 그 은혜를 갚기위해 기약없는 탐사를 떠납니다...</li>
+    <li>episode(tag=meme_Miho_MihoicCodeofLaw)  ->하드웨어는 인간인데, 소프트웨어는 완전 여우야.\n\n...\n\n항성에게 축복받은 여우들의 성간 봉건제국, 여우들은 그 은혜를 갚기위해 기약없는 탐사를 떠납니다...</li>
+  -->
+  <Miho_MihoicCodeofLaw.descriptionMaker.rules.rulesStrings>
+    <li>episode(tag=meme_Miho_MihoicCodeofLaw)  ->那些狐耳美少女居然不是异种人？天下竟有如此荒谬之事！\n\n...\n\n为了报答赋予他们智慧的超凡智能，美狐族建立起了庞大的星际巨企帝国，并开始无止境地收集财富...</li>
+    <li>episode(tag=meme_Miho_MihoicCodeofLaw)  ->比起平等交流，美狐族更喜欢将人类当做宠物看待。这样做并非为了报复，仅仅是因为他们觉得人类很可爱罢了。\n\n...\n\n为了报答赋予他们智慧的超凡智能，美狐族建立起了庞大的星际巨企帝国，并开始无止境地收集财富...</li>
+    <li>episode(tag=meme_Miho_MihoicCodeofLaw)  ->如果将人类比作硬件的话，那么美狐族就是软件。\n\n...\n\n为了报答赋予他们智慧的超凡智能，美狐族建立起了庞大的星际巨企帝国，并开始无止境地收集财富...</li>
+  </Miho_MihoicCodeofLaw.descriptionMaker.rules.rulesStrings>
+  <!-- EN:
+    <li>memeLeaderNoun->총재</li>
+    <li>memeMoralist->태양사</li>
+    <li>memeMoralist->유타</li>
+    <li>memeMoralist->심방</li>
+    <li>memeMoralist->신내림이</li>
+  -->
+  <Miho_MihoicCodeofLaw.generalRules.rulesStrings>
+    <li>memeLeaderNoun->总裁</li>
+    <li>memeMoralist->干事</li>
+    <li>memeMoralist->主管</li>
+    <li>memeMoralist->总监</li>
+    <li>memeMoralist->助理</li>
+  </Miho_MihoicCodeofLaw.generalRules.rulesStrings>
+  <!-- EN: 미호 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.0.adjective>美狐</Miho_MihoicCodeofLaw.symbolPacks.0.adjective>
+  <!-- EN: 미호 율령제 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.0.ideoName>美狐礼律</Miho_MihoicCodeofLaw.symbolPacks.0.ideoName>
+  <!-- EN: 여우과 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.0.member>美狐至上者</Miho_MihoicCodeofLaw.symbolPacks.0.member>
+  <!-- EN: 미호 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.1.adjective>美狐</Miho_MihoicCodeofLaw.symbolPacks.1.adjective>
+  <!-- EN: 미호율 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.1.ideoName>美狐法理</Miho_MihoicCodeofLaw.symbolPacks.1.ideoName>
+  <!-- EN: 여우과 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.1.member>美狐至上者</Miho_MihoicCodeofLaw.symbolPacks.1.member>
+  <!-- EN: 미호 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.2.adjective>美狐</Miho_MihoicCodeofLaw.symbolPacks.2.adjective>
+  <!-- EN: 천상 신전법 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.2.ideoName>天授律法</Miho_MihoicCodeofLaw.symbolPacks.2.ideoName>
+  <!-- EN: 여우과 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.2.member>美狐至上者</Miho_MihoicCodeofLaw.symbolPacks.2.member>
+  <!-- EN: 미호 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.3.adjective>美狐</Miho_MihoicCodeofLaw.symbolPacks.3.adjective>
+  <!-- EN: 여우 보통법 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.3.ideoName>美狐之法</Miho_MihoicCodeofLaw.symbolPacks.3.ideoName>
+  <!-- EN: 여우과 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.3.member>美狐至上者</Miho_MihoicCodeofLaw.symbolPacks.3.member>
+  <!-- EN: 미호 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.4.adjective>美狐</Miho_MihoicCodeofLaw.symbolPacks.4.adjective>
+  <!-- EN: 여우법 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.4.ideoName>美狐律法</Miho_MihoicCodeofLaw.symbolPacks.4.ideoName>
+  <!-- EN: 여우과 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.4.member>美狐至上者</Miho_MihoicCodeofLaw.symbolPacks.4.member>
+  <!-- EN: 미호 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.5.adjective>美狐</Miho_MihoicCodeofLaw.symbolPacks.5.adjective>
+  <!-- EN: 불페스법 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.5.ideoName>美狐至上</Miho_MihoicCodeofLaw.symbolPacks.5.ideoName>
+  <!-- EN: 여우과 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.5.member>美狐至上者</Miho_MihoicCodeofLaw.symbolPacks.5.member>
+  <!-- EN: 미호 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.6.adjective>美狐</Miho_MihoicCodeofLaw.symbolPacks.6.adjective>
+  <!-- EN: 항성법 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.6.ideoName>恒星礼律</Miho_MihoicCodeofLaw.symbolPacks.6.ideoName>
+  <!-- EN: 여우과 -->
+  <Miho_MihoicCodeofLaw.symbolPacks.6.member>美狐至上者</Miho_MihoicCodeofLaw.symbolPacks.6.member>
+  <!-- EN: 신단 -->
+  <Miho_MihoicCodeofLaw.worshipRoomLabel>圣坛</Miho_MihoicCodeofLaw.worshipRoomLabel>
+  
+</LanguageData>

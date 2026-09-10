@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: enslaved alien prisoner -->
+  <HAR_Alien_EnslavedPrisoner_Disapproved.stages.enslaved_alien_prisoner.label>奴役外星种族囚犯</HAR_Alien_EnslavedPrisoner_Disapproved.stages.enslaved_alien_prisoner.label>
+  <!-- EN: I enslaved an alien. It's hard to justify such actions. -->
+  <HAR_Alien_EnslavedPrisoner_Disapproved.stages.enslaved_alien_prisoner.description>我奴役了某个外星种族。我很难为这些行为辩解。</HAR_Alien_EnslavedPrisoner_Disapproved.stages.enslaved_alien_prisoner.description>
+  
+  <!-- EN: enslaved alien prisoner -->
+  <HAR_Alien_EnslavedPrisoner_Honorable.stages.enslaved_alien_prisoner.label>奴役外星种族囚犯</HAR_Alien_EnslavedPrisoner_Honorable.stages.enslaved_alien_prisoner.label>
+  <!-- EN: I took an alien into slavery. With no choice, they had to submit to me. -->
+  <HAR_Alien_EnslavedPrisoner_Honorable.stages.enslaved_alien_prisoner.description>我把某个外星种族变成了奴隶。他别无选择，只能向我屈服。</HAR_Alien_EnslavedPrisoner_Honorable.stages.enslaved_alien_prisoner.description>
+  
+  <!-- EN: enslaved alien prisoner -->
+  <HAR_Alien_EnslavedPrisoner_Horrible.stages.enslaved_alien_prisoner.label>奴役外星种族囚犯</HAR_Alien_EnslavedPrisoner_Horrible.stages.enslaved_alien_prisoner.label>
+  <!-- EN: I forced an alien into slavery. How can I justify that? -->
+  <HAR_Alien_EnslavedPrisoner_Horrible.stages.enslaved_alien_prisoner.description>我强迫某个外星种族成为奴隶。我该怎样去解释这一切？</HAR_Alien_EnslavedPrisoner_Horrible.stages.enslaved_alien_prisoner.description>
+  
+  <!-- EN: enslaved alien prisoner -->
+  <HAR_Alien_EnslavedPrisoner_Know_Abhorrent.stages.enslaved_alien_prisoner.label>奴役外星种族囚犯</HAR_Alien_EnslavedPrisoner_Know_Abhorrent.stages.enslaved_alien_prisoner.label>
+  
+  <!-- EN: enslaved alien prisoner -->
+  <HAR_Alien_EnslavedPrisoner_Know_Disapproved.stages.enslaved_alien_prisoner.label>奴役外星种族囚犯</HAR_Alien_EnslavedPrisoner_Know_Disapproved.stages.enslaved_alien_prisoner.label>
+  
+  <!-- EN: alien prisoner enslaved -->
+  <HAR_Alien_EnslavedPrisoner_Know_Disapproved_Mood.stages.alien_prisoner_enslaved.label>囚犯被奴役</HAR_Alien_EnslavedPrisoner_Know_Disapproved_Mood.stages.alien_prisoner_enslaved.label>
+  <!-- EN: We enslaved an alien. We shouldn't have done that. -->
+  <HAR_Alien_EnslavedPrisoner_Know_Disapproved_Mood.stages.alien_prisoner_enslaved.description>我们奴役了某个外星种族。我们不应该那样做。</HAR_Alien_EnslavedPrisoner_Know_Disapproved_Mood.stages.alien_prisoner_enslaved.description>
+  
+  <!-- EN: enslaved alien prisoner -->
+  <HAR_Alien_EnslavedPrisoner_Know_Honorable.stages.enslaved_alien_prisoner.label>奴役外星种族囚犯</HAR_Alien_EnslavedPrisoner_Know_Honorable.stages.enslaved_alien_prisoner.label>
+  
+  <!-- EN: alien prisoner enslaved -->
+  <HAR_Alien_EnslavedPrisoner_Know_Honorable_Mood.stages.alien_prisoner_enslaved.label>囚犯被奴役</HAR_Alien_EnslavedPrisoner_Know_Honorable_Mood.stages.alien_prisoner_enslaved.label>
+  <!-- EN: We enslaved an alien. Now they know our honor and power! -->
+  <HAR_Alien_EnslavedPrisoner_Know_Honorable_Mood.stages.alien_prisoner_enslaved.description>我们奴役了某个外星种族。是时候让他们知道我们的尊严与力量了！</HAR_Alien_EnslavedPrisoner_Know_Honorable_Mood.stages.alien_prisoner_enslaved.description>
+  
+  <!-- EN: enslaved alien prisoner -->
+  <HAR_Alien_EnslavedPrisoner_Know_Horrible.stages.enslaved_alien_prisoner.label>奴役外星种族囚犯</HAR_Alien_EnslavedPrisoner_Know_Horrible.stages.enslaved_alien_prisoner.label>
+  
+  <!-- EN: alien prisoner enslaved -->
+  <HAR_Alien_EnslavedPrisoner_Know_Horrible_Mood.stages.alien_prisoner_enslaved.label>囚犯被奴役</HAR_Alien_EnslavedPrisoner_Know_Horrible_Mood.stages.alien_prisoner_enslaved.label>
+  <!-- EN: We enslaved an alien. What a horrible thing to do to another sapient being. -->
+  <HAR_Alien_EnslavedPrisoner_Know_Horrible_Mood.stages.alien_prisoner_enslaved.description>我们奴役了某个外星种族。奴役他们是一件多么可怕的事情。</HAR_Alien_EnslavedPrisoner_Know_Horrible_Mood.stages.alien_prisoner_enslaved.description>
+  
+  <!-- EN: alien slaves in colony -->
+  <HAR_Alien_Slavery_Abhorrent_SlavesInColony.stages.alien_slaves_in_colony.label>殖民地有外星种族奴隶</HAR_Alien_Slavery_Abhorrent_SlavesInColony.stages.alien_slaves_in_colony.label>
+  <!-- EN: We're keeping alien slaves. It's barbaric. -->
+  <HAR_Alien_Slavery_Abhorrent_SlavesInColony.stages.alien_slaves_in_colony.description>我们在饲养外星种族奴隶，这太野蛮了。</HAR_Alien_Slavery_Abhorrent_SlavesInColony.stages.alien_slaves_in_colony.description>
+  
+  <!-- EN: alien slaves in colony -->
+  <HAR_Alien_Slavery_Disapproved_SlavesInColony.stages.alien_slaves_in_colony.label>殖民地有外星种族奴隶</HAR_Alien_Slavery_Disapproved_SlavesInColony.stages.alien_slaves_in_colony.label>
+  <!-- EN: We're keeping alien slaves. Even if it's necessary, it's distasteful and I wish we wouldn't. -->
+  <HAR_Alien_Slavery_Disapproved_SlavesInColony.stages.alien_slaves_in_colony.description>我们在外星种族奴隶，即使有必要，但也很令人反感，我希望我们不要再这样做了。</HAR_Alien_Slavery_Disapproved_SlavesInColony.stages.alien_slaves_in_colony.description>
+  
+  <!-- EN: no alien slaves in colony -->
+  <HAR_Alien_Slavery_Honorable_NoSlavesInColony.stages.no_alien_slaves_in_colony.label>殖民地没有外星种族奴隶</HAR_Alien_Slavery_Honorable_NoSlavesInColony.stages.no_alien_slaves_in_colony.label>
+  <!-- EN: Without alien slaves, nobody will respect us. -->
+  <HAR_Alien_Slavery_Honorable_NoSlavesInColony.stages.no_alien_slaves_in_colony.description>没有外星种族奴隶，就没有人会尊敬我们。</HAR_Alien_Slavery_Honorable_NoSlavesInColony.stages.no_alien_slaves_in_colony.description>
+  
+  <!-- EN: alien slaves in colony -->
+  <HAR_Alien_Slavery_Honorable_SlavesInColony.stages.alien_slaves_in_colony.label>殖民地有外星种族奴隶</HAR_Alien_Slavery_Honorable_SlavesInColony.stages.alien_slaves_in_colony.label>
+  <!-- EN: We've got alien slaves. It means we're on the right path. -->
+  <HAR_Alien_Slavery_Honorable_SlavesInColony.stages.alien_slaves_in_colony.description>我们拥有外星种族奴隶，这意味着我们走在正确的道路上。</HAR_Alien_Slavery_Honorable_SlavesInColony.stages.alien_slaves_in_colony.description>
+  
+  <!-- EN: alien slaves in colony -->
+  <HAR_Alien_Slavery_Horrible_SlavesInColony.stages.alien_slaves_in_colony.label>殖民地有外星种族奴隶</HAR_Alien_Slavery_Horrible_SlavesInColony.stages.alien_slaves_in_colony.label>
+  <!-- EN: We're keeping alien slaves. It's wrong. -->
+  <HAR_Alien_Slavery_Horrible_SlavesInColony.stages.alien_slaves_in_colony.description>我们在外星种族奴隶，这是不对的。</HAR_Alien_Slavery_Horrible_SlavesInColony.stages.alien_slaves_in_colony.description>
+  
+  <!-- EN: sold alien slave -->
+  <HAR_Alien_SoldSlave_Disapproved.stages.sold_alien_slave.label>贩卖外星种族奴隶</HAR_Alien_SoldSlave_Disapproved.stages.sold_alien_slave.label>
+  <!-- EN: I sold an alien into slavery. I hope nothing terrible happens to them. -->
+  <HAR_Alien_SoldSlave_Disapproved.stages.sold_alien_slave.description>我把一个外星种族当做奴隶卖掉了，希望不会发生什么可怕的事情。</HAR_Alien_SoldSlave_Disapproved.stages.sold_alien_slave.description>
+  
+  <!-- EN: sold alien slave -->
+  <HAR_Alien_SoldSlave_Honorable.stages.sold_alien_slave.label>贩卖外星种族奴隶</HAR_Alien_SoldSlave_Honorable.stages.sold_alien_slave.label>
+  <!-- EN: I sold an alien into slavery. It'll make people notice my stature. -->
+  <HAR_Alien_SoldSlave_Honorable.stages.sold_alien_slave.description>我把一个外星种族当做奴隶卖掉了，这会让人们注意到我的声望。</HAR_Alien_SoldSlave_Honorable.stages.sold_alien_slave.description>
+  
+  <!-- EN: sold alien slave -->
+  <HAR_Alien_SoldSlave_Horrible.stages.sold_alien_slave.label>贩卖外星种族奴隶</HAR_Alien_SoldSlave_Horrible.stages.sold_alien_slave.label>
+  <!-- EN: I sold an alien into slavery. I'm not sure I can forgive myself. -->
+  <HAR_Alien_SoldSlave_Horrible.stages.sold_alien_slave.description>我把一个外星种族当做奴隶卖掉了，我不确定我能否原谅自己。</HAR_Alien_SoldSlave_Horrible.stages.sold_alien_slave.description>
+  
+  <!-- EN: sold alien slave -->
+  <HAR_Alien_SoldSlave_Know_Abhorrent.stages.sold_alien_slave.label>贩卖外星种族奴隶</HAR_Alien_SoldSlave_Know_Abhorrent.stages.sold_alien_slave.label>
+  
+  <!-- EN: alien slave sold -->
+  <HAR_Alien_SoldSlave_Know_Abhorrent_Mood.stages.alien_slave_sold.label>外星种族奴隶被贩卖</HAR_Alien_SoldSlave_Know_Abhorrent_Mood.stages.alien_slave_sold.label>
+  <!-- EN: We sold an alien into slavery. It was an abhorrent, barbaric act. -->
+  <HAR_Alien_SoldSlave_Know_Abhorrent_Mood.stages.alien_slave_sold.description>我们把一个外星种族当做奴隶卖掉了，这种野蛮行为令人憎恶。</HAR_Alien_SoldSlave_Know_Abhorrent_Mood.stages.alien_slave_sold.description>
+  
+  <!-- EN: sold alien slave -->
+  <HAR_Alien_SoldSlave_Know_Disapproved.stages.sold_alien_slave.label>贩卖外星种族奴隶</HAR_Alien_SoldSlave_Know_Disapproved.stages.sold_alien_slave.label>
+  
+  <!-- EN: alien slave sold -->
+  <HAR_Alien_SoldSlave_Know_Disapproved_Mood.stages.alien_slave_sold.label>外星种族奴隶被贩卖</HAR_Alien_SoldSlave_Know_Disapproved_Mood.stages.alien_slave_sold.label>
+  <!-- EN: We sold an alien into slavery. We shouldn't have done that. -->
+  <HAR_Alien_SoldSlave_Know_Disapproved_Mood.stages.alien_slave_sold.description>我们把一个外星种族当做奴隶卖掉了，我们不应该那样做。</HAR_Alien_SoldSlave_Know_Disapproved_Mood.stages.alien_slave_sold.description>
+  
+  <!-- EN: sold alien slave -->
+  <HAR_Alien_SoldSlave_Know_Honorable.stages.sold_alien_slave.label>贩卖外星种族奴隶</HAR_Alien_SoldSlave_Know_Honorable.stages.sold_alien_slave.label>
+  
+  <!-- EN: alien slave sold -->
+  <HAR_Alien_SoldSlave_Know_Honorable_Mood.stages.alien_slave_sold.label>外星种族奴隶被贩卖</HAR_Alien_SoldSlave_Know_Honorable_Mood.stages.alien_slave_sold.label>
+  <!-- EN: We sold an alien into slavery! A great display of our honor and power. -->
+  <HAR_Alien_SoldSlave_Know_Honorable_Mood.stages.alien_slave_sold.description>我们把一个外星种族当做奴隶卖掉了！这彰显了我们的尊严与力量。</HAR_Alien_SoldSlave_Know_Honorable_Mood.stages.alien_slave_sold.description>
+  
+  <!-- EN: sold alien slave -->
+  <HAR_Alien_SoldSlave_Know_Horrible.stages.sold_alien_slave.label>贩卖外星种族奴隶</HAR_Alien_SoldSlave_Know_Horrible.stages.sold_alien_slave.label>
+  
+  <!-- EN: alien slave sold -->
+  <HAR_Alien_SoldSlave_Know_Horrible_Mood.stages.alien_slave_sold.label>外星种族奴隶被贩卖</HAR_Alien_SoldSlave_Know_Horrible_Mood.stages.alien_slave_sold.label>
+  <!-- EN: We sold an alien into slavery. What a horrible thing to do. -->
+  <HAR_Alien_SoldSlave_Know_Horrible_Mood.stages.alien_slave_sold.description>我们把一个外星种族当做奴隶卖掉了，这是一件多么可怕的事情。</HAR_Alien_SoldSlave_Know_Horrible_Mood.stages.alien_slave_sold.description>
+  
+</LanguageData>

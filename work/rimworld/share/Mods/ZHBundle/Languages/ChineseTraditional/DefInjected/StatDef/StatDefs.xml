@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Melee Duel Ability -->
+  <AM_DuelAbility.label>近戰決鬥實力值</AM_DuelAbility.label>
+  <!-- EN: This pawn's effectiveness in melee duels. This stat value is compared against the opponents, and influcenes the outcome of the duel. -->
+  <AM_DuelAbility.description>此單位在近戰決鬥時所發揮的實力值。\n\n決鬥開始後，遊戲會將雙方的實力值進行一次比較，並以此來分出勝負。</AM_DuelAbility.description>
+  
+  <!-- EN: Execution Cooldown -->
+  <AM_ExecutionCooldown.label>終結技冷卻時間</AM_ExecutionCooldown.label>
+  <!-- EN: The cooldown, measured in seconds, between melee executions. Affected by pawn melee skill and other factors. -->
+  <AM_ExecutionCooldown.description>此單位施展一次終結技後，需經過多長時間才能再次施展終結技（單位為秒）。\n\n此項的值會受到格鬥技能等級及其他因素的影響。</AM_ExecutionCooldown.description>
+  
+  <!-- EN: Lasso Cooldown -->
+  <AM_GrappleCooldown.label>套索冷卻時間</AM_GrappleCooldown.label>
+  <!-- EN: The cooldown, measured in seconds, between lasso uses. Affected by lasso type and pawn health status. -->
+  <AM_GrappleCooldown.description>此單位拋投一次套索後，需經過多長時間才能再次拋投套索（單位為秒）。\n\n此項的值會受到套索種類、操作能力及其他因素的影響。</AM_GrappleCooldown.description>
+  
+  <!-- EN: Max Lasso Distance -->
+  <AM_GrappleRadius.label>套索最大拋投距離</AM_GrappleRadius.label>
+  <!-- EN: The maximum distance from which an enemy can be lassoed by this pawn.\nAffected by the equipped lasso type. -->
+  <AM_GrappleRadius.description>此單位裝備的套索的最大拋投距離。\n\n此項的值會受到套索種類的影響。</AM_GrappleRadius.description>
+  
+  <!-- EN: Lasso Reel Speed -->
+  <AM_GrappleSpeed.label>套索收回速度</AM_GrappleSpeed.label>
+  <!-- EN: The speed of ensnaring and then reeling in an enemy using a lasso.\nHigher values mean that it takes less time to grab and pull the target into melee range.\nThis is NOT the lasso cooldown. -->
+  <AM_GrappleSpeed.description>此單位用套索捆住目標並將其拉至自身近戰攻擊範圍內的速度。\n此項的值越高，速度就越快。</AM_GrappleSpeed.description>
+  
+  <!-- EN: Melee Lethality -->
+  <AM_Lethality.label>近戰致死幾率</AM_Lethality.label>
+  <!-- EN: This pawn's lethality when performing executions. This value represents the chance to kill when performing execution animations, including when winning a duel. -->
+  <AM_Lethality.description>此單位施展終結技的致死幾率。\n\n此項的值越高，施展終結技或在決鬥中取勝時直接擊殺目標的幾率就越大。</AM_Lethality.description>
+  
+</LanguageData>

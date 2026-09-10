@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: gunshot -->
+  <MihoGunshotMiclic.label>枪伤</MihoGunshotMiclic.label>
+  <!-- EN: {0} has been melted. -->
+  <MihoGunshotMiclic.deathMessage>{0}被熔解了。</MihoGunshotMiclic.deathMessage>
+  
+</LanguageData>

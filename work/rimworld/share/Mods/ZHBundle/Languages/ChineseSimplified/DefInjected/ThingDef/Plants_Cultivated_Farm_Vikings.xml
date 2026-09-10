@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: blueberry plant -->
+  <VCE_Blueberry.label>蓝莓</VCE_Blueberry.label>
+  <!-- EN: A shrub prized for its sweet edible fruits. Hailed as a "superfood", blueberries are commonly eaten fresh as a dessert fruit and can be baked in a variety of pastries.\n\n<color=#E5E54C>Gameplay effect:</color> Blueberries are pollinated by bees: they will receive a growth boost if an apiary is found in a radius of 6 tiles. To avoid lag this is only calculated once, when the plant is sown, so apiaries placed after sowing it will have no effect. If there are no apiaries it will behave as a slower strawberry plant. -->
+  <VCE_Blueberry.description>能产出酸甜蓝莓的灌木。蓝莓是甘甜的健康水果，通常被生吃或者烘烤成各式甜点。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;蓝莓能被蜜蜂授粉，如果半径6格内有蜂箱会给予它生长加成。出于优化考虑，这个加成只会在播种时计算一次，播种之后造的蜂箱不会有效果。如果没有蜜蜂授粉，蓝莓就仅仅是普通莓果的弱化版。</VCE_Blueberry.description>
+  
+</LanguageData>

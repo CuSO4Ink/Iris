@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: Better GC: Mothballed and World Pawns clean-up report: -->
+  <MBADP.Reports.Title>更好的GC：封存和世界pawn清理报告：</MBADP.Reports.Title>
+
+	<!-- EN: There are {0} world pawns (in total). -->
+  <MBADP.Reports.TotalPawns>世界pawn(总共):{0} .</MBADP.Reports.TotalPawns>
+	<!-- EN: Of those {0} pawns, {1} are deemed potentially qualifying for pawn garbage collector (meaning the pawns are NOT: faction leaders, kidnapped, travelling in caravan, for sale, forcefully kept, reserved for quest, loaned to another faction, etc.) -->
+  <MBADP.Reports.TotalPawnsDetails>其中，潜在的废弃pawn：{1}（不包括：派系领袖，被绑架，在远行队中，出售，强行保留，任务保留，借给另一个派系等）.</MBADP.Reports.TotalPawnsDetails>
+
+	<!-- EN: {0} (present or former) colonist references were discarded. There are {1} colonist references left (world pawns only) -->
+  <MBADP.Reports.ColonistsDiscarded>已清理废弃的殖民者（现在或以前）:{0}.还有废弃的殖民者（仅限世界pawn）:{1}.</MBADP.Reports.ColonistsDiscarded>
+	<!-- EN: Discarded present or former colonist references: {0} -->
+  <MBADP.Reports.ColonistsDiscardedReferences>废弃的现在或以前的殖民者：{0}</MBADP.Reports.ColonistsDiscardedReferences>
+	<!-- EN: Present or former colonists references cleanup is disabled in mod settings. -->
+  <MBADP.Reports.ColonistsDiscardedDisabled>现在或以前的殖民者清理在mod设置中被禁用.</MBADP.Reports.ColonistsDiscardedDisabled>
+
+	<!-- EN: {0} animal references were discarded. There are {1} animal references left (world pawns only) -->
+  <MBADP.Reports.AnimalsDiscarded>已清理动物:{0}.剩下动物（仅限世界pawn）:{1}.</MBADP.Reports.AnimalsDiscarded>
+	<!-- EN: Discarded animal references: {0} -->
+  <MBADP.Reports.AnimalsDiscardedReferences>废弃动物：{0}</MBADP.Reports.AnimalsDiscardedReferences>
+	<!-- EN: Animal references cleanup is disabled in mod settings. -->
+  <MBADP.Reports.AnimalsDiscardedDisabled>在mod设置中禁用动物清理.</MBADP.Reports.AnimalsDiscardedDisabled>
+
+	<!-- EN: {0} other pawn references were discarded. There are {1} other pawn references left (world pawns only) -->
+  <MBADP.Reports.OtherPawnsDiscarded>已清理其它的pawn:{0}.还有其它的pawn（仅限世界pawn）:{1}.</MBADP.Reports.OtherPawnsDiscarded>
+	<!-- EN: Discarded other pawn references by faction: -->
+  <MBADP.Reports.OtherPawnsDiscardedReferences>被派系废弃的其它的pawn：</MBADP.Reports.OtherPawnsDiscardedReferences>
+	<!-- EN: Other pawn references cleanup is disabled in mod settings. -->
+  <MBADP.Reports.OtherPawnsDiscardedDisabled>在mod设置中禁用其它pawn清理.</MBADP.Reports.OtherPawnsDiscardedDisabled>
+
+	<!-- EN: Failed to process {0} pawns (may have already been discarded). -->
+  <MBADP.Reports.FailedToProcess>处理失败（可能已经被清理）:{0}.</MBADP.Reports.FailedToProcess>
+
+	<!-- EN: TOTAL: {0} pawns discarded. {1} pawn references left. -->
+  <MBADP.Reports.Total>总共清理pawn:{0}.还有废弃pawn:{1}.</MBADP.Reports.Total>
+
+	<!-- EN: {0} pawns are not eligible for cleanup: -->
+  <MBADP.Reports.ColonistsAlive>不符合清理条件：{0}.</MBADP.Reports.ColonistsAlive>
+	<!-- EN: Not eligible for cleanup pawn references by faction: -->
+  <MBADP.Reports.ColonistsAliveReferences>不符合清理条件的派系：</MBADP.Reports.ColonistsAliveReferences>
+
+	<!-- EN: Extra pawn cleanup functionality is disabled in mod settings. -->
+  <MBADP.Reports.PawnsCleanUpDisabled>特别pawn清理功能在mod设置中被禁用.</MBADP.Reports.PawnsCleanUpDisabled>
+
+	<!-- EN: Pawns mothballer was forcibly executed. -->
+  <MBADP.Reports.MothballingExecuted>pawn封存已被强行执行.</MBADP.Reports.MothballingExecuted>
+	<!-- EN: Forced pawns mothballer is disabled in mod settings. -->
+  <MBADP.Reports.MothballingDisabled>在mod设置中禁用强制pawn封存.</MBADP.Reports.MothballingDisabled>
+
+	<!-- EN: Quest log cleanup was executed. {0} archived quests were removed. -->
+  <MBADP.Reports.QuestLogCleanUpExecuted>任务日志清理已执行.已清理存档任务:{0}.</MBADP.Reports.QuestLogCleanUpExecuted>
+	<!-- EN: Quest log cleanup is disabled in mod settings. -->
+  <MBADP.Reports.QuestLogCleanUpDisabled>任务日志清理在mod设置中被禁用.</MBADP.Reports.QuestLogCleanUpDisabled>
+	
+	<!-- EN: Removed {0} thrown Throwing Axes from VFE-Medieval 2. -->
+  <MBADP.Reports.AxesCleanUpExecuted>从VFE-中世纪2中移除投掷斧:{0}.</MBADP.Reports.AxesCleanUpExecuted>
+
+	<!-- EN: Better GC: Mothballed and World Pawns Report -->
+  <MBADP.Reports.LetterTitle>更好的GC：封存和世界pawn报告</MBADP.Reports.LetterTitle>
+</LanguageData>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: R.R.: Stepping Stones -->
+  <RR_SteppingStones_Intro.label>科研重塑：踏脚石</RR_SteppingStones_Intro.label>
+  <!-- EN: Research Reinvented: Stepping Stones\n\nWelcome to Stepping Stones. Your research tree has been shuffled around to a more reasonable configuration. If you find yourself suddenly unable to do something, its possible that its been locked behind one of the technologies that you have not yet researched. Some of the more significant, broad sweeping changes are optional and can be disabled in the mod settings. -->
+  <RR_SteppingStones_Intro.helpText>科研重塑：踏脚石\n\n欢迎使用「踏脚石」。你的研究树已重新编排为更合理的结构。如果你发现某些原本可做的事暂时无法进行，可能是它们被放在尚未解锁的前置技术之后。一些影响范围较广的改动是可选的，你可以在模组设置中将其关闭。</RR_SteppingStones_Intro.helpText>
+
+</LanguageData>

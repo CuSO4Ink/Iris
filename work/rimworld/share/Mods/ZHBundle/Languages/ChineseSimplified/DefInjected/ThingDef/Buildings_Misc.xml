@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: mobile gas cooker -->
+  <MobileGasCooker.label>便携燃气炉</MobileGasCooker.label>
+  <!-- EN: A portable gas cooker widely used by adventurers throughout the rim. The mobile gas cooker is used to cook simple and fine meals, barbeque some delicious skewers, and re-heat army rations into delicious army ration meals. It uses chemfuel as fuel, and it is very efficient in fuel consumption. -->
+  <MobileGasCooker.description>深受边缘世界冒险家们喜爱的便携式燃气炉。功能不及普通炉灶多，但依然能用来烹饪简单和精致食物、烧烤肉串以及加热军粮。需要添加化合燃料才能工作，燃料的消耗速度很慢。</MobileGasCooker.description>
+  
+</LanguageData>

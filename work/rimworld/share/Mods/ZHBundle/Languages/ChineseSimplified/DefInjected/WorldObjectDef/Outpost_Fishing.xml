@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fishing outpost -->
+  <Outpost_Fishing.label>渔猎据点</Outpost_Fishing.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in the catching of fish from nearby coasts and rivers. Once an ample amount is collected, a delivery will be made at the outskirts of a faction's primary colony. -->
+  <Outpost_Fishing.description>一处能够自给自足的临时性据点，专门负责在附近的海岸或河流处捕捞渔获。一旦收集至足够的数量，驻守在此据点的殖民者将会把渔获交付至派系主殖民地的指定地点。</Outpost_Fishing.description>
+  
+</LanguageData>

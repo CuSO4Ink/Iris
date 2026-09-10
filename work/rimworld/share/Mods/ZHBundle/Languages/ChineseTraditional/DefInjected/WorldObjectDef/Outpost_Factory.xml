@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: factory outpost -->
+  <Outpost_Factory.label>工廠據點</Outpost_Factory.label>
+  <!-- EN: Places a temporary, autonomously-led factory that specializes in production and fabrication of goods using machines based on mechanoid technology. As with the machines normally, a wide variety of goods can be produced. Once an ample amount is produced, a delivery will be made at the outskirts of a faction's primary colony. -->
+  <Outpost_Factory.description>一處能夠自給自足的臨時性工廠，專門負責使用基於機械族技術的生產設備來加工製造貨物。一旦加工至足夠的數量，駐守在此據點的殖民者將會把貨物交付至派系主殖民地的指定地點。</Outpost_Factory.description>
+  
+</LanguageData>

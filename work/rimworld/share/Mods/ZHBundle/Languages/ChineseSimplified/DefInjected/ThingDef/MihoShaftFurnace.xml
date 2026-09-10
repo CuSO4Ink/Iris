@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 고로 -->
+  <Miho_ShaftFurnace.label>美狐高炉</Miho_ShaftFurnace.label>
+  <!-- EN: 세라믹과 강철을 제조하기 위해 만들어진 커다란 용광로 입니다. -->
+  <Miho_ShaftFurnace.description>用于快速生产各种美狐陶瓷材料的大型高炉。</Miho_ShaftFurnace.description>
+  
+</LanguageData>

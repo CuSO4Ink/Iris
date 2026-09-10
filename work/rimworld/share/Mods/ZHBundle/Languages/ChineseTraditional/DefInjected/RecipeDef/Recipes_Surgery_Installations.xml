@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: install archotech ratkin tail -->
+  <RK_Recipe_InstallArchotechTail.label>安裝遠古科技尾巴</RK_Recipe_InstallArchotechTail.label>
+  <!-- EN: Install an archotech ratkin tail. -->
+  <RK_Recipe_InstallArchotechTail.description>安裝遠古科技尾巴。</RK_Recipe_InstallArchotechTail.description>
+  <!-- EN: Installing archotech ratkin tail. -->
+  <RK_Recipe_InstallArchotechTail.jobString>安裝遠古科技尾巴。</RK_Recipe_InstallArchotechTail.jobString>
+  
+  <!-- EN: install bionic tail -->
+  <RK_Recipe_InstallBionicTail.label>安裝仿生尾巴</RK_Recipe_InstallBionicTail.label>
+  <!-- EN: Install a bionic tail. -->
+  <RK_Recipe_InstallBionicTail.description>安裝仿生尾巴。</RK_Recipe_InstallBionicTail.description>
+  <!-- EN: Installing bionic tail. -->
+  <RK_Recipe_InstallBionicTail.jobString>安裝仿生尾巴。</RK_Recipe_InstallBionicTail.jobString>
+  
+  <!-- EN: install fake ear -->
+  <RK_Recipe_InstallFakeEar.label>安裝假耳朵</RK_Recipe_InstallFakeEar.label>
+  <!-- EN: Install a fake ear. -->
+  <RK_Recipe_InstallFakeEar.description>安裝假耳朵。</RK_Recipe_InstallFakeEar.description>
+  <!-- EN: Installing fake ear. -->
+  <RK_Recipe_InstallFakeEar.jobString>安裝假耳朵。</RK_Recipe_InstallFakeEar.jobString>
+  
+  <!-- EN: install fake tail -->
+  <RK_Recipe_InstallFakeTail.label>安裝假尾巴</RK_Recipe_InstallFakeTail.label>
+  <!-- EN: Install a fake tail. -->
+  <RK_Recipe_InstallFakeTail.description>安裝假尾巴。</RK_Recipe_InstallFakeTail.description>
+  <!-- EN: Installing fake tail. -->
+  <RK_Recipe_InstallFakeTail.jobString>安裝假尾巴。</RK_Recipe_InstallFakeTail.jobString>
+  
+</LanguageData>

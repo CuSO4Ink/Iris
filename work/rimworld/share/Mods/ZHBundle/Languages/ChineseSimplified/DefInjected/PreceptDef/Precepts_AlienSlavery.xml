@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: abhorrent -->
+  <HAR_AlienSlavery_Abhorrent.label>厌恶</HAR_AlienSlavery_Abhorrent.label>
+  <!-- EN: Owning or trading alien beings is deeply evil. -->
+  <HAR_AlienSlavery_Abhorrent.description>奴役或贩卖外星种族是极其邪恶的。</HAR_AlienSlavery_Abhorrent.description>
+  <!-- EN: Each alien slave in colony -->
+  <HAR_AlienSlavery_Abhorrent.comps.0.description>殖民地中的每个外星种族奴隶</HAR_AlienSlavery_Abhorrent.comps.0.description>
+  <!-- EN: Someone sold an alien slave -->
+  <HAR_AlienSlavery_Abhorrent.comps.5.description>有人出售外星种族奴隶</HAR_AlienSlavery_Abhorrent.comps.5.description>
+  
+  <!-- EN: acceptable -->
+  <HAR_AlienSlavery_Acceptable.label>认可</HAR_AlienSlavery_Acceptable.label>
+  <!-- EN: Slavery of alien races is a normal, unremarkable part of life. -->
+  <HAR_AlienSlavery_Acceptable.description>奴役外星种族是日常生活中微不足道的一部分。</HAR_AlienSlavery_Acceptable.description>
+  
+  <!-- EN: disapproved -->
+  <HAR_AlienSlavery_Disapproved.label>反感</HAR_AlienSlavery_Disapproved.label>
+  <!-- EN: Alien slavery is part of life, though it is extremely distasteful. -->
+  <HAR_AlienSlavery_Disapproved.description>奴役外星种族是日常生活中的一部分，尽管这是极其令人厌恶的。</HAR_AlienSlavery_Disapproved.description>
+  <!-- EN: Each alien slave in colony -->
+  <HAR_AlienSlavery_Disapproved.comps.0.description>殖民地中的每个外星种族奴隶</HAR_AlienSlavery_Disapproved.comps.0.description>
+  <!-- EN: Someone sold an alien slave -->
+  <HAR_AlienSlavery_Disapproved.comps.5.description>有人出售外星种族奴隶</HAR_AlienSlavery_Disapproved.comps.5.description>
+  <!-- EN: Someone enslaved an alien prisoner -->
+  <HAR_AlienSlavery_Disapproved.comps.6.description>有人奴役了外星种族囚犯</HAR_AlienSlavery_Disapproved.comps.6.description>
+  
+  <!-- EN: honorable -->
+  <HAR_AlienSlavery_Honorable.label>推崇</HAR_AlienSlavery_Honorable.label>
+  <!-- EN: One who owns and trades alien slaves should be honored and respected. -->
+  <HAR_AlienSlavery_Honorable.description>拥有或交易外星种族奴隶的人应当值得尊敬和尊重。</HAR_AlienSlavery_Honorable.description>
+  <!-- EN: Each alien slave in colony -->
+  <HAR_AlienSlavery_Honorable.comps.0.description>殖民地中的每个外星种族奴隶</HAR_AlienSlavery_Honorable.comps.0.description>
+  <!-- EN: Someone sold an alien slave -->
+  <HAR_AlienSlavery_Honorable.comps.6.description>有人出售外星种族奴隶</HAR_AlienSlavery_Honorable.comps.6.description>
+  <!-- EN: Someone enslaved an alien prisoner -->
+  <HAR_AlienSlavery_Honorable.comps.7.description>有人奴役了外星种族囚犯</HAR_AlienSlavery_Honorable.comps.7.description>
+  
+  <!-- EN: horrible -->
+  <HAR_AlienSlavery_Horrible.label>畏惧</HAR_AlienSlavery_Horrible.label>
+  <!-- EN: Owning or trading alien beings is a horrible thing. -->
+  <HAR_AlienSlavery_Horrible.description>奴役或贩卖外星种族是件可怕的事情。</HAR_AlienSlavery_Horrible.description>
+  <!-- EN: Each alien slave in colony -->
+  <HAR_AlienSlavery_Horrible.comps.0.description>殖民地中的每个外星种族奴隶</HAR_AlienSlavery_Horrible.comps.0.description>
+  <!-- EN: Someone sold an alien slave -->
+  <HAR_AlienSlavery_Horrible.comps.5.description>有人出售外星种族奴隶</HAR_AlienSlavery_Horrible.comps.5.description>
+  <!-- EN: Someone enslaved an alien prisoner -->
+  <HAR_AlienSlavery_Horrible.comps.6.description>有人奴役了外星种族囚犯</HAR_AlienSlavery_Horrible.comps.6.description>
+  
+</LanguageData>

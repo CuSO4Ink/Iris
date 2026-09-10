@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: eltex ore -->
+  <VPE_EltexOre.label>灵质矿</VPE_EltexOre.label>
+  <!-- EN: Rock containing bits of eltex. -->
+  <VPE_EltexOre.description>带有少量灵质的岩石。</VPE_EltexOre.description>
+  
+</LanguageData>

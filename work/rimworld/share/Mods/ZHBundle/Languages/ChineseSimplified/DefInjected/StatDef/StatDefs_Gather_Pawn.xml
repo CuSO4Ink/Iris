@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: honey gather speed -->
+  <VV_HoneyGatherSpeed.label>蜂蜜收获速度</VV_HoneyGatherSpeed.label>
+  <!-- EN: It shows how quickly the work is done in collecting honey. -->
+  <VV_HoneyGatherSpeed.description>显示单次蜂蜜收获的速度。</VV_HoneyGatherSpeed.description>
+  
+  <!-- EN: honey gather yield -->
+  <VV_HoneyGatherYield.label>蜂蜜收获产量</VV_HoneyGatherYield.label>
+  <!-- EN: It shows how much honey is obtained at once during honey collection. -->
+  <VV_HoneyGatherYield.description>显示单次蜂蜜收获获得产物的数量。</VV_HoneyGatherYield.description>
+  
+  <!-- EN: plant gather speed -->
+  <VV_PlantGatherSpeed.label>植物收获速度</VV_PlantGatherSpeed.label>
+  <!-- EN: It shows how quickly the work is done in gathering resources from plants. -->
+  <VV_PlantGatherSpeed.description>显示单次收获植物的速度。</VV_PlantGatherSpeed.description>
+  
+  <!-- EN: honey gather yield -->
+  <VV_PlantGatherYield.label>植物收获产量</VV_PlantGatherYield.label>
+  <!-- EN: It shows how much resources are obtained at once when harvesting from plants. -->
+  <VV_PlantGatherYield.description>显示单次收获植物获得产物的数量。</VV_PlantGatherYield.description>
+  
+</LanguageData>

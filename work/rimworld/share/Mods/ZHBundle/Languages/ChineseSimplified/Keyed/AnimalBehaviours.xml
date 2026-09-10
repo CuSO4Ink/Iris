@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+
+	<!-- EN: Body clock -->
+  <NocturnalAnimals.BodyClock>生物钟</NocturnalAnimals.BodyClock>
+	<!-- EN: Determines when the animal sleeps and when it is awake.\n\nDiurnal animals sleep during the night and are awake during the day, while nocturnal animals sleep during the day and are awake during the night. Crepuscular animals are mainly active during dusk. -->
+  <NocturnalAnimals.BodyClock_Description>决定动物的睡眠作息。\n\n日间动物在白天活动，夜间动物则在白天休眠。暮间动物主要在黄昏时分活动。</NocturnalAnimals.BodyClock_Description>
+
+	<!-- EN: Diurnal -->
+  <NocturnalAnimals.BodyClock_Diurnal>日间</NocturnalAnimals.BodyClock_Diurnal>
+	<!-- EN: Nocturnal -->
+  <NocturnalAnimals.BodyClock_Nocturnal>夜间</NocturnalAnimals.BodyClock_Nocturnal>
+	<!-- EN: Crepuscular -->
+  <NocturnalAnimals.BodyClock_Crepuscular>暮间</NocturnalAnimals.BodyClock_Crepuscular>
+
+
+	<!-- EN: {0} has reproduced asexually. -->
+  <VEF_AsexualHatched>{0}已完成无性繁殖。</VEF_AsexualHatched>
+	<!-- EN: {0} has cloned itself. -->
+  <VEF_AsexualCloning>{0}已完成自我复制。</VEF_AsexualCloning>
+	<!-- EN: {0} has sporulated. -->
+  <VEF_AsexualHatchedEgg>{0}已散播孢子丛。</VEF_AsexualHatchedEgg>
+	<!-- EN: This creature is untameable -->
+  <VEF_NotTameable>此动物无法被驯服</VEF_NotTameable>
+	<!-- EN: Time to metamorphosis: {0} -->
+  <VEF_TimeToMetamorphosis>蜕变时间: {0}</VEF_TimeToMetamorphosis>
+	
+	<!-- EN: Warning, this egg explodes when hatching! -->
+  <VEF_WarningEggExplodes>警告，这颗蛋在孵化时会产生爆炸！</VEF_WarningEggExplodes>
+	
+	<!-- EN: Animal expires in: {0} -->
+  <VEF_TimeToDie>动物剩余寿命：{0}</VEF_TimeToDie>
+	
+	<!-- EN: Disable {0} -->
+  <VEF_DisableAnimal>禁用{0}</VEF_DisableAnimal>
+	
+	<!-- EN: {0} creatures swallowed whole.  -->
+  <VEF_StomachContents>已吞噬的生物数量：{0}</VEF_StomachContents>
+	<!-- EN: Will be consumed in {0} -->
+  <VEF_DigestionTime>将会在{0}后被消化</VEF_DigestionTime>
+	
+	<!-- EN: The terrain needs to be diggable to do this -->
+  <VEF_TerrainsNeedsDiggable>需要支持的地形：可挖掘</VEF_TerrainsNeedsDiggable>
+	
+	<!-- EN: While caravaning, produces {0} {1} every:  -->
+  <VEF_WhileCaravaning>当处于远行队中时，每隔一段时间产出{1} x{0}。产出周期：</VEF_WhileCaravaning>
+	
+	<!-- Mod options -->
+	
+	<!-- EN: These animal behaviours options will affect all animal mods that share code from the Vanilla Expanded Framework -->
+  <VCE_AffectsAllAnimalMods>这些动物行为选项将影响所有使用原版扩展框架的动物Mod</VCE_AffectsAllAnimalMods>
+	<!-- EN: Allow corpse decaying mechanics (for example, Helixien slug's effect) -->
+  <VCE_CorpseDecayingEffectOption>允许尸体腐烂机制（例如腐尸蛞蝓）</VCE_CorpseDecayingEffectOption>
+	<!-- EN: Allow digging when hungry mechanics (for example, Frostmites digging corpses) -->
+  <VCE_DigWhenHungryOption>允许动物饥饿时挖掘食物的机制（例如霜螨挖掘尸体）</VCE_DigWhenHungryOption>
+	<!-- EN: Allows animals digging for things periodically -->
+  <VCE_DigPeriodicallyOption>允许动物定期挖掘物品</VCE_DigPeriodicallyOption>
+	<!-- EN: Allow animal particles (gas and filth) -->
+  <VCE_AnimalParticlesOption>允许动物产生粒子效果（例如气体和污物）</VCE_AnimalParticlesOption>
+	<!-- EN: Allow asexual reproduction -->
+  <VCE_AsexualReproductionOption>允许无性繁殖</VCE_AsexualReproductionOption>
+	<!-- EN: Asexual reproduction disabled via mod options -->
+  <VFE_AsexualReproductionDisabled>通过Mod选项禁用无性繁殖</VFE_AsexualReproductionDisabled>
+	<!-- EN: Allow "blink" mechanics (for example, Skiphounds) -->
+  <VCE_BlinkMechanicsOption>允许“闪现”机制（例如闪现猎犬）</VCE_BlinkMechanicsOption>
+	<!-- EN: Allow animals building things (for example, beavers building dams) -->
+  <VCE_BuildPeriodicallyOption>允许动物建造物品（例如海狸建坝）</VCE_BuildPeriodicallyOption>	
+	<!-- EN: Allow animals recharging nearby batteries or refueling -->
+  <VCE_ChargeBatteriesOption>允许动物为附近的蓄电池充电或为设备补充燃料</VCE_ChargeBatteriesOption>
+	<!-- EN: Allow animals' eggs that explode (such as dragons') -->
+  <VCE_ExplodingEggsOption>允许动物的蛋爆炸</VCE_ExplodingEggsOption>
+	<!-- EN: Allow animals "hovering", ignoring terrain movement costs and waterstriding -->
+  <VCE_HoveringOption>允许动物通过“悬浮”来免受地形带来的移动速度惩罚</VCE_HoveringOption>
+	<!-- EN: Allow animals changing graphics (for example, Chameleon Yak) -->
+  <VCE_GraphicChangingOption>允许动物改变自身贴图（例如变色牦牛）</VCE_GraphicChangingOption>
+	<!-- EN: Allows animals causing hediffs, mental states or thoughts -->
+  <VCE_EffecterOption>允许动物造成健康状态、精神状态或想法方面的影响</VCE_EffecterOption>
+	<!-- EN: Allow health regeneration (active and passive) -->
+  <VCE_RegenerationOption>允许动物再生能力（主动或被动）</VCE_RegenerationOption>
+	<!-- EN: Allow animals to auto-resurrect (for example Phoenix Owlcat) -->
+  <VCE_ResurrectionOption>允许动物自动复活（例如凤凰猫）</VCE_ResurrectionOption>
+	<!-- EN: Allow some animals to be untameable -->
+  <VCE_UntameableOption>允许部分动物无法被驯服</VCE_UntameableOption>
+	<!-- EN: Search: -->
+  <VEF_AnimalsSearch>查找：</VEF_AnimalsSearch>
+	
+	<!-- Bills -->
+	
+	<!-- EN: Requires {0} Kg total mass -->
+  <VEF_BillRequiresMass>需求总计{0}千克的重量</VEF_BillRequiresMass>
+    
+
+
+</LanguageData>

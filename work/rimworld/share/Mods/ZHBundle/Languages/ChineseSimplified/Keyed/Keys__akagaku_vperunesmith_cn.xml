@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Psycasts -->
+  <Psycasts>灵能</Psycasts>
+	<!-- Comp Text -->
+	<!-- EN: Psychic Charge:  -->
+  <VPER_PsychicChargeIndicator>灵能充能：</VPER_PsychicChargeIndicator>
+	<!-- EN: Circle recharges in:  -->
+  <VPER_RechargeIndicatorCharging>魔圈充能至：</VPER_RechargeIndicatorCharging>
+	<!-- EN: Circle ready -->
+  <VPER_RechargeIndicatorReady>魔圈就绪</VPER_RechargeIndicatorReady>
+	<!-- EN: Must target a Runecircle. -->
+  <VPER_MustTargetRuneCircle>必须选择一个卢恩魔圈为目标。</VPER_MustTargetRuneCircle>
+	<!-- EN: This Runecircle is not charged. -->
+  <VPER_RuneCircleNotCharged>此卢恩魔圈未充能。</VPER_RuneCircleNotCharged>
+	<!-- EN:  days -->
+  <VPER_Days>天</VPER_Days> <!-- i feel like i don't need this one but also i'm stupid and this is easy -->
+</LanguageData>

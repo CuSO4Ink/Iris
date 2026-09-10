@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: deep snow -->
+  <VEE_DeepSnow.label>深厚积雪</VEE_DeepSnow.label>
+  <!-- EN: A heavy, compacted layer of snow that resists movement and muffles sound. Can be mined to remove it. -->
+  <VEE_DeepSnow.description>厚重且紧实的积雪，既会阻碍移动，也能消弭声响。可通过开采来将其移除。</VEE_DeepSnow.description>
+  
+</LanguageData>

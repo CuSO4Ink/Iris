@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: arcane weaponry -->
+  <VV_ArcaneWeaponry.label>神秘武器</VV_ArcaneWeaponry.label>
+  <!-- EN: Craft arcane weapons using materials from arcane plants, using mana in specialized ways. These weapons are tricky to handle but exceptionally powerful.\n\nArcane weapons recharge by absorbing environment mana; once their mana is spent, they either weaken or cannot be used at all. -->
+  <VV_ArcaneWeaponry.description>使用来自神秘植物的材料制作消耗魔能的神秘武器。神秘武器难以操作，但十分强力。\n\n神秘武器需要消耗环境魔能来充能，如果魔能耗尽，武器会被弱化或干脆无法使用。</VV_ArcaneWeaponry.description>
+  
+  <!-- EN: vivi automated infrastructures -->
+  <VV_AutomatedInfra.label>薇薇自动设施</VV_AutomatedInfra.label>
+  <!-- EN: Automate some of the manual jobs previously done by the vivis using electricity, increasing efficiency. -->
+  <VV_AutomatedInfra.description>使用电力将薇薇的部分手工工作自动化，以提高生产效率。</VV_AutomatedInfra.description>
+  
+  <!-- EN: lifestrand -->
+  <VV_Lifestrand.label>生命缕织</VV_Lifestrand.label>
+  <!-- EN: Weave lifestrand cloth reinforced with arcane materials processed from devilstrand fabric. -->
+  <VV_Lifestrand.description>用奥术材料加固魔菇布，制成生命缕织。</VV_Lifestrand.description>
+  
+</LanguageData>

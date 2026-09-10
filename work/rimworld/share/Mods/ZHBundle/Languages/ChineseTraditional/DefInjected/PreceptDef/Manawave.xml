@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: emit manawave ritual -->
+  <VV_Manawave.label>魔能波動儀式</VV_Manawave.label>
+  <!-- EN: Instantly unleashes a massive wave of mana over a wide area, briefly stunning all targets and leaving behind a vast amount of environment mana. The mana wave may also draw the attention of hostile entities nearby. -->
+  <VV_Manawave.description>立即投射大量魔能波動覆蓋大片區域，這會短暫擊暈所有目標并在環境中遺留大量魔能。魔能波動可能引起附近敵對實體的注意。</VV_Manawave.description>
+  
+</LanguageData>

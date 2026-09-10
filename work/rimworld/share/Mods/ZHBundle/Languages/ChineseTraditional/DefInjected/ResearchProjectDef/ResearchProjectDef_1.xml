@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi advanced apparels -->
+  <VV_AdvancedApparels.label>薇薇進階服飾</VV_AdvancedApparels.label>
+  <!-- EN: Make advanced clothing for the Vivis. -->
+  <VV_AdvancedApparels.description>制作薇薇的進階服飾。</VV_AdvancedApparels.description>
+  <!-- EN: advanced gathering -->
+  <VV_AdvancedGathering.label>進階收集</VV_AdvancedGathering.label>
+  <!-- EN: Can gather propolis from trees and process it into neutroamine and herbal medicine. Some living leaves can also be gathered from certain arcane plants. -->
+  <VV_AdvancedGathering.description>能從樹木中提取與加工蜂膠。</VV_AdvancedGathering.description>
+  <!-- EN: vivi apparels -->
+  <VV_Apparels.label>薇薇服飾</VV_Apparels.label>
+  <!-- EN: Make basic clothing for the Vivis. -->
+  <VV_Apparels.description>制作薇薇的基礎服飾。</VV_Apparels.description>
+  <!-- EN: arcane botany -->
+  <VV_ArcaneBotany.label>奧秘植物學</VV_ArcaneBotany.label>
+  <!-- EN: Can visually display the flow of environment mana emitted by arcane plants. Can make items using arcane plant materials and build facilities that aid cultivation. -->
+  <VV_ArcaneBotany.description>直觀顯示神秘植物的環境魔能流向。允許使用神秘植物材料制作物品，建造有助于耕種的設施。</VV_ArcaneBotany.description>
+  <!-- EN: You can now visualize the flow of environment mana. Select an arcane plant or enable the environment mana grid from the bottom-right toggle bar. -->
+  <VV_ArcaneBotany.discoveredLetterText>現在，你可以可視化環境魔能的流動。選擇一種奧術植物或在右下角啟用環境魔能網格。</VV_ArcaneBotany.discoveredLetterText>
+  <!-- EN: Env. Mana grid -->
+  <VV_ArcaneBotany.discoveredLetterTitle>環境魔能網絡</VV_ArcaneBotany.discoveredLetterTitle>
+  <!-- EN: arcane plant sowing -->
+  <VV_ArcanePlantSowing.label>神秘植物播種</VV_ArcanePlantSowing.label>
+  <!-- EN: Grow arcane plants by planting arcane seeds. Arcane seeds can be found by chance while foraging or purchased from vivi caravans.\n\nDeconstructing an arcane plant also yields multiple seeds along with materials. When planted in suitable soil or a pot, an arcane seed grows into a seedling. To mature into a full arcane plant it requires both nutrients and mana.\n\nNutrients must be regularly supplied using mana fertilizer. If left depleted for too long, the seedling will die.\n\nMana is naturally absorbed from the environment, so placing the seedling near arcane plants that emit environment mana or building a Mana emitter can help provide it. -->
+  <VV_ArcanePlantSowing.description>神秘植物需要通過種植神秘種子獲得。神秘種子可以在采集時偶然獲得，也可以從薇薇商隊購買。\n\n構建一種神秘植物也會產出一些種子和材料。當種植在合適的土壤或栽培盆中時，神秘種子會長成幼苗。要長成一株完全神秘的植物，幼苗需要營養和魔能。\n\n必須使用魔法肥料定期供應營養。如果幼苗長時間處于營養耗盡狀態會導致其死亡。\n\n神秘植物所需的魔能可以從環境中自然吸收，因此將幼苗放在能釋放環境魔能的神秘植物附近或建造一個魔能放射器以供給之。</VV_ArcanePlantSowing.description>
+  <!-- EN: Arcane seeds can be found by chance while foraging or purchased from vivi caravans. Deconstructing an arcane plant also yields multiple seeds along with materials.\n\nWhen planted in suitable soil or a pot, an arcane seed grows into a seedling. To mature into a full arcane plant it requires both nutrients and mana.\n\nNutrients must be regularly supplied using mana fertilizer. If left depleted for too long, the seedling will die.\n\nMana is naturally absorbed from the environment, so placing the seedling near arcane plants that emit environment mana or building a Mana emitter can help provide it. -->
+  <VV_ArcanePlantSowing.discoveredLetterText>神秘種子可以在采集時偶然獲得，也可以從薇薇商隊購買。\n\n構建一種神秘植物也會產出一些種子和材料。當種植在合適的土壤或栽培盆中時，神秘種子會長成幼苗。要長成一株完全神秘的植物，幼苗需要營養和魔能。\n\n必須使用魔法肥料定期供應營養。如果幼苗長時間處于營養耗盡狀態會導致其死亡。\n\n神秘植物所需的魔能可以從環境中自然吸收，因此將幼苗放在能釋放環境魔能的神秘植物附近或建造一個魔能放射器以供給之。</VV_ArcanePlantSowing.discoveredLetterText>
+  <!-- EN: Arcane plant -->
+  <VV_ArcanePlantSowing.discoveredLetterTitle>神秘植物</VV_ArcanePlantSowing.discoveredLetterTitle>
+  <!-- EN: basic gathering -->
+  <VV_BasicGathering.label>基礎收集</VV_BasicGathering.label>
+  <!-- EN: Build facilities for collecting and processing honey and pollen, the staple foods of the vivis. -->
+  <VV_BasicGathering.description>建造收集和加工蜂蜜和花粉的設施，那是薇薇們的主食。</VV_BasicGathering.description>
+  <!-- EN: vivi basic infrastructures -->
+  <VV_BasicInfra.label>薇薇基礎設施</VV_BasicInfra.label>
+  <!-- EN: Build basic production facilities and structures for the Vivis. -->
+  <VV_BasicInfra.description>建造薇薇們基本的生產設施與建筑結構。</VV_BasicInfra.description>
+  <!-- EN: gathering tools -->
+  <VV_Tools.label>收集用工具</VV_Tools.label>
+  <!-- EN: Make tools that enhance gathering ability. The gathering tool can be worn at the waist when not in use. -->
+  <VV_Tools.description>制作薇薇們用于采集的工具，只能被薇薇裝備，使用腰部裝備槽。</VV_Tools.description>
+  <!-- EN: vivi weaponry -->
+  <VV_Weaponry.label>薇薇武器</VV_Weaponry.label>
+  <!-- EN: Make traditional weapons used by the Vivis. These weapons can only be used by vivis. -->
+  <VV_Weaponry.description>制作薇薇們使用的傳統武器，只能被薇薇使用。</VV_Weaponry.description>
+</LanguageData>

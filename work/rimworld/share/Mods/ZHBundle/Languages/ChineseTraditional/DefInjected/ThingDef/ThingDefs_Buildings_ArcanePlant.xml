@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: arcane plant pot -->
+  <VV_ArcanePlantPot.label>神秘植物栽培盆</VV_ArcanePlantPot.label>
+  <!-- EN: a pot that can hold arcane plants. It is typically used to place arcane plants indoors or in locations where normal plants can't grow.\n\nIf an arcane plant in the pot is attacked, the pot will absorb the damage first unless it's an flame damage. If the pot is destroyed, the arcane plant will automatically be packed up. -->
+  <VV_ArcanePlantPot.description>一個可以種植神秘植物的盆。通常用于將神秘植物種植在室內或其他植物無法生長的地方。\n\n若盆中的神秘植物被攻擊，盆會替植物吸收傷害（除非是火焰傷害）。若盆被摧毀，盆中的神秘植物會自動打包。</VV_ArcanePlantPot.description>
+  
+  <!-- EN: large arcane plant pot -->
+  <VV_LargeArcanePlantPot.label>大型神秘植物栽培盆</VV_LargeArcanePlantPot.label>
+  <!-- EN: a large pot used for cultivating arcane seedlings. It can hold a large amount of fertilizer and automatically manages the nutrient levels of the seedlings on the farm with high efficiency.\n\nGrown arcane plants can also be planted in the cultivation bed, making it useful as a large pot for planting multiple arcane plants indoors at once. -->
+  <VV_LargeArcanePlantPot.description>用于培育神秘植物幼苗的大盆，可以容納大量的肥料并自動高效地管理幼苗的營養等級。\n\n成體神秘植物也可被移栽到育苗床上，使其能有效地在室內培植數株神秘植物。</VV_LargeArcanePlantPot.description>
+  <!-- EN: Mana Fertilizer -->
+  <VV_LargeArcanePlantPot.comps.CompRefuelable.fuelGizmoLabel>魔能肥料</VV_LargeArcanePlantPot.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- EN: Mana Fertilizer -->
+  <VV_LargeArcanePlantPot.comps.CompRefuelable.fuelLabel>魔能肥料</VV_LargeArcanePlantPot.comps.CompRefuelable.fuelLabel>
+  
+  <!-- EN: mana emitter -->
+  <VV_ManaEmitter.label>魔能放射器</VV_ManaEmitter.label>
+  <!-- EN: A device that extracts inactive mana contained in mana fertilizer and converts it into environment mana. When mana fertilizer is inserted, it slowly transforms it into environment mana and disperses it for use nearby.\n\nIts conversion efficiency is low, but it's useful when mana production is insufficient or in need of an emergency supply, making it an essential device used by the Vivi when establishing a hive. -->
+  <VV_ManaEmitter.description>一種提取魔法肥料中不活躍的魔能并將其轉化為環境魔能的裝置。當注入魔法肥料時，它會慢慢將其轉化為環境中的魔能，并將其分散給附近的神秘植物使用。\n\n它的轉換效率很低，但當法力產生不足或需要緊急供應時，它很有用，這使其成為薇薇在建立蜂巢時使用的重要設備。</VV_ManaEmitter.description>
+  <!-- EN: Mana Fertilizer -->
+  <VV_ManaEmitter.comps.CompRefuelable.fuelGizmoLabel>魔能肥料</VV_ManaEmitter.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- EN: Mana Fertilizer -->
+  <VV_ManaEmitter.comps.CompRefuelable.fuelLabel>魔能肥料</VV_ManaEmitter.comps.CompRefuelable.fuelLabel>
+  
+  <!-- EN: shock net trap -->
+  <VV_ShockNetTrap.label>電網陷阱</VV_ShockNetTrap.label>
+  <!-- EN: An electrified net trap. Stepping on it releases a small EMP that temporarily disables machines, while living targets are briefly stunned by a pulse of current. It must stay powered, and although it can be reused after triggering, it requires time to recharge. -->
+  <VV_ShockNetTrap.description>一個帶電的網狀陷阱，被踩下時會發出小型電磁脈沖暈眩機械體，或短暫擊暈活體目標。陷阱必須保持供電，且在一定時間的充電后能重復使用。</VV_ShockNetTrap.description>
+  
+  <!-- EN: waterdrop lamp -->
+  <VV_WaterdropLamp.label>滴水燈</VV_WaterdropLamp.label>
+  <!-- EN: a wall lamp decoration shaped like a Waterdrops flower. It emits light and illuminates the surroundings when it absorbs a small amount of environment mana. -->
+  <VV_WaterdropLamp.description>一盞形狀像滴水蘭花的墻燈，吸收少量環境魔能的同時能照亮周圍。</VV_WaterdropLamp.description>
+  
+</LanguageData>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+<VV_Letter_ViviEggHatchedLabel>新薇薇誕生</VV_Letter_ViviEggHatchedLabel>
+<VV_Letter_ViviEggHatched>一只新的薇薇從{PARENT_labelShort}產下的卵中孵化而出。薇薇比典型人類成長和學習速度更快，但壽命較短。她們在出生時也會繼承隨機的遺傳因子，包括來自母親的修飾因子。
+\n如果薇薇在成長階段攝取足夠的蜂王漿，她們將成長為皇家薇薇，她們的壽命更長，可以產卵。皇家薇薇具有更高的心靈敏感度和社交技能，但工作能力明顯較低，移動速度較慢。</VV_Letter_ViviEggHatched>
+<VV_Letter_ViviEggHatchedNoParent>一只新的薇薇已經誕生。薇薇比典型人類成長和學習速度更快，但壽命較短。她們在出生時也會繼承隨機的遺傳因子，包括來自母親的修飾因子。
+\n如果薇薇在成長階段攝取足夠的蜂王漿，她們將成長為皇家薇薇，她們的壽命更長，可以產卵。皇家薇薇具有更高的心靈敏感度和社交技能，但工作能力明顯較低，移動速度較慢。</VV_Letter_ViviEggHatchedNoParent>
+
+<VV_Letter_RoyalViviGrownLabel>新的皇家薇薇: {PAWN_labelShort}</VV_Letter_RoyalViviGrownLabel>
+<VV_Letter_RoyalViviGrown>{PAWN_labelShort}已經攝取了足夠的蜂王漿，成長為一只皇家薇薇。</VV_Letter_RoyalViviGrown>
+
+<VV_Letter_IncidentHornetSwarmArrivedLabel>巨型黃蜂群</VV_Letter_IncidentHornetSwarmArrivedLabel>
+<VV_Letter_IncidentHornetSwarmArrived>一群狂暴的巨型黃蜂出現了。它們會四處游蕩并攻擊它們遇到的任何生物。巨型黃蜂非常快速且堅韌，使用傳統武器難以將其擊倒，但對火焰和毒素抵抗力低下。
+\n它們無法穿過門，因此躲在墻后是安全的。它們將不加區別地獵捕最近的目標，所以如果殖民者缺乏足夠的防御，建議先躲藏起來。蜂群將會獵捕區域內的所有移動目標，并在幾天后自行離開。</VV_Letter_IncidentHornetSwarmArrived>
+
+<VV_Letter_LinkEverflowerLabel>永盛花共鳴</VV_Letter_LinkEverflowerLabel>
+<VV_Letter_LinkEverflower>{PAWN_labelShort}已同永盛花共鳴并建立了心靈鏈接。當永盛花的共鳴等級提升時，你將能獲得多種有益效果并能使用永盛花的能力。
+\n永盛花通過皇家薇薇吸收環境魔能，當因此吸收魔能或對應的皇家薇薇進行更多的共鳴儀式時，二者之間的心靈鏈接就會增強。</VV_Letter_LinkEverflower>
+
+<VV_Letter_EverflowerAttumentLevelUpLabel>共鳴等級: {LEVEL}</VV_Letter_EverflowerAttumentLevelUpLabel>
+<VV_Letter_EverflowerAttumentLevelUp>一株永盛花的共鳴等級增加了，新的儀式已解鎖。</VV_Letter_EverflowerAttumentLevelUp>
+
+<VV_Letter_FairyficationCompleteLabel>仙靈化: {TARGET_nameDef}</VV_Letter_FairyficationCompleteLabel>
+<VV_Letter_FairyficationComplete>{CASTER_nameDef} 將 {TARGET_nameDef}仙靈化。仙靈化的薇薇體型會大幅縮小，追隨其所綁定的皇家薇薇。\n仙靈化薇薇沒有任何需求，不會受到傷害，也不受壽命限制，但會隨其所綁定的皇家薇薇死亡而消亡。
+\n仙靈薇薇除了跟隨皇家薇薇外什么工作也不會做，但或許能提供一些工作外的幫助。
+\n\n仙靈薇薇可以通過儀式回到仙靈化前的原始狀態，但這會帶來需要時間去自愈的后遺癥，后遺癥痊愈前不可再次仙靈化。</VV_Letter_FairyficationComplete>
+
+<VV_Letter_IncidentHornetAssaultArrivedLabel>巨型黃蜂群</VV_Letter_IncidentHornetAssaultArrivedLabel>
+<VV_Letter_IncidentHornetAssaultArrived>一群狂暴的巨型黃蜂出現了。它們會四處游蕩并攻擊它們遇到的任何生物。巨型黃蜂非常快速且堅韌，使用傳統武器難以將其擊倒，但對火焰和毒素抵抗力低下。
+\n它們被魔能波動吸引而來，具有更加強烈的攻擊性，和尋常的黃蜂群不同，這群巨型黃蜂會攻擊視野中的一切，直到一切活物與建筑都被摧毀。</VV_Letter_IncidentHornetAssaultArrived>
+
+</LanguageData>

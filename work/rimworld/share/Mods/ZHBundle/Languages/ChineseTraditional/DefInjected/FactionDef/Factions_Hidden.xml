@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RH2_Nerotonin4_Horde.label>不死部落</RH2_Nerotonin4_Horde.label>
+  <RH2_Nerotonin4_Horde.description>被Nerotonin-4型病毒感染的部落，幸存者將其中的生物稱為「僵屍」。除非周邊所有的未感染生物盡數死亡，否則這些怪物永遠不會停歇。\n\n許多世界都淪為了Nerotonin-4型病毒的犧牲品，這種病毒起源於一家名為Secronom的公司，該公司在倒閉前引發了一場末日級的世界流行病。最近已知的最後一份病毒，來源於星際製藥公司OVID的一次實驗。\n\n沒人知道這些生物腦中所思所想，只知道它們被驅動來行使暴力。</RH2_Nerotonin4_Horde.description>
+  <RH2_Nerotonin4_Horde.fixedName>N-4感染者</RH2_Nerotonin4_Horde.fixedName>
+  <RH2_Nerotonin4_Horde.leaderTitle>領袖</RH2_Nerotonin4_Horde.leaderTitle>
+  <RH2_Nerotonin4_Horde.pawnSingular>殭屍</RH2_Nerotonin4_Horde.pawnSingular>
+  <RH2_Nerotonin4_Horde.pawnsPlural>僵屍</RH2_Nerotonin4_Horde.pawnsPlural>
+
+
+</LanguageData>

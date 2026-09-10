@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <CBP_TerribleRitual.stages.0.label>糟糕的祈福</CBP_TerribleRitual.stages.0.label>
+  <CBP_TerribleRitual.stages.0.description>这次的祈福仪式真是糟透了，我难以表示祝贺。</CBP_TerribleRitual.stages.0.description>
+
+  <CBP_UninspiringRitual.stages.0.label>平淡的祈福</CBP_UninspiringRitual.stages.0.label>
+  <CBP_UninspiringRitual.stages.0.description>这次的祈福仪式平平无奇，这样生下来的孩子也不会得到祝福吧。</CBP_UninspiringRitual.stages.0.description>
+
+  <CBP_EncouragingRitual.stages.0.label>成功的祈福</CBP_EncouragingRitual.stages.0.label>
+  <CBP_EncouragingRitual.stages.0.description>这次祈福仪式非常成功，相信生下的孩子能够得到祝福。</CBP_EncouragingRitual.stages.0.description>
+
+  <CBP_LegenderyRitual.stages.0.label>完美的祈福</CBP_LegenderyRitual.stages.0.label>
+  <CBP_LegenderyRitual.stages.0.description>这次祈福仪式无可挑剔，生下的孩子将来肯定会成为响当当的大人物！</CBP_LegenderyRitual.stages.0.description>
+
+
+</LanguageData>

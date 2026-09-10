@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Regeneration -->
+  <DR_Heal_A.label>龍人自癒</DR_Heal_A.label>
+  <!-- EN: Scars are restored every 15 to 30 days. -->
+  <DR_Heal_A.description>疤痕每隔15至30天就會恢復。</DR_Heal_A.description>
+  
+</LanguageData>

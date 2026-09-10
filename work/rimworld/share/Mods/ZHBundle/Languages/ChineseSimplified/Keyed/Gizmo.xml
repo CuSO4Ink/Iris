@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+<VV_Gizmo_ViviEggProgressHeader>产卵进度</VV_Gizmo_ViviEggProgressHeader>
+<VV_Gizmo_ViviEggProgressTooltip>显示距离下一次产卵剩余多少时间。\n\n当进度达到100%，并且有合适的薇薇孵化器可用时，薇薇将前往那里产卵。</VV_Gizmo_ViviEggProgressTooltip>
+
+<VV_Gizmo_ManaStorageHeader>魔能容量</VV_Gizmo_ManaStorageHeader>
+<VV_Gizmo_ManaStorageTooltip>{THING}所能储存的魔能量。
+\n吸收被神秘植物释放到环境中的魔能，当位于环境中存在魔能的区域时会充能。
+\n在当前地区，会每天吸收{DAILYMANA}的环境魔能。</VV_Gizmo_ManaStorageTooltip>
+
+<VV_Gizmo_LinkFailReason_AlreadyLinked>已经和永盛花共鸣。</VV_Gizmo_LinkFailReason_AlreadyLinked>
+<VV_Gizmo_LinkFailReason_PsychicSensitivityRequire>心灵敏感度不足。</VV_Gizmo_LinkFailReason_PsychicSensitivityRequire>
+<VV_Gizmo_OptionLabel_NoRoyalVivi>并非皇家薇薇。</VV_Gizmo_OptionLabel_NoRoyalVivi>
+</LanguageData>

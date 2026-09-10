@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Electric Sauna Heater -->
+  <DBHSaunaHeaterElec.label>電力桑拿加熱器</DBHSaunaHeaterElec.label>
+  <!-- EN: A heater designed specifically for creating a sauna room, using a sauna regularly reduces the risk of heart attacks, heats a room to 60c. -->
+  <DBHSaunaHeaterElec.description>專為桑拿室設計的特殊加熱器，使用時會將室溫提高至60°C。定期蒸桑拿浴有益身心健康，更可以降低心臟病發作的風險。</DBHSaunaHeaterElec.description>
+  
+  <!-- EN: Fueled Sauna Heater -->
+  <DBHSaunaHeaterLog.label>燃料桑拿加熱器</DBHSaunaHeaterLog.label>
+  <!-- EN: A heater designed specifically for creating a sauna room, using a sauna regularly reduces the risk of heart attacks, heats a room to 60c. -->
+  <DBHSaunaHeaterLog.description>專為桑拿室設計的特殊加熱器，使用時會將室溫提高至60°C。定期蒸桑拿浴有益身心健康，更可以降低心臟病發作的風險。</DBHSaunaHeaterLog.description>
+  
+  <!-- EN: Sauna seating -->
+  <DBHSaunaSeating.label>桑拿坐凳</DBHSaunaSeating.label>
+  <!-- EN: Slatted seating for sauna rooms -->
+  <DBHSaunaSeating.description>桑拿房專用的板條坐凳。</DBHSaunaSeating.description>
+  
+  <!-- EN: swimming pool -->
+  <DBHSwimmingPool.label>游泳池</DBHSwimmingPool.label>
+  <!-- EN: Swimming pool used for hydrotherapy, relaxation, or pleasure. Must be filled with water from water towers first. -->
+  <DBHSwimmingPool.description>用於水療，放鬆或娛樂的游泳池，使用時需要從蓄水设备中注入水。</DBHSwimmingPool.description>
+  
+  <!-- EN: hot tub -->
+  <HotTub.label>熱水按摩浴缸</HotTub.label>
+  <!-- EN: Hot tub used for hydrotherapy, relaxation, or pleasure. Filled with water from water towers on first use. Self-heated and does not require a sewage outlet. -->
+  <HotTub.description>用於水療放鬆的熱水按摩浴缸，在清潔的同時提高娛樂和舒適值。第一次使用時會從蓄水设备中注入水，自行加熱，不需要排污口。</HotTub.description>
+  
+  <!-- EN: washing machine -->
+  <WashingMachine.label>洗衣機</WashingMachine.label>
+  <!-- EN: Washes clothes so well that you can't even tell someone died wearing it! -->
+  <WashingMachine.description>這台機器如此優秀，以至於殖民者甚至無法發現這件衣物曾被死人穿過！</WashingMachine.description>
+  
+</LanguageData>

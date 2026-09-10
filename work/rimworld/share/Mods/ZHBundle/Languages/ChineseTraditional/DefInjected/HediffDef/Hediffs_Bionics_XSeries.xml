@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- x-hyper implant -->
+
+  <DF_XHyper_Implant.label>X-活力植入物</DF_XHyper_Implant.label>
+  <DF_XHyper_Implant.description>一個已安裝的X-活力植入物</DF_XHyper_Implant.description>
+  <DF_XHyper_Implant.labelNoun>一個X-活力植入物</DF_XHyper_Implant.labelNoun>
+
+
+  <!-- x-perception implant -->
+
+  <DF_XPerception_Implant.label>X-洞察植入物</DF_XPerception_Implant.label>
+  <DF_XPerception_Implant.description>一個已安裝的X-洞察植入物</DF_XPerception_Implant.description>
+  <DF_XPerception_Implant.labelNoun>一個X-洞察植入物</DF_XPerception_Implant.labelNoun>
+
+
+  <!-- x-ironskin implant -->
+
+  <DF_XIronskin_Implant.label>X-鐵皮植入物</DF_XIronskin_Implant.label>
+  <DF_XIronskin_Implant.description>一個已安裝的X-鐵皮植入物</DF_XIronskin_Implant.description>
+  <DF_XIronskin_Implant.labelNoun>一個X-鐵皮植入物</DF_XIronskin_Implant.labelNoun>
+
+
+  <!-- x-violence implant -->
+
+  <DF_XViolence_Implant.label>X-暴力植入物</DF_XViolence_Implant.label>
+  <DF_XViolence_Implant.description>一個已安裝的X-暴力植入物</DF_XViolence_Implant.description>
+  <DF_XViolence_Implant.labelNoun>一個X-暴力植入物</DF_XViolence_Implant.labelNoun>
+
+
+</LanguageData>

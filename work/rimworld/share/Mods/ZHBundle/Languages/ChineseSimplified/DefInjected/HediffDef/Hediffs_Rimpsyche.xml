@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: adrenaline rush -->
+  <Rimpsyche_AdrenalineRush.label>肾上腺素激增</Rimpsyche_AdrenalineRush.label>
+  <!-- EN: A rush of adrenaline. It increases heart rate and blood pressure while sharpening the senses and heightening focus. -->
+  <Rimpsyche_AdrenalineRush.description>肾上腺素的激增。提高心率和血压，感官更明锐，注意力更集中。</Rimpsyche_AdrenalineRush.description>
+  <!-- EN: negligible -->
+  <Rimpsyche_AdrenalineRush.stages.negligible.label>微不足道</Rimpsyche_AdrenalineRush.stages.negligible.label>
+  <!-- EN: trivial -->
+  <Rimpsyche_AdrenalineRush.stages.trivial.label>轻微</Rimpsyche_AdrenalineRush.stages.trivial.label>
+  <!-- EN: slight -->
+  <Rimpsyche_AdrenalineRush.stages.slight.label>较轻</Rimpsyche_AdrenalineRush.stages.slight.label>
+  <!-- EN: moderate -->
+  <Rimpsyche_AdrenalineRush.stages.moderate.label>中等</Rimpsyche_AdrenalineRush.stages.moderate.label>
+  <!-- EN: intense -->
+  <Rimpsyche_AdrenalineRush.stages.intense.label>严重</Rimpsyche_AdrenalineRush.stages.intense.label>
+  <!-- EN: extreme -->
+  <Rimpsyche_AdrenalineRush.stages.extreme.label>极重</Rimpsyche_AdrenalineRush.stages.extreme.label>
+  
+</LanguageData>

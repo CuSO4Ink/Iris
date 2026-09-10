@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: canola plant -->
+  <VCE_Canola.label>油菜</VCE_Canola.label>
+  <!-- EN: A bright-yellow flowering variety of the rapeseed, cultivated mainly for its oil-rich seed.\n\n<color=#E5E54C>Gameplay effect:</color> Canola, though not directly edible, can be very efficiently converted into chemfuel at a refinery. -->
+  <VCE_Canola.description>一种亮黄色的花，能结出各式富含油脂的籽。\n\n&lt;color=#E5E54C>游戏效果：&lt;/color>油菜花可以以更高的效率转化成化学燃料。需要花费更多的时间来播种与收割</VCE_Canola.description>
+  
+  <!-- EN: fragrantbloom rose -->
+  <VCE_FragrantbloomRose.label>芳香玫瑰</VCE_FragrantbloomRose.label>
+  <!-- EN: A unique rose variety cultivated for its intense, captivating scent, perfect for making perfumes and other aromatic products. -->
+  <VCE_FragrantbloomRose.description>一种独特的变种玫瑰，会释放出强烈的花香，可被用于制作香水或其它制品。</VCE_FragrantbloomRose.description>
+  
+  <!-- EN: hyacinth -->
+  <VCE_Hyacinth.label>风信子</VCE_Hyacinth.label>
+  <!-- EN: A vibrant, sweet-smelling flower with a fresh, green fragrance that adds depth to gardens and perfumes alike. -->
+  <VCE_Hyacinth.description>一种颜色鲜艳，气味芬芳的花卉，可以让花园增色不少。</VCE_Hyacinth.description>
+  
+  <!-- EN: jasmine -->
+  <VCE_Jasmine.label>茉莉花</VCE_Jasmine.label>
+  <!-- EN: A vibrant, sweet-smelling flower with a fresh, green fragrance that adds depth to gardens and perfumes alike. -->
+  <VCE_Jasmine.description>一种颜色鲜艳，气味芬芳的花卉，可以让花园增色不少。</VCE_Jasmine.description>
+  
+  <!-- EN: lavender -->
+  <VCE_Lavender.label>薰衣草</VCE_Lavender.label>
+  <!-- EN: A fragrant, purple-flowered plant known for its calming scent and ornamental beauty. -->
+  <VCE_Lavender.description>一种开有紫色小花的植物，不仅适合装饰，还有着能抚慰人心的花香。</VCE_Lavender.description>
+  
+  <!-- EN: lily -->
+  <VCE_Lily.label>百合花</VCE_Lily.label>
+  <!-- EN: A striking flower with a rich, sweet, and sometimes spicy fragrance that fills any space with elegance. -->
+  <VCE_Lily.description>一种夺人眼球的花卉，散发出有些许刺激性的浓厚甜香，让优雅的气息充满周围每一处角落。</VCE_Lily.description>
+  
+  <!-- EN: orchid -->
+  <VCE_Orchid.label>兰花</VCE_Orchid.label>
+  <!-- EN: A delicate and exotic bloom with a subtle, sweet scent that varies by species, often used in sophisticated perfumes. -->
+  <VCE_Orchid.description>一种独特高雅的花卉，散发出各有不同的淡雅花香，常被用于高档香水之中。</VCE_Orchid.description>
+  
+  <!-- EN: plumeria -->
+  <VCE_Plumeria.label>缅栀花</VCE_Plumeria.label>
+  <!-- EN: A tropical flower with a fruity, sweet, and creamy fragrance, perfect for creating a lush, warm atmosphere. -->
+  <VCE_Plumeria.description>一种热带花卉，带有一种棉柔的果香，是让人感到温馨的气息。</VCE_Plumeria.description>
+  
+  <!-- EN: tulip -->
+  <VCE_Tulip.label>郁金香</VCE_Tulip.label>
+  <!-- EN: A beautiful but mild-scented flower known more for its vibrant colors than its fragrance. -->
+  <VCE_Tulip.description>一种色彩出众但香气微弱的观赏性花卉。</VCE_Tulip.description>
+  
+  <!-- EN: vanilla -->
+  <VCE_Vanilla.label>香草花</VCE_Vanilla.label>
+  <!-- EN: Delicate, creamy-white flowers with a light, sweet fragrance. While the flowers are beautiful, it’s the pods they produce that are prized for their warm, rich scent. We put some vanilla in your Vanilla Expanded so you can expand vanilla while you vanilla your expansion. -->
+  <VCE_Vanilla.description>一种优雅的乳白色花卉，有着轻柔的甜香。不仅外观喜人，它的花荚也因浓厚的独特香气而价值不菲。给用香草给香草味的原版（Vanilla）扩展增添一重香草的意境，香草你的心。</VCE_Vanilla.description>
+  
+  <!-- EN: violet -->
+  <VCE_Violet.label>紫罗兰</VCE_Violet.label>
+  <!-- EN: A soft, powdery, and sweet-smelling flower, often used to add a gentle floral note to perfumes. -->
+  <VCE_Violet.description>一种柔软脆弱的花卉，它的花香常在香水中作辅助作用。</VCE_Violet.description>
+  
+  <!-- EN: ylang-Ylang -->
+  <VCE_YlangYlang.label>依兰</VCE_YlangYlang.label>
+  <!-- EN: A highly fragrant, sweet, and rich flower, prized for its use in exotic and sensual perfumes. -->
+  <VCE_YlangYlang.description>一种花香浓郁的花卉，作为香水原料要价不菲。</VCE_YlangYlang.description>
+  
+</LanguageData>

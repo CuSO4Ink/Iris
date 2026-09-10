@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 다각 공병전차 (클러스터 로켓 포대) 제작 -->
+  <Miho_Mech_CataphractCluRocket.label>組裝“鐵騎兵”集束火箭無人機</Miho_Mech_CataphractCluRocket.label>
+  <!-- EN: 다각 공병전차 (클러스터 로켓 포대) 제작. -->
+  <Miho_Mech_CataphractCluRocket.description>組裝“鐵騎兵”集束火箭無人機。</Miho_Mech_CataphractCluRocket.description>
+  <!-- EN: Gestating mech. -->
+  <Miho_Mech_CataphractCluRocket.jobString>組裝無人機。</Miho_Mech_CataphractCluRocket.jobString>
+  
+  <!-- EN: 다각 공병전차 (다연장 로켓 포대) 제작 -->
+  <Miho_Mech_CataphractRocket.label>組裝“鐵騎兵”溫壓火箭無人機</Miho_Mech_CataphractRocket.label>
+  <!-- EN: 다각 공병전차 (다연장 로켓 포대) 제작. -->
+  <Miho_Mech_CataphractRocket.description>組裝“鐵騎兵”溫壓火箭無人機。</Miho_Mech_CataphractRocket.description>
+  <!-- EN: Gestating mech. -->
+  <Miho_Mech_CataphractRocket.jobString>組裝無人機。</Miho_Mech_CataphractRocket.jobString>
+  
+</LanguageData>

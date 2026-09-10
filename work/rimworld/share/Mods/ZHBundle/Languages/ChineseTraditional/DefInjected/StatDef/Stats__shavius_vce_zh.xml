@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: food improvement chance -->
+  <VCE_FoodImprovementChance.label>食物質量提升幾率</VCE_FoodImprovementChance.label>
+  <!-- EN: The chance that this colonist will convert a crafted meal into a higher type (simple to fine, fine to lavish). Applies to bakes, grills and base game meals. -->
+  <VCE_FoodImprovementChance.description>該殖民者能將烹飪的食物提升一個質量等級的幾率（簡單到精緻，精緻到奢侈）。適用於面點，烤肉和原版食物。</VCE_FoodImprovementChance.description>
+  
+  <!-- EN: food condiment chance -->
+  <VCEF_FoodCondimentChance.label>加料幾率</VCEF_FoodCondimentChance.label>
+  <!-- EN: The chance that this colonist will add a random condiment to any crafted meal (except resurrector nanites). -->
+  <VCEF_FoodCondimentChance.description>該殖民者往製作中的食物里隨機添加一個調料的幾率（不包括復活納米醬）。</VCEF_FoodCondimentChance.description>
+  
+</LanguageData>

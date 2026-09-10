@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- x-hyper implant -->
+
+  <DF_XHyper_Implant.label>X-活力植入物</DF_XHyper_Implant.label>
+  <DF_XHyper_Implant.description>X-活力植入物。提高使用者的移动能力。\n\n它是X系列植入物的一部分，由荒野工程师和幸存的Secronom科学家利用现有的现代技术和废料场材料制作，目的是为那些负担不起高端植入物的生还者提供廉价的身体增强。</DF_XHyper_Implant.description>
+
+
+  <!-- x-perception implant -->
+
+  <DF_XPerception_Implant.label>X-洞察植入物</DF_XPerception_Implant.label>
+  <DF_XPerception_Implant.description>X-洞察植入物。提高使用者的视觉能力、学习能力和情绪调节能力。\n\n它是X系列植入物的一部分，由荒野工程师和幸存的Secronom科学家利用现有的现代技术和废料场材料制作，目的是为那些负担不起高端植入物的生还者提供廉价的身体增强。</DF_XPerception_Implant.description>
+
+
+  <!-- x-ironskin implant -->
+
+  <DF_XIronskin_Implant.label>X-铁皮植入物</DF_XIronskin_Implant.label>
+  <DF_XIronskin_Implant.description>X-铁皮植入物。提高使用者的承伤能力。\n\n它是X系列植入物的一部分，由荒野工程师和幸存的Secronom科学家利用现有的现代技术和废料场材料制作，目的是为那些负担不起高端植入物的生还者提供廉价的身体增强。</DF_XIronskin_Implant.description>
+
+
+  <!-- x-violence implant -->
+
+  <DF_XViolence_Implant.label>X-暴力植入物</DF_XViolence_Implant.label>
+  <DF_XViolence_Implant.description>X-暴力植入物。提高使用者的战斗能力。\n\n它是X系列植入物的一部分，由荒野工程师和幸存的Secronom科学家利用现有的现代技术和废料场材料制作，目的是为那些负担不起高端植入物的生还者提供廉价的身体增强。</DF_XViolence_Implant.description>
+
+
+</LanguageData>

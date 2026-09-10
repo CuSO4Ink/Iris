@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: chaos skip -->
+  <VPE_ChaosSkip.label>混亂折躍</VPE_ChaosSkip.label>
+  <!-- EN: Teleport the target to a random position from where he started, the distance scaling with the caster’s psychic sensitivity. Stuns the target for a second and is considered a hostile action. -->
+  <VPE_ChaosSkip.description>把目標傳送到附近的一個隨機位置。使目標眩暈一秒，被視作敵意行為。</VPE_ChaosSkip.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_ChaosSkip.jobReportString>使用能力：{0}</VPE_ChaosSkip.jobReportString>
+  <!-- EN: 混亂折躍 -->
+  <VPE_ChaosSkip.verbProperties.label>混亂折躍</VPE_ChaosSkip.verbProperties.label>
+  
+  <!-- EN: chunk skip -->
+  <VPE_Chunkskip.label>塊堆折躍</VPE_Chunkskip.label>
+  <!-- EN: Skip the 5 chunks of rock or slag to scatter them near the target point. This is useful for producing cover during offensive operations. -->
+  <VPE_Chunkskip.description>將5塊石塊或者鋼渣之類的塊堆折躍並分散到目標位置附近。這對於在進攻行動中快速製造掩體非常有用。</VPE_Chunkskip.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Chunkskip.jobReportString>使用能力：{0}</VPE_Chunkskip.jobReportString>
+  <!-- EN: 塊堆折躍 -->
+  <VPE_Chunkskip.verbProperties.label>塊堆折躍</VPE_Chunkskip.verbProperties.label>
+  
+  <!-- EN: farskip -->
+  <VPE_Farskip.label>遠距離折躍</VPE_Farskip.label>
+  <!-- EN: Skip the caster, along with anyone standing near them, to a willing ally at a distant location. This can send people far across the planet, and the skipped people will always appear near a random ally on the target map and be stunned for a few seconds from the journey. -->
+  <VPE_Farskip.description>折躍施放者以及站在他附近的所有人，去往一個遠處的盟友位置。這能夠讓人們抵達星球上很遠的位置，但必須在目標位置有一個願意充當道標的盟友時才有效果。被折躍的人總是出現在目標地圖上的隨機盟友附近。</VPE_Farskip.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Farskip.jobReportString>使用能力：{0}</VPE_Farskip.jobReportString>
+  <!-- EN: 遠距離折躍 -->
+  <VPE_Farskip.verbProperties.label>遠距離折躍</VPE_Farskip.verbProperties.label>
+  
+  <!-- EN: mass chaos skip -->
+  <VPE_MassChaosSkip.label>群體混亂折躍</VPE_MassChaosSkip.label>
+  <!-- EN: Skip everyone near a target point to a random location nearby. Considered a nuisance as it can put allies in danger. -->
+  <VPE_MassChaosSkip.description>把目標點周圍的人傳送到附近的一個隨機位置。因為會使友方陷入危險，被視作敵意行為。</VPE_MassChaosSkip.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_MassChaosSkip.jobReportString>使用能力：{0}</VPE_MassChaosSkip.jobReportString>
+  <!-- EN: 群體混亂折躍 -->
+  <VPE_MassChaosSkip.verbProperties.label>群體混亂折躍</VPE_MassChaosSkip.verbProperties.label>
+  
+  <!-- EN: skip -->
+  <VPE_Skip.label>折躍</VPE_Skip.label>
+  <!-- EN: Teleport the target to a desired position, the distance scaling with the caster’s psychic sensitivity, from his starting point. This is considered a hostile action. -->
+  <VPE_Skip.description>將目標傳送到離原點不遠的特定位置。被視作敵意行為。</VPE_Skip.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Skip.jobReportString>使用能力：{0}</VPE_Skip.jobReportString>
+  <!-- EN: 折躍 -->
+  <VPE_Skip.verbProperties.label>折躍</VPE_Skip.verbProperties.label>
+  
+  <!-- EN: skipdoor -->
+  <VPE_Skipdoor.label>折躍門</VPE_Skipdoor.label>
+  <!-- EN: Creates an opening to a network of skipgates which can be placed in any location with a permanent presence. The network is tied to a group’s collective consciousness, allowing others to use it and different psycasters can add to it. However, the entry points are sensitive to physical disturbances which can cause them to collapse. -->
+  <VPE_Skipdoor.description>在折躍網絡上創造一個永久的開口，可以被放在任意處。折躍網絡與一個集體潛意識綁定，讓外人也可以使用並加入。然而開口本身是十分脆弱的，會被物理上的擾動摧毀。</VPE_Skipdoor.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Skipdoor.jobReportString>使用能力：{0}</VPE_Skipdoor.jobReportString>
+  <!-- EN: 折躍門 -->
+  <VPE_Skipdoor.verbProperties.label>折躍門</VPE_Skipdoor.verbProperties.label>
+  
+  <!-- EN: smokepop -->
+  <VPE_Smokepop.label>煙霧</VPE_Smokepop.label>
+  <!-- EN: Skip dust particles up from under the ground surface to form a thick cloud. This reduces the accuracy of any shot fired through it, and prevents turrets from locking on entirely. -->
+  <VPE_Smokepop.description>折躍地下的灰塵顆粒揚起一團厚厚的煙霧，這會降低通過它發射的任何炮彈的精度，並防止被炮塔精確鎖定。</VPE_Smokepop.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Smokepop.jobReportString>使用能力：{0}</VPE_Smokepop.jobReportString>
+  <!-- EN: 煙霧 -->
+  <VPE_Smokepop.verbProperties.label>煙霧</VPE_Smokepop.verbProperties.label>
+  
+  <!-- EN: solar pinhole -->
+  <VPE_SolarPinhole.label>太陽碎片</VPE_SolarPinhole.label>
+  <!-- EN: Generate a microscopic skipgate linked to the core of a nearby star for a few days. Solar material leaks through the pinprick in spacetime, illuminating and warming the surrounding area until it closes. The light is enough to work by, but not enough to grow plants. -->
+  <VPE_SolarPinhole.description>產生一個與附近恆星相連的微小折躍門。太陽物質在時空中穿過碎片，直到它關閉之前照亮並加熱周圍的區域。這個亮度足以讓你照常工作，但是還不足以供應植物生長。</VPE_SolarPinhole.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_SolarPinhole.jobReportString>使用能力：{0}</VPE_SolarPinhole.jobReportString>
+  <!-- EN: 太陽碎片 -->
+  <VPE_SolarPinhole.verbProperties.label>太陽碎片</VPE_SolarPinhole.verbProperties.label>
+  
+  <!-- EN: wall raise -->
+  <VPE_Wallraise.label>升壁</VPE_Wallraise.label>
+  <!-- EN: Form a temporary wall by skipping rubble and soil up from deep under the ground. Decent range and useful in blocking line of sight and movement for a few hours. -->
+  <VPE_Wallraise.description>移動地下深處的碎石和泥土，形成一道臨時的牆壁。射程很遠，可以有效阻擋敵人的視線和移動，會持續數小時。</VPE_Wallraise.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Wallraise.jobReportString>使用能力：{0}</VPE_Wallraise.jobReportString>
+  <!-- EN: 升壁 -->
+  <VPE_Wallraise.verbProperties.label>升壁</VPE_Wallraise.verbProperties.label>
+  
+  <!-- EN: waterskip -->
+  <VPE_Waterskip.label>水傳送</VPE_Waterskip.label>
+  <!-- EN: Douse a target in water, extinguishing fires and shorting any electrical structures. The water is archotechnologically skipped from distant bodies of water or underground aquifers, with the amount skipped scaling with psychic sensitivity. -->
+  <VPE_Waterskip.description>將目標區域浸入水中，撲滅火焰。從技術上說，水是通過超凡方式從遙遠的水源或者是地下水層中傳送出來的，具體數量取決於施放者的心靈敏感度。</VPE_Waterskip.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Waterskip.jobReportString>使用能力：{0}</VPE_Waterskip.jobReportString>
+  <!-- EN: 水傳送 -->
+  <VPE_Waterskip.verbProperties.label>水傳送</VPE_Waterskip.verbProperties.label>
+  
+</LanguageData>

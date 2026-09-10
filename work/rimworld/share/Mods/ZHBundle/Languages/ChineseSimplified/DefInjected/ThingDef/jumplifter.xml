@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: jump lifter -->
+  <Mech_JumpLifter.label>跃迁搬运机</Mech_JumpLifter.label>
+  <!-- EN: A small hauling mechanoid equipped with a micro jump drive. It can momentarily form a wormhole between its current location and destination, allowing for short-range teleportation. Due to the limitations of the jump drive, it cannot be used for long-distance travel such as with caravans, but it can perform successive jumps across most colony-sized distances. Lacking a ranged weapon, it can make only weak melee attacks. -->
+  <Mech_JumpLifter.description>一种配备微型跃迁引擎的小型搬运机械体。它可以在所在地和目的地之间短暂生成一个虫洞，从而实现短距离传送。由于跃迁引擎的限制，它无法用于远行队这样的长途旅行，但它可以进行几乎能够穿过整个殖民地的连续跃迁。由于没有远程武器，它只能进行微弱的近战攻击。</Mech_JumpLifter.description>
+  <!-- EN: head -->
+  <Mech_JumpLifter.tools.head.label>头</Mech_JumpLifter.tools.head.label>
+  
+</LanguageData>

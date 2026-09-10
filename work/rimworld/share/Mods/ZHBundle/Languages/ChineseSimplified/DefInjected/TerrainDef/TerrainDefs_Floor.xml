@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi honeycomb tile -->
+  <VV_HoneycombTile.label>薇薇蜂巢地板</VV_HoneycombTile.label>
+  <!-- EN: The floor is filled with hexagonal tiles made of wax. It's comfortable to walk on, clean, and nice to look at.\n\nIt can be built even on unstable ground. -->
+  <VV_HoneycombTile.description>铺着蜂蜡的六角形地板。走在上面很舒服，很干净，看起来也很好看。\n\n即使在不稳定的地形上也可以建造。</VV_HoneycombTile.description>
+  
+  <!-- EN: vivi sterile honeycomb tile -->
+  <VV_SterileHoneycombTile.label>薇薇无菌蜂巢地板</VV_SterileHoneycombTile.label>
+  <!-- EN: This is an sterile tile made in Vivi's traditional way. It uses propolis, a powerful sterile substance, so it's cleaner than regular sterile tiles, but harder and more time-consuming to make.\n\nDue to the material's characteristics, it is very vulnerable to fire, but its structure allows construction even on unstable ground. -->
+  <VV_SterileHoneycombTile.description>按照薇薇的传统方式铺设的无菌地板。使用蜂胶——一种强大的无菌物质——以比普通的无菌地板更清洁，但因此铺设起来更困难、更耗时。\n\n由于材料原因，它很容易受到火灾的影响，但即使在不稳定的地形上也可以建造。</VV_SterileHoneycombTile.description>
+  
+  <!-- EN: vivi cream floor -->
+  <VV_ViviCreamFloor.label>薇薇乳脂地板</VV_ViviCreamFloor.label>
+  <!-- EN: The floor is made by spreading Vivi cream on the ground. It's less comfortable to walk on than a dirt road, but it can be made quickly and doesn't produce dust.\n\nIt can be refined into honeycomb tiles, but in many ways, it's less efficient than using wax from the start. -->
+  <VV_ViviCreamFloor.description>涂薇薇乳脂制成的地板。走起来不如土路快，但可以快速建造，而且不会产生灰尘。\n\n乳脂可以被提炼成蜂窝砖，但蜂窝砖在某些方面不比使用蜂蜡更有效率。</VV_ViviCreamFloor.description>
+  
+</LanguageData>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Chamber -->
+
+  <Void_MutantSpawner.label>休眠室</Void_MutantSpawner.label>
+  <Void_MutantSpawner.description>一個休眠室，供剛轉化為N-4感染體的受試者使用。它將周期性地喚醒其中的生物。</Void_MutantSpawner.description>
+
+
+  <!-- Black Chamber -->
+
+  <Void_Volatile_MutantSpawner.label>無定室</Void_Volatile_MutantSpawner.label>
+  <Void_Volatile_MutantSpawner.description>一個無定室，供剛轉化為N-4感染體的受試者使用。它將周期性地喚醒其中的生物。</Void_Volatile_MutantSpawner.description>
+
+
+  <!-- Chamber -->
+
+  <Void_Rebirth_MutantSpawner.label>再生室</Void_Rebirth_MutantSpawner.label>
+  <Void_Rebirth_MutantSpawner.description>一個再生室，供剛轉化為N-4感染體的受試者使用。它將周期性地喚醒其中的生物。</Void_Rebirth_MutantSpawner.description>
+
+
+</LanguageData>

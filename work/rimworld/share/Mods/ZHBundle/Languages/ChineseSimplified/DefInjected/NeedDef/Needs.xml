@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fulfillment -->
+  <VAspirE_Fulfillment.label>愿望满足</VAspirE_Fulfillment.label>
+  <!-- EN: Fulfillment represents how happy someone is with their personal achievements in life. If they achieve their dreams and complete their lifetime goals, the fulfillment will increase. Each stage of fulfillment decreases mental break threshold. Achieving maximum fulfillment will result in a final growth moment. -->
+  <VAspirE_Fulfillment.description>愿望满足值反映了人物达成愿望后的喜悦程度。每当他们达成一个愿望，愿望满足值就会随之提高，此外还会降低其崩溃临界值。愿望满足值达到最高时，他们将迈入新的成长阶段。</VAspirE_Fulfillment.description>
+  
+</LanguageData>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <Merthsoft_DesignatorShapes>形状规划</Merthsoft_DesignatorShapes>
+  <Merthsoft_DesignatorShapes_Settings_ShowShapeDictionary>形状词典</Merthsoft_DesignatorShapes_Settings_ShowShapeDictionary>
+  <Merthsoft_DesignatorShapes_Settings_AnnounceToolSelection>播报所选工具</Merthsoft_DesignatorShapes_Settings_AnnounceToolSelection>
+  <Merthsoft_DesignatorShapes_Settings_MaxCells>「填充」模式下的最大选择格数</Merthsoft_DesignatorShapes_Settings_MaxCells>
+  <Merthsoft_DesignatorShapes_Settings_AutoSelectShapes>打开「形状规划」界面后自动选择形状</Merthsoft_DesignatorShapes_Settings_AutoSelectShapes>
+  <Merthsoft_DesignatorShapes_Settings_ResetShapeOnResume>取消暂停时重置所选形状</Merthsoft_DesignatorShapes_Settings_ResetShapeOnResume>
+  <Merthsoft_DesignatorShapes_Settings_PauseOnFloodFill>选择「填充」工具时自动暂停游戏</Merthsoft_DesignatorShapes_Settings_PauseOnFloodFill>
+  <Merthsoft_DesignatorShapes_Settings_AllowCollapsing>允许折叠「形状规划」界面</Merthsoft_DesignatorShapes_Settings_AllowCollapsing>
+  <Merthsoft_DesignatorShapes_Settings_HideWhenArchitectMenuIsHidden>「建筑」界面关闭时自动隐藏「形状规划」界面</Merthsoft_DesignatorShapes_Settings_HideWhenArchitectMenuIsHidden>
+  <Merthsoft_DesignatorShapes_Settings_DrawBackground>绘制「形状规划」界面背景</Merthsoft_DesignatorShapes_Settings_DrawBackground>
+  <Merthsoft_DesignatorShapes_Settings_IconSize>图标大小: {0}</Merthsoft_DesignatorShapes_Settings_IconSize>
+  <Merthsoft_DesignatorShapes_Settings_WindowPosition>窗口位置（设为 [-1, -1] 可恢复默认）</Merthsoft_DesignatorShapes_Settings_WindowPosition>
+  <Merthsoft_DesignatorShapes_Settings_WindowX>窗口 X 坐标</Merthsoft_DesignatorShapes_Settings_WindowX>
+  <Merthsoft_DesignatorShapes_Settings_WindowY>窗口 Y 坐标</Merthsoft_DesignatorShapes_Settings_WindowY>
+  <Merthsoft_DesignatorShapes_Settings_LockWindow>锁定「形状规划」界面以防止误触拖动</Merthsoft_DesignatorShapes_Settings_LockWindow>
+    
+  <Merthsoft_DesignatorShapes_Settings_EnableKeyboardInput>启用键盘快捷键</Merthsoft_DesignatorShapes_Settings_EnableKeyboardInput>
+  <Merthsoft_DesignatorShapes_Settings_AltToggle>允许使用 Alt 键在原版功能与形状工具间切换</Merthsoft_DesignatorShapes_Settings_AltToggle>
+  <Merthsoft_DesignatorShapes_Settings_HideCompletelyOnAltToggle>使用 Alt 键切换时完全隐藏界面</Merthsoft_DesignatorShapes_Settings_HideCompletelyOnAltToggle>
+  <Merthsoft_DesignatorShapes_Settings_EnableRotation>启用旋转快捷键</Merthsoft_DesignatorShapes_Settings_EnableRotation>
+  <Merthsoft_DesignatorShapes_Settings_KeyBindings>键位绑定（撤销与重做需按住 Ctrl 键）：</Merthsoft_DesignatorShapes_Settings_KeyBindings>
+    
+  <Merthsoft_DesignatorShapes_KeyLabel_RotateLeft>向左旋转</Merthsoft_DesignatorShapes_KeyLabel_RotateLeft>
+  <Merthsoft_DesignatorShapes_KeyLabel_RotateRight>向右旋转</Merthsoft_DesignatorShapes_KeyLabel_RotateRight>
+  <Merthsoft_DesignatorShapes_KeyLabel_FillCorners>填充边角</Merthsoft_DesignatorShapes_KeyLabel_FillCorners>
+  <Merthsoft_DesignatorShapes_KeyLabel_IncreaseThickness>增加线条粗细</Merthsoft_DesignatorShapes_KeyLabel_IncreaseThickness>
+  <Merthsoft_DesignatorShapes_KeyLabel_DecreaseThickness>减小线条粗细</Merthsoft_DesignatorShapes_KeyLabel_DecreaseThickness>
+  <Merthsoft_DesignatorShapes_KeyLabel_Undo>撤销</Merthsoft_DesignatorShapes_KeyLabel_Undo>
+  <Merthsoft_DesignatorShapes_KeyLabel_Redo>重做</Merthsoft_DesignatorShapes_KeyLabel_Redo>
+
+  <Merthsoft_DesignatorShapes_ToolSelected>已选择: {0}</Merthsoft_DesignatorShapes_ToolSelected>
+
+  <Merthsoft_DesignatorShapes_Shapes>形状</Merthsoft_DesignatorShapes_Shapes>
+
+  <Merthsoft_DesignatorShapes_SizeInputWidthLabel>宽</Merthsoft_DesignatorShapes_SizeInputWidthLabel>
+  <Merthsoft_DesignatorShapes_SizeInputHeightLabel>高</Merthsoft_DesignatorShapes_SizeInputHeightLabel>
+
+  <Merthsoft_DesignatorShapes_BoundingBoxBasedOnShapeToggleTooltip>切换「边界框」的行为模式。</Merthsoft_DesignatorShapes_BoundingBoxBasedOnShapeToggleTooltip>
+  <Merthsoft_DesignatorShapes_BoundingBoxBasedOnShapeMode>边界框行为：</Merthsoft_DesignatorShapes_BoundingBoxBasedOnShapeMode>
+  <Merthsoft_DesignatorShapes_BoundingBoxBasedOnShapeMode_Vanilla>基于鼠标输入（原版行为）</Merthsoft_DesignatorShapes_BoundingBoxBasedOnShapeMode_Vanilla>
+  <Merthsoft_DesignatorShapes_BoundingBoxBasedOnShapeMode_Shape>基于形状本身（而非鼠标输入）</Merthsoft_DesignatorShapes_BoundingBoxBasedOnShapeMode_Shape>
+  <Merthsoft_DesignatorShapes_BoundingBoxBasedOnShapeMode_Toggle>在游戏中添加切换开关</Merthsoft_DesignatorShapes_BoundingBoxBasedOnShapeMode_Toggle>
+</LanguageData>

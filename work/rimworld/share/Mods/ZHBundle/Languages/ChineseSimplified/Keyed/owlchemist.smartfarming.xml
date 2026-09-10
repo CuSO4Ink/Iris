@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<SmartFarming.Icon.On>开启</SmartFarming.Icon.On>
+	<SmartFarming.Icon.On.Desc>只要当前是可生长季节，就可以种植所选植物</SmartFarming.Icon.On.Desc>
+	<SmartFarming.Icon.Off>关闭</SmartFarming.Icon.Off>
+	<SmartFarming.Icon.Off.Desc>不种植任何植物.</SmartFarming.Icon.Off.Desc>
+	<SmartFarming.Icon.Smart>智能模式</SmartFarming.Icon.Smart>
+	<SmartFarming.Icon.Smart.Desc>只要预计其生长程度将达到最低收获阈值就种植植物，但它也许会死于寒冷或毒素之中。</SmartFarming.Icon.Smart.Desc>
+	<SmartFarming.Icon.Force>强制模式</SmartFarming.Icon.Force>
+	<SmartFarming.Icon.Force.Desc>无论季节状况如何，都会种植植物（无视外部因素）</SmartFarming.Icon.Force.Desc>
+	<SmartFarming.Icon.HarvestNow>立即收割</SmartFarming.Icon.HarvestNow>
+	<SmartFarming.Icon.HarvestNow.Desc>指定该区域内的所有植物进行收割，即使它们尚未成熟。</SmartFarming.Icon.HarvestNow.Desc>
+	<SmartFarming.Icon.AllowHarvest>允许收割</SmartFarming.Icon.AllowHarvest>
+	<SmartFarming.Icon.AllowHarvest.Desc>关闭此功能以禁止收获此区域。</SmartFarming.Icon.AllowHarvest.Desc>
+	<SmartFarming.Icon.OrchardAlignment>排列种植</SmartFarming.Icon.OrchardAlignment>
+	<SmartFarming.Icon.OrchardAlignment.Desc>用于需要更多区域的植物，例如树木，会尝试将它们排成一排。但这可能不适用于形状奇特的区域。</SmartFarming.Icon.OrchardAlignment.Desc>
+	<SmartFarming.Icon.MergeZones>合并区域</SmartFarming.Icon.MergeZones>
+	<SmartFarming.Icon.MergeZones.Desc>将第一个选定区域作为参考，把所选区域合并为单个区域。
+	</SmartFarming.Icon.MergeZones.Desc>
+	
+	<SmartFarming.Icon.Low>较低</SmartFarming.Icon.Low>
+	<SmartFarming.Icon.Normal>普通</SmartFarming.Icon.Normal>
+	<SmartFarming.Icon.Preferred>优先</SmartFarming.Icon.Preferred>
+	<SmartFarming.Icon.Important>重要</SmartFarming.Icon.Important>
+	<SmartFarming.Icon.Critical>关键</SmartFarming.Icon.Critical>
+	<SmartFarming.Icon.Priority.Desc>按照优先级来播种/收割</SmartFarming.Icon.Priority.Desc>
+	
+	<SmartFarming.Icon.NoPettyJobs>禁止零碎种植</SmartFarming.Icon.NoPettyJobs>
+	<SmartFarming.Icon.NoPettyJobs.Desc>除非有足够的工作量，不然不会在该区域种植新的植物，可以在设置中配置。</SmartFarming.Icon.NoPettyJobs.Desc>
+	
+	<SmartFarming.Settings.ColdSowing>允许寒冷播种</SmartFarming.Settings.ColdSowing>
+	<SmartFarming.Settings.ColdSowing.Desc>通常来说，游戏不允许在寒冷时播种，即使播种的植物类型可以忍受冰冻温度。禁用此功能以保持原版规则。</SmartFarming.Settings.ColdSowing.Desc>
+	
+	<SmartFarming.Settings.AllowHarvest>显示允许收割</SmartFarming.Settings.AllowHarvest>
+	<SmartFarming.Settings.AllowHarvest.Desc>显示“允许收割”。启用此功能可能会对拥有许多种植小人产生一些性能影响。更改此设置需要重新启动游戏。</SmartFarming.Settings.AllowHarvest.Desc>
+	
+	<SmartFarming.Settings.SmartSowLabel>智能种植：</SmartFarming.Settings.SmartSowLabel>
+	<SmartFarming.Settings.ProcessedFoodLabel>食物生产因素：</SmartFarming.Settings.ProcessedFoodLabel>
+	
+	<SmartFarming.Settings.UseAverageTemperature>使用平均温度预测而不是最低温度预测</SmartFarming.Settings.UseAverageTemperature>
+	<SmartFarming.Settings.UseAverageTemperature.Desc>在使用智能种植的气温预测功能时，将使用一天的平均温度，而不是一天的最低温度。使用平均温度将会延长一天内的生长时间，但可能会损失部分作物。</SmartFarming.Settings.UseAverageTemperature.Desc>
+	
+	<SmartFarming.Settings.UseAverageFertility>使用平均生长速度而不是最低生长速度</SmartFarming.Settings.UseAverageFertility>
+	<SmartFarming.Settings.UseAverageFertility.Desc>在预测植物生长时，使用平均区域肥力，而不是该区域最弱的肥力。</SmartFarming.Settings.UseAverageFertility.Desc>
+	
+	<SmartFarming.Settings.AutoCutBlighted>自动割除枯萎病</SmartFarming.Settings.AutoCutBlighted>
+	<SmartFarming.Settings.AutoCutBlighted.Desc>如果作物患上枯萎病，将自动割除。</SmartFarming.Settings.AutoCutBlighted.Desc>
+	
+	<SmartFarming.Settings.AutoHarvestNow>如果受到威胁，尽早收获</SmartFarming.Settings.AutoHarvestNow>
+	<SmartFarming.Settings.AutoHarvestNow.Desc>如果今晚的天气将十分寒冷，立即收割所有的植物。</SmartFarming.Settings.AutoHarvestNow.Desc>
+	<SmartFarming.Message.AutoHarvestNow>由于今晚的天气，植物被指定为提前收割。</SmartFarming.Message.AutoHarvestNow>
+	
+	<SmartFarming.Settings.OrchardAlignment>显示排列种植</SmartFarming.Settings.OrchardAlignment>
+	<SmartFarming.Settings.OrchardAlignment.Desc>显示排列种植选项，可以在种植区整齐排列种植。</SmartFarming.Settings.OrchardAlignment.Desc>
+	
+	<SmartFarming.Settings.AutoCutDying>自动收割即将冻死的植物</SmartFarming.Settings.AutoCutDying>
+	<SmartFarming.Settings.AutoCutDying.Desc>系统会在为时未晚之前，自动收割即将冻死的植物，更改此设置需要重新启动游戏。</SmartFarming.Settings.AutoCutDying.Desc>
+	
+	<SmartFarming.Settings.ProcessedFood.Desc>当生长区给出估计的潜在营养产量时，它会将生食的营养乘以该值。作为参考，“简单食物”将值乘以 1.8，“精致食物”乘以 1.2，“奢侈食物”将值乘以 1.0。</SmartFarming.Settings.ProcessedFood.Desc>
+	
+	<SmartFarming.Settings.MinTempSlider>最低温度允许(Mod 预设: {0}, 最小: {1}, 最大: {2}): </SmartFarming.Settings.MinTempSlider>
+	<SmartFarming.Settings.MinTemp>在预测最早收获日的天气时，请考虑任何低于此温度的天气是不可接受的。植物可能会在0°C时死亡，但如果它只是勉强冻结几个小时，通常可以存活。然而，随机的每日温度偏差可能会降低准确性。</SmartFarming.Settings.MinTemp>
+	
+	<SmartFarming.Settings.PettyJobsSlider>零碎种植(Mod 预设: {0}, 最小: {1}, 最大: {2}): </SmartFarming.Settings.PettyJobsSlider>
+	<SmartFarming.Settings.PettyJobs>如果在一个区域上启用了“无零碎种植”，除非有足够的工作量，不然不会在该区域种植新的植物，这对于动物放牧区很有用。</SmartFarming.Settings.PettyJobs>
+	
+	<SmartFarming.Inspector.MinHarvestDay>\n最早收获时间: </SmartFarming.Inspector.MinHarvestDay>
+	<SmartFarming.Inspector.MinHarvestDayFail>\n植物可能会在收获前死亡</SmartFarming.Inspector.MinHarvestDayFail>
+	<SmartFarming.Inspector.Fertility>\n生长速率: {0} 平均 / {1} 最低</SmartFarming.Inspector.Fertility>
+	<SmartFarming.Inspector.AverageGrowth>\n平均生长程度: </SmartFarming.Inspector.AverageGrowth>
+	<SmartFarming.Inspector.Yield>\n潜在营养值 </SmartFarming.Inspector.Yield>
+	<SmartFarming.Inspector.DaysWorth> ({0} 每日获取的营养值)</SmartFarming.Inspector.DaysWorth>
+	
+	<SmartFarming.Icon.SetAll>将区域设置为</SmartFarming.Icon.SetAll>
+</LanguageData>

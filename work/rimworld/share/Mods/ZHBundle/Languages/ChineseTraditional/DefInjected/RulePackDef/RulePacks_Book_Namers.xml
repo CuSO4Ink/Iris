@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>title->[titleBasic]</li>
+    <li>title(p=2)->[titleAuthoredNoSubject]</li>
+    <li>titleBasic(p=6)->[randAdjective] [subject_primary]</li>
+    <li>titleBasic(p=6)->[randNoun] and [subject_primary]</li>
+    <li>titleBasic->The Flavours of [subject_primary]</li>
+    <li>titleBasic->Savoury [subject_primary]</li>
+    <li>titleBasic->Global Gourmet [subject_primary]</li>
+    <li>titleBasic->Fresh from [subject_primary]</li>
+    <li>titleBasic->Spice Odyssey on [subject_primary]</li>
+    <li>titleBasic->Quick and Easy Weeknight Meals of [subject_primary]</li>
+    <li>titleBasic->Grandma's Kitchen in [subject_primary]</li>
+    <li>titleBasic->The Healthy Plate of [subject_primary]</li>
+    <li>titleBasic->The Ultimate Vegan Cookbook in [subject_primary]</li>
+    <li>titleBasic->Culinary Classics of [subject_primary]</li>
+    <li>titleBasic->Cooking with Love in [subject_primary]</li>
+    <li>titleBasic->Fire and Smoke: A Griller's Guide to [subject_primary]</li>
+    <li>titleBasic->Bake It Easy: [subject_primary]</li>
+    <li>titleBasic->Fusion Feast: [subject_primary]</li>
+    <li>titleBasic->Soulful Southern Cooking: [subject_primary]</li>
+    <li>titleBasic->The One-Pot Wonder: [subject_primary]</li>
+    <li>titleBasic->The Lazy Cook's Handbook of [subject_primary]</li>
+    <li>titleBasic->Perfect Pasta Every Time: [subject_primary]</li>
+    <li>titleBasic->Wholesome Meals for the Family: [subject_primary]</li>
+    <li>titleBasic->Tips, Tricks, and Recipes of [subject_primary]</li>
+    <li>titleBasic->Desserts to Die For: [subject_primary]</li>
+    <li>titleBasic->The Chocolate Lover's Cookbook of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Cookbook of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s [randAdjective] Recipes of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Recipes of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Culinary Guide of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Recipe Collection of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Kitchen Manual of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Cookery Book of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Gastronomy Guide of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Food Guide of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Chef』s Handbook of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Cooking Compendium of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Cook』s Companion of [subject_primary]</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]'s Gastronomic Bible of [subject_primary]</li>
+  -->
+  <VCEV_CookingBook_Namer.rulePack.rulesStrings>
+    <li>title->[titleBasic]</li>
+    <li>title(p=2)->[titleAuthoredNoSubject]</li>
+    <li>titleBasic(p=6)->[randAdjective][subject_primary]</li>
+    <li>titleBasic(p=6)->[randNoun]和[subject_primary]</li>
+    <li>titleBasic->[subject_primary]的味道</li>
+    <li>titleBasic->美味的[subject_primary]</li>
+    <li>titleBasic->[subject_primary]世界美食</li>
+    <li>titleBasic->鮮美[subject_primary]</li>
+    <li>titleBasic->[subject_primary]上的香料奧德賽</li>
+    <li>titleBasic->教你如何用[subject_primary]快速料理出簡單的每日晚餐</li>
+    <li>titleBasic->奶奶的廚房：烹飪[subject_primary]</li>
+    <li>titleBasic->健康烹飪[subject_primary]</li>
+    <li>titleBasic->[subject_primary]終極素食料理書</li>
+    <li>titleBasic->[subject_primary]的經典烹飪方法</li>
+    <li>titleBasic->用愛料理[subject_primary]</li>
+    <li>titleBasic->煙熏火烤：[subject_primary]的燒烤指南</li>
+    <li>titleBasic->輕鬆焙烤：[subject_primary]</li>
+    <li>titleBasic->雜燴晚宴：[subject_primary]</li>
+    <li>titleBasic->悠久的南方料理：[subject_primary]</li>
+    <li>titleBasic->一鍋奇跡：[subject_primary]</li>
+    <li>titleBasic->懶人廚師的[subject_primary]烹飪手冊</li>
+    <li>titleBasic->隨時隨地做出完美的意大利面：[subject_primary]</li>
+    <li>titleBasic->家庭健康美食：[subject_primary]</li>
+    <li>titleBasic->舌尖上的[subject_primary]</li>
+    <li>titleBasic->珍饈甜點：[subject_primary]</li>
+    <li>titleBasic->巧克力愛好者的[subject_primary]料理書</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]廚藝書</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[randAdjective][subject_primary]食譜</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]食譜</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]烹飪指南</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]菜譜大全</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]廚房手冊</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]烹飪書</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]美食指南</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]家常菜</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]大廚手冊</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]料理圖鑒</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]烹飪小幫手</li>
+    <li>titleAuthoredNoSubject->[ANYPAWN_nameIndef]的[subject_primary]美食聖經</li>
+  </VCEV_CookingBook_Namer.rulePack.rulesStrings>
+  
+</LanguageData>

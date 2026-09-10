@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RH_N4Mutant_BlackLeaper.label>N4突變體</RH_N4Mutant_BlackLeaper.label>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.6.customLabel>左肺</RH_N4Mutant_BlackLeaper.corePart.parts.6.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.7.customLabel>右肺</RH_N4Mutant_BlackLeaper.corePart.parts.7.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.8.customLabel>左腎</RH_N4Mutant_BlackLeaper.corePart.parts.8.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.9.customLabel>右腎</RH_N4Mutant_BlackLeaper.corePart.parts.9.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.11.parts.0.parts.1.customLabel>左眼</RH_N4Mutant_BlackLeaper.corePart.parts.11.parts.0.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.11.parts.0.parts.2.customLabel>右眼</RH_N4Mutant_BlackLeaper.corePart.parts.11.parts.0.parts.2.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.11.parts.0.parts.3.customLabel>左耳</RH_N4Mutant_BlackLeaper.corePart.parts.11.parts.0.parts.3.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.11.parts.0.parts.4.customLabel>右耳</RH_N4Mutant_BlackLeaper.corePart.parts.11.parts.0.parts.4.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.customLabel>左肩</RH_N4Mutant_BlackLeaper.corePart.parts.12.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.0.customLabel>左鎖骨</RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.0.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.customLabel>左臂</RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.0.customLabel>左肱骨</RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.0.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.1.customLabel>左橈骨</RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.customLabel>左手</RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.parts.0.customLabel>左尾指</RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.parts.0.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.parts.1.customLabel>左無名指</RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.parts.2.customLabel>左中指</RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.parts.2.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.parts.3.customLabel>左食指</RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.parts.3.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.parts.4.customLabel>左拇指</RH_N4Mutant_BlackLeaper.corePart.parts.12.parts.1.parts.2.parts.4.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.customLabel>右肩</RH_N4Mutant_BlackLeaper.corePart.parts.13.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.0.customLabel>右鎖骨</RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.0.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.customLabel>右臂</RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.0.customLabel>右肱骨</RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.0.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.1.customLabel>右橈骨</RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.customLabel>右手</RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.parts.0.customLabel>右尾指</RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.parts.0.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.parts.1.customLabel>右無名指</RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.parts.2.customLabel>右中指</RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.parts.2.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.parts.3.customLabel>右食指</RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.parts.3.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.parts.4.customLabel>右拇指</RH_N4Mutant_BlackLeaper.corePart.parts.13.parts.1.parts.2.parts.4.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.15.customLabel>左腿</RH_N4Mutant_BlackLeaper.corePart.parts.15.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.0.customLabel>左股骨</RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.0.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.1.customLabel>左脛骨</RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.customLabel>左足</RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.parts.0.customLabel>左腳小趾</RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.parts.0.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.parts.1.customLabel>左腳無名趾</RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.parts.2.customLabel>左腳中趾</RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.parts.2.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.parts.3.customLabel>左腳食趾</RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.parts.3.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.parts.4.customLabel>左腳拇趾</RH_N4Mutant_BlackLeaper.corePart.parts.15.parts.2.parts.4.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.16.customLabel>右腿</RH_N4Mutant_BlackLeaper.corePart.parts.16.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.0.customLabel>右股骨</RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.0.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.1.customLabel>右脛骨</RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.customLabel>右足</RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.parts.0.customLabel>右腳小趾</RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.parts.0.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.parts.1.customLabel>右腳無名趾</RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.parts.1.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.parts.2.customLabel>右腳中趾</RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.parts.2.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.parts.3.customLabel>右腳食趾</RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.parts.3.customLabel>
+  <RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.parts.4.customLabel>右腳拇趾</RH_N4Mutant_BlackLeaper.corePart.parts.16.parts.2.parts.4.customLabel>
+
+
+</LanguageData>

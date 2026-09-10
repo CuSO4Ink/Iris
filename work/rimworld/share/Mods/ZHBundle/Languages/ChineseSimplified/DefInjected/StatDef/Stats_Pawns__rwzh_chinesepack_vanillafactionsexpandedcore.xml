@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: body size multiplier -->
+  <VEF_BodySize_Multiplier.label>体型乘数</VEF_BodySize_Multiplier.label>
+  <!-- EN: Increases the size of the pawn by a multiple of their current size -->
+  <VEF_BodySize_Multiplier.description>单位的体型会乘以此项的值。</VEF_BodySize_Multiplier.description>
+  
+  <!-- EN: body size offset -->
+  <VEF_BodySize_Offset.label>体型偏移</VEF_BodySize_Offset.label>
+  <!-- EN: Increases the size of the pawn relative to their current size -->
+  <VEF_BodySize_Offset.description>单位的体型会根据此项的值偏移。</VEF_BodySize_Offset.description>
+  
+  <!-- EN: cosmetic body size multiplier -->
+  <VEF_CosmeticBodySize_Multiplier.label>外观体型乘数</VEF_CosmeticBodySize_Multiplier.label>
+  <!-- EN: Increases the size of the pawn by a multiple of their current size -->
+  <VEF_CosmeticBodySize_Multiplier.description>单位的体型会乘以此项的值。</VEF_CosmeticBodySize_Multiplier.description>
+  
+  <!-- EN: cosmetic body size offset -->
+  <VEF_CosmeticBodySize_Offset.label>外观体型偏移</VEF_CosmeticBodySize_Offset.label>
+  <!-- EN: Increases the size of the pawn relative to their current size -->
+  <VEF_CosmeticBodySize_Offset.description>单位的体型会根据此项的值偏移。</VEF_CosmeticBodySize_Offset.description>
+  
+  <!-- EN: Shield max energy factor -->
+  <VEF_EnergyShieldEnergyMaxFactor.label>护盾能量上限系数</VEF_EnergyShieldEnergyMaxFactor.label>
+  <!-- EN: Factor of the maximum shield energy that the user can boost through various means. -->
+  <VEF_EnergyShieldEnergyMaxFactor.description>使用者的护盾能量上限系数可以通过各种各样的方式来提高。</VEF_EnergyShieldEnergyMaxFactor.description>
+  
+  <!-- EN: Shield max energy offset -->
+  <VEF_EnergyShieldEnergyMaxOffset.label>护盾能量上限偏移</VEF_EnergyShieldEnergyMaxOffset.label>
+  <!-- EN: Offset of the maximum shield energy that the user can boost through various means. -->
+  <VEF_EnergyShieldEnergyMaxOffset.description>使用者的护盾能量上限偏移可以通过各种各样的方式来提高。</VEF_EnergyShieldEnergyMaxOffset.description>
+  
+  <!-- EN: body food capacity multiplier -->
+  <VEF_FoodCapacityMultiplier.label>饮食值上限偏移</VEF_FoodCapacityMultiplier.label>
+  <!-- EN: Increases the size of the pawn's hunger bar. This does not affect hunger -->
+  <VEF_FoodCapacityMultiplier.description>单位的饮食值上限会根据此项的值偏移。不会影响饥饿度。</VEF_FoodCapacityMultiplier.description>
+  
+  <!-- EN: growth point multiplier -->
+  <VEF_GrowthPointMultiplier.label>成长点数乘数</VEF_GrowthPointMultiplier.label>
+  <!-- EN: Increases the amount of growth points accumulated by children when learning -->
+  <VEF_GrowthPointMultiplier.description>儿童通过学习获得的成长点数会乘以此项的值。</VEF_GrowthPointMultiplier.description>
+  
+  <!-- EN: head size multiplier -->
+  <VEF_HeadSize_Cosmetic.label>头型乘数</VEF_HeadSize_Cosmetic.label>
+  
+  <!-- EN: Mass carry capacity -->
+  <VEF_MassCarryCapacity.label>负重能力</VEF_MassCarryCapacity.label>
+  <!-- EN: Total mass carrying capacity of the pawn in caravans. -->
+  <VEF_MassCarryCapacity.description>单位在远行队中时总共能携带多重的物品。</VEF_MassCarryCapacity.description>
+  <!-- EN: {0} kg -->
+  <VEF_MassCarryCapacity.formatString>{0}千克</VEF_MassCarryCapacity.formatString>
+  <!-- EN: {0} kg -->
+  <VEF_MassCarryCapacity.formatStringUnfinalized>{0}千克</VEF_MassCarryCapacity.formatStringUnfinalized>
+  
+  <!-- EN: melee attack damage factor -->
+  <VEF_MeleeAttackDamageFactor.label>近战攻击伤害系数</VEF_MeleeAttackDamageFactor.label>
+  <!-- EN: A multiplier on melee attack damage. -->
+  <VEF_MeleeAttackDamageFactor.description>近战攻击造成的伤害会乘以此项的值。</VEF_MeleeAttackDamageFactor.description>
+  
+  <!-- EN: MTB Lovin Factor -->
+  <VEF_MTBLovinFactor.label>滚床单MTB系数</VEF_MTBLovinFactor.label>
+  <!-- EN: A factor of the mean time between (MTB) this person looking for some lovin'. -->
+  <VEF_MTBLovinFactor.description>此人与伴侣、情人等滚床单的平均间隔时间（MTB）会乘以此项的值。</VEF_MTBLovinFactor.description>
+  
+  <!-- EN: thought duration factor - negative -->
+  <VEF_NegativeThoughtDurationFactor.label>想法持续时间系数 - 消极</VEF_NegativeThoughtDurationFactor.label>
+  <!-- EN: The duration of negative thoughts is multiplied by this value. -->
+  <VEF_NegativeThoughtDurationFactor.description>消极想法的持续时间会乘以此项的值。</VEF_NegativeThoughtDurationFactor.description>
+  
+  <!-- EN: thought duration factor - neutral -->
+  <VEF_NeutralThoughtDurationFactor.label>想法持续时间系数 - 中性</VEF_NeutralThoughtDurationFactor.label>
+  <!-- EN: The duration of neutral thoughts is multiplied by this value. -->
+  <VEF_NeutralThoughtDurationFactor.description>中性想法的持续时间会乘以此项的值。</VEF_NeutralThoughtDurationFactor.description>
+  
+  <!-- EN: pawn render offset -->
+  <VEF_PawnRenderPosOffset.label>单位渲染偏移</VEF_PawnRenderPosOffset.label>
+  <!-- EN: Modifies the pawn's rendered position in y-axis. -->
+  <VEF_PawnRenderPosOffset.description>单位的渲染位置会根据此项的值偏移（Y轴）。</VEF_PawnRenderPosOffset.description>
+  
+  <!-- EN: thought duration factor - positive -->
+  <VEF_PositiveThoughtDurationFactor.label>想法持续时间系数 - 积极</VEF_PositiveThoughtDurationFactor.label>
+  <!-- EN: The duration of positive thoughts is multiplied by this value. -->
+  <VEF_PositiveThoughtDurationFactor.description>积极想法的持续时间会乘以此项的值。</VEF_PositiveThoughtDurationFactor.description>
+  
+  <!-- EN: range attack damage factor -->
+  <VEF_RangeAttackDamageFactor.label>远程攻击伤害系数</VEF_RangeAttackDamageFactor.label>
+  <!-- EN: A multiplier on range attack damage. -->
+  <VEF_RangeAttackDamageFactor.description>远程攻击造成的伤害会乘以此项的值。</VEF_RangeAttackDamageFactor.description>
+  
+  <!-- EN: ranged dodge chance -->
+  <VEF_RangedDodgeChance.label>远程闪避率</VEF_RangedDodgeChance.label>
+  <!-- EN: Chance to dodge a ranged attack that would've otherwise hit, or (if negative) get hit by a ranged attack that was meant for a different target. -->
+  <VEF_RangedDodgeChance.description>闪避远程攻击或者其他物理击打的几率。</VEF_RangedDodgeChance.description>
+  
+  <!-- EN: weapon range factor -->
+  <VEF_VerbRangeFactor.label>远程武器射程系数</VEF_VerbRangeFactor.label>
+  <!-- EN: The range on weapons is multiplied by this value. -->
+  <VEF_VerbRangeFactor.description>武器的射程会乘以此项的值。</VEF_VerbRangeFactor.description>
+  <!-- EN: weapon range factor (people) -->
+  <VEF_VerbRangeFactor.labelForFullStatList>远程武器射程系数（人）</VEF_VerbRangeFactor.labelForFullStatList>
+  
+</LanguageData>

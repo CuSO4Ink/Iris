@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: [PAWN_nameDef]是龍人。\n它是一種美麗的生物，具有人類和龍的特徵。它主要出現在野外。它們的銀髮毛皮強度高且柔軟，這使得它們在黑市上價格昂貴，經常成為獵人的目標。 -->
+  <Dragonian_BS.description>[PAWN_nameDef]是龍人。\n它是一種美麗的生物，具有人類和龍的特徵。它主要出現在野外。它們的銀髮毛皮強度高且柔軟，這使得它們在黑市上價格昂貴，經常成為獵人的目標。/n此外，他們也被帝國視為非法的靈能力使用者，因此可能遭到逮捕，甚至被當場處決。</Dragonian_BS.description>
+  <!-- EN: 龍人 -->
+  <Dragonian_BS.title>龍人</Dragonian_BS.title>
+  <!-- EN: 龍人 -->
+  <Dragonian_BS.titleShort>龍人</Dragonian_BS.titleShort>
+  
+  <!-- EN: [PAWN_nameDef]是龍人。\n它是一種美麗的生物，具有人類和龍的特徵。它主要出現在野外。它們的銀髮毛皮強度高且柔軟，這使得它們在黑市上價格昂貴，經常成為獵人的目標。 -->
+  <Dragonian_BS_B.description>[PAWN_nameDef]是龍人。\n它是一種美麗的生物，具有人類和龍的特徵。它主要出現在野外。它們的銀髮毛皮強度高且柔軟，這使得它們在黑市上價格昂貴，經常成為獵人的目標。/n此外，他們也被帝國視為非法的靈能力使用者，因此可能遭到逮捕，甚至被當場處決。</Dragonian_BS_B.description>
+  <!-- EN: 龍人 -->
+  <Dragonian_BS_B.title>龍人</Dragonian_BS_B.title>
+  <!-- EN: 龍人 -->
+  <Dragonian_BS_B.titleShort>龍人</Dragonian_BS_B.titleShort>
+  
+</LanguageData>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- RUMBLER END -->
+
+  <RH_DF_EvolvedRumbler.label>进化普通士兵</RH_DF_EvolvedRumbler.label>
+  <RH_DF_EvolvedRumbler.labelPlural>进化普通士兵</RH_DF_EvolvedRumbler.labelPlural>
+  <RH_DF_EvolvedRumbler.labelMale>男性 进化普通士兵</RH_DF_EvolvedRumbler.labelMale>
+  <RH_DF_EvolvedRumbler.labelMalePlural>男性 进化普通士兵</RH_DF_EvolvedRumbler.labelMalePlural>
+  <RH_DF_EvolvedRumbler.labelFemale>女性 进化普通士兵</RH_DF_EvolvedRumbler.labelFemale>
+  <RH_DF_EvolvedRumbler.labelFemalePlural>女性 进化普通士兵</RH_DF_EvolvedRumbler.labelFemalePlural>
+
+
+  <!-- evolved long arm END -->
+
+  <RH_DF_EvolvedLongArms.label>进化长臂</RH_DF_EvolvedLongArms.label>
+  <RH_DF_EvolvedLongArms.labelPlural>进化长臂</RH_DF_EvolvedLongArms.labelPlural>
+  <RH_DF_EvolvedLongArms.labelMale>男性 进化长臂</RH_DF_EvolvedLongArms.labelMale>
+  <RH_DF_EvolvedLongArms.labelMalePlural>男性 进化长臂</RH_DF_EvolvedLongArms.labelMalePlural>
+  <RH_DF_EvolvedLongArms.labelFemale>女性 进化长臂</RH_DF_EvolvedLongArms.labelFemale>
+  <RH_DF_EvolvedLongArms.labelFemalePlural>女性 进化长臂</RH_DF_EvolvedLongArms.labelFemalePlural>
+
+
+  <!-- irridiated long arm END -->
+
+  <RH_DF_IrridiatedLongArms.label>无光长臂</RH_DF_IrridiatedLongArms.label>
+  <RH_DF_IrridiatedLongArms.labelPlural>无光长臂</RH_DF_IrridiatedLongArms.labelPlural>
+  <RH_DF_IrridiatedLongArms.labelMale>男性 无光长臂</RH_DF_IrridiatedLongArms.labelMale>
+  <RH_DF_IrridiatedLongArms.labelMalePlural>男性 无光长臂</RH_DF_IrridiatedLongArms.labelMalePlural>
+  <RH_DF_IrridiatedLongArms.labelFemale>女性 无光长臂</RH_DF_IrridiatedLongArms.labelFemale>
+  <RH_DF_IrridiatedLongArms.labelFemalePlural>女性 无光长臂</RH_DF_IrridiatedLongArms.labelFemalePlural>
+
+
+  <!-- Volatile Leaper END -->
+
+  <RH_DF_VolatileLeaper.label>无定跳跃者</RH_DF_VolatileLeaper.label>
+  <RH_DF_VolatileLeaper.labelPlural>无定跳跃者</RH_DF_VolatileLeaper.labelPlural>
+  <RH_DF_VolatileLeaper.labelMale>男性 无定跳跃者</RH_DF_VolatileLeaper.labelMale>
+  <RH_DF_VolatileLeaper.labelMalePlural>男性 无定跳跃者</RH_DF_VolatileLeaper.labelMalePlural>
+  <RH_DF_VolatileLeaper.labelFemale>女性 无定跳跃者</RH_DF_VolatileLeaper.labelFemale>
+  <RH_DF_VolatileLeaper.labelFemalePlural>女性 无定跳跃者</RH_DF_VolatileLeaper.labelFemalePlural>
+
+
+  <!-- BLACK TITAN END -->
+
+  <RH_BlackTitan.label>漆黑泰坦</RH_BlackTitan.label>
+  <RH_BlackTitan.labelPlural>漆黑泰坦</RH_BlackTitan.labelPlural>
+  <RH_BlackTitan.labelMale>男性 漆黑泰坦</RH_BlackTitan.labelMale>
+  <RH_BlackTitan.labelMalePlural>男性 漆黑泰坦</RH_BlackTitan.labelMalePlural>
+  <RH_BlackTitan.labelFemale>女性 漆黑泰坦</RH_BlackTitan.labelFemale>
+  <RH_BlackTitan.labelFemalePlural>女性 漆黑泰坦</RH_BlackTitan.labelFemalePlural>
+
+
+  <!-- Black WRAITH END -->
+
+  <RH_BlackWraith.label>漆黑幽灵</RH_BlackWraith.label>
+  <RH_BlackWraith.labelPlural>漆黑幽灵</RH_BlackWraith.labelPlural>
+  <RH_BlackWraith.labelMale>男性 漆黑幽灵</RH_BlackWraith.labelMale>
+  <RH_BlackWraith.labelMalePlural>男性 漆黑幽灵</RH_BlackWraith.labelMalePlural>
+  <RH_BlackWraith.labelFemale>女性 漆黑幽灵</RH_BlackWraith.labelFemale>
+  <RH_BlackWraith.labelFemalePlural>女性 漆黑幽灵</RH_BlackWraith.labelFemalePlural>
+
+
+  <!-- BLACK LEAPER END -->
+
+  <RH_DF_BlackLeaper.label>漆黑跳跃者</RH_DF_BlackLeaper.label>
+  <RH_DF_BlackLeaper.labelPlural>漆黑跳跃者</RH_DF_BlackLeaper.labelPlural>
+  <RH_DF_BlackLeaper.labelMale>男性 漆黑跳跃者</RH_DF_BlackLeaper.labelMale>
+  <RH_DF_BlackLeaper.labelMalePlural>男性 漆黑跳跃者</RH_DF_BlackLeaper.labelMalePlural>
+  <RH_DF_BlackLeaper.labelFemale>女性 漆黑跳跃者</RH_DF_BlackLeaper.labelFemale>
+  <RH_DF_BlackLeaper.labelFemalePlural>女性 漆黑跳跃者</RH_DF_BlackLeaper.labelFemalePlural>
+
+
+  <!-- Devil Hound END -->
+
+  <RH_DF_DevilHound.label>恶魔猎犬</RH_DF_DevilHound.label>
+  <RH_DF_DevilHound.labelPlural>恶魔猎犬</RH_DF_DevilHound.labelPlural>
+  <RH_DF_DevilHound.labelMale>雄性 恶魔猎犬</RH_DF_DevilHound.labelMale>
+  <RH_DF_DevilHound.labelMalePlural>雄性 恶魔猎犬</RH_DF_DevilHound.labelMalePlural>
+  <RH_DF_DevilHound.labelFemale>雌性 恶魔猎犬</RH_DF_DevilHound.labelFemale>
+  <RH_DF_DevilHound.labelFemalePlural>雌性 恶魔猎犬</RH_DF_DevilHound.labelFemalePlural>
+
+
+</LanguageData>

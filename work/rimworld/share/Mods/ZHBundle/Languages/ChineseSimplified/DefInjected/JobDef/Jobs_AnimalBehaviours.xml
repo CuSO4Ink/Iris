@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: gathering animal resource from TargetA. -->
+  <VEF_AnimalResource.reportString>从TargetA处收获动物产物。</VEF_AnimalResource.reportString>
+  
+  <!-- EN: eating. -->
+  <VEF_AutoNutrition.reportString>进食中。</VEF_AutoNutrition.reportString>
+  
+  <!-- EN: destroying an item. -->
+  <VEF_DestroyItem.reportString>销毁物品。</VEF_DestroyItem.reportString>
+  
+  <!-- EN: fleeing. -->
+  <VEF_FleeAndCowerShort.reportString>逃跑中。</VEF_FleeAndCowerShort.reportString>
+  
+  <!-- EN: consuming TargetA. -->
+  <VEF_IngestWeird.reportString>消耗TargetA。</VEF_IngestWeird.reportString>
+  
+  <!-- EN: laying egg. -->
+  <VEF_LayExplodingEgg.reportString>下蛋中。</VEF_LayExplodingEgg.reportString>
+  
+</LanguageData>

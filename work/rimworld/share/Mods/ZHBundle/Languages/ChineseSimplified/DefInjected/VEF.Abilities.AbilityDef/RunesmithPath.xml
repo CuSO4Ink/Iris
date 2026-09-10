@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: etch runecircle -->
+  <VPER_Etch_Runecircle.label>刻画卢恩魔圈</VPER_Etch_Runecircle.label>
+  <!-- EN: Draws a standard runecircle on the ground at the targeted location. While it does nothing on its own, it acts as a foci for all the non-Runecircle etching abilities of the Runesmith. Records 50% of the user's Psychic Sensitivity as Psychic Charge, which empowers future psycasts involving this Runecircle. -->
+  <VPER_Etch_Runecircle.description>在目标位置的地面上绘制一个恒常符文圈。虽然它本身不会产生任何效果，但它会作为符文匠所有卢恩刻印能力的焦点。记录释放者50%的心灵敏感度作为心灵能量，这将增强未来使用此卢恩魔圈引动的卢恩心灵魔法。</VPER_Etch_Runecircle.description>
+  <!-- EN: Using ability: {0} -->
+  <VPER_Etch_Runecircle.jobReportString>使用能力：{0}</VPER_Etch_Runecircle.jobReportString>
+  <!-- EN: etch runecircle -->
+  <VPER_Etch_Runecircle.verbProperties.label>刻画卢恩魔圈</VPER_Etch_Runecircle.verbProperties.label>
+  
+  <!-- EN: etch greater runecircle -->
+  <VPER_Etch_Runecircle_Greater.label>刻画至圣卢恩魔圈</VPER_Etch_Runecircle_Greater.label>
+  <!-- EN: Draws a greater runecircle on the ground at the targeted location. While it does nothing on its own, it acts as a foci for all the non-Runecircle etching abilities of the Runesmith. Records a whopping 150% of the user's Psychic Sensitivity as Psychic Charge, which massively empowers future psycasts involving this Runecircle. -->
+  <VPER_Etch_Runecircle_Greater.description>在目标位置的地面上绘制一个至圣符文圈。虽然它本身不会产生任何效果，但它会作为符文匠所有卢恩刻印能力的焦点。记录释放者150%的心灵敏感度作为心灵能量，这将极大地增强未来使用此卢恩魔圈引动的卢恩心灵魔法。</VPER_Etch_Runecircle_Greater.description>
+  <!-- EN: Using ability: {0} -->
+  <VPER_Etch_Runecircle_Greater.jobReportString>使用能力：{0}</VPER_Etch_Runecircle_Greater.jobReportString>
+  <!-- EN: etch greater runecircle -->
+  <VPER_Etch_Runecircle_Greater.verbProperties.label>刻画至圣卢恩魔圈</VPER_Etch_Runecircle_Greater.verbProperties.label>
+  
+  <!-- EN: invoke: Algiz -->
+  <VPER_Invoke_Defense.label>引动：奥吉兹</VPER_Invoke_Defense.label>
+  <!-- EN: Invoke a Runecircle's power, adding its Psychic Charge to the pawn's Psychic Sensitivity for the purposes of the psycast. This will force the Runecircle to recharge.\n\nEngraves the mental rune of Ehwaz in the minds of all entities within a large radius of the targeted Runecircle. Decreases the damage taken of all the afflicted for 120 seconds, increased by an additional second per 1% Psychic Sensitivity over 100%. -->
+  <VPER_Invoke_Defense.description>引动卢恩魔圈的力量，将它的心灵能量添加到角色的心灵敏感度中，并进行心灵施法。这将使卢恩魔圈进入充能。\n\n在目标卢恩魔圈的大范围内，将奥吉兹的心灵符文刻印在所有生物的脑海中。在 120 秒内降低所有受影响者的所受伤害，心灵敏感度超过 100% 时，每增加 1% 额外延长 1 秒。</VPER_Invoke_Defense.description>
+  <!-- EN: Using ability: {0} -->
+  <VPER_Invoke_Defense.jobReportString>使用能力：{0}</VPER_Invoke_Defense.jobReportString>
+  <!-- EN: invoke: Algiz -->
+  <VPER_Invoke_Defense.verbProperties.label>引动：奥吉兹</VPER_Invoke_Defense.verbProperties.label>
+  
+  <!-- EN: invoke: Sowilo -->
+  <VPER_Invoke_Explosion.label>引动：索威罗</VPER_Invoke_Explosion.label>
+  <!-- EN: Invoke a Runecircle's power, adding its Psychic Charge to the pawn's Psychic Sensitivity for the purposes of the psycast. This will force the Runecircle to recharge.\n\nEngraves the physical rune of Sowilo in the air, promptly causing a large, fiery explosion. Deals 15 damage, increased by 1 per 8% Psychic Sensitivity over 100%. Notably, has a larger radius than other invocations. -->
+  <VPER_Invoke_Explosion.description>引动卢恩魔圈的力量，将它的心灵能量添加到角色的心灵敏感度中，并进行心灵施法。这将使卢恩魔圈进入充能。\n\n在空中刻画索威罗的物理符文，立即引发一场巨大的爆炸。造成 15 点伤害，心灵敏感度超过 100% 时，每增加 8% 额外增加 1 点伤害。值得注意的是该技能的半径更大于其他的引动卢恩技能。</VPER_Invoke_Explosion.description>
+  <!-- EN: Using ability: {0} -->
+  <VPER_Invoke_Explosion.jobReportString>使用能力：{0}</VPER_Invoke_Explosion.jobReportString>
+  <!-- EN: invoke: Sowilo -->
+  <VPER_Invoke_Explosion.verbProperties.label>引动：索威罗</VPER_Invoke_Explosion.verbProperties.label>
+  
+  <!-- EN: invoke: Berkana -->
+  <VPER_Invoke_Heal.label>引动：伯卡纳</VPER_Invoke_Heal.label>
+  <!-- EN: Invoke a Runecircle's power, adding its Psychic Charge to the pawn's Psychic Sensitivity for the purposes of the psycast. This will force the Runecircle to recharge.\n\nEngraves the mental rune of Berkana in the bodies of all entities within a large radius of the targeted Runecircle. Restores 30 HP to each pawn in the area, increased by 1 per 10% Psychic Sensitivity over 100%.\n\nThis instant healing is strenuous, and will provide a quadrum-long minor work speed penalty. While this debuff is active, the pawn cannot be healed by this psycast. -->
+  <VPER_Invoke_Heal.description>引动卢恩魔圈的力量，将它的心灵能量添加到角色的心灵敏感度中，并进行心灵施法。这将使卢恩魔圈进入充能。\n\n在目标卢恩魔圈的大范围内，将伯卡纳的心灵符文刻印在所有生物的身体上。恢复该区域内每个角色的 30 点生命值，心灵敏感度超过 100% 时，每增加 10% 额外增加 1 点治疗。\n\n这种瞬时治疗非常消耗精力，会带来四倍时间的小幅工作速度惩罚。在该减益效果激活期间，角色无法通过此心灵能力治疗。</VPER_Invoke_Heal.description>
+  <!-- EN: Using ability: {0} -->
+  <VPER_Invoke_Heal.jobReportString>使用能力：{0}</VPER_Invoke_Heal.jobReportString>
+  <!-- EN: invoke: Berkana -->
+  <VPER_Invoke_Heal.verbProperties.label>引动：伯卡纳 </VPER_Invoke_Heal.verbProperties.label>
+  
+  <!-- EN: invoke: Ehwaz -->
+  <VPER_Invoke_Speed.label>引动：耶瓦兹</VPER_Invoke_Speed.label>
+  <!-- EN: Invoke a Runecircle's power, adding its Psychic Charge to the pawn's Psychic Sensitivity for the purposes of the psycast. This will force the Runecircle to recharge.\n\nEngraves the mental rune of Ehwaz in the minds of all entities within a large radius of the targeted Runecircle. Increases the movement speed of all the afflicted for 120 seconds, increased by an additional second per 1% Psychic Sensitivity over 100%. -->
+  <VPER_Invoke_Speed.description>引动卢恩魔圈的力量，将它的心灵能量添加到角色的心灵敏感度中，并进行心灵施法。这将使卢恩魔圈进入充能。\n\n在目标卢恩魔圈的大范围内，将耶瓦兹的心灵符文刻印在所有生物的脑海中。在 120 秒内提高所有受影响者的移动速度，心灵敏感度超过 100% 时，每增加 1% 额外延长 1 秒。</VPER_Invoke_Speed.description>
+  <!-- EN: Using ability: {0} -->
+  <VPER_Invoke_Speed.jobReportString>使用能力：{0}</VPER_Invoke_Speed.jobReportString>
+  <!-- EN: invoke: Ehwaz -->
+  <VPER_Invoke_Speed.verbProperties.label>引动：耶瓦兹</VPER_Invoke_Speed.verbProperties.label>
+  
+  <!-- EN: invoke: Hagalaz -->
+  <VPER_Invoke_Stun.label>引动：哈格拉兹</VPER_Invoke_Stun.label>
+  <!-- EN: Invoke a Runecircle's power, adding its Psychic Charge to the pawn's Psychic Sensitivity for the purposes of the psycast. This will force the Runecircle to recharge.\n\nEngraves the mental rune of Hagalaz in the minds of all entities within a large radius of the targeted Runecircle. Stuns all the afflicted for 5 seconds, increased by an additional second per 50% Psychic Sensitivity over 100%. -->
+  <VPER_Invoke_Stun.description>引动卢恩魔圈的力量，将它的心灵能量添加到角色的心灵敏感度中，并进行心灵施法。这将使卢恩魔圈进入充能。\n\n在目标卢恩魔圈的大范围内，将哈格拉兹的心灵符文刻印在所有生物的脑海中。使所有受影响的生物昏迷 5 秒，心灵敏感度超过 100% 时，每增加 50% 则额外延长 1 秒。</VPER_Invoke_Stun.description>
+  <!-- EN: Using ability: {0} -->
+  <VPER_Invoke_Stun.jobReportString>使用能力：{0}</VPER_Invoke_Stun.jobReportString>
+  <!-- EN: invoke: Hagalaz -->
+  <VPER_Invoke_Stun.verbProperties.label>引动：哈格拉兹</VPER_Invoke_Stun.verbProperties.label>
+  
+  <!-- EN: invoke: Mannaz -->
+  <VPER_Invoke_Summon.label>引动：美纳兹</VPER_Invoke_Summon.label>
+  <!-- EN: Invoke a Runecircle's power, adding its Psychic Charge to the pawn's Psychic Sensitivity for the purposes of the psycast. This will force the Runecircle to recharge.\n\nEngraves the physical rune of Mannaz in the air, summoning the spirits of fallen warriors to aid you in combat for a short time. Spawns one spirit, and one extra per 100% Psychic Sensitivity over 100%. Maximum of 5 Spirits per summoning. -->
+  <VPER_Invoke_Summon.description>引动卢恩魔圈的力量，将它的心灵能量添加到角色的心灵敏感度中，并进行心灵施法。这将使卢恩魔圈进入充能。\n\n在空中刻画美纳兹的物理符文，召唤阵亡勇士的英灵在短时间内协助你战斗。召唤一个灵魂，心灵敏感度超过 100% 时，每增加 100% 召唤一个额外的灵魂。每次召唤最多可召唤 5 个灵魂。</VPER_Invoke_Summon.description>
+  <!-- EN: Using ability: {0} -->
+  <VPER_Invoke_Summon.jobReportString>使用能力：{0}</VPER_Invoke_Summon.jobReportString>
+  <!-- EN: invoke: Mannaz -->
+  <VPER_Invoke_Summon.verbProperties.label>引动：美纳兹</VPER_Invoke_Summon.verbProperties.label>
+  
+  <!-- EN: invoke: Isa -->
+  <VPER_Invoke_Turret.label>引动：伊莎</VPER_Invoke_Turret.label>
+  <!-- EN: Invoke a Runecircle's power, adding its Psychic Charge to the pawn's Psychic Sensitivity for the purposes of the psycast. This will force the Runecircle to recharge.\n\nEngraves the physical rune of Isa in the air, freezing its moisture and creating a defensive obelisk that blasts frost at hostiles. The obelisk will spawn on a random adjacent empty tile near the Runecircle- if there is no empty tile, this will permanently destroy the Runecircle. Grows stronger at 150%, 200%, 300%, and 400% Psychic Sensitivity. -->
+  <VPER_Invoke_Turret.description>引动卢恩魔圈的力量，将它的心灵能量添加到角色的心灵敏感度中，并进行心灵施法。这将使卢恩魔圈进入充能。\n\n在空中刻印伊莎的物理符文，冻结附近的水分，并创建一个防御性方尖碑，向敌人发射冰霜。方尖碑将在卢恩魔圈附近的随机相邻空格上生成——如果没有空格，将永久摧毁卢恩魔圈。随着心灵敏感度达到 150%、200%、300% 和 400% 变得更加强大。</VPER_Invoke_Turret.description>
+  <!-- EN: Using ability: {0} -->
+  <VPER_Invoke_Turret.jobReportString>使用能力：{0}</VPER_Invoke_Turret.jobReportString>
+  <!-- EN: invoke: Isa -->
+  <VPER_Invoke_Turret.verbProperties.label>引动：伊莎</VPER_Invoke_Turret.verbProperties.label>
+  
+  <!-- EN: invoke: Teiwaz -->
+  <VPER_Invoke_Wrath.label>引动：帝瓦兹</VPER_Invoke_Wrath.label>
+  <!-- EN: Invoke a Runecircle's power, adding its Psychic Charge to the pawn's Psychic Sensitivity for the purposes of the psycast. This will force the Runecircle to recharge.\n\nEngraves the mental rune of Teiwaz in the minds of all entities within a large radius of the targeted Runecircle. Boosts the melee prowess of all the afflicted for 120 seconds, increased by an additional second per 1% Psychic Sensitivity over 100%. -->
+  <VPER_Invoke_Wrath.description>引动卢恩魔圈的力量，将它的心灵能量添加到角色的心灵敏感度中，并进行心灵施法。这将使卢恩魔圈进入充能。\n\n在目标卢恩魔圈的大范围内，将蒂瓦兹的心灵符文刻印在所有生物的脑海中。在 120 秒内提升所有受影响生物的近战能力，心灵敏感度超过 100% 时，每增加 1% 额外延长 1 秒。</VPER_Invoke_Wrath.description>
+  <!-- EN: Using ability: {0} -->
+  <VPER_Invoke_Wrath.jobReportString>使用能力：{0}</VPER_Invoke_Wrath.jobReportString>
+  <!-- EN: invoke: Teiwaz -->
+  <VPER_Invoke_Wrath.verbProperties.label>引动：帝瓦兹</VPER_Invoke_Wrath.verbProperties.label>
+  
+</LanguageData>

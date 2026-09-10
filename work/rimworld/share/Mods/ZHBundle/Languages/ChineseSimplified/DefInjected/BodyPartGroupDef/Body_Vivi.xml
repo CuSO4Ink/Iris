@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: left antennae -->
+  <VV_LeftAntennae.label>左触须</VV_LeftAntennae.label>
+  <!-- EN: antennae -->
+  <VV_LeftAntennae.labelShort>触须</VV_LeftAntennae.labelShort>
+  
+  <!-- EN: left wing -->
+  <VV_LeftWing.label>左翅</VV_LeftWing.label>
+  <!-- EN: wing -->
+  <VV_LeftWing.labelShort>翅</VV_LeftWing.labelShort>
+  
+  <!-- EN: right antennae -->
+  <VV_RightAntennae.label>右触须</VV_RightAntennae.label>
+  <!-- EN: antennae -->
+  <VV_RightAntennae.labelShort>触须</VV_RightAntennae.labelShort>
+  
+  <!-- EN: right wing -->
+  <VV_RightWing.label>右翅</VV_RightWing.label>
+  <!-- EN: wing -->
+  <VV_RightWing.labelShort>翅</VV_RightWing.labelShort>
+  
+</LanguageData>

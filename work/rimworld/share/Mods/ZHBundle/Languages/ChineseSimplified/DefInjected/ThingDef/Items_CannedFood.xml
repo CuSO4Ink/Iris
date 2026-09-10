@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_CannedMeat.label>肉罐头</VCE_CannedMeat.label>
+		<VCE_CannedMeat.description>在钢铁罐子里真空密封的肉，使其保质期近乎无限长。虽然可以直接开罐食用，但最好把它烧成熟食。</VCE_CannedMeat.description>
+		<VCE_CannedProduce.label>菜罐头</VCE_CannedProduce.label>
+		<VCE_CannedProduce.description>在钢铁罐子里真空密封的素菜，使其保质期近乎无限长。虽然可以直接开罐食用，但最好把它烧成熟食。</VCE_CannedProduce.description>
+		<VCE_CannedAP.label>蛋罐头</VCE_CannedAP.label>
+		<VCE_CannedAP.description>在钢铁罐子里真空密封的煮蛋，使其保质期近乎无限长。虽然可以直接开罐食用，但最好把它烧成熟食。</VCE_CannedAP.description>
+		<VCE_CannedFish.label>鱼罐头</VCE_CannedFish.label>
+		<VCE_CannedFish.description>在钢铁罐子里真空密封的鱼肉，使其保质期近乎无限长。虽然可以直接开罐食用，但最好把它烧成熟食。</VCE_CannedFish.description>
+		<VCE_CannedFruit.label>水果罐头</VCE_CannedFruit.label>
+		<VCE_CannedFruit.description>在钢铁罐子里真空密封的水果，使其保质期近乎无限长。\n\n能被用于制作甜品。</VCE_CannedFruit.description>
+	</LanguageData>

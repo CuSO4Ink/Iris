@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguagData>
+    <!-- EN: Must target a battery or fiendly mechanoid -->
+  <VPE.MustTargetBattery>必須選定一個電池</VPE.MustTargetBattery>
+    <!-- EN: Stop Hurricane -->
+  <VPE.StopHurricane>停止颶風</VPE.StopHurricane>
+    <!-- EN: No nearby chunks -->
+  <VPE.NoChunks>附近沒有塊堆</VPE.NoChunks>
+	<!-- EN: {PAWN_nameDef} must have living family members. -->
+  <VPE.MustHaveLivingFamilyMembers>{PAWN_nameDef}必須擁有尚在人世的家人。</VPE.MustHaveLivingFamilyMembers>
+    <!-- EN: {0} things at level {1} -->
+  <VPE.ThingsOfLevel>{0}件在{1}級的物品</VPE.ThingsOfLevel>
+    <!-- EN: Not enough value, must be worth at least $1 per item. -->
+  <VPE.TooCheap>價值過低，須至少單個物品價值$1。</VPE.TooCheap>
+	<!-- EN: Break Link -->
+  <VPE_BreakLink>中止連接</VPE_BreakLink>
+	<!-- EN: Break the link and immediately kill this construct -->
+  <VPE_BreakLinkDesc>中止連接並立刻殺死該構裝體</VPE_BreakLinkDesc>
+    <!-- EN: Next PsySet -->
+  <VPE.PsySetNext>下一個技能組</VPE.PsySetNext>
+    <!-- EN: Previous PsySet -->
+  <VPE.PsySetPrev>上一個技能組</VPE.PsySetPrev>
+    <!-- EN: Nearby -->
+  <VPE.Nearby>附近</VPE.Nearby>
+    <!-- EN: {0} wealth nearby out of {1} total wealth -->
+  <VPE.WealthNearby>殖民地總財富{1}中有{0}在附近</VPE.WealthNearby>
+    <!-- EN: {0} other pawns nearby -->
+  <VPE.GroupFocus>有其它{0}人在附近</VPE.GroupFocus>
+    <!-- EN: All -->
+  <VPE.All>所有</VPE.All>
+    <!-- EN: Move to the next PsySet. Right click to choose a specific one.\nCurrent: {0}, Next: {1} -->
+  <VPE.PsySetDesc>切換到下一個技能組。右擊選擇特定一個。\n當前：{0}，下一個：{1}</VPE.PsySetDesc>
+    <!-- EN: Target must have quality -->
+  <VPE.MustHaveQuality>目標必須擁有品質</VPE.MustHaveQuality>
+    <!-- EN: Target quality too high, must be lower than Excellent. -->
+  <VPE.QualityTooHigh>目標品質過高，必須低於極佳。</VPE.QualityTooHigh>
+    <!-- EN: Maximum quality: {0} -->
+  <VPE.MaxQuality>最高品質：{0}</VPE.MaxQuality>
+    <!-- EN: Not enough neural heat available. -->
+  <VPE.NotEnoughHeat>剩餘心靈熵不足</VPE.NotEnoughHeat>
+    <!-- EN: Must consume power. -->
+  <VPE.MustConsumePower>必須消耗能量。</VPE.MustConsumePower>
+    <!-- EN: Target a stone chunk -->
+  <VPE.MustBeStoneChunk>選擇一個石塊</VPE.MustBeStoneChunk>
+    <!-- EN: Target steel slag -->
+  <VPE.MustBeSteelSlag>選擇一個鋼渣</VPE.MustBeSteelSlag>
+    <!-- EN: Psylink level gained: {0} -->
+  <VPE.PsylinkGained>獲得啟靈等級：{0}</VPE.PsylinkGained>
+    <!-- EN: {0} has gained a new level of psylink. Upon reaching that level, {1} raised psycasting-related stats slightly. {1} can now also allocate a point to either learn a new psycast, improve psycasting stats further or unlock a new meditation focus.\n\nPsycasting experience needed for next level is: {2}. -->
+  <VPE.PsylinkGained.Desc>{0}獲得了新的啟靈等級，{1}的靈能屬性略微提升了。{1}可以將技能點分配給學習新能力，強化靈能屬性或是解鎖新靈媒。\n\n晉升到下一等級所需的靈能經驗：{2}。</VPE.PsylinkGained.Desc>
+    <!-- EN: Unlocked via Psycaster points -->
+  <VPE.UnlockedByPoints>用技能點解鎖</VPE.UnlockedByPoints>
+    <!-- EN: Must target eltex -->
+  <VPE.MustEltex>必須選定靈質</VPE.MustEltex>
+    <!-- EN: Not a psycaster -->
+  <VPE.NotPsycaster>不是靈能者</VPE.NotPsycaster>
+    <!-- EN: Already wearing a psyring -->
+  <VPE.AlreadyPsyring>已經佩戴一個智環</VPE.AlreadyPsyring>
+    <!-- EN: Must be researchable -->
+  <VPE.Research>必須可被研究</VPE.Research>
+    <!-- EN: Already researched -->
+  <VPE.AlreadyResearch>已有研究</VPE.AlreadyResearch>
+    <!-- EN: Target must be ally or neutral. -->
+  <VPE.MustBeAllyOrNeutral>目標必須是友方或是中立</VPE.MustBeAllyOrNeutral>
+    <!-- EN: Target must be downed. -->
+  <VPE.MustBeDowned>目標必須已經倒地</VPE.MustBeDowned>
+    <!-- EN: Target must have at least one psycaster level. -->
+  <VPE.MustHavePsychicLevel>目標必須擁有至少一級靈能等級。</VPE.MustHavePsychicLevel>
+    <!-- EN: Must have at least {0} neural heat. -->
+  <VPE.MustHaveHeatAmount>必須擁有至少{0}點心靈熵。</VPE.MustHaveHeatAmount>
+	<!-- EN: Target must be corpse. -->
+  <VPE.MustBeCorpse>目標必須是屍體</VPE.MustBeCorpse>
+	<!-- EN: Corpse must be humanlike. -->
+  <VPE.MustBeCorpseHumanlike>屍體必須屬於人形生物。</VPE.MustBeCorpseHumanlike>
+    <!-- EN: Pack Summoned! -->
+  <VPE.PackSummon>獸群來臨！</VPE.PackSummon>
+    <!-- EN: A pack of wild animals have been summoned by {0} to defend the colony. -->
+  <VPE.PackSummon.Desc>一群野生動物受{0}的召喚前來保護殖民地。</VPE.PackSummon.Desc>
+	<!-- EN: No available fingers -->
+  <VPE.NoAvailableFingers>剩餘手指不足</VPE.NoAvailableFingers>
+    <!-- EN: Currently channeling {0} -->
+  <VPE.CurrentChanneling>正在傳輸{0}</VPE.CurrentChanneling>
+    <!-- EN: Target must in the dark -->
+  <VPE.MustBeInDark>目標必須身處暗處</VPE.MustBeInDark>
+    <!-- EN: Must be a psycaster -->
+  <VPE.MustBePsycaster>必須是靈能者</VPE.MustBePsycaster>
+    <!-- EN: Already knows {0} -->
+  <VPE.AlreadyHasPsycast>已有{0}</VPE.AlreadyHasPsycast>
+    <!-- EN: Target must be in the same faction. -->
+  <VPE.MustBeAlly>目標必須屬於同一派系</VPE.MustBeAlly>
+    <!-- EN: Target's equipment must be damaged. -->
+  <VPE.MustHaveDamagedEquipment>目標的裝備耐久不能是滿的</VPE.MustHaveDamagedEquipment>
+    <!-- EN: Cannot target animals -->
+  <VPE.NoAnimals>不能以動物為目標</VPE.NoAnimals>
+    <!-- EN: Target must be damaged -->
+  <VPE.MustBeDamaged>目標必須受到傷害</VPE.MustBeDamaged>
+</LanguagData>

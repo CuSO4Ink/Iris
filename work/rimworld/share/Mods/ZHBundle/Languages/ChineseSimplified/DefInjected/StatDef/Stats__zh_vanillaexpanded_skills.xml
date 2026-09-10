@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: armor penetration factor -->
+  <VSE_ArmorPenetrationFactor.label>护甲穿透系数</VSE_ArmorPenetrationFactor.label>
+  <!-- EN: A multiplier applied to armor penetration of attacks by this pawn. -->
+  <VSE_ArmorPenetrationFactor.description>护甲穿透会乘以此项的值。</VSE_ArmorPenetrationFactor.description>
+  
+  <!-- EN: art quality bonus -->
+  <VSE_ArtQuality.label>艺创品质加成</VSE_ArtQuality.label>
+  <!-- EN: A bonus to the quality of art produced by this pawn. -->
+  <VSE_ArtQuality.description>制作艺术品的品质加成。</VSE_ArtQuality.description>
+  
+  <!-- EN: art creation speed -->
+  <VSE_ArtSpeed.label>艺创速度</VSE_ArtSpeed.label>
+  <!-- EN: A multiplier to how fast this pawn creates art. -->
+  <VSE_ArtSpeed.description>制作艺术品的速度。</VSE_ArtSpeed.description>
+  
+  <!-- EN: attack on tame fail chance factor -->
+  <VSE_AttackOnFailChanceFactor.label>驯服失败反击率系数</VSE_AttackOnFailChanceFactor.label>
+  <!-- EN: A multiplier applied to the chance for failed taming attempts to result in animals attacking this pawn. -->
+  <VSE_AttackOnFailChanceFactor.description>驯服失败时引起动物狂暴反击的几率会乘以此项的值。</VSE_AttackOnFailChanceFactor.description>
+  
+  <!-- EN: component crafting speed -->
+  <VSE_ComponentCraftingSpeed.label>零部件制作速度</VSE_ComponentCraftingSpeed.label>
+  <!-- EN: How fast this pawn can create components (both industrial and advanced). -->
+  <VSE_ComponentCraftingSpeed.description>制作零部件的速度（普通零部件和高级零部件）。</VSE_ComponentCraftingSpeed.description>
+  
+  <!-- EN: construction quality bonus -->
+  <VSE_ConstructQuality.label>建造品质加成</VSE_ConstructQuality.label>
+  <!-- EN: A bonus added to the quality of things built by this pawn. -->
+  <VSE_ConstructQuality.description>建造建筑家具的品质加成。</VSE_ConstructQuality.description>
+  
+  <!-- EN: crafting quality bonus -->
+  <VSE_CraftingQuality.label>制作品质加成</VSE_CraftingQuality.label>
+  <!-- EN: A bonus to the quality of non-art crafts produced by this pawn. -->
+  <VSE_CraftingQuality.description>制作非艺术品的品质加成。</VSE_CraftingQuality.description>
+
+  <!-- EN: floor work speed -->
+  <VSE_FloorSpeed.label>地板铺设速度</VSE_FloorSpeed.label>
+  <!-- EN: How fast this pawn can work on floors. -->
+  <VSE_FloorSpeed.description>铺设地板的速度。</VSE_FloorSpeed.description>
+  
+  <!-- EN: melee cooldown factor -->
+  <VSE_MeleeCooldownFactor.label>近战冷却时间系数</VSE_MeleeCooldownFactor.label>
+  <!-- EN: A multiplier applied to the cooldown of melee attacks by this pawn. -->
+  <VSE_MeleeCooldownFactor.description>近战武器的冷却时间会乘以此项的值。</VSE_MeleeCooldownFactor.description>
+  
+  <!-- EN: peace talks success chance -->
+  <VSE_PeaceTalksChance.label>和平谈判成功率</VSE_PeaceTalksChance.label>
+  <!-- EN: How likely this pawn is to succeed at peace talks. -->
+  <VSE_PeaceTalksChance.description>和平谈判的成功几率。</VSE_PeaceTalksChance.description>
+  
+  <!-- EN: recruitment rate -->
+  <VSE_RecruitRate.label>囚犯招募速度</VSE_RecruitRate.label>
+  <!-- EN: How fast this pawn can recruit prisoners to the colony. -->
+  <VSE_RecruitRate.description>将囚犯招募为殖民者的速度。</VSE_RecruitRate.description>
+  
+  <!-- EN: repair speed -->
+  <VSE_RepairSpeed.label>修理速度</VSE_RepairSpeed.label>
+  <!-- EN: How fast this pawn can do repairs. -->
+  <VSE_RepairSpeed.description>修理建筑的速度。</VSE_RepairSpeed.description>
+  
+  <!-- EN: rock chunk chance -->
+  <VSE_RockChunkChance.label>石块产出率</VSE_RockChunkChance.label>
+  <!-- EN: The chance for this pawn to get a chunk when mining natural rock. -->
+  <VSE_RockChunkChance.description>开采山岩时产出石块的几率。</VSE_RockChunkChance.description>
+  
+  <!-- EN: roof work speed -->
+  <VSE_RoofSpeed.label>屋顶铺设速度</VSE_RoofSpeed.label>
+  <!-- EN: How fast this pawn can work on roofs. -->
+  <VSE_RoofSpeed.description>铺设屋顶的速度。</VSE_RoofSpeed.description>
+  
+  <!-- EN: tailoring speed -->
+  <VSE_TailoringSpeed.label>缝制速度</VSE_TailoringSpeed.label>
+  <!-- EN: How fast this pawn tailors clothes. -->
+  <VSE_TailoringSpeed.description>缝制衣物的速度。</VSE_TailoringSpeed.description>
+  
+  <!-- EN: weapon creation speed -->
+  <VSE_WeaponCreationSpeed.label>武器制作速度</VSE_WeaponCreationSpeed.label>
+  <!-- EN: How fast this pawn can create weapons. -->
+  <VSE_WeaponCreationSpeed.description>制作武器的速度。</VSE_WeaponCreationSpeed.description>
+  
+</LanguageData>

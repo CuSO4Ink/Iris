@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Enlisted -->
+
+  <RH.VOIDEnlistLetterTitle>{FACTION_name}: 邀請</RH.VOIDEnlistLetterTitle>
+  <RH.VOIDEnlistLetterLabel>我們正在等您，歡迎來到{FACTION_name}。\n\n請確保您有適當的裝備和足夠的能力以履行職責。我們相信，您不需要像孩子一樣受到監督。也正因如此，您的任何失敗都是自身的責任。話雖如此，請利用我們的設施，我們決不會拒絕照顧我們自己的人。\n\n您還沒有正式加入我們，所以也許可以利用其他派系的優勢。記住我們為什麽在這裏，我們為什麽做我們所做的事，請避免給這些人帶來不必要的痛苦，即使他們是我們的敵人。\n\n請註意Nerotonin-4型變種，我們的一個設施發生泄漏，導致病毒在當地的一些社區肆虐。我相信這對您來說沒有問題，否則您也不會成為我們的一員。\n\n誠摯的問候，我相信您不會讓我們失望的。\n{LEADER_nameDef}, {FACTION_name} 總經理。</RH.VOIDEnlistLetterLabel>
+
+  <RH.VOIDEnlistButtonLabel>輸入密碼</RH.VOIDEnlistButtonLabel>
+  <RH.VOIDEnlistButtonDesc>在神秘的鍵盤上輸入密碼。</RH.VOIDEnlistButtonDesc>
+  <RH.VOIDEnlistRequrementsNotSatisfied>你沒有得到邀請。</RH.VOIDEnlistRequrementsNotSatisfied>
+
+  <RH.VOIDEnlistedWithKey>成員來自: {FACTION_name}</RH.VOIDEnlistedWithKey>
+
+
+  <RH.VOIDMissionsLabel>任務</RH.VOIDMissionsLabel>
+  <RH.VOIDMissionsDesc>接取當前世界的可用任務</RH.VOIDMissionsDesc>
+  <RH.VOIDMenuMissionsDesc>你走進一個房間，一臺單獨的投影儀顯示著當前世界的統計數據和情報。
+</RH.VOIDMenuMissionsDesc>
+  <RH.VOIDMenuMissionsSelectQuest>選擇任務：</RH.VOIDMenuMissionsSelectQuest>
+  <RH.VOIDMenuMissionsStartQuest>開始任務({0})</RH.VOIDMenuMissionsStartQuest>
+  <RH.Cancel>取消</RH.Cancel>
+  <RH.VOIDNoEnoughMoney>資金不足</RH.VOIDNoEnoughMoney>
+
+  <RH.VOIDStorageLabel>儲存</RH.VOIDStorageLabel>
+  <RH.VOIDStorageDesc>將物品從你的遠行隊儲存到你的派系儲藏室。派系儲藏室在V.O.I.D的所有殖民地均可用且保持同步，即使遠行隊解散，儲存的物品也不會消失。</RH.VOIDStorageDesc>
+
+  <RH.VOIDDropPodServiceLabel>空運服務</RH.VOIDDropPodServiceLabel>
+  <RH.VOIDDropPodServiceDesc>免費使用這個派系的空運艙服務。</RH.VOIDDropPodServiceDesc>
+  <RH.VOIDDropPodServiceRequirementDesc>這個派系支付了你的旅行費用。</RH.VOIDDropPodServiceRequirementDesc>
+
+  <RH.StorageInventory>派系儲藏室</RH.StorageInventory>
+  <RH.CaravanInventory>遠行隊物品</RH.CaravanInventory>
+
+  <RH.UltraMechSerumLabelKey>Nerotonin-2型註射</RH.UltraMechSerumLabelKey>
+  <RH.UltraMechSerumCostRequirementKey>你無法支付這次服務。</RH.UltraMechSerumCostRequirementKey>
+  <RH.UltraMechSerumDescKey>Nerotonin-2型註射液，可立即免費治愈所有醫療狀況。</RH.UltraMechSerumDescKey>
+
+  <RH.ActiveEnlistOptions>可用入職選項</RH.ActiveEnlistOptions>
+
+  <RH.VOIDSalaryLabel>薪資</RH.VOIDSalaryLabel>
+  <RH.VOIDSalaryDesc>你有權每7天向該派系索取一次薪資。</RH.VOIDSalaryDesc>
+
+  <RH.VOIDProvisionsLabel>規定</RH.VOIDProvisionsLabel>
+  <RH.VOIDProvisionsDesc>規定將每24小時向你提供以下物資：\n\n- 魚子醬 ×30\n- 紅酒 ×4\n- 閃耀世界醫藥 ×10\n- Nerotonin-8B ×4</RH.VOIDProvisionsDesc>
+
+  <RH.VOIDProvisionsLabelVoidIssue>V.O.I.D.議題</RH.VOIDProvisionsLabelVoidIssue>
+  <RH.VOIDProvisionsDescVoidIssue>V.O.I.D.議題將每30天向你提供以下物資：\n\n- 薄暝剃刀 ×1\n- 薄暝執法者 ×1\n- 薄暝突擊步槍 ×1\n- V.O.I.D.頭盔 ×3\n- V.O.I.D.反應動力裝甲 ×3\n- Voidtech皮膚 ×3</RH.VOIDProvisionsDescVoidIssue>
+
+  <RH.VOIDProvisionsLabelVoidtech>Voidtech議題</RH.VOIDProvisionsLabelVoidtech>
+  <RH.VOIDProvisionsDescVoidtech>Voidtech議題將每14天向你提供以下物資：\n\n- 全套Voidtech器官 ×1\n- 全套Voidtech四肢 ×1\n- 全套X-系列植入物 ×1\n- 魔鬼植入物 ×1\n- 無定植入物 ×1\n- 災厄植入物 ×1\n- 迅捷植入物 ×1\n- 多功能植入物 ×1\n- 駕馭植入物 ×1\n- 誘惑植入物 ×1\n- 止痛芯片 ×1\n- Voidtech能量電池 ×2</RH.VOIDProvisionsDescVoidtech>
+
+  <!--<RH.VOIDPartTimeJobLabel>Part-Time Job</RH.VOIDPartTimeJobLabel>
+	<RH.VOIDPartTimeJobDesc>Earn $15 an hour working part-time with this outpost. Earnings are halted when the faction is resting at night.</RH.VOIDPartTimeJobDesc>	
+	
+	<RH.VOIDHospitalLabel>Hospital</RH.VOIDHospitalLabel>
+	<RH.VOIDHospitalDesc>Check in with the hospital of this outpost. This service tends to all of your caravan members with industrial medicine. Immunity gain is also increased while your caravan is using the hospital.</RH.VOIDHospitalDesc>-->
+
+  <RH.VOIDShootingTrainingLabel>培訓：高級生存</RH.VOIDShootingTrainingLabel>
+  <RH.VOIDShootingTrainingDesc>用高度先進的虛擬現實和增強的大腦刺激來訓練你的遠行隊，讓你的殖民者在後世界末日的場景中發揮作用。\n\n此選項將訓練你遠行隊殖民者的所有技能。\n\n當該派系在夜間休息時，經驗增益停止。</RH.VOIDShootingTrainingDesc>
+
+  <RH.VOIDTurnInLabel>上交</RH.VOIDTurnInLabel>
+  <RH.VOIDTurnInDesc>將俘虜交給V.O.I.D.委員會處理。</RH.VOIDTurnInDesc>
+  <RH_VOIDTurnInTraderName>母艦</RH_VOIDTurnInTraderName>
+
+  <RH.VOIDReinforcementsButtonLabel>援兵</RH.VOIDReinforcementsButtonLabel>
+  <RH.VOIDReinforcementsButtonDesc>向你已入職的派系尋求增援，他們派遣的軍隊數量取決於你們目前的關系。</RH.VOIDReinforcementsButtonDesc>
+
+  <RH.VOIDResignMenuText>你將離開並譴責V.O.I.D.\n\n(關系-100)</RH.VOIDResignMenuText>
+  <RH.VOIDResignLetterTitle>辭職</RH.VOIDResignLetterTitle>
+  <RH.VOIDResignButtonLabel>辭職</RH.VOIDResignButtonLabel>
+  <RH.VOIDResignLetterLabel>你已經離開{FACTION_name}。\n\n這將導致某種後果。(關系-100)</RH.VOIDResignLetterLabel>
+  <RH.VOIDResignButtonDesc>離開這個基地</RH.VOIDResignButtonDesc>
+  <RH.PlayerSettlementRequired>需要玩家結算</RH.PlayerSettlementRequired>
+  <RH.VOIDEnlistedToHostileFaction>無法進入，因為你已在他們的敵人{HOSTILEFACTION_name}中入職。</RH.VOIDEnlistedToHostileFaction>
+
+  <RH.VOIDEnlistRequiredForTrading>你不能與這個派系交易。你不屬於這裏。</RH.VOIDEnlistRequiredForTrading>
+  <RH.VOIDEnlistRequiredForGifting>你不能向這個派系提供任何東西。你不屬於這裏。</RH.VOIDEnlistRequiredForGifting>
+
+  <RH.VOIDKickOutLetterTitle>流放</RH.VOIDKickOutLetterTitle>
+  <RH.VOIDKickOutLabelTitle>理事會已批準從{FACTION_name}處驅逐你的命令。你遭到了流放，再也不能加入了。</RH.VOIDKickOutLabelTitle>
+
+  <RH.VoidPromoteButtonLabel>晉升</RH.VoidPromoteButtonLabel>
+  <RH.VoidPromoteButtonDesc>將你的一個殖民者提升為顧問角色</RH.VoidPromoteButtonDesc>
+  <RH.VoidPromoteSkillsNotSatisfied>為了晉升，您的一名殖民者需要滿足以下要求：\n{0}</RH.VoidPromoteSkillsNotSatisfied>
+  <RH.VOIDProvisionsPromotedLabel>顧問議題</RH.VOIDProvisionsPromotedLabel>
+  <RH.VOIDProvisionsPromotedDesc>顧問議題將每30天向你提供以下物資：\n\n- 薄暝MAG ×1\n- V.O.I.D.頭盔 ×1\n- V.O.I.D.反應動力裝甲 ×1\n- Voidtech皮膚 ×1\n- Voidtech外套 ×1\n- 全套Elite系列植入物(破曉植入物除外) ×1\n- 全套Epic系列植入物 ×1\n- 貓眼植入物 ×1\n- 毀滅植入物 ×1\n- 琥珀植入物 ×1\n- 天才植入物 ×1\n- 數據植入物 ×1\n- 浩劫植入物 ×1\n- Nerotonin-5型血清 ×1\n- Nerotonin-2b型血清 ×1\n- 白銀 ×75000\n- Voidtech能量電池 ×3\n- 無限反應釜 ×2</RH.VOIDProvisionsPromotedDesc>
+
+</LanguageData>
+

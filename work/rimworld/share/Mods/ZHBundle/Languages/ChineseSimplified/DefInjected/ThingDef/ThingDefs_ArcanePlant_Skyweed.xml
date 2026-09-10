@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: skyweed box -->
+  <VV_ActiveSkyweedBox.label>天蓬箱</VV_ActiveSkyweedBox.label>
+  
+  <!-- EN: skyweed -->
+  <VV_Skyweed.label>天蓬英</VV_Skyweed.label>
+  <!-- EN: a arcane plant that resembles a dandelion seed and converts the power of the wind into mana when outdoors.\n\nThe fluff of this grass is very light and has the property of flying well, so it can also be used to send small items.\n\nIf placed adjacent to a peashooter, it has a 50% chance to fire a High-velocity pea instead when the peashooter attacks. High-velocity peas have faster projectile speed and higher piercing power.\nIf multiple skyweeds are adjacent, the effect stacks. -->
+  <VV_Skyweed.description>一种神秘植物，拥有类似于蒲公英的种子，在户外可以将风力转化为魔能。\n\n这种草的绒毛极轻，具有良好的飞行能力，因此它也可以用来发射少量物品。\n\n当附近有豌豆射手时，天蓬英有50%的概率会令豌豆射手攻击时改为发射高速豌豆，高速豌豆具有更高的弹速和穿透力。\n复数天蓬英相邻时这一效果会叠加。</VV_Skyweed.description>
+  
+  <!-- EN: skyweed box -->
+  <VV_SkyweedBox.label>天蓬箱</VV_SkyweedBox.label>
+  <!-- EN: a box that can send the fluff of skyweed far away by tying it together. No special fuel is required, but it has a smaller capacity and shorter transport distance than the transport pods used by outlanders. -->
+  <VV_SkyweedBox.description>一个把天蓬英的绒毛捆在制成的一起能发送到遥远地方的盒子，使用了薇薇蜂蜡和布进行加固。不需要燃料，但容量比外来者使用的运输舱更小，运输距离更短。</VV_SkyweedBox.description>
+  
+  <!-- EN: skyweed box (incoming) -->
+  <VV_SkyweedBoxIncoming.label>天蓬箱（接近中）</VV_SkyweedBoxIncoming.label>
+  
+  <!-- EN: skyweed box (leaving) -->
+  <VV_SkyweedBoxLeaving.label>天蓬箱（飞离中）</VV_SkyweedBoxLeaving.label>
+  
+</LanguageData>

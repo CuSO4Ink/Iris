@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+<VV_Command_CancelReserveWeapon>取消武器装备</VV_Command_CancelReserveWeapon>
+<VV_Command_CancelReserveWeaponDesc>取消武器装备指令。</VV_Command_CancelReserveWeaponDesc>
+<VV_Command_EquipWeapon>装备武器</VV_Command_EquipWeapon>
+<VV_Command_EquipWeaponDesc>装备选定武器至持枪者，近战武器和生物编码武器不能被装备。</VV_Command_EquipWeaponDesc>
+<VV_Command_UnequipWeapon>卸下武器</VV_Command_UnequipWeapon>
+
+<VV_Command_ToggleLayEgg>激活产卵</VV_Command_ToggleLayEgg>
+<VV_Command_ToggleLayEggDesc>设置是否允许皇家薇薇产卵。</VV_Command_ToggleLayEggDesc>
+
+<VV_Designator_FortifyHoneycombWall>加固蜂巢墙</VV_Designator_FortifyHoneycombWall>
+<VV_Designator_FortifyHoneycombWallDesc>用生命缕织加固蜂巢墙，加固后的墙将不再可燃但对冲击的抗性降低。\n每个墙需要一个生命缕织。</VV_Designator_FortifyHoneycombWallDesc>
+
+<VV_Command_CancelReservationEverflower>取消传送</VV_Command_CancelReservationEverflower>
+<VV_Command_CancelReservationEverflowerDesc>取消传送命令。</VV_Command_CancelReservationEverflowerDesc>
+
+<VV_Command_ReserveTeleportEverflower>预备传送</VV_Command_ReserveTeleportEverflower>   
+<VV_Command_ReserveTeleportEverflowerDesc>准备向特定地点传送永盛花，需要一名共鸣的皇家薇薇。</VV_Command_ReserveTeleportEverflowerDesc>
+
+<VV_Command_CanGatherPollens>允许收获花粉</VV_Command_CanGatherPollens>
+<VV_Command_CanGatherPollensDesc>当清理收获范围外的花粉时，将其收集起来而非直接丢弃。花粉产量与清洁速度有关。</VV_Command_CanGatherPollensDesc>
+</LanguageData>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: assassinate -->
+  <VPE_Assassinate.label>暗影連殺</VPE_Assassinate.label>
+  <!-- EN: Links the caster’s shadow to a target in dark areas, allowing them to skip back and forth multiple times to attack in melee. The amount of hits depends on the caster’s psychic sensitivity. -->
+  <VPE_Assassinate.description>將施放者的陰影與在陰暗處的目標相連，在短時間內反覆傳送並發動近戰攻擊。連擊次數取決於施放者的心靈敏感度。</VPE_Assassinate.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Assassinate.jobReportString>使用能力：{0}</VPE_Assassinate.jobReportString>
+  <!-- EN: 暗影連殺 -->
+  <VPE_Assassinate.verbProperties.label>暗影連殺</VPE_Assassinate.verbProperties.label>
+  
+  <!-- EN: darkness -->
+  <VPE_Darkness.label>無光暗域</VPE_Darkness.label>
+  <!-- EN: Select a target area to generate an orb of completely obfuscating darkness, the duration scaling with the caster’s psychic sensitivity. All vision is blocked and any attacks within or passing through will miss entirely. -->
+  <VPE_Darkness.description>在目標區域生成一片完全不透光的黑暗領域，持續時間取決於施放者的心靈敏感度。一切視線都無法穿透這片區域，所有對其中發動的攻擊都不會命中。</VPE_Darkness.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Darkness.jobReportString>使用能力：{0}</VPE_Darkness.jobReportString>
+  <!-- EN: 無光暗域 -->
+  <VPE_Darkness.verbProperties.label>無光暗域</VPE_Darkness.verbProperties.label>
+  
+  <!-- EN: darkvision -->
+  <VPE_Darkvision.label>夜視</VPE_Darkvision.label>
+  <!-- EN: Gives the targeted pawn a nictitating membrane that allows them to see equally well in darkness and daytime. Duration scales with the target's psychic sensitivity. -->
+  <VPE_Darkvision.description>給目標生成一層臨時的瞬膜，讓他們在夜晚也能如白晝般視物。持續時間取決於施放者的心靈敏感度。</VPE_Darkvision.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Darkvision.jobReportString>使用能力：{0}</VPE_Darkvision.jobReportString>
+  <!-- EN: 夜視 -->
+  <VPE_Darkvision.verbProperties.label>夜視</VPE_Darkvision.verbProperties.label>
+  
+  <!-- EN: decoy -->
+  <VPE_Decoy.label>影子替身</VPE_Decoy.label>
+  <!-- EN: Creates a localized field of optical disharmony to travel and remain in a desired location, with a duration scaling with psychic sensitivity. The illusion will draw the ire of all enemies. -->
+  <VPE_Decoy.description>在附近創造出一片光學失衡場，生成一個幻象前往並停留在目標地點，持續時間取決於施放者的心靈敏感度。幻象會吸引所有敵人的注意力。</VPE_Decoy.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Decoy.jobReportString>使用能力：{0}</VPE_Decoy.jobReportString>
+  <!-- EN: 影子替身 -->
+  <VPE_Decoy.verbProperties.label>影子替身</VPE_Decoy.verbProperties.label>
+  
+  <!-- EN: eclipse -->
+  <VPE_Eclipse.label>日食</VPE_Eclipse.label>
+  <!-- EN: By strategically placing an orb of obfuscating darkness high in the sky, the caster can effectively cause a spontaneous eclipse. -->
+  <VPE_Eclipse.description>在高空生成一片絕對黑暗遮擋陽光，即刻造成一次日食。</VPE_Eclipse.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Eclipse.jobReportString>使用能力：{0}</VPE_Eclipse.jobReportString>
+  <!-- EN: 日食 -->
+  <VPE_Eclipse.verbProperties.label>日食</VPE_Eclipse.verbProperties.label>
+  
+  <!-- EN: intensify shadows -->
+  <VPE_IntensifyShadows.label>劇化黑暗</VPE_IntensifyShadows.label>
+  <!-- EN: Links the caster’s shadow with the shade and infuses it with obfuscating darkness, plummeting all areas on the map with less than 50% light levels into pitch darkness. Duration scales with the caster’s psychic sensitivity. -->
+  <VPE_IntensifyShadows.description>將施放者自己的影子與本地所有黑暗相連，注入黑暗的力量。地圖上所有亮度低於50%的地方都會變為0%的絕對黑暗。持續時間取決於施放者的心靈敏感度。</VPE_IntensifyShadows.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_IntensifyShadows.jobReportString>使用能力：{0}</VPE_IntensifyShadows.jobReportString>
+  <!-- EN: 劇化黑暗 -->
+  <VPE_IntensifyShadows.verbProperties.label>劇化黑暗</VPE_IntensifyShadows.verbProperties.label>
+  
+  <!-- EN: nightstep -->
+  <VPE_Nightstep.label>千里夜行</VPE_Nightstep.label>
+  <!-- EN: Briefly links nearby allies to a distant colonist’s shadow to instantly teleport them, even across the planet as long as they are not overburdened. Can only be cast at night and temporarily stuns the caster. -->
+  <VPE_Nightstep.description>將附近的友方目標傳送到另一個殖民者的影子之中，只要能夠撐得住超載的心靈熵，即便跨越整個星球都沒問題。只能於夜間施放。</VPE_Nightstep.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Nightstep.jobReportString>使用能力：{0}</VPE_Nightstep.jobReportString>
+  <!-- EN: 千里夜行 -->
+  <VPE_Nightstep.verbProperties.label>千里夜行</VPE_Nightstep.verbProperties.label>
+  
+  <!-- EN: obscure -->
+  <VPE_Obscure.label>陰影潛行</VPE_Obscure.label>
+  <!-- EN: Creates a field of optical disharmony around the caster, causing affected allies standing in darkness to be completely invisible. Attacking breaks the illusion. -->
+  <VPE_Obscure.description>在施放者周邊生成一片光學失衡場，在範圍內的友方都會受到影響，使其在黑暗中會完全隱身。主動攻擊會破除效果。</VPE_Obscure.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Obscure.jobReportString>使用能力：{0}</VPE_Obscure.jobReportString>
+  <!-- EN: 陰影潛行 -->
+  <VPE_Obscure.verbProperties.label>陰影潛行</VPE_Obscure.verbProperties.label>
+  
+  <!-- EN: shadowfocus -->
+  <VPE_ShadowFocus.label>暗影聚焦</VPE_ShadowFocus.label>
+  <!-- EN: Emitting particles of absorptive darkness allows the caster to augment their psychic sensitivity, which scales inversely with the local light level. -->
+  <VPE_ShadowFocus.description>釋放出吸性暗粒子，強化施放者的心靈敏感度，環境越暗效果越好。</VPE_ShadowFocus.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_ShadowFocus.jobReportString>使用能力：{0}</VPE_ShadowFocus.jobReportString>
+  <!-- EN: 暗影聚焦 -->
+  <VPE_ShadowFocus.verbProperties.label>暗影聚焦</VPE_ShadowFocus.verbProperties.label>
+  
+  <!-- EN: shadowskip -->
+  <VPE_Shadowskip.label>陰影折躍</VPE_Shadowskip.label>
+  <!-- EN: Linking the caster with their own shadow allows them to teleport themselves to an area of darkness, even if they can’t see the location. -->
+  <VPE_Shadowskip.description>將施放者與自己的影子相連，使其能瞬移到任何黑暗區域中，即便不在直接視線之內。</VPE_Shadowskip.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Shadowskip.jobReportString>使用能力：{0}</VPE_Shadowskip.jobReportString>
+  <!-- EN: 陰影折躍 -->
+  <VPE_Shadowskip.verbProperties.label>陰影折躍</VPE_Shadowskip.verbProperties.label>
+  
+</LanguageData>

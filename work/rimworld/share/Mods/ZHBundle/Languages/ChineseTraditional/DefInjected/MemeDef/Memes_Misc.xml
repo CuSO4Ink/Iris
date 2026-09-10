@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: xenophilia -->
+  <HAR_Xenophilia.label>異族親和</HAR_Xenophilia.label>
+  <!-- EN: Relations with aliens are to be encouraged and embraced, to be fearful or hostile towards them only proves one's simplemindedness. -->
+  <HAR_Xenophilia.description>我們理應與外星種族建立良好友善的關係，懼怕或敵視他們是種極其愚蠢的行為。</HAR_Xenophilia.description>
+  <!-- EN:
+    <li>creation(tag=meme_Xenophilia)        ->[deity0_name] created a multitude of races, all a different manifestation of [deity0_possessive] perfect image.</li>
+    <li>episode(uses=1,tag=meme_Xenophilia)  ->Our biogists catalogued and archived the multitude of [deity0_name]'s creations, which pleased [deity0_objective].</li>
+    <li>intro(tag=meme_Xenophilia)           ->On the [place_summary] [place_name], the [memberNamePlural] found the words of [deity0_name], a veritable display of open-mindedness.</li>
+    <li>conflict(tag=meme_Xenophilia)        ->A xenophobic [foeLeader] despised the acceptance of the [memberNamePlural] community, and [foeLeader_possessive] [foeSoldiers] destroyed their halls with [place_personalWeapon]s.</li>
+    <li>founderJoin(tag=meme_Xenophilia)     ->A cunning [place_job] named [founderName] asked for help from members of other races to warn the [memberNamePlural] of the approach of the [foeSoldiers].</li>
+    <li>victory(tag=meme_Xenophilia)         ->[founderName] spread a message of acceptance and love as divinely ordered by [deity0_name], and used it to unite all the races of the [memberNamePlural] so they could defeat the [foeSoldiers].</li>
+    <li>setup(tag=meme_Xenophilia)           ->[founderName] was a social scientist in the early days of planetary colonization. Seeing the rabidly isolationist policies of many governments, [founder_pronoun] took a small ship to found [founder_possessive] own movement.</li>
+    <li>story(uses=1,tag=meme_Xenophilia)    ->[founderName] assembled a team of great scientists and sociologists to create a new civilization where all species could live in harmony.</li>
+    <li>lessonIntro(tag=meme_Xenophilia)         ->The oldest sociologist in my university taught me the history of life in the Universe, hinting that</li>
+    <li>lesson(tag=meme_Xenophilia)              ->we are not alone. Intelligence is not scarce among the stars, and we are all brothers and sisters</li>
+    <li>lessonReinforcement(tag=meme_Xenophilia) ->Only by working all together, side by side and leaving alone our differences, may we suceed at any given task.</li>
+    <li>archistBasis(tag=meme_Xenophilia)    ->What could be more accepting of our intrinsic differences than a unifying, post-singularity archotech?</li>
+    <li>archistFact(tag=meme_Xenophilia)     ->In transcendence, our biological origins blur together.</li>
+    <li>archistProphecy(tag=meme_Xenophilia) ->[inTheEnd], all of us will achive our ascendancy by working together.</li>
+    <li>animistBasis(tag=meme_Xenophilia)    ->There is no concept of "race" amongst spirits.</li>
+    <li>animistProphecy(tag=meme_Xenophilia) ->The spirits will reveal their nature to us when we can fully accept one another as just varied manifestations of the same pure ideal.</li>
+  -->
+  <HAR_Xenophilia.descriptionMaker.rules.rulesStrings>
+    <li>creation(tag=meme_Xenophilia)        ->[deity0_name]創造出了許多種族，他們都是[deity0_possessive]完美形象的不同體現。</li>
+    <li>episode(uses=1,tag=meme_Xenophilia)  ->我們中的生物學家將[deity0_name]的眾多造物進行了編錄與存檔，這讓[deity0_objective]很高興。</li>
+    <li>intro(tag=meme_Xenophilia)           ->在[place_summary][place_name]上，[memberNamePlural]發現了[deity0_name]鐫刻在地上的話語，這也是真正思想開明的體現。</li>
+    <li>conflict(tag=meme_Xenophilia)        ->擯斥異族的[foeLeader]鄙視[memberNamePlural]社群的包容接納思想，並命令[foeLeader_possessive][foeSoldiers]用[place_personalWeapon]毀掉了他們的禮堂。</li>
+    <li>founderJoin(tag=meme_Xenophilia)     ->一位名為[founderName]的機智[place_job]向其他種族求援，並借此對[memberNamePlural]們發出了[foeSoldiers]即將來襲的警告。</li>
+    <li>victory(tag=meme_Xenophilia)         ->遵循[deity0_name]的神聖指示，[founderName]四處傳播著包容與友愛的信息，並將[memberNamePlural]們與所有的種族團結起來，這樣便可擊敗[foeSoldiers]。</li>
+    <li>setup(tag=meme_Xenophilia)           ->[founderName]是早期人類行星殖民時期的一位社會科學家。因不滿於許多政府的極端孤立主義政策，[founder_pronoun]便駕駛著自己那挺飛船，開始四處「演奏」那屬於[founder_possessive]自己的樂章。</li>
+    <li>story(uses=1,tag=meme_Xenophilia)    ->[founderName]組建了一個偉大的社會科學家小組，力圖創立一個所有物種都能和諧共存的嶄新文明。</li>
+    <li>lessonIntro(tag=meme_Xenophilia)         ->我們大學裡最年長的社會學教授教給了我有關宇宙中生命的歷史。他讓我懂得了</li>
+    <li>lesson(tag=meme_Xenophilia)              ->我們並不孤單。宇宙中的智慧種族並不稀少，我們都是和睦友愛的兄弟姐妹</li>
+    <li>lessonReinforcement(tag=meme_Xenophilia) ->唯有通力協作、和睦相處且摒棄異見，我們才能成功完成各種任務。</li>
+    <li>archistBasis(tag=meme_Xenophilia)    ->還有什麼比統合歸一的超凡智能更能包容我們內在差異的呢？</li>
+    <li>archistFact(tag=meme_Xenophilia)     ->在走向超越時，我們的物種起源將融合在一起。</li>
+    <li>archistProphecy(tag=meme_Xenophilia) ->[inTheEnd]，我們都將同心協力以取得優勢。</li>
+    <li>animistBasis(tag=meme_Xenophilia)    ->在靈魂們中是沒有「種族」的觀念的。</li>
+    <li>animistProphecy(tag=meme_Xenophilia) ->當我們能完全認可彼此只是同種純粹思想的不同體現時，靈魂便能向我們揭示它的本性。</li>
+  </HAR_Xenophilia.descriptionMaker.rules.rulesStrings>
+  <!-- EN:
+    <li>memeAdjective->universal</li>
+    <li>memeAdjective->open minded</li>
+    <li>memeAdjective->accepting</li>
+    <li>memeAdjective->alien loving</li>
+    <li>memeLeaderAdjective->concordant</li>
+    <li>memeConcept->openness</li>
+    <li>memeConcept->receptiveness</li>
+  -->
+  <HAR_Xenophilia.generalRules.rulesStrings>
+    <li>memeAdjective->廣泛</li>
+    <li>memeAdjective->思想開明</li>
+    <li>memeAdjective->接納</li>
+    <li>memeAdjective->異族喜好</li>
+    <li>memeLeaderAdjective->和諧</li>
+    <li>memeConcept->開明</li>
+    <li>memeConcept->包容</li>
+  </HAR_Xenophilia.generalRules.rulesStrings>
+  <!-- EN: xenophilic -->
+  <HAR_Xenophilia.symbolPacks.0.adjective>親外</HAR_Xenophilia.symbolPacks.0.adjective>
+  <!-- EN: Xenophilia -->
+  <HAR_Xenophilia.symbolPacks.0.ideoName>異族親和</HAR_Xenophilia.symbolPacks.0.ideoName>
+  <!-- EN: xenophile -->
+  <HAR_Xenophilia.symbolPacks.0.member>親外者</HAR_Xenophilia.symbolPacks.0.member>
+  <!-- EN: xenophilia -->
+  <HAR_Xenophilia.symbolPacks.0.theme>包容</HAR_Xenophilia.symbolPacks.0.theme>
+  
+  <!-- EN: xenophobia -->
+  <HAR_Xenophobia.label>異族擯斥</HAR_Xenophobia.label>
+  <!-- EN: Suffer not the alien to live, their mere existence is a threat to ours. Species of such are better as our servants or our sustenance. -->
+  <HAR_Xenophobia.description>我們與外星種族勢同水火。他們更適合做我們的奴僕或食物。</HAR_Xenophobia.description>
+  <!-- EN:
+    <li>creation(tag=meme_Xenophobia)        ->[deity0_name] created us, a perfect manifestation of [deity0_possessive] divine image.</li>
+    <li>episode(uses=1,tag=meme_Xenophobia)  ->The rest of [deity0_name]'s creations were just made as tools for us, it is [deity0_objective] will that we treat them as such.</li>
+    <li>intro(tag=meme_Xenophobia)           ->On the [place_summary] [place_name], the [memberNamePlural] found the words of [deity0_name], putting us at the pinnacle of creation.</li>
+    <li>conflict(tag=meme_Xenophobia)        ->Jealous of our divine stature, an alien [foeLeader] tried to conquer the [memberNamePlural] community, and [foeLeader_possessive] [foeSoldiers] enslaved our people.</li>
+    <li>founderJoin(tag=meme_Xenophobia)     ->A cunning [place_job] named [founderName] arose among the slaves, organizing the [memberNamePlural] to fight against the alien opressor.</li>
+    <li>victory(tag=meme_Xenophobia)         ->[founderName] slaughtered the alien scum as divinely ordered by [deity0_name], and ushered the [memberNamePlural] into a new era of progress and superiority.</li>
+    <li>setup(tag=meme_Xenophobia)           ->[founderName] was a social scientist in the early days of planetary colonization. Seeing the foolishly accepting policies of many governments, [founder_pronoun] took a small ship to found [founder_possessive] own movement.</li>
+    <li>story(uses=1,tag=meme_Xenophobia)    ->[founderName] assembled a team of great scientists and sociologists to create a new civilization where the needs of our race take preference over the needs of disgusting aliens.</li>
+    <li>lessonIntro(tag=meme_Xenophobia)         ->The oldest hunter in our squadron taught me the history of life in the Universe, hinting that</li>
+    <li>lesson(tag=meme_Xenophobia)              ->we are not alone. Intelligence is not scarce among the stars and their mere existence is a threat to ours</li>
+    <li>lessonReinforcement(tag=meme_Xenophobia) ->There is no other way around it, the alien menace must be purged.</li>
+    <li>archistBasis(tag=meme_Xenophobia)    ->Archotechnology is the pinnacle of biological evolution, and it should only be reached by those who are truly deserving.</li>
+    <li>archistFact(tag=meme_Xenophobia)     ->Can you imagine the threat a runaway alien post-singularity intelligence would pose to ourselves?</li>
+    <li>archistProphecy(tag=meme_Xenophobia) ->There is no other way around it, aliens must be purged before they are allowed to reach that point.</li>
+    <li>animistBasis(tag=meme_Xenophobia)    ->Aliens are soulless creatures, abominations to the world of spirits.</li>
+    <li>animistProphecy(tag=meme_Xenophobia) ->Only by getting rid of all aliens will the spirits look favourably upon us.</li>
+  -->
+  <HAR_Xenophobia.descriptionMaker.rules.rulesStrings>
+    <li>creation(tag=meme_Xenophobia)        ->[deity0_name]創造出了我們，我們即是[deity0_possessive]形象的完美體現。</li>
+    <li>episode(uses=1,tag=meme_Xenophobia)  ->[deity0_name]的其他造物都是為我們準備的工具，[deity0_objective]也希望我們如此對待它們。</li>
+    <li>intro(tag=meme_Xenophobia)           ->在[place_summary][place_name]上，[memberNamePlural]發現了[deity0_name]鐫刻在地上的話語，這將我們置於了造物頂點的地位。</li>
+    <li>conflict(tag=meme_Xenophobia)        ->因妒恨我們聖潔的地位，外星種族[foeLeader]試圖征服[memberNamePlural]們的社群，並命令[foeLeader_possessive][foeSoldiers]奴役我們的人民。</li>
+    <li>founderJoin(tag=meme_Xenophobia)     ->在奴隸中有一位名為[founderName]的機智[place_job]，他將[memberNamePlural]們集結起來並反抗那些外星壓迫者們。</li>
+    <li>victory(tag=meme_Xenophobia)         ->遵循[deity0_name]的神聖指示，[founderName]把這些外星渣滓盡數殺死，將[memberNamePlural]們引領向一個進步優越的新紀元。</li>
+    <li>setup(tag=meme_Xenophobia)           ->[founderName]是早期人類行星殖民時期的一位社會科學家。因不滿於許多政府愚蠢的包容主義政策，[founder_pronoun]便駕駛著自己那挺飛船，開始四處「演奏」那屬於[founder_possessive]自己的樂章。</li>
+    <li>story(uses=1,tag=meme_Xenophobia)    ->[founderName]組建了一個偉大的社會科學家小組，力圖創立一個我們的種族優於外星種族的文明。</li>
+    <li>lessonIntro(tag=meme_Xenophobia)         ->我們中隊裡最年長的獵人教給了我有關宇宙中生命的歷史。他讓我懂得了</li>
+    <li>lesson(tag=meme_Xenophobia)              ->我們並不孤單。宇宙中的智慧種族並不稀少，而我們與他們勢同水火</li>
+    <li>lessonReinforcement(tag=meme_Xenophobia) ->我們別無他法，危險的外星種族必須被淨化。</li>
+    <li>archistBasis(tag=meme_Xenophobia)    ->超凡智能即是生物進化的頂峰。唯有天選之人才能引起祂的注意。</li>
+    <li>archistFact(tag=meme_Xenophobia)     ->你能想像到一個失控的後奇點外星種族會對我們造成怎樣的威脅嗎？</li>
+    <li>archistProphecy(tag=meme_Xenophobia) ->我們別無他法，危險的外星種族必須在我們走向超越前被淨化。</li>
+    <li>animistBasis(tag=meme_Xenophobia)    ->呆板麻木的外星種族被靈魂世界所唾棄。</li>
+    <li>animistProphecy(tag=meme_Xenophobia) ->唯有剷除掉所有的外星種族，靈魂們才會青睞我們。</li>
+  </HAR_Xenophobia.descriptionMaker.rules.rulesStrings>
+  <!-- EN:
+    <li>memeAdjective->bigoted</li>
+    <li>memeAdjective->ethnocentric</li>
+    <li>memeAdjective->intolerant</li>
+    <li>memeAdjective->prejudiced</li>
+    <li>memeLeaderAdjective->inflexible</li>
+    <li>memeConcept->intolerance</li>
+    <li>memeConcept->prejudice</li>
+  -->
+  <HAR_Xenophobia.generalRules.rulesStrings>
+    <li>memeAdjective->偏執</li>
+    <li>memeAdjective->種族優越</li>
+    <li>memeAdjective->狹隘</li>
+    <li>memeAdjective->偏見</li>
+    <li>memeLeaderAdjective->頑固</li>
+    <li>memeConcept->偏狹</li>
+    <li>memeConcept->歧視</li>
+  </HAR_Xenophobia.generalRules.rulesStrings>
+  <!-- EN: Xenophobic -->
+  <HAR_Xenophobia.symbolPacks.0.adjective>排外</HAR_Xenophobia.symbolPacks.0.adjective>
+  <!-- EN: Xenophobia -->
+  <HAR_Xenophobia.symbolPacks.0.ideoName>異族擯斥</HAR_Xenophobia.symbolPacks.0.ideoName>
+  <!-- EN: xenophobe -->
+  <HAR_Xenophobia.symbolPacks.0.member>排外者</HAR_Xenophobia.symbolPacks.0.member>
+  <!-- EN: xenophobia -->
+  <HAR_Xenophobia.symbolPacks.0.theme>仇視</HAR_Xenophobia.symbolPacks.0.theme>
+  
+</LanguageData>

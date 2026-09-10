@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bionic antennae -->
+  <VV_BionicAntennae.label>仿生觸須</VV_BionicAntennae.label>
+  <!-- EN: An installed bionic antennae. Equipped with high-performance sensors, it can detect even the slightest flow of air. -->
+  <VV_BionicAntennae.description>已安裝的仿生觸須，配備了高性能傳感器，能檢測到最輕微的氣流。</VV_BionicAntennae.description>
+  <!-- EN: a bionic antennae -->
+  <VV_BionicAntennae.labelNoun>仿生觸須</VV_BionicAntennae.labelNoun>
+  
+  <!-- EN: bionic wing -->
+  <VV_BionicWing.label>仿生翅</VV_BionicWing.label>
+  <!-- EN: An installed bionic wing. These wings are lighter and sturdier than the original ones, making movement easier. -->
+  <VV_BionicWing.description>已安裝的仿生翅膀。這些翅膀比原來的翅膀更輕、更堅固，使運動更容易。</VV_BionicWing.description>
+  <!-- EN: a bionic wing -->
+  <VV_BionicWing.labelNoun>仿生翅</VV_BionicWing.labelNoun>
+  
+  <!-- EN: fake antennae -->
+  <VV_FakeAntennae.label>假觸須</VV_FakeAntennae.label>
+  <!-- EN: An installed fake antennae. It's not particularly helpful, but it's better than nothing. -->
+  <VV_FakeAntennae.description>已安裝的假觸須，雖然沒什么實際幫助，但總比沒有強。</VV_FakeAntennae.description>
+  <!-- EN: a fake antennae -->
+  <VV_FakeAntennae.labelNoun>假觸須</VV_FakeAntennae.labelNoun>
+  
+  <!-- EN: fake wing -->
+  <VV_FakeWing.label>假翅</VV_FakeWing.label>
+  <!-- EN: An installed fake wing. It's not particularly helpful, but it's better than nothing. -->
+  <VV_FakeWing.description>已安裝的假翅，雖然沒什么實際幫助，但總比沒有強。</VV_FakeWing.description>
+  <!-- EN: a fake wing -->
+  <VV_FakeWing.labelNoun>假翅</VV_FakeWing.labelNoun>
+  
+  <!-- EN: glider wing -->
+  <VV_GliderWing.label>滑翔翅</VV_GliderWing.label>
+  <!-- EN: Installed glider wings. It makes vivi fly more often and stay airborne longer. These wings are only a lift-assist device, so the vivi's own wings must be intact to fly. -->
+  <VV_GliderWing.description>已安裝的滑翔翅，可以飛行一小段距離，在這一過程中會消耗營養。\n\n這些翅膀只是接收升力的裝置，所以為了飛行，薇薇的翅膀必須完好無損。</VV_GliderWing.description>
+  <!-- EN: glider wing -->
+  <VV_GliderWing.labelNoun>滑翔翅</VV_GliderWing.labelNoun>
+  
+</LanguageData>

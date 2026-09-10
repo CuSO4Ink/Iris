@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fly -->
+  <VV_Glide.label>飛行</VV_Glide.label>
+  <!-- EN: Moves quickly by flying short distances. Wings must be intact, and it gets a little hungry. -->
+  <VV_Glide.description>快速飛行一小段距離。（雙翅必須完整，消耗一部分營養值）</VV_Glide.description>
+  <!-- EN: fly -->
+  <VV_Glide.verbProperties.label>飛行</VV_Glide.verbProperties.label>
+  
+</LanguageData>

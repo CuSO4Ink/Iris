@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Scarlet Edge -->
+  <AM_Weebstick.label>緋赤絕刃</AM_Weebstick.label>
+  <!-- EN: A legendary weapon of origin unknown.\nThe wielder of this mighty weapon feels compelled to wear a dark trenchcoat and answer questions with a grunt. Some may find this unsettling but none can deny its effectiveness in combat.\nUnlocks a unique and deadly Special Skill animation. -->
+  <AM_Weebstick.description>削鐵無聲、起源成謎的傳奇級武器。\n\n持有緋赤絕刃的人會不可避免地產生一種想要身披黑衣並嘟囔個不停的古怪衝動。或許會有人認為這實在太過詭異，但其在戰鬥中展現出的恐怖威力卻是無可爭辯的。\n\n裝備緋赤絕刃時可以施展特殊的終結技。</AM_Weebstick.description>
+  <!-- EN: point -->
+  <AM_Weebstick.tools.point.label>刀尖</AM_Weebstick.tools.point.label>
+  <!-- EN: edge -->
+  <AM_Weebstick.tools.edge.label>刀刃</AM_Weebstick.tools.edge.label>
+  
+</LanguageData>

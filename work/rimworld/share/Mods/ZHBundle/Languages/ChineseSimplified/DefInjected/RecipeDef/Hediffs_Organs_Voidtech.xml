@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- voidtech spine -->
+
+  <InstallRH_VOIDBionicSpine.label>安装Voidtech仿生脊椎</InstallRH_VOIDBionicSpine.label>
+  <InstallRH_VOIDBionicSpine.description>安装Voidtech仿生脊椎。</InstallRH_VOIDBionicSpine.description>
+  <InstallRH_VOIDBionicSpine.jobString>正在安装Voidtech仿生脊椎。</InstallRH_VOIDBionicSpine.jobString>
+
+
+  <!-- voidtech heart -->
+
+  <InstallRH_VOIDBionicHeart.label>安装Voidtech仿生心脏</InstallRH_VOIDBionicHeart.label>
+  <InstallRH_VOIDBionicHeart.description>安装Voidtech仿生心脏。</InstallRH_VOIDBionicHeart.description>
+  <InstallRH_VOIDBionicHeart.jobString>正在安装Voidtech仿生心脏。</InstallRH_VOIDBionicHeart.jobString>
+
+
+  <!-- voidtech stomach -->
+
+  <InstallRH_VOIDBionicStomach.label>安装Voidtech仿生胃</InstallRH_VOIDBionicStomach.label>
+  <InstallRH_VOIDBionicStomach.description>安装Voidtech仿生胃。</InstallRH_VOIDBionicStomach.description>
+  <InstallRH_VOIDBionicStomach.jobString>正在安装Voidtech仿生胃。</InstallRH_VOIDBionicStomach.jobString>
+
+
+  <!-- voidtech ear -->
+
+  <InstallRH_VOIDBionicEar.label>安装Voidtech仿生耳</InstallRH_VOIDBionicEar.label>
+  <InstallRH_VOIDBionicEar.description>安装Voidtech仿生耳。</InstallRH_VOIDBionicEar.description>
+  <InstallRH_VOIDBionicEar.jobString>正在安装Voidtech仿生耳。</InstallRH_VOIDBionicEar.jobString>
+
+
+  <!-- voidtechlung -->
+
+  <InstallRH_VOIDBionicLung.label>安装Voidtech仿生肺</InstallRH_VOIDBionicLung.label>
+  <InstallRH_VOIDBionicLung.description>安装Voidtech仿生肺。</InstallRH_VOIDBionicLung.description>
+  <InstallRH_VOIDBionicLung.jobString>正在安装Voidtech仿生肺。</InstallRH_VOIDBionicLung.jobString>
+
+
+  <!-- voidtechkidney -->
+
+  <InstallRH_VOIDBionicKidney.label>安装Voidtech仿生肾</InstallRH_VOIDBionicKidney.label>
+  <InstallRH_VOIDBionicKidney.description>安装Voidtech仿生肾。</InstallRH_VOIDBionicKidney.description>
+  <InstallRH_VOIDBionicKidney.jobString>正在安装Voidtech仿生肾。</InstallRH_VOIDBionicKidney.jobString>
+
+
+  <!-- voidtechliver -->
+
+  <InstallRH_VOIDBionicLiver.label>安装Voidtech仿生肝</InstallRH_VOIDBionicLiver.label>
+  <InstallRH_VOIDBionicLiver.description>安装Voidtech仿生肝。</InstallRH_VOIDBionicLiver.description>
+  <InstallRH_VOIDBionicLiver.jobString>正在安装Voidtech仿生肝。</InstallRH_VOIDBionicLiver.jobString>
+
+
+  <!-- voidtech half-cycler -->
+
+  <InstallRH_VOIDCircadianHalfCycler.label>安装Voidtech作息节律器</InstallRH_VOIDCircadianHalfCycler.label>
+  <InstallRH_VOIDCircadianHalfCycler.description>安装Voidtech作息节律器。</InstallRH_VOIDCircadianHalfCycler.description>
+  <InstallRH_VOIDCircadianHalfCycler.jobString>正在安装Voidtech作息节律器。</InstallRH_VOIDCircadianHalfCycler.jobString>
+
+  <RemoveRH_VOIDCircadianHalfCycler.label>移除Voidtech作息节律器</RemoveRH_VOIDCircadianHalfCycler.label>
+  <RemoveRH_VOIDCircadianHalfCycler.description>移除Voidtech作息节律器。</RemoveRH_VOIDCircadianHalfCycler.description>
+  <RemoveRH_VOIDCircadianHalfCycler.jobString>正在移除Voidtech作息节律器。</RemoveRH_VOIDCircadianHalfCycler.jobString>
+
+
+  <!-- knowledge implant -->
+
+  <InstallVOIDBrain_Implant.label>安装Voidtech神经计算机</InstallVOIDBrain_Implant.label>
+  <InstallVOIDBrain_Implant.description>安装Voidtech神经计算机。</InstallVOIDBrain_Implant.description>
+  <InstallVOIDBrain_Implant.jobString>正在安装Voidtech神经计算机。</InstallVOIDBrain_Implant.jobString>
+
+  <RemoveVOIDBrain_Implant.label>移除Voidtech神经计算机</RemoveVOIDBrain_Implant.label>
+  <RemoveVOIDBrain_Implant.description>移除Voidtech神经计算机。</RemoveVOIDBrain_Implant.description>
+  <RemoveVOIDBrain_Implant.jobString>正在移除Voidtech神经计算机。</RemoveVOIDBrain_Implant.jobString>
+
+
+  <!-- voidtech nose -->
+
+  <InstallRH_VOIDAestheticNose.label>安装Voidtech仿生鼻</InstallRH_VOIDAestheticNose.label>
+  <InstallRH_VOIDAestheticNose.description>安装Voidtech仿生鼻。</InstallRH_VOIDAestheticNose.description>
+  <InstallRH_VOIDAestheticNose.jobString>正在安装Voidtech仿生鼻。</InstallRH_VOIDAestheticNose.jobString>
+
+  <RemoveRH_VOIDAestheticNose.label>移除Voidtech仿生鼻</RemoveRH_VOIDAestheticNose.label>
+  <RemoveRH_VOIDAestheticNose.description>移除Voidtech仿生鼻。</RemoveRH_VOIDAestheticNose.description>
+  <RemoveRH_VOIDAestheticNose.jobString>正在移除Voidtech仿生鼻。</RemoveRH_VOIDAestheticNose.jobString>
+
+
+</LanguageData>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: Necronoids have finished incubating. -->
+  <MessageNecronoidsAssembled>歿疫感染體已孵化完畢。</MessageNecronoidsAssembled>
+  <!-- EN: Remaining necronoids to incubate -->
+  <MessageNecronoidsLeftToAssemble>待孵化的歿疫感染體數量</MessageNecronoidsLeftToAssemble>
+  <!-- EN: {0} incubation completes in {1}. -->
+  <NecroAssemblyCompleteIn>將在{1}內孵化出{0}。</NecroAssemblyCompleteIn>
+  <!-- EN: Necronoid Raid -->
+  <LetterLabelNecronoidRaid>歿疫感染體襲擊</LetterLabelNecronoidRaid>
+  <!-- EN: The necronoids have arrived and are attacking your base! They appear to be stronger than the regular necronoid, be careful. -->
+  <LetterTextNecronoidRaid>一群歿疫感染體已到達附近，它們會立即對你的殖民地發動攻擊！\n\n它們看起來要比普通的歿疫感染體更難對付，多加小心！</LetterTextNecronoidRaid>
+  <!-- EN: necronoid monstrocities! -->
+  <LetterLabelMonstrositiesArrived>歿疫屍潮！</LetterLabelMonstrositiesArrived>
+  <!-- EN: A horde of necronoid monstrocities have arrived!! -->
+  <MonstrocitiesArrived>一大群歿疫感染體已到達附近！拿起武器，做好背水一戰的準備！</MonstrocitiesArrived>
+
+
+</LanguageData>

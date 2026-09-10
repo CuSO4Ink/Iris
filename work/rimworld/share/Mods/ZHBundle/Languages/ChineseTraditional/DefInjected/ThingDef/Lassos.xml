@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Lasso -->
+  <AM_LassoCloth.label>套索</AM_LassoCloth.label>
+  <!-- EN: A cloth lasso that can drag enemies into melee range from a distance, or pull friendlies out of harm's way. -->
+  <AM_LassoCloth.description>用棉布製成的便利工具。套索可以快速將敵人捆住並拉至使用者的近戰攻擊範圍內，或使友方單位即刻脫離危險區域。</AM_LassoCloth.description>
+  
+  <!-- EN: Devilstrand Lasso -->
+  <AM_LassoDevilstrand.label>魔鬼布料套索</AM_LassoDevilstrand.label>
+  <!-- EN: A devilstrand lasso that can drag enemies into melee range from a distance, or pull friendlies out of harm's way.\nAllows increased lasso reach compared to a regular lasso. -->
+  <AM_LassoDevilstrand.description>用魔鬼布料製成的便利工具。套索可以快速將敵人捆住並拉至使用者的近戰攻擊範圍內，或使友方單位即刻脫離危險區域。\n\n這種套索的拋投距離要比普通套索更遠。</AM_LassoDevilstrand.description>
+  
+  <!-- EN: Hyperwave Lasso -->
+  <AM_LassoHyperwave.label>超級布料套索</AM_LassoHyperwave.label>
+  <!-- EN: A hyperwave lasso that can drag enemies into melee range from a distance, or pull friendlies out of harm's way.\nAllows increased lasso reach compared to a devilstrand lasso. -->
+  <AM_LassoHyperwave.description>用超級布料製成的便利工具。套索可以快速將敵人捆住並拉至使用者的近戰攻擊範圍內，或使友方單位即刻脫離危險區域。\n\n這種套索的拋投距離要比魔鬼布料套索更遠。</AM_LassoHyperwave.description>
+  
+</LanguageData>

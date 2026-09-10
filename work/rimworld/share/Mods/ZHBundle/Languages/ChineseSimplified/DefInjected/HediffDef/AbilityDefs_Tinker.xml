@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 홀로그램 포술 -->
+  <Miho_Accuracy_HediffTwo.label>全息定位</Miho_Accuracy_HediffTwo.label>
+  <!-- EN: 메카나이트-초능력을 이용하여 명중률을 향상시켰습니다. -->
+  <Miho_Accuracy_HediffTwo.description>此单位的全息定位装置已得到强化，其射击精度会大幅提高。</Miho_Accuracy_HediffTwo.description>
+  
+  <!-- EN: 메카나이트 경화 장갑 -->
+  <Miho_Armor_HediffTwo.label>装甲硬化</Miho_Armor_HediffTwo.label>
+  <!-- EN: 메카나이트-초능력을 이용하여 방어력을 향상시켰습니다. -->
+  <Miho_Armor_HediffTwo.description>此单位的装甲已得到强化，其防护能力会大幅提高。</Miho_Armor_HediffTwo.description>
+  
+  <!-- EN: 탄막지옥 -->
+  <Miho_BulletHell_HediffTwo.label>枪弹地狱</Miho_BulletHell_HediffTwo.label>
+  <!-- EN: 메카나이트-초능력을 이용하여 장전속도를 향상시켰습니다. -->
+  <Miho_BulletHell_HediffTwo.description>此单位的弹药装填系统已得到强化，其瞄准时间与远程冷却时间会大幅减少。</Miho_BulletHell_HediffTwo.description>
+  
+  <!-- EN: 폐열 폭발 -->
+  <Miho_HackingKill_Hediff.label>废热爆散</Miho_HackingKill_Hediff.label>
+  <!-- EN: 열을 배출하지 못하는 메카노이드들은 모두 죽었다... -->
+  <Miho_HackingKill_Hediff.description>此单位受到了心智骇入的影响，很快便会因内部电路被高温熔化而自毁。</Miho_HackingKill_Hediff.description>
+  <!-- EN: a -->
+  <Miho_HackingKill_Hediff.stages.a.label>A</Miho_HackingKill_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_HackingKill_Hediff.stages.b.label>B</Miho_HackingKill_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_HackingKill_Hediff.stages.c.label>C</Miho_HackingKill_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_HackingKill_Hediff.stages.d.label>D</Miho_HackingKill_Hediff.stages.d.label>
+  
+  <!-- EN: 의식 좀먹기 -->
+  <Miho_HackingSlow_Hediff.label>意识侵蚀</Miho_HackingSlow_Hediff.label>
+  <!-- EN: 의식을 갉아먹어 버립니다. -->
+  <Miho_HackingSlow_Hediff.description>此单位受到了心智骇入的影响，其意识与移动速度会有所降低。</Miho_HackingSlow_Hediff.description>
+  
+  <!-- EN: 오버클럭 -->
+  <Miho_Overclock_HediffTwo.label>机能超频</Miho_Overclock_HediffTwo.label>
+  <!-- EN: 메카나이트-초능력을 이용하여 의식을 향상시켰습니다. -->
+  <Miho_Overclock_HediffTwo.description>此单位的运算中枢已得到超频强化，其意识与移动速度会大幅提高。</Miho_Overclock_HediffTwo.description>
+  
+</LanguageData>

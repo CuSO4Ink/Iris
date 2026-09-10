@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: blizzard -->
+  <VPE_Blizzard.label>极寒风暴</VPE_Blizzard.label>
+  <!-- EN: Using differential-pressure skipgates, water-linked skipgates and nodes of psychic entropy, creates a swirling blizzard away from the caster. Those exposed to the tempest experience reduced sight, moving and manipulation, as well as hypothermia buildup and cutting cold. Duration scales with the caster’s psychic sensitivity and puts them in a 5-day coma. -->
+  <VPE_Blizzard.description>利用压差折跃门，水体折跃门和灵能负熵节点，在自身周围的区域生成肆虐的极寒风暴。风暴会使其中之人的视力，移动和操作能力下降，并逐渐产生低温症，以及被尖锐的冰霜划伤。持续时间取决于施放者的心灵敏感度，并会使其陷入5天的昏迷。</VPE_Blizzard.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Blizzard.jobReportString>使用能力：{0}</VPE_Blizzard.jobReportString>
+  <!-- EN: 极寒风暴 -->
+  <VPE_Blizzard.verbProperties.label>极寒风暴</VPE_Blizzard.verbProperties.label>
+  
+  <!-- EN: cold zone -->
+  <VPE_ColdZone.label>低温领域</VPE_ColdZone.label>
+  <!-- EN: Cause an area to manifest nodes of psychic entropy for the next 24 hours, drastically lowering the temperature. -->
+  <VPE_ColdZone.description>让一块区域在灵能负熵节点的影响下，在24小时内剧烈降温。</VPE_ColdZone.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_ColdZone.jobReportString>使用能力：{0}</VPE_ColdZone.jobReportString>
+  <!-- EN: 低温领域 -->
+  <VPE_ColdZone.verbProperties.label>低温领域</VPE_ColdZone.verbProperties.label>
+  
+  <!-- EN: frost ray -->
+  <VPE_FrostRay.label>冻结射线</VPE_FrostRay.label>
+  <!-- EN: Push forth a concentrated stream of psychic entropy for a few seconds, rapidly inducing cuts and hypothermia. The duration scales with the caster’s psychic sensitivity. -->
+  <VPE_FrostRay.description>将一束灵能负熵持续浓缩射出，对目标造成割伤和低温症。持续时间取决于施放者的心灵敏感度。</VPE_FrostRay.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_FrostRay.jobReportString>使用能力：{0}</VPE_FrostRay.jobReportString>
+  <!-- EN: 冻结射线 -->
+  <VPE_FrostRay.verbProperties.label>冻结射线</VPE_FrostRay.verbProperties.label>
+  
+  <!-- EN: ice block -->
+  <VPE_IceBlock.label>冰块</VPE_IceBlock.label>
+  <!-- EN: Combining nodes of psychic entropy and a skipgate linked to an ocean, creating a large block of ice to form in the target location. Fragile and can melt if the temperature is above freezing. -->
+  <VPE_IceBlock.description>将联向大海的折跃门和灵能负熵结点结合，在目标地点创造出一大块冰块。十分脆弱，温度在冰点以上的话会逐渐融化。</VPE_IceBlock.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_IceBlock.jobReportString>使用能力：{0}</VPE_IceBlock.jobReportString>
+  <!-- EN: 冰块 -->
+  <VPE_IceBlock.verbProperties.label>冰块</VPE_IceBlock.verbProperties.label>
+  
+  <!-- EN: breathe ice -->
+  <VPE_IceBreath.label>冰霜吐息</VPE_IceBreath.label>
+  <!-- EN: Breathe forward a stream of psychic entropy, the resulting cold cutting and inducing hypothermia scaling with the distance to the target. -->
+  <VPE_IceBreath.description>吐出一大束灵能负熵，根据距离对对目标造成割伤和低温症。</VPE_IceBreath.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_IceBreath.jobReportString>使用能力：{0}</VPE_IceBreath.jobReportString>
+  <!-- EN: 冰霜吐息 -->
+  <VPE_IceBreath.verbProperties.label>冰霜吐息</VPE_IceBreath.verbProperties.label>
+  
+  <!-- EN: ice crystal -->
+  <VPE_IceCrystal.label>低温水晶</VPE_IceCrystal.label>
+  <!-- EN: Creates a node of psychic entropy in the form of a crystal, sapping the heat from the room for the next 5 days. -->
+  <VPE_IceCrystal.description>将灵能负熵节点化作结晶，降低所在房间的温度，持续5天。</VPE_IceCrystal.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_IceCrystal.jobReportString>使用能力：{0}</VPE_IceCrystal.jobReportString>
+  <!-- EN: 低温水晶 -->
+  <VPE_IceCrystal.verbProperties.label>低温水晶</VPE_IceCrystal.verbProperties.label>
+  
+  <!-- EN: ice shield -->
+  <VPE_IceShield.label>冰盾</VPE_IceShield.label>
+  <!-- EN: Creates an aura of psychic entropy around the target for several seconds, preventing them from experiencing cold and inducing hypothermia on any who try to attack them in melee. -->
+  <VPE_IceShield.description>在目标周围施加一个灵能负熵光环，近战攻击目标之人会被冻伤，也会使目标免受寒冷伤害。</VPE_IceShield.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_IceShield.jobReportString>使用能力：{0}</VPE_IceShield.jobReportString>
+  <!-- EN: 冰盾 -->
+  <VPE_IceShield.verbProperties.label>冰盾</VPE_IceShield.verbProperties.label>
+  
+  <!-- EN: ice spike -->
+  <VPE_IceSpike.label>冰锥</VPE_IceSpike.label>
+  <!-- EN: Condenses vapor with psychic entropy into an icicle launched at a target, the damage scaling with psychic sensitivity. -->
+  <VPE_IceSpike.description>用灵能负熵将空气中的水汽凝结成冰锥射向目标，伤害取决于心灵敏感度</VPE_IceSpike.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_IceSpike.jobReportString>使用能力：{0}</VPE_IceSpike.jobReportString>
+  <!-- EN: 冰锥 -->
+  <VPE_IceSpike.verbProperties.label>冰锥</VPE_IceSpike.verbProperties.label>
+  
+  <!-- EN: ice wall -->
+  <VPE_IceWall.label>冰壁</VPE_IceWall.label>
+  <!-- EN: Combining nodes of psychic entropy and miniature skipgates linked to an ocean, creating a circular wall of ice to form around the caster. Fragile and can melt if the temperature is above freezing. -->
+  <VPE_IceWall.description>将联向大海的折跃门和灵能负熵结点结合，在施放者周边创造出一圈环绕的冰块。十分脆弱，温度在冰点以上的话会逐渐融化。</VPE_IceWall.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_IceWall.jobReportString>使用能力：{0}</VPE_IceWall.jobReportString>
+  <!-- EN: 冰壁 -->
+  <VPE_IceWall.verbProperties.label>冰壁</VPE_IceWall.verbProperties.label>
+  
+  <!-- EN: snap freeze -->
+  <VPE_SnapFreeze.label>瞬间冻结</VPE_SnapFreeze.label>
+  <!-- EN: Creates motes of psychic entropy and miniature skipgates to water reservoirs above all the targets in a small area, encasing them in ice. Victims will experience hypothermia but the ice can melt prematurely if the temperature is above freezing. -->
+  <VPE_SnapFreeze.description>将联向地下含水层的折跃门和一片灵能负熵云结合，将区域内的所有目标冻结在冰内。目标会持续遭受低温，但若温度在冰点以上，则冰会加速融化。</VPE_SnapFreeze.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_SnapFreeze.jobReportString>使用能力：{0}</VPE_SnapFreeze.jobReportString>
+  <!-- EN: 瞬间冻结 -->
+  <VPE_SnapFreeze.verbProperties.label>瞬间冻结</VPE_SnapFreeze.verbProperties.label>
+  
+</LanguageData>

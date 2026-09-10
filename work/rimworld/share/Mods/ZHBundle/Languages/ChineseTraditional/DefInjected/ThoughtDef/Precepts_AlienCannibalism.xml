@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ate alien meat -->
+  <HAR_AteAlienMeat_Abhorrent.stages.ate_alien_meat.label>吃了外星種族肉</HAR_AteAlienMeat_Abhorrent.stages.ate_alien_meat.label>
+  <!-- EN: I had to eat a sapient alien's meat. This is an offense against everything I believe. -->
+  <HAR_AteAlienMeat_Abhorrent.stages.ate_alien_meat.description>我不得不吃了外星種族肉。這是對我信仰的褻瀆。</HAR_AteAlienMeat_Abhorrent.stages.ate_alien_meat.description>
+  
+  <!-- EN: ate alien meat -->
+  <HAR_AteAlienMeat_Disapproved.stages.ate_alien_meat.label>吃了外星種族肉</HAR_AteAlienMeat_Disapproved.stages.ate_alien_meat.label>
+  <!-- EN: I had to eat alien meat. I believe such actions are wrong. -->
+  <HAR_AteAlienMeat_Disapproved.stages.ate_alien_meat.description>我不得不吃了外星種族肉。我認為這種行為是錯誤的。</HAR_AteAlienMeat_Disapproved.stages.ate_alien_meat.description>
+  
+  <!-- EN: ate alien meat -->
+  <HAR_AteAlienMeat_Know_Abhorrent.stages.ate_alien_meat.label>吃了外星種族肉</HAR_AteAlienMeat_Know_Abhorrent.stages.ate_alien_meat.label>
+  
+  <!-- EN: ate alien meat -->
+  <HAR_AteAlienMeat_Know_Disapproved.stages.ate_alien_meat.label>吃了外星種族肉</HAR_AteAlienMeat_Know_Disapproved.stages.ate_alien_meat.label>
+  
+  <!-- EN: ate alien meat -->
+  <HAR_AteAlienMeat_Preferred.stages.ate_alien_meat.label>吃了外星種族肉</HAR_AteAlienMeat_Preferred.stages.ate_alien_meat.label>
+  <!-- EN: I ate alien meat. It makes me feel noble and strong. -->
+  <HAR_AteAlienMeat_Preferred.stages.ate_alien_meat.description>我吃了外星種族肉。這使我感到高貴且強壯。</HAR_AteAlienMeat_Preferred.stages.ate_alien_meat.description>
+  
+  <!-- EN: ate alien meat -->
+  <HAR_AteAlienMeat_RequiredStrong.stages.ate_alien_meat.label>吃了外星種族肉</HAR_AteAlienMeat_RequiredStrong.stages.ate_alien_meat.label>
+  <!-- EN: I ate alien meat, as every real person should. -->
+  <HAR_AteAlienMeat_RequiredStrong.stages.ate_alien_meat.description>我吃了外星種族肉，每個人都應該這樣。</HAR_AteAlienMeat_RequiredStrong.stages.ate_alien_meat.description>
+  
+  <!-- EN: ate non-alien food -->
+  <HAR_AteNonAlienFood_Horrible.stages.ate_nonalien_food.label>吃了非外星種族肉食物</HAR_AteNonAlienFood_Horrible.stages.ate_nonalien_food.label>
+  <!-- EN: I had to eat food that wasn't taken from a sapient alien. My beliefs strictly forbid such things. -->
+  <HAR_AteNonAlienFood_Horrible.stages.ate_nonalien_food.description>我必須吃不是外星種族肉製品的食物。可我的信仰嚴格禁止這樣的事情。</HAR_AteNonAlienFood_Horrible.stages.ate_nonalien_food.description>
+  
+  <!-- EN: ate non-alien food -->
+  <HAR_AteNonAlienFood_Know_Horrible.stages.ate_nonalien_food.label>吃了非外星種族肉食物</HAR_AteNonAlienFood_Know_Horrible.stages.ate_nonalien_food.label>
+  
+  <!-- EN: I butchered an alien -->
+  <HAR_ButcheredAlien_Abhorrent.stages.I_butchered_an_alien.label>屠宰了外星種族</HAR_ButcheredAlien_Abhorrent.stages.I_butchered_an_alien.label>
+  <!-- EN: I butchered a sapient alien. This is an offense against everything I believe. -->
+  <HAR_ButcheredAlien_Abhorrent.stages.I_butchered_an_alien.description>我屠宰了一個外星種族。這是對我信仰的褻瀆。</HAR_ButcheredAlien_Abhorrent.stages.I_butchered_an_alien.description>
+  
+  <!-- EN: I butchered an alien -->
+  <HAR_ButcheredAlien_Disapproved.stages.I_butchered_an_alien.label>屠宰了外星種族</HAR_ButcheredAlien_Disapproved.stages.I_butchered_an_alien.label>
+  <!-- EN: I butchered a sapient alien. I believe such actions are wrong. -->
+  <HAR_ButcheredAlien_Disapproved.stages.I_butchered_an_alien.description>我屠宰了一個外星種族。我認為這種行為是錯誤的。</HAR_ButcheredAlien_Disapproved.stages.I_butchered_an_alien.description>
+  
+  <!-- EN: we butchered an alien -->
+  <HAR_ButcheredAlien_Know_Abhorrent.stages.we_butchered_an_alien.label>有外星種族被屠宰了</HAR_ButcheredAlien_Know_Abhorrent.stages.we_butchered_an_alien.label>
+  <!-- EN: One of us butchered a sapient alien. This is an offense against everything I believe. -->
+  <HAR_ButcheredAlien_Know_Abhorrent.stages.we_butchered_an_alien.description>我們把外星種族像動物一樣屠宰了。這是對我信仰的褻瀆。</HAR_ButcheredAlien_Know_Abhorrent.stages.we_butchered_an_alien.description>
+  
+  <!-- EN: butchered an alien -->
+  <HAR_ButcheredAlien_Know_Abhorrent_Opinion.stages.butchered_an_alien.label>屠宰過外星種族</HAR_ButcheredAlien_Know_Abhorrent_Opinion.stages.butchered_an_alien.label>
+  
+  <!-- EN: we butchered an alien -->
+  <HAR_ButcheredAlien_Know_Disapproved.stages.we_butchered_an_alien.label>有外星種族被屠宰了</HAR_ButcheredAlien_Know_Disapproved.stages.we_butchered_an_alien.label>
+  <!-- EN: One of us butchered a sapient alien. I believe such actions are wrong. -->
+  <HAR_ButcheredAlien_Know_Disapproved.stages.we_butchered_an_alien.description>我們把外星種族像動物一樣屠宰了。我認為這種行為是錯誤的。</HAR_ButcheredAlien_Know_Disapproved.stages.we_butchered_an_alien.description>
+  
+  <!-- EN: butchered an alien -->
+  <HAR_ButcheredAlien_Know_Disapproved_Opinion.stages.butchered_an_alien.label>屠宰過外星種族</HAR_ButcheredAlien_Know_Disapproved_Opinion.stages.butchered_an_alien.label>
+  
+  <!-- EN: want alien meat -->
+  <HAR_NoRecentAlienMeat_Preferred.stages.want_alien_meat.label>想吃外星種族肉</HAR_NoRecentAlienMeat_Preferred.stages.want_alien_meat.label>
+  <!-- EN: It's been too long since I consumed any alien meat. It feels wrong. -->
+  <HAR_NoRecentAlienMeat_Preferred.stages.want_alien_meat.description>我已經很久沒吃外星種族肉了。我感覺很難受。</HAR_NoRecentAlienMeat_Preferred.stages.want_alien_meat.description>
+  
+  <!-- EN: want alien meat -->
+  <HAR_NoRecentAlienMeat_RequiredStrong.stages.want_alien_meat.label>想吃外星種族肉</HAR_NoRecentAlienMeat_RequiredStrong.stages.want_alien_meat.label>
+  <!-- EN: It's been far too long since I consumed alien flesh. I should have eaten by now. -->
+  <HAR_NoRecentAlienMeat_RequiredStrong.stages.want_alien_meat.description>距離上次品嚐外星種族肉已經過去了太久太久。我需要立即吃幾塊外星種族肉！</HAR_NoRecentAlienMeat_RequiredStrong.stages.want_alien_meat.description>
+  
+</LanguageData>

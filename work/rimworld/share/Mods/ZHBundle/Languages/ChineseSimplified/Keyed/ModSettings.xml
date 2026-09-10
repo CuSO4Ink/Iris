@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Wandering Multiplier -->
+  <DSFI_ConfigWanderMultiplier>闲逛概率</DSFI_ConfigWanderMultiplier>
+  <!-- EN: Multiplier for wandering instead of doing something. If you lower it, colonists try more somethings. -->
+  <DSFI_TT_ConfigWanderMultiplier>闲逛而不去干活的比重值。如果降低，则殖民者会去尝试在更多闲暇的时候摸鱼。</DSFI_TT_ConfigWanderMultiplier>
+
+  <!-- EN: Spending Time Multiplier -->
+  <DSFI_SpendingTimeMultiplier>干活概率</DSFI_SpendingTimeMultiplier>
+  <!-- EN: Multiplier for time about to do something. If you lower it, colonists uses more time for idle.
+  If you have a lot of colonist in settlement, it is recommended to raise this option. -->
+  <DSFI_TT_SpendingTimeMultiplier>干活时长的比重值。如果你降低它，殖民者会有更多的闲暇时间。\n   如果你的基地有很多殖民者，建议提高此选项。</DSFI_TT_SpendingTimeMultiplier>
+  
+  <!-- EN: Wandering Move Style -->
+  <DSFI_ConfigWanderMovePolicy>闲逛时的移动方式</DSFI_ConfigWanderMovePolicy>
+  <!-- EN: Walk -->
+  <DSFI_ConfigWanderMovePolicy_Walk>散步</DSFI_ConfigWanderMovePolicy_Walk>
+  <!-- EN: Run -->
+  <DSFI_ConfigWanderMovePolicy_Run>奔跑</DSFI_ConfigWanderMovePolicy_Run>
+
+  <!-- EN: Change Idle Job Activate -->
+  <DSFI_ConfigActivatedIdleJob>摸鱼项目激活管理</DSFI_ConfigActivatedIdleJob>
+
+</LanguageData>

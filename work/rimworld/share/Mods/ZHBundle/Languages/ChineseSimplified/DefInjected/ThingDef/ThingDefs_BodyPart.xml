@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bionic vivi antennae -->
+  <VV_BionicAntennae.label>仿生薇薇触须</VV_BionicAntennae.label>
+  <!-- EN: a bionic vivi antennae made with foreign technology. Not only can it move like a real antenna, but it can also detect further distances due to its built-in advanced sensors. -->
+  <VV_BionicAntennae.description>采用外来技术制造的仿生薇薇触须。它不仅可以像真正的触须一样摆动，且由于内置了先进的传感器，比原生触须能探测更远的距离。</VV_BionicAntennae.description>
+  
+  <!-- EN: bionic vivi wing -->
+  <VV_BionicWing.label>仿生薇薇翅</VV_BionicWing.label>
+  <!-- EN: a bionic vivi wing made with foreign technology. Not only can it flutter like a real wing, but it can also move with less effort and is much lighter. -->
+  <VV_BionicWing.description>采用外来技术制造的仿生薇薇翅膀。这些翅膀不仅比原来的翅膀更轻，还能使运动更容易。</VV_BionicWing.description>
+  
+  <!-- EN: fake vivi antennae -->
+  <VV_FakeAntennae.label>假薇薇触须</VV_FakeAntennae.label>
+  <!-- EN: A fake antenna made from fibers mixed with Vivi cream. It doesn't help much, but it looks better than not having one. -->
+  <VV_FakeAntennae.description>用织物与薇薇乳脂混合制成的假薇薇触须，虽然没什么实际帮助，但总比没有强。</VV_FakeAntennae.description>
+  
+  <!-- EN: fake vivi wing -->
+  <VV_FakeWing.label>假薇薇翅</VV_FakeWing.label>
+  <!-- EN: A fake wing made from fibers mixed with Vivi cream. It doesn't help much, but it looks better than not having one. -->
+  <VV_FakeWing.description>用织物与薇薇乳脂混合制成的假薇薇翅，虽然没什么实际帮助，但总比没有强。</VV_FakeWing.description>
+  
+</LanguageData>

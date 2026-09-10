@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: central heating -->
+  <CentralHeating.label>集中供暖</CentralHeating.label>
+  <!-- EN: Build central heating systems with radiators, hot water tanks, boilers and thermostats. -->
+  <CentralHeating.description>解锁暖气片、热水箱、太阳能加热器、锅炉和化合燃料锅炉。</CentralHeating.description>
+
+  <!-- EN: Geothermal Heating -->
+  <GeothermalHeating.label>地热供暖</GeothermalHeating.label>
+  <!-- EN: Build geothermal heaters which can be built over geysers to generate heat for central heating and hot water tanks. -->
+  <GeothermalHeating.description>解锁可为暖气片和热水箱供热的地热加热器。必须放置在蒸汽间歇喷泉上。</GeothermalHeating.description>
+
+  <!-- EN: heating -->
+  <LogBoilers.label>供暖</LogBoilers.label>
+  <!-- EN: Build log boilers which can be used to heat rooms and can be placed adjacent to baths to heat bathwater. -->
+  <LogBoilers.description>解锁建造能提高房间温度并给相邻洗浴用水加热的锅炉。</LogBoilers.description>
+
+  <!-- EN: multi-split air conditioning -->
+  <MultiSplitAirCon.label>多分体空调</MultiSplitAirCon.label>
+  <!-- EN: Build multi-split air conditioning systems with outdoor units piped to indoor units and freezers. -->
+  <MultiSplitAirCon.description>解锁多分体空调系统，使用空调管道将复数室外机、室内机和制冷机连接在一起。</MultiSplitAirCon.description>
+
+</LanguageData>

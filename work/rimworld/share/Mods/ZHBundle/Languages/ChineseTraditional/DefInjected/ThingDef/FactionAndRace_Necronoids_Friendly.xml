@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: flesh marine -->
+  <Necronoid_FleshMarine.label>血肉陸戰隊</Necronoid_FleshMarine.label>
+  <!-- EN: A reprogrammed necronoid entity that was used to defend key points of interests in well developed civilizations. This flesh marine is friendly towards humanoids and it's expendable, where they can be mass produced and used to defend colonies throughout the rim, though the downside is that it can only defend the biomass that it came from and it can't be ordered to directly attack hostiles. -->
+  <Necronoid_FleshMarine.description>繁榮文明世界為保衛戰略要地而投入使用的生物兵器。這種經過改造的歿疫感染體對人類不抱有敵意，且僅需消耗歿疫肉就可以批量孵化。美中不足的是，血肉陸戰隊只會守護在人造歿疫屍巢旁，無法主動命令它們攻擊敵人。</Necronoid_FleshMarine.description>
+  <!-- EN: left fist -->
+  <Necronoid_FleshMarine.tools.left_fist.label>左拳</Necronoid_FleshMarine.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_FleshMarine.tools.right_fist.label>右拳</Necronoid_FleshMarine.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_FleshMarine.tools.head.label>頭</Necronoid_FleshMarine.tools.head.label>
+  
+</LanguageData>

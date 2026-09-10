@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: delivering TargetA to everflower. -->
+  <VV_DeliverToEverflower.reportString>將TargetA搬運至永盛花</VV_DeliverToEverflower.reportString>
+  
+  <!-- EN: attuning TargetA to move position. -->
+  <VV_MoveEverflower.reportString>共鳴TargetA以移動位置</VV_MoveEverflower.reportString>
+  
+</LanguageData>

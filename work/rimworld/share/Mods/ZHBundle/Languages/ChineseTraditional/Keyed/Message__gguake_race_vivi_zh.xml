@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+<VV_Message_ArcanePlantSeedlingDeadCausedNoNutrition>{0}死于缺乏營養。</VV_Message_ArcanePlantSeedlingDeadCausedNoNutrition>
+
+<VV_Message_HoneycombWallBeingFortified>蜂巢墻已被加固。</VV_Message_HoneycombWallBeingFortified>
+<VV_Message_MustDesignateHoneycombWall>必須選擇蜂巢墻。</VV_Message_MustDesignateHoneycombWall>
+
+<VV_Message_LinkEverflowerComplete>{PAWN_nameDef}已和該永盛花建立共鳴。</VV_Message_LinkEverflowerComplete>
+<VV_Message_LinkDisconnectedEverflower>{PAWN_nameDef}所共鳴的永盛花被摧毀，共鳴中止。</VV_Message_LinkDisconnectedEverflower>
+<VV_Message_EverflowerRandomTeleported>永盛花已傳送。</VV_Message_EverflowerRandomTeleported>
+
+<VV_Message_AttunementEverflowerComplete>{PAWN_nameDef}的永盛花共鳴儀式增強了其心靈鏈接。</VV_Message_AttunementEverflowerComplete>
+<VV_Message_PollenWaveAfterAttunement>永盛花共鳴儀式在周圍產生了花粉覆蓋。</VV_Message_PollenWaveAfterAttunement>
+<VV_Message_PlantGrownAfterAttunement>永盛花共鳴儀式令周圍的植物茁壯成長。</VV_Message_PlantGrownAfterAttunement>
+</LanguageData>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <SlowerPawnTickRate.PawnTickSlowdownLabel>生物状态更新率减缓倍率（影响UpdateRateTicks）：</SlowerPawnTickRate.PawnTickSlowdownLabel>
+  <SlowerPawnTickRate.ApplyToAllPawns>对所有生物生效</SlowerPawnTickRate.ApplyToAllPawns>
+  <SlowerPawnTickRate.AllPawnMultiplier>  减缓倍率： {0}倍</SlowerPawnTickRate.AllPawnMultiplier>
+
+  <SlowerPawnTickRate.ApplyToSlaves>只对奴隶生效</SlowerPawnTickRate.ApplyToSlaves>
+  <SlowerPawnTickRate.SlaveMultiplier>  减缓倍率： {0}倍</SlowerPawnTickRate.SlaveMultiplier>
+
+  <SlowerPawnTickRate.ApplyToAnimals>只对动物生效</SlowerPawnTickRate.ApplyToAnimals>
+  <SlowerPawnTickRate.AnimalMultiplier>  减缓倍率： {0}倍</SlowerPawnTickRate.AnimalMultiplier>
+
+  <SlowerPawnTickRate.ExperimentalToggle>实验性设置</SlowerPawnTickRate.ExperimentalToggle>
+
+  <SlowerPawnTickRate.ThingSectionLabel>[实验性设置] 物品更新率减缓：</SlowerPawnTickRate.ThingSectionLabel>
+  <SlowerPawnTickRate.ApplyToThings>对其余所有物品生效</SlowerPawnTickRate.ApplyToThings>
+  <SlowerPawnTickRate.ThingMultiplier>  减缓倍率： {0}倍</SlowerPawnTickRate.ThingMultiplier>
+
+  <SlowerPawnTickRate.WorldObjectSectionLabel>[实验性设置] 地图外物品更新率减缓：</SlowerPawnTickRate.WorldObjectSectionLabel>
+  <SlowerPawnTickRate.ApplyToWorldObjects>对所有地图外物品生效</SlowerPawnTickRate.ApplyToWorldObjects>
+  <SlowerPawnTickRate.WorldObjectMultiplier>  减缓倍率： {0}倍</SlowerPawnTickRate.WorldObjectMultiplier>
+
+  <SlowerPawnTickRate.DebugLog>启动纠错日志记录</SlowerPawnTickRate.DebugLog>
+  <SlowerPawnTickRate.ResetButton>重置默认设置</SlowerPawnTickRate.ResetButton>
+</LanguageData>

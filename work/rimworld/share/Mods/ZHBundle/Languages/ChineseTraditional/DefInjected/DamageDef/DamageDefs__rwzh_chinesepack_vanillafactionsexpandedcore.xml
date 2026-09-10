@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: permanent burn -->
+  <VEF_PermanentBurn.label>永久性燒傷</VEF_PermanentBurn.label>
+  <!-- EN: {0} has been killed by burning. -->
+  <VEF_PermanentBurn.deathMessage>{0}被燒死了。</VEF_PermanentBurn.deathMessage>
+  
+  <!-- EN: acid burn -->
+  <VEF_SecondaryAcidBurn.label>酸蝕</VEF_SecondaryAcidBurn.label>
+  <!-- EN: {0} has been corroded to death. -->
+  <VEF_SecondaryAcidBurn.deathMessage>{0}被酸液腐蝕致死。</VEF_SecondaryAcidBurn.deathMessage>
+  
+</LanguageData>

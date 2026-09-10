@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: Favourite meal or ingredient: -->
+  <VCE_FavouriteFoodTextOnly>最爱的食材/食物：</VCE_FavouriteFoodTextOnly>
+	<!-- EN: Favourite meal or ingredient: {0} -->
+  <VCE_FavouriteFood>最爱的食材/食物：{0}</VCE_FavouriteFood>
+	<!-- EN: Last eaten meals: {0} -->
+  <VCE_LastFoods>最近享用的食物：{0}</VCE_LastFoods>
+	<!-- EN: Last eaten meals: -->
+  <VCE_LastFoodsTextOnly>最近享用的食物：</VCE_LastFoodsTextOnly>
+	<!-- EN: Last eaten ingredients: {0} -->
+  <VCE_LastIngredients>最近享用的食材：{0}</VCE_LastIngredients>
+	<!-- EN: Last eaten ingredients: -->
+  <VCE_LastIngredientsTextOnly>最近享用的食材：</VCE_LastIngredientsTextOnly>
+	<!-- EN: Go back -->
+  <VCEV_GoBack>返回</VCEV_GoBack>
+	<!-- EN: Consuming this meal or ingredient will give a +2 bonus to variety -->
+  <VCE_FavouriteFoodEffects>享用这种食材/食物会为对应的多样性额外提供+2增益</VCE_FavouriteFoodEffects>
+	<!-- EN: Not eaten yet -->
+  <VCE_NotEatenYet>还未享用过</VCE_NotEatenYet>
+	
+	<!-- EN: Meal Variety: {0}/{1} -->
+  <VCE_MealVariety>食物多样性：{0}/{1}</VCE_MealVariety>
+	<!-- EN: Ingredient Variety: {0}/{1} -->
+  <VCE_IngredientVariety>食材多样性：{0}/{1}</VCE_IngredientVariety>
+	<!-- EN: Average Total: {0}% -->
+  <VCE_TotalVariety>总平均值：{0}%</VCE_TotalVariety>
+	
+	<!-- EN: Since {0}'s favourite food has been consumed, variety in this category will get a +2 bonus per favourite! -->
+  <VCE_MealsHasFavourites>{0}享用了自己最爱的食物！每种最爱的食物都会为对应的多样性额外提供+2增益。</VCE_MealsHasFavourites>
+	<!-- EN: Since {0}'s favourite ingredient has been consumed, variety in this category will get a +2 bonus per favourite! -->
+  <VCE_IngredientsHasFavourites>{0}享用了自己最爱的食材！每种最爱的食材都会为对应的多样性额外提供+2增益。</VCE_IngredientsHasFavourites>
+	
+	<!-- EN: {0} already has two favourite foods. The recipe book won't provide further insights -->
+  <VCEV_NoMoreFavourites>{0}已经有两种最爱的食材/食物了！阅读这本烹饪手册不会起到任何效果。</VCEV_NoMoreFavourites>
+	<!-- EN: {0} has decided that {1} is now their favourite food too! -->
+  <VCEV_NewFavouriteGained>通过阅读烹饪手册，{0}已经爱上了{1}！</VCEV_NewFavouriteGained>
+	<!-- EN: {1} is already {0}'s favourite food! The recipe book won't provide further insights -->
+  <VCEV_AlreadyFavourite>{1}已经是{0}最爱的食材/食物了！阅读这本烹饪手册不会起到任何效果。</VCEV_AlreadyFavourite>
+	
+	<!-- EN: This is {PAWN_nameDef}'s favourite meal, and counts as two meals for the purpose of food variety. -->
+  <VCEV_ThisIsFavourite>这是{PAWN_nameDef}最爱的食物，享用它会为对应的多样性额外提供+2增益。</VCEV_ThisIsFavourite>
+	<!-- EN: This is {PAWN_nameDef}'s favourite ingredient, and counts as two ingredients for the purpose of food variety. -->
+  <VCEV_ThisIsFavouriteIng>这是{PAWN_nameDef}最爱的食材，享用它会为对应的多样性额外提供+2增益。</VCEV_ThisIsFavouriteIng>
+	<!-- Mod options -->
+	
+	<!-- EN: Mood offset -->
+  <VCEV_MoodMultiplier>心情偏移</VCEV_MoodMultiplier>
+	<!-- EN: Both negative and positive moods produced by low and high Food Variety need will be multiplied by this number. +/- 5 by default. -->
+  <VCEV_MoodMultiplierDesc>因饮食多样性需求较高/较低而获得的心情增益/减益会根据此项的值偏移。默认情况下为+5/-5。</VCEV_MoodMultiplierDesc>
+	<!-- EN: Reset -->
+  <VCEV_Reset>重设</VCEV_Reset>
+	
+	<!-- EN: Low Food Variety Threshold -->
+  <VCEV_LowVarietyThreshold>饮食多样性阈值（较低）</VCEV_LowVarietyThreshold>
+	<!-- EN: Colonists with lower food variety than this will get negative mood effects. 30% by default. -->
+  <VCEV_LowVarietyThresholdDesc>当殖民者的饮食多样性需求低于某个阈值时，会获得心情减益。默认情况下为30%。</VCEV_LowVarietyThresholdDesc>
+	
+	<!-- EN: High Food Variety Threshold -->
+  <VCEV_HighVarietyThreshold>饮食多样性阈值（较高）</VCEV_HighVarietyThreshold>
+	<!-- EN: Colonists with higher food variety than this will get positive mood effects. 60% by default. -->
+  <VCEV_HighVarietyThresholdDesc>当殖民者的饮食多样性需求高于某个阈值时，会获得心情增益。默认情况下为60%。</VCEV_HighVarietyThresholdDesc>
+	
+	<!-- EN: Number of latest meals to count -->
+  <VCEV_NumberOfMeals>最近享用食物的记录数量</VCEV_NumberOfMeals>
+	<!-- EN: The food variety need level will be calculated by counting among this number of meals consumed. Default is 7 latest meals. -->
+  <VCEV_NumberOfMealsDesc>殖民者最近享用食物的记录数量。会影响食物多样性的值。默认情况下为7。</VCEV_NumberOfMealsDesc>
+	
+	<!-- EN: Number of latest ingredients to count -->
+  <VCEV_NumberOfIngredients>最近享用食材的记录数量</VCEV_NumberOfIngredients>
+	<!-- EN: The food variety need level will be calculated by counting among this number of ingredients consumed. Default is 7 latest ingredients. -->
+  <VCEV_NumberOfIngredientsDesc>殖民者最近享用食材的记录数量。会影响食材多样性的值。默认情况下为7。</VCEV_NumberOfIngredientsDesc>
+
+	<!-- EN: Number of ingredient stack per meal (requires reload) -->
+  <VCEV_NumberOfIngredientStacked>每份食物所显示的原料数量（需要重新加载）</VCEV_NumberOfIngredientStacked>
+	<!-- EN: By default, vanilla meals start deleting "common" ingredients after 3 ingredients. This allows you to increase that limit. Requires a mod reload to take effect. -->
+  <VCEV_NumberOfIngredientStackedDesc>默认情况下，烹饪食物（例如简单食物、精致食物）的原料只会显示3种。超过3种时，那些相对而言比较“普通”的原料将被删除。调整此项可以提高原料数量的显示上限。需要重新加载Mod后才会使改动生效。</VCEV_NumberOfIngredientStackedDesc>
+
+</LanguageData>

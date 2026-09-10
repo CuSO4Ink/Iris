@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: Hire {0} -->
+  <VEF.Hire>雇傭{0}</VEF.Hire>
+	<!-- EN: Hire some {0} to help around the colony, for example with defense. -->
+  <VEF.HireDesc>雇傭一些{0}來協助殖民地的防衛或其他事務。</VEF.HireDesc>
+	<!-- EN: Available Silver: {0} -->
+  <VEF.AvailableSilver>當前可用白銀：{0}</VEF.AvailableSilver>
+	<!-- EN: Value -->
+  <VEF.Value>價格</VEF.Value>
+	<!-- EN: How many of that unit do you want to have? -->
+  <VEF.ChooseNumberOfUnits>需要多少人手？</VEF.ChooseNumberOfUnits>
+	<!-- EN: Breakdown -->
+  <VEF.Breakdown>統計信息</VEF.Breakdown>
+	<!-- EN: Amount of Days -->
+  <VEF.DayAmount>雇傭天數</VEF.DayAmount>
+	<!-- EN: Cost to hire -->
+  <VEF.Cost>雇傭花費</VEF.Cost>
+	<!-- EN: Risk multiplier -->
+  <VEF.RiskMult>風險乘數</VEF.RiskMult>
+	<!-- EN: Total Price -->
+  <VEF.TotalPrice>價格總計</VEF.TotalPrice>
+	<!-- EN: You can hire {0} for any period of time.You can only have one contract active at a time, and you cannot mix and match the factions from which you hire.
+If hired {0} die on duty, you will incur an additional 5% increase to contract price per dead pirate on all future contracts for a full year. -->
+  <VEF.HiringDesc>你可以隨時雇傭{0}。但請註意：一次只能和同一個派系簽訂雇傭合約。\n\n如果雇傭的{0}以身殉職，在未來一年內簽訂的雇傭合約中，每名殉職者都會額外增加5%的價格。</VEF.HiringDesc>
+	<!-- EN: Long term contracts are significantly more expensive -->
+  <VEF.LongTerm>長期合約需花費更多白銀</VEF.LongTerm>
+	<!-- EN: View contract with {0} -->
+  <VEF.ContractInfo>查看與{0}間的合約</VEF.ContractInfo>
+	<!-- EN: Contracted: -->
+  <VEF.PawnsList>已雇傭：</VEF.PawnsList>
+	<!-- EN: Contract with {0} -->
+  <VEF.ContractTitle>與{0}間的合約</VEF.ContractTitle>
+	<!-- EN: Silver spent: -->
+  <VEF.Spent>花費白銀：</VEF.Spent>
+	<!-- EN: Time remaining: -->
+  <VEF.TimeLeft>剩余時間：</VEF.TimeLeft>
+	<!-- EN: Cancel Contract -->
+  <VEF.CancelContract>解除雇傭合約</VEF.CancelContract>
+	<!-- EN: Cancelling your contract will not refund the silver you spent on it. -->
+  <VEF.NoRefund>解除當前的雇傭合約。當然，你花費的白銀不會被退還。</VEF.NoRefund>
+	<!-- EN: Customize {0} -->
+  <VEF.Customize>定製{0}</VEF.Customize>
+	<!-- EN: {0} Customization -->
+  <VEF.CustomizationTitle>{0}定製</VEF.CustomizationTitle>
+	<!-- EN: Name -->
+  <VEF.Name>名字</VEF.Name>
+	<!-- EN: Cancel -->
+  <VEF.Cancel>取消</VEF.Cancel>
+	<!-- EN: Available contracts: {0} -->
+  <VEF.AvailableContracts>可用的合約：{0}</VEF.AvailableContracts>
+	<!-- EN: Mechanoids -->
+  <VEF.MechsSection>機械族</VEF.MechsSection>
+	<!-- EN: Default -->
+  <VEF.DoorLockDefault>默認</VEF.DoorLockDefault>
+	<!-- EN: Everyone -->
+  <VEF.DoorLockEveryone>允許任何人通過</VEF.DoorLockEveryone>
+	<!-- EN: Only colonists and animals -->
+  <VEF.DoorLockOnlyColonistsAndAnimals>僅允許殖民者和動物通過</VEF.DoorLockOnlyColonistsAndAnimals>
+	<!-- EN: Only colonists, animals and friendlies -->
+  <VEF.DoorLockOnlyColonistsAndAnimalsAndFriendlies>僅允許殖民者、動物和友方單位通過</VEF.DoorLockOnlyColonistsAndAnimalsAndFriendlies>
+	<!-- EN: Only drafted -->
+  <VEF.DoorLockOnlyDrafted>僅在征召狀態下可通過</VEF.DoorLockOnlyDrafted>
+	<!-- EN: Current door lock policy "{0}" -->
+  <VEF.DoorLockState>當前門鎖方案“{0}”</VEF.DoorLockState>
+	<!-- EN: Click to change current door lock policy. -->
+  <VEF.DoorLockStateDesc>單擊以更改當前門鎖方案。</VEF.DoorLockStateDesc>
+	<!-- EN: Power is off. Impossible to change door lock policy. -->
+  <VEF.DoorLockStatePowerOff>已斷電。無法更改當前門鎖方案。</VEF.DoorLockStatePowerOff>
+	<!-- EN: Hunt -->
+  <VEF.DraftHuntLabel>追擊</VEF.DraftHuntLabel>
+	<!-- EN: While this is on characters will automatically move to engage nearby targets.\n\nYou can right-click this button to toggle autofire for ALL abilities on the selected pawn. -->
+  <VEF.HuntDescription>啟用後，角色會自動搜尋並攻擊附近的目標。\n\n通過右鍵單擊此按鈕，你可以為選中的單位的所有能力切換自動開火模式。</VEF.HuntDescription>
+	<!-- EN: This quest is a part of a quest chain. Completing it may trigger continuation quests.\n\n{0}\n\n{1} -->
+  <VEF.QuestChainTooltip>此任務屬於某個任務鏈中的一環。完成它將會觸發後續任務。\n\n{0}\n\n{1}</VEF.QuestChainTooltip>
+	<!-- EN: Attack this {0}. -->
+  <VEF.CommandAttackMovingBaseDesc>攻擊{0}。</VEF.CommandAttackMovingBaseDesc>
+	<!-- EN: Change visual -->
+  <VFE.ChangeVisualLabel>更改貼圖</VFE.ChangeVisualLabel>
+	<!-- EN: Set a specific visual for the building or item. -->
+  <VFE.ChangeVisualDesc>為此建築或物品選擇指定的貼圖。</VFE.ChangeVisualDesc>
+  <!-- EN: min {MIN}% -->
+  <VEF.MinCapacityLevel>最小 {MIN}%</VEF.MinCapacityLevel>
+</LanguageData>

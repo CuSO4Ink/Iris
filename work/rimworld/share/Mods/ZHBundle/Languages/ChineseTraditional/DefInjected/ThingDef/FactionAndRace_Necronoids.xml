@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bladed ghoul -->
+  <Necronoid_BladedGhoul.label>刃爪屍鬼</Necronoid_BladedGhoul.label>
+  <!-- EN: A fetid ghoul that undergone mutation, giving it four bladed claws that can rip through steel and inflict necronoid infection in every strike, and improved anatomy for more mobility and health. It is ill-advised to engage this entity in melee combat, always keep your distance and wear armor with high sharp armor value. -->
+  <Necronoid_BladedGhoul.description>刃爪屍鬼由膿腐屍鬼變異而來。它們不僅移動速度更快，肉體也更加強壯。它們的雙臂已消失不見，取而代之的則是四根鋒利無比的恐怖巨爪，每次揮動都能斬開鋼鐵並有幾率造成歿疫病毒感染。對抗它們時最好避免近距離交戰，如果你執意如此，那就請穿好利器防護足夠高的裝甲衣物。</Necronoid_BladedGhoul.description>
+  <!-- EN: left claws -->
+  <Necronoid_BladedGhoul.tools.left_claws.label>左爪</Necronoid_BladedGhoul.tools.left_claws.label>
+  <!-- EN: right claws -->
+  <Necronoid_BladedGhoul.tools.right_claws.label>右爪</Necronoid_BladedGhoul.tools.right_claws.label>
+  <!-- EN: head -->
+  <Necronoid_BladedGhoul.tools.head.label>頭</Necronoid_BladedGhoul.tools.head.label>
+  
+  <!-- EN: bloated ogre -->
+  <Necronoid_BloatedOgre.label>腫脹巨獸</Necronoid_BloatedOgre.label>
+  <!-- EN: The most gigantic entity to ever walk among the necronoid horde. The bloated ogre has better armor due to the amount of meat covering its entire girth, and can easily tank most damage albeit enough for its necronoid allies to swarm the enemy. Upon death, parasites will burst out of its body as a final act to inflict damage. -->
+  <Necronoid_BloatedOgre.description>歿疫感染體中最為龐大的存在。過度增殖的肉體為膿腐巨魔提供了能承受大量傷害的天然護甲，它們可以頂在前方吸引火力，以此來為其他感染體創造突破人類防線的機會。即使被殺死，也會有大量膿腐蜱蟲從其體內鉆出，這些移動迅速的小怪物同樣是十分難纏的對手。</Necronoid_BloatedOgre.description>
+  <!-- EN: left fist -->
+  <Necronoid_BloatedOgre.tools.left_fist.label>左拳</Necronoid_BloatedOgre.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_BloatedOgre.tools.right_fist.label>右拳</Necronoid_BloatedOgre.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_BloatedOgre.tools.head.label>頭</Necronoid_BloatedOgre.tools.head.label>
+  
+  <!-- EN: bloodletter ghoul -->
+  <Necronoid_BloodLetterGhoul.label>放血屍鬼</Necronoid_BloodLetterGhoul.label>
+  <!-- EN: A powerful boss entity of the necronoid army. This entity is the same as the executioner ghoul, but the difference is tha it wears a crimson spike armor which generates a protective shield and grants extra damage resistance. It's sadistic nature futher emphasizes due to its use with the bloodletter mace, where it leaves a sea of blood in its wake.\n\nAlthough incredibly powerful, it is very weak against cleansing weapons. -->
+  <Necronoid_BloodLetterGhoul.description>實力超常且殘忍暴虐的高階歿疫感染體。放血屍鬼與戮刑屍鬼有許多相似之處，但不同的是，它身上額外穿戴了暗紅色的荊棘護甲，可形成一個能阻擋大量遠程投射物的護盾。它喜歡用手中的釘頭錘虐殺人類，將所經之處變為屍山血海。\n\n凈世武器是對抗放血屍鬼的最佳選擇。</Necronoid_BloodLetterGhoul.description>
+  <!-- EN: left fist -->
+  <Necronoid_BloodLetterGhoul.tools.left_fist.label>左拳</Necronoid_BloodLetterGhoul.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_BloodLetterGhoul.tools.right_fist.label>右拳</Necronoid_BloodLetterGhoul.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_BloodLetterGhoul.tools.head.label>頭</Necronoid_BloodLetterGhoul.tools.head.label>
+  
+  <!-- EN: chupacabra -->
+  <Necronoid_Chupacabra.label>血噬獸</Necronoid_Chupacabra.label>
+  <!-- EN: A necronoid biomass that took on the form of mexico's infamous monster. The chupacabra possess the worst damage resistance where all of it are 0, and its health pool is down right pathetic. Although despite its negatives, it's still one of the most dangerous entities to ever exist due to its ability to become invisible, and its ability to deal high damage which is comparable to the hag spiders.\n\nDuring its invisible state, it will become partially invincible, where you need to use any AOE attacks to hinder it, but if you wait for a bit, its invisibility will disappear. Just make sure that it doesn't kill any pawn, otherwise, its invisibility will reset. -->
+  <Necronoid_Chupacabra.description>與古地球美洲地區的傳說怪物“血噬獸（Chupacabra）”高度相似的存在。雖然血噬獸的肉體非常脆弱，但它們不僅有著可使自身幾乎完全透明化的詭異能力，其攻擊力也絲毫不亞於恐怖的妖婦駭蛛，因此被人們視作最危險的歿疫感染體之一。\n\n處於「隱匿身形」狀態下的血噬獸無法被遠程武器瞄準，最好使用能造成範圍傷害的武器來對抗它們。「隱匿身形」狀態持續一段時間後便會消失，但可通過殺死其他單位來重新獲得。</Necronoid_Chupacabra.description>
+  <!-- EN: left claw -->
+  <Necronoid_Chupacabra.tools.left_claw.label>左爪</Necronoid_Chupacabra.tools.left_claw.label>
+  <!-- EN: right claw -->
+  <Necronoid_Chupacabra.tools.right_claw.label>右爪</Necronoid_Chupacabra.tools.right_claw.label>
+  <!-- EN: razorfangs -->
+  <Necronoid_Chupacabra.tools.razorfangs.label>獠牙</Necronoid_Chupacabra.tools.razorfangs.label>
+  <!-- EN: head -->
+  <Necronoid_Chupacabra.tools.head.label>頭</Necronoid_Chupacabra.tools.head.label>
+  
+  <!-- EN: crazed butcher -->
+  <Necronoid_CrazedButcher.label>癲狂屠夫</Necronoid_CrazedButcher.label>
+  <!-- EN: A powerful boss entity of the necronoid army. This entity is known as the forked mutation of the fetid ogre, but it mutated to the point of it exhibiting pig-like traits with violent tendencies. It later worn the butchers robe and started terrorizing settlements after settlements using its steel saw.\n\nAlthough incredibly powerful, it is very weak against cleansing weapons. -->
+  <Necronoid_CrazedButcher.description>實力超常且殘忍暴虐的高階歿疫感染體。癲狂屠夫由腫脹巨獸變異而來，但不知為何生出了豬一般的樣貌。它穿著異常肥大的屠夫圍裙，嗜好用手中染血的圓盤鋸為人類定居點帶去恐懼與絕望。\n\n凈世武器是對抗癲狂屠夫的最佳選擇。</Necronoid_CrazedButcher.description>
+  <!-- EN: left fist -->
+  <Necronoid_CrazedButcher.tools.left_fist.label>左拳</Necronoid_CrazedButcher.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_CrazedButcher.tools.right_fist.label>右拳</Necronoid_CrazedButcher.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_CrazedButcher.tools.head.label>頭</Necronoid_CrazedButcher.tools.head.label>
+  
+  <!-- EN: executioner ghoul -->
+  <Necronoid_ExecutionerGhoul.label>戮刑屍鬼</Necronoid_ExecutionerGhoul.label>
+  <!-- EN: A powerful boss entity of the necronoid army. This entity embodies fear and death, where one will feel uncomfortable when they draw near to it, and it can literally chop you to pieces using its executioner's axe.\n\nAlthough incredibly powerful, it is very weak against cleansing weapons. -->
+  <Necronoid_ExecutionerGhoul.description>實力超常且殘忍暴虐的高階歿疫感染體。戮刑屍鬼是恐懼與死亡的化身，它無時無刻都在散發著令人毛骨悚然的可怕氣場，其手中的鋒利錘斧能輕易將脆弱的人類劈成兩半。\n\n凈世武器是對抗戮刑屍鬼的最佳選擇。</Necronoid_ExecutionerGhoul.description>
+  <!-- EN: left fist -->
+  <Necronoid_ExecutionerGhoul.tools.left_fist.label>左拳</Necronoid_ExecutionerGhoul.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_ExecutionerGhoul.tools.right_fist.label>右拳</Necronoid_ExecutionerGhoul.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_ExecutionerGhoul.tools.head.label>頭</Necronoid_ExecutionerGhoul.tools.head.label>
+  
+  <!-- EN: fetid brute -->
+  <Necronoid_FetidBrute.label>膿腐瘟獸</Necronoid_FetidBrute.label>
+  <!-- EN: A fetid ghoul that undergone mutation, where there are tumorous growths appearing in parts of their body. Although these growths are hindering their mobility, it provides the entity increased damage resistance due to the added flesh acting as armor. The fetid brute also possess enough intelligence to use firearms, preferably, they favor the plague spewer, making them an even more dangerous entity to face in battle. -->
+  <Necronoid_FetidBrute.description>膿腐瘟獸由膿腐屍鬼變異而來。它們身上長出了許多大小不一的惡心腫瘤，雖然會對移動速度造成影響，但同樣也是能承受不少傷害的天然護甲。膿腐瘟獸也具有能拿起並操作遠程武器的智力，且相當喜歡使用威力不俗的瘟疫投射器，在戰鬥時最好優先集火消滅它們。</Necronoid_FetidBrute.description>
+  <!-- EN: left fist -->
+  <Necronoid_FetidBrute.tools.left_fist.label>左拳</Necronoid_FetidBrute.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_FetidBrute.tools.right_fist.label>右拳</Necronoid_FetidBrute.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_FetidBrute.tools.head.label>頭</Necronoid_FetidBrute.tools.head.label>
+  
+  <!-- EN: fetid ghoul -->
+  <Necronoid_FetidGhoul.label>膿腐屍鬼</Necronoid_FetidGhoul.label>
+  <!-- EN: A re-animated human corpse that was deformed into an insult to mother nature. The fetid ghoul is an aggressive entity which attacks any humalikes that it can see using its nails and teeth, each of which can inflict the necronoid infection in an open wound. Although very dangerous when fighting it upclose and personal, it can be easily dispatched using a variety of long ranged weapons. -->
+  <Necronoid_FetidGhoul.description>毫無疑問，這些死而復生的畸變亡者是褻瀆自然法則的扭曲存在。膿腐屍鬼具有極強的攻擊性，它們會用指甲和牙齒抓撓、撕咬人類，並有幾率造成歿疫病毒感染。對抗它們時最好避免近距離交戰與單獨行動。</Necronoid_FetidGhoul.description>
+  <!-- EN: left fist -->
+  <Necronoid_FetidGhoul.tools.left_fist.label>左拳</Necronoid_FetidGhoul.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_FetidGhoul.tools.right_fist.label>右拳</Necronoid_FetidGhoul.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_FetidGhoul.tools.head.label>頭</Necronoid_FetidGhoul.tools.head.label>
+  
+  <!-- EN: fetid hulk -->
+  <Necronoid_FetidHulk.label>膿腐屍魔</Necronoid_FetidHulk.label>
+  <!-- EN: Considered as the perfect mutation of the fetid ghoul. This hulking behemoth possess partial resilience against physical damage, all while possessing superior mobility and combat capabilites, making them a formidable foe to face in battle. -->
+  <Necronoid_FetidHulk.description>膿腐屍魔由膿腐屍鬼完美變異而來。它們同時擁有出色的自愈能力、戰鬥能力與移動速度，是比較難纏的對手。</Necronoid_FetidHulk.description>
+  <!-- EN: left fist -->
+  <Necronoid_FetidHulk.tools.left_fist.label>左拳</Necronoid_FetidHulk.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_FetidHulk.tools.right_fist.label>右拳</Necronoid_FetidHulk.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_FetidHulk.tools.head.label>頭</Necronoid_FetidHulk.tools.head.label>
+  
+  <!-- EN: fetid marine -->
+  <Necronoid_FetidMarine.label>膿腐陸戰隊</Necronoid_FetidMarine.label>
+  <!-- EN: An adaptive variant of the fetid ghoul, which uses a necronoid biomass to develop a full set of power armor. The biomass itself mimicked the same damage resistance as a regular power armor, and undergone a deadly mutation where the flesh became fire proof and generates a sturdy shield bubble that intercepts projectiles. The conception of the fetid marine was meant to face the hardened glitterworld super soldiers, but despite all the upgrades, it is still the same fetid ghoul that can be dispatched by normal means. -->
+  <Necronoid_FetidMarine.description>膿腐陸戰隊由膿腐屍鬼變異而來。它們身著的血肉動力甲具有出色的防護與抗火能力，且可以形成一個能阻擋遠程投射物的護盾。有猜想認為，膿腐陸戰隊是為了對抗閃耀世界的超級士兵而誕生的，不過即使經過了諸多變異強化，它們也依然可以像膿腐屍鬼一樣被大量部署。</Necronoid_FetidMarine.description>
+  <!-- EN: left fist -->
+  <Necronoid_FetidMarine.tools.left_fist.label>左拳</Necronoid_FetidMarine.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_FetidMarine.tools.right_fist.label>右拳</Necronoid_FetidMarine.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_FetidMarine.tools.head.label>頭</Necronoid_FetidMarine.tools.head.label>
+  
+  <!-- EN: fetid parasite -->
+  <Necronoid_FetidParasite.label>膿腐蜱蟲</Necronoid_FetidParasite.label>
+  <!-- EN: Parasitic abomonation that festers on healthy hosts. These parasites are very dangerous, not only are they difficult to hit due to their small stature, they are incredibly nimble and can inflict the necronoid infection in every bite. -->
+  <Necronoid_FetidParasite.description>寄生在健康宿主體內發育繁殖的惡心生物。小巧靈活的膿腐蜱蟲很難被擊中，它們的撕咬還有幾率造成歿疫病毒感染。</Necronoid_FetidParasite.description>
+  <!-- EN: head -->
+  <Necronoid_FetidParasite.tools.head.label>頭</Necronoid_FetidParasite.tools.head.label>
+  
+  <!-- EN: fetid soldier -->
+  <Necronoid_FetidSoldier.label>膿腐屍卒</Necronoid_FetidSoldier.label>
+  <!-- EN: A fetid ghoul that undergone mutation, and probably a better mutation than the other fetid ghoul variants. The fetid soldier is well balanced in both mobility and health, and possess the inteligence to wield a variety of weapons that its fetid hands can grab. Although dangerous, it is still the same fetid ghoul that one can easily take down, just expect a lot of cassualties to pile up. -->
+  <Necronoid_FetidSoldier.description>膿腐屍卒由膿腐屍鬼變異而來。它們的移動速度與肉體強度皆得到了均衡強化，且具有能拿起並操作遠程武器的智力。不過即便如此，它們的威脅性也並沒有比膿腐屍鬼高多少就是了。</Necronoid_FetidSoldier.description>
+  <!-- EN: left fist -->
+  <Necronoid_FetidSoldier.tools.left_fist.label>左拳</Necronoid_FetidSoldier.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_FetidSoldier.tools.right_fist.label>右拳</Necronoid_FetidSoldier.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_FetidSoldier.tools.head.label>頭</Necronoid_FetidSoldier.tools.head.label>
+  
+  <!-- EN: fetid wolf -->
+  <Necronoid_FetidWolf.label>膿腐惡狼</Necronoid_FetidWolf.label>
+  <!-- EN: A necronoid biomass that took on the form of a wolf with monstrous aspects. Fetid wolves are dangerous, they are quick on their feet and can rip apart any prey with their razor sharp teeth, and their danger level increases once they joined as an entire pack. In an event of a fetid wolf attack, stay inside the safety of walls and always have an automatic firearm with you. -->
+  <Necronoid_FetidWolf.description>猙獰可怖的狼型歿疫感染體。膿腐惡狼是相當迅猛的獵手，它們擅長快速突進到人類身旁，用鋒利無比的獠牙撕碎喉嚨。一旦它們進入群體行動模式，其威脅性就會成倍增長。對抗它們時最好待在安全的防禦工事內，並備好可靠的自動武器。</Necronoid_FetidWolf.description>
+  <!-- EN: left claw -->
+  <Necronoid_FetidWolf.tools.left_claw.label>左爪</Necronoid_FetidWolf.tools.left_claw.label>
+  <!-- EN: right claw -->
+  <Necronoid_FetidWolf.tools.right_claw.label>右爪</Necronoid_FetidWolf.tools.right_claw.label>
+  <!-- EN: razorfangs -->
+  <Necronoid_FetidWolf.tools.razorfangs.label>獠牙</Necronoid_FetidWolf.tools.razorfangs.label>
+  <!-- EN: head -->
+  <Necronoid_FetidWolf.tools.head.label>頭</Necronoid_FetidWolf.tools.head.label>
+  
+  <!-- EN: flesh tyrant -->
+  <Necronoid_FleshTyrant.label>血肉暴君</Necronoid_FleshTyrant.label>
+  <!-- EN: A powerful boss entity of the necronoid army. The flesh tyrant mostly engages its target through melee, lifting a heavy flesh cleaver and swinging it haphazardly against unfortunate foes. The flesh tyrant is also fireproof and very duarble entity, where it requires an entire batallion of cataphracts to take down a single flesh tyrant.\n\nAlthough incredibly powerful, it is very weak against cleansing weapons. -->
+  <Necronoid_FleshTyrant.description>實力超常且殘忍暴虐的高階歿疫感染體。血肉暴君是精通近戰攻擊的大師，它們喜歡用手中沈重的血肉屠刀將人類肆意剁碎。由於威脅性極高，破碎帝國通會派遣一整隊的甲胄騎士去消滅它。\n\n凈世武器是對抗血肉暴君的最佳選擇。</Necronoid_FleshTyrant.description>
+  <!-- EN: left fist -->
+  <Necronoid_FleshTyrant.tools.left_fist.label>左拳</Necronoid_FleshTyrant.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_FleshTyrant.tools.right_fist.label>右拳</Necronoid_FleshTyrant.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_FleshTyrant.tools.head.label>頭</Necronoid_FleshTyrant.tools.head.label>
+  
+  <!-- EN: hag spider -->
+  <Necronoid_HagSpider.label>妖婦駭蛛</Necronoid_HagSpider.label>
+  <!-- EN: A horrifying beast that haunted the rim for a long time. The hag spider is believed to be a combination of a human and a megaspider, which mutated to be slightly bigger than a thrumbo, possessing absurd mobility, and having infectious scyths in both of its four arms. No one knows why its jaws were loose, but even with loose jaws, it can still rip apart flesh with ease. If you ever see this beast in the distance, YOU NEED TO RUN!! -->
+  <Necronoid_HagSpider.description>長期遊蕩於邊緣世界中的駭人怪物，似乎同時具有人類與巨蛛的生物特征。妖婦駭蛛的體型甚至比獨角獸還要大，且能以相當驚人的速度四處移動，其四條手臂上還附帶著有幾率造成歿疫病毒感染的恐怖鐮刃。雖然不知道它們的下頜為何會脫落，但即便如此也足以撕碎人類脆弱的肉體。如果你遠遠就發現了妖婦駭蛛的身影，那麽最好還是趁早跑路為妙。</Necronoid_HagSpider.description>
+  <!-- EN: left scyth blades -->
+  <Necronoid_HagSpider.tools.left_scyth_blades.label>左鐮刃</Necronoid_HagSpider.tools.left_scyth_blades.label>
+  <!-- EN: right scyth blades -->
+  <Necronoid_HagSpider.tools.right_scyth_blades.label>右鐮刃</Necronoid_HagSpider.tools.right_scyth_blades.label>
+  <!-- EN: head -->
+  <Necronoid_HagSpider.tools.head.label>頭</Necronoid_HagSpider.tools.head.label>
+  
+  <!-- EN: howling spider -->
+  <Necronoid_HowlingSpider.label>尖嘯駭蛛</Necronoid_HowlingSpider.label>
+  <!-- EN: A distant cousin of the hag spider, which is faster and more deadly than the hag spider. It's blood-curdling howl strikes fear into the hearts of man, and its face causes the target a massive mood debuff the more it drew close. As always, it is not advisable to engage this entity at melee and always keep your distance as much as possible. -->
+  <Necronoid_HowlingSpider.description>尖嘯駭蛛是妖婦駭蛛的“表親”，但比妖婦駭蛛更加迅捷致命。它們的叫聲尖銳且刺耳，任何聽見的人都會感到痛苦萬分。如果你遠遠就發現了尖嘯駭蛛的身影，那麽最好還是趁早跑路為妙。</Necronoid_HowlingSpider.description>
+  <!-- EN: left scyth blades -->
+  <Necronoid_HowlingSpider.tools.left_scyth_blades.label>左鐮刃</Necronoid_HowlingSpider.tools.left_scyth_blades.label>
+  <!-- EN: right scyth blades -->
+  <Necronoid_HowlingSpider.tools.right_scyth_blades.label>右鐮刃</Necronoid_HowlingSpider.tools.right_scyth_blades.label>
+  <!-- EN: head -->
+  <Necronoid_HowlingSpider.tools.head.label>頭</Necronoid_HowlingSpider.tools.head.label>
+  
+  <!-- EN: Wendigo -->
+  <Necronoid_Wendigo.label>溫迪戈</Necronoid_Wendigo.label>
+  <!-- EN: An incredibly dangerous entity to ever walk among the necronoid boss entities. Being incredibly hard to dispatch, its sharp claws are so infectious, that it can overwhelm any being with the necronoid infection in just a few swipes. Thankfully, such an entity is incredibly rare amoung the necronoid horde, but if one were to encounter such a beast, they can either fight as if their life depends on it, or perish over their misfortunate self. -->
+  <Necronoid_Wendigo.description>實力超常且殘忍暴虐的高階歿疫感染體。溫迪戈鋒利的巨爪上帶有大量歿疫病毒，被其抓傷後極容易感染。慶幸的是，溫迪戈的數量相當稀少，也不喜歡與其他歿疫感染體一同行動。然而一旦不幸遇到了它們，就只剩下戰鬥或死亡兩種選擇。</Necronoid_Wendigo.description>
+  <!-- EN: left fist -->
+  <Necronoid_Wendigo.tools.left_fist.label>左拳</Necronoid_Wendigo.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <Necronoid_Wendigo.tools.right_fist.label>右拳</Necronoid_Wendigo.tools.right_fist.label>
+  <!-- EN: head -->
+  <Necronoid_Wendigo.tools.head.label>頭</Necronoid_Wendigo.tools.head.label>
+  
+</LanguageData>

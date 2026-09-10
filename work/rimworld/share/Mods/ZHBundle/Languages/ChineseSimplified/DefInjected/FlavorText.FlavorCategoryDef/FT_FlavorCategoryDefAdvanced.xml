@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Flavor Text alcohol -->
+  <FT_Alcohol.label>酒精类风味文本</FT_Alcohol.label>
+  <!-- EN: cooking wine -->
+  <FT_Alcohol.keywords.6>料酒</FT_Alcohol.keywords.6>
+  <!-- EN: rice wine -->
+  <FT_Alcohol.keywords.9>米酒</FT_Alcohol.keywords.9>
+  
+  <!-- EN: Flavor Text almond -->
+  <FT_Almond.label>杏仁风味文本</FT_Almond.label>
+  <!-- EN: sweet almond -->
+  <FT_Almond.keywords.1>甜杏仁</FT_Almond.keywords.1>
+  <!-- EN: bitter almond -->
+  <FT_Almond.keywords.2>苦杏仁</FT_Almond.keywords.2>
+  <!-- EN: almond paste -->
+  <FT_Almond.keywords.4>杏仁膏</FT_Almond.keywords.4>
+  <!-- EN: almond flour -->
+  <FT_Almond.keywords.5>杏仁粉</FT_Almond.keywords.5>
+  <!-- EN: almond meal -->
+  <FT_Almond.keywords.6>杏仁 meal</FT_Almond.keywords.6>
+  <!-- EN: slivered almond -->
+  <FT_Almond.keywords.7>杏仁片</FT_Almond.keywords.7>
+  <!-- EN: sliced almond -->
+  <FT_Almond.keywords.8>切片杏仁</FT_Almond.keywords.8>
+  
+  <!-- EN: Flavor Text amarant -->
+  <FT_Amaranth.label>苋菜风味文本</FT_Amaranth.label>
+  
+  <!-- EN: Flavor Text apple -->
+  <FT_Apple.label>苹果风味文本</FT_Apple.label>
+  <!-- EN: red delicious -->
+  <FT_Apple.keywords.1>红元帅</FT_Apple.keywords.1>
+  <!-- EN: granny smith -->
+  <FT_Apple.keywords.2>青苹果</FT_Apple.keywords.2>
+  <!-- EN: crab apple -->
+  <FT_Apple.keywords.4>山楂果</FT_Apple.keywords.4>
+  <!-- EN: cider apple -->
+  <FT_Apple.keywords.6>酿酒苹果</FT_Apple.keywords.6>
+  <!-- EN: cooking apple -->
+  <FT_Apple.keywords.7>烹饪苹果</FT_Apple.keywords.7>
+  <!-- EN: ambrosia apple -->
+  <FT_Apple.keywords.12>仙果苹果</FT_Apple.keywords.12>
+  <!-- EN: orange pippin -->
+  <FT_Apple.keywords.13>橘皮平</FT_Apple.keywords.13>
+  <!-- EN: pink lady -->
+  <FT_Apple.keywords.15>粉红女士</FT_Apple.keywords.15>
+  
+  <!-- EN: Flavor Text artichoke -->
+  <FT_Artichoke.label>洋蓟风味文本</FT_Artichoke.label>
+  <!-- EN: Jerusalem artichoke -->
+  <FT_Artichoke.blacklist.0>菊芋</FT_Artichoke.blacklist.0>
+  
+  <!-- EN: Flavor Text asparagus -->
+  <FT_Asparagus.label>芦笋风味文本</FT_Asparagus.label>
+  <!-- EN: sparrow grass -->
+  <FT_Asparagus.keywords.1>芦笋草</FT_Asparagus.keywords.1>
+  
+  <!-- EN: Flavor Text avocado -->
+  <FT_Avocado.label>牛油果风味文本</FT_Avocado.label>
+  <!-- EN: alligator pear -->
+  <FT_Avocado.keywords.3>鳄梨</FT_Avocado.keywords.3>
+  <!-- EN: avocado pear -->
+  <FT_Avocado.keywords.4>牛油梨</FT_Avocado.keywords.4>
+  
+  <!-- EN: Flavor Text banana -->
+  <FT_Banana.label>香蕉风味文本</FT_Banana.label>
+  
+  <!-- EN: Flavor Text barley -->
+  <FT_Barley.label>大麦风味文本</FT_Barley.label>
+  
+  <!-- EN: Flavor Text bean -->
+  <FT_Bean.label>豆类风味文本</FT_Bean.label>
+  <!-- EN: black bean -->
+  <FT_Bean.keywords.1>黑豆</FT_Bean.keywords.1>
+  <!-- EN: pinto bean -->
+  <FT_Bean.keywords.2>斑豆</FT_Bean.keywords.2>
+  <!-- EN: navy bean -->
+  <FT_Bean.keywords.3>菜豆</FT_Bean.keywords.3>
+  <!-- EN: lima bean -->
+  <FT_Bean.keywords.4>利马豆</FT_Bean.keywords.4>
+  <!-- EN: butter bean -->
+  <FT_Bean.keywords.5>黄油豆</FT_Bean.keywords.5>
+  <!-- EN: white bean -->
+  <FT_Bean.keywords.6>白豆</FT_Bean.keywords.6>
+  
+  <!-- EN: Flavor Text beet -->
+  <FT_Beet.label>甜菜风味文本</FT_Beet.label>
+  
+  <!-- EN: Flavor Text bell pepper -->
+  <FT_BellPepper.label>甜椒风味文本</FT_BellPepper.label>
+  <!-- EN: bell pepper -->
+  <FT_BellPepper.keywords.0>甜椒</FT_BellPepper.keywords.0>
+  
+  <!-- EN: Flavor Text blood -->
+  <FT_Blood.label>血液风味文本</FT_Blood.label>
+  
+  <!-- EN: Flavor Text bone -->
+  <FT_Bone.label>骨头风味文本</FT_Bone.label>
+  
+  <!-- EN: Flavor Text breadfruit -->
+  <FT_Breadfruit.label>面包果风味文本</FT_Breadfruit.label>
+  
+  <!-- EN: Flavor Text broccoli -->
+  <FT_Broccoli.label>西兰花风味文本</FT_Broccoli.label>
+  <!-- EN: chinese broccoli -->
+  <FT_Broccoli.keywords.1>芥蓝</FT_Broccoli.keywords.1>
+  
+  <!-- EN: Flavor Text brussels sprout -->
+  <FT_BrusselsSprout.label>孢子甘蓝风味文本</FT_BrusselsSprout.label>
+  <!-- EN: brussel sprout -->
+  <FT_BrusselsSprout.keywords.1>球芽甘蓝</FT_BrusselsSprout.keywords.1>
+  
+  <!-- EN: Flavor Text buckwheat -->
+  <FT_Buckwheat.label>荞麦风味文本</FT_Buckwheat.label>
+  
+  <!-- EN: Flavor Text butter -->
+  <FT_Butter.label>黄油风味文本</FT_Butter.label>
+  
+  <!-- EN: Flavor Text cabbage -->
+  <FT_Cabbage.label>卷心菜风味文本</FT_Cabbage.label>
+  
+  <!-- EN: Flavor Text cactus fruit -->
+  <FT_CactusFruit.label>仙人掌果实风味文本</FT_CactusFruit.label>
+  <!-- EN: prickly pear -->
+  <FT_CactusFruit.keywords.0>仙人掌果</FT_CactusFruit.keywords.0>
+  <!-- EN: dragon fruit -->
+  <FT_CactusFruit.keywords.3>火龙果</FT_CactusFruit.keywords.3>
+  
+  <!-- EN: Flavor Text carrot -->
+  <FT_Carrot.label>胡萝卜风味文本</FT_Carrot.label>
+  
+  <!-- EN: Flavor Text cassava -->
+  <FT_Cassava.label>木薯风味文本</FT_Cassava.label>
+  
+  <!-- EN: Flavor Text celery -->
+  <FT_Celery.label>芹菜风味文本</FT_Celery.label>
+  
+  <!-- EN: Flavor Text cephalopod -->
+  <FT_Cephalopod.label>头足类风味文本</FT_Cephalopod.label>
+  
+  <!-- EN: Flavor Text cheese -->
+  <FT_Cheese.label>奶酪风味文本</FT_Cheese.label>
+  <!-- EN: blue cheese -->
+  <FT_Cheese.keywords.7>蓝纹奶酪</FT_Cheese.keywords.7>
+  <!-- EN: cheese sauce -->
+  <FT_Cheese.keywords.8>奶酪酱</FT_Cheese.keywords.8>
+  <!-- EN: swiss cheese -->
+  <FT_Cheese.keywords.12>瑞士奶酪</FT_Cheese.keywords.12>
+  
+  <!-- EN: Flavor Text cherry -->
+  <FT_Cherry.label>樱桃风味文本</FT_Cherry.label>
+  
+  <!-- EN: Flavor Text chestnuts -->
+  <FT_Chestnut.label>栗子风味文本</FT_Chestnut.label>
+  <!-- EN: water chestnut -->
+  <FT_Chestnut.blacklist.0>荸荠</FT_Chestnut.blacklist.0>
+  
+  <!-- EN: Flavor Text chickpea -->
+  <FT_Chickpea.label>鹰嘴豆风味文本</FT_Chickpea.label>
+  
+  <!-- EN: Flavor Text chili pepper -->
+  <FT_Chili.label>辣椒风味文本</FT_Chili.label>
+  <!-- EN: chili pepper -->
+  <FT_Chili.keywords.1>辣椒</FT_Chili.keywords.1>
+  <!-- EN: hot pepper -->
+  <FT_Chili.keywords.2>辣椒</FT_Chili.keywords.2>
+  
+  <!-- EN: Flavor Text citrus -->
+  <FT_Citrus.label>柑橘类风味文本</FT_Citrus.label>
+  
+  <!-- EN: Flavor Text coconut -->
+  <FT_Coconut.label>椰子风味文本</FT_Coconut.label>
+  <!-- EN: coconut milk -->
+  <FT_Coconut.keywords.2>椰奶</FT_Coconut.keywords.2>
+  
+  <!-- EN: Flavor Text cod -->
+  <FT_Cod.label>鳕鱼风味文本</FT_Cod.label>
+  
+  <!-- EN: Flavor Text coffee -->
+  <FT_Coffee.label>咖啡风味文本</FT_Coffee.label>
+  <!-- EN: coffee liquor -->
+  <FT_Coffee.keywords.1>咖啡利口酒</FT_Coffee.keywords.1>
+  <!-- EN: coffee bean -->
+  <FT_Coffee.keywords.2>咖啡豆</FT_Coffee.keywords.2>
+  
+  <!-- EN: Flavor Text cream -->
+  <FT_Cream.label>奶油风味文本</FT_Cream.label>
+  <!-- EN: sour cream -->
+  <FT_Cream.keywords.2>酸奶油</FT_Cream.keywords.2>
+  <!-- EN: cream cheese -->
+  <FT_Cream.keywords.3>奶油奶酪</FT_Cream.keywords.3>
+  <!-- EN: creme fraiche -->
+  <FT_Cream.keywords.5>法式酸奶油</FT_Cream.keywords.5>
+  
+  <!-- EN: Flavor Text cucumber -->
+  <FT_Cucumber.label>黄瓜风味文本</FT_Cucumber.label>
+  
+  <!-- EN: Flavor Text date -->
+  <FT_Date.label>椰枣风味文本</FT_Date.label>
+  
+  <!-- EN: Flavor Text drinks -->
+  <FT_Drink.label>饮品风味文本</FT_Drink.label>
+  
+  <!-- EN: Flavor Text durian -->
+  <FT_Durian.label>榴莲风味文本</FT_Durian.label>
+  
+  <!-- EN: Flavor Text eggplant -->
+  <FT_Eggplant.label>茄子风味文本</FT_Eggplant.label>
+  
+  <!-- EN: Flavor Text animal fat -->
+  <FT_Fat.label>动物油脂风味文本</FT_Fat.label>
+  
+  <!-- EN: Flavor Text fig -->
+  <FT_Fig.label>无花果风味文本</FT_Fig.label>
+  
+  <!-- EN: Flavor Text flour -->
+  <FT_Flour.label>面粉风味文本</FT_Flour.label>
+  <!-- EN: all purpose -->
+  <FT_Flour.keywords.1>多用途面粉</FT_Flour.keywords.1>
+  <!-- EN: bread flour -->
+  <FT_Flour.keywords.2>面包粉</FT_Flour.keywords.2>
+  <!-- EN: cake flour -->
+  <FT_Flour.keywords.3>蛋糕粉</FT_Flour.keywords.3>
+  <!-- EN: apricot kernel -->
+  <FT_Flour.keywords.6>杏仁粉</FT_Flour.keywords.6>
+  
+  <!-- EN: Flavor Text flower -->
+  <FT_Flower.label>花卉风味文本</FT_Flower.label>
+  
+  <!-- EN: Flavor Text garlic -->
+  <FT_Garlic.label>大蒜风味文本</FT_Garlic.label>
+  
+  <!-- EN: Flavor Text grape -->
+  <FT_Grape.label>葡萄风味文本</FT_Grape.label>
+  <!-- EN: wine grape -->
+  <FT_Grape.keywords.2>酿酒葡萄</FT_Grape.keywords.2>
+  
+  <!-- EN: Flavor Text honey -->
+  <FT_Honey.label>蜂蜜风味文本</FT_Honey.label>
+  
+  <!-- EN: Flavor Text kelp -->
+  <FT_Kelp.label>海带风味文本</FT_Kelp.label>
+  <!-- EN: sea mustard -->
+  <FT_Kelp.keywords.5>海芥菜</FT_Kelp.keywords.5>
+  
+  <!-- EN: Flavor Text leafy vegetables -->
+  <FT_LeafyVeg.label>叶菜类风味文本</FT_LeafyVeg.label>
+  
+  <!-- EN: Flavor Text lemon -->
+  <FT_Lemon.label>柠檬风味文本</FT_Lemon.label>
+  
+  <!-- EN: Flavor Text lentil -->
+  <FT_Lentil.label>小扁豆风味文本</FT_Lentil.label>
+  
+  <!-- EN: Flavor Text lettuce -->
+  <FT_Lettuce.label>生菜风味文本</FT_Lettuce.label>
+  
+  <!-- EN: Flavor Text lotus -->
+  <FT_Lotus.label>莲藕风味文本</FT_Lotus.label>
+  
+  <!-- EN: Flavor Text mango -->
+  <FT_Mango.label>芒果风味文本</FT_Mango.label>
+  
+  <!-- EN: Flavor Text bakes -->
+  <FT_MealsBake.label>烘焙类餐食风味文本</FT_MealsBake.label>
+  
+  <!-- EN: Flavor Text deep fried -->
+  <FT_MealsDeepFry.label>油炸类餐食风味文本</FT_MealsDeepFry.label>
+  <!-- EN: deep fry -->
+  <FT_MealsDeepFry.keywords.0>油炸</FT_MealsDeepFry.keywords.0>
+  <!-- EN: deep fried -->
+  <FT_MealsDeepFry.keywords.2>油炸的</FT_MealsDeepFry.keywords.2>
+  
+  <!-- EN: Flavor Text desserts -->
+  <FT_MealsDessert.label>甜点风味文本</FT_MealsDessert.label>
+  
+  <!-- EN: Flavor Text drink meals -->
+  <FT_MealsDrink.label>饮品餐食风味文本</FT_MealsDrink.label>
+  
+  <!-- EN: Flavor Text dumplings -->
+  <FT_MealsDumpling.label>饺子类餐食风味文本</FT_MealsDumpling.label>
+  
+  <!-- EN: Flavor Text gourmet meals -->
+  <FT_MealsGourmet.label>美食餐点风味文本</FT_MealsGourmet.label>
+  <!-- EN: gourmet meal -->
+  <FT_MealsGourmet.keywords.1>美食餐</FT_MealsGourmet.keywords.1>
+  
+  <!-- EN: Flavor Text grills -->
+  <FT_MealsGrill.label>烧烤类餐食风味文本</FT_MealsGrill.label>
+  
+  <!-- EN: Flavor Text noodle/grain dishes -->
+  <FT_MealsNoodle.label>面条/谷物类餐食风味文本</FT_MealsNoodle.label>
+  
+  <!-- EN: Flavor Text salads -->
+  <FT_MealsSalad.label>沙拉类餐食风味文本</FT_MealsSalad.label>
+  
+  <!-- EN: Flavor Text sandwiches -->
+  <FT_MealsSandwich.label>三明治类餐食风味文本</FT_MealsSandwich.label>
+  <!-- EN: hot dog -->
+  <FT_MealsSandwich.keywords.1>热狗</FT_MealsSandwich.keywords.1>
+  
+  <!-- EN: Flavor Text snacks -->
+  <FT_MealsSnack.label>零食类餐食风味文本</FT_MealsSnack.label>
+  
+  <!-- EN: Flavor Text soups -->
+  <FT_MealsSoup.label>汤类餐食风味文本</FT_MealsSoup.label>
+  <!-- EN: hot pot -->
+  <FT_MealsSoup.keywords.2>火锅</FT_MealsSoup.keywords.2>
+  
+  <!-- EN: Flavor Text stir fries -->
+  <FT_MealsStirFry.label>炒菜类餐食风味文本</FT_MealsStirFry.label>
+  <!-- EN: stir fry -->
+  <FT_MealsStirFry.keywords.0>炒</FT_MealsStirFry.keywords.0>
+  <!-- EN: stir fried -->
+  <FT_MealsStirFry.keywords.2>炒的</FT_MealsStirFry.keywords.2>
+  <!-- EN: chow mein -->
+  <FT_MealsStirFry.keywords.5>炒面</FT_MealsStirFry.keywords.5>
+  <!-- EN: lo mein -->
+  <FT_MealsStirFry.keywords.6>捞面</FT_MealsStirFry.keywords.6>
+  <!-- EN: wok fry -->
+  <FT_MealsStirFry.keywords.7>锅炒</FT_MealsStirFry.keywords.7>
+  <!-- EN: wok fried -->
+  <FT_MealsStirFry.keywords.8>锅炒的</FT_MealsStirFry.keywords.8>
+  
+  <!-- EN: Flavor Text bovine meat -->
+  <FT_Meat_Bovine.label>牛肉类风味文本</FT_Meat_Bovine.label>
+  
+  <!-- EN: Flavor Text cow meat -->
+  <FT_Meat_Cow.label>牛肉风味文本</FT_Meat_Cow.label>
+  
+  <!-- EN: Flavor Text fish -->
+  <FT_Meat_Fish.label>鱼类风味文本</FT_Meat_Fish.label>
+  <!-- EN: canned fish -->
+  <FT_Meat_Fish.keywords.1>罐装鱼</FT_Meat_Fish.keywords.1>
+  <!-- EN: pickled fish -->
+  <FT_Meat_Fish.keywords.2>腌鱼</FT_Meat_Fish.keywords.2>
+  <!-- EN: deep fried fish -->
+  <FT_Meat_Fish.keywords.3>炸鱼</FT_Meat_Fish.keywords.3>
+  <!-- EN: garden fish -->
+  <FT_Meat_Fish.keywords.5>花园鱼</FT_Meat_Fish.keywords.5>
+  <!-- EN: human surimi -->
+  <FT_Meat_Fish.keywords.31>人造鱼肉</FT_Meat_Fish.keywords.31>
+  
+  <!-- EN: Flavor Text human meat -->
+  <FT_Meat_Human.label>人肉风味文本</FT_Meat_Human.label>
+  <!-- EN: human egg -->
+  <FT_Meat_Human.blacklist.0>人蛋</FT_Meat_Human.blacklist.0>
+  <!-- EN: long pork -->
+  <FT_Meat_Human.keywords.1>长猪肉</FT_Meat_Human.keywords.1>
+  <!-- EN: long pig -->
+  <FT_Meat_Human.keywords.3>长猪</FT_Meat_Human.keywords.3>
+  <!-- EN: human meat -->
+  <FT_Meat_Human.keywords.4>人肉</FT_Meat_Human.keywords.4>
+  
+  <!-- EN: Flavor Text insect meat -->
+  <FT_Meat_Insect.label>昆虫肉风味文本</FT_Meat_Insect.label>
+  <!-- EN: insect jelly -->
+  <FT_Meat_Insect.blacklist.0>昆虫果冻</FT_Meat_Insect.blacklist.0>
+  <!-- EN: insect meat -->
+  <FT_Meat_Insect.keywords.1>昆虫肉</FT_Meat_Insect.keywords.1>
+  
+  <!-- EN: Flavor Text mammal meat -->
+  <FT_Meat_Mammal.label>哺乳动物肉风味文本</FT_Meat_Mammal.label>
+  
+  <!-- EN: Flavor Text mutton -->
+  <FT_Meat_Mutton.label>羊肉风味文本</FT_Meat_Mutton.label>
+  
+  <!-- EN: Flavor Text pork -->
+  <FT_Meat_Pig.label>猪肉风味文本</FT_Meat_Pig.label>
+  <!-- EN: guinea pig -->
+  <FT_Meat_Pig.blacklist.0>豚鼠</FT_Meat_Pig.blacklist.0>
+  <!-- EN: pork belly -->
+  <FT_Meat_Pig.keywords.7>五花肉</FT_Meat_Pig.keywords.7>
+  
+  <!-- EN: Flavor Text poultry -->
+  <FT_Meat_Poultry.label>禽肉风味文本</FT_Meat_Poultry.label>
+  
+  <!-- EN: Flavor Text rabbit meat -->
+  <FT_Meat_Rabbit.label>兔肉风味文本</FT_Meat_Rabbit.label>
+  
+  <!-- EN: Flavor Text seafood -->
+  <FT_Meat_Seafood.label>海鲜风味文本</FT_Meat_Seafood.label>
+  
+  <!-- EN: Flavor Text sheep meat -->
+  <FT_Meat_Sheep.label>羊肉风味文本</FT_Meat_Sheep.label>
+  
+  <!-- EN: Flavor Text shellfish -->
+  <FT_Meat_Shellfish.label>贝类风味文本</FT_Meat_Shellfish.label>
+  
+  <!-- EN: Flavor Text twisted meat -->
+  <FT_Meat_Twisted.label>扭曲肉风味文本</FT_Meat_Twisted.label>
+  <!-- EN: twisted meat -->
+  <FT_Meat_Twisted.keywords.1>扭曲肉</FT_Meat_Twisted.keywords.1>
+  
+  <!-- EN: Flavor Text melon -->
+  <FT_Melon.label>瓜类风味文本</FT_Melon.label>
+  
+  <!-- EN: Flavor Text millet -->
+  <FT_Millet.label>小米风味文本</FT_Millet.label>
+  
+  <!-- EN: Flavor Text nut -->
+  <FT_Nut.label>坚果风味文本</FT_Nut.label>
+  <!-- EN: brazil nut -->
+  <FT_Nut.keywords.7>巴西坚果</FT_Nut.keywords.7>
+  <!-- EN: tiger nut -->
+  <FT_Nut.keywords.9>虎坚果</FT_Nut.keywords.9>
+  <!-- EN: beech nut -->
+  <FT_Nut.keywords.11>山毛榉坚果</FT_Nut.keywords.11>
+  <!-- EN: cashew nut -->
+  <FT_Nut.keywords.14>腰果</FT_Nut.keywords.14>
+  <!-- EN: bread nut -->
+  <FT_Nut.keywords.16>面包果</FT_Nut.keywords.16>
+  <!-- EN: ginkgo nut -->
+  <FT_Nut.keywords.18>银杏果</FT_Nut.keywords.18>
+  <!-- EN: pine nut -->
+  <FT_Nut.keywords.20>松子</FT_Nut.keywords.20>
+  
+  <!-- EN: Flavor Text oat -->
+  <FT_Oat.label>燕麦风味文本</FT_Oat.label>
+  
+  <!-- EN: Flavor Text offal -->
+  <FT_Offal.label>内脏风味文本</FT_Offal.label>
+  <!-- EN: swim bladder -->
+  <FT_Offal.keywords.24>鱼鳔</FT_Offal.keywords.24>
+  
+  <!-- EN: Flavor Text okra -->
+  <FT_Okra.label>秋葵风味文本</FT_Okra.label>
+  
+  <!-- EN: Flavor Text olive -->
+  <FT_Olive.label>橄榄风味文本</FT_Olive.label>
+  
+  <!-- EN: Flavor Text onion -->
+  <FT_Onion.label>洋葱风味文本</FT_Onion.label>
+  <!-- EN: green onion -->
+  <FT_Onion.keywords.2>青葱</FT_Onion.keywords.2>
+  <!-- EN: spring onion -->
+  <FT_Onion.keywords.3>春葱</FT_Onion.keywords.3>
+  
+  <!-- EN: Flavor Text orange -->
+  <FT_Orange.label>橙子风味文本</FT_Orange.label>
+  
+  <!-- EN: Flavor Text pea -->
+  <FT_Pea.label>豌豆风味文本</FT_Pea.label>
+  <!-- EN: snap pea -->
+  <FT_Pea.keywords.1>甜豆</FT_Pea.keywords.1>
+  <!-- EN: sugar snap -->
+  <FT_Pea.keywords.2>糖荚豌豆</FT_Pea.keywords.2>
+  
+  <!-- EN: Flavor Text peach -->
+  <FT_Peach.label>桃子风味文本</FT_Peach.label>
+  
+  <!-- EN: Flavor Text peanut -->
+  <FT_Peanut.label>花生风味文本</FT_Peanut.label>
+  
+  <!-- EN: Flavor Text pear -->
+  <FT_Pear.label>梨风味文本</FT_Pear.label>
+  
+  <!-- EN: Flavor Text pineapple -->
+  <FT_Pineapple.label>菠萝风味文本</FT_Pineapple.label>
+  
+  <!-- EN: Flavor Text pistachio -->
+  <FT_Pistachio.label>开心果风味文本</FT_Pistachio.label>
+  
+  <!-- EN: Flavor Text plum -->
+  <FT_Plum.label>李子风味文本</FT_Plum.label>
+  
+  <!-- EN: Flavor Text pomegranate -->
+  <FT_Pomegranate.label>石榴风味文本</FT_Pomegranate.label>
+  
+  <!-- EN: Flavor Text pumpkin -->
+  <FT_Pumpkin.label>南瓜风味文本</FT_Pumpkin.label>
+  <!-- EN: mammoth gold -->
+  <FT_Pumpkin.keywords.2>巨无霸金南瓜</FT_Pumpkin.keywords.2>
+  
+  <!-- EN: Flavor Text quinoa -->
+  <FT_Quinoa.label>藜麦风味文本</FT_Quinoa.label>
+  
+  <!-- EN: Flavor Text red bean -->
+  <FT_RedBean.label>红豆风味文本</FT_RedBean.label>
+  <!-- EN: red bean -->
+  <FT_RedBean.keywords.0>红豆</FT_RedBean.keywords.0>
+  <!-- EN: sweet bean -->
+  <FT_RedBean.keywords.5>甜豆</FT_RedBean.keywords.5>
+  <!-- EN: red mung bean -->
+  <FT_RedBean.keywords.6>红绿豆</FT_RedBean.keywords.6>
+  <!-- EN: bean paste -->
+  <FT_RedBean.keywords.7>豆沙</FT_RedBean.keywords.7>
+  
+  <!-- EN: Flavor Text rye -->
+  <FT_Rye.label>黑麦风味文本</FT_Rye.label>
+  
+  <!-- EN: Flavor Text nut -->
+  <FT_Seed.label>种子风味文本</FT_Seed.label>
+  <!-- EN: pumpkin seed -->
+  <FT_Seed.keywords.7>南瓜籽</FT_Seed.keywords.7>
+  
+  <!-- EN: Flavor Text sorghum -->
+  <FT_Sorghum.label>高粱风味文本</FT_Sorghum.label>
+  
+  <!-- EN: Flavor Text sorrel -->
+  <FT_Sorrel.label>酸模风味文本</FT_Sorrel.label>
+  
+  <!-- EN: Flavor Text soy -->
+  <FT_Soy.label>大豆风味文本</FT_Soy.label>
+  
+  <!-- EN: Flavor Text soybean -->
+  <FT_Soybean.label>大豆风味文本</FT_Soybean.label>
+  <!-- EN: soy bean -->
+  <FT_Soybean.keywords.1>大豆</FT_Soybean.keywords.1>
+  
+  <!-- EN: Flavor Text spices -->
+  <FT_Spice.label>香料风味文本</FT_Spice.label>
+  <!-- EN: juniper berry -->
+  <FT_Spice.keywords.5>杜松子</FT_Spice.keywords.5>
+  <!-- EN: juniper berries -->
+  <FT_Spice.keywords.6>杜松子</FT_Spice.keywords.6>
+  
+  <!-- EN: Flavor Text squash -->
+  <FT_Squash.label>南瓜属风味文本</FT_Squash.label>
+  <!-- EN: butternut squash -->
+  <FT_Squash.keywords.1>冬南瓜</FT_Squash.keywords.1>
+  <!-- EN: spaghetti squash -->
+  <FT_Squash.keywords.3>意大利面南瓜</FT_Squash.keywords.3>
+  <!-- EN: summer squash -->
+  <FT_Squash.keywords.5>夏南瓜</FT_Squash.keywords.5>
+  <!-- EN: figleaf gourd -->
+  <FT_Squash.keywords.7>无花果叶南瓜</FT_Squash.keywords.7>
+  <!-- EN: stinking gourd -->
+  <FT_Squash.keywords.8>臭南瓜</FT_Squash.keywords.8>
+  <!-- EN: winter squash -->
+  <FT_Squash.keywords.9>冬南瓜</FT_Squash.keywords.9>
+  <!-- EN: vegetable marrow -->
+  <FT_Squash.keywords.13>蔬菜骨髓</FT_Squash.keywords.13>
+  <!-- EN: acorn squash -->
+  <FT_Squash.keywords.14>橡实南瓜</FT_Squash.keywords.14>
+  <!-- EN: fingerleaf gourd -->
+  <FT_Squash.keywords.15>指叶南瓜</FT_Squash.keywords.15>
+  <!-- EN: bitter melon -->
+  <FT_Squash.keywords.16>苦瓜</FT_Squash.keywords.16>
+  
+  <!-- EN: Flavor Text taro -->
+  <FT_Taro.label>芋头风味文本</FT_Taro.label>
+  
+  <!-- EN: Flavor Text tea -->
+  <FT_Tea.label>茶风味文本</FT_Tea.label>
+  <!-- EN: tea leaf -->
+  <FT_Tea.keywords.1>茶叶</FT_Tea.keywords.1>
+  <!-- EN: tea leaves -->
+  <FT_Tea.keywords.2>茶叶</FT_Tea.keywords.2>
+  
+  <!-- EN: Flavor Text tomato -->
+  <FT_Tomato.label>番茄风味文本</FT_Tomato.label>
+  
+  <!-- EN: Flavor Text pistachio -->
+  <FT_Turnip.label>芜菁风味文本</FT_Turnip.label>
+  
+  <!-- EN: Flavor Text water chestnut -->
+  <FT_WaterChestnut.label>荸荠风味文本</FT_WaterChestnut.label>
+  <!-- EN: water chestnut -->
+  <FT_WaterChestnut.keywords.0>荸荠</FT_WaterChestnut.keywords.0>
+  
+  <!-- EN: Flavor Text wheat -->
+  <FT_Wheat.label>小麦风味文本</FT_Wheat.label>
+  
+  <!-- EN: Flavor Text yam -->
+  <FT_Yam.label>山药风味文本</FT_Yam.label>
+  <!-- EN: sweet potato -->
+  <FT_Yam.keywords.0>红薯</FT_Yam.keywords.0>
+  
+  <!-- EN: Flavor Text yogurt -->
+  <FT_Yogurt.label>酸奶风味文本</FT_Yogurt.label>
+  
+</LanguageData>

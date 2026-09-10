@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 신경열 받기 -->
+  <Miho_Ability_Dump.label>熵热吸收</Miho_Ability_Dump.label>
+  <!-- EN: 신경열을 싸이베이스형 다각 전차에 옮겨 냉각을 시킵니다. -->
+  <Miho_Ability_Dump.description>与目标建立心灵链接，在短时间内快速吸收其身上积聚的心灵熵。</Miho_Ability_Dump.description>
+  
+  <!-- EN: 뉴로해킹 (의식 좀먹기) -->
+  <Miho_Ability_MechHackingSlow.label>心智骇入（意识侵蚀）</Miho_Ability_MechHackingSlow.label>
+  <!-- EN: 인공지능의 의식을 좀먹어 전반적인 의식 수준을 내립니다. -->
+  <Miho_Ability_MechHackingSlow.description>操纵心灵能量扰乱目标机械族或无人机的运算中枢，在短时间内瘫痪其各项系统，并持续降低意识与移动速度。</Miho_Ability_MechHackingSlow.description>
+  
+  <!-- EN: 치유의 손길 -->
+  <Miho_Ability_MechHeal.label>机械灵愈</Miho_Ability_MechHeal.label>
+  <!-- EN: 병을 낫게하고 상처를 아물게 해주는 치유의 손길을 발산합니다. -->
+  <Miho_Ability_MechHeal.description>使用心灵能量驱使纳米机械，快速包扎目标身上的伤口。</Miho_Ability_MechHeal.description>
+  
+</LanguageData>

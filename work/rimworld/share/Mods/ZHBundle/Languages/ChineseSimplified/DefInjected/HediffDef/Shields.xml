@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fire shield -->
+  <VPE_FireShield.label>火盾</VPE_FireShield.label>
+  <!-- EN: A shield of fire, sets melee attackers on fire -->
+  <VPE_FireShield.description>火焰构成的护盾，让近战攻击者引火烧身。</VPE_FireShield.description>
+  
+  <!-- EN: static aura -->
+  <VPE_StaticAura.label>静电光环</VPE_StaticAura.label>
+  <!-- EN: An aura of static electricity, causes EMP damage to everything around -->
+  <VPE_StaticAura.description>包含静电的光环，对附近目标造成EMP伤害。</VPE_StaticAura.description>
+  
+</LanguageData>

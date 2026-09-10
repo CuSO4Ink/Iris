@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <WTM_RequireRestart>你必须重启游戏以生效变更。</WTM_RequireRestart>
+
+  <WTM_FlagVanilla>标记游戏本体（Core）: </WTM_FlagVanilla>
+  <WTM_FlagVanilla_Desc>如果启用, 本体对象也会使用 '{0}' 来标记。</WTM_FlagVanilla_Desc>
+  <WTM_VanillaName>本体对象显示的标记: </WTM_VanillaName>
+
+  <WTM_VisualOptions>视效选项</WTM_VisualOptions>
+
+  <WTM_Format>Mod标签格式:</WTM_Format>
+  <WTM_Format_Desc>这允许您自定义mod名称的显示方式。 在此标签中，{0}将替换为Mod名称。\n举个例子，如果填入 ({0})，Mod名称将显示为: (Mod名称)，如果填入 xX{0}Xx ，Mod名称将显示为: xXModNameXx。</WTM_Format_Desc>
+  <WTM_Format_MissingTag>无效值! 格式中必须包含 "{0}"</WTM_Format_MissingTag>
+  <WTM_Format_FormatError>无效值! 标记格式无效。</WTM_Format_FormatError>
+
+  <WTM_Italics>斜体: </WTM_Italics>
+  <WTM_Italics_Desc>如果为 true，Mod名称将以斜体显示。</WTM_Italics_Desc>
+
+  <WTM_Bold>粗体: </WTM_Bold>
+  <WTM_Bold_Desc>如果为 true，Mod名称将以粗体显示。</WTM_Bold_Desc>
+
+  <WTM_CustomSize>自定义字体大小: {0}</WTM_CustomSize>
+  <WTM_CustomSize_Desc>可选自定义字体大小。 值为0表示使用RimWorld默认的字体大小。</WTM_CustomSize_Desc>
+
+  <WTM_SelectFontColor>字体颜色:</WTM_SelectFontColor>
+  <WTM_SelectFontColor_Desc>改变字体颜色。 也可以改变字体的透明度。</WTM_SelectFontColor_Desc>
+
+  <WTM_BlankLines>空行数: {0}</WTM_BlankLines>
+  <WTM_BlankLines_Desc>要在Mod名称前插入的空行数。这样可以更容易地看到描述的末尾和Mod名称的开头。</WTM_BlankLines_Desc>
+
+  <WTM_ExampleDescription>这是一个物品描述的例子。\n这是一行关于某个物品的描述。\nBla bla bla！</WTM_ExampleDescription>
+
+  <WTM_Show>显示</WTM_Show>
+  <WTM_Hide>隐藏</WTM_Hide>
+  <WTM_AdvancedSettings>高级设置</WTM_AdvancedSettings>
+
+  <WTM_AddNew>添加新条目</WTM_AddNew>
+  <WTM_RemoveBlank>删除空白条目</WTM_RemoveBlank>
+
+  <WTM_ExcludedMods>排除的Mod</WTM_ExcludedMods>
+  <WTM_ExcludedMods_Desc>在这里，您可以指定不带标签的MOD。您必须填入Mod的ID，而不是它的名称。</WTM_ExcludedMods_Desc>
+
+  <WTM_ExcludedDefTypes>排除的Mod</WTM_ExcludedDefTypes>
+  <WTM_ModFound>Mod: {0}</WTM_ModFound>
+  <WTM_ModNotFound>未找到已安装的Mod！您必须填入Mod的ID而不是它的名称！</WTM_ModNotFound>
+
+  <WTM_DetectPatched>检测补丁定义(Detect patched defs)</WTM_DetectPatched>
+  <WTM_DetectPatched_Desc>如果启用，将扫描所有激活的Mod的补丁(patches)以检测补丁定义(patched defs)。这可能会捕获一些错误，其中修补的项目没有正确标记。
+但是，扫描所有补丁的速度可能非常慢，尤其是对于大型的Mod Pack。
+您可以查看调试日志以查看扫描补丁需要多长时间，如果您希望游戏加载速度快于标记每个项目，则应禁用此选项。</WTM_DetectPatched_Desc>
+
+  <WTM_UltraDeepMode>深度补丁扫描(Deep patch scan)</WTM_UltraDeepMode>
+  <WTM_UltraDeepMode_Desc>默认情况下，该Mod将扫描补丁以查看添加的项目，但它将只扫描“顶级”补丁以加快加载速度。
+启用此选项将扫描所有修补程序，扫描速度可能会慢得多，但可能会捕获一些修补过的DEF，否则将丢失这些DEF。
+建议将其禁用，因为它不太可能产生任何影响，但始终会减慢加载速度。</WTM_UltraDeepMode_Desc>
+
+  <WTM_CECompat>CE兼容(Combat Extended compatibility)</WTM_CECompat>
+  <WTM_CECompat_Desc>启用后，弹药统计数据将添加到所有战斗扩展弹药的描述中，以便于查看的弹药统计数据一目了然。</WTM_CECompat_Desc>
+  <WTM_AmmoStats>弹药数据:</WTM_AmmoStats>
+
+  <WTM_LoadingMsg>(ノಠ益ಠ)ノ彡┻━┻ 辣是个甚麽MOD?!?</WTM_LoadingMsg>
+  <WTM_LoadingMsgZoo>辣是个甚麽动物!? ლ(ಠ益ಠლ)</WTM_LoadingMsgZoo>
+  <WTM_ZooLabel>动物园模式(Zoo Mode)</WTM_ZooLabel>
+  <WTM_ZooDesc>为Samuel Streamer先生的Jorasic公园系列和社区挑战而创建。
+显示一个“动物园分数”，该分数基于你的殖民地驯服的动物数量。要求安装EdB精心准备。</WTM_ZooDesc>
+
+  <WTM_ZooMultiLabel>多线程动物园计数器(Multithreaded Zoo Counter)</WTM_ZooMultiLabel>
+  <WTM_ZooMultiDesc>如果启用，动物园分数计算将在后台线程上运行，从而大大减少帧率延迟峰值。 但是它可能会导致错误。
+如果分数未按预期工作、调试日志中出现警告或分数停止更新，请禁用此选项。</WTM_ZooMultiDesc>
+
+</LanguageData>

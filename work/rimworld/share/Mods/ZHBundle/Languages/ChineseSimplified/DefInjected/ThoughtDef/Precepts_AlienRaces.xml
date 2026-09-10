@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: disgusting aliens! -->
+  <HAR_AlienRaces_Abhorrent.stages.disgusting_aliens.label>恶心的外星种族！</HAR_AlienRaces_Abhorrent.stages.disgusting_aliens.label>
+  <!-- EN: Other races are absolutely repulsive and I can’t stand them! -->
+  <HAR_AlienRaces_Abhorrent.stages.disgusting_aliens.description>其他的外星种族真是令我作呕！快让他们滚开！</HAR_AlienRaces_Abhorrent.stages.disgusting_aliens.description>
+  
+  <!-- EN: disgusting alien! -->
+  <HAR_AlienRaces_Abhorrent_Social.stages.disgusting_alien.label>恶心的外星种族！</HAR_AlienRaces_Abhorrent_Social.stages.disgusting_alien.label>
+  
+  <!-- EN: amazing aliens! -->
+  <HAR_AlienRaces_Exalted.stages.amazing_aliens.label>奇妙的外星种族！</HAR_AlienRaces_Exalted.stages.amazing_aliens.label>
+  <!-- EN: I can’t believe I’m in the company of other races! -->
+  <HAR_AlienRaces_Exalted.stages.amazing_aliens.description>哇哦，真不敢相信我正和其他外星种族在一起！</HAR_AlienRaces_Exalted.stages.amazing_aliens.description>
+  
+  <!-- EN: amazing alien! -->
+  <HAR_AlienRaces_Exalted_Social.stages.amazing_alien.label>奇妙的外星种族！</HAR_AlienRaces_Exalted_Social.stages.amazing_alien.label>
+  
+  <!-- EN: distrust for xenos -->
+  <HAR_AlienRaces_Horrible_Social.stages.distrust_for_xenos.label>猜忌外星种族</HAR_AlienRaces_Horrible_Social.stages.distrust_for_xenos.label>
+  
+  <!-- EN: respect for xenos -->
+  <HAR_AlienRaces_Respected_Social.stages.respect_for_xenos.label>敬重外星种族</HAR_AlienRaces_Respected_Social.stages.respect_for_xenos.label>
+  
+</LanguageData>

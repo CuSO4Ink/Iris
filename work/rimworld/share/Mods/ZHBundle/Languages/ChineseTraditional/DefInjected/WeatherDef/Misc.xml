@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: hurricane -->
+  <VPE_Hurricane.label>驟雨颶風</VPE_Hurricane.label>
+  <!-- EN: Extreme wind will cause a slowdown to everyone not under the roof. -->
+  <VPE_Hurricane.description>強風會使所有露天的生物行動緩慢。</VPE_Hurricane.description>
+
+  <!-- EN: bloodstorm -->
+  <VPEH_Bloodstorm.label>血雨腥風</VPEH_Bloodstorm.label>
+  <!-- EN: Mystical downpour of blood, caused by forbidden hemosage psycast. While non-hemogenic individuals are choking on blood, sanguophages regenerate hemogen and can cast psycasts without worrying about psychic heat. -->
+  <VPEH_Bloodstorm.description>血族禁術製造出的血之暴雨。沒有血原化基因的人都會受血霧影響劇烈嘔吐。而血族則會回復血原質，並且使用靈能時不會產生心靈熵。</VPEH_Bloodstorm.description>
+  
+</LanguageData>

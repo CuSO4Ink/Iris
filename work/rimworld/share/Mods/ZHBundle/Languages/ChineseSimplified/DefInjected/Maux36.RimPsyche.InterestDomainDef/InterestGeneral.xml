@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: common -->
+  <Rimpsyche_InterestDomainGeneral.label>通用兴趣</Rimpsyche_InterestDomainGeneral.label>
+  <!-- EN: Daily life -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.label>日常生活</Rimpsyche_InterestDomainGeneral.interests.0.label>
+  <!-- EN: Common experiences and basic needs. -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.description>共同兴趣与基本需求</Rimpsyche_InterestDomainGeneral.interests.0.description>
+  <!-- EN: the weather -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.0.label>天气</Rimpsyche_InterestDomainGeneral.interests.0.topics.0.label>
+  <!-- EN: sleep quality -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.1.label>睡眠质量</Rimpsyche_InterestDomainGeneral.interests.0.topics.1.label>
+  <!-- EN: pain -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.2.label>痛苦</Rimpsyche_InterestDomainGeneral.interests.0.topics.2.label>
+  <!-- EN: hunger -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.3.label>饥饿</Rimpsyche_InterestDomainGeneral.interests.0.topics.3.label>
+  <!-- EN: comfort -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.4.label>舒适</Rimpsyche_InterestDomainGeneral.interests.0.topics.4.label>
+  <!-- EN: safety -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.5.label>安全</Rimpsyche_InterestDomainGeneral.interests.0.topics.5.label>
+  <!-- EN: injuries -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.6.label>受伤</Rimpsyche_InterestDomainGeneral.interests.0.topics.6.label>
+  <!-- EN: dangers -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.7.label>危险</Rimpsyche_InterestDomainGeneral.interests.0.topics.7.label>
+  <!-- EN: surviving together -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.8.label>共同生存</Rimpsyche_InterestDomainGeneral.interests.0.topics.8.label>
+  <!-- EN: food -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.9.label>食物</Rimpsyche_InterestDomainGeneral.interests.0.topics.9.label>
+  <!-- EN: help -->
+  <Rimpsyche_InterestDomainGeneral.interests.0.topics.10.label>帮助</Rimpsyche_InterestDomainGeneral.interests.0.topics.10.label>
+  <!-- EN: Dreams and Fears -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.label>梦想与恐惧</Rimpsyche_InterestDomainGeneral.interests.1.label>
+  <!-- EN: Emotional, personal reflections. -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.description>情感化、个人化的各种想法</Rimpsyche_InterestDomainGeneral.interests.1.description>
+  <!-- EN: nightmares -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.0.label>噩梦</Rimpsyche_InterestDomainGeneral.interests.1.topics.0.label>
+  <!-- EN: hopes -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.1.label>希望</Rimpsyche_InterestDomainGeneral.interests.1.topics.1.label>
+  <!-- EN: fear of death -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.2.label>死亡与恐惧</Rimpsyche_InterestDomainGeneral.interests.1.topics.2.label>
+  <!-- EN: loss -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.3.label>失去</Rimpsyche_InterestDomainGeneral.interests.1.topics.3.label>
+  <!-- EN: uncertainty -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.4.label>不确定性</Rimpsyche_InterestDomainGeneral.interests.1.topics.4.label>
+  <!-- EN: longing -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.5.label>渴望</Rimpsyche_InterestDomainGeneral.interests.1.topics.5.label>
+  <!-- EN: courage -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.6.label>勇气</Rimpsyche_InterestDomainGeneral.interests.1.topics.6.label>
+  <!-- EN: ambition -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.7.label>抱负</Rimpsyche_InterestDomainGeneral.interests.1.topics.7.label>
+  <!-- EN: regrets -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.8.label>后悔</Rimpsyche_InterestDomainGeneral.interests.1.topics.8.label>
+  <!-- EN: dreams -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.9.label>梦想</Rimpsyche_InterestDomainGeneral.interests.1.topics.9.label>
+  <!-- EN: anxiety -->
+  <Rimpsyche_InterestDomainGeneral.interests.1.topics.10.label>焦虑感</Rimpsyche_InterestDomainGeneral.interests.1.topics.10.label>
+  <!-- EN: Daily Routines -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.label>日常作息</Rimpsyche_InterestDomainGeneral.interests.2.label>
+  <!-- EN: Mundane but relatable chatter. -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.description>平凡但能引起共鸣的日常交谈</Rimpsyche_InterestDomainGeneral.interests.2.description>
+  <!-- EN: chores -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.topics.0.label>杂务</Rimpsyche_InterestDomainGeneral.interests.2.topics.0.label>
+  <!-- EN: meal times -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.topics.1.label>用餐时间</Rimpsyche_InterestDomainGeneral.interests.2.topics.1.label>
+  <!-- EN: idle time -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.topics.2.label>休息时间</Rimpsyche_InterestDomainGeneral.interests.2.topics.2.label>
+  <!-- EN: work schedule -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.topics.3.label>工作时间</Rimpsyche_InterestDomainGeneral.interests.2.topics.3.label>
+  <!-- EN: sleep schedule -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.topics.4.label>睡眠时间</Rimpsyche_InterestDomainGeneral.interests.2.topics.4.label>
+  <!-- EN: daily routines -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.topics.5.label>日常工作</Rimpsyche_InterestDomainGeneral.interests.2.topics.5.label>
+  <!-- EN: favorite tasks -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.topics.6.label>最喜欢的工作</Rimpsyche_InterestDomainGeneral.interests.2.topics.6.label>
+  <!-- EN: breaks -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.topics.7.label>休息</Rimpsyche_InterestDomainGeneral.interests.2.topics.7.label>
+  <!-- EN: progress -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.topics.8.label>进步</Rimpsyche_InterestDomainGeneral.interests.2.topics.8.label>
+  <!-- EN: work assignment -->
+  <Rimpsyche_InterestDomainGeneral.interests.2.topics.9.label>工作任务</Rimpsyche_InterestDomainGeneral.interests.2.topics.9.label>
+  <!-- EN: Past Life -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.label>过往与记忆</Rimpsyche_InterestDomainGeneral.interests.3.label>
+  <!-- EN: Nostalgia or origin stories. -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.description>回忆往事，关于过去的故事</Rimpsyche_InterestDomainGeneral.interests.3.description>
+  <!-- EN: childhood -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.0.label>童年</Rimpsyche_InterestDomainGeneral.interests.3.topics.0.label>
+  <!-- EN: homeworld -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.1.label>家乡</Rimpsyche_InterestDomainGeneral.interests.3.topics.1.label>
+  <!-- EN: family -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.2.label>家人</Rimpsyche_InterestDomainGeneral.interests.3.topics.2.label>
+  <!-- EN: memories of friends -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.3.label>朋友</Rimpsyche_InterestDomainGeneral.interests.3.topics.3.label>
+  <!-- EN: cherished memories -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.4.label>珍贵的记忆</Rimpsyche_InterestDomainGeneral.interests.3.topics.4.label>
+  <!-- EN: memories of hardship -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.5.label>艰苦的回忆</Rimpsyche_InterestDomainGeneral.interests.3.topics.5.label>
+  <!-- EN: memorable moments -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.6.label>难忘的时刻</Rimpsyche_InterestDomainGeneral.interests.3.topics.6.label>
+  <!-- EN: first experiences -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.7.label>新的经历</Rimpsyche_InterestDomainGeneral.interests.3.topics.7.label>
+  <!-- EN: birthdays -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.8.label>生日</Rimpsyche_InterestDomainGeneral.interests.3.topics.8.label>
+  <!-- EN: significant places -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.9.label>重要的地方</Rimpsyche_InterestDomainGeneral.interests.3.topics.9.label>
+  <!-- EN: life lessons -->
+  <Rimpsyche_InterestDomainGeneral.interests.3.topics.10.label>人生的教训</Rimpsyche_InterestDomainGeneral.interests.3.topics.10.label>
+  <!-- EN: Colony Life -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.label>殖民地生活</Rimpsyche_InterestDomainGeneral.interests.4.label>
+  <!-- EN: The present shared experience. -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.description>当前的共同经历</Rimpsyche_InterestDomainGeneral.interests.4.description>
+  <!-- EN: other colonists -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.0.label>其他殖民者</Rimpsyche_InterestDomainGeneral.interests.4.topics.0.label>
+  <!-- EN: colony rules -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.1.label>殖民地规矩</Rimpsyche_InterestDomainGeneral.interests.4.topics.1.label>
+  <!-- EN: leadership -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.2.label>领导力</Rimpsyche_InterestDomainGeneral.interests.4.topics.2.label>
+  <!-- EN: the community -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.3.label>共同体</Rimpsyche_InterestDomainGeneral.interests.4.topics.3.label>
+  <!-- EN: recent events -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.4.label>近期事件</Rimpsyche_InterestDomainGeneral.interests.4.topics.4.label>
+  <!-- EN: parties -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.5.label>派对</Rimpsyche_InterestDomainGeneral.interests.4.topics.5.label>
+  <!-- EN: outsiders -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.6.label>外来者</Rimpsyche_InterestDomainGeneral.interests.4.topics.6.label>
+  <!-- EN: collective goals -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.7.label>集体目标</Rimpsyche_InterestDomainGeneral.interests.4.topics.7.label>
+  <!-- EN: recruiting -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.8.label>招募</Rimpsyche_InterestDomainGeneral.interests.4.topics.8.label>
+  <!-- EN: prisoners -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.9.label>俘虏</Rimpsyche_InterestDomainGeneral.interests.4.topics.9.label>
+  <!-- EN: conflicts -->
+  <Rimpsyche_InterestDomainGeneral.interests.4.topics.10.label>冲突</Rimpsyche_InterestDomainGeneral.interests.4.topics.10.label>
+  <!-- EN: Identity -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.label>身份认同</Rimpsyche_InterestDomainGeneral.interests.5.label>
+  <!-- EN: Who they are and how they view themselves. -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.description>关于自我和身份认同的思考</Rimpsyche_InterestDomainGeneral.interests.5.description>
+  <!-- EN: gender -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.0.label>性别</Rimpsyche_InterestDomainGeneral.interests.5.topics.0.label>
+  <!-- EN: self-worth -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.1.label>自尊</Rimpsyche_InterestDomainGeneral.interests.5.topics.1.label>
+  <!-- EN: their role in the group -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.2.label>群体内的角色</Rimpsyche_InterestDomainGeneral.interests.5.topics.2.label>
+  <!-- EN: independence -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.3.label>独立意识</Rimpsyche_InterestDomainGeneral.interests.5.topics.3.label>
+  <!-- EN: aspirations -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.4.label>渴望/抱负</Rimpsyche_InterestDomainGeneral.interests.5.topics.4.label>
+  <!-- EN: identity -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.5.label>身份认同</Rimpsyche_InterestDomainGeneral.interests.5.topics.5.label>
+  <!-- EN: self-expression -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.6.label>自我实现</Rimpsyche_InterestDomainGeneral.interests.5.topics.6.label>
+  <!-- EN: religion -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.7.label>宗教</Rimpsyche_InterestDomainGeneral.interests.5.topics.7.label>
+  <!-- EN: self-reflection -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.8.label>自我反思</Rimpsyche_InterestDomainGeneral.interests.5.topics.8.label>
+  <!-- EN: internal values -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.9.label>内在价值观</Rimpsyche_InterestDomainGeneral.interests.5.topics.9.label>
+  <!-- EN: beliefs -->
+  <Rimpsyche_InterestDomainGeneral.interests.5.topics.10.label>信念</Rimpsyche_InterestDomainGeneral.interests.5.topics.10.label>
+  
+</LanguageData>

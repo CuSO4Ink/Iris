@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>r_leaderTitle->executive</li>
+  -->
+  <LeaderTitleMaker_VOID.rulePack.rulesStrings.0>r_leaderTitle->高管</LeaderTitleMaker_VOID.rulePack.rulesStrings.0>
+  
+  <!-- EN:
+    <li>r_ideoName->[VOIDAdjective] Control</li>
+    <li>r_ideoName->[VOIDAdjective] Chaos</li>
+    <li>r_memberName->member</li>
+    <li>r_ideoAdjective(priority=1)->Void</li>
+    <li>r_ideoAdjective(priority=1)->Core</li>
+    <li>creed->[genericCreed]</li>
+    <li>genericCreed->creed</li>
+    <li>genericCreed->doctrine</li>
+    <li>genericCreed->way</li>
+    <li>genericCreed->path</li>
+    <li>VOIDAdjective->Total</li>
+    <li>VOIDAdjective->Absolute</li>
+  -->
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.0>r_ideoName->[VOIDAdjective] 控制</RH2NamerIdeo_VOID.rulePack.rulesStrings.0>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.1>r_ideoName->[VOIDAdjective] 紊乱</RH2NamerIdeo_VOID.rulePack.rulesStrings.1>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.2>r_memberName->职员</RH2NamerIdeo_VOID.rulePack.rulesStrings.2>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.3>r_ideoAdjective(priority=1)->Void</RH2NamerIdeo_VOID.rulePack.rulesStrings.3>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.4>r_ideoAdjective(priority=1)->核心</RH2NamerIdeo_VOID.rulePack.rulesStrings.4>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.5>creed->[genericCreed]</RH2NamerIdeo_VOID.rulePack.rulesStrings.5>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.6>genericCreed->教义</RH2NamerIdeo_VOID.rulePack.rulesStrings.6>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.7>genericCreed->信条</RH2NamerIdeo_VOID.rulePack.rulesStrings.7>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.8>genericCreed->道路</RH2NamerIdeo_VOID.rulePack.rulesStrings.8>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.9>genericCreed->通道</RH2NamerIdeo_VOID.rulePack.rulesStrings.9>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.10>VOIDAdjective->全部</RH2NamerIdeo_VOID.rulePack.rulesStrings.10>
+  <RH2NamerIdeo_VOID.rulePack.rulesStrings.11>VOIDAdjective->绝对</RH2NamerIdeo_VOID.rulePack.rulesStrings.11>
+  
+</LanguageData>

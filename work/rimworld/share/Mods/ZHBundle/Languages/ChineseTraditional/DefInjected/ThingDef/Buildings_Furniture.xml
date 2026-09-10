@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: pulpit -->
+  <RK_Pulpit.label>神職講台</RK_Pulpit.label>
+  <!-- EN: a small pulpit. ratkin priest can host prayer meeting in this place. -->
+  <RK_Pulpit.description>小巧玲瓏的講台。鼠族牧師可以在這裡舉辦禱告會。</RK_Pulpit.description>
+  
+</LanguageData>

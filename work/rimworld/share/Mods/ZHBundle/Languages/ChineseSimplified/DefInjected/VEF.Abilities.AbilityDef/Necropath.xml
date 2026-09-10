@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: consume bodies -->
+  <VPE_ConsumeBodies.label>尸体炼化</VPE_ConsumeBodies.label>
+  <!-- EN: Psychically strips all remaining life force from nearby humanoid corpses and stores the essence as a permanent stacking buffer to neural heat. -->
+  <VPE_ConsumeBodies.description>将一具死尸内残存的生命力吸收，永久增加施放者的心灵熵上限。</VPE_ConsumeBodies.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_ConsumeBodies.jobReportString>使用能力：{0}</VPE_ConsumeBodies.jobReportString>
+  <!-- EN: 尸体炼化 -->
+  <VPE_ConsumeBodies.verbProperties.label>尸体炼化</VPE_ConsumeBodies.verbProperties.label>
+  
+  <!-- EN: corpsetalk -->
+  <VPE_Corpsetalk.label>通灵</VPE_Corpsetalk.label>
+  <!-- EN: Target a corpse and temporarily appropriate the victim’s skills to make up for the caster’s deficiencies. Effect lasts for a season before returning to normal. -->
+  <VPE_Corpsetalk.description>对死尸施放，施放者会暂时获得死者生前强于自己的技能。一个季节后会重归原状。</VPE_Corpsetalk.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Corpsetalk.jobReportString>使用能力：{0}</VPE_Corpsetalk.jobReportString>
+  <!-- EN: 通灵 -->
+  <VPE_Corpsetalk.verbProperties.label>通灵</VPE_Corpsetalk.verbProperties.label>
+  
+  <!-- EN: deathshield -->
+  <VPE_Deathshield.label>拒死之盾</VPE_Deathshield.label>
+  <!-- EN: Locks the touched target’s life force in place for a day, preventing them from dying. After this period, they can die from accumulated wounds, blood loss, or missing limbs or organs. -->
+  <VPE_Deathshield.description>将目标的生命力锁定一整天，在此期间目标无论如何不会死亡，但在时间过后积累的伤势和失血依旧可能使其暴毙。</VPE_Deathshield.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Deathshield.jobReportString>使用能力：{0}</VPE_Deathshield.jobReportString>
+  <!-- EN: 拒死之盾 -->
+  <VPE_Deathshield.verbProperties.label>拒死之盾</VPE_Deathshield.verbProperties.label>
+  
+  <!-- EN: enthrall -->
+  <VPE_Enthrall.label>使役骸骨</VPE_Enthrall.label>
+  <!-- EN: Psychically strips the deceased target’s life force and infuses it directly into their bones, animating them for a full day. The only remaining instinct is to inflict pain on the caster’s enemies. -->
+  <VPE_Enthrall.description>将死尸残存的生命力嵌入骨头之中，使其能行动一天。复苏的骸骨没有神智，唯一的本能就是攻击施放者的敌人。</VPE_Enthrall.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Enthrall.jobReportString>使用能力：{0}</VPE_Enthrall.jobReportString>
+  <!-- EN: 使役骸骨 -->
+  <VPE_Enthrall.verbProperties.label>使役骸骨</VPE_Enthrall.verbProperties.label>
+  
+  <!-- EN: ghostwalk -->
+  <VPE_Ghostwalk.label>灵体行者</VPE_Ghostwalk.label>
+  <!-- EN: Coats the caster in a layer of temporary psychic atrophy, allowing them to walk through structures unimpeded and without damaging anything. Duration scales with the caster’s psychic sensitivity. -->
+  <VPE_Ghostwalk.description>用灵能将施放者的身体转化为半虚体，使其能直接穿过建筑结构。持续时间取决于施放者的心灵敏感度。</VPE_Ghostwalk.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Ghostwalk.jobReportString>使用能力：{0}</VPE_Ghostwalk.jobReportString>
+  <!-- EN: 灵体行者 -->
+  <VPE_Ghostwalk.verbProperties.label>灵体行者</VPE_Ghostwalk.verbProperties.label>
+  
+  <!-- EN: liferot -->
+  <VPE_Liferot.label>血肉腐化</VPE_Liferot.label>
+  <!-- EN: Psychically induces randomized mass necrosis in a target, exposing the afflicted body parts to infection and inducing vomiting. Duration scales with the target’s psychic sensitivity and is an overtly hostile action. -->
+  <VPE_Liferot.description>用灵能在目标身上引发大量坏疽，使身体部分开始腐烂，并散发出恶臭使目标呕吐不止。持续时间取决于施放者的心灵敏感度，被视作敌对行为。</VPE_Liferot.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Liferot.jobReportString>使用能力：{0}</VPE_Liferot.jobReportString>
+  <!-- EN: 血肉腐化 -->
+  <VPE_Liferot.verbProperties.label>血肉腐化</VPE_Liferot.verbProperties.label>
+  
+  <!-- EN: paralysis pulse -->
+  <VPE_ParalysisPulse.label>麻痹脉冲</VPE_ParalysisPulse.label>
+  <!-- EN: Emits a cloud of black particles from the caster, which afflicts all, caster included, within the area with paralytic abasia for a full day. The radius scales with the caster’s psychic sensitivity. -->
+  <VPE_ParalysisPulse.description>施放者在周围释放出一片暗黑粒子雾，包括施放者以内所有在范围之内的人都会获得一整天的麻痹效果。范围半径取决于施放者的心灵敏感度。被视作敌对行为。</VPE_ParalysisPulse.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_ParalysisPulse.jobReportString>使用能力：{0}</VPE_ParalysisPulse.jobReportString>
+  <!-- EN: 麻痹脉冲 -->
+  <VPE_ParalysisPulse.verbProperties.label>麻痹脉冲</VPE_ParalysisPulse.verbProperties.label>
+  
+  <!-- EN: resurrect -->
+  <VPE_Resurrect.label>复活</VPE_Resurrect.label>
+  <!-- EN: By sacrificing a natural finger, the caster is able to imitate the effects of resurrector mech serum on any non-dessicated corpse, the psychic energy repairing broken-down tissues and kickstarting the body back to life. The target will be incapacitated and their allegiances will remain the same. The less preserved the body is, the more likely the target is to suffer from negative side effects. The long, intense concentration ends with the caster falling into a 6-hour coma. -->
+  <VPE_Resurrect.description>施放者献祭一根自己的天然手指为代价，对未腐化的尸体造成类似复活机械液的效果。灵能会修复破碎的组织并为身体部件的活化提供生命的第一推动力。目标复活后会进入无法活动的状态，所属派系与生前一致。尸体保存越完好，越不容易遭受复活的副作用。持续的精密灵能操作会令施放者陷入6小时的昏迷。</VPE_Resurrect.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Resurrect.jobReportString>使用能力：{0}</VPE_Resurrect.jobReportString>
+  <!-- EN: 复活 -->
+  <VPE_Resurrect.verbProperties.label>复活</VPE_Resurrect.verbProperties.label>
+  
+  <!-- EN: steal vitality -->
+  <VPE_StealVitality.label>活力虹吸</VPE_StealVitality.label>
+  <!-- EN: Siphons vitality from a nearby source, transferring the target’s natural healing factor, movement speed, and consciousness to the caster for a full day. Considered an overtly hostile action. -->
+  <VPE_StealVitality.description>从附近的目标身上汲取生命力，获得部分目标的自然治愈系数，移动能力和意识。被视作敌对行为。</VPE_StealVitality.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_StealVitality.jobReportString>使用能力：{0}</VPE_StealVitality.jobReportString>
+  <!-- EN: 活力虹吸 -->
+  <VPE_StealVitality.verbProperties.label>活力虹吸</VPE_StealVitality.verbProperties.label>
+  
+  <!-- EN: word of fear -->
+  <VPE_WordofFear.label>恐惧之语</VPE_WordofFear.label>
+  <!-- EN: Induces panic by overloading their flight response system for a duration scaling with their psychic sensitivity. Considered a hostile action. -->
+  <VPE_WordofFear.description>刺激过载目标的逃跑反应，使其惊慌失措。被视作敌意行为。</VPE_WordofFear.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_WordofFear.jobReportString>使用能力：{0}</VPE_WordofFear.jobReportString>
+  <!-- EN: 恐惧之语 -->
+  <VPE_WordofFear.verbProperties.label>恐惧之语</VPE_WordofFear.verbProperties.label>
+  
+</LanguageData>

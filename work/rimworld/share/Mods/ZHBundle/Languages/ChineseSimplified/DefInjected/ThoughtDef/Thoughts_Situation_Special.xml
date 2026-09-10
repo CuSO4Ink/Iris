@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: psychic aurora -->
+  <VEE_Aurora.stages.psychic_aurora.label>心灵极光</VEE_Aurora.stages.psychic_aurora.label>
+  <!-- EN: The view is amazing. -->
+  <VEE_Aurora.stages.psychic_aurora.description>真是令人惊叹的景观。</VEE_Aurora.stages.psychic_aurora.description>
+  
+  <!-- EN: superbloom psychic drone -->
+  <VEE_SuperbloomPsychicDrone.stages.superbloom_psychic_drone.label>心灵低语（盛放之时）</VEE_SuperbloomPsychicDrone.stages.superbloom_psychic_drone.label>
+  <!-- EN: My heart pounds and I'm sweating. All I can think of is hurting and suffering and all these enemies around me. They're my nightmare, my nightmare, my nightmare... -->
+  <VEE_SuperbloomPsychicDrone.stages.superbloom_psychic_drone.description>我的心脏怦怦跳个不停，全身也都被汗水浸透了。我脑海中只剩伤痛，四面皆敌。他们是我的梦魇，我的梦魇，我的梦魇...</VEE_SuperbloomPsychicDrone.stages.superbloom_psychic_drone.description>
+  
+</LanguageData>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: examining {0} at {1}. -->
+  <RR_Analyse.reportString>于 {1} 测试 {0} 中。</RR_Analyse.reportString>
+
+  <!-- EN: examining {0}. -->
+  <RR_AnalyseInPlace.reportString>测试 {0} 中。</RR_AnalyseInPlace.reportString>
+
+  <!-- EN: analysing terrain. -->
+  <RR_AnalyseTerrain.reportString>分析地形中。</RR_AnalyseTerrain.reportString>
+
+  <!-- EN: interrogating {0}. -->
+  <RR_InterrogatePrisoner.reportString>审问 {0} 中。</RR_InterrogatePrisoner.reportString>
+
+  <!-- EN: learning at {0}. -->
+  <RR_LearnRemotely.reportString>于 {0} 学习中。</RR_LearnRemotely.reportString>
+
+  <!-- EN: researching. -->
+  <RR_Research.reportString>研究中。</RR_Research.reportString>
+
+</LanguageData>

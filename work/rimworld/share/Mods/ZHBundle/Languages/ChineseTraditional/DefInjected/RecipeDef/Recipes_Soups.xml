@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_CookSoupSimple.label>製作簡單湯料</VCE_CookSoupSimple.label>
+		<VCE_CookSoupSimple.description>用少許材料製作一份簡單的湯料。</VCE_CookSoupSimple.description>
+		<VCE_CookSoupSimple.jobString>正在製作簡單湯料。</VCE_CookSoupSimple.jobString>
+		<VCE_CookSoupFine.label>製作精緻湯料</VCE_CookSoupFine.label>
+		<VCE_CookSoupFine.description>將多種材料組合，製作一份相對複雜的湯料。</VCE_CookSoupFine.description>
+		<VCE_CookSoupFine.jobString>正在製作精緻湯料。</VCE_CookSoupFine.jobString>
+		<VCE_CookSoupLavish.label>製作奢侈湯料</VCE_CookSoupLavish.label>
+		<VCE_CookSoupLavish.description>製作一份藝術般的湯料，可以蕩滌身心。</VCE_CookSoupLavish.description>
+		<VCE_CookSoupLavish.jobString>正在製作奢侈湯料。</VCE_CookSoupLavish.jobString>
+		<VCE_CookSoupGourmet.label>製作豪華湯料</VCE_CookSoupGourmet.label>
+		<VCE_CookSoupGourmet.description>烹飪一份精雕細琢的湯料，美艷絕倫，雖然成品的量不多。</VCE_CookSoupGourmet.description>
+		<VCE_CookSoupGourmet.jobString>正在製作豪華湯料。</VCE_CookSoupGourmet.jobString>
+	</LanguageData>

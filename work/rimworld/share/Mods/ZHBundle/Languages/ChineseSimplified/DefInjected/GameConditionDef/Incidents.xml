@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- VOID Drone -->
+
+  <ChickenVOID_PsychicDrone.label>V.O.I.D.心灵低语</ChickenVOID_PsychicDrone.label>
+  <ChickenVOID_PsychicDrone.description>在遥远地区的某艘V.O.I.D.战舰正通过一台轨道信号放大器投射能让人发疯的心灵信号。</ChickenVOID_PsychicDrone.description>
+  <!-- EN: a V.O.I.D. [psychicDroneLevel] psychic drone will buzz the area around [map_definite] for [gameConditionDuration_duration], pushing all people of the [psychicDroneGender] gender towards insanity -->
+  <ChickenVOID_PsychicDrone.descriptionFuture>一台V.O.I.D.的[psychicDroneLevel]心灵干扰器会在 [gameConditionDuration_duration] 里持续刺激所有 [map_definite] 内的 [psychicSuppressorGender] 成员。</ChickenVOID_PsychicDrone.descriptionFuture>
+  <ChickenVOID_PsychicDrone.endMessage>V.O.I.D.心灵低语结束了。</ChickenVOID_PsychicDrone.endMessage>
+  <ChickenVOID_PsychicDrone.letterText>每个{0}殖民者都会感到一阵阵的愤怒和焦虑！\n\n一些遥远的仇恨引擎正通过一台轨道信号放大器投射能让人发疯的心灵信号，它只会影响{0}。几天内，有些人的情绪会变得比较糟\n\n目前的V.O.I.D.心灵冲击等级为{1}。</ChickenVOID_PsychicDrone.letterText>
+
+  <ChickenVOID_SolarFlare.label>V.O.I.D.太阳耀斑</ChickenVOID_SolarFlare.label>
+  <ChickenVOID_SolarFlare.description>一场人为引发的太阳耀斑正在冲击这个星球，这将产生强大的电磁干扰并让绝大多数电气设备无法运转。</ChickenVOID_SolarFlare.description>
+  <ChickenVOID_SolarFlare.endMessage>V.O.I.D.太阳耀斑结束了。</ChickenVOID_SolarFlare.endMessage>
+  <ChickenVOID_SolarFlare.letterText>一场人为引发的太阳耀斑已经开始。\n\n强电磁辐射会导致所有电子设备无法运转。\n\n耀斑将会持续约一天。</ChickenVOID_SolarFlare.letterText>
+
+  <ChickenVOID_ToxicFalloutCustomizable.label>V.O.I.D.有毒尘埃</ChickenVOID_ToxicFalloutCustomizable.label>
+  <ChickenVOID_ToxicFalloutCustomizable.description>从遥远地区弥漫过来的有毒尘埃正在星球的整个区域慢慢沉淀。任何不在屋顶下的人类和动物都会慢慢中毒，物品则会被腐蚀而加速腐化。</ChickenVOID_ToxicFalloutCustomizable.description>
+  <ChickenVOID_ToxicFalloutCustomizable.descriptionFuture>一片有毒尘埃将在[gameConditionDuration_duration]内持续笼罩[map_definite]地区，它将杀死所有还在室外的动植物。</ChickenVOID_ToxicFalloutCustomizable.descriptionFuture>
+  <ChickenVOID_ToxicFalloutCustomizable.endMessage>V.O.I.D.有毒尘埃已基本沉降。</ChickenVOID_ToxicFalloutCustomizable.endMessage>
+  <ChickenVOID_ToxicFalloutCustomizable.letterText>远处的化学火灾释放的毒尘正在污染整个地区。\n\n任何不在屋顶下的人类和动物都会慢慢中毒。\n\n毒尘会在几天至一象时间内持续存在。</ChickenVOID_ToxicFalloutCustomizable.letterText>
+
+
+  <!-- Planetkiller -->
+
+  <Void_PlanetKiller.label>משמיד עולמות</Void_PlanetKiller.label>
+  <Void_PlanetKiller.description>Mj ai gerrsx eglmizi syv zmwmsr jsv xlmw asvph, mx qywx fi tyvkih.\n\n时间不多了，我的朋友。</Void_PlanetKiller.description>
+  <Void_PlanetKiller.letterText>V.O.I.D.激活了一个古老的装置，可以终结这个世界上的所有生命。在这颗星球的核心爆炸之前，你只有7天时间。</Void_PlanetKiller.letterText>
+
+
+</LanguageData>

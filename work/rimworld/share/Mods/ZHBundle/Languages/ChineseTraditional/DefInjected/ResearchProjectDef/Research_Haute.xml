@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: haute cuisine -->
+  <VCE_HauteCuisine.label>臻藝食物</VCE_HauteCuisine.label>
+  <!-- EN: Haute cuisine is the pinnacle of culinary artistry, emphasizing meticulous preparation, refined techniques, and exquisite presentation. It transforms the finest ingredients into visually stunning and harmoniously balanced dishes, elevating dining to an experience of sophistication. This research also unlocks the haute section, a specialized workstation for crafting these masterful creations. -->
+  <VCE_HauteCuisine.description>臻藝食物是廚藝界最尖端的產物，從選材，烹製到擺盤無一不許做到盡善盡美。它會將最精緻的食材製作成攝人心魄的美食，將用餐提升到藝術的境界。該研究同樣會解鎖臻藝廚房，一種專門用來烹飪臻藝食物的工作站。</VCE_HauteCuisine.description>
+  <!-- EN:
+    <li>subject->culinary artistry</li>
+    <li>subject_story->perfected the delicate balance of flavors, elevating cooking to an art form</li>
+    <li>subject_story->trained under master chefs, mastering techniques passed down through generations</li>
+    <li>subject_story->founded an elite dining establishment, attracting nobles and connoisseurs alike</li>
+    <li>subject_gerund->crafting exquisite haute dishes</li>
+  -->
+  <VCE_HauteCuisine.generalRules.rulesStrings>
+    <li>subject->臻藝食物</li>
+    <li>subject_story->完善了對味覺的研究，將廚藝提升到藝術的境界</li>
+    <li>subject_story->曾在頂級大廚的手下學習，將大師級的技藝代代相傳</li>
+    <li>subject_story->成立了精英廚師公會，吸納了眾多豪富食客</li>
+    <li>subject_gerund->製作高雅的臻藝食物</li>
+  </VCE_HauteCuisine.generalRules.rulesStrings>
+  
+</LanguageData>

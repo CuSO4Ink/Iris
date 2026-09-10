@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: executioner ghoul (intense) -->
+  <ExecutionerGhoul.stages.executioner_ghoul_intense.label>戮刑屍鬼恐懼(極度)</ExecutionerGhoul.stages.executioner_ghoul_intense.label>
+  <!-- EN: NO! NO! STAY AWAY!!!. -->
+  <ExecutionerGhoul.stages.executioner_ghoul_intense.description>不！不！快讓我離開這裏！</ExecutionerGhoul.stages.executioner_ghoul_intense.description>
+  <!-- EN: executioner ghoul (strong) -->
+  <ExecutionerGhoul.stages.executioner_ghoul_strong.label>戮刑屍鬼恐懼(強烈)</ExecutionerGhoul.stages.executioner_ghoul_strong.label>
+  <!-- EN: That thing. Its smile feels ominous -->
+  <ExecutionerGhoul.stages.executioner_ghoul_strong.description>那個該死的怪物...它的笑容讓我不寒而栗。</ExecutionerGhoul.stages.executioner_ghoul_strong.description>
+  <!-- EN: executioner ghoul (distant) -->
+  <ExecutionerGhoul.stages.executioner_ghoul_distant.label>戮刑屍鬼恐懼(遙遠)</ExecutionerGhoul.stages.executioner_ghoul_distant.label>
+  <!-- EN: I feel a sudden chill through my skin. -->
+  <ExecutionerGhoul.stages.executioner_ghoul_distant.description>我的身體不由自主地湧起了一層雞皮疙瘩。</ExecutionerGhoul.stages.executioner_ghoul_distant.description>
+  
+  <!-- EN: howling spider (intense) -->
+  <HowlingSpider.stages.howling_spider_intense.label>尖嘯駭蛛恐懼(極度)</HowlingSpider.stages.howling_spider_intense.label>
+  <!-- EN: STAY AWAY!!!. -->
+  <HowlingSpider.stages.howling_spider_intense.description>我真的受不了！快讓我離開這裏！</HowlingSpider.stages.howling_spider_intense.description>
+  <!-- EN: howling spider (strong) -->
+  <HowlingSpider.stages.howling_spider_strong.label>尖嘯駭蛛恐懼(強烈)</HowlingSpider.stages.howling_spider_strong.label>
+  <!-- EN: Its howling hurts my ears. -->
+  <HowlingSpider.stages.howling_spider_strong.description>它尖銳至極的叫聲快把我的耳朵搞聾了！</HowlingSpider.stages.howling_spider_strong.description>
+  <!-- EN: howling spider (distant) -->
+  <HowlingSpider.stages.howling_spider_distant.label>尖嘯駭蛛恐懼(遙遠)</HowlingSpider.stages.howling_spider_distant.label>
+  <!-- EN: What the fuck is that. -->
+  <HowlingSpider.stages.howling_spider_distant.description>那他娘的是個什麽鬼東西？</HowlingSpider.stages.howling_spider_distant.description>
+  
+</LanguageData>

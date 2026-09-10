@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: Epicguru's Melee Animation -->
+  <AM.ModTitle>Epicguru's Melee Animation</AM.ModTitle>
+  <!-- EN: Loading Melee Animation -->
+  <AM.LoadingText>加载Melee Animation中</AM.LoadingText>
+
+  <!-- EN: Animation -->
+  <AM.Animation>动画</AM.Animation>
+
+  <!-- EN: Cannot lasso: {0} -->
+  <AM.Error.Grapple.FloatMenu>无法抛投套索：{0}</AM.Error.Grapple.FloatMenu>
+  <!-- EN: Lasso {0} -->
+  <AM.Grapple.FloatMenu>向{0}抛投套索</AM.Grapple.FloatMenu>
+  <!-- EN: Use a lasso to pull {1} towards {0}.\nThis does not harm {1}. -->
+  <AM.Grapple.FloatMenu.Tip>抛投套索将{1}拉至{0}的近战攻击范围内。\n此举不会对{1}造成伤害。</AM.Grapple.FloatMenu.Tip>
+  <!-- EN: Use a lasso to pull {1} towards {0}.\nThis does not harm {1}, but it does put them into melee/execution range. -->
+  <AM.Grapple.FloatMenu.TipEnemy>抛投套索将{1}拉至{0}的近战攻击范围内。\n此举不会对{1}造成伤害。</AM.Grapple.FloatMenu.TipEnemy>
+
+  <!-- EN: Cannot execute: {0} -->
+  <AM.Error.Exec.FloatMenu>无法施展终结技：{0}</AM.Error.Exec.FloatMenu>
+  <!-- EN: Execute {0} -->
+  <AM.Exec.FloatMenu>对{0}施展终结技</AM.Exec.FloatMenu>
+  <!-- EN: Perform an execution animation on {1}.\nPossible outcomes based on weapon, melee skill, armor, mod settings etc:\n{2} -->
+  <AM.Exec.FloatMenu.Tip>对{1}施展终结技。\n终结技可能会触发以下结果（取决于武器，格斗技能等级，护甲，Mod设置等因素）：\n{2}</AM.Exec.FloatMenu.Tip>
+  <!-- EN:  (walk to target) -->
+  <AM.Exec.FloatMenu.Walk>（移动至目标处）</AM.Exec.FloatMenu.Walk>
+  <!-- EN:  (lasso) -->
+  <AM.Exec.FloatMenu.Lasso>（抛投套索）</AM.Exec.FloatMenu.Lasso>
+
+  <!-- EN: Int.Error: {Error} -->
+  <AM.Error.Grapple.Internal>错误：{Error}</AM.Error.Grapple.Internal>
+  <!-- EN: Int.Error: {Error} -->
+  <AM.Error.Exec.Internal>错误：{Error}</AM.Error.Exec.Internal>
+  <!-- EN: {Target} is already in melee range -->
+  <AM.Error.Grapple.AlreadyAtTarget>{Target}已处于近战攻击范围内</AM.Error.Grapple.AlreadyAtTarget>
+
+  <!-- EN: Kill -->
+  <AM.ProbReport.Kill>击杀</AM.ProbReport.Kill>
+  <!-- EN: Down -->
+  <AM.ProbReport.Down>击倒</AM.ProbReport.Down>
+  <!-- EN: Injure -->
+  <AM.ProbReport.Injure>击伤</AM.ProbReport.Injure>
+  <!-- EN: Fail -->
+  <AM.ProbReport.Fail>失败</AM.ProbReport.Fail>
+
+  <!-- Duel command messages -->
+  <!-- EN: Int.Error: {Error} -->
+  <AM.Error.Duel.Internal>错误：{Error}</AM.Error.Duel.Internal>
+  <!-- EN: {Pawn} is dead -->
+  <AM.Error.Duel.Dead>{Pawn}已死亡</AM.Error.Duel.Dead>
+  <!-- EN: {Pawn} is downed -->
+  <AM.Error.Duel.Down>{Pawn}已倒地</AM.Error.Duel.Down>
+  <!-- EN: {Pawn} cannot be dueled right now -->
+  <AM.Error.Duel.NotSpawned>{Pawn}现在无法进行决斗</AM.Error.Duel.NotSpawned>
+  <!-- EN: {Pawn} is not available -->
+  <AM.Error.Duel.NotSpawned.Short>{Pawn}不可用</AM.Error.Duel.NotSpawned.Short>
+  <!-- EN: {Pawn} does not have a valid melee weapon -->
+  <AM.Error.Duel.MissingWeapon>{Pawn}未装备有效的近战武器</AM.Error.Duel.MissingWeapon>
+  <!-- EN: The weapon(s) these pawns are carrying cannot be used to duel with. -->
+  <AM.Error.Duel.NoAnim>这些单位装备的近战武器无法用于决斗</AM.Error.Duel.NoAnim>
+  <!-- EN: These melee weapons cannot be used to duel -->
+  <AM.Error.Duel.NoAnim.Short>这些近战武器无法用于决斗</AM.Error.Duel.NoAnim.Short>
+  <!-- EN: {0} cannot reach {1} to start a duel -->
+  <AM.Error.Duel.NoPath>{0}无法抵达{1}的所在处</AM.Error.Duel.NoPath>
+  <!-- EN: {0}'s duel is on cooldown -->
+  <AM.Error.Duel.OnCooldown>{0}的决斗能力正在冷却</AM.Error.Duel.OnCooldown>
+  <!-- EN: {0} got tired of waiting for {1} to arrive to their duel, and called it off. -->
+  <AM.Error.Duel.WaitedTooLong>{0}因为等{1}等得不耐烦，主动取消了决斗。</AM.Error.Duel.WaitedTooLong>
+
+  <!-- Duel spot gizmo -->
+  <!-- EN: Start duel -->
+  <AM.Gizmos.DuelSpot.StartDuel.Label>开始切磋决斗</AM.Gizmos.DuelSpot.StartDuel.Label>
+  <!-- EN: Manually start a duel between two friendly pawns with valid weapons. Prisoners cannot participate.\n\nThis is a friendly duel, nobody will be hurt. -->
+  <AM.Gizmos.DuelSpot.StartDuel.Desc>指定两名装备了有效近战武器的友方单位以开始切磋决斗。囚犯和奴隶无法参加。\n\n切磋决斗讲究点到为止，因此参加的双方并不会受到伤害。</AM.Gizmos.DuelSpot.StartDuel.Desc>
+  <!-- EN: The duel spot is currently in use -->
+  <AM.Gizmos.DuelSpot.StartDuel.InUse>决斗点正在被使用</AM.Gizmos.DuelSpot.StartDuel.InUse>
+  <!-- EN: The duel spot is forbidden -->
+  <AM.Gizmos.DuelSpot.StartDuel.Forbidden>决斗点已被禁用</AM.Gizmos.DuelSpot.StartDuel.Forbidden>
+  <!-- EN: {0} does not have a valid melee weapon -->
+  <AM.Gizmos.DuelSpot.StartDuel.MissingWeapon>{0}未装备有效的近战武器</AM.Gizmos.DuelSpot.StartDuel.MissingWeapon>
+  <!-- EN: {0}'s weapon cannot be used to duel {1}, their weapons are incompatible -->
+  <AM.Gizmos.DuelSpot.StartDuel.IncompatWeapon>{0}装备的近战武器无法用来与{1}切磋决斗（不兼容）</AM.Gizmos.DuelSpot.StartDuel.IncompatWeapon>
+  <!-- EN: {0}'s current job cannot be interrupted -->
+  <AM.Gizmos.DuelSpot.StartDuel.CannotInterrupt>无法打断{0}当前的工作</AM.Gizmos.DuelSpot.StartDuel.CannotInterrupt>
+  <!-- EN: {0} cannot reach the duel spot -->
+  <AM.Gizmos.DuelSpot.StartDuel.NoPath>{0}无法抵达决斗点所在处</AM.Gizmos.DuelSpot.StartDuel.NoPath>
+  <!-- EN: {0} cannot do a friendly duel for another {2} seconds -->
+  <AM.Gizmos.DuelSpot.StartDuel.OnCooldown>{0}无法参加切磋决斗（剩余冷却时间：{2}）</AM.Gizmos.DuelSpot.StartDuel.OnCooldown>
+  <!-- EN: Select a pawn to duel -->
+  <AM.Gizmos.DuelSpot.StartDuel.FloatMenuTitle>选择决斗者</AM.Gizmos.DuelSpot.StartDuel.FloatMenuTitle>
+  <!-- EN: An unexpected error caused the duel to not be able to be started. Please send logs to the mod author. -->
+  <AM.Gizmos.DuelSpot.StartDuel.FailedToStart>由于发生了意料之外的错误，切磋决斗无法开始。请向Mod作者提供logs以协助解决问题。</AM.Gizmos.DuelSpot.StartDuel.FailedToStart>
+  <!-- EN: Toggle visibility -->
+  <AM.Gizmos.DuelSpot.ToggleVisibility>显示/隐藏贴图</AM.Gizmos.DuelSpot.ToggleVisibility>
+  <!-- EN: Makes this duel spot invisible, or shows it again.\nWarning: it really is invisible! Don't forget where you put it down or you may struggle to find it again... -->
+  <AM.Gizmos.DuelSpot.ToggleVisibility.Desc>显示或隐藏决斗点的贴图。\n注意：为了避免找不到贴图被隐藏的决斗点，你最好牢牢记住它所在的位置。</AM.Gizmos.DuelSpot.ToggleVisibility.Desc>
+
+  <!-- EN: {Grappler} is dead -->
+  <AM.Error.Grapple.Dead>{Grappler}已死亡</AM.Error.Grapple.Dead>
+  <!-- EN: {Exec} is dead -->
+  <AM.Error.Exec.Dead>{Exec}已死亡</AM.Error.Exec.Dead>
+  <!-- EN: {Grappler} is stunned -->
+  <AM.Error.Grapple.Stunned>{Grappler}已被击晕</AM.Error.Grapple.Stunned>
+  <!-- EN: {Exec} is stunned -->
+  <AM.Error.Exec.Stunned>{Exec}已被击晕</AM.Error.Exec.Stunned>
+  <!-- EN: {Target} is not adjacent to {Exec}, and cannot be lassoed or walked to. -->
+  <AM.Error.Exec.NoWalk>{Target}与{Exec}不相邻，无法对其抛投套索或移动至其所在处。</AM.Error.Exec.NoWalk>
+  <!-- EN: {Target} cannot be reached -->
+  <AM.Error.Exec.NoWalk.Short>无法抵达{Target}的所在处</AM.Error.Exec.NoWalk.Short>
+  <!-- EN: {Target} is dead -->
+  <AM.Error.Grapple.DeadTarget>{Target}已死亡</AM.Error.Grapple.DeadTarget>
+  <!-- EN: {Target} is dead -->
+  <AM.Error.Exec.DeadTarget>{Target}已死亡</AM.Error.Exec.DeadTarget>
+  <!-- EN: {Grappler} is downed -->
+  <AM.Error.Grapple.Downed>{Grappler}已倒地</AM.Error.Grapple.Downed>
+  <!-- EN: {Exec} is downed -->
+  <AM.Error.Exec.Downed>{Exec}已倒地</AM.Error.Exec.Downed>
+  <!-- EN: {Target} is downed. Downed pawns cannot be executed. -->
+  <AM.Error.Exec.DownedTarget>{Target}已倒地。无法对倒地单位施展终结技。</AM.Error.Exec.DownedTarget>
+  <!-- EN: {Target} is downed -->
+  <AM.Error.Exec.DownedTarget.Short>{Target}已倒地</AM.Error.Exec.DownedTarget.Short>
+  <!-- EN: {Target} is not a valid target. -->
+  <AM.Error.Exec.BadRace>{Target}不是有效的目标。</AM.Error.Exec.BadRace>
+  <!-- EN: {Target} is not a valid target -->
+  <AM.Error.Exec.BadRace.Short>{Target}不是有效的目标。</AM.Error.Exec.BadRace.Short>
+
+  <!-- EN: {Exec} has no weapon and cannot use their fists: {Additional} -->
+  <AM.Error.Exec.CannotFist>{Exec}未装备近战武器且无法徒手格斗：{Additional}</AM.Error.Exec.CannotFist>
+  <!-- EN: {Exec} cannot use their fists -->
+  <AM.Error.Exec.CannotFist.Short>{Exec}无法徒手格斗</AM.Error.Exec.CannotFist.Short>
+
+  <!-- EN: {Exec} use their fists for execution: {Additional}. -->
+  <AM.Error.Exec.BadFists>{Exec}徒手施展终结技：{Additional}</AM.Error.Exec.BadFists>
+  <!-- EN: Cannot use their fists for execution -->
+  <AM.Error.Exec.BadFists.Short>无法徒手施展终结技</AM.Error.Exec.BadFists.Short>
+
+  <!-- EN: {Target} is already being lassoed -->
+  <AM.Error.Grapple.AlreadyTarget>{Target}已被套索捆住</AM.Error.Grapple.AlreadyTarget>
+  <!-- EN: Already being lassoed -->
+  <AM.Error.Grapple.AlreadyTarget.Short>已被套索捆住</AM.Error.Grapple.AlreadyTarget.Short>
+
+  <!-- EN: No line of sight -->
+  <AM.Error.Grapple.MissingLOS>没有视线</AM.Error.Grapple.MissingLOS>
+
+  <!-- EN: {Target} is out of reach of {Grappler}'s lasso -->
+  <AM.Error.Grapple.TooFar>{Target}已超出{Grappler}的套索最大抛投距离</AM.Error.Grapple.TooFar>
+  <!-- EN: Too far away -->
+  <AM.Error.Grapple.TooFar.Short>距离过远</AM.Error.Grapple.TooFar.Short>
+
+  <!-- EN: {Target} cannot be lassoed right now -->
+  <AM.Error.Grapple.InAnimation>现在无法对{Target}抛投套索</AM.Error.Grapple.InAnimation>
+  <!-- EN: {Grappler} cannot lasso right now -->
+  <AM.Error.Grapple.SelfInAnimation>{Grappler}现在无法抛投套索</AM.Error.Grapple.SelfInAnimation>
+  <!-- EN: {Grappler} cannot execute anyone right now -->
+  <AM.Error.Exec.SelfInAnimation>{Grappler}现在无法施展终结技</AM.Error.Exec.SelfInAnimation>
+  <!-- EN: {Target} cannot be executed right now -->
+  <AM.Error.Exec.InAnimation>现在无法对{Target}施展终结技</AM.Error.Exec.InAnimation>
+
+  <!-- EN: {Target} is too heavy for {Grappler} to lasso -->
+  <AM.Error.Grapple.Mass>{Target}重量过重，{Grappler}无法对其抛投套索</AM.Error.Grapple.Mass>
+  <!-- EN: {Target} is too heavy -->
+  <AM.Error.Grapple.Mass.Short>{Target}重量过重</AM.Error.Grapple.Mass.Short>
+
+  <!-- EN: {Target} is too large for {Grappler} to lasso -->
+  <AM.Error.Grapple.Size>{Target}体型过大，{Grappler}无法对其抛投套索</AM.Error.Grapple.Size>
+  <!-- EN: {Target} is too large -->
+  <AM.Error.Grapple.Size.Short>{Target}体型过大</AM.Error.Grapple.Size.Short>
+
+  <!-- EN: {Grappler}'s lasso is on cooldown -->
+  <AM.Error.Grapple.Cooldown>{Grappler}的套索正在冷却</AM.Error.Grapple.Cooldown>
+  <!-- EN: Lasso on cooldown -->
+  <AM.Error.Grapple.Cooldown.Short>套索正在冷却</AM.Error.Grapple.Cooldown.Short>
+
+  <!-- EN: {Grappler} does not have the required melee skill ({MeleeSkill}) to use their lasso -->
+  <AM.Error.Grapple.SkillIssue>{Grappler}的格斗技能等级不足（{MeleeSkill}），无法抛投套索</AM.Error.Grapple.SkillIssue>
+  <!-- EN: Not enough melee skill -->
+  <AM.Error.Grapple.SkillIssue.Short>格斗技能等级不足</AM.Error.Grapple.SkillIssue.Short>
+
+  <!-- EN: {Grappler} does not have the required manipulation to use their lasso -->
+  <AM.Error.Grapple.Manipulation>{Grappler}的操作能力不足，无法抛投套索</AM.Error.Grapple.Manipulation>
+  <!-- EN: Not enough manipulation -->
+  <AM.Error.Grapple.Manipulation.Short>操作能力不足</AM.Error.Grapple.Manipulation.Short>
+
+  <!-- EN: There is no free spot around {Grappler} to drag {Target} to -->
+  <AM.Error.Grapple.NoDest>{Grappler}附近没有可通行的地块，无法将{Target}拉至自身的近战攻击范围内</AM.Error.Grapple.NoDest>
+  <!-- EN: No free spot around {Grappler} -->
+  <AM.Error.Grapple.NoDest.Short>{Grappler}附近没有可通行的地块</AM.Error.Grapple.NoDest.Short>
+
+  <!-- EN: {Exec} is not wielding a valid melee weapon -->
+  <AM.Error.Exec.NoWeapon>{Exec}未装备有效的近战武器</AM.Error.Exec.NoWeapon>
+  <!-- EN: No melee weapon -->
+  <AM.Error.Exec.NoWeapon.Short>没有近战武器</AM.Error.Exec.NoWeapon.Short>
+
+  <!-- EN: {Exec}'s execution is on cooldown -->
+  <AM.Error.Exec.Cooldown>{Exec}的终结技正在冷却</AM.Error.Exec.Cooldown>
+  <!-- EN: Execution on cooldown -->
+  <AM.Error.Exec.Cooldown.Short>终结技正在冷却</AM.Error.Exec.Cooldown.Short>
+
+  <!-- EN: {Exec} cannot perform any execution animations using their {Weapon}.\nThis is probably due to a lack of melee skill or because all animations are disabled in the mod settings. -->
+  <AM.Error.Exec.NoAnims>{Exec}无法使用{Weapon}来施展终结技。\n造成这种情况的原因可能是{Exec}的格斗技能等级不足或在mod设置中禁用了所有可用的终结技。</AM.Error.Exec.NoAnims>
+  <!-- EN: No animations available -->
+  <AM.Error.Exec.NoAnims.Short>没有可用的终结技</AM.Error.Exec.NoAnims.Short>
+
+  <!-- EN: There is not enough space to perform any execution animation here -->
+  <AM.Error.Exec.NoSpace>空间不足，无法施展终结技</AM.Error.Exec.NoSpace>
+  <!-- EN: Not enough space -->
+  <AM.Error.Exec.NoSpace.Short>空间不足</AM.Error.Exec.NoSpace.Short>
+
+  <!-- EN: {Exec} cannot reach {Target} by walking, and their lasso is unavailable or unusable. -->
+  <AM.Error.Exec.NoPath>{Exec}无法抵达{Target}的所在处，其装备的套索也暂不可用。</AM.Error.Exec.NoPath>
+  <!-- EN: No path to target -->
+  <AM.Error.Exec.NoPath.Short>没有路径</AM.Error.Exec.NoPath.Short>
+
+  <!-- EN: Base Value: {0} -->
+  <AM.Stats.BaseValue>基础值：{0}</AM.Stats.BaseValue>
+  <!-- EN: Melee Skill ({0}) Effect: {1} -->
+  <AM.Stats.MeleeSkillOffset>格斗技能等级（{0}）影响：{1}</AM.Stats.MeleeSkillOffset>
+  <!-- EN: Consciousness ({0}) Effect: {1} -->
+  <AM.Stats.ConsciousnessOffset>意识（{0}）影响：{1}</AM.Stats.ConsciousnessOffset>
+  <!-- EN: Manipulation ({0}) Effect: {1} -->
+  <AM.Stats.ManipulationOffset>操作能力（{0}）影响：{1}</AM.Stats.ManipulationOffset>
+  <!-- EN: Weapon Damage Type ({0}) Effect: {1} -->
+  <AM.Stats.WeaponDamageTypeOffset>武器伤害类型（{0}）影响：{1}</AM.Stats.WeaponDamageTypeOffset>
+  <!-- EN: Weapon DPS ({0}) Effect: {1} -->
+  <AM.Stats.WeaponDPSCoef>武器每秒伤害（{0}）影响：{1}</AM.Stats.WeaponDPSCoef>
+  <!-- EN: No Melee Weapon Equipped: {0} -->
+  <AM.Stats.NoWeapon>未装备近战武器：{0}</AM.Stats.NoWeapon>
+  <!-- EN: Global {0} Multiplier (from mod settings): {1} -->
+  <AM.Stats.GlobalCoef>全局{0}乘数（基于Mod设置）：{1}</AM.Stats.GlobalCoef>
+  <!-- EN: Friendly Pawn Multiplier (from mod settings): x{0} -->
+  <AM.Stats.FriendlyCoef>友方单位乘数（基于Mod设置）：x{0}</AM.Stats.FriendlyCoef>
+  <!-- EN: Melee Skill Multiplier: x{0} -->
+  <AM.Stats.SkillCoef>格斗技能等级乘数：x{0}</AM.Stats.SkillCoef>
+  <!-- EN: Hostile Pawn Multiplier (from mod settings): x{0} -->
+  <AM.Stats.EnemyCoef>敌方单位乘数（基于Mod设置）：x{0}</AM.Stats.EnemyCoef>
+  <!-- EN: lethality -->
+  <AM.Stats.Lethality>致死几率</AM.Stats.Lethality>
+  <!-- EN: duel ability -->
+  <AM.Stats.DuelAbility>决斗能力</AM.Stats.DuelAbility>
+  <!-- EN: Friendly Pawn Bonus (from mod settings): {0} -->
+  <AM.Stats.FriendlyPawnBonus>友方单位加成（基于Mod设置）：{0}</AM.Stats.FriendlyPawnBonus>
+
+  <!-- EN: Cast unique skill '{0}' on {1} -->
+  <AM.Skill.Cast>对{1}施展特殊技“{0}”</AM.Skill.Cast>
+  <!-- EN: Can't cast {0}: {1} -->
+  <AM.Skill.CantCast>无法施展特殊技“{0}”：{1}</AM.Skill.CantCast>
+  <!-- EN: Can't cast {0} on {1} right now. -->
+  <AM.Skill.CantCastGeneric>现在无法对{1}施展特殊技“{0}”。</AM.Skill.CantCastGeneric>
+  <!-- EN: Target invalid state. -->
+  <AM.Skill.BadTargetState>目标无效。</AM.Skill.BadTargetState>
+  <!-- EN: The skill is already active. -->
+  <AM.Skill.AlreadyActive>特殊技已施展。</AM.Skill.AlreadyActive>
+  <!-- EN: On cooldown for {0} seconds. -->
+  <AM.Skill.OnCooldown>正在冷却（剩余时间：{0}）。</AM.Skill.OnCooldown>
+  <!-- EN: On cooldown for {0} seconds (because of recent execution). -->
+  <AM.Skill.OnCooldownExec>正在冷却（最近施展过终结技，剩余时间：{0}）。</AM.Skill.OnCooldownExec>
+  <!-- EN: Missing required weapon. -->
+  <AM.Skill.BadWeapon>缺少所需武器。</AM.Skill.BadWeapon>
+
+  <!-- Gilgamesh skill -->
+  <!-- EN: Psylink level {0} is below required level {1}. -->
+  <AM.Skill.Gilgamesh.LowPsy>施展特殊技需要启灵神经等级为{1}，但目前只有{0}。</AM.Skill.Gilgamesh.LowPsy>
+  <!-- EN: Melee level {0} is below required level {1}. -->
+  <AM.Skill.Gilgamesh.LowMelee>施展特殊技需要格斗技能等级为{1}，但目前只有{0}。</AM.Skill.Gilgamesh.LowMelee>
+
+  <!-- EN: The invisibilty optimization has been disabled by the Melee Animation mod due to visual bugs. -->
+  <AM.Patch.OptDisabled>由于产生了一些视觉上的bug，不可见优化已被本Mod禁用。</AM.Patch.OptDisabled>
+
+  <!-- Translate settings menu: -->
+  <!-- EN: Preset: -->
+  <SimpleSettings.Preset>预设：</SimpleSettings.Preset>
+  <!-- EN: Custom -->
+  <SimpleSettings.Preset.Custom>自定义</SimpleSettings.Preset.Custom>
+  <!-- EN: Right-click to set an option back to its default value. -->
+  <SimpleSettings.ClickToReset>右键单击某个选项以将其重设为默认值。</SimpleSettings.ClickToReset>
+
+  <!-- EN: Default -->
+  <AM.AMSettings.Presets.Default>默认</AM.AMSettings.Presets.Default>
+  <!-- EN: Enables all features the mod has to offer -->
+  <AM.AMSettings.Presets.Default.Desc>启用本Mod提供的所有重要功能。</AM.AMSettings.Presets.Default.Desc>
+
+  <!-- EN: No Lassos -->
+  <AM.AMSettings.Presets.NoLassos>无套索</AM.AMSettings.Presets.NoLassos>
+  <!-- EN: Everything is enabled except lassos. You can still craft and use lassos manually if you want but enemies will not spawn with or use lassos.
+
+* Adds melee attack animations.
+* Adds melee weapon idle animations
+* Adds duels
+* Adds execution animations
+* Adds Unique Skills -->
+  <AM.AMSettings.Presets.NoLassos.Desc>启用除套索以外的全部功能。你仍可以凭自己的喜好制作和使用套索，但敌对NPC生成时将不会装备和使用套索。\n\n* 启用近战攻击动画\n* 启用近战武器待机动画\n* 启用决斗功能\n* 启用终结技功能\n* 启用特殊技功能</AM.AMSettings.Presets.NoLassos.Desc>
+
+  <!-- EN: Vanilla+ -->
+  <AM.AMSettings.Presets.VanillaPlus>原版增强</AM.AMSettings.Presets.VanillaPlus>
+  <!-- EN: Keeps things very close to vanilla combat. Your pawns will not use lassos unless you manually instruct them to. Your pawns can not do executions, ever. Enemies will never do executions or use lassos.
+
+* Adds melee attack animations.
+* Adds melee weapon idle animations
+* Lassos can be used by friendly pawns, but must be equipped and triggered manually. -->
+  <AM.AMSettings.Presets.VanillaPlus.Desc>启用不偏离原版战斗风格的功能。除非由你手动操作，否则你的殖民者们将不会使用套索。此外，你的殖民者们也无法施展终结技。当然，敌对单位也永远无法使用套索或施展终结技。\n\n* 启用近战攻击动画\n* 启用近战武器待机动画\n* 友方单位可以使用套索，但必须由你手动装备和操作</AM.AMSettings.Presets.VanillaPlus.Desc>
+
+  <!-- EN: General -->
+  <AM.AMSettings.Settings.Header.General>常规</AM.AMSettings.Settings.Header.General>
+  <!-- EN: Always Animate Weapons -->
+  <AM.AMSettings.Settings.AnimateAtIdle>启用近战武器动画</AM.AMSettings.Settings.AnimateAtIdle>
+  <!-- EN: If enabled, melee weapons are animated whenever they are held, such as when standing drafted or while moving in combat.
+If disabled, animations are limited to duels, special skills and executions.
+
+<b>Leaving this enabled can have a large performance impact on densely populated maps.
+Please reload your save after changing this setting.</b> -->
+  <AM.AMSettings.Settings.AnimateAtIdle.Desc>如果启用此项，则当单位持有近战武器时会触发动画效果（包括移动、征召站立和战斗）。如果禁用此项，则只会在决斗、施展特殊技和终结技时触发动画效果。\n\n&lt;b&gt;如果你的地图上存在大量单位，启用此项可能会对游戏性能造成不小的影响。更改此项后需要重新加载存档才能生效。&lt;/b&gt;</AM.AMSettings.Settings.AnimateAtIdle.Desc>
+  <!-- EN: Enable Unique Skills -->
+  <AM.AMSettings.Settings.EnableUniqueSkills>启用特殊技功能</AM.AMSettings.Settings.EnableUniqueSkills>
+  <!-- EN: Enables or disables the Unique Skill system.
+Unique Skills are powerful attacks or abilities that are unlocked under certain conditions.
+Only your colonists can use these skills and they must be activated manually. See the Steam workshop page for more info. -->
+  <AM.AMSettings.Settings.EnableUniqueSkills.Desc>启用/禁用特殊技功能。\n特殊技是满足特殊条件时才能施展的强力攻击或能力。\n只有你的殖民者们才能施展特殊技，且必须由你手动操作。如果想了解更多信息，请浏览本Mod的创意工坊界面。</AM.AMSettings.Settings.EnableUniqueSkills.Desc>
+  <!-- EN: Animated Pawns Considered Invisible -->
+  <AM.AMSettings.Settings.AllowInvisiblePawns>单位触发终结技动画时进入隐形状态</AM.AMSettings.Settings.AllowInvisiblePawns>
+  <!-- EN: When in an animation, such as an execution, pawns are considered invisible by all other pawns and turrets: they will not be actively targeted or shot at. This makes executions less risky.
+Note that pawns in animations can still take damage, such as from stray gunfire or explosions. -->
+  <AM.AMSettings.Settings.AllowInvisiblePawns.Desc>当触发终结技动画时，参与的双方都将进入隐形状态，不会被其他单位和炮塔瞄准或射击。这能有效降低施展终结技的风险。\n注意：触发终结技动画的单位并不是无敌的，他们仍会正常受到伤害（比如流弹、爆炸等）。</AM.AMSettings.Settings.AllowInvisiblePawns.Desc>
+  <!-- EN: Global Animation Speed -->
+  <AM.AMSettings.Settings.GlobalAnimationSpeed>全局动画速度</AM.AMSettings.Settings.GlobalAnimationSpeed>
+  <!-- EN: A modifier on the speed of all animations.
+Higher is faster. -->
+  <AM.AMSettings.Settings.GlobalAnimationSpeed.Desc>调整所有动画的速度。\n此项的值越大，动画速度就越快。</AM.AMSettings.Settings.GlobalAnimationSpeed.Desc>
+  <!-- EN: Individual Animation Settings -->
+  <AM.AMSettings.Settings.animSettings>单独动画设置</AM.AMSettings.Settings.animSettings>
+  <AM.AMSettings.Settings.animSettings.Desc>单独动画设置</AM.AMSettings.Settings.animSettings.Desc>
+  <!-- EN: Lasso -->
+  <AM.AMSettings.Settings.Header.Lasso>套索</AM.AMSettings.Settings.Header.Lasso>
+  <!-- EN: Auto Lasso -->
+  <AM.AMSettings.Settings.AutoGrapple>自动使用套索</AM.AMSettings.Settings.AutoGrapple>
+  <!-- EN: If true, your colonists will automatically use their lassos against enemies.
+
+This only changes the <b>default</b> setting. It can also be configured on a per-pawn basis. -->
+  <AM.AMSettings.Settings.AutoGrapple.Desc>如果启用此项，你的殖民者们会自动对敌方单位使用套索。\n\n这只会改变&lt;b&gt;默认&lt;/b&gt;设置。你也可以在游戏内的「方案」面板中为每名殖民者单独调整是否自动使用套索。</AM.AMSettings.Settings.AutoGrapple.Desc>
+  <!-- EN: Automatic Lasso Average Interval (Friendly) -->
+  <AM.AMSettings.Settings.GrappleAttemptMTBSeconds>自动使用套索平均间隔（友方）</AM.AMSettings.Settings.GrappleAttemptMTBSeconds>
+  <!-- EN: This is the average time, in seconds, at which friendly pawns will attempt to use their lasso to pull an enemy into melee range.
+If their execution is off cooldown and Auto Execute is enabled, they will immediately execute the lassoed target too. -->
+  <AM.AMSettings.Settings.GrappleAttemptMTBSeconds.Desc>友方单位自动使用套索将目标拉入近战攻击范围内的平均间隔时间（秒）。\n如果他们的终结技未处于冷却状态，且同时启用了“自动施展终结技”功能，则会先用套索将目标拉至身前再施展终结技。</AM.AMSettings.Settings.GrappleAttemptMTBSeconds.Desc>
+  <!-- EN: Lasso Commonality -->
+  <AM.AMSettings.Settings.LassoSpawnChance>套索生成率</AM.AMSettings.Settings.LassoSpawnChance>
+  <!-- EN: This is the % chance for any <b>melee fighter</b> pawn to spawn with a lasso equipped.
+Set this to 0% to disable natural lasso generation on pawns. -->
+  <AM.AMSettings.Settings.LassoSpawnChance.Desc>所有人类&lt;b&gt;近战&lt;/b&gt;单位在生成时装备套索的几率。\n此项的值为0%时将禁用套索生成。</AM.AMSettings.Settings.LassoSpawnChance.Desc>
+  <!-- EN: Enemies Can Lasso -->
+  <AM.AMSettings.Settings.EnemiesCanGrapple>敌方单位可以使用套索</AM.AMSettings.Settings.EnemiesCanGrapple>
+  <!-- EN: Can enemies use lassos (if they have any) to pull your colonists into melee range? -->
+  <AM.AMSettings.Settings.EnemiesCanGrapple.Desc>敌方单位是否会使用套索（如果他们装备了的话）将你的殖民者们拉入近战攻击范围内？</AM.AMSettings.Settings.EnemiesCanGrapple.Desc>
+  <!-- EN: Automatic Lasso Average Interval (Enemy) -->
+  <AM.AMSettings.Settings.GrappleAttemptMTBSecondsEnemy>自动使用套索平均间隔（敌方）</AM.AMSettings.Settings.GrappleAttemptMTBSecondsEnemy>
+  <!-- EN: This is the average time, in seconds, at which enemy pawns will attempt to use their lasso to pull a target into melee range.
+If their execution is off cooldown and 'Enemies Can Perform Executions' is enabled, they will immediately execute the lassoed target too. -->
+  <AM.AMSettings.Settings.GrappleAttemptMTBSecondsEnemy.Desc>敌方单位自动使用套索将目标拉入近战攻击范围内的平均间隔时间（秒）。\n如果他们的终结技未处于冷却状态，且同时启用了“敌方单位可以施展终结技”功能，则会先用套索将目标拉至身前再施展终结技。</AM.AMSettings.Settings.GrappleAttemptMTBSecondsEnemy.Desc>
+  <!-- EN: Minimum Melee Skill -->
+  <AM.AMSettings.Settings.MinMeleeSkillToLasso>最低格斗技能等级需求</AM.AMSettings.Settings.MinMeleeSkillToLasso>
+  <!-- EN: The minumum melee skill required to use a lasso.
+Affects all pawns. -->
+  <AM.AMSettings.Settings.MinMeleeSkillToLasso.Desc>当某单位的格斗技能达到几级以上时，才能使用套索。\n对所有单位生效。</AM.AMSettings.Settings.MinMeleeSkillToLasso.Desc>
+  <!-- EN: Minimum Manipulation -->
+  <AM.AMSettings.Settings.MinManipulationToLasso>最低操作能力需求</AM.AMSettings.Settings.MinManipulationToLasso>
+  <!-- EN: The minimum Manipulation stat required to use a lasso.
+Affects all pawns. -->
+  <AM.AMSettings.Settings.MinManipulationToLasso.Desc>当某单位的操作能力达到多少以上时，才能使用套索。\n对所有单位生效。</AM.AMSettings.Settings.MinManipulationToLasso.Desc>
+  <!-- EN: Max Pawn Mass -->
+  <AM.AMSettings.Settings.MaxLassoMass>最大重量限制</AM.AMSettings.Settings.MaxLassoMass>
+  <!-- EN: The maximum mass that a pawn can have in order for it to be lassoed. The mass is measured in kilograms. You can check the mass of pawns in their Stat sheet.
+Set to zero to disable the mass limit. -->
+  <AM.AMSettings.Settings.MaxLassoMass.Desc>当某单位的重量（kg）达到多少以上时，将无法被套索拉动。你可以在单位的属性选项卡中查看他们的重量。\n\n此项的值为0时将禁用最大重量限制。</AM.AMSettings.Settings.MaxLassoMass.Desc>
+  <!-- EN: Max Pawn Size -->
+  <AM.AMSettings.Settings.MaxLassoBodySize>最大体型限制</AM.AMSettings.Settings.MaxLassoBodySize>
+  <!-- EN: The maximum 'body size' that a pawn can have in order for it to be lassoed.
+For reference, here are some example body sizes:
+• Chicken: 0.3
+• Human: 1
+• Boomalope: 2
+• Warg: 3
+• Thrumbo: 4
+
+
+Set to zero to disable the body size limit. -->
+  <AM.AMSettings.Settings.MaxLassoBodySize.Desc>当某单位的体型达到多少以上时，将无法被套索拉动。\n作为参考，这里列出几种单位的体型：\n• 鸡：0.3\n• 人类：1\n• 爆炸羊：2\n• 犀牛：3\n• 敲击兽：4\n\n此项的值为0时将禁用最大体型限制。</AM.AMSettings.Settings.MaxLassoBodySize.Desc>
+  <!-- EN: Lasso Travel Speed -->
+  <AM.AMSettings.Settings.GrappleSpeed>套索抛投速度</AM.AMSettings.Settings.GrappleSpeed>
+  <!-- EN: Adjusts the speed <b>(not cooldown)</b> of lassos, making it faster or slower to ensnare and pull in an enemy.
+Higher values make the lasso faster.
+Affects all pawns. -->
+  <AM.AMSettings.Settings.GrappleSpeed.Desc>调整套索的抛投速度，使其能更快或更慢地将目标拉入近战攻击范围内。\n此项的值越大，速度就越快。\n对所有单位生效。</AM.AMSettings.Settings.GrappleSpeed.Desc>
+  <!-- EN: Max Building Fill For Lasso Drag -->
+  <AM.AMSettings.Settings.MaxFillPctForLasso>最大掩体效果限制</AM.AMSettings.Settings.MaxFillPctForLasso>
+  <!-- EN: The maximum 'fill' percentage of a building that a pawn can be dragged through by a lasso.
+Lower values mean that pawns can <b>not</b> be dragged through/over partial cover such as sand bags or embrasures. A value of 100% means that the lasso can pull pawns though/over anything except completely solid walls and buildings. -->
+  <AM.AMSettings.Settings.MaxFillPctForLasso.Desc>当某建筑结构的掩体效果达到多少以上时，将无法使用套索拉动位于其后方的目标。\n此项的值过低时，可能会无法拉动位于沙袋、射击墙等建筑结构后的目标。此项的值为100%时，只有普通墙体、门、营养膏合成机等建筑结构后的目标无法被拉动（由于原版的掩体效果存在上限值，虽然它们的掩体效果都显示为75%，但实际上写在XML文件中的值是100%）。</AM.AMSettings.Settings.MaxFillPctForLasso.Desc>
+  <!-- EN: Executions & Duels -->
+  <AM.AMSettings.Settings.Header.Executions___Duels>终结技&amp;决斗</AM.AMSettings.Settings.Header.Executions___Duels>
+  <!-- EN: Enable Executions -->
+  <AM.AMSettings.Settings.EnableExecutions>启用终结技</AM.AMSettings.Settings.EnableExecutions>
+  <!-- EN: Entirely enables or disables the execution system. Disabling this means that no pawns will every be able to do executions, and the option is removed from the UI. -->
+  <AM.AMSettings.Settings.EnableExecutions.Desc>启用/禁用终结技功能。禁用此项意味着任何单位都无法施展终结技，且相关的互动选项和界面会被完全移除。</AM.AMSettings.Settings.EnableExecutions.Desc>
+  <!-- EN: Auto Execute -->
+  <AM.AMSettings.Settings.AutoExecute>自动施展终结技</AM.AMSettings.Settings.AutoExecute>
+  <!-- EN: If true, your pawns will automatically execute enemy pawns in combat, without your input.
+This may include opportunistically using their grappling hooks if the Auto Grapple setting is enabled.
+
+This only changes the <b>default</b> setting. It can also be configured on a per-pawn basis. -->
+  <AM.AMSettings.Settings.AutoExecute.Desc>如果启用此项，你的殖民者们会自动在战斗中对敌方单位施展终结技。\n如果同时启用了“自动使用套索”功能，他们有几率会先用套索将目标拉至身前再施展终结技。\n\n这只会改变&lt;b&gt;默认&lt;/b&gt;设置。你也可以在游戏内的「方案」面板中为每名殖民者单独调整是否自动施展终结技。</AM.AMSettings.Settings.AutoExecute.Desc>
+  <!-- EN: Enemies Can Perform Executions -->
+  <AM.AMSettings.Settings.EnemiesCanExecute>敌方单位可以施展终结技</AM.AMSettings.Settings.EnemiesCanExecute>
+  <!-- EN: Can enemies perform execution animations? -->
+  <AM.AMSettings.Settings.EnemiesCanExecute.Desc>敌方单位是否会施展终结技？</AM.AMSettings.Settings.EnemiesCanExecute.Desc>
+  <!-- EN: Automatic Execution Average Interval (Friendly) -->
+  <AM.AMSettings.Settings.ExecuteAttemptMTBSeconds>自动施展终结技平均间隔（友方）</AM.AMSettings.Settings.ExecuteAttemptMTBSeconds>
+  <!-- EN: This is the average time, in seconds, at which friendly pawns will attempt to start an execution animation on the enemy they are currently fighting.
+For example, if this is set to 5 and your pawn is fighting in melee, an execution animation will be triggered on average after 5 seconds.
+This does not affect execution cooldown, which is a pawn-specific stat.
+
+Lower values can greatly impact performance on populated maps. -->
+  <AM.AMSettings.Settings.ExecuteAttemptMTBSeconds.Desc>友方单位自动对目标施展终结技的平均间隔时间（秒）。\n举例来说，如果将此项的值设为5，且某个友方单位正处于近战状态中，他将会在平均5秒后施展终结技。\n此项的值不会影响终结技的冷却时间。\n\n如果你的地图上存在大量单位，此项的值过低时可能会对游戏性能造成不小的影响。</AM.AMSettings.Settings.ExecuteAttemptMTBSeconds.Desc>
+  <!-- EN: Automatic Execution Average Interval (Enemy) -->
+  <AM.AMSettings.Settings.ExecuteAttemptMTBSecondsEnemy>自动施展终结技平均间隔（敌方）</AM.AMSettings.Settings.ExecuteAttemptMTBSecondsEnemy>
+  <!-- EN: This is the average time, in seconds, at which enemy pawns will attempt to start an execution animation on the target they are currently fighting.
+For example, if this is set to 5 and an enemy is fighting in melee, an execution animation will be triggered on average after 5 seconds.
+This does not affect execution cooldown, which is a pawn-specific stat.
+
+Lower values can greatly impact performance on populated maps. -->
+  <AM.AMSettings.Settings.ExecuteAttemptMTBSecondsEnemy.Desc>敌方单位自动对目标施展终结技的平均间隔时间（秒）。\n举例来说，如果将此项的值设为5，且某个敌方单位正处于近战状态中，他将会在平均5秒后施展终结技。\n此项的值不会影响终结技的冷却时间。\n\n如果你的地图上存在大量单位，此项的值过低时可能会对游戏性能造成不小的影响。</AM.AMSettings.Settings.ExecuteAttemptMTBSecondsEnemy.Desc>
+  <!-- EN: Animals Can Be Executed -->
+  <AM.AMSettings.Settings.AnimalsCanBeExecuted>可以对动物施展终结技</AM.AMSettings.Settings.AnimalsCanBeExecuted>
+  <!-- EN: Allows animals to be executed.
+You are a bad person if you enable this. -->
+  <AM.AMSettings.Settings.AnimalsCanBeExecuted.Desc>允许对动物施展终结技。\n你怎么能对小动物下得了手的？</AM.AMSettings.Settings.AnimalsCanBeExecuted.Desc>
+  <!-- EN: Execution Lethality Modifier -->
+  <AM.AMSettings.Settings.ExecutionLethalityModifier>终结技致死几率</AM.AMSettings.Settings.ExecutionLethalityModifier>
+  <!-- EN: A general modifier on the lethality of execution animations. Higher values make executions more lethal. Affects all pawns. -->
+  <AM.AMSettings.Settings.ExecutionLethalityModifier.Desc>调整终结技的致死几率。此项的值越高，终结技就越容易致死。\n对所有单位生效。</AM.AMSettings.Settings.ExecutionLethalityModifier.Desc>
+  <!-- EN: Executions Are Non Lethal On Friendlies -->
+  <AM.AMSettings.Settings.ExecutionsOnFriendliesAreNotLethal>对友方单位施展终结技不会致死</AM.AMSettings.Settings.ExecutionsOnFriendliesAreNotLethal>
+  <!-- EN: If enabled, execution animations on friendly pawns are always non-lethal regardless of other settings.
+Prisoners and slaves are considered friendly.
+
+Useful when trying to stop a mental break or prisoner uprising without causing a bloodbath. -->
+  <AM.AMSettings.Settings.ExecutionsOnFriendliesAreNotLethal.Desc>如果启用此项，无论其他设置如何，对友方单位施展终结技时总是不会致死。\n友方单位包括囚犯和奴隶。\n适合用来解决精神崩溃或囚犯越狱。</AM.AMSettings.Settings.ExecutionsOnFriendliesAreNotLethal.Desc>
+  <!-- EN: Execution Armor Strength -->
+  <AM.AMSettings.Settings.ExecutionArmorCoefficient>终结技护甲强度</AM.AMSettings.Settings.ExecutionArmorCoefficient>
+  <!-- EN: A multiplier on the effectiveness of armor when calculating execution animation outcome.
+Lower values decrease the effect of armor on the outcome, higher values increase the strength of armor.
+Set to 0% to make armor be ignored. -->
+  <AM.AMSettings.Settings.ExecutionArmorCoefficient.Desc>计算终结技的结果时，目标的护甲值对其造成影响的乘数。\n此项的值越低，护甲值对结果的影响越小。\n此项的值为0%时，将会直接无视护甲值。</AM.AMSettings.Settings.ExecutionArmorCoefficient.Desc>
+  <!-- EN: Executions Can Destroy Body Parts -->
+  <AM.AMSettings.Settings.ExecutionsCanDestroyBodyParts>终结技击杀可以摧毁身体部件</AM.AMSettings.Settings.ExecutionsCanDestroyBodyParts>
+  <!-- EN: If true, executions can destroy specific vital body parts, such as the heart or head.
+If false, the pawn is simply killed by 'magic' (no specific part takes damage)
+Note: if disabled, combat log generation does not work properly for the execution, and will give a default message: "<i>name was killed.</i>" -->
+  <AM.AMSettings.Settings.ExecutionsCanDestroyBodyParts.Desc>如果启用此项，则通过终结技击杀目标时可以摧毁其心脏、头等重要的身体部件。\n如果禁用此项，则被终结技击杀的目标的身体部件不会受到伤害，且只会在战斗日志中简单显示为“XX被杀死了”。</AM.AMSettings.Settings.ExecutionsCanDestroyBodyParts.Desc>
+  <!-- EN: Amount Skill Affects Execution Cooldown -->
+  <AM.AMSettings.Settings.MeleeSkillExecCooldownFactor>技能等级对终结技冷却时间的影响</AM.AMSettings.Settings.MeleeSkillExecCooldownFactor>
+  <!-- EN: The amount that melee skill affects execution cooldown time.
+Higher melee skill means lower cooldown, changing this value increases or decreases the effect of melee skill.
+Set to 0% to disable melee skill as a factor.
+
+Note: only affects friendly pawns. -->
+  <AM.AMSettings.Settings.MeleeSkillExecCooldownFactor.Desc>格斗技能等级对终结技冷却时间造成的影响。\n格斗技能等级越高，终结技冷却时间就越短，调整此项的值会提高/降低格斗技能等级的影响效果。\n此项的值为0%时，将会禁用格斗技能等级对终结技冷却时间造成的影响。\n注意：只对友方单位生效。</AM.AMSettings.Settings.MeleeSkillExecCooldownFactor.Desc>
+  <!-- EN: Execution Cooldown Factor (Friendly) -->
+  <AM.AMSettings.Settings.FriendlyExecCooldownFactor>终结技冷却时间系数（友方）</AM.AMSettings.Settings.FriendlyExecCooldownFactor>
+  <!-- EN: This adjust the execution cooldown time for friendly pawns. Lower values decrease the cooldown. You can see the final cooldown time in the pawn's stats. -->
+  <AM.AMSettings.Settings.FriendlyExecCooldownFactor.Desc>调整友方单位的终结技冷却时间。此项的值越低，冷却时间就越短。你可以在单位的属性选项卡中查看他们的实际冷却时间为多少。</AM.AMSettings.Settings.FriendlyExecCooldownFactor.Desc>
+  <!-- EN: Execution Cooldown Factor (Enemy) -->
+  <AM.AMSettings.Settings.EnemyExecCooldownFactor>终结技冷却时间系数（敌方）</AM.AMSettings.Settings.EnemyExecCooldownFactor>
+  <!-- EN: This adjust the execution cooldown time for hostile pawns. Lower values decrease the cooldown. You can see the final cooldown time in the pawn's stats. -->
+  <AM.AMSettings.Settings.EnemyExecCooldownFactor.Desc>调整敌方单位的终结技冷却时间。此项的值越低，冷却时间就越短。你可以在单位的属性选项卡中查看他们的实际冷却时间为多少。</AM.AMSettings.Settings.EnemyExecCooldownFactor.Desc>
+  <!-- EN: Min Duel Duration -->
+  <AM.AMSettings.Settings.MinDuelDuration>最小决斗持续时间</AM.AMSettings.Settings.MinDuelDuration>
+  <!-- EN: The minimum number of attacks in a duel. Just affects the duration of the animation, has no impact on the outcome of the duel. -->
+  <AM.AMSettings.Settings.MinDuelDuration.Desc>决斗时双方的最小过招次数。只会影响决斗的持续时间，不会使决斗的结果发生变化。</AM.AMSettings.Settings.MinDuelDuration.Desc>
+  <!-- EN: Max Duel Duration -->
+  <AM.AMSettings.Settings.MaxDuelDuration>最大决斗持续时间</AM.AMSettings.Settings.MaxDuelDuration>
+  <!-- EN: The maximum number of attacks in a duel. Just affects the duration of the animation, has no impact on the outcome of the duel. -->
+  <AM.AMSettings.Settings.MaxDuelDuration.Desc>决斗时双方的最大过招次数。只会影响决斗的持续时间，不会使决斗的结果发生变化。</AM.AMSettings.Settings.MaxDuelDuration.Desc>
+  <!-- EN: Friendly Duel Cooldown -->
+  <AM.AMSettings.Settings.FriendlyDuelCooldown>友方单位决斗冷却时间</AM.AMSettings.Settings.FriendlyDuelCooldown>
+  <!-- EN: The cooldown time, in seconds, after a friendly duel where a friendly duel cannot be started again. -->
+  <AM.AMSettings.Settings.FriendlyDuelCooldown.Desc>友方单位发起决斗后的冷却时间（秒）。处于冷却状态时无法再次发起决斗。</AM.AMSettings.Settings.FriendlyDuelCooldown.Desc>
+  <!-- EN: Visuals -->
+  <AM.AMSettings.Settings.Header.Visuals>视效</AM.AMSettings.Settings.Header.Visuals>
+  <!-- EN: Show Hands -->
+  <AM.AMSettings.Settings.ShowHands>显示双手贴图</AM.AMSettings.Settings.ShowHands>
+  <!-- EN: Should pawn hands be displayed holding melee weapons? -->
+  <AM.AMSettings.Settings.ShowHands.Desc>当单位持有近战武器时，是否显示其双手的贴图（两个圆球）？</AM.AMSettings.Settings.ShowHands.Desc>
+  <!-- EN: Damage Effect -->
+  <AM.AMSettings.Settings.Gore_DamageEffect>受伤特效</AM.AMSettings.Settings.Gore_DamageEffect>
+  <!-- EN: Enable or disable the damage affect in animations.
+The damage effect is normally a small, temporary puff of blood. -->
+  <AM.AMSettings.Settings.Gore_DamageEffect.Desc>启用/禁用近战动画中的受伤特效。\n受伤特效的表现形式通常为短暂喷血。</AM.AMSettings.Settings.Gore_DamageEffect.Desc>
+  <!-- EN: Blood (filth) -->
+  <AM.AMSettings.Settings.Gore_FloorBlood>血迹（污物）</AM.AMSettings.Settings.Gore_FloorBlood>
+  <!-- EN: Enable or disable the spawning of blood in animations.
+The blood is filth that must be cleaned up. Includes modded blood and mechanoid blood (oil). -->
+  <AM.AMSettings.Settings.Gore_FloorBlood.Desc>启用/禁用触发近战动画时生成血迹。\n这些血迹是需要清扫的地面污物。支持Mod添加的血迹（比如外星人种族）和机械体的血迹（实际上是机械碎片）。</AM.AMSettings.Settings.Gore_FloorBlood.Desc>
+  <!-- EN: Corpse Offset Mode -->
+  <AM.AMSettings.Settings.CorpseOffsetMode>尸体位置偏移</AM.AMSettings.Settings.CorpseOffsetMode>
+  <!-- EN: In order for the animation to transition seamlessly to regular gameplay, execution animations leave the corpse of the victim in non-vanilla positions and rotations.
+This offset can be confusing however, because the corpse no longer occupies the center of the tile.
+<b>Note:</b> The offset corpses are reset after a save-reload. -->
+  <AM.AMSettings.Settings.CorpseOffsetMode.Desc>为了让动画能在游戏中无缝且流畅地触发完毕，终结技动画会使受害者尸体的实际所在位置和贴图显示位置出现错位。\n注意：重新加载存档后会使尸体的位置偏移被重置。</AM.AMSettings.Settings.CorpseOffsetMode.Desc>
+  <!-- EN: Move Animation Speed -->
+  <AM.AMSettings.Settings.MoveAnimSpeedCoef>移动动画速度</AM.AMSettings.Settings.MoveAnimSpeedCoef>
+  <!-- EN: Changes the speed of the movement animations.
+Higher values increase the speed. This is just a visual change, it obviously doesn't change the pawn's movement speed. -->
+  <AM.AMSettings.Settings.MoveAnimSpeedCoef.Desc>调整单位移动时的动画速度。\n此项的值越大，动画速度就越快。当然，这只是单纯的视效变化，不会对单位的移动速度造成实际影响。</AM.AMSettings.Settings.MoveAnimSpeedCoef.Desc>
+  <!-- EN: Increase Animation Speed When Attacks Are Fast -->
+  <AM.AMSettings.Settings.SpeedUpAttackAnims>近战动画速度与近战攻击速度挂钩</AM.AMSettings.Settings.SpeedUpAttackAnims>
+  <!-- EN: If enabled, the speed of melee attack animations will be automatically increased to match the pawn's melee speed.
+If false, the attack animation speed will never change however the animation may be interrupted by the next attack animation starting before the last one ended.
+This is a purely visual change and does not affect combat. -->
+  <AM.AMSettings.Settings.SpeedUpAttackAnims.Desc>如果启用此项，则近战动画的速度将会随着单位的近战攻击速度而发生变化。\n如果禁用此项，则近战动画的速度将保持不变，但可能会出现上一次动画被下一次动画打断的情况。\n这只是单纯的视效变化，不会对战斗造成实际影响。</AM.AMSettings.Settings.SpeedUpAttackAnims.Desc>
+  <!-- EN: Idle Animation Average Interval -->
+  <AM.AMSettings.Settings.FlavourMTB>待机动画平均间隔</AM.AMSettings.Settings.FlavourMTB>
+  <!-- EN: Pawns standing with their weapon out (such as when drafted) will sometimes play an animation where they swing their weapon about, flourish it etc.
+This option controls the average time, in seconds, between the occurrence of this animation.
+Set to 0 to disable the animations entirely. -->
+  <AM.AMSettings.Settings.FlavourMTB.Desc>持有武器的单位待机时（比如被征召后站在原地），偶尔会触发挥动或摆弄武器的动画。\n此项控制触发待机动画的平均时间（秒）。\n此项的值为0%时将禁用触发待机动画。</AM.AMSettings.Settings.FlavourMTB.Desc>
+  <!-- EN: Attack Pause Duration -->
+  <AM.AMSettings.Settings.AttackPauseDuration>近战动画停滞持续时间</AM.AMSettings.Settings.AttackPauseDuration>
+  <!-- EN: When doing a regular melee attack, the animation will very briefly pause at the point when the weapon intersects the target.
+This lets you know whether an attack connected, as well as giving the hit a bit more visual <i>oomph</i>.
+This setting changes the duration of that pause, or disables it entirely. This is a purely visual change and does not affect combat. -->
+  <AM.AMSettings.Settings.AttackPauseDuration.Desc>当进行普通近战攻击时，近战动画会在武器与目标接触时短暂停滞，让你能够更清楚地观察到攻击是否命中。\n更改此项可以调整近战动画停滞效果的持续时间，或将其完全禁用。\n这只是单纯的视效变化，不会对战斗造成实际影响。</AM.AMSettings.Settings.AttackPauseDuration.Desc>
+  <!-- EN: Weapon Trail Color -->
+  <AM.AMSettings.Settings.TrailColor>武器拖尾特效颜色</AM.AMSettings.Settings.TrailColor>
+  <!-- EN: The base color of weapon trails. If you set the alpha to 0, trails will be disabled. -->
+  <AM.AMSettings.Settings.TrailColor.Desc>武器拖尾特效的颜色。如果你将Alpha值设为0，则会禁用武器拖尾特效。</AM.AMSettings.Settings.TrailColor.Desc>
+  <!-- EN: Weapon Trail Length -->
+  <AM.AMSettings.Settings.TrailLengthScale>武器拖尾特效长度</AM.AMSettings.Settings.TrailLengthScale>
+  <!-- EN: A multiplier on the length of weapon trails. If 0%, trails are disabled. -->
+  <AM.AMSettings.Settings.TrailLengthScale.Desc>武器拖尾特效的长度会乘以此项的值。\n如果此项的值为0%，则会禁用武器拖尾特效。</AM.AMSettings.Settings.TrailLengthScale.Desc>
+  <!-- EN: Draw Names In Animation -->
+  <AM.AMSettings.Settings.DrawNamesInAnimation>触发动画时显示单位名字</AM.AMSettings.Settings.DrawNamesInAnimation>
+  <!-- EN: If true, the name of pawns is drawn below them, just like in the base game.
+If false, the name is not drawn, for a more cinematic animation. -->
+  <AM.AMSettings.Settings.DrawNamesInAnimation.Desc>如果启用此项，则触发终结技、决斗等动画时会像原版一样在单位下方显示他们的名字。\n如果禁用此项，则不会在单位下方显示他们的名字，让动画看起来更具影片感。</AM.AMSettings.Settings.DrawNamesInAnimation.Desc>
+  <!-- EN: Show Execution Outcome Text -->
+  <AM.AMSettings.Settings.ShowExecutionMotes>显示终结技结果文本</AM.AMSettings.Settings.ShowExecutionMotes>
+  <!-- EN: Enables or disables the text popup that shows the outcome of an execution (i.e. injure, down or kill) when an execution animation plays. -->
+  <AM.AMSettings.Settings.ShowExecutionMotes.Desc>启用/禁用触发终结技动画时会弹出的结果文本（击伤、击杀或击倒）。</AM.AMSettings.Settings.ShowExecutionMotes.Desc>
+  <!-- EN: Performance -->
+  <AM.AMSettings.Settings.Header.Performance>性能</AM.AMSettings.Settings.Header.Performance>
+  <!-- EN: Max Processing Threads -->
+  <AM.AMSettings.Settings.MaxProcessingThreads>最大处理线程</AM.AMSettings.Settings.MaxProcessingThreads>
+  <!-- EN: The maximum number of CPU threads to use when processing pawns for automatic executions & lasso usage.
+If set to 0, the thread count is automatically determined based on your CPU, and if set to 1 then multi-threaded processing is disabled.
+Set to 1 if you experience error spam caused by a mod conflict, although it will decrease performance considerably. -->
+  <AM.AMSettings.Settings.MaxProcessingThreads.Desc>调整当游戏处理单位自动使用套索/施展终结技时，调用的最大CPU线程数量。\n如果此项的值为0，调用的线程数量会依据你的CPU自动设定；如果此项的值为1，则会禁用多线程处理功能。\n如果你遇到了因mod冲突而引发的报错，请将此项的值设为1，虽然这会对游戏性能造成很大影响。</AM.AMSettings.Settings.MaxProcessingThreads.Desc>
+  <!-- EN: Multithreaded Matrix Calculations -->
+  <AM.AMSettings.Settings.MultithreadedMatrixCalculations>多线程矩阵运算</AM.AMSettings.Settings.MultithreadedMatrixCalculations>
+  <!-- EN: When enabled, multiple CPU threads are used to calculate complex matrix transformation needed for animations.
+The number of threads is given by the Max Processing Threads setting. -->
+  <AM.AMSettings.Settings.MultithreadedMatrixCalculations.Desc>如果启用此项，则会调用多个CPU线程来运算近战动画需要的复杂矩阵变换。\n可调用的线程数量取决于“最大处理线程”选项。</AM.AMSettings.Settings.MultithreadedMatrixCalculations.Desc>
+  <!-- EN: Offscreen Culling -->
+  <AM.AMSettings.Settings.OffscreenCulling>“剔除”屏幕外的近战动画</AM.AMSettings.Settings.OffscreenCulling>
+  <!-- EN: When enabled, offscreen animations are not drawn to save time and increase FPS.
+This option is only here in case there are unexpected bugs related to this culling. -->
+  <AM.AMSettings.Settings.OffscreenCulling.Desc>如果启用此项，则会自动“剔除”（Culling，Unity引擎的一种渲染优化方法）屏幕外触发的近战动画，这可以提高游戏的FPS并加快反应时间。\n仅当产生了与“剔除”相关的意外bug时启用此项。</AM.AMSettings.Settings.OffscreenCulling.Desc>
+  <!-- EN: Scan Tick Interval -->
+  <AM.AMSettings.Settings.ScanTickInterval>扫描间隔</AM.AMSettings.Settings.ScanTickInterval>
+  <!-- EN: The number of ticks between scanning all pawns on the map for automatic execution/duel/lasso opportunities.
+Higher values can increase FPS at the cost of less responsiveness. -->
+  <AM.AMSettings.Settings.ScanTickInterval.Desc>扫描地图上所有单位自动施展终结技/发起决斗/使用套索的机会的间隔时间（ticks）。\n通过调高此项的值来以降低游戏响应时间为代价提高FPS。</AM.AMSettings.Settings.ScanTickInterval.Desc>
+  <!-- EN: Other -->
+  <AM.AMSettings.Settings.Header.Other>其他</AM.AMSettings.Settings.Header.Other>
+  <!-- EN: Friendly Pawn Lethality Bonus -->
+  <AM.AMSettings.Settings.FriendlyPawnLethalityBonus>友方单位致死几率加成</AM.AMSettings.Settings.FriendlyPawnLethalityBonus>
+  <!-- EN: Positive values act as a lethality bonus for friendly pawns (including slaves) in execution & duel outcomes, meaning that they will be lethal more often. -->
+  <AM.AMSettings.Settings.FriendlyPawnLethalityBonus.Desc>友方单位（包括奴隶）施展终结技&amp;发动决斗的致死几率加成。此项的值越高，就越致命。</AM.AMSettings.Settings.FriendlyPawnLethalityBonus.Desc>
+  <!-- EN: Friendly Pawn Duel Ability Bonus -->
+  <AM.AMSettings.Settings.FriendlyPawnDuelBonus>友方单位决斗能力加成</AM.AMSettings.Settings.FriendlyPawnDuelBonus>
+  <!-- EN: Positive values act as a duel ability bonus for friendly pawns (including slaves), meaning that they will win duels more often. -->
+  <AM.AMSettings.Settings.FriendlyPawnDuelBonus.Desc>友方单位（包括奴隶）的决斗能力加成。此项的值越高，赢得决斗的几率就越高。</AM.AMSettings.Settings.FriendlyPawnDuelBonus.Desc>
+  <!-- EN: Duel Normal Distribution -->
+  <AM.AMSettings.Settings.NormalDist>决斗正态分布</AM.AMSettings.Settings.NormalDist>
+  <!-- EN: Higher values make duel outcomes less dependent on duel ability and more on randomness, lower values make the outcome more dependent on duel ability and less on randomness.
+
+Technical: This is the standard deviation used in the duel outcome normal distribution curve. -->
+  <AM.AMSettings.Settings.NormalDist.Desc>此项的值越高，决斗结果受决斗能力的影响就越小，而受随机性的影响就越大；此项的值越低，决斗结果受决斗能力的影响就越大，而受随机性的影响就越小。\n\n专业解析：这是用在决斗结果正态分布曲线上的标准差。</AM.AMSettings.Settings.NormalDist.Desc>
+  <!-- EN: Show Warning Before Executing Friendly -->
+  <AM.AMSettings.Settings.WarnOfFriendlyExecution>对友方单位施展终结技前弹出警告</AM.AMSettings.Settings.WarnOfFriendlyExecution>
+  <!-- EN: Prevents you from accidentally executing a friendly pawn by requiring you to hold the [Shift] key when selecting a friendly pawn for execution. -->
+  <AM.AMSettings.Settings.WarnOfFriendlyExecution.Desc>如果启用此项，则对友方单位施展终结技时，会弹出信息提示你必须先按住“Shift”键才行。\n可以有效防止你意外对友方单位施展终结技。</AM.AMSettings.Settings.WarnOfFriendlyExecution.Desc>
+  <!-- EN: Send Anonymous Patch Statistics -->
+  <AM.AMSettings.Settings.SendStatistics>向作者发送匿名性的补丁统计数据</AM.AMSettings.Settings.SendStatistics>
+  <!-- EN: When a mod is missing a patch (that allows the melee weapons to do animations), the ID of said mod is anonymously logged to let this mod's author know that a patch is needed. The <b>only</b> information logged is: mod ID, mod name, weapon count.
+You can opt out of this functionality by disabling this option.
+Note: logging does not occur the first time you run the game with this mod. -->
+  <AM.AMSettings.Settings.SendStatistics.Desc>当一个Mod缺少了与本Mod间的兼容补丁时（让其添加的近战武器支持近战动画），会匿名性地记录它的ID、名字等数据，然后发送给本Mod的作者，好让他知晓并着手制作补丁。\n注意：只有Mod的ID、Mod的名字和武器数量会被记录。你的个人信息并不包含在内。\n你可以随时禁用此项来关掉这个功能。\n首次运行本Mod时不会记录并发送任何数据。</AM.AMSettings.Settings.SendStatistics.Desc>
+
+  <!-- EN: Execution Failure Chance (Low Skill) -->
+  <AM.AMSettings.Settings.ChanceToFailMinSkill>终结技失败几率（技能等级低）</AM.AMSettings.Settings.ChanceToFailMinSkill>
+  <!-- EN: The chance that an execution attempt will result in failure, stunning the attacking pawn and leaving them vulnerable for a short time.
+This is the chance when a pawn has 0 melee skill.
+Affects all pawns. -->
+  <AM.AMSettings.Settings.ChanceToFailMinSkill.Desc>终结技的结果为“失败”的几率。失败的终结技会让施展者暂时陷入晕眩状态，此时很容易受到攻击。\n此项的值是单位的格斗技能等级为0时的失败几率。\n对所有单位生效。</AM.AMSettings.Settings.ChanceToFailMinSkill.Desc>
+
+  <!-- EN: Execution Failure Chance (High Skill) -->
+  <AM.AMSettings.Settings.ChanceToFailMaxSkill>终结技失败几率（技能等级高）</AM.AMSettings.Settings.ChanceToFailMaxSkill>
+  <!-- EN: The chance that an execution attempt will result in failure, stunning the attacking pawn and leaving them vulnerable for a short time.
+This is the chance when a pawn has 20 melee skill.
+Affects all pawns. -->
+  <AM.AMSettings.Settings.ChanceToFailMaxSkill.Desc>终结技的结果为“失败”的几率。失败的终结技会让施展者暂时陷入晕眩状态，此时很容易受到攻击。\n此项的值是单位的格斗技能等级为20时的失败几率。\n对所有单位生效。</AM.AMSettings.Settings.ChanceToFailMaxSkill.Desc>
+
+  <!-- EN: Injured -->
+  <AM.ExecutionOutcome.Injured>击伤</AM.ExecutionOutcome.Injured>
+  <!-- EN: Downed -->
+  <AM.ExecutionOutcome.Downed>击倒</AM.ExecutionOutcome.Downed>
+  <!-- EN: Killed -->
+  <AM.ExecutionOutcome.Killed>击杀</AM.ExecutionOutcome.Killed>
+  <!-- EN: Failed! -->
+  <AM.ExecutionOutcome.Failed>失败！</AM.ExecutionOutcome.Failed>
+
+</LanguageData>

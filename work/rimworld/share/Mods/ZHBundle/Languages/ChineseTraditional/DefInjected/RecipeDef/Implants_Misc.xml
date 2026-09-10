@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: install brain parasite -->
+  <InstallBrainParasites.label>植入洗腦惑蟲</InstallBrainParasites.label>
+  <!-- EN: Install a brain parasite. -->
+  <InstallBrainParasites.description>植入洗腦惑蟲。</InstallBrainParasites.description>
+  <!-- EN: Installing brain parasite. -->
+  <InstallBrainParasites.jobString>植入洗腦惑蟲。</InstallBrainParasites.jobString>
+  
+  <!-- EN: remove brain parasite -->
+  <RemoveBrainParasites.label>移除洗腦惑蟲</RemoveBrainParasites.label>
+  <!-- EN: Remove brain parasite. -->
+  <RemoveBrainParasites.description>移除洗腦惑蟲。</RemoveBrainParasites.description>
+  <!-- EN: Removing brain parasite. -->
+  <RemoveBrainParasites.jobString>移除洗腦惑蟲。</RemoveBrainParasites.jobString>
+  
+</LanguageData>

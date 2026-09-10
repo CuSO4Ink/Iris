@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: long javelin -->
+  <VV_Arrow_LongJavelin.label>長標槍</VV_Arrow_LongJavelin.label>
+  
+  <!-- EN: crossbow needle -->
+  <VV_Arrow_RepeatingCrossbow.label>連弩尖針</VV_Arrow_RepeatingCrossbow.label>
+  
+  <!-- EN: stone -->
+  <VV_Arrow_SlingshotStone.label>石頭</VV_Arrow_SlingshotStone.label>
+  
+  <!-- EN: shock dart -->
+  <VV_Dart_ShockDart.label>休克鏢</VV_Dart_ShockDart.label>
+  
+  <!-- EN: vivi repeating crossbow -->
+  <VV_RepeatingCrossbow.label>薇薇連弩</VV_RepeatingCrossbow.label>
+  <!-- EN: a rapid-fire crossbow that requires virtually no time to reload or aim. Too small and intricate for humans, so only vivis can wield it.\n\nFires poison-tipped, needle-like bolts instead of regular arrows—range and power are very low, but its overwhelming rate of fire and ease of use make it popular for self-defense and ideal for target practice. -->
+  <VV_RepeatingCrossbow.description>幾乎不需要裝彈或瞄準時間的連弩，對常人而言過小，只有薇薇才能使用它。\n\n它會發射涂滿了毒藥的針狀彈藥而不是傳統的箭矢，射程和威力都很低，但它提供了便利的火力壓制，使其在自衛武器中很受歡迎。是用于射擊訓練的理想選擇。</VV_RepeatingCrossbow.description>
+  <!-- EN: limb -->
+  <VV_RepeatingCrossbow.tools.limb.label>弩臂</VV_RepeatingCrossbow.tools.limb.label>
+  <!-- EN: vivi repeating crossbow -->
+  <VV_RepeatingCrossbow.verbs.Verb_Shoot.label>薇薇連弩</VV_RepeatingCrossbow.verbs.Verb_Shoot.label>
+  
+  <!-- EN: vivi shock dart -->
+  <VV_ShockDart.label>薇薇休克鏢</VV_ShockDart.label>
+  <!-- EN: a small throwing dart with an electrified tip. Too small and awkward for ordinary humans to throw, so only vivis can use it.\n\nA well-placed hit to a weak point can short-circuit machinery and stun it. -->
+  <VV_ShockDart.description>投擲用的尖端帶電的小飛鏢，對常人而言過小，只有薇薇才能使用它。\n\n尖端具有一股微弱的電流，如果它觸到弱點，就能造成短路并摧毀機電結構。</VV_ShockDart.description>
+  <!-- EN: point -->
+  <VV_ShockDart.tools.point.label>鏢尖</VV_ShockDart.tools.point.label>
+  <!-- EN: vivi shock dart -->
+  <VV_ShockDart.verbs.Verb_Shoot.label>薇薇休克鏢</VV_ShockDart.verbs.Verb_Shoot.label>
+  
+  <!-- EN: vivi slingshot -->
+  <VV_Slingshot.label>薇薇彈弓</VV_Slingshot.label>
+  <!-- EN: a simple slingshot used by young vivis to drive off rats and small animals. Too small for ordinary humans, so only Vivis can use it.\n\nRange is short, but it's easy to make and handle, effective, and has a high chance to stun on hit. -->
+  <VV_Slingshot.description>薇薇用來驅趕老鼠或小動物的簡單彈弓，對常人而言過小，只有薇薇才能使用它。它射程短，但易于使用且有效，有較高幾率短暫眩暈目標。</VV_Slingshot.description>
+  <!-- EN: handle -->
+  <VV_Slingshot.tools.handle.label>弓把</VV_Slingshot.tools.handle.label>
+  <!-- EN: vivi slingshot -->
+  <VV_Slingshot.verbs.Verb_Shoot.label>薇薇彈弓</VV_Slingshot.verbs.Verb_Shoot.label>
+  
+  <!-- EN: vivi long javelin -->
+  <VV_ViviLongJavelin.label>薇薇長標槍</VV_ViviLongJavelin.label>
+  <!-- EN: a long javelin commonly used by vivis against strong enemies. The tip is coated with poison, causing those hit to become poisoned. It has high destructive and penetrative power, but it's difficult to hit the target.\n\nIt is also effective in close combat, allowing it to respond to enemies without being neutralized. It is too small and uncomfortable for an average person to throw, so only vivis can use it. -->
+  <VV_ViviLongJavelin.description>薇薇常用于對付強敵的一種長標槍。尖端涂有毒藥，會令目標中毒。它具有很強的破壞力和穿透能力，但很難擊中目標。\n\n它在近戰中也很有效，能夠對敵人做出反應而不被壓制。\n\n它太小了，常人難以使用，只有薇薇才能使用它。</VV_ViviLongJavelin.description>
+  <!-- EN: shaft -->
+  <VV_ViviLongJavelin.tools.shaft.label>槍柄</VV_ViviLongJavelin.tools.shaft.label>
+  <!-- EN: point -->
+  <VV_ViviLongJavelin.tools.point.label>槍尖</VV_ViviLongJavelin.tools.point.label>
+  <!-- EN: vivi long javelin -->
+  <VV_ViviLongJavelin.verbs.Verb_Shoot.label>薇薇長標槍</VV_ViviLongJavelin.verbs.Verb_Shoot.label>
+  
+</LanguageData>

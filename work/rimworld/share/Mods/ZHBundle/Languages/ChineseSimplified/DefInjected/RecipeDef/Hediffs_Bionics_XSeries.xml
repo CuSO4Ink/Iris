@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- x-hyper implant -->
+
+  <InstallDF_XHyper_Implant.label>安装X-活力植入物</InstallDF_XHyper_Implant.label>
+  <InstallDF_XHyper_Implant.description>安装X-活力植入物。</InstallDF_XHyper_Implant.description>
+  <InstallDF_XHyper_Implant.jobString>正在安装X-活力植入物。</InstallDF_XHyper_Implant.jobString>
+
+  <RemoveDF_XHyper_Implant.label>移除X-活力植入物</RemoveDF_XHyper_Implant.label>
+  <RemoveDF_XHyper_Implant.description>移除X-活力植入物。</RemoveDF_XHyper_Implant.description>
+  <RemoveDF_XHyper_Implant.jobString>正在移除X-活力植入物。</RemoveDF_XHyper_Implant.jobString>
+
+
+  <!-- x-perception implant -->
+
+  <InstallDF_XPerception_Implant.label>安装X-洞察植入物</InstallDF_XPerception_Implant.label>
+  <InstallDF_XPerception_Implant.description>安装X-洞察植入物。</InstallDF_XPerception_Implant.description>
+  <InstallDF_XPerception_Implant.jobString>正在安装X-洞察植入物。</InstallDF_XPerception_Implant.jobString>
+
+  <RemoveDF_XPerception_Implant.label>移除X-洞察植入物</RemoveDF_XPerception_Implant.label>
+  <RemoveDF_XPerception_Implant.description>移除X-洞察植入物。</RemoveDF_XPerception_Implant.description>
+  <RemoveDF_XPerception_Implant.jobString>正在移除X-洞察植入物。</RemoveDF_XPerception_Implant.jobString>
+
+
+  <!-- x-ironskin implant -->
+
+  <InstallDF_XIronskin_Implant.label>安装X-铁皮植入物</InstallDF_XIronskin_Implant.label>
+  <InstallDF_XIronskin_Implant.description>安装X-铁皮植入物。</InstallDF_XIronskin_Implant.description>
+  <InstallDF_XIronskin_Implant.jobString>正在安装X-铁皮植入物。</InstallDF_XIronskin_Implant.jobString>
+
+  <RemoveDF_XIronskin_Implant.label>移除X-铁皮植入物</RemoveDF_XIronskin_Implant.label>
+  <RemoveDF_XIronskin_Implant.description>移除X-铁皮植入物。</RemoveDF_XIronskin_Implant.description>
+  <RemoveDF_XIronskin_Implant.jobString>正在移除X-铁皮植入物。</RemoveDF_XIronskin_Implant.jobString>
+
+
+  <!-- x-violence implant -->
+
+  <InstallDF_XViolence_Implant.label>安装X-暴力植入物</InstallDF_XViolence_Implant.label>
+  <InstallDF_XViolence_Implant.description>安装X-暴力植入物。</InstallDF_XViolence_Implant.description>
+  <InstallDF_XViolence_Implant.jobString>正在安装X-暴力植入物。</InstallDF_XViolence_Implant.jobString>
+
+  <RemoveDF_XViolence_Implant.label>移除X-暴力植入物</RemoveDF_XViolence_Implant.label>
+  <RemoveDF_XViolence_Implant.description>移除X-暴力植入物。</RemoveDF_XViolence_Implant.description>
+  <RemoveDF_XViolence_Implant.jobString>正在移除X-暴力植入物。</RemoveDF_XViolence_Implant.jobString>
+
+
+</LanguageData>

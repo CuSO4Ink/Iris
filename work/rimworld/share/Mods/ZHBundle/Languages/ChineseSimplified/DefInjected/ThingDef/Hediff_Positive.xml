@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 태양화 담배 -->
+  <Miho_PositiveFlower_Pipe.label>曜阳烟</Miho_PositiveFlower_Pipe.label>
+  <!-- EN: 태양화를 말려 만든 담배입니다. 흡연시 빠르게 양기를 보충해주며 기분이 좋아집니다. -->
+  <Miho_PositiveFlower_Pipe.description>以经干燥处理的大麻叶和秘灵葵花瓣为原料制成的烟草，能够快速补充被美狐族称为“阳气”的能量。用于提神醒脑的不二之选。</Miho_PositiveFlower_Pipe.description>
+  <!-- EN: Smoke {0} -->
+  <Miho_PositiveFlower_Pipe.ingestible.ingestCommandString>吸{0}</Miho_PositiveFlower_Pipe.ingestible.ingestCommandString>
+  <!-- EN: Smoking {0}. -->
+  <Miho_PositiveFlower_Pipe.ingestible.ingestReportString>正在吸{0}。</Miho_PositiveFlower_Pipe.ingestible.ingestReportString>
+  <!-- EN: Consuming {0}. -->
+  <Miho_PositiveFlower_Pipe.ingestible.ingestReportStringEat>正在品味{0}。</Miho_PositiveFlower_Pipe.ingestible.ingestReportStringEat>
+  
+  <!-- EN: 태양화 차 -->
+  <Miho_PositiveFlower_Tea.label>煦日茶</Miho_PositiveFlower_Tea.label>
+  <!-- EN: 태양화의 꽃잎을 우린 차 입니다. 향이 좋고 따뜻해 마시면 다소 노곤해 질 수 있습니다. -->
+  <Miho_PositiveFlower_Tea.description>以秘灵葵花瓣为原料泡制的茶饮，口感醇厚清香，有助于改善睡眠质量。</Miho_PositiveFlower_Tea.description>
+  <!-- EN: Drink {0} -->
+  <Miho_PositiveFlower_Tea.ingestible.ingestCommandString>喝{0}</Miho_PositiveFlower_Tea.ingestible.ingestCommandString>
+  <!-- EN: Drinking {0}. -->
+  <Miho_PositiveFlower_Tea.ingestible.ingestReportString>正在喝{0}。</Miho_PositiveFlower_Tea.ingestible.ingestReportString>
+  
+</LanguageData>

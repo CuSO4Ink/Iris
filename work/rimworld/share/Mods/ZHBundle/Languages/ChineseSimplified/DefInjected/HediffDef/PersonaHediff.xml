@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: RimTalk Persona -->
+  <RimTalk_PersonaData.label>RimTalk角色</RimTalk_PersonaData.label>
+  <!-- EN: Technical hediff for storing RimTalk data. Not visible in-game.\n<i><b><color=#66E0E4FF>RimTalk</color></b></i> -->
+  <RimTalk_PersonaData.description>用于存储 RimTalk 数据的技术 hediff。在游戏中不可见。</RimTalk_PersonaData.description>
+  
+</LanguageData>

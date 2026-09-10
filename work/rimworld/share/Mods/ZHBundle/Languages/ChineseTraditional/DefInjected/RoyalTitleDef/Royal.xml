@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 여우 고위 귀족 -->
+  <Miho_HighNoble.label>顯赫貴族</Miho_HighNoble.label>
+  <!-- EN: 천상의 여우의 피를 이은 고귀한 종족입니다. -->
+  <Miho_HighNoble.description>美狐巨企帝國中繼承了天陽血脈的貴族階層，地位顯赫。</Miho_HighNoble.description>
+  
+  <!-- EN: 여우 귀족 -->
+  <Miho_Noble.label>貴族</Miho_Noble.label>
+  <!-- EN: 권세가들로 이루어진 계층입니다. 이렇게 높은 계급을 지닌 여우는 변방계에서 마주치기 어렵습니다. -->
+  <Miho_Noble.description>美狐巨企帝國中的貴族階層。很難在邊緣世界遇到擁有此等頭銜的美狐族。</Miho_Noble.description>
+  
+  <!-- EN: 후원자 -->
+  <Miho_Patron.label>初級贊助人</Miho_Patron.label>
+  <!-- EN: 후원해주셔서 감사합니다! 캥! -->
+  <Miho_Patron.description>初級贊助人頭銜通常授予給為美狐巨企帝國做出貢獻之人。\n\n“感謝您的贊助！吭吭！”</Miho_Patron.description>
+  
+  <!-- EN: 고급 후원자 -->
+  <Miho_Patron_T1.label>中級贊助人</Miho_Patron_T1.label>
+  <!-- EN: 많이 후원해주셔서 감사합니다! 캥! -->
+  <Miho_Patron_T1.description>中級贊助人頭銜通常授予給為美狐巨企帝國做出貢獻之人。\n\n“感謝您的大力贊助！吭吭！”</Miho_Patron_T1.description>
+  
+  <!-- EN: 큰손 후원자 -->
+  <Miho_Patron_T2.label>高級贊助人</Miho_Patron_T2.label>
+  <!-- EN: 진짜 정말 많이 후원해주셔서 감사합니다! 캥! -->
+  <Miho_Patron_T2.description>高級贊助人頭銜通常授予給為美狐巨企帝國做出貢獻之人。\n\n“誠心感謝您的大力贊助！吭吭！”</Miho_Patron_T2.description>
+  
+  <!-- EN: 최고의 후원자 -->
+  <Miho_Patron_T3.label>頂級贊助人</Miho_Patron_T3.label>
+  <!-- EN: 정말 제정신으로 이렇게 많이 후원을 한거야...? 그래도 너정도면 내 팬티 한장 정도는 가질 자격이 있을지도 ㅋ... 캥. -->
+  <Miho_Patron_T3.description>頂級贊助人頭銜通常授予給為美狐巨企帝國做出貢獻之人。\n\n“真沒想到...您居然贊助了這麽多？能做到如此地步，或許您有資格得到我的一條內褲呢...吭吭。”</Miho_Patron_T3.description>
+  
+  <!-- EN: 여우 총독 -->
+  <Miho_Satrap.label>星系總督</Miho_Satrap.label>
+  <!-- EN: 항성군주급의 권력을 가지고 있는 보기 드문 여우 입니다. -->
+  <Miho_Satrap.description>美狐巨企帝國中權勢與星際主宰同等的存在。擁有此等頭銜的美狐族可謂鳳毛麟角。</Miho_Satrap.description>
+  
+</LanguageData>

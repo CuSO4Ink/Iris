@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 본래는 산타의 작은 도우미지만, 어떨때는 본인이 크리스마스 선물이 되기도 합니다. -->
+  <Miho_Adult_Seasonal_Santa.description>{PAWN_nameDef}自稱是聖誕老人的小助手，但有時候{PAWN_pronoun}也會把自己當成聖誕禮物送出去。</Miho_Adult_Seasonal_Santa.description>
+  <!-- EN: 산타의 작은 도우미 -->
+  <Miho_Adult_Seasonal_Santa.title>美狐聖誕老人小助手</Miho_Adult_Seasonal_Santa.title>
+  <!-- EN: 산타의 작은 도우미 -->
+  <Miho_Adult_Seasonal_Santa.titleShort>美狐聖誕老人小助手</Miho_Adult_Seasonal_Santa.titleShort>
+  
+</LanguageData>

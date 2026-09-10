@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: r_name->[colors] independent vivi kingdom -->
+  <VV_NamerFactionVivi.rulePack.rulesStrings.0>r_name->[colors]獨立王國</VV_NamerFactionVivi.rulePack.rulesStrings.0>
+  <!-- EN: r_name->[vivi_adjective] vivi kingdom -->
+  <VV_NamerFactionVivi.rulePack.rulesStrings.1>r_name->[vivi_adjective]王國</VV_NamerFactionVivi.rulePack.rulesStrings.1>
+  
+  <!-- EN: r_name->[vivi_flower_nouns] vivi federation -->
+  <VV_NamerNPCFactionVivi.rulePack.rulesStrings.0>r_name->[vivi_flower_nouns]聯邦</VV_NamerNPCFactionVivi.rulePack.rulesStrings.0>
+  <!-- EN: r_name->[colors] [vivi_flower_nouns] vivi federation -->
+  <VV_NamerNPCFactionVivi.rulePack.rulesStrings.1>r_name->[colors][vivi_flower_nouns]聯邦</VV_NamerNPCFactionVivi.rulePack.rulesStrings.1>
+  
+  <!-- EN: r_name->[colors] hive -->
+  <VV_NamerSettlementVivi.rulePack.rulesStrings.0>r_name->[colors]蜂巢</VV_NamerSettlementVivi.rulePack.rulesStrings.0>
+  <!-- EN: r_name->hive [position] [nature] -->
+  <VV_NamerSettlementVivi.rulePack.rulesStrings.1>r_name->[position][nature]蜂巢</VV_NamerSettlementVivi.rulePack.rulesStrings.1>
+  <!-- EN: r_name->honey storage [position] [nature] -->
+  <VV_NamerSettlementVivi.rulePack.rulesStrings.2>r_name->[position][nature]蜂蜜儲藏</VV_NamerSettlementVivi.rulePack.rulesStrings.2>
+  <!-- EN: r_name->pollen storage [position] [nature] -->
+  <VV_NamerSettlementVivi.rulePack.rulesStrings.3>r_name->[position][nature]花粉儲藏</VV_NamerSettlementVivi.rulePack.rulesStrings.3>
+  <!-- EN: r_name->vivi town [position] [nature] -->
+  <VV_NamerSettlementVivi.rulePack.rulesStrings.4>r_name->[position][nature]城鎮</VV_NamerSettlementVivi.rulePack.rulesStrings.4>
+  <!-- EN: r_name->[colors] arcane plant farm -->
+  <VV_NamerSettlementVivi.rulePack.rulesStrings.5>r_name->[colors]神秘植物農場</VV_NamerSettlementVivi.rulePack.rulesStrings.5>
+  
+</LanguageData>

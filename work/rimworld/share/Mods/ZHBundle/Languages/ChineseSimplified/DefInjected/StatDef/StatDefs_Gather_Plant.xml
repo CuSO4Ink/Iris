@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: living leaf yield multiplier -->
+  <VV_LivingLeafGatherYield.label>活叶收获量</VV_LivingLeafGatherYield.label>
+  <!-- EN: It indicates how much more living leaf can be gathered from the plant compared to the average. Production is influenced by health and mana. -->
+  <VV_LivingLeafGatherYield.description>显示这株植物平均能收获多少活叶，受活力和魔能影响。</VV_LivingLeafGatherYield.description>
+  
+  <!-- EN: gatherable minimum growth -->
+  <VV_MinGrowthPlantGatherable.label>最低可收获生长进度</VV_MinGrowthPlantGatherable.label>
+  <!-- EN: It indicates the minimum growth required to gather from plants. -->
+  <VV_MinGrowthPlantGatherable.description>显示植物能被收获的最低生长进度。</VV_MinGrowthPlantGatherable.description>
+  
+  <!-- EN: plant gather cooldown -->
+  <VV_PlantGatherCooldown.label>植物收获冷却</VV_PlantGatherCooldown.label>
+  <!-- EN: It indicates the time it takes before the plant can be gathered again. In polluted terrain, it takes longer for regeneration to occur. -->
+  <VV_PlantGatherCooldown.description>显示植物能被再次收获前的准备时间，在受污染的地形中则需要更长时间才能再生。</VV_PlantGatherCooldown.description>
+  <!-- EN: {0} day -->
+  <VV_PlantGatherCooldown.formatString>{0} 天</VV_PlantGatherCooldown.formatString>
+  
+  <!-- EN: honey gather yield multiplier -->
+  <VV_PlantHoneyGatherYield.label>蜂蜜收获产量倍率</VV_PlantHoneyGatherYield.label>
+  <!-- EN: It indicates how much more honey can be gathered from the plant compared to the average. Production is influenced by health, growth, and pollution. -->
+  <VV_PlantHoneyGatherYield.description>显示相较于平均水平，能从该植物中收集到多少倍的蜂蜜。蜂蜜生产会受到健康、生长进度和污染的影响。</VV_PlantHoneyGatherYield.description>
+  
+  <!-- EN: resin yield multiplier -->
+  <VV_TreeResinGatherYield.label>蜂胶产量倍率</VV_TreeResinGatherYield.label>
+  <!-- EN: It indicates how much more propolis can be gathered from the plant compared to the average. Production is influenced by health, growth, and pollution. -->
+  <VV_TreeResinGatherYield.description>显示相较于平均水平，能从该植物中收集到多少倍的蜂胶。蜂胶生产会受到健康、生长进度和污染的影响。</VV_TreeResinGatherYield.description>
+  
+</LanguageData>

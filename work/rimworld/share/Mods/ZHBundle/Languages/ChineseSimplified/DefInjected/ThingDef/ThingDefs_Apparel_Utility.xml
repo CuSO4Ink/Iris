@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi multiuse brush -->
+  <VV_MultiuseBrushTool.label>薇薇多功能刷</VV_MultiuseBrushTool.label>
+  <!-- EN: A large brush that can be used for cleaning pollen or collecting material precisely from plants. It's also very helpful when smoothing rough surfaces, and humans can use it too. -->
+  <VV_MultiuseBrushTool.description>一种巨大的刷子，可以用来收集花粉或精确地从植物中收集材料。</VV_MultiuseBrushTool.description>
+  
+  <!-- EN: vivi straw -->
+  <VV_StrawTool.label>薇薇吸管</VV_StrawTool.label>
+  <!-- EN: A large straw that Vivis use to collect honey more efficiently. Humans can also use it to collect honey. -->
+  <VV_StrawTool.description>薇薇用来更有效率收集蜂蜜的大吸管。人类也可以用它来采集蜂蜜。</VV_StrawTool.description>
+  
+</LanguageData>

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Ultra Boost Implant -->
+
+  <InstallDF_UltraBoost_Implant.label>安裝超促進植入物</InstallDF_UltraBoost_Implant.label>
+  <InstallDF_UltraBoost_Implant.description>安裝超促進植入物。</InstallDF_UltraBoost_Implant.description>
+  <InstallDF_UltraBoost_Implant.jobString>正在安裝超促進植入物。</InstallDF_UltraBoost_Implant.jobString>
+
+  <RemoveDF_UltraBoost_Implant.label>移除超促進植入物</RemoveDF_UltraBoost_Implant.label>
+  <RemoveDF_UltraBoost_Implant.description>移除超促進植入物。</RemoveDF_UltraBoost_Implant.description>
+  <RemoveDF_UltraBoost_Implant.jobString>正在移除超促進植入物。</RemoveDF_UltraBoost_Implant.jobString>
+
+
+  <!-- devil's implant -->
+
+  <InstallDF_Devils_Implant.label>安裝魔鬼植入物</InstallDF_Devils_Implant.label>
+  <InstallDF_Devils_Implant.description>安裝魔鬼植入物。</InstallDF_Devils_Implant.description>
+  <InstallDF_Devils_Implant.jobString>正在安裝魔鬼植入物。</InstallDF_Devils_Implant.jobString>
+
+  <RemoveDF_Devils_Implant.label>移除魔鬼植入物</RemoveDF_Devils_Implant.label>
+  <RemoveDF_Devils_Implant.description>移除魔鬼植入物。</RemoveDF_Devils_Implant.description>
+  <RemoveDF_Devils_Implant.jobString>正在移除魔鬼植入物。</RemoveDF_Devils_Implant.jobString>
+
+
+  <!-- volatile implant -->
+
+  <InstallDF_Volatile_Implant.label>安裝無定植入物</InstallDF_Volatile_Implant.label>
+  <InstallDF_Volatile_Implant.description>安裝無定植入物。</InstallDF_Volatile_Implant.description>
+  <InstallDF_Volatile_Implant.jobString>正在安裝無定植入物。</InstallDF_Volatile_Implant.jobString>
+
+  <RemoveDF_Volatile_Implant.label>移除無定植入物</RemoveDF_Volatile_Implant.label>
+  <RemoveDF_Volatile_Implant.description>移除無定植入物。</RemoveDF_Volatile_Implant.description>
+  <RemoveDF_Volatile_Implant.jobString>正在移除無定植入物。</RemoveDF_Volatile_Implant.jobString>
+
+
+  <!-- X-Dusk Implant -->
+
+  <InstallDF_XDusk_Implant.label>安裝X-薄暝植入物</InstallDF_XDusk_Implant.label>
+  <InstallDF_XDusk_Implant.description>安裝X-薄暝植入物。</InstallDF_XDusk_Implant.description>
+  <InstallDF_XDusk_Implant.jobString>正在安裝X-薄暝植入物。</InstallDF_XDusk_Implant.jobString>
+
+  <RemoveDF_XDusk_Implant.label>移除X-薄暝植入物</RemoveDF_XDusk_Implant.label>
+  <RemoveDF_XDusk_Implant.description>移除X-薄暝植入物。</RemoveDF_XDusk_Implant.description>
+  <RemoveDF_XDusk_Implant.jobString>正在移除X-薄暝植入物。</RemoveDF_XDusk_Implant.jobString>
+
+
+  <!-- dawn implant -->
+
+  <InstallDF_Dawn_Implant.label>安裝破曉植入物</InstallDF_Dawn_Implant.label>
+  <InstallDF_Dawn_Implant.description>安裝破曉植入物。</InstallDF_Dawn_Implant.description>
+  <InstallDF_Dawn_Implant.jobString>正在安裝破曉植入物。</InstallDF_Dawn_Implant.jobString>
+
+  <RemoveDF_Dawn_Implant.label>移除破曉植入物</RemoveDF_Dawn_Implant.label>
+  <RemoveDF_Dawn_Implant.description>移除破曉植入物。</RemoveDF_Dawn_Implant.description>
+  <RemoveDF_Dawn_Implant.jobString>正在移除破曉植入物。</RemoveDF_Dawn_Implant.jobString>
+
+
+</LanguageData>

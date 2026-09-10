@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Void_PlanetaryKillerSite.label>行星杀手武器</Void_PlanetaryKillerSite.label>
+  <Void_PlanetaryKillerSite.description>一个VOID前哨站，里面藏有行星杀手武器。</Void_PlanetaryKillerSite.description>
+  <!-- EN: Attacking {0} -->
+  <Void_PlanetaryKillerSite.approachingReportString>攻击{0}</Void_PlanetaryKillerSite.approachingReportString>
+  <!-- EN: Attack {0} -->
+  <Void_PlanetaryKillerSite.approachOrderString>攻击{0}</Void_PlanetaryKillerSite.approachOrderString>
+  <!-- EN: There is an enemy outpost in this area. -->
+  <Void_PlanetaryKillerSite.arrivedLetter>这个地区有敌人的一个前哨基地。</Void_PlanetaryKillerSite.arrivedLetter>
+
+
+</LanguageData>

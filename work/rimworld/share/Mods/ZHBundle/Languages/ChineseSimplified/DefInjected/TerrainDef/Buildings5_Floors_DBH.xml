@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: granite mosaic tile -->
+  <DBHMosaicGranite.label>花岗岩马赛克地砖</DBHMosaicGranite.label>
+  <!-- EN: Carefully-cut and fit stone tiles in a mosaic pattern, stylish in bathrooms or kitchens. -->
+  <DBHMosaicGranite.description>精心铺设的坚固花岗岩马赛克地砖。浴室或厨房地板的最佳选择。</DBHMosaicGranite.description>
+  
+  <!-- EN: limestone mosaic tile -->
+  <DBHMosaicLimestone.label>石灰岩马赛克地砖</DBHMosaicLimestone.label>
+  <!-- EN: Carefully-cut and fit stone tiles in a mosaic pattern, stylish in bathrooms or kitchens. -->
+  <DBHMosaicLimestone.description>精心铺设的坚固石灰岩马赛克地砖。浴室或厨房地板的最佳选择。</DBHMosaicLimestone.description>
+  
+  <!-- EN: marble mosaic tile -->
+  <DBHMosaicMarble.label>大理石马赛克地砖</DBHMosaicMarble.label>
+  <!-- EN: Carefully-cut and fit stone tiles in a mosaic pattern, stylish in bathrooms or kitchens. -->
+  <DBHMosaicMarble.description>精心铺设的坚固大理石马赛克地砖。浴室或厨房地板的最佳选择。</DBHMosaicMarble.description>
+  
+  <!-- EN: sandstone mosaic tile -->
+  <DBHMosaicSandstone.label>砂岩马赛克地砖</DBHMosaicSandstone.label>
+  <!-- EN: Carefully-cut and fit stone tiles in a mosaic pattern, stylish in bathrooms or kitchens. -->
+  <DBHMosaicSandstone.description>精心铺设的坚固砂岩马赛克地砖。浴室或厨房地板的最佳选择。</DBHMosaicSandstone.description>
+  
+  <!-- EN: slate mosaic tile -->
+  <DBHMosaicSlate.label>板岩马赛克地砖</DBHMosaicSlate.label>
+  <!-- EN: Carefully-cut and fit stone tiles in a mosaic pattern, stylish in bathrooms or kitchens. -->
+  <DBHMosaicSlate.description>精心铺设的坚固板岩马赛克地砖。浴室或厨房地板的最佳选择。</DBHMosaicSlate.description>
+  
+  <!-- EN: mosaic tile -->
+  <DBHMosaicTile.label>马赛克地砖</DBHMosaicTile.label>
+  <!-- EN: Steel tiles in a mosaic pattern, stylish in bathrooms or kitchens. -->
+  <DBHMosaicTile.description>钢质的马赛克地砖。浴室或厨房地板的最佳选择。</DBHMosaicTile.description>
+  
+</LanguageData>

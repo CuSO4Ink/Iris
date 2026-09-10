@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 나약의 창 -->
+  <Miho_Turret_Flame.label>弱化禦槍</Miho_Turret_Flame.label>
+  <!-- EN: 적을 약화시켜주는 자동포탑입니다. -->
+  <Miho_Turret_Flame.description>形似長槍的自動砲塔，其發射的弱化激光會增加敵人所受的傷害。</Miho_Turret_Flame.description>
+  
+  <!-- EN: Lance -->
+  <Miho_TurretGun_Flame.label>弱化禦槍</Miho_TurretGun_Flame.label>
+  <!-- EN: . -->
+  <Miho_TurretGun_Flame.description>.</Miho_TurretGun_Flame.description>
+  <!-- EN: Lance -->
+  <Miho_TurretGun_Flame.verbs.Verb_ShootBeam.label>弱化禦槍</Miho_TurretGun_Flame.verbs.Verb_ShootBeam.label>
+  
+</LanguageData>

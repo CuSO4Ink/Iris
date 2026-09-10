@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 케노스 -->
+  <Ears_Voidborn_Miho.label>虛零之狐</Ears_Voidborn_Miho.label>
+  <!-- EN: 중력이 없는 공간에서의 생활에 최적화된 미호들 입니다. 유전적으로 개조된 이 미호들은 지상의 미호들보다 부서지기 쉬우며, 우주공간에서의 맬서스주의적인 파멸을 방지하기 위해 불임이지만. 굉장히 높은 수준의 소행성 채굴 능력과 기지 건설 능력, 그리고 깜찍한 아가미를 지니고 있습니다. -->
+  <Ears_Voidborn_Miho.description>基因擁有者具有更強的耐寒能力、更高的真空抗性、更快的工作速度以及更弱的覓食能力。除此之外，他們比正常人更容易感到疲勞。</Ears_Voidborn_Miho.description>
+  
+  <!-- EN: miho space blonde hair -->
+  <Hair_Miho_SpaceBlonde.label>太空金發</Hair_Miho_SpaceBlonde.label>
+  <!-- EN: Carriers of this gene have a particular hair color. With multiple hair color genes, one is randomly selected. -->
+  <Hair_Miho_SpaceBlonde.description>此基因持有者擁有獨特的髮色。當有多個髮色基因時，會隨機選擇其中一個。</Hair_Miho_SpaceBlonde.description>
+  
+  <!-- EN: miho fox violet hair -->
+  <Hair_Miho_Violet.label>狐紫發</Hair_Miho_Violet.label>
+  <!-- EN: Carriers of this gene have a particular hair color. With multiple hair color genes, one is randomly selected. -->
+  <Hair_Miho_Violet.description>此基因持有者擁有獨特的髮色。當有多個髮色基因時，會隨機選擇其中一個。</Hair_Miho_Violet.description>
+  
+</LanguageData>

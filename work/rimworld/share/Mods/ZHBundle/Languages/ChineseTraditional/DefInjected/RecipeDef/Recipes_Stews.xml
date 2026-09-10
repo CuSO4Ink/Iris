@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_CookStewSimple.label>製作簡單燉料</VCE_CookStewSimple.label>
+		<VCE_CookStewSimple.description>用少許材料製作一份簡單的燉料。</VCE_CookStewSimple.description>
+		<VCE_CookStewSimple.jobString>正在製作簡單燉料</VCE_CookStewSimple.jobString>
+		<VCE_CookStewFine.label>製作精緻燉料</VCE_CookStewFine.label>
+		<VCE_CookStewFine.description>將多種材料組合，製作一份相對複雜的燉料。</VCE_CookStewFine.description>
+		<VCE_CookStewFine.jobString>正在製作精緻燉料</VCE_CookStewFine.jobString>
+		<VCE_CookStewLavish.label>製作奢侈燉料</VCE_CookStewLavish.label>
+		<VCE_CookStewLavish.description>製作一份濃藝術般的湯料，可以蕩滌身心。</VCE_CookStewLavish.description>
+		<VCE_CookStewLavish.jobString>正在製作奢侈燉料</VCE_CookStewLavish.jobString>
+	</LanguageData>

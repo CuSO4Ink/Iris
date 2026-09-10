@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <Circle.label>圆形</Circle.label>
+  
+  <CircleFilled.label>实心圆形</CircleFilled.label>
+  
+  <Hexagon.label>六边形</Hexagon.label>
+  
+  <HexagonFilled.label>实心六边形</HexagonFilled.label>
+  
+  <LineFreeform.label>自由曲线</LineFreeform.label>
+  
+  <MidpointHexagon.label>中心点六边形</MidpointHexagon.label>
+  
+  <MidpointHexagonFilled.label>实心中心点六边形</MidpointHexagonFilled.label>
+  
+  <SunLamp.label>太阳灯范围</SunLamp.label>
+  
+  <SunLampOutline.label>太阳灯范围轮廓</SunLampOutline.label>
+  
+  <TradeBeacon.label>轨道贸易信标范围</TradeBeacon.label>
+  
+  <TradeBeaconOutline.label>轨道贸易信标范围轮廓</TradeBeaconOutline.label>
+  
+</LanguageData>

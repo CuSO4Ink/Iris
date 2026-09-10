@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 세라믹 제조 -->
+  <DoBillsMake_Miho_ShaftFurnace.label>在高爐工作</DoBillsMake_Miho_ShaftFurnace.label>
+  <!-- EN: 제작중 -->
+  <DoBillsMake_Miho_ShaftFurnace.gerund>工作於</DoBillsMake_Miho_ShaftFurnace.gerund>
+  <!-- EN: 제작 -->
+  <DoBillsMake_Miho_ShaftFurnace.verb>工作</DoBillsMake_Miho_ShaftFurnace.verb>
+  
+</LanguageData>

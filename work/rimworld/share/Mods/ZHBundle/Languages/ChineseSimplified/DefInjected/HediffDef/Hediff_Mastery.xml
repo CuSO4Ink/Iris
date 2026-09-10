@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: This hediff adds a positive bonus thought to a pawn -->
+  <SK_WM_MasteredWeaponEquippedBonusMood.description>精通武器心情增益</SK_WM_MasteredWeaponEquippedBonusMood.description>
+  <!-- EN: MasteredWeaponEquippedBonusMood -->
+  <SK_WM_MasteredWeaponEquippedBonusMood.stages.MasteredWeaponEquippedBonusMood.label>精通武器心情增益。</SK_WM_MasteredWeaponEquippedBonusMood.stages.MasteredWeaponEquippedBonusMood.label>
+  
+</LanguageData>

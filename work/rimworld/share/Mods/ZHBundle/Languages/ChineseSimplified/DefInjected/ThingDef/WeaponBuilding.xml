@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 보병포 -->
+  <Miho_BuildingWeapon_InfantryGun.label>美狐步兵炮</Miho_BuildingWeapon_InfantryGun.label>
+  <!-- EN: 57mm 보병포 -->
+  <Miho_BuildingWeapon_InfantryGun.description>能快速发射57mm高爆弹的牵引式步兵支援火炮。</Miho_BuildingWeapon_InfantryGun.description>
+  <!-- EN: 미호 보병포 -->
+  <Miho_BuildingWeapon_InfantryGun.verbs.Verb_Shoot.label>美狐步兵炮</Miho_BuildingWeapon_InfantryGun.verbs.Verb_Shoot.label>
+
+  <!-- EN: 미호 중기관총 -->
+  <Miho_BuildingWeapon_Machinegun.label>美狐重机枪</Miho_BuildingWeapon_Machinegun.label>
+  <!-- EN: 7.7mm 중기관총 -->
+  <Miho_BuildingWeapon_Machinegun.description>架设作为炮塔使用的7.7mm重机枪。由于配备了额外的瞄准镜，其整体性能要比“驱鬼犬”侦查无人机的重机枪更出色。</Miho_BuildingWeapon_Machinegun.description>
+  <!-- EN: 미호 중기관총 -->
+  <Miho_BuildingWeapon_Machinegun.verbs.Verb_Shoot.label>美狐重机枪</Miho_BuildingWeapon_Machinegun.verbs.Verb_Shoot.label>
+  
+  <!-- EN: 중-MAT -->
+  <Miho_BuildingWeapon_Missile.label>美狐导弹发射器</Miho_BuildingWeapon_Missile.label>
+  <!-- EN: 중-MAT. -->
+  <Miho_BuildingWeapon_Missile.description>架设作为炮塔使用的瞄准线半自动指令（简称“SACLOS”）式制导导弹发射器。最大射程为200格。</Miho_BuildingWeapon_Missile.description>
+  <!-- EN: 중-MAT -->
+  <Miho_BuildingWeapon_Missile.verbs.Verb_Shoot.label>美狐导弹发射器</Miho_BuildingWeapon_Missile.verbs.Verb_Shoot.label>
+  
+  <!-- EN: 미호 재래식 함포 -->
+  <Miho_BuildingWeapon_ShipGun.label>美狐旧式舰炮</Miho_BuildingWeapon_ShipGun.label>
+  <!-- EN: 미호 재래식 함포 -->
+  <Miho_BuildingWeapon_ShipGun.description>型号老旧的47mm链式舰炮。</Miho_BuildingWeapon_ShipGun.description>
+  <!-- EN: 미호 재래식 함포 -->
+  <Miho_BuildingWeapon_ShipGun.verbs.Verb_Shoot.label>美狐旧式舰炮</Miho_BuildingWeapon_ShipGun.verbs.Verb_Shoot.label>
+  
+  <!-- EN: shell -->
+  <Miho_BuildingWeapon_ShipGun_Proj.label>美狐旧式舰炮弹</Miho_BuildingWeapon_ShipGun_Proj.label>
+  
+  <!-- EN: 미호 철갑소이 유도탄 -->
+  <Miho_Missile.label>美狐烧蚀导弹</Miho_Missile.label>
+  <!-- EN: 어느 상황에나 적절한 유도탄 입니다. 부수적인 파편 효과가 있습니다. -->
+  <Miho_Missile.description>泛用性出色的美狐烧蚀破甲导弹。爆炸后还会额外产生大量破片。</Miho_Missile.description>
+  
+  <!-- EN: missile -->
+  <Miho_Missile_Proj.label>导弹</Miho_Missile_Proj.label>
+  
+  <!-- EN: missile -->
+  <Miho_Missilenonhoming_Proj.label>导弹</Miho_Missilenonhoming_Proj.label>
+  
+  <!-- EN: 미호 플라즈마 대메카유도탄 -->
+  <Miho_MissilePlasma.label>美狐反机械导弹</Miho_MissilePlasma.label>
+  <!-- EN: 메카노이드에 효과적인 유도 미사일 입니다. 무거운 플라즈마 탄두 때문에 탄속은 느리지만, 화끈한 대메카 화력을 자랑합니다. -->
+  <Miho_MissilePlasma.description>用于高效对抗机械族的美狐等离子制导导弹。</Miho_MissilePlasma.description>
+  
+  <!-- EN: 미호 보병포 -->
+  <Miho_Turret_InfantryGun.label>美狐步兵炮</Miho_Turret_InfantryGun.label>
+  <!-- EN: 57mm 고폭탄을 고속으로 발사하는 견인포 입니다. -->
+  <Miho_Turret_InfantryGun.description>能快速发射57mm高爆弹的牵引式步兵支援火炮。</Miho_Turret_InfantryGun.description>
+  <!-- EN: Shells -->
+  <Miho_Turret_InfantryGun.comps.CompRefuelable.fuelGizmoLabel>高爆弹</Miho_Turret_InfantryGun.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- EN: Shots until the shells run out -->
+  <Miho_Turret_InfantryGun.comps.CompRefuelable.fuelLabel>重新装填前剩余射击次数</Miho_Turret_InfantryGun.comps.CompRefuelable.fuelLabel>
+  <!-- EN: Cannot shoot: Needs new Shells -->
+  <Miho_Turret_InfantryGun.comps.CompRefuelable.outOfFuelMessage>需要新的高爆弹</Miho_Turret_InfantryGun.comps.CompRefuelable.outOfFuelMessage>
+
+  <!-- EN: 미호 중기관총 -->
+  <Miho_Turret_Machinegun.label>美狐重机枪</Miho_Turret_Machinegun.label>
+  <!-- EN: 7.7mm 탄을 사용하는 중기관총 포탑 입니다. 적당한 광학 장비가 있어 다각전차용 중기관총보다 우수한 성능을 자랑합니다. -->
+  <Miho_Turret_Machinegun.description>架设作为炮塔使用的7.7mm重机枪。由于配备了额外的瞄准镜，其整体性能要比“驱鬼犬”侦查无人机的重机枪更出色。</Miho_Turret_Machinegun.description>
+  
+  <!-- EN: 미호 중-MAT -->
+  <Miho_Turret_Missile.label>美狐导弹发射器</Miho_Turret_Missile.label>
+  <!-- EN: SACLOS 유도탄 발사기 입니다. 200칸의 사거리를 지닙니다. -->
+  <Miho_Turret_Missile.description>架设作为炮塔使用的瞄准线半自动指令（简称“SACLOS”）式制导导弹发射器。最大射程为200格。</Miho_Turret_Missile.description>
+  
+  <!-- EN: 미호 재래식 함포 -->
+  <Miho_Turret_ShipGun.label>美狐旧式舰炮</Miho_Turret_ShipGun.label>
+  <!-- EN: 47mm 탄을 사용하는 소형 체인건 함포 입니다. 일정 주기마다 포신을 교체해줘야 합니다. 중력반응판 위에만 설치 가능합니다. -->
+  <Miho_Turret_ShipGun.description>型号老旧的47mm链式舰炮。长期使用后需要更换炮管。必须放置在逆重飞船基架上。</Miho_Turret_ShipGun.description>
+  <!-- EN: Barrel durability -->
+  <Miho_Turret_ShipGun.comps.CompRefuelable.fuelGizmoLabel>炮管耐久度</Miho_Turret_ShipGun.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- EN: Shots until barrel change -->
+  <Miho_Turret_ShipGun.comps.CompRefuelable.fuelLabel>更换炮管前剩余射击次数</Miho_Turret_ShipGun.comps.CompRefuelable.fuelLabel>
+  <!-- EN: Cannot shoot: Needs new barrel -->
+  <Miho_Turret_ShipGun.comps.CompRefuelable.outOfFuelMessage>需要新的加固炮管</Miho_Turret_ShipGun.comps.CompRefuelable.outOfFuelMessage>
+  
+  <!-- EN: 미호 무반동포 -->
+  <Miho_Weapon_RifleRecoillessSharp.label>美狐无后坐力炮</Miho_Weapon_RifleRecoillessSharp.label>
+  <!-- EN: 미호 미사일을 유도기능 없이 발사 할 수 있는 무반동포입니다. 또한 오래된 발사방식 때문에 플라즈마탄을 발사 할 수 없습니다. -->
+  <Miho_Weapon_RifleRecoillessSharp.description>不需要制导就能发射导弹的无后坐力炮。由于其设计构造已经过时，因此无法发射更先进的美狐反机械导弹。</Miho_Weapon_RifleRecoillessSharp.description>
+  <!-- EN: missile charges -->
+  <Miho_Weapon_RifleRecoillessSharp.comps.CompEquippableAbilityReloadable.chargeNoun>导弹</Miho_Weapon_RifleRecoillessSharp.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Miho_Weapon_RifleRecoillessSharp.comps.CompEquippableAbilityReloadable.cooldownGerund>冷却中</Miho_Weapon_RifleRecoillessSharp.comps.CompEquippableAbilityReloadable.cooldownGerund>
+  <!-- EN: stock -->
+  <Miho_Weapon_RifleRecoillessSharp.tools.stock.label>炮托</Miho_Weapon_RifleRecoillessSharp.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RifleRecoillessSharp.tools.barrel.label>炮管</Miho_Weapon_RifleRecoillessSharp.tools.barrel.label>
+  
+</LanguageData>

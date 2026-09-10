@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: air-con pipe -->
+  <airPipe.label>空调管道</airPipe.label>
+  <!-- EN: Pipe for connecting air-conditioning units. -->
+  <airPipe.description>用于连接空调设备的管道。</airPipe.description>
+  
+  <!-- EN: air-con pipe (hidden) -->
+  <airPipeHidden.label>隐藏空调管道</airPipeHidden.label>
+  <!-- EN: Pipe for connecting air-conditioning units. (hidden) -->
+  <airPipeHidden.description>用于连接空调设备的隐藏式管道。</airPipeHidden.description>
+  
+  <!-- EN: Heating Pipe -->
+  <HeatingPipe.label>供暖管道</HeatingPipe.label>
+  <!-- EN: Plumbing for connecting central heating. -->
+  <HeatingPipe.description>用于连接集中供暖设备的管道。</HeatingPipe.description>
+  
+  <!-- EN: Heating Pipe (hidden) -->
+  <HeatingPipeHidden.label>隐藏供暖管道</HeatingPipeHidden.label>
+  <!-- EN: Plumbing for connecting central heating (hidden). -->
+  <HeatingPipeHidden.description>用于连接集中供暖设备的隐藏式管道。</HeatingPipeHidden.description>
+  
+</LanguageData>

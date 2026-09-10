@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_Agave.label>龙舌兰</VCE_Agave.label>
+		<VCE_Agave.description>宽大叶子的沙漠植物，花和茎可以食用。</VCE_Agave.description>
+		<VCE_Grass.label>草</VCE_Grass.label>
+		<VCE_Grass.description>人工种植的草。只要少许光照和略微肥沃的土地就能生长。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;和干草一样，种植草可以用来喂养牲畜。它不会被枯萎病影响，但不能像干草那样被收割并储存。</VCE_Grass.description>
+		<VCE_TallGrass.label>高草</VCE_TallGrass.label>
+		<VCE_TallGrass.description>人工种植的高草。只要少许光照和略微肥沃的土地就能生长。会减慢在它之上的移动速度。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;和干草一样，种植草可以用来喂养牲畜。它不会被枯萎病影响，但不能像干草那样被收割并储存。</VCE_TallGrass.description>
+		<VCE_Onion.label>洋葱</VCE_Onion.label>
+		<VCE_Onion.description>有一种辛辣的气味，很适合用来做菜。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;不会受到枯萎病的影响。</VCE_Onion.description>
+		<VCE_Pumpkin.label>南瓜</VCE_Pumpkin.label>
+		<VCE_Pumpkin.description>巨型的瓜状果实，不管是播种还是收割都很容易。然而果实的重量过高让它不适合水培。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;南瓜的收割永远不会失败，不论收割者的种植技术如何。</VCE_Pumpkin.description>
+		<VCE_Pepper.label>辣椒</VCE_Pepper.label>
+		<VCE_Pepper.description>又小又辣的红色荚状果实，适合用来做成各式调味料。味道的效果一般，但其中的辣椒素让人欲罢不能。食用过多会产生痛觉。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;动物不会主动吃地里的辣椒，但已收割的成品不受限制。</VCE_Pepper.description>
+		<VCE_Peas.label>豌豆</VCE_Peas.label>
+		<VCE_Peas.description>装在豆荚内的绿色原型果实。对水分需求很高，下雨时会加速生长。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;在平时的效率远远不如土豆，玉米和大米，但下雨时生长速度会有50%的可怕加成。</VCE_Peas.description>
+		<VCE_Eggplant.label>茄子</VCE_Eggplant.label>
+		<VCE_Eggplant.description>丰满的紫色果实。茄子经常在烹饪时替代肉类作为主菜。适合在温暖的环境中成长。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;在37到60ºC之间生长速度会有30%的加成。</VCE_Eggplant.description>
+		<VCE_Cabbage.label>卷心菜</VCE_Cabbage.label>
+		<VCE_Cabbage.description>强健的叶状蔬菜，通常适合切片水煮。这种菜对毒气和辐射有很高的抗性。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;不会受到毒气的影响</VCE_Cabbage.description>
+		<VCE_Beet.label>甜菜</VCE_Beet.label>
+		<VCE_Beet.description>草状蔬菜，营养丰富也曾被用作染料，人和动物都爱吃。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;虽然对土壤要求高，但生命力很旺盛，即便在冬季也会以10%的速度缓慢生长。仍然需要在适耕季播种。</VCE_Beet.description>
+		<VCE_Tomato.label>番茄</VCE_Tomato.label>
+		<VCE_Tomato.description>长在藤上的光洁多汁的红色水果，也经常被看作蔬菜。水煮时会放出天然糖分并有醇厚的酸味。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;番茄在收割后不会消失，而是会留下藤，与果树类似。</VCE_Tomato.description>
+
+		<!-- EN: aloe vera plant -->
+		<VCE_AloeVera.label>芦荟</VCE_AloeVera.label>
+		<!-- EN: A herb with succulent leaves that are arranged in a rosette. The leaves are grey to green and sometimes have white spots on their surfaces. They have sharp, pinkish spines along their edges and are the source of a colourless gel that is used in many medicinal products.\n\n<color=#E5E54C>Gameplay effect:</color> Aloe vera is only growable in sandy growing zones, which ignore fertility. These plants will however take a long time to sow and harvest, basically exchanging colonist work for growing plants in a normally unused space. Aloe vera is a source of herbal medicine. -->
+		<VCE_AloeVera.description>一种药草，由层层环绕的多肉叶子组成。叶子由绿到灰，有时会有小白点。叶子的边缘很锋利，且有粉色的小刺，它能用来制作一种无色的胶状草药。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;该作物只能在沙地种植区中种植，也因而不受肥沃度影响。这类作物需要花费更多的时间来播种与收割，也就是以工作量来换取生长空间的限制。芦荟的产物是草药。</VCE_AloeVera.description>
+		
+		<!-- EN: green bean plant -->
+		<VCE_Beans.label>豆角</VCE_Beans.label>
+		<!-- EN: A herbaceous bush with a long history of cultivation. They are distinguished from the many other varieties of beans in that green beans are harvested and consumed with their enclosing pods, before the bean seeds inside have fully matured, similar to peas.\n\n<color=#E5E54C>Gameplay effect:</color> Companion planting: green beans will grow faster if carrots are cultivated in the same map (up to 30% faster if 100 are found). -->
+		<VCE_Beans.description>有悠久种植历史的草本灌木。与其它豆类的不同之处在于，豆角会在种子成熟之前，连带着豆荚被收割下来并食用。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;与胡萝卜有套种效果，如果和胡萝卜种植在同一个地图上，会受到生长速度加成，在100个胡萝卜时达到最高的30%加成。</VCE_Beans.description>
+		
+		<!-- EN: bell pepper plant -->
+		<VCE_BellPepper.label>菜椒</VCE_BellPepper.label>
+		<!-- EN: Also known as sweet peppers, bell peppers are technically nightshades and part of the capsicum family, but they are the only chili pepper that carries a recessive gene that stops any capsaicin from being made in the fruit, thus making them not spicy.\n\n<color=#E5E54C>Gameplay effect:</color> On average, 25% of bell peppers will mature into yellow peppers, while 75% will mature into red peppers. The former are more nutritive. If planted in large numbers this results in increased average yield. -->
+		<VCE_BellPepper.description>也被叫做甜椒，茄科辣椒属植物，但菜椒拥有抑制产生辣椒素的基因，因此丝毫不辣。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;菜椒有平均25%的几率会长成黄菜椒，75%会长成红菜椒。黄菜椒的营养值更高，因而鼓励你多种些菜椒以获得更多的中奖机会。</VCE_BellPepper.description>
+		
+		<!-- EN: brussels sprout plant -->
+		<VCE_BrusselsSprout.label>小卷心菜</VCE_BrusselsSprout.label>
+		<!-- EN: A form of cabbage grown for its edible buds called "sprouts". Brussels sprouts usually are eaten cooked, and the small young sprouts have a more delicate flavour than older ones.\n\n<color=#E5E54C>Gameplay effect:</color> Contrary to other plants, brussels sprouts thrive in snow, and receive a considerable boost to growth if snowing, AS LONG AS it is also growth season (they won't grow or be able to be planted otherwise). They won't die due to cold. -->
+		<VCE_BrusselsSprout.description>拥有特殊小芽的一种卷心菜。小卷心菜通常被煮熟食用，鲜嫩的小芽比成熟的更加美味。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;小卷心菜偏爱雪天，只要当前季节仍然允许它生长，它在下雪时会受到大量生长加成。小卷心菜不会被冻死。</VCE_BrusselsSprout.description>
+		
+		<!-- EN: buckwheat plant -->
+		<VCE_Buckwheat.label>荞麦</VCE_Buckwheat.label>
+		<!-- EN: A pseudocereal cultivated for its grain-like seeds. Its white flowers are produced in terminal clusters and after pòllination turn into triangular-shaped seeds that are enclosed by a tough dark brown or gray rind.\n\n<color=#E5E54C>Gameplay effect:</color> Buckwheat is very resistant to fire, and this variety has been modified to be completely non-flammable. -->
+		<VCE_Buckwheat.description>一种能结出谷状种子的准谷物。成熟后会开出一束束的白花，在授粉之后会结出深色硬壳包裹的三角形种子。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;荞麦本就耐火，这一种的转基因荞麦更是百分百的防火。</VCE_Buckwheat.description>
+		
+		<!-- EN: butternut squash plant -->
+		<VCE_ButternutSquash.label>冬南瓜</VCE_ButternutSquash.label>
+		<!-- EN: A vine plant that produces a vegetable with a sweet, nutty taste similar to that of a pumpkin. It has tan-yellow skin and orange fleshy pulp with a compartment of seeds in the blossom end.\n\n<color=#E5E54C>Gameplay effect:</color> Butternut squash is only growable in sandy growing zones, which ignore fertility. These plants will however take a long time to sow and harvest, basically exchanging colonist work for growing plants in a normally unused space. Butternut squash takes a long time to grow. -->
+		<VCE_ButternutSquash.description>有着类南瓜的甜坚果风味。它有黄褐色的外皮和橘黄色的果肉，种子聚集在果实的一端末。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;该作物只能在沙地种植区中种植，也因而不受肥沃度影响。这类作物需要花费更多的时间来播种与收割，也就是以工作量来换取生长空间的限制。冬南瓜的生长时间很长。</VCE_ButternutSquash.description>
+		
+		<!-- EN: carrot plant -->
+		<VCE_Carrot.label>胡萝卜</VCE_Carrot.label>
+		<!-- EN: A herbaceous plant of the Apiaceae family that produces an edible taproot. An erect rosette of doubly compound, finely divided leaves develops above ground, while the edible carrot and attached roots are below.\n\n<color=#E5E54C>Gameplay effect:</color> Companion planting: carrots will grow faster if green beans are cultivated in the same map (up to 30% faster if 100 are found). -->
+		<VCE_Carrot.description>伞形科草本植物，能在地面上长出坚挺的环状页，地下则是可食用的块根。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;与豆角有套种效果，如果和豆角种植在同一个地图上，会受到生长速度加成，在100个豆角时达到最高的30%加成。</VCE_Carrot.description>
+		
+		<!-- EN: cassava plant -->
+		<VCE_Cassava.label>木薯</VCE_Cassava.label>
+		<!-- EN: A tuberous edible plant also called manioc, mandioca, or yuca. They have a mild nutty taste and are commonly eaten as root vegetables in stews or as side dishes. Cassava roots are a versatile vegetable that can be used to produce flour, breads, tapioca, a laundry starch, and an alcoholic beverage.\n\n<color=#E5E54C>Gameplay effect:</color> Cassava grows best in tropical, warm and humid climates. As such, it will receive a considerable growth bonus if the weather is foggy. -->
+		<VCE_Cassava.description>也叫树薯，是有柔和坚果味的块根蔬菜，常用于煲汤和冷盘。这是种多用途的食材，可以用来制作面粉，面包，洗衣淀粉，奶茶珍珠和酒精饮料。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;木薯适合生长在温暖潮湿的气候，因而会在雾天得到生长加成。</VCE_Cassava.description>
+		
+		<!-- EN: celery plant -->
+		<VCE_Celery.label>芹菜</VCE_Celery.label>
+		<!-- EN: A vegetable consisting of a long fibrous stalk tapering into leaves. The leaves are strongly flavored and are used less often, either as a flavoring in soups and stews or as a dried herb. Celery is a staple in many soups.\n\n<color=#E5E54C>Gameplay effect:</color> Celery has a very long growth period (almost a full year!). If it can be kept alive all that time, it produces greater yield than corn. -->
+		<VCE_Celery.description>一种蔬菜，富含纤维的长杆直接连接着菜叶。菜杆常被用作食材，而菜叶的味道过于厚重，所以并不常用，通常只用来调味或风干成香料。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;芹菜的生长时间极长（接近一年），只要能确保不把它中途养死，芹菜的生产效率比玉米还要高。</VCE_Celery.description>
+		
+		<!-- EN: chickpea plant -->
+		<VCE_Chickpea.label>鹰嘴豆</VCE_Chickpea.label>
+		<!-- EN: One of the earliest cultivated legumes, widely grown for its nutritious seeds. These are high in fibre and protein and are a good source of iron, phosphorus, and folic acid.\n\n<color=#E5E54C>Gameplay effect:</color> Chickpeas grow quite fast and have good yield, but they require a LOT of space to be stored (this may be negated by stack-increasing mods, you dirty cheater, but it's up to you to decide to mess up the game's balance). -->
+		<VCE_Chickpea.description>种植历史悠久的豆类。鹰嘴豆富含纤维素和蛋白质，还能补充铁，磷和叶酸。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;鹰嘴豆的总体生产效率很高，但营养值被分在大量的单个物品中，导致它非常费存储空间。你用增加堆叠上限的mod可以规避这一缺点，但那就没意思了对吧。</VCE_Chickpea.description>
+		
+		<!-- EN: cucumber plant -->
+		<VCE_Cucumber.label>黄瓜藤</VCE_Cucumber.label>
+		<!-- EN: A sprawling vine with large leaves and curling tendrils, triangular prickly hairy leaves and yellow flowers. Produces a fruit that is a long thin vegetable with hard green skin and wet transparent flesh. \n\n<color=#E5E54C>Gameplay effect:</color> Cucumbers are only growable in sandy growing zones, which ignore fertility. These plants will however take a long time to sow and harvest, basically exchanging colonist work for growing plants in a normally unused space. Cucumbers grow quite fast, providing little yield but in a short period. They can ber eaten raw. -->
+		<VCE_Cucumber.description>有大片叶子和卷须的藤曼植物，三角形的叶子上覆盖着细密的小刺，藤蔓上开着黄色的小花。能收获黄瓜，一种长条形的蔬菜，有着深绿色的外皮和水灵灵的半透明果肉。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;该作物只能在沙地种植区中种植，也因而不受肥沃度影响。这类作物需要花费更多的时间来播种与收割，也就是以工作量来换取生长空间的限制。黄瓜成熟快但产量少，可以生吃。</VCE_Cucumber.description>
+		
+		<!-- EN: garlic plant -->
+		<VCE_Garlic.label>大蒜</VCE_Garlic.label>
+		<!-- EN: A plant with long, flat grasslike leaves forming a stalk, which rises directly from the flower bulb, the part of the plant used as food and medicine. The bulb is made up of many smaller cloves covered with a papery skin.\n\n<color=#E5E54C>Gameplay effect:</color> Garlic has very little yield, but can grow in almost any terrain and takes an obscene time to rot, as dried garlic can be used to cook too. -->
+		<VCE_Garlic.description>有着又长又平的草状叶子，直接从底部的球状块茎长出，这个块茎可以用来当作食材或是药材。大蒜头被纸一样的外皮包裹，里面分成许多小蒜瓣。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;大蒜的产量很小，但可以在很恶劣的地形生长，而且成品需要很久才会变质。</VCE_Garlic.description>
+		
+		<!-- EN: lettuce plant -->
+		<VCE_Lettuce.label>生菜</VCE_Lettuce.label>
+		<!-- EN: A leaf vegetable commonly eaten fresh and served as the base of green salads. Lettuce is generally a rich source of vitamins K and A.\n\n<color=#E5E54C>Gameplay effect:</color> Lettuce can be eaten raw like strawberries, but needs to be grown in shade: outside, but under roof. It won't grow inside. -->
+		<VCE_Lettuce.description>一种绿叶菜，通常被做在沙拉中被生食。生菜富含维生素K和A。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;生菜和莓果一样可以生吃，但是需要在阴影中种植，也就是在有屋顶的户外土地。</VCE_Lettuce.description>
+		
+		<!-- EN: lotus plant -->
+		<VCE_Lotus.label>莲蓬</VCE_Lotus.label>
+		<!-- EN: Sometimes colloquially called a water lily, lotus plants are adapted to grow in the flood plains of slow-moving rivers and delta areas. Lotus rhizomes have a crunchy texture with sweet-tangy flavours and can be deep-fried, stir-fried, or stuffed with meats or preserved fruits.\n\n<color=#E5E54C>Gameplay effect:</color> Lotus is only growable in aquatic growing zones, which ignore fertility. These plants will however take a long time to sow and harvest, basically exchanging colonist work for growing plants in a normally unused space. Lotus takes a long time to grow. -->
+		<VCE_Lotus.description>莲蓬一般生长在水流较慢的河流上和三角洲地区。莲藕的子口感爽脆香甜，可以油炸，爆炒或者填入肉和水果。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;该作物只能在水生种植区中种植，也因而不受肥沃度影响。这类作物需要花费更多的时间来播种与收割，也就是以工作量来换取生长空间的限制。莲蓬的生长时间很长。</VCE_Lotus.description>
+		
+		<!-- EN: melon plant -->
+		<VCE_Melon.label>西瓜</VCE_Melon.label>
+		<!-- EN: A plant producing a sweet, edible, and fleshy fruit of considerable size. Melons are usually cultivated in warm regions.\n\n<color=#E5E54C>Gameplay effect:</color> Melons are only growable in sandy growing zones, which ignore fertility. These plants will however take a long time to sow and harvest, basically exchanging colonist work for growing plants in a normally unused space. Melons need a lot of space, blocking sowing in adjacent spaces, but harvesting them can't fail -->
+		<VCE_Melon.description>清甜爽脆的大型水果。常在温热地带种植。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;该作物只能在沙地种植区中种植，也因而不受肥沃度影响。这类作物需要花费更多的时间来播种与收割，也就是以工作量来换取生长空间的限制。西瓜会占用大量空间，因此相邻格子不能播种，但收割西瓜不会失败。</VCE_Melon.description>
+		
+		<!-- EN: okra plant -->
+		<VCE_Okra.label>秋葵</VCE_Okra.label>
+		<!-- EN: A flowering plant in the mallow family valued for its edible green seed pods, which are famously known for their slimy or sticky texture when cut open. Okra is a powerhouse of valuable nutrients.\n\n<color=#E5E54C>Gameplay effect:</color> Okra is very, VERY resistant to damage. Okra plants will take less damage from prolonged lack of light, and will regenerate damage caused by any other means. -->
+		<VCE_Okra.description>锦葵科的开花植物，能产出绿色的可食用豆荚，特色在于切开后那黏糊糊的质感。富含多种营养。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;秋葵的生命力非常顽强，在光照不足时受到的伤害更少，其它手段造成的伤害也会自我恢复。</VCE_Okra.description>
+		
+		<!-- EN: peanut plant -->
+		<VCE_Peanut.label>花生</VCE_Peanut.label>
+		<!-- EN: A plant that produces seeds with an oblong shape and a papery seed coat. Similar in taste and nutritional profile to tree nuts such as walnuts and almonds, but technically a legume.\n\n<color=#E5E54C>Gameplay effect:</color> This genetically modified variety of peanuts is sown by throwing the seeds haphazardly on the growing zone, and as such the plants will automatically be planted in the adjacent tiles 75% of the time, reducing the total amount of sowing work needed. Useful! -->
+		<VCE_Peanut.description>能产出包裹在类纸外壳中的椭圆形种子。味道和杏仁，核桃这种树种类坚果类似，但花生其实是豆类哒。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;这种转基因花生的播种十分简单，只要抓一把种子撒到土里就算完成，每一次播种都有75%的几率在相邻格子内同时播种，非常省时省力。</VCE_Peanut.description>
+		
+		<!-- EN: secondary peanut plant -->
+		<VCE_PeanutSecondary.label>花生</VCE_PeanutSecondary.label>
+		<!-- EN: A plant that produces seeds with an oblong shape and a papery seed coat. Similar in taste and nutritional profile to tree nuts such as walnuts and almonds, but technically a legume.\n\n<color=#E5E54C>Gameplay effect:</color> This genetically modified variety of peanuts is sown by throwing the seeds haphazardly on the growing zone, and as such the plants will automatically be planted in the adjacent tiles 75% of the time, reducing the total amount of sowing work needed. Useful! -->
+		<VCE_PeanutSecondary.description>能产出包裹在类纸外壳中的椭圆形种子。味道和杏仁，核桃这种树种类坚果类似，但花生其实是豆类哒。\n\n&lt;color=#E5E54C>游戏效果：&lt;/color>这种转基因花生的播种十分简单，只要抓一把种子撒到土里就算完成，每一次播种都有75%的几率在相邻格子内同时播种，非常省时省力。</VCE_PeanutSecondary.description>
+
+		<!-- EN: pineapple plant -->
+		<VCE_Pineapple.label>菠萝</VCE_Pineapple.label>
+		<!-- EN: A sweet tropical fruit with a tough leathery skin and spiky leaves on top. The word pineapple was first used to mean "pine cone," and the fruit was given this name because of its resemblance to a large pine cone.\n\n<color=#E5E54C>Gameplay effect:</color> Pineapples have a very long growth period, but they are very nutritive, taking up less space in stockpiles. -->
+		<VCE_Pineapple.description>甜味热带水果，有皮革一样的坚固外皮和刺状的叶子。菠萝由于其外形，以前常被指代为“大号松果”。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;菠萝的生长时间很长，但营养集中，消耗的存储空间更小。</VCE_Pineapple.description>
+		
+		<!-- EN: radish plant -->
+		<VCE_Radish.label>红萝卜</VCE_Radish.label>
+		<!-- EN: An edible root vegetable that is very easy to grow and quick to harvest. Radishes are often planted by novice gardeners.\n\n<color=#E5E54C>Gameplay effect:</color> This genetically modified radish has a very short growth period (less than 2 days). This means it is an effective crop if you need small amounts of food FAST, and the sowing and harvesting work will be the most important factor. -->
+		<VCE_Radish.description>生长迅速，收割方便的块根蔬菜。适合有一定经验的园丁种植。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;这种转基因红萝卜在两天时间内就会快速成熟，适合在应急的时候种植。</VCE_Radish.description>
+		
+		<!-- EN: sunflower plant -->
+		<VCE_Sunflower.label>向日葵</VCE_Sunflower.label>
+		<!-- EN: A large crop used for its edible oil and edible fruits. The name sunflower may derive from the flower's head's shape, which resembles the sun.\n\n<color=#E5E54C>Gameplay effect:</color> Sunflowers grow 30% faster in equatorial regions. The size of the equatorial region depends on the planet's overall temperature: below 15º for Normal, below 35º for Warm, below 65º for Hot and all the planet for Very Hot. Planets with below Normal temperature are considered to have no equator. -->
+		<VCE_Sunflower.description>一种富含油脂的大型作物。由于花的形状很像太阳，所以有时也叫太阳花。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;向日葵在热带有30%的生长加成，热带的定义取决于星球的整体温度，在“普通”星球上是15°内，“温暖”星球是35°，“炎热”星球是65%，而“极热星球”整个都是热带，温度在“普通”以下的星球被视作没有热带。</VCE_Sunflower.description>
+		
+		<!-- EN: sweet potato plant -->
+		<VCE_SweetPotato.label>番薯</VCE_SweetPotato.label>
+		<!-- EN: A plant with large, starchy, sweet-tasting (tasting similar to pumpkin), tuberous roots that are used as a root vegetable. The sweet potato is distantly related to the common potato.\n\n<color=#E5E54C>Gameplay effect:</color> Sweet potatoes show a marked preference for rocky soils, flourishing on them. Rich soils are actually detrimental to them. They do not tolerate frost, growing best at an average temperature of 24 °C, and receinving penalties under 20ºC. -->
+		<VCE_SweetPotato.description>一种块根蔬菜，呈大块，淀粉质感，味道微甜有点像南瓜。是土豆的近亲。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;番薯更偏爱有沙硕的土地，反而不适应肥沃的耕地。番薯不耐寒，在24°C左右生长的最好，在20°C以下会有生长速度惩罚。</VCE_SweetPotato.description>
+		
+		<!-- EN: taro plant -->
+		<VCE_Taro.label>芋头</VCE_Taro.label>
+		<!-- EN: A tropical plant grown primarily for its edible corm, a root vegetable. Taro is one of the few crops that can be grown under flooded conditions, with the base of the plant always under water. This is due to air spaces in the petiole, which permit underwater gaseous exchange with the atmosphere.\n\n<color=#E5E54C>Gameplay effect:</color> Taro is only growable in aquatic growing zones, which ignore fertility. These plants will however take a long time to sow and harvest, basically exchanging colonist work for growing plants in a normally unused space. Taro is the baseline aquatic plant. -->
+		<VCE_Taro.description>一种热带植物，主要产出它的块根。芋头好水，可以在根部完全被水覆盖的情况下生长，因为叶柄中的空洞可以让水下的部位进行空气交换。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;该作物只能在水生种植区中种植，也因而不受肥沃度影响。这类作物需要花费更多的时间来播种与收割，也就是以工作量来换取生长空间的限制。芋头是中规中矩的水生作物。</VCE_Taro.description>
+		
+		<!-- EN: water chestnut plant -->
+		<VCE_WaterChestnut.label>荸荠</VCE_WaterChestnut.label>
+		<!-- EN: An aquatic vegetable that grows in marshes, under water, in the mud. It has stem-like, tubular green leaves, and small, rounded corms with a crisp, white flesh that may be eaten raw, slightly boiled, or grilled.\n\n<color=#E5E54C>Gameplay effect:</color> Water chestnut is only growable in aquatic growing zones, which ignore fertility. These plants will however take a long time to sow and harvest, basically exchanging colonist work for growing plants in a normally unused space. Water chestnut grows 30% faster in the heat (37-60ºC). -->
+		<VCE_WaterChestnut.description>生长在沼泽的水生蔬菜。它能产出一种小小的球茎，有着脆脆的白色果肉。生吃，水煮和烘烤都很不错。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;该作物只能在水生种植区中种植，也因而不受肥沃度影响。这类作物需要花费更多的时间来播种与收割，也就是以工作量来换取生长空间的限制。荸荠在热天（37-60°C）会得到30%的生长加成，</VCE_WaterChestnut.description>
+		
+		<!-- EN: watercress plant -->
+		<VCE_Watercress.label>西洋菜</VCE_Watercress.label>
+		<!-- EN: Watercress is a rapidly growing, perennial plant. It is one of the oldest known leaf vegetables consumed by humans. Watercress and many of its relatives are noteworthy for their piquant flavors.\n\n<color=#E5E54C>Gameplay effect:</color> Watercress is only growable in aquatic growing zones, which ignore fertility. These plants will however take a long time to sow and harvest, basically exchanging colonist work for growing plants in a normally unused space. Watercress grows faster than taro but needs a lot of space, blocking sowing in adjacent spaces. -->
+		<VCE_Watercress.description>西洋菜是一种生长迅速的多年生植物。是食用历史最久远的绿叶菜之一。西洋菜和它的近亲都有一股独特的辛辣味道。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;该作物只能在水生种植区中种植，也因而不受肥沃度影响。这类作物需要花费更多的时间来播种与收割，也就是以工作量来换取生长空间的限制。西洋菜比芋生长更快，但同时更占空间，它的相邻 格子无法播种。</VCE_Watercress.description>
+		
+		<!-- EN: bell pepper plant -->
+		<VCE_YellowBellPepper.label>菜椒</VCE_YellowBellPepper.label>
+		<!-- EN: Also known as sweet peppers, bell peppers are technically nightshades and part of the capsicum family, but they are the only chili pepper that carries a recessive gene that stops any capsaicin from being made in the fruit, thus making them not spicy.\n\n<color=#E5E54C>Gameplay effect:</color> On average, 25% of bell peppers will mature into yellow peppers, while 75% will mature into red peppers. The former are more nutritive. If planted in large numbers this results in increased average yield. -->
+		<VCE_YellowBellPepper.description>也被叫做甜椒，茄科辣椒属植物，但菜椒拥有抑制产生辣椒素的基因，因此丝毫不辣。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;菜椒有平均25%的几率会长成黄菜椒，75%会长成红菜椒。黄菜椒的营养值更高，因而鼓励你多种些菜椒以获得更多的中奖机会。</VCE_YellowBellPepper.description>
+
+    <!-- EN: zapcap -->
+    <VPE_Building_Zapcap.label>滋啦菇</VPE_Building_Zapcap.label>
+    <!-- EN: A large, bulbous, beige mushroom that is known to produce small amounts of electricity as it grows. Needs to be placed on power conduits in order to use the newly produced energy. In case of an electrical short, zapcaps amplify the released energy, causing significantly more damage. -->
+    <VPE_Building_Zapcap.description>一种球型的大型棕色菇类，可以在生长时产生少许电力。需要放置在电路上才能采集到生产的电力。当电缆发生短路时，滋啦菇会放大失控的能量，造成更大的损失。</VPE_Building_Zapcap.description>
+    
+    <!-- EN: bileceps -->
+    <VPE_Plant_Bileceps.label>食尸菇</VPE_Plant_Bileceps.label>
+    <!-- EN: Bileceps is a peculiar, coral-like mushroom that thrives on the bile of decaying bodies. Despite its unappetizing source, it possesses a meaty flavor and offers a protein-rich harvest. Its distinctive, cancerous appearance does little to deter colonists from utilizing it as an alternate source of meat.\n\n<color=#E5E54C>Gameplay effect:</color> Requires corpse bile on its tile to grow properly. Time to get a Helixien slug! -->
+    <VPE_Plant_Bileceps.description>食尸菇是一种外形类似珊瑚的菇类，会在腐烂的尸体上快速生长。虽然生长方法可能有点恶心，但它丰富的肉含量和口感都与生肉无异。它非同寻常的外表丝毫不能阻止殖民者们将它当作肉食的一大来源。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;种植的地块需要包含尸液（尸体腐烂产生的污垢）才能正常生长。</VPE_Plant_Bileceps.description>
+    
+    <!-- EN: blisscap -->
+    <VPE_Plant_Blisscap.label>极乐菇</VPE_Plant_Blisscap.label>
+    <!-- EN: A long, light-blue mushroom that offers more than just sustenance. Eating it induces a state of blissful happiness, making the consumer exceptionally content, yet notably drowsy. It is known to greatly enhance the psychic sensitivity of whoever eats it, and is often consumed by hippie communities on various core planets, allowing them to ‘see into the future’.\n\n<color=#E5E54C>Gameplay effect:</color> Contrary to other plants, blisscap ignores light levels for growth. Sunlight won't destroy it. It will still rest during the night period. -->
+    <VPE_Plant_Blisscap.description>一种长杆的亮蓝色菇类，除了本身的营养外还会带来大量的快感，让摄入者浑身放松，昏昏欲睡。它能增强食用者的心灵敏感度，核心世界的嬉皮士们常常觉得这能让他们“看到未来的预兆”。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;与其它植物不同，光照程度对它的生长没有影响。阳光并不会破坏它。它依旧会在夜间进入休眠。</VPE_Plant_Blisscap.description>
+    
+    <!-- EN: foampuffer -->
+    <VPE_Plant_Foampuffer.label>粉爆菇</VPE_Plant_Foampuffer.label>
+    <!-- EN: An ugly, thick mushroom with a cap that smells of muffalo fecal matter. It needs to be grown in flower pots. If it comes into contact with fire once matured, it explodes, ejecting a spray of firefoam over a short distance. -->
+    <VPE_Plant_Foampuffer.description>一种肥大丑陋的菇类，气味神似雪牛的排泄物。它只能在花盆中种植。成熟后一旦接触火焰就会自爆，向周围散发灭火泡沫。</VPE_Plant_Foampuffer.description>
+    
+    <!-- EN: glowcap -->
+    <VPE_Plant_Glowcap.label>荧光菇</VPE_Plant_Glowcap.label>
+    <!-- EN: A small blue mushroom typically found in caves. The smell it emits is absolutely repulsive - but it tastes surprisingly good when cooked. It lights up the area around it, but the light is not strong enough to grow crops. -->
+    <VPE_Plant_Glowcap.description>常在洞穴中生长的一种小型蓝色菇类。它闻起来臭，吃起来香。它会照亮周围一小片区域，但亮度并不足以让作物生长。</VPE_Plant_Glowcap.description>
+    
+    <!-- EN: healtruffle -->
+    <VPE_Plant_Healtruffle.label>熏药松露</VPE_Plant_Healtruffle.label>
+    <!-- EN: Healtruffle is a mushroom that grows slowly by using nutrients from rotstink - it requires a supply of rotstink gas around it in order to grow. Harvesting it gives you herbal medicine. However, it takes a lot of work to plant and collect because it's very delicate. It's been grown for a long time by settlers for its medicinal properties. -->
+    <VPE_Plant_Healtruffle.description>熏药松露是一种特殊的菇类，它依靠腐臭中的营养缓慢生长。它成熟后能产出草药。然而由于结构脆弱，不论是种植还是收割都十分费工夫。由于本身的药用性能，它在殖民者中非常流行。</VPE_Plant_Healtruffle.description>
+    
+    <!-- EN: lullabloom -->
+    <VPE_Plant_Lullabloom.label>安神菇</VPE_Plant_Lullabloom.label>
+    <!-- EN: A special kind of mushroom that emits calming spores, ideal for planting next to a bed. Needs to be planted in a flower pot. Its presence soothes the sleeping individual, creating a more restful slumber and promoting overall comfort. Its gentle, sleep-inducing properties make it a favorite among colonists seeking a peaceful night's rest.\n\n<color=#E5E54C>Gameplay effect:</color> Contrary to other plants, lullabloom ignores light levels for growth. Sunlight won't destroy it. It will still rest during the night period.\n\nNullifies the "disturbed sleep" thought.\n\nWill link to vanilla and Vanilla Furniture Expanded beds. -->
+    <VPE_Plant_Lullabloom.description>一种特殊菇类，能散发出使人舒心的孢子，适合在床头种植。需要在花盆中种植。它能辅助睡眠，在周围休息的人会更加舒适。它在有睡眠障碍的人们中非常流行。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;与其它植物不同，光照程度对它的生长没有影响。阳光并不会破坏它。它依旧会在夜间进入休眠。\n\n它会消除“睡眠被打扰”的效果。\n\n会与原版和原版家具扩展中的床连接。</VPE_Plant_Lullabloom.description>
+    
+    <!-- EN: mycothread mushroom -->
+    <VPE_Plant_MycothreadMushroom.label>纤维菇</VPE_Plant_MycothreadMushroom.label>
+    <!-- EN: This mushroom has been cultivated for ages by tunneler mining colonies, as it produces a thick but flexible cotton-like fabric which can be used to craft ropes, clothing and furniture. While it takes an incredibly long time to grow, and dies when exposed to any sort of light, for some colonies it is the only reliable way of obtaining good quality textiles. -->
+    <VPE_Plant_MycothreadMushroom.description>这种蘑菇被矿业殖民地种植了上百年，因为它会产出一种厚实且柔软的布料，可以用来做成工具，衣物和家具。虽然生长周期很长，而且丝毫不能见光，但对有需要的人来说，它还是必不可少的织物来源。</VPE_Plant_MycothreadMushroom.description>
+    
+    <!-- EN: redcap -->
+    <VPE_Plant_Redcap.label>红伞菇</VPE_Plant_Redcap.label>
+    <!-- EN: A cultivated mushroom with a beautiful red cap and a somewhat short lifespan. Recaps are beautiful, but may need to be replanted often. -->
+    <VPE_Plant_Redcap.description>短命的蘑菇，有着优美的鲜红外表。它能美化殖民地，但需要频繁地重新种植。</VPE_Plant_Redcap.description>
+    
+    <!-- EN: stinker -->
+    <VPE_Plant_Stinker.label>恶臭菇</VPE_Plant_Stinker.label>
+    <!-- EN: A small, fast-growing mushroom that forms large patches. It produces rotstink through a chemical process. Despite its unpleasant odor, it can be harvested for edible fungus. It can grow anywhere, however exposure to sunlight will kill it.\n\n<color=#E5E54C>Gameplay effect:</color> Contrary to other mushrooms, stinkers can handle light source up to 50% luminosity, such as torches. -->
+    <VPE_Plant_Stinker.description>生长迅速的小型菇类，会长出肥大的鼓包。它会分泌出散发腐臭的物质。虽然臭味十分恼人，但仍然可以食用。它能在任何地方种植，除了不能见阳光。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;与其它蘑菇不同，恶臭菇能够应付最高50%的光照，例如火把。</VPE_Plant_Stinker.description>
+    
+    <!-- EN: thermoregulus -->
+    <VPE_Plant_Thermoregulus.label>恒温菇</VPE_Plant_Thermoregulus.label>
+    <!-- EN: A rare, large mushroom that needs to be grown in flower pots. Once mature, thermoregulus emits varying temperature depending on the ambient temperature around it. At all times it will aim to bring the temperature of the room it’s in to 16C. \n\n<color=#E5E54C>Gameplay effect:</color> Contrary to other mushroom, sunlight won't destroy it. -->
+    <VPE_Plant_Thermoregulus.description>一种稀有的大型菇类，只能在花盆中种植。成熟后，恒温菇会根据环境自发地释放出不同温度的气体，尝试将气温稳定在16℃左右。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;与其它蘑菇不同，阳光并不会破坏它。</VPE_Plant_Thermoregulus.description>
+    
+    <!-- EN: timbercap -->
+    <VPE_Plant_Timbercap.label>木本菇</VPE_Plant_Timbercap.label>
+    <!-- EN: A short, brown mushroom with a hard stem. When harvested, it yields a small amount of wood-like substance. -->
+    <VPE_Plant_Timbercap.description>一种矮小的棕色菇类，有着坚硬的菌杆，收割后会产出少量木头。</VPE_Plant_Timbercap.description>
+    
+    <!-- EN: zapcap -->
+    <VPE_Plant_Zapcap.label>滋啦菇</VPE_Plant_Zapcap.label>
+    <!-- EN: A large, bulbous, beige mushroom that is known to produce small amounts of electricity as it grows. Needs to be placed on power conduits in order to use the newly produced energy. In case of an electrical short, zapcaps amplify the released energy, causing significantly more damage. -->
+    <VPE_Plant_Zapcap.description>一种球型的大型棕色菇类，可以在生长时产生少许电力。需要放置在电路上才能采集到生产的电力。当电缆发生短路时，滋啦菇会放大失控的能量，造成更大的损失。</VPE_Plant_Zapcap.description>
+	</LanguageData>

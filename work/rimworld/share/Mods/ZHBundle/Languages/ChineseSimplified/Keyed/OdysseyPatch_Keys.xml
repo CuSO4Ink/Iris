@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: Space Travel -->
+  <OdysseyPatch_SpaceTravel>太空旅行</OdysseyPatch_SpaceTravel>
+	<!-- EN: Fishing -->
+  <OdysseyPatch_Fishing>钓鱼</OdysseyPatch_Fishing>
+	<!-- EN: Outfit Stands and Statues -->
+  <OdysseyPatch_OutfitStands>服装架</OdysseyPatch_OutfitStands>
+	<!-- EN: Miscellaneous -->
+  <OdysseyPatch_Misc>杂项</OdysseyPatch_Misc>
+	<!-- EN: Allow looking in or hauling to groups of outfit stands in bills -->
+  <OdysseyPatch_OutfitStandGroupsInBills>允许在“清单”查看或搬运到服装架群</OdysseyPatch_OutfitStandGroupsInBills>
+	<!-- EN: Outfit stand body type is configurable -->
+  <OdysseyPatch_OutfitStandBodyType>可自定义服装架的体型大小</OdysseyPatch_OutfitStandBodyType>
+	<!-- EN: Fishing zone settings can be copy/pasted -->
+  <OdysseyPatch_FishingZoneCopy>可复制粘贴钓鱼区设置</OdysseyPatch_FishingZoneCopy>
+	<!-- EN: Allow removing items from outfit stands by default -->
+  <OdysseyPatch_AllowRemovingItemsFromOutfitStand>默认允许从服装架移除物品</OdysseyPatch_AllowRemovingItemsFromOutfitStand>
+	<!-- EN: Allow full world search which searches all world tiles -->
+  <OdysseyPatch_WorldSearchEmptyTiles>允许在世界范围内搜索所有的地图格</OdysseyPatch_WorldSearchEmptyTiles>
+	<!-- EN: Allow always showing substructure overlay -->
+  <OdysseyPatch_SubstructureOverlayOptions>允许始终显示基架</OdysseyPatch_SubstructureOverlayOptions>
+	<!-- EN: Floors can erroneously be built under gravship hulls -->
+  <OdysseyPatch_FloorsBlockedByHulls>修复可在逆重飞船舱壁错误地建造地板的问题</OdysseyPatch_FloorsBlockedByHulls>
+	<!-- EN: Prevent pawns from fishing to starvation/exhaustion -->
+  <OdysseyPatch_FishingInterruptions>防止角色因钓鱼而饥肠辘辘/精疲力尽</OdysseyPatch_FishingInterruptions>
+	<!-- EN: Pawn dot highlights are erroneously visible during gravship cutscenes -->
+  <OdysseyPatch_SilhouettesHiddenByGravshipLanding>修复逆重飞船过场动画错误地高亮角色的问题。</OdysseyPatch_SilhouettesHiddenByGravshipLanding>
+	<!-- EN: Don't disable allowing removing items from outfit stands when ordering a pawn to equip the outfit -->
+  <OdysseyPatch_AllowRemovingItemsFromOutfitStandAfterEquipping>命令角色着装时不再禁止从服装架移除物品</OdysseyPatch_AllowRemovingItemsFromOutfitStandAfterEquipping>
+	<!-- EN: Pawns can grab food, medicine, and drugs from their parked shuttle just like they can from their pack animals -->
+  <OdysseyPatch_ShuttleFood>角色可从停泊的穿梭机获取食物、药品和成瘾品，就像从驮运动物那里拿一样</OdysseyPatch_ShuttleFood>
+	<!-- EN: Allow pressing Enter to skip gravship cutscenes -->
+  <OdysseyPatch_GravshipCutsceneOptions>允许按Enter键跳过逆重飞船过场动画</OdysseyPatch_GravshipCutsceneOptions>
+	<!-- EN: After landing a gravship, electrical buildings previously designated for flicking the power enter an erroneous state -->
+  <OdysseyPatch_FlickSwitchesAfterLanding>逆重飞船降落后，先前指定开关的电力建筑会进入错误状态</OdysseyPatch_FlickSwitchesAfterLanding>
+	<!-- EN: After landing a gravship, deathresting pawns are erroneously popped out of bed -->
+  <OdysseyPatch_DeathrestingPawnsTuckedInAfterLanding>逆重飞船降落后，死眠的角色会错误地从床上跳出</OdysseyPatch_DeathrestingPawnsTuckedInAfterLanding>
+	<!-- EN: Disable warnings when settling in orbit or in "dangerous" biomes -->
+  <OdysseyPatch_BiomeDangerWarningSuppressed>定居在轨道或“危险”生态时禁止弹出警告</OdysseyPatch_BiomeDangerWarningSuppressed>
+	<!-- EN: Ignore ugliness of things stored on outfit stands (positive beauty still counts) -->
+  <OdysseyPatch_OutfitStandsIgnoreStoredThingsBeauty>忽略存储在服装架的东西的丑陋度（正面的美观度仍然计入）</OdysseyPatch_OutfitStandsIgnoreStoredThingsBeauty>
+	<!-- EN: Negative fishing outcome notifications are less intrusive -->
+  <OdysseyPatch_FishingMishapsLessIntrusive>钓鱼失败的信息不再那么烦人</OdysseyPatch_FishingMishapsLessIntrusive>
+	<!-- EN: Saving with a shuttle that hasn't been used yet causes an error -->
+  <OdysseyPatch_ShuttleSavingError>保存未使用的穿梭机仍会引起错误</OdysseyPatch_ShuttleSavingError>
+	<!-- EN: You can park a shuttle anywhere you could also place a blueprint for a new shuttle -->
+  <OdysseyPatch_ShuttleBlockedByLess>可在你放置新穿梭机蓝图的地方停泊另一穿梭机</OdysseyPatch_ShuttleBlockedByLess>
+	<!-- EN: Allow hiding statue headgear -->
+  <OdysseyPatch_StatuesDontHaveHeadgear>允许隐藏雕像头饰</OdysseyPatch_StatuesDontHaveHeadgear>
+	<!-- EN: Statues can erroneously reload with different dominant genes -->
+  <OdysseyPatch_StatueConsistency>雕像会错误地加载出不同的显性基因</OdysseyPatch_StatueConsistency>
+	<!-- EN: Substructure filth multiplier erroneously overrides filth multiplier of floor on top -->
+  <OdysseyPatch_FilthMultiplierFixForSubstructure>基架的易污乘数会错误地覆盖上面地板的易污乘数</OdysseyPatch_FilthMultiplierFixForSubstructure>
+	<!-- EN: Bug fix -->
+  <OdysseyPatch_BugFix>bug修复</OdysseyPatch_BugFix>
+	<!-- EN: (requires restart) -->
+  <OdysseyPatch_RestartRequired>（需要重启）</OdysseyPatch_RestartRequired>
+	<!-- EN: Body type: {0} -->
+  <OdysseyPatch_BodyType>体型：{0}</OdysseyPatch_BodyType>
+	<!-- EN: Click to change this outfit stand's model to a different body type. -->
+  <OdysseyPatch_BodyTypeDesc>点击将该服装架的模型改成不同的体型</OdysseyPatch_BodyTypeDesc>
+	<!-- EN: Copy this fishing zone's settings to the clipboard so you can paste them onto another fishing zone. -->
+  <OdysseyPatch_FishingZoneCopyDesc>复制该钓鱼区的设置到剪贴板，以便粘贴到另一处钓鱼区。</OdysseyPatch_FishingZoneCopyDesc>
+	<!-- EN: Overwrite this fishing zone's settings with those previously copied to the clipboard. -->
+  <OdysseyPatch_FishingZonePasteDesc>用之前复制到剪贴板的设置覆盖当前钓鱼区的设置</OdysseyPatch_FishingZonePasteDesc>
+	<!-- EN: Full search -->
+  <OdysseyPatch_FullSearch>全局搜索</OdysseyPatch_FullSearch>
+	<!-- EN: Initializing search set -->
+  <OdysseyPatch_InitializingSearchSet>初始化搜索集</OdysseyPatch_InitializingSearchSet>
+	<!-- EN: Always -->
+  <OdysseyPatch_Always>总是</OdysseyPatch_Always>
+	<!-- EN: When selected -->
+  <OdysseyPatch_WhenSelected>选中时</OdysseyPatch_WhenSelected>
+	<!-- EN: Never -->
+  <OdysseyPatch_Never>从不</OdysseyPatch_Never>
+	<!-- EN: Allow grabbing supplies -->
+  <OdysseyPatch_AllowGrabbingSupplies>允许获取补给</OdysseyPatch_AllowGrabbingSupplies>
+	<!-- EN: When enabled, pawns can freely grab food, medicine, and drugs from this shuttle as needed. -->
+  <OdysseyPatch_AllowGrabbingSuppliesDesc>启用后，角色可从停泊的穿梭机获取食物、药品和成瘾品。</OdysseyPatch_AllowGrabbingSuppliesDesc>
+	<!-- EN: Show headgear -->
+  <OdysseyPatch_ShowHeadgear>显示头饰</OdysseyPatch_ShowHeadgear>
+</LanguageData>

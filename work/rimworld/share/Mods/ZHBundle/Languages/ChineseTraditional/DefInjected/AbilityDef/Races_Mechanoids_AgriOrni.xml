@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 고속 고공 비행 -->
+  <Miho_MechAbility_High_Jump.label>高速飛行</Miho_MechAbility_High_Jump.label>
+  <!-- EN: 차체 안에 있는 열을 이용해 증기를 발사하여 고속으로 날아갑니다. -->
+  <Miho_MechAbility_High_Jump.description>借助機體內因燃燒高溫產生的蒸汽能量，快速飛行到遠處。</Miho_MechAbility_High_Jump.description>
+  <!-- EN: jump -->
+  <Miho_MechAbility_High_Jump.verbProperties.label>飛行</Miho_MechAbility_High_Jump.verbProperties.label>
+  
+  <!-- EN: 마지막 고속 고공 비행 -->
+  <Miho_MechAbility_High_JumpExplosion.label>高速飛行（自爆）</Miho_MechAbility_High_JumpExplosion.label>
+  <!-- EN: 차체 안에 있는 열을 이용해 증기를 발사하여 고속으로 날아간 후, 본체에 내장된 폭약과 함깨 사라집니다. -->
+  <Miho_MechAbility_High_JumpExplosion.description>借助機體內因燃燒高溫產生的蒸汽能量，快速飛行到遠處，隨後引爆身上裝載的所有炸藥。</Miho_MechAbility_High_JumpExplosion.description>
+  <!-- EN: jump -->
+  <Miho_MechAbility_High_JumpExplosion.verbProperties.label>飛行</Miho_MechAbility_High_JumpExplosion.verbProperties.label>
+
+</LanguageData>

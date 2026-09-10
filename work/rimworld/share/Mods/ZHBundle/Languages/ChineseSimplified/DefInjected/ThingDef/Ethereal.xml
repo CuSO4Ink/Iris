@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: emerging -->
+  <VPE_BrambleSpawner.label>正在长出</VPE_BrambleSpawner.label>
+  
+  <!-- EN: darkness -->
+  <VPE_Darkness.label>黑暗</VPE_Darkness.label>
+  
+  <!-- EN: decoy -->
+  <VPE_Decoy.label>替身</VPE_Decoy.label>
+  
+  <!-- EN: fire beam -->
+  <VPE_FireBeam.label>火柱</VPE_FireBeam.label>
+  
+  <!-- EN: fire tornado -->
+  <VPE_FireTornado.label>炽火旋风</VPE_FireTornado.label>
+  
+  <!-- EN: hurricane maker -->
+  <VPE_HurricaneMaker.label>飓风</VPE_HurricaneMaker.label>
+  
+  <!-- EN: flying -->
+  <VPE_JumpingPawn.label>空中</VPE_JumpingPawn.label>
+  
+  <!-- EN: large shrineshield -->
+  <VPE_Shrineshield_Large.label>大型圣地护盾</VPE_Shrineshield_Large.label>
+  
+  <!-- EN: small shrineshield -->
+  <VPE_Shrineshield_Small.label>小型圣地护盾</VPE_Shrineshield_Small.label>
+  
+  <!-- EN: sky changer -->
+  <VPE_SkyChanger.label>变天</VPE_SkyChanger.label>
+  
+  <!-- EN: time sphere -->
+  <VPE_TimeSphere.label>时球</VPE_TimeSphere.label>
+  
+  <!-- EN: emerging -->
+  <VPE_TreeSpawner.label>正在长出</VPE_TreeSpawner.label>
+  
+  <!-- EN: vortex -->
+  <VPE_Vortex.label>漩涡</VPE_Vortex.label>
+  
+  <!-- EN: emerging -->
+  <VPE_WildPlantSpawner.label>正在长出</VPE_WildPlantSpawner.label>
+  
+</LanguageData>

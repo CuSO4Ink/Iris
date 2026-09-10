@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: casting animation -->
+  <AM_ChannelAnimation.reportString>触发动画。</AM_ChannelAnimation.reportString>
+
+  <!-- EN: engaging in friendly duel with TargetA -->
+  <AM_DoFriendlyDuel.reportString>与TargetA切磋决斗。</AM_DoFriendlyDuel.reportString>
+  
+  <!-- EN: lassoing pawn -->
+  <AM_GrapplePawn.reportString>抛投套索。</AM_GrapplePawn.reportString>
+  
+  <!-- EN: in animation -->
+  <AM_InAnimation.reportString>动画中。</AM_InAnimation.reportString>
+  
+  <!-- EN: spectating duel: cheering for TargetC -->
+  <AM_SpectateFriendlyDuel.reportString>围观决斗：为TargetC加油打气。</AM_SpectateFriendlyDuel.reportString>
+  
+  <!-- EN: moving towards TargetA to perform execution. -->
+  <AM_WalkToExecution.reportString>对TargetA施展终结技。</AM_WalkToExecution.reportString>
+  
+</LanguageData>

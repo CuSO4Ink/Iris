@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: the army of fetid corpses -->
+  <Necronoid.label>殁疫尸军</Necronoid.label>
+  <!-- EN: A gathering of horrible creatures which is an amalgamation of reaminmated rotting human flesh, that was deformed into monstrous proportions. Their origins are shrouded in mysteries, backed-up with many theories pertaining on how they came to be, but one thing's for sure is that these necronoids are a menace to all organic life, leaving behind a sea of corpses, enslaved pieces of meat, and fallen settlements in their wake. -->
+  <Necronoid.description>这些形态扭曲畸异、外表狰狞可怖的怪物是所有知性生命的死敌，其所经之处皆将化作尸横遍野的人间炼狱。虽然它们的具体起源至今是个谜，但有件事却是毫无疑问的——若不想被它们屠戮殆尽，那就必须竭尽全力地挣扎下去。</Necronoid.description>
+  <!-- EN: flesh master -->
+  <Necronoid.leaderTitle>血肉傀首</Necronoid.leaderTitle>
+  <!-- EN: necronoid -->
+  <Necronoid.pawnSingular>殁疫感染体</Necronoid.pawnSingular>
+  <!-- EN: necronoids -->
+  <Necronoid.pawnsPlural>殁疫感染体</Necronoid.pawnsPlural>
+  
+</LanguageData>

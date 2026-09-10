@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bring ingredient to processor -->
+  <PS_BringToProcessor.label>為加工設備添加原料</PS_BringToProcessor.label>
+  <!-- EN: bringing ingredients to -->
+  <PS_BringToProcessor.gerund>添加原料至</PS_BringToProcessor.gerund>
+  <!-- EN: bring ingredients to -->
+  <PS_BringToProcessor.verb>添加原料</PS_BringToProcessor.verb>
+  
+  <!-- EN: drain out of storage -->
+  <PS_DrainOutOfStorage.label>取出內容物</PS_DrainOutOfStorage.label>
+  <!-- EN: draining out of storage -->
+  <PS_DrainOutOfStorage.gerund>取出內容物於</PS_DrainOutOfStorage.gerund>
+  <!-- EN: drain out of storage -->
+  <PS_DrainOutOfStorage.verb>取出內容物</PS_DrainOutOfStorage.verb>
+  
+  <!-- EN: fill storage -->
+  <PS_FillStorage.label>填充容器</PS_FillStorage.label>
+  <!-- EN: filling storage -->
+  <PS_FillStorage.gerund>填充容器於</PS_FillStorage.gerund>
+  <!-- EN: fill storage -->
+  <PS_FillStorage.verb>填充容器</PS_FillStorage.verb>
+  
+  <!-- EN: pick up result from processor -->
+  <PS_PickUpProcessor.label>收取加工設備產物</PS_PickUpProcessor.label>
+  <!-- EN: picking up result from -->
+  <PS_PickUpProcessor.gerund>收取產物於</PS_PickUpProcessor.gerund>
+  <!-- EN: pick up result from -->
+  <PS_PickUpProcessor.verb>收取產物</PS_PickUpProcessor.verb>
+  
+</LanguageData>

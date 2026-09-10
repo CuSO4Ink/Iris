@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: gather construction experience -->
+  <AnalyseFloor.header_Ancestor>积累建造经验</AnalyseFloor.header_Ancestor>
+  <!-- EN: reverse engineer floor -->
+  <AnalyseFloor.header_Direct>地面逆向工程</AnalyseFloor.header_Direct>
+  <!-- EN: Inspect construction methodology used in construction of {0}.\n\nAffected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <AnalyseFloor.shortDesc_Ancestor>检查 {0} 的施工方法。\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</AnalyseFloor.shortDesc_Ancestor>
+  <!-- EN: Reverse engineer construction approach of {0}.\n\nAffected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <AnalyseFloor.shortDesc_Direct>对 {0} 的施工方案进行逆向分析。\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</AnalyseFloor.shortDesc_Direct>
+
+  <!-- EN: soil analysis -->
+  <AnalyseSoil.header_Direct>土壤分析</AnalyseSoil.header_Direct>
+  <!-- EN: Analyze soil contents of {0}.\n\nAffected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <AnalyseSoil.shortDesc_Direct>分析 {0} 的土壤成分。\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</AnalyseSoil.shortDesc_Direct>
+
+  <!-- EN: terrain analysis -->
+  <AnalyseTerrain.header_Direct>地形分析</AnalyseTerrain.header_Direct>
+  <!-- EN: Analyze {0}.\n\n\Affected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <AnalyseTerrain.shortDesc_Direct>分析 {0}。\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</AnalyseTerrain.shortDesc_Direct>
+
+</LanguageData>

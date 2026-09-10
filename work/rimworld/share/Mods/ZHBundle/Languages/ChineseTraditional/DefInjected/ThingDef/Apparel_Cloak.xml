@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Cap -->
+
+  <RHApparel_DFCloak_Hood.label>帶風帽的鬥篷</RHApparel_DFCloak_Hood.label>
+  <RHApparel_DFCloak_Hood.description>覆蓋頭部的鬥篷，保暖得體。</RHApparel_DFCloak_Hood.description>
+
+
+  <!-- Black cloak -->
+
+  <RHApparel_DFCloak_Poncho.label>鬥篷</RHApparel_DFCloak_Poncho.label>
+  <RHApparel_DFCloak_Poncho.description>一件防風鬥篷，多年使用後已破舊不堪，但仍在被使用。這似乎是荒地幸存者在使用動力裝甲之前的裝備，他們由於充斥著過去的情感而難以放棄這件鬥篷。誰知道呢，也許這只是他們社交圈裏的流行東西。</RHApparel_DFCloak_Poncho.description>
+
+
+</LanguageData>

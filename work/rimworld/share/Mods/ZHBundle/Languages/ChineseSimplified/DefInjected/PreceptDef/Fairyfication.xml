@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fairyfication ritual -->
+  <VV_Fairyfication.label>仙灵化仪式</VV_Fairyfication.label>
+  <!-- EN: Transforms a vivi into its fairy form and binds it to the resonator. The fairyfication ritual can only be performed on adult common vivis hatched from eggs laid by the resonator.\n\nA fairy vivi does not age, has no needs, and cannot be harmed, but vanishes if the bound royal vivi dies. -->
+  <VV_Fairyfication.description>将一名薇薇转化为其仙灵形态并同共鸣者绑定。仙灵化仪式只能用于共鸣者产下的卵所孵化出的成年普通薇薇。\n\n仙灵化薇薇没有任何需求，不会受到伤害，也不受寿命限制，但会随其所绑定的皇家薇薇死亡而消亡。</VV_Fairyfication.description>
+  
+</LanguageData>

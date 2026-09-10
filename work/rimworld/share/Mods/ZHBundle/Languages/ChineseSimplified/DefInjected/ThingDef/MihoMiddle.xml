@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 트루퍼 아머 -->
+  <Miho_Apparel_Middle_Militia.label>美狐战术背心</Miho_Apparel_Middle_Militia.label>
+  <!-- EN: 전술적인 플레이트 캐리어 입니다. 튼튼하기도 하지만, 무엇보다 장전속도를 감소시켜 줍니다. -->
+  <Miho_Apparel_Middle_Militia.description>装有防弹插板的战术背心，能够小幅降低穿戴者的射击瞄准时间。</Miho_Apparel_Middle_Militia.description>
+  
+  <!-- EN: 미호 트루퍼 아머 (tan) -->
+  <Miho_Apparel_Middle_Militia_Tan.label>美狐战术背心（卡其色）</Miho_Apparel_Middle_Militia_Tan.label>
+  <!-- EN: 전술적인 플레이트 캐리어 입니다. 튼튼하기도 하지만, 무엇보다 장전속도를 감소시켜 줍니다. -->
+  <Miho_Apparel_Middle_Militia_Tan.description>装有防弹插板的战术背心，能够小幅降低穿戴者的射击瞄准时间。</Miho_Apparel_Middle_Militia_Tan.description>
+  
+  <!-- EN: 미호 메딕 아머 -->
+  <Miho_Apparel_Middle_MilitiaMedic.label>美狐军医战术背心</Miho_Apparel_Middle_MilitiaMedic.label>
+  <!-- EN: 전술적인 플레이트 캐리어 입니다. 치유의 손길을 쓸 수 있는 모듈이 있습니다. 이미 배웠을시 한번 더 쓸 수 있습니다. -->
+  <Miho_Apparel_Middle_MilitiaMedic.description>装有防弹插板的战术背心，其额外搭载的医疗模块能让穿戴者快速包扎并治愈他人身上的伤口与疾病。</Miho_Apparel_Middle_MilitiaMedic.description>
+  
+  <!-- EN: 미호 전술조끼 -->
+  <Miho_Apparel_Middle_MilitiaVest.label>美狐携行装具</Miho_Apparel_Middle_MilitiaVest.label>
+  <!-- EN: 전술적인 조끼 입니다. 약간의 방호력을 지니고 있고, 무엇보다 장전속도를 감소시켜 줍니다. -->
+  <Miho_Apparel_Middle_MilitiaVest.description>具有一定防护能力的携行装具，能够有效降低穿戴者的射击瞄准时间。</Miho_Apparel_Middle_MilitiaVest.description>
+  
+  <!-- EN: 미호 외골격 중갑 -->
+  <Miho_Apparel_Middle_Powered.label>美狐军用外骨骼</Miho_Apparel_Middle_Powered.label>
+  <!-- EN: 외골격입니다. 여러가지 추가 파츠들을 장착시킬 수 있습니다. -->
+  <Miho_Apparel_Middle_Powered.description>为同时提高防护能力、携带能力和灵活性而设计的外骨骼装备，可以额外加装各种插件。</Miho_Apparel_Middle_Powered.description>
+  
+  <!-- EN: 미호 메카나이터 외골격 -->
+  <Miho_Apparel_Middle_PoweredMechanitor.label>美狐机控外骨骼</Miho_Apparel_Middle_PoweredMechanitor.label>
+  <!-- EN: 메카나이터 장비가 내장된 외골격 입니다. 첨단 부품이 내장되어있어 일반적인 중갑 외골격보다 충격에 약합니다. -->
+  <Miho_Apparel_Middle_PoweredMechanitor.description>搭载了机械师辅助装置的外骨骼装备，防护能力稍逊于美狐族的军用外骨骼。</Miho_Apparel_Middle_PoweredMechanitor.description>
+  
+  <!-- EN: 미호 안전 외골격 -->
+  <Miho_Apparel_Middle_PoweredWorker.label>美狐外骨骼</Miho_Apparel_Middle_PoweredWorker.label>
+  <!-- EN: 외골격입니다. 착용자를 보호해 주진 않지만, 연약한 미호도 무거운 짐을 쉽게 나를 수 있게 만듭니다. -->
+  <Miho_Apparel_Middle_PoweredWorker.description>常用于工程作业的外骨骼装备。穿戴上后，即便是身体羸弱的美狐族也能轻松搬起重物。</Miho_Apparel_Middle_PoweredWorker.description>
+  
+</LanguageData>

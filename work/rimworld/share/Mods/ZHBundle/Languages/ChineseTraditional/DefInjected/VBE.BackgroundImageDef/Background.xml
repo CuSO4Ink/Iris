@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Melee Animation: Brawl -->
+  <AM_NoTablesBrawl.label>騷亂</AM_NoTablesBrawl.label>
+  <!-- EN: Artwork created by @No_Tables for the Melee Animation mod.\nThis background is dynamic, with a parallax effect. -->
+  <AM_NoTablesBrawl.description>由No_Tables為「Melee Animation」繪製的動態主菜單背景，會依據鼠標移動而出現視差效果。</AM_NoTablesBrawl.description>
+  
+</LanguageData>

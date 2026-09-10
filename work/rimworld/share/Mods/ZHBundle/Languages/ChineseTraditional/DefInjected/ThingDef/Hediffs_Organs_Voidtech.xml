@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- voidtech spine -->
+
+  <RH_VOIDBionicSpine.label>Voidtech仿生脊椎</RH_VOIDBionicSpine.label>
+  <RH_VOIDBionicSpine.description>一個先進的人造脊柱，外觀和感覺類似於天然脊柱。一根生物凝膠神經束沿著一個鉸接的塑料核心向下延伸，周圍環繞著一個晶格塵埃治療系統。它與生物脊椎的性能相匹配。\n\n此仿生部件是V.O.I.D.為其成員定製的。</RH_VOIDBionicSpine.description>
+
+
+  <!-- voidtech heart -->
+
+  <RH_VOIDBionicHeart.label>Voidtech仿生心臟</RH_VOIDBionicHeart.label>
+  <RH_VOIDBionicHeart.description>一個先進的人工心臟，外觀和感覺類似於天然心臟。通過合成肌肉纖維模擬心跳，並通過高流量泵在高壓力下進行快速血液循環。它幾乎在所有方面都比生物心臟好。\n\n此仿生部件是V.O.I.D.為其成員定製的。</RH_VOIDBionicHeart.description>
+
+
+  <!-- voidtech stomach -->
+
+  <RH_VOIDBionicStomach.label>Voidtech仿生胃</RH_VOIDBionicStomach.label>
+  <RH_VOIDBionicStomach.description>一個先進的人工胃，外觀和感覺類似於天然胃。其中先進的化學處理系統可以分解人類通常無法利用的物質，從而提升消化效率。它在各方面都優於生物的消化器。\n\n此仿生部件是V.O.I.D.為其成員定製的。</RH_VOIDBionicStomach.description>
+
+
+  <!-- voidtech ear -->
+
+  <RH_VOIDBionicEar.label>Voidtech仿生耳</RH_VOIDBionicEar.label>
+  <RH_VOIDBionicEar.description>一個先進的人工耳，外觀和感覺類似於天然耳。隱藏在皮下的裝置進行聲波捕捉，並通過生物凝膠神經直接傳遞給聽覺神經。其靈敏度足以讓你在發現貓之前就察覺到對方的聲音，同時能夠抵抗巨大噪音造成的損害，並能從嘈雜壞境中準確篩選出目標聲音。\n\n此仿生部件是V.O.I.D.為其成員定製的。除了作息節律器的基礎功能外，它還能夠保護大腦免受EMP沖擊。</RH_VOIDBionicEar.description>
+
+
+  <!-- voidtechlung -->
+
+  <RH_VOIDBionicLung.label>Voidtech仿生肺</RH_VOIDBionicLung.label>
+  <RH_VOIDBionicLung.description>一個先進的人工肺，外觀和感覺類似於天然肺。能夠將大部分雜質轉化為氧氣並增加呼吸能力，成對構成了人類呼吸系統的核心。\n\n此仿生部件是V.O.I.D.為其成員定製的。</RH_VOIDBionicLung.description>
+
+
+  <!-- voidtechkidney -->
+
+  <RH_VOIDBionicKidney.label>Voidtech仿生腎</RH_VOIDBionicKidney.label>
+  <RH_VOIDBionicKidney.description>一種先進的人工腎，外觀和感覺類似於天然腎。更有效地過濾和去除血液中的廢物。\n\n此仿生部件是V.O.I.D.為其成員定製的。</RH_VOIDBionicKidney.description>
+
+
+  <!-- voidtechliver -->
+
+  <RH_VOIDBionicLiver.label>Voidtech仿生肝</RH_VOIDBionicLiver.label>
+  <RH_VOIDBionicLiver.description>一種先進的人工肝臟，外觀和感覺類似於天然肝臟。在更高效的新陳代謝中發揮重要作用。\n\n此仿生部件是V.O.I.D.為其成員定製的。</RH_VOIDBionicLiver.description>
+
+
+  <!-- voidtech half-cycler -->
+
+  <RH_VOIDCircadianHalfCycler.label>Voidtech作息節律器</RH_VOIDCircadianHalfCycler.label>
+  <RH_VOIDCircadianHalfCycler.description>一款定製的信號重定向器，可以將大腦左右半球隔離，使其中一半在工作的時候讓另一半休眠。讓兩個半球輪流工作，安裝者便永遠不需要睡眠。不幸的是，一個半球顯然不如兩個，只用一半的大腦工作會導致意識降低。\n\n此仿生部件是V.O.I.D.為其成員定製的。</RH_VOIDCircadianHalfCycler.description>
+
+
+  <!-- knowledge implant -->
+
+  <VOIDBrain_Implant.label>Voidtech神經計算機</VOIDBrain_Implant.label>
+  <VOIDBrain_Implant.description>由觸覺/視覺神經接口控製的定製微型計算機。可以幫助大腦學習、計算和記憶，就像往大腦裏安裝了計算器和記事本一樣。\n\n此仿生部件是V.O.I.D.為其成員定製的。</VOIDBrain_Implant.description>
+
+
+  <!-- voidtech nose -->
+
+  <RH_VOIDAestheticNose.label>Voidtech仿生鼻</RH_VOIDAestheticNose.label>
+  <RH_VOIDAestheticNose.description>一款定製的高級仿生鼻。形狀能夠變成安裝者的期望形狀，並且做到符合流行的審美，可以增強其他人對安裝者的印象。它還增強了用戶的嗅覺，並能夠在需要時過濾出強烈的惡臭，其中的一些功能來自於美食分析儀，因此有助於烹飪。\n\n此仿生部件是V.O.I.D.為其成員定製的。</RH_VOIDAestheticNose.description>
+
+
+</LanguageData>

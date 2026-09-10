@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: gestate jump lifter -->
+  <JumpLifter.label>培育跃迁搬运机</JumpLifter.label>
+  <!-- EN: Gestate a jump lifter mechanoid. -->
+  <JumpLifter.description>培育跃迁搬运机。</JumpLifter.description>
+  <!-- EN: Gestating mech. -->
+  <JumpLifter.jobString>培育中。</JumpLifter.jobString>
+  
+</LanguageData>

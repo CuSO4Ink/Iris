@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 보병지원 다각 중전차 -->
+  <Miho_Mech_Balbari.label>“勇悍犬”步兵支援无人机</Miho_Mech_Balbari.label>
+  <!-- EN: 전투에 쓰이는 발발이급 다각 중전차 입니다. -->
+  <Miho_Mech_Balbari.description>配备有13.7mm机炮和护盾发生器的“勇悍犬”级重型步兵支援无人机。除了能够为协同作战的步兵提供援助外，还可以胜任物资搬运工作。\n\n【额外能力I】：机械烟雾\n\n从隐蔽的气孔中释放压缩的烟雾。烟雾能够降低子弹的精准度，并防止自身被炮塔完全锁定。\n\n【额外能力II】：反机械导弹\n\n向目标点处发射一枚反机械族等离子导弹。</Miho_Mech_Balbari.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_Balbari.tools.front_left_leg.label>左前腿</Miho_Mech_Balbari.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_Balbari.tools.front_right_leg.label>右前腿</Miho_Mech_Balbari.tools.front_right_leg.label>
+  
+  <!-- EN: plasma AM missile -->
+  <Miho_MechATMissile_Proj.label>反机械等离子导弹</Miho_MechATMissile_Proj.label>
+  
+  <!-- EN: 미호 다각전차용 기관포 -->
+  <Miho_MechWeapon_HeavyAutoCannon.label>无人机机炮</Miho_MechWeapon_HeavyAutoCannon.label>
+  <!-- EN: 13.7mm탄 호치키스 탄을 사용하는 기관포를 감싼 포탑입니다. 포탑 상부에 중-MAT도 장착되어 있습니다. -->
+  <Miho_MechWeapon_HeavyAutoCannon.description>为“勇悍犬”级步兵支援无人机设计的13.7mm机炮。额外搭载有反机械导弹发射器。</Miho_MechWeapon_HeavyAutoCannon.description>
+  <!-- EN: missile charges -->
+  <Miho_MechWeapon_HeavyAutoCannon.comps.CompEquippableAbilityReloadable.chargeNoun>导弹</Miho_MechWeapon_HeavyAutoCannon.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Miho_MechWeapon_HeavyAutoCannon.comps.CompEquippableAbilityReloadable.cooldownGerund>冷却中</Miho_MechWeapon_HeavyAutoCannon.comps.CompEquippableAbilityReloadable.cooldownGerund>
+  <!-- EN: barrel -->
+  <Miho_MechWeapon_HeavyAutoCannon.tools.barrel.label>炮管</Miho_MechWeapon_HeavyAutoCannon.tools.barrel.label>
+  <!-- EN: 미호 다각전차용 기관포 -->
+  <Miho_MechWeapon_HeavyAutoCannon.verbs.Verb_Shoot.label>无人机机炮</Miho_MechWeapon_HeavyAutoCannon.verbs.Verb_Shoot.label>
+  
+  <!-- EN: HMG bullet -->
+  <Miho_MechWeapon_HeavyAutoCannon_Proj.label>机炮弹</Miho_MechWeapon_HeavyAutoCannon_Proj.label>
+  
+</LanguageData>

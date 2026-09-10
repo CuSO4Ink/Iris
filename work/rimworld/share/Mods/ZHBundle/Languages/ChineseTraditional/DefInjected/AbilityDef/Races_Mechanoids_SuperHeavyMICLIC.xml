@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 험지개척탄 -->
+  <Miho_MechMiclicReloadable.label>險地拓進導彈</Miho_MechMiclicReloadable.label>
+  <!-- EN: 험지개척탄을 발사합니다. 정면에 존재하는 모든 것들이 파괴됩니다. -->
+  <Miho_MechMiclicReloadable.description>向目標點處發射一枚險地拓進導彈，會對沿途的一切物體和單位造成傷害。</Miho_MechMiclicReloadable.description>
+  
+</LanguageData>

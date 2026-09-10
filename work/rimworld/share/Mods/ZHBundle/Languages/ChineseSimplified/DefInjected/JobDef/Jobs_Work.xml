@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: milking TargetA. -->
+  <MilkingDragonian.reportString>对 TargetA 挤奶。</MilkingDragonian.reportString>
+  
+  <!-- EN: shearing TargetA. -->
+  <ShearingDragonian.reportString>对 TargetA 修剪毛发。</ShearingDragonian.reportString>
+  
+</LanguageData>

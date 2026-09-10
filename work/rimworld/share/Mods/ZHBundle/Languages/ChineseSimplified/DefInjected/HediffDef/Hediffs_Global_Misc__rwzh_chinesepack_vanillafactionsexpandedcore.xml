@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: acid burn -->
+  <VEF_AcidBuildup.label>酸蚀</VEF_AcidBuildup.label>
+  <!-- EN: A splash of acid that continues to cause burn wounds for quite some time after the initial attack. -->
+  <VEF_AcidBuildup.description>此单位将会在很长一段时间内受到持续性的酸蚀伤害。</VEF_AcidBuildup.description>
+  <!-- EN: minor, receiving burns -->
+  <VEF_AcidBuildup.stages.minor_receiving_burns.label>轻度</VEF_AcidBuildup.stages.minor_receiving_burns.label>
+  <!-- EN: moderate, receiving burns -->
+  <VEF_AcidBuildup.stages.moderate_receiving_burns.label>中度</VEF_AcidBuildup.stages.moderate_receiving_burns.label>
+  <!-- EN: serious, receiving burns -->
+  <VEF_AcidBuildup.stages.serious_receiving_burns.label>重度</VEF_AcidBuildup.stages.serious_receiving_burns.label>
+  
+  <!-- EN: acid burn -->
+  <VEF_AcidBurn.label>酸蚀</VEF_AcidBurn.label>
+  <!-- EN: An acid burn. -->
+  <VEF_AcidBurn.description>酸蚀伤口。</VEF_AcidBurn.description>
+  <!-- EN: tended -->
+  <VEF_AcidBurn.comps.HediffComp_TendDuration.labelSolidTendedWell>已简单处理</VEF_AcidBurn.comps.HediffComp_TendDuration.labelSolidTendedWell>
+  <!-- EN: bandaged -->
+  <VEF_AcidBurn.comps.HediffComp_TendDuration.labelTendedWell>已包扎</VEF_AcidBurn.comps.HediffComp_TendDuration.labelTendedWell>
+  <!-- EN: tended -->
+  <VEF_AcidBurn.comps.HediffComp_TendDuration.labelTendedWellInner>已缝合</VEF_AcidBurn.comps.HediffComp_TendDuration.labelTendedWellInner>
+  <!-- EN: acid burn scar -->
+  <VEF_AcidBurn.comps.HediffComp_GetsPermanent.permanentLabel>酸蚀疤痕</VEF_AcidBurn.comps.HediffComp_GetsPermanent.permanentLabel>
+  <!-- EN: Corroded -->
+  <VEF_AcidBurn.injuryProps.destroyedLabel>被酸蚀殆尽</VEF_AcidBurn.injuryProps.destroyedLabel>
+  <!-- EN: Corroded -->
+  <VEF_AcidBurn.injuryProps.destroyedOutLabel>被酸蚀殆尽</VEF_AcidBurn.injuryProps.destroyedOutLabel>
+  <!-- EN: an acid burn -->
+  <VEF_AcidBurn.labelNoun>酸蚀伤</VEF_AcidBurn.labelNoun>
+  <!-- EN: {0} in the {1} -->
+  <VEF_AcidBurn.labelNounPretty>{1}中的{0}</VEF_AcidBurn.labelNounPretty>
+  
+  <!-- EN: invisibility -->
+  <VEF_ControlledInvisibility.label>隐形</VEF_ControlledInvisibility.label>
+  <!-- EN: Shrouded in a veil of controlled invisibility. -->
+  <VEF_ControlledInvisibility.description>此生物已主动进入隐形状态。</VEF_ControlledInvisibility.description>
+  
+  <!-- EN: sudden detonation -->
+  <VEF_Kamikaze.label>突然自爆</VEF_Kamikaze.label>
+  <!-- EN: Boom. -->
+  <VEF_Kamikaze.description>Boom！</VEF_Kamikaze.description>
+  <!-- EN: initial-hidden -->
+  <VEF_Kamikaze.stages.initialhidden.label>隐藏</VEF_Kamikaze.stages.initialhidden.label>
+  <!-- EN: critical -->
+  <VEF_Kamikaze.stages.critical.label>完全</VEF_Kamikaze.stages.critical.label>
+  
+  <!-- EN: level of sunlight -->
+  <VEF_LightSustenance.label>光照强度</VEF_LightSustenance.label>
+  <!-- EN: This creature feeds on sunlight. Inadequate levels of light will kill it. -->
+  <VEF_LightSustenance.description>此生物从阳光中获取能量。光照强度过低会致其死亡。</VEF_LightSustenance.description>
+  <!-- EN: adequate light -->
+  <VEF_LightSustenance.stages.adequate_light.label>充足</VEF_LightSustenance.stages.adequate_light.label>
+  <!-- EN: poor light levels -->
+  <VEF_LightSustenance.stages.poor_light_levels.label>不足</VEF_LightSustenance.stages.poor_light_levels.label>
+  <!-- EN: very low light levels -->
+  <VEF_LightSustenance.stages.very_low_light_levels.label>非常不足</VEF_LightSustenance.stages.very_low_light_levels.label>
+  <!-- EN: lack of sunlight -->
+  <VEF_LightSustenance.stages.lack_of_sunlight.label>匮乏</VEF_LightSustenance.stages.lack_of_sunlight.label>
+  <!-- EN: extreme lack of sustenance -->
+  <VEF_LightSustenance.stages.extreme_lack_of_sustenance.label>极度匮乏</VEF_LightSustenance.stages.extreme_lack_of_sustenance.label>
+  
+  <!-- EN: permanent burn -->
+  <VEF_PermanentBurn.label>永久性烧伤</VEF_PermanentBurn.label>
+  <!-- EN: A permanent burn scar that cannot be treated. -->
+  <VEF_PermanentBurn.description>无法治愈的永久性烧伤疤痕。</VEF_PermanentBurn.description>
+  <!-- EN: permanent burn -->
+  <VEF_PermanentBurn.comps.HediffComp_GetsPermanent.permanentLabel>永久性烧伤</VEF_PermanentBurn.comps.HediffComp_GetsPermanent.permanentLabel>
+  <!-- EN: Burned off -->
+  <VEF_PermanentBurn.injuryProps.destroyedLabel>被烧毁</VEF_PermanentBurn.injuryProps.destroyedLabel>
+  <!-- EN: Burned out -->
+  <VEF_PermanentBurn.injuryProps.destroyedOutLabel>被烧掉</VEF_PermanentBurn.injuryProps.destroyedOutLabel>
+  <!-- EN: a permanent burn -->
+  <VEF_PermanentBurn.labelNoun>永久性烧伤</VEF_PermanentBurn.labelNoun>
+  <!-- EN: {0} in the {1} -->
+  <VEF_PermanentBurn.labelNounPretty>{1}中的{0}</VEF_PermanentBurn.labelNounPretty>
+  
+  <!-- EN: toxic buildup -->
+  <VEF_ToxicBuildup.label>中毒</VEF_ToxicBuildup.label>
+  <!-- EN: Toxins in the bloodstream. This can come from various sources, including environmental toxins, venomous bites, or poisoned weapons.\n\nAt high doses, toxic buildup is lethal. Even at low doses, it can generate cancers.\n\nContrary to base game toxic buildup, creatures who die with this toxic damage can be eaten. -->
+  <VEF_ToxicBuildup.description>流淌在血液里的毒素。来源可能是：来自环境的毒素、有毒生物的叮咬、或有毒的武器。\n毒素的积聚是致命的，即使是低剂量，它也能引发癌症。\n\n与原版相反，死于这种中毒状态的生物可以食用。</VEF_ToxicBuildup.description>
+  <!-- EN: initial -->
+  <VEF_ToxicBuildup.stages.initial-0.label>轻微</VEF_ToxicBuildup.stages.initial-0.label>
+  <!-- EN: initial -->
+  <VEF_ToxicBuildup.stages.initial-1.label>轻微</VEF_ToxicBuildup.stages.initial-1.label>
+  <!-- EN: minor -->
+  <VEF_ToxicBuildup.stages.minor.label>较轻</VEF_ToxicBuildup.stages.minor.label>
+  <!-- EN: moderate -->
+  <VEF_ToxicBuildup.stages.moderate.label>中等</VEF_ToxicBuildup.stages.moderate.label>
+  <!-- EN: serious -->
+  <VEF_ToxicBuildup.stages.serious.label>严重</VEF_ToxicBuildup.stages.serious.label>
+  <!-- EN: extreme -->
+  <VEF_ToxicBuildup.stages.extreme.label>极重</VEF_ToxicBuildup.stages.extreme.label>
+  
+  <!-- EN: hypothermic slowdown -->
+  <VFEP_HypothermicSlowdown.label>低温冻结</VFEP_HypothermicSlowdown.label>
+  <!-- EN: Dangerously low core body temperature. Unless re-warmed, hypothermic slowdown gets worse and ends in death. Recovery is quick once the victim is re-warmed. -->
+  <VFEP_HypothermicSlowdown.description>长时间暴露于急冻粒子下导致的患者体内温度平衡失调状态。低温冻结会在患者进入温暖的地方后随着时间的推移自然恢复。但如果患者继续暴露在急冻粒子下，低温冻结会变得更严重，直到患者死亡。</VFEP_HypothermicSlowdown.description>
+  <!-- EN: minor -->
+  <VFEP_HypothermicSlowdown.stages.minor-0.label>轻微</VFEP_HypothermicSlowdown.stages.minor-0.label>
+  <!-- EN: minor -->
+  <VFEP_HypothermicSlowdown.stages.minor-1.label>较轻</VFEP_HypothermicSlowdown.stages.minor-1.label>
+  <!-- EN: moderate -->
+  <VFEP_HypothermicSlowdown.stages.moderate.label>中等</VFEP_HypothermicSlowdown.stages.moderate.label>
+  <!-- EN: serious -->
+  <VFEP_HypothermicSlowdown.stages.serious.label>严重</VFEP_HypothermicSlowdown.stages.serious.label>
+  <!-- EN: extreme -->
+  <VFEP_HypothermicSlowdown.stages.extreme.label>极重</VFEP_HypothermicSlowdown.stages.extreme.label>
+
+</LanguageData>

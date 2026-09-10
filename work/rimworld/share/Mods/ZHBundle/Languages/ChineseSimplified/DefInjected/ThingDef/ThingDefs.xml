@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Vocal Link Catalyst -->
+  <VocalLinkCatalyst.label>声连催化剂</VocalLinkCatalyst.label>
+  <!-- EN: A single-use item that grants the creature the ability to speak in ways it couldn’t before. -->
+  <VocalLinkCatalyst.description>一次性使用物品，赋予生物此前无法实现的言语表达能力。</VocalLinkCatalyst.description>
+  <!-- EN: Use {0_label} -->
+  <VocalLinkCatalyst.comps.CompUsable.useLabel>使用 {0_label}</VocalLinkCatalyst.comps.CompUsable.useLabel>
+  
+</LanguageData>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Trinity implant -->
+
+  <DF_Trinity_Implant.label>三位一體植入物</DF_Trinity_Implant.label>
+  <DF_Trinity_Implant.description>一個已安裝的三位一體植入物</DF_Trinity_Implant.description>
+  <DF_Trinity_Implant.labelNoun>一個三位一體植入物</DF_Trinity_Implant.labelNoun>
+
+
+  <!-- ghastly implant -->
+
+  <DF_Ghastly_Implant.label>恐怖植入物</DF_Ghastly_Implant.label>
+  <DF_Ghastly_Implant.description>一個已安裝的恐怖植入物</DF_Ghastly_Implant.description>
+  <DF_Ghastly_Implant.labelNoun>一個恐怖植入物</DF_Ghastly_Implant.labelNoun>
+
+
+  <!-- Celerity implant -->
+
+  <DF_Celerity_Implant.label>迅捷植入物</DF_Celerity_Implant.label>
+  <DF_Celerity_Implant.description>一個已安裝的迅捷植入物</DF_Celerity_Implant.description>
+  <DF_Celerity_Implant.labelNoun>一個迅捷植入物</DF_Celerity_Implant.labelNoun>
+
+
+  <!-- scrutiny implant -->
+
+  <DF_Scrutiny_Implant.label>審查植入物</DF_Scrutiny_Implant.label>
+  <DF_Scrutiny_Implant.description>一個已安裝的審查植入物</DF_Scrutiny_Implant.description>
+  <DF_Scrutiny_Implant.labelNoun>一個審查植入物</DF_Scrutiny_Implant.labelNoun>
+
+
+  <!-- versatility implant -->
+
+  <DF_Versatility_Implant.label>多功能植入物</DF_Versatility_Implant.label>
+  <DF_Versatility_Implant.description>一個已安裝的多功能植入物</DF_Versatility_Implant.description>
+  <DF_Versatility_Implant.labelNoun>一個多功能植入物</DF_Versatility_Implant.labelNoun>
+
+
+  <!-- mastery implant -->
+
+  <DF_Mastery_Implant.label>駕馭植入物</DF_Mastery_Implant.label>
+  <DF_Mastery_Implant.description>一個已安裝的駕馭植入物</DF_Mastery_Implant.description>
+  <DF_Mastery_Implant.labelNoun>一個駕馭植入物</DF_Mastery_Implant.labelNoun>
+
+
+  <!-- calamity implant -->
+
+  <DF_Calamity_Implant.label>災厄植入物</DF_Calamity_Implant.label>
+  <DF_Calamity_Implant.description>一個已安裝的災厄植入物</DF_Calamity_Implant.description>
+  <DF_Calamity_Implant.labelNoun>一個災厄植入物</DF_Calamity_Implant.labelNoun>
+
+
+  <!-- lethality implant -->
+
+  <DF_Lethality_Implant.label>致命植入物</DF_Lethality_Implant.label>
+  <DF_Lethality_Implant.description>一個已安裝的致命植入物</DF_Lethality_Implant.description>
+  <DF_Lethality_Implant.labelNoun>一個致命植入物</DF_Lethality_Implant.labelNoun>
+
+
+  <!-- mortality implant -->
+
+  <DF_Mortality_Implant.label>死亡植入物</DF_Mortality_Implant.label>
+  <DF_Mortality_Implant.description>一個已安裝的死亡植入物</DF_Mortality_Implant.description>
+  <DF_Mortality_Implant.labelNoun>一個死亡植入物</DF_Mortality_Implant.labelNoun>
+
+
+  <!-- prosperity implant -->
+
+  <DF_Prosperity_Implant.label>昌盛植入物</DF_Prosperity_Implant.label>
+  <DF_Prosperity_Implant.description>一個已安裝的昌盛植入物</DF_Prosperity_Implant.description>
+  <DF_Prosperity_Implant.labelNoun>一個昌盛植入物</DF_Prosperity_Implant.labelNoun>
+
+
+</LanguageData>

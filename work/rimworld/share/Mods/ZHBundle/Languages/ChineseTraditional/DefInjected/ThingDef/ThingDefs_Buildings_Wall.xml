@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: smoothed vivicream wall -->
+  <VV_SmoothedViviCreamWall.label>光滑薇薇乳脂墻</VV_SmoothedViviCreamWall.label>
+  <!-- EN: a refined Vivi cream wall. It's impassable and supports roofs, but it's very vulnerable to impact.\n\nOnce the cream dries over time, it becomes a sturdy wall. -->
+  <VV_SmoothedViviCreamWall.description>精致的薇薇乳脂墻。無法通行，能支撐屋頂，但易因沖擊倒塌。\n\n一旦乳脂隨著時間的推移風干，它就會變成一堵堅固的墻。</VV_SmoothedViviCreamWall.description>
+  
+  <!-- EN: vivicream wall -->
+  <VV_ViviCreamWall.label>薇薇乳脂墻</VV_ViviCreamWall.label>
+  <!-- EN: a makeshift wall made of Vivi's cream. It's impassable and supports roofs, but it's very vulnerable to impact.\n\nBy refining and drying this wall, it can be turned into a sturdy structure. Its unique structure allows it to be constructed on unstable ground. -->
+  <VV_ViviCreamWall.description>用薇薇乳脂建造的臨時墻。無法通行，能支撐屋頂，但易因沖擊倒塌。\n\n通過對其進行精煉與風干，可以讓它變成一堵堅固的墻。其獨特的結構使其能夠在不穩定的地形上建造。</VV_ViviCreamWall.description>
+  
+  <!-- EN: vivi harden honeycomb wall -->
+  <VV_ViviHardenHoneycombWall.label>薇薇加固蜂巢墻</VV_ViviHardenHoneycombWall.label>
+  <!-- EN: A fireproof honeycomb wall reinforced with lifestrands. It's impassable and supports roofs. -->
+  <VV_ViviHardenHoneycombWall.description>用生命縷織加固過的防火蜂巢墻，不可通過，支撐屋頂。</VV_ViviHardenHoneycombWall.description>
+  
+  <!-- EN: vivi honeycomb wall -->
+  <VV_ViviHoneycombWall.label>薇薇蜂巢墻</VV_ViviHoneycombWall.label>
+  <!-- EN: a hexagonal structured honeycomb wall. It's impassable and supports roofs.\n\nWhile it's very sturdy against various impacts, it's very vulnerable to fire. -->
+  <VV_ViviHoneycombWall.description>六邊形結構的墻。無法通行，能支撐屋頂。\n\n雖然它非常堅固，可以抵御各種沖擊，但很容易因火災而損壞。</VV_ViviHoneycombWall.description>
+  
+</LanguageData>

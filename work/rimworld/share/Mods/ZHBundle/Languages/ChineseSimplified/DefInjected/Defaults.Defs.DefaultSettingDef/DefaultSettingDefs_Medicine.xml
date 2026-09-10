@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <DefaultCareForColonist.label>default medicine for colonists</DefaultCareForColonist.label> -->
+  <DefaultCareForColonist.label>殖民者默认药物</DefaultCareForColonist.label>
+  <!-- <DefaultCareForPrisoner.label>default medicine for prisoners</DefaultCareForPrisoner.label> -->
+  <DefaultCareForPrisoner.label>囚犯默认药物</DefaultCareForPrisoner.label>
+  <!-- <DefaultCareForSlave.label>default medicine for slaves</DefaultCareForSlave.label> -->
+  <DefaultCareForSlave.label>奴隶默认药物</DefaultCareForSlave.label>
+  <!-- <DefaultCareForGhouls.label>default medicine for ghouls</DefaultCareForGhouls.label> -->
+  <DefaultCareForGhouls.label>食尸鬼默认药物</DefaultCareForGhouls.label>
+  <!-- <DefaultCareForTamedAnimal.label>default medicine for tamed animals</DefaultCareForTamedAnimal.label> -->
+  <DefaultCareForTamedAnimal.label>驯服动物默认药物</DefaultCareForTamedAnimal.label>
+  <!-- <DefaultCareForFriendlyFaction.label>default medicine for friendly faction</DefaultCareForFriendlyFaction.label> -->
+  <DefaultCareForFriendlyFaction.label>友好派系默认药物</DefaultCareForFriendlyFaction.label>
+  <!-- <DefaultCareForNeutralFaction.label>default medicine for neutral faction</DefaultCareForNeutralFaction.label> -->
+  <DefaultCareForNeutralFaction.label>中立派系默认药物</DefaultCareForNeutralFaction.label>
+  <!-- <DefaultCareForHostileFaction.label>default medicine for hostile faction</DefaultCareForHostileFaction.label> -->
+  <DefaultCareForHostileFaction.label>敌对派系默认药物</DefaultCareForHostileFaction.label>
+  <!-- <DefaultCareForNoFaction.label>default medicine for no faction</DefaultCareForNoFaction.label> -->
+  <DefaultCareForNoFaction.label>无派系默认药物</DefaultCareForNoFaction.label>
+  <!-- <DefaultCareForWildlife.label>default medicine for wildlife</DefaultCareForWildlife.label> -->
+  <DefaultCareForWildlife.label>野生动物默认药物</DefaultCareForWildlife.label>
+  <!-- <DefaultCareForEntities.label>default medicine for entities</DefaultCareForEntities.label> -->
+  <DefaultCareForEntities.label>实体默认药物</DefaultCareForEntities.label>
+  <!-- <MedCarry.label>default medicine to carry</MedCarry.label> -->
+  <MedCarry.label>默认携带药物</MedCarry.label>
+  <!-- <MedCarryAmount.label>default medicine amount to carry</MedCarryAmount.label> -->
+  <MedCarryAmount.label>默认携带药物数量</MedCarryAmount.label>
+  <!-- <MedCarryGuest.label>guests pick up medicine to carry, too</MedCarryGuest.label> -->
+  <MedCarryGuest.label>访客会拿起药物来携带</MedCarryGuest.label>
+
+
+</LanguageData>

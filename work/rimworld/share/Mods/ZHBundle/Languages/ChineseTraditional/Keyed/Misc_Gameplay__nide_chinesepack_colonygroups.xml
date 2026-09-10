@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: {0}
+Left click:		Expand Pawn Icons
+2x Left click:	Select All Colonists
+Right click:	Group Menu -->
+  <TG.GroupInfoTooltip>{0}左鍵單擊：展開小人圖標，\n2次左鍵單擊：選擇所有殖民者，\n右鍵單擊：小組菜單</TG.GroupInfoTooltip>
+	<!-- EN: RALLY -->
+  <TG.Rally>征召</TG.Rally>
+	<!-- EN: Work -->
+  <TG.Work>工作</TG.Work>
+	<!-- EN: Orders -->
+  <TG.Orders>命令</TG.Orders>
+	<!-- EN: Manage -->
+  <TG.Manage>管理</TG.Manage>
+	<!-- EN: Group -->
+  <TG.Group>小組</TG.Group>
+	<!-- EN: Colony -->
+  <TG.Colony>殖民地</TG.Colony>
+	<!-- EN: Task Force -->
+  <TG.TaskForce>特殊小組</TG.TaskForce>
+	<!-- EN: Caravan -->
+  <TG.Caravan>遠征隊</TG.Caravan>
+	<!-- EN: Diplomacy -->
+  <TG.Diplomacy>社交</TG.Diplomacy>
+
+	<!-- EN: Get to Work -->
+  <TG.GetToWork>開始工作</TG.GetToWork>
+	<!-- EN: Take a Break -->
+  <TG.TakeABreak>休息一下</TG.TakeABreak>
+	<!-- EN: Chow Hall -->
+  <TG.ChowHall>食堂</TG.ChowHall>
+	<!-- EN: Social Relax -->
+  <TG.SocialRelax>社交放松</TG.SocialRelax>
+	<!-- EN: Have Some Fun -->
+  <TG.HaveSomeFun>玩得開心點</TG.HaveSomeFun>
+	<!-- EN: Clean -->
+  <TG.Clean>清潔</TG.Clean>
+	<!-- EN: Haul -->
+  <TG.Haul>搬運</TG.Haul>
+	<!-- EN: Visit Medical -->
+  <TG.VisitMedical>就醫</TG.VisitMedical>
+
+	<!-- EN: Rename -->
+  <TG.Rename>重命名</TG.Rename>
+	<!-- EN: Icon -->
+  <TG.Icon>圖標</TG.Icon>
+	<!-- EN: Sort Group -->
+  <TG.SortGroup>排序小組</TG.SortGroup>
+
+	<!-- EN: Disband -->
+  <TG.Disband>解散</TG.Disband>
+	<!-- EN: Pawn -->
+  <TG.DisbandPawn>小人</TG.DisbandPawn>
+	<!-- EN: Group -->
+  <TG.DisbandGroup>小組</TG.DisbandGroup>
+
+	<!-- EN: Look Busy -->
+  <TG.LookBusy>看起來很忙</TG.LookBusy>
+
+	<!-- EN: Show All Colonists -->
+  <TG.ShowAllColonists>顯示所有殖民者</TG.ShowAllColonists>
+	<!-- EN: Display Food -->
+  <TG.DisplayFood>顯示飲食值</TG.DisplayFood>
+	<!-- EN: Display Rest -->
+  <TG.DisplayRest>顯示休息值</TG.DisplayRest>
+	<!-- EN: Display Health -->
+  <TG.DisplayHealth>顯示健康值</TG.DisplayHealth>
+	<!-- EN: Display Weapons -->
+  <TG.DisplayWeapons>顯示武器</TG.DisplayWeapons>
+	<!-- EN: Color Mood Bars -->
+  <TG.DisplayColorBars>顏色情緒欄</TG.DisplayColorBars>
+	<!-- EN: Break Risk Overlay -->
+  <TG.DisplayBreakRiskOverlay>崩潰風險覆蓋</TG.DisplayBreakRiskOverlay>
+	<!-- EN: Hide Pawns Off Map -->
+  <TG.HidePawnsWhenOffMap>把小人隱蔽在地圖上</TG.HidePawnsWhenOffMap>
+	<!-- EN: Hide Groups -->
+  <TG.HideGroups>隱藏小組</TG.HideGroups>
+	<!-- EN: Hide Create Group -->
+  <TG.HideCreateGroup>隱藏創建小組</TG.HideCreateGroup>
+	<!-- EN: Create Group & Options menu can be found in Assign Menu / Mod Settings. -->
+  <TG.HideCreateGroupDesc>「創建小組選項」菜單可在「分配菜單/模式設置」中找到。</TG.HideCreateGroupDesc>
+	<!-- EN: Colonist Bar Position (Y) -->
+  <TG.ColonistBarPositionY>殖民者欄位置（Y）</TG.ColonistBarPositionY>
+	<!-- EN: Colonist Bar Position (X) -->
+  <TG.ColonistBarPositionX>殖民者欄位置（X）</TG.ColonistBarPositionX>
+	<!-- EN: Colonist Bar Spacing (X) -->
+  <TG.ColonistBarSpacingX>殖民者欄間距（X）</TG.ColonistBarSpacingX>
+	<!-- EN: Colonist Bar Spacing (Y) -->
+  <TG.ColonistBarSpacingY>殖民者欄間距（Y）</TG.ColonistBarSpacingY>
+	<!-- EN: Group Row Count -->
+  <TG.GroupRowCount>小組行數</TG.GroupRowCount>
+	<!-- EN: Overall Pawn Display Scale:  -->
+  <TG.OverallPawnDisplayScale>全部小人顯示比例：</TG.OverallPawnDisplayScale>
+	<!-- EN: Colony Group Scale -->
+  <TG.ColonyGroupScale>殖民地小組大小</TG.ColonyGroupScale>
+	<!-- EN: Group Scale -->
+  <TG.GroupScale>小組大小</TG.GroupScale>
+	<!-- EN: Pawn Needs Size -->
+  <TG.PawnNeedsSize>殖民者"需求"大小</TG.PawnNeedsSize>
+	<!-- EN: Weapon Overlay Placement -->
+  <TG.WeaponOverlayPlacement>武器疊加放置</TG.WeaponOverlayPlacement>
+	<!-- EN: Color mood bar preset: -->
+  <TG.ColorBarModeLabel>顏色情緒欄預設：</TG.ColorBarModeLabel>
+	<!-- EN: Default -->
+  <TG.ColorBarModeDefault>默認</TG.ColorBarModeDefault>
+	<!-- EN: Extended -->
+  <TG.ColorBarModeExtended>擴展</TG.ColorBarModeExtended>
+	<!-- EN: Disable Label Background (for performance) -->
+  <TG.DisableLabelBackground>禁用標簽背景（為了性能）</TG.DisableLabelBackground>
+
+	<!-- EN: Attack -->
+  <TG.Attack>攻擊</TG.Attack>
+	<!-- EN: Regroup -->
+  <TG.Regroup>重組</TG.Regroup>
+	<!-- EN: Battle Stations -->
+  <TG.BattleStations>戰鬥位置</TG.BattleStations>
+	<!-- EN: Set -->
+  <TG.Set>設置</TG.Set>
+	<!-- EN: Clear -->
+  <TG.Clear>清除</TG.Clear>
+	<!-- EN: Send -->
+  <TG.Send>遠征</TG.Send>
+	<!-- EN: Unload -->
+  <TG.Unload>卸載貨物</TG.Unload>
+	
+	<!-- EN: Formation -->
+  <TG.Formation>編組</TG.Formation>
+	<!-- EN: Medical -->
+  <TG.Medical>醫療</TG.Medical>
+	<!-- EN: Fire At Will -->
+  <TG.FireAtWill>自由開火</TG.FireAtWill>
+	<!-- EN: Strongest -->
+  <TG.Strongest>最強</TG.Strongest>
+	<!-- EN: Weakest -->
+  <TG.Weakest>最弱</TG.Weakest>
+	<!-- EN: Pursue Fleeing -->
+  <TG.PursueFleeing>追逃</TG.PursueFleeing>
+
+	<!-- EN: Management -->
+  <TG.Management>管理</TG.Management>
+	<!-- EN: Okay -->
+  <TG.Okay>一般</TG.Okay>
+	<!-- EN: Sad -->
+  <TG.Sad>悲傷</TG.Sad>
+	<!-- EN: Happy -->
+  <TG.Happy>快樂</TG.Happy>
+	
+	<!-- EN: Report to Medical -->
+  <TG.ReportToMedical>營救</TG.ReportToMedical>
+	<!-- EN: Rescue Fallen -->
+  <TG.RescueFallen>救援失敗</TG.RescueFallen>
+	<!-- EN: Tend Wounded -->
+  <TG.TendWounded>照顧傷員</TG.TendWounded>
+	<!-- EN: Take Five -->
+  <TG.TakeFive>休息五分鐘</TG.TakeFive>
+	
+	<!-- EN: Form group with selected colonists -->
+  <TG.CreateGroupTooltip>與選定的殖民者組成小組</TG.CreateGroupTooltip>
+	<!-- EN: Open the options menu -->
+  <TG.OptionsGearTooltip>打開選項菜單</TG.OptionsGearTooltip>
+	<!-- EN: Tell group to work any task -->
+  <TG.LookBusyTooltip>讓小組完成任何任務</TG.LookBusyTooltip>
+
+
+	<!-- EN: Build -->
+  <TG.WorkTaskTooltipConstruction>建造</TG.WorkTaskTooltipConstruction>
+	<!-- EN: Craft -->
+  <TG.WorkTaskTooltipCraft>手工</TG.WorkTaskTooltipCraft>
+	<!-- EN: Haul -->
+  <TG.WorkTaskTooltipHaul>搬運</TG.WorkTaskTooltipHaul>
+	<!-- EN: Clean -->
+  <TG.WorkTaskTooltipClean>清潔</TG.WorkTaskTooltipClean>
+	<!-- EN: Hunt -->
+  <TG.WorkTaskTooltipHunt>狩獵</TG.WorkTaskTooltipHunt>
+	<!-- EN: Cook -->
+  <TG.WorkTaskTooltipCook>烹飪</TG.WorkTaskTooltipCook>
+	<!-- EN: Mine -->
+  <TG.WorkTaskTooltipMine>采礦</TG.WorkTaskTooltipMine>
+	<!-- EN: Chop Wood -->
+  <TG.WorkTaskTooltipChopWood>伐木</TG.WorkTaskTooltipChopWood>
+	<!-- EN: Farm -->
+  <TG.WorkTaskTooltipFarm>務農</TG.WorkTaskTooltipFarm>
+	<!-- EN: Clear Snow -->
+  <TG.WorkTaskTooltipClearSnow>掃雪</TG.WorkTaskTooltipClearSnow>
+	<!-- EN: Warden Prisoners -->
+  <TG.WorkTaskTooltipWarden>看守囚犯</TG.WorkTaskTooltipWarden>
+	<!-- EN: Art -->
+  <TG.WorkTaskTooltipArt>藝術</TG.WorkTaskTooltipArt>
+	<!-- EN: Tailor -->
+  <TG.WorkTaskTooltipTailor>裁縫</TG.WorkTaskTooltipTailor>
+	<!-- EN: Smith -->
+  <TG.WorkTaskTooltipSmith>鍛造</TG.WorkTaskTooltipSmith>
+	<!-- EN: Handle -->
+  <TG.WorkTaskTooltipHandle>馴獸</TG.WorkTaskTooltipHandle>
+	<!-- EN: Fire Extinguish -->
+  <TG.WorkTaskTooltipFireExtinguish>滅火</TG.WorkTaskTooltipFireExtinguish>
+	<!-- EN: Research -->
+  <TG.WorkTaskTooltipResearch>研究</TG.WorkTaskTooltipResearch>
+	<!-- EN: Research Menu -->
+  <TG.WorkTaskTooltipResearchMenu>研究菜單</TG.WorkTaskTooltipResearchMenu>
+	
+	
+	<!-- EN: 
+Right Click to Prioritize
+-Right Click x2 = Slave Labor -->
+  <TG.ForcedLaborTooltip>右鍵單擊：劃定優先級，\n-2次右鍵單擊：奴隸菜單</TG.ForcedLaborTooltip>
+
+	<!-- EN: Take a Break
+	
+-Tell group to take a break from working -->
+  <TG.TakeFiveTooltip>休息一會\n告知小組暫停工作休息一會</TG.TakeFiveTooltip>
+	
+	
+	<!-- EN: Chow Time
+	
+Tell group to go eat -->
+  <TG.ChowHallToolTip>開飯時間\n告知小組前去吃飯</TG.ChowHallToolTip>
+
+
+	<!-- EN: Lights Out
+	
+Tell group to go to sleep -->
+  <TG.SleepTooltip>該熄燈了\n告知小組前去睡覺</TG.SleepTooltip>
+
+
+
+	
+
+
+
+
+
+	<!-- EN: Rally
+	
+Select and Draft entire group -->
+  <TG.RallyToolTip>征召選擇的整個小組</TG.RallyToolTip>
+	<!-- EN: Number of shooters in group
+	-Click to select -->
+  <TG.ShootersToolTip>組中擁有遠程武器的小人數量-單擊以選擇</TG.ShootersToolTip>
+	<!-- EN: Number of Melee in group
+	-Click to select -->
+  <TG.MeleeToolTip>組內擁有近程武器的小人-點擊選擇</TG.MeleeToolTip>
+	<!-- EN: Show pawns in group from the top bar -->
+  <TG.ShowTooltip>從頂部欄顯示組內的小人</TG.ShowTooltip>
+	<!-- EN: Hide pawns in group from the top bar -->
+  <TG.HideTooltip>從頂部欄隱藏組內的小人</TG.HideTooltip>
+	
+	<!-- EN: Add selected colonists to group -->
+  <TG.AddColonistTooltip>將選定的殖民者添加到小組</TG.AddColonistTooltip>
+	<!-- EN: Regroup on Leader's potition.
+Squad leader is first pawn in group -->
+  <TG.RegroupTooltip>征召去到組長的位置重組,小組組長是組裏的第一個小人</TG.RegroupTooltip>
+	<!-- EN: Send group to battle positions -->
+  <TG.BattleStationsTooltip>派小組到戰鬥位置</TG.BattleStationsTooltip>
+	<!-- EN: Set battle positions -->
+  <TG.BattleStationsSetTooltip>設置戰鬥位置</TG.BattleStationsSetTooltip>
+	<!-- EN: Clear battle positions -->
+  <TG.BattleStationsClearTooltip>清除戰鬥位置</TG.BattleStationsClearTooltip>
+	<!-- EN: Default combat mode -->
+  <TG.FireAtWillTooltip>默認戰鬥模式</TG.FireAtWillTooltip>
+	<!-- EN: Target strongest enemy -->
+  <TG.StrongestTooltip>瞄準最強的敵人</TG.StrongestTooltip>
+	<!-- EN: Target weakest enemy -->
+  <TG.WeakestTooltip>瞄準最弱的敵人</TG.WeakestTooltip>
+	<!-- EN: Pursue fleeing enemies -->
+  <TG.PursueFleeingTooltip>追捕逃跑的敵人</TG.PursueFleeingTooltip>
+	<!-- EN: Send wounded to Rest until Healed -->
+  <TG.ReportToMedicalTooltip>把傷員送去休息直到痊愈</TG.ReportToMedicalTooltip>
+	<!-- EN: Rescue downed colonists -->
+  <TG.RescueDownedTooltip>營救被擊倒的殖民者</TG.RescueDownedTooltip>
+	<!-- EN: Tend wounded colonists -->
+  <TG.TendWoundedTooltip>照顧受傷的殖民者</TG.TendWoundedTooltip>
+	<!-- EN: Average group armor rating -->
+  <TG.ArmorTooltip>平均小組護甲等級：</TG.ArmorTooltip>
+	<!-- EN: Average group DPS -->
+  <TG.DPSTooltip>平均小組DPS：</TG.DPSTooltip>
+
+
+	<!-- EN: Number of combat-ready pawns -->
+  <TG.MiddlePawnCountToolTip>戰鬥準備就緒的小人數量</TG.MiddlePawnCountToolTip>
+	<!-- EN: Group average combat rank -->
+  <TG.RankTooltip>平均小組戰鬥等級</TG.RankTooltip>
+	<!-- EN: Tell group to upgrade weapons if any are available
+	
+-Pawns will only upgrade to their current weapon type; Ranged / Melee -->
+  <TG.UpgradeWeaponTooltip>讓小組升級武器，如果有的話-小人只會升級到他們當前的武器類型；遠程/近戰</TG.UpgradeWeaponTooltip>
+	<!-- EN: Tell group to upgrade armor if any is available -->
+  <TG.UpgradeArmorTooltip>如果有盔甲，讓小組升級盔甲</TG.UpgradeArmorTooltip>
+	<!-- EN: Tell group to take combat drugs in inventory -->
+  <TG.TakeBuffTooltip>讓小組在庫存中服用戰鬥藥物</TG.TakeBuffTooltip>
+	
+	<!-- EN: Overall Mood -->
+  <TG.MoodIconTooltip>小組整體情緒</TG.MoodIconTooltip>
+	<!-- EN: Overall Health -->
+  <TG.HealthIconTooltip>小組整體健康狀況</TG.HealthIconTooltip>
+	<!-- EN: Overall Rest -->
+  <TG.RestIconTooltip>小組整體休息值</TG.RestIconTooltip>
+	<!-- EN: Overall Hunger -->
+  <TG.HungerIconTooltip>小組整體饑餓值</TG.HungerIconTooltip>
+	
+	<!-- EN: Hide Colony Group until mouse over -->
+  <TG.GroupHideOptionsTooltip>隱藏小組直到鼠標移到上面</TG.GroupHideOptionsTooltip>
+	<!-- EN: Hide group pawn dots display -->
+  <TG.HideGroupPawnDotsOptionsTooltip>隱藏小組小人點顯示</TG.HideGroupPawnDotsOptionsTooltip>
+	<!-- EN: Hide group health alert overlay -->
+  <TG.HideGroupHealthAlertOverlayOptionsTooltip>隱藏小組狀況警報覆蓋</TG.HideGroupHealthAlertOverlayOptionsTooltip>
+	<!-- EN: Hide group weapon overlay -->
+  <TG.HideWeaponOverlayOptionsTooltip>隱藏小組武器覆蓋</TG.HideWeaponOverlayOptionsTooltip>
+	<!-- EN: Banish selected pawn(s) from group -->
+  <TG.BanishPawnTooltip>從小組中驅逐選定的小人</TG.BanishPawnTooltip>
+	<!-- EN: Move group to subgroups -->
+  <TG.HidePawnGroupOptionsTooltip>將小組移到子組</TG.HidePawnGroupOptionsTooltip>
+	<!-- EN: Drafted -->
+  <TG.WeaponModeShowDrafted>只在征召時</TG.WeaponModeShowDrafted>
+	<!-- EN: Always -->
+  <TG.WeaponModeShowAlways>一直顯示</TG.WeaponModeShowAlways>
+	
+	<!-- EN: Area Policy will also apply to new Pawns
+-You must select a new policy AFTER checking this box	 -->
+  <TG.GroupAreaTooltip>活動區方案也將應用於新的小人\n-選中此框後，必須選擇新策略</TG.GroupAreaTooltip>
+	<!-- EN: Outfit Policy will also apply to new Pawns
+-You must select a new policy AFTER checking this box -->
+  <TG.GroupOutfitTooltip>著裝方案也將應用於新的小人\n-選中此框後，必須選擇新策略</TG.GroupOutfitTooltip>
+	<!-- EN: Drug Policy will also apply to new Pawns
+-You must select a new policy AFTER checking this box -->
+  <TG.GroupDrugsTooltip>用藥方針也將應用於新的小人\n-選中此框後，必須選擇新策略</TG.GroupDrugsTooltip>
+	<!-- EN: Food Policy will also apply to new Pawns
+-You must select a new policy AFTER checking this box -->
+  <TG.GroupFoodTooltip>食物限製也將應用於新的小人\n-選中此框後，必須選擇新策略</TG.GroupFoodTooltip>
+	<!-- EN: Open Preset menu -->
+  <TG.PresetMenuOverlayOptionsTooltip>打開預設菜單</TG.PresetMenuOverlayOptionsTooltip>
+	<!-- EN: Preset -->
+  <TG.PresetLabel>預設</TG.PresetLabel>
+	<!-- EN: Presets -->
+  <TG.GroupsLabel>預設</TG.GroupsLabel>
+	<!-- EN: Create New -->
+  <TG.CreateNew>新建預設</TG.CreateNew>
+	<!-- EN: Create New Preset
+-Presets will only save upon saving the current game session. -->
+  <TG.CreateNewTooltip>創建新預設\n-預設僅在保存當前遊戲存檔時保存。</TG.CreateNewTooltip>
+	<!-- EN: Delete Preset -->
+  <TG.TrashCanTooltip>刪除預設</TG.TrashCanTooltip>
+	<!-- EN: Overwrite Preset -->
+  <TG.SavePresetTooltip>覆蓋預設</TG.SavePresetTooltip>
+	<!-- EN: Activate Preset
+-Multiple Presets can be active at the same time. -->
+  <TG.ActivatePresetTooltip>啟用預設\n-多個預設可以同時啟用。</TG.ActivatePresetTooltip>
+	<!-- EN: Deactivate Preset -->
+  <TG.DisactivatePresetTooltip>停用預設</TG.DisactivatePresetTooltip>
+	<!-- EN: Create -->
+  <TG.CreateNewPreset>創建</TG.CreateNewPreset>
+	<!-- EN: Remove preset -->
+  <TG.RemovePreset>移除預設</TG.RemovePreset>
+	<!-- EN: Save preset -->
+  <TG.SavePreset>保存預設</TG.SavePreset>
+	
+	<!-- EN: Work priorities: -->
+  <TG.PresetWorkPrioritiesTooltip>優先工作：</TG.PresetWorkPrioritiesTooltip>
+	<!-- EN: Forced work states: -->
+  <TG.PresetActiveWorkStatesTooltip>強迫勞動狀態：</TG.PresetActiveWorkStatesTooltip>
+	<!-- EN: Group area:  -->
+  <TG.PresetAreaTooltip>區域小組：</TG.PresetAreaTooltip>
+	<!-- EN: Drug policy:  -->
+  <TG.PresetDrugPolicyTooltip>用藥方針</TG.PresetDrugPolicyTooltip>
+	<!-- EN: Food policy:  -->
+  <TG.PresetFoodPolicyTooltip>食物限製</TG.PresetFoodPolicyTooltip>
+	<!-- EN: Outfit policy:  -->
+  <TG.PresetOutfitPolicyTooltip>著裝方案</TG.PresetOutfitPolicyTooltip>
+	<!-- EN: Inactive -->
+  <TG.Inactive>閑置</TG.Inactive>
+	<!-- EN: Active -->
+  <TG.Active>忙碌</TG.Active>
+	<!-- EN: Forced labor -->
+  <TG.ForcedLabor>強迫勞動</TG.ForcedLabor>
+	<!-- EN: Temporary -->
+  <TG.Temporary>暫時</TG.Temporary>
+	
+	<!-- EN: Apply -->
+  <TG.Apply>應用</TG.Apply>
+	<!-- EN: Reset Group -->
+  <TG.ResetGroupTitle>重置小組</TG.ResetGroupTitle>
+	<!-- EN: Reset Group -->
+  <TG.ResetGroupTooltip>重置小組</TG.ResetGroupTooltip>
+	
+	<!-- EN: Travel supplies -->
+  <TG.TravelSupplies>遠征儲備</TG.TravelSupplies>
+	<!-- EN: Bedrolls -->
+  <TG.Bedrolls>遠征睡袋</TG.Bedrolls>
+	
+	<!-- EN: Capture all downed enemies -->
+  <TG.CaptureTooltip>俘虜所有被擊倒的敵人</TG.CaptureTooltip>
+	<!-- EN: Execute all downed enemies -->
+  <TG.ExecuteTooltip>處死所有被擊倒的敵人</TG.ExecuteTooltip>
+	<!-- EN: Name -->
+  <TG.Name>名字</TG.Name>
+	
+	<!-- EN: Prisoner Menu -->
+  <TG.PrisonerMenuTooltip>囚犯菜單</TG.PrisonerMenuTooltip>
+	<!-- EN: Animal Menu -->
+  <TG.AnimalMenuTooltip>動物菜單</TG.AnimalMenuTooltip>
+	<!-- EN: Guest Menu -->
+  <TG.GuestMenuTooltip>訪客菜單</TG.GuestMenuTooltip>
+	<!-- EN: Slave Menu
+	Ctrl-S to open in game -->
+  <TG.SlaveMenuTooltip>奴隸菜單\n可用Ctrl+S在遊戲中打開</TG.SlaveMenuTooltip>
+	<!-- EN: Prisoners -->
+  <TG.Prisoners>囚犯</TG.Prisoners>
+	<!-- EN: Animals -->
+  <TG.Animals>動物</TG.Animals>
+	<!-- EN: Guests -->
+  <TG.Guests>訪客</TG.Guests>
+	<!-- EN: Slaves -->
+  <TG.Slaves>奴隸</TG.Slaves>
+	
+	<!-- EN: 3 Layer Color Mood Bar -->
+  <TG.ColorBarModeDefaultTooltip>3層彩色情緒欄</TG.ColorBarModeDefaultTooltip>
+	<!-- EN: 5 Layer Color Mood Bar -->
+  <TG.ColorBarModeExtendedTooltip>5層彩色情緒欄</TG.ColorBarModeExtendedTooltip>
+	
+	<!-- EN: Pawn -->
+  <TG.Pawn>小人</TG.Pawn>
+	<!-- EN: Box -->
+  <TG.Box>殖民者格</TG.Box>
+	
+	<!-- EN: Reset to Default -->
+  <TG.ResetToDefault>重置為默認</TG.ResetToDefault>
+	<!-- EN: Reset Pawn View -->
+  <TG.ResetPawnView>重置小人視圖</TG.ResetPawnView>
+
+	<!-- EN: Left Click to Apply -->
+  <TG.WorkTypeLeftClickToApply>左鍵單擊以應用</TG.WorkTypeLeftClickToApply>
+	<!-- EN: Forced Labor -->
+  <TG.WorkTypeForcedLabor>強迫勞動</TG.WorkTypeForcedLabor>
+	<!-- EN: Slave Labor -->
+  <TG.WorkTypeSlaveLabor>奴隸勞動</TG.WorkTypeSlaveLabor>
+	<!-- EN: Reset Work Priorities
+Green box = Group Override
+Middle Mouse on Green Box to Reset
+	 -->
+  <TG.GroupWorkPrioritiesReset>重設優先工作\n綠色框 = 小組覆蓋\n在綠色框上使用鼠標中鍵重置</TG.GroupWorkPrioritiesReset>
+	
+	<!-- EN: Assign group apparel color for pawns. They will go to styling stations and recolor their apparels accordingly. -->
+  <TG.GroupColorTooltip>為小人設置小組服裝顏色。他們會前往梳妝臺並為自己的服裝重新染色。</TG.GroupColorTooltip>
+	<!-- EN: Set ideology color -->
+  <TG.SetIdeologyColor>設置象征文化的顏色</TG.SetIdeologyColor>
+	<!-- EN: Set pawn favorites color -->
+  <TG.SetPawnFavoritesColor>設置小人喜歡的顏色</TG.SetPawnFavoritesColor>
+	<!-- EN: Clear group color -->
+  <TG.ClearGroupColor>清除小組服裝顏色</TG.ClearGroupColor>
+	
+	<!-- EN: All -->
+  <TG.All>所有</TG.All>
+	<!-- EN: Torso -->
+  <TG.Torso>軀幹</TG.Torso>
+	<!-- EN: Legs -->
+  <TG.Legs>腿部</TG.Legs>
+	<!-- EN: Hands -->
+  <TG.Hands>手部</TG.Hands>
+	<!-- EN: Head -->
+  <TG.Head>頭部</TG.Head>
+	<!-- EN: Feet -->
+  <TG.Feet>足部</TG.Feet>
+	<!-- EN: Hair -->
+  <TG.Hair>頭發</TG.Hair>
+	<!-- EN: Health bar size -->
+  <TG.HealthBarWidth>健康條大小</TG.HealthBarWidth>
+	<!-- EN: Auto Disband
+If selected, a group will not 
+auto disband when there are
+no more pawns in the group.
+ -->
+  <TG.AutoDisbandTooltip>自動解散\n當選定後，當小組中沒有小人時\n小組將不會自動解散\n</TG.AutoDisbandTooltip>
+	<!-- EN: Weapon size -->
+  <TG.WeaponSizeScale>武器大小</TG.WeaponSizeScale>
+	<!-- EN: Options for Colony Groups can be found in-game using the Gear icon located beneath the Create Group button -->
+  <TG.ModSettingsText>點擊【創建小組】下方的按鈕，找到遊戲內的殖民地小組mod設置。</TG.ModSettingsText>
+	<!-- EN: Pawn Row Count:  -->
+  <TG.PawnRowCount>小人共有幾列：</TG.PawnRowCount>
+	
+	<!-- EN: {0} (slaves) -->
+  <TG.GroupSlavesSection>{0}（奴隸）</TG.GroupSlavesSection>
+	<!-- EN: Ungrouped colonists -->
+  <TG.UngroupedColonistsSection>未編組的殖民者</TG.UngroupedColonistsSection>
+	<!-- EN: Ungrouped slaves -->
+  <TG.UngroupedSlavesSection>未編組的奴隸</TG.UngroupedSlavesSection>
+	
+	<!-- EN: Any pawn of {0} -->
+  <TG.AnyPawnOfGroup>{0}中的任意小人</TG.AnyPawnOfGroup>
+	<!-- EN: Click to disband selected pawns from this group -->
+  <TG.DisbandSelectedPawns>點擊以將小人移出這個小組</TG.DisbandSelectedPawns>
+	<!-- EN: Colonist bar width offset -->
+  <TG.ColonistBarWidthOffset>殖民者欄寬度偏移</TG.ColonistBarWidthOffset>
+
+</LanguageData>

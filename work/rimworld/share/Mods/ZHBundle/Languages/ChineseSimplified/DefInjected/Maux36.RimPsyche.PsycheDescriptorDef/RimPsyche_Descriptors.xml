@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Agreement helps conversations less. -->
+  <RP_Desc_Eloquence.negativeDescription>认同对谈话的帮助较小。</RP_Desc_Eloquence.negativeDescription>
+  <!-- EN: Agreement helps conversations more. -->
+  <RP_Desc_Eloquence.positiveDescription>认同对谈话的帮助较大。</RP_Desc_Eloquence.positiveDescription>
+  <!-- EN: builds rapport -->
+  <RP_Desc_Eloquence.positiveLabel>建立融洽关系</RP_Desc_Eloquence.positiveLabel>
+  
+  <!-- EN: Less likely to offend others. -->
+  <RP_Desc_InitIntentFactor.negativeDescription>不太可能冒犯他人。</RP_Desc_InitIntentFactor.negativeDescription>
+  <!-- EN: unlikely to offend -->
+  <RP_Desc_InitIntentFactor.negativeLabel>不易冒犯</RP_Desc_InitIntentFactor.negativeLabel>
+  <!-- EN: More likely to offend others. -->
+  <RP_Desc_InitIntentFactor.positiveDescription>更可能冒犯他人。</RP_Desc_InitIntentFactor.positiveDescription>
+  <!-- EN: likely to offend -->
+  <RP_Desc_InitIntentFactor.positiveLabel>更易冒犯</RP_Desc_InitIntentFactor.positiveLabel>
+  
+  <!-- EN: High topic interest has weaker effects. -->
+  <RP_Desc_InterestedTopicAttitude.negativeDescription>高话题兴趣的影响较弱。</RP_Desc_InterestedTopicAttitude.negativeDescription>
+  <!-- EN: less invested -->
+  <RP_Desc_InterestedTopicAttitude.negativeLabel>投入较少</RP_Desc_InterestedTopicAttitude.negativeLabel>
+  <!-- EN: High topic interest effects amplified. -->
+  <RP_Desc_InterestedTopicAttitude.positiveDescription>高话题兴趣的影响增强。</RP_Desc_InterestedTopicAttitude.positiveDescription>
+  <!-- EN: deeply invested -->
+  <RP_Desc_InterestedTopicAttitude.positiveLabel>深度投入</RP_Desc_InterestedTopicAttitude.positiveLabel>
+  
+  <!-- EN: Disagreements hurts more. -->
+  <RP_Desc_ReceptiveBase.negativeDescription>分歧更受伤。</RP_Desc_ReceptiveBase.negativeDescription>
+  <!-- EN: rejects differences -->
+  <RP_Desc_ReceptiveBase.negativeLabel>拒绝差异</RP_Desc_ReceptiveBase.negativeLabel>
+  <!-- EN: Disagreements hurts less. -->
+  <RP_Desc_ReceptiveBase.positiveDescription>分歧难受伤。</RP_Desc_ReceptiveBase.positiveDescription>
+  <!-- EN: tolerates differences -->
+  <RP_Desc_ReceptiveBase.positiveLabel>容忍差异</RP_Desc_ReceptiveBase.positiveLabel>
+  
+  <!-- EN: Less likely to take offense. -->
+  <RP_Desc_ReciNegativeChanceFactor.negativeDescription>不太可能被冒犯。</RP_Desc_ReciNegativeChanceFactor.negativeDescription>
+  <!-- EN: hard to offend -->
+  <RP_Desc_ReciNegativeChanceFactor.negativeLabel>难以冒犯</RP_Desc_ReciNegativeChanceFactor.negativeLabel>
+  <!-- EN: More likely to take offense. -->
+  <RP_Desc_ReciNegativeChanceFactor.positiveDescription>更可能被冒犯。</RP_Desc_ReciNegativeChanceFactor.positiveDescription>
+  <!-- EN: easily offended -->
+  <RP_Desc_ReciNegativeChanceFactor.positiveLabel>容易冒犯</RP_Desc_ReciNegativeChanceFactor.positiveLabel>
+  
+  <!-- EN: Less frequent social interactions. -->
+  <RP_Desc_Sociable.negativeDescription>社交更少。</RP_Desc_Sociable.negativeDescription>
+  <!-- EN: socially withdrawn -->
+  <RP_Desc_Sociable.negativeLabel>社交退缩</RP_Desc_Sociable.negativeLabel>
+  <!-- EN: More frequent social interactions. -->
+  <RP_Desc_Sociable.positiveDescription>社交更频。</RP_Desc_Sociable.positiveDescription>
+  <!-- EN: socially active -->
+  <RP_Desc_Sociable.positiveLabel>社交积极</RP_Desc_Sociable.positiveLabel>
+  
+  <!-- EN: May act more unpredictably. -->
+  <RP_Desc_Spontaneity.positiveDescription>行为可能更难预测。</RP_Desc_Spontaneity.positiveDescription>
+  
+  <!-- EN: Weaker conversations outcomes. -->
+  <RP_Desc_TalkFactor.negativeDescription>谈话结果更弱。</RP_Desc_TalkFactor.negativeDescription>
+  <!-- EN: Stronger conversations outcomes. -->
+  <RP_Desc_TalkFactor.positiveDescription>谈话结果更强。</RP_Desc_TalkFactor.positiveDescription>
+  <!-- EN: impactful communicator -->
+  <RP_Desc_TalkFactor.positiveLabel>有影响力的谈话者。</RP_Desc_TalkFactor.positiveLabel>
+  
+  <!-- EN: Low topic interest effects amplified. -->
+  <RP_Desc_UnInterestedTopicAttitude.negativeDescription>低话题兴趣的影响较弱。</RP_Desc_UnInterestedTopicAttitude.negativeDescription>
+  <!-- EN: indifferent communicator -->
+  <RP_Desc_UnInterestedTopicAttitude.negativeLabel>淡漠的沟通者</RP_Desc_UnInterestedTopicAttitude.negativeLabel>
+  <!-- EN: Low topic interest has weaker effects. -->
+  <RP_Desc_UnInterestedTopicAttitude.positiveDescription>低话题兴趣的影响增强。</RP_Desc_UnInterestedTopicAttitude.positiveDescription>
+  <!-- EN: curious communicator -->
+  <RP_Desc_UnInterestedTopicAttitude.positiveLabel>好奇的沟通者</RP_Desc_UnInterestedTopicAttitude.positiveLabel>
+  
+</LanguageData>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 무사 (I) -->
+  <Miho_Temptress_I_Hediff.label>灵侍-I</Miho_Temptress_I_Hediff.label>
+  <!-- EN: 무사 -->
+  <Miho_Temptress_I_Hediff.description>I级灵侍。</Miho_Temptress_I_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Temptress_I_Hediff.stages.a.label>A阶</Miho_Temptress_I_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Temptress_I_Hediff.stages.b.label>B阶</Miho_Temptress_I_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Temptress_I_Hediff.stages.c.label>C阶</Miho_Temptress_I_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Temptress_I_Hediff.stages.d.label>D阶</Miho_Temptress_I_Hediff.stages.d.label>
+  
+  <!-- EN: 무사 (II) -->
+  <Miho_Temptress_II_Hediff.label>灵侍-II</Miho_Temptress_II_Hediff.label>
+  <!-- EN: 무사 -->
+  <Miho_Temptress_II_Hediff.description>II级灵侍。</Miho_Temptress_II_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Temptress_II_Hediff.stages.a.label>A阶</Miho_Temptress_II_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Temptress_II_Hediff.stages.b.label>B阶</Miho_Temptress_II_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Temptress_II_Hediff.stages.c.label>C阶</Miho_Temptress_II_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Temptress_II_Hediff.stages.d.label>D阶</Miho_Temptress_II_Hediff.stages.d.label>
+  
+  <!-- EN: 무사 (III) -->
+  <Miho_Temptress_III_Hediff.label>灵侍-III</Miho_Temptress_III_Hediff.label>
+  <!-- EN: 무사 -->
+  <Miho_Temptress_III_Hediff.description>III级灵侍。</Miho_Temptress_III_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Temptress_III_Hediff.stages.a.label>A阶</Miho_Temptress_III_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Temptress_III_Hediff.stages.b.label>B阶</Miho_Temptress_III_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Temptress_III_Hediff.stages.c.label>C阶</Miho_Temptress_III_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Temptress_III_Hediff.stages.d.label>D阶</Miho_Temptress_III_Hediff.stages.d.label>
+  
+  <!-- EN: 무사 (IV) -->
+  <Miho_Temptress_IV_Hediff.label>灵侍-IV</Miho_Temptress_IV_Hediff.label>
+  <!-- EN: 무사 -->
+  <Miho_Temptress_IV_Hediff.description>IV级灵侍。</Miho_Temptress_IV_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Temptress_IV_Hediff.stages.a.label>A阶</Miho_Temptress_IV_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Temptress_IV_Hediff.stages.b.label>B阶</Miho_Temptress_IV_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Temptress_IV_Hediff.stages.c.label>C阶</Miho_Temptress_IV_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Temptress_IV_Hediff.stages.d.label>D阶</Miho_Temptress_IV_Hediff.stages.d.label>
+  
+  <!-- EN: 무사 (행성 적응중) -->
+  <Miho_Temptress_Start_Hediff.label>灵侍（星球适应）</Miho_Temptress_Start_Hediff.label>
+  <!-- EN: 무사 -->
+  <Miho_Temptress_Start_Hediff.description>灵侍。</Miho_Temptress_Start_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Temptress_Start_Hediff.stages.a.label>A</Miho_Temptress_Start_Hediff.stages.a.label>
+  <!-- EN: c -->
+  <Miho_Temptress_Start_Hediff.stages.c.label>C</Miho_Temptress_Start_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Temptress_Start_Hediff.stages.d.label>D</Miho_Temptress_Start_Hediff.stages.d.label>
+  <!-- EN: e -->
+  <Miho_Temptress_Start_Hediff.stages.e.label>E</Miho_Temptress_Start_Hediff.stages.e.label>
+  <!-- EN: f -->
+  <Miho_Temptress_Start_Hediff.stages.f.label>F</Miho_Temptress_Start_Hediff.stages.f.label>
+  <!-- EN: g -->
+  <Miho_Temptress_Start_Hediff.stages.g.label>G</Miho_Temptress_Start_Hediff.stages.g.label>
+  
+  <!-- EN: 무사 (V) -->
+  <Miho_Temptress_V_Hediff.label>灵侍-V</Miho_Temptress_V_Hediff.label>
+  <!-- EN: 무사 -->
+  <Miho_Temptress_V_Hediff.description>V级灵侍。</Miho_Temptress_V_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Temptress_V_Hediff.stages.a.label>A阶</Miho_Temptress_V_Hediff.stages.a.label>
+  
+</LanguageData>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <StartingXenotype.label>default starting xenotype</StartingXenotype.label> -->
+  <StartingXenotype.label>默認起始異種人</StartingXenotype.label>
+  <!-- <HostilityResponse.label>default hostility response</HostilityResponse.label> -->
+  <HostilityResponse.label>默認敵意反應</HostilityResponse.label>
+  <!-- <PregnancyApproach.label>default pregnancy approach</PregnancyApproach.label> -->
+  <PregnancyApproach.label>默認妊娠方法</PregnancyApproach.label>
+  <!-- <PlantType.label>default plant type</PlantType.label> -->
+  <PlantType.label>默認植物類型</PlantType.label>
+  <!-- <CaravanAutoSelect.label>auto-select caravan supplies by default</CaravanAutoSelect.label> -->
+  <CaravanAutoSelect.label>默認自動選擇旅行補給</CaravanAutoSelect.label>
+  <!-- <TargetTempHeater.label>target temperature for heaters</TargetTempHeater.label> -->
+  <TargetTempHeater.label>電暖爐的目標溫度</TargetTempHeater.label>
+  <!-- <TargetTempCooler.label>target temperature for coolers</TargetTempCooler.label> -->
+  <TargetTempCooler.label>空調的目標溫度</TargetTempCooler.label>
+  <!-- <WorkModeFirst.label>first mech control group work mode</WorkModeFirst.label> -->
+  <WorkModeFirst.label>第一機械操控組行動模式</WorkModeFirst.label>
+  <!-- <WorkModeSecond.label>second mech control group work mode</WorkModeSecond.label> -->
+  <WorkModeSecond.label>第二機械操控組行動模式</WorkModeSecond.label>
+  <!-- <WorkModeAdditional.label>additional mech control groups work mode</WorkModeAdditional.label> -->
+  <WorkModeAdditional.label>附加機械操控組行動模式</WorkModeAdditional.label>
+
+
+</LanguageData>

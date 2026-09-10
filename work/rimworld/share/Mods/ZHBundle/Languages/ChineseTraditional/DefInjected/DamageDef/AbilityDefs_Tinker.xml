@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: mechanite-arcane -->
+  <Miho_NeuroKill.label>廢熱爆散</Miho_NeuroKill.label>
+  <!-- EN: {0} has died in an explosion. -->
+  <Miho_NeuroKill.deathMessage>{0}被炸死了。</Miho_NeuroKill.deathMessage>
+  
+  <!-- EN: mechanite-arcane -->
+  <Miho_NeuroSlow.label>意識侵蝕</Miho_NeuroSlow.label>
+  <!-- EN: {0} has died in an explosion. -->
+  <Miho_NeuroSlow.deathMessage>{0}被炸死了。</Miho_NeuroSlow.deathMessage>
+  
+</LanguageData>

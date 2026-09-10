@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Mech serums -->
+
+  <RH_Nerotonin8B.label>Nerotonin-8B</RH_Nerotonin8B.label>
+  <RH_Nerotonin8B.description>Nerotonin-8B型藥丸(簡稱N-8B)是醫療領域的革命性發現，它能夠快速治癒所有健康問題。病毒爆發幾年後，人們在一座廢棄的Secronom大樓中發現了這一產品，導致N-4病毒爆發的Secroncom公司沒有關於這種神祕藥丸的任何文件記錄。\n這是他們未能釋放的治癒方法，只對那些尚未屈從於N-4感染或因之死亡的人有效。\n\n回到帕斯特堡後，相關研究立即展開，倖存的科學家得以重現了這種被遺忘已久的藥物。然而，有傳言稱這種神奇藥丸的真正起源來自一些古代和邪惡實體的禁忌知識。</RH_Nerotonin8B.description>
+  <RH_Nerotonin8B.comps.CompUsable.useLabel>使用{0_label}</RH_Nerotonin8B.comps.CompUsable.useLabel>
+  <RH_Nerotonin8B.comps.0.useLabel>使用{0_label}</RH_Nerotonin8B.comps.0.useLabel>
+
+
+</LanguageData>

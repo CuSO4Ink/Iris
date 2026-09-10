@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: conjure heat pearls -->
+  <VPE_ConjureHeatPearls.label>凝聚心熵灵珠</VPE_ConjureHeatPearls.label>
+  <!-- EN: Converts the caster’s neural heat into compressed metaphysical pearls. Completely harmless, but dumps a tremendous amount of neural heat into a small area when shattered. -->
+  <VPE_ConjureHeatPearls.description>形而上地将施放者的少量心灵熵凝聚成珠状。它们可以被掷向其它灵能者，引发他们的心灵熵暴涨，但除此之外完全无害。</VPE_ConjureHeatPearls.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_ConjureHeatPearls.jobReportString>使用能力：{0}</VPE_ConjureHeatPearls.jobReportString>
+  <!-- EN: 凝聚心熵灵珠 -->
+  <VPE_ConjureHeatPearls.verbProperties.label>心熵灵珠</VPE_ConjureHeatPearls.verbProperties.label>
+  
+  <!-- EN: craft psyring -->
+  <VPE_CraftPsyRing.label>打造智环</VPE_CraftPsyRing.label>
+  <!-- EN: Psychically alters the form of a piece of eltex into the shape of a ring, which is imbued with psycasting knowledge of the caster. When worn by another psycaster, this temporarily allows them to use this knowledge to perform the stored psycast without practice. -->
+  <VPE_CraftPsyRing.description>将一小团灵质融成环状，注入施放者对心灵能力的相关知识。其它灵能者佩戴智环后可以临时使用其中的知识来施放他们本身不掌握的心灵能力。</VPE_CraftPsyRing.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_CraftPsyRing.jobReportString>使用能力：{0}</VPE_CraftPsyRing.jobReportString>
+  <!-- EN: 打造智环 -->
+  <VPE_CraftPsyRing.verbProperties.label>打造智环</VPE_CraftPsyRing.verbProperties.label>
+  
+  <!-- EN: enchant quality -->
+  <VPE_EnchantQuality.label>品质重构</VPE_EnchantQuality.label>
+  <!-- EN: Psychically manipulate an object or structure to improve its overall quality. Maximum quality depends on psychic sensitivity. -->
+  <VPE_EnchantQuality.description>微调物品的物质结构，尝试提升它的品质，品质上限取决于心灵敏感度。</VPE_EnchantQuality.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_EnchantQuality.jobReportString>使用能力：{0}</VPE_EnchantQuality.jobReportString>
+  <!-- EN: 品质重构 -->
+  <VPE_EnchantQuality.verbProperties.label>品质重构</VPE_EnchantQuality.verbProperties.label>
+  
+  <!-- EN: haywire -->
+  <VPE_Haywire.label>智械干扰</VPE_Haywire.label>
+  <!-- EN: Subjects an area to psychic interference, temporarily reconfiguring up to 3 automated weapons systems to protect the caster and their allies. Duration scales with the caster’s psychic sensitivity. -->
+  <VPE_Haywire.description>用灵能干涉一片选定的目标，扰乱所有其中电子机械的敌我识别系统，令其将我方单位识别为友方。持续时间取决于施放者的心灵敏感度。</VPE_Haywire.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Haywire.jobReportString>使用能力：{0}</VPE_Haywire.jobReportString>
+  <!-- EN: 智械干扰 -->
+  <VPE_Haywire.verbProperties.label>智械干扰</VPE_Haywire.verbProperties.label>
+  
+  <!-- EN: mend -->
+  <VPE_Mend.label>修复</VPE_Mend.label>
+  <!-- EN: Psychically manipulate an object or structure to restore its condition. Requires high psychic sensitivity for any meaningful restoration. -->
+  <VPE_Mend.description>施放者与物品共鸣，尝试修复它受到的损坏，效果取决于施放者的心灵敏感度。</VPE_Mend.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Mend.jobReportString>使用能力：{0}</VPE_Mend.jobReportString>
+  <!-- EN: 修复 -->
+  <VPE_Mend.verbProperties.label>修复</VPE_Mend.verbProperties.label>
+  
+  <!-- EN: power -->
+  <VPE_Power.label>虚空供能</VPE_Power.label>
+  <!-- EN: Metaphysically alters the designated equipment’s power input to extract energy directly from fluctuations in the quantum foam for a few days. Duration scales with psychic sensitivity. -->
+  <VPE_Power.description>形而上地将目标装置的供能转接到翻腾的量子泡沫上。能持续数天，具体持续时间取决于施放者的心灵敏感度。</VPE_Power.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Power.jobReportString>使用能力：{0}</VPE_Power.jobReportString>
+  <!-- EN: 虚空供能 -->
+  <VPE_Power.verbProperties.label>虚空供能</VPE_Power.verbProperties.label>
+  
+  <!-- EN: reverse engineer -->
+  <VPE_ReverseEngineer.label>逆向工程</VPE_ReverseEngineer.label>
+  <!-- EN: Psychically manipulate an object or structure to learn its history and principles, annihilating it in the process. Extremely taxing, resulting in the caster falling into a temporary coma. -->
+  <VPE_ReverseEngineer.description>施放者专注于一个物品上，尝试解构出制造它所需要的知识。长时间的全神贯注会使施放者陷入临时昏迷。</VPE_ReverseEngineer.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_ReverseEngineer.jobReportString>使用能力：{0}</VPE_ReverseEngineer.jobReportString>
+  <!-- EN: 逆向工程 -->
+  <VPE_ReverseEngineer.verbProperties.label>逆向工程</VPE_ReverseEngineer.verbProperties.label>
+  
+  <!-- EN: rock construct -->
+  <VPE_RockConstruct.label>岩石构装体</VPE_RockConstruct.label>
+  <!-- EN: Compresses a portion of the caster’s neural heat tolerance into metaphysical crystals, then implanting them into a stone chunk. Creates a construct capable of simple chores. Breaking the crystals restores heat tolerance. -->
+  <VPE_RockConstruct.description>将施放者的少量心灵熵容量转化为形而上的水晶，并植入石块之中。造出的岩石构装体能完成简单的工作，当核心水晶被击毁后，所占用的心灵熵容量会返还。</VPE_RockConstruct.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_RockConstruct.jobReportString>使用能力：{0}</VPE_RockConstruct.jobReportString>
+  <!-- EN: 岩石构装体 -->
+  <VPE_RockConstruct.verbProperties.label>岩石构装体</VPE_RockConstruct.verbProperties.label>
+  
+  <!-- EN: steel construct -->
+  <VPE_SteelConstruct.label>钢铁构装体</VPE_SteelConstruct.label>
+  <!-- EN: Compresses a portion of the caster’s neural heat tolerance into metaphysical crystals, then implanting them into steel slag. Creates a construct that guards the caster. Breaking the crystals restores heat tolerance. -->
+  <VPE_SteelConstruct.description>将施放者的少量心灵熵容量转化为形而上的水晶，并植入金属块之中。造出的钢铁构装体会跟随并贴身保护施放者，当核心水晶被击毁后，所占用的心灵熵容量会返还。</VPE_SteelConstruct.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_SteelConstruct.jobReportString>使用能力：{0}</VPE_SteelConstruct.jobReportString>
+  <!-- EN: 钢铁构装体 -->
+  <VPE_SteelConstruct.verbProperties.label>钢铁构装体</VPE_SteelConstruct.verbProperties.label>
+  
+  <!-- EN: word of progress -->
+  <VPE_WordofProgress.label>进步之语</VPE_WordofProgress.label>
+  <!-- EN: Speak words encouraging problem solving capabilities while psychically hypercharging the target’s mind with keen insight. The target will experience double research speed and intellectual skill gain for 5 days, scaling with their psychic sensitivity. -->
+  <VPE_WordofProgress.description>在口头上鼓励理性工作的同时用灵能强化目标脑中的洞察力。目标会在接下来的5天中拥有双倍的研究速度和经验获取，具体持续时间取决于施放者的心灵敏感度。</VPE_WordofProgress.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_WordofProgress.jobReportString>使用能力：{0}</VPE_WordofProgress.jobReportString>
+  <!-- EN: 进步之语 -->
+  <VPE_WordofProgress.verbProperties.label>进步之语</VPE_WordofProgress.verbProperties.label>
+  
+</LanguageData>

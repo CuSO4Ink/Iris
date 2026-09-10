@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: power conduit -->
+  <KCSG_PowerConduit.label>电缆</KCSG_PowerConduit.label>
+  <!-- EN: A burried bundle of electrical cables for moving power around. -->
+  <KCSG_PowerConduit.description>一捆用于传输电力的地下电缆。</KCSG_PowerConduit.description>
+  
+</LanguageData>

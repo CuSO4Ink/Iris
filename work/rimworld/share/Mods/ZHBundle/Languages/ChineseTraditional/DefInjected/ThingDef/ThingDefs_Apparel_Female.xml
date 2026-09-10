@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi basic royal costume -->
+  <VV_BasicRoyalCostume.label>皇家薇薇基礎服裝</VV_BasicRoyalCostume.label>
+  <!-- EN: A simple dress worn by royal vivis. -->
+  <VV_BasicRoyalCostume.description>皇家薇薇穿的普通裙子。</VV_BasicRoyalCostume.description>
+  
+  <!-- EN: royal vivi travel cape -->
+  <VV_RoyalViviTravelCape.label>皇家薇薇旅行斗篷</VV_RoyalViviTravelCape.label>
+  <!-- EN: A cape commonly worn by royal vivis when traveling long distances. Designed to be quite thick, it provides substantial protection for the vulnerable royal vivis in the wild and enables them to endure various environments. Its luxurious appearance makes it a favored garment among royal vivis when interacting with outsiders.\n\nCan wear only royal vivi. -->
+  <VV_RoyalViviTravelCape.description>皇家薇薇進行長途旅行時通常穿著的斗篷。設計相當厚實，為在野外活動的皇家薇薇提供了實在的保護，使其能夠適應多種環境。奢華的外觀也讓它成為了皇家薇薇和外來者進行交流時的首選。\n\n只能由皇家薇薇穿著。</VV_RoyalViviTravelCape.description>
+  
+</LanguageData>

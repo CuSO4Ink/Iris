@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: duel spot -->
+  <AM_DuelSpot.label>决斗点</AM_DuelSpot.label>
+  <!-- EN: Designates a spot where friendly duels can take place. Two colonists with valid melee weapons may spar here for fun and practice. -->
+  <AM_DuelSpot.description>指定一个举行切磋决斗的位置。装备有效近战武器的殖民者可能会在这里娱乐或练习。</AM_DuelSpot.description>
+  
+</LanguageData>

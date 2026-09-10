@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: crude runecircle（蓝图） -->
+  <Blueprint_Install_VPER_Runecircle_Constructible.label>原始卢恩魔圈（蓝图）</Blueprint_Install_VPER_Runecircle_Constructible.label>
+  
+  <!-- EN: greater runecircle（蓝图） -->
+  <Blueprint_Install_VPER_Runecircle_Greater.label>至圣卢恩魔圈（蓝图）</Blueprint_Install_VPER_Runecircle_Greater.label>
+  
+  <!-- EN: standard runecircle（蓝图） -->
+  <Blueprint_Install_VPER_Runecircle_Standard.label>恒常卢恩魔圈（蓝图）</Blueprint_Install_VPER_Runecircle_Standard.label>
+  
+</LanguageData>

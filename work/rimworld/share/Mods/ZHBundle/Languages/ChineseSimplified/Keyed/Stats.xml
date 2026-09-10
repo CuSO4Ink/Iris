@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: is too -->
+  <VFECore.IsToo>过于</VFECore.IsToo>
+	<!-- EN: advanced -->
+  <VFECore.Advanced>高级</VFECore.Advanced>
+	<!-- EN: primitive -->
+  <VFECore.Primitive>原始</VFECore.Primitive>
+	<!-- EN: Powered -->
+  <VFECore.StatsReport_Powered>通电</VFECore.StatsReport_Powered>
+	<!-- EN: Unpowered -->
+  <VFECore.StatsReport_Unpowered>未通电</VFECore.StatsReport_Unpowered>
+	<!-- EN: Range Attack Speed Factor -->
+  <VEF_RangeAttackSpeedFactor>远程攻击速度系数</VEF_RangeAttackSpeedFactor>
+  <!-- EN: Dodge -->
+  <VEF.RangedDodge.ShotReportReadout>闪避</VEF.RangedDodge.ShotReportReadout>
+</LanguageData>

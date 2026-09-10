@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: brain parasite -->
+  <BrainParasites.label>洗脑惑虫</BrainParasites.label>
+  <!-- EN: A living organism born from the necronoid biomass, which was used to brainwash humanoids and turning them into a walking trojan horse. If the carrier fell into the ground due to unbearble pain, the brain parasite will then forcefully awaken the fetid parasites inside itself, which in turn, killing the carrier via outburst of parasites inside the head. It is possible to save the carrier from this brain parasite by using an EMP blast that cripples the carrier and the parasite, and performing brain surgery to replace the brain parasite with a new brain, that is if you have a spare brain in your storage. -->
+  <BrainParasites.description>用于洗脑人类并将他们转化为活体“特洛伊木马”的殁疫寄生物。如果被寄生者因过度疼痛而倒地，则洗脑惑虫会迫使其体内的脓腐蜱虫加速孵化并破体而出。EMP伤害会使被寄生者陷入“大脑休克”状态，此时可通过手术移除洗脑惑虫来帮助他们摆脱控制。</BrainParasites.description>
+  
+</LanguageData>

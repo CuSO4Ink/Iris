@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData> 
+	<VisibleWealth_WealthBreakdown>财富明细</VisibleWealth_WealthBreakdown> 
+	<VisibleWealth_Calculating>计算中</VisibleWealth_Calculating> 
+	<VisibleWealth_TotalWealth>总财富: ${0}</VisibleWealth_TotalWealth> 
+	<VisibleWealth_ListStyle>列表模式</VisibleWealth_ListStyle> 
+	<VisibleWealth_PieStyle>饼图模式</VisibleWealth_PieStyle> 
+	<VisibleWealth_Flat>平铺模式</VisibleWealth_Flat> 
+	<VisibleWealth_Nested>嵌套模式</VisibleWealth_Nested> 
+	<VisibleWealth_WealthItems>物品资产</VisibleWealth_WealthItems> 
+	<VisibleWealth_WealthBuildings>建筑资产</VisibleWealth_WealthBuildings> 
+	<VisibleWealth_WealthPawns>人员资产</VisibleWealth_WealthPawns> 
+	<VisibleWealth_WealthPocketMaps>便携地图</VisibleWealth_WealthPocketMaps> 
+	<VisibleWealth_Humans>殖民者</VisibleWealth_Humans> 
+	<VisibleWealth_Animals>动物</VisibleWealth_Animals> 
+	<VisibleWealth_Mechs>机械体</VisibleWealth_Mechs> 
+	<VisibleWealth_Mutants>异常实体</VisibleWealth_Mutants> 
+	<VisibleWealth_Ghouls>食尸鬼</VisibleWealth_Ghouls> 
+	<VisibleWealth_Enabled>启用</VisibleWealth_Enabled> 
+	<VisibleWealth_Disabled>停用</VisibleWealth_Disabled> 
+	<VisibleWealth_SortBy>排序方式</VisibleWealth_SortBy> 
+	<VisibleWealth_SortByName>名称排序</VisibleWealth_SortByName> 
+	<VisibleWealth_SortByValue>价值排序</VisibleWealth_SortByValue> 
+	<VisibleWealth_SortDirectionAscending>升序排列</VisibleWealth_SortDirectionAscending> 
+	<VisibleWealth_RaidPointMode>袭击点数模式</VisibleWealth_RaidPointMode> 
+	<VisibleWealth_PercentOfTotal>显示总财富占比</VisibleWealth_PercentOfTotal> 
+	<VisibleWealth_PercentOfCategory>显示分类内占比</VisibleWealth_PercentOfCategory> 
+	<VisibleWealth_PercentOfNone>隐藏百分比</VisibleWealth_PercentOfNone> 
+	<VisibleWealth_RerollColors>随机配色</VisibleWealth_RerollColors> 
+	<VisibleWealth_ClickForInfo>点击查看详情</VisibleWealth_ClickForInfo> 
+	<VisibleWealth_ClickToExpand>点击展开</VisibleWealth_ClickToExpand> 
+	<VisibleWealth_ClickToCollapse>收起{0}</VisibleWealth_ClickToCollapse> 
+	<VisibleWealth_CollapseAll>全部收起</VisibleWealth_CollapseAll> 
+	<VisibleWealth_PlaySettingsButton>在游戏设置显示按钮（右下角）</VisibleWealth_PlaySettingsButton> 
+	<VisibleWealth_MainButton>在主界面显示按钮（底部工具栏）</VisibleWealth_MainButton> 
+	<VisibleWealth_OpenKeyBindings>配置财富明细快捷键</VisibleWealth_OpenKeyBindings> 
+</LanguageData>
+
+<!-- <?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<VisibleWealth_WealthBreakdown>财富明细</VisibleWealth_WealthBreakdown>
+	<VisibleWealth_TotalWealth>总财富: ${0}</VisibleWealth_TotalWealth>
+	<VisibleWealth_WealthItems>物品财富</VisibleWealth_WealthItems>
+	<VisibleWealth_WealthBuildings>建筑财富</VisibleWealth_WealthBuildings>
+	<VisibleWealth_WealthPawns>单位财富</VisibleWealth_WealthPawns>
+	<VisibleWealth_WealthPocketMaps>当前地区</VisibleWealth_WealthPocketMaps>
+	<VisibleWealth_Humans>殖民者</VisibleWealth_Humans>
+	<VisibleWealth_Animals>动物</VisibleWealth_Animals>
+	<VisibleWealth_Mechs>机械体</VisibleWealth_Mechs>
+	<VisibleWealth_Mutants>异常实体</VisibleWealth_Mutants>
+	<VisibleWealth_Ghouls>食尸鬼</VisibleWealth_Ghouls>
+	<VisibleWealth_SortBy>按{0}排序</VisibleWealth_SortBy>
+	<VisibleWealth_SortByName>名称</VisibleWealth_SortByName>
+	<VisibleWealth_SortByValue>价值</VisibleWealth_SortByValue>
+	<VisibleWealth_SortDirectionAscending>升序排列</VisibleWealth_SortDirectionAscending>
+	<VisibleWealth_SortDirectionDescending>降序排列</VisibleWealth_SortDirectionDescending>
+</LanguageData> -->

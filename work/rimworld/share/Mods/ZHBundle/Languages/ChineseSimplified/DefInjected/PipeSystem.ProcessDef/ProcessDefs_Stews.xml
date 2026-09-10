@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Cook Fine Stew -->
+  <VCE_FineStewRecipe.label>烹制精致炖菜</VCE_FineStewRecipe.label>
+  <!-- EN: Turns an uncooked fine stew into 10 cooked fine stews. -->
+  <VCE_FineStewRecipe.description>用精致炖料 x1 烹制精致炖菜 x10。</VCE_FineStewRecipe.description>
+  
+  <!-- EN: Cook Lavish Stew -->
+  <VCE_LavishStewRecipe.label>烹制奢侈炖菜</VCE_LavishStewRecipe.label>
+  <!-- EN: Turns an uncooked lavish stew into 10 cooked lavish stews. -->
+  <VCE_LavishStewRecipe.description>用奢侈炖料 x1 烹制奢侈炖菜 x10。</VCE_LavishStewRecipe.description>
+  
+  <!-- EN: Cook Simple Stew -->
+  <VCE_SimpleStewRecipe.label>烹制简单炖菜</VCE_SimpleStewRecipe.label>
+  <!-- EN: Turns an uncooked simple stew into 10 cooked simple stews. -->
+  <VCE_SimpleStewRecipe.description>用简单炖料 x1 烹制简单炖菜 x10。</VCE_SimpleStewRecipe.description>
+  
+</LanguageData>

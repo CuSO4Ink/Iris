@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_DeepFryMeats.label>油炸肉类 x4</VCE_DeepFryMeats.label>
+		<VCE_DeepFryMeats.description>油炸大块的肉。油炸食物非常好吃，但是不利于健康。</VCE_DeepFryMeats.description>
+		<VCE_DeepFryMeats.jobString>正在油炸肉类。</VCE_DeepFryMeats.jobString>
+		<VCE_DeepFryVegetables.label>油炸素菜 x4</VCE_DeepFryVegetables.label>
+		<VCE_DeepFryVegetables.description>油炸素菜。油炸食物非常好吃，但是不利于健康。</VCE_DeepFryVegetables.description>
+		<VCE_DeepFryVegetables.jobString>正在油炸素菜。</VCE_DeepFryVegetables.jobString>
+		<VCE_DeepFryFish.label>油炸鱼肉 x4</VCE_DeepFryFish.label>
+		<VCE_DeepFryFish.description>油炸鱼肉。油炸食物非常好吃，但是不利于健康。</VCE_DeepFryFish.description>
+		<VCE_DeepFryFish.jobString>正在油炸鱼肉。</VCE_DeepFryFish.jobString>
+		<VCE_DeepFryAlienFish.label>油炸外星生鱼x4</VCE_DeepFryAlienFish.label>
+		<VCE_DeepFryAlienFish.description>油炸外星生鱼。油炸食物非常好吃，但是不利于健康。</VCE_DeepFryAlienFish.description>
+		<VCE_DeepFryAlienFish.jobString>正在油炸外星生鱼</VCE_DeepFryAlienFish.jobString>
+		<VCE_DeepFrySushi.label>油炸寿司 x4</VCE_DeepFrySushi.label>
+		<VCE_DeepFrySushi.description>油炸寿司。油炸食物非常好吃，但是不利于健康。</VCE_DeepFrySushi.description>
+		<VCE_DeepFrySushi.jobString>正在油炸寿司</VCE_DeepFrySushi.jobString>
+	</LanguageData>

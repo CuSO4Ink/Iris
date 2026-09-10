@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: skeleton -->
+  <VPE_SummonedSkeleton.label>骷髏</VPE_SummonedSkeleton.label>
+  <!-- EN: A psychically re-animated husk of a deceased individual. Extremely aggressive, but will soon wither away into nothing. -->
+  <VPE_SummonedSkeleton.description>用靈能活化的死屍軀體。攻擊性強，但很快就會凋零為塵埃。</VPE_SummonedSkeleton.description>
+  <!-- EN: left fist -->
+  <VPE_SummonedSkeleton.tools.left_fist.label>左拳</VPE_SummonedSkeleton.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <VPE_SummonedSkeleton.tools.right_fist.label>右拳</VPE_SummonedSkeleton.tools.right_fist.label>
+  
+</LanguageData>

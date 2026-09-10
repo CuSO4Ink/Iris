@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi automated infrastructures -->
+  <VV_AutomatedInfra.label>薇薇自动设施</VV_AutomatedInfra.label>
+  <!-- EN: Automate some of the manual jobs previously done by the Vivis using electricity, increasing efficiency. -->
+  <VV_AutomatedInfra.description>使用电力将薇薇的部分手工工作自动化，以提高生产效率。</VV_AutomatedInfra.description>
+  <!-- EN: mana transfer tube -->
+  <VV_ManaTransferTube.label>魔能管道</VV_ManaTransferTube.label>
+  <!-- EN: Construct mana transfer tubes that can transmit mana over long distances and through walls, mimicking the mana transfer method of arcane plants. -->
+  <VV_ManaTransferTube.description>建造魔能管道，模仿神秘植物的魔能转移方式，管道可以穿过墙壁远距离转移魔能。</VV_ManaTransferTube.description>
+  <!-- EN: vivi ritual weaponry -->
+  <VV_RitualWeaponry.label>薇薇仪式武器</VV_RitualWeaponry.label>
+  <!-- EN: Make special weapons exclusively for recognized Vivi warriors. -->
+  <VV_RitualWeaponry.description>制作专门被公认的薇薇战士定做的特殊武器。</VV_RitualWeaponry.description>
+  
+</LanguageData>

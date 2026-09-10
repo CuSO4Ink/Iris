@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: [PAWN_nameDef] is Smart Dragonian!\n[PAWN_nameDef] is surprisingly capable of math! -->
+  <Dragonian_BS_CreepJoiner.description>[PAWN_nameDef] 是聰明的龍人！\n[PAWN_nameDef] 懂數學！</Dragonian_BS_CreepJoiner.description>
+  <!-- EN: Smart Dragonian -->
+  <Dragonian_BS_CreepJoiner.title>聰明的龍人</Dragonian_BS_CreepJoiner.title>
+  <!-- EN: Smart Dragonian -->
+  <Dragonian_BS_CreepJoiner.titleShort>聰明的龍人</Dragonian_BS_CreepJoiner.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is Smart Dragonian!\n[PAWN_nameDef] is surprisingly capable of math! -->
+  <Dragonian_BS_CreepJoinerB.description>[PAWN_nameDef] 是聰明的龍人！\n[PAWN_nameDef] 懂數學！</Dragonian_BS_CreepJoinerB.description>
+  <!-- EN: Smart Dragonian -->
+  <Dragonian_BS_CreepJoinerB.title>聰明的龍人</Dragonian_BS_CreepJoinerB.title>
+  <!-- EN: Smart Dragonian -->
+  <Dragonian_BS_CreepJoinerB.titleShort>聰明的龍人</Dragonian_BS_CreepJoinerB.titleShort>
+  
+</LanguageData>

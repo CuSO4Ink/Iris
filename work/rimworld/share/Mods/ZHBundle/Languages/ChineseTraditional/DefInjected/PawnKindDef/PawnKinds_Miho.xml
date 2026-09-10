@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 모험가 -->
+  <Miho_Colonist.label>美狐冒險者</Miho_Colonist.label>
+  
+  <!-- EN: 미호 모험가 -->
+  <Miho_ColonistGlasses.label>美狐冒險者</Miho_ColonistGlasses.label>
+
+  <!-- EN: 미호 리더 -->
+  <Miho_Leader.label>美狐領袖</Miho_Leader.label>
+  <!-- EN: leaders -->
+  <Miho_Leader.labelPlural>美狐領袖</Miho_Leader.labelPlural>
+  
+  <!-- EN: 미호 난민 -->
+  <Miho_Refugee.label>美狐逃難者</Miho_Refugee.label>
+  
+  <!-- EN: 미호 노예 -->
+  <Miho_Slave.label>美狐奴隸</Miho_Slave.label>
+  
+  <!-- EN: 미호 여행자 -->
+  <Miho_Soldier_Adventurer.label>美狐旅行者</Miho_Soldier_Adventurer.label>
+  
+  <!-- EN: 미호 특작병 -->
+  <Miho_Soldier_AssassinRanged.label>美狐特種兵</Miho_Soldier_AssassinRanged.label>
+  
+  <!-- EN: 미호 전략 마법사 -->
+  <Miho_Soldier_Battlemage.label>美狐戰略術士</Miho_Soldier_Battlemage.label>
+  
+  <!-- EN: 미호 화력지원병 -->
+  <Miho_Soldier_Firepower.label>美狐火力支援兵</Miho_Soldier_Firepower.label>
+  
+  <!-- EN: 미호 사냥꾼 -->
+  <Miho_Soldier_Hunter.label>美狐獵人</Miho_Soldier_Hunter.label>
+  
+  <!-- EN: 미호 보안대원 -->
+  <Miho_Soldier_Marksman.label>美狐殖民地警衛</Miho_Soldier_Marksman.label>
+  
+  <!-- EN: 미호 보안대원 -->
+  <Miho_Soldier_MarksmanEar.label>美狐殖民地警衛</Miho_Soldier_MarksmanEar.label>
+  
+  <!-- EN: 미호 보안대 군의관 -->
+  <Miho_Soldier_Medic.label>美狐殖民地軍醫</Miho_Soldier_Medic.label>
+  
+  <!-- EN: 미호 자경대원 -->
+  <Miho_Soldier_Militia.label>美狐自警團員</Miho_Soldier_Militia.label>
+  
+  <!-- EN: 미호 자경대원 -->
+  <Miho_Soldier_MilitiaGlasses.label>美狐自警團員</Miho_Soldier_MilitiaGlasses.label>
+
+  <!-- EN: 미호 보안대 장교 -->
+  <Miho_Soldier_MilitiaCaptain.label>美狐殖民地警衛官</Miho_Soldier_MilitiaCaptain.label>
+  
+  <!-- EN: 미호 보안대 돌격병 -->
+  <Miho_Soldier_MilitiaMelee.label>美狐殖民地突擊警衛</Miho_Soldier_MilitiaMelee.label>
+  
+  <!-- EN: 미호 육전대 -->
+  <Miho_Soldier_PMC_Breacher.label>美狐陸戰隊</Miho_Soldier_PMC_Breacher.label>
+  
+  <!-- EN: 미호 중보병 -->
+  <Miho_Soldier_PMC_InfantryBasic.label>美狐重裝步兵</Miho_Soldier_PMC_InfantryBasic.label>
+  
+  <!-- EN: 미호 전술 마법사 -->
+  <Miho_Soldier_TacticalMagi.label>美狐戰術術士</Miho_Soldier_TacticalMagi.label>
+  
+  <!-- EN: 미호 캐러밴장 -->
+  <Miho_Trader.label>美狐商人</Miho_Trader.label>
+  
+  <!-- EN: 쏘지마시발 -->
+  <Miho_Unique_DontShootMe.label>美狐逃兵</Miho_Unique_DontShootMe.label>
+  
+</LanguageData>

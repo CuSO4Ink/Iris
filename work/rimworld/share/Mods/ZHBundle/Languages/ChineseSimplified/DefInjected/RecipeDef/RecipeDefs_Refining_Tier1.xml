@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: filter honey -->
+  <VV_FilteringHoney.label>过滤蜂蜜</VV_FilteringHoney.label>
+  <!-- EN: Filter the Vivi honey by removing impurities to create pure honey. -->
+  <VV_FilteringHoney.description>通过去除杂质来过滤薇薇蜂蜜，制作纯净蜂蜜。</VV_FilteringHoney.description>
+  <!-- EN: filtering honey. -->
+  <VV_FilteringHoney.jobString>过滤蜂蜜中</VV_FilteringHoney.jobString>
+  
+  <!-- EN: make fertilizer from bones -->
+  <VV_MakeFertilizerCorpse.label>以骨头制作肥料</VV_MakeFertilizerCorpse.label>
+  <!-- EN: Combine rotten corpse or bones with pollen to produce mana fertilizers. -->
+  <VV_MakeFertilizerCorpse.description>将骨头与花粉结合起来，制造魔法肥料。</VV_MakeFertilizerCorpse.description>
+  <!-- EN: pollen -->
+  <VV_MakeFertilizerCorpse.ingredients.1.filter.customSummary>花粉</VV_MakeFertilizerCorpse.ingredients.1.filter.customSummary>
+  <!-- EN: making fertilizer from bones. -->
+  <VV_MakeFertilizerCorpse.jobString>以骨头制作肥料中</VV_MakeFertilizerCorpse.jobString>
+  
+  <!-- EN: make fertilizer from organics -->
+  <VV_MakeFertilizerResource.label>以有机物制作肥料</VV_MakeFertilizerResource.label>
+  <!-- EN: Ferment organic matter and mix it with pollen or crops to produce mana fertilizers. -->
+  <VV_MakeFertilizerResource.description>发酵有机物并将其与作物和花粉混合以制造魔法肥料。</VV_MakeFertilizerResource.description>
+  <!-- EN: pollen or crops -->
+  <VV_MakeFertilizerResource.ingredients.1.filter.customSummary>花粉或作物</VV_MakeFertilizerResource.ingredients.1.filter.customSummary>
+  <!-- EN: making fertilizer from organics. -->
+  <VV_MakeFertilizerResource.jobString>以有机物制作肥料中</VV_MakeFertilizerResource.jobString>
+  
+  <!-- EN: make vivicream -->
+  <VV_MakeVivicream.label>制作薇薇乳脂</VV_MakeVivicream.label>
+  <!-- EN: Produces cream from Vivi's body. Only Vivi can make it and it does not require materials, instead it consumes Vivi's calories and cannot be made when hungry. -->
+  <VV_MakeVivicream.description>从薇薇的身体中制造乳脂。只有薇薇可以制造它，这不需要材料，但会消耗薇薇的营养，饥饿时无法制造。</VV_MakeVivicream.description>
+  <!-- EN: making vivicream. -->
+  <VV_MakeVivicream.jobString>制作薇薇乳脂中</VV_MakeVivicream.jobString>
+  
+  <!-- EN: make viviwax -->
+  <VV_MakeViviwax.label>制作薇薇蜂蜡</VV_MakeViviwax.label>
+  <!-- EN: Produce viviwax from vivi creams. -->
+  <VV_MakeViviwax.description>从薇薇乳脂中提取薇薇蜂蜡。</VV_MakeViviwax.description>
+  <!-- EN: making viviwax. -->
+  <VV_MakeViviwax.jobString>制作薇薇蜂蜡中</VV_MakeViviwax.jobString>
+  
+  <!-- EN: refining propolis -->
+  <VV_RefiningPropolis.label>精炼蜂胶</VV_RefiningPropolis.label>
+  <!-- EN: Refine propolis to extract medicines and neutroamines. -->
+  <VV_RefiningPropolis.description>精炼蜂胶以提取药物和中性胺。</VV_RefiningPropolis.description>
+  <!-- EN: refining propolis. -->
+  <VV_RefiningPropolis.jobString>精炼蜂胶中</VV_RefiningPropolis.jobString>
+  
+</LanguageData>

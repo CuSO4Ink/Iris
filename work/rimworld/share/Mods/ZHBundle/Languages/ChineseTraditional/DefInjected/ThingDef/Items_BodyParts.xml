@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: archotech ratkin tail -->
+  <RK_Thing_ArchotechTail.label>遠古科技尾巴</RK_Thing_ArchotechTail.label>
+  <!-- EN: An artificial ratkin tail built by an archotech. It senses posture and micro-movements to keep the bearer perfectly balanced, feels like living flesh, and is harder to damage than plasteel. If harmed, it repairs itself over time. Its inner workings are a mystery. -->
+  <RK_Thing_ArchotechTail.description>一種遠古科技打造的仿生尾巴。它可以感知到安裝者的姿勢和細微動作，從而使其身體平衡性達到完美狀態。外觀、觸感看起來就像是天然的尾巴，但比塑鋼耐用。即使受到損傷，也能隨著時間自行修復。它的內部構造對人類來說是一團謎。</RK_Thing_ArchotechTail.description>
+
+  <!-- EN: bionic tail -->
+  <RK_Thing_BionicTail.label>仿生尾巴</RK_Thing_BionicTail.label>
+  <!-- EN: An advanced artificial tail. It also has a small AI that automatically balances the user's missing. -->
+  <RK_Thing_BionicTail.description>一種高級的人工尾巴，專為鼠族而設計。其內置的小型AI可以幫助安裝者自動調解身體平衡性。</RK_Thing_BionicTail.description>
+  
+</LanguageData>

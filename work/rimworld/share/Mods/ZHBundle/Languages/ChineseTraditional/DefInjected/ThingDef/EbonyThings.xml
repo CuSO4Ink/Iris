@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 화현 분재 -->
+  <Miho_Ebony_Bonsai.label>火玄盆栽</Miho_Ebony_Bonsai.label>
+  <!-- EN: 굉장히 귀한 취급을 받는 커다란 분재 입니다. 주기적으로 비단을 생산 합니다. -->
+  <Miho_Ebony_Bonsai.description>非常珍貴的巨型盆栽。可以定期產出火玄絲綢。</Miho_Ebony_Bonsai.description>
+  
+  <!-- EN: 화현 오디 -->
+  <Miho_Ebony_Mulberry.label>火玄桑葚</Miho_Ebony_Mulberry.label>
+  <!-- EN: 화현 뽕나무의 열매입니다. 약물의 재료로 쓰이고, 생으로 먹으면 극상의 맛을 자랑합니다. 다만 보관 기간이 짧으니 주의해 주세요. -->
+  <Miho_Ebony_Mulberry.description>火玄桑樹結出的紫紅色果實，就算生吃味道也很好。火玄桑葚也是用於生產藥物的重要原料，但若得不到妥善儲存，很快就會腐爛變質。</Miho_Ebony_Mulberry.description>
+  
+  <!-- EN: 화현 비단 -->
+  <Miho_Ebony_SilkCloth.label>火玄絲綢</Miho_Ebony_SilkCloth.label>
+  <!-- EN: 화현 비단은 약초를 먹는 누에의 고치를 태워 만든 아름답고 단열성이 강한 비단입니다. -->
+  <Miho_Ebony_SilkCloth.description>由火玄紡蚕產出的美麗織物，不僅堅固耐用，隔溫性能與防火性能也相當出色。</Miho_Ebony_SilkCloth.description>
+  
+  <!-- EN: 화현 뽕나무 -->
+  <Plant_Ebony_Silk.label>火玄桑樹</Plant_Ebony_Silk.label>
+  <!-- EN: 화현 누에나방이 서식하는 거대한 뽕나무 입니다. 1년 내내 오디가 수확되는 풍요로운 나무이기도 합니다. -->
+  <Plant_Ebony_Silk.description>可供火玄紡蚕們棲息的大桑樹。由於生命力相當頑強，這種樹無論春夏秋冬都能結出美味的火玄桑葚。</Plant_Ebony_Silk.description>
+  
+</LanguageData>

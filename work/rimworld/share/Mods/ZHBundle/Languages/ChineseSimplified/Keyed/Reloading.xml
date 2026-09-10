@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Unload {GEAR_labelShort} -->
+  <Reloading.Unload>卸出{GEAR_labelShort}的弹药</Reloading.Unload>
+    <!-- EN: No Ammo -->
+  <Reloading.NoAmmo>无弹药</Reloading.NoAmmo>
+    <!-- EN: Ammo: {0} / {1} -->
+  <Reloading.Ammo>弹药: {0} / {1}</Reloading.Ammo>
+    <!-- EN: Reload {GEAR} with {AMMO_label} -->
+  <Reloading.Reload>用{AMMO_label}装填{GEAR}</Reloading.Reload>
+</LanguageData>

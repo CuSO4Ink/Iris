@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bionic antennae -->
+  <VV_BionicAntennae.label>仿生触须</VV_BionicAntennae.label>
+  <!-- EN: An installed bionic antennae. Equipped with high-performance sensors, it can detect even the slightest flow of air. -->
+  <VV_BionicAntennae.description>已安装的仿生触须，配备了高性能传感器，能检测到最轻微的气流。</VV_BionicAntennae.description>
+  <!-- EN: a bionic antennae -->
+  <VV_BionicAntennae.labelNoun>仿生触须</VV_BionicAntennae.labelNoun>
+  
+  <!-- EN: bionic wing -->
+  <VV_BionicWing.label>仿生翅</VV_BionicWing.label>
+  <!-- EN: An installed bionic wing. These wings are lighter and sturdier than the original ones, making movement easier. -->
+  <VV_BionicWing.description>已安装的仿生翅膀。这些翅膀比原来的翅膀更轻、更坚固，使运动更容易。</VV_BionicWing.description>
+  <!-- EN: a bionic wing -->
+  <VV_BionicWing.labelNoun>仿生翅</VV_BionicWing.labelNoun>
+  
+  <!-- EN: fake antennae -->
+  <VV_FakeAntennae.label>假触须</VV_FakeAntennae.label>
+  <!-- EN: An installed fake antennae. It's not particularly helpful, but it's better than nothing. -->
+  <VV_FakeAntennae.description>已安装的假触须，虽然没什么实际帮助，但总比没有强。</VV_FakeAntennae.description>
+  <!-- EN: a fake antennae -->
+  <VV_FakeAntennae.labelNoun>假触须</VV_FakeAntennae.labelNoun>
+  
+  <!-- EN: fake wing -->
+  <VV_FakeWing.label>假翅</VV_FakeWing.label>
+  <!-- EN: An installed fake wing. It's not particularly helpful, but it's better than nothing. -->
+  <VV_FakeWing.description>已安装的假翅，虽然没什么实际帮助，但总比没有强。</VV_FakeWing.description>
+  <!-- EN: a fake wing -->
+  <VV_FakeWing.labelNoun>假翅</VV_FakeWing.labelNoun>
+  
+  <!-- EN: glider wing -->
+  <VV_GliderWing.label>滑翔翅</VV_GliderWing.label>
+  <!-- EN: Installed glider wings. It makes vivi fly more often and stay airborne longer. These wings are only a lift-assist device, so the vivi's own wings must be intact to fly. -->
+  <VV_GliderWing.description>已安装的滑翔翅，可以令薇薇时常飞行且更久滞空。\n\n这些翅膀只是接收升力的装置，所以薇薇自带的翅膀必须完好才能飞行。</VV_GliderWing.description>
+  <!-- EN: glider wing -->
+  <VV_GliderWing.labelNoun>滑翔翅</VV_GliderWing.labelNoun>
+  
+</LanguageData>

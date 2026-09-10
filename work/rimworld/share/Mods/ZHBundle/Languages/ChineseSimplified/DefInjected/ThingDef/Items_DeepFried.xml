@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_DeepFriedBigMeat.label>油炸肉</VCE_DeepFriedBigMeat.label>
+		<VCE_DeepFriedBigMeat.description>将肉嫩化后切块，在面糊里面滚完再浸入滚烫的热油炸熟。随后的产物就是一块又脆又香但不健康的食物。量没有普通份餐食一样多，但非常好吃。油炸食物不冷冻的话也会腐烂。</VCE_DeepFriedBigMeat.description>
+		<VCE_DeepFriedVegetables.label>油炸素菜</VCE_DeepFriedVegetables.label>
+		<VCE_DeepFriedVegetables.description>将素菜切片拍干，下油锅炸至金黄。量没有普通份餐食一样多，但非常好吃。油炸食物不冷冻的话也会腐烂。</VCE_DeepFriedVegetables.description>
+		<VCE_DeepFriedFish.label>油炸鱼肉</VCE_DeepFriedFish.label>
+		<VCE_DeepFriedFish.description>将鱼肉嫩化后切块，在面糊里面滚完再浸入滚烫的热油炸熟。随后的产物就是一块又脆又香但不健康的食物。量没有普通份餐食一样多，但非常好吃。油炸食物不冷冻的话也会腐烂。</VCE_DeepFriedFish.description>
+		<VCE_DeepFriedSushi.label>油炸寿司</VCE_DeepFriedSushi.label>
+		<VCE_DeepFriedSushi.description>寿司是一种养生的食物，但是油炸后就未必了。它是一种香脆美味但不健康的食物。油炸食物不冷冻的话也会腐烂。</VCE_DeepFriedSushi.description>
+	</LanguageData>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 중력부양선 (미호) -->
+  <Miho_TheGravship.label>美狐族重力船</Miho_TheGravship.label>
+  <!-- EN: 으아앙!!! 끄아아앙!!! 당신의 사랑스러운 여우들이 메카노이드들을 화나게 한 것 같습니다! -->
+  <Miho_TheGravship.description>外出遊歷的你們將逆重飛船停靠在軌道中繼站。當你們好奇地四處探索時，突然發現眼前的東西是一個機械族信標。中繼站開始活躍，向遙遠的機巢發出戰爭警報。遭到鎖定的你們將被機械族追殺至天涯海角。即使是可愛的美狐族也不行。\n\n注意：這是一個困難的腳本，不建議新手玩家遊玩。</Miho_TheGravship.description>
+  <!-- EN: 으아앙!!! 끄아아앙!!! 당신의 사랑스러운 여우들이 메카노이드들을 화나게 한 것 같습니다! -->
+  <Miho_TheGravship.scenario.description>外出遊歷的你們將逆重飛船停靠在軌道中繼站。當你們好奇地四處探索時，突然發現眼前的東西是一個機械族信標。中繼站開始活躍，向遙遠的機巢發出戰爭警報。遭到鎖定的你們將被機械族追殺至天涯海角。即使是可愛的美狐族也不行。\n\n注意：這是一個困難的腳本，不建議新手玩家遊玩。</Miho_TheGravship.scenario.description>
+  <!-- EN: 중력부양선 (미호) -->
+  <Miho_TheGravship.scenario.name>美狐族重力船</Miho_TheGravship.scenario.name>
+  <!-- EN: 미친 저질 변태 살인 메카노이드들이 몇시간 내로 올겁니다!!! 으앙!!! -->
+  <Miho_TheGravship.scenario.parts.GameStartDialog.text>嗚嗚！那些瘋狂、低劣且變態的殺戮機械很快就要到來了！必須要乘坐重力船逃跑才行！\n\n要發射重力船，選擇駕駛控制台，然後選擇發射指令。\n\n在世界地圖上，選擇“查看星球”以選擇星球上的降落點。\n\n從現在開始，無論你走到哪裡，機械族最終都會找到你。為了阻止它們，你必須找到並擊敗機械巢穴本身。</Miho_TheGravship.scenario.parts.GameStartDialog.text>
+  <!-- EN: 세명의 미호로 시작합니다. -->
+  <Miho_TheGravship.scenario.parts.ConfigurePawnsXenotypes.customSummary>以三名美狐族船員開局。</Miho_TheGravship.scenario.parts.ConfigurePawnsXenotypes.customSummary>
+  <!-- EN: 메카노이드들에게 쫒기는 세 여우들. -->
+  <Miho_TheGravship.scenario.summary>一支被機械族追捕的美狐族三人團隊。</Miho_TheGravship.scenario.summary>
+  
+</LanguageData>

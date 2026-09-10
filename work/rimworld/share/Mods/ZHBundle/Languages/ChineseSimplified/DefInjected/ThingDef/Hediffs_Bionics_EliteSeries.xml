@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Ultra Boost Implant -->
+
+  <DF_UltraBoost_Implant.label>超促进植入物</DF_UltraBoost_Implant.label>
+  <DF_UltraBoost_Implant.description>超促进植入物。最初是由幸存的Secronom科学家为费尔维尤的精英生还者合成的药物，后来被转化为植入物。它旨在被用于精英中的精英。\n\n一个被称为AdminPwn的世界穿越者创建了它，用于奖励内城中最强大的战士，并让他们保护世界上剩余的人类。由于荒野突变种的进化越发危险，这种植入物最终还是泄露到了普通人手里。</DF_UltraBoost_Implant.description>
+
+
+  <!-- devil's implant -->
+
+  <DF_Devils_Implant.label>魔鬼植入物</DF_Devils_Implant.label>
+  <DF_Devils_Implant.description>魔鬼植入物。由Nerotonin-4型“恶魔猎犬”跳动的心脏制成，它增强了使用者的灵活性和对身体创伤的抵抗力。此外，它还继承了一小部分Nerotonin-4型变体的能力，能够让使用者忍受对常人来说致命的高温。</DF_Devils_Implant.description>
+
+
+  <!-- volatile implant -->
+
+  <DF_Volatile_Implant.label>无定植入物</DF_Volatile_Implant.label>
+  <DF_Volatile_Implant.description>无定植入物。由Nerotonin-4型“无定跳跃者”的挥发性皮和内脏制成，它增强了使用者的灵活性和对身体创伤的抵抗力。此外，它还继承了一小部分Nerotonin-4型变体的能力，能够让使用者忍受对常人来说致命的高温并拥有非自然的力量。当使用者死亡时，这种植入物会从体内分泌挥发性化学物质，可能会摧毁使用者的装备。</DF_Volatile_Implant.description>
+
+
+  <!-- X-Dusk Implant -->
+
+  <DF_XDusk_Implant.label>X-薄暝植入物</DF_XDusk_Implant.label>
+  <DF_XDusk_Implant.description>X-薄暝植入物。由一个名叫AdminPwn的世界穿越者创造。与薄暝装备相似，X-薄暝是Mk 2装备的升级版，用以武装精英幸存者，以更好地应对由于Nerotonin-4型病毒爆发而在他们的世界中出现的越来越多的极端突变和日益增长的威胁。\n\n无法与破晓植入物一起使用。</DF_XDusk_Implant.description>
+
+
+  <!-- dawn implant -->
+
+  <DF_Dawn_Implant.label>破晓植入物</DF_Dawn_Implant.label>
+  <DF_Dawn_Implant.description>破晓植入物。X-薄暝植入物的升级版本，意味着这两种植入物之间无法兼容。破晓植入物是破晓装备的一部分，是X-薄暝装备的升级。它的创造者是一名工程师，由著名的世界穿越者兼知名工匠AdminPwn指导。\n\n无法与X-薄暝植入物一起使用。</DF_Dawn_Implant.description>
+
+
+</LanguageData>

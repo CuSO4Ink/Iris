@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+<VV_Inspector_ProperTemperature>適宜溫度：{0} ~ {1}</VV_Inspector_ProperTemperature>
+<VV_Inspector_HatcheryDisabled>孵化器已停用</VV_Inspector_HatcheryDisabled>
+<VV_Inspector_HatcheryDisabledReasonNoRoof>無屋頂</VV_Inspector_HatcheryDisabledReasonNoRoof>
+<VV_Inspector_HatcheryDisabledReasonOutdoor>戶外</VV_Inspector_HatcheryDisabledReasonOutdoor>
+
+<VV_Inspector_ViviWallReplaceCooldown>固化剩余時間：{0}</VV_Inspector_ViviWallReplaceCooldown>
+<VV_Inspector_Cooldown_PlantGatherCooldown>距離下一次收獲還有: {0}</VV_Inspector_Cooldown_PlantGatherCooldown>
+
+<VV_Inspector_PlantManaFlux>魔能通量: {0}, {1}/天</VV_Inspector_PlantManaFlux>
+<VV_Inspector_PlantStoredMana>已儲存魔能: {0}/{1}</VV_Inspector_PlantStoredMana>
+<VV_Inspector_PlantActive>激活</VV_Inspector_PlantActive>
+<VV_Inspector_PlantInactive>未激活</VV_Inspector_PlantInactive>
+<VV_Inspector_PlantEmitMana>放射環境魔能中</VV_Inspector_PlantEmitMana>
+<VV_Inspector_PlantAbsorbMana>吸收環境魔能中</VV_Inspector_PlantAbsorbMana>
+
+<VV_Inspector_ShootusWeaponReserved>被占用： {0}</VV_Inspector_ShootusWeaponReserved>
+<VV_Inspector_ShootusWeaponEquipped>已裝備： {0}</VV_Inspector_ShootusWeaponEquipped>
+
+<VV_Inspector_ViviBroadShieldHitPoint>護盾耐久： {0}/{1}</VV_Inspector_ViviBroadShieldHitPoint>
+<VV_Inspector_ViviBroadShieldDuration>護盾剩余持續時間： {0}</VV_Inspector_ViviBroadShieldDuration>
+
+<VV_Inspector_GrowingArcanePlantReady>準備種植 {0}</VV_Inspector_GrowingArcanePlantReady>
+<VV_Inspector_GrowingArcanePlantProgress> {1} 生長進度： {0}</VV_Inspector_GrowingArcanePlantProgress>
+
+<VV_Inspector_AttunementReserved>{RITUAL} 預備: {PAWN_nameDef}</VV_Inspector_AttunementReserved>
+<VV_Inspector_EverflowerAttunementState>共鳴: 等級 {LEVEL} ({EXP})</VV_Inspector_EverflowerAttunementState>
+</LanguageData>

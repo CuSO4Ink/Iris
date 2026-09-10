@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 龙娘 -->
+  <Dragonian_Race.label>龙人</Dragonian_Race.label>
+  <!-- EN: 它是一种美丽的生物，具有人类和龙的特征。它主要出现在野外。它们的银发毛皮强度高且柔软，这使得它们在黑市上价格昂贵，经常成为猎人的目标。 -->
+  <Dragonian_Race.description>它是一种美丽的生物，具有人类和龙的特征。它主要出现在野外。它们的银发毛皮强度高且柔软，这使得它们在黑市上价格昂贵，经常成为猎人的目标。</Dragonian_Race.description>
+  <!-- EN: 牙 -->
+  <Dragonian_Race.tools.teeth.label>牙</Dragonian_Race.tools.teeth.label>
+  <!-- EN: 左拳 -->
+  <Dragonian_Race.tools.left_fist.label>左拳</Dragonian_Race.tools.left_fist.label>
+  <!-- EN: 右拳 -->
+  <Dragonian_Race.tools.right_fist.label>右拳</Dragonian_Race.tools.right_fist.label>
+  <!-- EN: 尾 -->
+  <Dragonian_Race.tools.tail.label>尾</Dragonian_Race.tools.tail.label>
+  
+</LanguageData>

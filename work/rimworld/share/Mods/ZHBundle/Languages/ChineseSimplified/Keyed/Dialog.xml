@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+<ViviFactionGreetingHostile>{0}断开连接，带着敌意的嗡嗡声。</ViviFactionGreetingHostile>
+<ViviFactionGreetingHostileAppreciative>{0}嗡嗡作响。他们不会再与你交易，直到你们之间建立友好关系。你可以通过向{0_possessive}的定居点送礼物或者安全地释放属于{0_possessive}的囚犯来改善关系。
+  \n{0_pronoun}突然断开连接。</ViviFactionGreetingHostileAppreciative>
+<ViviFactionGreetingWary>{0}嗡嗡着等待着你。</ViviFactionGreetingWary>
+<ViviFactionGreetingWarm>{0}以热情的嗡嗡声和{NEGOTIATOR_labelShort}打招呼。</ViviFactionGreetingWarm>
+
+</LanguageData>

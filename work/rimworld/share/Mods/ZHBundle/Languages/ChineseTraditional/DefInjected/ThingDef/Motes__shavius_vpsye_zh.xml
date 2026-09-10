@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Mote -->
+  <VPE_Hallucination.label>Mote</VPE_Hallucination.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Liferot.label>Mote</VPE_Liferot.label>
+  
+  <!-- EN: Mote -->
+  <VPE_MatterPhasing.label>Mote</VPE_MatterPhasing.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_Butterfly.label>Mote</VPE_Mote_Butterfly.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_Cast.label>Mote</VPE_Mote_Cast.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_CastPsycast.label>Mote</VPE_Mote_CastPsycast.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_CastPsycast_Red.label>Mote</VPE_Mote_CastPsycast_Red.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_CastPsycast_Yellow.label>Mote</VPE_Mote_CastPsycast_Yellow.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_FireBeam.label>Mote</VPE_Mote_FireBeam.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_GhostA.label>Mote</VPE_Mote_GhostA.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_GhostB.label>Mote</VPE_Mote_GhostB.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_GhostC.label>Mote</VPE_Mote_GhostC.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_GhostD.label>Mote</VPE_Mote_GhostD.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_GhostE.label>Mote</VPE_Mote_GhostE.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_GhostF.label>Mote</VPE_Mote_GhostF.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_GhostG.label>Mote</VPE_Mote_GhostG.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_GreenMist.label>Mote</VPE_Mote_GreenMist.label>
+  
+  <!-- EN: Mote -->
+  <VPE_Mote_ParalysisPulse.label>Mote</VPE_Mote_ParalysisPulse.label>
+  
+  <!-- EN: Mote -->
+  <VPE_PsycastAreaEffectMaintained.label>Mote</VPE_PsycastAreaEffectMaintained.label>
+  
+  <!-- EN: Mote -->
+  <VPE_PsycastPsychicEffectTransfer.label>Mote</VPE_PsycastPsychicEffectTransfer.label>
+  
+  <!-- EN: Mote -->
+  <VPE_RedSparkFlash.label>Mote</VPE_RedSparkFlash.label>
+  
+  <!-- EN: Mote -->
+  <VPE_SoulOrb.label>Mote</VPE_SoulOrb.label>
+  
+  <!-- EN: Mote -->
+  <VPE_SoulOrbTransfer.label>Mote</VPE_SoulOrbTransfer.label>
+  
+  <!-- EN: Mote -->
+  <VPE_WarlordTargettingReticle.label>Mote</VPE_WarlordTargettingReticle.label>
+  
+  <!-- EN: Mote -->
+  <VPE_WhiteSparkFlash.label>Mote</VPE_WhiteSparkFlash.label>
+  
+  <!-- EN: Mote -->
+  <VPE_YellowSparkFlash.label>Mote</VPE_YellowSparkFlash.label>
+
+  <!-- EN: Mote -->
+  <VPE_PsycastAreaEffect_CorpseExplosion.label>Mote</VPE_PsycastAreaEffect_CorpseExplosion.label>
+  
+  <!-- EN: Mote -->
+  <VPEH_BloodmistMote.label>Mote</VPEH_BloodmistMote.label>
+  
+  <!-- EN: Mote -->
+  <VPEH_BloodRite.label>Mote</VPEH_BloodRite.label>
+  
+  <!-- EN: Mote -->
+  <VPEH_CorpseExplosion.label>Mote</VPEH_CorpseExplosion.label>
+  
+  <!-- EN: Mote -->
+  <VPEP_BrainCutSlash.label>Mote</VPEP_BrainCutSlash.label>
+  
+  <!-- EN: Mote -->
+  <VPEP_DegradePsychicWarp.label>Mote</VPEP_DegradePsychicWarp.label>
+  
+  <!-- EN: Mote -->
+  <VPEP_PsycastAreaEffect.label>Mote</VPEP_PsycastAreaEffect.label>
+  
+  <!-- EN: Mote -->
+  <VPEP_PsycastCastPurple.label>Mote</VPEP_PsycastCastPurple.label>
+</LanguageData>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- NV -->
+
+  <RH2_NerotoninV_Implant.label>Nerotonin-5型血清</RH2_NerotoninV_Implant.label>
+  <RH2_NerotoninV_Implant.description>已注射Nerotonin-5型血清</RH2_NerotoninV_Implant.description>
+  <RH2_NerotoninV_Implant.labelNoun>一个Nerotonin-5型血清</RH2_NerotoninV_Implant.labelNoun>
+
+
+  <!-- N2 -->
+
+  <RH2_Nerotonin2b_Implant.label>Nerotonin-2b型血清</RH2_Nerotonin2b_Implant.label>
+  <RH2_Nerotonin2b_Implant.description>已注射Nerotonin-2b型血清</RH2_Nerotonin2b_Implant.description>
+  <RH2_Nerotonin2b_Implant.labelNoun>一个Nerotonin-2b型血清</RH2_Nerotonin2b_Implant.labelNoun>
+
+
+  <!-- The nerotonin-4b serum -->
+
+  <RH2_Nerotonin4b_Implant.label>Nerotonin-4b型血清</RH2_Nerotonin4b_Implant.label>
+  <RH2_Nerotonin4b_Implant.description>已注射Nerotonin-4b型血清</RH2_Nerotonin4b_Implant.description>
+  <RH2_Nerotonin4b_Implant.labelNoun>一个Nerotonin-4b型血清</RH2_Nerotonin4b_Implant.labelNoun>
+
+
+</LanguageData>

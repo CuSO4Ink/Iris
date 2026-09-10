@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: The confections have spoiled due to a lack of fuel or power in the bakery oven -->
+  <VCE_OvenFailurePower>由于烤箱断电或耗尽燃料，糕点已经变质。</VCE_OvenFailurePower>
+	<!-- EN: The confections are spoiling fast due to a lack of fuel or power in the bakery oven -->
+  <VCE_OvenFailurePowerWarning>由于烤箱断电或耗尽燃料，糕点正在快速变质。</VCE_OvenFailurePowerWarning>
+	<!-- EN: This bakery oven is not working at the moment -->
+  <VCE_BakeryOvenNotWorking>该烤箱目前没在运作</VCE_BakeryOvenNotWorking>
+	<!-- EN: Reset -->
+  <VCE_Reset>重置</VCE_Reset>
+	<!-- EN: Max negative memory removed by simple confections -->
+  <VCE_SimpleMealMood>简单糕点能移除的最大负面记忆</VCE_SimpleMealMood>
+	<!-- EN: Ingesting a simple confection will remove a negative memory up to this severity. -3 by default. 0 will disable the mechanic for that meal. -->
+  <VCE_SimpleMealMoodDesc>食用简单糕点能移除的负面记忆强度。默认为-3，设置为0会禁用该食物的机制。</VCE_SimpleMealMoodDesc>
+	<!-- EN: Max negative memory removed by fine confections -->
+  <VCE_FineMealMood>精致糕点能移除的最大负面记忆</VCE_FineMealMood>
+	<!-- EN: Ingesting a fine confection will remove a negative memory up to this severity. -5 by default. 0 will disable the mechanic for that meal. -->
+  <VCE_FineMealMoodDesc>食用精致糕点能移除的负面记忆强度。默认为-5，设置为0会禁用该食物的机制。</VCE_FineMealMoodDesc>
+	<!-- EN: Max negative memory removed by lavish confections -->
+  <VCE_LavishMealMood>奢侈糕点能移除的最大负面记忆</VCE_LavishMealMood>
+	<!-- EN: Ingesting a lavish confection will remove a negative memory up to this severity. -10 by default. 0 will disable the mechanic for that meal. -->
+  <VCE_LavishMealMoodDesc>食用奢侈糕点能移除的负面记忆强度。默认为-10，设置为0会禁用该食物的机制。</VCE_LavishMealMoodDesc>
+	<!-- EN: Max negative memory removed by gourmet confections -->
+  <VCE_GourmetMealMood>豪华糕点能移除的最大负面记忆</VCE_GourmetMealMood>
+	<!-- EN: Ingesting a gourmet confection will remove a negative memory up to this severity. -15 by default. 0 will disable the mechanic for that meal. -->
+  <VCE_GourmetMealMoodDesc>食用豪华糕点能移除的负面记忆强度。默认为-15，设置为0会禁用该食物的机制。</VCE_GourmetMealMoodDesc>
+	<!-- EN: Period before the "consumed confection" effect wanes -->
+  <VCE_TicksForEffect>“食用了糕点”效果的刷新时间</VCE_TicksForEffect>
+	<!-- EN: By default, consuming a confection gives a 3 day period where consuming other confections doesn't make them nullify any negative memories. -->
+  <VCE_TicksForEffectDesc>默认下，食用糕点后会有一个3天的冷却期，期间再次食用糕点无法再移除负面记忆。</VCE_TicksForEffectDesc>
+</LanguageData>

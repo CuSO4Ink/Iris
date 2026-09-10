@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- General -->
+  <!-- EN: RimPsyche -->
+  <RimpsycheSettingCategory>边缘心理</RimpsycheSettingCategory>
+
+  <!-- Settings -->
+  <!-- EN: RimPsyche General Settings -->
+  <RimpsycheGeneralSetting>边缘心理通用设置</RimpsycheGeneralSetting>
+  <!-- EN: RimPsyche Tab Settings -->
+  <RimpsycheTabSetting>边缘心理标签页设置</RimpsycheTabSetting>
+  <!-- EN: Psyche Info UI Settings -->
+  <RimpsychePsycheUISetting>边缘心理信息UI设置</RimpsychePsycheUISetting>
+  <!-- EN: Personality Presentation Settings -->
+  <RimpsychePersonalityViewSetting>人格呈现设置</RimpsychePersonalityViewSetting>
+  <!-- EN: Misc Settings -->
+  <RimpsycheMiscSetting>杂项设置</RimpsycheMiscSetting>
+
+  <!-- Tab Settings -->
+  <!-- EN: Show Psyche tab -->
+  <RimpsycheUsePsycheTab>显示“心理”标签页</RimpsycheUsePsycheTab>
+  <!-- EN: Displays a dedicated Psyche tab on pawns. Full psyche info can still be accessed via a Bio tab when turned off. -->
+  <RimpsycheUsePsycheTabTooltip>在角色上显示专门的“心理”标签页。关闭时，仍可通过“生物”标签访问完整的心理信息。</RimpsycheUsePsycheTabTooltip>
+  <!-- EN: Hide summary on Bio tab -->
+  <RimpsycheHideSummaryInBio>在生物标签隐藏简介</RimpsycheHideSummaryInBio>
+  <!-- EN: Removes the personality summary from the bottom of the Bio tab. -->
+  <RimpsycheHideSummaryInBioTooltip>从“生物”标签的底部移除人格简介。</RimpsycheHideSummaryInBioTooltip>
+  <!-- EN: Removes the personality summary from the bottom of the Bio tab.\n\nRequires "Show Psyche tab" to be enabled. -->
+  <RimpsycheHideSummaryInBioDisabledTooltip>从“生物”标签的底部移除人格简介。\n\n需要启用“显示‘心理’标签”。</RimpsycheHideSummaryInBioDisabledTooltip>
+  <!-- EN: Show side info in Bio tab summary -->
+  <RimpsycheShowSideInfoInSummary>在生物标签简介中显示侧边信息</RimpsycheShowSideInfoInSummary>
+  <!-- EN: Displays an extra info panel alongside the Bio tab summary for active RimPsyche modules. -->
+  <RimpsycheShowSideInfoInSummaryTooltip>在“生物”标签简介的旁边显示激活的“边缘心理”模块的额外信息面板。</RimpsycheShowSideInfoInSummaryTooltip>
+  
+  <!-- Psyche Info UI Settings -->
+  <!-- EN: [Dev] Show dispositions in Psyche Info UI -->
+  <RimpsycheShowDispositionInUI>[Dev] 在边缘心理信息UI中显示性情</RimpsycheShowDispositionInUI>
+  <!-- EN: Displays the full list of dispositions in the Psyche Info UI.\n\nWARNING: Dispositions are simplified for quick summaries. This list does not reflect all active gameplay mechanics and effects. -->
+  <RimpsycheShowDispositionInUITooltip>在边缘心理信息UI中显示完整的性情列表。\n\n警告：性情只为一眼略过而简化。这一列表并不显示全部的活跃的游戏机制与影响。</RimpsycheShowDispositionInUITooltip>
+  <!-- EN: [Dev] Show facets in Psyche Info UI -->
+  <RimpsycheShowFacetInUI>[Dev] 在边缘心理信息UI中显示心理维度</RimpsycheShowFacetInUI>
+  <!-- EN: Displays underlying facets in the Psyche Info UI.\n\nWARNING: Facets represent a pawn's base personality before being modified by traits and other factors. They do not represent expressed personality and should not be taken as such. -->
+  <RimpsycheShowFacetInUITooltip>在边缘心理信息UI中显示底层的心理维度。\n\n警告：心理维度代表角色在被特性等其它因素调整之前的基础人格。它们并不展现表达出来的人格，也不应如此对待。</RimpsycheShowFacetInUITooltip>
+  <!-- EN: [Dev] Enable facet editing -->
+  <RimpsycheAllowFacetEdit>[Dev] 开启心理维度编辑</RimpsycheAllowFacetEdit>
+  <!-- EN: Allows facets to be edited directly.\n\nWARNING: Facets represent a pawn's base personality before being modified by traits and other factors. They do not represent expressed personality and should not be taken as such. -->
+  <RimpsycheAllowFacetEditTooltip>允许直接编辑心理维度。\n\n警告：心理维度代表角色在被特性等其它因素调整之前的基础人格。它们并不展现表达出来的人格，也不应如此对待。</RimpsycheAllowFacetEditTooltip>
+  <!-- EN: Allows facets to be edited directly.\n\nWARNING: Facets represent a pawn's base personality before being modified by traits and other factors. They do not represent expressed personality and should not be taken as such.\n\nRequires "[Dev] Show facets in Psyche Info UI" to be enabled. -->
+  <RimpsycheAllowFacetEditDisabledTooltip>允许直接编辑心理维度。\n\n警告：心理维度代表角色在被特性等其它因素调整之前的基础人格。它们并不展现表达出来的人格，也不应如此对待。\n\n需要启用“[Dev] 在边缘心理信息UI中显示心理维度”。</RimpsycheAllowFacetEditDisabledTooltip>
+  <!-- EN: [Dev] Show facet radar chart in Psyche Info UI -->
+  <RimpsycheShowFacetGraph>[Dev] 显示心理维度雷达图</RimpsycheShowFacetGraph>
+  <!-- EN: Displays a radar chart of personality facets in the Psyche Info UI.\n\nWARNING: Facets represent a pawn's base personality before being modified by traits and other factors. They do not represent expressed personality and should not be taken as such. -->
+  <RimpsycheShowFacetGraphTooltip>在“心理”列表显示心理维度雷达图。\n\n警告：心理维度代表角色在被特性等其它因素调整之前的基础人格。它们并不展现表达出来的人格，也不应如此对待。</RimpsycheShowFacetGraphTooltip>
+
+  <!-- Personality Description -->
+  <!-- EN: Show personality values as bars -->
+  <RimpsychePersonalityAsBars>以条形图显示人格数值</RimpsychePersonalityAsBars>
+  <!-- EN: Displays personality values using bars instead of descriptive text labels. -->
+  <RimpsychePersonalityAsBarsTooltip>用条形图而非描述性文本标签来显示人格数值。</RimpsychePersonalityAsBarsTooltip>
+  <!-- EN: Show gameplay effects in personality -->
+  <RimpsycheShowEffectInDescription>在人格中显示游戏效果</RimpsycheShowEffectInDescription>
+  <!-- EN: Displays associated gameplay effects inside each personality node's description.\n\nWARNING: Personality effects are simplified for readability and do not reflect all active gameplay mechanics. -->
+  <RimpsycheShowEffectInDescriptionTooltip>在每个人格节点的描述中显示相关的游戏效果。\n\n警告：人格效果只为一眼略过而简化。这一列表并不显示全部的活跃的游戏机制。</RimpsycheShowEffectInDescriptionTooltip>
+  <!-- EN: Effects to display in descriptions -->
+  <RimpsycheDescriptionEffectToggle>在描述中显示的效果</RimpsycheDescriptionEffectToggle>
+
+  <!-- Misc -->
+  <!-- EN: Confirm before loading/saving Psyche -->
+  <RimpsycheConfirmLoadSave>加载/保存前确认</RimpsycheConfirmLoadSave>
+  <!-- EN: Displays a confirmation pop-up before overwriting or loading a pawn's Psyche. -->
+  <RimpsycheConfirmLoadSaveTooltip>覆盖或加载角色心理前显示确认弹窗。</RimpsycheConfirmLoadSaveTooltip>
+
+  <!-- EN: Default -->
+  <RimpsycheDefaultSetting>默认</RimpsycheDefaultSetting>
+
+  <!-- Descriptors -->
+  <!-- EN: Conversation Effects -->
+  <RP_Desc_Conversation>交谈效果</RP_Desc_Conversation>
+  <!-- EN: Thought Tags -->
+  <RP_Desc_ThoughtTag>思绪标签</RP_Desc_ThoughtTag>
+  <!-- EN: Gameplay -->
+  <RP_Desc_Gameplay>游戏机制</RP_Desc_Gameplay>
+  <!-- EN: Romance -->
+  <RP_Desc_Romance>恋爱</RP_Desc_Romance>
+
+  <!-- Title -->
+  <!-- EN: Personality -->
+  <RPC_Personality>人格特质</RPC_Personality>
+  <!-- EN: Disposition -->
+  <RPC_Disposition>描述</RPC_Disposition>
+  <!-- EN: Facets -->
+  <RPC_Facets>心理维度</RPC_Facets>
+  <!-- EN: Interests -->
+  <RPC_Interest>兴趣取向</RPC_Interest>
+  <!-- EN: Sexuality -->
+  <RPC_Sexuality>性取向</RPC_Sexuality>
+
+  <!-- UI -->
+  <!-- EN: Psyche -->
+  <TabPsyche>心理状态</TabPsyche>
+
+  <!-- EN: Show Personality -->
+  <RimpsycheShowPersonality>显示人格</RimpsycheShowPersonality>
+  <!-- EN: Show Disposition -->
+  <RimpsycheShowDisposition>显示性情</RimpsycheShowDisposition>
+  <!-- EN: Show Sexuality -->
+  <RimpsycheShowSexuality>显示性取向</RimpsycheShowSexuality>
+  <!-- EN: Show Facets -->
+  <RimpsycheShowFacet>心理维度</RimpsycheShowFacet>
+
+  <!-- EN: Sort by Value -->
+  <RimpsycheSortValue>按数值排序</RimpsycheSortValue>
+  <!-- EN: Sort by Label -->
+  <RimpsycheSortAlphabet>按标签排序</RimpsycheSortAlphabet>
+  <!-- EN: Sort by Def Order -->
+  <RimpsycheSortDef>按Def顺序排序</RimpsycheSortDef>
+
+  <!-- EN: Edit -->
+  <RimpsycheEdit>编辑</RimpsycheEdit>
+  <!-- EN: Topics -->
+  <RimpsycheTopicHeader>话题</RimpsycheTopicHeader>
+
+  <!-- EN: Affected by trait(s): -->
+  <TraitAffected>受以下特质影响：</TraitAffected>
+  <!-- EN: Affected by gene(s): -->
+  <GeneAffected>受以下基因影响:</GeneAffected>
+  <!-- EN: [Shift] Full description. -->
+  <RP_ShiftForFull>[Shift] 完整描述。</RP_ShiftForFull>
+  <!-- EN: Effects -->
+  <RP_PsycheEffects>效果</RP_PsycheEffects>
+
+  <!-- EN: Psyche Disabled -->
+  <PsycheDisabled>心理系统已禁用</PsycheDisabled>
+
+  <!-- Behavior -->
+  <!-- EN: From personalities: -->
+  <RPC_DescriptorBlame>来自人格：</RPC_DescriptorBlame>
+  <!-- EN: No notable dispositions -->
+  <RPC_NoBehavior>无显著性情</RPC_NoBehavior>
+
+  <!-- Interaction -->
+  <!-- EN: Conversation about {0} -->
+  <MemoryReportString>关于{0}的交谈</MemoryReportString>
+  <!-- EN: Neutral {0} -->
+  <RimPsycheIntensityNeutral>中性 {0}</RimPsycheIntensityNeutral>
+  <!-- EN: Extremely {0} -->
+  <RimPsycheIntensityExtremely>极度 {0}</RimPsycheIntensityExtremely>
+  <!-- EN: Very {0} -->
+  <RimPsycheIntensityVery>非常 {0}</RimPsycheIntensityVery>
+  <!-- EN: Somewhat {0} -->
+  <RimPsycheIntensitySomewhat>有些 {0}</RimPsycheIntensitySomewhat>
+  <!-- EN: Marginally {0} -->
+  <RimPsycheIntensityMarginally>轻微 {0}</RimPsycheIntensityMarginally>
+
+  <!-- EN: Not -->
+  <RimPsycheIntensityKeyNeutral>非</RimPsycheIntensityKeyNeutral>
+  <!-- EN: Extremely -->
+  <RimPsycheIntensityKeyExtremely>极度</RimPsycheIntensityKeyExtremely>
+  <!-- EN: Very -->
+  <RimPsycheIntensityKeyVery>非常</RimPsycheIntensityKeyVery>
+  <!-- EN: Somewhat -->
+  <RimPsycheIntensityKeySomewhat>有些</RimPsycheIntensityKeySomewhat>
+  <!-- EN: Marginally -->
+  <RimPsycheIntensityKeyMarginally>轻微</RimPsycheIntensityKeyMarginally>
+
+  <!-- Edit Mode -->
+  <!-- EN: Reset Personality -->
+  <ResetPsycheTooltip>重置个性</ResetPsycheTooltip>
+  <!-- EN: Facets are the core building blocks that shape a pawn's thoughts, feelings, and behavior. Each one represents a specific aspect of how they see the world and react to it. -->
+  <RimpsycheFacetInfo>心理维度是塑造角色思维、情感和行为的核心要素，每个维度都代表其认知和应对世界的特定方式。</RimpsycheFacetInfo>
+  <!-- EN: A pawn’s personality is the result of their individual facets coming together. It influences their behavior, relationships, and decisions. -->
+  <RimpsychePersonalityInfo>小人的个性是各心理维度共同作用的结果，将影响其行为模式、人际关系和决策。</RimpsychePersonalityInfo>
+
+  <!-- EN: Save/Load Psyche -->
+  <SavePsycheTooltip>保存/加载心理</SavePsycheTooltip>
+  <!-- EN: Save -->
+  <SaveToSlot>保存</SaveToSlot>
+  <!-- EN: Saving the Psyche here will overwrite the existing Psyche.\n\nAre you sure you want to overwrite? -->
+  <ConfirmSaveToSlot>在此保存心理将覆盖现有心理。\n\n确定要覆盖吗？</ConfirmSaveToSlot>
+  <!-- EN: Load -->
+  <LoadFromSlot>加载</LoadFromSlot>
+  <!-- EN: Loading the Psyche will overwrite the current Psyche of this pawn.\n\nAre you sure you want to overwrite? -->
+  <ConfirmLoadFromSlot>加载此心理将覆盖该角色的当前心理状态。\n\n确定要覆盖吗？</ConfirmLoadFromSlot>
+  <!-- EN: Loading the Psyche will overwrite the current Psyche of this pawn.\n\nWARNING: The psyche you are trying to load has an undefined sexual orientation. Loading this psyche unto a pawn will randomize their sexuality.\n\nAre you sure you want to overwrite? -->
+  <ConfirmLoadFromSlot_RandomOrientation>加载此心理将覆盖该角色的当前心理状态。\n\n警告：你尝试加载的心理档案未定义性取向。将其加载到角色身上会随机化其性取向。\n\n确定要覆盖吗？</ConfirmLoadFromSlot_RandomOrientation>
+  <!-- EN: Delete -->
+  <DeleteSlot>删除</DeleteSlot>
+  <!-- EN: Are you sure you want to delete the saved Psyche permanently? -->
+  <ConfirmDeleteSlot>确定要永久删除已保存的心理吗？</ConfirmDeleteSlot>
+
+  <!-- Facet Desc. -->
+  <!-- EN: Imagination -->
+  <RPC_Imagination>想象力</RPC_Imagination>
+  <!-- EN: Intellect -->
+  <RPC_Intellect>智力</RPC_Intellect>
+  <!-- EN: Curiosity -->
+  <RPC_Curiosity>好奇心</RPC_Curiosity>
+  <!-- EN: Industriousness -->
+  <RPC_Industriousness>勤勉</RPC_Industriousness>
+  <!-- EN: Orderliness -->
+  <RPC_Orderliness>条理</RPC_Orderliness>
+  <!-- EN: Integrity -->
+  <RPC_Integrity>诚信</RPC_Integrity>
+  <!-- EN: Sociability -->
+  <RPC_Sociability>社交</RPC_Sociability>
+  <!-- EN: Assertiveness -->
+  <RPC_Assertiveness>果断</RPC_Assertiveness>
+  <!-- EN: Enthusiasm -->
+  <RPC_Enthusiasm>热情</RPC_Enthusiasm>
+  <!-- EN: Compassion -->
+  <RPC_Compassion>同情心</RPC_Compassion>
+  <!-- EN: Cooperation -->
+  <RPC_Cooperation>合作</RPC_Cooperation>
+  <!-- EN: Humbleness -->
+  <RPC_Humbleness>谦逊</RPC_Humbleness>
+  <!-- EN: Volatility -->
+  <RPC_Volatility>情绪波动</RPC_Volatility>
+  <!-- EN: Pessimism -->
+  <RPC_Pessimism>悲观</RPC_Pessimism>
+  <!-- EN: Insecurity -->
+  <RPC_Insecurity>不安</RPC_Insecurity>
+  <!-- EN: Realistic -->
+  <RPC_Realistic>务实</RPC_Realistic>
+  <!-- EN: Imaginative -->
+  <RPC_Imaginative>幻想</RPC_Imaginative>
+  <!-- EN: Practical -->
+  <RPC_Practical>实干</RPC_Practical>
+  <!-- EN: Philosophical -->
+  <RPC_Philosophical>哲思</RPC_Philosophical>
+  <!-- EN: Conventional -->
+  <RPC_Conventional>保守</RPC_Conventional>
+  <!-- EN: Explorative -->
+  <RPC_Explorative>探索</RPC_Explorative>
+  <!-- EN: Unmotivated -->
+  <RPC_Unmotivated>消极</RPC_Unmotivated>
+  <!-- EN: Industrious -->
+  <RPC_Industrious>奋进</RPC_Industrious>
+  <!-- EN: Disorganized -->
+  <RPC_Disorganized>散漫</RPC_Disorganized>
+  <!-- EN: Organized -->
+  <RPC_Organized>条理</RPC_Organized>
+  <!-- EN: Inconsistent -->
+  <RPC_Inconsistent>不一</RPC_Inconsistent>
+  <!-- EN: Reliable -->
+  <RPC_Reliable>可靠</RPC_Reliable>
+  <!-- EN: Aloof -->
+  <RPC_Aloof>疏离</RPC_Aloof>
+  <!-- EN: Friendly -->
+  <RPC_Friendly>友善</RPC_Friendly>
+  <!-- EN: Timid -->
+  <RPC_Timid>怯懦</RPC_Timid>
+  <!-- EN: Assertive -->
+  <RPC_Assertive>强势</RPC_Assertive>
+  <!-- EN: Stoic -->
+  <RPC_Stoic>坚忍</RPC_Stoic>
+  <!-- EN: Cheerful -->
+  <RPC_Cheerful>开朗</RPC_Cheerful>
+  <!-- EN: Detached -->
+  <RPC_Detached>超然</RPC_Detached>
+  <!-- EN: Compassionate -->
+  <RPC_Compassionate>慈悲</RPC_Compassionate>
+  <!-- EN: Stubborn -->
+  <RPC_Stubborn>固执</RPC_Stubborn>
+  <!-- EN: Accommodating -->
+  <RPC_Accommodating>随和</RPC_Accommodating>
+  <!-- EN: Arrogant -->
+  <RPC_Arrogant>傲慢</RPC_Arrogant>
+  <!-- EN: Humble -->
+  <RPC_Humble>谦逊</RPC_Humble>
+  <!-- EN: Stable -->
+  <RPC_Stable>稳定</RPC_Stable>
+  <!-- EN: Volatile -->
+  <RPC_Volatile>多变</RPC_Volatile>
+  <!-- EN: Optimistic -->
+  <RPC_Optimistic>乐观</RPC_Optimistic>
+  <!-- EN: Pessimistic -->
+  <RPC_Pessimistic>悲观</RPC_Pessimistic>
+  <!-- EN: Confident -->
+  <RPC_Confident>自信</RPC_Confident>
+  <!-- EN: Insecure -->
+  <RPC_Insecure>自卑</RPC_Insecure>
+  <!-- EN: Reflects a vivid inner world and emotional sensitivity to art and beauty. Imaginative pawns are drawn to things like daydreams, music and art; Realistic pawns are more grounded and practical. -->
+  <RPC_Imagination_Tooltip>反映内心世界的丰富程度及对艺术美感的敏感度。衡量个体在现实与幻想之间的倾向。务实型个体专注实际问题，脚踏实地；幻想型个体则常沉浸天马行空的想象，热衷于创造性思维和抽象概念</RPC_Imagination_Tooltip>
+  <!-- EN: Captures interest in abstract thinking and complex ideas. Philosophical pawns enjoy deep conversations and philosophical questions; Practical pawns prefer concrete, straightforward thinking. -->
+  <RPC_Intellect_Tooltip>体现抽象思维和复杂概念的接受能力。哲思型小人热衷深度讨论与哲学思考；实用型小人偏好具体直接的思维方式。</RPC_Intellect_Tooltip>
+  <!-- EN: Describes a drive for novelty, diversity, and exploration. Explorative pawns seek new experiences and challenge norms; Conventional pawns favor routine and familiar settings. -->
+  <RPC_Curiosity_Tooltip>描述对新奇事物和探索未知的驱动力。探索型小人追求突破常规的新体验；守成型小人则安于熟悉的日常节奏。</RPC_Curiosity_Tooltip>
+  <!-- EN: Describes a drive to achieve long-term goals through hard work and persistence. Industrious pawns are motivated and focused, seeing tasks through to completion; Unmotivated pawns tend to lack drive and may abandon tasks. -->
+  <RPC_Industriousness_Tooltip>展现为长期目标持续努力的意志品质。奋进型小人专注执着有始有终；懈怠型小人往往半途而废缺乏恒心。</RPC_Industriousness_Tooltip>
+  <!-- EN: Describes a preference for structure, tidiness, and careful planning. Organized pawns manage their environments and tasks with forethought, valuing order and disliking chaos; Disorganized pawns tend to be less structured and may struggle with keeping track of tasks. -->
+  <RPC_Orderliness_Tooltip>体现对条理性和计划性的重视程度。条理型小人做事井井有条厌恶混乱；随性型小人常显得杂乱无章丢三落四。</RPC_Orderliness_Tooltip>
+  <!-- EN: Describes a commitment to honesty, self-discipline, and moral consistency. Reliable pawns hold themselves to their promises, follow rules, and prioritize doing what's right; Inconsistent pawns may struggle with self-regulation, taking shortcuts or acting unreliably. -->
+  <RPC_Integrity_Tooltip>描述恪守承诺与道德准则的可靠程度。可靠型小人言出必行遵纪守法；反复型小人可能投机取巧违背原则。</RPC_Integrity_Tooltip>
+  <!-- EN: Reflects a pawn's warmth and engagement in social interactions. Friendly pawns enjoy connecting with others and are approachable; Aloof pawns tend to be more distant and less outwardly social. -->
+  <RPC_Sociability_Tooltip>反映社交互动的自然倾向。友善型小人乐于主动交往谈笑风生；孤僻型小人更习惯独处回避社交。</RPC_Sociability_Tooltip>
+  <!-- EN: Describes a pawn's tendency to take charge, voice opinions, and influence others in social settings. Assertive pawns are bold and confident speakers; Timid pawns are more reserved and may hesitate to express themselves. -->
+  <RPC_Assertiveness_Tooltip>体现表达主张的果断程度。强势型小人敢于直言不讳据理力争；怯懦型小人往往犹豫不决畏首畏尾。</RPC_Assertiveness_Tooltip>
+  <!-- EN: Captures a pawn's desire for stimulation, positivity, and activity. Cheerful pawns are energetic, easily excited, and often on the move; Stoic pawns tend to be more reserved in their behavior and less outwardly driven by excitement. -->
+  <RPC_Enthusiasm_Tooltip>展现对外界刺激的反应强度。开朗型小人精力充沛情绪外放；坚忍型小人则喜怒不形于色。</RPC_Enthusiasm_Tooltip>
+  <!-- EN: Reflects a pawn's capacity for emotional empathy and their desire to alleviate distress in others. Compassionate pawns are kind, nurturing, and emotionally attuned to others' feelings; Detached pawns tend to be less sensitive to the emotional states of those around them. -->
+  <RPC_Compassion_Tooltip>衡量体察他人情感的能力。慈悲型小人能感同身受雪中送炭；超然型小人较少受他人情绪影响。</RPC_Compassion_Tooltip>
+  <!-- EN: Describes a pawn's preference for peaceful interactions and their willingness to trust. Accommodating pawns avoid arguments, value compromise, and dislike tension; Stubborn pawns may resist compromise and prefer to stick to their own views. -->
+  <RPC_Cooperation_Tooltip>描述解决分歧的倾向性。随和型小人善于折中求全；固执型小人坚持己见不肯妥协。</RPC_Cooperation_Tooltip>
+  <!-- EN: Captures a pawn's tendency to downplay their own importance and avoid arrogance. Humble pawns are unassuming and respectful, seeing themselves as equals to others; Arrogant pawns tend to exhibit self-importance and may act superior. -->
+  <RPC_Humbleness_Tooltip>反映自我评价的谦虚程度。谦逊型小人虚怀若谷平等待人；傲慢型小人容易自视甚高。</RPC_Humbleness_Tooltip>
+  <!-- EN: Reflects a pawn's tendency to experience intense, rapidly changing emotions. Volatile pawns struggle with emotional regulation and may exhibit erratic behavior under stress; Stable pawns maintain a more consistent and calm emotional state. -->
+  <RPC_Volatility_Tooltip>体现情绪控制的稳定性。多变型小人喜怒无常阴晴不定；稳定型小人情绪平稳处变不惊。</RPC_Volatility_Tooltip>
+  <!-- EN: Captures a pawn's predisposition towards negative emotions such as sadness, resentment, and irritability. Pessimistic pawns often feel hopeless and are prone to depressive moods; Optimistic pawns maintain a more positive outlook. -->
+  <RPC_Pessimism_Tooltip>描述看待问题的视角倾向。悲观型小人容易聚焦困难消极预期；乐观型小人总是看到积极可能。</RPC_Pessimism_Tooltip>
+  <!-- EN: Describes a pawn's susceptibility to feeling overwhelmed and their lack of confidence in stressful situations. Insecure pawns avoid pressure, fear failure, and may withdraw socially; Confident pawns approach challenges with self-assurance and are less affected by judgment. -->
+  <RPC_Insecurity_Tooltip>反映面对压力时的心理状态。自卑型小人在挑战前容易自我怀疑；自信型小人则沉着应对游刃有余。</RPC_Insecurity_Tooltip>
+</LanguageData>

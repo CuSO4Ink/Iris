@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: infected boneshard -->
+  <Bullet_ADVBoneshardRifle.label>高級感染骨刺彈</Bullet_ADVBoneshardRifle.label>
+  
+  <!-- EN: infected boneshard -->
+  <Bullet_BoneshardAutoCannon.label>感染骨刺彈</Bullet_BoneshardAutoCannon.label>
+  
+  <!-- EN: infected boneshard -->
+  <Bullet_BoneshardAvenger.label>感染骨刺彈</Bullet_BoneshardAvenger.label>
+  
+  <!-- EN: infected warhead -->
+  <Bullet_BoneshardCannon.label>感染骨刺彈</Bullet_BoneshardCannon.label>
+  
+  <!-- EN: infected boneshard -->
+  <Bullet_BoneshardRifle.label>感染骨刺彈</Bullet_BoneshardRifle.label>
+  
+  <!-- EN: infected boneshard -->
+  <Bullet_BoneshardSniper.label>感染骨刺彈</Bullet_BoneshardSniper.label>
+  
+  <!-- EN: plague bullet -->
+  <Bullet_PlagueProj.label>瘟疫彈</Bullet_PlagueProj.label>
+  
+  <!-- EN: advanced boneshard rifle -->
+  <Gun_AdvancedBoneshardRifle.label>高級骨刺步槍</Gun_AdvancedBoneshardRifle.label>
+  <!-- EN: An advanced living armament mainly used by fetid marines. The advanced boneshard rifle is basically the standard charge rifle used by humanity, but with slightly better accuracy and increased shot count. -->
+  <Gun_AdvancedBoneshardRifle.description>膿腐陸戰隊使用的高級骨刺步槍。這種由血肉和骨骼組成的活體武器與人類的電能步槍性能相近，但擁有更優秀的精度與連射次數，擊中敵人時還有幾率造成歿疫病毒感染。</Gun_AdvancedBoneshardRifle.description>
+  <!-- EN: barrel -->
+  <Gun_AdvancedBoneshardRifle.tools.barrel.label>槍管</Gun_AdvancedBoneshardRifle.tools.barrel.label>
+  <!-- EN: advanced boneshard rifle -->
+  <Gun_AdvancedBoneshardRifle.verbs.Verb_Shoot.label>高級骨刺步槍</Gun_AdvancedBoneshardRifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: boneshard auto cannon -->
+  <Gun_BoneshardAutoCannon.label>骨刺重砲</Gun_BoneshardAutoCannon.label>
+  <!-- EN: A living heavy weapon wielded exclusively by the bloated ogres. The boneshard auto cannon serves as a heavy weapon for the necronoids, dealing massive amounts of damage with the ability to inflict the necromoid infection in every shot. -->
+  <Gun_BoneshardAutoCannon.description>腫脹巨獸使用的骨刺重砲。這種由血肉和骨骼組成的重型活體武器不僅威力驚人，擊中敵人時還有幾率造成歿疫病毒感染。</Gun_BoneshardAutoCannon.description>
+  <!-- EN: barrel -->
+  <Gun_BoneshardAutoCannon.tools.barrel.label>槍管</Gun_BoneshardAutoCannon.tools.barrel.label>
+  <!-- EN: boneshard auto cannon -->
+  <Gun_BoneshardAutoCannon.verbs.Verb_Shoot.label>骨刺重砲</Gun_BoneshardAutoCannon.verbs.Verb_Shoot.label>
+  
+  <!-- EN: boneshard avenger -->
+  <Gun_BoneshardRapidBlaster.label>骨刺旋轉機槍</Gun_BoneshardRapidBlaster.label>
+  <!-- EN: A living heavy armament mainly used by elite necronoids, and a minigun variant of the boneshard rifle. -->
+  <Gun_BoneshardRapidBlaster.description>膿腐陸戰隊和其他歿疫感染體使用的骨刺旋轉機槍。這種由血肉和骨骼組成的活體武器內部長有可以合成碎裂骨刺的特殊器官，擊中敵人時能撕裂血肉並有幾率造成歿疫病毒感染。</Gun_BoneshardRapidBlaster.description>
+  <!-- EN: barrel -->
+  <Gun_BoneshardRapidBlaster.tools.barrel.label>槍管</Gun_BoneshardRapidBlaster.tools.barrel.label>
+  <!-- EN: boneshard avenger -->
+  <Gun_BoneshardRapidBlaster.verbs.Verb_Shoot.label>骨刺旋轉機槍</Gun_BoneshardRapidBlaster.verbs.Verb_Shoot.label>
+  
+  <!-- EN: boneshard rifle -->
+  <Gun_BoneshardRifle.label>骨刺步槍</Gun_BoneshardRifle.label>
+  <!-- EN: A living armament mainly used by fetid soldiers. The boneshard rifle possess a special organ that produces bones, shaping it into shards, and lacing it with necronoid infection. Once fired, the boneshards can deal moderate amounts of shredded damage alongside inflicting the necronoid infection in an open wound. -->
+  <Gun_BoneshardRifle.description>膿腐屍卒使用的骨刺步槍。這種由血肉和骨骼組成的活體武器內部長有可以合成碎裂骨刺的特殊器官，擊中敵人時能撕裂血肉並有幾率造成歿疫病毒感染。</Gun_BoneshardRifle.description>
+  <!-- EN: barrel -->
+  <Gun_BoneshardRifle.tools.barrel.label>槍管</Gun_BoneshardRifle.tools.barrel.label>
+  <!-- EN: boneshard rifle -->
+  <Gun_BoneshardRifle.verbs.Verb_Shoot.label>骨刺步槍</Gun_BoneshardRifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: boneshard shotgun -->
+  <Gun_BoneshardShotgun.label>骨刺霰彈槍</Gun_BoneshardShotgun.label>
+  <!-- EN: A living armament mainly used by fetid soldiers, and a shotgun variant of the boneshard rifle. -->
+  <Gun_BoneshardShotgun.description>膿腐屍卒使用的骨刺霰彈槍。這種由血肉和骨骼組成的活體武器內部長有可以合成碎裂骨刺的特殊器官，擊中敵人時能撕裂血肉並有幾率造成歿疫病毒感染。</Gun_BoneshardShotgun.description>
+  <!-- EN: barrel -->
+  <Gun_BoneshardShotgun.tools.barrel.label>槍管</Gun_BoneshardShotgun.tools.barrel.label>
+  <!-- EN: boneshard shotgun -->
+  <Gun_BoneshardShotgun.verbs.Verb_Shoot.label>骨刺霰彈槍</Gun_BoneshardShotgun.verbs.Verb_Shoot.label>
+  
+  <!-- EN: boneshard sniper rifle -->
+  <Gun_BoneshardSniperRifle.label>骨刺狙擊步槍</Gun_BoneshardSniperRifle.label>
+  <!-- EN: A living armament mainly used by elite necronoids, and a sniper variant of the boneshard rifle. -->
+  <Gun_BoneshardSniperRifle.description>膿腐陸戰隊和其他歿疫感染體使用的骨刺狙擊步槍。這種由血肉和骨骼組成的活體武器內部長有可以合成碎裂骨刺的特殊器官，擊中敵人時能撕裂血肉並有幾率造成歿疫病毒感染。</Gun_BoneshardSniperRifle.description>
+  <!-- EN: barrel -->
+  <Gun_BoneshardSniperRifle.tools.barrel.label>槍管</Gun_BoneshardSniperRifle.tools.barrel.label>
+  <!-- EN: boneshard sniper rifle -->
+  <Gun_BoneshardSniperRifle.verbs.Verb_Shoot.label>骨刺狙擊步槍</Gun_BoneshardSniperRifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: plague spewer -->
+  <Gun_PlagueSpewer.label>瘟疫投射器</Gun_PlagueSpewer.label>
+  <!-- EN: A living armament made of human flesh and bones. Unlike every armaments used by the necronoids, this weapon has a special organ that produces plague-infested bile and launching it against organic enemies, which deals shredded damage and inflicting the plague at the same time. -->
+  <Gun_PlagueSpewer.description>膿腐狂魔使用的瘟疫投射器。這種由血肉和骨骼組成的活體武器內部長有可以合成瘟疫膽汁特殊器官，擊中敵人時能撕裂血肉並有幾率傳播瘟疫。</Gun_PlagueSpewer.description>
+  <!-- EN: barrel -->
+  <Gun_PlagueSpewer.tools.barrel.label>槍管</Gun_PlagueSpewer.tools.barrel.label>
+  <!-- EN: plague spewer -->
+  <Gun_PlagueSpewer.verbs.Verb_Shoot.label>瘟疫投射器</Gun_PlagueSpewer.verbs.Verb_Shoot.label>
+  
+  <!-- EN: blood letter mace -->
+  <Melee_BloodLetterMace.label>放血釘頭錘</Melee_BloodLetterMace.label>
+  <!-- EN: A giant mace with spikes made of hardened blood. This weapon is capable of causing excessive bleeding, where a single scratch can be deadly if not treated immediately. This weapon is mainly weilded by the bloodletter ghoul. -->
+  <Melee_BloodLetterMace.description>放血屍鬼使用的巨型釘頭錘，其頂部長滿了硬化過的猙獰血刺。這種武器擊中敵人時會造成大量失血，若得不到及時救治則很容易致命。</Melee_BloodLetterMace.description>
+  <!-- EN: mace spike -->
+  <Melee_BloodLetterMace.tools.mace_spike.label>錘刺</Melee_BloodLetterMace.tools.mace_spike.label>
+  <!-- EN: handle -->
+  <Melee_BloodLetterMace.tools.handle.label>握柄</Melee_BloodLetterMace.tools.handle.label>
+  
+  <!-- EN: executioner's axe -->
+  <Melee_ExecutionerAxe.label>戮刑錘斧</Melee_ExecutionerAxe.label>
+  <!-- EN: A giant axe and hammer hybrid that claimed thousands of heads. Both heavy and incredibly sharp, it can cut down heavily armored foes like cutting butter with a butter knife, and can easily bash some skulls using the hammer head. This weapon is mainly weilded by the executioner ghoul. -->
+  <Melee_ExecutionerAxe.description>戮刑屍鬼使用的巨型錘斧，曾斬下了數以千計的人類首級。這種武器不僅可以像小刀切黃油一樣將身披重甲的敵人劈成兩半，它的錘頭部分也能輕易地粉碎頭骨。</Melee_ExecutionerAxe.description>
+  <!-- EN: edge -->
+  <Melee_ExecutionerAxe.tools.edge.label>斧刃</Melee_ExecutionerAxe.tools.edge.label>
+  <!-- EN: hammer head -->
+  <Melee_ExecutionerAxe.tools.hammer_head.label>錘頭</Melee_ExecutionerAxe.tools.hammer_head.label>
+  <!-- EN: handle -->
+  <Melee_ExecutionerAxe.tools.handle.label>握柄</Melee_ExecutionerAxe.tools.handle.label>
+  
+  <!-- EN: flesh cleaver -->
+  <Melee_FleshCleaver.label>血肉屠刀</Melee_FleshCleaver.label>
+  <!-- EN: A giant clever made of flesh. This unholy blade contains an organ that releases concentrated dosage of the necronoid infection, which is capable of inflicting the necrotion with a higher severity. -->
+  <Melee_FleshCleaver.description>血肉暴君使用的巨型屠刀。這種武器內部長有可以合成高濃度歿疫病毒的特殊器官，擊中敵人更容易造成感染。</Melee_FleshCleaver.description>
+  <!-- EN: edge -->
+  <Melee_FleshCleaver.tools.edge.label>刀刃</Melee_FleshCleaver.tools.edge.label>
+  <!-- EN: blade tip -->
+  <Melee_FleshCleaver.tools.blade_tip.label>刀尖</Melee_FleshCleaver.tools.blade_tip.label>
+  <!-- EN: handle -->
+  <Melee_FleshCleaver.tools.handle.label>握柄</Melee_FleshCleaver.tools.handle.label>
+  
+  <!-- EN: butcher's steel saw -->
+  <Melee_SteelSaw.label>屠夫圓盤鋸</Melee_SteelSaw.label>
+  <!-- EN: An industrial tool that was used to cut steel bars. This once humble industrial tool now serves a dark purpose, where is being used to cut innocent beings into mince meat. This weapon is mainly weilded by the bloodletter ghoul. -->
+  <Melee_SteelSaw.description>癲狂屠夫使用的巨型圓盤鋸。這種工具原本的用途是鋸切工業鋼筋，而如今則變成了將無辜人類絞成肉泥的可怕武器。</Melee_SteelSaw.description>
+  <!-- EN: saw blade -->
+  <Melee_SteelSaw.tools.saw_blade.label>鋸刃</Melee_SteelSaw.tools.saw_blade.label>
+  <!-- EN: handle -->
+  <Melee_SteelSaw.tools.handle.label>握柄</Melee_SteelSaw.tools.handle.label>
+  
+</LanguageData>

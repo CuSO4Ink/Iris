@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: dragonian child dress -->
+  <DR_AP_Child.label>龙人 童装</DR_AP_Child.label>
+  <!-- EN: A costume for the Child. -->
+  <DR_AP_Child.description>给儿童穿的服装。</DR_AP_Child.description>
+  
+  <!-- EN: Frost -->
+  <Filth_DR_Frost.label>冰霜</Filth_DR_Frost.label>
+  
+</LanguageData>

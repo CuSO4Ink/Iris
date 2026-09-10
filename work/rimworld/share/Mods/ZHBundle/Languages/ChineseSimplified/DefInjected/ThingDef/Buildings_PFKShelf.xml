@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: PFK small shelf -->
+  <PFK_ShelfSmall.label>儿童房小物品架</PFK_ShelfSmall.label>
+  <!-- EN: A toy chest-style locker to keep the clutter in check!\nIt holds three times as many items as placing them on the floor, prevents deterioration, and doesn't impact room beauty. Limited space means no large objects or materials can be stored.\n\nRotate to view different designs.\nFunctions the same as a standard small shelf. -->
+  <PFK_ShelfSmall.description>一个玩具盒风格的三层架子，可以容纳三倍于空地的东西。存放在里面的物品永远不会老化，也不会影响周围环境的美观。\n\n由于空间有限，物品架不能存放块堆、建筑、植物和大型尸体。\n\n属性和功能同原版小物品架一致。可通过旋转来改变此建筑的贴图。</PFK_ShelfSmall.description>
+  
+</LanguageData>

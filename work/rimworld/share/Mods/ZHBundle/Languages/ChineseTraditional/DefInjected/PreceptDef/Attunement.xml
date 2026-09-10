@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: attunement ritual -->
+  <VV_Attunement.label>共鳴儀式</VV_Attunement.label>
+  <!-- EN: A Royal vivi enters resonance with an everflower through psychic attunement. A royal vivi can attune to only one everflower at a time, and if a royal vivi already in resonance performs the attunement ritual, it deepens the everflower's attunement level. -->
+  <VV_Attunement.description>令一名皇家薇薇同一株永盛花產生心靈共鳴。一名皇家薇薇同時只能同一株永盛花共鳴，若其已經與永盛花共鳴，該儀式會提升永盛花的共鳴等級。</VV_Attunement.description>
+  
+</LanguageData>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: mix cake batter -->
+  <VCE_CookCakeBatter.label>制作蛋糕糊</VCE_CookCakeBatter.label>
+  <!-- EN: Mix some cake butter to act as a base for a baked confection. -->
+  <VCE_CookCakeBatter.description>制作蛋糕糊，用于烘焙糕点。</VCE_CookCakeBatter.description>
+  <!-- EN: Mixing cake batter. -->
+  <VCE_CookCakeBatter.jobString>正在制作蛋糕糊</VCE_CookCakeBatter.jobString>
+  
+  <!-- EN: mix gourmet cake batter -->
+  <VCE_CookGourmetCakeBatter.label>制作豪华蛋糕糊</VCE_CookGourmetCakeBatter.label>
+  <!-- EN: Mix some gourmet cake butter to act as a base for a baked confection. -->
+  <VCE_CookGourmetCakeBatter.description>制作豪华蛋糕糊，用于烘焙豪华糕点。</VCE_CookGourmetCakeBatter.description>
+  <!-- EN: Mixing gourmet cake batter. -->
+  <VCE_CookGourmetCakeBatter.jobString>正在制作豪华蛋糕糊</VCE_CookGourmetCakeBatter.jobString>
+  
+</LanguageData>

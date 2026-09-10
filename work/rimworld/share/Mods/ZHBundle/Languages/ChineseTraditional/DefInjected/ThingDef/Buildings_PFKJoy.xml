@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: PFK Ring Toss A -->
+  <PFK_RingToss.label>兒童房套圈遊戲</PFK_RingToss.label>
+  <!-- EN: A classic game where you toss rings onto a distant peg.\nWith its whimsical design, it lets colonists embrace their inner child while sharpening their shooting skills. -->
+  <PFK_RingToss.description>通過將套圈擲到遠處的立樁上來遊玩的經典遊戲。有趣的設計既能喚起未泯的童心，還可以提高射擊技能。\n\n可通過旋轉來改變此建築的貼圖。</PFK_RingToss.description>
+  
+  <!-- EN: PFK Ring Toss Monkey -->
+  <PFK_RingTossB.label>兒童房套圈遊戲（猴子）</PFK_RingTossB.label>
+  <!-- EN: A classic game where you toss rings onto a distant peg.\nWith its whimsical design, it lets colonists embrace their inner child while sharpening their shooting skills. -->
+  <PFK_RingTossB.description>通過將套圈擲到遠處的立樁上來遊玩的經典遊戲。有趣的設計既能喚起未泯的童心，還可以提高射擊技能。\n\n可通過旋轉來改變此建築的貼圖。</PFK_RingTossB.description>
+  
+  <!-- EN: PFK Ring Toss Giraffe -->
+  <PFK_RingTossC.label>兒童房套圈遊戲（長頸鹿）</PFK_RingTossC.label>
+  <!-- EN: A classic game where you toss rings onto a distant peg.\nWith its whimsical design, it lets colonists embrace their inner child while sharpening their shooting skills. -->
+  <PFK_RingTossC.description>通過將套圈擲到遠處的立樁上來遊玩的經典遊戲。有趣的設計既能喚起未泯的童心，還可以提高射擊技能。\n\n可通過旋轉來改變此建築的貼圖。</PFK_RingTossC.description>
+  
+  <!-- EN: PFK Ring Toss Rocket -->
+  <PFK_RingTossD.label>兒童房套圈遊戲（火箭）</PFK_RingTossD.label>
+  <!-- EN: A classic game where you toss rings onto a distant peg.\nWith its whimsical design, it lets colonists embrace their inner child while sharpening their shooting skills. -->
+  <PFK_RingTossD.description>通過將套圈擲到遠處的立樁上來遊玩的經典遊戲。有趣的設計既能喚起未泯的童心，還可以提高射擊技能。\n\n可通過旋轉來改變此建築的貼圖。</PFK_RingTossD.description>
+  
+  <!-- EN: PFK tube television -->
+  <PFK_TubeTelevision.label>兒童房映像管電視</PFK_TubeTelevision.label>
+  <!-- EN: A classic cathode ray tube television.\n            On the Rimworlds, it seems someone keeps the broadcast running for the smiles of children.\n\nIt has the same functionality as the vanilla "tube television" and can be recolored with Tinctoria to match your style. -->
+  <PFK_TubeTelevision.description>經典款式的陰極射線管電視。在邊緣世界裡，經常會有老舊的基地台在播放一些有趣的東西。\n\n屬性和功能同原版映像管電視一致。可通過粉刷來改變此建築的顏色。</PFK_TubeTelevision.description>
+  
+</LanguageData>

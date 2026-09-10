@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: blood focus -->
+  <VPEH_Bloodfocus.label>浸血冥想</VPEH_Bloodfocus.label>
+  <!-- EN: By forcibly manipulating the body’s stores of hemogen, the caster can enter a state of rapid meditation, regaining psyfocus at the cost of hemogen. -->
+  <VPEH_Bloodfocus.description>操控体内储存的血原质，强制进入高速冥想之中，可以花费血原质获得精神力。</VPEH_Bloodfocus.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEH_Bloodfocus.jobReportString>使用能力：{0}</VPEH_Bloodfocus.jobReportString>
+  <!-- EN: blood focus -->
+  <VPEH_Bloodfocus.verbProperties.label>浸血冥想</VPEH_Bloodfocus.verbProperties.label>
+  
+  <!-- EN: blood rite -->
+  <VPEH_BloodRite.label>拜血祭仪</VPEH_BloodRite.label>
+  <!-- EN: Creates a mote of hemogen that follows the caster, acting as an amplifier for psychic sensitivity based on the caster’s current hemogen level. -->
+  <VPEH_BloodRite.description>用血原质创造一团随身的血雾，基于血原质水平增强施放者的心灵敏感度。</VPEH_BloodRite.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEH_BloodRite.jobReportString>使用能力：{0}</VPEH_BloodRite.jobReportString>
+  <!-- EN: blood rite -->
+  <VPEH_BloodRite.verbProperties.label>拜血祭仪</VPEH_BloodRite.verbProperties.label>
+  
+  <!-- EN: blood shard -->
+  <VPEH_BloodShard.label>血镖</VPEH_BloodShard.label>
+  <!-- EN: Launch a small amount of excess blood as a lethal projectile by forcibly expelling hemogen that has been solidified into a crystalline structure. -->
+  <VPEH_BloodShard.description>将体内的血原质固化成晶体状，带动部分过甚的血液似飞镖般射出。</VPEH_BloodShard.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEH_BloodShard.jobReportString>使用能力：{0}</VPEH_BloodShard.jobReportString>
+  <!-- EN: blood shard -->
+  <VPEH_BloodShard.verbProperties.label>血镖</VPEH_BloodShard.verbProperties.label>
+  
+  <!-- EN: blood spew -->
+  <VPEH_BloodSpew.label>吞吐血雾</VPEH_BloodSpew.label>
+  <!-- EN: Spew forth a fine mist of hemogen towards the targets, coating them in sticky, nauseating blood. Those affected are overcome with intense vomiting. -->
+  <VPEH_BloodSpew.description>将一团雾化的血原质向目标喷出，使其被粘稠恶心的血液包裹。受影响者会剧烈呕吐。</VPEH_BloodSpew.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEH_BloodSpew.jobReportString>使用能力：{0}</VPEH_BloodSpew.jobReportString>
+  <!-- EN: blood spew -->
+  <VPEH_BloodSpew.verbProperties.label>吞吐血雾</VPEH_BloodSpew.verbProperties.label>
+  
+  <!-- EN: bloodstorm -->
+  <VPEH_Bloodstorm.label>血雨腥风</VPEH_Bloodstorm.label>
+  <!-- EN: Creates a downpour of blood, inflicting non-hemogenic individuals with bloodmist, causing intense vomiting. Sanguophages instead regenerate hemogen, and don’t gain psychic heat when casting any psycasts under the effects of bloodstorm. -->
+  <VPEH_Bloodstorm.description>制造一场血液构成的暴雨。没有血原化基因的人都会受血雾影响剧烈呕吐。而血族则会回复血原质，并且使用灵能时不会产生心灵熵。</VPEH_Bloodstorm.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEH_Bloodstorm.jobReportString>使用能力：{0}</VPEH_Bloodstorm.jobReportString>
+  <!-- EN: If you use bloodstorm, everyone in this local area will be affected by it, and you will lose goodwill with every non-hostile faction that currently is visiting this place.\n\nBloodstorm takes 10 seconds to cast, and cannot be interrupted. When complete, the rain of blood will fall everywhere, affecting both normal people and sanguophages.\n\nEveryone on the map except Sanguophages will be affected by blood mist, causing intense vomiting. Sanguophages will not generate Psychic heat when casting psycasts of any kind.\n\nDo you really want to cast bloodstorm? -->
+  <VPEH_Bloodstorm.modExtensions.3.message>如果你使用血雨腥风，这个地区的所有人都会受到影响，你将失去与所有非敌对派系的部分好感。\n\n血雨腥风需要10秒的释放时间，并且不能被打断。完成后，血液的暴雨将会影响笼罩下的所有人。\n\n地图上除了血族外都会受血雾影响剧烈呕吐，而血族则会回复血原质，并且使用灵能时不会产生心灵熵。\n\n你真的要释放血雨腥风吗？</VPEH_Bloodstorm.modExtensions.3.message>
+  <!-- EN: bloodstorm -->
+  <VPEH_Bloodstorm.verbProperties.label>血雨腥风</VPEH_Bloodstorm.verbProperties.label>
+  
+  <!-- EN: close wounds -->
+  <VPEH_CloseWounds.label>止血</VPEH_CloseWounds.label>
+  <!-- EN: Forcibly move excess blood to stop any ongoing bleeding. However, it does not actually heal. -->
+  <VPEH_CloseWounds.description>强制操控体内的血液流动暂时停止一切失血。但伤口并不会被治愈</VPEH_CloseWounds.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEH_CloseWounds.jobReportString>使用能力：{0}</VPEH_CloseWounds.jobReportString>
+  <!-- EN: close wounds -->
+  <VPEH_CloseWounds.verbProperties.label>止血</VPEH_CloseWounds.verbProperties.label>
+  
+  <!-- EN: corpse explosion -->
+  <VPEH_CorpseExplosion.label>尸爆</VPEH_CorpseExplosion.label>
+  <!-- EN: Uses the caster’s hemogen to overstimulate the blood of a corpse, causing an explosion which deals no damage, but covers everyone in thick bloodmist. Those affected are overcome with intense vomiting. -->
+  <VPEH_CorpseExplosion.description>动用血原质与尸体内残余的血液共鸣，使其爆炸。这种爆炸并不会造成实际伤害，但会将范围内的目标覆盖在一团粘稠的血液中，受影响者会剧烈呕吐。</VPEH_CorpseExplosion.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEH_CorpseExplosion.jobReportString>使用能力：{0}</VPEH_CorpseExplosion.jobReportString>
+  <!-- EN: corpse explosion -->
+  <VPEH_CorpseExplosion.verbProperties.label>尸爆</VPEH_CorpseExplosion.verbProperties.label>
+  
+  <!-- EN: hemodrain -->
+  <VPEH_Hemodrain.label>血原汲取</VPEH_Hemodrain.label>
+  <!-- EN: Forcibly extracts the blood of the target at a distance and converts it to hemogen. Practical but inefficient. -->
+  <VPEH_Hemodrain.description>在远处将目标的血液转化成血原质抽出。方便，但转换效率不佳</VPEH_Hemodrain.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEH_Hemodrain.jobReportString>使用能力：{0}</VPEH_Hemodrain.jobReportString>
+  <!-- EN: hemodrain -->
+  <VPEH_Hemodrain.verbProperties.label>血原汲取</VPEH_Hemodrain.verbProperties.label>
+  
+  <!-- EN: sanguine spear -->
+  <VPEH_SanguineSpear.label>圣血飞枪</VPEH_SanguineSpear.label>
+  <!-- EN: Launches a pressurized spear of blood over to the target, damaging the target and creating a bloodmist explosion. Damage depends on the caster's hemogen level. -->
+  <VPEH_SanguineSpear.description>用高压将血液凝成一支长枪射向敌人，造成伤害后会爆成一团血雾。伤害受施放者血原质水平影响。</VPEH_SanguineSpear.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEH_SanguineSpear.jobReportString>使用能力：{0}</VPEH_SanguineSpear.jobReportString>
+  <!-- EN: sanguine spear -->
+  <VPEH_SanguineSpear.verbProperties.label>圣血飞枪</VPEH_SanguineSpear.verbProperties.label>
+  
+  <!-- EN: word of offering -->
+  <VPEH_WordofOffering.label>奉献之语</VPEH_WordofOffering.label>
+  <!-- EN: Convinces the target to offer their blood to the caster. Can be used on visitors or even during combat. -->
+  <VPEH_WordofOffering.description>魅惑目标向施放者献血。可以对访客使用，甚至可以在战斗中对敌人使用。</VPEH_WordofOffering.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEH_WordofOffering.jobReportString>使用能力：{0}</VPEH_WordofOffering.jobReportString>
+  <!-- EN: word of offering -->
+  <VPEH_WordofOffering.verbProperties.label>奉献之语</VPEH_WordofOffering.verbProperties.label>
+  
+</LanguageData>

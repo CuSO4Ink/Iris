@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 아르티코스 -->
+  <Ears_Arctic_Miho.label>雪凛之狐</Ears_Arctic_Miho.label>
+  <!-- EN: 아르티코스는 베르그만 법칙과 작은 귀 덕분에 추위를 잘 버티게 되었고, 북방의 공업화 덕분에 조금의 독성 저항력이 생긴 북방의 미호입니다. 다만 뇌에 쓸 열량을 보온에 쓴 탓인지 사교능력을 조금 잃었습니다. 그래봤자 보통 인간 수준이지만 말이죠. -->
+  <Ears_Arctic_Miho.description>这种基因的携带者具有更强的耐寒能力、更强的承伤能力、更弱的社交能力以及更慢的移动速度。</Ears_Arctic_Miho.description>
+  
+  <!-- EN: 코니스 -->
+  <Ears_Desert_Miho.label>沙伶之狐</Ears_Desert_Miho.label>
+  <!-- EN: 코니스는 뛰어난 엔지니어이자 상인인 사막의 미호입니다. 호기심이 많고 더위를 잘 버팁니다. 하지만 많은 일들을 기계들에게 맡기다 보니 보통의 미호들보다 게으르다 평가됩니다. -->
+  <Ears_Desert_Miho.description>这种基因的携带者具有更强的耐热能力、更快的学习速度以及更慢的工作速度。</Ears_Desert_Miho.description>
+  
+  <!-- EN: 프로드로모스 -->
+  <Ears_Highland_Miho.label>战凌之狐</Ears_Highland_Miho.label>
+  <!-- EN: 프로드로모스는 통제된 전장에 맞춰진, 극도로 공격적이고 효율적인 살인귀들 입니다. 유전적으로 고-주스를 필요로 합니다. -->
+  <Ears_Highland_Miho.description>这种基因的携带者具有更强的承伤能力、更高的射击精度、更快的移动速度、更低的觅食能力以及更弱的社交能力。</Ears_Highland_Miho.description>
+  
+  <!-- EN: 포르네 -->
+  <Ears_Highmate_Miho.label>欲琳之狐</Ears_Highmate_Miho.label>
+  <!-- EN: 번화계의 "특별한" 서비스 용도로 설계된 포르네들은 굉장한 사회적 능력과 상대를 매혹시키는 초능력을 가지고 있습니다. 대부분의 접대 상황에서는 엄청난 재능을 보여주지만, 안타깝게도 다른 분야에서는 쉽게 활약하지 못합니다. -->
+  <Ears_Highmate_Miho.description>这种基因的携带者可以使用特殊的灵能。</Ears_Highmate_Miho.description>
+  
+  <!-- EN: 천상의 여우 -->
+  <Gene_CelestialMiho.label>天阳庇佑</Gene_CelestialMiho.label>
+  <!-- EN: 이 유전자를 지닌 여우는 이 항성의 가호를 받는 듯 합니다. 검증은 되지 않았지만요. -->
+  <Gene_CelestialMiho.description>这种基因的携带者似乎会受到恒星之力的庇佑，但是否属实仍有待考证。</Gene_CelestialMiho.description>
+  
+  <!-- EN: 발달된 청각 -->
+  <Gene_Miho_AdvancedAuditory.label>听觉发达</Gene_Miho_AdvancedAuditory.label>
+  <!-- EN: 이 유전자를 지닌 폰은 사교 능력과 단거리 사격 명중률이 상승합니다. 하지만 장거리 사격 능력이 줄어들게 됩니다. -->
+  <Gene_Miho_AdvancedAuditory.description>这种基因的携带者听觉十分发达，因而具有更出色的社交能力与近距离射击精度。不过，他们的远距离射击精度相对较差。</Gene_Miho_AdvancedAuditory.description>
+  
+  <!-- EN: 완벽한 몸 -->
+  <Gene_Miho_Naked.label>裸体诱惑</Gene_Miho_Naked.label>
+  <!-- EN: 이 유전자를 지닌 폰은 옷을 입지 않을시 사교 능력치와 매력이 증가합니다. -->
+  <Gene_Miho_Naked.description>这种基因的携带者在未着衣时具有更出色的社交能力与更高的魅力。</Gene_Miho_Naked.description>
+  
+  <!-- EN: oros ash hair -->
+  <Hair_Miho_Ash.label>金灰发</Hair_Miho_Ash.label>
+  <!-- EN: Carriers of this gene have a particular hair color. With multiple hair color genes, one is randomly selected. -->
+  <Hair_Miho_Ash.description>这种基因的携带者有一个特定的头发颜色。如果有多个发色基因，则会随机选择一个。</Hair_Miho_Ash.description>
+  
+  <!-- EN: miho fox orange hair -->
+  <Hair_Miho_Orange.label>狐橙发</Hair_Miho_Orange.label>
+  <!-- EN: Carriers of this gene have a particular hair color. With multiple hair color genes, one is randomly selected. -->
+  <Hair_Miho_Orange.description>这种基因的携带者有一个特定的头发颜色。如果有多个发色基因，则会随机选择一个。</Hair_Miho_Orange.description>
+  
+  <!-- EN: miho fox pink hair -->
+  <Hair_Miho_Pink.label>狐粉发</Hair_Miho_Pink.label>
+  <!-- EN: Carriers of this gene have a particular hair color. With multiple hair color genes, one is randomly selected. -->
+  <Hair_Miho_Pink.description>这种基因的携带者有一个特定的头发颜色。如果有多个发色基因，则会随机选择一个。</Hair_Miho_Pink.description>
+  
+  <!-- EN: miho fox red hair -->
+  <Hair_Miho_Red.label>狐红发</Hair_Miho_Red.label>
+  <!-- EN: Carriers of this gene have a particular hair color. With multiple hair color genes, one is randomly selected. -->
+  <Hair_Miho_Red.description>这种基因的携带者有一个特定的头发颜色。如果有多个发色基因，则会随机选择一个。</Hair_Miho_Red.description>
+  
+  <!-- EN: miho fox sky blue hair -->
+  <Hair_Miho_Sky.label>狐蓝发</Hair_Miho_Sky.label>
+  <!-- EN: Carriers of this gene have a particular hair color. With multiple hair color genes, one is randomly selected. -->
+  <Hair_Miho_Sky.description>这种基因的携带者有一个特定的头发颜色。如果有多个发色基因，则会随机选择一个。</Hair_Miho_Sky.description>
+  
+</LanguageData>

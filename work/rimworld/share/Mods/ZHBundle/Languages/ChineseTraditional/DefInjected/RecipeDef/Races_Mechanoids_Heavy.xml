@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 다각 경전차 (정찰형) 제작 -->
+  <Miho_Mech_Sapsal.label>組裝“驅鬼犬”偵查無人機</Miho_Mech_Sapsal.label>
+  <!-- EN: 다각 경전차 (정찰형) 제작. -->
+  <Miho_Mech_Sapsal.description>組裝“驅鬼犬”偵查無人機。</Miho_Mech_Sapsal.description>
+  <!-- EN: Gestating mech. -->
+  <Miho_Mech_Sapsal.jobString>組裝無人機。</Miho_Mech_Sapsal.jobString>
+  
+  <!-- EN: 다각 경전차 (초능력 지원) 제작 -->
+  <Miho_Mech_SapsalPsy.label>組裝“驅鬼犬”靈能支援無人機</Miho_Mech_SapsalPsy.label>
+  <!-- EN: 다각 경전차 (초능력 지원) 제작. -->
+  <Miho_Mech_SapsalPsy.description>組裝“驅鬼犬”靈能支援無人機。</Miho_Mech_SapsalPsy.description>
+  <!-- EN: Gestating mech. -->
+  <Miho_Mech_SapsalPsy.jobString>組裝無人機。</Miho_Mech_SapsalPsy.jobString>
+  
+</LanguageData>

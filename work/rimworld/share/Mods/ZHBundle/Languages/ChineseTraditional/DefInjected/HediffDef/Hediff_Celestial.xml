@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 천상술사 (I) -->
+  <Miho_Celestial_I_Hediff.label>天陽術士-I</Miho_Celestial_I_Hediff.label>
+  <!-- EN: 천상술사 -->
+  <Miho_Celestial_I_Hediff.description>I級天陽術士。</Miho_Celestial_I_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Celestial_I_Hediff.stages.a.label>A階</Miho_Celestial_I_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Celestial_I_Hediff.stages.b.label>B階</Miho_Celestial_I_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Celestial_I_Hediff.stages.c.label>C階</Miho_Celestial_I_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Celestial_I_Hediff.stages.d.label>D階</Miho_Celestial_I_Hediff.stages.d.label>
+  
+  <!-- EN: 천상술사 (II) -->
+  <Miho_Celestial_II_Hediff.label>天陽術士-II</Miho_Celestial_II_Hediff.label>
+  <!-- EN: 천상술사 -->
+  <Miho_Celestial_II_Hediff.description>II級天陽術士。</Miho_Celestial_II_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Celestial_II_Hediff.stages.a.label>A階</Miho_Celestial_II_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Celestial_II_Hediff.stages.b.label>B階</Miho_Celestial_II_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Celestial_II_Hediff.stages.c.label>C階</Miho_Celestial_II_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Celestial_II_Hediff.stages.d.label>D階</Miho_Celestial_II_Hediff.stages.d.label>
+  
+  <!-- EN: 천상술사 (III) -->
+  <Miho_Celestial_III_Hediff.label>天陽術士-III</Miho_Celestial_III_Hediff.label>
+  <!-- EN: 천상술사 -->
+  <Miho_Celestial_III_Hediff.description>III級天陽術士。</Miho_Celestial_III_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Celestial_III_Hediff.stages.a.label>A階</Miho_Celestial_III_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Celestial_III_Hediff.stages.b.label>B階</Miho_Celestial_III_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Celestial_III_Hediff.stages.c.label>C階</Miho_Celestial_III_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Celestial_III_Hediff.stages.d.label>D階</Miho_Celestial_III_Hediff.stages.d.label>
+  
+  <!-- EN: 천상술사 (IV) -->
+  <Miho_Celestial_IV_Hediff.label>天陽術士-IV</Miho_Celestial_IV_Hediff.label>
+  <!-- EN: 천상술사 -->
+  <Miho_Celestial_IV_Hediff.description>IV級天陽術士。</Miho_Celestial_IV_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Celestial_IV_Hediff.stages.a.label>A階</Miho_Celestial_IV_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Celestial_IV_Hediff.stages.b.label>B階</Miho_Celestial_IV_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Celestial_IV_Hediff.stages.c.label>C階</Miho_Celestial_IV_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Celestial_IV_Hediff.stages.d.label>D階</Miho_Celestial_IV_Hediff.stages.d.label>
+  
+  <!-- EN: 천상술사 (행성 적응중) -->
+  <Miho_Celestial_Start_Hediff.label>天陽術士（星球適應）</Miho_Celestial_Start_Hediff.label>
+  <!-- EN: 천상술사 -->
+  <Miho_Celestial_Start_Hediff.description>天陽術士。</Miho_Celestial_Start_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Celestial_Start_Hediff.stages.a.label>A</Miho_Celestial_Start_Hediff.stages.a.label>
+  <!-- EN: c -->
+  <Miho_Celestial_Start_Hediff.stages.c.label>C</Miho_Celestial_Start_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Celestial_Start_Hediff.stages.d.label>D</Miho_Celestial_Start_Hediff.stages.d.label>
+  <!-- EN: e -->
+  <Miho_Celestial_Start_Hediff.stages.e.label>E</Miho_Celestial_Start_Hediff.stages.e.label>
+  <!-- EN: f -->
+  <Miho_Celestial_Start_Hediff.stages.f.label>F</Miho_Celestial_Start_Hediff.stages.f.label>
+  <!-- EN: g -->
+  <Miho_Celestial_Start_Hediff.stages.g.label>G</Miho_Celestial_Start_Hediff.stages.g.label>
+  
+  <!-- EN: 천상술사 (V) -->
+  <Miho_Celestial_V_Hediff.label>天陽術士-V</Miho_Celestial_V_Hediff.label>
+  <!-- EN: 천상술사 -->
+  <Miho_Celestial_V_Hediff.description>V級天陽術士。</Miho_Celestial_V_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Celestial_V_Hediff.stages.a.label>A階</Miho_Celestial_V_Hediff.stages.a.label>
+  
+  <!-- EN: 태양등 -->
+  <Miho_Skill_I_Sunlamp_Hediff.label>天陽輝燈</Miho_Skill_I_Sunlamp_Hediff.label>
+  <!-- EN: 태양등 -->
+  <Miho_Skill_I_Sunlamp_Hediff.description>天陽輝燈。</Miho_Skill_I_Sunlamp_Hediff.description>
+  
+  <!-- EN: 불줄기 -->
+  <Miho_Skill_II_HotFirespew_Hediff.label>燒卻焰流</Miho_Skill_II_HotFirespew_Hediff.label>
+  <!-- EN: 불줄기 -->
+  <Miho_Skill_II_HotFirespew_Hediff.description>燒卻焰流。</Miho_Skill_II_HotFirespew_Hediff.description>
+  
+  <!-- EN: 메탈위빙 -->
+  <Miho_Skill_II_MakeSteel_Hediff.label>金屬織構（鋼鐵）</Miho_Skill_II_MakeSteel_Hediff.label>
+  <!-- EN: 메탈위빙(강철) -->
+  <Miho_Skill_II_MakeSteel_Hediff.description>金屬織構（鋼鐵）。</Miho_Skill_II_MakeSteel_Hediff.description>
+  
+  <!-- EN: 망토 -->
+  <Miho_Skill_III_HeatArmor_Hediff.label>狐火護體</Miho_Skill_III_HeatArmor_Hediff.label>
+  <!-- EN: 망토 -->
+  <Miho_Skill_III_HeatArmor_Hediff.description>狐火護體。</Miho_Skill_III_HeatArmor_Hediff.description>
+  
+  <!-- EN: 뜨거운 여우불 -->
+  <Miho_Skill_III_HotFireball_Hediff.label>爆能狐焱</Miho_Skill_III_HotFireball_Hediff.label>
+  <!-- EN: 뜨거운 여우불 -->
+  <Miho_Skill_III_HotFireball_Hediff.description>爆能狐焱。</Miho_Skill_III_HotFireball_Hediff.description>
+  
+  <!-- EN: 메탈위빙 -->
+  <Miho_Skill_IV_MakePlasteel_Hediff.label>金屬織構（塑鋼）</Miho_Skill_IV_MakePlasteel_Hediff.label>
+  <!-- EN: 메탈위빙(플라스틸) -->
+  <Miho_Skill_IV_MakePlasteel_Hediff.description>金屬織構（塑鋼）。</Miho_Skill_IV_MakePlasteel_Hediff.description>
+  
+</LanguageData>

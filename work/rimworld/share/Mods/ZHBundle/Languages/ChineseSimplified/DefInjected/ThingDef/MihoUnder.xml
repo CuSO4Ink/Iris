@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 보호내의 -->
+  <Miho_Apparel_Under_Armor.label>美狐软甲内衣</Miho_Apparel_Under_Armor.label>
+  <!-- EN: 화현비단으로 제작된 충격 흡수에 능한 보호 내의 입니다. -->
+  <Miho_Apparel_Under_Armor.description>用火玄丝绸加固制成的软甲内衣，能够有效吸收子弹等投射物带来的动能冲击。</Miho_Apparel_Under_Armor.description>
+  
+  <!-- EN: 미호 엘텍스 속옷 -->
+  <Miho_Apparel_Under_EltexOne.label>美狐灵质内衣</Miho_Apparel_Under_EltexOne.label>
+  <!-- EN: 화현비단으로 제작한 고급 속옷입니다. -->
+  <Miho_Apparel_Under_EltexOne.description>用火玄丝绸制成的美狐族传统衣物，能够有效强化穿戴者的心灵能力。</Miho_Apparel_Under_EltexOne.description>
+  
+  <!-- EN: 미호 봉인 부적 -->
+  <Miho_Apparel_Under_EltexTalisman.label>美狐封印灵符</Miho_Apparel_Under_EltexTalisman.label>
+  <!-- EN: 화현비단으로 제작한 부적입니다. 붙히면 좀 더 '개'같아 질겁니다. 참고로 엉덩이쪽은 보호 해 주지 않습니다. -->
+  <Miho_Apparel_Under_EltexTalisman.description>用火玄丝绸制成的灵符，能够逐步封印穿戴者的灵能，并使其变成顺从听话的“狗狗”。此外，它还具有极强的避孕效果。</Miho_Apparel_Under_EltexTalisman.description>
+  
+  <!-- EN: 미호 속옷 -->
+  <Miho_Apparel_Under_Industrial.label>美狐内衣</Miho_Apparel_Under_Industrial.label>
+  <!-- EN: 양산하기 쉽고 질긴 속옷입니다. -->
+  <Miho_Apparel_Under_Industrial.description>可快速批量制作的美狐族内衣，穿起来既耐用又结实。</Miho_Apparel_Under_Industrial.description>
+  
+  <!-- EN: 미호 곰돌이 속옷 -->
+  <Miho_Apparel_Under_IndustrialBear.label>美狐小熊内衣</Miho_Apparel_Under_IndustrialBear.label>
+  <!-- EN: 양산하기 쉽고 질긴 속옷입니다. -->
+  <Miho_Apparel_Under_IndustrialBear.description>可快速批量制作的美狐族内衣，穿起来既耐用又结实。这种款式的内裤反面印有可爱小熊图案。</Miho_Apparel_Under_IndustrialBear.description>
+
+  <!-- EN: 미호 검은 속옷 -->
+  <Miho_Apparel_Under_IndustrialBlack.label>美狐黑丝内衣</Miho_Apparel_Under_IndustrialBlack.label>
+  <!-- EN: 양산하기 쉽고 질긴 속옷입니다. 미호의 연약한 다리를 추위로부터 보호해 줍니다. -->
+  <Miho_Apparel_Under_IndustrialBlack.description>可快速批量制作的美狐族内衣，穿起来既耐用又结实。这种款式要更保暖一些。</Miho_Apparel_Under_IndustrialBlack.description>
+  
+  <!-- EN: 미호 줄무늬 속옷 -->
+  <Miho_Apparel_Under_IndustrialStripe.label>美狐条纹内衣</Miho_Apparel_Under_IndustrialStripe.label>
+  <!-- EN: 양산하기 쉽고 질긴 속옷입니다. 여름에 입기 좋습니다. -->
+  <Miho_Apparel_Under_IndustrialStripe.description>可快速批量制作的美狐族内衣，穿起来既耐用又结实。这种款式适合在夏天穿戴。</Miho_Apparel_Under_IndustrialStripe.description>
+  
+  <!-- EN: 미호 부족민 속옷 -->
+  <Miho_Apparel_Under_Tribal.label>美狐简易内衣（A）</Miho_Apparel_Under_Tribal.label>
+  <!-- EN: 조잡하지만 아름다운 속옷입니다. -->
+  <Miho_Apparel_Under_Tribal.description>用皮革或织物制成的简易内衣，虽然做工略显粗糙，但看起来相当养眼。</Miho_Apparel_Under_Tribal.description>
+  
+  <!-- EN: 미호 부족 엘텍스 속옷 -->
+  <Miho_Apparel_Under_TribalEltex.label>美狐灵质简易内衣</Miho_Apparel_Under_TribalEltex.label>
+  <!-- EN: 화현비단으로 제작한 고급 속옷입니다. -->
+  <Miho_Apparel_Under_TribalEltex.description>用火玄丝绸和织物制成的简易内衣，虽然做工略显粗糙，但看起来相当养眼。能够有效强化穿戴者的心灵能力。</Miho_Apparel_Under_TribalEltex.description>
+  
+  <!-- EN: 미호 부족민 속옷 (B) -->
+  <Miho_Apparel_Under_TribalTwo.label>美狐简易内衣（B）</Miho_Apparel_Under_TribalTwo.label>
+  <!-- EN: 조잡하지만 아름다운 속옷입니다. -->
+  <Miho_Apparel_Under_TribalTwo.description>用皮革或织物制成的简易内衣，虽然做工略显粗糙，但看起来相当养眼。</Miho_Apparel_Under_TribalTwo.description>
+  
+</LanguageData>

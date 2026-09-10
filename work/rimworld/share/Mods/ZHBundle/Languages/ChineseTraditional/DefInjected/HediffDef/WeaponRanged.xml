@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 갑옷 융해 -->
+  <Miho_Plasma_Hediff.label>護甲熔解</Miho_Plasma_Hediff.label>
+  <!-- EN: 갑옷이 열에 의해 부분적으로 액체화 되었습니다. -->
+  <Miho_Plasma_Hediff.description>此單位身上的護甲因高溫熔解了。</Miho_Plasma_Hediff.description>
+  <!-- EN: initial -->
+  <Miho_Plasma_Hediff.stages.initial-0.label>輕微</Miho_Plasma_Hediff.stages.initial-0.label>
+  <!-- EN: initial -->
+  <Miho_Plasma_Hediff.stages.initial-1.label>較輕</Miho_Plasma_Hediff.stages.initial-1.label>
+  <!-- EN: minor melted -->
+  <Miho_Plasma_Hediff.stages.minor_melted.label>中等</Miho_Plasma_Hediff.stages.minor_melted.label>
+  <!-- EN: moderate melted -->
+  <Miho_Plasma_Hediff.stages.moderate_melted.label>嚴重</Miho_Plasma_Hediff.stages.moderate_melted.label>
+  <!-- EN: severe melted -->
+  <Miho_Plasma_Hediff.stages.severe_melted.label>極重</Miho_Plasma_Hediff.stages.severe_melted.label>
+  <!-- EN: totally melted -->
+  <Miho_Plasma_Hediff.stages.totally_melted.label>完全</Miho_Plasma_Hediff.stages.totally_melted.label>
+  
+</LanguageData>

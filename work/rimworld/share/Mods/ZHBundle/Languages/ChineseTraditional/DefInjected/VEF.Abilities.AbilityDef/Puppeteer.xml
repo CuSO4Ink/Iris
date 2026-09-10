@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ascension -->
+  <VPEP_Ascension.label>盡忠號令</VPEP_Ascension.label>
+  <!-- EN: Targets a controlled puppet and causes them to commit suicide through psychic overload, annihilating itself and the surrounding 5 tiles. The sum of the puppet’s learned skills is converted into psychic energy for the detonation, with a fraction absorbed by the caster as psycasting XP. -->
+  <VPEP_Ascension.description>讓目標心偶過載自己的心靈能量並自爆，殺死小範圍內包括自身的一切。目標心偶的技能會被轉換成心靈能量在參與自爆，一小部分會被施放者吸收化作靈能經驗。</VPEP_Ascension.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEP_Ascension.jobReportString>使用能力：{0}</VPEP_Ascension.jobReportString>
+  <!-- EN: ascension -->
+  <VPEP_Ascension.verbProperties.label>盡忠號令</VPEP_Ascension.verbProperties.label>
+  
+  <!-- EN: brain cut -->
+  <VPEP_BrainCut.label>神經刺</VPEP_BrainCut.label>
+  <!-- EN: An intentional misuse of the reprogramming psycast which creates a permanent rift in the target’s brain. The damage scales with the target’s psychic sensitivity and always disorients for 2 seconds. -->
+  <VPEP_BrainCut.description>在操縱目標大腦時故意使靈能失控，對目標造成腦損傷。傷害取決於目標的心靈敏感度，總會造成2秒的眩暈。</VPEP_BrainCut.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEP_BrainCut.jobReportString>使用能力：{0}</VPEP_BrainCut.jobReportString>
+  <!-- EN: brain cut -->
+  <VPEP_BrainCut.verbProperties.label>神經刺</VPEP_BrainCut.verbProperties.label>
+  
+  <!-- EN: brain leech -->
+  <VPEP_BrainLeech.label>附腦蠱</VPEP_BrainLeech.label>
+  <!-- EN: Creates a psionic link on a colleague or prisoner that redirects brain processing power to the leacher. The effect is inefficient and reaches its maximum after 2 days before fading into obscurity. Only a single leech can be maintained. -->
+  <VPEP_BrainLeech.description>在一個囚犯或者同僚的腦中種下一個心靈鏈接，會竊取部分對方的腦力給主人使用。效果會在2天後達到高峰，隨後消失。一個人同時只能維持一個附腦蠱。</VPEP_BrainLeech.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEP_BrainLeech.jobReportString>使用能力：{0}</VPEP_BrainLeech.jobReportString>
+  <!-- EN: brain leech -->
+  <VPEP_BrainLeech.verbProperties.label>附腦蠱</VPEP_BrainLeech.verbProperties.label>
+  
+  <!-- EN: degrade -->
+  <VPEP_Degrade.label>心智降格</VPEP_Degrade.label>
+  <!-- EN: Reverts the humanoid target’s behavioral instincts to a considerably more primitive state, forcibly triggering the mental break 「run wild」. -->
+  <VPEP_Degrade.description>將目標腦內的行為認知重置為原始形態，強制觸發一次「精神崩潰：野性爆發」。</VPEP_Degrade.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEP_Degrade.jobReportString>使用能力：{0}</VPEP_Degrade.jobReportString>
+  <!-- EN: degrade -->
+  <VPEP_Degrade.verbProperties.label>心智降格</VPEP_Degrade.verbProperties.label>
+  
+  <!-- EN: mind jump -->
+  <VPEP_MindJump.label>意識轉移</VPEP_MindJump.label>
+  <!-- EN: Permanently swaps the caster and the targeted puppet’s bodies, with the puppet becoming the master with all of their psycasting capabilities. The sudden change in consciousness and adaptation to a new vessel locks the new master into a scaled 48-hour psychic coma. -->
+  <VPEP_MindJump.description>將施放者和目標心偶的意識永久交換，也就是說心偶會成為主人本體並繼承所有記憶和心靈能力。軀體的驟然改變會讓轉移後的施放者陷入48小時的昏迷。</VPEP_MindJump.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEP_MindJump.jobReportString>使用能力：{0}</VPEP_MindJump.jobReportString>
+  <!-- EN: mind jump -->
+  <VPEP_MindJump.verbProperties.label>意識轉移</VPEP_MindJump.verbProperties.label>
+  
+  <!-- EN: mind split -->
+  <VPEP_MindSplit.label>分心術</VPEP_MindSplit.label>
+  <!-- EN: By taking the psionic equivalent of a hammer and chisel to their own consciousness, the caster can permanently increase their limit of controllable puppets by one. Effectively painless as they knock themselves unconscious for a short duration from shattering their sense of self. -->
+  <VPEP_MindSplit.description>在施放者自己的心靈中塑造出一個象徵性的錘子和鑿子並打下一個缺口，從而使自己能操控的心偶上限永久+1。由於自身的感知會被分裂，施放者會陷入短期昏迷。</VPEP_MindSplit.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEP_MindSplit.jobReportString>使用能力：{0}</VPEP_MindSplit.jobReportString>
+  <!-- EN: mind split -->
+  <VPEP_MindSplit.verbProperties.label>分心術</VPEP_MindSplit.verbProperties.label>
+  
+  <!-- EN: puppet -->
+  <VPEP_Puppet.label>心偶</VPEP_Puppet.label>
+  <!-- EN: Targeting a pawn affected by Brain Leech, this psycast permanently overwrites their personality with the caster’s own. Locks the short-term memory portion of the brain to synchronize with the caster, in turn putting them into a short coma. Number of puppets is initially limited to one. -->
+  <VPEP_Puppet.description>選定一個正在被附腦蠱影響的目標，通過心靈鏈接強制覆寫目標的意識，將其重塑成心偶。將短期記憶部分與施放者同調，會使目標陷入短期昏迷。起初的心偶數量上限為1。</VPEP_Puppet.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEP_Puppet.jobReportString>使用能力：{0}</VPEP_Puppet.jobReportString>
+  <!-- EN: puppet -->
+  <VPEP_Puppet.verbProperties.label>心偶</VPEP_Puppet.verbProperties.label>
+  
+  <!-- EN: puppet swarm -->
+  <VPEP_PuppetSwarm.label>集結號令</VPEP_PuppetSwarm.label>
+  <!-- EN: By causing an effect similar to an extreme case of 「homesickness」, the caster can force all linked puppets to skip themselves to them almost instantaneously and regardless of distance. -->
+  <VPEP_PuppetSwarm.description>在心偶心中種下極深的思想之情，讓自己的所有心偶即刻躍遷到主人身邊。</VPEP_PuppetSwarm.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEP_PuppetSwarm.jobReportString>使用能力：{0}</VPEP_PuppetSwarm.jobReportString>
+  <!-- EN: puppet swarm -->
+  <VPEP_PuppetSwarm.verbProperties.label>集結號令</VPEP_PuppetSwarm.verbProperties.label>
+  
+  <!-- EN: subjugation -->
+  <VPEP_Subjugation.label>叛逆之印</VPEP_Subjugation.label>
+  <!-- EN: Induces a form of indoctrination on a prisoner by altering neuron pathways so that thoughts of the target’s faction triggers negative reactions. The effects are quite nauseating and 「convinces」 them to switch sides after 7 days. -->
+  <VPEP_Subjugation.description>改變一個囚犯的腦內神經迴路，反轉他對自身派系的認知。該效果會造成較大的精神壓力，會在7天後迫使目標加入你。</VPEP_Subjugation.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEP_Subjugation.jobReportString>使用能力：{0}</VPEP_Subjugation.jobReportString>
+  <!-- EN: subjugation -->
+  <VPEP_Subjugation.verbProperties.label>叛逆之印</VPEP_Subjugation.verbProperties.label>
+  
+  <!-- EN: summon puppet -->
+  <VPEP_SummonPuppet.label>回歸號令</VPEP_SummonPuppet.label>
+  <!-- EN: By causing an effect similar to an extreme case of 「homesickness」, the caster can force the puppet to skip itself to them almost instantaneously and regardless of distance. -->
+  <VPEP_SummonPuppet.description>在心偶心中種下極深的思想之情，讓一個心偶即刻躍遷到主人身邊。</VPEP_SummonPuppet.description>
+  <!-- EN: Using ability: {0} -->
+  <VPEP_SummonPuppet.jobReportString>使用能力：{0}</VPEP_SummonPuppet.jobReportString>
+  <!-- EN: summon puppet -->
+  <VPEP_SummonPuppet.verbProperties.label>回歸號令</VPEP_SummonPuppet.verbProperties.label>
+  
+</LanguageData>

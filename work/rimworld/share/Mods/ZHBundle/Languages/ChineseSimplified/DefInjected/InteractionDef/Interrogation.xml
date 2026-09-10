@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: extract knowledge -->
+  <RR_ScienceInterrogation_Demand.label>提取知识</RR_ScienceInterrogation_Demand.label>
+  <!-- EN:
+    <li>r_logentry->[INITIATOR_nameDef] spoke to [RECIPIENT_nameDef] about [subject].</li>
+    <li>r_logentry->[INITIATOR_nameDef] described [subject] to [RECIPIENT_nameDef].</li>
+    <li>r_logentry->[INITIATOR_nameDef] [encouraged] [RECIPIENT_nameDef] to [talkabout] [knowledge_requested].</li>
+    <li>encouraged->encouraged</li>
+    <li>encouraged->offered a chance for</li>
+    <li>encouraged->demanded</li>
+    <li>encouraged->suggested</li>
+    <li>talkabout->talk about</li>
+    <li>talkabout->discuss</li>
+    <li>talkabout->have a discussion about</li>
+    <li>talkabout->think about</li>
+    <li>subject->science</li>
+    <li>subject->previous experiments</li>
+    <li>subject->the scientific method</li>
+    <li>knowledge_requested->scientific data</li>
+    <li>knowledge_requested->experimentation</li>
+    <li>knowledge_requested->data points</li>
+    <li>knowledge_requested->[RECIPIENT_possessive] experience</li>
+    <li>knowledge_requested->[RECIPIENT_possessive] knowledge</li>
+  -->
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.0>r_logentry->[INITIATOR_nameDef] 与 [RECIPIENT_nameDef] 谈及 [subject]。</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.0>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.1>r_logentry->[INITIATOR_nameDef] 将 [subject] 说明给 [RECIPIENT_nameDef]。</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.1>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.2>r_logentry->[INITIATOR_nameDef] [encouraged] [RECIPIENT_nameDef] [talkabout] [knowledge_requested]。</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.2>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.3>encouraged->鼓励</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.3>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.4>encouraged->让</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.4>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.5>encouraged->要求</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.5>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.6>encouraged->建议</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.6>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.7>talkabout->谈论</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.7>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.8>talkabout->讨论</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.8>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.9>talkabout->讨论</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.9>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.10>talkabout->思考</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.10>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.11>subject->科学</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.11>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.12>subject->既往实验</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.12>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.13>subject->科学方法</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.13>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.14>knowledge_requested->科学数据</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.14>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.15>knowledge_requested->实验</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.15>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.16>knowledge_requested->数据点</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.16>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.17>knowledge_requested->[RECIPIENT_possessive] 经验</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.17>
+  <RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.18>knowledge_requested->[RECIPIENT_possessive] 知识</RR_ScienceInterrogation_Demand.logRulesInitiator.rulesStrings.18>
+
+  <!-- EN: share knowledge -->
+  <RR_ScienceInterrogation_Reply_Cooperative.label>分享知识</RR_ScienceInterrogation_Reply_Cooperative.label>
+  <!-- EN:
+    <li>r_logentry->[RECIPIENT_nameDef] [willingly] [revealed] [knowledge] to [INITIATOR_nameDef].</li>
+    <li>willingly->willingly</li>
+    <li>willingly->voluntarily</li>
+    <li>willingly->readily</li>
+    <li>willingly->freely</li>
+    <li>revealed->revealed</li>
+    <li>revealed->surrendered</li>
+    <li>revealed->gave up</li>
+    <li>revealed->conceded</li>
+    <li>knowledge->[RECIPIENT_possessive] knowledge</li>
+    <li>knowledge->[RECIPIENT_possessive] experience</li>
+    <li>knowledge->information</li>
+    <li>knowledge->scientific data</li>
+    <li>knowledge->data points</li>
+  -->
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.0>r_logentry->[RECIPIENT_nameDef] [willingly] [revealed] 了 [knowledge] 给 [INITIATOR_nameDef]。</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.0>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.1>willingly->心甘情愿地</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.1>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.2>willingly->自愿地</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.2>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.3>willingly->欣然地</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.3>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.4>willingly->坦然地</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.4>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.5>revealed->透露</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.5>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.6>revealed->交出</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.6>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.7>revealed->给出</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.7>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.8>revealed->让渡</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.8>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.9>knowledge->[RECIPIENT_possessive] 知识</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.9>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.10>knowledge->[RECIPIENT_possessive] 经验</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.10>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.11>knowledge->信息</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.11>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.12>knowledge->科学数据</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.12>
+  <RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.13>knowledge->数据点</RR_ScienceInterrogation_Reply_Cooperative.logRulesInitiator.rulesStrings.13>
+
+  <!-- EN: share knowledge -->
+  <RR_ScienceInterrogation_Reply_Reluctant.label>分享知识</RR_ScienceInterrogation_Reply_Reluctant.label>
+  <!-- EN:
+    <li>r_logentry->[RECIPIENT_nameDef] [reluctantly] [revealed] [knowledge] to [INITIATOR_nameDef].</li>
+    <li>reluctantly->reluctantly</li>
+    <li>reluctantly->unwillingly</li>
+    <li>revealed->revealed</li>
+    <li>revealed->surrendered</li>
+    <li>revealed->gave up</li>
+    <li>revealed->conceded</li>
+    <li>knowledge->[RECIPIENT_possessive] knowledge</li>
+    <li>knowledge->[RECIPIENT_possessive] experience</li>
+    <li>knowledge->information</li>
+    <li>knowledge->scientific data</li>
+    <li>knowledge->data points</li>
+  -->
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.0>r_logentry->[RECIPIENT_nameDef] [reluctantly] 地 [revealed] 了 [knowledge] 给 [INITIATOR_nameDef]。</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.0>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.1>reluctantly->不情愿</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.1>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.2>reluctantly->勉强</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.2>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.3>revealed->透露</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.3>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.4>revealed->交出</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.4>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.5>revealed->给出</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.5>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.6>revealed->让渡</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.6>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.7>knowledge->[RECIPIENT_possessive] 知识</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.7>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.8>knowledge->[RECIPIENT_possessive] 经验</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.8>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.9>knowledge->信息</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.9>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.10>knowledge->科学数据</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.10>
+  <RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.11>knowledge->数据点</RR_ScienceInterrogation_Reply_Reluctant.logRulesInitiator.rulesStrings.11>
+
+  <!-- EN: share knowledge -->
+  <RR_ScienceInterrogation_Reply_Resistant.label>分享知识</RR_ScienceInterrogation_Reply_Resistant.label>
+  <!-- EN:
+    <li>r_logentry->[RECIPIENT_nameDef] refused to [reveal] [anything] to [INITIATOR_nameDef].</li>
+    <li>r_logentry->[RECIPIENT_nameDef] [revealed] [false_pair] [knowledge] to [INITIATOR_nameDef].</li>
+    <li>reveal->surrender</li>
+    <li>reveal->give up</li>
+    <li>reveal->concede</li>
+    <li>reveal->reveal</li>
+    <li>revealed->revealed</li>
+    <li>revealed->surrendered</li>
+    <li>revealed->gave up</li>
+    <li>revealed->conceded</li>
+    <li>anything->[RECIPIENT_possessive] knowledge</li>
+    <li>anything->anything</li>
+    <li>anything->any information</li>
+    <li>false_pair->[false]</li>
+    <li>false_pair->[false_adjective] [false]</li>
+    <li>false_adjective->blatantly</li>
+    <li>false_adjective->clearly</li>
+    <li>false_adjective->completely</li>
+    <li>false->false</li>
+    <li>false->incorrect</li>
+    <li>false->false</li>
+    <li>false->unreliable</li>
+    <li>false->unverifiable</li>
+    <li>false->unactionable</li>
+    <li>knowledge->information</li>
+    <li>knowledge->scientific data</li>
+    <li>knowledge->data points</li>
+  -->
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.0>r_logentry->[RECIPIENT_nameDef] 拒绝 [reveal] [anything] 给 [INITIATOR_nameDef]。</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.0>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.1>r_logentry->[RECIPIENT_nameDef] [revealed] 了 [false_pair] [knowledge] 给 [INITIATOR_nameDef]。</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.1>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.2>reveal->转让</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.2>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.3>reveal->交出</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.3>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.4>reveal->给出</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.4>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.5>reveal->透露</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.5>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.6>revealed->透露</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.6>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.7>revealed->交出</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.7>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.8>revealed->给出</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.8>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.9>revealed->让渡</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.9>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.10>anything->[RECIPIENT_possessive] 知识</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.10>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.11>anything->任何东西</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.11>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.12>anything->任何信息</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.12>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.13>false_pair->[false]</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.13>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.14>false_pair->[false_adjective] [false]</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.14>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.15>false_adjective->明显的</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.15>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.16>false_adjective->清楚的</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.16>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.17>false_adjective->完全的</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.17>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.18>false->虚假</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.18>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.19>false->错误</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.19>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.20>false->不实</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.20>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.21>false->不可靠</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.21>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.22>false->无法证实</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.22>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.23>false->无法使用</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.23>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.24>knowledge->信息</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.24>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.25>knowledge->科学数据</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.25>
+  <RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.26>knowledge->数据点</RR_ScienceInterrogation_Reply_Resistant.logRulesInitiator.rulesStrings.26>
+
+  <!-- EN: note knowledge -->
+  <RR_ScienceInterrogationFinalize.label>记录知识</RR_ScienceInterrogationFinalize.label>
+  <!-- EN:
+    <li>r_logentry->[INITIATOR_nameDef] [noted] [knowledge] [given] by [RECIPIENT_nameDef] [about] [subject].</li>
+    <li>noted->noted down</li>
+    <li>noted->wrote down</li>
+    <li>noted->logged</li>
+    <li>noted->memorized</li>
+    <li>noted->gained</li>
+    <li>given->given</li>
+    <li>given->shared</li>
+    <li>given->provided</li>
+    <li>given->doled out</li>
+    <li>given->handed over</li>
+    <li>given->dispensed</li>
+    <li>about->about</li>
+    <li>about->regarding</li>
+    <li>about->on the subject of</li>
+    <li>subject->science</li>
+    <li>subject->previous experiments</li>
+    <li>subject->prototypes</li>
+    <li>subject->research</li>
+    <li>knowledge->knowledge</li>
+    <li>knowledge->information</li>
+    <li>knowledge->scientific data</li>
+    <li>knowledge->data points</li>
+  -->
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.0>r_logentry->[INITIATOR_nameDef] [noted] [knowledge]，[given] 自 [RECIPIENT_nameDef]，[about] [subject]。</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.0>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.1>noted->记下</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.1>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.2>noted->写下</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.2>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.3>noted->登记</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.3>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.4>noted->记忆</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.4>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.5>noted->获得</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.5>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.6>given->给予</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.6>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.7>given->分享</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.7>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.8>given->提供</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.8>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.9>given->发放</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.9>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.10>given->移交</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.10>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.11>given->施予</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.11>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.12>about->关于</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.12>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.13>about->有关</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.13>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.14>about->主题为</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.14>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.15>subject->科学</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.15>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.16>subject->既往实验</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.16>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.17>subject->原型</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.17>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.18>subject->研究</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.18>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.19>knowledge->知识</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.19>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.20>knowledge->信息</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.20>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.21>knowledge->科学数据</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.21>
+  <RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.22>knowledge->数据点</RR_ScienceInterrogationFinalize.logRulesInitiator.rulesStrings.22>
+
+</LanguageData>

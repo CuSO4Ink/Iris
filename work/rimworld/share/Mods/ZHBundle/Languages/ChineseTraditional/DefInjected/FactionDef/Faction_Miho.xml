@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 재벌 제후국 -->
+  <Miho_Faction_Megacorp.label>美狐巨企帝國</Miho_Faction_Megacorp.label>
+  <!-- EN: 은하 어딘가에 있는 거대한 여우 기업의 잊혀진 제후국 입니다. 이들이 돈을 모으는 이유는 자신들을 지성체로 만들어준 무언가에게 제물을 바치기 위해서란 말이 있습니다. -->
+  <Miho_Faction_Megacorp.description>已逐漸淡出人們視野的美狐族巨企帝國，其總部坐落於銀河系的某處。有傳言稱，這些美狐族將賺來的財富都獻給了賦予他們智慧的超凡智能。</Miho_Faction_Megacorp.description>
+  <!-- EN: 제후 -->
+  <Miho_Faction_Megacorp.leaderTitle>首席執行官</Miho_Faction_Megacorp.leaderTitle>
+  <!-- EN: {0} from {1} are attacking your {2}. -->
+  <Miho_Faction_Megacorp.messageDefendersAttacking>來自{1}的{0}正在攻擊你的{2}。</Miho_Faction_Megacorp.messageDefendersAttacking>
+  <!-- EN: 미호 -->
+  <Miho_Faction_Megacorp.pawnSingular>美狐族</Miho_Faction_Megacorp.pawnSingular>
+  <!-- EN: 미호들 -->
+  <Miho_Faction_Megacorp.pawnsPlural>美狐族</Miho_Faction_Megacorp.pawnsPlural>
+  <!-- EN: 기여점수 -->
+  <Miho_Faction_Megacorp.royalFavorLabel>貢獻點數</Miho_Faction_Megacorp.royalFavorLabel>
+  
+</LanguageData>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 태양화 위험약물 -->
+  <Chemical_Miho_PositiveFlower_Juice.label>秘靈烈藥</Chemical_Miho_PositiveFlower_Juice.label>
+  <!-- EN: 태양화 위험약물에 중독되면 그에대한 부작용을 방지하기 위해 지속적으로 태양화 위험약물을 투여 받아야 합니다. -->
+  <Chemical_Miho_PositiveFlower_Juice.description>因為秘靈烈藥成癮，此人需要經常飲用朝花湯劑，避免戒斷症狀。</Chemical_Miho_PositiveFlower_Juice.description>
+  
+  <!-- EN: 태양화 경약물 -->
+  <Chemical_Miho_PositiveFlower_Tea.label>秘靈藥物</Chemical_Miho_PositiveFlower_Tea.label>
+  <!-- EN: 미호가 동물적 감각을 지니지 않기 위해 태양화로 만든 약물을 주기적으로 복용해야 합니다. -->
+  <Chemical_Miho_PositiveFlower_Tea.description>因為秘靈藥物成癮，此人需要經常攝入曜陽煙或煦日茶，避免戒斷症狀。</Chemical_Miho_PositiveFlower_Tea.description>
+  
+</LanguageData>

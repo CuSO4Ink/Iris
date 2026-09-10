@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_SimpleBake.label>簡單面點</VCE_SimpleBake.label>
+		<VCE_SimpleBake.description>用少許麵粉和其它材料快速烹飪出的一份簡單面點。</VCE_SimpleBake.description>
+		<VCE_FineBake.label>精緻面點</VCE_FineBake.label>
+		<VCE_FineBake.description>選擇多種原料，精心烹飪出的一份相對複雜的面點。</VCE_FineBake.description>
+		<VCE_LavishBake.label>奢侈面點</VCE_LavishBake.label>
+		<VCE_LavishBake.description>廚藝界的大師級作品，這份面點同時滋養了身體、思想和靈魂。</VCE_LavishBake.description>
+		<VCE_GourmetBake.label>豪華面點</VCE_GourmetBake.label>
+		<VCE_GourmetBake.description>精雕細琢的面點，美艷絕倫，雖然量不多。</VCE_GourmetBake.description>
+	</LanguageData>

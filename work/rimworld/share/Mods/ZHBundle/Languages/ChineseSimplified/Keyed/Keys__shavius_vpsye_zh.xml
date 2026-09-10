@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguagData>
+	<!-- EN: Is a deathrest building. -->
+  <VPEH.DeathrestBuilding>是死眠设施。</VPEH.DeathrestBuilding>
+	<!-- EN: {0} deathrest buildings nearby. -->
+  <VPEH.DeathrestBuildingsNearby>附近{0}有死眠设施。</VPEH.DeathrestBuildingsNearby>
+	<!-- EN: Hemogen is too low. Minimum {0} is required. -->
+  <VPEH.HemogenTooLow>血原质水平过低，需要至少{0}。</VPEH.HemogenTooLow>
+	<!-- EN: Corpse must be not dessicated. -->
+  <VPEH.MustBeNotDessicated>尸体不能已经干枯。</VPEH.MustBeNotDessicated>
+	<!-- EN: Cannot cast: target is hemogenic. -->
+  <VPEH.OnlyNonHemogenic>无法施放：目标拥有血原化基因。</VPEH.OnlyNonHemogenic>
+    <!-- EN: Cancel Bloodfocus -->
+  <VPEH.CancelBloodfocus>中止浸血冥想</VPEH.CancelBloodfocus>
+    <!-- EN: Click to cancel Bloodfocus on the caster. -->
+  <VPEH.CancelBloodfocusDesc>点击中止施放者的浸血冥想。</VPEH.CancelBloodfocusDesc>
+	<!-- EN: H -->
+  <VPEH.HemogenLetter>H</VPEH.HemogenLetter>
+
+  <!-- EN: Target cannot be colonist. -->
+  <VPEP.TargetCannotBeSameFactionAsCaster>不能选择己方成员。</VPEP.TargetCannotBeSameFactionAsCaster>
+	<!-- EN: Target must be prisoner or colonist. -->
+  <VPEP.TargetMustBeSameFactionAsCaster>目标必须是殖民者或囚犯。</VPEP.TargetMustBeSameFactionAsCaster>
+	<!-- EN: Target must be prisoner or slave. -->
+  <VPEP.TargetMustBePrisonerOrSlave>目标必须是囚犯或奴隶。</VPEP.TargetMustBePrisonerOrSlave>
+	<!-- EN: It was caused by the Degrade psycast. -->
+  <VPEP.DegradePsycast>这是受到了心智降格能力的影响。</VPEP.DegradePsycast>
+	<!-- EN: Target must have brain leech from the caster. -->
+  <VPEP.TargetMustHaveBrainLeech>目标必须拥有来自施放者的附脑蛊。</VPEP.TargetMustHaveBrainLeech>
+	<!-- EN: Target is a puppet already. -->
+  <VPEP.TargetIsPuppetAlready>目标已经是心偶了。</VPEP.TargetIsPuppetAlready>
+	<!-- EN: Cannot have more puppets due to the puppet limit. -->
+  <VPEP.CannotHaveMorePuppets>心偶数量已达上限。</VPEP.CannotHaveMorePuppets>
+	<!-- EN: Puppets -->
+  <VPEP.Puppets>心偶</VPEP.Puppets>
+	<!-- EN: A puppeteer can only sustain a puppet if there is enough psychic capacity to do so. Gain more psychic capacity to sustain more puppets by casting mind split, however bear in mind it will send the puppeteer and all their puppets into a 24 hour coma.\n\nPsychic capacity: {0} -->
+  <VPEP.PuppetsGizmoTip>一个操偶师能维持的心偶数量有限。可以通过施放分心术增加心偶上限，但注意施放该能力会让施放者和自己所有控制之下的心偶陷入24小时的昏迷。\n\n当前上限：{0}</VPEP.PuppetsGizmoTip>
+	<!-- EN: Current puppets: -->
+  <VPEP.PuppetsUsage>当前心偶：</VPEP.PuppetsUsage>
+	<!-- EN: Target must be a puppet of the caster. -->
+  <VPEP.TargetMustBePuppetOfCaster>目标必须是属于施放者的心偶。</VPEP.TargetMustBePuppetOfCaster>
+	<!-- EN: No puppets. -->
+  <VPEP.NoPuppets>没有心偶。</VPEP.NoPuppets>
+	<!-- EN: Mind jump -->
+  <VPEP.MindJumpTitle>意识转移</VPEP.MindJumpTitle>
+	<!-- EN: {Puppeteer_nameDef} has died. Before {Puppeteer_pronoun} died, {Puppeteer_pronoun} used the mind jump ability on {NewPuppeteer_nameDef}. Now {NewPuppeteer_nameDef} is a new puppeteer. -->
+  <VPEP.MindJumpText>{Puppeteer_nameDef}已经死亡。但{Puppeteer_pronoun}临死之前将意识转移到了{NewPuppeteer_nameDef}身上。现在{NewPuppeteer_nameDef}是操偶师本尊了。</VPEP.MindJumpText>
+</LanguagData>

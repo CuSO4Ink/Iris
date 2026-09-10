@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: decorative baking -->
+  <VCE_DecorativeBaking.label>烘焙</VCE_DecorativeBaking.label>
+  <!-- EN: Unlocks techniques for creative baking, enabling colonists to craft decorated cakes, cupcakes, and cookies with colorful designs and sweet flair. -->
+  <VCE_DecorativeBaking.description>开发烘焙的技巧，让殖民者可以制作出装点精致的蛋糕，纸杯蛋糕，曲奇等多种多样的点心。</VCE_DecorativeBaking.description>
+  <!-- EN:
+    <li>subject->decorative baking</li>
+    <li>subject_story->perfected the art of transforming simple sweets into colorful creations</li>
+    <li>subject_story->trained in the delicate craft of fondant, frosting, and sugarwork</li>
+    <li>subject_story->founded a renowned bakery, delighting children and patrons with whimsical confections</li>
+    <li>subject_gerund->designing intricate cakes and decorated pastries</li>
+  -->
+  <VCE_DecorativeBaking.generalRules.rulesStrings>
+    <li>subject->装饰糕点</li>
+    <li>subject_story->完善了简单的甜点中体现的厨艺技巧</li>
+    <li>subject_story->特别学习了翻糖，冰糖和糖霜的妙用。</li>
+    <li>subject_story->成立了一家又名的烘焙屋，给邻里的孩子们提供充满创意的点心</li>
+    <li>subject_gerund->设计精致养眼的烘焙点心</li>
+  </VCE_DecorativeBaking.generalRules.rulesStrings>
+  
+</LanguageData>

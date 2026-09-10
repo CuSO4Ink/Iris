@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <VCEF_Fishing.label>钓鱼</VCEF_Fishing.label>
+  <!-- EN: Catch fish in designated work zones. -->
+  <VCEF_Fishing.description>在指定的区域钓鱼。</VCEF_Fishing.description>
+  <!-- EN: fishing -->
+  <VCEF_Fishing.gerundLabel>钓鱼</VCEF_Fishing.gerundLabel>
+  <!-- EN: Fish -->
+  <VCEF_Fishing.labelShort>钓鱼</VCEF_Fishing.labelShort>
+  <!-- EN: Fisher -->
+  <VCEF_Fishing.pawnLabel>渔夫</VCEF_Fishing.pawnLabel>
+  <!-- EN: Fish -->
+  <VCEF_Fishing.verb>钓鱼</VCEF_Fishing.verb>
+  
+</LanguageData>

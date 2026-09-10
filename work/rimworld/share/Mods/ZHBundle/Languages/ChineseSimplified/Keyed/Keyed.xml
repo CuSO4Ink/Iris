@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+  <AAAA_SettingsCategory>AAAA 设置</AAAA_SettingsCategory>
+  <AAAA_Description>描述</AAAA_Description>
+  <AAAA_DefaultDescription1>AAAA 是一个在袭击发生时自动切换活动区，并引导非战斗人员与儿童撤离至安全区域的模组（这种行为在mod中称为撤离）。</AAAA_DefaultDescription1>
+  <AAAA_DefaultDescription2>本页面可调整 AAAA 的各项功能</AAAA_DefaultDescription2>
+  <AAAA_DefaultDescription3></AAAA_DefaultDescription3>
+  <AAAA_DefaultDescription4></AAAA_DefaultDescription4>
+  <AAAA_Suffix>后缀</AAAA_Suffix>
+  <AAAA_SuffixDescription1>AAAA 会搜索名为“当前活动区名称 + 后缀”的活动区，若存在则切换至该区域。</AAAA_SuffixDescription1>
+  <AAAA_SuffixDescription2>若后缀包含特殊符号，可能导致匹配失败，切换功能将无法生效。</AAAA_SuffixDescription2>
+  <AAAA_SuffixDescription3>因此不建议修改默认后缀“#safe”。若需修改，请务必在敌人出现时测试功能是否能正常使用。</AAAA_SuffixDescription3>
+  <AAAA_SuffixDescription4></AAAA_SuffixDescription4>
+  <AAAA_HighSensitivityMode>始终高灵敏度模式</AAAA_HighSensitivityMode>
+  <AAAA_HighSensitivityModeDescription1>AAAA 会将大型敌人视为威胁，并将背景音乐切换为战斗音乐。</AAAA_HighSensitivityModeDescription1>
+  <AAAA_HighSensitivityModeDescription2>高灵敏度模式下，即使出现微小威胁也会触发撤离，且需击败所有敌人才会解除。</AAAA_HighSensitivityModeDescription2>
+  <AAAA_HighSensitivityModeDescription3>若启用此模式但未察觉敌人存在，可能导致“击败敌人后撤离仍未自动结束”。</AAAA_HighSensitivityModeDescription3>
+  <AAAA_HighSensitivityModeDescription4>OFF：仅在猎杀人类动物出现时自动启用高灵敏度模式。ON：始终保持高灵敏度模式。</AAAA_HighSensitivityModeDescription4>
+  <AAAA_Emotes>动画</AAAA_Emotes>
+  <AAAA_EmotesDescription1>当 AAAA 切换活动区时，殖民者会发出“！”的动画提示。</AAAA_EmotesDescription1>
+  <AAAA_EmotesDescription2></AAAA_EmotesDescription2>
+  <AAAA_EmotesDescription3></AAAA_EmotesDescription3>
+  <AAAA_EmotesDescription4></AAAA_EmotesDescription4>
+  <AAAA_SoundEffect>音效</AAAA_SoundEffect>
+  <AAAA_SoundEffectDescription1>AAAA 切换活动区时播放音效。</AAAA_SoundEffectDescription1>
+  <AAAA_SoundEffectDescription2></AAAA_SoundEffectDescription2>
+  <AAAA_SoundEffectDescription3></AAAA_SoundEffectDescription3>
+  <AAAA_SoundEffectDescription4></AAAA_SoundEffectDescription4>
+  <AAAA_SoundEffectNormalMode>撤离解除音效</AAAA_SoundEffectNormalMode>
+  <AAAA_SoundEffectNormalModeDescription1>ON: 自动解除撤离时静音</AAAA_SoundEffectNormalModeDescription1>
+  <AAAA_SoundEffectNormalModeDescription2>OFF: 自动解除撤离时播放音效。</AAAA_SoundEffectNormalModeDescription2>
+  <AAAA_SoundEffectNormalModeDescription3></AAAA_SoundEffectNormalModeDescription3>
+  <AAAA_SoundEffectNormalModeDescription4></AAAA_SoundEffectNormalModeDescription4>
+  <AAAA_PredatorHunt>被野生动物猎杀</AAAA_PredatorHunt>
+  <AAAA_PredatorHuntDescription1>当被野生捕食者捕食时，它会向受害者发出撤离命令。大约一小时后，AAAA将解除撤离命令</AAAA_PredatorHuntDescription1>
+  <AAAA_PredatorHuntDescription2>小Tips：捕食者倾向攻击弱小、受伤或倒地目标。</AAAA_PredatorHuntDescription2>
+  <AAAA_PredatorHuntDescription3></AAAA_PredatorHuntDescription3>
+  <AAAA_PredatorHuntDescription4></AAAA_PredatorHuntDescription4>
+  <AAAA_DropPod>空投仓袭击</AAAA_DropPod>
+  <AAAA_DropPodDescription1>当空投舱袭击降落时，AAAA 会立即让降落位置附近的殖民者撤离（舱体未开启前）。</AAAA_DropPodDescription1>
+  <AAAA_DropPodDescription2>当一个空投仓被打开时，AAAA会探测到袭击者并命令所有的殖民者撤离。</AAAA_DropPodDescription2>
+  <AAAA_DropPodDescription3>总结：为贴近事实，仅空投舱附近的殖民者能在全局警报前提前反应。</AAAA_DropPodDescription3>
+  <AAAA_DropPodDescription4></AAAA_DropPodDescription4>
+  <AAAA_MeleeAttack>近战攻击</AAAA_MeleeAttack>
+  <AAAA_MeleeAttackDescription1>当殖民者遭受敌人近战攻击时，AAAA 会发出撤离指令。</AAAA_MeleeAttackDescription1>
+  <AAAA_MeleeAttackDescription2>此功能为 AAAA 未检测到敌人时的备用机制，可能与现有功能重复。</AAAA_MeleeAttackDescription2>
+  <AAAA_MeleeAttackDescription3></AAAA_MeleeAttackDescription3>
+  <AAAA_MeleeAttackDescription4></AAAA_MeleeAttackDescription4>
+  <AAAA_MechanoidCluster>机械集群</AAAA_MechanoidCluster>
+  <AAAA_MechanoidClusterDescription1>机械集群出现时触发撤离，即使其处于休眠状态。</AAAA_MechanoidClusterDescription1>
+  <AAAA_MechanoidClusterDescription2>若您希望保留机械集群不动，并将其作为拦截系统用于拦截其他派系的袭击者，请关闭此功能。</AAAA_MechanoidClusterDescription2>
+  <AAAA_MechanoidClusterDescription3>关闭后，仅会在机械族集群激活时响应。</AAAA_MechanoidClusterDescription3>
+  <AAAA_MechanoidClusterDescription4></AAAA_MechanoidClusterDescription4>
+  <AAAA_Hive>虫巢</AAAA_Hive>
+  <AAAA_HiveDescription1>虫巢出现时触发撤离指令。</AAAA_HiveDescription1>
+  <AAAA_HiveDescription2>启用时，即使虫巢处于休眠状态也会响应，想要解除撤离，需要摧毁所有虫巢</AAAA_HiveDescription2>
+  <AAAA_HiveDescription3></AAAA_HiveDescription3>
+  <AAAA_HiveDescription4></AAAA_HiveDescription4>
+  <AAAA_EnemyOfDefenseIsThreat>防御型敌人视为威胁</AAAA_EnemyOfDefenseIsThreat>
+  <AAAA_EnemyOfDefenseIsThreat1>ON：将“仅当殖民者靠近时攻击”的防御型敌人视为威胁。</AAAA_EnemyOfDefenseIsThreat1>
+  <AAAA_EnemyOfDefenseIsThreat2>请注意这包括洞穴中的昆虫。</AAAA_EnemyOfDefenseIsThreat2>
+  <AAAA_EnemyOfDefenseIsThreat3>OFF:将这种“仅当殖民者靠近时攻击”的防御型敌人视为安全的。</AAAA_EnemyOfDefenseIsThreat3>
+  <AAAA_EnemyOfDefenseIsThreat4></AAAA_EnemyOfDefenseIsThreat4>
+  <AAAA_Draft>征召状态切换</AAAA_Draft>
+  <AAAA_DraftDescription1>ON：被征召的殖民者也会切换活动区</AAAA_DraftDescription1>
+  <AAAA_DraftDescription2>当然，被征召的殖民者不会撤离。</AAAA_DraftDescription2>
+  <AAAA_DraftDescription3></AAAA_DraftDescription3>
+  <AAAA_DraftDescription4></AAAA_DraftDescription4>
+  <AAAA_ManualButton>手动疏散警报</AAAA_ManualButton>
+  <AAAA_ManualButton1>当打开时，添加一个警报按钮，允许您手动向殖民者发出撤离/取消撤离的命令。</AAAA_ManualButton1>
+  <AAAA_ManualButton2>因为警报是虚拟的，听力受损的殖民者也能听见</AAAA_ManualButton2>
+  <AAAA_ManualButton3>殖民者需要一点时间才能作出反应。</AAAA_ManualButton3>
+  <AAAA_ManualButton4></AAAA_ManualButton4>
+  <AAAA_ManualOnlyMode>仅手动模式</AAAA_ManualOnlyMode>
+  <AAAA_ManualOnlyMode1>如果打开，将禁用自动更改活动区。</AAAA_ManualOnlyMode1>
+  <AAAA_ManualOnlyMode2>请当您希望只通过手动操作来使用AAAA时开启。</AAAA_ManualOnlyMode2>
+  <AAAA_ManualOnlyMode3></AAAA_ManualOnlyMode3>
+  <AAAA_ManualOnlyMode4></AAAA_ManualOnlyMode4>
+</LanguageData>

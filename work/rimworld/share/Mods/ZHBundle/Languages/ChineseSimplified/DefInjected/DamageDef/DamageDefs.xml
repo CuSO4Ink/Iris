@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: mechanite-arcane -->
+  <Miho_MagicBomb.label>秘灵爆炸</Miho_MagicBomb.label>
+  <!-- EN: {0} has died in an explosion. -->
+  <Miho_MagicBomb.deathMessage>{0}被炸死了。</Miho_MagicBomb.deathMessage>
+  
+  <!-- EN: mechanite-arcane -->
+  <Miho_MagicBombAnalysis.label>秘灵爆炸</Miho_MagicBombAnalysis.label>
+  <!-- EN: {0} has been beamed to death. -->
+  <Miho_MagicBombAnalysis.deathMessage>{0}被杀死了。</Miho_MagicBombAnalysis.deathMessage>
+  
+  <!-- EN: mechanite-arcane -->
+  <Miho_MagicBombBatto.label>秘灵爆炸</Miho_MagicBombBatto.label>
+  <!-- EN: {0} has died in an cut. -->
+  <Miho_MagicBombBatto.deathMessage>{0}被杀死了。</Miho_MagicBombBatto.deathMessage>
+  
+  <!-- EN: mechanite-arcane -->
+  <Miho_MagicBombBig.label>秘灵爆炸</Miho_MagicBombBig.label>
+  <!-- EN: {0} has died in an explosion. -->
+  <Miho_MagicBombBig.deathMessage>{0}被炸死了。</Miho_MagicBombBig.deathMessage>
+  
+  <!-- EN: mechanite-arcane -->
+  <Miho_MagicBombEMP.label>秘灵爆炸</Miho_MagicBombEMP.label>
+  <!-- EN: {0} has been beamed to death. -->
+  <Miho_MagicBombEMP.deathMessage>{0}被杀死了。</Miho_MagicBombEMP.deathMessage>
+  
+  <!-- EN: mechanite-arcane -->
+  <Miho_MagicBombGaze.label>秘灵爆炸</Miho_MagicBombGaze.label>
+  <!-- EN: {0} has been beamed to death. -->
+  <Miho_MagicBombGaze.deathMessage>{0}被杀死了。</Miho_MagicBombGaze.deathMessage>
+  
+  <!-- EN: mechanite-arcane -->
+  <Miho_MagicBombHawk.label>秘灵爆炸</Miho_MagicBombHawk.label>
+  <!-- EN: {0} has died in an explosion. -->
+  <Miho_MagicBombHawk.deathMessage>{0}被炸死了。</Miho_MagicBombHawk.deathMessage>
+  
+</LanguageData>

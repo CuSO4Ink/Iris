@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Weapon Bond:  -->
+  <SK_WeaponMastery_WeaponMasteryDescriptionItemWeaponBond>武器綁定：</SK_WeaponMastery_WeaponMasteryDescriptionItemWeaponBond>
+    <!-- EN: Weapon Mastery:  -->
+  <SK_WeaponMastery_WeaponMasteryDescriptionItem>武器精通者：</SK_WeaponMastery_WeaponMasteryDescriptionItem>
+    <!-- EN: Relic Bonuses:  -->
+  <SK_WeaponMastery_WeaponMasteryDescriptionTitleRelicBonus>聖物屬性加成：</SK_WeaponMastery_WeaponMasteryDescriptionTitleRelicBonus>
+    <!-- EN: Weapon Mastery -->
+  <SK_WeaponMastery_StatWeaponMastery>武器精通</SK_WeaponMastery_StatWeaponMastery>
+</LanguageData>

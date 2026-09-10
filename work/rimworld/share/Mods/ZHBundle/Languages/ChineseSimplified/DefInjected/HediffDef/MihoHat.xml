@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 돌격 지휘 -->
+  <Miho_Command_Charge_Hediff.label>突击命令</Miho_Command_Charge_Hediff.label>
+  <!-- EN: "아무튼 꼬라박아! 그리고 이겨!" -->
+  <Miho_Command_Charge_Hediff.description>此人正在通过心灵感应下达突击命令，提高附近所有人的移动速度和近战能力。\n\n“不管怎样，先冲上去再说！会赢的！”</Miho_Command_Charge_Hediff.description>
+  
+  <!-- EN: 돌격 지휘 받음 -->
+  <Miho_Command_ChargeCommand_Hediff.label>突击命令</Miho_Command_ChargeCommand_Hediff.label>
+  <!-- EN: 돌격 지휘를 받았습니다. -->
+  <Miho_Command_ChargeCommand_Hediff.description>有人在附近使用突击命令能力，从而提高了此人的移动速度和近战能力。</Miho_Command_ChargeCommand_Hediff.description>
+  
+  <!-- EN: 격려 -->
+  <Miho_Command_Mental_Hediff.label>鼓舞命令</Miho_Command_Mental_Hediff.label>
+  <!-- EN: "아무튼 열심히 해봐!" -->
+  <Miho_Command_Mental_Hediff.description>此人正在通过心灵感应下达鼓舞命令，提高附近所有人的心情。\n\n“不管怎样，先努力去做吧！”</Miho_Command_Mental_Hediff.description>
+  
+  <!-- EN: 격려 받음 -->
+  <Miho_Command_MentalCommand_Hediff.label>鼓舞命令</Miho_Command_MentalCommand_Hediff.label>
+  <!-- EN: 초능력으로 격려를 받아 무드 보너스를 받았습니다. -->
+  <Miho_Command_MentalCommand_Hediff.description>有人在附近使用鼓舞命令能力，从而提高了此人的心情。</Miho_Command_MentalCommand_Hediff.description>
+  
+  <!-- EN: Masked -->
+  <Miho_EltexCaptain_Hediff.label>遮掩面部</Miho_EltexCaptain_Hediff.label>
+  <!-- EN: Masked -->
+  <Miho_EltexCaptain_Hediff.description>遮掩面部。</Miho_EltexCaptain_Hediff.description>
+  <!-- EN: Masked -->
+  <Miho_EltexCaptain_Hediff.labelNoun>遮掩面部</Miho_EltexCaptain_Hediff.labelNoun>
+  
+  <!-- EN: Masked -->
+  <Miho_EltexMask_Hediff.label>遮掩面部</Miho_EltexMask_Hediff.label>
+  <!-- EN: Masked -->
+  <Miho_EltexMask_Hediff.description>遮掩面部。</Miho_EltexMask_Hediff.description>
+  <!-- EN: Masked -->
+  <Miho_EltexMask_Hediff.labelNoun>遮掩面部</Miho_EltexMask_Hediff.labelNoun>
+  
+  <!-- EN: 아주 기초적인 임플란트 -->
+  <Miho_Pariah_Hediff.label>头盔视觉强化</Miho_Pariah_Hediff.label>
+  <!-- EN: 아주 기초적인 임플란트. -->
+  <Miho_Pariah_Hediff.description>头盔视觉强化。</Miho_Pariah_Hediff.description>
+  <!-- EN: 아주 기초적인 임플란트 -->
+  <Miho_Pariah_Hediff.labelNoun>头盔视觉强化</Miho_Pariah_Hediff.labelNoun>
+  
+</LanguageData>

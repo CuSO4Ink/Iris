@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: mass animal insanity -->
+  <AnimalInsanityMassPurple.label>大量动物发狂</AnimalInsanityMassPurple.label>
+  
+  <!-- EN: infestation -->
+  <InfestationPurple.label>虫灾</InfestationPurple.label>
+  <!-- EN: Infestation -->
+  <InfestationPurple.letterLabel>虫灾</InfestationPurple.letterLabel>
+  <!-- EN: Giant insects are tunneling towards you! They will break through in a few seconds and plant hives.\n\nThe hives will spawn more insects and more hives.\n\nIf you don't want the insects to infest the whole area, destroy the hives. But beware - the bugs will defend their home. -->
+  <InfestationPurple.letterText>一大群虫族正在向你挖掘而来！它们会在片刻后突破地表并且安置虫巢。\n\n这些虫巢会繁衍更多的虫族和虫巢。\n\n如果你不希望虫族遍布整片区域，那就摧毁这些虫巢。但是要当心——这些虫族会保卫他们的家园。</InfestationPurple.letterText>
+  
+  <!-- EN: manhunter pack -->
+  <ManhunterPackPurple.label>猎杀人类</ManhunterPackPurple.label>
+  
+  <!-- EN: enemy raid whiteout -->
+  <RaidEnemyPurple.label>白幕袭击</RaidEnemyPurple.label>
+  
+  <!-- EN: desperate refugees -->
+  <VEE_WhiteoutRefugees.label>绝望的难民</VEE_WhiteoutRefugees.label>
+  
+</LanguageData>

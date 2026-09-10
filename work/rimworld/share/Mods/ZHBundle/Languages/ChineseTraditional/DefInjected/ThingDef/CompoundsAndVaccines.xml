@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: XJ9 - Compound -->
+  <MiracleCompound.label>XJ9合劑</MiracleCompound.label>
+  <!-- EN: A miracle compound heavily used by soldiers on the frontline. Injecting it on the bloodstream can temporarily nullify fatigue and lowers hunger rate, along with temporarily boosting a few stats along the way. -->
+  <MiracleCompound.description>通常發放給前線士兵使用的奇妙藥物。注射後可暫時消除睡眠需求並大幅降低飢餓速率，還能提供少量的屬性加成。</MiracleCompound.description>
+  <!-- EN: Inject {0} -->
+  <MiracleCompound.ingestible.ingestCommandString>注射{0}</MiracleCompound.ingestible.ingestCommandString>
+  <!-- EN: Injecting {0}. -->
+  <MiracleCompound.ingestible.ingestReportString>正在注射{0}。</MiracleCompound.ingestible.ingestReportString>
+  
+  <!-- EN: "anti-necrotion" vaccine -->
+  <Vaccine_AntiNecrotion.label>歿疫解藥</Vaccine_AntiNecrotion.label>
+  <!-- EN: A powerful vaccine that can cure the necronoid infection. The vaccine was made using the antigens found from a necronoid antigen organ, which was slowly refined using neutroamine as its base, and adding a little bit of yayo for sudden energy boost. -->
+  <Vaccine_AntiNecrotion.description>可立即治癒歿疫病毒感染的特效解藥，其主要成分為以中性胺作反應基質從抗原器官內精煉出的抗原物質，以及增強活力用的Y他命。頻繁使用也可能會導致成癮。</Vaccine_AntiNecrotion.description>
+  <!-- EN: Inject {0} -->
+  <Vaccine_AntiNecrotion.ingestible.ingestCommandString>注射{0}</Vaccine_AntiNecrotion.ingestible.ingestCommandString>
+  <!-- EN: Injecting {0}. -->
+  <Vaccine_AntiNecrotion.ingestible.ingestReportString>正在注射{0}。</Vaccine_AntiNecrotion.ingestible.ingestReportString>
+  
+</LanguageData>

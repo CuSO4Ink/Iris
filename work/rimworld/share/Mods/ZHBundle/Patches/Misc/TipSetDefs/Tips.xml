@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/TipSetDef[defName = "GameplayTips"]/tips</xpath>
+		<value>
+			<li>没什么比钓鱼更令人放松了，明目张胆地摸鱼，却又能产出，闲适而且充实。</li>
+		</value>
+	</Operation>
+
+</Patch>

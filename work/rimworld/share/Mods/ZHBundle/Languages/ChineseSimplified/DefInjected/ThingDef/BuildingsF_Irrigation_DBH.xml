@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: biosolids composter -->
+  <BiosolidsComposter.label>堆肥器</BiosolidsComposter.label>
+  <!-- EN: A composter for turning sewage into fertilizer for increasing the fertility of diggable terrain. -->
+  <BiosolidsComposter.description>堆肥容器。能够将污水和粪便转化为有机肥料，提高土地的肥沃度。</BiosolidsComposter.description>
+  
+  <!-- EN: fire sprinkler -->
+  <FireSprinkler.label>喷淋灭火器</FireSprinkler.label>
+  <!-- EN: Triggered by fire or high temperature. Douses flames with a spray of water. -->
+  <FireSprinkler.description>当被火焰和高温触发或手动激活后，这种安全装置会向着四周圆形范围喷出水雾。</FireSprinkler.description>
+  <!-- EN: Trigger fire sprinkler -->
+  <FireSprinkler.comps.CompUsable.useLabel>激活喷淋灭火器</FireSprinkler.comps.CompUsable.useLabel>
+  
+  <!-- EN: irrigation sprinkler -->
+  <IrrigationSprinkler.label>喷灌器</IrrigationSprinkler.label>
+  <!-- EN: Waters the surrounding area once every morning to improve the fertility of the soil through the day. Uses 1000L each morning at max radius. -->
+  <IrrigationSprinkler.description>每天清晨会向着四周圆形范围浇水，大幅提高土地的肥沃度。作用半径调至最大时，每次喷灌需要消耗1000L的水。</IrrigationSprinkler.description>
+  
+</LanguageData>

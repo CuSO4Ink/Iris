@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bed pan -->
+  <BedPan.label>便盆</BedPan.label>
+  <!-- EN: A receptacle used by a bedridden patient for urine and faeces. -->
+  <BedPan.description>盛放臥床患者尿液和糞便的容器。</BedPan.description>
+  
+  <!-- EN: biosolids -->
+  <Biosolids.label>有機肥料</Biosolids.label>
+  <!-- EN: When properly treated and processed, sewage sludge becomes biosolids that offer a small boost to terrain fertility. Useful for harsh environments with limited space to grow. Biosolids also produce a large boost to the fertility of sand which can make it fertile when combined with irrigation. -->
+  <Biosolids.description>用糞便污泥發酵製成的有機肥料，可以提高土地的肥沃度。與噴灌器配合使用甚至能將貧瘠的沙地變為耕地。</Biosolids.description>
+  
+  <!-- EN: water -->
+  <DBH_WaterBottle.label>水壺</DBH_WaterBottle.label>
+  <!-- EN: A bottle of water. -->
+  <DBH_WaterBottle.description>一壺水。</DBH_WaterBottle.description>
+  <!-- EN: Drink {0} -->
+  <DBH_WaterBottle.ingestible.ingestCommandString>喝{0}</DBH_WaterBottle.ingestible.ingestCommandString>
+  <!-- EN: Drinking {0}. -->
+  <DBH_WaterBottle.ingestible.ingestReportString>正在喝{0}。</DBH_WaterBottle.ingestible.ingestReportString>
+  
+  <!-- EN: fecal sludge -->
+  <FecalSludge.label>糞便污泥</FecalSludge.label>
+  <!-- EN: A barrel filled with fecal sludge. Can be dumped, burned, or composted into biosolids. -->
+  <FecalSludge.description>一個裝滿糞便污泥的桶，可以傾倒，焚燒，或者通過堆肥製作成有機肥料。</FecalSludge.description>
+  
+</LanguageData>

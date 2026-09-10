@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<VCE_ConsumedMayo.label>食用了蛋黄酱</VCE_ConsumedMayo.label>
+	<VCE_ConsumedMayo.description>蛋黄酱是由蛋，油和其它材料制成的乳状物。蛋黄酱能量价值很高。在24小时内减少15%饥饿速率。</VCE_ConsumedMayo.description>
+	<VCE_ConsumedAgave.label>食用了龙舌兰蜜</VCE_ConsumedAgave.label>
+	<VCE_ConsumedAgave.description>龙舌兰蜜是一种细腻又轻甜的花蜜，拥有疗伤和消炎的作用。在24小时内增加15%免疫获得速率。</VCE_ConsumedAgave.description>
+	<VCE_ConsumedSpices.label>食用了香料</VCE_ConsumedSpices.label>
+	<VCE_ConsumedSpices.description>食用了一系列又香又辣的香料。在24小时内增加操作能力。</VCE_ConsumedSpices.description>
+	<VCE_WellFed.label>饱腹</VCE_WellFed.label>
+	<VCE_WellFed.description>吃了一份量足的烤肉。在12小时内减少35%饥饿速率。</VCE_WellFed.description>
+	<VCE_WellFedSimple.label>饱腹</VCE_WellFedSimple.label>
+	<VCE_WellFedSimple.description>吃了一份量足的烤肉。在12小时内减少35%饥饿速率。</VCE_WellFedSimple.description>
+	<VCE_WellFedFine.label>饱腹</VCE_WellFedFine.label>
+	<VCE_WellFedFine.description>吃了一份量足的烤肉。在12小时内减少35%饥饿速率。</VCE_WellFedFine.description>
+	<VCE_WellFedLavish.label>饱腹</VCE_WellFedLavish.label>
+	<VCE_WellFedLavish.description>吃了一份量足的烤肉。在12小时内减少35%饥饿速率。</VCE_WellFedLavish.description>
+	<VCE_WellFedGourmet.label>饱腹</VCE_WellFedGourmet.label>
+	<VCE_WellFedGourmet.description>吃了一份量足的烤肉。在12小时内减少35%饥饿速率。</VCE_WellFedGourmet.description>
+	<VCE_ConsumedDigestibleResurrectorNanites.label>食用了再生机械酱</VCE_ConsumedDigestibleResurrectorNanites.label>
+	<VCE_ConsumedDigestibleResurrectorNanites.description>在12小时内如果食用者死亡，会被再生机械酱复活。</VCE_ConsumedDigestibleResurrectorNanites.description>
+	<VCE_SugarRush.label>食用了蔗糖</VCE_SugarRush.label>
+	<VCE_SugarRush.description>蔗糖能被人体迅速转化为能量，可以让人精力充沛。在24小时内增加15%移动能力。</VCE_SugarRush.description>
+	<VCE_AteGourmetMeal.label>吃了豪华食物</VCE_AteGourmetMeal.label>
+	<VCE_AteGourmetMeal.description>该殖民者吃了非常豪华的食物</VCE_AteGourmetMeal.description>
+	<VCE_ConsumedHotSauce.label>食用了辣酱</VCE_ConsumedHotSauce.label>
+	<VCE_ConsumedHotSauce.description>食用了用辣椒熬制成的酱，刚入口会很感觉辣，但在之后会让人发热，还能麻痹痛觉。在24小时内增加疼痛耐受和寒冷抗性</VCE_ConsumedHotSauce.description>
+	<VCE_ConsumedSoySauce.label>食用了酱油</VCE_ConsumedSoySauce.label>
+	<VCE_ConsumedSoySauce.description>大豆和曲霉，盐水，谷物一起发酵后制成的酱。烹饪加入食物可以提供鲜味。酱油中的抗氧化剂是红酒的10倍，可以预防心血管疾病（强化循环系统和过滤系统）</VCE_ConsumedSoySauce.description>
+	<VCE_ConsumedWasabi.label>食用了芥末</VCE_ConsumedWasabi.label>
+	<VCE_ConsumedWasabi.description>用山葵根制成的末，可以用来调味寿司和其它食物。其辣味主要刺激呼吸道而不是舌头。芥末能使人呼吸通畅并让人暖合起来。</VCE_ConsumedWasabi.description>
+	<VCE_AteSimpleSushi.label>吃了简单寿司</VCE_AteSimpleSushi.label>
+	<VCE_AteSimpleSushi.description>吃了一份好吃的寿司。</VCE_AteSimpleSushi.description>
+	<VCE_AteFineSushi.label>吃了精致寿司</VCE_AteFineSushi.label>
+	<VCE_AteFineSushi.description>吃了一份好吃的寿司。</VCE_AteFineSushi.description>
+	<VCE_AteLavishSushi.label>吃了奢侈寿司</VCE_AteLavishSushi.label>
+	<VCE_AteLavishSushi.description>吃了一份好吃的寿司。</VCE_AteLavishSushi.description>
+	<VCE_AteGourmetSushi.label>吃了豪华寿司</VCE_AteGourmetSushi.label>
+	<VCE_AteGourmetSushi.description>吃了一份好吃的寿司。</VCE_AteGourmetSushi.description>
+</LanguageData>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<!-- Soups -->
+	
+	<!-- EN: insert soup -->
+  <VCE_InsertSoup>加入汤料</VCE_InsertSoup>
+	<!-- EN: Soup to Cook -->
+  <VCE_InsertSoupDesc>加入汤料炖汤</VCE_InsertSoupDesc>
+	<!-- EN: No soups of that kind found in this map. -->
+  <VCE_NoSoupsFound>当前地区没有这种汤料。</VCE_NoSoupsFound>
+	<!-- EN: simple soup -->
+  <VCE_UncookedSoupSimple>简单汤料</VCE_UncookedSoupSimple>
+	<!-- EN: fine soup -->
+  <VCE_UncookedSoupFine>精致汤料</VCE_UncookedSoupFine>
+	<!-- EN: lavish soup -->
+  <VCE_UncookedSoupLavish>奢侈汤料</VCE_UncookedSoupLavish>
+	<!-- EN: gourmet soup -->
+  <VCE_UncookedSoupGourmet>豪华汤料</VCE_UncookedSoupGourmet>	
+	<!-- EN: insert simple soup -->
+  <VCE_UncookedSoupSimple_InsertSoup>加入简单汤料</VCE_UncookedSoupSimple_InsertSoup>
+	<!-- EN: insert fine soup -->
+  <VCE_UncookedSoupFine_InsertSoup>加入精致汤料</VCE_UncookedSoupFine_InsertSoup>
+	<!-- EN: insert lavish soup -->
+  <VCE_UncookedSoupLavish_InsertSoup>加入奢侈汤料</VCE_UncookedSoupLavish_InsertSoup>
+	<!-- EN: insert gourmet soup -->
+  <VCE_UncookedSoupGourmet_InsertSoup>加入豪华汤料</VCE_UncookedSoupGourmet_InsertSoup>
+	<!-- EN: Select a type of soup to be cooked -->
+  <VCE_SelectSoup>选择一种将要被炖的汤</VCE_SelectSoup>
+	<!-- EN: Bring Soup -->
+  <VCE_StartInsertion>添加汤料</VCE_StartInsertion>
+	<!-- EN: Bring a soup to the electric pot to start cooking -->
+  <VCE_StartInsertionDesc>往该电汤锅添加汤料以开始熬制。</VCE_StartInsertionDesc>
+	<!-- EN: Remove Soup -->
+  <VCE_RemoveSoup>移除汤料</VCE_RemoveSoup>
+	<!-- EN: Remove the soup from the pot. This can only be done before you start cooking it. -->
+  <VCE_RemoveSoupDesc>从该电汤锅移除汤料。只能在熬制开始前移除。</VCE_RemoveSoupDesc>
+	<!-- EN: Cancel Bringing Soup -->
+  <VCE_CancelBringingSoup>取消添加汤料</VCE_CancelBringingSoup>
+	<!-- EN: Cancel bringing soup to the electric pot. -->
+  <VCE_CancelBringingSoupDesc>取消往该电汤锅添加汤料。</VCE_CancelBringingSoupDesc>
+	<!-- EN: Wait until the soup has been brought to the electric pot, or cancel the job. -->
+  <VCE_WaitTillJobsEnd>等待汤料被带至该电汤锅，或者取消该工作。</VCE_WaitTillJobsEnd>
+	<!-- EN: The electric pot is not powered -->
+  <VCE_NotPowered>该电汤锅没有接入电源</VCE_NotPowered>
+	<!-- EN: Cook Soup -->
+  <VCE_Engage>炖汤</VCE_Engage>
+	<!-- EN: Start cooking soup. This process takes 3 days and can't be interrupted, or the soup will be destroyed. -->
+  <VCE_EngageDesc>开始炖汤。这将花费3天并且不能被终止，否则汤料将会消失。</VCE_EngageDesc>
+	<!-- EN: The soup has spoiled due to a power failure in the electric pot -->
+  <VCE_SoupFailurePower>由于电汤锅断电，汤已经变质。</VCE_SoupFailurePower>
+	<!-- EN: The soup is spoiling fast due to a lack of fuel in the electric pot -->
+  <VCE_SoupFailurePowerWarning>由于电汤锅断电，汤正在快速变质。</VCE_SoupFailurePowerWarning>
+	<!-- EN: A soup has finished cooking in the electric pot -->
+  <VCE_SoupFinished>一个电汤锅已完成炖汤</VCE_SoupFinished>
+	<!-- EN: An {0} is cooking. It will be ready in {1} -->
+  <VCE_SoupInProgress>一份{0}正在被熬制。将在{1}内完成</VCE_SoupInProgress>
+	<!-- EN: A soup has finished cooking and is waiting for pickup -->
+  <VCE_SoupReady>一份汤食已经完成熬制，等待被收取</VCE_SoupReady>
+	<!-- EN: This electric pot is not working at the moment -->
+  <VCE_SoupPotNotWorking>该电汤锅目前没在运作</VCE_SoupPotNotWorking>
+
+	<!-- Cheese making -->
+	
+	<!-- EN: Select Milk to press in the cheese press. Different milks might produce different types of cheese. -->
+  <VCE_InsertMilkDesc>给奶酪压制器选择原乳。不同种类的原乳可能会制成不同种类的奶酪。</VCE_InsertMilkDesc>
+	<!-- EN: Select Milk -->
+  <VCE_InsertMilk>选原乳</VCE_InsertMilk>
+	<!-- EN: Insert {0} -->
+  <VCE_InsertMilkVariable>加入{0}</VCE_InsertMilkVariable>
+	<!-- EN: No milks of that kind found in this map. -->
+  <VCE_NoMilksFound>当前地区没有这种原乳。</VCE_NoMilksFound>
+	<!-- EN: Select a type of milk to be pressed -->
+  <VCE_SelectMilk>选择一种准备被压制的原乳。</VCE_SelectMilk>
+	<!-- EN: Bring Milk -->
+  <VCE_StartInsertionMilk>添加原乳</VCE_StartInsertionMilk>
+	<!-- EN: Bring milk to the cheese press to start pressing -->
+  <VCE_StartInsertionMilkDesc>往该奶酪压制器添加原乳以开始压制。</VCE_StartInsertionMilkDesc>
+	<!-- EN: Remove Milk -->
+  <VCE_RemoveMilk>移除原乳</VCE_RemoveMilk>
+	<!-- EN: Remove the milk from the press. This can only be done before you start pressing it. -->
+  <VCE_RemoveMilkDesc>从该压制器移除原乳，只能在压制开始前移除</VCE_RemoveMilkDesc>	
+	<!-- EN: Cancel Bringing Milk -->
+  <VCE_CancelBringingMilk>取消添加原乳</VCE_CancelBringingMilk>
+	<!-- EN: Cancel bringing milk to the cheese press. -->
+  <VCE_CancelBringingMilkDesc>取消往该奶酪压制器添加原乳</VCE_CancelBringingMilkDesc>
+	<!-- EN: Wait until the milk has been brought to the cheese press, or cancel the job. -->
+  <VCE_WaitTillJobsEndMilk>等待原乳被带至该奶酪压制器，或者取消该工作。</VCE_WaitTillJobsEndMilk>
+	<!-- EN: Press Into Cheese -->
+  <VCE_EngageMilk>开始压制奶酪</VCE_EngageMilk>
+	<!-- EN: Start pressing milk into cheese. This process takes a variable time and cheese will increase in quality with ripening. You can remove it at any time after the initial period. -->
+  <VCE_EngageMilkDesc>开始把原乳压制成奶酪。该过程时间不固定，奶酪质量会随着时间不断上升。</VCE_EngageMilkDesc>
+	<!-- EN: A cheese has finished ripening in the cheese press -->
+  <VCE_CheeseFinished>一份奶酪已经发酵完成</VCE_CheeseFinished>
+	<!-- EN: Cheese press is pressing {0}. It will be ready with {1} quality in {2} -->
+  <VCE_CheeseInProgress>该奶酪压制器正在压制{0}。他会在{2}以内以{1}质量完成</VCE_CheeseInProgress>
+	<!-- EN: This cheese has reached its desired degree of ripening and is waiting for pickup -->
+  <VCE_CheeseReady>该奶酪已达到目标质量，等待被收取</VCE_CheeseReady>
+	<!-- EN: This milk has been improperly defined to work with the cheese press, contact the milk mod's author -->
+  <VCE_MilkImproperlyDefined>该原乳并不能和奶酪压制器兼容，请联系奶源的mod作者</VCE_MilkImproperlyDefined>
+	<!-- EN: Remove Cheese ({0}) -->
+  <VCE_RemoveCheese>移除奶酪（{0}）</VCE_RemoveCheese>
+	<!-- EN: Remove cheese from the cheese press. The cheese will be ready at the present quality level ({0}) -->
+  <VCE_RemoveCheeseDesc>从奶酪压制器移除奶酪。该奶酪会在{0}质量完成</VCE_RemoveCheeseDesc>
+	
+	<!-- EN: Cheese press is empty right now -->
+  <VCE_CheesePressEmpty>该奶酪压制器是空的</VCE_CheesePressEmpty>
+	<!-- EN: Cheese press filled with {0} -->
+  <VCE_CheesePressFilled>该奶酪压制器装有{0}</VCE_CheesePressFilled>
+	<!-- EN: Cheese press is working: -->
+  <VCE_CheesePressWorking>该奶酪压制器正在运作：</VCE_CheesePressWorking>
+	<!-- EN:  (filled at {0} of {1}) -->
+  <VCE_ResourcePercentage>已填入{0}/{1}</VCE_ResourcePercentage>
+	
+	<!-- EN: This cheese press is not working at the moment -->
+  <VCE_CheesePressNotWorking>该奶酪压制器目前没在运作</VCE_CheesePressNotWorking>
+
+	
+	<!-- Condiment stats (using code from AnimalBehaviours) -->
+	
+	<!-- EN: Condiment Effects -->
+  <VCE_CondimentEffects>调料效果</VCE_CondimentEffects>
+	<!-- EN: Acting as condiment -->
+  <VCE_CondimentEffectsTitle>作为调料</VCE_CondimentEffectsTitle>
+	<!-- EN: Agave nectar is a thin and semi-sweet nectar, known for its healing and anti-inflammatory properties. Consuming meals that include this condiment gives a 15% immunity gain speed boost for 12 hours. -->
+  <VCE_CondimentEffectsAgave>龙舌兰蜜是一种细腻又轻甜的花蜜，拥有疗伤和消炎的作用。食用带有该调料的食物会在12小时里增加15%的免疫获取速度。</VCE_CondimentEffectsAgave>
+	<!-- EN: Sugar is easily converted into energy by the body, which may result in a nice burst of energy. Consuming meals that include this condiment increases moving stat by 15% for 12 hours. -->
+  <VCE_CondimentEffectsSugar>蔗糖能被人体迅速转化为能量，可以让人精力充沛。食用带有该调料的食物会在12小时里增加15%的移动能力。</VCE_CondimentEffectsSugar>
+	<!-- EN: A variety of aromatic and pungent spices. Consuming meals that include this condiment increases manipulation stat by 10% for 12 hours. -->
+  <VCE_CondimentEffectsSpices>一系列又香又辣的香料。食用带有该调料的食物会在12小时里增加10%的工作能力。</VCE_CondimentEffectsSpices>
+	<!-- EN: Consuming meals that include this condiment increases mood by 5 for 12 hours. -->
+  <VCE_CondimentEffectsSalt>食用带有该调料的食物会在12小时里增加5点心情。</VCE_CondimentEffectsSalt>
+	<!-- EN: Mayonnaise, while terrible for you, adds a pleasing tang and is very calorically dense. Consuming meals that include this condiment lowers hunger rate by 15% for 12 hours. -->
+  <VCE_CondimentEffectsMayo>虽然对身体不好，蛋黄酱能量价值很高。食用带有该调料的食物会在12小时里减少15%的饥饿值增长。</VCE_CondimentEffectsMayo>
+	<!-- EN: Consuming meals that include this condiment increases mood by 10 for 12 hours. -->
+  <VCE_CondimentEffectsJelly>食用带有该调料的食物会在12小时里增加10点心情。</VCE_CondimentEffectsJelly>
+	<!-- EN: Consuming meals that include this condiment creates a smokeleaf high without addiction risks. -->
+  <VCE_CondimentEffectsButter>食用带有该调料的食物会产生大麻亢奋效果，但不会有上瘾的风险。</VCE_CondimentEffectsButter>
+	<!-- EN: Consuming meals that include this condiment increases mood by 7 for 12 hours. -->
+  <VCE_CondimentEffectsSyrup>食用带有该调料的食物会在12小时里增加7点心情。</VCE_CondimentEffectsSyrup>
+	<!-- EN: Consuming meals that include this condiment increases manipulation by 1% for 12 hours. The colonist will be resurrected if it is killed during that time. -->
+  <VCE_CondimentEffectsNanites>食用带有该调料的食物会在12小时里增加1%的工作能力。在此期间如果食用者被杀则会复活。</VCE_CondimentEffectsNanites>
+	<!-- EN: Consuming meals that include this condiment increases mood by 3 for 12 hours. -->
+  <VCE_CondimentEffectsKetchup>食用带有该调料的食物会在12小时里增加3点心情。</VCE_CondimentEffectsKetchup>
+	<!-- EN: While particularly strong hot sauces hurt at first, they are known to numb pain and work up a warm sweat shortly after consumption. Consuming meals that include this condiment boosts pain resistance by 15% and cold temperature resistance by 10ºC for 12 hours. Mood will be reduced by 3. -->
+  <VCE_CondimentEffectsSauce>刚入口会很感觉辣，但在之后会让人身体发热，还能麻痹痛觉。食用带有该调料的食物会在12小时里减少3点心情，增加15%的疼痛抗性和10ºC的温度下限。</VCE_CondimentEffectsSauce>
+	
+	<!-- EN: Health Effects -->
+  <VCE_HealthEffects>健康效果</VCE_HealthEffects>	
+	<!-- EN: No health effects -->
+  <VCE_NoEffect>无健康效果</VCE_NoEffect>
+	<!-- EN: Consuming meals that include this condiment causes no negative health effects. -->
+  <VCE_NoEffectDesc>使用含有该调料的食物不会有负面健康效果。</VCE_NoEffectDesc>
+	
+	<!-- EN: Diabetes -->
+  <VCE_DiabetesEffect>高血糖</VCE_DiabetesEffect>	
+	<!-- EN: Consuming meals that include this condiment causes Diabetes. Each ingestion of such a meal will increase colonist's Diabetes by 0.5%. -->
+  <VCE_DiabetesEffectDescHalfPoint>食用带有该调料的食物会造成高血糖。每次食用会增加0.5%的高血糖程度。</VCE_DiabetesEffectDescHalfPoint>
+	<!-- EN: Consuming meals that include this condiment causes Diabetes. Each ingestion of such a meal will increase colonist's Diabetes by 1.5%. -->
+  <VCE_DiabetesEffectDescOneAndHalfPoint>食用带有该调料的食物会造成高血糖。每次食用会增加1.5%的高血糖程度。</VCE_DiabetesEffectDescOneAndHalfPoint>
+	<!-- EN: Consuming meals that include this condiment causes Diabetes. Each ingestion of such a meal will increase colonist's Diabetes by 0.75%. -->
+  <VCE_DiabetesEffectDescThreeQuarterPoint>食用带有该调料的食物会造成高血糖。每次食用会增加0.75%的高血糖程度。</VCE_DiabetesEffectDescThreeQuarterPoint>
+	<!-- EN: Consuming this meal causes Diabetes. Each ingestion of such a meal will increase colonist's Diabetes by 0.5%. -->
+  <VCE_DiabetesDessertSimpleDesc>食用该食物会造成高血糖。每次食用会增加0.5%的高血糖程度。</VCE_DiabetesDessertSimpleDesc>
+	<!-- EN: Consuming this meal causes Diabetes. Each ingestion of such a meal will increase colonist's Diabetes by 1.5%. -->
+  <VCE_DiabetesDessertFineDesc>食用该食物会造成高血糖。每次食用会增加1.5%的高血糖程度。</VCE_DiabetesDessertFineDesc>
+	<!-- EN: Consuming this meal causes Diabetes. Each ingestion of such a meal will increase colonist's Diabetes by 2.5%. -->
+  <VCE_DiabetesDessertLavishDesc>食用该食物会造成高血糖。每次食用会增加2.5%的高血糖程度。</VCE_DiabetesDessertLavishDesc>
+	<!-- EN: Consuming this meal causes Diabetes. Each ingestion of such a meal will increase colonist's Diabetes by 3.5%. -->
+  <VCE_DiabetesDessertGourmetDesc>食用该食物会造成高血糖。每次食用会增加3.5%的高血糖程度。</VCE_DiabetesDessertGourmetDesc>
+
+	
+	<!-- EN: High Blood Pressure -->
+  <VCE_HighBloodPressureEffect>高血压</VCE_HighBloodPressureEffect>	
+	<!-- EN: Consuming meals that include this condiment causes High Blood Pressure. Each ingestion of such a meal will increase colonist's High Blood Pressure by 0.75%. -->
+  <VCE_HighBloodPressureEffectDesc>食用带有该调料的食物会造成高血压。每次食用会增加0.75%的高血压程度。</VCE_HighBloodPressureEffectDesc>
+	<!-- EN: Consuming canned goods causes High Blood Pressure. Each ingestion of such a meal will increase colonist's High Blood Pressure by 1.5%. -->
+  <VCE_HighBloodPressureEffectDescCanned>食用罐装食物会造成高血压。每次食用会增加1.5%的高血压程度。</VCE_HighBloodPressureEffectDescCanned>
+	
+	<!-- EN: Cholesterol -->
+  <VCE_CholesterolEffect>高血脂</VCE_CholesterolEffect>	
+	<!-- EN: Consuming meals that include this condiment causes Cholesterol. Each ingestion of such a meal will increase colonist's Cholesterol by 1%. -->
+  <VCE_CholesterolEffectDesc>食用带有该调料的食物会造成高血脂。每次食用会增加1%的高血脂程度。</VCE_CholesterolEffectDesc>
+	<!-- EN: Consuming meals that include this condiment causes Cholesterol. Each ingestion of such a meal will increase colonist's Cholesterol by 1.5%. -->
+  <VCE_CholesterolEffectDescOneAndHalfPoint>食用带有该调料的食物会造成高血脂。每次食用会增加1.5%的高血脂程度。</VCE_CholesterolEffectDescOneAndHalfPoint>
+	<!-- EN: Consuming meals that include this condiment causes Cholesterol. Each ingestion of such a meal will increase colonist's Cholesterol by 2%. -->
+  <VCE_CholesterolEffectDescDouble>食用带有该调料的食物会造成高血脂。每次食用会增加2%的高血脂程度。</VCE_CholesterolEffectDescDouble>
+	<!-- EN: Consuming deep fried foods causes Cholesterol. Each ingestion of such a meal will increase colonist's Cholesterol by 1.5%. -->
+  <VCE_CholesterolDescDeepFried>食用油炸食物会造成高血脂。每次食用会增加1.5%的高血脂程度。</VCE_CholesterolDescDeepFried>
+
+
+</LanguageData>

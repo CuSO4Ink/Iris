@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: emberbloom -->
+  <VV_EmberBloom.label>余烬朵</VV_EmberBloom.label>
+  <!-- EN: a arcane flower shaped like flames that converts mana into heat until the surrounding temperature reaches a certain level. In environments that are sufficiently hot, it produces and accumulates mana instead of emitting heat.\n\nIf placed adjacent to a peashooter, it has a 50% chance to fire a fire pea instead when the peashooter attacks. Fire peas deal flame damage instead of physical damage and set the target on fire.\nIf multiple emberblooms are adjacent, the effect stacks. -->
+  <VV_EmberBloom.description>一种形状像火焰的神秘花朵，可以将魔能转化为热量，直到周围的温度高到一定水平。在足够热的环境中，它能生产并积累魔能，而不是散发热量。\n\n当附近有豌豆射手时，余烬朵有50%的概率会在豌豆射手攻击时改为发射燃烧豌豆，燃烧豌豆会造成火焰伤害而非物理伤害并点燃目标。\n复数余烬朵相邻时这一效果会叠加。</VV_EmberBloom.description>
+  
+  <!-- EN: frostbloom -->
+  <VV_FrostBloom.label>严霜华</VV_FrostBloom.label>
+  <!-- EN: a arcane flower shaped like ice crystals that consumes mana to absorb heat until the surrounding temperature reaches a certain level. In environments that are sufficiently cold, it produces and accumulates mana instead of absorbing heat.\n\nIf placed adjacent to a peashooter, it has a 50% chance to fire an ice pea instead when the peashooter attacks. Ice peas deal frostbite damage instead of physical damage and temporarily slow the target's movement speed.\nIf multiple frostblooms are adjacent, the effect stacks. -->
+  <VV_FrostBloom.description>一种形状像冰晶的神秘花朵，可以用魔能来吸收热量，直到周围的温度低到一定水平。在足够冷的环境中，它能生产并积累魔能，而不是吸收热量。\n\n当附近有豌豆射手时，余烬朵有50%的概率会在豌豆射手攻击时改为发射冰冻豌豆，冰冻豌豆会造成冻伤伤害而非物理伤害并减缓目标。\n复数严霜华相邻时这一效果会叠加。</VV_FrostBloom.description>
+  
+</LanguageData>

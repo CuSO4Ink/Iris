@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: corpse gladiator -->
+  <CorpseGladiator.label>狂暴鬥士</CorpseGladiator.label>
+  <!-- EN: A unique mutation that improves a necronoid's ability in melee combat. -->
+  <CorpseGladiator.description>這只變異的歿疫感染體有著更高的近戰傷害。</CorpseGladiator.description>
+  
+  <!-- EN: flame proof -->
+  <FlameProof.label>阻熱覆層</FlameProof.label>
+  <!-- EN: A unique mutation that covers the flesh with flame retardants, giving it protection against heat damage. -->
+  <FlameProof.description>這只變異的歿疫感染體身上覆有可以阻擋熱能傷害的特殊物質。</FlameProof.description>
+  
+  <!-- EN: hardened flesh -->
+  <HardenedFlesh.label>肉體硬化</HardenedFlesh.label>
+  <!-- EN: A unique mutation that hardens their flesh, to become something akin to plate armor, though in exchange of lowerer move speed. -->
+  <HardenedFlesh.description>這只變異的歿疫感染體有著如同板甲般堅硬的肉體，不過代價則是犧牲了靈活性與移動速度。它也感受不到任何疼痛。</HardenedFlesh.description>
+  
+  <!-- EN: invisibility -->
+  <Invisibility.label>隱匿身形</Invisibility.label>
+  <!-- EN: A unique mutation that allows a necronoid to become invisible. -->
+  <Invisibility.description>這只變異的歿疫感染體可以使自身幾乎完全透明化。</Invisibility.description>
+  
+  <!-- EN: invisibility organ -->
+  <InvisibilityOrgan.label>隱匿器官</InvisibilityOrgan.label>
+  <!-- EN: A unique mutation that grants a necronoid an organ, where once it killed a pawn, it'll become invisible. -->
+  <InvisibilityOrgan.description>這只變異的歿疫感染體長有特殊器官，當它殺死一個單位後便會進入“隱匿身形”狀態。</InvisibilityOrgan.description>
+  
+  <!-- EN: less rigor mortis -->
+  <LessRigorMortis.label>肢體活化</LessRigorMortis.label>
+  <!-- EN: A unique mutation that improves a necronoid's motor function, giving it increased move speed. -->
+  <LessRigorMortis.description>這只變異的歿疫感染體有著更快的移動速度。</LessRigorMortis.description>
+  
+  <!-- EN: blessing of the dead -->
+  <Necronoid_BlessingOfTheDead.label>死冥加護</Necronoid_BlessingOfTheDead.label>
+  <!-- EN: A unique mutation granted by a select few of the necronoid swarm, which grants +30% to its Moving, Manipulation, and Consciousness, all while increasing wound healing speed. -->
+  <Necronoid_BlessingOfTheDead.description>這只高度變異的歿疫感染體是少數被“選中”的存在，它不僅感受不到任何疼痛，其意識、移動能力、操作能力和傷口愈合速度均得到了大幅強化。</Necronoid_BlessingOfTheDead.description>
+  
+  <!-- EN: blessing of the biomass "AOE" -->
+  <Necronoid_BlessingOfTheDead_AOE.label>屍巢加護光環</Necronoid_BlessingOfTheDead_AOE.label>
+  <!-- EN: A special blessing which grants lifeforms an added buff via frequency distribution. -->
+  <Necronoid_BlessingOfTheDead_AOE.description>屍巢加護光環。</Necronoid_BlessingOfTheDead_AOE.description>
+  
+  <!-- EN: necronoid incubation -->
+  <Necronoid_Incubation.label>寄生孵化</Necronoid_Incubation.label>
+  <!-- EN: Incubating necronoids are clawing their way out of your body. -->
+  <Necronoid_Incubation.description>孵化完畢的膿腐蜱蟲已破體而出。</Necronoid_Incubation.description>
+  
+  <!-- EN: airborne necronoid infection -->
+  <Necronoid_Infection.label>弱性歿疫感染</Necronoid_Infection.label>
+  <!-- EN: A deadly airborne viral infection that slowly spreads throughout the body. The victim will be subjected in an excruciating pain and weakened state, and if left unchecked, parasites will force their way out of the unfortunate host, killing them instantly. -->
+  <Necronoid_Infection.description>由空氣或其他途徑傳播的弱性歿疫病毒正緩慢擴散至全身。這不僅會導致患者的生理機能逐漸衰退，其體內還可能寄生並孵化出膿腐蜱蟲。\n\n弱性歿疫病毒可以被免疫系統緩慢治愈。但如果就這樣放任不管，一旦感染程度變得嚴重起來，寄生在患者體內的膿腐蜱蟲就會加速孵化並破體而出。</Necronoid_Infection.description>
+  <!-- EN: a case of an airborne necronoid infection -->
+  <Necronoid_Infection.labelNoun>弱性歿疫感染</Necronoid_Infection.labelNoun>
+  <!-- EN: initial -->
+  <Necronoid_Infection.stages.initial-0.label>輕微</Necronoid_Infection.stages.initial-0.label>
+  <!-- EN: initial -->
+  <Necronoid_Infection.stages.initial-1.label>輕微</Necronoid_Infection.stages.initial-1.label>
+  <!-- EN: minor -->
+  <Necronoid_Infection.stages.minor.label>較輕</Necronoid_Infection.stages.minor.label>
+  <!-- EN: un-bearable -->
+  <Necronoid_Infection.stages.unbearable.label>痛苦</Necronoid_Infection.stages.unbearable.label>
+  <!-- EN: major -->
+  <Necronoid_Infection.stages.major.label>嚴重</Necronoid_Infection.stages.major.label>
+  <!-- EN: paralysis imminent -->
+  <Necronoid_Infection.stages.paralysis_imminent.label>垂危</Necronoid_Infection.stages.paralysis_imminent.label>
+  
+  <!-- EN: necronoid infection -->
+  <Necronoid_InfectionOne.label>歿疫感染</Necronoid_InfectionOne.label>
+  <!-- EN: A deadly viral infection that spreads through the victim's lymph nodes, and eventually throughout the entire body. Symptoms includes gradual degradation, shut down of natural immunity, and life threatning fetid parasites incubating inside the victim.\n\nIf left unchecked, either by negligence or external force, the severity will become dire and will lead to death via the parasites waking up and forcefully hatching inside the host. It requires a vaccine to cure the necronoid infection. -->
+  <Necronoid_InfectionOne.description>具有致死性的歿疫病毒正通過淋巴結擴散至全身。這不僅會導致患者的生理機能逐漸衰退，其體內還可能寄生並孵化出膿腐蜱蟲。\n\n這種歿疫病毒只能使用歿疫解藥來治愈。一旦感染程度變得嚴重起來，寄生在患者體內的膿腐蜱蟲就會加速孵化並破體而出。</Necronoid_InfectionOne.description>
+  <!-- EN: an infection -->
+  <Necronoid_InfectionOne.labelNoun>歿疫感染</Necronoid_InfectionOne.labelNoun>
+  <!-- EN: minor -->
+  <Necronoid_InfectionOne.stages.minor.label>較輕</Necronoid_InfectionOne.stages.minor.label>
+  <!-- EN: major -->
+  <Necronoid_InfectionOne.stages.major.label>中等</Necronoid_InfectionOne.stages.major.label>
+  <!-- EN: extreme -->
+  <Necronoid_InfectionOne.stages.extreme-0.label>嚴重</Necronoid_InfectionOne.stages.extreme-0.label>
+  <!-- EN: extreme -->
+  <Necronoid_InfectionOne.stages.extreme-1.label>極重</Necronoid_InfectionOne.stages.extreme-1.label>
+  
+  <!-- EN: necrotion partial resistance -->
+  <Necrotion_PartialResistance.label>歿疫感染抗性（不完全）</Necrotion_PartialResistance.label>
+  <!-- EN: Partial resistance against the necronoid infection caused by environmental influence, though not so effective when inflicted via open wound. -->
+  <Necrotion_PartialResistance.description>對環境影響和傷口傳播所造成的歿疫病毒感染有著不完全的抗性。</Necrotion_PartialResistance.description>
+  
+  <!-- EN: painless -->
+  <Painless.label>無懼疼痛</Painless.label>
+  <!-- EN: A unique mutation that cuts a necronoid's feeling of pain. -->
+  <Painless.description>這只變異的歿疫感染體感受不到任何疼痛。</Painless.description>
+  
+</LanguageData>

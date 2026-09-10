@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: These raiders seem to be led by a powerful psycaster. Psycasters can use psychic powers to manipulate the battlefield and easily tip the scales of the conflict. You should watch out for them, and prioritise targeting them when you see that they are about to cast a psycast.\n\nPsycasters in this group:\n -->
+  <VPE_ImmediateAttack_Psycasters.arrivalTextEnemy>这些袭击者被强大的灵能者所带领。灵能者能使用心灵的能量影响整个战局。你应该谨慎对待他们，并尽力制止他们使用能力。\n\n队伍中的灵能者：\n</VPE_ImmediateAttack_Psycasters.arrivalTextEnemy>
+  <!-- EN: They are moving in to help you immediately. -->
+  <VPE_ImmediateAttack_Psycasters.arrivalTextFriendly>他们会立即支援你。</VPE_ImmediateAttack_Psycasters.arrivalTextFriendly>
+  <!-- EN: Raid (Psycaster) -->
+  <VPE_ImmediateAttack_Psycasters.letterLabelEnemy>袭击（灵能者）</VPE_ImmediateAttack_Psycasters.letterLabelEnemy>
+  <!-- EN: Friendlies (Psycaster) -->
+  <VPE_ImmediateAttack_Psycasters.letterLabelFriendly>友军（灵能者）</VPE_ImmediateAttack_Psycasters.letterLabelFriendly>
+  
+</LanguageData>

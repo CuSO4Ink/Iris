@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Alpha Animals</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<success>Always</success>
+			<operations>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="AA_NightMilk"]/value</xpath>
+                    <value>
+                        <value>暗夜</value>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="AA_GowMilk"]/value</xpath>
+                    <value>
+                        <value>刺牛</value>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="AA_BlueMilk"]/value</xpath>
+                    <value>
+                        <value>蔚蓝</value>
+                    </value>
+                </li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

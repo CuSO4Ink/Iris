@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: everflower -->
+  <VV_Everflower.label>永盛花</VV_Everflower.label>
+  <!-- EN: It is a very rare arcane flower, treated as a sacred flower by the Vivi. Although its specific cultivation methods are not known, it is occasionally found alongside other arcane plants.\n\nIt periodically releases a large amount of pollen. When an adult Vivi gathers honey from this flower, it has the ability to convert biological age into mana, absorbing it to reverse aging.\n\nThe scent of the everflower has a strong sedative effect, but the Vivi have some resistance to it, allowing only them to gather the honey. However, a single Vivi cannot gather honey repeatedly. -->
+  <VV_Everflower.description>一种非常罕见的神秘花朵，被薇薇视为神圣之花。虽然它的具体培养方法尚不清楚，但偶尔也会与其他神秘植物中被发现。\n\n永盛花会周期性地释放大量花粉。当成年薇薇从这种花上采集蜂蜜时，她们的年龄会被永盛花转化为魔能，后者会吸收这种魔能来逆转薇薇的衰老。\n\n永盛花的香气有很强的镇静作用，但薇薇对它们有一定抵抗力，所以只有薇薇能采集它的花蜜。然而，同一名薇薇不能重复采集。</VV_Everflower.description>
+  
+</LanguageData>

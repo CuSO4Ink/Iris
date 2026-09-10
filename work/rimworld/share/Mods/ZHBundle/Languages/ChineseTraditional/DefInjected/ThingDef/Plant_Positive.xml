@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 태양화 -->
+  <Plant_PosFlower.label>秘靈向日葵</Plant_PosFlower.label>
+  <!-- EN: 유전자 조작된 식물입니다. 주로 미호들의 초능력을 증진시켜주는 물질을 모으는 신호기 역할을 합니다. -->
+  <Plant_PosFlower.description>經過基因工程改造的奇異植物，其花瓣可以從陽光中吸收並儲存用於維持美狐族靈能與精神狀態的“陽氣”能量和機械分子。</Plant_PosFlower.description>
+  
+  <!-- EN: 야생 태양화 -->
+  <Plant_PosFlower_Wild.label>野生秘靈向日葵</Plant_PosFlower_Wild.label>
+  <!-- EN: 유전자 조작된 식물입니다. 주로 미호들의 초능력을 증진시켜주는 물질을 모으는 신호기 역할을 합니다. -->
+  <Plant_PosFlower_Wild.description>經過基因工程改造的奇異植物，其花瓣可以從陽光中吸收並儲存用於維持美狐族靈能與精神狀態的“陽氣”能量和機械分子。</Plant_PosFlower_Wild.description>
+  
+  <!-- EN: 태양화 -->
+  <Plant_PosFlowerPot.label>秘靈向日葵</Plant_PosFlowerPot.label>
+  <!-- EN: 유전자 조작된 식물입니다. 주로 미호들의 초능력을 증진시켜주는 물질을 모으는 신호기 역할을 합니다. -->
+  <Plant_PosFlowerPot.description>經過基因工程改造的奇異植物，其花瓣可以從陽光中吸收並儲存用於維持美狐族靈能與精神狀態的“陽氣”能量和機械分子。</Plant_PosFlowerPot.description>
+  
+  <!-- EN: 여명이끼 -->
+  <Plant_PosMoss_Hydro.label>晨曦苔蘚</Plant_PosMoss_Hydro.label>
+  <!-- EN: 유전자 조작된 식물입니다. 주로 미호들의 초능력을 증진시켜주는 물질을 모으는 신호기 역할을 합니다. 이 식물은 점도가 높고, 굉장히 역한 맛을 지니고 있어 스토브에서 가루로 가공하여 사용해야 합니다. -->
+  <Plant_PosMoss_Hydro.description>經過基因工程改造的奇異植物，可以從陽光中吸收並儲存用於維持美狐族靈能與精神狀態的“陽氣”能量和機械分子。\n\n由於質地粘稠且味道不佳，晨曦苔蘚必須先在爐灶或料理桌上加工成秘靈粉末後才能使用。</Plant_PosMoss_Hydro.description>
+
+  <!-- EN: 태양화 꽃잎 -->
+  <RawPosFlower.label>秘靈葵花瓣</RawPosFlower.label>
+  <!-- EN: 미호의 초능력을 발현할수있게 도와주는 물질이 응집된 꽃잎입니다. -->
+  <RawPosFlower.description>蘊含有“陽氣”能量和機械分子的秘靈向日葵花瓣，可進一步加工為各種產品。</RawPosFlower.description>
+  
+  <!-- EN: 태양화 가루 -->
+  <RawPosFlower_Dust.label>秘靈粉末</RawPosFlower_Dust.label>
+  <!-- EN: 태양화 꽃잎속에 존재하는 메카나이트들을 순수하게 뭉쳐 만든 가루입니다. 보관이 더욱 용이합니다. -->
+  <RawPosFlower_Dust.description>蘊含有“陽氣”能量和機械分子的晶狀粉末，可進一步加工為各種產品。</RawPosFlower_Dust.description>
+  
+  <!-- EN: 여명이끼 마리모 -->
+  <RawPosMoss.label>晨曦苔蘚</RawPosMoss.label>
+  <!-- EN: 미호의 초능력을 발현할수있게 도와주는 물질이 응집된 이끼입니다. 이 식물은 점도가 높고, 굉장히 역한 맛을 지니고 있어 스토브에서 가루로 가공하여 사용해야 합니다. -->
+  <RawPosMoss.description>蘊含有“陽氣”能量和機械分子的晨曦苔蘚，可進一步加工為各種產品。\n\n由於質地粘稠且味道不佳，晨曦苔蘚必須先在爐灶或料理桌上加工成秘靈粉末後才能使用。</RawPosMoss.description>
+  
+</LanguageData>

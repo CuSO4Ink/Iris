@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>sent(p=2)->[RECIPIENT_nameDef] ignored [INITIATOR_objective].</li>
+    <li>sent->[RECIPIENT_nameDef] did not respond.</li>
+    <li>sent->[RECIPIENT_nameDef] brushed [INITIATOR_objective] off.</li>
+  -->
+  <Sentence_RimpsycheConversationFail.rulePack.rulesStrings>
+    <li>sent(p=2)->[RECIPIENT_nameDef]直接无视了[INITIATOR_objective]。</li>
+    <li>sent->[RECIPIENT_nameDef]没有任何回应。</li>
+    <li>sent->[RECIPIENT_nameDef]把[INITIATOR_objective]搪塞过去了。</li>
+  </Sentence_RimpsycheConversationFail.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent->Their differing views led to a tense exchange.</li>
+    <li>sent->Their discussion devolved into sharp words as views collided.</li>
+    <li>sent->The disagreement escalated quickly, making the conversation feel confrontational.</li>
+  -->
+  <Sentence_RimpsycheConversationNegativeBad.rulePack.rulesStrings>
+    <li>sent->观点分歧让谈话变得剑拔弩张。</li>
+    <li>sent->意见冲突让讨论演变成激烈争执。</li>
+    <li>sent->分歧迅速升级，整场交谈充满火药味。</li>
+  </Sentence_RimpsycheConversationNegativeBad.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent->Despite their differing views, they managed to have a civil conversation.</li>
+    <li>sent->Though their opinions diverged, they kept the discussion civil.</li>
+    <li>sent->Despite their differences, the conversation remained calm and respectful.</li>
+  -->
+  <Sentence_RimpsycheConversationNegativeGood.rulePack.rulesStrings>
+    <li>sent->尽管观点相左，他们仍保持了礼貌的交谈。</li>
+    <li>sent->虽然意见分歧，但讨论始终不失体面。</li>
+    <li>sent->即使存在差异，交谈依然平静而互相尊重。</li>
+  </Sentence_RimpsycheConversationNegativeGood.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent->Though they agreed on many points, the conversation still felt a little strained.</li>
+    <li>sent->Even though they saw eye-to-eye, there was an underlying awkwardness.</li>
+    <li>sent->Although they found common ground, the conversation didn’t feel entirely comfortable.</li>
+  -->
+  <Sentence_RimpsycheConversationPositiveBad.rulePack.rulesStrings>
+    <li>sent->虽然达成诸多共识，但谈话仍有些勉强。</li>
+    <li>sent->即便观点一致，也掩不住隐约的尴尬。</li>
+    <li>sent->尽管找到共同点，交谈仍不算十分融洽。</li>
+  </Sentence_RimpsycheConversationPositiveBad.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent->They quickly found common ground, making the conversation feel easy and natural.</li>
+    <li>sent->Their discussion flowed easily, with shared views making things smooth.</li>
+    <li>sent->Both of them enjoyed the exchange, finding common ground on the topic.</li>
+  -->
+  <Sentence_RimpsycheConversationPositiveGood.rulePack.rulesStrings>
+    <li>sent->他们很快找到共鸣，交谈轻松自然。</li>
+    <li>sent->共同观点让讨论如行云流水般顺畅。</li>
+    <li>sent->双方都很享受这次观点契合的交流。</li>
+  </Sentence_RimpsycheConversationPositiveGood.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent->Their conversation was engaging and pleasant, thanks to how their closely algined views.</li>
+    <li>sent->Their shared views made the conversation genuinely enjoyable.</li>
+    <li>sent->They immediately saw eye-to-eye, and the exchange felt pleasant and refreshing.</li>
+  -->
+  <Sentence_RimpsycheConversationPositiveGreat.rulePack.rulesStrings>
+    <li>sent->观点高度契合让他们的交谈既投入又愉快。</li>
+    <li>sent->共同的见解使这次交谈完全令人愉悦。</li>
+    <li>sent->他们一见如故，交流过程令人心旷神怡。</li>
+  </Sentence_RimpsycheConversationPositiveGreat.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent->Their differences escalated until [INITIATOR_nameDef] started a fight!</li>
+    <li>sent->What started as a disagreement quickly turned into a fight when [INITIATOR_nameDef] lost their temper!</li>
+    <li>sent->Their clash of opinions turned personal, and [INITIATOR_nameDef] initiated a fight!</li>
+    <li>sent->The conversation became heated, culminating in [INITIATOR_nameDef] starting a fight!</li>
+  -->
+  <Sentence_RimpsycheSocialFightConvoInitiatorStarted.rulePack.rulesStrings>
+    <li>sent->分歧不断升级，最终[INITIATOR_nameDef]大打出手！</li>
+    <li>sent->原本只是争执，[INITIATOR_nameDef]突然暴怒引发斗殴！</li>
+    <li>sent->观点冲突演变成人身攻击，[INITIATOR_nameDef]率先动手！</li>
+    <li>sent->激烈争吵最终以[INITIATOR_nameDef]挑起战斗收场！</li>
+  </Sentence_RimpsycheSocialFightConvoInitiatorStarted.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>sent->Their differences escalated until [RECIPIENT_nameDef] started a fight!</li>
+    <li>sent->What started as a disagreement quickly turned into a fight when [RECIPIENT_nameDef] lost their temper!</li>
+    <li>sent->Their clash of opinions turned personal, and [RECIPIENT_nameDef] initiated a fight!</li>
+    <li>sent->The conversation became heated, culminating in [RECIPIENT_nameDef] starting a fight!</li>
+  -->
+  <Sentence_RimpsycheSocialFightConvoRecipientStarted.rulePack.rulesStrings>
+    <li>sent->矛盾愈演愈烈，[RECIPIENT_nameDef]最终挥拳相向！</li>
+    <li>sent->[RECIPIENT_nameDef]突然情绪失控引发肢体冲突！</li>
+    <li>sent->争论白热化后，[RECIPIENT_nameDef]率先发动攻击！</li>
+    <li>sent->激烈辩论最终演变成[RECIPIENT_nameDef]引发的斗殴！</li>
+  </Sentence_RimpsycheSocialFightConvoRecipientStarted.rulePack.rulesStrings>
+  
+</LanguageData>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: autocannon bullet -->
+  <Bullet_Autocannonz.label>轉輪自動加農砲子彈</Bullet_Autocannonz.label>
+  
+  <!-- EN: AP incendiary bullet -->
+  <Bullet_MilitorScopedRifle.label>精準戰鬥步槍穿甲燃燒彈</Bullet_MilitorScopedRifle.label>
+  
+  <!-- EN: energized bullet -->
+  <Bullet_Undertaker.label>送葬者手槍能量彈</Bullet_Undertaker.label>
+  
+  <!-- EN: militor scoped battle rifle -->
+  <Gun_MilitorScopedRifle.label>精準戰鬥步槍</Gun_MilitorScopedRifle.label>
+  <!-- EN: A customized battle rifle meant to be used by a militor. This weapon was originally the standard version of the EMP rifles used by kraltech operators, now modified with a heat resistant barrel which is capable of firing AP incendiary rounds without over heating. -->
+  <Gun_MilitorScopedRifle.description>微力者使用的改裝戰鬥步槍。這種武器原本是Kral科技下屬戰鬥員所配備的EMP步槍的標準型號，加裝了耐高溫槍管後可以在避免過熱的情況下發射穿甲燃燒彈。</Gun_MilitorScopedRifle.description>
+  <!-- EN: barrel -->
+  <Gun_MilitorScopedRifle.tools.barrel.label>槍管</Gun_MilitorScopedRifle.tools.barrel.label>
+  <!-- EN: militor scoped battle rifle -->
+  <Gun_MilitorScopedRifle.verbs.Verb_Shoot.label>精準戰鬥步槍</Gun_MilitorScopedRifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: revolving autocannon -->
+  <Gun_RevolvingAutoCannon.label>轉輪自動加農砲</Gun_RevolvingAutoCannon.label>
+  <!-- EN: An autocannon which uses a big revolver cylinder to store and fire autocannon rounds. Capable of firing special autocannon rounds that travels at long distances, with an added chance of stunning an ememy upon impact. -->
+  <Gun_RevolvingAutoCannon.description>採用轉輪彈巢結構供彈的自動加農砲，其發射的特製子彈可以平穩飛行相當長的距離，擊中敵人時還有幾率造成眩暈效果。</Gun_RevolvingAutoCannon.description>
+  <!-- EN: barrel -->
+  <Gun_RevolvingAutoCannon.tools.barrel.label>槍管</Gun_RevolvingAutoCannon.tools.barrel.label>
+  <!-- EN: revolving autocannon -->
+  <Gun_RevolvingAutoCannon.verbs.Verb_Shoot.label>轉輪自動加農砲</Gun_RevolvingAutoCannon.verbs.Verb_Shoot.label>
+  
+  <!-- EN: sentry turret -->
+  <Gun_SentryTurret.label>哨戒砲塔</Gun_SentryTurret.label>
+  <!-- EN: A rapid-fire mini turret used for crowd control. -->
+  <Gun_SentryTurret.description>安裝在機械蜈蚣治安官背部的反步兵速射哨戒砲塔。</Gun_SentryTurret.description>
+  <!-- EN: sentry turret -->
+  <Gun_SentryTurret.verbs.Verb_Shoot.label>哨戒砲塔</Gun_SentryTurret.verbs.Verb_Shoot.label>
+  
+  <!-- EN: undertaker pistol -->
+  <Gun_UnderTaker.label>送葬者手槍</Gun_UnderTaker.label>
+  <!-- EN: A custom energy pistol meant to be used by a militor. This pistol is few of the strongest energy weapons ever created, where each shot packs a lot of stopping power and burn damage. -->
+  <Gun_UnderTaker.description>微力者使用的改裝能量手槍。這種武器是少數有資格被稱為最強的能量武器之一，其發射的子彈不僅可以造成可觀的燒傷傷害，還具有極強的抑止能力。</Gun_UnderTaker.description>
+  <!-- EN: barrel -->
+  <Gun_UnderTaker.tools.barrel.label>槍管</Gun_UnderTaker.tools.barrel.label>
+  <!-- EN: undertaker pistol -->
+  <Gun_UnderTaker.verbs.Verb_Shoot.label>送葬者手槍</Gun_UnderTaker.verbs.Verb_Shoot.label>
+  
+  <!-- EN: centipede sheriff -->
+  <Mech_CentipedeSheriff.label>機械蜈蚣治安官</Mech_CentipedeSheriff.label>
+  <!-- EN: A modified version of an alpha centipede. Unlike its original counterpart, this centipede has better mobility and an anti-personel sentry turret in its back, though in exchange of decreased defense. If you're wondering why this centipede is dressed as a sheriff, well, it's fashion honey! Look it up! -->
+  <Mech_CentipedeSheriff.description>由阿爾法機械蜈蚣改裝而來的強化型號。雖然犧牲了部分防護能力，但機械蜈蚣治安官不僅移動速度更快，其背部還額外搭載了一門反步兵哨戒砲塔。如果你想問為什麼它們打扮成了西部治安官的模樣，那我只能說：“懂不懂什麼叫當今潮流啊，你這緣批！”</Mech_CentipedeSheriff.description>
+  <!-- EN: head -->
+  <Mech_CentipedeSheriff.tools.head.label>頭</Mech_CentipedeSheriff.tools.head.label>
+  
+  <!-- EN: militor "Courier Six" -->
+  <Mech_CourierSix.label>“六號郵差”微力者</Mech_CourierSix.label>
+  <!-- EN: A modified version of the infamous militor mk2, now wearing a poncho and a fedora. Although it may look cute, but don't let it fool you, for this is the same militor that terrorizes the rim for a long time. -->
+  <Mech_CourierSix.description>由微力者Mk2改裝而來的強化型號。或許你會覺得這些頭戴軟呢帽、圍著紅面巾的小傢伙很可愛，但可千萬別忘記它們的本質依舊是那些長期威脅著邊緣世界安全的恐怖機械族。</Mech_CourierSix.description>
+  <!-- EN: head -->
+  <Mech_CourierSix.tools.head.label>頭</Mech_CourierSix.tools.head.label>
+  
+  <!-- EN: militor "Gun Slinger" -->
+  <Mech_GunSlinger.label>“西部槍手”微力者</Mech_GunSlinger.label>
+  <!-- EN: A modified version of the infamous militor mk2, now wearing a fedora and a red scarf. Although it may look cute, but don't let it fool you, for this is the same militor that terrorizes the rim for a long time. -->
+  <Mech_GunSlinger.description>由微力者Mk2改裝而來的強化型號。或許你會覺得這些頭戴軟呢帽、圍著紅面巾的小傢伙很可愛，但可千萬別忘記它們的本質依舊是那些長期威脅著邊緣世界安全的恐怖機械族。</Mech_GunSlinger.description>
+  <!-- EN: head -->
+  <Mech_GunSlinger.tools.head.label>頭</Mech_GunSlinger.tools.head.label>
+  
+</LanguageData>

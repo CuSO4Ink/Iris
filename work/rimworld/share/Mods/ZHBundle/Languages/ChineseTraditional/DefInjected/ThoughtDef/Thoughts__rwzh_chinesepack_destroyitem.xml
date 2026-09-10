@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Destroying corpse -->
+  <Thought_DestroyedCorpse.stages.Destroying_corpse.label>銷毀屍體</Thought_DestroyedCorpse.stages.Destroying_corpse.label>
+  <!-- EN: I had to cut a humanlike corpse into little pieces. Disgusting! -->
+  <Thought_DestroyedCorpse.stages.Destroying_corpse.description>我不得不把一具像人的屍體切成小塊處理掉。真噁心！</Thought_DestroyedCorpse.stages.Destroying_corpse.description>
+  
+  <!-- EN: I destroyed embryo -->
+  <Thought_DestroyedEmbryo.stages.I_destroyed_embryo.label>我銷毀了胚胎</Thought_DestroyedEmbryo.stages.I_destroyed_embryo.label>
+  <!-- EN: I had to destroy a little unborn human. -->
+  <Thought_DestroyedEmbryo.stages.I_destroyed_embryo.description>我不得不銷毀未出生的小孩。</Thought_DestroyedEmbryo.stages.I_destroyed_embryo.description>
+  
+  <!-- EN: we destroyed corpse -->
+  <Thought_KnowDestroyedCorpse.stages.we_destroyed_corpse.label>我們銷毀了屍體</Thought_KnowDestroyedCorpse.stages.we_destroyed_corpse.label>
+  <!-- EN: We dismembered and destroyed a humanlike corpse. -->
+  <Thought_KnowDestroyedCorpse.stages.we_destroyed_corpse.description>我們把屍體像切香腸一樣銷毀掉了。</Thought_KnowDestroyedCorpse.stages.we_destroyed_corpse.description>
+  
+</LanguageData>

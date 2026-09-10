@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>desc->This [writingQualityAdjective] [bookType] [follows] a [chef] as [protagHe] [storyStruggles]. [writingQualitySentence]. [maybe_date]\n\nOnce read, this book will provide a new favourite ingredient or meal to the reader, and then it will be destroyed.</li>
+    <li>follows->covers the recipes from</li>
+    <li>follows->lists the recipes from</li>
+    <li>protagHe->he</li>
+    <li>protagHis->his</li>
+    <li>protagHim->him</li>
+    <li>storyStruggles->tries to give some insight into new, exciting ingredients</li>
+    <li>storyStruggles->aims to explore the world of bold, innovative ingredients</li>
+    <li>storyStruggles->delves into the discovery of fresh and thrilling flavours</li>
+    <li>storyStruggles->seeks to uncover the secrets of unique and exotic ingredients</li>
+    <li>storyStruggles->offers a peek into the realm of vibrant, unfamiliar ingredients</li>
+    <li>storyStruggles->takes a deep dive into discovering exciting, novel ingredients</li>
+    <li>storyStruggles->strives to illuminate the potential of new and adventurous ingredients</li>
+    <li>storyStruggles->embarks on a journey to reveal the magic of undiscovered culinary gems</li>
+    <li>storyStruggles->provides a fresh perspective on using innovative and tantalizing ingredients</li>
+    <li>storyStruggles->ventures into the uncharted territory of intriguing, new ingredients</li>
+    <li>storyStruggles->showcases the allure and versatility of bold, underexplored ingredients</li>
+    <li>chef->chef</li>
+    <li>chef->culinary artist</li>
+    <li>chef->gastronomer</li>
+    <li>chef->head cook</li>
+    <li>chef->kitchen maestro</li>
+    <li>chef->cuisine expert</li>
+    <li>chef->pastry chef</li>
+    <li>chef->sous chef</li>
+    <li>chef->food specialist</li>
+    <li>chef->gourmet chef</li>
+    <li>writingQualityAdjective(quality==6)->remarkably well-written</li>
+    <li>writingQualityAdjective(quality==5)->smart and insightful</li>
+    <li>writingQualityAdjective(quality==4)->thoughtful and eloquent</li>
+    <li>writingQualityAdjective(quality==3)->well-written</li>
+    <li>writingQualityAdjective(quality==2)->mediocre</li>
+    <li>writingQualityAdjective(quality==1)->poorly-written</li>
+    <li>writingQualityAdjective(quality==0)->nearly-incoherent</li>
+    <li>writingQualitySentence(quality[greater_than]4)->It is [excellentDesc] [excellentExtra]</li>
+    <li>writingQualitySentence(quality[less_than]5,quality[greater_than]1)->It is [decentDesc] [decentExtra]</li>
+    <li>writingQualitySentence(quality[less_than]2)->It is [awfulDesc] [awfulExtra]</li>
+    <li>excellentDesc->a thoughtful exploration of the culinary spirit</li>
+    <li>excellentDesc->deeply insightful about the complexity of cooking</li>
+    <li>excellentDesc->tightly-written and rich with exotic creations</li>
+    <li>excellentDesc->creative and original</li>
+    <li>excellentDesc->wildly original and remarkably well-crafted</li>
+    <li>excellentDesc->filled with relatable humorous kitchen anecdotes</li>
+    <li>excellentExtra->. Each recipe's description flows naturally into the next</li>
+    <li>excellentExtra->. It is a page-turner and very hard to put down, each recipe better than the previous one</li>
+    <li>excellentExtra->. Its recipes constantly blow the reader's mind</li>
+    <li>decentDesc->a decent dish collection</li>
+    <li>decentDesc->interesting and engaging, with neat culinary ideas</li>
+    <li>decentDesc->focused on one interesting culinary technique</li>
+    <li>decentDesc->somewhat humorous from time to time</li>
+    <li>decentDesc->appealing to a certain type of cook</li>
+    <li>decentExtra-> but has some awful cooking omissions</li>
+    <li>decentExtra-> but its recipes are often hard to follow</li>
+    <li>decentExtra-> but is riddled with cooking errors</li>
+    <li>decentExtra-> but lacks any deep complexity to its recipes</li>
+    <li>decentExtra-> but the recipes are trite and simplistic</li>
+    <li>decentExtra-> but the author constantly uses words inappropriately in an attempt to sound smart</li>
+    <li>decentExtra-> but there is a huge text wall detailing the author's inane travel experiences before each recipe. Just give us the recipe!</li>
+    <li>decentExtra-> but the writing is excessively flowery</li>
+    <li>decentExtra-> but many of the ingredients on its recipes are unnecessary and add nothing to their flavours</li>
+    <li>awfulDesc->very poorly written, as if created by an amateur chef,</li>
+    <li>awfulDesc->written by someone who should never work in a kitchen</li>
+    <li>awfulDesc->full of irrelevant anecdotes that add nothing to the dish being described</li>
+    <li>awfulDesc->hard to follow</li>
+    <li>awfulDesc->lacking in engaging dishes</li>
+    <li>awfulDesc->presenting very bizarre dishes, yet unoriginal</li>
+    <li>awfulDesc->far, far too long, filled with redundant recipes</li>
+    <li>awfulExtra-> and the recipes are borderline incoherent</li>
+    <li>awfulExtra-> and the recipes are extremely hard to follow</li>
+    <li>awfulExtra-> and some of the recipes sound like they would outright kill you</li>
+    <li>awfulExtra-> and the recipes lack any sense of theme or meaning</li>
+    <li>awfulExtra-> and its recipes don't present any interesting ideas at all</li>
+    <li>awfulExtra-> and its recipes are bland and tasteless</li>
+    <li>awfulExtra-> and by the looks of it it's basically a guide to getting food poisoning</li>
+    <li>awfulExtra-> and it tends to substitute ingredients for lower-quality alternatives</li>
+    <li>maybe_date-></li>
+    <li>maybe_date->The book was published [date_form].</li>
+    <li>maybe_date->The text was first printed [date_form].</li>
+    <li>maybe_date->It's unclear exactly when the book was written.</li>
+    <li>date_form->recently</li>
+    <li>date_form->many centuries ago</li>
+    <li>date_form->on the [date]</li>
+    <li>date_form->in [date_season]</li>
+    <li>bookType(p=4)->cookbook</li>
+    <li>bookType(p=2)->recipe book</li>
+    <li>bookType->culinary guide</li>
+    <li>bookType->recipe handbook</li>
+    <li>bookType->kitchen guide</li>
+    <li>bookType->cuisine guide</li>
+    <li>bookType->cooking reference</li>
+  -->
+  <VCEV_CookingBook_Description.rulePack.rulesStrings>
+    <li>desc->這本[writingQualityAdjective]的[bookType][follows]，[protagHe]曾[storyStruggles]。[writingQualitySentence]。[maybe_date]\n\n這本書閱讀完畢後就會消失。它能讓讀者愛上一種新的的食材/烹飪食物。</li>
+    <li>follows->記錄了一位[chef]的烹飪食譜</li>
+    <li>follows->列出了一名[chef]的烹飪秘方</li>
+    <li>protagHe->他</li>
+    <li>protagHis->他</li>
+    <li>protagHim->他</li>
+    <li>storyStruggles->嘗試著尋找能讓人激動不已的全新食材</li>
+    <li>storyStruggles->致力於大膽發掘各種創新性的食材</li>
+    <li>storyStruggles->仔細研究了能讓人感到新鮮和刺激的味道</li>
+    <li>storyStruggles->想揭露珍奇食材中蘊藏的秘密</li>
+    <li>storyStruggles->提供了一瞥新奇與未知食材王國的機會</li>
+    <li>storyStruggles->深入探索了讓人激動不已的珍奇食材</li>
+    <li>storyStruggles->全力發掘了新奇食材的潛力</li>
+    <li>storyStruggles->踏上了揭示未知珍稀美食的旅途</li>
+    <li>storyStruggles->提供了使用創新性和誘人食材的全新觀點</li>
+    <li>storyStruggles->冒險深入未被涉足過的神秘食材領域</li>
+    <li>storyStruggles->大膽展現了未被充分發掘的食材的廣泛用途和誘惑力</li>
+    <li>chef->大廚</li>
+    <li>chef->廚藝家</li>
+    <li>chef->美食家</li>
+    <li>chef->廚師長</li>
+    <li>chef->主廚</li>
+    <li>chef->烹飪大師</li>
+    <li>chef->糕點師</li>
+    <li>chef->副主廚</li>
+    <li>chef->食品專家</li>
+    <li>chef->主廚</li>
+    <li>writingQualityAdjective(quality==6)->行雲流水</li>
+    <li>writingQualityAdjective(quality==5)->精闢獨到</li>
+    <li>writingQualityAdjective(quality==4)->生花妙筆</li>
+    <li>writingQualityAdjective(quality==3)->文從字順</li>
+    <li>writingQualityAdjective(quality==2)->拖泥帶水</li>
+    <li>writingQualityAdjective(quality==1)->辭不達義</li>
+    <li>writingQualityAdjective(quality==0)->味同嚼蠟</li>
+    <li>writingQualitySentence(quality[greater_than]4)->其中[excellentDesc][excellentExtra]</li>
+    <li>writingQualitySentence(quality[less_than]5,quality[greater_than]1)->其中[decentDesc][decentExtra]</li>
+    <li>writingQualitySentence(quality[less_than]2)->其中[awfulDesc][awfulExtra]</li>
+    <li>excellentDesc->還講述了對烹飪本質的深刻探究</li>
+    <li>excellentDesc->還闡釋了對複雜烹飪技巧的精闢觀點</li>
+    <li>excellentDesc->還以嚴謹的文筆描繪了異常奇妙的料理作品</li>
+    <li>excellentDesc->立意新穎，引人入勝</li>
+    <li>excellentDesc->還獨具匠心地展現了各種美味</li>
+    <li>excellentDesc->還寫著許多有意思的廚房趣事</li>
+    <li>excellentExtra->。食譜的介紹描述自然流暢</li>
+    <li>excellentExtra->。它妙趣橫生，愈發精妙的食譜讓人愛不釋手</li>
+    <li>excellentExtra->。各種精妙的食譜定會讓讀者驚聲連連</li>
+    <li>decentDesc->各式菜品看起來相當不錯</li>
+    <li>decentDesc->的內容看起來有趣且迷人，有很多出色的烹飪點子</li>
+    <li>decentDesc->主要講述了一種趣味十足的料理技術</li>
+    <li>decentDesc->不乏富有幽默感的觀點</li>
+    <li>decentDesc->迎合了某類烹飪者的口味</li>
+    <li>decentExtra->，但在烹飪過程上存在一些明顯的缺失</li>
+    <li>decentExtra->，但複雜的食譜讓人難以理解</li>
+    <li>decentExtra->，但料理過程卻漏洞百出</li>
+    <li>decentExtra->，但食譜毫無深度</li>
+    <li>decentExtra->，但食譜顯得過於老套且簡單</li>
+    <li>decentExtra->，但作者總是自作聰明地堆砌辭藻</li>
+    <li>decentExtra->，但每個食譜前都寫著一大段作者無聊的旅行經歷。讀者們可不想看這些連篇的廢話</li>
+    <li>decentExtra->，但文筆過於花哨</li>
+    <li>decentExtra->，但菜譜中的許多食材都毫無用處，沒有改善味道</li>
+    <li>awfulDesc->文筆相當糟糕，很難不認為作者是個外行廚師</li>
+    <li>awfulDesc->的內容寫得慘不忍睹，作者根本就沒有當廚師的才能</li>
+    <li>awfulDesc->寫著許多無關緊要的廚房趣事，和所述菜品沒有關聯性</li>
+    <li>awfulDesc->的內容難以理解</li>
+    <li>awfulDesc->缺少吸引人的菜品</li>
+    <li>awfulDesc->描繪的菜品相當古怪，但缺乏新意</li>
+    <li>awfulDesc->講述了過多冗余無用的食譜</li>
+    <li>awfulExtra->，而且食譜的介紹斷斷續續，非常不連貫</li>
+    <li>awfulExtra->，而且食譜的烹飪步驟非常混亂，讓人無從下手</li>
+    <li>awfulExtra->，而且有些食譜過於抽像，讓人無法接受</li>
+    <li>awfulExtra->，而且有些食譜缺乏主題與意義</li>
+    <li>awfulExtra->，而且它的食譜沒有任何有趣的點子</li>
+    <li>awfulExtra->，而且它的食譜既平庸又無味</li>
+    <li>awfulExtra->，而且實際上將這本書改名為《如何讓人食物中毒》也並不為過</li>
+    <li>awfulExtra->，而且作者更喜歡採用劣質的食材</li>
+    <li>maybe_date-></li>
+    <li>maybe_date->它於[date_form]正式出版。</li>
+    <li>maybe_date->它於[date_form]首次印刷。</li>
+    <li>maybe_date->目前還不清楚這本書到底是何時寫成的。</li>
+    <li>date_form->近期</li>
+    <li>date_form->數個世紀以前</li>
+    <li>date_form->[date]</li>
+    <li>date_form->[date_season]</li>
+    <li>bookType(p=4)->廚藝書</li>
+    <li>bookType(p=2)->食譜大全</li>
+    <li>bookType->烹飪指南</li>
+    <li>bookType->菜譜手冊</li>
+    <li>bookType->廚房指南</li>
+    <li>bookType->料理指導書</li>
+    <li>bookType->烹飪參考書</li>
+  </VCEV_CookingBook_Description.rulePack.rulesStrings>
+  
+</LanguageData>

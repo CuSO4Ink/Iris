@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: breathe flame -->
+  <VPE_BreatheFlame.label>火焰吐息</VPE_BreatheFlame.label>
+  <!-- EN: Spews forth flammable liquid which immediately ignites, along with everything the flames touch. -->
+  <VPE_BreatheFlame.description>展開一個暫時的折躍門，將地下的有機化合物礦層和施放者的口部單向連接，隨後用一個小火花點燃。一束高溫高壓的火焰會從施放者的口中噴涌而出，焚盡一切。</VPE_BreatheFlame.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_BreatheFlame.jobReportString>使用能力：{0}</VPE_BreatheFlame.jobReportString>
+  <!-- EN: 火焰吐息 -->
+  <VPE_BreatheFlame.verbProperties.label>火焰吐息</VPE_BreatheFlame.verbProperties.label>
+  
+  <!-- EN: explosion -->
+  <VPE_Explosion.label>炎爆</VPE_Explosion.label>
+  <!-- EN: Ignites a small amount of deepchem underneath the target area, which vents to the surface in an explosion. Burns the area and spills forth excess liquid. -->
+  <VPE_Explosion.description>展開一個暫時的折躍門，將地下的有機化合物礦層和選定的地點單向連接，隨後用一個小火花點燃。點燃的高壓燃氣會引發大範圍的爆炸，小團的化學燃料會不斷躍出。</VPE_Explosion.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Explosion.jobReportString>使用能力：{0}</VPE_Explosion.jobReportString>
+  <!-- EN: 炎爆 -->
+  <VPE_Explosion.verbProperties.label>炎爆術</VPE_Explosion.verbProperties.label>
+  
+  <!-- EN: eye blast -->
+  <VPE_EyeBlast.label>灼熱視線</VPE_EyeBlast.label>
+  <!-- EN: Emulating a star, the caster compresses highly energized gas which escapes in the desired direction, with damage scaling with psychic sensitivity. Ignites a small but distant area. -->
+  <VPE_EyeBlast.description>展開兩個微型的折躍門，將附近的一顆白矮星和施放者的雙眼單向連接。選定一個目標地點防止誤傷，隨後灼目的能量會射出並點燃目標周圍。</VPE_EyeBlast.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_EyeBlast.jobReportString>使用能力：{0}</VPE_EyeBlast.jobReportString>
+  <!-- EN: 灼熱視線 -->
+  <VPE_EyeBlast.verbProperties.label>灼熱視線</VPE_EyeBlast.verbProperties.label>
+  
+  <!-- EN: fire beam -->
+  <VPE_FireBeam.label>天降火柱</VPE_FireBeam.label>
+  <!-- EN: Attempts to recreate the power of a star inside a concentrated column of almost liquidized oxygen. The resulting emission of plasma is so powerful that only the most advanced weapons systems can hope to compare. The long, intense concentration ends with the caster falling into a 6-hour coma. -->
+  <VPE_FireBeam.description>在一團緻密的液態氧中模擬恆星的威能。釋放出的高能等離子體只有最先進的高科技武器能與之相比。極度的精力消耗會讓施放者在結束後陷入6小時的昏迷</VPE_FireBeam.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_FireBeam.jobReportString>使用能力：{0}</VPE_FireBeam.jobReportString>
+  <!-- EN: 天降火柱 -->
+  <VPE_FireBeam.verbProperties.label>天降火柱</VPE_FireBeam.verbProperties.label>
+  
+  <!-- EN: fire shield -->
+  <VPE_FireShield.label>火盾</VPE_FireShield.label>
+  <!-- EN: Creates an aura of blazing flames around the target for a time, preventing them from immolation and igniting any who try to attack them in melee. Duration scales with the caster’s psychic sensitivity. -->
+  <VPE_FireShield.description>展開一個環繞目標的折躍門，將附近的一顆恆星和與之單向連接，熾熱的火焰僅會向外延伸幾寸距離。近戰攻擊目標之人會引火燒身，也會使目標免受火焰傷害。</VPE_FireShield.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_FireShield.jobReportString>使用能力：{0}</VPE_FireShield.jobReportString>
+  <!-- EN: 火盾 -->
+  <VPE_FireShield.verbProperties.label>火盾</VPE_FireShield.verbProperties.label>
+  
+  <!-- EN: flameball -->
+  <VPE_Flameball.label>火球彈</VPE_Flameball.label>
+  <!-- EN: Throw an orb of condensed flames, similar to a grenade, which explodes upon impact. The range scales with the caster’s psychic sensitivity. -->
+  <VPE_Flameball.description>在手中生成一團不穩定的熔岩並用力丟出。擊中目標後會引發小範圍的爆炸。射程取決於施放者的心靈敏感度。</VPE_Flameball.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Flameball.jobReportString>使用能力：{0}</VPE_Flameball.jobReportString>
+  <!-- EN: 火球彈 -->
+  <VPE_Flameball.verbProperties.label>火球彈</VPE_Flameball.verbProperties.label>
+  
+  <!-- EN: fire tornado -->
+  <VPE_FlameTornado.label>熾火旋風</VPE_FlameTornado.label>
+  <!-- EN: Attempts to recreate the power of a star inside a vortex of concentrated oxygen. The mess of reactions occurring creates flammable byproducts in its wake while also leaving its trajectory completely unpredictable. -->
+  <VPE_FlameTornado.description>在一團緻密的液態氧中模擬恆星的威能。劇烈的反應會生成大量可燃副產物，一旦點燃，其軌跡便不能預測。</VPE_FlameTornado.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_FlameTornado.jobReportString>使用能力：{0}</VPE_FlameTornado.jobReportString>
+  <!-- EN: 熾火旋風 -->
+  <VPE_FlameTornado.verbProperties.label>熾火旋風</VPE_FlameTornado.verbProperties.label>
+  
+  <!-- EN: meteor shower -->
+  <VPE_MeteorShower.label>流星火雨</VPE_MeteorShower.label>
+  <!-- EN: Skips and immolates orbiting meteoroids to strike a designated area. The number of impacts scales with psychic sensitivity. -->
+  <VPE_MeteorShower.description>擾亂星球軌道上的小行星的引力環境，促使其墜落並撞擊選定的地點。流星數量取決於心靈敏感度。</VPE_MeteorShower.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_MeteorShower.jobReportString>使用能力：{0}</VPE_MeteorShower.jobReportString>
+  <!-- EN: 流星火雨 -->
+  <VPE_MeteorShower.verbProperties.label>流星火雨</VPE_MeteorShower.verbProperties.label>
+  
+  <!-- EN: extinguish flames -->
+  <VPE_QuenchFlames.label>滅火</VPE_QuenchFlames.label>
+  <!-- EN: Converts a local deposit of deepchem into fire-retardant foam which sprays forth from the user in a large area. -->
+  <VPE_QuenchFlames.description>展開一個暫時的折躍門，連結至附近經過的飛船的防火系統，在目標地點爆出大量阻燃泡沫。借來的阻燃泡沫非常之多，影響範圍相當大。</VPE_QuenchFlames.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_QuenchFlames.jobReportString>使用能力：{0}</VPE_QuenchFlames.jobReportString>
+  <!-- EN: 滅火 -->
+  <VPE_QuenchFlames.verbProperties.label>滅火</VPE_QuenchFlames.verbProperties.label>
+  
+  <!-- EN: self explosion -->
+  <VPE_SelfExplosion.label>自我炎爆</VPE_SelfExplosion.label>
+  <!-- EN: Expels pressurized, flammable gas from the caster which immediately ignites. High chance of igniting those in the blast site, but does little damage without harming the caster. -->
+  <VPE_SelfExplosion.description>展開一個環繞施放者的折躍門，將地下的可燃氣體礦藏與之單向連接。燃燒的氣體會高速向外脫出，儘管直接的傷害不多，但會將幾乎所有東西點燃，施放者也不會受到影響。</VPE_SelfExplosion.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_SelfExplosion.jobReportString>使用能力：{0}</VPE_SelfExplosion.jobReportString>
+  <!-- EN: 自我炎爆 -->
+  <VPE_SelfExplosion.verbProperties.label>自我炎爆</VPE_SelfExplosion.verbProperties.label>
+  
+</LanguageData>

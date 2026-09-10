@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: mycothread -->
+  <VPE_Mycothread.label>菌丝布</VPE_Mycothread.label>
+  <!-- EN: Cotton-like, edible fabric extracted from mycothread mushrooms. It’s soft to the touch and easy to work with, deteriorates quickly, has an unusual color, and oddly still smells and tastes like mushrooms. -->
+  <VPE_Mycothread.description>纤维菇里提取出来的菌丝织物，可以食用。它触感柔软，方便加工，老化迅速，有一种独特的颜色。难得的是，它还能被当作蘑菇食用。</VPE_Mycothread.description>
+  
+</LanguageData>

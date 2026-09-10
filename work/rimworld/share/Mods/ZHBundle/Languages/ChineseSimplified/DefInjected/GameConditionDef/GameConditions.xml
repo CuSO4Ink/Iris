@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: forced hurricane -->
+  <VPE_Hurricane.label>骤雨飓风</VPE_Hurricane.label>
+  <!-- EN: A Staticlord is creating a hurricane. -->
+  <VPE_Hurricane.description>一个风雷使正在激起飓风。</VPE_Hurricane.description>
+  
+  <!-- EN: intensified shadows -->
+  <VPE_IntenseShadows.label>剧化黑暗</VPE_IntenseShadows.label>
+  <!-- EN: text.todo -->
+  <VPE_IntenseShadows.description>所有低于50%光照的暗处都会变成0%的绝对黑暗</VPE_IntenseShadows.description>
+  <!-- EN: The shadows return to normal. -->
+  <VPE_IntenseShadows.endMessage>黑暗已经重归正常</VPE_IntenseShadows.endMessage>
+  
+  <!-- EN: flashstorm -->
+  <VPE_PsychicFlashstorm.label>闪电风暴</VPE_PsychicFlashstorm.label>
+  <!-- EN: A freak localized storm is blasting a small area with repeated lightning strikes. -->
+  <VPE_PsychicFlashstorm.description>一个剧烈的闪电风暴正在不断雷击一片区域。</VPE_PsychicFlashstorm.description>
+  <!-- EN: The flashstorm is over. -->
+  <VPE_PsychicFlashstorm.endMessage>闪电风暴结束了。</VPE_PsychicFlashstorm.endMessage>
+  <!-- EN: A freak localized flashstorm is striking a small area with lightning. This can cause massive fires. -->
+  <VPE_PsychicFlashstorm.letterText>一个剧烈的闪电风暴正在不断雷击一片区域。可能会引发大量火灾。</VPE_PsychicFlashstorm.letterText>
+  
+  <!-- EN: paused raid -->
+  <VPE_RaidPause.label>袭击止步</VPE_RaidPause.label>
+  <!-- EN: A Chronopath is pausing a raid. -->
+  <VPE_RaidPause.description>一个捻时官冻结了袭击。</VPE_RaidPause.description>
+  
+  <!-- EN: time quake -->
+  <VPE_TimeQuake.label>时空震颤</VPE_TimeQuake.label>
+  <!-- EN: A massive temporal disturbance. -->
+  <VPE_TimeQuake.description>剧烈的时空扰动。</VPE_TimeQuake.description>
+  
+</LanguageData>

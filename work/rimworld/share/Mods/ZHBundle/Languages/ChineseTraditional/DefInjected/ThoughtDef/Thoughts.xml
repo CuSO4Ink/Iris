@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: alien loved by xenophile -->
+  <HAR_AlienVsXenophobia.stages.alien_loved_by_xenophile.label>外星種族喜歡親外主義</HAR_AlienVsXenophobia.stages.alien_loved_by_xenophile.label>
+  <!-- EN: alien hated by xenophobe -->
+  <HAR_AlienVsXenophobia.stages.alien_hated_by_xenophobe.label>外星種族討厭排外主義</HAR_AlienVsXenophobia.stages.alien_hated_by_xenophobe.label>
+  
+  <!-- EN: xenophobe vs xenophile -->
+  <HAR_XenophobeVsXenophile.stages.xenophobe_vs_xenophile.label>排外主義 vs 親外主義</HAR_XenophobeVsXenophile.stages.xenophobe_vs_xenophile.label>
+  
+  <!-- EN: xenophile loves aliens -->
+  <HAR_XenophobiaVsAlien.stages.xenophile_loves_aliens.label>親外主義喜歡外星種族</HAR_XenophobiaVsAlien.stages.xenophile_loves_aliens.label>
+  <!-- EN: xenophile loves aliens -->
+  <HAR_XenophobiaVsAlien.stages.xenophile_loves_aliens.description>親外主義喜愛外星種族</HAR_XenophobiaVsAlien.stages.xenophile_loves_aliens.description>
+  <!-- EN: xenophobe hates aliens -->
+  <HAR_XenophobiaVsAlien.stages.xenophobe_hates_aliens.label>排外主義厭惡外星種族</HAR_XenophobiaVsAlien.stages.xenophobe_hates_aliens.label>
+  <!-- EN: xenophobe hates aliens -->
+  <HAR_XenophobiaVsAlien.stages.xenophobe_hates_aliens.description>排外主義憎惡外星種族</HAR_XenophobiaVsAlien.stages.xenophobe_hates_aliens.description>
+  
+</LanguageData>

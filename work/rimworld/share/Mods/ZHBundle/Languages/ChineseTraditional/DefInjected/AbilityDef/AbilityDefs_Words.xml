@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 하얀 갑옷의 무사 -->
+  <Miho_Ability_Defence.label>英魂加身</Miho_Ability_Defence.label>
+  <!-- EN: 시전자 대신 데미지를 흡수해주는 하얀 갑옷의 무사의 혼령을 시전자의 몸에 깃들게 합니다. -->
+  <Miho_Ability_Defence.description>召喚銀甲英魂加持己身，使施法者在短時間內變得幾乎刀槍不入。</Miho_Ability_Defence.description>
+  
+  <!-- EN: 즐거움의 꼬리침 -->
+  <Miho_Ability_Inspiration.label>歡欣靈尾</Miho_Ability_Inspiration.label>
+  <!-- EN: 행복을 선사해줍니다. 어떻게 선사해주는진 알려들지 마세요. -->
+  <Miho_Ability_Inspiration.description>通過快樂平靜的話語傳遞心靈能量，同時用心靈暗示與毛絨柔軟的尾巴在目標腦中植入一個歡欣暗示。歡欣暗示會抑制目標不愉快的想法以改善情緒。這樣做的副作用是使人感覺遲鈍而降低意識。</Miho_Ability_Inspiration.description>
+  
+  <!-- EN: 유혹의 꼬리침 -->
+  <Miho_Ability_Love.label>迷愛靈尾</Miho_Ability_Love.label>
+  <!-- EN: 두 사람을 이어줍니다. 정말로요! -->
+  <Miho_Ability_Love.description>談論關於某人浪漫的同時使用心理暗示與毛絨柔軟的尾巴向聽者灌輸浪漫的慾望。在接下來的幾天裡，聽者會感覺到心靈感應的浪漫中另一個人產生的吸引力。這大大增強了他們的看法，使他們更有可能在有機會的情況下表達愛意。這個心靈能力可以用來鏈接不相關的兩人、誘導目標對施法者的愛、或是讓自己愛上另一個人。</Miho_Ability_Love.description>
+  
+  <!-- EN: 일도 양단 -->
+  <Miho_Ability_Powerstrike.label>一刀兩斷</Miho_Ability_Powerstrike.label>
+  <!-- EN: 진정한 무사에게 필요한 것은 의지와 기다림 입니다. 반갈죽! -->
+  <Miho_Ability_Powerstrike.description>通過心靈能量的強化以達到“心如止水”的狀態，在短時間內大幅提高施法者的近戰能力。\n\n“我要把你劈成兩半！”</Miho_Ability_Powerstrike.description>
+  
+  <!-- EN: 평온의 꼬리침 -->
+  <Miho_Ability_Serenity.label>寧神靈尾</Miho_Ability_Serenity.label>
+  <!-- EN: 정신이상을 멈춰줍니다! 여우는 못참지 ㅋㅋ -->
+  <Miho_Ability_Serenity.description>通過平靜的話語、心理暗示與毛絨柔軟的尾巴來結束人或動物的精神崩潰狀態。目標會進入短暫的心靈沉睡。精神力的代價取決於目標的精神崩潰強度。</Miho_Ability_Serenity.description>
+  
+  <!-- EN: 영성화 -->
+  <Miho_Ability_Spiritualize.label>流轉不息</Miho_Ability_Spiritualize.label>
+  <!-- EN: 시전자 본인이 메카나이트-초능력 전달체가 되어 주변 시전자들의 신경열 스트레스를 해소시켜 줍니다. -->
+  <Miho_Ability_Spiritualize.description>將施法者化作心靈能量與機械分子的流轉中樞，大幅提高周圍友方單位的神經熱極限和消散速率。</Miho_Ability_Spiritualize.description>
+  
+</LanguageData>

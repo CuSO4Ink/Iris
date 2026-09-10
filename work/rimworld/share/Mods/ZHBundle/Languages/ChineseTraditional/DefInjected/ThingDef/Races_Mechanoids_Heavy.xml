@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 다각 경전차 (정찰형) -->
+  <Miho_Mech_Sapsal.label>“驅鬼犬”偵查無人機</Miho_Mech_Sapsal.label>
+  <!-- EN: 정찰, 진지구축, 위험환경 제거에 적합한 삽살급 다각 경전차 입니다. -->
+  <Miho_Mech_Sapsal.description>配備有7.7mm重機槍的“驅鬼犬”級中型偵查無人機，能夠勝任戰術偵察、險境排除、物資搬運等多種工作。\n\n【額外能力】：機械煙霧\n\n從隱藏的通風口釋放出壓縮煙霧。煙霧會降低穿過它射來的任何砲彈的精準度，並防止被砲塔精確鎖定。</Miho_Mech_Sapsal.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_Sapsal.tools.front_left_leg.label>左前腿</Miho_Mech_Sapsal.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_Sapsal.tools.front_right_leg.label>右前腿</Miho_Mech_Sapsal.tools.front_right_leg.label>
+  <!-- EN: blade -->
+  <Miho_Mech_Sapsal.tools.blade.label>鐮刃</Miho_Mech_Sapsal.tools.blade.label>
+  
+  <!-- EN: 다각 경전차 (초능력 지원) -->
+  <Miho_Mech_SapsalPsy.label>“驅鬼犬”靈能支援無人機</Miho_Mech_SapsalPsy.label>
+  <!-- EN: 정찰, 진지구축, 위험환경 제거에 적합한 삽살급 다각 경전차 입니다. -->
+  <Miho_Mech_SapsalPsy.description>配備有启灵增幅系統的“驅鬼犬”級中型靈能支援無人機。能夠勝任戰術援護、緊急包紮等多種工作。\n\n【額外能力I】：心智駭入（意識侵蝕）\n\n操縱心靈能量擾亂目標機械族或無人機的運算中樞，在短時間內癱瘓其各項系統，並持續降低意識與移動速度。\n\n【額外能力II】：熵熱吸收\n\n與目標建立心靈鏈接，在短時間內快速吸收其身上積聚的神經熱。\n\n【額外能力III】：機械靈愈\n\n使用心靈能量驅使機械分子，快速包紮目標身上的傷口。</Miho_Mech_SapsalPsy.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_SapsalPsy.tools.front_left_leg.label>左前腿</Miho_Mech_SapsalPsy.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_SapsalPsy.tools.front_right_leg.label>右前腿</Miho_Mech_SapsalPsy.tools.front_right_leg.label>
+  <!-- EN: blade -->
+  <Miho_Mech_SapsalPsy.tools.blade.label>鐮刃</Miho_Mech_SapsalPsy.tools.blade.label>
+  
+  <!-- EN: 미호 다각전차용 중기관총 -->
+  <Miho_MechWeapon_Machinegun.label>無人機重機槍</Miho_MechWeapon_Machinegun.label>
+  <!-- EN: 7.7mm 탄을 사용하는 다각전차용 중기관총 입니다. -->
+  <Miho_MechWeapon_Machinegun.description>為“驅鬼犬”級偵查無人機設計的7.7mm重機槍。</Miho_MechWeapon_Machinegun.description>
+  <!-- EN: barrel -->
+  <Miho_MechWeapon_Machinegun.tools.barrel.label>槍管</Miho_MechWeapon_Machinegun.tools.barrel.label>
+  <!-- EN: 미호 다각전차용 중기관총 -->
+  <Miho_MechWeapon_Machinegun.verbs.Verb_Shoot.label>無人機重機槍</Miho_MechWeapon_Machinegun.verbs.Verb_Shoot.label>
+  
+</LanguageData>

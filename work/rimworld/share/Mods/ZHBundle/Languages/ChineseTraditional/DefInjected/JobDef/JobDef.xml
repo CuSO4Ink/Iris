@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cleaning their TargetA. -->
+  <IdleJob_CleaningGun.reportString>正在護理 TargetA。</IdleJob_CleaningGun.reportString>
+  
+  <!-- EN: watching crops in TargetA. -->
+  <IdleJob_Gardening.reportString>在 TargetA 觀察農作物。</IdleJob_Gardening.reportString>
+  <!-- EN: weeding around TargetA. -->
+  <IdleJob_Gardening.reportStringA>除去 TargetA 周圍雜草。</IdleJob_Gardening.reportStringA>
+  <!-- EN: killing pests around TargetA. -->
+  <IdleJob_Gardening.reportStringB>殺死 TarjetA 周圍的害蟲。</IdleJob_Gardening.reportStringB>
+  
+  <!-- EN: has scribbling on the ground. -->
+  <IdleJob_Graffiti.reportString>在地上亂塗亂畫。</IdleJob_Graffiti.reportString>
+  
+  <!-- EN: poking around in TargetA's room. -->
+  <IdleJob_LookAroundRoom.reportString>正在參觀 TargetA 的房間。</IdleJob_LookAroundRoom.reportString>
+  
+  <!-- EN: mending TargetA. -->
+  <IdleJob_MendItem.reportString>正在修補 TargetA。</IdleJob_MendItem.reportString>
+  
+  <!-- EN: just sitting idle. -->
+  <IdleJob_MessingAround.reportString>無所事事。</IdleJob_MessingAround.reportString>
+  
+  <!-- EN: observing TargetA. -->
+  <IdleJob_ObservingAnimal.reportString>觀察 TargetA。</IdleJob_ObservingAnimal.reportString>
+  
+  <!-- EN: practicing with their TargetA. -->
+  <IdleJob_PracticeMelee.reportString>正在拿著 TargetA 進行鍛鍊。</IdleJob_PracticeMelee.reportString>
+  
+  <!-- EN: taking a break time. -->
+  <IdleJob_TakeBreakTime.reportString>正在小憩</IdleJob_TakeBreakTime.reportString>
+  
+  <!-- EN: thinking about happened with TargetA. -->
+  <IdleJob_Thinking.reportString>正在思考 TargetA 的事。</IdleJob_Thinking.reportString>
+  
+  <!-- EN: throwing small stones. -->
+  <IdleJob_ThrowingStone.reportString>扔小石頭。</IdleJob_ThrowingStone.reportString>
+  
+  <!-- EN: watching TargetA do research. -->
+  <IdleJob_WatchResearch.reportString>看著 TargetA 在學習。</IdleJob_WatchResearch.reportString>
+  
+  <!-- EN: watching TargetA working. -->
+  <IdleJob_WatchWorking.reportString>看著 TargetA 在工作。</IdleJob_WatchWorking.reportString>
+  
+</LanguageData>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Pawn {0} is now one with their weapon and named it: {1} -->
+  <SK_WeaponMastery_Message1>{0}觉得手中的武器十分趁手，并为它取了个新的昵称：{1}</SK_WeaponMastery_Message1>
+    <!-- EN: Pawn {0} mastered: {1} -->
+  <SK_WeaponMastery_Message2>{0}已经能够熟练使用{1}了。</SK_WeaponMastery_Message2>
+    <!-- EN: Beware of Pawn {0} and their weapon: {1} -->
+  <SK_WeaponMastery_Message3>嘿，小心{0}和那把散发着杀气的{1}！</SK_WeaponMastery_Message3>
+    <!-- EN: Pawn {0} has named their weapon: {1} -->
+  <SK_WeaponMastery_Message4>{0}为手中的武器取了新的名字：{1}</SK_WeaponMastery_Message4>
+</LanguageData>

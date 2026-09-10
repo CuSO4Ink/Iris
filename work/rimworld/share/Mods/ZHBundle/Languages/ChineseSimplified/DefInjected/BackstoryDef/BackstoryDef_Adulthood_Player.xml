@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: [PAWN_nameDef] was banished from the nest where he lived due to his different appearance. To survive, [PAWN_pronoun] learned various skills that are not necessary for ordinary royal vivi. -->
+  <VV_ViviExiled.description>[PAWN_nameDef]由于长相不同，被驱逐出了他所居住的巢穴。为了生存，[PAWN_pronoun]学会了一般皇家薇薇所不需要的各种技能。</VV_ViviExiled.description>
+  <!-- EN: vivi exiled -->
+  <VV_ViviExiled.title>薇薇被放逐者</VV_ViviExiled.title>
+  <!-- EN: exiled -->
+  <VV_ViviExiled.titleShort>被放逐者</VV_ViviExiled.titleShort>
+  
+</LanguageData>

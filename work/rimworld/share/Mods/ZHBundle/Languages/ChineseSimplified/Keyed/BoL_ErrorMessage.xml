@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<!--== "Propose" == -->
+	<BoL_DoPropose>求婚</BoL_DoPropose>
+
+	<!--== "Propose to your partner by whispering words of love to him/her." == -->
+	<BoL_ProposeText>向对方柔声说一句情话并鼓起勇气求婚。</BoL_ProposeText>
+
+	<!--== "You are already married to the subject." == -->
+	<BoL_AlreadyMaarried>对方已经结婚了。</BoL_AlreadyMaarried>
+</LanguageData>

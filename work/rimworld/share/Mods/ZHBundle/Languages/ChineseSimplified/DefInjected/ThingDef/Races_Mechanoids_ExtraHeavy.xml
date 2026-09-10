@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 다각 중전차 -->
+  <Miho_Mech_Bulgasal.label>“永生灵”坦猎无人机</Miho_Mech_Bulgasal.label>
+  <!-- EN: 전투에 쓰이는 불가살급 다각 중전차 입니다. -->
+  <Miho_Mech_Bulgasal.description>配备有47mm反坦克炮和6.5mm同轴轻机枪的“永生灵”级重型坦猎无人机。除了能够有效对抗各种载具外，还可以胜任物资搬运工作。\n\n【额外能力】：烟雾榴弹\n\n向目标点处发射一枚烟雾榴弹。</Miho_Mech_Bulgasal.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_Bulgasal.tools.front_left_leg.label>左前腿</Miho_Mech_Bulgasal.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_Bulgasal.tools.front_right_leg.label>右前腿</Miho_Mech_Bulgasal.tools.front_right_leg.label>
+  
+  <!-- EN: 다각 중전차 (유산탄) -->
+  <Miho_Mech_BulgasalGrenade.label>“永生灵”榴弹无人机</Miho_Mech_BulgasalGrenade.label>
+  <!-- EN: 전투에 쓰이는 불가살급 다각 중전차 입니다. -->
+  <Miho_Mech_BulgasalGrenade.description>配备有57mm榴弹炮的“永生灵”级重型榴弹无人机。除了能够有效对抗成群的轻甲敌人外，还可以胜任物资搬运工作。\n\n【额外能力I】：曲射炮击\n\n向目标点处发射一枚迫击炮弹。最大射程为75格。\n\n【额外能力II】：烟雾榴弹\n\n向目标点处发射一枚大范围烟雾榴弹。</Miho_Mech_BulgasalGrenade.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_BulgasalGrenade.tools.front_left_leg.label>左前腿</Miho_Mech_BulgasalGrenade.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_BulgasalGrenade.tools.front_right_leg.label>右前腿</Miho_Mech_BulgasalGrenade.tools.front_right_leg.label>
+  
+  <!-- EN: 다각 중전차 -->
+  <Miho_Mech_BulgasalSiege.label>“永生灵”破城无人机</Miho_Mech_BulgasalSiege.label>
+  <!-- EN: 전투에 쓰이는 불가살급 다각 중전차 입니다. -->
+  <Miho_Mech_BulgasalSiege.description>配备有80mm等离子臼炮的“永生灵”级重型破城无人机。除了能够有效打击防御工事外，还可以胜任物资搬运工作。\n\n【额外能力】：爆能弹幕\n\n向目标点处喷射大量高能等离子弹。</Miho_Mech_BulgasalSiege.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_BulgasalSiege.tools.front_left_leg.label>左前腿</Miho_Mech_BulgasalSiege.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_BulgasalSiege.tools.front_right_leg.label>右前腿</Miho_Mech_BulgasalSiege.tools.front_right_leg.label>
+  
+  <!-- EN: plasma -->
+  <Miho_MechPlasmaSpray_Proj.label>等离子弹</Miho_MechPlasmaSpray_Proj.label>
+  
+  <!-- EN: smoke launcher shell -->
+  <Miho_MechSmoke_Proj.label>烟雾榴弹</Miho_MechSmoke_Proj.label>
+  
+  <!-- EN: smoke launcher shell -->
+  <Miho_MechSmokeGrenade_Proj.label>烟雾榴弹</Miho_MechSmokeGrenade_Proj.label>
+  
+  <!-- EN: thermobaric shell -->
+  <Miho_MechThermobaricGrenade_Proj.label>温压榴弹</Miho_MechThermobaricGrenade_Proj.label>
+  
+  <!-- EN: 미호 다각전차용 유탄포 -->
+  <Miho_MechWeapon_Heavygrenade.label>无人机榴弹炮</Miho_MechWeapon_Heavygrenade.label>
+  <!-- EN: 57mm유탄을 사용하는 유탄포를 감싼 포탑입니다. 유산탄을 발사하여 미개한 군대에게 치명적인 피해를 줄 수 있습니다. -->
+  <Miho_MechWeapon_Heavygrenade.description>为“永生灵”级榴弹无人机设计的57mm榴弹炮。其发射的榴霰弹很适合用来歼灭成群的轻甲敌人。</Miho_MechWeapon_Heavygrenade.description>
+  <!-- EN: shell charges -->
+  <Miho_MechWeapon_Heavygrenade.comps.CompEquippableAbilityReloadable.chargeNoun>榴霰弹</Miho_MechWeapon_Heavygrenade.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Miho_MechWeapon_Heavygrenade.comps.CompEquippableAbilityReloadable.cooldownGerund>冷却中</Miho_MechWeapon_Heavygrenade.comps.CompEquippableAbilityReloadable.cooldownGerund>
+  <!-- EN: barrel -->
+  <Miho_MechWeapon_Heavygrenade.tools.barrel.label>炮管</Miho_MechWeapon_Heavygrenade.tools.barrel.label>
+  <!-- EN: 미호 다각전차용 유탄포 -->
+  <Miho_MechWeapon_Heavygrenade.verbs.Verb_Shoot_ShootGun.label>无人机榴弹炮</Miho_MechWeapon_Heavygrenade.verbs.Verb_Shoot_ShootGun.label>
+  
+  <!-- EN: grapeshot -->
+  <Miho_MechWeapon_Heavygrenade_Proj.label>榴霰弹</Miho_MechWeapon_Heavygrenade_Proj.label>
+  
+  <!-- EN: 미호 다각전차용 대전차포 -->
+  <Miho_MechWeapon_Heavygun.label>无人机反坦克炮</Miho_MechWeapon_Heavygun.label>
+  <!-- EN: 47mm탄을 사용하는 고관통 속사포를 감싼 포탑입니다. 작아보여도, 변방계에서는 과잉화력입니다. -->
+  <Miho_MechWeapon_Heavygun.description>为“永生灵”级坦猎无人机设计的47mm反坦克穿甲炮。虽然体积不大，但威力十足。</Miho_MechWeapon_Heavygun.description>
+  <!-- EN: barrel -->
+  <Miho_MechWeapon_Heavygun.tools.barrel.label>炮管</Miho_MechWeapon_Heavygun.tools.barrel.label>
+  <!-- EN: 미호 다각전차용 대전차포 -->
+  <Miho_MechWeapon_Heavygun.verbs.Verb_Shoot.label>无人机反坦克炮</Miho_MechWeapon_Heavygun.verbs.Verb_Shoot.label>
+  
+  <!-- EN: shell -->
+  <Miho_MechWeapon_Heavygun_Proj.label>47mm反坦克炮弹</Miho_MechWeapon_Heavygun_Proj.label>
+  
+  <!-- EN: 미호 다각전차용 동축기관총 -->
+  <Miho_MechWeapon_MachinegunTurret.label>无人机同轴轻机枪</Miho_MechWeapon_MachinegunTurret.label>
+  <!-- EN: 6.5mm 탄을 사용하는 다각전차용 동축기관총 입니다. -->
+  <Miho_MechWeapon_MachinegunTurret.description>为“永生灵”级坦猎无人机设计的6.5mm同轴轻机枪。</Miho_MechWeapon_MachinegunTurret.description>
+  <!-- EN: 미호 다각전차용 동축기관총 -->
+  <Miho_MechWeapon_MachinegunTurret.verbs.Verb_Shoot.label>无人机同轴轻机枪</Miho_MechWeapon_MachinegunTurret.verbs.Verb_Shoot.label>
+  
+  <!-- EN: 미호 다각전차용 플라즈마 구포 -->
+  <Miho_MechWeapon_PlasmaHowitzer.label>无人机等离子臼炮</Miho_MechWeapon_PlasmaHowitzer.label>
+  <!-- EN: 80mm 플라즈마 탄을 사용하는 공성용 구포입니다. 식히는 과정이 길지만, 그에 걸맞는 화력을 보여줍니다. -->
+  <Miho_MechWeapon_PlasmaHowitzer.description>为“永生灵”级破城无人机设计的80mm等离子臼炮。冷却时间较长，但威力十足。</Miho_MechWeapon_PlasmaHowitzer.description>
+  <!-- EN: barrel -->
+  <Miho_MechWeapon_PlasmaHowitzer.tools.barrel.label>炮管</Miho_MechWeapon_PlasmaHowitzer.tools.barrel.label>
+  <!-- EN: 미호 다각전차용 플라즈마 구포 -->
+  <Miho_MechWeapon_PlasmaHowitzer.verbs.Verb_Shoot.label>无人机等离子臼炮</Miho_MechWeapon_PlasmaHowitzer.verbs.Verb_Shoot.label>
+  
+  <!-- EN: plasma -->
+  <Miho_MechWeapon_PlasmaHowitzer_Proj.label>等离子炮弹</Miho_MechWeapon_PlasmaHowitzer_Proj.label>
+  
+  <!-- EN: plasma -->
+  <Miho_MechWeapon_PlasmaHowitzer_ProjSub.label>等离子炮弹</Miho_MechWeapon_PlasmaHowitzer_ProjSub.label>
+
+  <!-- EN: high-explosive shell -->
+  <Miho_Shell_HighExplosive_Proj.label>高爆弹</Miho_Shell_HighExplosive_Proj.label>
+  
+</LanguageData>

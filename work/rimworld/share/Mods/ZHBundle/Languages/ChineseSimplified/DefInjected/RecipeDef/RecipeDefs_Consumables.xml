@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: brew warm flowering tea -->
+  <VV_Make_FloralHotTea.label>制作热花茶</VV_Make_FloralHotTea.label>
+  <!-- EN: Brews flowering tea with heating petals and a little honey. -->
+  <VV_Make_FloralHotTea.description>制作热花茶</VV_Make_FloralHotTea.description>
+  <!-- EN: brewing warm flowering tea. -->
+  <VV_Make_FloralHotTea.jobString>制作热花茶中</VV_Make_FloralHotTea.jobString>
+  
+  <!-- EN: brew ice flowering tea -->
+  <VV_Make_FloralIceTea.label>制作冰花茶</VV_Make_FloralIceTea.label>
+  <!-- EN: Brews flowering tea with cooling petals and a little honey. -->
+  <VV_Make_FloralIceTea.description>制作冰花茶</VV_Make_FloralIceTea.description>
+  <!-- EN: brewing ice flowering tea. -->
+  <VV_Make_FloralIceTea.jobString>制作冰花茶中</VV_Make_FloralIceTea.jobString>
+  
+  <!-- EN: brew aromatic flowering tea -->
+  <VV_Make_FloralMilkTea.label>制作奶花茶</VV_Make_FloralMilkTea.label>
+  <!-- EN: Brews aromatic flowering tea with perfuming petals and a little honey or milks. -->
+  <VV_Make_FloralMilkTea.description>制作奶花茶</VV_Make_FloralMilkTea.description>
+  <!-- EN: brewing aromatic flowering tea. -->
+  <VV_Make_FloralMilkTea.jobString>制作奶花茶中</VV_Make_FloralMilkTea.jobString>
+  
+  <!-- EN: make honey pollen cake -->
+  <VV_Make_HoneyPollenCake.label>制作蜜粉蛋糕</VV_Make_HoneyPollenCake.label>
+  <!-- EN: Mixes pollen with honey and packs it into small little balls. -->
+  <VV_Make_HoneyPollenCake.description>制作蜜粉蛋糕</VV_Make_HoneyPollenCake.description>
+  <!-- EN: Making honey pollen cake. -->
+  <VV_Make_HoneyPollenCake.jobString>制作蜜粉蛋糕中</VV_Make_HoneyPollenCake.jobString>
+  
+  <!-- EN: make honey pollen cake x4 -->
+  <VV_Make_HoneyPollenCake_Bulk.label>制作四份蜜粉蛋糕</VV_Make_HoneyPollenCake_Bulk.label>
+  <!-- EN: Mixes pollen with honey and packs it into small little balls. -->
+  <VV_Make_HoneyPollenCake_Bulk.description>制作四份蜜粉蛋糕</VV_Make_HoneyPollenCake_Bulk.description>
+  <!-- EN: Making bulk honey pollen cake. -->
+  <VV_Make_HoneyPollenCake_Bulk.jobString>制作四份蜜粉蛋糕中</VV_Make_HoneyPollenCake_Bulk.jobString>
+  
+  <!-- EN: make royal jelly -->
+  <VV_Make_RoyalJelly.label>制作蜂王浆</VV_Make_RoyalJelly.label>
+  <!-- EN: Extracts rare components from large quantities of Vivi cream, then mixes them with honey and pollen to produce royal jelly. -->
+  <VV_Make_RoyalJelly.description>制作蜂王浆</VV_Make_RoyalJelly.description>
+  <!-- EN: Making royal jelly. -->
+  <VV_Make_RoyalJelly.jobString>制作蜂王浆中</VV_Make_RoyalJelly.jobString>
+  
+</LanguageData>

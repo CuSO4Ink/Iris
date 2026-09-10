@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>r_deityType->[all]들의 창조자</li>
+    <li>r_deityType->[adj] 신</li>
+    <li>all->여우</li>
+    <li>all->영리한 개과</li>
+    <li>adj->빛나는</li>
+    <li>adj->초월적인</li>
+    <li>adj->광휘의</li>
+  -->
+  <DietyTypeMakerMiho.rulePack.rulesStrings>
+    <li>r_deityType->[all]造物主</li>
+    <li>r_deityType->[adj]神明</li>
+    <li>all->狐之</li>
+    <li>all->圣狐</li>
+    <li>adj->天阳</li>
+    <li>adj->超凡</li>
+    <li>adj->曜日</li>
+  </DietyTypeMakerMiho.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>r_deityName(p=3)->광휘</li>
+    <li>r_deityName(p=3)->별</li>
+    <li>r_deityName->태양</li>
+    <li>r_deityName->별</li>
+    <li>r_deityName->햇님</li>
+    <li>r_deityName->푸른 태양</li>
+    <li>r_deityName->붉은 태양</li>
+    <li>r_deityName->샛노란 태양</li>
+    <li>r_deityName->푸른 별</li>
+    <li>r_deityName->붉은 별</li>
+    <li>r_deityName->샛노란 별</li>
+  -->
+  <NamerDeityMiho.rulePack.rulesStrings>
+    <li>r_deityName(p=3)->光耀</li>
+    <li>r_deityName(p=3)->辰星</li>
+    <li>r_deityName->金轮</li>
+    <li>r_deityName->星宇</li>
+    <li>r_deityName->赤乌</li>
+    <li>r_deityName->赤轮</li>
+    <li>r_deityName->明光</li>
+    <li>r_deityName->朱曦</li>
+    <li>r_deityName->辉光</li>
+    <li>r_deityName->金乌</li>
+    <li>r_deityName->火轮</li>
+  </NamerDeityMiho.rulePack.rulesStrings>
+  
+</LanguageData>

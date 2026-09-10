@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bringing TargetB to TargetA. -->
+  <PS_BringToProcessor.reportString>將TargetB運送至TargetA。</PS_BringToProcessor.reportString>
+  
+  <!-- EN: draining out of TargetA. -->
+  <PS_DrainFromMarkedStorage.reportString>從TargetA中取出內容物。</PS_DrainFromMarkedStorage.reportString>
+  
+  <!-- EN: filling TargetA. -->
+  <PS_FillStorage.reportString>填充TargetA。</PS_FillStorage.reportString>
+  
+  <!-- EN: picking up from TargetA. -->
+  <PS_PickUpProcessor.reportString>從TargetA中收取產物。</PS_PickUpProcessor.reportString>
+  
+</LanguageData>

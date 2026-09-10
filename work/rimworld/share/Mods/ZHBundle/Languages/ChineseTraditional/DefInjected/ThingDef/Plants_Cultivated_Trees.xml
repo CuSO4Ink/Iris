@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_AppleTree.label>蘋果樹</VCE_AppleTree.label>
+		<VCE_AppleTree.description>樹上能結出光潔通紅的蘋果。蘋果樹的亞種很多，這一種更加喜歡溫暖的夏天和冬天。蘋果可以作為點心，甜點材料或者釀酒材料。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。</VCE_AppleTree.description>
+		<VCE_PeachTree.label>桃子樹</VCE_PeachTree.label>
+		<VCE_PeachTree.description>一種落葉樹，樹上能結出毛茸茸的桃子，桃子樹需要溫暖的環境和充足的光照。因為其對乾旱的抗性，遠古的東方人曾一度種植這種樹。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。</VCE_PeachTree.description>
+		<VCE_CherryTree.label>櫻桃樹</VCE_CherryTree.label>
+		<VCE_CherryTree.description>樹上能結出紫紅色的櫻桃。櫻桃樹的成長需要一季度的低溫環境，所以深受北方人喜愛。這一種櫻桃樹每逢冬季能長出漂亮的櫻花。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。櫻桃樹有其它果樹雙倍的美觀度</VCE_CherryTree.description>
+		<VCE_PlumTree.label>梅樹</VCE_PlumTree.label>
+		<VCE_PlumTree.description>一種矮生樹，能長出光滑的紫色梅子。梅子非常酸，經常被做成果醬，果凍和果酒。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。梅子晾乾後會變成梅子干，保質期很長。</VCE_PlumTree.description>
+		<VCE_PearTree.label>梨樹</VCE_PearTree.label>
+		<VCE_PearTree.description>一種粗矮的樹，需求大量水分和涼快的環境，對光照要求不高。梨子比蘋果老，沒蘋果甜。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。梨樹可以在室內種植，也不會阻礙風力發電機。</VCE_PearTree.description>
+		<VCE_Opuntia.label>花椒仙人掌</VCE_Opuntia.label>
+		<VCE_Opuntia.description>一種特殊的仙人掌，即便在最熱最干的沙漠裡也能保持豐滿。頂部能結出瓜狀的果實，可以吃，曾被沙漠住民用來療傷。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。花椒仙人掌可以被挨個種在一起，沒有4格的空間限制</VCE_Opuntia.description>
+		<VCE_BearBerryBush.label>熊莓灌木</VCE_BearBerryBush.label>
+		<VCE_BearBerryBush.description>一種灌木，能結出粉色的莓果，即便在肥力不高的土地也能茁壯成長。熊莓生吃會非常酸，但燒熟後就只剩下了輕甜，更加好吃。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。熊莓能在種植箱中生長。</VCE_BearBerryBush.description>
+		<VCE_BananaTree.label>香蕉樹</VCE_BananaTree.label>
+		<VCE_BananaTree.description>一種熱帶闊葉樹，能結出一串串的長條香蕉。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。香蕉的收割速度非常快，畢竟能一抓一把下來。</VCE_BananaTree.description>
+		<VCE_OrangeTree.label>橘樹</VCE_OrangeTree.label>
+		<VCE_OrangeTree.description>一種亞熱帶矮生樹，能結出橘色的橘子，適合在濕潤的環境和土壤中生長。橘子很爛且剝皮很麻煩，但甜美多汁。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。橘子樹的半徑3格內每有一格水域就增加1%的生長速度</VCE_OrangeTree.description>
+
+		<!-- EN: coconut palm -->
+		<VCE_CoconutPalm.label>椰樹</VCE_CoconutPalm.label>
+		<!-- EN: A palm tree cultivated extensively in tropical areas for its edible fruit, the coconut. Coconut palms flourish best close to the sea on low-lying areas a few feet above high water.\n\n<color=#E5E54C>Gameplay effect:</color> All fruit trees take about four times as much space as regular crops, take a long time to grow and produce fruits that can be eaten raw. They aren't destroyed after harvesting but have a limited lifespan and will eventually need to be replanted.\n\nCoconut palms are only growable in sandy growing zones, which ignore fertility. These plants will however take a long time to sow and harvest, basically exchanging colonist work for growing plants in a normally unused space.\n\nCoconut palms receive a growth bonus if sea water tiles are found in a 6 tile radius. Coconuts can be used as fruits or processed into milk. -->
+		<VCE_CoconutPalm.description>常在熱帶種植的棕櫚樹，能生產椰子。適合在靠近海邊的低海拔地區生長。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。\n\n該作物只能在沙地種植區中種植，也因而不受肥沃度影響。這類作物需要花費更多的時間來播種與收割，也就是以工作量來換取生長空間的限制。椰子可以當作普通水果食用，也可以提煉成植物乳。</VCE_CoconutPalm.description>
+		
+		<!-- EN: almond tree -->
+		<VCE_TreeAlmond.label>扁桃樹</VCE_TreeAlmond.label>
+		<!-- EN: A deciduous tree cultivated for its fruit, almonds. The sweet almond can be eaten plain or be used as ingredient in desserts and confectioneries. The trees are strikingly beautiful when in flower; they produce fragrant, five-petaled, light pink to white flowers.\n\n<color=#E5E54C>Gameplay effect:</color> All fruit trees take about four times as much space as regular crops, take a long time to grow and produce fruits that can be eaten raw. They aren't destroyed after harvesting but have a limited lifespan and will eventually need to be replanted.\n\nAlmond trees are beautiful, but they require water to be present in a 6 tile radius to grow properly. Almonds can be used as fruits or processed into milk. -->
+		<VCE_TreeAlmond.description>一種落葉樹，主要產物為其果實的內果皮，即杏仁（常說的杏仁實際上是扁桃仁）。杏仁可以干吃，也可以被用在甜點之中。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。\n\n扁桃樹有雙倍的美觀度，但需要6格範圍內有水才能正常生長。杏仁可以當作普通水果食用，也可以提煉成植物乳。</VCE_TreeAlmond.description>
+		
+		<!-- EN: avocado tree -->
+		<VCE_TreeAvocado.label>牛油果樹</VCE_TreeAvocado.label>
+		<!-- EN: An evergreen tree with thick, leathery leaves that produces perfect white, ivory to yellow flowers. The fruit has a large seed or pit in the center and may be green or nearly black.\n\n<color=#E5E54C>Gameplay effect:</color> Avocado trees take a notoriously long period to mature and produce their fruits. If they can be kept alive all that time, they produce greater yield than other fruit trees. Plus if you install the Coffees and Teas mod and pair them with Pumpkin Spice Coffee you can have your dream RimWorld Hipster experience! -->
+		<VCE_TreeAvocado.description>擁有皮革般厚實樹皮的常青樹，能開出象牙色到黃色的花朵。果實的種子都聚集在它中間的一個坑裡。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;牛油果樹不論是生長還是結果都出奇得慢，但如果能長時間存活，它的生產效率會比一般的果樹高得多。牛油果配上同製作組的咖啡和茶mod里的南瓜咖啡就可以暢想cosplay嬉皮士的體驗了。</VCE_TreeAvocado.description>
+		
+		<!-- EN: mango tree -->
+		<VCE_TreeMango.label>芒果樹</VCE_TreeMango.label>
+		<!-- EN: A tropical evergreen tree that produces oval fruits, vividly coloured with shades of red and yellow. The single large seed is flattened, and the flesh that surrounds it is yellow to orange in colour, juicy, and of distinctive sweet-spicy flavour.\n\n<color=#E5E54C>Gameplay effect:</color> All fruit trees take about four times as much space as regular crops, take a long time to grow and produce fruits that can be eaten raw. They aren't destroyed after harvesting but have a limited lifespan and will eventually need to be replanted.\n\nMango trees have very good yield, but mangoes cannot be frozen or they get destroyed. The game won't be smart enough to detect this, so disable them from freezers. -->
+		<VCE_TreeMango.description>一種熱帶常青樹，能生產混合紅黃色彩的橢圓形水果。芒果只有一個扁平形的大核在果實中央，周邊環繞的果肉由黃至橙，甜辣多汁。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;所有果樹都需要占用四格空間，需要很長的時間生長，並最終會結出可以生吃的果實。果樹在被收割後不會消失，但依舊有自己的壽命限制。\n\n芒果樹的產量較高，但芒果一旦被冷凍就會壞掉，請手動把冷藏庫的存儲設定中刪除芒果。</VCE_TreeMango.description>
+		
+		<!-- EN: olive tree -->
+		<VCE_TreeOlive.label>橄欖樹</VCE_TreeOlive.label>
+		<!-- EN: A subtropical broad-leaved evergreen tree. Its leaves, leathery and lance-shaped, are dark green above and silvery on the underside and are paired opposite each other on the twig. The wood is resistant to decay. If the top dies back, a new trunk will often arise from the roots.\n\n<color=#E5E54C>Gameplay effect:</color> Interestingly, olive trees show a marked preference for rocky soils, flourishing on them. Rich soils are actually detrimental to them. They will also live for a very, very long time, far longer than other produce trees. Contrary to other tree produce, olives can't be eaten raw. -->
+		<VCE_TreeOlive.description>一種亞熱帶常青樹。它有長條形的類皮革樹葉，在枝條上成對生長，上方的葉子是深綠色的，而下方的則是銀色的。橄欖木能抵抗腐蝕。如果樹身壞死，一個新的樹幹會從根系中長出。。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;橄欖樹更偏愛有沙碩的土地，反而不適應肥沃的耕地。橄欖樹的壽命比其它果樹要長得多，但結出的橄欖不可生吃。</VCE_TreeOlive.description>
+	</LanguageData>

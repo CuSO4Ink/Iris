@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: science marches on -->
+  <SettingsPreset_RR_ScienceMarchesOn.label>科学向前进</SettingsPreset_RR_ScienceMarchesOn.label>
+  <!-- EN: No limit on research gained by prototyping or reverse engineering. Theoretical research speed greatly decreased. -->
+  <SettingsPreset_RR_ScienceMarchesOn.description>原型制作与逆向工程获得的研究不设上限；理论研究速度大幅降低。</SettingsPreset_RR_ScienceMarchesOn.description>
+
+</LanguageData>

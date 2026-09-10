@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: dated an alien -->
+  <HAR_AlienDating_Horrible.stages.dated_an_alien.label>与外星种族约会</HAR_AlienDating_Horrible.stages.dated_an_alien.label>
+  <!-- EN: How could I bring myself to date an alien? I feel disgusted with myself. -->
+  <HAR_AlienDating_Horrible.stages.dated_an_alien.description>我怎么会和一个外星种族约会？这简直太恶心了。</HAR_AlienDating_Horrible.stages.dated_an_alien.description>
+  
+  <!-- EN: dated an alien -->
+  <HAR_AlienDating_Know_Honorable.stages.dated_an_alien.label>与外星种族约会</HAR_AlienDating_Know_Honorable.stages.dated_an_alien.label>
+  
+  <!-- EN: dated an alien -->
+  <HAR_AlienDating_Know_Horrible.stages.dated_an_alien.label>与外星种族约会</HAR_AlienDating_Know_Horrible.stages.dated_an_alien.label>
+  
+</LanguageData>

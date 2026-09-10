@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: spirit arm -->
+  <VPER_SpiritArm.label>灵臂</VPER_SpiritArm.label>
+  
+  <!-- EN: spirit hand -->
+  <VPER_SpiritHand.label>灵手</VPER_SpiritHand.label>
+  
+  <!-- EN: head -->
+  <VPER_SpiritHead.label>头</VPER_SpiritHead.label>
+  
+  <!-- EN: lower spirit mass -->
+  <VPER_SpiritMassLower.label>灵团下部</VPER_SpiritMassLower.label>
+  
+  <!-- EN: upper spirit mass -->
+  <VPER_SpiritMassUpper.label>灵团上部</VPER_SpiritMassUpper.label>
+  
+  <!-- EN: mannaz rune -->
+  <VPER_SpiritRune.label>美纳兹符文</VPER_SpiritRune.label>
+  
+</LanguageData>

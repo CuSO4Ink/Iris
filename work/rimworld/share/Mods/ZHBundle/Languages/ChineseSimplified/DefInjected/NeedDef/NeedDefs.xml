@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: royal jelly -->
+  <VV_RoyalJelly.label>蜂王浆</VV_RoyalJelly.label>
+  <!-- EN: The total amount of royal jelly a Vivi eats affects how it grows. If a Vivi is fully fed by the time it grows up, it becomes a Royal Vivi; if not, it stays a regular Vivi.\n\nRoyal vivis can reproduce, have high social ability and psychic sensitivity, and possess several unique abilities, but their work capability is low. -->
+  <VV_RoyalJelly.description>薇薇吃的蜂王浆总量会影响它的生长。如果薇薇摄入了足够的蜂王浆，那么它就会成为皇家薇薇；否则，它将保持生长为普通薇薇。\n\n皇家薇薇可以繁殖，长于社交，具有较高的心灵敏感度，但她们不太擅长常规工作。</VV_RoyalJelly.description>
+  
+</LanguageData>

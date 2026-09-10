@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Request lecture on {0} (free) -->
+  <RR_RequestLectureAlly>要求 {0} 进行讲座（免费）</RR_RequestLectureAlly>
+  <!-- EN: Request lecture on {1} (Requires goodwill: {0}) -->
+  <RR_RequestLectureNeutral>要求 {1} 进行讲座（需要好感度: {0}）</RR_RequestLectureNeutral>
+  <!-- EN: {0} cannot take part in lectures. -->
+  <RR_RequestLecture_FailNotResearcher>{0} 无法参加讲座。</RR_RequestLecture_FailNotResearcher>
+  <!-- EN: Last lecture was too recent. -->
+  <RR_RequestLecture_FailTooRecent>讲座过于频繁。</RR_RequestLecture_FailTooRecent>
+  <!-- EN: {0} agreed to spend some time talking about {1}. -->
+  <RR_RequestLecture_Reply>{0} 同意讨论一会儿 {1}。</RR_RequestLecture_Reply>
+</LanguageData>

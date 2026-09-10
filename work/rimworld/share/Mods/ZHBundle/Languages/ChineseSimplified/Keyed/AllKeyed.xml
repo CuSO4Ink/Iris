@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <NegotiationStatFactor>每点魅力属性将会增加谈判能力</NegotiationStatFactor>
+  <ConversionStatFactor>每点魅力属性将会增加教化能力</ConversionStatFactor>
+  <TradePriceStatFactor>每点魅力属性将会增加贸易价格改善</TradePriceStatFactor>
+  <SuppressionStatFactor>每点魅力属性将会增加压制能力</SuppressionStatFactor>
+  <SocialImpactStatFactor>每点魅力属性将会增加社交影响</SocialImpactStatFactor>
+  <Linear>线性相关</Linear>
+  <SquareRoot>平方根</SquareRoot>
+
+</LanguageData>

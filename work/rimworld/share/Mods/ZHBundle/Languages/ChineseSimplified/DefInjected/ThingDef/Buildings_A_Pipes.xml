@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Console Loom -->
+  <controllerLoom.label>数据电缆</controllerLoom.label>
+  <!-- EN: Wiring loom for transmitting signals between a core and a control console. Can be placed under walls and other buildings. -->
+  <controllerLoom.description>用于在反应堆与控制台之间传输信号。\n\n可以放置于墙壁和其他建筑物之下。</controllerLoom.description>
+  
+  <!-- EN: console loom (hidden) -->
+  <controllerLoomHidden.label>数据电缆（隐藏）</controllerLoomHidden.label>
+  <!-- EN: Hidden wiring loom for transmitting signals between a core and a control console. Can be placed under walls and other buildings.\n\n<i><color=#66E0E4FF>Dubs Rimatomics</color></i> -->
+  <controllerLoomHidden.description>用于在反应堆与控制台之间传输信号。\n\n可以放置于墙壁和其他建筑物之下。</controllerLoomHidden.description>
+  
+  <!-- EN: Coolant valve -->
+  <coolantValve.label>冷却剂阀门</coolantValve.label>
+  <!-- EN: Opens or closes connections between coolant pipes. -->
+  <coolantValve.description>打开或关闭冷却液导管之间的连通。</coolantValve.description>
+  
+  <!-- EN: coolant pipe -->
+  <coolingPipe.label>冷却剂导管</coolingPipe.label>
+  <!-- EN: Pipes for pumping coolant from the turbine to cooling systems. Can be placed under walls and other buildings. -->
+  <coolingPipe.description>用于在涡轮机与冷却系统之间输送冷却剂。\n\n可以放置于墙壁和其他建筑物之下。</coolingPipe.description>
+  
+  <!-- EN: coolant pipe (hidden) -->
+  <coolingPipeHidden.label>冷却剂导管（隐藏）</coolingPipeHidden.label>
+  <!-- EN: Hidden pipes for pumping coolant from the turbine to cooling systems. Can be placed under walls and other buildings.\n\n<i><color=#66E0E4FF>Dubs Rimatomics</color></i> -->
+  <coolingPipeHidden.description>用于在涡轮机与冷却系统之间输送冷却剂。\n\n可以放置于墙壁和其他建筑物之下。</coolingPipeHidden.description>
+  
+  <!-- EN: High Voltage -->
+  <HighVoltage.label>高压电缆</HighVoltage.label>
+  <!-- EN: Cable for transporting high voltage power from turbines to transformers. Can be placed under walls and other buildings. -->
+  <HighVoltage.description>用于在涡轮与变压器之间输送高压电。\n\n可以放置于墙壁和其他建筑物之下。</HighVoltage.description>
+  
+  <!-- EN: high voltage (hidden) -->
+  <HighVoltageHidden.label>高压电缆（隐藏）</HighVoltageHidden.label>
+  <!-- EN: Hidden cable for transporting high voltage power from turbines to transformers. Can be placed under walls and other buildings.\n\n<i><color=#66E0E4FF>Dubs Rimatomics</color></i> -->
+  <HighVoltageHidden.description>用于在涡轮与变压器之间输送高压电。\n\n可以放置于墙壁和其他建筑物之下。</HighVoltageHidden.description>
+  
+  <!-- EN: Steam pipe -->
+  <steamPipe.label>蒸汽导管</steamPipe.label>
+  <!-- EN: Pipes for pumping high pressure steam from the reactor to turbines. Can be placed under walls and other buildings. -->
+  <steamPipe.description>用于在反应堆与涡轮之间输送高压蒸汽。\n\n可以放置于墙壁和其他建筑物之下。</steamPipe.description>
+  
+  <!-- EN: steam water pipe (hidden) -->
+  <steamPipeHidden.label>蒸汽导管（隐藏）</steamPipeHidden.label>
+  <!-- EN: Hidden pipes for pumping high pressure steam from the reactor to turbines. Can be placed under walls and other buildings.\n\n<i><color=#66E0E4FF>Dubs Rimatomics</color></i> -->
+  <steamPipeHidden.description>用于在反应堆与涡轮之间输送高压蒸汽。\n\n可以放置于墙壁和其他建筑物之下。</steamPipeHidden.description>
+  
+  <!-- EN: Steam valve -->
+  <steamValve.label>蒸汽阀门</steamValve.label>
+  <!-- EN: Opens or closes connections between steam pipes. -->
+  <steamValve.description>打开或关闭蒸汽导管之间的连通。</steamValve.description>
+  
+  <!-- EN: cold water pipe -->
+  <waterPipe.label>冷水导管</waterPipe.label>
+  <!-- EN: Pipes for pumping cold water from the turbine or heat exchanger back to the core. Can be placed under walls and other buildings. -->
+  <waterPipe.description>用于在涡轮或热交换器与反应堆之间输送冷水。\n\n可以放置于墙壁和其他建筑物之下。</waterPipe.description>
+  
+  <!-- EN: cold water pipe (hidden) -->
+  <waterPipeHidden.label>冷水导管(隐藏）</waterPipeHidden.label>
+  <!-- EN: Hidden pipes for pumping cold water from the turbine or heat exchanger back to the core. Can be placed under walls and other buildings.\n\n<i><color=#66E0E4FF>Dubs Rimatomics</color></i> -->
+  <waterPipeHidden.description>用于在涡轮或热交换器与反应堆之间输送冷水。\n\n可以放置于墙壁和其他建筑物之下。</waterPipeHidden.description>
+  
+  <!-- EN: Cold water valve -->
+  <waterValve.label>冷水阀门</waterValve.label>
+  <!-- EN: Opens or closes connections between cold water pipes. -->
+  <waterValve.description>打开或关闭冷水导管之间的连通。</waterValve.description>
+  
+</LanguageData>

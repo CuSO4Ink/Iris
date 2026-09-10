@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: honey dependency -->
+  <VV_HoneyNeed.label>蜂蜜依賴</VV_HoneyNeed.label>
+  <!-- EN: This person has a genetically-induced biochemical dependency on a honey. Without regular ingestion of the honey, their body cannot maintain itself in a healthy state and they will suffer degrading health and mood.\n\nTakes effect after age: 3. -->
+  <VV_HoneyNeed.description>此人對蜂蜜產生了基因導致的生物化學依賴性。如果不定期攝入薇薇蜂蜜，他們的身體就無法保持健康狀態，他們的健康和情緒也會惡化。\n\n 3歲后生效。</VV_HoneyNeed.description>
+  <!-- EN: deficiency -->
+  <VV_HoneyNeed.stages.deficiency.label>依賴性</VV_HoneyNeed.stages.deficiency.label>
+  <!-- EN: critical honey deficiency -->
+  <VV_HoneyNeed.stages.2.overrideLabel>惡性蜂蜜依賴</VV_HoneyNeed.stages.2.overrideLabel>
+  
+</LanguageData>

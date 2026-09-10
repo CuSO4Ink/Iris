@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: conflagator -->
+  <Tribal_Caster_Conflagrator.label>纵火家</Tribal_Caster_Conflagrator.label>
+  
+  <!-- EN: frostshaper -->
+  <Tribal_Caster_Frostshaper.label>霜塑者</Tribal_Caster_Frostshaper.label>
+  
+  <!-- EN: staticlord -->
+  <Tribal_Caster_Staticlord.label>风雷使</Tribal_Caster_Staticlord.label>
+  
+  <!-- EN: wildspeaker -->
+  <Tribal_Caster_Wildspeaker.label>林语者</Tribal_Caster_Wildspeaker.label>
+  
+</LanguageData>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_SimpleGrill.label>簡單烤肉</VCE_SimpleGrill.label>
+		<VCE_SimpleGrill.description>用少許肉材快速烹飪出的一份簡單烤肉。能量非常足，燒烤過的肉會讓人很長時間感受不到飢餓。冷凍時會失去這種效用。</VCE_SimpleGrill.description>
+		<VCE_RuinedSimpleGrill.label>涼透的簡單烤肉</VCE_RuinedSimpleGrill.label>
+		<VCE_RuinedSimpleGrill.description>用少許肉材烹飪的簡單烤肉。這份烤肉已經被冷凍過，雖然依舊能吃但不再能提供飽腹感。</VCE_RuinedSimpleGrill.description>
+		<VCE_FineGrill.label>精緻烤肉</VCE_FineGrill.label>
+		<VCE_FineGrill.description>選擇多種原料，精心烹飪出的一份相對複雜的烤肉。能量非常足，燒烤過的肉會讓人很長時間感受不到飢餓。冷凍時會失去這種效用。</VCE_FineGrill.description>
+		<VCE_RuinedFineGrill.label>涼透的精緻烤肉</VCE_RuinedFineGrill.label>
+		<VCE_RuinedFineGrill.description>選擇多種原料，精心烹飪出的一份相對複雜的烤肉。這份烤肉已經被冷凍過，雖然依舊能吃但不再能提供飽腹感。</VCE_RuinedFineGrill.description>
+		<VCE_LavishGrill.label>奢侈烤肉</VCE_LavishGrill.label>
+		<VCE_LavishGrill.description>廚藝界的大師級作品，這份烤肉同時滋養了身體、思想和靈魂。能量非常足，燒烤過的肉會讓人很長時間感受不到飢餓。冷凍時會失去這種效用。</VCE_LavishGrill.description>
+		<VCE_RuinedLavishGrill.label>涼透的奢侈烤肉</VCE_RuinedLavishGrill.label>
+		<VCE_RuinedLavishGrill.description>廚藝界的大師級作品，這份烤肉同時滋養了身體、思想和靈魂。這份烤肉已經被冷凍過，雖然依舊能吃但不再能提供飽腹感。</VCE_RuinedLavishGrill.description>
+		<VCE_GourmetGrill.label>豪華烤肉</VCE_GourmetGrill.label>
+		<VCE_GourmetGrill.description>精雕細琢的烤肉，美艷絕倫，雖然量不多。能量非常足，燒烤過的肉會讓人很長時間感受不到飢餓。冷凍時會失去這種效用。</VCE_GourmetGrill.description>
+		<VCE_RuinedGourmetGrill.label>涼透的豪華烤肉</VCE_RuinedGourmetGrill.label>
+		<VCE_RuinedGourmetGrill.description>精雕細琢的烤肉，美艷絕倫，雖然量不多。這份烤肉已經被冷凍過，雖然依舊能吃但不再能提供飽腹感。</VCE_RuinedGourmetGrill.description>
+	</LanguageData>

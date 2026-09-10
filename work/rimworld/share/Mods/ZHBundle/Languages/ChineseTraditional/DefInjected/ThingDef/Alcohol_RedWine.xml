@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RH_RedWine.label>紅酒</RH_RedWine.label>
+  <RH_RedWine.description>紅酒是一種由深色葡萄品種製成的葡萄酒。葡萄酒味道很好，但容易讓人喝醉。過量飲酒會導致酒精中毒，並最終導致成癮。</RH_RedWine.description>
+  <RH_RedWine.tools.0.label>瓶子</RH_RedWine.tools.0.label>
+  <RH_RedWine.tools.1.label>瓶頸</RH_RedWine.tools.1.label>
+  <RH_RedWine.ingestible.ingestCommandString>喝{0}</RH_RedWine.ingestible.ingestCommandString>
+  <RH_RedWine.ingestible.ingestReportString>正在喝{0}.</RH_RedWine.ingestible.ingestReportString>
+
+
+</LanguageData>

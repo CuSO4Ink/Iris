@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: archon -->
+  <VPE_Archon.label>執政官</VPE_Archon.label>
+  <!-- EN: Archon path is the path of a psychic leader, providing various buffs to the entire colony, but also ruling with an iron fist. It’s also a path that allows you to drain enemy psycasters and gain Psycast levels this way. -->
+  <VPE_Archon.description>執政之道會打造一個鐵腕的靈能領袖，用他的能力為整個殖民地提供加成。此道系同樣能讓你抽取其它靈能者的力量提升自己的等級。</VPE_Archon.description>
+  <!-- EN: The path of kings, archons often occupy the highest seats in their local governments. Being able to easily bond with others, manipulate their enemies either through friendship or pain, with powerful archons strengthening themselves by draining the psyessence of other psycasters. -->
+  <VPE_Archon.tooltip>屬於君王們的道系。執政官們常為他們地區政府的最高領袖。他們能輕易與他人連結，通過友誼或是痛楚操縱他們的敵人，強大的執政官們還可以抽取他人的靈能為自己所用。</VPE_Archon.tooltip>
+  <VPE_Archon.tab>靈能</VPE_Archon.tab>
+  
+  <!-- EN: archotechist -->
+  <VPE_Archotechist.label>超凡使</VPE_Archotechist.label>
+  <!-- EN: Archotechist path is a special path locked only for Empire-based psycasters. It allows spreading insanity, using psychic shock to down any wrong-doers, and to offload neural heat to others, as well as use neural heat in combat. -->
+  <VPE_Archotechist.description>超凡之道是只能被帝國背景的靈能者選取的特殊道系。它能散播瘋狂，用心靈衝擊快速擊倒任何冒犯之徒，能將心靈熵轉移給別人，並能在戰鬥中利用心靈熵。</VPE_Archotechist.description>
+  <!-- EN: Imperials only -->
+  <VPE_Archotechist.lockedReason>僅限帝國背景</VPE_Archotechist.lockedReason>
+  <!-- EN: A path so mysterious only imperial scholars can confirm rumours, archotechists are able to tap into archotech engines and exert power so ridiculous and bizarre that it really makes one question their sanity. Archotechists can simply drive entire armies to insanity, and can even manipulate neural heat to mutilate their adversaries. -->
+  <VPE_Archotechist.tooltip>此道系最為撲朔迷離，只有來自帝國的學者能在眾多流言蜚語中宣告其確實存在。超凡使們能使用來自超凡智能的力量，將靈能以最為超乎想象的方式施於他人。超凡者可以輕而易舉地讓一整支軍隊陷入瘋狂，並能操縱心靈熵來擊垮其它的靈能者。</VPE_Archotechist.tooltip>
+  <VPE_Archotechist.tab>靈能</VPE_Archotechist.tab>
+  
+  <!-- EN: chronopath -->
+  <VPE_Chronopath.label>捻時官</VPE_Chronopath.label>
+  <!-- EN: Chronopath path is focused on manipulating time, making things older, completing growth of plants, or de-aging your pawns. -->
+  <VPE_Chronopath.description>捻時之道專注於操控時間，讓事物加快老化，讓植物瞬間成熟，或是讓人物返老還童。</VPE_Chronopath.description>
+  <!-- EN: Chronopaths are rare and mysterious psycasters, capable of manipulating the fabric of time itself. By creating skipgates through time rather than space, chronopaths can have weapons assemble themselves, alter someone’s age at will, and even create bizarre timequakes that accelerate the time of everything around them by dozens of years. -->
+  <VPE_Chronopath.tooltip>捻時官們非常稀少，也布滿謎團，擁有者操縱時間本身的神奇能力。通過創造時間而非空間上的折躍門，捻時官可以讓武器自行組裝，改變他人的年紀，甚至能使用時空震顫讓所有在其周圍的事物瞬間穿越數十年的光陰。</VPE_Chronopath.tooltip>
+  <VPE_Chronopath.tab>靈能</VPE_Chronopath.tab>
+  
+  <!-- EN: conflagrator -->
+  <VPE_Conflagrator.label>縱火家</VPE_Conflagrator.label>
+  <!-- EN: Conflagrator path is focused on manipulating fire, heat and energy to eliminate enemies. -->
+  <VPE_Conflagrator.description>縱火之道專注於控制火焰，高溫和熱能來消滅敵人。</VPE_Conflagrator.description>
+  <!-- EN: Conflagrators are the masters of flame, capable of eradicating entire regiments of enemy infantry using powerful fire tornadoes and explosions. Greatly respected across all psycaster paths, conflagrators bring fear, death and the stench of burnt meat wherever they go. -->
+  <VPE_Conflagrator.tooltip>縱火家們是控制火焰的大師，可以讓一整隊步兵在熾火旋風中化為灰燼。縱火家們在所有靈能道系中最為知名，身上環繞着恐懼，死亡，和焦碳的味道。</VPE_Conflagrator.tooltip>
+  <VPE_Conflagrator.tab>靈能</VPE_Conflagrator.tab>
+  
+  <!-- EN: empath -->
+  <VPE_Empath.label>心療師</VPE_Empath.label>
+  <!-- EN: Empath psycasts are focused on enhancing the mood of others, one way or another. -->
+  <VPE_Empath.description>心療之道的心靈能力能夠提高他人的心情。</VPE_Empath.description>
+  <!-- EN: Empaths are psycasters committed to serving their community and boosting their kin’s spirits. Known to inspire joy with but a few words, as well as snap people out of mental states, particularly powerful empaths can emit strong psychic soothes or even skip blood-related family members from across the globe. -->
+  <VPE_Empath.tooltip>心療師們常常服務於社區，幫助穩定同僚們的心情。他們能用隻言片語讓人轉憂為喜，助人擺脫精神崩潰，甚至還能用強大的靈能讓整個星球上的血親團聚。</VPE_Empath.tooltip>
+  <VPE_Empath.tab>靈能</VPE_Empath.tab>
+  
+  <!-- EN: frostshaper -->
+  <VPE_Frostshaper.label>霜塑者</VPE_Frostshaper.label>
+  <!-- EN: Frostshaper is a path about manipulating the elements, particularly the cold, to your advantage. Not only you get to use the cold to freeze and slow enemies, frostshapers also gain access to many utility psycasts that either construct shelters out of ice blocks, or create cooling crystals that can be used both as a temporary fridge, and a trap. -->
+  <VPE_Frostshaper.description>霜塑之道可以操縱元素與低溫為你服務。霜塑之道的心靈能力除了簡單粗暴地凍結或遲緩敵人之外還有多種用途，例如用冰塊堆積成掩體，或是創造一個低溫水晶來當作空調或冰箱使用。</VPE_Frostshaper.description>
+  <!-- EN: Frostshapers are psycaster who devoted their life to pursue the cold embrace of frost. This makes them equally as deadly as conflagrators, capable of breathing freezing air and creating localised cold zones that freeze everything in seconds. Frostshapers can also create walls and obstacles out of ice, as well as summon crystals of pure entropy that plunge entire rooms into subzero temperatures. -->
+  <VPE_Frostshaper.tooltip>霜塑者們追隨着寒冷的力量。他們的破壞力絲毫不遜於縱火者，能吐息出冰冷的空氣，還能將一整塊土地長時間地籠罩在嚴寒之中。他們還能用冰塊創造牆壁和障礙，抑或是創造出能將整個房間的溫度降至零下的純熵水晶。</VPE_Frostshaper.tooltip>
+  <VPE_Frostshaper.tab>靈能</VPE_Frostshaper.tab>
+  
+  <!-- EN: harmonist -->
+  <VPE_Harmonist.label>制衡家</VPE_Harmonist.label>
+  <!-- EN: Harmonists are all about manipulating the balance of the universe. Their abilities are never a clear benefit or a drawback, and they always come with a price one way or another. -->
+  <VPE_Harmonist.description>制衡之道在於維護宇宙的和諧。制衡家的能力從不會單純的帶來增益或懲罰，永遠是利益與代價有來有回。</VPE_Harmonist.description>
+  <!-- EN: Harmonists alter the probability, luck and balance of the universe. They are able to peak under the veil and adjust the scales as they desire, controlling the minds of unsuspecting foes, changing what has happened,influencing what might happen or even overriding the personal history of others. -->
+  <VPE_Harmonist.tooltip>制衡家能扭曲概率，幸運和宇宙的平衡。他們在命運的面紗之下動土，控制敵人的心智，改變已發生的現實，影響未發生的未來，甚至能改變他人從小到大的經歷。</VPE_Harmonist.tooltip>
+  <VPE_Harmonist.tab>靈能</VPE_Harmonist.tab>
+  
+  <!-- EN: necropath -->
+  <VPE_Necropath.label>死靈師</VPE_Necropath.label>
+  <!-- EN: Necropath is a path focused on distributing fear and death, whilst also gaining from death and corpses. You can resurrect fallen allies, prohibit them from dying and raise hordes of skeletons to fight for your cause. -->
+  <VPE_Necropath.description>死靈之道在於散布死亡與恐懼，並從死屍中獲取力量。你能喚起死去的朋友，或是復活大片的骷髏為你而戰。</VPE_Necropath.description>
+  <!-- EN: Masters of the dark arts, necropaths live to defy death itself. They can cast fear into the hearts of their enemies, emit a paralytic pulse to knock attackers down, rot away the flesh of living bodies and ultimately summon the dead - either through wicked enthrallment or sacred resurrection. -->
+  <VPE_Necropath.tooltip>死靈師們是黑暗靈能的大師，目的只在忤逆生死的規律。他們能將恐懼滲入敵人的內心，用僵化脈衝即刻擊倒敵人，讓生者的血肉迅速腐化，最後，他們還能讓屍體起死回生——無論是扭曲的行屍走肉，或是真正意義上的復活。</VPE_Necropath.tooltip>
+  <VPE_Necropath.tab>靈能</VPE_Necropath.tab>
+  
+  <!-- EN: Nightstalker -->
+  <VPE_Nightstalker.label>夜行人</VPE_Nightstalker.label>
+  <!-- EN: Nightstalkers are warriors of the dark, gaining many combat related benefits when shrouded in the shadows. -->
+  <VPE_Nightstalker.description>夜行之道的力量受賜與黑暗，能在陰影中勇猛作戰。</VPE_Nightstalker.description>
+  <!-- EN: Silent assassins who strike from the shadows, nightstalkers move under the cover of darkness, gaining power from the absence of light. They are capable of skipping to wherever  darkness prevails and executing multiple, near-simultaneous strikes to their target’s heart. -->
+  <VPE_Nightstalker.tooltip>夜行人是在陰影中活躍的悄聲殺手，能在任何無光的領域獲得力量。他們能折躍到任何黑暗之中，並在彈指間對目標的心臟發動連擊。</VPE_Nightstalker.tooltip>
+  <VPE_Nightstalker.tab>靈能</VPE_Nightstalker.tab>
+  
+  <!-- EN: protector -->
+  <VPE_Protector.label>守御者</VPE_Protector.label>
+  <!-- EN: Protector path is focused on providing aid and protection to your pawns, stopping them from dying and allowing you to escape from dangerous situations unscratched. -->
+  <VPE_Protector.description>守御之道專注於為人們提供支援與保護，能救人與水火之間，也能在性命關頭全身而退。</VPE_Protector.description>
+  <!-- EN: Protectors serve on the front lines, defending the brave soldiers from harm. Not only can they stop projectiles using powerful skipshields, but they can also help the body recover from wounds, as well as boost the natural regeneration and immunity of those in need. -->
+  <VPE_Protector.tooltip>守御者們總是戰鬥於第一線，為勇猛的士兵們抵擋傷害。他們不僅能用折躍護盾來抵擋槍彈，還可以讓傷口快速癒合，還可以激發人體的潛能來恢復傷勢並增強免疫。</VPE_Protector.tooltip>
+  <VPE_Protector.tab>靈能</VPE_Protector.tab>
+  
+  <!-- EN: skipmaster -->
+  <VPE_Skipmaster.label>折躍師</VPE_Skipmaster.label>
+  <!-- EN: Skipmaster psycasts are focused on using skipgates to change the course of battle or the life of the colony. -->
+  <VPE_Skipmaster.description>折躍之道專注於使用折躍門來改變戰場的局勢，或是殖民地的未來。</VPE_Skipmaster.description>
+  <!-- EN: Skipmasters often served the Empire by establishing convoluted skipdoor networks. Masters of logistics and bending space, they can skip people to desired locations and can even use skipgates for everyday chores - such as creating solar pinholes or skipping water to extinguish flames. -->
+  <VPE_Skipmaster.tooltip>折躍師常常為帝國工作，他們在據點間建立錯綜複雜的折躍門網絡。他們是空間摺疊和後勤規劃的大師，可以把人們瞬間送往目的地。他們對摺躍門的應用如臂使指，例如折躍陽光來提供持續的光源，或是折躍水體來滅火。</VPE_Skipmaster.tooltip>
+  <VPE_Skipmaster.tab>靈能</VPE_Skipmaster.tab>
+  
+  <!-- EN: staticlord -->
+  <VPE_Staticlord.label>風雷使</VPE_Staticlord.label>
+  <!-- EN: Staticlord is a path focused on blasting enemies with electricity, disabling electronics and controlling the storm itself. -->
+  <VPE_Staticlord.description>風雷之道專注於用電能轟擊敵人，損毀電子原件以及控制風暴本身。</VPE_Staticlord.description>
+  <!-- EN: Lords of thunder and lightning, staticlords are excellent psycasters when it comes to controlling the flow of electricity and fighting against mechanoid swarms. They can summon powerful lightning bolts in many shapes and forms, as well as manipulate the weather to generate localised lightning storms and hurricanes. -->
+  <VPE_Staticlord.tooltip>風雷使是雷霆與閃電的主人，他們能熟練地掌控電能的流動，十分克制機械集群。他們能召喚威力十足的閃電矢，乃至掌控天氣生成局部的颶風和雷暴。</VPE_Staticlord.tooltip>
+  <VPE_Staticlord.tab>靈能</VPE_Staticlord.tab>
+  
+  <!-- EN: technomancer -->
+  <VPE_Technomancer.label>奧技工</VPE_Technomancer.label>
+  <!-- EN: Technomancers are masters of technology, knowledge and research, capable of using psychic energy to aid in concept exploration, but also to breathe life into small-scale constructs that can help and defend them. -->
+  <VPE_Technomancer.description>奧技之道掌控着科技，知識於研究，可以將靈能運用於對科學的探索上，同時還能活化構裝體保護自己。</VPE_Technomancer.description>
+  <!-- EN: Masters of knowledge and technology, technomancers can improve existing technology, generate infinite power, create constructs out of seemingly worthless materials as well as reverse engineer anything they can get their hands on. Especially powerful technomancers can even use eltex to create psyrings, essentially sharing their knowledge of the psycasting art with other amateur psycasters. -->
+  <VPE_Technomancer.tooltip>奧技工是知識與科技的大師，能夠強化科技造物，生成無限能源，從看似無用的材料中製造構裝體，逆向研究任何手可觸及的造物。高等級的奧技工可以用靈質製造智環，將自己對心靈能力的詮釋與後輩靈能者共享。</VPE_Technomancer.tooltip>
+  <VPE_Technomancer.tab>靈能</VPE_Technomancer.tab>
+  
+  <!-- EN: warlord -->
+  <VPE_Warlord.label>冠軍候</VPE_Warlord.label>
+  <!-- EN: Warlord path is focused on upgrading the warfare capabilities of the Psycaster and psycaster alone - as all the Warlord psycasts are to an extent self-cast. -->
+  <VPE_Warlord.description>冠軍之道在於用靈能強化自身的作戰能力，所有冠軍候的心靈能力都只為加強自己存在。</VPE_Warlord.description>
+  <!-- EN: Masters of warfare, warlords serve only themselves, able to improve their perception, reflexes, speed and stamina at will. Feared anywhere they go, a powerful warlord will never miss a shot and their blade will always find its target. -->
+  <VPE_Warlord.tooltip>冠軍候是戰場上的明星，他們追求着獨屬於自身的強大力量，強化自身的感應，反應，速度和耐力。冠軍候於戰爭中所向披靡，彈無虛發，見血封喉。</VPE_Warlord.tooltip>
+  <VPE_Warlord.tab>靈能</VPE_Warlord.tab>
+  
+  <!-- EN: wildspeaker -->
+  <VPE_Wildspeaker.label>林語者</VPE_Wildspeaker.label>
+  <!-- EN: Wildspeaker path is a special path locked only for Tribal-based psycasters. It’s all about controlling nature and animals for defense and survival. -->
+  <VPE_Wildspeaker.description>林語之道是僅能被部落背景之人選取的道系。它專注於掌控自然與動物來守護自身。</VPE_Wildspeaker.description>
+  <!-- EN: Tribals only -->
+  <VPE_Wildspeaker.lockedReason>僅限部落背景</VPE_Wildspeaker.lockedReason>
+  <!-- EN: A secret path of the tribal communities, wildspeaking is the art of living in harmony with the forest and nature, and being able to summon the aid of the forest when needed. Tribal wildspeakers are known to control packs of territorial animals, be protected from all damage by an impenetrable shield, and they can also seem to make brambles and trees sprout out of the ground on a whim. -->
+  <VPE_Wildspeaker.tooltip>僅在部落民中流傳的隱秘道系，林語之道旨在尋找與森林和自然和諧共處的方法，需要時可以召喚來自森林的力量。部落的林語者可以號令獸群，用護盾保護自然，還能讓荊棘和樹林隨心而生。</VPE_Wildspeaker.tooltip>
+  <VPE_Wildspeaker.tab>靈能</VPE_Wildspeaker.tab>
+
+  <!-- EN: hemosage -->
+  <VPEH_Hemosage.label>血原祖</VPEH_Hemosage.label>
+  <!-- EN: Hemosages are masters of blood magic that use hemogen as a resource to cast unique psycasts. -->
+  <VPEH_Hemosage.description>血原祖是血法術的大師，他們可以用血原質施放特殊的靈能法術。</VPEH_Hemosage.description>
+  <!-- EN: Hemogenic only -->
+  <VPEH_Hemosage.lockedReason>僅限血原化基因</VPEH_Hemosage.lockedReason>
+  <!-- EN: Hemosages are powerful, elder psycasters that use their connection with an engine of evil and their bloody curse to inflict pain and manipulate matter in vile, wicked ways. Relying on hemogen, they can drain and leech life from everyone around them, instilling incredible pain and even worse nightmares. Only those that have access to the power of hemogen can become a true hemosage. -->
+  <VPEH_Hemosage.tooltip>血原祖能以骯髒扭曲地方法利用血脈中的詛咒之力操控痛苦與物質。他們可以用血原質抽取旁人的生命，製造極度的痛苦和不可名狀的夢魘。只有那些擁有血原質之力的人才可以成為血原祖。</VPEH_Hemosage.tooltip>
+  <VPEH_Hemosage.tab>靈能</VPEH_Hemosage.tab>
+
+  <!-- EN: puppeteer -->
+  <VPEP_Puppeteer.label>操偶師</VPEP_Puppeteer.label>
+  <!-- EN: Puppeteers provide the ways to exploit minds and dominate others. They are the masters of subjugating enemies and creating mindless husks upon which they feed. -->
+  <VPEP_Puppeteer.description>操偶師有着操控意識的能力。他們能把敵人轉換成沒有意識的行屍走肉。</VPEP_Puppeteer.description>
+  <!-- EN: Imperials only -->
+  <VPEP_Puppeteer.lockedReason>僅限帝國背景</VPEP_Puppeteer.lockedReason>
+  <!-- EN: Masters of psychic manipulation, puppeteers can delve into minds, inflicting deep psychic wounds or taking control. They craft mindless puppets, extensions of their own will, which collect knowledge and serve their whims. In times of danger, a puppeteer can transfer their very essence into a puppet, achieving a form of immortality. This arcane art is jealously guarded, known only to the elite empire-born nobles. -->
+  <VPEP_Puppeteer.tooltip>操偶師是操縱心靈力量的大師，他們能潛入人民的意識，造成精神創傷乃至取而代之。他們可以製造依自己意志行動的心偶。當情況危急時，操偶師可以直接將意識轉移進自己的心偶之一，達成一定意義上的永生。這種精妙的靈能技術被帝國嚴加保密，外人不能得知。</VPEP_Puppeteer.tooltip>
+  <VPEP_Puppeteer.tab>靈能</VPEP_Puppeteer.tab>
+  
+</LanguageData>

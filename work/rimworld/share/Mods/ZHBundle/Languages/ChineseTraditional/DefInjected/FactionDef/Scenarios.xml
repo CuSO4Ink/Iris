@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 탐험가 -->
+  <Miho_GravshipCrew.label>美狐重力船船員</Miho_GravshipCrew.label>
+  <!-- EN: Your own Miho gravship. -->
+  <Miho_GravshipCrew.description>屬於你們自己的美狐族重力船。</Miho_GravshipCrew.description>
+  <!-- EN: leader -->
+  <Miho_GravshipCrew.leaderTitle>領袖</Miho_GravshipCrew.leaderTitle>
+  <!-- EN: {0} from {1} are attacking your {2}. -->
+  <Miho_GravshipCrew.messageDefendersAttacking>來自{1}的{0}正在攻擊你的{2}。</Miho_GravshipCrew.messageDefendersAttacking>
+  <!-- EN: colonist -->
+  <Miho_GravshipCrew.pawnSingular>殖民者</Miho_GravshipCrew.pawnSingular>
+  <!-- EN: colonists -->
+  <Miho_GravshipCrew.pawnsPlural>殖民者</Miho_GravshipCrew.pawnsPlural>
+  
+</LanguageData>

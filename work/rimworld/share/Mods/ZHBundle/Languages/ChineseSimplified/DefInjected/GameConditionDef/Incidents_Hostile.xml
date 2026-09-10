@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: necrotion fallout -->
+  <GameCon_NecrotionFallout.label>殁疫尘埃</GameCon_NecrotionFallout.label>
+  <!-- EN: An infectious fallout affecting the entire region. -->
+  <GameCon_NecrotionFallout.description>含有殁疫病毒的可怕尘埃正在这片区域慢慢沉淀。任何不在屋顶下的人类和动物都会被逐渐感染。</GameCon_NecrotionFallout.description>
+  <!-- EN: An infectious fallout is covering the area around [map_definite] for [gameConditionDuration_duration], killing outdoor plant and animal life -->
+  <GameCon_NecrotionFallout.descriptionFuture>一片殁疫尘埃将在[gameConditionDuration_duration]内持续笼罩[map_definite]地区，它将感染所有还在户外的动植物。</GameCon_NecrotionFallout.descriptionFuture>
+  <!-- EN: The necrotion fallout has settled. -->
+  <GameCon_NecrotionFallout.endMessage>殁疫尘埃已基本消散了。</GameCon_NecrotionFallout.endMessage>
+  <!-- EN: The necrotion fallout will befall the entire region.\n\nAny person or creature not under a roof will be infected with the airborne necronoid infection.\n\nIt will last for anywhere between a few days to over a quadrum. -->
+  <GameCon_NecrotionFallout.letterText>含有殁疫病毒的可怕尘埃正在这片区域慢慢沉淀。\n\n任何不在屋顶下的人类和动物都会被逐渐感染。\n\n殁疫尘埃将会在几天至一象时间内持续存在。</GameCon_NecrotionFallout.letterText>
+  
+</LanguageData>

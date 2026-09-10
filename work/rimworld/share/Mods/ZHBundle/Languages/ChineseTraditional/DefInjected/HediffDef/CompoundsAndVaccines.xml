@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: XJ9 - Compound addiction -->
+  <MiracleCompoundAddiction.label>XJ9合劑成癮</MiracleCompoundAddiction.label>
+  <!-- EN: A chemical addiction to XJ9 - Compound. Long-term presence of the compound has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug.\n\nWithout regular doses of XJ9 - Compound, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction. -->
+  <MiracleCompoundAddiction.description>XJ9合劑的化學成癮。長期注射XJ9合劑會造成細胞內的神經適應XJ9合劑，導致大腦沒有XJ9合劑的話就無法運作。\n\n如果沒有定期注射XJ9合劑，戒斷反應就會開始。然而，長時間的戒斷會迫使大腦恢復正常狀態，解決成癮問題。</MiracleCompoundAddiction.description>
+  <!-- EN: withdrawal -->
+  <MiracleCompoundAddiction.stages.withdrawal.label>戒斷</MiracleCompoundAddiction.stages.withdrawal.label>
+  
+  <!-- EN: high on XJ9 - Compound -->
+  <MiracleCompoundHigh.label>XJ9合劑亢奮</MiracleCompoundHigh.label>
+  <!-- EN: A temporary boost after injecting the XJ9 - Compound in the bloodstream. -->
+  <MiracleCompoundHigh.description>流淌在血液裡的XJ9合劑成分。它能夠暫時消除睡眠需求並大幅降低飢餓速率，以及提供少量的屬性加成。</MiracleCompoundHigh.description>
+  <!-- EN: a compound high -->
+  <MiracleCompoundHigh.labelNoun>XJ9合劑亢奮</MiracleCompoundHigh.labelNoun>
+  
+  <!-- EN: XJ9 - Compound tolerance -->
+  <MiracleCompoundTolerance.label>XJ9合劑耐受</MiracleCompoundTolerance.label>
+  <!-- EN: A built-up tolerance to XJ9 - Compound. The more severe this tolerance is, the more XJ9 - Compound it takes to get the same effect. -->
+  <MiracleCompoundTolerance.description>對XJ9合劑的耐受性。耐受性越嚴重，達到同樣效果所需要的XJ9合劑也就越多。</MiracleCompoundTolerance.description>
+  <!-- EN: small -->
+  <MiracleCompoundTolerance.stages.small.label>輕微</MiracleCompoundTolerance.stages.small.label>
+  <!-- EN: large -->
+  <MiracleCompoundTolerance.stages.large.label>強烈</MiracleCompoundTolerance.stages.large.label>
+  <!-- EN: massive -->
+  <MiracleCompoundTolerance.stages.massive.label>極強</MiracleCompoundTolerance.stages.massive.label>
+  
+  <!-- EN: "anti-necrotion" vaccine addiction -->
+  <VaccineAddiction.label>歿疫解藥成癮</VaccineAddiction.label>
+  <!-- EN: A chemical addiction to "anti-necrotion" vaccine. Long-term presence of the vaccine has caused neurological adaptations at the cellular level, so the brain can no longer function properly without the drug.\n\nWithout regular doses of "anti-necrotion" vaccine, withdrawal symptoms will begin. However, extended abstinence will force the brain to adapt back to its normal state, resolving the addiction. -->
+  <VaccineAddiction.description>歿疫解藥的化學成癮。長期注射歿疫解藥會造成細胞內的神經適應歿疫解藥，導致大腦沒有歿疫解藥的話就無法運作。\n\n如果沒有定期注射歿疫解藥，戒斷反應就會開始。然而，長時間的戒斷會迫使大腦恢復正常狀態，解決成癮問題。</VaccineAddiction.description>
+  <!-- EN: withdrawal -->
+  <VaccineAddiction.stages.withdrawal.label>戒斷</VaccineAddiction.stages.withdrawal.label>
+  
+  <!-- EN: high on vaccine -->
+  <VaccineHigh.label>歿疫解藥亢奮</VaccineHigh.label>
+  <!-- EN: A temporary boost after injecting the "anti-necrotion" vaccine in the bloodstream. -->
+  <VaccineHigh.description>流淌在血液裡的歿疫解藥成分。它能夠增強戰鬥能力，並且在飲用時直接提升精神力。</VaccineHigh.description>
+  <!-- EN: a vaccine high -->
+  <VaccineHigh.labelNoun>歿疫解藥亢奮</VaccineHigh.labelNoun>
+  
+  <!-- EN: "anti-necrotion" vaccine tolerance -->
+  <VaccineTolerance.label>歿疫解藥耐受</VaccineTolerance.label>
+  <!-- EN: A built-up tolerance to "anti-necrotion" vaccine. The more severe this tolerance is, the more vaccine it takes to get the same effect. -->
+  <VaccineTolerance.description>對歿疫解藥的耐受性。耐受性越嚴重，達到同樣效果所需要的歿疫解藥也就越多。</VaccineTolerance.description>
+  <!-- EN: small -->
+  <VaccineTolerance.stages.small.label>輕微</VaccineTolerance.stages.small.label>
+  <!-- EN: large -->
+  <VaccineTolerance.stages.large.label>強烈</VaccineTolerance.stages.large.label>
+  <!-- EN: massive -->
+  <VaccineTolerance.stages.massive.label>極強</VaccineTolerance.stages.massive.label>
+  
+</LanguageData>

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: dragonian basic dress -->
+  <DR_BasicDress.label>龙人 基本连衣裙</DR_BasicDress.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_BasicDress.description>这是基本的装扮。</DR_BasicDress.description>
+  
+  <!-- EN: dragonian Basic Wear -->
+  <DR_BasicWear.label>龙人 基本装扮</DR_BasicWear.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_BasicWear.description>这是基本的装扮。</DR_BasicWear.description>
+
+  <!-- EN: dragonian basic dress(Male) -->
+  <DR_BasicWearMale.label>龙人 基本装扮(男性)</DR_BasicWearMale.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_BasicWearMale.description>这是基本的装扮。</DR_BasicWearMale.description>
+  
+  <!-- EN: dragonian Battle dress -->
+  <DR_BattleDress.label>龙人 战衣</DR_BattleDress.label>
+  <!-- EN: Lightweight armor with plate on the dress. -->
+  <DR_BattleDress.description>轻型盔甲，连衣裙上带有金属护板。</DR_BattleDress.description>
+
+  <!-- EN: dragonian Battle dress(Male) -->
+  <DR_BattleDressMale.label>龙人 战衣(男性)</DR_BattleDressMale.label>
+  <!-- EN: Lightweight armor with plate. -->
+  <DR_BattleDressMale.description>轻型盔甲，附有护板以提供额外防护。</DR_BattleDressMale.description>
+  
+  <!-- EN: dragonian battle helm A -->
+  <DR_BattleHelmA.label>龙人 战盔A型</DR_BattleHelmA.label>
+  <!-- EN: A lightweight battle helm with a complex design. -->
+  <DR_BattleHelmA.description>一款设计复杂的轻型战斗头盔。</DR_BattleHelmA.description>
+  
+  <!-- EN: dragonian MidOff dress -->
+  <DR_MidOff.label>龙人 中空连衣裙</DR_MidOff.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_MidOff.description>这是基本的装扮。</DR_MidOff.description>
+  
+  <!-- EN: dragonian offshoulder dress -->
+  <DR_OffshoulderDress.label>龙人 露肩连衣裙</DR_OffshoulderDress.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_OffshoulderDress.description>这是基本的装扮。</DR_OffshoulderDress.description>
+  
+  <!-- EN: dragonian ribbon Wear -->
+  <DR_OpenDress.label>龙人 丝带服饰</DR_OpenDress.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_OpenDress.description>这是基本的装扮。</DR_OpenDress.description>
+  
+  <!-- EN: dragonian Protection Orb -->
+  <DR_ProtectionOrb.label>龙人 防护宝珠</DR_ProtectionOrb.label>
+  <!-- EN: It is a mysterious orb that protects the body. -->
+  <DR_ProtectionOrb.description>这是一个保护身体的神秘宝珠。</DR_ProtectionOrb.description>
+  
+  <!-- EN: dragonian eltex dress -->
+  <DR_PsychicDress.label>龙人 灵质战衣</DR_PsychicDress.label>
+  <!-- EN: Lightweight armor with plate on the dress. -->
+  <DR_PsychicDress.description>轻型盔甲，连衣裙上带有金属护板。</DR_PsychicDress.description>
+
+  <!-- EN: dragonian eltex dress(Male) -->
+  <DR_PsychicDressMale.label>龙人 灵质战衣(男性)</DR_PsychicDressMale.label>
+  <!-- EN: Lightweight armor with plate. -->
+  <DR_PsychicDressMale.description>轻型盔甲，附有护板以提供额外防护。</DR_PsychicDressMale.description>
+  
+  <!-- EN: dragonian eltex helm -->
+  <DR_PsychicHelm.label>龙人 灵质战盔</DR_PsychicHelm.label>
+  <!-- EN: A lightweight Psychic helm with a complex design. -->
+  <DR_PsychicHelm.description>一款设计复杂的轻型灵质头盔。</DR_PsychicHelm.description>
+  
+  <!-- EN: dragonian seethrough dress -->
+  <DR_Seethrough.label>龙人 镂空连衣裙</DR_Seethrough.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_Seethrough.description>这是基本的装扮。</DR_Seethrough.description>
+  
+  <!-- EN: dragonian side open dress -->
+  <DR_SideDress.label>龙人 侧开式连衣裙</DR_SideDress.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_SideDress.description>这是基本的装扮。</DR_SideDress.description>
+  
+  <!-- EN: dragonian SlaveBlindfold -->
+  <DR_SlaveBlindfold.label>龙人 奴隶眼罩</DR_SlaveBlindfold.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_SlaveBlindfold.description>这是基本的装扮。</DR_SlaveBlindfold.description>
+  
+  <!-- EN: dragonian SlaveCloth -->
+  <DR_SlaveCloth.label>龙人 奴隶服</DR_SlaveCloth.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_SlaveCloth.description>这是基本的装扮。</DR_SlaveCloth.description>
+  
+  <!-- EN: dragonian summer dress -->
+  <DR_SummerDress.label>龙人 夏季连衣裙</DR_SummerDress.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_SummerDress.description>这是基本的装扮。</DR_SummerDress.description>
+  
+  <!-- EN: dragonian Wide hat -->
+  <DR_Widehat.label>龙人 宽帽</DR_Widehat.label>
+  <!-- EN: It is primitive clothing. -->
+  <DR_Widehat.description>这是基本的装扮。</DR_Widehat.description>
+  
+</LanguageData>

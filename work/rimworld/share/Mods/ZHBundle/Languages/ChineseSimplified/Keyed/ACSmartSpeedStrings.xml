@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<LanguageData>
+  <SS_EventSpeed>事件速度</SS_EventSpeed>
+  <EventSpeedLabel>更改事件速度</EventSpeedLabel>
+  <SS_Slow>慢速（正常速度的一半）</SS_Slow>
+  <SS_Normal>常速（正常速度）</SS_Normal>
+  <SS_Fast>快速（正常速度的两倍）</SS_Fast>
+  <SS_Half>目前速度的一半</SS_Half>
+  <SS_Ignore>无视（无减速）</SS_Ignore>
+  
+  <SS_normalSpeed>常速（速度 1）</SS_normalSpeed>
+  <SS_normalSpeedTooltip>正常速度的倍数。默认值为1，对应每每秒60个刻度。</SS_normalSpeedTooltip>
+  <SS_fastSpeed>快速（速度 2）</SS_fastSpeed>
+  <SS_fastSpeedTooltip>快速速度的倍速。默认值为3，相当于每秒180个刻度。</SS_fastSpeedTooltip>
+  <SS_superfastSpeed>超快速（速度 3）</SS_superfastSpeed>
+  <SS_superfastSpeedTooltip>超快速度的倍速。默认值为6，即每秒360个刻度。</SS_superfastSpeedTooltip>
+  <SS_ultrafastSpeed>最快速（速度4）</SS_ultrafastSpeed>
+  <SS_ultrafastSpeedTooltip>最快速度每秒的倍数。默认值为15，相当于每秒900个刻度。请确保你的电脑可以承受如此高的负担，否则，它将受到限制。</SS_ultrafastSpeedTooltip>
+  <SS_Reset>重置</SS_Reset>
+</LanguageData>

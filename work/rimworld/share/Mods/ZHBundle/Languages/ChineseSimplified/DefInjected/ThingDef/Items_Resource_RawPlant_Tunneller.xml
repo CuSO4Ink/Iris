@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cave moss -->
+  <VCE_RawMoss.label>洞穴苔藓</VCE_RawMoss.label>
+  <!-- EN: A nutrient-rich moss that can be used to feed cave animals, but not humans. -->
+  <VCE_RawMoss.description>富含营养的苔藓，可以喂给洞穴里的动物，但不能给人吃。</VCE_RawMoss.description>
+  
+</LanguageData>

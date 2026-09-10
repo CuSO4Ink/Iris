@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: warrior spirit -->
+  <VPER_WarriorSpirit.label>勇士英灵</VPER_WarriorSpirit.label>
+  <!-- EN: A spirit summoned from beyond this realm, presumably of a Runesmith who had previously fallen in glorious combat. A fairly durable melee combatant that severs limbs with their trusty battleaxe that's followed them from one life to the afterlife. Their physical rune of Mannaz defines their existence, so a single blow to their rune can banish them from this realm. -->
+  <VPER_WarriorSpirit.description>来自另一个世界的召唤灵，据推测是一位曾在光荣战斗中阵亡的符文匠。这位近战战士相当耐打，凭借随身携带的战斧能轻松斩断敌人的四肢，这把战斧自其前世便一直相伴至今。英灵存在的本质由美纳兹（Mannaz）符文定义，因此只要击中其符文，便可将其驱逐出这个世界。</VPER_WarriorSpirit.description>
+  <!-- EN: head -->
+  <VPER_WarriorSpirit.tools.head.label>头</VPER_WarriorSpirit.tools.head.label>
+  <!-- EN: axe -->
+  <VPER_WarriorSpirit.tools.axe-0.label>战斧</VPER_WarriorSpirit.tools.axe-0.label>
+  <!-- EN: axe -->
+  <VPER_WarriorSpirit.tools.axe-1.label>战斧</VPER_WarriorSpirit.tools.axe-1.label>
+  
+</LanguageData>

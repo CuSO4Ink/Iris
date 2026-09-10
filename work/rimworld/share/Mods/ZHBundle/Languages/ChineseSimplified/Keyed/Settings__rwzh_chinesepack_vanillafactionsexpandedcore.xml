@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: General -->
+  <VEF_GeneralTitle>常规设置</VEF_GeneralTitle>
+    <!-- CSG -->
+    <!-- EN: Custom structure generation: -->
+  <CSGTitle>自定义结构生成：</CSGTitle>
+    <!-- EN: Enable structure generation debugging log:  -->
+  <CSGLog>启用生成结构调试日志：</CSGLog>
+
+    <!-- Toggleable patches -->
+    <!-- EN: Toggleable patches -->
+  <VEF_TPTitle>可开关补丁</VEF_TPTitle>
+    <!-- EN: All settings need a restart to be applied -->
+  <NeedRestart>&lt;b>&lt;color=red>所有设置都需要重启游戏后才能生效&lt;/color>&lt;/b></NeedRestart>
+    <!-- EN: {0} patches found -->
+  <XPatchFound>找到{0}个补丁</XPatchFound>
+
+    <!-- Weather damages -->
+    <!-- EN: Weather damages -->
+  <VEF.WeatherDamages>天气伤害</VEF.WeatherDamages>
+    <!-- EN: {0} -->
+  <VEF.EnableWeatherDamage>{0}</VEF.EnableWeatherDamage>
+    <!-- Faction Discovery -->
+    <!-- EN: Faction Discovery -->
+  <FDTitle>派系侦测</FDTitle>
+    <!-- EN: You first need to load a save -->
+  <NeedToBeInGame>你需要先加载一个存档</NeedToBeInGame>
+    <!-- EN: Add faction(s) -->
+  <AskForPopUp>添加派系</AskForPopUp>
+    <!-- EN: Click this to be asked for each faction if you want it to be added to your game -->
+  <AskForPopUpExplained>单击此选项以查询每个你希望添加到游戏中的派系</AskForPopUpExplained>
+    <!-- EN: {0} faction(s) can be added to your current save -->
+  <CanAddXFaction>当前有{0}个派系可以添加到你当前的存档中</CanAddXFaction>
+
+    <!-- EN: Disable mod source reports -->
+  <VEF.DisableModSourceReport>禁用Mod的数据源报告</VEF.DisableModSourceReport>
+
+    <!-- EN: Search:  -->
+  <VEF.Shields.Search>查找：</VEF.Shields.Search>
+    <!-- EN: Reset mod settings to default -->
+  <VEF.Shields.ResetModSettingsToDefault>重设为默认值</VEF.Shields.ResetModSettingsToDefault>
+    <!-- EN: Set weapons to be usable or not usable with shields. -->
+  <VEF.Shields.ExplanationTitle>设置武器是否能与盾牌（仅支持基于VE框架的盾牌）一同使用。</VEF.Shields.ExplanationTitle>
+    <!-- EN: Show melee weapons -->
+  <VEF.Shields.ShowMeleeWeapons>显示近战武器</VEF.Shields.ShowMeleeWeapons>
+    <!-- EN: Show range weapons -->
+  <VEF.Shields.ShowRangeWeapons>显示远程武器</VEF.Shields.ShowRangeWeapons>
+	
+	<!-- EN: Disable Texture Caching -->
+  <VEF_DisableTextureCaching>禁用贴图缓存</VEF_DisableTextureCaching>
+	<!-- EN: Enable PipeSystem no storage alert -->
+  <VEF_EnablePipeSystemNoStorageAlert>禁用管道系统的“未连接至存储建筑”警报</VEF_EnablePipeSystemNoStorageAlert>
+	<!-- EN: Faction Discovery -->
+  <VEF_FactionDiscovery>派系发现</VEF_FactionDiscovery>
+	<!-- EN: Custom Structure Generation: -->
+  <VEF_CustomStructureGeneration>自定义结构生成：</VEF_CustomStructureGeneration>
+	<!-- EN: Texture Variations: -->
+  <VEF_TextureVariations>贴图变体：</VEF_TextureVariations>
+	<!-- EN: Verbose logging -->
+  <VEF_VerboseLogging>详细日志</VEF_VerboseLogging>
+	<!-- EN: Unforbid mined ores -->
+  <VEF_UnforbidMinedOres>开采矿石互动</VEF_UnforbidMinedOres>
+	<!-- EN: Never -->
+  <VEF_Never>永不</VEF_Never>
+	<!-- EN: Home Area -->
+  <VEF_HomeArea>居住区</VEF_HomeArea>
+	<!-- EN: Always -->
+  <VEF_Always>总是</VEF_Always>
+	<!-- EN: Never unforbid mined ores (this is how the base game works for non-human pawns, such as animals and mechs) -->
+  <VEF_NeverDesc>人类、动物、机械族等单位开采的矿石会自动标记为禁止互动（原版设置）。</VEF_NeverDesc>
+	<!-- EN: Ores mined by pawns are only unforbidden if mined in the home area -->
+  <VEF_HomeAreaDesc>如果处于居住区内，人类、动物、机械族等单位开采的矿石会自动标记为允许互动。</VEF_HomeAreaDesc>
+	<!-- EN: Ores mined by pawns are always unforbidden -->
+  <VEF_AlwaysDesc>人类、动物、机械族等单位开采的矿石总是会自动标记为允许互动。</VEF_AlwaysDesc>
+</LanguageData>

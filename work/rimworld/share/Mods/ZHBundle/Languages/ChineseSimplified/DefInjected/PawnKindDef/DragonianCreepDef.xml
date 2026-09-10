@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Smart Dragonian -->
+  <DR_SmartDragonian.label>聪明的龙人</DR_SmartDragonian.label>
+  <!-- EN: A dragonian with sharp eyes slowly approaches. -->
+  <DR_SmartDragonian.letterLabel>一名目光锐利的龙人缓缓走来。</DR_SmartDragonian.letterLabel>
+  <!-- EN: Who on earth taught this dragonian so much knowledge, and what was their purpose?\nOne thing is certain, this foolishly naive creature must have endured immense pain to learn this knowledge. -->
+  <DR_SmartDragonian.letterPrompt>究竟是谁教会了这名龙人如此多的知识？又是出于什么目的？\n有一点是确定的 —— 这个天真得近乎愚蠢的生物，必定忍受了巨大的痛苦才学会了这些知识。</DR_SmartDragonian.letterPrompt>
+  
+</LanguageData>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: spending time alone. -->
+  <SnapOut_ActuallyRecoverJob.reportString>想要自己一個人冷靜一下。</SnapOut_ActuallyRecoverJob.reportString>
+  
+  <!-- EN: calming TargetA down. -->
+  <SnapOut_CalmDownJob.reportString>正在安撫 TargetA 冷靜下來</SnapOut_CalmDownJob.reportString>
+  
+  <!-- EN: trying to relax. -->
+  <SnapOut_GoToSafetyJob.reportString>試著放鬆情緒。</SnapOut_GoToSafetyJob.reportString>
+  
+  <!-- EN: spending time alone. -->
+  <SnapOut_SnappingOutJob.reportString>需要一些時間來自我冷靜。</SnapOut_SnappingOutJob.reportString>
+  
+</LanguageData>

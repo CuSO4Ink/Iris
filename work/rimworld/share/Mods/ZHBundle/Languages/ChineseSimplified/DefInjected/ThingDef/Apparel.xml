@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 진공 방호복 헬멧 -->
+  <Miho_Apparel_Hat_Vacsuit.label>美狐真空头盔</Miho_Apparel_Hat_Vacsuit.label>
+  <!-- EN: 귀가 매력포인트 입니다. -->
+  <Miho_Apparel_Hat_Vacsuit.description>为美狐族设计的头盔，能高效回收使用者的氧气，使其能在太空真空中持续呼吸数小时。由于氧气转化过程并非完美无缺，使用者仍需定期返回加压环境。\n\n这种头盔的耳朵是萌点所在。</Miho_Apparel_Hat_Vacsuit.description>
+  
+  <!-- EN: 미호 진공 방호복 -->
+  <Miho_Apparel_OnSkin_Vacsuit.label>美狐真空服</Miho_Apparel_OnSkin_Vacsuit.label>
+  <!-- EN: 세일러 하이레그 바디슈트 입니다. -->
+  <Miho_Apparel_OnSkin_Vacsuit.description>为美狐族设计的高叉连体防护服，可在太空中保障使用者安全。但会约束穿戴者行动，显著降低其行动速度。\n\n看起来这种衣物在样式方面还参考了水手服。</Miho_Apparel_OnSkin_Vacsuit.description>
+  
+</LanguageData>

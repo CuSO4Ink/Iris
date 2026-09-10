@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: exiled royal vivi -->
+  <VV_PlayerExiledRoyalVivi.label>皇家薇薇被放逐者</VV_PlayerExiledRoyalVivi.label>
+  
+  <!-- EN: vivi refugee -->
+  <VV_PlayerRefugeeVivi.label>薇薇难民</VV_PlayerRefugeeVivi.label>
+  
+  <!-- EN: royal vivi -->
+  <VV_PlayerRoyalVivi.label>皇家薇薇</VV_PlayerRoyalVivi.label>
+  
+  <!-- EN: vivi -->
+  <VV_PlayerVivi.label>薇薇</VV_PlayerVivi.label>
+  
+</LanguageData>

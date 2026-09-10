@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ambition frustrated -->
+  <PsycheAmbitionAchievement.stages.ambition_frustrated.label>雄心受挫</PsycheAmbitionAchievement.stages.ambition_frustrated.label>
+  <!-- EN: Nothing seems to be moving forward. It feels like I'm just spinning my wheels. -->
+  <PsycheAmbitionAchievement.stages.ambition_frustrated.description>一切似乎都停滞不前。我感觉就像在原地打转</PsycheAmbitionAchievement.stages.ambition_frustrated.description>
+  <!-- EN: sense of achievement -->
+  <PsycheAmbitionAchievement.stages.sense_of_achievement.label>成就感</PsycheAmbitionAchievement.stages.sense_of_achievement.label>
+  <!-- EN: I'm making real progress with my skills. It's nice to see my own growth.\n\n(Gained skill experience) -->
+  <PsycheAmbitionAchievement.stages.sense_of_achievement.description>我正在熟能生巧。看到自己的成长真好。\n\n（获得技能经验）</PsycheAmbitionAchievement.stages.sense_of_achievement.description>
+  <!-- EN: sense of accomplishment -->
+  <PsycheAmbitionAchievement.stages.sense_of_accomplishment.label>完成感</PsycheAmbitionAchievement.stages.sense_of_accomplishment.label>
+  <!-- EN: I've made something I'm proud of. It's nice to feel productive. -->
+  <PsycheAmbitionAchievement.stages.sense_of_accomplishment.description>我做出了引以为傲的东西。看到自己的创造真好。</PsycheAmbitionAchievement.stages.sense_of_accomplishment.description>
+  <!-- EN: sense of progress -->
+  <PsycheAmbitionAchievement.stages.sense_of_progress.label>进步感</PsycheAmbitionAchievement.stages.sense_of_progress.label>
+  <!-- EN: It's great to see things moving ahead. Feels good to be part of something that's growing. -->
+  <PsycheAmbitionAchievement.stages.sense_of_progress.description>看到事情正在稳步前进真好。感觉自己是前进的一部分真高兴。</PsycheAmbitionAchievement.stages.sense_of_progress.description>
+  
+  <!-- EN: working in the wrong room -->
+  <PsycheOrganizedWorkspace.stages.working_in_the_wrong_room-0.label>在不合适的房间工作</PsycheOrganizedWorkspace.stages.working_in_the_wrong_room-0.label>
+  <!-- EN: This isn't the right place for this work. It’s distracting, uncomfortable, and it’s really getting to me. -->
+  <PsycheOrganizedWorkspace.stages.working_in_the_wrong_room-0.description>这里不适合做这份工。让我心神恍惚，也不舒服，真的让我焦躁不安。</PsycheOrganizedWorkspace.stages.working_in_the_wrong_room-0.description>
+  <!-- EN: working in the wrong room -->
+  <PsycheOrganizedWorkspace.stages.working_in_the_wrong_room-1.label>在不合适的房间工作</PsycheOrganizedWorkspace.stages.working_in_the_wrong_room-1.label>
+  <!-- EN: This isn't the right place for this job. -->
+  <PsycheOrganizedWorkspace.stages.working_in_the_wrong_room-1.description>这里不适合做这份工。</PsycheOrganizedWorkspace.stages.working_in_the_wrong_room-1.description>
+  <!-- EN: working in the right room -->
+  <PsycheOrganizedWorkspace.stages.working_in_the_right_room-0.label>在合适的房间工作</PsycheOrganizedWorkspace.stages.working_in_the_right_room-0.label>
+  <!-- EN: This room is well-suited for the work. Makes things a little easier. -->
+  <PsycheOrganizedWorkspace.stages.working_in_the_right_room-0.description>这里就适合干这份工。工作也轻松了点。</PsycheOrganizedWorkspace.stages.working_in_the_right_room-0.description>
+  <!-- EN: working in the right room -->
+  <PsycheOrganizedWorkspace.stages.working_in_the_right_room-1.label>在合适的房间工作</PsycheOrganizedWorkspace.stages.working_in_the_right_room-1.label>
+  <!-- EN: This is the right place for this job. Everything clicks, and it feels great to work here. -->
+  <PsycheOrganizedWorkspace.stages.working_in_the_right_room-1.description>这里就适合干这份工。一切如行云流水，在这里工作棒极了。</PsycheOrganizedWorkspace.stages.working_in_the_right_room-1.description>
+  
+</LanguageData>

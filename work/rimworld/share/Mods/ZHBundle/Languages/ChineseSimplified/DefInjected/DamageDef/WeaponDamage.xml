@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: plasma cut -->
+  <Miho_CutPlasma.label>等离子割伤</Miho_CutPlasma.label>
+  <!-- EN: {0} has been cut to death. -->
+  <Miho_CutPlasma.deathMessage>{0}死于割伤。</Miho_CutPlasma.deathMessage>
+  
+</LanguageData>

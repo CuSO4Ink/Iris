@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <BoL_Flower.label>一支玫瑰</BoL_Flower.label>
+  <BoL_Flower.description>用於求婚的一支玫瑰，可以用來求婚。
+  （據說一支玫瑰象征著一見鐘情）</BoL_Flower.description>
+
+  <BoL_SmallBouquet.label>花束</BoL_SmallBouquet.label>
+  <BoL_SmallBouquet.description>用於求婚的花束。可以用來求婚，並提高求婚成功幾率。
+  （不求情意綿綿，但求地久天長）</BoL_SmallBouquet.description>
+
+  <BoL_BigBouquet.label>華麗的爱之花束❤</BoL_BigBouquet.label>
+  <BoL_BigBouquet.description>用於求婚的華麗花束，可以用來求婚，極大的提高求婚成功幾率。
+  （對月形單望相互，只羨鴛鴦不羨仙）</BoL_BigBouquet.description>
+
+
+
+</LanguageData>

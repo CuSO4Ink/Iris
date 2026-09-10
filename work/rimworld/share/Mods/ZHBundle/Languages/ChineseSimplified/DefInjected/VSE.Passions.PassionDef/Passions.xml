@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: burning -->
+  <Major.label>狂热</Major.label>
+  <!-- EN: major passion -->
+  <Major.description>此人对这项技能非常热衷。</Major.description>
+  
+  <!-- EN: interested -->
+  <Minor.label>好奇</Minor.label>
+  <!-- EN: minor passion -->
+  <Minor.description>此人对这项技能略感兴趣。</Minor.description>
+  
+  <!-- EN: none -->
+  <None.label>无</None.label>
+  <!-- EN: no passion -->
+  <None.description>此人既不热衷这项技能，也不会感到乏味。</None.description>
+  
+  <!-- EN: apathy -->
+  <VSE_Apathy.label>乏味</VSE_Apathy.label>
+  <!-- EN: no interest in this skill -->
+  <VSE_Apathy.description>此人对这项技能毫无兴趣。</VSE_Apathy.description>
+  
+  <!-- EN: critical -->
+  <VSE_Critical.label>偏长</VSE_Critical.label>
+  <!-- EN: This skill is extremely important in some way, most likely due to events in their past. -->
+  <VSE_Critical.description>由于过去的某些经历，此人仅具有这项技能方面的“一技之长”，且很难学会其他技能。</VSE_Critical.description>
+  
+  <!-- EN: natural -->
+  <VSE_Natural.label>恃才</VSE_Natural.label>
+  <!-- EN: Naturally good at this skill. However, this means they won’t keep up their practice. -->
+  <VSE_Natural.description>此人生来便具有这项技能方面的天赋，但却恃才不学，毫无上进心。</VSE_Natural.description>
+  
+</LanguageData>

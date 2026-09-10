@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 신남 -->
+  <Miho_Tail_Thought.stages.2.label>興高采烈</Miho_Tail_Thought.stages.2.label>
+  <!-- EN: 신나는 일 투성이야! 내 적성을 찾은거 같아. (꼬리를 흔듬) -->
+  <Miho_Tail_Thought.stages.2.description>這裡到處都是有趣的事物！我想我找到能大顯身手的地方了！（尾巴正因興奮而搖個不停）</Miho_Tail_Thought.stages.2.description>
+  
+  <!-- EN: 유부초밥을 먹음 -->
+  <MihoAteInariZushi.stages.0.label>吃了特製豆皮壽司</MihoAteInariZushi.stages.0.label>
+  <!-- EN: 내 영혼속의 맛! 너무 좋아. -->
+  <MihoAteInariZushi.stages.0.description>世間怎麽會有如此美妙的食物？這味道真是令我欲罷不能！</MihoAteInariZushi.stages.0.description>
+  
+  <!-- EN: {0}의 주인임 -->
+  <MihoBondedAnimalMaster.stages.0.label>{0}的主人</MihoBondedAnimalMaster.stages.0.label>
+  <!-- EN: 이런 하등 생명체가 나를 섬기고 있다니, 오묘한 감정이군. -->
+  <MihoBondedAnimalMaster.stages.0.description>讓這樣的低等生物服從我...真是奇怪的感覺。</MihoBondedAnimalMaster.stages.0.description>
+  <!-- EN: {0}의 주인임 -->
+  <MihoBondedAnimalMaster.stages.1.label>{0}的主人</MihoBondedAnimalMaster.stages.1.label>
+  <!-- EN: 이런 하등 생명체가 나를 섬기고 있다니, 오묘한 감정이군. -->
+  <MihoBondedAnimalMaster.stages.1.description>讓這樣的低等生物服從我...真是奇怪的感覺。</MihoBondedAnimalMaster.stages.1.description>
+  
+  <!-- EN: 자신의 사유재산을 처리함 -->
+  <MihoKilledMyBondedAnimal.stages.0.label>私人財產被處理</MihoKilledMyBondedAnimal.stages.0.label>
+  
+  <!-- EN: {0}의 주인이 아님 -->
+  <MihoNotBondedAnimalMaster.stages.0.label>不是{0}的主人</MihoNotBondedAnimalMaster.stages.0.label>
+  <!-- EN: 딱히 나랑 상관 없잖아. -->
+  <MihoNotBondedAnimalMaster.stages.0.description>我又不在乎。</MihoNotBondedAnimalMaster.stages.0.description>
+  <!-- EN: {0}의 주인이 아님 -->
+  <MihoNotBondedAnimalMaster.stages.1.label>不是{0}的主人</MihoNotBondedAnimalMaster.stages.1.label>
+  <!-- EN: 딱히 나랑 상관 없잖아. -->
+  <MihoNotBondedAnimalMaster.stages.1.description>我又不在乎。</MihoNotBondedAnimalMaster.stages.1.description>
+  
+  <!-- EN: 애교받음 -->
+  <MihoNuzzled.stages.0.label>動物撒嬌</MihoNuzzled.stages.0.label>
+  <!-- EN: 나보다 나을게 없는 이런 하등한것이 귀엽다는 이유 하나만으로 인간들에게 사랑받는다고? 난 용납안돼. -->
+  <MihoNuzzled.stages.0.description>我難道不比這些低等生物強的多嗎？為什麽它們僅憑可愛就能討人類歡心？真是受不了！</MihoNuzzled.stages.0.description>
+  <!-- EN: 더 애교받음 -->
+  <MihoNuzzled.stages.1.label>動物撒嬌</MihoNuzzled.stages.1.label>
+  <!-- EN: 나보다 나을게 없는 이런 하등한것이 귀엽다는 이유 하나만으로 인간들에게 사랑받는다고? 난 용납안돼. -->
+  <MihoNuzzled.stages.1.description>我難道不比這些低等生物強的多嗎？為什麽它們僅憑可愛就能討人類歡心？真是受不了！</MihoNuzzled.stages.1.description>
+  
+  <!-- EN: 유부초밥을 먹음 -->
+  <NotMihoAteInariZushi.stages.0.label>吃了特製豆皮壽司</NotMihoAteInariZushi.stages.0.label>
+  <!-- EN: 담백한 맛이야. -->
+  <NotMihoAteInariZushi.stages.0.description>雖然味道比較清淡，但還是蠻好吃的。</NotMihoAteInariZushi.stages.0.description>
+  
+</LanguageData>

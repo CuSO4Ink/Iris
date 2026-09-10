@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Weapon Mastery -->
+  <SK_WeaponMastery_SettingsListItemName>Weapon Mastery</SK_WeaponMastery_SettingsListItemName>
+    <!-- EN: Mod Settings:  -->
+  <SK_WeaponMastery_ModSettingsSectionTitle>Mod設置：</SK_WeaponMastery_ModSettingsSectionTitle>
+    <!-- EN: (Certain changes require a restart in order to take effect) -->
+  <SK_WeaponMastery_ModSettingsSectionNote>（部分更改需要重啟遊戲才能生效）</SK_WeaponMastery_ModSettingsSectionNote>
+    <!-- EN: Chance for weapon to be renamed:  -->
+  <SK_WeaponMastery_ModSettingsSectionWeaponNameChanceLabel>殖民者為武器起暱稱的幾率：</SK_WeaponMastery_ModSettingsSectionWeaponNameChanceLabel>
+    <!-- EN: On gaining the first mastery level, there's a chance for pawns to rename their weapon -->
+  <SK_WeaponMastery_ModSettingsSectionWeaponNameChanceTooltip>在掌握了首個精通等級後，殖民者有幾率為自己武器起一個與眾不同的“暱稱”。</SK_WeaponMastery_ModSettingsSectionWeaponNameChanceTooltip>
+    <!-- EN: This configuration option requires Royalty DLC -->
+  <SK_WeaponMastery_ModSettingsSectionRoyaltyRequiredLabel>需要啟用皇權DLC才能更改此選項</SK_WeaponMastery_ModSettingsSectionRoyaltyRequiredLabel>
+    <!-- EN: This configuration option requires Ideology DLC -->
+  <SK_WeaponMastery_ModSettingsSectionIdeologyRequiredLabel>需要啟用理念DLC才能更改此選項</SK_WeaponMastery_ModSettingsSectionIdeologyRequiredLabel>
+    <!-- EN: Bonded weapon experience multiplier:  -->
+  <SK_WeaponMastery_ModSettingsSectionBondedWeaponExperienceMultiplierLabel>綁定武器的經驗獲取乘數：</SK_WeaponMastery_ModSettingsSectionBondedWeaponExperienceMultiplierLabel>
+    <!-- EN: Number of bonus stats for relic:  -->
+  <SK_WeaponMastery_ModSettingsSectionRelicBonusStatsNumberLabel>聖物的屬性加成數值：</SK_WeaponMastery_ModSettingsSectionRelicBonusStatsNumberLabel>
+    <!-- EN: Bonuses only apply to pawns that believe in the relic's ideology -->
+  <SK_WeaponMastery_ModSettingsSectionRelicBonusStatsNumberTooltip>只有信仰聖物對應意識形態的殖民者才能獲得屬性加成。</SK_WeaponMastery_ModSettingsSectionRelicBonusStatsNumberTooltip>
+    <!-- EN: Enable Specific Mastery System -->
+  <SK_WeaponMastery_ModSettingsSectionSpecificMasterySystemLabel>啟用武器精通系統（獨立）</SK_WeaponMastery_ModSettingsSectionSpecificMasterySystemLabel>
+    <!-- EN: A pawn mastering an assault rifle will not master ALL assault rifles but only THE assault rifle that is in their possession -->
+  <SK_WeaponMastery_ModSettingsSectionSpecificMasterySystemTooltip>舉例：殖民者只能精通使用自己手中的突擊步槍，而不是所有的突擊步槍。</SK_WeaponMastery_ModSettingsSectionSpecificMasterySystemTooltip>
+    <!-- EN: Enable General Mastery System -->
+  <SK_WeaponMastery_ModSettingsSectionGeneralMasterySystemLabel>啟用武器精通系統（共通）</SK_WeaponMastery_ModSettingsSectionGeneralMasterySystemLabel>
+    <!-- EN: A pawn mastering an assault rifle will master ALL assault rifles NOT only the assault rifle that is in their possession -->
+  <SK_WeaponMastery_ModSettingsSectionGeneralMasterySystemTooltip>舉例：殖民者可以精通使用所有的突擊步槍，而不僅僅是自己手中的突擊步槍。</SK_WeaponMastery_ModSettingsSectionGeneralMasterySystemTooltip>
+    <!-- EN: Masteries on outsider pawns -->
+  <SK_WeaponMastery_ModSettingsSectionMasteryOutsiderPawnsLabel>武器精通系統是否對殖民者以外的單位生效</SK_WeaponMastery_ModSettingsSectionMasteryOutsiderPawnsLabel>
+    <!-- EN: Allow masteries to spawn on pawns coming from outside your colony. Such as raids, visitors and traders. -->
+  <SK_WeaponMastery_ModSettingsSectionMasteryOutsiderTooltip>允許武器精通系統對殖民者以外的單位生效，比如襲擊者、訪客或商隊。</SK_WeaponMastery_ModSettingsSectionMasteryOutsiderTooltip>
+    <!-- EN: Display Experience -->
+  <SK_WeaponMastery_ModSettingsSectionDisplayExperienceLabel>顯示經驗槽</SK_WeaponMastery_ModSettingsSectionDisplayExperienceLabel>
+    <!-- EN: Display experience needed to level up for each weapon in the info tab -->
+  <SK_WeaponMastery_ModSettingsSectionDisplayExperienceTooltip>在武器的「描述」界面中顯示等級經驗槽</SK_WeaponMastery_ModSettingsSectionDisplayExperienceTooltip>
+  <!-- EN: Keep Original Name and Quality -->
+  <SK_WeaponMastery_ModSettingsSectionKeepOriginalNameAndQualityLabel>保留武器原本顯示的名字與品質</SK_WeaponMastery_ModSettingsSectionKeepOriginalNameAndQualityLabel>
+  <!-- EN: When a weapon name is generated, the mod will keep the original weapon's name and quality in the generated name. Example: "Boomer" Revolver (normal). Do keep in mind this might make certain weapon names too long to be fully displayed. -->
+  <SK_WeaponMastery_ModSettingsSectionKeepOriginalNameAndQualityTooltip>當一把武器生成了昵稱後，原本顯示的名字和品質將會繼續保留。具體格式為：“粉紅毛兔兔”左輪手槍（普通）。請註意，這可能會導致某些武器的名字因過長而無法完全顯示。</SK_WeaponMastery_ModSettingsSectionKeepOriginalNameAndQualityTooltip>
+  <!-- EN: Percentage of pawns that should spawn with a mastery from a group -->
+  <SK_WeaponMastery_ModSettingsSectionMasteryGroupPercentage>NPC團體在生成時出現武器精通者的幾率</SK_WeaponMastery_ModSettingsSectionMasteryGroupPercentage>
+    <!-- EN: Weapon name chance per pawn -->
+  <SK_WeaponMastery_ModSettingsSectionMasteryWeaponNameChancePerPawn>每個殖民者為武器起暱稱的幾率</SK_WeaponMastery_ModSettingsSectionMasteryWeaponNameChancePerPawn>
+    <!-- EN: Weapon mood buff/debuff -->
+  <SK_WeaponMastery_ModSettingsUseMoodsCheckboxLabel>武器心情增益/減益</SK_WeaponMastery_ModSettingsUseMoodsCheckboxLabel>
+    <!-- EN: When equipping a mastered weapon, pawn gains a mood bonus and vice versa (Specific Weapon Mastery Only) -->
+  <SK_WeaponMastery_ModSettingsUseMoodsCheckboxTooltip>當裝備了已精通武器時，殖民者將會獲得一個額外的心情增益，反之亦然。只在“武器精通系統（獨立）”下生效。</SK_WeaponMastery_ModSettingsUseMoodsCheckboxTooltip>
+    <!-- EN: Levels Section:  -->
+  <SK_WeaponMastery_LevelSectionTitle>精通等級設置：</SK_WeaponMastery_LevelSectionTitle>
+    <!-- EN: Add or remove mastery levels up to a max of 15 levels. Each time a pawn levels up, they will get a random stat bonus. -->
+  <SK_WeaponMastery_LevelSectionDetail>你可以在這裡添加新的或刪除原有的精通等級。最大上限為15級。每次升級後，殖民者使用已精通的武器時就會隨機獲得一項額外的屬性加成。你可以在武器的「描述」界面中查看已獲得的屬性加成。</SK_WeaponMastery_LevelSectionDetail>
+    <!-- EN: Add Level -->
+  <SK_WeaponMastery_LevelSectionAddButton>添加精通等級</SK_WeaponMastery_LevelSectionAddButton>
+    <!-- EN: Remove Level -->
+  <SK_WeaponMastery_LevelSectionRemoveButton>移除精通等級</SK_WeaponMastery_LevelSectionRemoveButton>
+    <!-- EN: Level {0} -->
+  <SK_WeaponMastery_LevelSectionDropdownOptionLabel>精通等級{0}</SK_WeaponMastery_LevelSectionDropdownOptionLabel>
+    <!-- EN: Experience Needed for level({0}):  -->
+  <SK_WeaponMastery_LevelSectionLevelExpLabel>到達精通等級({0})所需的經驗</SK_WeaponMastery_LevelSectionLevelExpLabel>
+    <!-- EN: Configure Allowed Ranged Stats: -->
+  <SK_WeaponMastery_RangedStatsSectionTitle>調整允許作為額外加成的遠程武器屬性：</SK_WeaponMastery_RangedStatsSectionTitle>
+    <!-- EN: Configure Allowed Melee Stats: -->
+  <SK_WeaponMastery_MeleeStatsSectionTitle>調整允許作為額外加成的近戰武器屬性：</SK_WeaponMastery_MeleeStatsSectionTitle>
+    <!-- EN: Bonus Stat Value: -->
+  <SK_WeaponMastery_RangedAndMeleeStatsSectionLabel>屬性加成數值：</SK_WeaponMastery_RangedAndMeleeStatsSectionLabel>
+    <!-- EN: Enable Stat -->
+  <SK_WeaponMastery_RangedAndMeleeStatsSectionEnableButton>啟用此項屬性</SK_WeaponMastery_RangedAndMeleeStatsSectionEnableButton>
+    <!-- EN: Disable Stat -->
+  <SK_WeaponMastery_RangedAndMeleeStatsSectionDisableButton>禁用此項屬性</SK_WeaponMastery_RangedAndMeleeStatsSectionDisableButton>
+    <!-- EN: Warning: Only certain stat defs are applicable to weapons and pawns, the rest are just ignored. If you don't know what you're doing, I would highly recommend not editing anything in this section. -->
+  <SK_WeaponMastery_RangedAndMeleeStatsSectionWarning>警告：只有某些屬性加成對武器和殖民者有效。無法生效的屬性會被自動忽略掉。由於這裡引用的是無法被翻譯的屬性代碼，如果你實在看不懂的話，就不要隨便亂動了。</SK_WeaponMastery_RangedAndMeleeStatsSectionWarning>
+    <!-- EN: Note: Percentage stats use values from 0 -> 1 which maps to 0% -> 100% -->
+  <SK_WeaponMastery_RangedAndMeleeStatsSectionNote>（舉例：0.35對應35%，1對應100%）</SK_WeaponMastery_RangedAndMeleeStatsSectionNote>
+    <!-- EN: {0} was added to the pool of ranged weapon stats -->
+  <SK_WeaponMastery_MessageEnabledRangedStat>{0}已被添加至遠程武器的屬性池中</SK_WeaponMastery_MessageEnabledRangedStat>
+    <!-- EN: {0} was added to the pool of melee weapon stats -->
+  <SK_WeaponMastery_MessageEnabledMeleeStat>{0}已被添加至近戰武器的屬性池中</SK_WeaponMastery_MessageEnabledMeleeStat>
+    <!-- EN: {0} was remove from the pool of ranged weapon stats -->
+  <SK_WeaponMastery_MessageDisabledRangedStat>{0}已被從遠程武器的屬性池中移除</SK_WeaponMastery_MessageDisabledRangedStat>
+    <!-- EN: {0} was remove from the pool of melee weapon stats -->
+  <SK_WeaponMastery_MessageDisabledMeleeStat>{0}已被從近戰武器的屬性池中移除</SK_WeaponMastery_MessageDisabledMeleeStat>
+    <!-- EN: Custom Weapon Names:  -->
+  <SK_WeaponMastery_CustomNamesSectionTitle>自定義武器暱稱</SK_WeaponMastery_CustomNamesSectionTitle>
+    <!-- EN: Use Custom Weapon Names -->
+  <SK_WeaponMastery_CustomNamesSectionCheckbox>使用自定義武器暱稱</SK_WeaponMastery_CustomNamesSectionCheckbox>
+    <!-- EN: Using custom names will override the default list -->
+  <SK_WeaponMastery_CustomNamesSectionCheckboxTooltip>使用自定義武器暱稱將會覆蓋Mod自帶的隨機暱稱列表。</SK_WeaponMastery_CustomNamesSectionCheckboxTooltip>
+  <!-- EN: Customize Classes Section: -->
+  <SK_WeaponMastery_GeneralMasterySectionAddRemoveClassesTitle>自定義武器類別：</SK_WeaponMastery_GeneralMasterySectionAddRemoveClassesTitle>
+  <!-- EN: Add Class -->
+  <SK_WeaponMastery_GeneralMasterySectionAddClassButton>添加</SK_WeaponMastery_GeneralMasterySectionAddClassButton>
+  <!-- EN: Remove Class -->
+  <SK_WeaponMastery_GeneralMasterySectionRemoveClassButton>移除</SK_WeaponMastery_GeneralMasterySectionRemoveClassButton>
+  <!-- EN: Add a new class:  -->
+  <SK_WeaponMastery_GeneralMasterySectionAddClassLabel>添加新的武器類別：</SK_WeaponMastery_GeneralMasterySectionAddClassLabel>
+  <!-- EN: Remove an existing class:  -->
+  <SK_WeaponMastery_GeneralMasterySectionRemoveClassLabel>移除已有的武器類別：</SK_WeaponMastery_GeneralMasterySectionRemoveClassLabel>
+  <!-- EN: Select class:  -->
+  <SK_WeaponMastery_GeneralMasterySectionSelectClassLabel>選擇武器類別：</SK_WeaponMastery_GeneralMasterySectionSelectClassLabel>
+  <!-- EN: Select weapon:  -->
+  <SK_WeaponMastery_GeneralMasterySectionSelectWeaponLabel>選擇武器：</SK_WeaponMastery_GeneralMasterySectionSelectWeaponLabel>
+  <!-- EN: Assign Class -->
+  <SK_WeaponMastery_GeneralMasterySectionAssignClassButton>為此武器分配類別</SK_WeaponMastery_GeneralMasterySectionAssignClassButton>
+  <!-- EN: Clear Class -->
+  <SK_WeaponMastery_GeneralMasterySectionClearClassButton>清除為此武器分配的類別</SK_WeaponMastery_GeneralMasterySectionClearClassButton>
+  <!-- EN: Assigned Class: {0} -->
+  <SK_WeaponMastery_GeneralMasterySectionAssignedClassLabel>武器類別：{0}</SK_WeaponMastery_GeneralMasterySectionAssignedClassLabel>
+  <!-- EN: {0} was added to the classes pool -->
+  <SK_WeaponMastery_GeneralMasterySectionAddClassMessage>{0}已被添加至武器類別池中</SK_WeaponMastery_GeneralMasterySectionAddClassMessage>
+  <!-- EN: {0} was removed from the classes pool -->
+  <SK_WeaponMastery_GeneralMasterySectionRemoveClassMessage>{0}已被從武器類別池中移除</SK_WeaponMastery_GeneralMasterySectionRemoveClassMessage>
+  <!-- EN: {0} was assigned class: {1} -->
+  <SK_WeaponMastery_GeneralMasterySectionClassAssignedMessage>{0}已被分配至武器類別：{0}</SK_WeaponMastery_GeneralMasterySectionClassAssignedMessage>
+  <!-- EN: Class cleared -->
+  <SK_WeaponMastery_GeneralMasterySectionClassClearedMessage>武器類別已清除</SK_WeaponMastery_GeneralMasterySectionClassClearedMessage>
+  <!-- EN: No Class -->
+  <SK_WeaponMastery_GeneralMasterySectionNoClassLabel>無武器類別</SK_WeaponMastery_GeneralMasterySectionNoClassLabel>
+    <!-- EN: Add Name:  -->
+  <SK_WeaponMastery_CustomNamesAddNameLabel>添加暱稱：</SK_WeaponMastery_CustomNamesAddNameLabel>
+    <!-- EN: Remove Name:  -->
+  <SK_WeaponMastery_CustomNamesRemoveNameLabel>移除暱稱：</SK_WeaponMastery_CustomNamesRemoveNameLabel>
+    <!-- EN: Add -->
+  <SK_WeaponMastery_CustomNamesAddButton>添加</SK_WeaponMastery_CustomNamesAddButton>
+    <!-- EN: Remove -->
+  <SK_WeaponMastery_CustomNamesRemoveButton>移除</SK_WeaponMastery_CustomNamesRemoveButton>
+    <!-- EN: Name: {0} was added to the custom names pool -->
+  <SK_WeaponMastery_CustomNamesAddNameMessage>暱稱：{0}已被添加至自定義暱稱池中</SK_WeaponMastery_CustomNamesAddNameMessage>
+    <!-- EN: Name: {0} was removed from the custom names pool -->
+  <SK_WeaponMastery_CustomNamesRemoveNameMessage>暱稱：{0}已被從自定義暱稱池中移除</SK_WeaponMastery_CustomNamesRemoveNameMessage>
+  <!-- EN: Installed mod-version: {0} -->
+  <SK_WeaponMastery_ModSettingsCurrentModVersion>當前Mod版本: {0}</SK_WeaponMastery_ModSettingsCurrentModVersion>
+</LanguageData>

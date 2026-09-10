@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: anchovy -->
+  <VCEF_RawAnchovy.label>鳀魚</VCEF_RawAnchovy.label>
+  <!-- EN: Raw anchovy. A small, common forage fish of the family Engraulidae. Most species are found in marine waters, but several will enter brackish water and some are restricted to fresh water. -->
+  <VCEF_RawAnchovy.description>鳀魚也叫鳳尾魚，是鳀科下的一系小型列餌料魚類。大多數是海生，有些會進入淡鹽水域，也有局布於淡水區的品種。</VCEF_RawAnchovy.description>
+
+  <!-- EN: angelfish -->
+  <VCEF_RawAngelfish.label>神仙魚</VCEF_RawAngelfish.label>
+  <!-- EN: Raw angelfish. Angelfish refers to several species of fish, both marine and freshwater, usually sporting bright colours and deep, laterally compressed bodies. -->
+  <VCEF_RawAngelfish.description>神仙魚也叫天使魚或梯紋魚，是非常有名的熱帶觀賞魚類之一。海水和淡水中均可見其身影，背鰭和腹鰭很長，極像天使展開的翅膀。</VCEF_RawAngelfish.description>
+
+  <!-- EN: anglerfish -->
+  <VCEF_RawAnglerfish.label>鮟鱇魚</VCEF_RawAnglerfish.label>
+  <!-- EN: Raw anglerfish. Anglerfish are bony fish named for their characteristic mode of predation, in which, a fleshy growth from the fish's head (the esca or illicium) acts as a lure towards other fish. -->
+  <VCEF_RawAnglerfish.description>鮟鱇魚也叫華臍魚或琵琶魚，是一種肉食性、海生、底棲的硬骨魚類。它們頭部上方長有可以發光的肉狀突出，是引誘食物的利器。\n\n它們一般生活在熱帶和亞熱帶淺海水域，主要棲息近海砂泥底質海域。</VCEF_RawAnglerfish.description>
+
+  <!-- EN: clownfish -->
+  <VCEF_RawClownfish.label>小醜魚</VCEF_RawClownfish.label>
+  <!-- EN: Raw clownfish. In the wild, clownfish form symbiotic mutualisms with sea anemones. Depending on species, clownfish are overall yellow, orange, or a reddish or blackish color, and many show white bars or patches. -->
+  <VCEF_RawClownfish.description>小醜魚因其令人愉悅的配色而得名，在野外會與海葵形成共生共棲的關系。小醜魚總體上是黃色的，但取決於種類，也有橙、紅、黑的配色，並且大多都有白色條紋或斑紋。</VCEF_RawClownfish.description>
+
+  <!-- EN: eel -->
+  <VCEF_RawEel.label>鰻魚</VCEF_RawEel.label>
+  <!-- EN: Raw eel. An eel is any ray-finned fish belonging to the order Anguilliformes. Eels are elongated fish, possessing no pelvic fins, and many species also lacking pectoral fins. Eels swim by generating body waves which travel the length of their bodies. -->
+  <VCEF_RawEel.description>鰻魚是鰻形目下的一系列長條蛇形鰭刺魚類。無鱗，無腹鰭，有些品種還無胸鰭。鰻魚喜歡在清潔、無汙染的水域棲身，會像蛇一樣靠扭動身軀蜿蜒遊行。\n\n鰻魚的性別受環境因子和密度的控製，當密度高，食物不足時會變成公魚，反之變成母魚。</VCEF_RawEel.description>
+
+  <!-- EN: goldfish -->
+  <VCEF_RawGoldfish.label>金魚</VCEF_RawGoldfish.label>
+  <!-- EN: Raw goldfish. The goldfish (Carassius auratus) is a freshwater fish in the family Cyprinidae of order Cypriniformes. It is one of the most commonly kept aquarium fish. -->
+  <VCEF_RawGoldfish.description>金魚又稱金鯽魚，是鯉形目下的一系列鯽魚，是人工改良而成的有名觀賞魚類。\n\n 金魚屬於一種雜食偏肉食性的淡水魚類，具有發達的咽喉齒。它們對水溫的適應能力較強，但是不能適應溫度的劇烈變化。</VCEF_RawGoldfish.description>
+
+  <!-- EN: haddock -->
+  <VCEF_RawHaddock.label>黑線鱈</VCEF_RawHaddock.label>
+  <!-- EN: Raw haddock. The haddock (Melanogrammus aeglefinus) is a saltwater fish from the family Gadidae, the true cods. It is an important food fish and has traditionaly been consumed either fresh or smoked. -->
+  <VCEF_RawHaddock.description>黑線鱈是鱈科下的一種深海魚類。底棲，肉食性，以無脊椎動物和一些魚類為食。幼魚偏好棲息於淺水域，成年魚則偏好於深海水域，一般生活在近大陸架或者遠離海岸的冷水海域。\n\n黑線鱈被人類大量捕食，煙熏或生吃都十分美味。</VCEF_RawHaddock.description>
+
+  <!-- EN: halibut -->
+  <VCEF_RawHalibut.label>大比目魚</VCEF_RawHalibut.label>
+  <!-- EN: Raw halibut. Halibut is a common name principally applied to the two flatfish from the family of right-eye flounders. Less commonly, and in some regions only, other species of flatfish are also referred to as being halibuts. -->
+  <VCEF_RawHalibut.description>太平洋大比目魚為海中最大的魚類之一。然而，大部分被釣魚人捉到的都是幼魚，最大的成魚產於極深的水中。\n\n盡管大比目魚是一種含油量較低的魚類，但其出色的質地適合於各種烹飪方法。</VCEF_RawHalibut.description>
+
+  <!-- EN: herring -->
+  <VCEF_RawHerring.label>鯡魚</VCEF_RawHerring.label>
+  <!-- EN: Raw herring. Herring are forage fish, mostly belonging to the family Clupeidae. Herring often move in large schools around fishing banks and near the coast. -->
+  <VCEF_RawHerring.description>鯡魚是鯡科下的一系列餌料魚類，經常在淺水漁場和海岸區成大群遊行。</VCEF_RawHerring.description>
+
+  <!-- EN: koi -->
+  <VCEF_RawKoi.label>錦鯉</VCEF_RawKoi.label>
+  <!-- EN: Raw koi. Koi are colored varieties of the Amur carp (Cyprinus rubrofuscus) that are kept for decorative purposes in outdoor koi ponds or water gardens. -->
+  <VCEF_RawKoi.description>錦鯉是一種多彩多色的鯉科觀賞魚類，廣布於各個星球。它們為雜食性，生性溫和，喜群遊，易飼養，對水溫適應性強。</VCEF_RawKoi.description>
+
+  <!-- EN: lobster -->
+  <VCEF_RawLobster.label>龍蝦</VCEF_RawLobster.label>
+  <!-- EN: Raw lobster. Lobsters are large marine crustaceans. Lobsters have long bodies with muscular tails. Three of their five pairs of legs have claws, including the first pair, which are usually much larger than the others. -->
+  <VCEF_RawLobster.description>龍蝦是一種大型的海生甲殼綱動物，有著連接著肌肉強健的尾巴的長型身體。它們五對肢足中有三對都帶爪，其中第一對遠比其它的更大更強。</VCEF_RawLobster.description>
+
+  <!-- EN: mackerel -->
+  <VCEF_RawMackerel.label>鯖魚</VCEF_RawMackerel.label>
+  <!-- EN: Raw mackerel. Mackerel is a common name applied to a number of different species of pelagic fish, mostly from the family Scombridae. They are found in both temperate and tropical seas, mostly living along the coast or offshore in the oceanic environment. -->
+  <VCEF_RawMackerel.description>鯖魚也叫馬鮫魚，是一系列上層魚類的通用名稱，大多來自鯖科。它們棲息於溫帶和熱帶海域，大多生活在沿岸或近海的海洋環境中。</VCEF_RawMackerel.description>
+
+  <!-- EN: minnow -->
+  <VCEF_RawMinnow.label>鰷魚</VCEF_RawMinnow.label>
+  <!-- EN: Raw minnow. Minnow is the common name for a number of species of small freshwater fish, belonging to several genera of the family Cyprinidae. -->
+  <VCEF_RawMinnow.description>鰷魚也叫米諾魚，是鯉科下的一種小型魚類。生活於河湖，從春至秋常喜群集於沿岸水面遊泳，行動迅速。多食為藻類、高等植物碎屑、甲殼動物及昆蟲等。</VCEF_RawMinnow.description>
+
+  <!-- EN: perch -->
+  <VCEF_RawPerch.label>河鱸</VCEF_RawPerch.label>
+  <!-- EN: Raw perch. Perch is a common name for fish of the genus Perca, freshwater gamefish belonging to the family Percidae. The perch lend their name to a large order of vertebrates: the Perciformes. Many species of freshwater gamefish more or less resemble perch, but belong to different genera. -->
+  <VCEF_RawPerch.description>河鱸是鱸屬下的淡水遊釣魚類的通用名。很多的淡水魚都長得跟河鱸很像，但其實它們來自不同的屬。</VCEF_RawPerch.description>
+
+  <!-- EN: pufferfish -->
+  <VCEF_RawPufferfish.label>河豚</VCEF_RawPufferfish.label>
+  <!-- EN: Raw pufferfish. Pufferfish are a family of primarily marine and estuarine fish. The majority of pufferfish species are toxic and some are among the most poisonous vertebrates in the world. In certain species, the internal organs, such as the liver, and sometimes their skin, contain tetrodotoxin and are highly toxic to most animals when eaten; nevertheless, the meat of some species is considered a delicacy when prepared by specially trained chefs. -->
+  <VCEF_RawPufferfish.description>河豚一般棲息在入海河口。它們大多數是有毒的，有些的毒性在所有脊椎動物中數一數二。河豚的部分內部器官（例如肝臟，有時甚至是皮膚）含有河豚毒素，對大多數動物有劇毒。但是，經過特殊培訓的廚師精心準備，有些種類的肉可被烹為美味佳肴。</VCEF_RawPufferfish.description>
+
+  <!-- EN: sprat -->
+  <VCEF_RawSprat.label>西鯡</VCEF_RawSprat.label>
+  <!-- EN: Raw sprat. Sprat is the common name applied to a group of forage fish belonging to the genus Sprattus in the family Clupeidae. Like most forage fishes, sprats are highly active, small, oily fish. They travel in large schools with other fish and swim continuously throughout the day. -->
+  <VCEF_RawSprat.description>西鯡是鯡科下一系列的小型餌料魚類，它們大多高度活躍、肉質油滑。它們會和其他魚類結伴，大群地持續多天遊行。</VCEF_RawSprat.description>
+
+  <!-- EN: swordfish -->
+  <VCEF_RawSwordfish.label>劍魚</VCEF_RawSwordfish.label>
+  <!-- EN: Raw swordfish. Swordfish, also known as broadbills, are large, highly migratory, predatory fish characterized by a long, flat, pointed bill. -->
+  <VCEF_RawSwordfish.description>劍魚也叫寬喙魚，是一種洄遊性的大型捕食者。最顯著的特征就是那尖長而扁平的喙。</VCEF_RawSwordfish.description>
+
+  <!-- EN: trout -->
+  <VCEF_RawTrout.label>鱒魚</VCEF_RawTrout.label>
+  <!-- EN: Raw trout. Trout is the common name for a number of species of freshwater fish. Most species of trout live in freshwater lakes and rivers exclusively, while there are others, such as the steelhead, which can spend two or three years at sea before returning to fresh water to spawn (a habit more typical of salmon). -->
+  <VCEF_RawTrout.description>鱒魚是一系列淡水魚的通稱。大多數的鱒魚棲息在江河湖。但也有例如虹鱒這樣的，會在海裡花費兩到三年時間遊回淡水區域產卵。</VCEF_RawTrout.description>
+  
+</LanguageData>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_Cheese.label>奶酪</VCE_Cheese.label>
+		<VCE_Cheese.description>一种奶制品，将原乳中的酪蛋白凝结而制成，风味口感各异。奶酪便携，保质期长，且富含脂肪，蛋白质，钙和磷。比起液态奶，它占地更小且保质期更长。</VCE_Cheese.description>
+		
+		<VCE_InsectCheese.label>虫奶酪</VCE_InsectCheese.label>
+		<VCE_InsectCheese.description>像罗克福奶酪一样臭。虫奶酪很白，很浓郁，口感酥脆潮湿。</VCE_InsectCheese.description>
+
+		<VCE_BlueCheese.label>蔚蓝奶酪</VCE_BlueCheese.label>
+		<VCE_BlueCheese.description>用青霜牛奶制作的奶酪，外表有着蓝色的斑点或纹理。闻起来有种十分“独特”的气味。</VCE_BlueCheese.description>
+		
+		<VCE_GowCheese.label>刺牛羊奶酪</VCE_GowCheese.label>
+		<VCE_GowCheese.description>刺牛羊奶酪因其丝滑、入口即化的质地和非常柔软的口感而备受赞赏。</VCE_GowCheese.description>
+		
+		<VCE_WeirdCheese.label>古怪奶酪</VCE_WeirdCheese.label>
+		<VCE_WeirdCheese.description>正不断向外渗出油滴的古怪奶酪。不仅闻起来十分恶心，吃起来也有一股酸腐的化学物质的味道。</VCE_WeirdCheese.description>
+		
+		<VCE_MechaCheese.label>机械奶酪</VCE_MechaCheese.label>
+		<VCE_MechaCheese.description>用机械奶制成的机械奶酪。虽然看起来无法食用，但实际上却是效果堪比魔鬼素的强力药物。当然，它没有成瘾性。</VCE_MechaCheese.description>
+		
+		<VCE_BearffaloCheese.label>雪牛熊奶酪</VCE_BearffaloCheese.label>
+		<VCE_BearffaloCheese.description>用雪牛熊奶制成的奇怪蓝色奶酪。虽然营养值很高，但脂肪含量同样也很足。</VCE_BearffaloCheese.description>
+
+		<VCE_ThrumffaloGouda.label>雪牛敲击兽奶酪</VCE_ThrumffaloGouda.label>
+		<VCE_ThrumffaloGouda.description>用传统古法制成的精美佳肴。虽然需要发酵很长时间才能成熟，但作为边缘世界中最具营养的奶酪之一，这一切显然都是值得的。</VCE_ThrumffaloGouda.description>
+		
+		<VCE_LumpyCheese.label>鸡雪牛奶酪</VCE_LumpyCheese.label>
+		<VCE_LumpyCheese.description>这种奶酪里似乎含有一些味道很像炸鸡的凝固蛋白质块。虽然卖相不怎么好，但殖民者们却很喜欢。</VCE_LumpyCheese.description>
+		
+		<VCE_ChickenffaloCheese.label>雪牛鸡奶酪</VCE_ChickenffaloCheese.label>
+		<VCE_ChickenffaloCheese.description>平淡无味的雪牛鸡奶酪。与其他奶酪相比，它唯一的优点可能就是发酵至成熟的时间较短了。</VCE_ChickenffaloCheese.description>
+		
+		<VCE_BrownCheese.label>熊雪牛奶酪</VCE_BrownCheese.label>
+		<VCE_BrownCheese.description>通体棕色的熊雪牛奶酪。虽然尝起来很像切达干酪，但还隐隐带有一股烤坚果味。虽然非常好吃，但营养值略低。</VCE_BrownCheese.description>
+		
+		<VCE_HairyCheese.label>毛奶酪</VCE_HairyCheese.label>
+		<VCE_HairyCheese.description>噫！为什么，为什么？为什么这奶酪里全都是灰色毛发啊？？</VCE_HairyCheese.description>
+		
+		<VCE_RatCheese.label>雪牛鼠奶酪</VCE_RatCheese.label>
+		<VCE_RatCheese.description>如果你不去想这种奶酪是用什么制成的话，那么它就一点也不恶心！</VCE_RatCheese.description>
+		
+		<VCE_EldritchCheese.label>怪异奶酪</VCE_EldritchCheese.label>
+		<VCE_EldritchCheese.description>“在沉没的拉莱耶宅邸中，长眠的克苏鲁候汝入梦。”这是唯一能取悦衪们的奶酪。</VCE_EldritchCheese.description>
+		
+		<VCE_DinoCheese.label>恐龙"奶酪"</VCE_DinoCheese.label>
+		<VCE_DinoCheese.description>用假奶制成的假奶酪。咳，我劝你最好不要去深究这东西的来源。</VCE_DinoCheese.description>
+		
+		<VCE_ParaceramuffaloBrie.label>雪牛巨犀奶酪</VCE_ParaceramuffaloBrie.label>
+		<VCE_ParaceramuffaloBrie.description>用雪牛巨犀奶制成的美味奶酪。虽然需要发酵很长时间才能成熟，但作为边缘世界中最具营养的奶酪之一，这一切显然都是值得的。</VCE_ParaceramuffaloBrie.description>
+		
+		<VCE_GreenCheese.label>碧绿奶酪</VCE_GreenCheese.label>
+		<VCE_GreenCheese.description>通体碧绿的奶酪，看起来并不是很诱人。</VCE_GreenCheese.description>
+		
+		<VCE_BeeCheese.label>蜜蜂奶酪</VCE_BeeCheese.label>
+		<VCE_BeeCheese.description>用蜂乳制成的美味的奶酪。咳，我劝你最好不要去深究这东西的来源。</VCE_BeeCheese.description>
+	</LanguageData>

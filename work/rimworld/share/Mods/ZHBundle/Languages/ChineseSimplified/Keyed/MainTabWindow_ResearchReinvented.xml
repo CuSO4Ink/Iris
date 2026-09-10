@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: No active project -->
+  <RR_no_project_selected>无活跃项目</RR_no_project_selected>
+  <!-- EN: Cleared this tick. Unpause to update. -->
+  <RR_cleared_this_tick>当前游戏刻已清理。取消暂停以更新。</RR_cleared_this_tick>
+  <!-- EN: Compact -->
+  <RR_enable_compact_mode>概览</RR_enable_compact_mode>
+  <!-- EN: Details -->
+  <RR_disable_compact_mode>详细</RR_disable_compact_mode>
+  <!-- EN: Expand -->
+  <RR_uncollapse_category>展开</RR_uncollapse_category>
+  <!-- EN: Collapse -->
+  <RR_collapse_category>关闭</RR_collapse_category>
+  <!-- EN: Expand All -->
+  <RR_uncollapse_all>全部展开</RR_uncollapse_all>
+  <!-- EN: Collapse All -->
+  <RR_collapse_all>全部关闭</RR_collapse_all>
+
+  <!-- EN: Done -->
+  <RR_OpportunityBlocked_Finished_short>已完成</RR_OpportunityBlocked_Finished_short>
+  <!-- EN: Done -->
+  <RR_OpportunityBlocked_CategoryFinished_short>已完成</RR_OpportunityBlocked_CategoryFinished_short>
+  <!-- EN: Locked  -->
+  <RR_OpportunityBlocked_ResearchTooLow_short>锁定中</RR_OpportunityBlocked_ResearchTooLow_short>
+  <!-- EN: Not useful -->
+  <RR_OpportunityBlocked_ResearchTooHigh_short>无用</RR_OpportunityBlocked_ResearchTooHigh_short>
+  <!-- EN: Locked ??? -->
+  <RR_OpportunityBlocked_ReasonUnknown_short>锁定中？？？</RR_OpportunityBlocked_ReasonUnknown_short>
+
+  <!-- EN: Finished -->
+  <RR_OpportunityBlocked_Finished>已完成</RR_OpportunityBlocked_Finished>
+  <!-- EN: Category finished\nNothing more to learn -->
+  <RR_OpportunityBlocked_CategoryFinished>此类别已完成\n无需继续学习</RR_OpportunityBlocked_CategoryFinished>
+  <!-- EN: Locked\nMore overall progress needed -->
+  <RR_OpportunityBlocked_ResearchTooLow>锁定中\n需要更高的全局进度</RR_OpportunityBlocked_ResearchTooLow>
+  <!-- EN: Locked\nCannot learn more now -->
+  <RR_OpportunityBlocked_ResearchTooHigh>锁定中\n暂时无法继续学习</RR_OpportunityBlocked_ResearchTooHigh>
+  <!-- EN: Locked\nREASON UNKNOWN REPORT AS BUG -->
+  <RR_OpportunityBlocked_ReasonUnknown>锁定中\n未知的 Bug，请报告</RR_OpportunityBlocked_ReasonUnknown>
+</LanguageData>

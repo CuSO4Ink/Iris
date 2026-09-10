@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- Ambition fulfilled reasons -->
+  <!-- EN: (A colony baby was born) -->
+  <RP_BabyBorn>（殖民地有新生兒）</RP_BabyBorn>
+  <!-- EN: (Enemy slain) -->
+  <RP_EnemySlain>（敵人被擊殺）</RP_EnemySlain>
+  <!-- EN: (New recruit: {0}) -->
+  <RP_Recruited>（新招募：{0}）</RP_Recruited>
+  <!-- EN: (Wild animal tamed: {0}) -->
+  <RP_Tamed>（馴服野生動物：{0}）</RP_Tamed>
+  <!-- EN: (Research completed: {0}) -->
+  <RP_Researched>（研究完成：{0}）</RP_Researched>
+  <!-- EN: (Crafted item of quality: {0}) -->
+  <RP_Crafted>（製作物品品質：{0}）</RP_Crafted>
+
+  <!-- Message -->
+  <!-- EN: {PAWN_labelShort} is overwhelmed with shame and trying to hide from others. -->
+  <RP_MessageShamed>{PAWN_labelShort}無地自容，試圖躲開別人視線。</RP_MessageShamed>
+  <!-- EN: {PAWN_labelShort}'s experiment improved the item's quality. -->
+  <RP_MessageExperimentSuccess>{PAWN_labelShort}的實驗提升了物品品質。</RP_MessageExperimentSuccess>
+  <!-- EN: {PAWN_labelShort}'s experiment failed, lowering the item's quality. -->
+  <RP_MessageExperimentFail>{PAWN_labelShort}實驗失敗了，降低了物品品質。</RP_MessageExperimentFail>
+
+  <!-- Job string -->
+  <!-- EN: Hiding in shame -->
+  <ReportHidingInShame>無地自容</ReportHidingInShame>
+  <!-- EN: Cowering in fear -->
+  <ReportPanicAttack>倉皇逃竄</ReportPanicAttack>
+
+  <!-- Letters -->
+  <!-- EN: Brilliant Success -->
+  <RP_BrilliantSuccessLabel>輝煌成功</RP_BrilliantSuccessLabel>
+  <!-- EN: While working, {PAWN_labelShort} recognized a rare opportunity. Thanks to {PAWN_possessive} experimental streak, {PAWN_pronoun} took a chance and created something truly exceptional. -->
+  <RP_BrilliantSuccessMessage>{PAWN_labelShort}在工作時發現一個千載難逢的好機會。正因為{PAWN_labelShort}的實驗精神，{PAWN_pronoun}抓住機會，創造出了一個出神入化的作品。</RP_BrilliantSuccessMessage>
+  <!-- EN: Resilient Spirit -->
+  <RP_ResilientSpiritLabel>發奮圖強</RP_ResilientSpiritLabel>
+  <!-- EN: {PAWN_labelShort} nearly broke down, but {PAWN_possessive} resilience gave {PAWN_objective} new resolve.\n\nFor the next three days, negative moods will affect {PAWN_objective} only half as much. -->
+  <RP_ResilientSpiritMessage>{PAWN_labelShort}近乎失魂落魄，但{PAWN_possessive}韌性讓{PAWN_objective}重拾信心。\n\n接下來三天，負面情緒對{PAWN_objective}的影響將減半。</RP_ResilientSpiritMessage>
+  <!-- EN: Panic attack -->
+  <RP_MentalStateReason_PanicAttack>恐慌發作</RP_MentalStateReason_PanicAttack>
+  <!-- EN: Being ashamed -->
+  <RP_MentalStateReason_Shame>感到羞愧</RP_MentalStateReason_Shame>
+
+
+  <!-- Stat parts -->
+  <!-- EN: Psyche -->
+  <RP_Stat_Psyche>心理狀態</RP_Stat_Psyche>
+  <!-- EN: Deliberation -->
+  <RP_Stat_ShootingAccuracyPawnOffset>慎思</RP_Stat_ShootingAccuracyPawnOffset>
+  <!-- EN: Deliberation -->
+  <RP_Stat_AimingDelayFactorOffset>慎思</RP_Stat_AimingDelayFactorOffset>
+  <!-- EN: Deliberation -->
+  <RP_Stat_DeliberationYield>慎思</RP_Stat_DeliberationYield>
+  <!-- EN: Deliberation -->
+  <RP_Stat_DeliberationButcherEfficiency>慎思</RP_Stat_DeliberationButcherEfficiency>
+  <!-- EN: Deliberation -->
+  <RP_Stat_DeliberationTendQuality>慎思</RP_Stat_DeliberationTendQuality>
+  <!-- EN: Deliberation -->
+  <RP_Stat_DeliberationOperationChance>慎思</RP_Stat_DeliberationOperationChance>
+  <!-- EN: Deliberation -->
+  <RP_Stat_DeliberationFoodpoison>慎思</RP_Stat_DeliberationFoodpoison>
+  <!-- EN: Deliberation -->
+  <RP_Stat_DeliberationWorkspeed>慎思</RP_Stat_DeliberationWorkspeed>
+  <!-- EN: Diligence -->
+  <RP_Stat_DiligenceWorkspeed>勤奮</RP_Stat_DiligenceWorkspeed>
+  <!-- EN: Organization worktable adjustment -->
+  <RP_Stat_OrganizationRoomWorkspeed>工作區整理</RP_Stat_OrganizationRoomWorkspeed>
+  <!-- EN: Tact, Self-interest -->
+  <RP_Stat_TradePriceImprovementOffset>圓滑，自利</RP_Stat_TradePriceImprovementOffset>
+  <!-- EN: Tact, Confidence -->
+  <RP_Stat_NegotiationAbilityOffset>圓滑，自信</RP_Stat_NegotiationAbilityOffset>
+  <!-- EN: Resilience -->
+  <RP_Stat_MentalBreakThreashold>韌性</RP_Stat_MentalBreakThreashold>
+  <!-- EN: Resilience, Bravery -->
+  <RP_Stat_PainShockThresholdOffset>韌性，勇敢</RP_Stat_PainShockThresholdOffset>
+  <!-- EN: Reflectiveness -->
+  <RP_Stat_ReflectivenessResearchSpeed>深思</RP_Stat_ReflectivenessResearchSpeed>
+  <!-- EN: Reflectiveness -->
+  <RP_Stat_ReflectivenessMeditation>深思</RP_Stat_ReflectivenessMeditation>
+
+  <!-- Stat parts: Ideology -->
+  <!-- EN: Bravery -->
+  <RP_Stat_BraveryTerrorMultiplier>勇敢</RP_Stat_BraveryTerrorMultiplier>
+  <!-- EN: Resilience -->
+  <RP_Stat_ResilienceSuppressionFall>韌性</RP_Stat_ResilienceSuppressionFall>
+  <!-- EN: Aggressiveness -->
+  <RP_Stat_AggressivenessSuppression>好鬥</RP_Stat_AggressivenessSuppression>
+  <!-- EN: Trust, Conviction -->
+  <RP_Stat_CertaintyLossMult>信任，堅定</RP_Stat_CertaintyLossMult>
+  <!-- EN: Talkativeness, Zealousy -->
+  <RP_Stat_IdeoSpreadMult>健談，嫉妒</RP_Stat_IdeoSpreadMult>
+
+  <!-- Stat parts: CE -->
+  <!-- EN: Deliberation -->
+  <RP_Stat_AimingAccuracyPartCE>慎思</RP_Stat_AimingAccuracyPartCE>
+  <!-- EN: Deliberation -->
+  <RP_Stat_ShootingAccuracyPartCE>慎思</RP_Stat_ShootingAccuracyPartCE>
+  <!-- EN: Bravery -->
+  <RP_Stat_SuppressabilityPartCE>勇敢</RP_Stat_SuppressabilityPartCE>
+
+
+  <!-- EN: Rimpsyche Disposition -->
+  <RimpsycheDispositionSettingCategory>邊緣心理：性情</RimpsycheDispositionSettingCategory>
+
+  <!-- EN: Content Settings -->
+  <RimpsycheDispositionContentSetting>內容設置</RimpsycheDispositionContentSetting>
+  <!-- EN: You need to restart the game for these settings to take effect. -->
+  <RimpsycheDispositionRestartNeeded>重啟以應用修改。</RimpsycheDispositionRestartNeeded>
+  <!-- EN: Performance Mode -->
+  <RimpsycheUsePerformanceModeThought>性能模式</RimpsycheUsePerformanceModeThought>
+  <!-- EN: Use performance mod. Mods directly referencing mood thought offset might ignore personality adjustment -->
+  <RimpsycheUsePerformanceModeThoughtTooltip>使用性能模式。直接引用心情思緒偏移的mod將忽略個性調整。</RimpsycheUsePerformanceModeThoughtTooltip>
+  <!-- EN: Emotionality Mood Influence -->
+  <RimpsycheMoodEmotionalityC>情緒對心情的影響</RimpsycheMoodEmotionalityC>
+  <!-- EN: How much Emotionality affects a pawn's overall mood. -->
+  <RimpsycheMoodEmotionalityCTooltip>情緒對角色總體心情的影響程度。</RimpsycheMoodEmotionalityCTooltip>
+  <!-- EN: Optimism Mood Influence -->
+  <RimpsycheMoodOptimismC>樂觀對心情的影響</RimpsycheMoodOptimismC>
+  <!-- EN: How much Optimism affects a pawn's overall mood. -->
+  <RimpsycheMoodOptimismCTooltip>樂觀對角色總體心情的影響程度。</RimpsycheMoodOptimismCTooltip>
+  <!-- EN: Individual Thought Variance -->
+  <RimpsycheUseIndividualThoughts>個體思緒差異</RimpsycheUseIndividualThoughts>
+  <!-- EN: A pawn's personality influences the mood value of individual thoughts. -->
+  <RimpsycheUseIndividualThoughtsTooltip>角色個性會影響單個思緒的心情值</RimpsycheUseIndividualThoughtsTooltip>
+  <!-- EN: Individual Mood Influence -->
+  <RimpsycheMoodIndividualC>個體心情影響</RimpsycheMoodIndividualC>
+  <!-- EN: How strongly a pawn's personality affects the mood impact of individual thoughts. -->
+  <RimpsycheMoodIndividualCTooltip>角色個性對單個思緒的心情影響程度。</RimpsycheMoodIndividualCTooltip>
+  <!-- EN: Experimentation -->
+  <RimpsycheUseExperimentation>實驗精神</RimpsycheUseExperimentation>
+  <!-- EN: Pawns may experiment while crafting or building, either increasing or decreasing an item's quality. -->
+  <RimpsycheUseExperimentationTooltip>角色在製造或建造時可能會進行試驗，會提升或者降低品質。</RimpsycheUseExperimentationTooltip>
+  <!-- EN: Sense of Progress -->
+  <RimpsycheUseSenseOfProgress>進步感</RimpsycheUseSenseOfProgress>
+  <!-- EN: Pawns gain a mood boost from progress like earning skill XP, making quality items, or completing research. Ambitious pawns may become frustrated if they go too long without making progress. -->
+  <RimpsycheUseSenseOfProgressTooltip>角色會從獲得技能經驗、製作高品質物品或完成研究等進展中獲得心情加成。有雄心的角色如果長時間沒有進展可能會悶悶不樂。</RimpsycheUseSenseOfProgressTooltip>
+  <!-- EN: Resilient Spirit -->
+  <RimpsycheUseResilientSpirit>堅韌不拔</RimpsycheUseResilientSpirit>
+  <!-- EN: Resilient pawns has a chance to resist mentalbreaks and gain renewed resolve buff for three days instead. (Cooldown 60 days) -->
+  <RimpsycheUseResilientSpiritTooltip>堅韌不拔的小人有機會抵抗精神崩潰，轉而獲得持續三天的發奮圖強增益。（冷卻時間60天）</RimpsycheUseResilientSpiritTooltip>
+  <!-- EN: Hide in Shame -->
+  <RimpsycheUseHideInShame>無地自容</RimpsycheUseHideInShame>
+  <!-- EN: Modest pawns not dressed according to their ideology (naked for vanilla) will feel ashamed, and can eventually run away in shame from other pawns' prying eyes. -->
+  <RimpsycheUseHideInShameTooltip>端莊的小人若如果未按其文化着裝（原版則為裸體）會感到羞愧，並最終可能想躲避他人的眼神而羞愧逃跑。</RimpsycheUseHideInShameTooltip>
+  <!-- EN: Tend over Shame -->
+  <RimpsycheCheckMedicalOverShame>治療優先於羞愧</RimpsycheCheckMedicalOverShame>
+  <!-- EN: Pawns with health conditions suppress their shame until they are tended. -->
+  <RimpsycheCheckMedicalOverShameTooltip>有健康狀況的小人會壓制自己的羞愧感，直到得到治療。</RimpsycheCheckMedicalOverShameTooltip>
+  <!-- EN: Fight-or-flight -->
+  <RimpsycheUseFightorFlight>戰鬥或逃跑反應</RimpsycheUseFightorFlight>
+  <!-- EN: In combat, fearful pawns may suffer panic attacks, while brave or aggressive pawns may get an adrenaline rush that temporarily boosts stats. -->
+  <RimpsycheUseFightorFlightTooltip>戰鬥中，縮頭縮腦的角色可能會遭受恐慌發作，而勇敢或者好鬥的角色可能會腎上腺素激增，暫時提升屬性。</RimpsycheUseFightorFlightTooltip>
+  <!-- EN: Non-colonists Fight-or-flight -->
+  <RimpsycheEnemyFightorFlight>非殖民者的戰鬥或逃跑反應</RimpsycheEnemyFightorFlight>
+  <!-- EN: Non-colonists may experience panic attacks or adrenaline rushes. -->
+  <RimpsycheEnemyFightorFlightTooltip>非殖民者可能會經歷恐慌發作或腎上腺素激增。</RimpsycheEnemyFightorFlightTooltip>
+
+  <!-- EN: Message Settings -->
+  <RimpsycheDispositionMessageSetting>信息設置</RimpsycheDispositionMessageSetting>
+  <!-- EN: Send Experimentation Messages -->
+  <RimpsycheSendExperimentMessage>彈出實驗信息</RimpsycheSendExperimentMessage>
+  <!-- EN: Send notifications when pawns experiment. -->
+  <RimpsycheUseSendExperimentMessageTooltip>當角色進行實驗時彈出信息。</RimpsycheUseSendExperimentMessageTooltip>
+  <!-- EN: Send Shame Messages -->
+  <RimpsycheSendShameMessage>彈出羞愧信息</RimpsycheSendShameMessage>
+  <!-- EN: Send notifications when pawns run away in shame. -->
+  <RimpsycheUseSendShameMessageTooltip>當角色無地自容時彈出信息。</RimpsycheUseSendShameMessageTooltip>
+
+  <!-- EN: Mote Settings -->
+  <RimpsycheDispositionMoteSetting>浮標設置</RimpsycheDispositionMoteSetting>
+  <!-- EN: Show Experimentation Mote -->
+  <RimpsycheShowExperimentMote>顯示實驗浮標</RimpsycheShowExperimentMote>
+  <!-- EN: Show a mote when pawns experiment. -->
+  <RimpsycheShowExperimentMoteTooltip>當小人進行實驗時顯示浮標。</RimpsycheShowExperimentMoteTooltip>
+  <!-- EN: Show Resilient Spirit mote -->
+  <RimpsycheShowResilientSpiritMote>顯示堅韌不拔浮標</RimpsycheShowResilientSpiritMote>
+  <!-- EN: Show a mote when a pawn triggers the Resilient Spirit. -->
+  <RimpsycheShowResilientSpiritMoteTooltip>當小人觸發堅韌不拔時顯示浮標。</RimpsycheShowResilientSpiritMoteTooltip>
+  <!-- EN: Show Adrenaline Mote -->
+  <RimpsycheShowAdrenalineMote>顯示腎上腺素浮標</RimpsycheShowAdrenalineMote>
+  <!-- EN: Show a mote when a pawn's adrenaline rush stage progresses. -->
+  <RimpsycheShowAdrenalineMoteTooltip>當小人的腎上腺素激增階段升級時顯示浮標。</RimpsycheShowAdrenalineMoteTooltip>
+  <!-- EN: Show Panic Attack Mote -->
+  <RimpsycheShowPanicMote>顯示恐慌發作浮標</RimpsycheShowPanicMote>
+  <!-- EN: Show a mote on pawns fleeing in panic. -->
+  <RimpsycheShowPanicMoteTooltip>在倉皇逃竄的小人身上顯示浮標。</RimpsycheShowPanicMoteTooltip>
+
+  <!-- EN: Default -->
+  <RimpsycheDispositionDefaultSetting>默認</RimpsycheDispositionDefaultSetting>
+  <!-- EN: Revert to default settings. -->
+  <RimpsycheDispositionDefaultSettingTooltip>恢復默認設置</RimpsycheDispositionDefaultSettingTooltip>
+</LanguageData>

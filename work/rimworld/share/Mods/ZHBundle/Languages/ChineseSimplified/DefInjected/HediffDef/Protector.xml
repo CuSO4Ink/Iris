@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: psychic stabilization -->
+  <VPE_BlockBleeding.label>心灵止血</VPE_BlockBleeding.label>
+  <!-- EN: Psychically-induced stasis that stops any bleeding. -->
+  <VPE_BlockBleeding.description>受灵能影响，停止失血。</VPE_BlockBleeding.description>
+  
+  <!-- EN: guardian skipbarrier -->
+  <VPE_GuardianSkipBarrier.label>守御折跃盾</VPE_GuardianSkipBarrier.label>
+  <!-- EN: Psychically crafted defensive barrier that generates large amounts of psychic heat in order to sustain itself. -->
+  <VPE_GuardianSkipBarrier.description>灵能生成的防护盾，持续生成大量心灵熵。</VPE_GuardianSkipBarrier.description>
+  
+  <!-- EN: psychic healing -->
+  <VPE_Healing.label>心灵治愈</VPE_Healing.label>
+  <!-- EN: Psychically-induced healing boost. -->
+  <VPE_Healing.description>灵能强化了治愈能力。</VPE_Healing.description>
+  
+  <!-- EN: psychic immunity -->
+  <VPE_Immunity.label>心灵免疫</VPE_Immunity.label>
+  <!-- EN: Psychically-induced immunity boost. -->
+  <VPE_Immunity.description>灵能强化了免疫力。</VPE_Immunity.description>
+  
+  <!-- EN: psychic overshield -->
+  <VPE_Overshield.label>护盾赋予</VPE_Overshield.label>
+  <!-- EN: Psychically-induced personal skipbarrier. Impenetrable by ranged projectiles. -->
+  <VPE_Overshield.description>灵能赋予的个人护盾，阻挡一切远程攻击。</VPE_Overshield.description>
+  
+  <!-- EN: regenerating -->
+  <VPE_Regenerating.label>再生</VPE_Regenerating.label>
+  <!-- EN: Regenerating wounds, new and old. -->
+  <VPE_Regenerating.description>正在再生的伤口、</VPE_Regenerating.description>
+  <!-- EN: {0} in the {1} -->
+  <VPE_Regenerating.labelNounPretty>{1}中的{0}</VPE_Regenerating.labelNounPretty>
+  
+  <!-- EN: psychic regeneration -->
+  <VPE_RegrowLimbs.label>心灵再生</VPE_RegrowLimbs.label>
+  <!-- EN: Psychically-induced tissue regeneration, which can close open wounds and regenerate missing body parts. -->
+  <VPE_RegrowLimbs.description>灵能强化的再生组织，可以痊愈伤口并再生肢体。</VPE_RegrowLimbs.description>
+  
+</LanguageData>

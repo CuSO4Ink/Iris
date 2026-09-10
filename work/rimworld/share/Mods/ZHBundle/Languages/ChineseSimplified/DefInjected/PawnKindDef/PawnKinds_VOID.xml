@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Starter -->
+
+  <RH_VOID_Member.label>成员</RH_VOID_Member.label>
+  <RH_VOID_Member.labelPlural>成员</RH_VOID_Member.labelPlural>
+
+  <RH_VOID_Collaborator.label>成员</RH_VOID_Collaborator.label>
+  <RH_VOID_Collaborator.labelPlural>成员</RH_VOID_Collaborator.labelPlural>
+
+
+  <!-- Grinder -->
+
+  <RH_VOID_Associate.label>资深成员</RH_VOID_Associate.label>
+  <RH_VOID_Associate.labelPlural>资深成员</RH_VOID_Associate.labelPlural>
+
+
+  <!-- CD -->
+
+  <RH_VOID_Destroyer.label>资深成员</RH_VOID_Destroyer.label>
+  <RH_VOID_Destroyer.labelPlural>资深成员</RH_VOID_Destroyer.labelPlural>
+
+
+  <!-- Grinder -->
+
+  <RH_VOID_Grinder.label>资深成员</RH_VOID_Grinder.label>
+  <RH_VOID_Grinder.labelPlural>资深成员</RH_VOID_Grinder.labelPlural>
+
+
+  <!-- Elite tier - merc elite, pirate boss -->
+
+  <RH_VOID_Elite.label>精锐</RH_VOID_Elite.label>
+  <RH_VOID_Elite.labelPlural>精锐</RH_VOID_Elite.labelPlural>
+
+
+  <!-- Executive -->
+
+  <RH_VOID_Boss.label>领导</RH_VOID_Boss.label>
+  <RH_VOID_Boss.labelPlural>领导</RH_VOID_Boss.labelPlural>
+
+  <RH_VOID_Negotiator.label>顾问</RH_VOID_Negotiator.label>
+  <RH_VOID_Negotiator.labelPlural>顾问</RH_VOID_Negotiator.labelPlural>
+
+
+  <!-- Bodyguard -->
+
+  <RH_VOID_Bodyguard.label>贴身保镖</RH_VOID_Bodyguard.label>
+  <RH_VOID_Bodyguard.labelPlural>贴身保镖</RH_VOID_Bodyguard.labelPlural>
+
+
+</LanguageData>

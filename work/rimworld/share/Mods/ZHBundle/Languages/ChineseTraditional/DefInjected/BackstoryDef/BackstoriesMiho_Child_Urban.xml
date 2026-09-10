@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Miho_Child_Urban.title>美狐都市兒童</Miho_Child_Urban.title>
+  <Miho_Child_Urban.titleShort>都市兒童</Miho_Child_Urban.titleShort>
+  <Miho_Child_Urban.description>{PAWN_nameDef}是一名在父母的陪伴下健康長大的都市兒童，且接受了基礎的公共教育。雖然不知道為什麽會來到邊緣世界，不過{PAWN_pronoun}顯然有些難適應這裡的生活條件。</Miho_Child_Urban.description>
+
+  <Miho_Child_UrbanStudent.title>美狐工業技校學生</Miho_Child_UrbanStudent.title>
+  <Miho_Child_UrbanStudent.titleShort>學生</Miho_Child_UrbanStudent.titleShort>
+  <Miho_Child_UrbanStudent.description>由於沒能趕上返程的穿梭巴士，{PAWN_nameDef}在修學旅行的途中失蹤了。不過幸運的是，{PAWN_pronoun}還活著...</Miho_Child_UrbanStudent.description>
+
+  <Miho_Child_Urban_Rural.title>美狐邊境兒童</Miho_Child_Urban_Rural.title>
+  <Miho_Child_Urban_Rural.titleShort>邊境兒童</Miho_Child_Urban_Rural.titleShort>
+  <Miho_Child_Urban_Rural.description>{PAWN_nameDef}自懂事起就與身為開拓者的父母來到了邊緣世界。{PAWN_pronoun}喜歡用小口徑的槍械捕獵松鼠。</Miho_Child_Urban_Rural.description>
+
+  <Miho_Child_Urban_RuralAnimal.title>美狐牧場兒童</Miho_Child_Urban_RuralAnimal.title>
+  <Miho_Child_Urban_RuralAnimal.titleShort>牧場兒童</Miho_Child_Urban_RuralAnimal.titleShort>
+  <Miho_Child_Urban_RuralAnimal.description>{PAWN_nameDef}是一名生活在美狐族西部奶牛牧場中的兒童，{PAWN_pronoun}從小就學會了與動物打交道。</Miho_Child_Urban_RuralAnimal.description>
+
+  <Miho_Child_Urban_Farm.title>美狐農場兒童</Miho_Child_Urban_Farm.title>
+  <Miho_Child_Urban_Farm.titleShort>農場兒童</Miho_Child_Urban_Farm.titleShort>
+  <Miho_Child_Urban_Farm.description>{PAWN_nameDef}的祖祖輩輩都以種植香甜的水果為生。某一天，{PAWN_pronoun}厭倦了這種和平但無趣的生活，便背起行囊開始遠走他鄉。</Miho_Child_Urban_Farm.description>
+
+  <Miho_Child_Urban_Inari.title>美狐豆皮店小幫手</Miho_Child_Urban_Inari.title>
+  <Miho_Child_Urban_Inari.titleShort>豆皮店小幫手</Miho_Child_Urban_Inari.titleShort>
+  <Miho_Child_Urban_Inari.description>{PAWN_nameDef}在邊緣世界的一家豆皮專賣店中長大。為了報答父母的養育之恩，{PAWN_pronoun}一直在店裡幫忙。</Miho_Child_Urban_Inari.description>
+  
+  <Miho_Child_Urban_Soldier.title>美狐童兵</Miho_Child_Urban_Soldier.title>
+  <Miho_Child_Urban_Soldier.titleShort>童兵</Miho_Child_Urban_Soldier.titleShort>
+  <Miho_Child_Urban_Soldier.description>{PAWN_nameDef}是一名喜歡惹禍的搗蛋鬼。為了讓父母擔心自己，{PAWN_pronoun}瞞報年齡參了軍，可沒過多久就後悔了。</Miho_Child_Urban_Soldier.description>
+  
+  <Miho_Child_Urban_UrbanPoor.title>美狐貧民窟兒童</Miho_Child_Urban_UrbanPoor.title>
+  <Miho_Child_Urban_UrbanPoor.titleShort>貧民窟兒童</Miho_Child_Urban_UrbanPoor.titleShort>
+  <Miho_Child_Urban_UrbanPoor.description>{PAWN_nameDef}出生在一個非常普通的家庭中——這裡的“普通”指的是每天都要過著不知何時就會斷水斷電的生活。相比學校的老師，{PAWN_pronoun}認為自己能從來往於後巷的大人們身上學到更多東西。當{PAWN_nameDef}意識到這些大人也不過是沒用的渣滓而已後，便在不依賴於父母微薄的幫助下走向了自立。</Miho_Child_Urban_UrbanPoor.description>
+  
+  <Miho_Child_Urban_EngineerApprentice.title>美狐維修工學徒</Miho_Child_Urban_EngineerApprentice.title>
+  <Miho_Child_Urban_EngineerApprentice.titleShort>維修工學徒</Miho_Child_Urban_EngineerApprentice.titleShort>
+  <Miho_Child_Urban_EngineerApprentice.description>{PAWN_nameDef}從小就發現了自己在維修方面的才能。比起沒什麽用處的社會安全網，{PAWN_pronoun}更喜歡向親切且勇敢的維修工們請教以學習技術，還能借此省下一筆人工費。{PAWN_pronoun}從非企業所屬的無證維修站那裡學會了協商交涉的技巧，也從正當要求自己配給份額的市井混混那裡學會了如何用扳手敲人。</Miho_Child_Urban_EngineerApprentice.description>
+  
+  <Miho_Child_Urban_BadStudent.title>離家出走的美狐兒童</Miho_Child_Urban_BadStudent.title>
+  <Miho_Child_Urban_BadStudent.titleShort>學生</Miho_Child_Urban_BadStudent.titleShort>
+  <Miho_Child_Urban_BadStudent.description>{PAWN_nameDef}是一名以醫學預科班為目標努力學習的優等生，但由於受不了父母施加的壓力，便選擇離家出走前往邊緣世界。</Miho_Child_Urban_BadStudent.description>
+  
+</LanguageData>

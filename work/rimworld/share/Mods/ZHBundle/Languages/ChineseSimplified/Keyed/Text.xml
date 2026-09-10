@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Feature_Achtung_Welcome>欢迎使用Achtung!</Feature_Achtung_Welcome>
+	<Feature_Achtung_Forcing>强制工作</Feature_Achtung_Forcing>
+	<Feature_Achtung_MenuError>菜单错误</Feature_Achtung_MenuError>
+	<Feature_Achtung_Formations>编队</Feature_Achtung_Formations>
+	<Feature_Achtung_Cooperation>合作</Feature_Achtung_Cooperation>
+	<Feature_Achtung_FourModes>四种模式</Feature_Achtung_FourModes>
+	<Feature_Achtung_Settings>设置</Feature_Achtung_Settings>
+	<Feature_Achtung_Draftstatus>征召状态</Feature_Achtung_Draftstatus>
+	<Feature_Achtung_Rescue>救援</Feature_Achtung_Rescue>
+	<Feature_Achtung_Dragging>征召拖动</Feature_Achtung_Dragging>
+
+	<PositioningEnabledTitle>自定义鼠标定位</PositioningEnabledTitle>
+	<PositioningEnabledExplained>为鼠标点击/拖动启用战斗定位功能（参见下方设置）</PositioningEnabledExplained>
+
+	<AchtungModifierTitle>Achtung! 键</AchtungModifierTitle>
+	<AchtungModifierExplained>按住此键，在殖民者接收移动或编队移动命令时，将其强制征召。按住此键，可通过按住并拖动鼠标右键，在光标位置按当前编队移动选定的殖民者。一旦按住鼠标右键，Achtung! 键即可松开。编队可通过Q和E键旋转。</AchtungModifierExplained>
+
+	<ForceCommandMenuModeTitle>右键模式</ForceCommandMenuModeTitle>
+	<ForceCommandMenuKeyTitle>右键覆盖键</ForceCommandMenuKeyTitle>
+
+	<CommandMenuModeOptionAuto>征召状态决定</CommandMenuModeOptionAuto>
+	<CommandMenuModeOptionAutoExplained>殖民者的征召状态决定是显示上下文菜单还是移动到点击位置</CommandMenuModeOptionAutoExplained>
+	<CommandMenuModeOptionPressForMenu>按键显示菜单</CommandMenuModeOptionPressForMenu>
+	<CommandMenuModeOptionPressForMenuExplained>按住此键可覆盖默认操作并显示上下文菜单</CommandMenuModeOptionPressForMenuExplained>
+	<CommandMenuModeOptionPressForPosition>按键定位</CommandMenuModeOptionPressForPosition>
+	<CommandMenuModeOptionPressForPositionExplained>按住此键可覆盖上下文菜单并发出定位命令</CommandMenuModeOptionPressForPositionExplained>
+	<CommandMenuModeOptionDelayed>按住切换</CommandMenuModeOptionDelayed>
+	<CommandMenuModeOptionDelayedExplained>按住鼠标右键；在设定的延迟后，操作将从定位切换为显示上下文菜单</CommandMenuModeOptionDelayedExplained>
+
+	<DelayTitle>按住时长</DelayTitle>
+	<DelayExplained>按住鼠标右键以显示上下文菜单（覆盖定位）的持续时间（毫秒）</DelayExplained>
+
+	<RescueEnabledTitle>“救援”工作优先级列</RescueEnabledTitle>
+	<RescueEnabledExplained>启用小人的自动救援功能并在工作标签页添加一列</RescueEnabledExplained>
+
+	<ShowForceEndLetterTitle>强制工作结束时显示通知</ShowForceEndLetterTitle>
+	<ShowForceEndLetterExplained>启用后，当殖民者完成所有强制工作时会显示通知</ShowForceEndLetterExplained>
+
+	<ReplaceCleanRoomTitle>替换清洁房间命令</ReplaceCleanRoomTitle>
+	<ReplaceCleanRoomExplained>用Achtung的清洁房间功能替换原版清洁房间</ReplaceCleanRoomExplained>
+
+	<ReplaceFightFireTitle>替换扑灭火焰命令</ReplaceFightFireTitle>
+	<ReplaceFightFireExplained>用Achtung的扑灭火焰功能替换原版扑灭火焰</ReplaceFightFireExplained>
+
+	<ForcedCommandState>已下令工作直到完成。</ForcedCommandState>
+
+	<ForceMenuButtonText>强制</ForceMenuButtonText>
+
+	<IncreaseForceRadius>增加范围</IncreaseForceRadius>
+	<IncreaseForceRadiusDesc>增加强制工作的搜索距离（当前半径为 {0}）</IncreaseForceRadiusDesc>
+	<DecreaseForceRadius>减少范围</DecreaseForceRadius>
+	<DecreaseForceRadiusDesc>减少强制工作的搜索距离（当前半径为 {0}）</DecreaseForceRadiusDesc>
+	<BuildingSmart>智能建造</BuildingSmart>
+	<BuildingSmartDesc>智能建造可防止出现漏洞或卡住，但速度较慢，且始终围绕你的起始位置建造</BuildingSmartDesc>
+
+	<Notes>注意事项</Notes>
+	<Note1>使用Achtung时，上下文菜单包含：已征召和未征召的命令</Note1>
+
+	<AchtungModKeyOptionNone>禁用</AchtungModKeyOptionNone>
+	<AchtungModKeyOptionAlt>Alt</AchtungModKeyOptionAlt>
+	<AchtungModKeyOptionCtrl>Ctrl</AchtungModKeyOptionCtrl>
+	<AchtungModKeyOptionShift>Shift</AchtungModKeyOptionShift>
+	<AchtungModKeyOptionMeta>Win/Cmd</AchtungModKeyOptionMeta>
+
+	<BreakLevelTitle>工作时的精神崩溃等级</BreakLevelTitle>
+	<BreakLevelExplained>设置殖民者停止Achtung工作的精神崩溃等级</BreakLevelExplained>
+	<BreakLevelOptionNone>忽略</BreakLevelOptionNone>
+	<BreakLevelOptionMinor>轻微</BreakLevelOptionMinor>
+	<BreakLevelOptionMajor>严重</BreakLevelOptionMajor>
+	<BreakLevelOptionAlmostExtreme>接近极端</BreakLevelOptionAlmostExtreme>
+	<BreakLevelOptionExtreme>极端</BreakLevelOptionExtreme>
+
+	<HealthLevelTitle>工作时的健康状态</HealthLevelTitle>
+	<HealthLevelExplained>设置殖民者停止Achtung工作的健康状态</HealthLevelExplained>
+	<HealthLevelOptionNone>忽略</HealthLevelOptionNone>
+	<HealthLevelOptionShouldBeTendedNow>需要立即治疗</HealthLevelOptionShouldBeTendedNow>
+	<HealthLevelOptionPrefersMedicalRest>医疗护理</HealthLevelOptionPrefersMedicalRest>
+	<HealthLevelOptionNeedsMedicalRest>需要医疗休息</HealthLevelOptionNeedsMedicalRest>
+	<HealthLevelOptionInPainShock>休克</HealthLevelOptionInPainShock>
+
+	<IgnoreForbiddenTitle>忽略禁止标记</IgnoreForbiddenTitle>
+	<IgnoreForbiddenExplained>允许对被禁止的物品进行强制工作</IgnoreForbiddenExplained>
+	<IgnoreRestrictionsTitle>忽略区域限制</IgnoreRestrictionsTitle>
+	<IgnoreRestrictionsExplained>允许在限制区域内进行强制工作</IgnoreRestrictionsExplained>
+	<IgnoreAssignmentsTitle>忽略工作类型分配</IgnoreAssignmentsTitle>
+	<IgnoreAssignmentsExplained>允许在未设置工作优先级时进行强制工作</IgnoreAssignmentsExplained>
+
+	<BuildingSmartTitle>新的Achtung!工作默认开启智能建造</BuildingSmartTitle>
+	<BuildingSmartExplained>设置新工作选择建造顺序的默认方式</BuildingSmartExplained>
+
+	<WorkMarkersTitle>强制工作标记</WorkMarkersTitle>
+	<WorkMarkersExplained>强制工作会显示小标记</WorkMarkersExplained>
+	<WorkMarkersOptionAnimated>动态</WorkMarkersOptionAnimated>
+	<WorkMarkersOptionStatic>静态</WorkMarkersOptionStatic>
+	<WorkMarkersOptionOff>关闭</WorkMarkersOptionOff>
+
+	<MaxForcedItemsTitle>最大强制物品数量</MaxForcedItemsTitle>
+	<MaxForcedItemsExplained>限制强制物品的数量，适用于配置较低的电脑</MaxForcedItemsExplained>
+	<MaxForcedItemsUnlimited>无限制</MaxForcedItemsUnlimited>
+
+	<FeatureSettingsDesc>核心功能开关</FeatureSettingsDesc>
+	<FeatureSettingsButton>配置功能</FeatureSettingsButton>
+
+	<JobInterruptedLabel>已取消：{0}</JobInterruptedLabel>
+	<JobInterruptedBreakdown>{0}: {1}</JobInterruptedBreakdown>
+	<JobInterruptedBadHealth>{0} 身体状况不佳</JobInterruptedBadHealth>
+
+	<CleanRoomLabel>清洁房间 (Achtung)</CleanRoomLabel>
+	<CleanRoomInfoText>正在彻底清洁房间</CleanRoomInfoText>
+	<CleanRoomDescription>彻底清洁一个房间，直到它完全干净</CleanRoomDescription>
+	<CleanRoomReport>清洁{0}：{1}</CleanRoomReport>
+
+	<FireFightLabel>扑灭火焰 (Achtung)</FireFightLabel>
+	<FireFightInfoText>正在扑灭火焰</FireFightInfoText>
+	<FireFightDescription>扑灭火焰（甚至在家庭区域外）</FireFightDescription>
+	<FireFightReport>正在扑灭火焰：{0}</FireFightReport>
+
+	<SowZoneLabel>播种此区域/房间</SowZoneLabel>
+	<SowZoneInfoText>正在播种区域/房间</SowZoneInfoText>
+	<SowZoneDescription>播种一个种植区或房间，直到它完全播种完成</SowZoneDescription>
+	<SowZoneReport>播种{0}：{1}</SowZoneReport>
+
+	<AlreadyDoing>(工作 #{0})</AlreadyDoing>
+
+	<CouldNotFindMoreForcedWork>{0} 无法找到更多强制工作。剩余工作很可能已被保留或无法访问。</CouldNotFindMoreForcedWork>
+	<NoForcedWork>没有强制工作</NoForcedWork>
+	<ForcedWorkWasInterrupted>的强制工作被中断。</ForcedWorkWasInterrupted>
+
+	<WorkType_Rescue_Label>救援</WorkType_Rescue_Label>
+	<WorkType_Rescue_PawnLabel>救援</WorkType_Rescue_PawnLabel>
+	<WorkType_Rescue_GerundLabel>殖民者救援</WorkType_Rescue_GerundLabel>
+	<WorkType_Rescue_Description>受伤的殖民者被带到床上，在那里他们可以得到治疗。</WorkType_Rescue_Description>
+
+</LanguageData>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_UncookedStewSimple.label>簡單燉料</VCE_UncookedStewSimple.label>
+		<VCE_UncookedStewSimple.description>未被煮過的簡單燉料，需要在燉鍋被燉熟後才能食用。</VCE_UncookedStewSimple.description>
+		<VCE_CookedStewSimple.label>簡單燉菜</VCE_CookedStewSimple.label>
+		<VCE_CookedStewSimple.description>用少許材料慢慢烹飪出的一份簡單燉菜。</VCE_CookedStewSimple.description>
+		<VCE_UncookedStewFine.label>精緻燉料</VCE_UncookedStewFine.label>
+		<VCE_UncookedStewFine.description>未被煮過的精緻燉料，需要在燉鍋被燉熟後才能食用。</VCE_UncookedStewFine.description>
+		<VCE_CookedStewFine.label>精緻燉菜</VCE_CookedStewFine.label>
+		<VCE_CookedStewFine.description>選擇多種原料，精心烹飪出的一份相對複雜的燉菜。</VCE_CookedStewFine.description>
+		<VCE_UncookedStewLavish.label>奢侈燉料</VCE_UncookedStewLavish.label>
+		<VCE_UncookedStewLavish.description>未被煮過的奢侈燉料，需要在電燉鍋被燉熟後才能食用。</VCE_UncookedStewLavish.description>
+		<VCE_CookedStewLavish.label>奢侈燉菜</VCE_CookedStewLavish.label>
+		<VCE_CookedStewLavish.description>廚藝界的大師級作品，這份燉菜同時滋養了身體、思想和靈魂。</VCE_CookedStewLavish.description>
+	</LanguageData>

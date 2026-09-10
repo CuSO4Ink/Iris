@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_RawOnion.label>洋葱</VCE_RawOnion.label>
+		<VCE_RawOnion.description>有一种辛辣的气味，很适合用来做菜。</VCE_RawOnion.description>
+		<VCE_RawPumpkin.label>南瓜</VCE_RawPumpkin.label>
+		<VCE_RawPumpkin.description>巨型的瓜状果实，不管是播种还是收割都很容易。</VCE_RawPumpkin.description>
+		<VCE_RawPepper.label>辣椒</VCE_RawPepper.label>
+		<VCE_RawPepper.description>又小又辣的红色荚状果实，适合用来做成各式调味料。味道的效果一般，但其中的辣椒素让人欲罢不能。食用过多会产生痛觉。动物不会主动吃它。</VCE_RawPepper.description>
+		<VCE_RawPeas.label>豌豆</VCE_RawPeas.label>
+		<VCE_RawPeas.description>装在豆荚内的绿色原型果实。干燥时保质期会很长。</VCE_RawPeas.description>
+		<VCE_RawEggplant.label>茄子</VCE_RawEggplant.label>
+		<VCE_RawEggplant.description>丰满的紫色果实。茄子经常在烹饪时替代肉类作为主菜。</VCE_RawEggplant.description>
+		<VCE_RawCabbage.label>卷心菜</VCE_RawCabbage.label>
+		<VCE_RawCabbage.description>强健的叶状蔬菜，通常适合切片水煮。</VCE_RawCabbage.description>
+		<VCE_RawBeets.label>甜菜</VCE_RawBeets.label>
+		<VCE_RawBeets.description>草状蔬菜，营养丰富也曾被用作染料，人和动物都爱吃。</VCE_RawBeets.description>
+		<VCE_RawTomatoes.label>番茄</VCE_RawTomatoes.label>
+		<VCE_RawTomatoes.description>长在藤上的光洁多汁的红色水果，也经常被看作蔬菜。水煮时会放出天然糖分并有醇厚的酸味。</VCE_RawTomatoes.description>
+
+		<!-- EN: green beans -->
+		<VCE_RawBeans.label>豆角</VCE_RawBeans.label>
+		<!-- EN: Young, unripe fruits of a cultivar of the common bean. They can be steamed, boiled, stir-fried, or baked. They are commonly cooked in other dishes such as soups, stews, and casseroles. Green beans can also be pickled, much like cucumbers are. -->
+		<VCE_RawBeans.description>豆类植物的新鲜果实，可蒸可煮可炒可烤。通常被用在浓汤，杂烩和法式砂锅里。也可以和黄瓜一样做成酸腌菜。</VCE_RawBeans.description>
+		
+		<!-- EN: red bell peppers -->
+		<VCE_RawBellPeppers.label>红菜椒</VCE_RawBellPeppers.label>
+		<!-- EN: Also known as sweet peppers, bell peppers are technically nightshades and part of the capsicum family, but they are the only chili pepper that carries a recessive gene that stops any capsaicin from being made in the fruit, thus making them not spicy. -->
+		<VCE_RawBellPeppers.description>也被叫做甜椒，茄科辣椒属植物，但菜椒拥有抑制产生辣椒素的基因，因此丝毫不辣。</VCE_RawBellPeppers.description>
+		
+		<!-- EN: brussels sprouts -->
+		<VCE_RawBrusselsSprouts.label>小卷心菜</VCE_RawBrusselsSprouts.label>
+		<!-- EN: A form of cabbage grown for its edible buds called "sprouts". Brussels sprouts usually are eaten cooked, and the small young sprouts have a more delicate flavour than older ones. -->
+		<VCE_RawBrusselsSprouts.description>拥有特殊小芽的一种卷心菜。小卷心菜通常被煮熟食用，鲜嫩的小芽比成熟的更加美味。</VCE_RawBrusselsSprouts.description>
+		
+		<!-- EN: buckwheat -->
+		<VCE_RawBuckwheat.label>荞麦</VCE_RawBuckwheat.label>
+		<!-- EN: A pseudocereal cultivated for its grain-like seeds. Its white flowers are produced in terminal clusters and after pòllination turn into triangular-shaped seeds that are enclosed by a tough dark brown or gray rind. -->
+		<VCE_RawBuckwheat.description>一种能结出谷状种子的准谷物。成熟后会开出一束束的白花，在授粉之后会结出深色硬壳包裹的三角形种子。</VCE_RawBuckwheat.description>
+		
+		<!-- EN: butternut squashes -->
+		<VCE_RawButternutSquash.label>冬南瓜</VCE_RawButternutSquash.label>
+		<!-- EN: A vegetable with a sweet, nutty taste similar to that of a pumpkin. It has tan-yellow skin and orange fleshy pulp with a compartment of seeds in the blossom end. -->
+		<VCE_RawButternutSquash.description>有着类南瓜的甜坚果风味。它有黄褐色的外皮和橘黄色的果肉，种子聚集在果实的一端末。</VCE_RawButternutSquash.description>
+		
+		<!-- EN: carrots -->
+		<VCE_RawCarrot.label>胡萝卜</VCE_RawCarrot.label>
+		<!-- EN: A root vegetable, typically orange in color, though purple, black, red, white, and yellow cultivars exist. A versatile food that can be chopped and boiled, fried or steamed, cooked in soups and stews, as well as used for baby and pet foods. -->
+		<VCE_RawCarrot.description>一种块根蔬菜，通常呈橙色，但世界上也有紫色黑色红色白色黄色的品种。这是种多用途的食材，可以煮熟，蒸熟，炖汤，或是制作婴儿和宠物食品。</VCE_RawCarrot.description>
+		
+		<!-- EN: cassavas -->
+		<VCE_RawCassava.label>木薯</VCE_RawCassava.label>
+		<!-- EN: A tuberous edible plant also called manioc, mandioca, or yuca. They have a mild nutty taste and are commonly eaten as root vegetables in stews or as side dishes. Cassava roots are a versatile vegetable that can be used to produce flour, breads, tapioca, a laundry starch, and an alcoholic beverage. -->
+		<VCE_RawCassava.description>也叫树薯，是有柔和坚果味的块根蔬菜，常用于煲汤和冷盘。这是种多用途的食材，可以用来制作面粉，面包，洗衣淀粉，奶茶珍珠和酒精饮料。</VCE_RawCassava.description>
+		
+		<!-- EN: celery -->
+		<VCE_RawCelery.label>芹菜</VCE_RawCelery.label>
+		<!-- EN: A vegetable consisting of a long fibrous stalk tapering into leaves. The leaves are strongly flavored and are used less often, either as a flavoring in soups and stews or as a dried herb. Celery is a staple in many soups. -->
+		<VCE_RawCelery.description>一种蔬菜，富含纤维的长杆直接连接着菜叶。菜杆常被用作食材，而菜叶的味道过于厚重，所以并不常用，通常只用来调味或风干成香料。</VCE_RawCelery.description>
+		
+		<!-- EN: chickpeas -->
+		<VCE_RawChickpeas.label>鹰嘴豆</VCE_RawChickpeas.label>
+		<!-- EN: One of the earliest cultivated legumes. Chickpeas are high in fibre and protein and are a good source of iron, phosphorus, and folic acid. -->
+		<VCE_RawChickpeas.description>种植历史悠久的豆类。鹰嘴豆富含纤维素和蛋白质，还能补充铁，磷和叶酸。</VCE_RawChickpeas.description>
+		
+		<!-- EN: cucumbers -->
+		<VCE_RawCucumber.label>黄瓜</VCE_RawCucumber.label>
+		<!-- EN: A long thin vegetable with hard green skin and wet transparent flesh. Can be eaten raw. -->
+		<VCE_RawCucumber.description>长条形的蔬菜，有着深绿色的外皮和水灵灵的半透明果肉。可以生吃。</VCE_RawCucumber.description>
+		
+		<!-- EN: garlic cloves -->
+		<VCE_RawGarlic.label>蒜头</VCE_RawGarlic.label>
+		<!-- EN: A very old crop which is cultivated for its bulb, formed in the base of the leaves. It is highly appreciated in cooking for its pungent and characteristic taste. -->
+		<VCE_RawGarlic.description>历史悠久的作物，主要产物为它在叶子底端的块茎。它辛辣香浓的味道深受很多人喜爱。</VCE_RawGarlic.description>
+		
+		<!-- EN: lettuce -->
+		<VCE_RawLettuce.label>生菜</VCE_RawLettuce.label>
+		<!-- EN: A leaf vegetable commonly eaten fresh and served as the base of green salads. Lettuce is generally a rich source of vitamins K and A. -->
+		<VCE_RawLettuce.description>一种绿叶菜，通常被做在沙拉中被生食。生菜富含维生素K和A。</VCE_RawLettuce.description>
+		
+		<!-- EN: lotus seeds -->
+		<VCE_RawLotus.label>莲子</VCE_RawLotus.label>
+		<!-- EN: The seeds of the lotus plant. They are packed with nutritional elements which make them an excellent choice for a healthy diet, with a high content of proteins, carbohydrates, and vitamins. -->
+		<VCE_RawLotus.description>莲蓬的种子。堆积着丰富的蛋白质，碳水化合物和维生素，是健康饮食的首选。</VCE_RawLotus.description>
+		
+		<!-- EN: okra -->
+		<VCE_RawOkra.label>秋葵</VCE_RawOkra.label>
+		<!-- EN: Edible green seed pods, famously known for their slimy or sticky texture when cut open. Okra is a powerhouse of valuable nutrients. -->
+		<VCE_RawOkra.description>绿色的可食用豆荚，特色在于切开后那黏糊糊的质感。富含多种营养。</VCE_RawOkra.description>
+		
+		<!-- EN: olives -->
+		<VCE_RawOlives.label>橄榄</VCE_RawOlives.label>
+		<!-- EN: A small, egg-shaped black or green fruit that is used as food or for making oil. Olives freshly picked from the tree contain oleuropein, which makes the fruit unpalatable for immediate consumption. They must be brined or fermented to be used. -->
+		<VCE_RawOlives.description>小型的卵形果实，多呈绿色或黑色，可以食用或用来榨油。</VCE_RawOlives.description>
+		
+		<!-- EN: peanuts -->
+		<VCE_RawPeanut.label>花生</VCE_RawPeanut.label>
+		<!-- EN: Seeds with an oblong shape and a papery seed coat. Similar in taste and nutritional profile to tree nuts such as walnuts and almonds, but technically a legume. -->
+		<VCE_RawPeanut.description>包裹在类纸外壳中的椭圆形种子。味道和杏仁，核桃这种树种类坚果类似，但花生其实是豆类哒。</VCE_RawPeanut.description>
+		
+		<!-- EN: radishes -->
+		<VCE_RawRadish.label>红萝卜</VCE_RawRadish.label>
+		<!-- EN: An edible root vegetable that is very easy to grow and quick to harvest. Radishes are often planted by novice gardeners. -->
+		<VCE_RawRadish.description>生长迅速，收割方便的块根蔬菜。适合有一定经验的园丁种植。</VCE_RawRadish.description>
+		
+		<!-- EN: sunflower seeds -->
+		<VCE_RawSunflower.label>葵花子</VCE_RawSunflower.label>
+		<!-- EN: The seeds of the sunflower plant are more commonly eaten as a snack than as part of a meal. They can also be used as garnishes or ingredients in various recipes. -->
+		<VCE_RawSunflower.description>葵花的种子，常被当作零食，亦可用来装点一些菜式。</VCE_RawSunflower.description>
+		
+		<!-- EN: sweet potatoes -->
+		<VCE_RawSweetPotatoes.label>番薯</VCE_RawSweetPotatoes.label>
+		<!-- EN: Large, starchy, sweet-tasting (tasting similar to pumpkin), tuberous roots that are used as a root vegetable. The sweet potato is distantly related to the common potato. -->
+		<VCE_RawSweetPotatoes.description>一种块根蔬菜，呈大块，淀粉质感，味道微甜有点像南瓜。是土豆的近亲。</VCE_RawSweetPotatoes.description>
+		
+		<!-- EN: taro roots -->
+		<VCE_RawTaro.label>芋头</VCE_RawTaro.label>
+		<!-- EN: A starchy root vegetable. It has a brown outer skin and white flesh with purple specks throughout. When cooked, it has a mildly sweet taste and a texture similar to potato. -->
+		<VCE_RawTaro.description>淀粉质的块根蔬菜。有着棕色的外皮和夹杂着紫色斑点的白色果肉。烧熟后会释放出一种清甜，口感与土豆类似。</VCE_RawTaro.description>
+		
+		<!-- EN: water chestnuts -->
+		<VCE_RawWaterChestnut.label>荸荠</VCE_RawWaterChestnut.label>
+		<!-- EN: Small, rounded corms with a crisp, white flesh that may be eaten raw, slightly boiled, or grilled. -->
+		<VCE_RawWaterChestnut.description>小小的球茎，有着脆脆的白色果肉。生吃，水煮和烘烤都很不错。</VCE_RawWaterChestnut.description>
+		
+		<!-- EN: watercress leaves -->
+		<VCE_RawWatercress.label>西洋菜</VCE_RawWatercress.label>
+		<!-- EN: A green leaf vegetable rich in vitamins and minerals and from the same family as kale and broccoli. -->
+		<VCE_RawWatercress.description>富含维生素和矿物质的绿叶菜，与卷心菜和花椰菜是近亲。</VCE_RawWatercress.description>
+		
+		<!-- EN: yellow bell peppers -->
+		<VCE_RawYellowBellPeppers.label>黄菜椒</VCE_RawYellowBellPeppers.label>
+		<!-- EN: Also known as sweet peppers, bell peppers are technically nightshades and part of the capsicum family, but they are the only chili pepper that carries a recessive gene that stops any capsaicin from being made in the fruit, thus making them not spicy. -->
+		<VCE_RawYellowBellPeppers.description>也被叫做甜椒，茄科辣椒属植物，但菜椒拥有抑制产生辣椒素的基因，因此丝毫不辣。</VCE_RawYellowBellPeppers.description>
+    
+    
+    <!-- EN: raw bileceps -->
+    <VPE_Bileceps.label>食尸菇</VPE_Bileceps.label>
+    <!-- EN: Harvested bileceps. Can be cooked into meals or eaten raw. -->
+    <VPE_Bileceps.description>收割下来的食尸菇，可进一步烹饪为菜肴或生吃。</VPE_Bileceps.description>
+    
+    <!-- EN: raw blisscap -->
+    <VPE_Blisscap.label>极乐菇</VPE_Blisscap.label>
+    <!-- EN: Raw blisscap obtained by harvesting blisscap mushrooms. When eaten, makes people incredibly high, but also incredibly drowsy. -->
+    <VPE_Blisscap.description>收割下来的极乐菇。食用后会带来快感和困意。</VPE_Blisscap.description>
+	</LanguageData>

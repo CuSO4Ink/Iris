@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Bubbles.Toggle>显示互动气泡</Bubbles.Toggle>
+  <Bubbles.ResetToDefault>恢复为默认设置</Bubbles.ResetToDefault>
+  <Bubbles.NonWindow>按住 shift 并点击气泡切换图标来访问游戏中的这些设置。\nHold shift and click on the Bubble toggle icon to access these settings in-game.</Bubbles.NonWindow>
+  <Bubbles.DoNonPlayer>为其他派系显示气泡</Bubbles.DoNonPlayer>
+  <Bubbles.DoAnimals>显示动物互动</Bubbles.DoAnimals>
+  <Bubbles.DoDrafted>征召时显示</Bubbles.DoDrafted>
+  <Bubbles.DoTextColors>高亮互动对象名称(Show text colors)</Bubbles.DoTextColors>
+  <Bubbles.HearingCheck>必须被玩家操控的小人听见(Must be heard by player-controlled)</Bubbles.HearingCheck>
+  <Bubbles.HearingRange>听觉范围(Hearing range)</Bubbles.HearingRange>
+  <Bubbles.AutoHideSpeed>在倍速模式下自动隐藏</Bubbles.AutoHideSpeed>
+  <Bubbles.AutoHideSpeedOff>关闭</Bubbles.AutoHideSpeedOff>
+  <Bubbles.AltitudeBase>气泡大小(Base altitude)</Bubbles.AltitudeBase>
+  <Bubbles.AltitudeMax>显示气泡的最大相机高度(Maximum visible altitude)</Bubbles.AltitudeMax>
+  <Bubbles.ScaleMax>允许的最大缩放</Bubbles.ScaleMax>
+  <Bubbles.PawnMax>每个小人的最大气泡数(Maximum per pawn)</Bubbles.PawnMax>
+  <Bubbles.OffsetSpacing>间距(Spacing)</Bubbles.OffsetSpacing>
+  <Bubbles.OffsetStart>气泡与人物的偏移量</Bubbles.OffsetStart>
+  <Bubbles.OffsetDirection>偏移的方向</Bubbles.OffsetDirection>
+  <Bubbles.OffsetDirections>下|左|上|右</Bubbles.OffsetDirections>
+  <Bubbles.OpacityStart>气泡出现时的不透明度</Bubbles.OpacityStart>
+  <Bubbles.OpacityHover>鼠标经过气泡时的不透明度</Bubbles.OpacityHover>
+  <Bubbles.FadeStart>气泡从显示到开始淡出经过的时间(游戏时钟Ticks)</Bubbles.FadeStart>
+  <Bubbles.FadeLength>气泡完成淡出经过的时间(游戏时钟Ticks)</Bubbles.FadeLength>
+  <Bubbles.FontSize>气泡文本字体大小</Bubbles.FontSize>
+  <Bubbles.PaddingX>文本左右与气泡的边距</Bubbles.PaddingX>
+  <Bubbles.PaddingY>文本上下与气泡的边距</Bubbles.PaddingY>
+  <Bubbles.WidthMax>气泡最大宽度</Bubbles.WidthMax>
+  <Bubbles.Background>气泡颜色</Bubbles.Background>
+  <Bubbles.Foreground>文本颜色</Bubbles.Foreground>
+  <Bubbles.BackgroundSelected>气泡颜色 (选中人物时)</Bubbles.BackgroundSelected>
+  <Bubbles.ForegroundSelected>文本颜色 (选中人物时)</Bubbles.ForegroundSelected>
+</LanguageData>

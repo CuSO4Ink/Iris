@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: obelisk iceblast -->
+  <VPER_Bullet_Obelisk.label>方尖碑冰爆</VPER_Bullet_Obelisk.label>
+  
+  <!-- EN: obelisk iceblast -->
+  <VPER_Bullet_Obelisk_Slow.label>方尖碑冰爆</VPER_Bullet_Obelisk_Slow.label>
+  
+  <!-- EN: obelisk iceblast -->
+  <VPER_Bullet_Obelisk_SlowFragile.label>方尖碑冰爆</VPER_Bullet_Obelisk_SlowFragile.label>
+  
+  <!-- EN: isa rune -->
+  <VPER_Gun_Monolith_1Tier.label>伊莎卢恩</VPER_Gun_Monolith_1Tier.label>
+  <!-- EN: A weak rune that fires icy blasts. -->
+  <VPER_Gun_Monolith_1Tier.description>一个弱小的符文，能释放冰霜爆裂。</VPER_Gun_Monolith_1Tier.description>
+  <!-- EN: isa rune -->
+  <VPER_Gun_Monolith_1Tier.verbs.Verb_Shoot.label>伊莎卢恩</VPER_Gun_Monolith_1Tier.verbs.Verb_Shoot.label>
+  
+  <!-- EN: isa rune -->
+  <VPER_Gun_Monolith_2Tier.label>伊莎卢恩</VPER_Gun_Monolith_2Tier.label>
+  <!-- EN: A rune that fires icy blasts. -->
+  <VPER_Gun_Monolith_2Tier.description>一个标准符文，能释放冰霜爆裂。</VPER_Gun_Monolith_2Tier.description>
+  <!-- EN: isa rune -->
+  <VPER_Gun_Monolith_2Tier.verbs.Verb_Shoot.label>伊莎卢恩</VPER_Gun_Monolith_2Tier.verbs.Verb_Shoot.label>
+  
+  <!-- EN: isa rune -->
+  <VPER_Gun_Monolith_3Tier.label>伊莎卢恩</VPER_Gun_Monolith_3Tier.label>
+  <!-- EN: A powerful rune that fires icy blasts. -->
+  <VPER_Gun_Monolith_3Tier.description>一个强力符文，能释放冰霜爆裂。</VPER_Gun_Monolith_3Tier.description>
+  <!-- EN: isa rune -->
+  <VPER_Gun_Monolith_3Tier.verbs.Verb_Shoot.label>伊莎卢恩</VPER_Gun_Monolith_3Tier.verbs.Verb_Shoot.label>
+  
+  <!-- EN: isa rune -->
+  <VPER_Gun_Monolith_4Tier.label>伊莎卢恩</VPER_Gun_Monolith_4Tier.label>
+  <!-- EN: A very powerful rune that fires icy blasts. -->
+  <VPER_Gun_Monolith_4Tier.description>十分强力的符文，可以释放冰霜爆裂。</VPER_Gun_Monolith_4Tier.description>
+  <!-- EN: isa rune -->
+  <VPER_Gun_Monolith_4Tier.verbs.Verb_Shoot.label>伊莎卢恩</VPER_Gun_Monolith_4Tier.verbs.Verb_Shoot.label>
+  
+  <!-- EN: isa rune -->
+  <VPER_Gun_Monolith_5Tier.label>伊莎卢恩</VPER_Gun_Monolith_5Tier.label>
+  <!-- EN: An excessively powerful rune that fires icy blasts. -->
+  <VPER_Gun_Monolith_5Tier.description>极度强力的符文，可以释放冰霜爆裂。</VPER_Gun_Monolith_5Tier.description>
+  <!-- EN: isa rune -->
+  <VPER_Gun_Monolith_5Tier.verbs.Verb_Shoot.label>伊莎卢恩</VPER_Gun_Monolith_5Tier.verbs.Verb_Shoot.label>
+  
+  <!-- EN: isa obelisk, tier 1 -->
+  <VPER_Turret_Monolith_1Tier.label>伊莎方尖碑，阶段一</VPER_Turret_Monolith_1Tier.label>
+  <!-- EN: A summoned ice monolith, manifested through the physical rune of Isa. Fires at nearby foes until it the rune destabilizes, causing the construct to melt.\n\nCreated with less than 150% Psychic Sensitivity, this monolith was almost certainly created with a basic, uncharged Runecircle. Still, it should be enough to fend off at least a few foes. -->
+  <VPER_Turret_Monolith_1Tier.description>通过伊萨的物理符文召唤出的冰之巨石。它会向附近的敌人射击，直到卢恩符文不稳定导致构造体融化。\n\n该巨石创造时的心理敏感度低于150%，因此几乎可以肯定是由一个原始的、未充能的符文圈创建的。尽管如此，它应该足以抵御至少数个敌人。</VPER_Turret_Monolith_1Tier.description>
+  <!-- EN: Melts in -->
+  <VPER_Turret_Monolith_1Tier.comps.CompDestroyAfterDelay.countdownLabel>融化于</VPER_Turret_Monolith_1Tier.comps.CompDestroyAfterDelay.countdownLabel>
+  
+  <!-- EN: isa obelisk, tier 2 -->
+  <VPER_Turret_Monolith_2Tier.label>伊莎方尖碑，阶段二</VPER_Turret_Monolith_2Tier.label>
+  <!-- EN: A summoned ice monolith, manifested through the physical rune of Isa. Fires at nearby foes until it the rune destabilizes, causing the construct to melt.\n\nCreated with Psychic Sensitivity between 150% and 199%, this monolith still leaves something to be desired. Boasts improved durability, range, burst shots, and accuracy when compared to the first tier. -->
+  <VPER_Turret_Monolith_2Tier.description>通过伊萨的物理符文召唤出的冰之巨石。它会向附近的敌人射击，直到卢恩符文不稳定导致构造体融化。\n\n以150%至199%的心灵敏感度打造的巨石，仍存在一些不足之处。与阶段一相比，其耐用性、射程、连射性能及精准度均有所提升。</VPER_Turret_Monolith_2Tier.description>
+  <!-- EN: Melts in -->
+  <VPER_Turret_Monolith_2Tier.comps.CompDestroyAfterDelay.countdownLabel>融化于</VPER_Turret_Monolith_2Tier.comps.CompDestroyAfterDelay.countdownLabel>
+  
+  <!-- EN: isa obelisk, tier 3 -->
+  <VPER_Turret_Monolith_3Tier.label>伊莎方尖碑，阶段三</VPER_Turret_Monolith_3Tier.label>
+  <!-- EN: A summoned ice monolith, manifested through the physical rune of Isa. Fires at nearby foes until it the rune destabilizes, causing the construct to melt.\n\nCreated with Psychic Sensitivity between 200% and 299%, this monolith is fairly powerful and will handle most scenarios. Has even higher stats than the previous tier, and the icy blasts now cling to targets on hit, slowing them down. -->
+  <VPER_Turret_Monolith_3Tier.description>通过伊萨的物理符文召唤出的冰之巨石。它会向附近的敌人射击，直到卢恩符文不稳定导致构造体融化。\n\n，以心灵敏感度200%至299%之间时创造的巨石，相当强大，能应对大多数情况。其属性比上一等级更高，且冰冻爆裂现在在命中目标时会附着于其上，使其减速。</VPER_Turret_Monolith_3Tier.description>
+  <!-- EN: Melts in -->
+  <VPER_Turret_Monolith_3Tier.comps.CompDestroyAfterDelay.countdownLabel>融化于</VPER_Turret_Monolith_3Tier.comps.CompDestroyAfterDelay.countdownLabel>
+  
+  <!-- EN: isa obelisk, tier 4 -->
+  <VPER_Turret_Monolith_4Tier.label>伊莎方尖碑，阶段四</VPER_Turret_Monolith_4Tier.label>
+  <!-- EN: A summoned ice monolith, manifested through the physical rune of Isa. Fires at nearby foes until it the rune destabilizes, causing the construct to melt.\n\nCreated with Psychic Sensitivity between 300% and 399%, this monolith is almost perfect. Even now, the stats are improved when compared to the previous iteration of obelisk. -->
+  <VPER_Turret_Monolith_4Tier.description>通过伊萨的物理符文召唤出的冰之巨石。它会向附近的敌人射击，直到卢恩符文不稳定导致构造体融化。\n\n，以心灵敏感度300%至399%之间时创造的巨石，这座巨石几乎完美无缺。优于之前的方尖碑版本。</VPER_Turret_Monolith_4Tier.description>
+  <!-- EN: Melts in -->
+  <VPER_Turret_Monolith_4Tier.comps.CompDestroyAfterDelay.countdownLabel>融化于</VPER_Turret_Monolith_4Tier.comps.CompDestroyAfterDelay.countdownLabel>
+  
+  <!-- EN: isa obelisk, tier 5 -->
+  <VPER_Turret_Monolith_5Tier.label>伊莎方尖碑，阶段五</VPER_Turret_Monolith_5Tier.label>
+  <!-- EN: A summoned ice monolith, manifested through the physical rune of Isa. Fires at nearby foes until it the rune destabilizes, causing the construct to melt.\n\nCreated with Psychic Sensitivity at or over 400%, this monolith embodies the oncoming blizzard. Has the highest stats of any monolith, firing bursts of five icicles that both slow foes and make them vulnerable to further damage. -->
+  <VPER_Turret_Monolith_5Tier.description>通过伊萨的物理符文召唤出的冰之巨石。它会向附近的敌人射击，直到卢恩符文不稳定导致构造体融化。\n\n心灵敏感度达到或超过400%，这座巨石将化身为呼啸的暴风雪。它的能力已至巅峰，能发射五枚冰锥的连射，既能减缓敌人的移动速度，也能使其更容易受到进一步伤害。</VPER_Turret_Monolith_5Tier.description>
+  <!-- EN: Melts in -->
+  <VPER_Turret_Monolith_5Tier.comps.CompDestroyAfterDelay.countdownLabel>融化于</VPER_Turret_Monolith_5Tier.comps.CompDestroyAfterDelay.countdownLabel>
+  
+</LanguageData>

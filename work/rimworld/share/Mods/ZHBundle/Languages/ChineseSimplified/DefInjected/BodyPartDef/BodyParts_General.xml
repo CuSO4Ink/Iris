@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RH_N4Mutant_Head.label>头</RH_N4Mutant_Head.label>
+  <RH_N4Mutant_Skull.label>颅骨</RH_N4Mutant_Skull.label>
+  <RH_N4Mutant_Brain.label>大脑</RH_N4Mutant_Brain.label>
+  <RH_N4Mutant_Eye.label>眼</RH_N4Mutant_Eye.label>
+  <RH_N4Mutant_Ear.label>耳</RH_N4Mutant_Ear.label>
+  <RH_N4Mutant_Nose.label>鼻</RH_N4Mutant_Nose.label>
+  <RH_N4Mutant_Jaw.label>下颌</RH_N4Mutant_Jaw.label>
+  <RH_N4Mutant_Neck.label>颈部</RH_N4Mutant_Neck.label>
+  <RH_N4Mutant_Ribcage.label>胸腔</RH_N4Mutant_Ribcage.label>
+  <RH_N4Mutant_Spine.label>脊椎</RH_N4Mutant_Spine.label>
+  <RH_N4Mutant_Leg.label>腿</RH_N4Mutant_Leg.label>
+  <RH_N4Mutant_Foot.label>足</RH_N4Mutant_Foot.label>
+
+
+</LanguageData>

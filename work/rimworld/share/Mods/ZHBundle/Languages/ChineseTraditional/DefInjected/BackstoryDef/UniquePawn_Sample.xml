@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: [PAWN_nameDef]은 '잿빛 발톱'이라 불리는 전설적인 전사입니다. 수많은 습격을 혼자 막아내며 그 이름을 얻었고, 동족들 사이에서 두려움과 존경을 동시에 받습니다. -->
+  <RK_Unique_Kira_Adulthood.description>[PAWN_nameDef]是一名身經百戰的傳奇戰士。[PAWN_pronoun]曾單槍匹馬抵擋過無數次襲擊，因此贏得了“灰爪”這一綽號，[PAWN_pronoun]的鼠族同胞們皆對其抱有敬畏之心。</RK_Unique_Kira_Adulthood.description>
+  <!-- EN: grey claw -->
+  <RK_Unique_Kira_Adulthood.title>鼠族灰爪</RK_Unique_Kira_Adulthood.title>
+  <!-- EN: grey claw -->
+  <RK_Unique_Kira_Adulthood.titleShort>灰爪</RK_Unique_Kira_Adulthood.titleShort>
+  
+  <!-- EN: [PAWN_nameDef]은 무너진 터널 속에서 홀로 살아남은 고아입니다. 어둠 속에서 길을 찾는 법을 스스로 익혔고, 위험을 본능적으로 감지하는 감각을 얻었습니다. -->
+  <RK_Unique_Kira_Childhood.description>[PAWN_nameDef]是一名在隧道坍塌事故中獨自幸存下來的孤兒。[PAWN_pronoun]在滿是灰塵的昏暗環境中掌握了尋路的技巧，還學會了如何依靠本能來察覺危險。</RK_Unique_Kira_Childhood.description>
+  <!-- EN: orphan of the grey tunnels -->
+  <RK_Unique_Kira_Childhood.title>鼠族灰隧孤兒</RK_Unique_Kira_Childhood.title>
+  <!-- EN: tunnel orphan -->
+  <RK_Unique_Kira_Childhood.titleShort>灰隧孤兒</RK_Unique_Kira_Childhood.titleShort>
+  
+</LanguageData>

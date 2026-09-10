@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <Outpost_GemMine.label>寶石據點</Outpost_GemMine.label>
+  <Outpost_GemMine.description>一處能夠自給自足的臨時性據點，專門負責開採珍貴的寶石。一旦收集至足夠的數量，駐守在此據點的殖民者將會把寶石交付至派系主殖民地的指定地點。</Outpost_GemMine.description>
+  <Outpost_GemMine.modExtensions.0.ChooseDesc>點擊來改變開採目標</Outpost_GemMine.modExtensions.0.ChooseDesc>
+  <Outpost_GemMine.modExtensions.0.ChooseLabel>開採{0}</Outpost_GemMine.modExtensions.0.ChooseLabel>
+  
+</LanguageData>

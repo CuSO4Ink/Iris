@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Miho Ornithopter (incoming) -->
+  <Miho_Shuttle_CivIncoming.label>美狐巡航撲翼機（下落中）</Miho_Shuttle_CivIncoming.label>
+  
+  <!-- EN: Miho Ornithopter (leaving) -->
+  <Miho_Shuttle_CivLeaving.label>美狐巡航撲翼機（發射中）</Miho_Shuttle_CivLeaving.label>
+  
+  <!-- EN: Miho Ornithopter (incoming) -->
+  <Miho_ShuttleIncoming.label>美狐軍用巡航撲翼機（下落中）</Miho_ShuttleIncoming.label>
+  
+  <!-- EN: Miho Ornithopter (leaving) -->
+  <Miho_ShuttleLeaving.label>美狐軍用巡航撲翼機（發射中）</Miho_ShuttleLeaving.label>
+  
+</LanguageData>

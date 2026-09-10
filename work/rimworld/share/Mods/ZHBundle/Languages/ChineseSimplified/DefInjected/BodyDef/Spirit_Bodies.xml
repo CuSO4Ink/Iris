@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: spirit -->
+  <VPER_SpiritBody.label>英灵</VPER_SpiritBody.label>
+  <!-- EN: left spirit arm -->
+  <VPER_SpiritBody.corePart.parts.left_spirit_arm.customLabel>左灵臂</VPER_SpiritBody.corePart.parts.left_spirit_arm.customLabel>
+  <!-- EN: left spirit hand -->
+  <VPER_SpiritBody.corePart.parts.left_spirit_arm.parts.left_spirit_hand.customLabel>左灵手</VPER_SpiritBody.corePart.parts.left_spirit_arm.parts.left_spirit_hand.customLabel>
+  <!-- EN: right spirit arm -->
+  <VPER_SpiritBody.corePart.parts.right_spirit_arm.customLabel>右灵臂</VPER_SpiritBody.corePart.parts.right_spirit_arm.customLabel>
+  <!-- EN: right spirit hand -->
+  <VPER_SpiritBody.corePart.parts.right_spirit_arm.parts.right_spirit_hand.customLabel>右灵手</VPER_SpiritBody.corePart.parts.right_spirit_arm.parts.right_spirit_hand.customLabel>
+  
+</LanguageData>

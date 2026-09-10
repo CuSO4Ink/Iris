@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: metal body -->
+  <VPE_MetalBody.label>金屬身體</VPE_MetalBody.label>
+  
+  <!-- EN: metal head -->
+  <VPE_MetalHead.label>金屬頭部</VPE_MetalHead.label>
+  
+  <!-- EN: rocky body -->
+  <VPE_RockBody.label>岩石身體</VPE_RockBody.label>
+  
+  <!-- EN: rocky head -->
+  <VPE_RockHead.label>岩石頭部</VPE_RockHead.label>
+  
+  <!-- EN: skeletal arm -->
+  <VPE_SkeletalArm.label>骷髏手臂</VPE_SkeletalArm.label>
+  
+  <!-- EN: skeletal leg -->
+  <VPE_SkeletalLeg.label>骷髏腿</VPE_SkeletalLeg.label>
+  
+  <!-- EN: skull -->
+  <VPE_Skull.label>骷髏頭</VPE_Skull.label>
+  
+</LanguageData>

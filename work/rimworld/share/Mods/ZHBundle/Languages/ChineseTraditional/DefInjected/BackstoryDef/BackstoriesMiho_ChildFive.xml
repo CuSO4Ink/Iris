@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Miho_Child_HuntFoxFive.title>美狐小獵手</Miho_Child_HuntFoxFive.title>
+  <Miho_Child_HuntFoxFive.titleShort>小獵手</Miho_Child_HuntFoxFive.titleShort>
+  <Miho_Child_HuntFoxFive.description>{PAWN_nameDef}年紀輕輕就成為了一名本領高強的獵手，但似乎沒人知道{PAWN_pronoun}究竟是因為天賦異稟還是經過不懈努力才達成這一步的。</Miho_Child_HuntFoxFive.description>
+
+  <Miho_Child_DesertFive.title>美狐沙漠兒童</Miho_Child_DesertFive.title>
+  <Miho_Child_DesertFive.titleShort>沙漠兒童</Miho_Child_DesertFive.titleShort>
+  <Miho_Child_DesertFive.description>{PAWN_nameDef}從小就在人跡罕至的沙漠中生活，略微極端的生活環境使{PAWN_pronoun}對炎熱有著異常高的忍耐力。</Miho_Child_DesertFive.description>
+
+</LanguageData>

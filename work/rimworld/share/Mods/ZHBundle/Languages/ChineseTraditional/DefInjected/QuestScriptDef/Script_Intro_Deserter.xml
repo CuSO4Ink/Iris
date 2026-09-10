@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>questDescription->한 바보같은 여우가 통신을 걸었습니다. 자초지종을 들어보니 술김에 탈영을 했다가 주변에 있는 제국군들을 화나게 한 모양입니다. 살려달라고 하긴 하는데 들어줄까요?</li>
+  -->
+  <Intro_MihoScav.questDescriptionRules.rulesStrings>
+    <li>questDescription->附近一個傻傻的美狐族士兵[asker_nameDef]向我們發來求救信號。據其所述，[asker_pronoun]因為酒喝得太多而在意識模糊的情況下離開了自己的營地，又誤打誤撞地闖入破碎帝國的據點並大鬧了一番，現在正被憤怒的帝國士兵們窮追不舍。[asker_pronoun]祈求得到保護並想加入位於[map_definite]的殖民地。\n\n警告：如果你選擇接奈[asker_nameDef]，你就選擇了與破碎帝國為敵！追擊而來的帝國士兵也會立即對你發起進攻。</li>
+  </Intro_MihoScav.questDescriptionRules.rulesStrings>
+  <!-- EN:
+    <li>questName->쏘지마시발</li>
+  -->
+  <Intro_MihoScav.questNameRules.rulesStrings>
+    <li>questName->等一下，別開槍！</li>
+  </Intro_MihoScav.questNameRules.rulesStrings>
+  <!-- EN: {BASETEXT}\n\nBecause you accepted [asker_nameDef], [asker_factionName] has become hostile.\n\nThe loyalty squad that is hunting [asker_objective] will arrive soon. -->
+  <Intro_MihoScav.root.nodes.PawnsArrive.customLetterText.slateRef>{BASETEXT}\n\n因為你選擇接奈[asker_nameDef]，破碎帝國現在視你為敵人。\n\n追捕[asker_objective]的帝國士兵即將來襲。</Intro_MihoScav.root.nodes.PawnsArrive.customLetterText.slateRef>
+  <!-- EN: {BASELABEL}: 화난 제국군 -->
+  <Intro_MihoScav.root.nodes.Delay.node.parms.customLetterLabel.value.slateRef>{BASELABEL}：追擊者</Intro_MihoScav.root.nodes.Delay.node.parms.customLetterLabel.value.slateRef>
+  <!-- EN: 적들이 옵니다.\n               -->
+  <Intro_MihoScav.root.nodes.Delay.node.parms.customLetterText.value.slateRef>負責追擊的帝國士兵已經抵達。</Intro_MihoScav.root.nodes.Delay.node.parms.customLetterText.value.slateRef>
+  
+</LanguageData>

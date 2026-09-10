@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: charge -->
+  <RK_Ability_LanceCharge.label>騎槍衝鋒</RK_Ability_LanceCharge.label>
+  <!-- EN: Short-range charge toward a hostile target (3-5 tiles). Stops at the last clear tile before obstacles. After landing, movement speed is reduced but melee hit chance increases. -->
+  <RK_Ability_LanceCharge.description>向附近的敵對目標發起短程衝鋒（3-5格內）。衝鋒會在目標身前未被阻擋的地格處停止。衝鋒結束後將暫時降低移動速度，但會提高近戰命中率，且首次近戰攻擊還會造成額外傷害。</RK_Ability_LanceCharge.description>
+  
+</LanguageData>

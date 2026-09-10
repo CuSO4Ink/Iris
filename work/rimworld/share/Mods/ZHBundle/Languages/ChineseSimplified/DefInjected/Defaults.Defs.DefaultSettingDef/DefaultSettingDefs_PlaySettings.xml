@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <AutoRebuild.label>default auto rebuild setting</AutoRebuild.label> -->
+  <AutoRebuild.label>默认自动重建设置</AutoRebuild.label>
+  <!-- <AutoHomeArea.label>default auto home area setting</AutoHomeArea.label> -->
+  <AutoHomeArea.label>默认自动添加居住区设置</AutoHomeArea.label>
+  <!-- <ZoneVisibility.label>show non-hidden zones by default</ZoneVisibility.label> -->
+  <ZoneVisibility.label>默认显示非隐藏区域</ZoneVisibility.label>
+  <!-- <ShowPlanetDayNight.label>show planet day/night by default</ShowPlanetDayNight.label> -->
+  <ShowPlanetDayNight.label>默认显示星球白天/夜晚</ShowPlanetDayNight.label>
+  <!-- <ShowWorldFeatures.label>show names of planet features by default</ShowWorldFeatures.label> -->
+  <ShowWorldFeatures.label>默认显示星球特征的名称</ShowWorldFeatures.label>
+  <!-- <LockNorthUp.label>lock planet view with north up by default</LockNorthUp.label> -->
+  <LockNorthUp.label>默认将星球视图锁定为向北</LockNorthUp.label>
+  <!-- <ShowImportantExpandingIcons.label>show expanding icons for important planet tiles by default</ShowImportantExpandingIcons.label> -->
+  <ShowImportantExpandingIcons.label>默认显示重要星球图块的展开图标</ShowImportantExpandingIcons.label>
+  <!-- <ShowBasesExpandingIcons.label>show expanding icons for faction bases on planet by default</ShowBasesExpandingIcons.label> -->
+  <ShowBasesExpandingIcons.label>默认显示星球上派系基地的展开图标</ShowBasesExpandingIcons.label>
+  <!-- <ShowExpandingLandmarks.label>show expanding icons for landmarks by default</ShowExpandingLandmarks.label> -->
+  <ShowExpandingLandmarks.label>默认显示地标的展开图标</ShowExpandingLandmarks.label>
+
+
+</LanguageData>

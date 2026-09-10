@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VPER_Runesmith.tab>灵能</VPER_Runesmith.tab>
+  <!-- EN: runesmith -->
+  <VPER_Runesmith.label>符文匠</VPER_Runesmith.label>
+  <!-- EN: Runesmiths create Runecircles, which they Invoke from a distance to perform powerful effects that buff allies or destroy enemies. -->
+  <VPER_Runesmith.description>符文匠善于打造卢恩魔圈，他们可以远程引动这些卢恩魔圈以施展强大的效果，为盟友提供增益或摧毁敌人。</VPER_Runesmith.description>
+  <!-- EN: Runesmiths make use of ancient nordic runecircles, carving them into the ground and imbuing them with psychic power. They may then call upon the powers imbued within the runes, calling upon one of eight physical or mental runes to shape the forces of nature, or engrave ancient power into their companions. -->
+  <VPER_Runesmith.tooltip>符文匠利用古代北欧卢恩符文构造魔圈，将其雕刻于地面并赋予其心灵力量。他们可召唤符文中蕴含的力量，选择八种物理或精神符文之一，以塑造自然之力，或将古代力量铭刻于同伴。</VPER_Runesmith.tooltip>
+  
+</LanguageData>

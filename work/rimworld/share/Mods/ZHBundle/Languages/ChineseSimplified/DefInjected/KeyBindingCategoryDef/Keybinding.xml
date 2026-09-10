@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Performance Optimizer -->
+  <PerformanceOptimizer.label>性能优化器</PerformanceOptimizer.label>
+  <!-- EN: Keybinds for Performance Optimizer. -->
+  <PerformanceOptimizer.description>性能优化器的按键绑定。</PerformanceOptimizer.description>
+  
+</LanguageData>

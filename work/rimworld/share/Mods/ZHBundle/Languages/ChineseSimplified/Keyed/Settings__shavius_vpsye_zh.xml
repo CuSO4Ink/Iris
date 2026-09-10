@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Vanilla Psycasts Expanded -->
+  <VanillaPsycastsExpanded>原版灵能扩展</VanillaPsycastsExpanded>
+    <!-- EN: Psycaster XP per Psyfocus % gained -->
+  <VPE.XPPerPercent>每百分比的精神力获得的灵能经验</VPE.XPPerPercent>
+    <!-- EN: Basilicus Bestower Psycaster spawn chance -->
+  <VPE.PsycasterSpawnBaseChance>「布施者」巴西里库斯的灵能者生成率</VPE.PsycasterSpawnBaseChance>
+    <!-- EN: Basilicus Bestower Psycaster strength factor -->
+  <VPE.PsycasterSpawnAdditional>「布施者」巴西里库斯的灵能者强度</VPE.PsycasterSpawnAdditional>
+    <!-- EN: Allow shrinking? -->
+  <VPE.AllowShrink>允许缩小按钮</VPE.AllowShrink>
+    <!-- EN: Allow psycast gizmos to be shrunken to half size when there are a lot of them. -->
+  <VPE.AllowShrink.Desc>当心灵能力的按钮过多时将它们缩小到一半大小。</VPE.AllowShrink.Desc>
+    <!-- EN: UI small mode -->
+  <VPE.SmallMode>精简UI模式</VPE.SmallMode>
+    <!-- EN: In small mode, the stats are moved to a tooltip and the psysets are moved to a separate dialog. If checked, this will force small mode. If X'ed, this will ban small mode. If partial (yellow line), this will allow default behavior (small mode will be active if your vertical resolution is less than 1080). -->
+  <VPE.SmallMode.Desc>精简UI模式下，属性会被移到提示框里，而技能组会被移到单独的窗口。如果勾上会强制开启精简UI，如果差掉会强制关闭，如果标为黄线则会在垂直分辨率低于1000时自动开启。</VPE.SmallMode.Desc>
+    <!-- EN: Mute Skipdoor Sound -->
+  <VPE.MuteSkipdoor>不播放折越门的效果音</VPE.MuteSkipdoor>
+    <!-- EN: Maximum psycaster level -->
+  <VPE.MaxLevel>最高灵能等级</VPE.MaxLevel>
+    <!-- EN: Scale base psyfocus gain with stat points? -->
+  <VPE.ChangeFocusGain>允许加强精神力获取效率</VPE.ChangeFocusGain>
+    <!-- EN: If enabled, then the base psyfocus gain before any foci can be increased by spending stat points. -->
+  <VPE.ChangeFocusGain.Desc>打开后，你可以用技能点强化通过任何灵媒获得精神力的量。</VPE.ChangeFocusGain.Desc>
+</LanguageData>

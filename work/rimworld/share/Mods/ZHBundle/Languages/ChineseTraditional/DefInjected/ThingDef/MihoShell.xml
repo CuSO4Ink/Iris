@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 패딩 -->
+  <Miho_Apparel_Shell_Padding.label>美狐棉服</Miho_Apparel_Shell_Padding.label>
+  <!-- EN: 수천년전 지구에서 유행했던 패딩입니다. 무척 따뜻합니다. -->
+  <Miho_Apparel_Shell_Padding.description>適合美狐族穿戴的棉服，即使在最寒冷的溫度中也能保持溫暖。</Miho_Apparel_Shell_Padding.description>
+  
+  <!-- EN: 미호 군용 코트 -->
+  <Miho_Apparel_Shell_PMC.label>美狐軍用外套</Miho_Apparel_Shell_PMC.label>
+  <!-- EN: 방편기능이 있는 튼튼한 코트 입니다. -->
+  <Miho_Apparel_Shell_PMC.description>結實耐用的美狐族軍用鬥篷，穿起來相當暖和。</Miho_Apparel_Shell_PMC.description>
+  
+  <!-- EN: 미호 소서리스 망토 -->
+  <Miho_Apparel_Shell_Sorceress.label>美狐術士鬥篷</Miho_Apparel_Shell_Sorceress.label>
+  <!-- EN: 체내 메카나이트들을 활발하게 만들어주는 고급 망토입니다. -->
+  <Miho_Apparel_Shell_Sorceress.description>可以活化體內機械分子的華麗美狐族鬥篷，能夠有效強化穿戴者的心靈能力。</Miho_Apparel_Shell_Sorceress.description>
+  
+  <!-- EN: 미호 겨울 판초 -->
+  <Miho_Apparel_Shell_Winter.label>美狐禦寒披肩</Miho_Apparel_Shell_Winter.label>
+  <!-- EN: 미호들의 전통 복장 입니다. 반문의 여지없이 따뜻한 디자인 입니다. -->
+  <Miho_Apparel_Shell_Winter.description>結實耐用的美狐族傳統衣物，穿起來相當暖和。</Miho_Apparel_Shell_Winter.description>
+  
+</LanguageData>

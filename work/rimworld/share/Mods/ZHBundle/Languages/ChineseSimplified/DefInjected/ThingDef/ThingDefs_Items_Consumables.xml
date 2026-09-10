@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi combat hormone jelly -->
+  <VV_CombatHormoneJelly.label>薇薇战斗激素果冻</VV_CombatHormoneJelly.label>
+  <!-- EN: It is a jelly made by chemically concentrating and processing mead. It has a very high alcohol content, and when consumed by vivi, it temporary enhances their combat abilities and makes them fearless of fire, but it also increases their aggressiveness and makes them feel fatigue and hunger quickly.\n\nInvented when the vivis experimented with drinking leftover honey mead to use it up; among ordinary humans it's also sold as a pungent, unusual-tasting snack. -->
+  <VV_CombatHormoneJelly.description>一种通过化学浓缩和加工蜂蜜酒制成的果冻。它的酒精含量非常高，当被薇薇食用时，会增强他们的战斗能力，使他们不再恐惧火焰，但也会增加他们的攻击性，使他们更易感到疲劳和饥饿。\n\n对于非薇薇来说，也能作为一种具有刺激性和独特味道的零食。</VV_CombatHormoneJelly.description>
+  <!-- EN: Take {0} -->
+  <VV_CombatHormoneJelly.ingestible.ingestCommandString>使用{0}</VV_CombatHormoneJelly.ingestible.ingestCommandString>
+  <!-- EN: Taking {0}. -->
+  <VV_CombatHormoneJelly.ingestible.ingestReportString>使用{0}中</VV_CombatHormoneJelly.ingestible.ingestReportString>
+  
+  <!-- EN: vivi filtered honey -->
+  <VV_FilteredHoney.label>薇薇过滤蜂蜜</VV_FilteredHoney.label>
+  <!-- EN: pure honey that has been refined to remove unnecessary moisture and impurities. It contains a large amount of nutrients and is used as a staple food for vivis.\n\nIt contains similar ingredients to ambrosia and was also called nectar in ancient times. -->
+  <VV_FilteredHoney.description>经过精制以去除水分和杂质的高纯度蜂蜜。它含有较高的营养成分，是薇薇的主食。\n\n它含有与仙馐果相似的成分，在古代也被称为果蜜。</VV_FilteredHoney.description>
+  
+  <!-- EN: warm flowering tea -->
+  <VV_FloralHotTea.label>热花茶</VV_FloralHotTea.label>
+  <!-- EN: A tea made by steaming heating petals and a bit of honey. Drinking it makes the body feel warm, reducing the sensation of cold.\n\nBecause of the unique properties of the petals, it maintains warmth regardless of stored temperature. -->
+  <VV_FloralHotTea.description>一种用加热的花瓣和少量蜂蜜蒸馏成的茶。饮用它可以使身体感到温暖，抵御严寒。由于花瓣的独特特性，无论储存温度如何，它都能保持温暖。</VV_FloralHotTea.description>
+  <!-- EN: Drink {0} -->
+  <VV_FloralHotTea.ingestible.ingestCommandString>饮用{0}</VV_FloralHotTea.ingestible.ingestCommandString>
+  <!-- EN: Drinking {0}. -->
+  <VV_FloralHotTea.ingestible.ingestReportString>饮用{0}中</VV_FloralHotTea.ingestible.ingestReportString>
+  
+  <!-- EN: ice flowering tea -->
+  <VV_FloralIceTea.label>冰花茶</VV_FloralIceTea.label>
+  <!-- EN: A tea made by steaming cooling petals and a bit of honey. Drinking it makes the body feel cool, reducing the sensation of heat.\n\nBecause of the unique properties of the petals, it maintains its coolness regardless of stored temperature. -->
+  <VV_FloralIceTea.description>一种用冷却的花瓣和少量蜂蜜蒸制成的茶。饮用它可以使身体感到凉爽，抵御酷热。由于花瓣的独特特性，无论储存温度如何，它都能保持凉爽。</VV_FloralIceTea.description>
+  <!-- EN: Drink {0} -->
+  <VV_FloralIceTea.ingestible.ingestCommandString>饮用{0}</VV_FloralIceTea.ingestible.ingestCommandString>
+  <!-- EN: Drinking {0}. -->
+  <VV_FloralIceTea.ingestible.ingestReportString>饮用{0}中</VV_FloralIceTea.ingestible.ingestReportString>
+  
+  <!-- EN: aromatic flowering tea -->
+  <VV_FloralMilkTea.label>奶花茶</VV_FloralMilkTea.label>
+  <!-- EN: A tea made by steaming perfuming petals and a bit of honey or milk.\n\nDrinking it makes your body give off a floral scent for a while, lifting mood and aiding sleep and psychic focus. -->
+  <VV_FloralMilkTea.description>将芳香的花瓣浸泡入牛奶制成的茶。饮用它可以使身体在一定时间内散发花香，改善情绪，有益睡眠。</VV_FloralMilkTea.description>
+  <!-- EN: Drink {0} -->
+  <VV_FloralMilkTea.ingestible.ingestCommandString>饮用{0}</VV_FloralMilkTea.ingestible.ingestCommandString>
+  <!-- EN: Drinking {0}. -->
+  <VV_FloralMilkTea.ingestible.ingestReportString>饮用{0}中</VV_FloralMilkTea.ingestible.ingestReportString>
+  
+  <!-- EN: honey pollen cake -->
+  <VV_HoneyPollenCake.label>蜜粉蛋糕</VV_HoneyPollenCake.label>
+  <!-- EN: a cake made from a large amount of pollen and honey, a staple food for vivis. Since it is divided into small pieces, it's good for feeding to baby vivis, and young Vivis receive beneficial effects for learning when they eat it.\n\nHumans can eat it too, but they usually don't prefer this type of food. -->
+  <VV_HoneyPollenCake.description>一种由大量花粉和蜂蜜制成的蛋糕，是薇薇的主食。由于它被切成小块，也能够用于喂养婴儿薇薇，它会对年轻的薇薇的学习产生有益的影响。人类也可以吃蜜粉蛋糕，但他们通常不喜欢这种食物。</VV_HoneyPollenCake.description>
+  
+  <!-- EN: honeywater fruit -->
+  <VV_HoneyWaterFruit.label>蜜水果</VV_HoneyWaterFruit.label>
+  <!-- EN: a droplet-shaped fruit that periodically grows on Waterdrops. Resembling the shape of a waterdrops flower, it has a translucent thin skin filled with fructose-rich juice, making it a great snack for the vivi.\nIt's extremely delicate and easily damaged, making it unsuitable for cooking, but it's tasty when eaten raw and can be preserved for a long time if kept intact.\nWhen infused with a small amount of mana, it glows - so the Vivi sometimes preserve the emptied fruits and use them as light sources. -->
+  <VV_HoneyWaterFruit.description>一种由滴水兰周期性长成的水滴形状水果。它和水滴兰的花很想，覆有一层半透明薄膜，内里充满了甜甜的、富含果糖的汁液。\n蜜水果精致而很容易受损，不适于烹饪，但生食十分美味，能以得当的方式保存很久。\n当注入少量魔能时，蜜水果会发光，所以薇薇们有时候也会将空的蜜水果加工用作照明。</VV_HoneyWaterFruit.description>
+  
+  <!-- EN: vivi pollen -->
+  <VV_Pollen.label>薇薇花粉</VV_Pollen.label>
+  <!-- EN: Collected pollen from flowers and various plants. Although it's not eaten by typical humans, it contains a bit of mana and nutrients necessary for vivis. -->
+  <VV_Pollen.description>薇薇从花草中采集来的花粉。虽然它不是典型的人类食物，但它含有少量魔能和薇薇所需的营养。</VV_Pollen.description>
+  
+  <!-- EN: vivi raw honey -->
+  <VV_RawHoney.label>薇薇蜂蜜</VV_RawHoney.label>
+  <!-- EN: Honey collected by vivi from flowers or plants. The wax part is inedible and it is somewhat mixed with impurities, but it still tastes good. -->
+  <VV_RawHoney.description>薇薇从花草中采集来的蜂蜜。蜂蜡的部分不能食用，而且含有一些杂质，但味道很好。</VV_RawHoney.description>
+  
+  <!-- EN: royal jelly -->
+  <VV_RoyalJelly.label>蜂王浆</VV_RoyalJelly.label>
+  <!-- EN: jelly made from gathering rare ingredients from large amounts of vivi cream. It's not very tasty on its own, so a bit of honey is added. When child vivis consume it, they receive beneficial effects for learning, and child vivis who continuously ingest it grow into royal vivis.\n\nAdult vivis who eat it do not become royal vivis, but if consumed regularly, their lifespan can be slightly extended and aging diseases can be prevented. -->
+  <VV_RoyalJelly.description>从大量薇薇乳脂中收集稀有成分制成的果冻。它本身不太好吃，所以加了一点蜂蜜。当薇薇儿童食用它时，他们会获得学习增益，不断摄入它的薇薇儿童会成长为皇家薇薇。\n\n食用它的成年薇薇不会成为皇家薇薇，但如果经常食用，可以延长他们的寿命，也可以预防衰老与疾病。</VV_RoyalJelly.description>
+  
+</LanguageData>

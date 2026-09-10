@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: harvest flowers -->
+  <VPE_HarvestFlowerZone.label>收割花卉</VPE_HarvestFlowerZone.label>
+  <!-- EN: harvesting flowers -->
+  <VPE_HarvestFlowerZone.gerund>收割花卉</VPE_HarvestFlowerZone.gerund>
+  <!-- EN: harvest flowers -->
+  <VPE_HarvestFlowerZone.verb>收割花卉</VPE_HarvestFlowerZone.verb>
+  
+  <!-- EN: sow flowers -->
+  <VPE_SowFlowerZone.label>播种花卉</VPE_SowFlowerZone.label>
+  <!-- EN: sowing flowers -->
+  <VPE_SowFlowerZone.gerund>播种花卉</VPE_SowFlowerZone.gerund>
+  <!-- EN: sow flowers -->
+  <VPE_SowFlowerZone.verb>播种花卉</VPE_SowFlowerZone.verb>
+  
+</LanguageData>

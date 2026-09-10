@@ -26,5 +26,5 @@ workshop_ids.txt(258 个工坊 mod,按加载顺序)。
   mod 或目标 mod 大改版时,对应补丁静默不生效(FindMod 不命中=跳过),不会崩。
 - ZHBundle 为纯翻译,独立可用。
 
-ZHBundle(聚合汉化)不随本仓库分发:它合并自 71 个第三方翻译包,公开仓库存在版权风险;
-请通过安装套件 zip(rimworld-modset-20260910.zip)或单独渠道获取后放入 Mods\ 目录。
+ZHBundle(聚合汉化,合并自 71 个翻译包)已随本仓库 Mods\ 分发,经所有者确认承担再分发责任;
+安装时把 Mods\ZHBundle 整个文件夹放入游戏 Mods\ 目录即可。

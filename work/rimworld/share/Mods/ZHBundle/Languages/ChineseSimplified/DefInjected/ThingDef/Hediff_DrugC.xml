@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 초능력 개화 은단 (천상술사) -->
+  <Miho_PositiveFlower_ChildCelestial.label>秘灵花丹（天阳术士）</Miho_PositiveFlower_ChildCelestial.label>
+  <!-- EN: 초능력을 개화해주는 은단입니다. 이미 초능력을 지닌 미호는 먹어도 효과가 없습니다. -->
+  <Miho_PositiveFlower_ChildCelestial.description>专为美狐族研制的奇异丹药，服用后可以激发“天阳术士”灵能特职。对已拥有灵能特职的美狐族不起作用。\n\n注意：秘灵花丹服用后并非即时生效，请耐心等待一段时间。</Miho_PositiveFlower_ChildCelestial.description>
+  <!-- EN: Inject {0} -->
+  <Miho_PositiveFlower_ChildCelestial.ingestible.ingestCommandString>服用{0}</Miho_PositiveFlower_ChildCelestial.ingestible.ingestCommandString>
+  <!-- EN: Injecting {0}. -->
+  <Miho_PositiveFlower_ChildCelestial.ingestible.ingestReportString>正在服用{0}。</Miho_PositiveFlower_ChildCelestial.ingestible.ingestReportString>
+  
+  <!-- EN: 초능력 개화 은단 (사냥꾼) -->
+  <Miho_PositiveFlower_ChildHuntress.label>秘灵花丹（猎手）</Miho_PositiveFlower_ChildHuntress.label>
+  <!-- EN: 초능력을 개화해주는 은단입니다. 이미 초능력을 지닌 미호는 먹어도 효과가 없습니다. -->
+  <Miho_PositiveFlower_ChildHuntress.description>专为美狐族研制的奇异丹药，服用后可以激发“猎手”灵能特职。对已拥有灵能特职的美狐族不起作用。\n\n注意：秘灵花丹服用后并非即时生效，请耐心等待一段时间。</Miho_PositiveFlower_ChildHuntress.description>
+  <!-- EN: Inject {0} -->
+  <Miho_PositiveFlower_ChildHuntress.ingestible.ingestCommandString>服用{0}</Miho_PositiveFlower_ChildHuntress.ingestible.ingestCommandString>
+  <!-- EN: Injecting {0}. -->
+  <Miho_PositiveFlower_ChildHuntress.ingestible.ingestReportString>正在服用{0}。</Miho_PositiveFlower_ChildHuntress.ingestible.ingestReportString>
+  
+  <!-- EN: 초능력 개화 은단 (무녀) -->
+  <Miho_PositiveFlower_ChildShamaness.label>秘灵花丹（巫女）</Miho_PositiveFlower_ChildShamaness.label>
+  <!-- EN: 초능력을 개화해주는 은단입니다. 이미 초능력을 지닌 미호는 먹어도 효과가 없습니다. -->
+  <Miho_PositiveFlower_ChildShamaness.description>专为美狐族研制的奇异丹药，服用后可以激发“巫女”灵能特职。对已拥有灵能特职的美狐族不起作用。\n\n注意：秘灵花丹服用后并非即时生效，请耐心等待一段时间。</Miho_PositiveFlower_ChildShamaness.description>
+  <!-- EN: Inject {0} -->
+  <Miho_PositiveFlower_ChildShamaness.ingestible.ingestCommandString>服用{0}</Miho_PositiveFlower_ChildShamaness.ingestible.ingestCommandString>
+  <!-- EN: Injecting {0}. -->
+  <Miho_PositiveFlower_ChildShamaness.ingestible.ingestReportString>正在服用{0}。</Miho_PositiveFlower_ChildShamaness.ingestible.ingestReportString>
+  
+  <!-- EN: 초능력 개화 은단 (소환사) -->
+  <Miho_PositiveFlower_ChildSummoner.label>秘灵花丹（唤灵师）</Miho_PositiveFlower_ChildSummoner.label>
+  <!-- EN: 초능력을 개화해주는 은단입니다. 이미 초능력을 지닌 미호는 먹어도 효과가 없습니다. -->
+  <Miho_PositiveFlower_ChildSummoner.description>专为美狐族研制的奇异丹药，服用后可以激发“唤灵师”灵能特职。对已拥有灵能特职的美狐族不起作用。\n\n注意：秘灵花丹服用后并非即时生效，请耐心等待一段时间。</Miho_PositiveFlower_ChildSummoner.description>
+  <!-- EN: Inject {0} -->
+  <Miho_PositiveFlower_ChildSummoner.ingestible.ingestCommandString>服用{0}</Miho_PositiveFlower_ChildSummoner.ingestible.ingestCommandString>
+  <!-- EN: Injecting {0}. -->
+  <Miho_PositiveFlower_ChildSummoner.ingestible.ingestReportString>正在服用{0}。</Miho_PositiveFlower_ChildSummoner.ingestible.ingestReportString>
+  
+  <!-- EN: 초능력 개화 은단 (무사) -->
+  <Miho_PositiveFlower_ChildTemptress.label>秘灵花丹（灵侍）</Miho_PositiveFlower_ChildTemptress.label>
+  <!-- EN: 초능력을 개화해주는 은단입니다. 이미 초능력을 지닌 미호는 먹어도 효과가 없습니다. -->
+  <Miho_PositiveFlower_ChildTemptress.description>专为美狐族研制的奇异丹药，服用后可以激发“灵侍”灵能特职。对已拥有灵能特职的美狐族不起作用。\n\n注意：秘灵花丹服用后并非即时生效，请耐心等待一段时间。</Miho_PositiveFlower_ChildTemptress.description>
+  <!-- EN: Inject {0} -->
+  <Miho_PositiveFlower_ChildTemptress.ingestible.ingestCommandString>服用{0}</Miho_PositiveFlower_ChildTemptress.ingestible.ingestCommandString>
+  <!-- EN: Injecting {0}. -->
+  <Miho_PositiveFlower_ChildTemptress.ingestible.ingestReportString>正在服用{0}。</Miho_PositiveFlower_ChildTemptress.ingestible.ingestReportString>
+  
+  <!-- EN: 초능력 개화 은단 (땜장이) -->
+  <Miho_PositiveFlower_ChildTinker.label>秘灵花丹（驭械士）</Miho_PositiveFlower_ChildTinker.label>
+  <!-- EN: 초능력을 개화해주는 은단입니다. 이미 초능력을 지닌 미호는 먹어도 효과가 없습니다. -->
+  <Miho_PositiveFlower_ChildTinker.description>专为美狐族研制的奇异丹药，服用后可以激发“驭械士”灵能特职。对已拥有灵能特职的美狐族不起作用。\n\n注意：秘灵花丹服用后并非即时生效，请耐心等待一段时间。</Miho_PositiveFlower_ChildTinker.description>
+  <!-- EN: Inject {0} -->
+  <Miho_PositiveFlower_ChildTinker.ingestible.ingestCommandString>服用{0}</Miho_PositiveFlower_ChildTinker.ingestible.ingestCommandString>
+  <!-- EN: Injecting {0}. -->
+  <Miho_PositiveFlower_ChildTinker.ingestible.ingestReportString>正在服用{0}。</Miho_PositiveFlower_ChildTinker.ingestible.ingestReportString>
+  
+</LanguageData>

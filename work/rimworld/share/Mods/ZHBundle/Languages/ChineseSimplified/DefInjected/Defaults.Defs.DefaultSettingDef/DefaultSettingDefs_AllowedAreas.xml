@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <ChildrenInheritAreaFromParent.label>children inherit area restriction from parent when born</ChildrenInheritAreaFromParent.label> -->
+  <ChildrenInheritAreaFromParent.label>儿童出生时从父母继承区域限制</ChildrenInheritAreaFromParent.label>
+  <!-- <AnimalsInheritAreaFromParent.label>animals inherit area restriction from parent when born</AnimalsInheritAreaFromParent.label> -->
+  <AnimalsInheritAreaFromParent.label>动物出生时从父母继承区域限制</AnimalsInheritAreaFromParent.label>
+
+
+</LanguageData>

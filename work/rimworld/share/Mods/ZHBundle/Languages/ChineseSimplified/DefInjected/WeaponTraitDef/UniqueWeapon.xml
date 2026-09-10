@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 날개안정분리소이탄 -->
+  <Miho_APFSDSRounds.label>尾翼稳定脱壳穿甲弹</Miho_APFSDSRounds.label>
+  <!-- EN: 물리적 타격력이 줄어드는 대신, 압도적인 관통력과 사거리, 장거리 명중률을 얻은 탄 입니다. -->
+  <Miho_APFSDSRounds.description>此武器发射特殊的尾翼稳定脱壳穿甲弹药，以牺牲伤害为代价换来了更出色的穿甲能力、射程和远距离精度。</Miho_APFSDSRounds.description>
+  <!-- EN: 날개달린 -->
+  <Miho_APFSDSRounds.traitAdjectives.0>穿甲</Miho_APFSDSRounds.traitAdjectives.0>
+  <!-- EN: 꿰뚫는 -->
+  <Miho_APFSDSRounds.traitAdjectives.1>贯通</Miho_APFSDSRounds.traitAdjectives.1>
+  <!-- EN: 안정적인 -->
+  <Miho_APFSDSRounds.traitAdjectives.2>稳定</Miho_APFSDSRounds.traitAdjectives.2>
+  <!-- EN: 멀리가는 -->
+  <Miho_APFSDSRounds.traitAdjectives.3>远射</Miho_APFSDSRounds.traitAdjectives.3>
+  
+  <!-- EN: 불타는 플라즈마 -->
+  <Miho_FieryPlasma.label>燃烧等离子弹</Miho_FieryPlasma.label>
+  <!-- EN: 이 플라즈마 혼합물은 주변을 쉽게 연소시키는 특징을 가지고 있습니다. -->
+  <Miho_FieryPlasma.description>此武器采用燃烧等离子电池作为弹药，命中时有几率点燃目标。</Miho_FieryPlasma.description>
+  <!-- EN: 불타는 -->
+  <Miho_FieryPlasma.traitAdjectives.0>爆燃</Miho_FieryPlasma.traitAdjectives.0>
+  <!-- EN: 소각하는 -->
+  <Miho_FieryPlasma.traitAdjectives.1>烧却</Miho_FieryPlasma.traitAdjectives.1>
+  <!-- EN: 태우는 -->
+  <Miho_FieryPlasma.traitAdjectives.2>烧焦</Miho_FieryPlasma.traitAdjectives.2>
+  
+  <!-- EN: 메카나이트-아케인탄 -->
+  <Miho_FoxfireRounds.label>秘灵弹</Miho_FoxfireRounds.label>
+  <!-- EN: 여우들의 마법이 담긴 메카나이트 탄환을 발사합니다. -->
+  <Miho_FoxfireRounds.description>此武器发射注入了纳米机械和美狐族心灵能量的弹药。</Miho_FoxfireRounds.description>
+  <!-- EN: 여우의 -->
+  <Miho_FoxfireRounds.traitAdjectives.0>美狐</Miho_FoxfireRounds.traitAdjectives.0>
+  <!-- EN: 요정의 -->
+  <Miho_FoxfireRounds.traitAdjectives.1>秘灵</Miho_FoxfireRounds.traitAdjectives.1>
+  <!-- EN: 마법의 -->
+  <Miho_FoxfireRounds.traitAdjectives.2>法术</Miho_FoxfireRounds.traitAdjectives.2>
+  <!-- EN: 초능력 -->
+  <Miho_FoxfireRounds.traitAdjectives.3>灵能</Miho_FoxfireRounds.traitAdjectives.3>
+  
+  <!-- EN: 고에너지 플라즈마 -->
+  <Miho_HeavyPlasma.label>高能等离子弹</Miho_HeavyPlasma.label>
+  <!-- EN: 에너지가 높다는건 더욱 치명적이란것을 의미합니다. -->
+  <Miho_HeavyPlasma.description>此武器采用高能等离子电池作为弹药，以增加远程冷却时间为代价，换来更高的伤害与精度。</Miho_HeavyPlasma.description>
+  <!-- EN: 무거운 -->
+  <Miho_HeavyPlasma.traitAdjectives.0>重击</Miho_HeavyPlasma.traitAdjectives.0>
+  <!-- EN: 고열량의 -->
+  <Miho_HeavyPlasma.traitAdjectives.1>高能</Miho_HeavyPlasma.traitAdjectives.1>
+  <!-- EN: 중금속 -->
+  <Miho_HeavyPlasma.traitAdjectives.2>重金属</Miho_HeavyPlasma.traitAdjectives.2>
+  
+  <!-- EN: 말랑 플라즈마 -->
+  <Miho_MeltyPlasma.label>强蚀等离子弹</Miho_MeltyPlasma.label>
+  <!-- EN: 끈끈한 플라즈마로 방어구를 더욱 효과적으로 녹일 수 있습니다. -->
+  <Miho_MeltyPlasma.description>此武器采用浓缩等离子电池作为弹药，命中时可以迅速地熔解目标身上的装甲。</Miho_MeltyPlasma.description>
+  <!-- EN: 끈끈한 -->
+  <Miho_MeltyPlasma.traitAdjectives.0>强蚀</Miho_MeltyPlasma.traitAdjectives.0>
+  <!-- EN: 잘붙는 -->
+  <Miho_MeltyPlasma.traitAdjectives.1>浓缩</Miho_MeltyPlasma.traitAdjectives.1>
+  <!-- EN: 끈적한 -->
+  <Miho_MeltyPlasma.traitAdjectives.2>蚀尽</Miho_MeltyPlasma.traitAdjectives.2>
+  
+  <!-- EN: 플라즈마탄 -->
+  <Miho_PlasmaRounds.label>等离子弹</Miho_PlasmaRounds.label>
+  <!-- EN: 높은 에너지를 저장하고 있는 전지를 발사해 플라즈마 폭발을 일으킵니다. -->
+  <Miho_PlasmaRounds.description>此武器采用等离子电池作为弹药，命中时可以快速地熔解目标身上的装甲，且会对建筑造成额外伤害。</Miho_PlasmaRounds.description>
+  <!-- EN: 태양의 -->
+  <Miho_PlasmaRounds.traitAdjectives.0>天阳</Miho_PlasmaRounds.traitAdjectives.0>
+  <!-- EN: 뜨거운 -->
+  <Miho_PlasmaRounds.traitAdjectives.1>灼热</Miho_PlasmaRounds.traitAdjectives.1>
+  <!-- EN: 증발시키는 -->
+  <Miho_PlasmaRounds.traitAdjectives.2>蒸发</Miho_PlasmaRounds.traitAdjectives.2>
+  
+  <!-- EN: 열화우라늄탄 -->
+  <Miho_UraniumRounds.label>贫铀弹</Miho_UraniumRounds.label>
+  <!-- EN: 여우들의 소이탄이 아니라 열화우라늄을 발사하도록 개조되었습니다. -->
+  <Miho_UraniumRounds.description>此武器发射用贫铀合金制成的弹药，提高了伤害和穿甲能力。</Miho_UraniumRounds.description>
+  <!-- EN: 물리적 -->
+  <Miho_UraniumRounds.traitAdjectives.0>重击</Miho_UraniumRounds.traitAdjectives.0>
+  <!-- EN: 충격적 -->
+  <Miho_UraniumRounds.traitAdjectives.1>冲击</Miho_UraniumRounds.traitAdjectives.1>
+  <!-- EN: 물리 -->
+  <Miho_UraniumRounds.traitAdjectives.2>物理</Miho_UraniumRounds.traitAdjectives.2>
+  
+</LanguageData>

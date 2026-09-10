@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Rimatomics research bench -->
+  <NuclearResearchBench.label>「邊緣核能」研究台</NuclearResearchBench.label>
+  <!-- EN: Contains Rimatomics research projects. Requires power. -->
+  <NuclearResearchBench.description>用於「邊緣核能」的研究項目。需要消耗電力。</NuclearResearchBench.description>
+  
+  <!-- EN: Plutonium Processor -->
+  <PlutoniumProcessor.label>鈽分離器</PlutoniumProcessor.label>
+  <!-- EN: A machine that uses chemicals to separate fissionable plutonium from spent nuclear fuel. -->
+  <PlutoniumProcessor.description>使用化學法從核廢料中分離出鈽元素。</PlutoniumProcessor.description>
+  
+  <!-- EN: Research Reactor -->
+  <ResearchReactor.label>研究用核反應堆</ResearchReactor.label>
+  <!-- EN: Research reactor. -->
+  <ResearchReactor.description>研究用核反應堆。</ResearchReactor.description>
+  
+  <!-- EN: Rimatomics machining table -->
+  <TableRimatomicsMachining.label>「邊緣核能」加工台</TableRimatomicsMachining.label>
+  <!-- EN: A work station for assembling Rimatomics technologies -->
+  <TableRimatomicsMachining.description>「邊緣核能」產品裝配工作台。</TableRimatomicsMachining.description>
+  
+  <!-- EN: Weapons Research Bench -->
+  <WeaponsBench.label>能量武器實驗台</WeaponsBench.label>
+  <!-- EN: Weapons research bench. -->
+  <WeaponsBench.description>能量武器實驗台。</WeaponsBench.description>
+  
+</LanguageData>

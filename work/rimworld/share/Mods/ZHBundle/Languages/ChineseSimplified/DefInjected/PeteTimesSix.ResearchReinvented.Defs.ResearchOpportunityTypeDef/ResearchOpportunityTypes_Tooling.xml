@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: technique exploration -->
+  <AnalyseProductionFacility.header_Direct>工艺探索</AnalyseProductionFacility.header_Direct>
+  <!-- EN: Passively practice with differing tools and methodologies while performing any work at {0}.\n\nAffected by (while working here):\nWorker speed stat (by recipe type)\nWorker research speed stat -->
+  <AnalyseProductionFacility.shortDesc_Direct>在 {0} 工作时，使用不同工具与方法被动练习。\n\n受影响（在此处工作时）：\n按配方类型的工作速度属性\n研究速度属性</AnalyseProductionFacility.shortDesc_Direct>
+
+</LanguageData>

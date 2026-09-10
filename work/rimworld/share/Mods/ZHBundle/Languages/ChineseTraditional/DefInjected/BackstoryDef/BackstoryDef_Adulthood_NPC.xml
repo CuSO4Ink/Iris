@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: [PAWN_nameDef] is a architect in vivi hive. -->
+  <VV_ViviArchitect.description>[PAWN_nameDef]是薇薇蜂巢中的一名建筑師。</VV_ViviArchitect.description>
+  <!-- EN: vivi architect -->
+  <VV_ViviArchitect.title>薇薇建筑師</VV_ViviArchitect.title>
+  <!-- EN: architect -->
+  <VV_ViviArchitect.titleShort>建筑師</VV_ViviArchitect.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a cook in vivi hive. -->
+  <VV_ViviCook.description>[PAWN_nameDef]是薇薇蜂巢中的一名廚師。</VV_ViviCook.description>
+  <!-- EN: vivi cook -->
+  <VV_ViviCook.title>薇薇廚師</VV_ViviCook.title>
+  <!-- EN: cook -->
+  <VV_ViviCook.titleShort>廚師</VV_ViviCook.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a firefighter in vivi hive. -->
+  <VV_ViviFirefighter.description>[PAWN_nameDef]是薇薇蜂巢中的一名消防員。</VV_ViviFirefighter.description>
+  <!-- EN: vivi firefighter -->
+  <VV_ViviFirefighter.title>薇薇消防員</VV_ViviFirefighter.title>
+  <!-- EN: firefighter -->
+  <VV_ViviFirefighter.titleShort>消防員</VV_ViviFirefighter.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a gatherer in vivi hive. -->
+  <VV_ViviGatherer.description>[PAWN_nameDef]是薇薇蜂巢中的一名收集者。</VV_ViviGatherer.description>
+  <!-- EN: vivi gatherer -->
+  <VV_ViviGatherer.title>薇薇收集者</VV_ViviGatherer.title>
+  <!-- EN: gatherer -->
+  <VV_ViviGatherer.titleShort>收集者</VV_ViviGatherer.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a guard in vivi hive. -->
+  <VV_ViviGuard.description>[PAWN_nameDef]是薇薇蜂巢中的一名守衛。</VV_ViviGuard.description>
+  <!-- EN: vivi guard -->
+  <VV_ViviGuard.title>薇薇守衛</VV_ViviGuard.title>
+  <!-- EN: guard -->
+  <VV_ViviGuard.titleShort>守衛</VV_ViviGuard.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a herbalist in vivi hive. -->
+  <VV_ViviHerbalist.description>[PAWN_nameDef]是薇薇蜂巢中的一名藥草師。</VV_ViviHerbalist.description>
+  <!-- EN: vivi herbalist -->
+  <VV_ViviHerbalist.title>薇薇藥草師</VV_ViviHerbalist.title>
+  <!-- EN: herbalist -->
+  <VV_ViviHerbalist.titleShort>藥草師</VV_ViviHerbalist.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a princess in vivi hive. -->
+  <VV_ViviPrincess.description>[PAWN_nameDef]是薇薇蜂巢中的公主。</VV_ViviPrincess.description>
+  <!-- EN: vivi princess -->
+  <VV_ViviPrincess.title>薇薇公主</VV_ViviPrincess.title>
+  <!-- EN: princess -->
+  <VV_ViviPrincess.titleShort>公主</VV_ViviPrincess.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a researcher in vivi hive. -->
+  <VV_ViviResearcher.description>[PAWN_nameDef]是薇薇蜂巢中的一名研究人員。</VV_ViviResearcher.description>
+  <!-- EN: vivi researcher -->
+  <VV_ViviResearcher.title>薇薇研究人員</VV_ViviResearcher.title>
+  <!-- EN: researcher -->
+  <VV_ViviResearcher.titleShort>研究人員</VV_ViviResearcher.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a scout in vivi hive. -->
+  <VV_ViviScout.description>[PAWN_nameDef]是薇薇蜂巢中的一名偵察員。</VV_ViviScout.description>
+  <!-- EN: vivi scout -->
+  <VV_ViviScout.title>薇薇偵察員</VV_ViviScout.title>
+  <!-- EN: scout -->
+  <VV_ViviScout.titleShort>偵察員</VV_ViviScout.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a Vivi belonging to the settlement. -->
+  <VV_ViviSettler.description>[PAWN_nameDef]是殖民地中的一員。</VV_ViviSettler.description>
+  <!-- EN: vivi settler -->
+  <VV_ViviSettler.title>薇薇殖民者</VV_ViviSettler.title>
+  <!-- EN: settler -->
+  <VV_ViviSettler.titleShort>殖民者</VV_ViviSettler.titleShort>
+  
+  <!-- EN: [PAWN_nameDef] is a sniper in vivi hive. -->
+  <VV_ViviSniper.description>[PAWN_nameDef]是薇薇蜂巢中的一名狙擊手。</VV_ViviSniper.description>
+  <!-- EN: vivi sniper -->
+  <VV_ViviSniper.title>薇薇狙擊手</VV_ViviSniper.title>
+  <!-- EN: sniper -->
+  <VV_ViviSniper.titleShort>狙擊手</VV_ViviSniper.titleShort>
+  
+</LanguageData>

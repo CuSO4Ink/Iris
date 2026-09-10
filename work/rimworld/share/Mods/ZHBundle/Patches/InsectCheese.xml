@@ -1,0 +1,8 @@
+<Patch>
+	<Operation Class="PatchOperationReplace"> 
+        <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="InsectJelly"]/value</xpath>
+        <value>
+            <value>虫</value>
+        </value>
+    </Operation>
+</Patch>

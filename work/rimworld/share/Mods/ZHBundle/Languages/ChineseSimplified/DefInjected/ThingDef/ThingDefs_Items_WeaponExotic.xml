@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi eltex needle -->
+  <VV_EltexNeedle.label>薇薇纫针</VV_EltexNeedle.label>
+  <!-- EN: A specially processed sharp needles. Only vivi can handle them and once equipped they resonate with the wearer becoming bound so that no one else can use them.\n\Needle can absorb environmental mana to recharge, and by using the needles as a medium, you can summon psychic needles that resonate with mana ignoring physical laws and moving freely according to the users will.\n\nThe psychic needles pass through all obstacles and always hit their target. The higher the mental sensitivity, the faster the needles move, and the more attacks can be made at once.\n\nWhile summoning the psychic needles, vivi enter a state of deep concentration, making it impossible to move until the needles are retrieved. -->
+  <VV_EltexNeedle.description>一种经过特殊加工的尖针。只有薇薇才能装备它，装备后，它会与装备者产生共鸣并与其进行绑定。\n\n它可以以周围魔能充能，以纫针为媒介，使用者可以召唤一根无视物理定律自由移动的幽灵尖针。\n\n幽灵尖针可以穿透所有障碍，且总能命中。使用者心灵敏感度越高，尖针伤害就越高，飞行速度亦愈快，能攻击的目标亦愈多。\n\n一旦召唤幽灵尖针，使用的薇薇就会进入高度专注状态，在幽灵尖针回收之前无法移动。</VV_EltexNeedle.description>
+  <!-- EN: point -->
+  <VV_EltexNeedle.tools.point.label>针尖</VV_EltexNeedle.tools.point.label>
+  <!-- EN: vivi eltex needle -->
+  <VV_EltexNeedle.verbs.Verb_ShootWithMana.label>薇薇纫针</VV_EltexNeedle.verbs.Verb_ShootWithMana.label>
+  
+  <!-- UNUSED -->
+  <VV_EltexNeedle.verbs.Verb_SpawnNeedle.label>薇薇纫针</VV_EltexNeedle.verbs.Verb_SpawnNeedle.label>
+  
+  <!-- EN: psychic needle -->
+  <VV_Projectile_EltexNeedle.label>纫针</VV_Projectile_EltexNeedle.label>
+  
+  <!-- EN: vivi ritual lance -->
+  <VV_RitualLance.label>薇薇仪式长枪</VV_RitualLance.label>
+  <!-- EN: a large spear with various decorations and a large blade given in a form of ceremony to Vivi who saved the hive from danger. Due to the abnormal size of the blade and decorations compared to the length of the handle, only Vivi can use it as it is optimized for them.\n\nLance can absorb environmental mana to recharge and the recharged lance becomes remarkably sharp, significantly increasing attack power and penetration. -->
+  <VV_RitualLance.description>一支带有繁复装饰与刀刃的巨型长枪。会被在仪式中授予将蜂巢从危急关头中拯救的英勇薇薇。由于与枪柄相比不同寻常的刀刃装饰的尺寸，只有薇薇可以使用这种为他们而设计的长枪。\n\n长枪可以吸收环境魔能进行充能，充能后的长枪会变得更加锋利，显著提高其攻击力和穿透力。</VV_RitualLance.description>
+  <!-- EN: shaft -->
+  <VV_RitualLance.tools.shaft.label>枪柄</VV_RitualLance.tools.shaft.label>
+  <!-- EN: point -->
+  <VV_RitualLance.tools.point.label>枪尖</VV_RitualLance.tools.point.label>
+  
+  <!-- UNUSED -->
+  <VV_RitualLance.tools.point-1.label>枪尖</VV_RitualLance.tools.point-1.label>
+  
+</LanguageData>

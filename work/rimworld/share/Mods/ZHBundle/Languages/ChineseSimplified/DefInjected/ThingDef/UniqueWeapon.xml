@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 유니크 미호 단축 경기관총 -->
+  <Miho_Weapon_RifleDefence_Unique.label>特化美狐近战轻机枪</Miho_Weapon_RifleDefence_Unique.label>
+  <!-- EN: 미호 해군의 정예 육전대들이 사용하던 커스텀 단축 경기관총 입니다. 선내같은 좁은 공간에서 사용하기 좋습니다. -->
+  <Miho_Weapon_RifleDefence_Unique.description>一把配有定制部件的美狐近战轻机枪。\n\n这种武器由美狐族精英海军陆战队使用的轻机枪产量较少，专为在飞船等较为狭小的空间内近距离战斗而设计。</Miho_Weapon_RifleDefence_Unique.description>
+  <!-- EN: charge -->
+  <Miho_Weapon_RifleDefence_Unique.comps.CompEquippableAbilityReloadable.chargeNoun>充能</Miho_Weapon_RifleDefence_Unique.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Miho_Weapon_RifleDefence_Unique.comps.CompEquippableAbilityReloadable.cooldownGerund>冷却中</Miho_Weapon_RifleDefence_Unique.comps.CompEquippableAbilityReloadable.cooldownGerund>
+  <!-- EN: 갈갈이 -->
+  <Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.0>轻机枪</Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.0>
+  <!-- EN: 이리 -->
+  <Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.1>狼袭机枪</Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.1>
+  <!-- EN: 캥캥이의 분노 -->
+  <Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.2>吭吭之怒</Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.2>
+  <!-- EN: 단축 기관총 -->
+  <Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.3>近战机枪</Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.3>
+  <!-- EN: 정예군 기관총 -->
+  <Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.4>精英机枪</Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.4>
+  <!-- EN: 프로토타입 기관총 -->
+  <Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.5>原型机枪</Miho_Weapon_RifleDefence_Unique.comps.CompUniqueWeapon.namerLabels.5>
+  <!-- EN: stock -->
+  <Miho_Weapon_RifleDefence_Unique.tools.stock.label>枪托</Miho_Weapon_RifleDefence_Unique.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RifleDefence_Unique.tools.barrel.label>枪管</Miho_Weapon_RifleDefence_Unique.tools.barrel.label>
+  <!-- EN: 유니크 미호 단축 경기관총 -->
+  <Miho_Weapon_RifleDefence_Unique.verbs.Verb_Shoot.label>特化美狐近战轻机枪</Miho_Weapon_RifleDefence_Unique.verbs.Verb_Shoot.label>
+
+  <!-- EN: 유니크 미호 대물저격총 -->
+  <Miho_Weapon_RifleOld_Unique.label>特化美狐反器材步枪</Miho_Weapon_RifleOld_Unique.label>
+  <!-- EN: 커스텀 파츠가 장착된 변방계에서 얼마 생산되지 않은 희귀한 13.7mm 대물저격총 입니다. -->
+  <Miho_Weapon_RifleOld_Unique.description>一把配有定制部件的美狐反器材步枪。\n\n这种由美狐族使用的13.7mm反器材步枪产量较少，在边缘世界中也是相当稀有的武器。</Miho_Weapon_RifleOld_Unique.description>
+  <!-- EN: charge -->
+  <Miho_Weapon_RifleOld_Unique.comps.CompEquippableAbilityReloadable.chargeNoun>充能</Miho_Weapon_RifleOld_Unique.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Miho_Weapon_RifleOld_Unique.comps.CompEquippableAbilityReloadable.cooldownGerund>冷却中</Miho_Weapon_RifleOld_Unique.comps.CompEquippableAbilityReloadable.cooldownGerund>
+  <!-- EN: 대장갑 소총 -->
+  <Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.0>穿甲步枪</Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.0>
+  <!-- EN: 중형 소총 -->
+  <Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.1>重型步枪</Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.1>
+  <!-- EN: 대물저격총 -->
+  <Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.2>反器材步枪</Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.2>
+  <!-- EN: 머리날리개 -->
+  <Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.3>碎颅者</Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.3>
+  <!-- EN: 깡통따개 -->
+  <Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.4>开罐器</Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.4>
+  <!-- EN: 초대형 사냥총 -->
+  <Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.5>超级猎枪</Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.5>
+  <!-- EN: 두통치료제 -->
+  <Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.6>头痛治疗药</Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.6>
+  <!-- EN: 으앙이의 분노 -->
+  <Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.7>嗷呜之怒</Miho_Weapon_RifleOld_Unique.comps.CompUniqueWeapon.namerLabels.7>
+  <!-- EN: stock -->
+  <Miho_Weapon_RifleOld_Unique.tools.stock.label>枪托</Miho_Weapon_RifleOld_Unique.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RifleOld_Unique.tools.barrel.label>枪管</Miho_Weapon_RifleOld_Unique.tools.barrel.label>
+  <!-- EN: 유니크 미호 대물저격총 -->
+  <Miho_Weapon_RifleOld_Unique.verbs.Verb_Shoot.label>特化美狐反器材步枪</Miho_Weapon_RifleOld_Unique.verbs.Verb_Shoot.label>
+  
+  <!-- EN: AMR bullet -->
+  <Miho_Weapon_RifleOld_Unique_Proj.label>美狐反器材步枪子弹</Miho_Weapon_RifleOld_Unique_Proj.label>
+  
+  <!-- EN: 유니크 미호 플라즈마 소총 -->
+  <Miho_Weapon_RiflePlasma_Unique.label>特化美狐等离子步枪</Miho_Weapon_RiflePlasma_Unique.label>
+  <!-- EN: 변방계의 대중들에게 알려지지 않은 미호들의 실험용 플라즈마 소총 입니다. -->
+  <Miho_Weapon_RiflePlasma_Unique.description>一把配有定制部件的美狐等离子步枪。\n\n作为美狐族的实验性武器，在边缘世界中鲜有人知晓其存在。</Miho_Weapon_RiflePlasma_Unique.description>
+  <!-- EN: charge -->
+  <Miho_Weapon_RiflePlasma_Unique.comps.CompEquippableAbilityReloadable.chargeNoun>充能</Miho_Weapon_RiflePlasma_Unique.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Miho_Weapon_RiflePlasma_Unique.comps.CompEquippableAbilityReloadable.cooldownGerund>冷却中</Miho_Weapon_RiflePlasma_Unique.comps.CompEquippableAbilityReloadable.cooldownGerund>
+  <!-- EN: 눈부신 항성 -->
+  <Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.0>耀星</Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.0>
+  <!-- EN: 태양 -->
+  <Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.1>天阳</Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.1>
+  <!-- EN: 뚜방이의 분노 -->
+  <Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.2>曜阳之怒</Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.2>
+  <!-- EN: 프로토타입 플라즈마 소총 -->
+  <Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.3>原型等离子步枪</Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.3>
+  <!-- EN: 커스텀 플라즈마 소총 -->
+  <Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.4>定制等离子步枪</Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.4>
+  <!-- EN: 증발기계 -->
+  <Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.5>蒸发器</Miho_Weapon_RiflePlasma_Unique.comps.CompUniqueWeapon.namerLabels.5>
+  <!-- EN: stock -->
+  <Miho_Weapon_RiflePlasma_Unique.tools.stock.label>枪托</Miho_Weapon_RiflePlasma_Unique.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RiflePlasma_Unique.tools.barrel.label>枪管</Miho_Weapon_RiflePlasma_Unique.tools.barrel.label>
+  <!-- EN: 유니크 미호 플라즈마 소총 -->
+  <Miho_Weapon_RiflePlasma_Unique.verbs.Verb_Shoot.label>特化美狐等离子步枪</Miho_Weapon_RiflePlasma_Unique.verbs.Verb_Shoot.label>
+  
+</LanguageData>

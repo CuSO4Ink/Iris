@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: basic research -->
+  <BasicResearch.header_Direct>基础研究</BasicResearch.header_Direct>
+  <!-- EN: Theorize from fundamentals.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <BasicResearch.shortDesc_Direct>从基本原理推导理论。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</BasicResearch.shortDesc_Direct>
+
+</LanguageData>

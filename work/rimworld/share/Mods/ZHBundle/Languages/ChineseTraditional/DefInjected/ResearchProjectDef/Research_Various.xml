@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cleasing weapons -->
+  <CleansingWeapons.label>凈世武器</CleansingWeapons.label>
+  <!-- EN: Research a way to manufacture a highly effective tool in combating the necronoid threat. -->
+  <CleansingWeapons.description>解鎖製作可高效對抗歿疫感染體的凈世武器。</CleansingWeapons.description>
+  
+  <!-- EN: imperial cleasing weapons -->
+  <CleansingWeaponsEmpire.label>帝國凈世武器</CleansingWeaponsEmpire.label>
+  <!-- EN: Research a way to manufacture cleansing weapons used by the empire. -->
+  <CleansingWeaponsEmpire.description>解鎖製作由破碎帝國研發並投入使用的凈世武器。</CleansingWeaponsEmpire.description>
+  
+  <!-- EN: miracle compound -->
+  <Compound.label>XJ9合劑</Compound.label>
+  <!-- EN: Research a way to manufacture an XJ9-Compound. A miracle compound that can temporarily nullify fatigue and lowers hunger rate, which is very benificial to soldiers in the frontline. -->
+  <Compound.description>解鎖製作XJ9合劑。這種藥物註射後可暫時消除睡眠需求並大幅降低饑餓速率，還能提供少量的屬性加成。</Compound.description>
+  
+  <!-- EN: imperial monolith power armor -->
+  <ImperialStalkerPowerArmor.label>帝國潛獵裝甲</ImperialStalkerPowerArmor.label>
+  <!-- EN: Research a way to manufacture the imperial monolith power armor, a signiture armor piece worn by imperial necro hunters. -->
+  <ImperialStalkerPowerArmor.description>解鎖製作由破碎帝國研發並投入使用的帝國潛獵裝甲。</ImperialStalkerPowerArmor.description>
+  
+  <!-- EN: incendiary weapons -->
+  <IncendiaryWeapons.label>怒焰武器</IncendiaryWeapons.label>
+  <!-- EN: Research a way to manufacture a handful of effective incendiary weapons. -->
+  <IncendiaryWeapons.description>解鎖製作可有效對抗歿疫感染體的怒焰武器。</IncendiaryWeapons.description>
+  
+  <!-- EN: necronoid stuff -->
+  <NecroStuff.label>歿疫建築</NecroStuff.label>
+  <!-- EN: Research a way to repurpose some necronoid meats into usable flesh stuctures. -->
+  <NecroStuff.description>解鎖建造人造歿疫屍巢。這種防衛建築可定期孵化出為你而戰的血肉陸戰隊。</NecroStuff.description>
+  
+  <!-- EN: necronoid weapons -->
+  <NecroWeapons.label>骨刺武器</NecroWeapons.label>
+  <!-- EN: Research a way to repurpose some necronoid meats into usable flesh weapons. -->
+  <NecroWeapons.description>解鎖製作經過調整後可為人類所用的骨刺武器。與歿疫感染體手中的骨刺武器不同，它們發射的子彈僅帶有普通毒素。</NecroWeapons.description>
+  
+  <!-- EN: stalker power armor -->
+  <StalkerPowerArmor.label>潛獵裝甲</StalkerPowerArmor.label>
+  <!-- EN: Research a way to manufacture stalker power armors, one of the best power armors to be used againsts the necronoids. -->
+  <StalkerPowerArmor.description>解鎖製作可高效對抗歿疫感染體的潛獵裝甲。</StalkerPowerArmor.description>
+  
+  <!-- EN: vaccines -->
+  <Vaccines.label>歿疫解藥</Vaccines.label>
+  <!-- EN: Research a way to create vaccines, capable of curing the necronoid infection. -->
+  <Vaccines.description>解鎖製作可立即治愈歿疫病毒感染的歿疫解藥。</Vaccines.description>
+  
+</LanguageData>

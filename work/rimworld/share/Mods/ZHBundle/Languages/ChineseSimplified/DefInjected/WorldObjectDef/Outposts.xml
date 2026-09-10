@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: artillery outpost -->
+  <Outpost_Artillery.label>火炮据点</Outpost_Artillery.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in providing point defense to nearby settlements via artillery strikes. Each pawn will be tasked with the maintenance and usage of a mortar. After a barrage has been expended one day will be required to prepare a new one. -->
+  <Outpost_Artillery.description>一处能够自给自足的临时性据点，专门负责为附近的定居点提供火炮打击。据点里的每名殖民者都会维护并操作迫击炮。当一轮炮火打击完毕后，需要一天的时间来进行重新整备。</Outpost_Artillery.description>
+  
+  <!-- EN: defensive outpost -->
+  <Outpost_Defensive.label>防御据点</Outpost_Defensive.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in intercepting and ambushing incoming enemy raids on the main colony. Winning a small skirmish at an outpost can significantly diminish the size of an enemy raid on the main colony. Furthermore, defensive outposts can be tasked to send drop pods to the main colony for short-notice defense. -->
+  <Outpost_Defensive.description>一处能够自给自足的临时性据点，专门负责拦截并埋伏敌人对主殖民地发动的袭击。在防御据点处赢下一场小规模遭遇战能够大幅缩减袭击主殖民地的敌人数量。此外，防御据点还可以向主殖民地发射运输舱来提供快速支援。</Outpost_Defensive.description>
+  
+  <!-- EN: drilling outpost -->
+  <Outpost_Drilling.label>采油据点</Outpost_Drilling.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in locating and tapping underground chemfuel reservoirs. Once an ample amount is collected, a delivery will be made at the outskirts of a faction's primary colony. -->
+  <Outpost_Drilling.description>一处能够自给自足的临时性据点，专门负责勘探开采地下的油藏并炼制成化合燃料。一旦收集至足够的数量，驻守在此据点的殖民者将会把化合燃料交付至派系主殖民地的指定地点。必须建立在沙漠或极端沙漠地形上。</Outpost_Drilling.description>
+  
+  <!-- EN: encampment -->
+  <Outpost_Encampment.label>营地据点</Outpost_Encampment.label>
+  <!-- EN: Places a temporary, autonomously-led camp that serves as a resting point for caravans. While camping all pawns will regain food and rest, and allow time for injuries to heal. -->
+  <Outpost_Encampment.description>一处能够自给自足的临时性据点，专门负责为远行队提供歇脚休整之处。在此宿营的所有殖民者都将恢复饮食值与休息值，并且会留出充足的时间来让身上的伤口愈合。</Outpost_Encampment.description>
+  
+  <!-- EN: farming outpost -->
+  <Outpost_Farming.label>农场据点</Outpost_Farming.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in sowing and harvesting easily-grown vegetation, cannot be placed on deserts. Once an ample amount is collected, a delivery will be made at the outskirts of a faction's primary colony. -->
+  <Outpost_Farming.description>一处能够自给自足的临时性据点，专门负责种植并收获容易生长的农作物。一旦收集至足够的数量，驻守在此据点的殖民者将会把粮食作物交付至派系主殖民地的指定地点。无法建立在沙漠地形上。</Outpost_Farming.description>
+  <!-- EN: Choose which plant this outpost should plant -->
+  <Outpost_Farming.modExtensions.0.ChooseDesc>选择此据点要种植的作物。</Outpost_Farming.modExtensions.0.ChooseDesc>
+  <!-- EN: Choose plant -->
+  <Outpost_Farming.modExtensions.0.ChooseLabel>选择作物</Outpost_Farming.modExtensions.0.ChooseLabel>
+  
+  <!-- EN: hunting outpost -->
+  <Outpost_Hunting.label>狩猎据点</Outpost_Hunting.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in hunting and butchering wildlife. Once an ample amount is collected, a delivery will be made at the outskirts of a faction's primary colony. -->
+  <Outpost_Hunting.description>一处能够自给自足的临时性据点，专门负责狩猎并屠宰野生动物。一旦收集至足够的数量，驻守在此据点的殖民者将会把鲜肉皮革交付至派系主殖民地的指定地点。</Outpost_Hunting.description>
+  <!-- EN: Choose what animal to hunt at this outpost -->
+  <Outpost_Hunting.modExtensions.0.ChooseDesc>选择此据点要狩猎的动物。</Outpost_Hunting.modExtensions.0.ChooseDesc>
+  <!-- EN: Hunting {0} -->
+  <Outpost_Hunting.modExtensions.0.ChooseLabel>狩猎{0}</Outpost_Hunting.modExtensions.0.ChooseLabel>
+  
+  <!-- EN: logging outpost -->
+  <Outpost_Logging.label>伐木据点</Outpost_Logging.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in collecting wood from trees in the areas, cannot be placed on deserts. Once an ample amount is collected, a delivery will be made at the outskirts of a faction's primary colony. -->
+  <Outpost_Logging.description>一处能够自给自足的临时性据点，专门负责采伐此地区的树木。一旦收集至足够的数量，驻守在此据点的殖民者将会把木材交付至派系主殖民地的指定地点。</Outpost_Logging.description>
+  
+  <!-- EN: mining outpost -->
+  <Outpost_Mining.label>采矿据点</Outpost_Mining.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in collecting and processing stone or metal, can only be placed on hills or mountains. Once an ample amount is collected, a delivery will be made at the outskirts of a faction's primary colony. -->
+  <Outpost_Mining.description>一处能够自给自足的临时性据点，专门负责开采加工石块或金属。一旦收集至足够的数量，驻守在此据点的殖民者将会把矿物石砖交付至派系主殖民地的指定地点。必须建立在丘陵或山地地形上。</Outpost_Mining.description>
+  <!-- EN: Click to change mining target. -->
+  <Outpost_Mining.modExtensions.0.ChooseDesc>点击来改变开采目标</Outpost_Mining.modExtensions.0.ChooseDesc>
+  <!-- EN: Mining {0} -->
+  <Outpost_Mining.modExtensions.0.ChooseLabel>开采{0}</Outpost_Mining.modExtensions.0.ChooseLabel>
+  
+  <!-- EN: production outpost -->
+  <Outpost_Production.label>加工据点</Outpost_Production.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in manufacturing and fabrication of mechanical and electronic components. Once an ample amount is produced, a delivery will be made at the outskirts of a faction's primary colony. -->
+  <Outpost_Production.description>一处能够自给自足的临时性据点，专门负责加工制造各种各样的零部件。一旦加工至足够的数量，驻守在此据点的殖民者将会把零部件交付至派系主殖民地的指定地点。</Outpost_Production.description>
+  <!-- EN: Choose between components and advanced components -->
+  <Outpost_Production.modExtensions.0.ChooseDesc>生产零部件或高级零部件。</Outpost_Production.modExtensions.0.ChooseDesc>
+  <!-- EN: Choose output -->
+  <Outpost_Production.modExtensions.0.ChooseLabel>选择产物</Outpost_Production.modExtensions.0.ChooseLabel>
+  
+  <!-- EN: scavenging outpost -->
+  <Outpost_Scavenging.label>探宝据点</Outpost_Scavenging.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in scouting for nearby unmarked settlements and the loot contained within them. Once something notable is collected, a delivery will be made at the outskirts of a faction's primary colony. -->
+  <Outpost_Scavenging.description>一处能够自给自足的临时性据点，专门负责侦察附近那些未被标记在地图上的定居点以及其中藏有的珍稀宝物。一旦收集到些有价值的物品，驻守在此据点的殖民者将会把它们交付至派系主殖民地的指定地点。</Outpost_Scavenging.description>
+  
+  <!-- EN: science outpost -->
+  <Outpost_Science.label>科研据点</Outpost_Science.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in research and analysis. Any information gained will be shared with the faction as a whole. -->
+  <Outpost_Science.description>一处能够自给自足的临时性据点，专门负责研究并解析新科技。此据点获得的所有研究进展都将与整个派系进行共享。</Outpost_Science.description>
+  
+  <!-- EN: town -->
+  <Outpost_Town.label>城镇据点</Outpost_Town.label>
+  <!-- EN: Places a temporary, autonomously-led town that is designed to provide hospitality to travelers and traders alike. Should a visitor find their lodging amicable they will be invited to join the town as a resident permanently. A town can only be erected if 3 pre-existing settlements are located within 10 hexes. -->
+  <Outpost_Town.description>一处能够自给自足的临时性据点，专门负责款待远道而来的商队与旅行者们。若访客对住宿感到满意，他们将有可能成为此城镇的永久居民。周围10格内必须拥有三个定居点才能建立城镇。</Outpost_Town.description>
+  
+  <!-- EN: trading outpost -->
+  <Outpost_Trading.label>贸易据点</Outpost_Trading.label>
+  <!-- EN: Places a temporary, autonomously-led camp that specializes in selling and bartering with wanderers, caravans, and natives alike in exchange for silver. Once an ample amount is collected, a delivery will be made at the outskirts of a faction's primary colony. -->
+  <Outpost_Trading.description>一处能够自给自足的临时性据点，专门负责与拾荒者、远行商队和当地人进行交易买卖。一旦收集至足够的数量，驻守在此据点的殖民者将会把白银交付至派系主殖民地的指定地点。</Outpost_Trading.description>
+  
+</LanguageData>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fine confection -->
+  <VCE_FineConfection.label>精緻糕點</VCE_FineConfection.label>
+  <!-- EN: Colourful donuts topped with swirls of frosting and sprinkles. A cheerful treat for any occasion. -->
+  <VCE_FineConfection.description>五顏六色的甜甜圈，飾有糖霜和糖粉。無論何時都能討人喜歡。</VCE_FineConfection.description>
+  
+  <!-- EN: gourmet cake batter -->
+  <VCE_GourmetCakeBatter.label>豪華蛋糕糊</VCE_GourmetCakeBatter.label>
+  <!-- EN: Some gourmet cake batter. Used to bake into confections, and inedible on its own. -->
+  <VCE_GourmetCakeBatter.description>一盆豪華蛋糕糊。可以被烘焙成豪華糕點，本身不可以食用。</VCE_GourmetCakeBatter.description>
+  
+  <!-- EN: gourmet confection -->
+  <VCE_GourmetConfection.label>豪華糕點</VCE_GourmetConfection.label>
+  <!-- EN: A plate of lavishly decorated cupcakes, each topped with elaborate frosting and sweet embellishments. A true showcase of creative baking. -->
+  <VCE_GourmetConfection.description>一盤裝飾奢華的紙杯蛋糕，均點綴有頂級的糖霜和糖果飾品。可以說是創意烘焙的炫技之作。</VCE_GourmetConfection.description>
+  
+  <!-- EN: lavish confection -->
+  <VCE_LavishConfection.label>奢侈糕點</VCE_LavishConfection.label>
+  <!-- EN: An assortment of intricately decorated cookies, each iced with bright colors and detailed patterns. More artwork than food, but still delicious. -->
+  <VCE_LavishConfection.description>一套造型精美的曲奇餅，用糖霜鍍上了鮮艷的顏色和細緻的紋理。比起食物更像是藝術品，不過確實很好吃。</VCE_LavishConfection.description>
+  
+  <!-- EN: cake batter -->
+  <VCE_NormalCakeBatter.label>蛋糕糊</VCE_NormalCakeBatter.label>
+  <!-- EN: Some cake batter. Used to bake into confections, and inedible on its own. -->
+  <VCE_NormalCakeBatter.description>一盆蛋糕糊。可以被烘焙成糕點，本身不可以食用。</VCE_NormalCakeBatter.description>
+  
+  <!-- EN: simple confection -->
+  <VCE_SimpleConfection.label>簡單糕點</VCE_SimpleConfection.label>
+  <!-- EN: A giant sweet cookie, lightly decorated. Quick to make, simple to enjoy. -->
+  <VCE_SimpleConfection.description>一大坨曲奇，基本沒有裝飾。製作簡單，味道還行。</VCE_SimpleConfection.description>
+  
+</LanguageData>

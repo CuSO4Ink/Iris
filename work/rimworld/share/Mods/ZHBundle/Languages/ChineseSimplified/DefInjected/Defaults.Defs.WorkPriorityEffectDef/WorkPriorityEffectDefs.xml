@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <Value.label>set priority</Value.label> -->
+  <Value.label>设置优先级</Value.label>
+  <!-- <Increase.label>increase priority</Increase.label> -->
+  <Increase.label>提高优先级</Increase.label>
+  <!-- <Decrease.label>decrease priority</Decrease.label> -->
+  <Decrease.label>降低优先级</Decrease.label>
+  <!-- <Logic.label>apply subrules</Logic.label> -->
+  <Logic.label>应用子规则</Logic.label>
+
+
+</LanguageData>

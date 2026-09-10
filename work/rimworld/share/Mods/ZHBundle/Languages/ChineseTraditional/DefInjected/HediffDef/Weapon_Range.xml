@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: RatHolic Gun Spooling Manager -->
+  <RK_Hediff_RatHolicGun.label>吱特林機槍預熱控制</RK_Hediff_RatHolicGun.label>
+  <!-- EN: Manages RatHolic Gun spooling effects. -->
+  <RK_Hediff_RatHolicGun.description>控制吱特林機槍的預熱效果。</RK_Hediff_RatHolicGun.description>
+  
+  <!-- EN: spooling up -->
+  <RK_Hediff_RatHolicGunSpooling.label>武器預熱</RK_Hediff_RatHolicGunSpooling.label>
+  <!-- EN: The weapon is spooling up, reducing reload time with each shot fired. -->
+  <RK_Hediff_RatHolicGunSpooling.description>吱特林機槍已預熱，降低每次射擊後的冷卻時間。</RK_Hediff_RatHolicGunSpooling.description>
+  
+  <!-- EN: aiming alignment -->
+  <RK_Hediff_RatHolicGunSpoolingAim.label>瞄準校正</RK_Hediff_RatHolicGunSpoolingAim.label>
+  <!-- EN: The weapon is spooling up, reducing aiming time and improving accuracy with each shot fired. -->
+  <RK_Hediff_RatHolicGunSpoolingAim.description>吱特林機槍已預熱，降低每次射擊的瞄準時間並提高射擊精度。</RK_Hediff_RatHolicGunSpoolingAim.description>
+  
+</LanguageData>

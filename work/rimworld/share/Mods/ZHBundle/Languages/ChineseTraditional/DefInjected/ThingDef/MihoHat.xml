@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 엘텍스 장교모 -->
+  <Miho_Apparel_Hat_EltexCaptain.label>美狐心靈軍官帽</Miho_Apparel_Hat_EltexCaptain.label>
+  <!-- EN: 미호 제국의 고위 장교들이 입는 장교모 입니다. 돌격 지휘 스킬을 사용 할 수 있습니다. 가끔 시장에 풀리는 중고 장교복들은 페티시적인 요소 때문에 인기가 많습니다. -->
+  <Miho_Apparel_Hat_EltexCaptain.description>由美狐巨企帝國的高級軍官使用的帽子。穿戴後可以使用“突擊命令”能力。\n\n用過的美狐軍官衣物偶爾會放在二手市場售賣，且頗受具有戀物癖的買家們的歡迎。</Miho_Apparel_Hat_EltexCaptain.description>
+  
+  <!-- EN: 미호 트루퍼 헬멧 -->
+  <Miho_Apparel_Hat_Militia.label>美狐軍用頭盔</Miho_Apparel_Hat_Militia.label>
+  <!-- EN: 병사들에게 지급되는 헬멧입니다. 빠른 조준에 중점이 맞춰져 있습니다. -->
+  <Miho_Apparel_Hat_Militia.description>由美狐族部隊使用的製式頭盔，能夠小幅降低穿戴者的射擊瞄準時間與冷卻時間。</Miho_Apparel_Hat_Militia.description>
+  
+  <!-- EN: 미호 트루퍼 헬멧 (귀) -->
+  <Miho_Apparel_Hat_MilitiaEar.label>美狐軍用頭盔（護耳）</Miho_Apparel_Hat_MilitiaEar.label>
+  <!-- EN: 병사들에게 지급되는 헬멧입니다. 귀를 보호 할 수 있어서 방호력만큼은 더 좋다고 할 수 있습니다. -->
+  <Miho_Apparel_Hat_MilitiaEar.description>由美狐族部隊使用的製式頭盔，能為穿戴者的頭部和耳朵提供更多的防護。</Miho_Apparel_Hat_MilitiaEar.description>
+  
+  <!-- EN: 미호 메딕 헬멧 -->
+  <Miho_Apparel_Hat_MilitiaMedic.label>美狐軍醫頭盔</Miho_Apparel_Hat_MilitiaMedic.label>
+  <!-- EN: 군의관들에게 지급되는 헬멧입니다. 생존성에 중점이 맞춰져 있습니다. -->
+  <Miho_Apparel_Hat_MilitiaMedic.description>由美狐族軍醫使用的製式頭盔，能為穿戴者的頭部提供體面的防護。</Miho_Apparel_Hat_MilitiaMedic.description>
+  
+  <!-- EN: 미호 트루퍼 헬멧 -->
+  <Miho_Apparel_Hat_MilitiaShoot.label>美狐軍用頭盔</Miho_Apparel_Hat_MilitiaShoot.label>
+  <!-- EN: 병사들에게 지급되는 헬멧입니다. 빠른 조준에 중점이 맞춰져 있습니다. 뭔가 이상한 언어가 쓰여있습니다. -->
+  <Miho_Apparel_Hat_MilitiaShoot.description>由美狐族部隊使用的製式頭盔，能夠小幅降低穿戴者的射擊瞄準時間與冷卻時間。不知為何，頭盔上還寫著一些奇形怪狀的文字。</Miho_Apparel_Hat_MilitiaShoot.description>
+  
+  <!-- EN: 미호 트루퍼 헬멧 (야채) -->
+  <Miho_Apparel_Hat_MilitiaVegi.label>美狐軍用頭盔（野菜）</Miho_Apparel_Hat_MilitiaVegi.label>
+  <!-- EN: 병사들에게 지급되는 헬멧입니다. 귀를 보호 할 수 있어서 방호력만큼은 더 좋다고 할 수 있습니다. 위장포처럼 생긴거는 위장용이 아니라 장식이나 간식용인것 같습니다. -->
+  <Miho_Apparel_Hat_MilitiaVegi.description>由美狐族部隊使用的製式頭盔，能為穿戴者的頭部和耳朵提供更多的防護。順帶一提，覆蓋在它外層的野菜只是裝飾，並不具有偽裝效果。假如你餓了的話，也可以薅一把塞到嘴裡充饑。</Miho_Apparel_Hat_MilitiaVegi.description>
+  
+  <!-- EN: 미호 퍼라이어 배틀 헬멧 -->
+  <Miho_Apparel_Hat_Pariah.label>美狐流徙者戰鬥頭盔</Miho_Apparel_Hat_Pariah.label>
+  <!-- EN: 사용자의 체내 메카나이트로 작동되는 안티-싸이킥 헬멧입니다. 원거리 전투능력 상승과 완벽한 사용자 보호를 추구합니다. -->
+  <Miho_Apparel_Hat_Pariah.description>依靠穿戴者體內的機械分子進行運作的心靈阻斷頭盔，擁有較為出色的輔助射擊能力與防護能力。此外，頭盔內側還配備有神經強化接口，可以小幅提高穿戴者的視覺能力。</Miho_Apparel_Hat_Pariah.description>
+  
+  <!-- EN: 미호 정예 트루퍼 헬멧 -->
+  <Miho_Apparel_Hat_PMC.label>美狐精英軍用頭盔</Miho_Apparel_Hat_PMC.label>
+  <!-- EN: PMC 병사들에게 지급되는 구형 헬멧입니다. 오래된만큼 전장에서의 신뢰성이 높습니다. -->
+  <Miho_Apparel_Hat_PMC.description>由美狐族部隊使用的製式頭盔。雖然型號有些老舊，但同樣堅固可靠。能為穿戴者的頭部提供體面的防護。</Miho_Apparel_Hat_PMC.description>
+  
+  <!-- EN: 미호 택티컬 캡 -->
+  <Miho_Apparel_Hat_ShooterCap.label>美狐戰術帽</Miho_Apparel_Hat_ShooterCap.label>
+  <!-- EN: 전술적으로 보이는 단단한 캡모자 입니다. 헤드셋은 누가 내용물을 다 뜯어갔지만. 어짜피 귀 구조상 쓸모가 없으니 상관이 없습니다. -->
+  <Miho_Apparel_Hat_ShooterCap.description>帶有耳機的單色戰術帽，能夠小幅降低穿戴者的射擊瞄準時間與冷卻時間，並提高射擊精度。由於美狐族的耳朵長在頭頂兩側，耳機實際並未起到任何作用，不過他們也不怎麽在意就是了。</Miho_Apparel_Hat_ShooterCap.description>
+  
+  <!-- EN: 미호 소서리스모 -->
+  <Miho_Apparel_Hat_Sorceress.label>美狐術士帽</Miho_Apparel_Hat_Sorceress.label>
+  <!-- EN: 체내 메카나이트들을 활발하게 만들어주는 고급 모자입니다. -->
+  <Miho_Apparel_Hat_Sorceress.description>可以活化體內機械分子的華麗美狐族高頂帽，能夠有效強化穿戴者的心靈能力。</Miho_Apparel_Hat_Sorceress.description>
+  
+  <!-- EN: 미호 비니 -->
+  <Miho_Apparel_Hat_Winter.label>美狐禦寒帽</Miho_Apparel_Hat_Winter.label>
+  <!-- EN: 두껍고 따뜻한 모자입니다. -->
+  <Miho_Apparel_Hat_Winter.description>適合美狐族穿戴的柔軟、厚實的帽子。非常適合在冬季中保持溫暖。</Miho_Apparel_Hat_Winter.description>
+  
+  <!-- EN: 미호 안전모 -->
+  <Miho_Apparel_Hat_Worker.label>美狐安全帽</Miho_Apparel_Hat_Worker.label>
+  <!-- EN: 위험한 곳에서 근무할때 필수인 안전모 입니다. 당연하지만, 미호의 목숨값보단 저렴합니다. -->
+  <Miho_Apparel_Hat_Worker.description>就連美狐族的小朋友都知道在危險區內工作要戴好安全帽。這總比耗費大價錢把意外死於高空墜物的你復活要簡單的多，是吧？</Miho_Apparel_Hat_Worker.description>
+  
+  <!-- EN: 미호 엘텍스 마스크 -->
+  <Miho_Apparel_Mask_Eltex.label>美狐心靈假面</Miho_Apparel_Mask_Eltex.label>
+  <!-- EN: 흑단 목재로 만들어진 초능력 증진 마스크 입니다. -->
+  <Miho_Apparel_Mask_Eltex.description>用上好的木材製成的美狐族傳統假面，能夠有效強化穿戴者的心靈能力。</Miho_Apparel_Mask_Eltex.description>
+  
+</LanguageData>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <!-- 压力等级名称 -->
+    <MSM_ExtremeStress>极端压力</MSM_ExtremeStress>
+    <MSM_ModerateStress>严重压力</MSM_ModerateStress>
+    <MSM_MinorStress>轻微压力</MSM_MinorStress>
+    <MSM_Normal>状态平稳</MSM_Normal>
+    <MSM_Good>心满意足</MSM_Good>
+    <MSM_Excellent>信心十足</MSM_Excellent>
+    <MSM_DzalianExcellent>干劲十足</MSM_DzalianExcellent>
+    <!-- UI标签 -->
+    <MSM_StressMotivation>压力/动力</MSM_StressMotivation>
+    <MSM_CurrentStressLevel>当前状态</MSM_CurrentStressLevel>
+    <MSM_WorkEfficiency>工作效率</MSM_WorkEfficiency>
+    <MSM_MoodThresholds>心情阈值</MSM_MoodThresholds>
+    <!-- 用于提示信息的积极心情阈值标签 -->
+    <MSM_MoodThresholdGood>心满意足</MSM_MoodThresholdGood>
+    <MSM_MoodThresholdExcellent>信心十足</MSM_MoodThresholdExcellent>
+    <MSM_MoodThresholdDzalianExcellent>干劲十足</MSM_MoodThresholdDzalianExcellent>
+    <!-- 设置 -->
+    <MSM_SettingsCategory>心情压力与动力</MSM_SettingsCategory>
+    <!-- 精神崩溃设置部分 -->
+    <MSM_MentalBreakSettings>精神崩溃设置</MSM_MentalBreakSettings>
+    <!-- 单独的崩溃开关 -->
+    <MSM_AllowExtremeMentalBreaks>允许极端精神崩溃</MSM_AllowExtremeMentalBreaks>
+    <MSM_AllowExtremeMentalBreaksDesc>启用时（默认），处于极端压力下（心情低于约5%，如果没有任何特质）的殖民者会发生精神崩溃。禁用时，将防止发生极端精神崩溃。</MSM_AllowExtremeMentalBreaksDesc>
+    <MSM_AllowMajorMentalBreaks>允许严重精神崩溃</MSM_AllowMajorMentalBreaks>
+    <MSM_AllowMajorMentalBreaksDesc>启用时，处于严重压力下（心情低于约25%，如果没有任何特质）的殖民者会发生精神崩溃。默认禁用 - 通常只发生极端崩溃。</MSM_AllowMajorMentalBreaksDesc>
+    <MSM_AllowMinorMentalBreaks>允许轻微精神崩溃</MSM_AllowMinorMentalBreaks>
+    <MSM_AllowMinorMentalBreaksDesc>启用时，处于轻微压力下（心情低于约45%，如果没有任何特质）的殖民者会发生精神崩溃。默认禁用 - 通常只发生极端崩溃。</MSM_AllowMinorMentalBreaksDesc>
+    <!-- 医疗数据开关 -->
+    <MSM_AffectMedicalStats>影响医疗数据</MSM_AffectMedicalStats>
+    <MSM_AffectMedicalStatsDesc>启用时，医疗处理速度、处理质量、手术速度和手术成功率会受到心情影响。禁用时，医疗数据不受压力/动力影响。</MSM_AffectMedicalStatsDesc>
+    <!-- 单向扩展崩溃池系统开关 -->
+    <MSM_EnableOneWayExtendedBreakPool>启用单向扩展崩溃池</MSM_EnableOneWayExtendedBreakPool>
+    <MSM_EnableOneWayExtendedBreakPoolDesc>更高的压力阈值可以触发更低强度的崩溃。极端压力可以引发任何类型的崩溃，严重压力可以引发严重/轻微崩溃。即使禁用了某些阈值，这也能体验到所有原版崩溃。</MSM_EnableOneWayExtendedBreakPoolDesc>
+    <MSM_ExtendedPoolPenalties>应用扩展崩溃池惩罚</MSM_ExtendedPoolPenalties>
+    <MSM_ExtendedPoolPenaltiesDesc>通常不会在当前心情水平发生的崩溃，其触发几率会降低。严重崩溃在由极端压力触发时有50%的几率，轻微崩溃在由极端压力触发时有20%的几率，或在由严重压力触发时有50%的几率。</MSM_ExtendedPoolPenaltiesDesc>
+	<!-- 重置按钮 -->
+	<MSM_ResetToDefaults>重置为默认值</MSM_ResetToDefaults>
+	<MSM_ResetToDefaultsConfirm>确定要将所有设置重置为默认值吗？此操作无法撤销。</MSM_ResetToDefaultsConfirm>
+    <!-- 效率乘数部分 -->
+    <MSM_EfficiencyMultipliers>工作效率乘数</MSM_EfficiencyMultipliers>
+    <!-- 原版覆盖：警报标签 -->
+    <BreakRiskExtreme>极端压力</BreakRiskExtreme>
+    <BreakRiskMajor>严重压力</BreakRiskMajor>
+    <BreakRiskMinor>轻微压力</BreakRiskMinor>
+    <!-- 原版覆盖：警报描述 -->
+    <BreakRiskExtremeDesc>这些殖民者正承受极端的心理压力，几乎无法正常工作。他们的工作效率严重下降，并且可能遭受精神崩溃（如果在MSM模组设置中允许极端精神崩溃）：\n{0}</BreakRiskExtremeDesc>
+    <BreakRiskMajorDesc>这些殖民者正经历显著的压力，影响了他们的表现。他们的工作效率下降，并且可能遭受精神崩溃（如果在MSM模组设置中允许严重精神崩溃）：\n{0}</BreakRiskMajorDesc>
+    <BreakRiskMinorDesc>这些殖民者感到一些轻微的压力。由于无法完全集中精力并百分百投入工作，他们的工作效率略有下降，并且可能遭受精神崩溃（如果在MSM模组设置中允许轻微精神崩溃）：\n{0}</BreakRiskMinorDesc>
+    <!-- 原版覆盖：心情工具提示阈值 -->
+    <MentalBreakThresholdExtreme>极端压力</MentalBreakThresholdExtreme>
+    <MentalBreakThresholdMajor>严重压力</MentalBreakThresholdMajor>
+    <MentalBreakThresholdMinor>轻微压力</MentalBreakThresholdMinor>
+</LanguageData>

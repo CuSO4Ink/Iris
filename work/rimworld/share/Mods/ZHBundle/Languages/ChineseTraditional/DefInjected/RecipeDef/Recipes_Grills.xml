@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_CookGrillSimple.label>烹飪簡單烤肉</VCE_CookGrillSimple.label>
+		<VCE_CookGrillSimple.description>用少許肉材烹飪一份簡單的烤肉。</VCE_CookGrillSimple.description>
+		<VCE_CookGrillSimple.jobString>正在烹飪簡單烤肉。</VCE_CookGrillSimple.jobString>
+		<VCE_CookGrillSimpleBulk.label>烹飪簡單烤肉 x4</VCE_CookGrillSimpleBulk.label>
+		<VCE_CookGrillSimpleBulk.description>用少許肉材烹飪四份簡單的烤肉。</VCE_CookGrillSimpleBulk.description>
+		<VCE_CookGrillSimpleBulk.jobString>正在烹飪四份簡單烤肉</VCE_CookGrillSimpleBulk.jobString>
+		<VCE_CookGrillFine.label>烹飪精緻烤肉</VCE_CookGrillFine.label>
+		<VCE_CookGrillFine.description>將多種材料組合，烹飪一份相對複雜的烤肉。</VCE_CookGrillFine.description>
+		<VCE_CookGrillFine.jobString>正在烹飪精緻烤肉。</VCE_CookGrillFine.jobString>
+		<VCE_CookGrillFineBulk.label>烹飪精緻烤肉 x4</VCE_CookGrillFineBulk.label>
+		<VCE_CookGrillFineBulk.description>將多種材料組合，烹飪四份相對複雜的烤肉。</VCE_CookGrillFineBulk.description>
+		<VCE_CookGrillFineBulk.jobString>正在烹飪四份精緻烤肉。</VCE_CookGrillFineBulk.jobString>
+		<VCE_CookGrillLavish.label>烹飪奢侈烤肉</VCE_CookGrillLavish.label>
+		<VCE_CookGrillLavish.description>烹飪一份藝術般的烤肉，可以蕩滌身心。</VCE_CookGrillLavish.description>
+		<VCE_CookGrillLavish.jobString>正在烹飪奢侈烤肉</VCE_CookGrillLavish.jobString>
+		<VCE_CookGrillLavishhBulk.label>烹飪奢侈烤肉 x4</VCE_CookGrillLavishhBulk.label>
+		<VCE_CookGrillLavishhBulk.description>烹飪四份藝術般的烤肉，可以蕩滌身心。</VCE_CookGrillLavishhBulk.description>
+		<VCE_CookGrillLavishhBulk.jobString>正在烹飪四份奢侈烤肉</VCE_CookGrillLavishhBulk.jobString>
+		<VCE_CookGrillGourmet.label>烹飪豪華烤肉</VCE_CookGrillGourmet.label>
+		<VCE_CookGrillGourmet.description>烹飪一份精雕細琢的烤肉，美艷絕倫，雖然量不多。</VCE_CookGrillGourmet.description>
+		<VCE_CookGrillGourmet.jobString>正在烹飪豪華烤肉</VCE_CookGrillGourmet.jobString>
+	</LanguageData>

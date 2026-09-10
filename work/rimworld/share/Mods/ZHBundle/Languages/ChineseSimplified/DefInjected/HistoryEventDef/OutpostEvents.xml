@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: join hunting outpost -->
+  <VOE_JoinHuntingOutpost.label>加入狩猎据点</VOE_JoinHuntingOutpost.label>
+  <!-- EN: join a hunting outpost -->
+  <VOE_JoinHuntingOutpost.description>加入狩猎据点</VOE_JoinHuntingOutpost.description>
+  
+  <!-- EN: join logging outpost -->
+  <VOE_JoinLoggingOutpost.label>加入伐木据点</VOE_JoinLoggingOutpost.label>
+  <!-- EN: join a logging outpost -->
+  <VOE_JoinLoggingOutpost.description>加入伐木据点</VOE_JoinLoggingOutpost.description>
+  
+</LanguageData>

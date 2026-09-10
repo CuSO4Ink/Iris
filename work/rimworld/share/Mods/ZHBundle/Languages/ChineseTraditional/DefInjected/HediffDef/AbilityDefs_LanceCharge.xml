@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: lance charge exhaustion -->
+  <RK_Hediff_LanceChargeExhaustion.label>騎槍衝鋒（疲憊）</RK_Hediff_LanceChargeExhaustion.label>
+  <!-- EN: Exhausted from the lance charge. Movement speed reduced. -->
+  <RK_Hediff_LanceChargeExhaustion.description>使用騎槍衝鋒後感到疲憊。降低移動速度。</RK_Hediff_LanceChargeExhaustion.description>
+  
+  <!-- EN: lance charge focus -->
+  <RK_Hediff_LanceChargeFocus.label>騎槍衝鋒（專注）</RK_Hediff_LanceChargeFocus.label>
+  <!-- EN: Focused from the lance charge. Melee hit chance increased. -->
+  <RK_Hediff_LanceChargeFocus.description>使用騎槍衝鋒後獲得的專注效果。提高近戰命中率。</RK_Hediff_LanceChargeFocus.description>
+  
+  <!-- EN: lance charge momentum -->
+  <RK_Hediff_LanceChargeMomentum.label>騎槍衝鋒（突勢）</RK_Hediff_LanceChargeMomentum.label>
+  <!-- EN: Momentum from the lance charge. First melee attack deals 25% more damage, then this effect is consumed. -->
+  <RK_Hediff_LanceChargeMomentum.description>使用騎槍衝鋒後獲得的突勢效果。首次近戰攻擊將額外造成25%傷害，隨後此效果消失。</RK_Hediff_LanceChargeMomentum.description>
+  
+</LanguageData>

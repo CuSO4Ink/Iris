@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: not vivi -->
+  <VV_AdultApparelConstraint.constraints.0.failReason>并非薇薇</VV_AdultApparelConstraint.constraints.0.failReason>
+  <!-- EN: not adapt body -->
+  <VV_AdultApparelConstraint.constraints.1.failReason>体型不当</VV_AdultApparelConstraint.constraints.1.failReason>
+  
+  <!-- EN: not vivi -->
+  <VV_ApparelConstraint.constraints.0.failReason>并非薇薇</VV_ApparelConstraint.constraints.0.failReason>
+  <!-- EN: not adapt body -->
+  <VV_ApparelConstraint.constraints.1.failReason>体型不当</VV_ApparelConstraint.constraints.1.failReason>
+  
+  <!-- EN: not vivi -->
+  <VV_FemaleApparelConstraint.constraints.0.failReason>并非薇薇</VV_FemaleApparelConstraint.constraints.0.failReason>
+  <!-- EN: not adapt body -->
+  <VV_FemaleApparelConstraint.constraints.1.failReason>体型不当</VV_FemaleApparelConstraint.constraints.1.failReason>
+  
+  <!-- EN: not vivi -->
+  <VV_HeartAttackBlockRaceConstraint.constraints.0.failReason>并非薇薇</VV_HeartAttackBlockRaceConstraint.constraints.0.failReason>
+  
+  <!-- EN: not vivi -->
+  <VV_RaceConstraint.constraints.0.failReason>并非薇薇</VV_RaceConstraint.constraints.0.failReason>
+  
+  <!-- EN: not vivi -->
+  <VV_ThinApparelConstraint.constraints.0.failReason>并非薇薇</VV_ThinApparelConstraint.constraints.0.failReason>
+  <!-- EN: not adapt body -->
+  <VV_ThinApparelConstraint.constraints.1.failReason>体型不当</VV_ThinApparelConstraint.constraints.1.failReason>
+  
+  <!-- EN: not vivi -->
+  <VV_WaterproofCoatApparelConstraint.constraints.0.failReason>并非薇薇</VV_WaterproofCoatApparelConstraint.constraints.0.failReason>
+  <!-- EN: not adapt body -->
+  <VV_WaterproofCoatApparelConstraint.constraints.1.failReason>体型不当</VV_WaterproofCoatApparelConstraint.constraints.1.failReason>
+  
+</LanguageData>

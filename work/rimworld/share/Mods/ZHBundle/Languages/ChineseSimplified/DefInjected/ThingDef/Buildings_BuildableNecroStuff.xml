@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: artificial necronoid biomass -->
+  <Necro_Buildable_Biomass.label>人造殁疫尸巢</Necro_Buildable_Biomass.label>
+  <!-- EN: An artificial biomass that incubates friendly flesh marines. These flesh marines will always spawn friendly and will defend the biomass it came from against any threats.\n\nWARNING: What ever you do, do not deconstruct this stucture unless all of its spawns are dead or gone, otherwise, they will wander aimlessly without a biomass to defend. -->
+  <Necro_Buildable_Biomass.description>可定期孵化血肉陆战队的人造殁疫尸巢。这种特殊的殁疫感染体隶属于玩家派系，它们会一直保护人造殁疫尸巢直至死亡。\n\n警告：除非人造殁疫尸巢孵化的血肉陆战队全部死亡或消失，否则请不要将其拆除。如果失去了需要保护的对象，它们将会漫无目的地四处游荡。</Necro_Buildable_Biomass.description>
+  
+</LanguageData>

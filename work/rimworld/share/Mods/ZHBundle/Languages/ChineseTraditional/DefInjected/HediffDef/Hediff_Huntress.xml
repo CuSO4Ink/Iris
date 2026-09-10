@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 사냥꾼 (I) -->
+  <Miho_Huntress_I_Hediff.label>獵手-I</Miho_Huntress_I_Hediff.label>
+  <!-- EN: 사냥꾼 -->
+  <Miho_Huntress_I_Hediff.description>I級獵手。</Miho_Huntress_I_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Huntress_I_Hediff.stages.a.label>A階</Miho_Huntress_I_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Huntress_I_Hediff.stages.b.label>B階</Miho_Huntress_I_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Huntress_I_Hediff.stages.c.label>C階</Miho_Huntress_I_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Huntress_I_Hediff.stages.d.label>D階</Miho_Huntress_I_Hediff.stages.d.label>
+  
+  <!-- EN: 사냥꾼 (II) -->
+  <Miho_Huntress_II_Hediff.label>獵手-II</Miho_Huntress_II_Hediff.label>
+  <!-- EN: 사냥꾼 -->
+  <Miho_Huntress_II_Hediff.description>II級獵手。</Miho_Huntress_II_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Huntress_II_Hediff.stages.a.label>A階</Miho_Huntress_II_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Huntress_II_Hediff.stages.b.label>B階</Miho_Huntress_II_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Huntress_II_Hediff.stages.c.label>C階</Miho_Huntress_II_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Huntress_II_Hediff.stages.d.label>D階</Miho_Huntress_II_Hediff.stages.d.label>
+  
+  <!-- EN: 사냥꾼 (III) -->
+  <Miho_Huntress_III_Hediff.label>獵手-III</Miho_Huntress_III_Hediff.label>
+  <!-- EN: 사냥꾼 -->
+  <Miho_Huntress_III_Hediff.description>III級獵手。</Miho_Huntress_III_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Huntress_III_Hediff.stages.a.label>A階</Miho_Huntress_III_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Huntress_III_Hediff.stages.b.label>B階</Miho_Huntress_III_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Huntress_III_Hediff.stages.c.label>C階</Miho_Huntress_III_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Huntress_III_Hediff.stages.d.label>D階</Miho_Huntress_III_Hediff.stages.d.label>
+  
+  <!-- EN: 사냥꾼 (IV) -->
+  <Miho_Huntress_IV_Hediff.label>獵手-IV</Miho_Huntress_IV_Hediff.label>
+  <!-- EN: 사냥꾼 -->
+  <Miho_Huntress_IV_Hediff.description>IV級獵手。</Miho_Huntress_IV_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Huntress_IV_Hediff.stages.a.label>A階</Miho_Huntress_IV_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Huntress_IV_Hediff.stages.b.label>B階</Miho_Huntress_IV_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Huntress_IV_Hediff.stages.c.label>C階</Miho_Huntress_IV_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Huntress_IV_Hediff.stages.d.label>D階</Miho_Huntress_IV_Hediff.stages.d.label>
+  
+  <!-- EN: 사냥꾼 (행성 적응중) -->
+  <Miho_Huntress_Start_Hediff.label>獵手（星球適應）</Miho_Huntress_Start_Hediff.label>
+  <!-- EN: 사냥꾼 -->
+  <Miho_Huntress_Start_Hediff.description>獵手。</Miho_Huntress_Start_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Huntress_Start_Hediff.stages.a.label>A</Miho_Huntress_Start_Hediff.stages.a.label>
+  <!-- EN: c -->
+  <Miho_Huntress_Start_Hediff.stages.c.label>C</Miho_Huntress_Start_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Huntress_Start_Hediff.stages.d.label>D</Miho_Huntress_Start_Hediff.stages.d.label>
+  <!-- EN: e -->
+  <Miho_Huntress_Start_Hediff.stages.e.label>E</Miho_Huntress_Start_Hediff.stages.e.label>
+  <!-- EN: f -->
+  <Miho_Huntress_Start_Hediff.stages.f.label>F</Miho_Huntress_Start_Hediff.stages.f.label>
+  <!-- EN: g -->
+  <Miho_Huntress_Start_Hediff.stages.g.label>G</Miho_Huntress_Start_Hediff.stages.g.label>
+  
+  <!-- EN: 사냥꾼 (V) -->
+  <Miho_Huntress_V_Hediff.label>獵手-V</Miho_Huntress_V_Hediff.label>
+  <!-- EN: 사냥꾼 -->
+  <Miho_Huntress_V_Hediff.description>V級獵手。</Miho_Huntress_V_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Huntress_V_Hediff.stages.a.label>A階</Miho_Huntress_V_Hediff.stages.a.label>
+  
+</LanguageData>

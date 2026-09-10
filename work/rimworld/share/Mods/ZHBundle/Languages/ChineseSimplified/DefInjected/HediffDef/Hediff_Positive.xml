@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 안개꽃 기관 잠재력 -->
+  <Miho_Elegans_Hediff.label>秘兰灵腺状态</Miho_Elegans_Hediff.label>
+  <!-- EN: 안개꽃 기관, 또는 엘레강스 기관은 미호의 몸속에만 있는 기관이며 수용성 메카나이트들을 활성화 시키고 온몸으로 퍼저나가게 합니다. 안개꽃 기관이라 불리우는 이유중 하나는 온몸에 퍼져있는 관들이 안개꽃의 줄기와 같다 해서 붙혀졌습니다. \n\n안개꽃 기관을 유지시킬려면 태양화를 통해 메카나이트를 주기적으로 공급해야 합니다. -->
+  <Miho_Elegans_Hediff.description>作为美狐族特有的器官，秘兰灵腺能够活化溶于体液中的纳米机械，并维持它们在躯体内的循环。或许有人会对“秘兰灵腺”这个名字的由来而心生好奇——因为与这种器官相关联的神经通路就像婚纱吊兰的根茎一样错综复杂，遍及全身。\n\n如果美狐族没有定期补充被他们称为“阳气”的能量，不仅灵能的强度会下降，其精神状态也会因无法压抑的原始情感而变得如同野兽一样。“阳气”能量可通过摄入秘灵药物来补充。</Miho_Elegans_Hediff.description>
+  <!-- EN: 장애 -->
+  <Miho_Elegans_Hediff.stages.0.label>耗竭</Miho_Elegans_Hediff.stages.0.label>
+  <!-- EN: 매우 저하됨 -->
+  <Miho_Elegans_Hediff.stages.1.label>极度虚弱</Miho_Elegans_Hediff.stages.1.label>
+  <!-- EN: 저하됨 -->
+  <Miho_Elegans_Hediff.stages.2.label>虚弱</Miho_Elegans_Hediff.stages.2.label>
+  <!-- EN: 정상 -->
+  <Miho_Elegans_Hediff.stages.3.label>正常</Miho_Elegans_Hediff.stages.3.label>
+  <!-- EN: 과충전 -->
+  <Miho_Elegans_Hediff.stages.4.label>活跃</Miho_Elegans_Hediff.stages.4.label>
+  
+  <!-- EN: 태양화 꽃잎을 먹음 -->
+  <Miho_PositiveFlower_High.label>摄入秘灵葵花瓣</Miho_PositiveFlower_High.label>
+  <!-- EN: 태양화 꽃잎은 양기를 충전시켜 줍니다. -->
+  <Miho_PositiveFlower_High.description>秘灵葵花瓣正在为此单位恢复能量。</Miho_PositiveFlower_High.description>
+  <!-- EN: 태양화 꽃잎을 먹음 -->
+  <Miho_PositiveFlower_High.labelNoun>摄入秘灵葵花瓣</Miho_PositiveFlower_High.labelNoun>
+  
+  <!-- EN: 태양화 담배 흡연 -->
+  <Miho_PositiveFlower_Pipe_High.label>曜阳烟亢奋</Miho_PositiveFlower_Pipe_High.label>
+  <!-- EN: 태양화 담배는 정신을 맑게 해줍니다. 신진대사를 활발하게 하는 효과도 있습니다. -->
+  <Miho_PositiveFlower_Pipe_High.description>曜阳烟拥有提神醒脑、促进食欲的功效。</Miho_PositiveFlower_Pipe_High.description>
+  <!-- EN: 태양화 담배 흡연 -->
+  <Miho_PositiveFlower_Pipe_High.labelNoun>曜阳烟亢奋</Miho_PositiveFlower_Pipe_High.labelNoun>
+  
+  <!-- EN: 태양화 차를 마심 -->
+  <Miho_PositiveFlower_Tea_High.label>煦日茶暖身</Miho_PositiveFlower_Tea_High.label>
+  <!-- EN: 태양화 차는 양기를 충전시켜 줍니다. 수면효율을 증대시켜 자기 전에 마시기 좋습니다.. -->
+  <Miho_PositiveFlower_Tea_High.description>煦日茶有助于改善睡眠质量。</Miho_PositiveFlower_Tea_High.description>
+  <!-- EN: 태양화 차를 마심 -->
+  <Miho_PositiveFlower_Tea_High.labelNoun>煦日茶暖身</Miho_PositiveFlower_Tea_High.labelNoun>
+  
+  <!-- EN: 봉인됨 -->
+  <Miho_Restraint_Hediff.label>灵符封印</Miho_Restraint_Hediff.label>
+  <!-- EN: 어떠한 힘으로 초능력을 봉인하였습니다. -->
+  <Miho_Restraint_Hediff.description>灵符中蕴含的某种力量封印了此人的灵能。</Miho_Restraint_Hediff.description>
+  <!-- EN: 봉인 (거부) -->
+  <Miho_Restraint_Hediff.stages.0.label>抗拒</Miho_Restraint_Hediff.stages.0.label>
+  <!-- EN: 봉인 (부분적) -->
+  <Miho_Restraint_Hediff.stages.1.label>起效</Miho_Restraint_Hediff.stages.1.label>
+  <!-- EN: 봉인 (순응) -->
+  <Miho_Restraint_Hediff.stages.2.label>顺从</Miho_Restraint_Hediff.stages.2.label>
+  
+</LanguageData>

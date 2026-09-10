@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+  <EndlessGrowth_pleaseRestart>请重新启动以应用修改！</EndlessGrowth_pleaseRestart>
+  <EndlessGrowthModSettingsCategoryLabel>无限升级</EndlessGrowthModSettingsCategoryLabel>
+  <EndlessGrowth_maxLevelExplanation>设置等级上限，-1为无限</EndlessGrowth_maxLevelExplanation>
+  <EndlessGrowth_unlimitedPriceExplanation>设置为允许，允许卖出价格高于买入价格(并相信自己不会滥用它)。</EndlessGrowth_unlimitedPriceExplanation>
+  <EndlessGrowth_gapForMaxBillExplanation>在技能等级中，你当前最高技能等级和可以达到的最大等级之间的差距。如果想修改，需要重新设置你技能可以达到的的最高等级并重新启动。</EndlessGrowth_gapForMaxBillExplanation>或更新现有的
+  <EndlessGrowth_craftNotificationsEnabledExplanation>是否启用了大师级/传奇级制作通知？</EndlessGrowth_craftNotificationsEnabledExplanation>
+
+
+</LanguageData>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: make kibble from moss -->
+  <VCE_Make_Kibble_Moss.label>用洞穴苔藓制作粗饲料</VCE_Make_Kibble_Moss.label>
+  <!-- EN: Make animal kibble by combining raw meat and moss. This recipe is slightly more efficient than using hay. -->
+  <VCE_Make_Kibble_Moss.description>将生肉和洞穴苔藓混合成动物饲料。比用干草效率更高。</VCE_Make_Kibble_Moss.description>
+  <!-- EN: Making kibble from moss. -->
+  <VCE_Make_Kibble_Moss.jobString>正在用洞穴苔藓制作粗饲料。</VCE_Make_Kibble_Moss.jobString>
+  
+</LanguageData>

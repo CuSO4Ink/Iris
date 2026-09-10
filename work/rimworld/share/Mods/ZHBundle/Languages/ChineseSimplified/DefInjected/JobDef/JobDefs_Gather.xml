@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: gather honey at TargetA. -->
+  <VV_GatherHoney.reportString>自 TargetA 收获蜂蜜</VV_GatherHoney.reportString>
+  
+  <!-- EN: gather living leaf at TargetA. -->
+  <VV_GatherLivingLeaf.reportString>自 TargetA 收获活叶</VV_GatherLivingLeaf.reportString>
+  
+  <!-- EN: gather propolis at TargetA. -->
+  <VV_GatherPropolis.reportString>自 TargetA 收获蜂胶</VV_GatherPropolis.reportString>
+  
+</LanguageData>

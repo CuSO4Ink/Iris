@@ -1,0 +1,9 @@
+﻿<LanguageData>
+  <PE_BasicSpeechTier.label>基础演讲</PE_BasicSpeechTier.label>
+  <PE_FirearmTier.label>火器</PE_FirearmTier.label>
+  <PE_FluentSpeechTier.label>流利演讲</PE_FluentSpeechTier.label>
+  <PE_HighTechTier.label>高科技</PE_HighTechTier.label>
+  <PE_LowTechTier.label>低科技</PE_LowTechTier.label>
+  <PE_MuteTier.label>失语</PE_MuteTier.label>
+  <PE_OrbitalPilotingTier.label>轨道驾驶</PE_OrbitalPilotingTier.label>
+</LanguageData>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 오니솝터 제작 -->
+  <Miho_Mech_DesertSphex.label>组装“泥蜂”园艺无人机</Miho_Mech_DesertSphex.label>
+  <!-- EN: 오니솝터 제작. -->
+  <Miho_Mech_DesertSphex.description>组装一台“泥蜂”园艺无人机。</Miho_Mech_DesertSphex.description>
+  <!-- EN: Gestating mech. -->
+  <Miho_Mech_DesertSphex.jobString>正在组装无人机。</Miho_Mech_DesertSphex.jobString>
+  
+  <!-- EN: 오니솝터(자폭용) 제작 -->
+  <Miho_Mech_DesertSphexExplosion.label>组装“泥蜂”自爆无人机</Miho_Mech_DesertSphexExplosion.label>
+  <!-- EN: 오니솝터 제작. -->
+  <Miho_Mech_DesertSphexExplosion.description>组装一台“泥蜂”自爆无人机。</Miho_Mech_DesertSphexExplosion.description>
+  <!-- EN: Gestating mech. -->
+  <Miho_Mech_DesertSphexExplosion.jobString>正在组装无人机。</Miho_Mech_DesertSphexExplosion.jobString>
+  
+</LanguageData>

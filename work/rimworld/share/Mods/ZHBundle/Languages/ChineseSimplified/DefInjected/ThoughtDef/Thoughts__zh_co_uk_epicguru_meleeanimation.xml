@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: lost friendly duel -->
+  <AM_FriendlyDuel_Lose.stages.lost_friendly_duel.label>在切磋决斗中落败</AM_FriendlyDuel_Lose.stages.lost_friendly_duel.label>
+  <!-- EN: I lost in a friendly duel against {OTHERPAWN}.\nLosing is disappointing but it was still good practice. I'll get em' next time! -->
+  <AM_FriendlyDuel_Lose.stages.lost_friendly_duel.description>我在一次切磋决斗中被{OTHERPAWN}击败了。\n虽说失败的滋味并不好受，但我也因此学到了许多。下次我可不会再输了！</AM_FriendlyDuel_Lose.stages.lost_friendly_duel.description>
+  
+  <!-- EN: won friendly duel -->
+  <AM_FriendlyDuel_Win.stages.won_friendly_duel.label>在切磋决斗中取胜</AM_FriendlyDuel_Win.stages.won_friendly_duel.label>
+  <!-- EN: I won a friendly duel against {OTHERPAWN}!\nIt was a relaxed bout but it still feels good to be victorious. -->
+  <AM_FriendlyDuel_Win.stages.won_friendly_duel.description>我在一次切磋决斗中击败了{OTHERPAWN}！\n取胜的感觉竟是如此美妙！</AM_FriendlyDuel_Win.stages.won_friendly_duel.description>
+  
+</LanguageData>

@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- Shield -->
+	<!-- EN: Equip {0} as shield -->
+  <VanillaFactionsExpanded.EquipShield>將{0}當作盾牌裝備</VanillaFactionsExpanded.EquipShield>
+	<!-- EN: (unusable with {0}) -->
+  <VanillaFactionsExpanded.EquipWarningShieldUnusable>（{0}將無法與盾牌一同使用）</VanillaFactionsExpanded.EquipWarningShieldUnusable>
+	<!-- EN: ({0} will be unusable) -->
+  <VanillaFactionsExpanded.EquipWarningShieldUnusableWithWeapon>（{0}將無法與此武器一同使用）</VanillaFactionsExpanded.EquipWarningShieldUnusableWithWeapon>
+
+	<!-- EN: Protects -->
+  <VanillaFactionsExpanded.Protects>防護部位</VanillaFactionsExpanded.Protects>
+	<!-- EN: What body parts the shield protects. -->
+  <VanillaFactionsExpanded.Protects_Desc>盾牌能對哪些身體部位起到防護作用。</VanillaFactionsExpanded.Protects_Desc>
+	
+	<!-- Scenario parts -->
+	<!-- EN: Faction relation modifiers -->
+  <VanillaFactionsExpanded.ScenPart_ForcedFactionRelations>派系關係修正</VanillaFactionsExpanded.ScenPart_ForcedFactionRelations>
+	<!-- EN: {0} to {1} -->
+  <VanillaFactionsExpanded.NumberRange>{0}至{1}</VanillaFactionsExpanded.NumberRange>
+	<!-- EN: All factions -->
+  <VanillaFactionsExpanded.AllFactions>所有派系</VanillaFactionsExpanded.AllFactions>
+	<!-- EN: All factions including hidden -->
+  <VanillaFactionsExpanded.AllFactionsIncludingHidden>所有派系（包括隱藏派系）</VanillaFactionsExpanded.AllFactionsIncludingHidden>
+	<!-- EN: Always hostile -->
+  <VanillaFactionsExpanded.AlwaysHostile>永久敵對</VanillaFactionsExpanded.AlwaysHostile>
+	<!-- EN: Affect hidden -->
+  <VanillaFactionsExpanded.AffectHiddenFactions>隱藏影響</VanillaFactionsExpanded.AffectHiddenFactions>
+	<!-- EN: Starting -->
+  <VanillaFactionsExpanded.StartingGoodwill>開局好感度</VanillaFactionsExpanded.StartingGoodwill>
+	<!-- EN: Natural -->
+  <VanillaFactionsExpanded.NaturalGoodwill>順其自然</VanillaFactionsExpanded.NaturalGoodwill>
+
+	<!-- Stat Draw Entries -->
+	<!-- EN: Usable with shields -->
+  <VanillaFactionsExpanded.UsableWithShield>可與盾牌一同裝備</VanillaFactionsExpanded.UsableWithShield>
+	<!-- EN: Whether or not this weapon can be used if the character also has a shield equipped. -->
+  <VanillaFactionsExpanded.UsableWithShield_Desc>在角色裝備盾牌時，該武器是否可以使用。</VanillaFactionsExpanded.UsableWithShield_Desc>
+	<!-- EN: Ammo per charge -->
+  <VEF.Weapons.Stat_Thing_MaterialPerCharge>每次充能所需彈藥</VEF.Weapons.Stat_Thing_MaterialPerCharge>
+	<!-- EN: {0} {1} per charge (total {2} charges) -->
+  <VEF.Weapons.Stat_Thing_MaterialPerCharge_Value>每次充能消耗{0}{1}（總計{2}次充能）</VEF.Weapons.Stat_Thing_MaterialPerCharge_Value>
+    <!-- EN: The amount of {0} per charge this ability needs to be recharged. -->
+  <VEF.Weapons.Stat_Thing_MaterialPerCharge_Desc>該能力每次充能需要消耗的{0}數量。</VEF.Weapons.Stat_Thing_MaterialPerCharge_Desc>
+
+	<!-- New Faction Spawning -->
+	<!-- EN: New faction: {FactionName} -->
+  <VanillaFactionsExpanded.FactionTitle>新派系：{FactionName}</VanillaFactionsExpanded.FactionTitle>
+	<!-- EN: This faction is added by {ModName} and not currently present in your game. -->
+  <VanillaFactionsExpanded.ModInfo>此派系由“{ModName}”添加，目前不存在於你的遊戲中。</VanillaFactionsExpanded.ModInfo>
+	<!-- EN: an unknown mod -->
+  <VanillaFactionsExpanded.AnUnknownMod>一個未知Mod</VanillaFactionsExpanded.AnUnknownMod>
+	<!-- EN: This is a hidden faction and won't show up in your faction list. -->
+  <VanillaFactionsExpanded.HiddenFactionInfo>此派系被標記為“隱藏的”，不會出現在你的派系列表中。</VanillaFactionsExpanded.HiddenFactionInfo>
+	<!-- EN: It is marked as required by {ModName}. -->
+  <VanillaFactionsExpanded.RequiredFactionInfo>它已按照“{ModName}”的設定被標記。</VanillaFactionsExpanded.RequiredFactionInfo>
+	<!-- EN: This faction is marked as non-spawning and you should probably just ignore it. -->
+  <VanillaFactionsExpanded.NonSpawningFactionInfo>此派系被標記為“不生成”，你也許應該忽略它。</VanillaFactionsExpanded.NonSpawningFactionInfo>
+	<!-- EN: Please select how to proceed: -->
+  <VanillaFactionsExpanded.FactionSelectOption>請繼續選擇：</VanillaFactionsExpanded.FactionSelectOption>
+	<!-- EN: Add the faction -->
+  <VanillaFactionsExpanded.FactionButtonAdd>生成派系</VanillaFactionsExpanded.FactionButtonAdd>
+	<!-- EN: Add the faction with settlements -->
+  <VanillaFactionsExpanded.FactionButtonAddFull>生成具有定居點的派系</VanillaFactionsExpanded.FactionButtonAddFull>
+	<!-- EN: Do nothing -->
+  <VanillaFactionsExpanded.FactionButtonSkip>忽略</VanillaFactionsExpanded.FactionButtonSkip>
+	<!-- EN: Don't ask for this faction again -->
+  <VanillaFactionsExpanded.FactionButtonIgnore>不再生成此派系</VanillaFactionsExpanded.FactionButtonIgnore>
+	<!-- EN: Failed to add the faction. -->
+  <VanillaFactionsExpanded.FactionMessageFailed>無法生成派系。</VanillaFactionsExpanded.FactionMessageFailed>
+	<!-- EN: Failed to create a faction with settlements. -->
+  <VanillaFactionsExpanded.FactionMessageFailedFull>無法生成具有定居點的派系。</VanillaFactionsExpanded.FactionMessageFailedFull>
+	<!-- EN: Added {FactionName} with {Amount} settlements. -->
+  <VanillaFactionsExpanded.FactionMessageSuccessFull>已生成有{Amount}個定居點的{FactionName}。</VanillaFactionsExpanded.FactionMessageSuccessFull>
+	<!-- EN: Added {FactionName}. -->
+  <VanillaFactionsExpanded.FactionMessageSuccess>已生成{FactionName}。</VanillaFactionsExpanded.FactionMessageSuccess>
+	<!-- EN: It is marked as required, and you must add it to the game. -->
+  <VanillaFactionsExpanded.FactionDiscoveryRequired>此派系被標記為“必要的”，你必須在遊戲中生成它。</VanillaFactionsExpanded.FactionDiscoveryRequired>
+	<!-- EN: Failed to generate this faction. It is recommended to try again, but you can now skip adding this faction. Skipping may cause issues. -->
+  <VanillaFactionsExpanded.FactionFailedMessage>生成此派系失敗。建議你再試一次，或者暫時跳過生成此派系。跳過生成可能會導致一些小問題。</VanillaFactionsExpanded.FactionFailedMessage>
+	<!-- EN: {FACTION} cannot be disabled{REQUIRED_multiple ? , you need at least {REQUIRED} factions of that type. : .} -->
+  <VanillaFactionsExpanded.FactionRequired>{FACTION}無法被禁用{REQUIRED_multiple ? ，你的遊戲中至少要擁有{REQUIRED}個同種類型的派系. : .}</VanillaFactionsExpanded.FactionRequired>
+	<!-- EN: {REQUIRED_multiple ? It is recommended to have at least {REQUIRED} factions of {FACTION} type, but currently there's only {COUNT}. : It is recommended to enable {FACTION}.} -->
+  <VanillaFactionsExpanded.FactionRecommended>{REQUIRED_multiple ? 建議遊戲中至少要擁有{REQUIRED}個{FACTION}類型的派系，然而當前只有{COUNT}個. : 建議啟用{FACTION}.}</VanillaFactionsExpanded.FactionRecommended>
+
+	<!-- EN: Settlements to spawn (recommended are {0}): {1} -->
+  <VanillaFactionsExpanded.FactionSettlementsToSpawn>生成的定居點數：{1}（建議值：{0}）</VanillaFactionsExpanded.FactionSettlementsToSpawn>
+	<!-- EN: The minimum distance from player bases (recommended are {0}): {1} -->
+  <VanillaFactionsExpanded.FactionMinDistance>與玩家基地的最短距離：{1}（建議值：{0}）</VanillaFactionsExpanded.FactionMinDistance>
+	<!-- EN: Spawn -->
+  <VanillaFactionsExpanded.FactionButtonSpawn>生成</VanillaFactionsExpanded.FactionButtonSpawn>
+	<!-- EN: Cancel -->
+  <VanillaFactionsExpanded.FactionButtonCancel>取消</VanillaFactionsExpanded.FactionButtonCancel>
+
+	<!-- EN: Reinforcements -->
+  <VSE.Reinforcements>增援</VSE.Reinforcements>
+	<!-- EN: Seeing that your forces suffered losses, {FACTION_name} has decided to reinforce their raiding force -->
+  <VSE.ReinforcementsDesc>看到你們的部隊遭受損失，{FACTION_name}決定增援他們的襲擊部隊。</VSE.ReinforcementsDesc>
+	<!-- EN: cost: {0} goodwill -->
+  <VSE.CostGoodwill>花費: {0}好感度</VSE.CostGoodwill>
+
+	<!-- EN: Weapon warm-up -->
+  <VWEL_ToggleHotshotLabel>武器預熱</VWEL_ToggleHotshotLabel>
+	<!-- EN: Shots fired when standing still warm-up the weapon allowing for increased firing speed. Overheating can lead to detonation. -->
+  <VWEL_ToggleHotshotDesc>站立不動時射擊可以給武器預熱，從而提高射擊速度。過熱會導致爆炸。</VWEL_ToggleHotshotDesc>
+
+	<!-- EN: Deep drill cannot be used with {0}. -->
+  <VFE_DeepDrillNo>{0}無法使用深鑽井。</VFE_DeepDrillNo>
+	
+    <!-- EN: Teleport to {0} -->
+  <VEF.TeleportTo>傳送至{0}</VEF.TeleportTo>
+	
+	<!-- Lootboxes -->
+	
+	<!-- EN: Market value range (base) -->
+  <VEF.TotalMarketValueRange>市場價值範圍（基礎）</VEF.TotalMarketValueRange>
+	<!-- EN: Total market value range (minimum and maximum) of the objects that can be found by opening this loot box. -->
+  <VEF.TotalMarketValueRange_Desc>開啟此戰利品箱時，所獲得物品的總市場價值範圍（最小值~最大值）。</VEF.TotalMarketValueRange_Desc>
+	<!-- EN: Market value range (by quality) -->
+  <VEF.TotalMarketValueRange_Quality>市場價值範圍（品質加成）</VEF.TotalMarketValueRange_Quality>
+	<!-- EN: Total market value range (minimum and maximum) of the objects that can be found by opening this loot box. Box quality has modified the base value by a factor of {0} -->
+  <VEF.TotalMarketValueRange_Quality_Desc>開啟此戰利品箱時，所獲得物品的總市場價值範圍（最小值~最大值）。根據戰利品箱的品質，其基礎市場價值已乘以{0}。</VEF.TotalMarketValueRange_Quality_Desc>
+
+    <!-- Extractable plants -->
+	<!-- EN: Extracted flower will die in {time} unless replanted. -->
+  <VPE_MinifiedFlowerWillDieIn>待移植的花卉如未被重新種植，會在{time}內凋零。</VPE_MinifiedFlowerWillDieIn>
+	<!-- EN: Extract flower -->
+  <VPE_ExtractFlower>移植花卉</VPE_ExtractFlower>
+	<!-- EN: Extract this flower while keeping it alive, so that it can be replanted elsewhere. -->
+  <VPE_ExtractFlower_Desc>挖起這株花卉同時避免它在過程中枯死，以便重新種植在其他地方。</VPE_ExtractFlower_Desc>
+	<!-- EN: Cancel extraction -->
+  <VPE_CancelExtractFlower>取消移植</VPE_CancelExtractFlower>
+	<!-- EN: Cancel extracting this flower. -->
+  <VPE_CancelExtractFlower_Desc>取消移植此花卉。</VPE_CancelExtractFlower_Desc>
+	<!-- EN: Replant -->
+  <VPE_ReplantFlower>重新種植</VPE_ReplantFlower>
+	<!-- EN: The flower is currently packaged up for storage and transport. Use this command to replant it in the new location. -->
+  <VPE_ReplantFlower_Desc>此花卉目前被打包以利於儲藏及搬遷。使用這個指令將它重新種植在新地點。</VPE_ReplantFlower_Desc>
+	
+	<!-- Blooming plants -->
+	<!-- EN: Age: {0} -->
+  <VPE_RealAge>年齡: {0}</VPE_RealAge>
+	<!-- EN: Flower is blooming -->
+  <VPE_FlowerIsBlooming>花卉正在開放</VPE_FlowerIsBlooming>
+	<!-- EN: Beauty by age: +{0} -->
+  <VPE_BeautyByAge>年齡帶來的美觀度：+{0}</VPE_BeautyByAge>
+	<!-- EN: Beauty by blooming: x{0} -->
+  <VPE_BeautyByBloming>開放帶來的美觀度：x{0}</VPE_BeautyByBloming>
+	<!-- EN: Beauty because of weeds: {0} -->
+  <VPE_BeautyByWeeds>雜草帶來的美觀度：{0}</VPE_BeautyByWeeds>
+	<!-- EN: Leafless beauty: {0} -->
+  <VPE_BeautyByLeafless>無葉美觀度：{0}</VPE_BeautyByLeafless>
+	<!-- EN: Leafless beauty -->
+  <VPE_LeaflessBeauty>無葉美觀度</VPE_LeaflessBeauty>
+	<!-- EN: Blooming flowers are pretty ugly when leafless due to cold. They won't die just for being leafless, but their beauty will be greatly affected. -->
+  <VPE_LeaflessBeauty_Desc>由於寒冷而掉光葉子的花卉看起來會很醜。沒有葉子不會讓它們死亡，但美觀度會受到很大影響。</VPE_LeaflessBeauty_Desc>
+	<!-- EN: Plant must be fully grown before you can add age to it -->
+  <VPE_MustBeGrown>植物只有在完全成長後才會累計年齡。</VPE_MustBeGrown>
+	<!-- EN: Age beauty modifier -->
+  <VPE_AgeBeautyModifier>年齡美觀度修正</VPE_AgeBeautyModifier>
+	<!-- EN: The beauty of this plant will increase by this amount for every year it is kept alive, up to a maximum of +{0}. -->
+  <VPE_AgeBeautyModifier_Desc>此植物的美觀度會因存活年數而增加，最多可增加到+{0}。</VPE_AgeBeautyModifier_Desc>
+	<!-- EN: Bloom beauty modifier -->
+  <VPE_BloomBeautyModifier>開放美觀度修正</VPE_BloomBeautyModifier>
+	<!-- EN: The beauty of this plant will be multiplied by this amount when in its blooming stage. -->
+  <VPE_BloomBeautyModifier_Desc>此植物在開放狀態的美觀度會乘以這個倍數。</VPE_BloomBeautyModifier_Desc>
+	<!-- EN: Blooming period -->
+  <VPE_BloomingPeriod>開花期</VPE_BloomingPeriod>
+	<!-- EN: This flower will enter a blooming stage in this period, or the equivalent in days of the year in permanent summer / winter. -->
+  <VPE_BloomingPeriod_Desc>此花卉將在此時期進入開放狀態，或在永久夏/冬季節中相當於一年中的天數。</VPE_BloomingPeriod_Desc>
+	<!-- EN: Minimum bloom temperature -->
+  <VPE_BloomTemperatureMin>最低開花溫度</VPE_BloomTemperatureMin>
+	<!-- EN: The minimum temperature the plant will need to enter a blooming stage.\n\n{0} -->
+  <VPE_BloomTemperatureMin_Desc>植物進入開放狀態所需的最低溫度。\n\n{0}</VPE_BloomTemperatureMin_Desc>
+	<!-- EN: If the blooming stops due to low temperature, this flower can enter a blooming stage again if the conditions improve. -->
+  <VPE_CanBloom>如果開花因低溫而中止，當條件重新回歸標準後，此花卉可以再次進入開放狀態。</VPE_CanBloom>
+	<!-- EN: If the blooming stops due to low temperature, this flower won't be able to bloom again until next year! -->
+  <VPE_CantBloom>如果開花因低溫而中止，此花卉將無法在明年之前再次開花！</VPE_CantBloom>
+	<!-- EN: Deadly cold temperature -->
+  <VPE_DeadlyColdTemperature>致命寒冷溫度</VPE_DeadlyColdTemperature>
+	<!-- EN: Below this temperature, the plant will start dying. -->
+  <VPE_DeadlyColdTemperature_Desc>當溫度低於此值時，此植物將會死亡。</VPE_DeadlyColdTemperature_Desc>
+	<!-- EN: Temperature too low for blooming -->
+  <VPE_TempTooLowForBlooming>溫度過低，無法開花</VPE_TempTooLowForBlooming>
+	<!-- EN: Remove weeds -->
+  <VPE_RemoveWeeds>移除雜草</VPE_RemoveWeeds>
+	<!-- EN: Remove the weeds that are negatively impacting this flower's beauty. -->
+  <VPE_RemoveWeeds_Desc>移除影響此花卉美觀度的雜草。</VPE_RemoveWeeds_Desc>
+	<!-- EN: Cancel weed removal -->
+  <VPE_CancelWeedRemoval>取消除草</VPE_CancelWeedRemoval>
+	<!-- EN: Cancel removing the weeds from this flower. -->
+  <VPE_CancelWeedRemoval_Desc>取消移除此花卉的雜草。</VPE_CancelWeedRemoval_Desc>
+	<!-- EN: Weeds: {PLANTDEF_labelPlural} -->
+  <VEF_LetterLabelWeeds>雜草：{PLANTDEF_labelPlural}</VEF_LetterLabelWeeds>
+    <!-- EN: Weeds have spread across your {PLANTDEF_labelPlural}, as well as other nearby blooming flowers, greatly affecting their beauty.\n\nYou can order your colonists to remove the weeds, though it is a time consuming process. -->
+  <VEF_LetterWeeds>雜草已經蔓延到你的{PLANTDEF_labelPlural}以及附近的其他花卉上，嚴重影響了她們的美觀度。\n\n你可以命令你的殖民者移除雜草，此過程比較耗時。</VEF_LetterWeeds>
+</LanguageData>

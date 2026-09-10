@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: chupacabra!!!!! -->
+  <Chupacabras_SilentRaid.label>血噬兽袭击</Chupacabras_SilentRaid.label>
+  
+  <!-- EN: corrupted drop ship -->
+  <CorruptedDropShip.label>母巢飞船</CorruptedDropShip.label>
+  <!-- EN: Corrupted Drop Ship -->
+  <CorruptedDropShip.letterLabel>母巢飞船</CorruptedDropShip.letterLabel>
+  <!-- EN: A corrupted drop ship had landed near your colony! It will deploy fetid marines that will attack your colony, all while polluting the atmosphere in necrotion fallout! -->
+  <CorruptedDropShip.letterText>一艘母巢飞船坠毁在了殖民地附近！它将在周围部署脓腐陆战队并源源不断地构建殁疫炮塔，还会释放出笼罩整片区域的感染性殁疫尘埃。\n\n最好在事态超出掌控前尽快将其摧毁！</CorruptedDropShip.letterText>
+  
+  <!-- EN: corrupted ship -->
+  <CorruptedShip.label>母巢飞船</CorruptedShip.label>
+  <!-- EN: Corrupted Ship -->
+  <CorruptedShip.letterLabel>母巢飞船</CorruptedShip.letterLabel>
+  <!-- EN: A corrupted ship had crashed near your colony! It will create its own hive where it will send necronoids in your base every 24 hours.\n\nYou have to deal with this threat before it overwhelms your colony! -->
+  <CorruptedShip.letterText>一艘母巢飞船坠毁在了殖民地附近！它将源源不断地在周围构建殁疫炮塔与殁疫尸巢，还会释放出笼罩整片区域的感染性殁疫尘埃。每经过24小时，它都会派遣大量殁疫感染体攻击你的基地。\n\n最好在事态超出掌控前尽快将其摧毁！</CorruptedShip.letterText>
+  
+  <!-- EN: howling spider!!!!! -->
+  <HowlingSpiders_SilentRaid.label>尖啸骇蛛袭击</HowlingSpiders_SilentRaid.label>
+  
+  <!-- EN: necronid raid "center drop" -->
+  <Necronoid_CenterDropRaid.label>殁疫感染体袭击（中心空投）</Necronoid_CenterDropRaid.label>
+  
+  <!-- EN: necronid horde -->
+  <Necronoid_Horde.label>殁疫尸潮</Necronoid_Horde.label>
+
+  <!-- EN: FleshPit -->
+  <NecronoidBiomass.label>血肉渊窟</NecronoidBiomass.label>
+  <!-- EN: Flesh Pit!! -->
+  <NecronoidBiomass.letterLabel>血肉渊窟</NecronoidBiomass.letterLabel>
+  <!-- EN: A giant flesh pit had spawned somewhere near your base! It will spawn dozens of necronoids, including some boss-like necronoids, and will lay waste in your colony! Defend your self at all cost!! -->
+  <NecronoidBiomass.letterText>一个巨大的血肉渊窟出现在了殖民地附近！它将孵化出大量的普通殁疫感染体，以及一只实力超常的高阶殁疫感染体！\n\n一场恶战在所难免，无论如何都请保护好自己！</NecronoidBiomass.letterText>
+  
+  <!-- EN: necrotion fallout -->
+  <NecrotionFallout.label>殁疫尘埃</NecrotionFallout.label>
+  <!-- EN: Necrotion Fallout -->
+  <NecrotionFallout.letterLabel>殁疫尘埃</NecrotionFallout.letterLabel>
+  
+  <!-- EN: wendigo!!!!! -->
+  <Wendigo_SilentRaid.label>温迪戈袭击</Wendigo_SilentRaid.label>
+  
+</LanguageData>

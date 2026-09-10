@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: hypothermia -->
+  <DR_Mace_Hypothermia.label>低温症</DR_Mace_Hypothermia.label>
+  <!-- EN: Dangerously low core body temperature. -->
+  <DR_Mace_Hypothermia.description>体温低至危险程度。</DR_Mace_Hypothermia.description>
+  <!-- EN: shivering -->
+  <DR_Mace_Hypothermia.stages.shivering-0.label>身体颤抖</DR_Mace_Hypothermia.stages.shivering-0.label>
+  <!-- EN: shivering -->
+  <DR_Mace_Hypothermia.stages.shivering-1.label>身体颤抖</DR_Mace_Hypothermia.stages.shivering-1.label>
+  <!-- EN: minor -->
+  <DR_Mace_Hypothermia.stages.minor.label>轻微</DR_Mace_Hypothermia.stages.minor.label>
+  <!-- EN: serious -->
+  <DR_Mace_Hypothermia.stages.serious.label>严重</DR_Mace_Hypothermia.stages.serious.label>
+  <!-- EN: extreme -->
+  <DR_Mace_Hypothermia.stages.extreme.label>极重度</DR_Mace_Hypothermia.stages.extreme.label>
+  
+</LanguageData>

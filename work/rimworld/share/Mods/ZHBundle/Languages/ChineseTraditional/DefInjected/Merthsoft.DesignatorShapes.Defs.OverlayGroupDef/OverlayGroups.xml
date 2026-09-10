@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <Ellipse.label>橢圓</Ellipse.label>
+  
+  <Ellipse_Input.label>自訂橢圓</Ellipse_Input.label>
+  <Ellipse_Input.description>建立並使用使用者自訂尺寸的橢圓。</Ellipse_Input.description>
+  
+  <Etc.label>其他形狀</Etc.label>
+  <Etc.description>《邊緣世界》預設的一些特殊形狀。</Etc.description>
+  
+  <FloodFill.label>填充</FloodFill.label>
+  <FloodFill.description>對一個被牆壁等障礙物封閉的區域進行填充。</FloodFill.description>
+
+  <Grids.label>網格</Grids.label>
+  <Grids.description>建立各種網格形狀。</Grids.description>
+  
+  <Grids_Input.label>自訂網格</Grids_Input.label>
+  <Grids_Input.description>建立自訂尺寸的網格。</Grids_Input.description>
+  
+  <Grids_Inverse.label>反向網格</Grids_Inverse.label>
+  <Grids_Inverse.description>建立各種反向網格形狀。</Grids_Inverse.description>
+  
+  <Grids_Inverse_Input.label>自訂反向網格</Grids_Inverse_Input.label>
+  <Grids_Inverse_Input.description>建立自訂尺寸的反向網格。</Grids_Inverse_Input.description>
+  
+  <Line.label>線段與曲線</Line.label>
+  
+  <MoreShapes.label>更多形狀</MoreShapes.label>
+  <MoreShapes.description>更多其他的幾何圖形。</MoreShapes.description>
+  
+  <Rectangle.label>矩形</Rectangle.label>
+  
+  <Rectangle_Input.label>自訂矩形</Rectangle_Input.label>
+  <Rectangle_Input.description>建立並使用使用者自訂尺寸的矩形。</Rectangle_Input.description>
+  
+</LanguageData>

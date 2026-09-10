@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Auto-Execution mode -->
+  <AM_ExecutionModePawnColumn.headerTip>施展终结技（自动）</AM_ExecutionModePawnColumn.headerTip>
+  
+  <!-- EN: Auto-Lasso mode -->
+  <AM_LassoModePawnColumn.headerTip>抛投套索（自动）</AM_LassoModePawnColumn.headerTip>
+  
+</LanguageData>

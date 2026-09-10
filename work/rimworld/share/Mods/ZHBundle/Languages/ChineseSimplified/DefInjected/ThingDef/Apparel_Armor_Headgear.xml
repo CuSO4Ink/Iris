@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- VOID Helmet -->
+
+  <RHApparel_VOIDReactive_Helmet.label>V.O.I.D.头盔</RHApparel_VOIDReactive_Helmet.label>
+  <RHApparel_VOIDReactive_Helmet.description>V.O.I.D.头盔是一种古老的动力装甲头盔，它有一个内置接口，可以为用户在战斗和地形导航中提供帮助。\n\nV.O.I.D.头盔保护使用者免受精神攻击和有毒物质的伤害，它是由一个名叫AdminPwn的声名狼藉的世界穿越者设计和发明的，他为V.O.I.D.设计了一系列专门的盔甲，原意是以便他们帮助所居住的堕落世界。然而，N-4突变种缓慢但确切无疑地接管了他们的世界，幸存者在费尔维尤能够居住的安全区域日渐缩小。</RHApparel_VOIDReactive_Helmet.description>
+
+
+  <!-- Dusk Helmet -->
+
+  <RHApparel_DuskReactive_Helmet.label>薄暝头盔</RHApparel_DuskReactive_Helmet.label>
+  <RHApparel_DuskReactive_Helmet.description>这种古代薄暝头盔是薄暝装备的一部分，其作者是一位名叫AdminPwn的声名狼藉的世界穿越者。据说在以前，获得这顶头盔的唯一途径是在一个被N-4病毒感染的世界中，与其他幸存者竞争并最终获胜。</RHApparel_DuskReactive_Helmet.description>
+
+
+</LanguageData>

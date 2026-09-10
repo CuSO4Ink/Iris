@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_CanMeats.label>装罐肉类 x4</VCE_CanMeats.label>
+		<VCE_CanMeats.description>将肉安全地封装在钢铁罐头里。罐头食物的保质期近乎无限长。</VCE_CanMeats.description>
+		<VCE_CanMeats.jobString>正在给肉装罐。</VCE_CanMeats.jobString>
+		<VCE_CanProduce.label>装罐素菜 x4</VCE_CanProduce.label>
+		<VCE_CanProduce.description>将素菜安全地封装在钢铁罐头里。罐头食物的保质期近乎无限长。</VCE_CanProduce.description>
+		<VCE_CanProduce.jobString>正在给素菜装罐。</VCE_CanProduce.jobString>
+		<VCE_CanEggs.label>装罐蛋类 x4</VCE_CanEggs.label>
+		<VCE_CanEggs.description>将煮蛋安全地封装在钢铁罐头里。罐头食物的保质期近乎无限长。</VCE_CanEggs.description>
+		<VCE_CanEggs.jobString>正在给蛋装罐。</VCE_CanEggs.jobString>
+		<VCE_CanFish.label>装罐鱼肉 x4</VCE_CanFish.label>
+		<VCE_CanFish.description>将鱼肉安全地封装在钢铁罐头里。罐头食物的保质期近乎无限长。</VCE_CanFish.description>
+		<VCE_CanFish.jobString>正在给鱼装罐。</VCE_CanFish.jobString>
+		<VCE_CanAlienFish.label>装罐外星生鱼x4</VCE_CanAlienFish.label>
+		<VCE_CanAlienFish.description>将外星生鱼安全地封装在钢铁罐头里。罐头食物的保质期近乎无限长。</VCE_CanAlienFish.description>
+		<VCE_CanAlienFish.jobString>正在给外星生鱼装罐。</VCE_CanAlienFish.jobString>
+		<VCE_CanFruit.label>装罐水果 x4</VCE_CanFruit.label>
+		<VCE_CanFruit.description>将水果安全地封装在钢铁罐头里。罐头食物的保质期近乎无限长。\n\n罐装水果依旧可以用来制作甜品</VCE_CanFruit.description>
+		<VCE_CanFruit.jobString>正在给水果装罐。</VCE_CanFruit.jobString>	
+	</LanguageData>

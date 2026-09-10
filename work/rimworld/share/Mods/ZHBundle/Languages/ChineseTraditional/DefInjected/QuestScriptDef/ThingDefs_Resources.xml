@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>arrivalLetterLabel->Modified mechanoid have arrived</li>
+    <li>arrivalLetterText->A [mech_label] has dropped from orbit in response to the activated mech beacon.\n\nIt seems to arrive uncontrolled, and will wander around until someone takes control of it, but it seems to be eager to serve its new master.</li>
+  -->
+  <ModifiedMechArrival.questContentRules.rulesStrings>
+    <li>arrivalLetterLabel->改裝機械體抵達</li>
+    <li>arrivalLetterText->一個收到信號的[mech_label]已乘坐運輸艙抵達此處。\n\n它渴望為新主人服務，但目前處於未被控制狀態。請確保你有一位頻寬足夠的御機使。</li>
+  </ModifiedMechArrival.questContentRules.rulesStrings>
+  
+</LanguageData>

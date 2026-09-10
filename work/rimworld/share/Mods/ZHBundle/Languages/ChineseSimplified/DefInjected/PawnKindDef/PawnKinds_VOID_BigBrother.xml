@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Starter -->
+
+  <RH_VOID_Undying.label>老大哥</RH_VOID_Undying.label>
+  <RH_VOID_Undying.labelPlural>老大哥</RH_VOID_Undying.labelPlural>
+  <RH_VOID_Undying.labelMale>男性 老大哥</RH_VOID_Undying.labelMale>
+  <RH_VOID_Undying.labelMalePlural>男性 老大哥</RH_VOID_Undying.labelMalePlural>
+  <RH_VOID_Undying.labelFemale>老大姐</RH_VOID_Undying.labelFemale>
+  <RH_VOID_Undying.labelFemalePlural>老大姐</RH_VOID_Undying.labelFemalePlural>
+
+
+</LanguageData>

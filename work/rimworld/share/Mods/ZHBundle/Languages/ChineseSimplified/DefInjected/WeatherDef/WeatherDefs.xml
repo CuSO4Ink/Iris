@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: inferno -->
+  <VEE_Inferno.label>狱火燎原</VEE_Inferno.label>
+  <!-- EN: A catastrophic, unnatural, oppressive heat. -->
+  <VEE_Inferno.description>一股非自然且极度沉闷的灾难性热浪正席卷此区域。</VEE_Inferno.description>
+  
+  <!-- EN: long night -->
+  <VEE_LongNight.label>漫漫长夜</VEE_LongNight.label>
+  <!-- EN: A catastrophic celestial eclipse that blankets the world in an endless, freezing twilight, forcing the world to adapt to artificial light and increased psychic sensitivity as nocturnal predators and subterranean threats emerge in the darkness. -->
+  <VEE_LongNight.description>一场灾难性的天体日蚀令整个世界笼罩在无尽且寒冷的暮色中。随着夜行掠食者与地下威胁自黑暗中悄然浮现，人们将不得不依靠人造光源生存，并适应心灵敏感度激增的异常状况。</VEE_LongNight.description>
+  
+  <!-- EN: psychic rain -->
+  <VEE_PsychicRain.label>心灵之雨</VEE_PsychicRain.label>
+  <!-- EN: A seemingly supernatural rain that alters the very composition of time. Any person or creature not under a roof will age significantly faster. -->
+  <VEE_PsychicRain.description>一场似乎永无尽头的超自然之雨正改变着时间的本质结构。任何不在屋顶下的人类和动物都会加速衰老。</VEE_PsychicRain.description>
+  
+  <!-- EN: swelter -->
+  <VEE_Swelter.label>热浪初涌</VEE_Swelter.label>
+  <!-- EN: An unnatural, oppressive heat. -->
+  <VEE_Swelter.description>一股非自然且沉闷的热浪正席卷此区域。</VEE_Swelter.description>
+  
+  <!-- EN: whiteout -->
+  <VEE_Whiteout.label>白幕封疆</VEE_Whiteout.label>
+  <!-- EN: Heavy, chilling snow that severely reduces the accuracy of ranged weapons, extinguishes fire and slows people down. -->
+  <VEE_Whiteout.description>遮天蔽日的刺骨暴风雪会显著降低远程武器的命中率，扑灭火焰，雪地同时还会降低移动速度。</VEE_Whiteout.description>
+  
+</LanguageData>

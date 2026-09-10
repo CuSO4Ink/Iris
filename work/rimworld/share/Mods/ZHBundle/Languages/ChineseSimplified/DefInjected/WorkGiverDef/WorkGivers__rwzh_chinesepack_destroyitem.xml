@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: destroy item -->
+  <WorkGiver_DestroyItem.label>销毁物品</WorkGiver_DestroyItem.label>
+  <!-- EN: destroying -->
+  <WorkGiver_DestroyItem.gerund>正在销毁</WorkGiver_DestroyItem.gerund>
+  <!-- EN: destroy -->
+  <WorkGiver_DestroyItem.verb>销毁</WorkGiver_DestroyItem.verb>
+  
+</LanguageData>

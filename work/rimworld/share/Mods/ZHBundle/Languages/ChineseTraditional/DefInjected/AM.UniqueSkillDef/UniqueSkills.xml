@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Lance Ultrakill -->
+  <AM_Skill_GaeBulg.label>穿刺死棘之槍</AM_Skill_GaeBulg.label>
+  <!-- EN: Kill a single target in a complex and stylish animation that launches them into the air.\nAlways kills the target. -->
+  <AM_Skill_GaeBulg.description>將目標擊飛至空中，使出復雜且華麗的槍術將其終結。\n此特殊技必定會擊殺目標。</AM_Skill_GaeBulg.description>
+  
+  <!-- EN: Mystic Weapon Summon -->
+  <AM_Skill_Gilgamesh.label>王之財寶</AM_Skill_Gilgamesh.label>
+  <!-- EN: Summons a myriad of weapons, of unknown origin, to impale the target.\nDoes not require line of sight, and the onslaught of weapons is sure to kill the victim.\nHowever, such a feat of psychic ability will put the summoner in a psychic coma for no less than 2 days.\nAlways kills the target. -->
+  <AM_Skill_Gilgamesh.description>召喚出大量來源不明的武器，將被套索限製行動的目標刺穿。\n此特殊技會消耗大量心靈能量，使用者將陷入至少持續兩天以上的心靈休克狀態。\n此特殊技必定會擊殺目標，且無視線限製。</AM_Skill_Gilgamesh.description>
+  
+  <!-- EN: Scarlet Edge -->
+  <AM_Skill_Weebstick.label>緋赤終焉</AM_Skill_Weebstick.label>
+  <!-- EN: Slash through a single enemy using Scarlet Edge, killing them instantly. -->
+  <AM_Skill_Weebstick.description>對目標施展速度快到難以察覺的一斬，使其毫無痛苦地迎來死亡。\n此特殊技必定會擊殺目標。</AM_Skill_Weebstick.description>
+  
+</LanguageData>

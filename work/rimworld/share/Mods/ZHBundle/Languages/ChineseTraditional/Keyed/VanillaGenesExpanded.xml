@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+
+
+	<!-- EN: over 40ºC -->
+  <VGE_StatsReport_Over40>高於40℃</VGE_StatsReport_Over40>	
+	<!-- EN: below 0ºC -->
+  <VGE_StatsReport_Below0>低於0℃</VGE_StatsReport_Below0>
+	<!-- EN: armoured -->
+  <VGE_StatsReport_Armoured>著甲</VGE_StatsReport_Armoured>
+	<!-- EN: no sunlight -->
+  <VGE_StatsReport_NoSunlight>無日光直射</VGE_StatsReport_NoSunlight>
+	<!-- EN: on water -->
+  <VGE_StatsReport_Water>在水中</VGE_StatsReport_Water>
+	<!-- EN: on dry land -->
+  <VGE_StatsReport_NotWater>在陸地上</VGE_StatsReport_NotWater>
+	<!-- EN: outdoors -->
+  <VGE_StatsReport_Outside>室外</VGE_StatsReport_Outside>
+	<!-- EN: indoors -->
+  <VGE_StatsReport_Inside>室內</VGE_StatsReport_Inside>
+	<!-- EN: above 50% lit -->
+  <VGE_StatsReport_InLight>亮度高於50%</VGE_StatsReport_InLight>
+	<!-- EN: below 50% lit -->
+  <VGE_StatsReport_InDarkness>亮度低於50%</VGE_StatsReport_InDarkness>
+	<!-- EN: in pain -->
+  <VGE_StatsReport_InPain>疼痛狀態</VGE_StatsReport_InPain>
+	<!-- EN: in polluted terrain -->
+  <VGE_StatsReport_InPollution>污染環境中</VGE_StatsReport_InPollution>
+	<!-- EN: on colony map -->
+  <VGE_StatsReport_ColonyMap>殖民地內</VGE_StatsReport_ColonyMap>
+	<!-- EN: outside colony map -->
+  <VGE_StatsReport_OutsideColonyMap>殖民地外</VGE_StatsReport_OutsideColonyMap>
+	<!-- EN: light sensitivity -->
+  <VGE_StatsReport_AnyLightSensitivity>光源下</VGE_StatsReport_AnyLightSensitivity>
+	<!-- EN: in vacuum -->
+  <VGE_StatsReport_InVacuum>在真空中</VGE_StatsReport_InVacuum>
+	<!-- EN: in Space -->
+  <VGE_StatsReport_InSpace>在太空中</VGE_StatsReport_InSpace>
+	<!-- EN: in the planet -->
+  <VGE_StatsReport_InPlanet>在行星地表上</VGE_StatsReport_InPlanet>
+	
+	<!-- EN: {0}'s eggs have been fertilized! The egglaying process will continue until a fertile egg is laid. -->
+  <VGE_EggPregnancy>{0}的蛋已成功受精！產蛋進程將持續至一顆受精蛋被產下。</VGE_EggPregnancy>
+	<!-- EN: {0} fertilized! -->
+  <VGE_EggPregnancyLabel>{0}已成功受精！</VGE_EggPregnancyLabel>
+	
+	<!-- EN: {0} has laid an egg! Keep it warm and protected. -->
+  <VGE_EggLaid>{0}產下了一顆蛋！若想順利孵化，請確保蛋處於溫度適宜的安全環境下。</VGE_EggLaid>
+	<!-- EN: {0} laid an egg! -->
+  <VGE_EggLaidLabel>{0}產下了一顆蛋！</VGE_EggLaidLabel>
+	
+	<!-- EN: {0} has hatched from an egg! -->
+  <VGE_EggHatched>{0}從蛋中孵化了出來！</VGE_EggHatched>
+	<!-- EN: {0} hatched! -->
+  <VGE_EggHatchedLabel>{0}已成功孵化！</VGE_EggHatchedLabel>
+	
+	<!-- EN: Males don't lay eggs -->
+  <VGE_Male_Egg>男性無法產蛋</VGE_Male_Egg>
+	
+	<!-- EN: Pregnancy factor gene: {0} gestation speed -->
+  <VGE_PregnancyFactor>妊娠速度受到基因影響：加成數量 x{0}</VGE_PregnancyFactor>
+
+	<!-- EN: {0} only gene. -->
+  <VGE_ForGenderOnly>{0}限定基因。</VGE_ForGenderOnly>
+
+
+</LanguageData>

@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: VE Framework - Outposts -->
+  <Outposts.Settings.Title>Vanilla Outposts Expanded</Outposts.Settings.Title>
+    <!-- EN: Gloabal Production Multiplier: {0} -->
+  <Outposts.Settings.Multiplier.Production>全局產出乘數：{0}</Outposts.Settings.Multiplier.Production>
+    <!-- EN: Global Time Multiplier: {0} -->
+  <Outposts.Settings.Multiplier.Time>全局產出時間乘數：{0}</Outposts.Settings.Multiplier.Time>
+	<!-- EN: Global Raid Difficulty Multiplier: {0} -->
+  <Outposts.Settings.RaidDifficulty>全局襲擊難度乘數：{0}</Outposts.Settings.RaidDifficulty>
+	<!-- EN: Raid Frequency Range -->
+  <Outposts.Settings.RaidFrequency>襲擊頻率範圍</Outposts.Settings.RaidFrequency>
+    <!-- EN: Create -->
+  <Outposts.Dialog.Create>建立</Outposts.Dialog.Create>
+    <!-- EN: Create Outpost -->
+  <Outposts.Commands.Create.Label>建立據點</Outposts.Commands.Create.Label>
+    <!-- EN: Create a new outpost using this caravan -->
+  <Outposts.Commands.Create.Desc>讓此旅隊建立一個新的據點。</Outposts.Commands.Create.Desc>
+    <!-- EN: Take items -->
+  <Outposts.Commands.TakeItems.Label>帶走物品</Outposts.Commands.TakeItems.Label>
+    <!-- EN: Take items from {0} and add them to the caravan -->
+  <Outposts.Commands.TakeItems.Desc>讓旅隊從據點{0}中帶走物品。</Outposts.Commands.TakeItems.Desc>
+	<!-- EN: Give items -->
+  <Outposts.Commands.GiveItems.Label>存放物品</Outposts.Commands.GiveItems.Label>
+    <!-- EN: Take items from {0} and add them to the outpost -->
+  <Outposts.Commands.GiveItems.Desc>讓{0}向據點中存放物品。</Outposts.Commands.GiveItems.Desc>
+    <!-- EN: Outpost Lost -->
+  <Outposts.Letters.Lost.Label>據點丟失</Outposts.Letters.Lost.Label>
+    <!-- EN: Regretfully, due to the deaths of all inhabitants, the outpost of {0} has been lost to us. -->
+  <Outposts.Letters.Lost.Text>不幸的是，由於其中的殖民者全部死亡，我們失去了據點{0}。</Outposts.Letters.Lost.Text>
+    <!-- EN: Outpost Battle Won -->
+  <Outposts.Letters.BattleWon.Label>據點戰勝利</Outposts.Letters.BattleWon.Label>
+    <!-- EN: We have successfully won the battle for {0}.{1} -->
+  <Outposts.Letters.BattleWon.Text>我們已成功贏得了發生在據點{0}的戰鬥。{1}</Outposts.Letters.BattleWon.Text>
+	<!-- EN: We have managed to capture {0} in the aftermath -->
+  <Outposts.Letters.BattleWon.Captured>我們已在戰鬥後成功俘獲{0}。</Outposts.Letters.BattleWon.Captured>
+	<!-- EN: We have managed to recover {0}'s body -->
+  <Outposts.Letters.BattleWon.Rescued>我們已在戰鬥後成功找回了{0}的屍體。</Outposts.Letters.BattleWon.Rescued>
+	<!-- EN: We have secured: {0} worth of goods and weapons from the raiders -->
+  <Outposts.Letters.BattleWon.Secured>我們已從襲擊者處繳獲了總價值為{0}的戰利品。</Outposts.Letters.BattleWon.Secured>
+    <!-- EN: Items From {0} -->
+  <Outposts.Letters.Items.Label>來自{0}的物品</Outposts.Letters.Items.Label>
+    <!-- EN: You have received the follow items from the outpost {0}: -->
+  <Outposts.Letters.Items.Text>據點{0}向你交付了以下物品：</Outposts.Letters.Items.Text>
+    <!-- EN: Add Pawn -->
+  <Outposts.Commands.AddPawn.Label>增派</Outposts.Commands.AddPawn.Label>
+    <!-- EN: Transfer a pawn from this caravan to the outpost -->
+  <Outposts.Commands.AddPawn.Desc>將旅隊裡的指定殖民者或動物轉移到據點中。</Outposts.Commands.AddPawn.Desc>
+	<!-- EN: Delivery Destination -->
+  <Outposts.Commands.DeliveryColony.Label>物品交付地</Outposts.Commands.DeliveryColony.Label>
+    <!-- EN: Select which colony will recieve the goods. Currently: {0} -->
+  <Outposts.Commands.DeliveryColony.Desc>選擇此據點產出的物品要交付至哪個殖民地。當前交付地：{0}</Outposts.Commands.DeliveryColony.Desc>
+    <!-- EN: Pack -->
+  <Outposts.Commands.Pack.Label>打包</Outposts.Commands.Pack.Label>
+    <!-- EN: Begin packing this outpost back into a caravan -->
+  <Outposts.Commands.Pack.Desc>打包據點並重新組建旅隊。</Outposts.Commands.Pack.Desc>
+    <!-- EN: Stop packing -->
+  <Outposts.Commands.StopPack.Label>取消打包</Outposts.Commands.StopPack.Label>
+    <!-- EN: Cancel packing this outpost into a caravan -->
+  <Outposts.Commands.StopPack.Desc>取消打包據點。</Outposts.Commands.StopPack.Desc>
+    <!-- EN: Remove Pawn -->
+  <Outposts.Commands.Remove.Label>撤出</Outposts.Commands.Remove.Label>
+    <!-- EN: Remove a pawn from this outpost into a new caravan -->
+  <Outposts.Commands.Remove.Desc>將據點裡的指定殖民者或動物轉移到新的旅隊中。</Outposts.Commands.Remove.Desc>
+    <!-- EN: Cannot remove pawns: Only 1 inhabitant. If you want to remove this outpost, select "Pack". -->
+  <Outposts.Command.Remove.Only1>無法撤出：據點內僅剩1名殖民者或動物。如果要放棄此據點，請選擇“打包”。</Outposts.Command.Remove.Only1>
+    <!-- EN: Contains {0} pawns -->
+  <Outposts.Contains>殖民者與動物數量：{0}</Outposts.Contains>
+    <!-- EN: Packing into caravan. Done in {0} -->
+  <Outposts.Packing>正在打包據點並重新組建旅隊。將在{0}內完成</Outposts.Packing>
+    <!-- EN: Pawns are not skilled enough, need a cumulative {0} skill of at least {1} -->
+  <Outposts.NotSkilledEnough>殖民者的技能等級不足。{0}技能的等級總和至少為{1}</Outposts.NotSkilledEnough>
+    <!-- EN: Resting at outpost {0} -->
+  <Outposts.RestingAt>在據點{0}中休整。</Outposts.RestingAt>
+    <!-- EN: Will produce some items in {0} -->
+  <Outposts.WillProduce.0>將在{0}內產出一些物品。</Outposts.WillProduce.0>
+    <!-- EN: Will produce {0} {1} in {2} -->
+  <Outposts.WillProduce.1>將在{2}內產出{0}{1}。</Outposts.WillProduce.1>
+    <!-- EN: Will produce {0} {1} and {2} {3} in {4} -->
+  <Outposts.WillProduce.2>將在{4}內產出{0}{1}和{2}{3}。</Outposts.WillProduce.2>
+    <!-- EN: Will produce the following in {0}:\n{1} -->
+  <Outposts.WillProduce.N>將在{0}內產出以下物品：\n{1}</Outposts.WillProduce.N>
+    <!-- EN: Cannot be made in {0} -->
+  <Outposts.CannotBeMade>無法建立在{0}上</Outposts.CannotBeMade>
+    <!-- EN: Not enough pawns in caravan, need at least {0} -->
+  <Outposts.NotEnoughPawns>旅隊中沒有足夠的殖民者。至少需要{0}名殖民者</Outposts.NotEnoughPawns>
+    <!-- EN: Cumulative {0} skill: {1} -->
+  <Outposts.TotalSkill>{0}技能等級總和：{1}</Outposts.TotalSkill>
+    <!-- EN: Too close to settlement or other outpost, must have at least 1 tile between them -->
+  <Outposts.TooClose>與定居點或其它據點靠的太近了。兩者之間至少需要相隔1格。</Outposts.TooClose>
+    <!-- EN: Your transport pods have arrived. {0} has been added to {1}. -->
+  <Outposts.AddedFromTransportPods>你的運輸艙抵達了目的地。{0}已加入至{1}。</Outposts.AddedFromTransportPods>
+    <!-- EN: Add to outpost -->
+  <Outposts.AddTo>加入據點</Outposts.AddTo>
+    <!-- EN: Confirm sending items to the outpost? They will be permanently lost. -->
+  <Outposts.SendNonPawns>你真的想要將物品發射到據點裡嗎？它們將會永久丟失。</Outposts.SendNonPawns>
+    <!-- EN: Already packing -->
+  <Outposts.AlreadyPacking>已打包</Outposts.AlreadyPacking>
+    <!-- EN: Delivery Method -->
+  <Outposts.Settings.DeliveryMethod>貨物交付方式</Outposts.Settings.DeliveryMethod>
+    <!-- EN: Teleport items to colony -->
+  <Outposts.Settings.DeliveryMethod.Teleport>直接傳送到殖民地</Outposts.Settings.DeliveryMethod.Teleport>
+    <!-- EN: Send pack animal carrying items to colony -->
+  <Outposts.Settings.DeliveryMethod.PackAnimal>派遣馱運動物</Outposts.Settings.DeliveryMethod.PackAnimal>
+    <!-- EN: Store items at outpost -->
+  <Outposts.Settings.DeliveryMethod.Store>將物品儲存在據點中</Outposts.Settings.DeliveryMethod.Store>
+    <!-- EN: Always send drop pods -->
+  <Outposts.Settings.DeliveryMethod.ForcePods>發射運輸艙</Outposts.Settings.DeliveryMethod.ForcePods>
+    <!-- EN: Pods if available, otherwise pack animal -->
+  <Outposts.Settings.DeliveryMethod.PackOrPods>運輸艙（需要解鎖科技）或馱運動物</Outposts.Settings.DeliveryMethod.PackOrPods>
+    <!-- EN: Outpost Abandoned -->
+  <Outposts.Abandoned>已放棄據點</Outposts.Abandoned>
+    <!-- EN: {0} has been abonded due to having no one inside to run it. It will very quickly be looted and taken over by nature, leaving no trace it was ever there. -->
+  <Outposts.Abandoned.Desc>因為空無一人，據點{0}已被放棄。它將很快被其他人洗劫一空，最終變為大自然的一部分。</Outposts.Abandoned.Desc>
+    <!-- EN: Take -->
+  <Outposts.Take>帶走</Outposts.Take>
+	<!-- EN: Give -->
+  <Outposts.Give>存放</Outposts.Give>
+    <!-- EN: Must be in one of the following biomes: -->
+  <Outposts.AllowedBiomes>必須建立在以下生態群落上：</Outposts.AllowedBiomes>
+    <!-- EN: Cannot be in any of the following biomes: -->
+  <Outposts.DisallowedBiomes>無法建立在以下生態群落上：</Outposts.DisallowedBiomes>
+    <!-- EN: Must have at least {0} pawns willing to join the outpost -->
+  <Outposts.NumPawns>至少需要{0}名殖民者</Outposts.NumPawns>
+    <!-- EN: Cumulative {0} skill must be at least {1} -->
+  <Outposts.RequiredSkill>{0}技能的等級總和至少為{1}</Outposts.RequiredSkill>
+    <!-- EN: Must have ability to grow plants -->
+  <Outposts.GrowingRequired>必須能夠生長植物</Outposts.GrowingRequired>
+    <!-- EN: Must have {0} in caravan -->
+  <Outposts.MustHaveInCaravan>旅隊必須擁有{0}</Outposts.MustHaveInCaravan>
+    <!-- EN: No valid pawns to add to outpost -->
+  <Outposts.NoValidPawns>沒有可以增派到據點中的有效殖民者或動物</Outposts.NoValidPawns>
+    <!-- EN: Due to changes in skill level, {0} can no longer produce {1} -->
+  <Outposts.SkillChange>由於技能等級發生變化，{0}無法再產出{1}</Outposts.SkillChange>
+    <!-- EN: Production Time -->
+  <Outposts.Setting.ProductionTime>產出所需時間</Outposts.Setting.ProductionTime>
+    <!-- EN: Pack Time -->
+  <Outposts.Setting.PackTime>打包所需時間</Outposts.Setting.PackTime>
+    <!-- EN: Range -->
+  <Outposts.Setting.Range>作用範圍</Outposts.Setting.Range>
+    <!-- EN: Minimum Pawns to Create -->
+  <Outposts.Setting.MinimumPawns>建立據點所需的最小殖民者與動物數量</Outposts.Setting.MinimumPawns>
+    <!-- EN: Production Multiplier -->
+  <Outposts.Settings.Production>總產出乘數</Outposts.Settings.Production>
+    <!-- EN: Enable Outpost Raids? -->
+  <Outposts.Settings.DoRaids>據點是否會遭到襲擊？</Outposts.Settings.DoRaids>
+</LanguageData>

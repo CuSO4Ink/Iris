@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fleeing -->
+  <VPE_Flee.label>倉皇逃竄</VPE_Flee.label>
+  <!-- EN: Mental state: Fleeing -->
+  <VPE_Flee.baseInspectLine>失控：倉皇逃竄</VPE_Flee.baseInspectLine>
+  <!-- EN: {0} is fleeing. -->
+  <VPE_Flee.beginLetter>{0} 開始倉皇逃竄。</VPE_Flee.beginLetter>
+  <!-- EN: flee -->
+  <VPE_Flee.beginLetterLabel>倉皇逃竄</VPE_Flee.beginLetterLabel>
+  <!-- EN: {0} is no longer fleeing. -->
+  <VPE_Flee.recoveryMessage>{0}不再倉皇逃竄了。</VPE_Flee.recoveryMessage>
+  
+  <!-- EN: rage -->
+  <VPE_Manhunter.label>狂怒</VPE_Manhunter.label>
+  <!-- EN: Raging -->
+  <VPE_Manhunter.baseInspectLine>狂怒</VPE_Manhunter.baseInspectLine>
+  <!-- EN: {0} is raging! -->
+  <VPE_Manhunter.beginLetter>{0}陷入狂怒之中！</VPE_Manhunter.beginLetter>
+  <!-- EN: {0}'s rage has come to an end. -->
+  <VPE_Manhunter.recoveryMessage>{0}的狂怒結束了。</VPE_Manhunter.recoveryMessage>
+  
+  <!-- EN: territorial manhunter -->
+  <VPE_ManhunterTerritorial.label>獵殺人類</VPE_ManhunterTerritorial.label>
+  <!-- EN: Maddened: Territorial Manhunter -->
+  <VPE_ManhunterTerritorial.baseInspectLine>瘋狂：獵殺人類</VPE_ManhunterTerritorial.baseInspectLine>
+  <!-- EN: {0} has become a territorial manhunter! -->
+  <VPE_ManhunterTerritorial.beginLetter>{0}為了保護領地，開始獵殺人類！</VPE_ManhunterTerritorial.beginLetter>
+  <!-- EN: {0}'s territorial defense instincts have come to an end. -->
+  <VPE_ManhunterTerritorial.recoveryMessage>{0}保護領地的本能結束了。</VPE_ManhunterTerritorial.recoveryMessage>
+  
+</LanguageData>

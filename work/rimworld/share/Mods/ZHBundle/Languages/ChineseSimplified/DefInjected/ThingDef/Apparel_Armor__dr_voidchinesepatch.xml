@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- VOID Reactive -->
+
+  <RHApparel_VOIDReactive_PowerArmor.label>V.O.I.D.反应动力装甲</RHApparel_VOIDReactive_PowerArmor.label>
+  <RHApparel_VOIDReactive_PowerArmor.description>一套古老的动力装甲。V.O.I.D.反应动力装甲是由一个名叫AdminPwn的世界穿越者制作的。在Nerotonin-4型病毒爆发期间，他被困在一个像地球一样的世界。多年来，他利用自己在其他世界旅行中获得的知识，通过显著提高幸存者的技术来帮助他们。传说就是因为有他，人类种族才能在自我封闭的费尔维尤里获得生存下去的机会。在那里，超乎想象的怪物潜伏在内城墙外。</RHApparel_VOIDReactive_PowerArmor.description>
+
+
+  <!-- VOID Guard -->
+
+  <RHApparel_VengeanceGuard_PowerArmor.label>复仇卫士</RHApparel_VengeanceGuard_PowerArmor.label>
+  <RHApparel_VengeanceGuard_PowerArmor.description>复仇卫士是最后一批已知的反应动力装甲之一，其作者是一位名叫AdminPwn的世界级工匠兼声名狼藉的世界穿越者。复仇护卫队是一种应对古代世界中日益增长的恶魔猎犬威胁的方法。不幸的是，这种生物的攻击太过凶猛，虽然装甲能够从猛击中幸存，但佩戴者就难说了。</RHApparel_VengeanceGuard_PowerArmor.description>
+
+
+</LanguageData>

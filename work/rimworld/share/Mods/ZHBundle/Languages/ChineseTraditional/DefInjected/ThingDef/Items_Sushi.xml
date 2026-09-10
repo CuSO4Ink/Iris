@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_Chirashizushi.label>散壽司（簡單）</VCE_Chirashizushi.label>
+		<VCE_Chirashizushi.description>用少許材料快速製作出的簡單散壽司。散壽司，即將生魚蔬菜等壽司材料蓋在飯上。量足又製作簡單。</VCE_Chirashizushi.description>
+		<VCE_Norimaki.label>卷壽司（簡單）</VCE_Norimaki.label>
+		<VCE_Norimaki.description>用少許材料快速製作出的卷壽司。卷壽司，即用紫菜包裹材料的壽司。</VCE_Norimaki.description>
+		<VCE_Uramaki.label>反卷壽司（精緻）</VCE_Uramaki.label>
+		<VCE_Uramaki.description>選擇多種原料，精心製作出的一份相對複雜的反卷壽司。反卷壽司，即用米飯包裹紫菜和其它材料的一種中型壽司。</VCE_Uramaki.description>
+		<VCE_Nigiri.label>握壽司（精緻）</VCE_Nigiri.label>
+		<VCE_Nigiri.description>選擇多種原料，精心製作出的一份相對複雜的握壽司。握壽司，即將長條形的米飯和配料用手握在一起定型成的壽司。</VCE_Nigiri.description>
+		<VCE_Temaki.label>手卷壽司（奢侈）</VCE_Temaki.label>
+		<VCE_Temaki.description>廚藝界的大師級作品，這份壽司同時滋養了身體、思想和靈魂。手卷壽司，即用一大片紫菜包裹住材料捲成的錐形壽司。手卷壽司一般有10cm左右長，通常用手拿着吃。</VCE_Temaki.description>
+		<VCE_Futomaki.label>太卷壽司（奢侈）</VCE_Futomaki.label>
+		<VCE_Futomaki.description>廚藝界的大師級作品，這份壽司同時滋養了身體、思想和靈魂。太卷壽司，即用海苔包裹的大塊柱狀壽司。太卷壽司直徑一般5-6cm。配料多種多樣，塑造出複雜多變的外觀和味道。</VCE_Futomaki.description>
+		<VCE_Gunkanmaki.label>軍艦卷壽司（豪華）</VCE_Gunkanmaki.label>
+		<VCE_Gunkanmaki.description>精雕細琢的壽司，美艷絕倫，雖然量不多。軍艦卷壽司，即手捏海苔包裹橢圓柱狀的飯糰，米飯之上盛有一層鬆軟的頂料。</VCE_Gunkanmaki.description>
+		<VCE_Oshizushi.label>押壽司（豪華）</VCE_Oshizushi.label>
+		<VCE_Oshizushi.description>精雕細琢的壽司，美艷絕倫，雖然量不多。押壽司，即原料層層疊加裝在一個木盒裡壓制再切塊製成的壽司。</VCE_Oshizushi.description>
+		<VCE_HumanSurimi.label>人肉膏</VCE_HumanSurimi.label>
+		<VCE_HumanSurimi.description>一種膏狀食物，外表看上去與蝦肉和蟹肉差不多，但這個。。。是用人肉做的，食人者的天堂，正常人的地獄。</VCE_HumanSurimi.description>
+	</LanguageData>

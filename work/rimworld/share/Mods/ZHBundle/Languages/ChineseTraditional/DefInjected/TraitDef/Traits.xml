@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: xenophobe -->
+  <HAR_Xenophobia.degreeDatas.xenophobe.label>排外主義</HAR_Xenophobia.degreeDatas.xenophobe.label>
+  <!-- EN: [PAWN_nameDef] hates and distrusts xenos. They see them as little more than animals. -->
+  <HAR_Xenophobia.degreeDatas.xenophobe.description>[PAWN_nameDef]討厭和不信任外星種族。[PAWN_pronoun]認為這些外星種族連畜生都不如。</HAR_Xenophobia.degreeDatas.xenophobe.description>
+  <!-- EN: xenophile -->
+  <HAR_Xenophobia.degreeDatas.xenophile.label>親外主義</HAR_Xenophobia.degreeDatas.xenophile.label>
+  <!-- EN: [PAWN_nameDef] thinks aliens are exotic and interesting. They would love to get to know them more and wouldn't mind forming relationships with them. -->
+  <HAR_Xenophobia.degreeDatas.xenophile.description>[PAWN_nameDef]認為外星種族是一種奇妙而有趣的夥伴。[PAWN_pronoun]更願意接近、了解外星種族，也不介意與其建立關係。</HAR_Xenophobia.degreeDatas.xenophile.description>
+  
+</LanguageData>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Void_OpportunitySite_ItemStash.root.nodes.4.name>詢問</Void_OpportunitySite_ItemStash.root.nodes.4.name>
+  <Void_OpportunitySite_ItemStash.root.nodes.4.elseNode.nodes.0.name>詢問無效</Void_OpportunitySite_ItemStash.root.nodes.4.elseNode.nodes.0.name>
+  <Void_OpportunitySite_ItemStash.root.nodes.10.node.nodes.0.label>任務已失效：[resolvedQuestName]</Void_OpportunitySite_ItemStash.root.nodes.10.node.nodes.0.label>
+  <Void_OpportunitySite_ItemStash.root.nodes.10.node.nodes.0.text>根據截獲的信息表明，匿藏的物品已經被人捷足先登。任務[resolvedQuestName]已失效。</Void_OpportunitySite_ItemStash.root.nodes.10.node.nodes.0.text>
+  <Void_OpportunitySite_ItemStash.questDescriptionRules.rulesStrings.0>questDescription(askerIsNull==true)-&gt;根據我們剛截獲的訊息可知，有一批價值[itemStashContentsValue]的貴重物資被藏匿在了[map_definite]附近。其中包括：\n\n[itemStashContents]\n\n那裏存在[allSitePartsDescriptionsExceptFirst]</Void_OpportunitySite_ItemStash.questDescriptionRules.rulesStrings.0>
+  <Void_OpportunitySite_ItemStash.questDescriptionRules.rulesStrings.1>questDescription(asker_factionLeader==True)-&gt;[asker_faction_name]的[asker_faction_leaderTitle]，[asker_nameDef]告訴我們，一批價值[itemStashContentsValue]的貴重物品被留在距離我們不遠處等待接收。其中包括：\n\n[itemStashContents]\n\n[asker_label]向我們透露：那裏存在[allSitePartsDescriptionsExceptFirst]</Void_OpportunitySite_ItemStash.questDescriptionRules.rulesStrings.1>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.0>questName(priority=1)-&gt;嬰兒藍</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.0>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.1>questName(priority=1)-&gt;Nerotonin藥丸</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.1>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.2>questName(priority=1)-&gt;[asker_nameDef]的[stash]Nerotonin</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.2>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.3>questName(priority=1)-&gt;[asker_nameDef]的魔法藥丸</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.3>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.4>questName(priority=1)-&gt;奇蹟藥丸</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.4>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.5>questName(priority=1)-&gt;[asker_nameDef]的藍色藥丸</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.5>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.6>questName(priority=1)-&gt;Nerotonin</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.6>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.7>questName(priority=1)-&gt;魔法藥丸</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.7>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.8>stash-&gt;藏匿</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.8>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.9>stash-&gt;隱藏</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.9>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.10>stash-&gt;儲藏</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.10>
+  <Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.11>stash-&gt;庫存</Void_OpportunitySite_ItemStash.questNameRules.rulesStrings.11>
+
+
+</LanguageData>

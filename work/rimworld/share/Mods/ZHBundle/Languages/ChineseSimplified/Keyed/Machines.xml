@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: Force Recharge -->
+  <VFEMechForceRecharge>强制充电</VFEMechForceRecharge>
+  <!-- EN: Order the associated machine to return to this platform for charging, regardless of its current battery level. -->
+  <VFEMechForceRechargeDesc>命令相关联的机械立即返回此基站充电，无论当前剩余电量如何。</VFEMechForceRechargeDesc>
+  <!-- EN: Attach Turret -->
+  <VFEMechAttachTurret>装载炮台</VFEMechAttachTurret>
+  <!-- EN: Construct a turret atop this mobile platform. This will require a colonist to deliver resources equal to that turret's normal construction cost. -->
+  <VFEMechAttachTurretDesc>在此移动炮台上装载新的炮塔。需要殖民者搬运等于此炮塔标准造价的资源。</VFEMechAttachTurretDesc>
+  <!-- EN: Machine destroyed -->
+  <VFEMechMachineDied>机械被摧毁</VFEMechMachineDied>
+  <!-- EN: One of your machines has been destroyed! You can dismantle its remains at a machining table. In order to construct a replacement, one of your colonists will need to deliver the following parts to its platform:\n\n{0} -->
+  <VFEMechMachineDiedDesc>你的一台机械被摧毁了！你可以在机械加工台拆解它的残骸。如果想要重建它，殖民者需要搬运以下材料：\n\n{0}</VFEMechMachineDiedDesc>
+  <!-- EN: Not enough resources -->
+  <VFEMechNoResources>资源不足</VFEMechNoResources>
+  <!-- EN: No active mobile turret -->
+  <VFEMechNoTurret>没有运行中的移动炮台</VFEMechNoTurret>
+  <!-- EN: Needed to rebuild machine: -->
+  <VFEMechReconstruct>重建机械需要：</VFEMechReconstruct>
+  <!-- EN: Needed to construct turret: -->
+  <VFEMechTurretResources>建造炮塔需要：</VFEMechTurretResources>
+  <!-- EN: Reduce range -->
+  <VFEMechLowerRange>减少距离</VFEMechLowerRange>
+  <!-- EN: Reduce the number of tiles this machine will travel. -->
+  <VFEMechLowerRangeDesc>减少此机械的移动距离。</VFEMechLowerRangeDesc>
+  <!-- EN: Increase range -->
+  <VFEMechRaiseRange>增加距离</VFEMechRaiseRange>
+  <!-- EN: Increase the number of tiles this machine will travel. -->
+  <VFEMechRaiseRangeDesc>增加此机械的移动距离。</VFEMechRaiseRangeDesc>
+  <!-- EN: Stop machine -->
+  <VFEMechStopMachine>中止任务</VFEMechStopMachine>
+  <!-- EN: Stop this machine's progress and force it to return to base. -->
+  <VFEMechStopMachineDesc>中止此机械的任务并强制其返回基站。</VFEMechStopMachineDesc>
+  <!-- EN: Start machine -->
+  <VFEMechStartMachine>开始运行</VFEMechStartMachine>
+  <!-- EN: Start this machine. -->
+  <VFEMechStartMachineDesc>让此机械开始运行。</VFEMechStartMachineDesc>
+  <!-- EN: Machine has run into an obstacle! -->
+  <VFEMechMachineHitObstacle>机械遇到了障碍物！</VFEMechMachineHitObstacle>
+  <!-- EN: Set area -->
+  <VFEMechSetArea>设置区域</VFEMechSetArea>
+  <!-- EN: Set the allowed area for all of this platform's associated machines. -->
+  <VFEMechSetAreaDesc>设置此基站相关联机械的活动区。</VFEMechSetAreaDesc>
+  <!-- EN: This droid is rideable. People in a caravan will ride the fastest available animals/droids, improving the speed of the caravan as a whole. -->
+  <VFEMRideableMachineTip>这种无人机是可以骑乘的。远行队中的人将骑着最快的可用动物/无人机，提高整个远行队的速度。</VFEMRideableMachineTip>
+	<!-- EN: {MACHINE_nameDef} ran out of power, and was left behind. -->
+  <VFEM.CaravanMachineRanOutPower>{MACHINE_nameDef}因电量耗尽而被遗弃。</VFEM.CaravanMachineRanOutPower>
+  <!-- EN: The drone's name is now {0}. -->
+  <VFEM.DroneGainsName>此无人机的名字已更改为{0}。</VFEM.DroneGainsName>
+</LanguageData>

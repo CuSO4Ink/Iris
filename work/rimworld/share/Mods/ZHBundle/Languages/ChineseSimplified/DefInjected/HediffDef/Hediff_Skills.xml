@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 운반여우 -->
+  <Miho_Skill_I_Fox_Hediff.label>灵狐跃动</Miho_Skill_I_Fox_Hediff.label>
+  <!-- EN: 운반여우 -->
+  <Miho_Skill_I_Fox_Hediff.description>灵狐跃动。</Miho_Skill_I_Fox_Hediff.description>
+  
+  <!-- EN: 사냥매 -->
+  <Miho_Skill_I_Hawk_Hediff.label>猎鹰袭扰</Miho_Skill_I_Hawk_Hediff.label>
+  <!-- EN: 사냥매 -->
+  <Miho_Skill_I_Hawk_Hediff.description>猎鹰袭扰。</Miho_Skill_I_Hawk_Hediff.description>
+  
+  <!-- EN: 유혹의 꼬리침 -->
+  <Miho_Skill_I_Love_Hediff.label>迷爱灵尾</Miho_Skill_I_Love_Hediff.label>
+  <!-- EN: 유혹의 꼬리침 -->
+  <Miho_Skill_I_Love_Hediff.description>迷爱灵尾。</Miho_Skill_I_Love_Hediff.description>
+  
+  <!-- EN: 반갈죽 -->
+  <Miho_Skill_I_Powerstrike_Hediff.label>一刀两断</Miho_Skill_I_Powerstrike_Hediff.label>
+  <!-- EN: 반갈죽 -->
+  <Miho_Skill_I_Powerstrike_Hediff.description>一刀两断。</Miho_Skill_I_Powerstrike_Hediff.description>
+  
+  <!-- EN: 무의식의 부적 -->
+  <Miho_Skill_I_StunTalisman_Hediff.label>眩晕灵符</Miho_Skill_I_StunTalisman_Hediff.label>
+  <!-- EN: 무의식의 부적 -->
+  <Miho_Skill_I_StunTalisman_Hediff.description>眩晕灵符。</Miho_Skill_I_StunTalisman_Hediff.description>
+  
+  <!-- EN: 칼날나비 -->
+  <Miho_Skill_II_Butterfly_Hediff.label>刃蝶翩舞</Miho_Skill_II_Butterfly_Hediff.label>
+  <!-- EN: 칼날나비 -->
+  <Miho_Skill_II_Butterfly_Hediff.description>刃蝶翩舞。</Miho_Skill_II_Butterfly_Hediff.description>
+  
+  <!-- EN: 인스네어 -->
+  <Miho_Skill_II_Ensnare_Hediff.label>灵缚猎网</Miho_Skill_II_Ensnare_Hediff.label>
+  <!-- EN: 인스네어 -->
+  <Miho_Skill_II_Ensnare_Hediff.description>灵缚猎网。</Miho_Skill_II_Ensnare_Hediff.description>
+  
+  <!-- EN: 여우잔불 -->
+  <Miho_Skill_II_FireballSmall_Hediff.label>秘灵狐火</Miho_Skill_II_FireballSmall_Hediff.label>
+  <!-- EN: 여우잔불 -->
+  <Miho_Skill_II_FireballSmall_Hediff.description>秘灵狐火。</Miho_Skill_II_FireballSmall_Hediff.description>
+  
+  <!-- EN: 도약 -->
+  <Miho_Skill_II_Jump_Hediff.label>秘灵长跃</Miho_Skill_II_Jump_Hediff.label>
+  <!-- EN: 도약 -->
+  <Miho_Skill_II_Jump_Hediff.description>秘灵长跃。</Miho_Skill_II_Jump_Hediff.description>
+  
+  <!-- EN: 보호의 토템 -->
+  <Miho_Skill_III_Defence_Hediff.label>英魂加身</Miho_Skill_III_Defence_Hediff.label>
+  <!-- EN: 보호의 토템 -->
+  <Miho_Skill_III_Defence_Hediff.description>英魂加身。</Miho_Skill_III_Defence_Hediff.description>
+  
+  <!-- EN: 여우불 -->
+  <Miho_Skill_III_Fireball_Hediff.label>秘灵狐焱</Miho_Skill_III_Fireball_Hediff.label>
+  <!-- EN: 여우불 -->
+  <Miho_Skill_III_Fireball_Hediff.description>秘灵狐焱。</Miho_Skill_III_Fireball_Hediff.description>
+  
+  <!-- EN: 응원의 꼬리침 -->
+  <Miho_Skill_III_Inspiration_Hediff.label>欢欣灵尾</Miho_Skill_III_Inspiration_Hediff.label>
+  <!-- EN: 응원의 꼬리침 -->
+  <Miho_Skill_III_Inspiration_Hediff.description>欢欣灵尾。</Miho_Skill_III_Inspiration_Hediff.description>
+  
+  <!-- EN: 재조립 -->
+  <Miho_Skill_III_Skip_Hediff.label>秘灵折跃</Miho_Skill_III_Skip_Hediff.label>
+  <!-- EN: 재조립 -->
+  <Miho_Skill_III_Skip_Hediff.description>秘灵折跃。</Miho_Skill_III_Skip_Hediff.description>
+  
+  <!-- EN: 인스네어 -->
+  <Miho_Skill_IV_Batto_Hediff.label>拔刀瞬斩</Miho_Skill_IV_Batto_Hediff.label>
+  <!-- EN: 인스네어 -->
+  <Miho_Skill_IV_Batto_Hediff.description>拔刀瞬斩。</Miho_Skill_IV_Batto_Hediff.description>
+  
+  <!-- EN: 여우불 화살 -->
+  <Miho_Skill_IV_FireballAdept_Hediff.label>秘灵箭雨</Miho_Skill_IV_FireballAdept_Hediff.label>
+  <!-- EN: 여우불 화살 -->
+  <Miho_Skill_IV_FireballAdept_Hediff.description>秘灵箭雨。</Miho_Skill_IV_FireballAdept_Hediff.description>
+  
+  <!-- EN: 치유의 손길 -->
+  <Miho_Skill_IV_Heal_Hediff.label>灵愈圣手</Miho_Skill_IV_Heal_Hediff.label>
+  <!-- EN: 치유의 손길 -->
+  <Miho_Skill_IV_Heal_Hediff.description>灵愈圣手。</Miho_Skill_IV_Heal_Hediff.description>
+  
+  <!-- EN: 평온의 꼬리침 -->
+  <Miho_Skill_IV_Serenity_Hediff.label>宁神灵尾</Miho_Skill_IV_Serenity_Hediff.label>
+  <!-- EN: 평온의 꼬리침 -->
+  <Miho_Skill_IV_Serenity_Hediff.description>宁神灵尾。</Miho_Skill_IV_Serenity_Hediff.description>
+  
+  <!-- EN: 여우 보호막 -->
+  <Miho_Skill_IV_Shield_Hediff.label>秘灵护盾</Miho_Skill_IV_Shield_Hediff.label>
+  <!-- EN: 여우 보호막 -->
+  <Miho_Skill_IV_Shield_Hediff.description>秘灵护盾。</Miho_Skill_IV_Shield_Hediff.description>
+  
+  <!-- EN: 여우번개 -->
+  <Miho_Skill_IV_Thunder_Hediff.label>秘灵雷枪</Miho_Skill_IV_Thunder_Hediff.label>
+  <!-- EN: 여우번개 -->
+  <Miho_Skill_IV_Thunder_Hediff.description>秘灵雷枪。</Miho_Skill_IV_Thunder_Hediff.description>
+  
+  <!-- EN: 여우 비콘 -->
+  <Miho_Skill_IV_Turret_Hediff.label>弱化御枪</Miho_Skill_IV_Turret_Hediff.label>
+  <!-- EN: 여우 비콘 -->
+  <Miho_Skill_IV_Turret_Hediff.description>弱化御枪。</Miho_Skill_IV_Turret_Hediff.description>
+  
+</LanguageData>

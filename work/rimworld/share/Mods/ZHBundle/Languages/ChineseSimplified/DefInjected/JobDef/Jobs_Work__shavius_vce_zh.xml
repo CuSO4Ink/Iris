@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<IP_InsertFirstIngredient.reportString>正在加入原料。</IP_InsertFirstIngredient.reportString>
+		<IP_InsertSecondIngredient.reportString>正在加入原料。</IP_InsertSecondIngredient.reportString>
+		<IP_InsertThirdIngredient.reportString>正在加入原料。</IP_InsertThirdIngredient.reportString>
+		<IP_RemoveProduct.reportString>正在收取成品。</IP_RemoveProduct.reportString>
+	</LanguageData>

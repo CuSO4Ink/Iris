@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: make chemfuel from fecal sludge -->
+  <Make_ChemfuelFromFecalSludge.label>以糞便污泥提煉化合燃料</Make_ChemfuelFromFecalSludge.label>
+  <!-- EN: Make a batch of chemfuel from fecal sludge. -->
+  <Make_ChemfuelFromFecalSludge.description>從糞便污泥萃取生質燃料再提煉出化合燃料。</Make_ChemfuelFromFecalSludge.description>
+  <!-- EN: Refining chemfuel from fecal sludge -->
+  <Make_ChemfuelFromFecalSludge.jobString>製作化合燃料</Make_ChemfuelFromFecalSludge.jobString>
+  
+</LanguageData>

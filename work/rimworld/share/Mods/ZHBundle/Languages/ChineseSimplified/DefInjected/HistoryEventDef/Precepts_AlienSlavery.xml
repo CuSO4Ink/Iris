@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: enslaved prisoner -->
+  <HAR_Alien_EnslavedPrisoner.label>奴役了囚犯</HAR_Alien_EnslavedPrisoner.label>
+  
+  <!-- EN: enslaved prisoner not previously enslaved -->
+  <HAR_Alien_EnslavedPrisonerNotPreviouslyEnslaved.label>奴役了曾未被奴役过的囚犯</HAR_Alien_EnslavedPrisonerNotPreviouslyEnslaved.label>
+  
+  <!-- EN: sold slave -->
+  <HAR_Alien_SoldSlave.label>贩卖奴隶</HAR_Alien_SoldSlave.label>
+  
+</LanguageData>

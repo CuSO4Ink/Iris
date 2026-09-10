@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- Blue pola bear prototype -->
+  <A_B_01_Mincho_BluePolarBearPrototype.title>藍色北極熊原型</A_B_01_Mincho_BluePolarBearPrototype.title>
+  <!-- prototype -->
+  <A_B_01_Mincho_BluePolarBearPrototype.titleShort>原型</A_B_01_Mincho_BluePolarBearPrototype.titleShort>
+  <!-- ICEcRIM Co. decided to create a variant of Mincho after the success of Minmoong and Minchonyang. ICEcRIM Co. experimented with variant mechanites in other ice creams, and one of the things that was made was {PAWN_nameDef}. -->
+  <A_B_01_Mincho_BluePolarBearPrototype.description>ICEcRIM公司決定在珉巧喵和珉巧汪的成功之後，決定創建珉巧的變體。ICEcRIM公司在其他霜淇淋中試驗了變異的機械設備，其中一種是 {PAWN_nameDef}。</A_B_01_Mincho_BluePolarBearPrototype.description>
+  <!-- Blue pola bear unexpected arrival product -->
+  <C_B_01_Mincho_UnexpectedArrivalProduct.title>藍色北極熊迫降商品</C_B_01_Mincho_UnexpectedArrivalProduct.title>
+  <!-- unexpected arrival product -->
+  <C_B_01_Mincho_UnexpectedArrivalProduct.titleShort>迫降商品</C_B_01_Mincho_UnexpectedArrivalProduct.titleShort>
+  <!-- {PAWN_nameDef} was sold to another planet for ice cream production, but her cargo ship crashed in an accident. {PAWN_nameDef} took clothes from the freighter and a bear hat for freebies and wandered from place to place. -->
+  <C_B_01_Mincho_UnexpectedArrivalProduct.description>{PAWN_nameDef} 被賣給另一個星球生產霜淇淋，但她的貨船在一次事故中墜毀。{PAWN_nameDef} 從貨船上拿了衣服和一頂熊帽作為免費贈品，四處遊蕩。</C_B_01_Mincho_UnexpectedArrivalProduct.description>
+  <!-- Pink fall in love prototype -->
+  <A_P_01_Mincho_PinkFallInLovePrototype.title>墜入粉紅愛河原型</A_P_01_Mincho_PinkFallInLovePrototype.title>
+  <!-- prototype -->
+  <A_P_01_Mincho_PinkFallInLovePrototype.titleShort>原型</A_P_01_Mincho_PinkFallInLovePrototype.titleShort>
+  <!-- ICEcRIM Co. decided to create a variant of Mincho after the success of Minmoong and Minchonyang. ICEcRIM Co. experimented with variant mechanites in other ice creams, and one of the things that was made was {PAWN_nameDef}. -->
+  <A_P_01_Mincho_PinkFallInLovePrototype.description>ICEcRIM公司決定在珉巧喵和珉巧汪的成功之後，決定創建珉巧的變體。ICEcRIM公司在其他霜淇淋中試驗了變異的機械設備，其中一種是 {PAWN_nameDef}。</A_P_01_Mincho_PinkFallInLovePrototype.description>
+  <!-- Pink fall in love wander in for love -->
+  <C_P_01_Mincho_WanderInForLove.title>墜入粉紅色愛河愛流浪者</C_P_01_Mincho_WanderInForLove.title>
+  <!-- wanderer -->
+  <C_P_01_Mincho_WanderInForLove.titleShort>流浪者</C_P_01_Mincho_WanderInForLove.titleShort>
+  <!-- {PAWN_nameDef} was wandering to find someone to spend eternity with. And... she came here. To find her own companion. -->
+  <C_P_01_Mincho_WanderInForLove.description>{PAWN_nameDef} 正在徘徊尋找可以與之永恆相處的人；而...她來到這裡是為了尋找自己的伴侶。</C_P_01_Mincho_WanderInForLove.description>
+  <!-- Mincho newborn baby -->
+  <Colonist_01_MinchoNewbornBaby.title>珉巧新生兒</Colonist_01_MinchoNewbornBaby.title>
+  <!-- Newborn baby -->
+  <Colonist_01_MinchoNewbornBaby.titleShort>新生兒</Colonist_01_MinchoNewbornBaby.titleShort>
+  <!-- {PAWN_nameDef} is the fruit of love. She is very cute when she wriggles, but she is still too young to do anything. When she grow up, she will surely grow into a good mincho that loves mintchoco and everyone. -->
+  <Colonist_01_MinchoNewbornBaby.description>{PAWN_nameDef} 是愛的結晶。她在蠕動時顯得相當可愛，但她還是過於幼小而無法做任何事。等她長大後，她必定會成為喜愛薄荷巧克力以及所有人的好珉巧。</Colonist_01_MinchoNewbornBaby.description>
+  <!-- Mincho child -->
+  <Colonist_02_MinchoChild.title>珉巧兒童</Colonist_02_MinchoChild.title>
+  <!-- Child -->
+  <Colonist_02_MinchoChild.titleShort>兒童</Colonist_02_MinchoChild.titleShort>
+  <!-- The Mincho child, as grew up, started to take on the appearance of a human beings. She is so young that she is not interested in anything other than eating mintchoco. -->
+  <Colonist_02_MinchoChild.description>珉巧兒童隨著成長，開始有了人類的樣貌。她還太過年輕以至於沒有能比得上食用薄荷巧克力的興趣。</Colonist_02_MinchoChild.description>
+  <!-- Mincho girl -->
+  <Colonist_03_MinchoGirl.title>珉巧女孩</Colonist_03_MinchoGirl.title>
+  <!-- Girl -->
+  <Colonist_03_MinchoGirl.titleShort>女孩</Colonist_03_MinchoGirl.titleShort>
+  <!-- {PAWN_nameDef} has grown a lot. It's time to work as a member of the colony. Unlike when she was a child who only liked mintchoco, she started to get interested in another things. -->
+  <Colonist_03_MinchoGirl.description>{PAWN_nameDef} 成長了許多，這該是時候作為一位殖民者工作。不像她還是孩子的時候只喜歡薄荷巧克力，她開始對其他事物生成興趣。</Colonist_03_MinchoGirl.description>
+  <!-- Mincho lady -->
+  <Colonist_04_MinchoLady.title>珉巧淑女</Colonist_04_MinchoLady.title>
+  <!-- Lady -->
+  <Colonist_04_MinchoLady.titleShort>淑女</Colonist_04_MinchoLady.titleShort>
+  <!-- {PAWN_nameDef} is now a adult, and has become a great member of the colony. She will try to spread mintchoco and love to others. Of course, there are people who don't welcome it, but they will eventually accept it. -->
+  <Colonist_04_MinchoLady.description>{PAWN_nameDef} 現在是成體了，並且成為了優秀的殖民者成員，她將試著去向其他人散播薄荷巧克力與愛。當然，還是不會受到一些人的歡迎，但他們終將接受。</Colonist_04_MinchoLady.description>
+  <!-- Mincho isolationist -->
+  <A_01_Mincho_isolationist.title>珉巧孤立者</A_01_Mincho_isolationist.title>
+  <!-- Isolationist -->
+  <A_01_Mincho_isolationist.titleShort>孤立者</A_01_Mincho_isolationist.titleShort>
+  <!-- {PAWN_nameDef} is abandoned by society and humans and has a very strong distrust of others. She had to train herself to survive alone. -->
+  <A_01_Mincho_isolationist.description>{PAWN_nameDef} 被社會及人類遺棄並對他人充滿不信任，她不得不學會自力更生。</A_01_Mincho_isolationist.description>
+  <!-- Mincho elder -->
+  <A_02_Mincho_elder.title>珉巧長老</A_02_Mincho_elder.title>
+  <!-- Elder -->
+  <A_02_Mincho_elder.titleShort>長老</A_02_Mincho_elder.titleShort>
+  <!-- It's very rare to find a colony of Mincho. And {PAWN_nameDef} was the elder of such a Mincho village. She led the village as an elder and sometimes held meetings, but the content of the meetings was mostly about mintchoco. -->
+  <A_02_Mincho_elder.description>珉巧聚集在一起形成一個村落是非常罕見的。而 {PAWN_nameDef} 就是這樣一個村落的長老。 作為長老，她帶領村裡不時召開會議，但會議的內容大多是薄荷巧克力。</A_02_Mincho_elder.description>
+  <!-- Mincho colonist -->
+  <A_03_Mincho_colonist.title>珉巧殖民者</A_03_Mincho_colonist.title>
+  <!-- Colonist -->
+  <A_03_Mincho_colonist.titleShort>殖民者</A_03_Mincho_colonist.titleShort>
+  <!-- {PAWN_nameDef} was a member of a colony of Mincho. She talked about mintchoco every day with her colleagues. -->
+  <A_03_Mincho_colonist.description>{PAWN_nameDef} 曾是珉巧殖民地的成員，在過去的每天與她的同事談論著薄荷巧克力。</A_03_Mincho_colonist.description>
+  <!-- Mincho priestess -->
+  <A_04_Mincho_priestess.title>珉巧祭司</A_04_Mincho_priestess.title>
+  <!-- Priestess -->
+  <A_04_Mincho_priestess.titleShort>祭司</A_04_Mincho_priestess.titleShort>
+  <!-- {PAWN_nameDef} was a priestess of the Mincho colony. She worshiped mintchoco, the source of the Mincho races, like a god. She also thought it was God's will to spread mintchoco to others. -->
+  <A_04_Mincho_priestess.description>{PAWN_nameDef} 曾是珉巧殖民地的祭司，她將作為珉巧一族起源的薄荷巧克力像是神一般崇拜著，她也認為向他人傳播薄荷巧克力是神的旨意。</A_04_Mincho_priestess.description>
+  <!-- Mincho cannibal -->
+  <A_05_Mincho_cannibal.title>珉巧食人族</A_05_Mincho_cannibal.title>
+  <!-- Cannibal -->
+  <A_05_Mincho_cannibal.titleShort>食人族</A_05_Mincho_cannibal.titleShort>
+  <!-- {PAWN_nameDef} loves the taste of human meat. Maybe it's from a young age, or the meat she accidentally tasted was palatable. But she know she shouldn't eat her "living friend." -->
+  <A_05_Mincho_cannibal.description>{PAWN_nameDef} 喜愛人肉的味道。也許自兒時，又或者是因為偶然嚐到美味的肉，但她知道她不該吃掉她“還活著的朋友”。</A_05_Mincho_cannibal.description>
+  <!-- Mincho exploited -->
+  <A_06_Mincho_exploited.title>受剝削的珉巧</A_06_Mincho_exploited.title>
+  <!-- Exploited -->
+  <A_06_Mincho_exploited.titleShort>受剝削</A_06_Mincho_exploited.titleShort>
+  <!-- Mintchoco is famous for addictive taste. The easiest way to get a lot of mintchoco was to pick up the mintchoco that came out when Mincho died, and {PAWN_nameDef} was waiting for the day to die for get mintchoco in a human village. But when the village was destroyed by a pirate attack, she fled in the midst of chaos. -->
+  <A_06_Mincho_exploited.description>薄荷巧克力以令人欲罷不能的味道聞名，而大量獲取薄荷巧克力最簡單的方法，曾是搜羅自珉巧死亡後生出的巧克力，而 {PAWN_nameDef} 曾在人類村落為此等待著死亡。不過當此村落因遭受海盜襲擊而被破壞時，她便從這混亂中逃走。</A_06_Mincho_exploited.description>
+  <!-- Mincho doctor -->
+  <A_07_Mincho_doctor.title>珉巧醫生</A_07_Mincho_doctor.title>
+  <!-- Doctor -->
+  <A_07_Mincho_doctor.titleShort>醫生</A_07_Mincho_doctor.titleShort>
+  <!-- Minchoes are so resilient that they don't have to be treated, but some Mincho know from experience that putting herbs in the wound can make the recovery faster. {PAWN_nameDef} poked the herb she had saved into the wound of the injured Mincho and took mintchoco in return. -->
+  <A_07_Mincho_doctor.description>珉巧們因高超的回復力使她們不必接受治疔，但一些珉巧從經驗中得知將藥草置於傷口上可加速癒合。{PAWN_nameDef} 將存下的藥草置於受傷珉巧的傷口，並收取薄荷巧克力作為回報。</A_07_Mincho_doctor.description>
+  <!-- Mincho misdelivery -->
+  <A_08_Mincho_misdelivery.title>遭誤送的珉巧</A_08_Mincho_misdelivery.title>
+  <!-- Misdelivery -->
+  <A_08_Mincho_misdelivery.titleShort>遭誤送者</A_08_Mincho_misdelivery.titleShort>
+  <!-- This Mincho was originally scheduled to be delivered to another colony. But it was delivered to your colony for some reason. -->
+  <A_08_Mincho_misdelivery.description>這個珉巧原本安排送至另一個殖民地，但一些原因而被送到你的殖民地。</A_08_Mincho_misdelivery.description>
+  <!-- Mincho defender -->
+  <A_09_Mincho_Defender.title>珉巧守護者</A_09_Mincho_Defender.title>
+  <!-- Defender -->
+  <A_09_Mincho_Defender.titleShort>守護者</A_09_Mincho_Defender.titleShort>
+  <!-- Although Minchoes are very friendly to others, there is no guarantee that the others are also friendly to them. It's {PAWN_nameDef}'s job to beat up the raiders with choco stick and hand them over to Minchoes that need the stupid intruder. -->
+  <A_09_Mincho_Defender.description>雖然珉巧們對其他人很友好，但並不保障也能受到其他人友好的對待。{PAWN_nameDef} 的職責就是用巧克力棍打倒入侵者，並將他們交給需要這愚蠢入侵者的珉巧。</A_09_Mincho_Defender.description>
+  <!-- Mincho knight -->
+  <A_10_Mincho_knight.title>珉巧騎士</A_10_Mincho_knight.title>
+  <!-- Knight -->
+  <A_10_Mincho_knight.titleShort>騎士</A_10_Mincho_knight.titleShort>
+  <!-- There is no improvement in the bodies of Minchoes, and there is no new thought in the mind. But that doesn't mean that Mincho has no talent as a warrior. {PAWN_nameDef} has honed her combat skills through endless training. -->
+  <A_10_Mincho_knight.description>珉巧的肉體不能進步，思維上不能創新。但這並不是說珉巧沒有戰士的素質。{PAWN_nameDef} 透過不斷的修煉來練就戰鬥的技能。</A_10_Mincho_knight.description>
+    <!-- Mincho mercenary -->
+  <A_11_Mincho_Mercenary.title>珉巧傭兵</A_11_Mincho_Mercenary.title>
+  <!-- Mercenary -->
+  <A_11_Mincho_Mercenary.titleShort>傭兵</A_11_Mincho_Mercenary.titleShort>
+  <!-- Some of the Mincho with strong combat skills are hired to wield weapons instead when force is needed. What need to hire {PAWN_nameDef} is money or mintchoco.\n\nIn some cases, when employed in battles against other races, {PAWN_nameDef} do not require remuneration. Because {PAWN_nameDef} takes those who fight and survive on the battlefield as pay. -->
+  <A_11_Mincho_Mercenary.description>一些擁有強大戰鬥技能的珉巧被僱傭，在需要武力的時候代替他們揮舞武器。僱傭 {PAWN_nameDef} 需要的是錢或薄荷巧克力。\n\n{PAWN_nameDef} 有時被僱傭為對抗其他種族的戰鬥，而不要求額外的報酬。 因為在戰場上，他們用自己的武器戰鬥，以倖存者為獎勵。</A_11_Mincho_Mercenary.description>
+  <!-- The first Mincho -->
+  <C_01_The_first_Mincho.title>最初的珉巧</C_01_The_first_Mincho.title>
+  <!-- The first Mincho -->
+  <C_01_The_first_Mincho.titleShort>最初的珉巧</C_01_The_first_Mincho.titleShort>
+  <!-- {PAWN_nameDef} was one of the promotional slime toys made by the glitterworld Co. ICEcRIM. The slime toy had the ability to mimic part of the human appearance due to mistakes in the manufacturing process. Despite the recall, the creature, called Mincho, had already spread to several planets. -->
+  <C_01_The_first_Mincho.description>{PAWN_nameDef} 是由閃耀世界食品公司ICEcRIMe所製作的史萊姆型促銷玩具之一。因製造過程中的失誤，使得此史萊姆玩具擁有了擬態人類部分樣貌的能力。儘管進行了進行回收，名為“珉巧”的生物已經散布到多個星球。</C_01_The_first_Mincho.description>
+  <!-- Mincho poultice -->
+  <C_02_Mincho_poultice.title>珉巧藥膏</C_02_Mincho_poultice.title>
+  <!-- Poultice -->
+  <C_02_Mincho_poultice.titleShort>珉巧藥膏</C_02_Mincho_poultice.titleShort>
+  <!-- In places where medical facilities are scarce, would catch Mincho and use them for poultice and ice packs. Mincho is always cold and has been very effective in labor pains due to menthol. {PAWN_nameDef} has gained a small amount of medical knowledge through experience used in poultice, ice packs, and so on. -->
+  <C_02_Mincho_poultice.description>在醫疔設備匱乏的地區，會捕捉珉巧並將她們作為藥膏及冰袋使用。珉巧總是冰冷的，並且其中的薄荷醇對陣痛非常有效。{PAWN_nameDef} 在被用作藥膏、冰袋等時獲取了零星的醫疔知識。</C_02_Mincho_poultice.description>
+  <!-- Mincho mechanic -->
+  <C_03_Mincho_mechanic.title>珉巧機械師</C_03_Mincho_mechanic.title>
+  <!-- Mechanic -->
+  <C_03_Mincho_mechanic.titleShort>機械師</C_03_Mincho_mechanic.titleShort>
+  <!-- Mincho is not smart, but it's not mean that they're bad dexterous. {PAWN_nameDef} has been interested in machines since childhood. Although she didn't fully understand the structure of the machines, she had the ability repair the machines to some extent. -->
+  <C_03_Mincho_mechanic.description>珉巧不怎麼聰明，但不代表她們不夠靈巧。{PAWN_nameDef} 打從孩提時期就對機械有興趣，即便她不完全理解機械的構造，她有能夠將機械修復至一定程度的能力。</C_03_Mincho_mechanic.description>
+  <!-- Mincho patissier -->
+  <C_04_Mincho_patissier.title>珉巧糕點師</C_04_Mincho_patissier.title>
+  <!-- Patissier -->
+  <C_04_Mincho_patissier.titleShort>糕點師</C_04_Mincho_patissier.titleShort>
+  <!-- {PAWN_nameDef} has loved mintchoco since she was a kid, and she didn't understand why some humans hated mintchoco. She tried to make more delicious mintchoco for such people. -->
+  <C_04_Mincho_patissier.description>{PAWN_nameDef} 打從孩提時期便熱愛著薄荷巧克力，她也不能理解為什麼有些人類討厭薄荷巧克力，為了這些人她試著將薄荷巧克力變得更美味。</C_04_Mincho_patissier.description>
+  <!-- Mincho frozen food -->
+  <C_05_Mincho_frozenfood.title>珉巧冷凍食品</C_05_Mincho_frozenfood.title>
+  <!-- Frozen food -->
+  <C_05_Mincho_frozenfood.titleShort>冷凍食品</C_05_Mincho_frozenfood.titleShort>
+  <!-- On some planets, ice cream was still an expensive favorite food. Mincho, which makes mintchoco continuously when just given food, was highly preferred. So some smugglers caught Mincho and sold it to other planets at a high price. -->
+  <C_05_Mincho_frozenfood.description>在某些星球，冰淇淋依然是最受歡迎昂貴食品，而只需要供應食物就能持續生成薄荷巧克力的珉巧成為首選，因此一些走私者捕捉珉巧並以高價賣至其他星球。</C_05_Mincho_frozenfood.description>
+  <!--Original=Mincho wet nurse-->
+  <A_W_01_Mincho_WetNurse.title>珉巧保母</A_W_01_Mincho_WetNurse.title>
+  <!--Original=Wet nurse-->
+  <A_W_01_Mincho_WetNurse.titleShort>保母</A_W_01_Mincho_WetNurse.titleShort>
+  <!--Original={PAWN_nameDef} is a perfect wet nurse who deeply adores children.\n\nHowever, behind her smile lies a secret ambition: by feeding children &quot;special&quot; mintchoco from a young age, she ensures they grow up completely incapable of feeling any aversion toward mintchoco or the Mincho race.-->
+  <A_W_01_Mincho_WetNurse.description>{PAWN_nameDef}是一位極度喜愛孩子的完美保母。\n\n然而，在她的微笑背後隱藏著一個秘密的野心：透過從小給孩子們餵食“特製”的薄荷巧克力，她確保孩子們長大後對薄荷巧克力和珉巧族徹底失去任何排斥感。</A_W_01_Mincho_WetNurse.description>
+  <!--Original=Mincho good kid-->
+  <C_W_01_Mincho_GoodKid.title>珉巧好孩子</C_W_01_Mincho_GoodKid.title>
+  <!--Original=good kid-->
+  <C_W_01_Mincho_GoodKid.titleShort>好孩子</C_W_01_Mincho_GoodKid.titleShort>
+  <!--Original={PAWN_nameDef} was always a caring child. {PAWN_pronoun} always shared what {PAWN_pronoun} loved most with others: mintchoco.-->
+  <C_W_01_Mincho_GoodKid.description>{PAWN_nameDef}一直是個體貼的孩子。{PAWN_pronoun}總是樂於和他人分享自己最愛的東西：薄荷巧克力。</C_W_01_Mincho_GoodKid.description>
+  
+  
+</LanguageData>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi -->
+  <VV_Vivi.label>薇薇</VV_Vivi.label>
+  <!-- EN: left lung -->
+  <VV_Vivi.corePart.parts.left_lung.customLabel>左肺</VV_Vivi.corePart.parts.left_lung.customLabel>
+  <!-- EN: right lung -->
+  <VV_Vivi.corePart.parts.right_lung.customLabel>右肺</VV_Vivi.corePart.parts.right_lung.customLabel>
+  <!-- EN: left kidney -->
+  <VV_Vivi.corePart.parts.left_kidney.customLabel>左腎</VV_Vivi.corePart.parts.left_kidney.customLabel>
+  <!-- EN: right kidney -->
+  <VV_Vivi.corePart.parts.right_kidney.customLabel>右腎</VV_Vivi.corePart.parts.right_kidney.customLabel>
+  <!-- EN: left eye -->
+  <VV_Vivi.corePart.parts.Neck.parts.Head.parts.left_eye.customLabel>左眼</VV_Vivi.corePart.parts.Neck.parts.Head.parts.left_eye.customLabel>
+  <!-- EN: right eye -->
+  <VV_Vivi.corePart.parts.Neck.parts.Head.parts.right_eye.customLabel>右眼</VV_Vivi.corePart.parts.Neck.parts.Head.parts.right_eye.customLabel>
+  <!-- EN: left ear -->
+  <VV_Vivi.corePart.parts.Neck.parts.Head.parts.left_ear.customLabel>左耳</VV_Vivi.corePart.parts.Neck.parts.Head.parts.left_ear.customLabel>
+  <!-- EN: right ear -->
+  <VV_Vivi.corePart.parts.Neck.parts.Head.parts.right_ear.customLabel>右耳</VV_Vivi.corePart.parts.Neck.parts.Head.parts.right_ear.customLabel>
+  <!-- EN: left antennae -->
+  <VV_Vivi.corePart.parts.Neck.parts.Head.parts.left_antennae.customLabel>左觸須</VV_Vivi.corePart.parts.Neck.parts.Head.parts.left_antennae.customLabel>
+  <!-- EN: right antennae -->
+  <VV_Vivi.corePart.parts.Neck.parts.Head.parts.right_antennae.customLabel>右觸須</VV_Vivi.corePart.parts.Neck.parts.Head.parts.right_antennae.customLabel>
+  <!-- EN: left shoulder -->
+  <VV_Vivi.corePart.parts.left_shoulder.customLabel>左肩</VV_Vivi.corePart.parts.left_shoulder.customLabel>
+  <!-- EN: left clavicle -->
+  <VV_Vivi.corePart.parts.left_shoulder.parts.left_clavicle.customLabel>左鎖骨</VV_Vivi.corePart.parts.left_shoulder.parts.left_clavicle.customLabel>
+  <!-- EN: left arm -->
+  <VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.customLabel>左臂</VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.customLabel>
+  <!-- EN: left humerus -->
+  <VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_humerus.customLabel>左肱骨</VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_humerus.customLabel>
+  <!-- EN: left radius -->
+  <VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_radius.customLabel>左橈骨</VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_radius.customLabel>
+  <!-- EN: left hand -->
+  <VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.customLabel>左手</VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.customLabel>
+  <!-- EN: left pinky -->
+  <VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_pinky.customLabel>左小指</VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_pinky.customLabel>
+  <!-- EN: left ring finger -->
+  <VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_ring_finger.customLabel>左無名指</VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_ring_finger.customLabel>
+  <!-- EN: left middle finger -->
+  <VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_middle_finger.customLabel>左中指</VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_middle_finger.customLabel>
+  <!-- EN: left index finger -->
+  <VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_index_finger.customLabel>左食指</VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_index_finger.customLabel>
+  <!-- EN: left thumb -->
+  <VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_thumb.customLabel>左拇指</VV_Vivi.corePart.parts.left_shoulder.parts.left_arm.parts.left_hand.parts.left_thumb.customLabel>
+  <!-- EN: right shoulder -->
+  <VV_Vivi.corePart.parts.right_shoulder.customLabel>右肩</VV_Vivi.corePart.parts.right_shoulder.customLabel>
+  <!-- EN: right clavicle -->
+  <VV_Vivi.corePart.parts.right_shoulder.parts.right_clavicle.customLabel>右鎖骨</VV_Vivi.corePart.parts.right_shoulder.parts.right_clavicle.customLabel>
+  <!-- EN: right arm -->
+  <VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.customLabel>右臂</VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.customLabel>
+  <!-- EN: right humerus -->
+  <VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_humerus.customLabel>右肱骨</VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_humerus.customLabel>
+  <!-- EN: right radius -->
+  <VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_radius.customLabel>右橈骨</VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_radius.customLabel>
+  <!-- EN: right hand -->
+  <VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.customLabel>右手</VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.customLabel>
+  <!-- EN: right pinky -->
+  <VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_pinky.customLabel>右小指</VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_pinky.customLabel>
+  <!-- EN: right ring finger -->
+  <VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_ring_finger.customLabel>右無名指</VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_ring_finger.customLabel>
+  <!-- EN: right middle finger -->
+  <VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_middle_finger.customLabel>右中指</VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_middle_finger.customLabel>
+  <!-- EN: right index finger -->
+  <VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_index_finger.customLabel>右食指</VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_index_finger.customLabel>
+  <!-- EN: right thumb -->
+  <VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_thumb.customLabel>右拇指</VV_Vivi.corePart.parts.right_shoulder.parts.right_arm.parts.right_hand.parts.right_thumb.customLabel>
+  <!-- EN: left leg -->
+  <VV_Vivi.corePart.parts.left_leg.customLabel>左腿</VV_Vivi.corePart.parts.left_leg.customLabel>
+  <!-- EN: left femur -->
+  <VV_Vivi.corePart.parts.left_leg.parts.left_femur.customLabel>左股骨</VV_Vivi.corePart.parts.left_leg.parts.left_femur.customLabel>
+  <!-- EN: left tibia -->
+  <VV_Vivi.corePart.parts.left_leg.parts.left_tibia.customLabel>左脛骨</VV_Vivi.corePart.parts.left_leg.parts.left_tibia.customLabel>
+  <!-- EN: left foot -->
+  <VV_Vivi.corePart.parts.left_leg.parts.left_foot.customLabel>左足</VV_Vivi.corePart.parts.left_leg.parts.left_foot.customLabel>
+  <!-- EN: left little toe -->
+  <VV_Vivi.corePart.parts.left_leg.parts.left_foot.parts.left_little_toe.customLabel>左小趾</VV_Vivi.corePart.parts.left_leg.parts.left_foot.parts.left_little_toe.customLabel>
+  <!-- EN: left fourth toe -->
+  <VV_Vivi.corePart.parts.left_leg.parts.left_foot.parts.left_fourth_toe.customLabel>左次小趾</VV_Vivi.corePart.parts.left_leg.parts.left_foot.parts.left_fourth_toe.customLabel>
+  <!-- EN: left middle toe -->
+  <VV_Vivi.corePart.parts.left_leg.parts.left_foot.parts.left_middle_toe.customLabel>左三趾</VV_Vivi.corePart.parts.left_leg.parts.left_foot.parts.left_middle_toe.customLabel>
+  <!-- EN: left second toe -->
+  <VV_Vivi.corePart.parts.left_leg.parts.left_foot.parts.left_second_toe.customLabel>左二趾</VV_Vivi.corePart.parts.left_leg.parts.left_foot.parts.left_second_toe.customLabel>
+  <!-- EN: left big toe -->
+  <VV_Vivi.corePart.parts.left_leg.parts.left_foot.parts.left_big_toe.customLabel>左拇趾</VV_Vivi.corePart.parts.left_leg.parts.left_foot.parts.left_big_toe.customLabel>
+  <!-- EN: right leg -->
+  <VV_Vivi.corePart.parts.right_leg.customLabel>右腿</VV_Vivi.corePart.parts.right_leg.customLabel>
+  <!-- EN: right femur -->
+  <VV_Vivi.corePart.parts.right_leg.parts.right_femur.customLabel>右股骨</VV_Vivi.corePart.parts.right_leg.parts.right_femur.customLabel>
+  <!-- EN: right tibia -->
+  <VV_Vivi.corePart.parts.right_leg.parts.right_tibia.customLabel>右脛骨</VV_Vivi.corePart.parts.right_leg.parts.right_tibia.customLabel>
+  <!-- EN: right foot -->
+  <VV_Vivi.corePart.parts.right_leg.parts.right_foot.customLabel>右足</VV_Vivi.corePart.parts.right_leg.parts.right_foot.customLabel>
+  <!-- EN: right little toe -->
+  <VV_Vivi.corePart.parts.right_leg.parts.right_foot.parts.right_little_toe.customLabel>右小趾</VV_Vivi.corePart.parts.right_leg.parts.right_foot.parts.right_little_toe.customLabel>
+  <!-- EN: right fourth toe -->
+  <VV_Vivi.corePart.parts.right_leg.parts.right_foot.parts.right_fourth_toe.customLabel>右次小趾</VV_Vivi.corePart.parts.right_leg.parts.right_foot.parts.right_fourth_toe.customLabel>
+  <!-- EN: right middle toe -->
+  <VV_Vivi.corePart.parts.right_leg.parts.right_foot.parts.right_middle_toe.customLabel>右三趾</VV_Vivi.corePart.parts.right_leg.parts.right_foot.parts.right_middle_toe.customLabel>
+  <!-- EN: right second toe -->
+  <VV_Vivi.corePart.parts.right_leg.parts.right_foot.parts.right_second_toe.customLabel>右二趾</VV_Vivi.corePart.parts.right_leg.parts.right_foot.parts.right_second_toe.customLabel>
+  <!-- EN: right big toe -->
+  <VV_Vivi.corePart.parts.right_leg.parts.right_foot.parts.right_big_toe.customLabel>右拇趾</VV_Vivi.corePart.parts.right_leg.parts.right_foot.parts.right_big_toe.customLabel>
+  <!-- EN: left wing -->
+  <VV_Vivi.corePart.parts.left_wing.customLabel>左翅</VV_Vivi.corePart.parts.left_wing.customLabel>
+  <!-- EN: right wing -->
+  <VV_Vivi.corePart.parts.right_wing.customLabel>右翅</VV_Vivi.corePart.parts.right_wing.customLabel>
+  
+</LanguageData>

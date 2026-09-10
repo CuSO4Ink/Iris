@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Mote -->
+  <Mote_ShockWave.label>特效</Mote_ShockWave.label>
+  
+  <!-- EN: ballista bolt (AP) -->
+  <RK_Ammo_BallistaBoltAP.label>巨型弩箭（穿透）</RK_Ammo_BallistaBoltAP.label>
+  <!-- EN: The ballistic bolt has high penetration. It can penetrate multiple target in firing lines. -->
+  <RK_Ammo_BallistaBoltAP.description>穿透力十足的巨型弩箭。能在彈道飛行路線上對多個目標造成殺傷。</RK_Ammo_BallistaBoltAP.description>
+  
+  <!-- EN: ballista bolt (normal) -->
+  <RK_Ammo_BallistaBoltNormal.label>巨型弩箭（標準）</RK_Ammo_BallistaBoltNormal.label>
+  <!-- EN: It is a ballista bolt. It will be hard to survive if hit by this big arrow. -->
+  <RK_Ammo_BallistaBoltNormal.description>標準規格的巨型弩箭。如果被這支巨箭擊中，將很難有生還者。</RK_Ammo_BallistaBoltNormal.description>
+  
+  <!-- EN: Ratkin Cannon Shell -->
+  <RK_Ammo_CannonBall.label>鼠族加農砲彈</RK_Ammo_CannonBall.label>
+  <!-- EN: 다듬어진 돌덩어리의 표면을 강철로 둘러 싼 포탄입니다. -->
+  <RK_Ammo_CannonBall.description>用表面包裹著鐵殼的光滑石塊製成的加農砲彈。</RK_Ammo_CannonBall.description>
+  
+  <!-- EN: ballista -->
+  <RK_Building_Ballista.label>鼠族弩砲</RK_Building_Ballista.label>
+  <!-- EN: It is a machine that fires large arrows. It is designed to be easy to operate by Ratkin. -->
+  <RK_Building_Ballista.description>發射巨型弩箭的防禦器械。為了便於鼠族操作而進行過特殊改造。</RK_Building_Ballista.description>
+  
+  <!-- EN: Ratkin Cannon -->
+  <RK_Building_Cannon.label>鼠族加農砲</RK_Building_Cannon.label>
+  <!-- EN: 다듬어진 돌덩어리를 원거리로 발사할수 있는 대포입니다. 적을 원거리에서 제압하기 위하여 개발되었으나 언덕 너머를 사격할수는 없습니다. 별명은 찍찍포입니다. -->
+  <RK_Building_Cannon.description>可以遠程發射鐵石砲彈的防禦器械，俗稱“吱吱砲”。雖然是為了遠距離火力壓制而研發的，但它無法像迫擊砲那樣越過牆體和障礙打擊目標。</RK_Building_Cannon.description>
+  
+  <!-- EN: Cannon -->
+  <RK_Building_CannonTurret.label>鼠族加農砲</RK_Building_CannonTurret.label>
+  <!-- EN: 다듬어진 돌덩어리를 원거리로 발사할수 있는 대포입니다. 적을 원거리에서 제압하기 위하여 개발되었으나 언덕 너머를 사격할수는 없습니다. 별명은 찍찍포입니다. -->
+  <RK_Building_CannonTurret.description>可以遠程發射鐵石砲彈的防禦器械，俗稱“吱吱砲”。雖然是為了遠距離火力壓制而研發的，但它無法像迫擊砲那樣越過牆體和障礙打擊目標。</RK_Building_CannonTurret.description>
+  <!-- EN: Cannon -->
+  <RK_Building_CannonTurret.verbs.Verb_Shoot.label>鼠族加農砲</RK_Building_CannonTurret.verbs.Verb_Shoot.label>
+  
+  <!-- EN: ballista bolt (AP) -->
+  <RK_Projectile_BallistaBoltAP.label>巨型弩箭（穿透）</RK_Projectile_BallistaBoltAP.label>
+  
+  <!-- EN: ballista bolt (normal) -->
+  <RK_Projectile_BallistaBoltNormal.label>巨型弩箭（標準）</RK_Projectile_BallistaBoltNormal.label>
+  
+  <!-- EN: Ratkin Cannon Shell -->
+  <RK_Projectile_CannonBall.label>鼠族加農砲彈</RK_Projectile_CannonBall.label>
+  
+  <!-- EN: ballista -->
+  <RK_Weapon_Ballista.label>鼠族弩砲</RK_Weapon_Ballista.label>
+  <!-- EN: ballista bolt launcher. accurate and long-ranged. -->
+  <RK_Weapon_Ballista.description>發射巨型弩箭的防禦器械。精度高且射程遠。</RK_Weapon_Ballista.description>
+  <!-- EN: ballista -->
+  <RK_Weapon_Ballista.verbs.Verb_Shoot.label>鼠族弩砲</RK_Weapon_Ballista.verbs.Verb_Shoot.label>
+  
+</LanguageData>

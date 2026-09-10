@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Lonely Dragonian -->
+  <DR_Scenario.label>孤獨的龍人</DR_Scenario.label>
+  <!-- EN: This is the story of a lonely dragonian.\n How will this innocent creature survive in this harsh world? -->
+  <DR_Scenario.description>這是一個孤獨的龍人的故事。\n 這個天真的生物將如何在這個殘酷的世界中生存？\n此外，在帝國眼中，他們屬於非法的靈能力使用者，因此也可能遭到逮捕，甚至被當場處決。\n\n他們將與帝國永久敵對。</DR_Scenario.description>
+  <!-- EN: This is the story of a lonely dragonian.\n How will this innocent creature survive in this harsh world? -->
+  <DR_Scenario.scenario.description>這是一個孤獨的龍人的故事。\n 這個天真的生物將如何在這個殘酷的世界中生存？\n此外，在帝國眼中，他們屬於非法的靈能力使用者，因此也可能遭到逮捕，甚至被當場處決。\n\n他們將與帝國永久敵對。</DR_Scenario.scenario.description>
+  <!-- EN: Lonely Dragonian -->
+  <DR_Scenario.scenario.name>孤獨的龍人</DR_Scenario.scenario.name>
+  <!-- EN: A dragonian with nothing.\nIt's a challenging story. -->
+  <DR_Scenario.scenario.summary>一個一無所有的龍人。\n這是一個充滿挑戰性的故事。</DR_Scenario.scenario.summary>
+  
+</LanguageData>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_RawApple.label>蘋果</VCE_RawApple.label>
+		<VCE_RawApple.description>光潔通紅的蘋果。蘋果可以作為點心，甜點材料或者釀酒材料。</VCE_RawApple.description>
+		<VCE_RawPeach.label>桃子</VCE_RawPeach.label>
+		<VCE_RawPeach.description>毛茸茸的桃子。有濃厚的芳香，生吃非常美味。</VCE_RawPeach.description>
+		<VCE_RawCherry.label>櫻桃</VCE_RawCherry.label>
+		<VCE_RawCherry.description>小巧的紫紅色櫻桃。櫻桃樹的成長需要一季度的低溫環境，所以深受北方人喜愛。</VCE_RawCherry.description>
+		<VCE_RawPlum.label>梅子</VCE_RawPlum.label>
+		<VCE_RawPlum.description>光滑的紫色梅子。梅子不會腐化，而是在採摘的15天後變成梅子干。</VCE_RawPlum.description>
+		<VCE_RawPrunes.label>梅子干</VCE_RawPrunes.label>
+		<VCE_RawPrunes.description>乾燥的梅子，保質期很長。</VCE_RawPrunes.description>
+		<VCE_RawPear.label>梨子</VCE_RawPear.label>
+		<VCE_RawPear.description>脆脆的綠色梨子。梨子比蘋果老，沒蘋果甜。</VCE_RawPear.description>
+		<VCE_RawPricklyPear.label>花椒梨</VCE_RawPricklyPear.label>
+		<VCE_RawPricklyPear.description>粉色的瓜狀果實，可以吃，曾被沙漠住民用來療傷。</VCE_RawPricklyPear.description>
+		<VCE_Bearberry.label>熊莓</VCE_Bearberry.label>
+		<VCE_Bearberry.description>小巧的粉色熊莓。熊莓生吃會非常酸，但燒熟後就只剩下了輕甜，更加好吃。</VCE_Bearberry.description>
+		<VCE_RawBanana.label>香蕉</VCE_RawBanana.label>
+		<VCE_RawBanana.description>黃色的長條水果，剝皮方便，果肉很爛，有一種濃郁的甜味。千年來深受熱帶住民的喜愛。</VCE_RawBanana.description>
+		<VCE_RawOrange.label>橘子</VCE_RawOrange.label>
+		<VCE_RawOrange.description>圓形的水果，橘子很爛且剝皮很麻煩，但甜美多汁。</VCE_RawOrange.description>
+
+		<!-- EN: mangoes -->
+		<VCE_Mangoes.label>芒果</VCE_Mangoes.label>
+		<!-- EN: An oval fruit, vividly coloured with shades of red and yellow. The single large seed is flattened, and the flesh that surrounds it is yellow to orange in colour, juicy, and of distinctive sweet-spicy flavour.\n\n<color=#E5E54C>Gameplay effect:</color> Mangoes cannot be frozen or they get destroyed. The game won't be smart enough to detect this, so disable them from freezers. -->
+		<VCE_Mangoes.description>有着混合紅黃色彩的橢圓形水果。只有一個扁平形的大核在果實中央，周邊環繞的果肉由黃至橙，甜辣多汁。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;芒果一旦被冷凍就會壞掉，請手動把冷藏庫的存儲設定中刪除芒果。</VCE_Mangoes.description>
+		
+		<!-- EN: almonds -->
+		<VCE_RawAlmonds.label>杏仁</VCE_RawAlmonds.label>
+		<!-- EN: An oval shaped drupe often eaten on its own, raw or toasted, though it can also be used as a component of various dishes. A wide range of classic sweets feature almonds as a central ingredient. -->
+		<VCE_RawAlmonds.description>橢圓形的乾果，可以干吃或可以炒制，也可以當作熟菜的配料。很多經典的甜食都依賴杏仁的風味。</VCE_RawAlmonds.description>
+		
+		<!-- EN: avocados -->
+		<VCE_RawAvocado.label>牛油果</VCE_RawAvocado.label>
+		<!-- EN: A green or nearly black coloured fruit with a large seed or pit in the center. Avocados have a very mild, creamy texture. Hipsters love them. -->
+		<VCE_RawAvocado.description>深綠色的果實，種子都聚集在中間的一個坑裡。牛油果有一種濃郁的奶油狀口感。深受嬉皮士喜愛。</VCE_RawAvocado.description>
+		
+		<!-- EN: coconuts -->
+		<VCE_RawCoconut.label>椰子</VCE_RawCoconut.label>
+		<!-- EN: The edible fruit of the coconut palm. Coconut flesh is high in fat and can be dried or eaten fresh or processed into coconut milk or coconut oil. The liquid of the nut, known as coconut water, is used in beverages. -->
+		<VCE_RawCoconut.description>椰樹的果實。椰肉富含脂肪，可以食用，也可以製成椰奶或椰油。果實里富含的椰汁常被用作飲料的 原料。</VCE_RawCoconut.description>
+		
+		<!-- EN: melons -->
+		<VCE_RawMelon.label>西瓜</VCE_RawMelon.label>
+		<!-- EN: A sweet, edible, and fleshy fruit of considerable size. Melons are usually cultivated in warm regions. -->
+		<VCE_RawMelon.description>清甜爽脆的大型水果。常在溫熱地帶種植。</VCE_RawMelon.description>
+		
+		<!-- EN: pineapples -->
+		<VCE_RawPineapple.label>菠蘿</VCE_RawPineapple.label>
+		<!-- EN: A sweet tropical fruit with a tough leathery skin and spiky leaves on top. The word pineapple was first used to mean "pine cone," and the fruit was given this name because of its resemblance to a large pine cone. -->
+		<VCE_RawPineapple.description>甜味熱帶水果，有皮革一樣的堅固外皮和刺狀的葉子。菠蘿由於其外形，以前常被指代為「大號松果」。</VCE_RawPineapple.description>
+	</LanguageData>

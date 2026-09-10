@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>questDescription->A large meteorite has struck ground nearby. It has left behind a lump of eltex. Eltex can be used to create psyfocus-enhancing gear, or sold to the Empire to gain honor.\nYou can send a mining party to retrieve it, but chances are if you wait long enough, someone else will lay claim to it.</li>
+  -->
+  <VPE_EltexMeteor.questDescriptionRules.rulesStrings>
+    <li>questDescription->一颗巨大的陨石撞击了此区域的地面。留下了一块灵质。灵质可以用来打造强化心灵能力的装备，或是卖给帝国征募官。</li>
+  </VPE_EltexMeteor.questDescriptionRules.rulesStrings>
+  <!-- EN:
+    <li>questName->Eltex Meteor</li>
+  -->
+  <VPE_EltexMeteor.questNameRules.rulesStrings>
+    <li>questName->灵质陨石</li>
+  </VPE_EltexMeteor.questNameRules.rulesStrings>
+  <!-- EN: Quest expired: [resolvedQuestName] -->
+  <VPE_EltexMeteor.root.nodes.WorldObjectTimeout.node.nodes.Letter.label.slateRef>任务已失效：[resolvedQuestName]</VPE_EltexMeteor.root.nodes.WorldObjectTimeout.node.nodes.Letter.label.slateRef>
+  <!-- EN: Others have mined the Eltex meteor. The quest [resolvedQuestName] has expired. -->
+  <VPE_EltexMeteor.root.nodes.WorldObjectTimeout.node.nodes.Letter.text.slateRef>灵质被其它人挖走了，任务“[resolvedQuestName]”已经失效。</VPE_EltexMeteor.root.nodes.WorldObjectTimeout.node.nodes.Letter.text.slateRef>
+  
+  <!-- UNUSED -->
+  <VPE_EltexMeteor.LetterLabelQuestExpired.slateRef>任务已失效：[resolvedQuestName]</VPE_EltexMeteor.LetterLabelQuestExpired.slateRef>
+  <VPE_EltexMeteor.LetterTextQuestExpired.slateRef>灵质被其它人挖走了，任务“[resolvedQuestName]”已经失效。</VPE_EltexMeteor.LetterTextQuestExpired.slateRef>
+  
+</LanguageData>

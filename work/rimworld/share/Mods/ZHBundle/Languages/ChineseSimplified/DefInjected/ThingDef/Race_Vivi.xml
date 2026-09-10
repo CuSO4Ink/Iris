@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi -->
+  <VV_Vivi.label>薇薇</VV_Vivi.label>
+  <!-- EN: A race similar to a kind of fairy that lives a lifestyle similar to bees.\n\nTheir origin is unknown, but their lifestyle is mostly similar to bees, and unlike normal humans, they reproduce through parthenogenesis, and are known to have their unique mode of communication and a short lifespan.\n\nVivi genes are abnormally prone to mutations compared to other creatures, so it is common to be born with random xenogenes. For this reason, despite parthenogenesis, they show a diverse genetic distribution.\n\nTypically, Vivis live only near their nests, so they are not commonly seen outside, but occasionally you can see Vivi who wander to create new nests. -->
+  <VV_Vivi.description>一个和传说中小仙灵类似的种族，生活方式与蜜蜂接近。\n\n它们的起源尚不清楚，但它们的生活方式与蜜蜂相似，而非人类，薇薇以其单性生殖、独特的交流方式和较短的寿命而闻名。\n\n薇薇基因与其他生物相比更容易发生异常突变，因此天生具有某种异种基因对她们来说是很常见的。因此，尽管单性生殖，它们也能表现出多样化的遗传分布。\n\n通常，薇薇只居住在它们的蜂巢附近，所以它们在外并不常见，但偶尔也能看到有薇薇四处游荡，以期创造新的蜂巢。</VV_Vivi.description>
+  <!-- EN: left wing -->
+  <VV_Vivi.modExtensions.3.requireBodyParts.0>左翼</VV_Vivi.modExtensions.3.requireBodyParts.0>
+  <!-- EN: right wing -->
+  <VV_Vivi.modExtensions.3.requireBodyParts.1>右翼</VV_Vivi.modExtensions.3.requireBodyParts.1>
+  <!-- EN: left fist -->
+  <VV_Vivi.tools.left_fist.label>左拳</VV_Vivi.tools.left_fist.label>
+  <!-- EN: right fist -->
+  <VV_Vivi.tools.right_fist.label>右拳</VV_Vivi.tools.right_fist.label>
+  <!-- EN: teeth -->
+  <VV_Vivi.tools.teeth.label>牙齿</VV_Vivi.tools.teeth.label>
+  <!-- EN: head -->
+  <VV_Vivi.tools.head.label>头部</VV_Vivi.tools.head.label>
+  
+</LanguageData>

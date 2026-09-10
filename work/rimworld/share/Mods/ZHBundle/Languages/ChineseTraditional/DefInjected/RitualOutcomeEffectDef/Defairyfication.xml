@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: The better a ritual's result, the shorter the cooldown on the next everflower ritual.\n\nAll everflower rituals share a cooldown. -->
+  <VV_Defairyfication.description>儀式效果越好，下一次永盛花儀式前的冷卻時間越短。\n\n所有永盛花儀式共享冷卻時間。</VV_Defairyfication.description>
+  <!-- EN: {PAWN_labelShort}'s psychic sensitivity -->
+  <VV_Defairyfication.comps.0.label>{PAWN_labelShort}的心靈敏感度</VV_Defairyfication.comps.0.label>
+  <!-- EN: resonator's psychic sensitivity -->
+  <VV_Defairyfication.comps.0.labelAbstract>共鳴者的心靈敏感度</VV_Defairyfication.comps.0.labelAbstract>
+  <!-- EN: participant count -->
+  <VV_Defairyfication.comps.1.label>參與者數量</VV_Defairyfication.comps.1.label>
+  
+</LanguageData>

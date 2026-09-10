@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: Strip -->
+  <StripThing>剥除</StripThing>
+	<!-- EN: Cancel Strip -->
+  <StripThingCancel>取消剥除</StripThingCancel>
+	<!-- EN: - unload apparel from the corpse -->
+  <strip_apparel>- 脱下尸体上衣物</strip_apparel>
+	<!-- EN: - unload equipment from the corpse -->
+  <strip_equipment>- 脱下尸体上装备</strip_equipment>
+	<!-- EN: - unload inventory from the corpse -->
+  <strip_inventory>- 脱下尸体上携带物</strip_inventory>
+	<!-- EN: When cremated (autoStipCorpses = false): -->
+  <cremated>火化设定 (自动剥光尸体=关闭):</cremated>
+	<!-- EN: When downed: -->
+  <downed>倒地设定:</downed>
+	<!-- EN: When killed: -->
+  <killed>被杀设定:</killed>
+	<!-- EN: - colonists drop equipment -->
+  <player_downed_drop_equipment>- 装备掉落(殖民者)</player_downed_drop_equipment>
+	<!-- EN: - colonists drop inventory -->
+  <player_downed_drop_inventory>- 携带物掉落(殖民者)</player_downed_drop_inventory>
+	<!-- EN: - outsiders drop equipment -->
+  <nonplayer_downed_drop_equipment>- 装备掉落(非殖民者)</nonplayer_downed_drop_equipment>
+	<!-- EN: - outsiders drop inventory -->
+  <nonplayer_downed_drop_inventory>- 携带物掉落(非殖民者)</nonplayer_downed_drop_inventory>
+	<!-- EN: - colonists drop equipment -->
+  <player_killed_drop_equipment>- 装备掉落(殖民者)</player_killed_drop_equipment>
+	<!-- EN: - colonists drop inventory -->
+  <player_killed_drop_inventory>- 携带物掉落(殖民者)</player_killed_drop_inventory>
+	<!-- EN: - outsiders drop equipment -->
+  <nonplayer_killed_drop_equipment>- 装备掉落(非殖民者)</nonplayer_killed_drop_equipment>
+	<!-- EN: - outsiders drop inventory -->
+  <nonplayer_killed_drop_inventory>- 携带物掉落(非殖民者)</nonplayer_killed_drop_inventory>
+	<!-- EN: - unload everything from the corpse if it's designated to be stripped (always enabled) -->
+  <strip_designated>- 若尸体被标记剥光则脱下尸体上所有物品(始终生效)</strip_designated>
+	<!-- EN: - display equipment over dead body -->
+  <corpse_display_equipment>- 显示尸体上的装备</corpse_display_equipment>
+	<!-- EN: - unload smeltable equipment and apparel -->
+  <strip_smeltable>- 仅脱下可熔炼的装备和服装</strip_smeltable>
+	<!-- EN: - unload only untainted apparel -->
+  <strip_untainted>- 仅脱下未被污染的服装</strip_untainted>
+	<!-- EN: - allow cremating non-burnable equipment -->
+  <allow_cremate_nonburnable>- 允许火化不可燃装备</allow_cremate_nonburnable>
+	<!-- EN: Allow strip rules when butchered (autoStripCorpses = true): -->
+  <butchered>屠宰尸体设定 (自动剥光尸体=开启):</butchered>
+</LanguageData>

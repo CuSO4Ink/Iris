@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: mana fertilizer -->
+  <VV_Fertilizer.label>魔法肥料</VV_Fertilizer.label>
+  <!-- EN: A special Vivi-made fertilizer blended with organic matter and pollen. It's mainly used for cultivating arcane plants, but it can also be fed into a mana emitter to extract the mana mixed in the fertilizer as environment mana. -->
+  <VV_Fertilizer.description>一種特殊肥料，薇薇通過將有機物和花粉混合在一起制成。它含有少量的魔力，因此可以用來培育神秘植物或臨時補充神秘植物的魔能。每個肥料可恢復20點魔能。</VV_Fertilizer.description>
+  
+  <!-- EN: lifestrand -->
+  <VV_Lifestrand.label>生命縷織</VV_Lifestrand.label>
+  <!-- EN: a fabric that has been toughened by processing devilstrand with mana-infused materials. It is much more durable than regular devilstrand fabric, but it is also more difficult to process.\n\nThe fibers are called lifestrand because they seem to be alive, but they might indeed be living. -->
+  <VV_Lifestrand.description>一種通過將活葉和巨型黃蜂翅膀組織用于加工魔菇布并硬化而成的織物。它比一般的魔菇布織物耐用得多，但也更難加工。\n\n這種織物被稱為生命縷織，因為它們看起來像是活的一樣，但或許，它們確實是活的。</VV_Lifestrand.description>
+  
+  <!-- EN: vivi propolis -->
+  <VV_Propolis.label>薇薇蜂膠</VV_Propolis.label>
+  <!-- EN: a rare resinous mixture collected by Vivis from trees. It has a strong antibacterial effect, so it is used as an ingredient where cleanliness is required.\n\nIt can also be used as a natural antibiotic to slow the progress of infections or some diseases. -->
+  <VV_Propolis.description>薇薇從樹上采集的一種罕見的樹脂混合物。蜂膠具有很強的抗菌作用，因此被用與制造需要經常清潔的結構。\n\n它也可以作為一種天然抗生素來減緩感染或某些疾病的惡化。</VV_Propolis.description>
+  
+  <!-- EN: unknown seed -->
+  <VV_Seed_UnknownPlant.label>未知種子</VV_Seed_UnknownPlant.label>
+  <!-- EN: An arcane seed of unknown species, occasionally found during gathering. Its plant type cannot be identified until it fully matures.\nArcane plants require both mana and nutrients to grow.\n\nMana is absorbed from the environment mana and can also be supplied by nearby mana emitter or other arcane plants that produce mana.\n\nutrients continuously decrease regardless of mana, so a person must regularly apply mana fertilizer. If left without sufficient nutrients for too long, the seedling will die. -->
+  <VV_Seed_UnknownPlant.description>一顆不知品種的神秘植物種子，在采集時偶能得到。在種子長成之前無法辨別其是何種神秘植物。\n神秘植物需要魔能和養分生長。\n\n植物會吸收周圍環境中或附近產能神秘植物的提供的魔能，或依賴魔能放射器供給。\n\n不管魔能是否充足，幼苗都會持續消耗營養，所以需要定期使用魔法肥料。若幼苗長時間得不到充足的養分便會死去。</VV_Seed_UnknownPlant.description>
+  
+  <!-- EN: vivi cream -->
+  <VV_Vivicream.label>薇薇乳脂</VV_Vivicream.label>
+  <!-- EN: a mixture created by the Vivi's body. Only Vivis can produce it, and it uses a bit of calorie during the process, so it can't be made when the Vivi is hungry.\n\nIt can be used as an adhesive and applied to various crafts of the Vivis, and is also used when extracting rare components to make Royal Jelly. If left outdoors, it quickly deteriorates, so careful handling is necessary. -->
+  <VV_Vivicream.description>由薇薇創造的混合物。只有薇薇可以制造它，這不需要材料，但會消耗薇薇的營養，饑餓時無法制造。\n\n它可以用作粘合劑，應用于薇薇的各種工藝中，也可以用于提取稀有成分制作蜂王漿。處在室外時會迅速劣化，因此需要謹慎處理。</VV_Vivicream.description>
+  
+  <!-- EN: viviwax -->
+  <VV_Viviwax.label>薇薇蜂蠟</VV_Viviwax.label>
+  <!-- EN: a viviwax made by hardening Vivi cream. It is light and reasonably sturdy, but weak to fire. It can be used as a substitute in most cases where stone is needed. -->
+  <VV_Viviwax.description>一種通過硬化薇薇乳脂制成的蜂蠟。它很輕，相當堅固，但非常易燃。在很多需要石磚的場合下，可以用它作為替代品。</VV_Viviwax.description>
+  
+</LanguageData>

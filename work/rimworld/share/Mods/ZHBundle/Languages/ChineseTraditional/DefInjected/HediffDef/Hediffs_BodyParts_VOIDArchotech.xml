@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- voidtech eye -->
+
+  <RH2_VOIDArchotechEye.label>Voidtech仿生眼</RH2_VOIDArchotechEye.label>
+  <RH2_VOIDArchotechEye.description>一個已安裝的Voidtech仿生眼</RH2_VOIDArchotechEye.description>
+  <RH2_VOIDArchotechEye.labelNoun>一個Voidtech仿生眼</RH2_VOIDArchotechEye.labelNoun>
+
+
+  <!-- voidtech arm -->
+
+  <RH2_VOIDArchotechArm.label>Voidtech仿生臂</RH2_VOIDArchotechArm.label>
+  <RH2_VOIDArchotechArm.description>一條已安裝的Voidtech仿生臂</RH2_VOIDArchotechArm.description>
+  <RH2_VOIDArchotechArm.comps.0.tools.0.label>拳</RH2_VOIDArchotechArm.comps.0.tools.0.label>
+  <RH2_VOIDArchotechArm.labelNoun>一條Voidtech仿生臂</RH2_VOIDArchotechArm.labelNoun>
+
+
+  <!-- voidtech leg -->
+
+  <RH2_VOIDArchotechLeg.label>Voidtech仿生腿</RH2_VOIDArchotechLeg.label>
+  <RH2_VOIDArchotechLeg.description>一條已安裝的Voidtech仿生腿</RH2_VOIDArchotechLeg.description>
+  <RH2_VOIDArchotechLeg.labelNoun>一條Void科技腿</RH2_VOIDArchotechLeg.labelNoun>
+
+
+</LanguageData>

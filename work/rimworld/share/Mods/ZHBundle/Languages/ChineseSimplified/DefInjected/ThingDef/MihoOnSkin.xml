@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 천상복 -->
+  <Miho_Apparel_OnSkin_Celestial.label>美狐天阳华服</Miho_Apparel_OnSkin_Celestial.label>
+  <!-- EN: 여우들을 위한 완벽한 엘텍스 의복 입니다. -->
+  <Miho_Apparel_OnSkin_Celestial.description>为美狐族量身定做的完美型灵质华服，能够显著强化穿戴者的心灵能力。</Miho_Apparel_OnSkin_Celestial.description>
+  
+  <!-- EN: 미호 후드 -->
+  <Miho_Apparel_OnSkin_Hoodie.label>美狐连帽衫</Miho_Apparel_OnSkin_Hoodie.label>
+  <!-- EN: 따뜻한 후드 입니다. 아랫도리는 어딨냐고요? 몰라... -->
+  <Miho_Apparel_OnSkin_Hoodie.description>穿起来很暖和的连帽衫。话说，配套的裤子去哪儿了？</Miho_Apparel_OnSkin_Hoodie.description>
+  
+  <!-- EN: 미호 프렌치 메이드복 -->
+  <Miho_Apparel_OnSkin_Maid.label>美狐女仆装</Miho_Apparel_OnSkin_Maid.label>
+  <!-- EN: 아마 고대 지구의 갈리아 지방에서는 이걸 메이드복이라 불렀을겁니다. 하지만 귀여우니까 봐주죠. -->
+  <Miho_Apparel_OnSkin_Maid.description>起源自古地球高卢地区的女仆装。看起来相当可爱。</Miho_Apparel_OnSkin_Maid.description>
+  
+  <!-- EN: 미호 시큐리티 슈트 -->
+  <Miho_Apparel_OnSkin_Militia.label>美狐作战服</Miho_Apparel_OnSkin_Militia.label>
+  <!-- EN: 병사들에게 지원되는 슈트입니다. 완벽하진 않지만, 괜찮은 방호력을 제공합니다. -->
+  <Miho_Apparel_OnSkin_Militia.description>由美狐族部队使用的作战服。能为穿戴者提供一定防护，整体设计仍有改进的余地。</Miho_Apparel_OnSkin_Militia.description>
+  
+  <!-- EN: 미호 엘텍스 장교복 -->
+  <Miho_Apparel_OnSkin_OrnatedCaptain.label>美狐灵质军官服</Miho_Apparel_OnSkin_OrnatedCaptain.label>
+  <!-- EN: 미호 제국의 고위 장교들이 입는 장교복 입니다. 격려 스킬을 사용 할 수 있습니다. 가끔 시장에 풀리는 중고 장교복들은 페티시적인 요소 때문에 인기가 많습니다. -->
+  <Miho_Apparel_OnSkin_OrnatedCaptain.description>由美狐巨企帝国的高级军官使用的制服。穿戴后可以使用“鼓舞命令”能力。\n\n用过的美狐军官衣物偶尔会放在二手市场售卖，且颇受具有恋物癖的买家们的欢迎。</Miho_Apparel_OnSkin_OrnatedCaptain.description>
+  
+  <!-- EN: 미호 엘텍스 의복 (내조) -->
+  <Miho_Apparel_OnSkin_OrnatedMiho.label>美狐灵质华服（内助）</Miho_Apparel_OnSkin_OrnatedMiho.label>
+  <!-- EN: 노동의 여신을 모시는 무녀들의 화현 비단으로 만들어진 고급 전통복 입니다. -->
+  <Miho_Apparel_OnSkin_OrnatedMiho.description>用火玄丝绸制成的美狐族高端传统华服，能够有效强化穿戴者的心灵能力。\n\n这种款式通常由侍奉辛劳女神的美狐族巫女穿戴，可以让她们更迅速地完成各种普通工作。</Miho_Apparel_OnSkin_OrnatedMiho.description>
+  
+  <!-- EN: 미호 엘텍스 의복 (북방) -->
+  <Miho_Apparel_OnSkin_OrnatedNomadic.label>美狐灵质华服（北域）</Miho_Apparel_OnSkin_OrnatedNomadic.label>
+  <!-- EN: 북방 미호들이 입던 전통 복장입니다. 트럼보 가죽을 덧대 높은 방호력과 내한성능을 제공하고, 극단적인 옆트임이 있어 기동성이 좋아졌으며, 무엇보다도 엄청 귀엽습니다! -->
+  <Miho_Apparel_OnSkin_OrnatedNomadic.description>用火玄丝绸制成的美狐族高端传统华服，能够有效强化穿戴者的心灵能力。\n\n这种款式发源于北域地区的美狐族，在制作时使用了敲击兽皮来提高防护能力和抗寒能力。大胆的侧开叉设计不仅便于活动，看起来也很可爱。</Miho_Apparel_OnSkin_OrnatedNomadic.description>
+  
+  <!-- EN: 미호 엘텍스 의복 (엔트로피 저장고) -->
+  <Miho_Apparel_OnSkin_OrnatedOne.label>美狐灵质华服（容熵）</Miho_Apparel_OnSkin_OrnatedOne.label>
+  <!-- EN: 악마가닥으로 엔트로피를 저장 할 수 있는. 화현 비단으로 만들어진 고급 전통복 입니다. -->
+  <Miho_Apparel_OnSkin_OrnatedOne.description>用火玄丝绸制成的美狐族高端传统华服，能够有效强化穿戴者的心灵能力。\n\n在魔菇布的特殊性质加持下，这种款式还可以让穿戴者承受更多的心灵熵。</Miho_Apparel_OnSkin_OrnatedOne.description>
+  
+  <!-- EN: 미호 엘텍스 의복 (아케인 실드) -->
+  <Miho_Apparel_OnSkin_OrnatedTwo.label>美狐灵质华服（盾御）</Miho_Apparel_OnSkin_OrnatedTwo.label>
+  <!-- EN: 초능력 보호막을 무의식 중으로 투사 가능한. 금사와 화현 비단으로 만들어진 고급 전통복 입니다. -->
+  <Miho_Apparel_OnSkin_OrnatedTwo.description>用火玄丝绸制成的美狐族高端传统华服，能够有效强化穿戴者的心灵能力。\n\n在某种特殊机制的作用下，这种款式还可以生成一个环绕穿戴者的远程护盾。</Miho_Apparel_OnSkin_OrnatedTwo.description>
+  
+  <!-- EN: 미호 퍼라이어 배틀 슈트 -->
+  <Miho_Apparel_OnSkin_Pariah.label>美狐流徙者战斗服</Miho_Apparel_OnSkin_Pariah.label>
+  <!-- EN: 사용자의 체내 메카나이트로 작동되는 안티-싸이킥 파워 슈트입니다. 근접 전투능력 상승과 완벽한 사용자 보호를 추구합니다. -->
+  <Miho_Apparel_OnSkin_Pariah.description>依靠穿戴者体内的纳米机械进行运作的心灵阻断战斗服，能够有效提高其防护能力与灵活性。</Miho_Apparel_OnSkin_Pariah.description>
+  
+  <!-- EN: 미호 트루퍼 슈트 -->
+  <Miho_Apparel_OnSkin_PMC.label>美狐精英作战服</Miho_Apparel_OnSkin_PMC.label>
+  <!-- EN: PMC 병사들에게 지원되는 슈트입니다. 어느정도 충격을 분산 시켜줍니다. -->
+  <Miho_Apparel_OnSkin_PMC.description>由美狐族部队使用的作战服，能为穿戴者提供良好的防护。</Miho_Apparel_OnSkin_PMC.description>
+  
+  <!-- EN: 미호 표준 정장 -->
+  <Miho_Apparel_OnSkin_Regular.label>美狐常服</Miho_Apparel_OnSkin_Regular.label>
+  <!-- EN: 미호들의 표준 정장 입니다. 사석에서나 공식적인 석상에서나, 어디서든 편하게 입을 수 있는 옷 입니다. -->
+  <Miho_Apparel_OnSkin_Regular.description>尽显端庄优雅气质的常服，无论在平时还是正式场合下穿着都很合适。</Miho_Apparel_OnSkin_Regular.description>
+  
+  <!-- EN: 미호 셔츠 -->
+  <Miho_Apparel_OnSkin_Shirt.label>美狐衬衫</Miho_Apparel_OnSkin_Shirt.label>
+  <!-- EN: 시원한 셔츠 입니다. 아랫도리는 어딨냐고요? 몰라... -->
+  <Miho_Apparel_OnSkin_Shirt.description>穿起来很清凉的衬衫。话说，配套的裤子去哪儿了？</Miho_Apparel_OnSkin_Shirt.description>
+  
+  <!-- EN: 미호 평상복 -->
+  <Miho_Apparel_OnSkin_Simple.label>美狐便服</Miho_Apparel_OnSkin_Simple.label>
+  <!-- EN: 미호들의 전통 복장 입니다. 고대 지구의 어느 반도국가의 여성복과 닮았습니다. 아동복으로도 입을수 있습니다. -->
+  <Miho_Apparel_OnSkin_Simple.description>朴实却不失美感的美狐族传统衣物，其设计灵感似乎源自古地球上的某个半岛国家。\n\n这种衣物可供儿童使用。</Miho_Apparel_OnSkin_Simple.description>
+  
+</LanguageData>

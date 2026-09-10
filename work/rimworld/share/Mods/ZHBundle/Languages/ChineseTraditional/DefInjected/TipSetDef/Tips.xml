@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Execution animations cannot be cancelled after they have started, but if either pawn is downed or killed, the animation is cancelled. -->
+  <AM_Tips.tips.0>終結技施展後將無法取消，除非其中一方的單位中途倒地或死亡。</AM_Tips.tips.0>
+  <!-- EN: The lethality of execution animations can be adjusted in the mod settings. -->
+  <AM_Tips.tips.1>你可以在mod設置中自行調整終結技的致死幾率。</AM_Tips.tips.1>
+  <!-- EN: Lasso cooldown is affected by the type of lasso, the pawn's melee skill, and the pawn's manipulation. -->
+  <AM_Tips.tips.2>影響套索冷卻時間的因素主要有三點：套索的種類、使用者的格鬥技能等級以及其操作能力。</AM_Tips.tips.2>
+  
+</LanguageData>

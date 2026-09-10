@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <NVG_CanSeeInDarkness.stages.0.label>我能在黑暗中視物</NVG_CanSeeInDarkness.stages.0.label>
+  <NVG_CanSeeInDarkness.stages.0.description>我能在黑暗中視物</NVG_CanSeeInDarkness.stages.0.description>
+
+  <NVG_TooBright.stages.0.label>太過明亮</NVG_TooBright.stages.0.label>
+  <NVG_TooBright.stages.0.description>太過明亮</NVG_TooBright.stages.0.description>
+
+
+</LanguageData>

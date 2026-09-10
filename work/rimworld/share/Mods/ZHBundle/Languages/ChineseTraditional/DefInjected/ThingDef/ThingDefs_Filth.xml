@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: pollen -->
+  <VV_FilthPollen.label>花粉</VV_FilthPollen.label>
+  <!-- EN: The pollen that often scatters around when a vivi collects honey. -->
+  <VV_FilthPollen.description>薇薇采集蜂蜜時散落的花粉。</VV_FilthPollen.description>
+  
+</LanguageData>

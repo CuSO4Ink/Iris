@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: extract milk from almonds -->
+  <VCE_MilkFromAlmonds.label>用杏仁制奶</VCE_MilkFromAlmonds.label>
+  <!-- EN: Extract vegetable milk from almonds. This milk can be used in any recipe that asks for milk.\n\nVegetable milks are generally inefficient, as a lot of nutrition is lost in the process. -->
+  <VCE_MilkFromAlmonds.description>从杏仁里提取植物乳。所产出的奶可以像普通牛奶一样使用。\n\n植物乳的性价比不高，因为大量营养在提取过程中被浪费了。</VCE_MilkFromAlmonds.description>
+  <!-- EN: Extracting milk from almonds. -->
+  <VCE_MilkFromAlmonds.jobString>正在用杏仁制奶</VCE_MilkFromAlmonds.jobString>
+  
+  <!-- EN: extract milk from coconuts -->
+  <VCE_MilkFromCoconuts.label>用椰子制奶</VCE_MilkFromCoconuts.label>
+  <!-- EN: Extract vegetable milk from coconuts. This milk can be used in any recipe that asks for milk.\n\nVegetable milks are generally inefficient, as a lot of nutrition is lost in the process. -->
+  <VCE_MilkFromCoconuts.description>从椰子里提取植物乳。所产出的奶可以像普通牛奶一样使用。\n\n植物乳的性价比不高，因为大量营养在提取过程中被浪费了。</VCE_MilkFromCoconuts.description>
+  <!-- EN: Extracting milk from coconuts. -->
+  <VCE_MilkFromCoconuts.jobString>正在用椰子制奶</VCE_MilkFromCoconuts.jobString>
+  
+  <!-- EN: extract milk from oats -->
+  <VCE_MilkFromOats.label>用燕麦制奶</VCE_MilkFromOats.label>
+  <!-- EN: Extract vegetable milk from oats. This milk can be used in any recipe that asks for milk.\n\nVegetable milks are generally inefficient, as a lot of nutrition is lost in the process. -->
+  <VCE_MilkFromOats.description>从燕麦里提取植物乳。所产出的奶可以像普通牛奶一样使用。\n\n植物乳的性价比不高，因为大量营养在提取过程中被浪费了。</VCE_MilkFromOats.description>
+  <!-- EN: Extracting milk from oats. -->
+  <VCE_MilkFromOats.jobString>正在用燕麦制奶</VCE_MilkFromOats.jobString>
+  
+  <!-- EN: extract milk from rice -->
+  <VCE_MilkFromRice.label>用稻米制奶</VCE_MilkFromRice.label>
+  <!-- EN: Extract vegetable milk from rice. This milk can be used in any recipe that asks for milk.\n\nRice is very inefficient when converted into milk, and a lot of nutrition is lost in the process. -->
+  <VCE_MilkFromRice.description>从稻米里提取植物乳。所产出的奶可以像普通牛奶一样使用。\n\n植物乳的性价比不高，因为大量营养在提取过程中被浪费了。</VCE_MilkFromRice.description>
+  <!-- EN: Extracting milk from rice. -->
+  <VCE_MilkFromRice.jobString>正在用稻米制奶</VCE_MilkFromRice.jobString>
+
+  <!-- EN: extract milk from soybean -->
+  <VCE_MilkFromSoybeans.label>用大豆制奶</VCE_MilkFromSoybeans.label>
+  <!-- EN: Extract vegetable milk from soybean. This milk can be used in any recipe that asks for milk.\n\nRice is very inefficient when converted into milk, and a lot of nutrition is lost in the process. -->
+  <VCE_MilkFromSoybeans.description>从大豆里提取植物乳。所产出的奶可以像普通牛奶一样使用。\n\n植物乳的性价比不高，因为大量营养在提取过程中被浪费了。</VCE_MilkFromSoybeans.description>
+  <!-- EN: Extracting milk from soybean. -->
+  <VCE_MilkFromSoybeans.jobString>正在用大豆制奶</VCE_MilkFromSoybeans.jobString>
+  
+</LanguageData>

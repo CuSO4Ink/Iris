@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Cleaning owned gun -->
+  <IdleJobGiver_CleaningGun.label>清洁自己的枪支</IdleJobGiver_CleaningGun.label>
+  
+  <!-- EN: Gardening crops -->
+  <IdleJobGiver_Gardening.label>做园艺</IdleJobGiver_Gardening.label>
+  
+  <!-- EN: Drawing graffiti on ground -->
+  <IdleJobGiver_Graffiti.label>在地上涂鸦</IdleJobGiver_Graffiti.label>
+  
+  <!-- EN: Look around room -->
+  <IdleJobGiver_LookAroundRoom.label>环顾四壁</IdleJobGiver_LookAroundRoom.label>
+  
+  <!-- EN: Mending item -->
+  <IdleJobGiver_MendItem.label>修补物品</IdleJobGiver_MendItem.label>
+  
+  <!-- EN: Messing around -->
+  <IdleJobGiver_MessingAround.label>四处走动</IdleJobGiver_MessingAround.label>
+  
+  <!-- EN: Observing animals -->
+  <IdleJobGiver_ObservingAnimal.label>观察动物</IdleJobGiver_ObservingAnimal.label>
+  
+  <!-- EN: Taking practice for melee weapon -->
+  <IdleJobGiver_PracticeMelee.label>练习近战武器</IdleJobGiver_PracticeMelee.label>
+  
+  <!-- EN: Taking break time -->
+  <IdleJobGiver_TakeBreakTime.label>小憩</IdleJobGiver_TakeBreakTime.label>
+  
+  <!-- EN: Thinking friend -->
+  <IdleJobGiver_Thinking.label>找朋友</IdleJobGiver_Thinking.label>
+  
+  <!-- EN: Throwing stones -->
+  <IdleJobGiver_ThrowingStone.label>扔石子</IdleJobGiver_ThrowingStone.label>
+  
+  <!-- EN: Wandering -->
+  <IdleJobGiver_Wander.label>徘徊</IdleJobGiver_Wander.label>
+  
+  <!-- EN: Watching research -->
+  <IdleJobGiver_WatchResearch.label>观察研究</IdleJobGiver_WatchResearch.label>
+  
+  <!-- EN: Watching working -->
+  <IdleJobGiver_WatchWorking.label>观察工作</IdleJobGiver_WatchWorking.label>
+  
+</LanguageData>

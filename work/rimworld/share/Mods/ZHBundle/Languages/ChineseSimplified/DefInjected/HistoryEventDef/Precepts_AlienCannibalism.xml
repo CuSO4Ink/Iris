@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ate alien meat -->
+  <HAR_AteAlienMeat.label>吃了外星种族肉</HAR_AteAlienMeat.label>
+  
+  <!-- EN: ate non-alien food -->
+  <HAR_AteNonAlienFood.label>吃了非外星种族肉食物</HAR_AteNonAlienFood.label>
+  
+  <!-- EN: butchered alien -->
+  <HAR_ButcheredAlien.label>屠宰了外星种族</HAR_ButcheredAlien.label>
+  
+</LanguageData>

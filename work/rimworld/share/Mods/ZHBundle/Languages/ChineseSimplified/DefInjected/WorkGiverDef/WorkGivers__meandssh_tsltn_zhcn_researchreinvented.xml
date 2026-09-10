@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: analyse -->
+  <RR_Analyse.label>分析</RR_Analyse.label>
+  <!-- EN: analysing -->
+  <RR_Analyse.gerund>分析</RR_Analyse.gerund>
+  <!-- EN: analyse -->
+  <RR_Analyse.verb>分析</RR_Analyse.verb>
+
+  <!-- EN: analyse in place -->
+  <RR_AnalyseInPlace.label>实地分析</RR_AnalyseInPlace.label>
+  <!-- EN: analysing -->
+  <RR_AnalyseInPlace.gerund>分析</RR_AnalyseInPlace.gerund>
+  <!-- EN: analyse -->
+  <RR_AnalyseInPlace.verb>分析</RR_AnalyseInPlace.verb>
+
+  <!-- EN: analyse terrain -->
+  <RR_AnalyseTerrain.label>分析地形</RR_AnalyseTerrain.label>
+  <!-- EN: analysing -->
+  <RR_AnalyseTerrain.gerund>分析</RR_AnalyseTerrain.gerund>
+  <!-- EN: analyse -->
+  <RR_AnalyseTerrain.verb>分析</RR_AnalyseTerrain.verb>
+
+  <!-- EN: do research -->
+  <RR_InterrogatePrisoner.label>研究</RR_InterrogatePrisoner.label>
+  <!-- EN: interrogating -->
+  <RR_InterrogatePrisoner.gerund>审问</RR_InterrogatePrisoner.gerund>
+  <!-- EN: interrogate -->
+  <RR_InterrogatePrisoner.verb>审问</RR_InterrogatePrisoner.verb>
+
+  <!-- EN: learn from allies -->
+  <RR_LearnRemotely.label>向盟友学习</RR_LearnRemotely.label>
+  <!-- EN: learning at -->
+  <RR_LearnRemotely.gerund>学习于</RR_LearnRemotely.gerund>
+  <!-- EN: learn -->
+  <RR_LearnRemotely.verb>学习</RR_LearnRemotely.verb>
+
+  <!-- EN: do research -->
+  <RR_ResearchRR.label>研究</RR_ResearchRR.label>
+  <!-- EN: researching at -->
+  <RR_ResearchRR.gerund>研究于</RR_ResearchRR.gerund>
+  <!-- EN: research -->
+  <RR_ResearchRR.verb>研究</RR_ResearchRR.verb>
+
+</LanguageData>

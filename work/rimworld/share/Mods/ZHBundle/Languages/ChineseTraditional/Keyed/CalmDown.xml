@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: {0} failed to calm {1} down. -->
+  <FailCalm>{0}未能成功讓{1}冷靜下來。</FailCalm>
+  <!-- EN: {1} has been successfully calmed down by {0}. -->
+  <SuccessCalm>{1}被{0}成功安撫下來。</SuccessCalm>
+  <!-- EN: {0} is being attacked after failing to calm {1} down -->
+  <AggroFailCalm>{0}安撫失敗並遭到{1}的攻擊。</AggroFailCalm>
+  <!-- EN: Snap Out! -->
+  <SettingsCategoryLabel>振作起來！</SettingsCategoryLabel>
+  <!-- EN: Enable character messages -->
+  <MessagesEnabledLabel>啟用消息提示</MessagesEnabledLabel>
+  <!-- EN: Enable calming of aggressive pawns -->
+  <AggroCalmEnabledLabel>啟用安撫處於攻擊狀態的角色</AggroCalmEnabledLabel>
+  <!-- EN: Only opinion matters -->
+  <OpinionOnlyEnabledLabel>僅有意見更重要</OpinionOnlyEnabledLabel>
+  <!-- EN: Enable calming prisoners -->
+  <NonFactionEnabledLabel>使囚犯平靜下來</NonFactionEnabledLabel>
+  <!-- EN: Enable calming traders -->
+  <TraderCalmEnabledLabel>使貿易商人平靜下來</TraderCalmEnabledLabel>
+  <!-- EN: Advanced options -->
+  <AdvancedMenu>高級選項</AdvancedMenu>
+  <!-- EN: Negotiation multiplier -->
+  <SMultLabel>交談乘數</SMultLabel>
+  <!-- EN: Opinion multiplier -->
+  <OMultLabel>意見增加</OMultLabel>
+  <!-- EN: Negotiation cap -->
+  <CapLabel>交談上限</CapLabel>
+  <!-- EN: Opinion only multiplier -->
+  <OOMultLabel>僅意見乘數</OOMultLabel>
+  <!-- EN: Aggressive pawn stun chance multiplier -->
+  <StunWeight>失控的小人能制服的倍率</StunWeight>
+  <!-- EN: Duration of the calm -->
+  <CalmDuration>平靜持續時間</CalmDuration>
+  <!-- EN: Debug mode -->
+  <DebugChanceSetting>控制台中的輸出調試和機會消息</DebugChanceSetting>
+  <!-- EN: Disable catharsis gain -->
+  <NoCathEnabledLabel>禁用宣洩情緒增益</NoCathEnabledLabel>
+  <!-- EN: Cool down on failed attempt -->
+  <SOCooldown>沒能成功的讓對方冷靜下來。(ticks)</SOCooldown>
+  <!-- EN: Launch Counter -->
+  <LaunchCounterSetting>啟動計數器</LaunchCounterSetting>
+  <!-- EN: No fail (debug) -->
+  <AlwaysSucceedSetting>不會失敗(debug)</AlwaysSucceedSetting>
+  <!-- EN: Revert advanced settings to default -->
+  <DefaultButton>將高級選項恢復為默認值</DefaultButton>
+
+
+  <!-- EN: It will be all fine. -->
+  <CM1>一切都會好起來的。</CM1>
+  <!-- EN: Don't worry, I've got your back. -->
+  <CM2>別擔心，我會支持你的。</CM2>
+  <!-- EN: Just hold on with me, I'll be with you all the way. -->
+  <CM3>堅持住，我會一直陪著你。</CM3>
+  <!-- EN: It's just a table, we will be fine. -->
+  <CM4>只是一張桌子，我們會沒事的。</CM4>
+  <!-- EN: We will be with you. -->
+  <CM5>我們會和你在一起。</CM5>
+  <!-- EN: I'm here for you, tell me what's bothering you - I'm listening. -->
+  <CM6>我就在這裡陪著你，告訴我是什麼困擾著你——我在聽。</CM6>
+  <!-- EN: We can solve this together. -->
+  <CM7>我們可以一起解決這個問題。</CM7>
+  <!-- EN: Take deep breaths, you can do it. Relax... -->
+  <CM8>深呼吸，你能做到的。放鬆.....</CM8>
+  <!-- EN: I know what you're going through, I'd really like to help... -->
+  <CM9>我知道你在經歷什麼，我真的很想幫你...</CM9>
+  <!-- EN: What are you worried about? -->
+  <CM10>你在擔心什麼?</CM10>
+  <!-- EN: Not this again, come on... -->
+  <CM11>別再這樣了，拜託...</CM11>
+  <!-- EN: Tell me your concerns. -->
+  <CM12>告訴我你的顧慮。</CM12>
+  <!-- EN: This too will pass. -->
+  <CM13>這一切都會過去。</CM13>
+  <!-- EN: It's like a storm, it's just temporary. -->
+  <CM14>就像一場風暴，只是暫時的。</CM14>
+  <!-- EN: Let's solve this together. -->
+  <CM15>讓我們一起解決這個問題。</CM15>
+  <!-- EN: You're safe, I'm here for you. -->
+  <CM16>你很安全，我在這裡等你。</CM16>
+  <!-- EN: I'm sorry you're going through that. -->
+  <CM17>我很抱歉對於你經歷的這些。</CM17>
+  <!-- EN: You're not on your own, we are all here for you. -->
+  <CM18>你不是一個人，我們都在你身邊。</CM18>
+  <!-- EN: It's not your fault. -->
+  <CM19>這不是你的錯。</CM19>
+  <!-- EN: You can vent to me, I'll listen. -->
+  <CM20>你可以跟我發洩，我會聽的。</CM20>
+  <!-- EN: We have a great recreation room, how about we play some chess together? -->
+  <CM21>我們有一個很大的娛樂室，我們一起下棋怎麼樣?</CM21>
+  
+</LanguageData>

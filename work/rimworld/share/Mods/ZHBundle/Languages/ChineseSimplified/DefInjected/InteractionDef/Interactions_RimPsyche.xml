@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: conversation -->
+  <Rimpsyche_Conversation.label>交谈</Rimpsyche_Conversation.label>
+  <!-- EN:
+    <li>r_logentry->[INITIATOR_nameDef] struck up a conversation with [RECIPIENT_nameDef] about {0}.</li>
+    <li>r_logentry->[INITIATOR_nameDef] kicked off a discussion with [RECIPIENT_nameDef] on {0}.</li>
+    <li>r_logentry->[INITIATOR_nameDef] brought up {0} with [RECIPIENT_nameDef] in their conversation.</li>
+    <li>r_logentry->[INITIATOR_nameDef] engaged [RECIPIENT_nameDef] in a conversation about {0}.</li>
+  -->
+  <Rimpsyche_Conversation.logRulesInitiator.rulesStrings>
+    <li>r_logentry->[INITIATOR_nameDef]与[RECIPIENT_nameDef]展开了关于{0}的交谈。</li>
+    <li>r_logentry->[INITIATOR_nameDef]和[RECIPIENT_nameDef]就{0}展开了讨论。</li>
+    <li>r_logentry->[INITIATOR_nameDef]在与[RECIPIENT_nameDef]交谈时提到了{0}。</li>
+    <li>r_logentry->[INITIATOR_nameDef]和[RECIPIENT_nameDef]聊起了{0}。</li>
+  </Rimpsyche_Conversation.logRulesInitiator.rulesStrings>
+  
+  <!-- EN: conversation -->
+  <Rimpsyche_ConversationAttempt.label>尝试交谈</Rimpsyche_ConversationAttempt.label>
+  <!-- EN:
+    <li>r_logentry->[INITIATOR_nameDef] hailed [RECIPIENT_nameDef] for a conversation about {0}.</li>
+    <li>r_logentry->[INITIATOR_nameDef] tried to talk about {0} with [RECIPIENT_nameDef].</li>
+    <li>r_logentry->[INITIATOR_nameDef] tried to engage [RECIPIENT_nameDef] in a conversation about {0}.</li>
+    <li>r_logentry->[INITIATOR_nameDef] tried to open up a conversation with [RECIPIENT_nameDef] about {0}.</li>
+  -->
+  <Rimpsyche_ConversationAttempt.logRulesInitiator.rulesStrings>
+    <li>r_logentry->[INITIATOR_nameDef]试图与[RECIPIENT_nameDef]讨论{0}。</li>
+    <li>r_logentry->[INITIATOR_nameDef]想和[RECIPIENT_nameDef]聊聊{0}。</li>
+    <li>r_logentry->[INITIATOR_nameDef]试着与[RECIPIENT_nameDef]就{0}展开交谈。</li>
+    <li>r_logentry->[INITIATOR_nameDef]想和[RECIPIENT_nameDef]谈谈{0}。</li>
+  </Rimpsyche_ConversationAttempt.logRulesInitiator.rulesStrings>
+  
+  <!-- EN: smalltalk -->
+  <Rimpsyche_Smalltalk.label>闲聊</Rimpsyche_Smalltalk.label>
+  <!-- EN:
+    <li>r_logentry->[INITIATOR_nameDef] [commentedabout] [subject] to [RECIPIENT_nameDef].</li>
+    <li>r_logentry(p=0.7)->[INITIATOR_nameDef] brought up [subject] in a brief chat with [RECIPIENT_nameDef].</li>
+    <li>r_logentry(p=0.5)->[INITIATOR_nameDef] mentioned something about [subject] while passing by [RECIPIENT_nameDef].</li>
+    <li>r_logentry(p=0.3)->[INITIATOR_nameDef] gave a passing nod to [RECIPIENT_nameDef].</li>
+    <li>r_logentry(p=0.1)->[INITIATOR_nameDef] greeted [RECIPIENT_nameDef] in passing.</li>
+    <li>r_logentry(p=0.1)->[INITIATOR_nameDef] waved at [RECIPIENT_nameDef].</li>
+    <li>subject(INITIATOR_cubeInterest==false)->[TalkTopicLight]</li>
+    <li>subject(INITIATOR_cubeInterest==true)->[TalkTopicCube]</li>
+    <li>commentedabout->made a comment about</li>
+    <li>commentedabout->casually remarked on</li>
+    <li>commentedabout->muttered something about</li>
+    <li>commentedabout->made a quick observation about</li>
+  -->
+  <Rimpsyche_Smalltalk.logRulesInitiator.rulesStrings>
+    <li>r_logentry->[INITIATOR_nameDef]向[RECIPIENT_nameDef][commentedabout][subject]。</li>
+    <li>r_logentry(p=0.7)->[INITIATOR_nameDef]在和[RECIPIENT_nameDef]短暂聊天时提到了[subject]。</li>
+    <li>r_logentry(p=0.5)->[INITIATOR_nameDef]路过[RECIPIENT_nameDef]时随口说了些关于[subject]的事。</li>
+    <li>r_logentry(p=0.3)->[INITIATOR_nameDef]向[RECIPIENT_nameDef]点头致意。</li>
+    <li>r_logentry(p=0.1)->[INITIATOR_nameDef]路过时向[RECIPIENT_nameDef]打了招呼。</li>
+    <li>r_logentry(p=0.1)->[INITIATOR_nameDef]向[RECIPIENT_nameDef]挥了挥手。</li>
+    <li>subject(INITIATOR_cubeInterest==false)->[TalkTopicLight]</li>
+    <li>subject(INITIATOR_cubeInterest==true)->[TalkTopicCube]</li>
+    <li>commentedabout->评论了</li>
+    <li>commentedabout->随口说起</li>
+    <li>commentedabout->嘀咕了几句</li>
+    <li>commentedabout->简短评价了</li>
+  </Rimpsyche_Smalltalk.logRulesInitiator.rulesStrings>
+  
+  <!-- EN: conversation -->
+  <Rimpsyche_StartConversation.label>开始交谈</Rimpsyche_StartConversation.label>
+  <!-- EN:
+    <li>r_logentry->Their interaction ended.</li>
+  -->
+  <Rimpsyche_StartConversation.logRulesInitiator.rulesStrings>
+    <li>r_logentry->他们的交流结束了。</li>
+  </Rimpsyche_StartConversation.logRulesInitiator.rulesStrings>
+  
+</LanguageData>

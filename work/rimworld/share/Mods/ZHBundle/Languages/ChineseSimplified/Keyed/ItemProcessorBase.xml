@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<!-- Generic -->
+	
+	<!-- EN: Insert -->
+  <IP_InsertFirstItemDesc>加入</IP_InsertFirstItemDesc>
+	<!-- EN: Insert -->
+  <IP_InsertSecondItemDesc>加入</IP_InsertSecondItemDesc>
+	<!-- EN: Insert -->
+  <IP_InsertThirdItemDesc>加入</IP_InsertThirdItemDesc>
+	<!-- EN: Insert -->
+  <IP_InsertFourthItemDesc>加入</IP_InsertFourthItemDesc>
+	<!-- EN: Insert {0} -->
+  <IP_InsertVariable>加入{0}</IP_InsertVariable>
+	<!-- EN: Output {0} -->
+  <IP_Output>生产{0}</IP_Output>
+	<!-- EN: Output {0} from {1} -->
+  <IP_OutputVariable>用{1}来生产{0}</IP_OutputVariable>
+	<!-- EN: Processor will output {0}. It needs to be fed {1} -->
+  <IP_OutputDesc>加工设备将生产{0}。这需要加入一定数量的{1}</IP_OutputDesc>
+	<!-- EN: Insert {0} in 2nd slot -->
+  <IP_InsertVariableSecond>在二号槽位加入{0}</IP_InsertVariableSecond>
+	<!-- EN: Insert {0} in 3rd slot -->
+  <IP_InsertVariableThird>在三号槽位加入{0}</IP_InsertVariableThird>
+	<!-- EN: No items of that kind ({0}) found in this map -->
+  <IP_CantFindThing>当前地区没有这种物品（{0}）</IP_CantFindThing>
+	<!-- EN: Bring Ingredients -->
+  <IP_BringIngredients>添加原料</IP_BringIngredients>
+	<!-- EN: Bring ingredients to start the process -->
+  <IP_BringIngredientsDesc>添加原料以开始制作</IP_BringIngredientsDesc>
+	<!-- EN: Cancel Bringing Ingredients -->
+  <IP_CancelIngredients>取消添加原料</IP_CancelIngredients>
+	<!-- EN: Cancel Bringing Ingredients to this building -->
+  <IP_CancelIngredientsDesc>取消向此设备添加原料</IP_CancelIngredientsDesc>	
+	<!-- EN: No ingredient found on map -->
+  <IP_NoIngredientFound>当前地区没有原料</IP_NoIngredientFound>
+	<!-- EN: Choose Ingredient -->
+  <IP_ChooseIngredient>选择原料</IP_ChooseIngredient>
+	<!-- EN: Choose Output -->
+  <IP_ChooseOutput>选择产出物</IP_ChooseOutput>
+	<!-- EN: Choose Second Ingredient -->
+  <IP_ChooseIngredientSecond>选择第二样原料</IP_ChooseIngredientSecond>
+	<!-- EN: Choose Third Ingredient -->
+  <IP_ChooseIngredientThird>选择第三样原料</IP_ChooseIngredientThird>
+	<!-- EN: Choose Fourth Ingredient -->
+  <IP_ChooseIngredientFourth>选择第三样原料</IP_ChooseIngredientFourth>
+	<!-- EN: One of the ingredients has been improperly defined to work with the item processor, contact the mod's author -->
+  <IP_IngredientImproperlyDefined>某一个原料的定义出现错误，无法使用此加工设备制作，请联系mod作者。</IP_IngredientImproperlyDefined>
+	<!-- EN: {0} needs to be powered to start working -->
+  <IP_NoPowerDestroysWarning>需要给{0}接入电源才能开始运作。</IP_NoPowerDestroysWarning>
+	<!-- EN: {0} needs to be fueled to start working -->
+  <IP_NoFuelDestroysWarning>需要给{0}添加燃料才能开始运作。</IP_NoFuelDestroysWarning>
+	<!-- EN: {0} needs to have an adequate light level to start working -->
+  <IP_LightDestroysWarning>需要给{0}适宜的光照才能开始运作。</IP_LightDestroysWarning>
+	<!-- EN: {0} needs to not be raining to start working -->
+  <IP_RainDestroysWarning>需要给{0}遮雨才能开始运作。</IP_RainDestroysWarning>
+	<!-- EN: {0} needs to have an adequate temperature ({1} - {2}) to start working -->
+  <IP_TemperatureDestroysWarning>需要给{0}适宜的温度（{1}~{2}℃）才能开始运作。</IP_TemperatureDestroysWarning>
+	<!-- EN: The result is spoiling due to a power failure in the item processor -->
+  <IP_NoPowerDestroysInitialWarning>由于断电，此设备的产物即将损坏。</IP_NoPowerDestroysInitialWarning>
+	<!-- EN: The result has spoiled due to a power failure in the item processor -->
+  <IP_NoPowerDestroysMessage>由于断电，此设备的产物已损坏。</IP_NoPowerDestroysMessage>
+	<!-- EN: A product has finished processing and is waiting for pickup -->
+  <IP_GenericProductFinished>产物已完成，等待被收取。</IP_GenericProductFinished>
+	<!-- EN: {0} is empty -->
+  <IP_IsEmpty>{0}是空的</IP_IsEmpty>
+	<!-- EN: {0} is filled with {1} -->
+  <IP_FilledWith>{0}需要填入{1}。</IP_FilledWith>
+	<!-- EN: {0}'s 2nd slot is filled with {1} -->
+  <IP_FilledWithSecond>{0}的二号槽位需要填入{1}。</IP_FilledWithSecond>
+	<!-- EN: {0}'s 3rd slot is filled with {1} -->
+  <IP_FilledWithThird>{0}的三号槽位需要填入{1}。</IP_FilledWithThird>
+	<!-- EN: {0}'s 4th slot is filled with {1} -->
+  <IP_FilledWithFourth>{0}的四号槽位需要填入{1}。</IP_FilledWithFourth>
+	<!-- EN:  (filled at {0} of {1}) -->
+  <IP_IngredientPercentage>已填入{0}/{1}</IP_IngredientPercentage>
+	<!-- EN: {0} is working:  -->
+  <IP_ProcessorWorking>{0}正在运作：</IP_ProcessorWorking>
+	<!-- EN: {0} is paused:  -->
+  <IP_ProcessorPaused>{0}已暂停：</IP_ProcessorPaused>
+	<!-- EN: {0} is processing {1}. {2} will be ready with {3} quality in {4} -->
+  <IP_ProcessingInProgress>{0}正在加工{1}。{2}会在{4}内以{3}品质完成</IP_ProcessingInProgress>
+	<!-- EN: {0} is processing {1}. {2} will be ready in {3} -->
+  <IP_ProcessingInProgressNoQuality>{0}正在加工{1}。{2}会在{3}内完成</IP_ProcessingInProgressNoQuality>
+	<!-- EN: Remove {0} ({1}) -->
+  <IP_RemoveProduct>移除{0}（{1}）</IP_RemoveProduct>
+	<!-- EN: Remove {0} from the {1}. The product will be ready at the present quality level ({2}) -->
+  <IP_RemoveProductDesc>从{1}移除{0}。此产物将以{2}品质完成</IP_RemoveProductDesc>
+	<!-- EN: Reset Recipes -->
+  <IP_ResetSemiautomatic>重置配方</IP_ResetSemiautomatic>
+	<!-- EN: This will reset the building after the current product is finished, so a new input ingredient can be chosen -->
+  <IP_ResetSemiautomaticDesc>在当前产物完成后会重置此设备，以便选择一个新配方</IP_ResetSemiautomaticDesc>
+	<!-- EN: No combination found for these ingredients -->
+  <IP_NoCombination>此组合没有对应产物</IP_NoCombination>
+	<!-- EN: Set quality for product extraction. When the product reaches this quality, a colonist will automatically retrieve it and carry it to an stockpile if available. If not set, products will be extracted manually, or at Legendary quality. -->
+  <IP_SetAutoQuality>设置目标品质。当产物达到此品质时，殖民者会自动将其取出并放入储存区。如果未设定，则只能手动取出产物或是在其达到传奇级品质时自动取出。</IP_SetAutoQuality>
+	<!-- EN: Choose Auto Quality -->
+  <IP_ChooseQualityAuto>选择目标品质</IP_ChooseQualityAuto>
+	<!-- EN: Auto Quality: {0} -->
+  <IP_QualityAutoIs>目标品质：{0}</IP_QualityAutoIs>
+	<!-- EN: Disable Auto Quality -->
+  <IP_QualityAutoNot>关闭自动目标品质</IP_QualityAutoNot>
+	<!-- EN: Auto Quality, product will be extracted at quality level: {0} -->
+  <IP_QualityAutoEstablished>已设置自动目标品质，产物会在达到此品质时被取出：{0}</IP_QualityAutoEstablished>
+	<!-- EN: Auto Ingredient Acquiring -->
+  <IP_ToggleAuto>正在自动获取原料</IP_ToggleAuto>
+	<!-- EN: If set to active, this building will automatically grab ingredients from adjacent hoppers, and automatically start working again once the product is removed. If not, colonists will haul the ingredients to the building, and it will need to be activated manually once refilled -->
+  <IP_ToggleAutoDesc>如果开启，设备会自动从最近的进料口获得原料，并在产物被取出后自动开始下一轮运作。如果关闭，殖民者会将原料搬运至设备，并且之后需要手动开启运作。</IP_ToggleAutoDesc>
+	<!-- EN: Reset Machine -->
+  <IP_ResetFullAuto>重置设备</IP_ResetFullAuto>
+	<!-- EN: Fully resets the machine and makes it stop. Warning, it will destroy the process and the input items -->
+  <IP_ResetFullAutoDesc>完全重置此加工设备，并使其停止运作。警告，此举将会破坏加工进程和里面的原料</IP_ResetFullAutoDesc>
+	<!-- EN: Waiting for pickup -->
+  <IP_ProductWaiting>正在等待取出</IP_ProductWaiting>
+	<!-- EN: The process in this machine is being interrupted due to an inadequate level of light and will be spoiled soon -->
+  <IP_OutsideLightRange>由于光照不符合需求，此设备的加工过程即将中止，且产物也会腐烂。</IP_OutsideLightRange>
+	<!-- EN: The product in this machine has spoiled due to an inadequate level of light -->
+  <IP_SpoiledDueToLight>由于光照不符合需求，此设备的产物已腐烂。</IP_SpoiledDueToLight>
+	<!-- EN: The process in this machine is being interrupted due to inclement weather and will be spoiled soon -->
+  <IP_ItRains>由于天气不佳，此设备的加工过程即将中止，且产物也会腐烂。</IP_ItRains>
+	<!-- EN: The product in this machine has spoiled due to inclement weather -->
+  <IP_SpoiledDueToRain>由于天气不佳，此设备的产物已腐烂。</IP_SpoiledDueToRain>
+	<!-- EN: The process in this machine is being interrupted due to an unsuitable temperature and will be spoiled soon -->
+  <IP_WrongTemp>由于温度不符合需求，此设备的加工过程即将中止，且产物也会腐烂。</IP_WrongTemp>
+	<!-- EN: The product has spoiled due to an unsuitable temperature. Needs between {0} and {1} ºC -->
+  <IP_SpoiledDueToWrongTemp>由于温度不符合需求，产物已腐烂。需求温度为{0}~{1}℃</IP_SpoiledDueToWrongTemp>
+	<!-- EN: Current process needs a temperature between {0} and {1} ºC -->
+  <IP_TempRangeInThisMachine>当前加工过程需求温度：{0}~{1}℃</IP_TempRangeInThisMachine>
+	<!-- EN: Pause / Restart -->
+  <IP_TogglePause>暂停/重启</IP_TogglePause>
+	<!-- EN: Pause / Restart this machine's processing -->
+  <IP_TogglePauseDesc>暂停/重启此加工设备的加工进程</IP_TogglePauseDesc>
+	<!-- EN:  Waiting for output to clear. Output limit is {0} -->
+  <IP_OverThreshold>正在等待清理产物。产物限制为{0}</IP_OverThreshold>
+	<!-- EN: No modded recipes found for this factory -->
+  <IP_NoRecipesHere>找不到此工厂的新配方</IP_NoRecipesHere>
+
+</LanguageData>

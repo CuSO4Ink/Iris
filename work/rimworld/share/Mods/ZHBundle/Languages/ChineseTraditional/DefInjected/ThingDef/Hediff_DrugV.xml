@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 태양화 탕약 -->
+  <Miho_PositiveFlower_Juice.label>朝花湯劑</Miho_PositiveFlower_Juice.label>
+  <!-- EN: 고농축된 메카나이트 성분이 들어있는 탕약 입니다. 마시면 빠르게 신경열을 가라앉게 만들어 줍니다. -->
+  <Miho_PositiveFlower_Juice.description>含有高濃度機械分子的湯劑，飲用後可使神經熱迅速消散。</Miho_PositiveFlower_Juice.description>
+  <!-- EN: Inject {0} -->
+  <Miho_PositiveFlower_Juice.ingestible.ingestCommandString>飲用{0}</Miho_PositiveFlower_Juice.ingestible.ingestCommandString>
+  <!-- EN: Injecting {0}. -->
+  <Miho_PositiveFlower_Juice.ingestible.ingestReportString>飲用{0}。</Miho_PositiveFlower_Juice.ingestible.ingestReportString>
+  
+</LanguageData>

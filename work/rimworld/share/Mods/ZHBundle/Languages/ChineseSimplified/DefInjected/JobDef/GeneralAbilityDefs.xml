@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Doing something. -->
+  <VFEA_GotoTargetAndUseAbility.reportString>执行指令。</VFEA_GotoTargetAndUseAbility.reportString>
+  
+  <!-- EN: standing. -->
+  <VFEA_StandAndFaceTarget.reportString>站立中。</VFEA_StandAndFaceTarget.reportString>
+  
+  <!-- EN: Doing something. -->
+  <VFEA_UseAbility.reportString>执行指令。</VFEA_UseAbility.reportString>
+  
+  <!-- EN: Doing something. -->
+  <VFEA_UseAbilityUninterruptible.reportString>执行指令。</VFEA_UseAbilityUninterruptible.reportString>
+  
+</LanguageData>

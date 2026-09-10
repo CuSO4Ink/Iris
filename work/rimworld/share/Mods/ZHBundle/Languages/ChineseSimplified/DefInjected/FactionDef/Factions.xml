@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: New Dragonian -->
+  <Dragonian_PlayerFaction.label>龙人</Dragonian_PlayerFaction.label>
+  <!-- EN: your Dragonian settlement. -->
+  <Dragonian_PlayerFaction.description>你的龙人定居地。</Dragonian_PlayerFaction.description>
+  <!-- EN: leader -->
+  <Dragonian_PlayerFaction.leaderTitle>领袖</Dragonian_PlayerFaction.leaderTitle>
+  <!-- EN: colonist -->
+  <Dragonian_PlayerFaction.pawnSingular>移民者</Dragonian_PlayerFaction.pawnSingular>
+  <!-- EN: colonists -->
+  <Dragonian_PlayerFaction.pawnsPlural>移民者们</Dragonian_PlayerFaction.pawnsPlural>
+  
+</LanguageData>

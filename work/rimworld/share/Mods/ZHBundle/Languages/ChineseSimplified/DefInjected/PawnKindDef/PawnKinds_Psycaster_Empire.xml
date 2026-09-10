@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: archotechist -->
+  <Empire_Caster_Archotechist.label>超凡使</Empire_Caster_Archotechist.label>
+  
+  <!-- EN: coflagator -->
+  <Empire_Caster_Conflagrator.label>捻时官</Empire_Caster_Conflagrator.label>
+  
+  <!-- EN: protector -->
+  <Empire_Caster_Protector.label>守御者</Empire_Caster_Protector.label>
+  
+  <!-- EN: warlord -->
+  <Empire_Caster_Warlord_Melee.label>冠军候</Empire_Caster_Warlord_Melee.label>
+  
+  <!-- EN: warlord -->
+  <Empire_Caster_Warlord_Ranged.label>冠军候</Empire_Caster_Warlord_Ranged.label>
+  
+</LanguageData>

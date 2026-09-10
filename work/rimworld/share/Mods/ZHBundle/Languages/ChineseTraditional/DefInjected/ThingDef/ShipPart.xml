@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Crashed ship parts -->
+
+  <Void_DefoliatorShipPart.label>N-4轉換室</Void_DefoliatorShipPart.label>
+  <Void_DefoliatorShipPart.description>Nerotonin-4型轉換室，似乎是來自太空船的實驗室。\n\n它正在緩慢釋放煙霧，使附近的植物雕零。</Void_DefoliatorShipPart.description>
+
+
+  <!-- VL -->
+
+  <VOID_Conversion_ShipPart.label>N-4無定室</VOID_Conversion_ShipPart.label>
+  <VOID_Conversion_ShipPart.description>Nerotonin-4無定室，似乎是來自太空船的實驗室。這件事有些不太對勁，那些接近它的人感到內心有種不可思議的不祥預感。\n\n它正在緩慢釋放煙霧，使附近的植物雕零。</VOID_Conversion_ShipPart.description>
+
+
+  <!-- BLACK TITAN -->
+
+  <VOID_Rebirth_ShipPart.label>N-4再生室</VOID_Rebirth_ShipPart.label>
+  <VOID_Rebirth_ShipPart.description>Nerotonin-4再生室，似乎是來自太空船的實驗室。\n\n損壞的屏幕上有難以理解的文字和警告符號請求你遠離。\n\n它正在緩慢釋放煙霧，使附近的植物雕零。</VOID_Rebirth_ShipPart.description>
+
+
+  <!-- DH -->
+
+  <Void_DevilChamber_ShipPart.label>N-4惡魔室</Void_DevilChamber_ShipPart.label>
+  <Void_DevilChamber_ShipPart.description>Nerotonin-4惡魔室。似乎是來自太空船的實驗室。\n\n有一個損壞的屏幕，它的電量已經所剩無幾，但依舊閃爍著紅色，並顯示警告符號。你的眼睛轉向一個特定的單詞，上面寫著「惡魔」，其余的單詞由於裂縫和內部損壞而難以辨認。\n\n它正在緩慢釋放煙霧，使附近的植物雕零。</Void_DevilChamber_ShipPart.description>
+
+
+</LanguageData>

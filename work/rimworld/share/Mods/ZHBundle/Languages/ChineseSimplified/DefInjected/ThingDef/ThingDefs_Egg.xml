@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi egg -->
+  <VV_ViviEgg.label>薇薇蜂卵</VV_ViviEgg.label>
+  <!-- EN: This is an egg from which a Vivi can be born. It only hatches when placed in a warm incubator between 19-39℃, and the closer the temperature is maintained to 30℃, the faster it hatches.\n\nIf it's in an inadequate temperature, the egg gets damaged but it automatically recovers once the proper environment is restored.\n\nThe born Vivi inherits the mother's xenogenes and additionally, is born with random xenogenes. (Archites are not inherited.)\n\nCaution: Be careful not to accidentally eat it or let passing animals eat it. -->
+  <VV_ViviEgg.description>这是一个可以孵出薇薇的蜂卵。只能在19-39℃之间的温暖孵化器中孵化，温度越接近30℃，孵化越快。\n\n如果温度过低，蜂卵会受损，但一旦环境恢复正常，它就会自动恢复。\n\n出生的薇薇会继承母本的异种基因，且会突变出随机异种基因（超凡基因不遗传）\n\n注意：不要意外让殖民者或路过的动物食用它。</VV_ViviEgg.description>
+  
+</LanguageData>

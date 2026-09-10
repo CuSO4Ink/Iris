@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_TilledSoil.label>耕土</VCE_TilledSoil.label>
+		<VCE_TilledSoil.description>人工耕的土地，增加土壤肥沃度。只能在普通土地上耕作（肥沃土地不行）。当耕土上有植物被收割了，它会变回普通土地。</VCE_TilledSoil.description>
+		<VCE_TilledSoil.tools.0.label>泥土</VCE_TilledSoil.tools.0.label>
+		<VCE_TilledSoil.modExtensions.0.constructionSkillRequirement.reportStringOverride>耕耘土壤。</VCE_TilledSoil.modExtensions.0.constructionSkillRequirement.reportStringOverride>
+	</LanguageData>

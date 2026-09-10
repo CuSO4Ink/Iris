@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Dragonian Mace -->
+  <DR_BattleMace.label>龙人 锤矛</DR_BattleMace.label>
+  <!-- EN: A Mace for Dragonian. -->
+  <DR_BattleMace.description>龙人使用的锤矛。</DR_BattleMace.description>
+  <!-- EN: handle -->
+  <DR_BattleMace.tools.handle.label>锤柄</DR_BattleMace.tools.handle.label>
+  <!-- EN: head -->
+  <DR_BattleMace.tools.head.label>锤头</DR_BattleMace.tools.head.label>
+  
+  <!-- EN: Dragonian eltex Staff -->
+  <DR_BattleStaff.label>龙人 灵质权杖</DR_BattleStaff.label>
+  <!-- EN: A Staff for Dragonian. -->
+  <DR_BattleStaff.description>龙人使用的灵质权杖。</DR_BattleStaff.description>
+  <!-- EN: handle -->
+  <DR_BattleStaff.tools.handle.label>手柄</DR_BattleStaff.tools.handle.label>
+  <!-- EN: physical-magic -->
+  <DR_BattleStaff.tools.physicalmagic.label>物理-魔法</DR_BattleStaff.tools.physicalmagic.label>
+  
+  <!-- EN: Dragonian Graeatsword -->
+  <DR_Battlesword.label>龙人 巨剑</DR_Battlesword.label>
+  <!-- EN: A Graeatsword for Dragonian. -->
+  <DR_Battlesword.description>龙人使用的巨剑。</DR_Battlesword.description>
+  <!-- EN: handle -->
+  <DR_Battlesword.tools.handle.label>手柄</DR_Battlesword.tools.handle.label>
+  <!-- EN: Blunt blade -->
+  <DR_Battlesword.tools.Blunt_blade.label>钝刀刃</DR_Battlesword.tools.Blunt_blade.label>
+  
+  <!-- EN: Dragonian javelin thrower -->
+  <DR_GreatBow.label>龙人 巨型弓</DR_GreatBow.label>
+  <!-- EN: A GreatBow for Dragonian. -->
+  <DR_GreatBow.description>龙人使用的巨型弓。</DR_GreatBow.description>
+  <!-- EN: Dragonian javelin thrower -->
+  <DR_GreatBow.verbs.Verb_Shoot.label>龙人巨型弓</DR_GreatBow.verbs.Verb_Shoot.label>
+  
+  <!-- EN: javelin -->
+  <DR_javelinBullet.label>标枪</DR_javelinBullet.label>
+  
+</LanguageData>

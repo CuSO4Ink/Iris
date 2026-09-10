@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- voidtech eye -->
+
+  <InstallVOIDArchotechEye.label>安装Voidtech仿生眼</InstallVOIDArchotechEye.label>
+  <InstallVOIDArchotechEye.description>安装Voidtech仿生眼。</InstallVOIDArchotechEye.description>
+  <InstallVOIDArchotechEye.jobString>正在安装Voidtech仿生眼。</InstallVOIDArchotechEye.jobString>
+
+
+  <!-- voidtech arm -->
+
+  <InstallVOIDArchotechArm.label>安装Voidtech仿生臂</InstallVOIDArchotechArm.label>
+  <InstallVOIDArchotechArm.description>安装Voidtech仿生臂。</InstallVOIDArchotechArm.description>
+  <InstallVOIDArchotechArm.jobString>正在安装Voidtech仿生臂。</InstallVOIDArchotechArm.jobString>
+
+
+  <!-- voidtech leg -->
+
+  <InstallVOIDArchotechLeg.label>安装Voidtech仿生腿</InstallVOIDArchotechLeg.label>
+  <InstallVOIDArchotechLeg.description>安装Voidtech仿生腿。</InstallVOIDArchotechLeg.description>
+  <InstallVOIDArchotechLeg.jobString>正在安装Voidtech仿生腿。</InstallVOIDArchotechLeg.jobString>
+
+
+</LanguageData>

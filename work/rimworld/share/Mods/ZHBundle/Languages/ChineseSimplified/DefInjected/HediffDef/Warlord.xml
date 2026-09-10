@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: psychic rush -->
+  <VPE_AdrenalineRush.label>热血浪涌</VPE_AdrenalineRush.label>
+  <!-- EN: Psychically induced adrenaline rush, increasing sight, hearing and movement capabilities. -->
+  <VPE_AdrenalineRush.description>用灵能激发施放者体内的肾上腺素，止住痛觉并强化视力，听觉和移动能力。</VPE_AdrenalineRush.description>
+  
+  <!-- EN: blade focus -->
+  <VPE_BladeFocus.label>刀锋专注</VPE_BladeFocus.label>
+  <!-- EN: Psychically induced combat focus, greatly enhancing melee combat capabilities. -->
+  <VPE_BladeFocus.description>灵能激发的战斗专注，强化近战能力。</VPE_BladeFocus.description>
+  
+  <!-- EN: psychic frenzy -->
+  <VPE_ControlledFrenzy.label>心灵狂化</VPE_ControlledFrenzy.label>
+  <!-- EN: Temporary, psychically induced frenzy. The energy restores itself with each consecutive kill. -->
+  <VPE_ControlledFrenzy.description>暂时的狂暴状态。每次击杀都会恢复能量。</VPE_ControlledFrenzy.description>
+  
+  <!-- EN: firing focus -->
+  <VPE_FiringFocus.label>枪火专注</VPE_FiringFocus.label>
+  <!-- EN: Psychically induced combat focus, greatly enhancing ranged combat capabilities. -->
+  <VPE_FiringFocus.description>灵能激发的战斗专注，强化远程能力。</VPE_FiringFocus.description>
+  
+  <!-- EN: guided shot -->
+  <VPE_GuidedShot.label>灵能枪斗</VPE_GuidedShot.label>
+  <!-- EN: Psychically induced insane accuracy. -->
+  <VPE_GuidedShot.description>灵能强化的射击精度。</VPE_GuidedShot.description>
+  
+  <!-- EN: psychic agility -->
+  <VPE_SpeedBoost.label>心灵敏捷</VPE_SpeedBoost.label>
+  <!-- EN: Psychically induced agility boost, greatly increasing movement speed. -->
+  <VPE_SpeedBoost.description>灵能激发的战斗强化，增加移速。</VPE_SpeedBoost.description>
+  
+</LanguageData>

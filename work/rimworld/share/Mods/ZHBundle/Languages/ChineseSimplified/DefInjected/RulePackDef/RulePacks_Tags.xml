@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>hairy->hairy</li>
+    <li>hairy->fuzzy</li>
+    <li>hairy(p=0.3)->furry</li>
+    <li>hairy(p=0.3)->stringy</li>
+  -->
+  <FT_Tags.rulePack.rulesStrings>    
+    <li>hairy->多毛的</li>
+    <li>hairy->模糊的</li>
+    <li>hairy(p=0.3)->毛皮的</li>
+    <li>hairy(p=0.3)->纤维的</li>
+  </FT_Tags.rulePack.rulesStrings>
+  
+</LanguageData>

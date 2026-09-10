@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Dragonborn -->
+  <Dragonian_Dragonborn.label>龍裔</Dragonian_Dragonborn.label>
+  <!-- EN: This gene is known to be a remnant of ancient dragons.\nThose with this gene have excellent resilience and overwhelming strength. -->
+  <Dragonian_Dragonborn.description>這種基因被認為是遠古時期龍的遺傳基因。\n帶有這種基因的人會有超乎常人的韌性和壓倒性的力量。</Dragonian_Dragonborn.description>
+  <!-- EN: Dragonborn -->
+  <Dragonian_Dragonborn.labelShortAdj>龍裔</Dragonian_Dragonborn.labelShortAdj>
+
+  <!-- EN: Black-Dragonborn -->
+  <Dragonian_Dragonborn_Black.label>黑龍裔</Dragonian_Dragonborn_Black.label>
+  <!-- EN: This gene is known to be a remnant of ancient Black-dragons.\nThose with this gene have excellent resilience and overwhelming strength. -->
+  <Dragonian_Dragonborn_Black.description>據說這種基因是古代黑龍殘留下來的餘燼。\n擁有此基因者將具備卓越的恢復力與壓倒性的力量。</Dragonian_Dragonborn_Black.description>
+  <!-- EN: Black-Dragonborn -->
+  <Dragonian_Dragonborn_Black.labelShortAdj>黑龍裔</Dragonian_Dragonborn_Black.labelShortAdj>
+  
+</LanguageData>

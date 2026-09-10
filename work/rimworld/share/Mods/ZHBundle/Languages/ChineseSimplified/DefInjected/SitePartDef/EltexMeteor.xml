@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: eltex meteor -->
+  <VPE_EltexMeteor.label>灵质陨石</VPE_EltexMeteor.label>
+  <!-- EN: A location of an eltex meteor, highly desired by the empire. Travelling here will allow you to obtain eltex that can be used to craft psycasting gear. -->
+  <VPE_EltexMeteor.description>一颗灵质陨石坠落的地方，灵质是帝国所渴求的资源。旅行到这里可以开掘灵质，你可以用它制作灵能装备。</VPE_EltexMeteor.description>
+  <!-- EN: Hostile activity detected. -->
+  <VPE_EltexMeteor.mainPartAllThreatsLabel>检测到活跃的敌人。</VPE_EltexMeteor.mainPartAllThreatsLabel>
+  
+</LanguageData>
