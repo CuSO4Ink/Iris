@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>The Army Of Fetid Corpses (Continued)</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="Necronoid_Horde"]/baseChance</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="Necronoid_Horde"]/baseChance</xpath>
+            <value>
+              <baseChance>0.8</baseChance>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="Necronoid_Horde"]</xpath>
+            <value>
+              <baseChance>0.8</baseChance>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="Necronoid_CenterDropRaid"]/baseChance</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="Necronoid_CenterDropRaid"]/baseChance</xpath>
+            <value>
+              <baseChance>0.4</baseChance>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="Necronoid_CenterDropRaid"]</xpath>
+            <value>
+              <baseChance>0.4</baseChance>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="Chupacabras_SilentRaid"]/baseChance</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="Chupacabras_SilentRaid"]/baseChance</xpath>
+            <value>
+              <baseChance>0.2</baseChance>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="Chupacabras_SilentRaid"]</xpath>
+            <value>
+              <baseChance>0.2</baseChance>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="HowlingSpiders_SilentRaid"]/baseChance</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="HowlingSpiders_SilentRaid"]/baseChance</xpath>
+            <value>
+              <baseChance>0.3</baseChance>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="HowlingSpiders_SilentRaid"]</xpath>
+            <value>
+              <baseChance>0.3</baseChance>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="Wendigo_SilentRaid"]/baseChance</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="Wendigo_SilentRaid"]/baseChance</xpath>
+            <value>
+              <baseChance>0.2</baseChance>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="Wendigo_SilentRaid"]</xpath>
+            <value>
+              <baseChance>0.2</baseChance>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="CorruptedShip"]/baseChance</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="CorruptedShip"]/baseChance</xpath>
+            <value>
+              <baseChance>0.2</baseChance>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="CorruptedShip"]</xpath>
+            <value>
+              <baseChance>0.2</baseChance>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="CorruptedDropShip"]/baseChance</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="CorruptedDropShip"]/baseChance</xpath>
+            <value>
+              <baseChance>0.2</baseChance>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="CorruptedDropShip"]</xpath>
+            <value>
+              <baseChance>0.2</baseChance>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="NecronoidBiomass"]/baseChance</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="NecronoidBiomass"]/baseChance</xpath>
+            <value>
+              <baseChance>0.15</baseChance>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="NecronoidBiomass"]</xpath>
+            <value>
+              <baseChance>0.15</baseChance>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="Necronoid_Horde"]/category</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="Necronoid_Horde"]/category</xpath>
+            <value>
+              <category>ThreatBig</category>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="Necronoid_Horde"]</xpath>
+            <value>
+              <category>ThreatBig</category>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="Necronoid_Horde"]/minRefireDays</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="Necronoid_Horde"]/minRefireDays</xpath>
+            <value>
+              <minRefireDays>3</minRefireDays>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="Necronoid_Horde"]</xpath>
+            <value>
+              <minRefireDays>3</minRefireDays>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="Necronoid_CenterDropRaid"]/category</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="Necronoid_CenterDropRaid"]/category</xpath>
+            <value>
+              <category>ThreatBig</category>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="Necronoid_CenterDropRaid"]</xpath>
+            <value>
+              <category>ThreatBig</category>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="Necronoid_CenterDropRaid"]/minRefireDays</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="Necronoid_CenterDropRaid"]/minRefireDays</xpath>
+            <value>
+              <minRefireDays>3</minRefireDays>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="Necronoid_CenterDropRaid"]</xpath>
+            <value>
+              <minRefireDays>3</minRefireDays>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="Chupacabras_SilentRaid"]/minRefireDays</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="Chupacabras_SilentRaid"]/minRefireDays</xpath>
+            <value>
+              <minRefireDays>3</minRefireDays>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="Chupacabras_SilentRaid"]</xpath>
+            <value>
+              <minRefireDays>3</minRefireDays>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="HowlingSpiders_SilentRaid"]/minRefireDays</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="HowlingSpiders_SilentRaid"]/minRefireDays</xpath>
+            <value>
+              <minRefireDays>3</minRefireDays>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="HowlingSpiders_SilentRaid"]</xpath>
+            <value>
+              <minRefireDays>3</minRefireDays>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="Wendigo_SilentRaid"]/minRefireDays</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="Wendigo_SilentRaid"]/minRefireDays</xpath>
+            <value>
+              <minRefireDays>3</minRefireDays>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="Wendigo_SilentRaid"]</xpath>
+            <value>
+              <minRefireDays>3</minRefireDays>
+            </value>
+          </nomatch>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/IncidentDef[defName="NecronoidBiomass"]/baseChanceWithRoyalty</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/IncidentDef[defName="NecronoidBiomass"]/baseChanceWithRoyalty</xpath>
+            <value>
+              <baseChanceWithRoyalty>0.15</baseChanceWithRoyalty>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/IncidentDef[defName="NecronoidBiomass"]</xpath>
+            <value>
+              <baseChanceWithRoyalty>0.15</baseChanceWithRoyalty>
+            </value>
+          </nomatch>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

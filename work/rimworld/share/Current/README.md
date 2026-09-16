@@ -8,7 +8,7 @@
 |---|---|---|
 | Mods/ | 7 个已启用本地模组的运行文件，含实际安装的 DLL、补丁、翻译及资源 | RimWorld/Mods/ |
 | Config/ModsConfig.xml | 272 项启用列表，保留完整加载顺序 | 玩家数据目录/Config/ |
-| Settings/ModSettings/ | 142 份 ModSettings，含 Defaults、战斗平衡、人才、招募、灵能及关系等参数 | 玩家数据目录/Config/ |
+| Settings/ModSettings/ | 143 份 ModSettings，含 Defaults、战斗平衡、人才、招募、灵能及关系等参数 | 玩家数据目录/Config/ |
 | Settings/Game/ | 游戏偏好、键位及其他全局设置 | 玩家数据目录/Config/ |
 | Settings/UserData/ | HugsLib 参数、RimHUD 配置、米莉拉全局图鉴 | 玩家数据目录，保留相对路径 |
 | Manifests/mods.tsv | 按顺序记录包名、工坊 ID、声明版本和本地目录 | 对照用 |
@@ -44,7 +44,7 @@
 
 - 6 个官方内容 + 259 个工坊模组 + 7 个本地模组 = 272 项。
 - 本地模组导出自安装目录，不混入尚未部署的 IrisFixes 性能分析器源码或构建版本。
-- 142 份参数文件包含部分已停用模组留下的参数；这些不会自行启用对应模组，保留是为了避免误漏同一模组的设置类。
+- 143 份参数文件包含部分已停用模组留下的参数；这些不会自行启用对应模组，保留是为了避免误漏同一模组的设置类。
 - 原始参数除两份配置的密钥外按字节复制。已核对启用列表完整、包名可解析，所有已复制运行文件与本机相同。
 - 不上传存档、日志、贴图缓存、编辑器缓存、旧备份。IrisFixes 的 DiagnosticsOutputPath.txt 含导出机临时采样路径，未携带；因此目标机默认不进行那套临时诊断文件采样，游戏规则不受影响。
 - Steam 工坊仍会自动更新第三方模组；本包同步的是当前本地补丁和参数，不锁定第三方工坊二进制版本。若另一台机器的工坊内容更新了，不能据此保证行为逐字节相同。
@@ -55,3 +55,7 @@
 IrisTextureBudget、ZHBundle、IrisBalance、IrisFixes、IrisTalentProgression、IrisRitualRecruitment、IrisStorageDefaults。
 
 无需重新编译。保留原目录名称，否则一些以目录名保存的 ModSettings 可能读不到。
+
+## 残疫袭击频率更新
+
+IrisBalance 已包含 8 种残疫专属事件的权重调整。尸潮和中心空投改为大型威胁；共用冷却默认 3 个游戏日，在 Iris 袭击平衡设置中可调整。冷却跨地图并随存档保存；第一次加载补丁给 3 天缓冲。任务／强制事件和地图上已有的巢穴刷怪不拦截；正常随机袭击冷却期间不选择残疫派系。不会取消已排队专属事件转出的真正 RaidEnemy。
