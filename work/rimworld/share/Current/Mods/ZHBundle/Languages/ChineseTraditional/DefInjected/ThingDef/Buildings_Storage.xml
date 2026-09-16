@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: corpse dump spot -->
+  <sbz_CorpseSpot.label>屍體堆放點</sbz_CorpseSpot.label>
+  <!-- EN: A spot that can store up to 24 corpses. -->
+  <sbz_CorpseSpot.description>指定一個堆放儲存屍體的位置。存放在裡面的物品露天時會老化。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：12組\n【可儲存類型】：屍體</sbz_CorpseSpot.description>
+  
+  <!-- EN: large crate -->
+  <sbz_Crate.label>大陳列箱</sbz_Crate.label>
+  <!-- EN: A large crate that can hold up to 36 different items. -->
+  <sbz_Crate.description>用於儲存並陳列各種物品的大箱子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：24組\n【可儲存類型】：所有物品</sbz_Crate.description>
+  
+  <!-- EN: half pallet -->
+  <sbz_HalfPallet.label>小貨物托盤</sbz_HalfPallet.label>
+  <!-- EN: A pallet that can stack up to 12 items of various kinds. -->
+  <sbz_HalfPallet.description>用於儲存並陳列各種物品的小貨物托盤。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：12組\n【可儲存類型】：所有物品</sbz_HalfPallet.description>
+
+  <!-- EN: horizontal weapon rack -->
+  <sbz_HorizontalWeaponRack.label>現代武器架（橫向）</sbz_HorizontalWeaponRack.label>
+  <!-- EN: A horizontal weapon rack that can display up to 12 weapons. -->
+  <sbz_HorizontalWeaponRack.description>用於橫向儲存並陳列各種武器的架子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：12組\n【可儲存類型】：近戰&amp;遠程武器</sbz_HorizontalWeaponRack.description>
+
+  <!-- EN: crate -->
+  <sbz_MidCrate.label>陳列箱</sbz_MidCrate.label>
+  <!-- EN: A crate that can hold up to 18 different items. -->
+  <sbz_MidCrate.description>用於儲存並陳列各種物品的箱子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：12組\n【可儲存類型】：所有物品</sbz_MidCrate.description>
+  
+  <!-- EN: mini pallet -->
+  <sbz_MiniPallet.label>迷你貨物托盤</sbz_MiniPallet.label>
+  <!-- EN: A pallet that can stack up to 6 different items. -->
+  <sbz_MiniPallet.description>用於儲存並陳列各種物品的迷你貨物托盤。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：6組\n【可儲存類型】：所有物品</sbz_MiniPallet.description>
+
+  <!-- EN: Pallet -->
+  <sbz_Pallet.label>貨物托盤</sbz_Pallet.label>
+  <!-- EN: A pallet that can stack up to 24 different items. -->
+  <sbz_Pallet.description>用於儲存並陳列各種物品的貨物托盤。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：24組\n【可儲存類型】：所有物品</sbz_Pallet.description>
+  
+  <!-- EN: small crate -->
+  <sbz_SmallCrate.label>小陳列箱</sbz_SmallCrate.label>
+  <!-- EN: A small crate that can hold up to 9 different items. -->
+  <sbz_SmallCrate.description>用於儲存並陳列各種物品的小箱子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：6組\n【可儲存類型】：所有物品</sbz_SmallCrate.description>
+
+  <!-- EN: tall crate -->
+  <sbz_TallCrate.label>高陳列箱</sbz_TallCrate.label>
+  <!-- EN: A tall crate that can hold up to 24 items of various kinds. -->
+  <sbz_TallCrate.description>用於儲存並陳列各種物品的高箱子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：24組\n【可儲存類型】：所有物品</sbz_TallCrate.description>
+  
+  <!-- EN: vertical weapon rack -->
+  <sbz_VerticalWeaponRack.label>現代武器架（縱向）</sbz_VerticalWeaponRack.label>
+  <!-- EN: A vertical weapon rack that can display up to 12 weapons. -->
+  <sbz_VerticalWeaponRack.description>用於縱向儲存並陳列各種武器的架子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：12組\n【可儲存類型】：近戰&amp;遠程武器</sbz_VerticalWeaponRack.description>
+  
+  <!-- EN: weapon rack -->
+  <sbz_WeaponRack.label>武器架</sbz_WeaponRack.label>
+  <!-- EN: A weapon rack that can display up to 6 weapons. -->
+  <sbz_WeaponRack.description>用於儲存並陳列各種武器的架子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：6組\n【可儲存類型】：近戰&amp;遠程武器</sbz_WeaponRack.description>
+
+</LanguageData>

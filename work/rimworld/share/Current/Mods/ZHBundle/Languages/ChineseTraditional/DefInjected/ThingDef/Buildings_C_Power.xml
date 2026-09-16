@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Zeus Turbine -->
+  <BigTurbine.label>“宙斯”級渦輪機</BigTurbine.label>
+  <!-- EN: A turbine driven by steam which turns a generator to produce electricity. The Zeus has a maximum power output of 1 Megawatt -->
+  <BigTurbine.description>利用反應堆產生的蒸汽推動渦輪機發電。“宙斯”的最大輸出功率為1MW。</BigTurbine.description>
+  
+  <!-- EN: Radiator -->
+  <CoolingRadiator.label>散熱器</CoolingRadiator.label>
+  <!-- EN: Small air coolers designed to provide cooling for small nuclear reactors when resources or space is limited.\n25kW cooling capacity -->
+  <CoolingRadiator.description>這種小型風冷散熱器設計用於在資源或空間有限的情況下達到為小型核反應堆散熱的目的。</CoolingRadiator.description>
+  
+  <!-- UNUSED -->
+  <CoolingRadiator.comps.CompBoilerNuclear.GizmoLabel>未使用</CoolingRadiator.comps.CompBoilerNuclear.GizmoLabel>
+  
+  <!-- EN: Cooling Tower -->
+  <CoolingTower.label>乾式冷卻塔</CoolingTower.label>
+  <!-- EN: Very large air coolers designed to provide large amounts of cooling for nuclear reactors when no natural bodies of water are available.\n250kW cooling capacity -->
+  <CoolingTower.description>非常大的乾式冷卻塔，在沒有天然水體的情況下達到為核反應堆散熱的目的。</CoolingTower.description>
+  
+  <!-- EN: Water Cooling -->
+  <CoolingWater.label>水冷裝置</CoolingWater.label>
+  <!-- EN: Provides large amounts of cooling to nuclear reactors by using cold water from rivers, lakes or oceans.\n250kW cooling capacity -->
+  <CoolingWater.description>通過利用河流、湖泊或海洋的大量冷水達到為核反應堆散熱的目的。</CoolingWater.description>
+  
+  <!-- EN: Radiation Detector -->
+  <RadiationDetector.label>輻射探測器</RadiationDetector.label>
+  <!-- EN: Radiation detector, can be placed near reactors to detect radiation leaks -->
+  <RadiationDetector.description>輻射探測器。</RadiationDetector.description>
+  
+  <!-- EN: reactor console -->
+  <ReactorControl.label>反應堆控制台</ReactorControl.label>
+  <!-- EN: Computer system designed to control nuclear reactors. Send a colonist to man the station to access the controls, multiple controls can be open at the same time -->
+  <ReactorControl.description>用於控制核反應堆的計算機系統。單人操控，可多個控制台同時進行運行。</ReactorControl.description>
+  
+  <!-- EN: Reactor Type A -->
+  <ReactorCoreA.label>輕水反應堆</ReactorCoreA.label>
+  <!-- EN: Rimatomics thermal reactor core with 21 fuel assembly capacity. A reactor core contains the fuel components where nuclear reactions take place and heat is generated -->
+  <ReactorCoreA.description>「邊緣核能」基礎熱核反應堆，具有21個燃料棒插槽。核反應在堆芯出發生並產生高溫。</ReactorCoreA.description>
+  
+  <!-- EN: Reactor Type X -->
+  <ReactorCoreB.label>快中子增殖反應堆</ReactorCoreB.label>
+  <!-- EN: An advanced breeder reactor design which can generate more fissile material than it consumes. -->
+  <ReactorCoreB.description>「邊緣核能」先進快中子增殖反應堆，可以產生比其所消耗的核燃料更多的核廢料。</ReactorCoreB.description>
+  
+  <!-- EN: Reactor Type V -->
+  <ReactorCoreC.label>大型快中子增殖反應堆</ReactorCoreC.label>
+  <!-- EN: A massive advanced breeder reactor design which can generate more fissile material than it consumes. -->
+  <ReactorCoreC.description>「邊緣核能」大型先進快中子增殖反應堆，可以產生比其所消耗的核燃料更多的核廢料。</ReactorCoreC.description>
+  
+  <!-- EN: R.T.G -->
+  <RimatomicsRTG.label>放射性同位素發電機</RimatomicsRTG.label>
+  <!-- EN: An electrical generator that uses an array of thermocouples to convert the heat released by the decay of a suitable radioactive material into electricity. -->
+  <RimatomicsRTG.description>使用熱電偶陣列將放射性同位素衰變所釋放熱能轉化為電能的發電機。</RimatomicsRTG.description>
+  
+  <!-- EN: Storage Pool -->
+  <storagePool.label>存儲池</storagePool.label>
+  <!-- EN: A storage pool for safely storing spent nuclear fuel rods, water in the pool absorbs radiation, fuel must be manually removed from the pool before it can be used -->
+  <storagePool.description>安全儲存核燃料棒的儲存池。選定殖民者右鍵操作，可以移除指定核燃料棒。</storagePool.description>
+  
+  <!-- EN: High Voltage Transformer -->
+  <Transformer.label>高壓變壓器</Transformer.label>
+  <!-- EN: Provides the final voltage transformation from Turbine Generators, stepping down the voltage used in high voltage lines to the level used by power conduits -->
+  <Transformer.description>將渦輪機的所提供的高壓電的電壓降低到電網所能負荷的水平。</Transformer.description>
+  
+  <!-- EN: Thor Turbine -->
+  <Turbine.label>“雷神”級渦輪機</Turbine.label>
+  <!-- EN: A turbine driven by steam which turns a generator to produce electricity. The Thor has a maximum power output of 100 Kilowatts -->
+  <Turbine.description>利用反應堆產生的蒸汽推動渦輪機發電。“雷神”的最大輸出功率為100KW。</Turbine.description>
+  
+</LanguageData>

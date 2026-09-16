@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: Must be placed over a cell with subsurface ice deposits -->
+  <WellNeedsIce>必須放置在含有地下冰層的位置上</WellNeedsIce>
+  
+  <!-- EN: Transfer Tank -->
+  <TransferStorageTank>轉存罐內液體</TransferStorageTank>
+  <!-- EN: Transfer the contents of this tank to other available tanks -->
+  <TransferStorageTankDesc>將此存儲罐內的液體轉存到其他可用的罐中</TransferStorageTankDesc>
+
+</LanguageData>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="Hoxise_AutoUpgrade.AutoUpgradeModSettings">
+		<AwfulToPoor>50</AwfulToPoor>
+		<PoorToNormal>50</PoorToNormal>
+		<NormalToGood>100</NormalToGood>
+		<GoodToExcellent>100</GoodToExcellent>
+		<ExcellentToMasterwork>200</ExcellentToMasterwork>
+		<MasterworkToLegendary>500</MasterworkToLegendary>
+	</ModSettings>
+</SettingsBlock>

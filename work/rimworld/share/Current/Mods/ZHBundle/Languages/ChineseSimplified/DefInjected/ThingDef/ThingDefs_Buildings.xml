@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi honey auto refiner -->
+  <VV_AutoExtractor.label>自动蜂蜜提取机</VV_AutoExtractor.label>
+  <!-- EN: a machine that uses electricity and centrifugal force to refine large quantities of raw vivi honey. When supplied with honey, refined Vivi honey is produced periodically, at greater efficiency than human work. -->
+  <VV_AutoExtractor.description>利用离心力从未精制的薇薇蜂蜜或蜂胶中大量提取必要成分的机器。比手工作业更快，能够处理更多原料，但需要通电。</VV_AutoExtractor.description>
+  <!-- EN: Raw Honey -->
+  <VV_AutoExtractor.comps.CompRefuelable.fuelGizmoLabel>原蜜</VV_AutoExtractor.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- EN: Vivi Raw Honey -->
+  <VV_AutoExtractor.comps.CompRefuelable.fuelLabel>薇薇原蜜</VV_AutoExtractor.comps.CompRefuelable.fuelLabel>
+  
+  <!-- EN: gathering workbench -->
+  <VV_GatheringBarrel.label>采集工作台</VV_GatheringBarrel.label>
+  <!-- EN: a workbench for conducting various gathering jobs from nearby plants. Gathering jobs can only be done near the workstation. -->
+  <VV_GatheringBarrel.description>用于从附近植物中进行各种收集工作的工作台。收集作业只能在工作站附近完成。</VV_GatheringBarrel.description>
+  
+  <!-- EN: gathering spot -->
+  <VV_GatheringSpot.label>采集点</VV_GatheringSpot.label>
+  <!-- EN: a place to perform various gathering jobs from nearby plants. Because of insufficient equipment, only half of the original collection amount is obtained, and gathering is possible only near the gathering place. -->
+  <VV_GatheringSpot.description>用于从附近植物中进行各种收集工作的工作点。由于设备不足，只能获得原本采集量的一半，收集作业只能在工作点附近完成。</VV_GatheringSpot.description>
+  
+  <!-- EN: vivi refining workbench -->
+  <VV_RefiningWorkbench.label>薇薇提取工作台</VV_RefiningWorkbench.label>
+  <!-- EN: A workbench for manually processing various resources needed by the vivis. -->
+  <VV_RefiningWorkbench.description>薇薇执行提取工作的工作台。</VV_RefiningWorkbench.description>
+  
+  <!-- EN: vivi hatchery -->
+  <VV_ViviHatchery.label>薇薇孵化器</VV_ViviHatchery.label>
+  <!-- EN: a structure for incubating vivi eggs. If there is an empty hatchery, Royal vivi will go there to lay their eggs.\n\nIf the hatchery is placed indoors with a roof and kept at an appropriate temperature, it receives a bonus to hatching speed. -->
+  <VV_ViviHatchery.description>用于孵化薇薇蜂卵的结构。必须在有屋顶的室内，并且需要合适的温度才能工作。如果有合适的孵化器，皇家薇薇会去那里产卵。</VV_ViviHatchery.description>
+  
+</LanguageData>

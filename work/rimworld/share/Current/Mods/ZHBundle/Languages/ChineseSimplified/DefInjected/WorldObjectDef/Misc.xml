@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ambush -->
+  <VOE_AmbushedRaid.label>伏击</VOE_AmbushedRaid.label>
+  <!-- EN: An ongoing ambush battle. -->
+  <VOE_AmbushedRaid.description>一场正在进行的伏击战。</VOE_AmbushedRaid.description>
+  
+  <!-- EN: artillery strike -->
+  <VOE_TravellingArtilleryStrike.label>火炮打击</VOE_TravellingArtilleryStrike.label>
+  <!-- EN: Artillery strike in flight. -->
+  <VOE_TravellingArtilleryStrike.description>正在袭来的火炮打击。</VOE_TravellingArtilleryStrike.description>
+  
+</LanguageData>

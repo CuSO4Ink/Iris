@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- VOID-o-metric power cell -->
+
+  <RH_VOIDPowerCell.label>Voidtech能量電池</RH_VOIDPowerCell.label>
+  <RH_VOIDPowerCell.description>產生無限能量的電池。這項技術由星際航空和仿生學製造巨頭Voidtech開發、再設計和再生產。他們花費了100年時間用以研究和尋找復製該技術的方法，以便任何人都能負擔起這種設備。至於Voidtech到底如何解開了這些問題的答案，學者們仍在為此絞盡腦汁。</RH_VOIDPowerCell.description>
+
+
+  <!-- Corpo stuff -->
+
+  <RH_Corpo_Armchair.label>公司扶手椅</RH_Corpo_Armchair.label>
+  <RH_Corpo_Armchair.description>寬敞、柔軟、舒適的現代座，非常適合放松。可放置在桌子、工作站和其他地方。</RH_Corpo_Armchair.description>
+
+
+  <!-- Table base -->
+
+  <RH_Corpo_Table1x2c.label>公司桌 (1x2)</RH_Corpo_Table1x2c.label>
+  <RH_Corpo_Table1x2c.description>當椅子面朝桌子時，人們就會在桌子上吃飯。</RH_Corpo_Table1x2c.description>
+
+  <RH_Corpo_Desk1x2c.label>公司辦公桌 (1x2)</RH_Corpo_Desk1x2c.label>
+  <RH_Corpo_Desk1x2c.description>當椅子面朝桌子時，人們就會在桌子上吃飯。</RH_Corpo_Desk1x2c.description>
+
+
+  <!-- <ThingDef ParentName="RHCorpo_TableGatherSpotBase">
+    <defName>RH_Corpo_Table2x2c</defName>
+    <label>table (2x2)</label>
+    <graphicData>
+      <texPath>Things/Building/Corpo_Furniture/Table2x2</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <drawSize>(4,4)</drawSize>
+      <damageData>
+        <cornerTL>Damage/Corner</cornerTL>
+        <cornerTR>Damage/Corner</cornerTR>
+        <cornerBL>Damage/Corner</cornerBL>
+        <cornerBR>Damage/Corner</cornerBR>
+      </damageData>
+    </graphicData>
+    <uiIconScale>0.8</uiIconScale>
+    <statBases>
+      <MaxHitPoints>100</MaxHitPoints>
+      <WorkToBuild>1500</WorkToBuild>
+      <Mass>10</Mass>
+      <Flammability>1.0</Flammability>
+      <Beauty>1</Beauty>
+    </statBases>
+    <size>(2,2)</size>
+    <costStuffCount>50</costStuffCount>
+    <rotatable>false</rotatable>
+  </ThingDef> -->
+
+  <RH_Corpo_Table2x4c.label>公司桌 (2x4)</RH_Corpo_Table2x4c.label>
+  <RH_Corpo_Table2x4c.description>當椅子面朝桌子時，人們就會在桌子上吃飯。</RH_Corpo_Table2x4c.description>
+
+  <RH_Corpo_Table1x1c.label>公司桌 (1x1)</RH_Corpo_Table1x1c.label>
+  <RH_Corpo_Table1x1c.description>當椅子面朝桌子時，人們就會在桌子上吃飯。</RH_Corpo_Table1x1c.description>
+
+
+  <!-- Lamp Designator -->
+
+  <RH_Corpo_StandingLamp.label>公司立燈</RH_Corpo_StandingLamp.label>
+  <RH_Corpo_StandingLamp.description>將一片區域照亮的立燈。人們需要有光亮才能以全速工作和移動。</RH_Corpo_StandingLamp.description>
+
+  <RH_Corpo_StandingLamp_Red.label>公司立燈 (紅)</RH_Corpo_StandingLamp_Red.label>
+  <RH_Corpo_StandingLamp_Red.description>將一片區域照亮的立燈，散發出紅色的光芒。</RH_Corpo_StandingLamp_Red.description>
+
+  <RH_Corpo_StandingLamp_Green.label>公司立燈 (綠)</RH_Corpo_StandingLamp_Green.label>
+  <RH_Corpo_StandingLamp_Green.description>將一片區域照亮的立燈，散發出綠色的光芒。</RH_Corpo_StandingLamp_Green.description>
+
+  <RH_Corpo_StandingLamp_Blue.label>公司立燈 (藍)</RH_Corpo_StandingLamp_Blue.label>
+  <RH_Corpo_StandingLamp_Blue.description>將一片區域照亮的立燈，散發出藍色的光芒。</RH_Corpo_StandingLamp_Blue.description>
+
+
+  <!-- Drapes, Royalty stuff -->
+
+  <RH_Corpo_Drape.label>公司帷幕</RH_Corpo_Drape.label>
+  <RH_Corpo_Drape.description>掛在垂直木架上的裝飾用帷幕，適用於公司房間。</RH_Corpo_Drape.description>
+
+
+  <!-- Boards, Royalty stuff -->
+
+  <RH_Corpo_Whiteboard_A.label>會議白板 (圖表)</RH_Corpo_Whiteboard_A.label>
+  <RH_Corpo_Whiteboard_A.description>掛在垂直木架上的裝飾用白板，適用於公司房間。</RH_Corpo_Whiteboard_A.description>
+
+  <RH_Corpo_Whiteboard_B.label>會議白板 (圖表)</RH_Corpo_Whiteboard_B.label>
+  <RH_Corpo_Whiteboard_B.description>掛在垂直木架上的裝飾用白板，適用於公司房間。</RH_Corpo_Whiteboard_B.description>
+
+  <RH_Corpo_Brazier.label>公司火盆</RH_Corpo_Brazier.label>
+  <RH_Corpo_Brazier.description>用來生火的方形家具，會照亮周圍環境並產生熱量。</RH_Corpo_Brazier.description>
+  <RH_Corpo_Brazier_Blueprint_Install.label>公司火盆 (藍圖)</RH_Corpo_Brazier_Blueprint_Install.label>
+
+
+</LanguageData>

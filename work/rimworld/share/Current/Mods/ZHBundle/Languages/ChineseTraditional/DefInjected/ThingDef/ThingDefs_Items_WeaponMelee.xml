@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi spear -->
+  <VV_ViviSpear.label>薇薇長槍</VV_ViviSpear.label>
+  <!-- EN: a spear commonly used by vivis. Too small for ordinary humans, so only vivis can wield it.\n\nThe tip of the spear is coated with poison, which can intoxicate those it strikes. It possesses powerful impact, but it is difficult to handle. -->
+  <VV_ViviSpear.description>一種薇薇常用的長槍，對常人而言過小，只有薇薇才能使用它。\n\n槍尖涂有毒藥，會令目標中毒，這種毒非常生猛且難以處理。</VV_ViviSpear.description>
+  <!-- EN: shaft -->
+  <VV_ViviSpear.tools.shaft.label>槍柄</VV_ViviSpear.tools.shaft.label>
+  <!-- EN: point -->
+  <VV_ViviSpear.tools.point.label>槍尖</VV_ViviSpear.tools.point.label>
+  
+</LanguageData>

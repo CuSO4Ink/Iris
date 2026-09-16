@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+ 
+  <!-- EN: vacuum toilet -->
+  <ToiletSpacer.label>太空马桶</ToiletSpacer.label>
+  <!-- EN: Vacuum toilet that doesn't require water and jettisons all waste into space via sewage dump ports. -->
+  <ToiletSpacer.description>无需用水的真空式马桶,通过太空排污口可将所有废弃物排放至太空。</ToiletSpacer.description>
+  
+</LanguageData>

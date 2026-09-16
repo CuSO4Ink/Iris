@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: resilient spirit -->
+  <Rimpsyche_ResilientSpirit.stages.resilient_spirit.label>發奮圖強</Rimpsyche_ResilientSpirit.stages.resilient_spirit.label>
+  <!-- EN: I need to get it together. I can get through this. -->
+  <Rimpsyche_ResilientSpirit.stages.resilient_spirit.description>我得振作起來。我能度過難關。</Rimpsyche_ResilientSpirit.stages.resilient_spirit.description>
+  
+  <!-- EN: overwhelmed by shame -->
+  <Rimpsyche_ShameOverwhelmed.stages.overwhelmed_by_shame.label>無地自容</Rimpsyche_ShameOverwhelmed.stages.overwhelmed_by_shame.label>
+  <!-- EN: I was seen in a humiliating state. I'm so embarrassed I can't look anyone in the eye. -->
+  <Rimpsyche_ShameOverwhelmed.stages.overwhelmed_by_shame.description>我出醜的時候被人看到了。太不好意思了，真想找塊地鑽進去。</Rimpsyche_ShameOverwhelmed.stages.overwhelmed_by_shame.description>
+  
+</LanguageData>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 이종물질(x10) 보급상자 -->
+  <Miho_ExoticMatter_Box.label>美狐物資箱（異態秘質）</Miho_ExoticMatter_Box.label>
+  <!-- EN: 미호 이종물질(x10)이 든 보급상자 입니다. -->
+  <Miho_ExoticMatter_Box.description>裝有異態秘質（x10）的美狐物資箱。</Miho_ExoticMatter_Box.description>
+  
+  <!-- EN: 미호 대형 메카나이트 코어 보급상자 -->
+  <Miho_HeavyMechCore_Box.label>美狐物資箱（機械分子引擎）</Miho_HeavyMechCore_Box.label>
+  <!-- EN: 미호 대형 메카나이트가 든 보급상자 입니다. -->
+  <Miho_HeavyMechCore_Box.description>裝有機械分子引擎的美狐物資箱。</Miho_HeavyMechCore_Box.description>
+  
+  <!-- EN: 미호 유부초밥(x20) 보급상자 -->
+  <Miho_InariZushi_Box.label>美狐物資箱（特製豆皮壽司）</Miho_InariZushi_Box.label>
+  <!-- EN: 미호 유부초밥(x20)이 든 보급상자 입니다. -->
+  <Miho_InariZushi_Box.description>裝有特製豆皮壽司（x20）的美狐物資箱。</Miho_InariZushi_Box.description>
+  
+  <!-- EN: 태양화 탕약(x5) 보급상자 -->
+  <Miho_PositiveFlower_Juice_Box.label>美狐物資箱（朝花湯劑）</Miho_PositiveFlower_Juice_Box.label>
+  <!-- EN: 태양화 탕약(x5)이 든 보급상자 입니다. -->
+  <Miho_PositiveFlower_Juice_Box.description>裝有朝花湯劑（x5）的美狐物資箱。</Miho_PositiveFlower_Juice_Box.description>
+  
+  <!-- EN: 미호 태양화 담배(x25) 보급상자 -->
+  <Miho_PositiveFlower_Pipe_Box.label>美狐物資箱（曜陽煙）</Miho_PositiveFlower_Pipe_Box.label>
+  <!-- EN: 미호 태양화 담배(x25)가 든 보급상자 입니다. -->
+  <Miho_PositiveFlower_Pipe_Box.description>裝有曜陽煙（x25）的美狐物資箱。</Miho_PositiveFlower_Pipe_Box.description>
+  
+  <!-- EN: 초능력 증폭기 보급상자 -->
+  <Miho_PsychicAmplifier_Box.label>美狐物資箱（啟靈裝置）</Miho_PsychicAmplifier_Box.label>
+  <!-- EN: 초능력 증폭기가 든 보급상자 입니다. -->
+  <Miho_PsychicAmplifier_Box.description>裝有啟靈裝置的美狐物資箱。</Miho_PsychicAmplifier_Box.description>
+  
+  <!-- EN: 미호 태양화 가루(x500) 보급상자 -->
+  <Miho_RawPosFlower_Dust_Box.label>美狐物資箱（秘靈粉末）</Miho_RawPosFlower_Dust_Box.label>
+  <!-- EN: 미호 태양화 가루(x500)가 든 보급상자 입니다. -->
+  <Miho_RawPosFlower_Dust_Box.description>裝有秘靈粉末（x500）的美狐物資箱。</Miho_RawPosFlower_Dust_Box.description>
+  
+  <!-- EN: 미호 은화(x200) 보급상자 -->
+  <Miho_Silver_Box.label>美狐物資箱（白銀）</Miho_Silver_Box.label>
+  <!-- EN: 미호 은화(x200)가 든 보급상자 입니다. -->
+  <Miho_Silver_Box.description>裝有白銀（x200）的美狐物資箱。</Miho_Silver_Box.description>
+  
+</LanguageData>

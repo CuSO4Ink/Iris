@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="NepLandOnAnything.LandOnAnythingSettings">
+		<NepLOA_AllowedToSqishRoofs>True</NepLOA_AllowedToSqishRoofs>
+		<NepLOA_AllowedToLandInFog>True</NepLOA_AllowedToLandInFog>
+		<NepLOA_AllowedToLandOnThings>True</NepLOA_AllowedToLandOnThings>
+		<NepLOA_AllowedToLandOnAnyTerrain>True</NepLOA_AllowedToLandOnAnyTerrain>
+		<NepLOA_PatchShuttleLanding>True</NepLOA_PatchShuttleLanding>
+		<NepLOA_unblockableThrusters>True</NepLOA_unblockableThrusters>
+		<NepLOA_clearSpace>True</NepLOA_clearSpace>
+		<NepLOA_damageLimit>0.5</NepLOA_damageLimit>
+		<NepLOA_damageEnabled>True</NepLOA_damageEnabled>
+	</ModSettings>
+</SettingsBlock>

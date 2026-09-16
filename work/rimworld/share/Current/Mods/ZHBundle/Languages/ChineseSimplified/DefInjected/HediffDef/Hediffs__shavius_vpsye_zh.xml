@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: age sickness -->
+  <VPE_AgeSickness.label>老化病</VPE_AgeSickness.label>
+  <!-- EN: Age-related psychic sickness greatly reducing manipulation and consciousness. -->
+  <VPE_AgeSickness.description>灵能造成的老化相关的疾病，大量减少操作能力和意识。</VPE_AgeSickness.description>
+  
+  <!-- EN: animal shield -->
+  <VPE_AnimalOvershield.label>动物护盾</VPE_AnimalOvershield.label>
+  <!-- EN: An overshield that protects the animal from any ranged attacks. -->
+  <VPE_AnimalOvershield.description>覆盖整个动物的护盾，防御一切远程攻击。</VPE_AnimalOvershield.description>
+  
+  <!-- EN: bliss -->
+  <VPE_Bliss.label>极乐</VPE_Bliss.label>
+  <!-- EN: Waves of serenity emanate deep from within, bringing peace of mind and lowering consciousness. -->
+  <VPE_Bliss.description>由灵能自内心引发的快感，让心灵宁静并降低意识。</VPE_Bliss.description>
+  
+  <!-- EN: blizzard -->
+  <VPE_Blizzard.label>极寒风暴</VPE_Blizzard.label>
+  <!-- EN: A huge wind with extreme snow that lowers sight, manipulation and movement speed. -->
+  <VPE_Blizzard.description>寒风和大雪减少了视力，操作能力和移动速度。</VPE_Blizzard.description>
+  
+  <!-- EN: casting blizzard -->
+  <VPE_BlizzardSource.label>正在施放极寒风暴</VPE_BlizzardSource.label>
+  <!-- EN: This entity is casting blizzard. -->
+  <VPE_BlizzardSource.description>该实体正在施放极寒风暴。</VPE_BlizzardSource.description>
+  
+  <!-- EN: bodies consumed -->
+  <VPE_BodiesConsumed.label>已炼化尸体</VPE_BodiesConsumed.label>
+  <!-- EN: The amount of bodies that were consumed using the Consume Bodies psycast. Each body consumed increases a maximum neural heat by 1. -->
+  <VPE_BodiesConsumed.description>用尸体炼化能力所炼化的尸体数。每一个炼化的尸体会使心灵熵上限+1.</VPE_BodiesConsumed.description>
+  
+  <!-- EN: corpse talk -->
+  <VPE_CorpseTalk.label>通灵</VPE_CorpseTalk.label>
+  <!-- EN: Psychically-induced link with a spirit of a deceased individual. -->
+  <VPE_CorpseTalk.description>与一个死去之人的灵魂连接。</VPE_CorpseTalk.description>
+  
+  <!-- EN: darkvision -->
+  <VPE_Darkvision.label>夜视</VPE_Darkvision.label>
+  <!-- EN: Psychically-induced ability to see through the darkness and shadows. -->
+  <VPE_Darkvision.description>灵能赋予的能力，能看透黑暗和阴影。</VPE_Darkvision.description>
+  
+  <!-- EN: darkvision -->
+  <VPE_Darkvision_Display.label>夜视</VPE_Darkvision_Display.label>
+  <!-- EN: Psychically-induced night vision. -->
+  <VPE_Darkvision_Display.description>灵能赋予的夜视能力。</VPE_Darkvision_Display.description>
+  
+  <!-- EN: death shield -->
+  <VPE_DeathShield.label>拒死之盾</VPE_DeathShield.label>
+  <!-- EN: Psychically-induced immortality that lasts for one day. -->
+  <VPE_DeathShield.description>灵能赋予的不死能力，持续一天。</VPE_DeathShield.description>
+  
+  <!-- EN: Essence of -->
+  <VPE_Essence.label>生命契约者：</VPE_Essence.label>
+  <!-- EN: Psychically-split fragment of someone's personality imbued in this very being. -->
+  <VPE_Essence.description>用灵能分开的他人生命力暂存在这个动物身上。</VPE_Essence.description>
+  
+  <!-- EN: frost ray -->
+  <VPE_FrostRay.label>冻结射线</VPE_FrostRay.label>
+  <!-- EN: A heavily damaging and freezing ray of frost. -->
+  <VPE_FrostRay.description>一束威力强大的极寒射线。</VPE_FrostRay.description>
+  
+  <!-- EN: psychic vitality -->
+  <VPE_GainedVitality.label>窃得活力</VPE_GainedVitality.label>
+  <!-- EN: Psychically-induced vitality stolen from another person. -->
+  <VPE_GainedVitality.description>从他人身上窃取的生命力。</VPE_GainedVitality.description>
+  
+  <!-- EN: ghostwalk -->
+  <VPE_Ghostwalk.label>灵体行者</VPE_Ghostwalk.label>
+  <!-- EN: Psychically-induced matter phasing. -->
+  <VPE_Ghostwalk.description>灵能转化的虚体状态。</VPE_Ghostwalk.description>
+  
+  <!-- EN: group link -->
+  <VPE_GroupLink.label>心灵链接</VPE_GroupLink.label>
+  <!-- EN: Psychically-induced link between several entities. Any 'word of' psycast will resonate between all linked individuals. -->
+  <VPE_GroupLink.description>将不同实体连在一起的灵能链接，任何一人如果受到“XX之语”的影响都会将其共享给所有人</VPE_GroupLink.description>
+  
+  <!-- EN: hallucination -->
+  <VPE_Hallucination.label>幻术</VPE_Hallucination.label>
+  <!-- EN: Strong psychic suggestion that reshapes reality in the eyes of the affected individuals, making them perceive their every day life as that of a luxury. -->
+  <VPE_Hallucination.description>一个强大的心灵暗示，改变受影响者的三观，令其将每一天的日常都看作无比珍贵。</VPE_Hallucination.description>
+  
+  <!-- EN: haywire -->
+  <VPE_Haywire.label>智械干扰</VPE_Haywire.label>
+  <!-- EN: Psychically hacked programming that disrupts the IFF operations. -->
+  <VPE_Haywire.description>智能程序的敌我识别系统被灵能干扰。</VPE_Haywire.description>
+  
+  <!-- EN: hurricane -->
+  <VPE_Hurricane.label>骤雨飓风</VPE_Hurricane.label>
+  <!-- EN: A hurricane is causing difficulty moving and seeing. -->
+  <VPE_Hurricane.description>飓风使移动和视力受到影响。</VPE_Hurricane.description>
+  
+  <!-- EN: frozen solid -->
+  <VPE_IceBlock.label>冻得硬邦邦</VPE_IceBlock.label>
+  <!-- EN: This entity is completely frozen in a block of ice, and will not be able to move until it melts. -->
+  <VPE_IceBlock.description>该实体被彻底冻在冰内，在冰块融化前无法行动。</VPE_IceBlock.description>
+  
+  <!-- EN: ice shield -->
+  <VPE_IceShield.label>冰盾</VPE_IceShield.label>
+  <!-- EN: A psychic shield that protects from hypothermia and freezer enemies that interact with it. -->
+  <VPE_IceShield.description>一个能防护低温并冻结附近敌人的灵能护盾。</VPE_IceShield.description>
+  
+  <!-- EN: powering -->
+  <VPE_InfinitePower.label>供能</VPE_InfinitePower.label>
+  <!-- EN: Generating infinite electricity supply to a given structure. -->
+  <VPE_InfinitePower.description>正在给一个器械供给无限能源。</VPE_InfinitePower.description>
+  
+  <!-- EN: liferot -->
+  <VPE_Liferot.label>血肉腐化</VPE_Liferot.label>
+  <!-- EN: Psychically-induced mass necrosis, causing living and healthy limbs and organs to rot on the victim. -->
+  <VPE_Liferot.description>灵能造成的坏疽，使活体器官缓慢腐化。</VPE_Liferot.description>
+  
+  <!-- EN: psychic weakness -->
+  <VPE_LostVitality.label>被榨干</VPE_LostVitality.label>
+  <!-- EN: Psychically-induced weakness caused by vitality being stolen by another person. -->
+  <VPE_LostVitality.description>被他人用灵能盗取活力造成的虚弱。</VPE_LostVitality.description>
+  
+  <!-- EN: obscured -->
+  <VPE_Obscured.label>潜行</VPE_Obscured.label>
+  <!-- EN: Psychically-induced invisibility. -->
+  <VPE_Obscured.description>灵能赋予的隐身能力。</VPE_Obscured.description>
+  
+  <!-- EN: psychic productivity -->
+  <VPE_Productivity.label>心灵勤劳</VPE_Productivity.label>
+  <!-- EN: Psychically-induced improvement to work speed. -->
+  <VPE_Productivity.description>工作速度被灵能增强。</VPE_Productivity.description>
+  
+  <!-- EN: psychic protection -->
+  <VPE_Protection.label>心灵守护</VPE_Protection.label>
+  <!-- EN: Psychically-induced physical protection from incoming damage. -->
+  <VPE_Protection.description>灵能赋予的防御能力强化。</VPE_Protection.description>
+  
+  <!-- EN: psychic drone -->
+  <VPE_PsychicDrone.label>心灵噪音</VPE_PsychicDrone.label>
+  <!-- EN: A strong psychic force affecting every enemy humanlike in the area, making them feel more disturbed, terrified, and paranoid. -->
+  <VPE_PsychicDrone.description>强力的灵能让区域内所有人形单位陷入恐慌和急躁。</VPE_PsychicDrone.description>
+  
+  <!-- EN: psychic pain -->
+  <VPE_PsychicPain.label>心灵痛苦</VPE_PsychicPain.label>
+  <!-- EN: Psychically-induced extreme physical pain. -->
+  <VPE_PsychicPain.description>被灵能引发的剧痛。</VPE_PsychicPain.description>
+  
+  <!-- EN: psychic soothe -->
+  <VPE_PsychicSoothe.label>心灵抚慰</VPE_PsychicSoothe.label>
+  <!-- EN: Psychically-induced, self-satisfying perceptual distortions, giving a temporary mood boost. -->
+  <VPE_PsychicSoothe.description>知觉被灵能扭曲，暂时增加少许心情。</VPE_PsychicSoothe.description>
+  
+  <!-- EN: recharge -->
+  <VPE_Recharge.label>电力传输</VPE_Recharge.label>
+  <!-- EN: Electricity is being channeled to a nearby battery. -->
+  <VPE_Recharge.description>电力正在被输入附近的电池中。</VPE_Recharge.description>
+  
+  <!-- EN: rot -->
+  <VPE_Rot.label>腐烂</VPE_Rot.label>
+  <!-- EN: A rot. -->
+  <VPE_Rot.description>腐烂伤口。</VPE_Rot.description>
+  <!-- EN: Rotted away -->
+  <VPE_Rot.injuryProps.destroyedLabel>烂掉</VPE_Rot.injuryProps.destroyedLabel>
+  <!-- EN: Rotted away -->
+  <VPE_Rot.injuryProps.destroyedOutLabel>烂掉</VPE_Rot.injuryProps.destroyedOutLabel>
+  <!-- EN: a rot -->
+  <VPE_Rot.labelNoun>腐烂</VPE_Rot.labelNoun>
+  <!-- EN: {0} in the {1} -->
+  <VPE_Rot.labelNounPretty>{1}中的{0}</VPE_Rot.labelNounPretty>
+  
+  <!-- EN: sacrificed -->
+  <VPE_Sacrificed.label>被献祭</VPE_Sacrificed.label>
+  <!-- EN: Psychically-induced limb removal caused by a powerful psycast. This body part will not regrow under any circumstances, even after using powerful healing artifacts. -->
+  <VPE_Sacrificed.description>这个肢体在心灵能力的作用下被献祭了，无法通过任何手段重新长出。</VPE_Sacrificed.description>
+  
+  <!-- EN: shadowfocus -->
+  <VPE_Shadowfocus.label>暗影聚焦</VPE_Shadowfocus.label>
+  <!-- EN: Psychically-induced increase to psychic sensitivity based on the lack of light around the psycaster. -->
+  <VPE_Shadowfocus.description>被无光环境造成的心灵敏感度强化。</VPE_Shadowfocus.description>
+  
+  <!-- EN: smartbuzz -->
+  <VPE_Smartbuzz.label>聪慧暗示</VPE_Smartbuzz.label>
+  <!-- EN: Psychically-induced feelings of clarity and curiosity. This improves research speed as well as skill gain speed. -->
+  <VPE_Smartbuzz.description>灵能引发的理智与好学。提升研究速度和智识获取。</VPE_Smartbuzz.description>
+  
+  <!-- EN: vortex -->
+  <VPE_Vortex.label>电力漩涡</VPE_Vortex.label>
+  <!-- EN: An electirical vortex is causing difficulty moving. -->
+  <VPE_Vortex.description>电力漩涡导致行动困难。</VPE_Vortex.description>
+    
+  <!-- EN: Bloodfocus -->
+  <VPEH_Bloodfocus.label>浸血冥想</VPEH_Bloodfocus.label>
+  <!-- EN: Rapidly regenerating psyfocus at the cost of hemogen. -->
+  <VPEH_Bloodfocus.description>花费血原质快速获得精神力。</VPEH_Bloodfocus.description>
+  
+  <!-- EN: Bloodmist -->
+  <VPEH_Bloodmist.label>血雾</VPEH_Bloodmist.label>
+  <!-- EN: A special sanguophage particle is blocking the airways and causes intense vomiting. -->
+  <VPEH_Bloodmist.description>一种特殊的血液因子麻痹了气管，导致剧烈呕吐。</VPEH_Bloodmist.description>
+  
+  <!-- EN: blood rite -->
+  <VPEH_BloodRite.label>拜血祭仪</VPEH_BloodRite.label>
+  <!-- EN: Psychic sensitivity is amplified by the current hemogen level. -->
+  <VPEH_BloodRite.description>基于血原质水平增强心灵敏感度。</VPEH_BloodRite.description>
+
+  <!-- EN: Brain leech -->
+  <VPEP_BrainLeech.label>附脑蛊</VPEP_BrainLeech.label>
+  <!-- EN: A brain parasite that leeches consciousness of the victim and gives a fraction of that consciousness to the psycaster that cast it. -->
+  <VPEP_BrainLeech.description>一个心灵能力造成的蛊虫正在将宿主的部分意识转移给它的施放者。</VPEP_BrainLeech.description>
+  
+  <!-- EN: Leeching -->
+  <VPEP_Leeching.label>蛊虫滋养</VPEP_Leeching.label>
+  <!-- EN: A psychic consciousness boost provided by the brain leech on another person. -->
+  <VPEP_Leeching.description>一个对他人种下的附脑蛊正在强化自己的意识。</VPEP_Leeching.description>
+  
+  <!-- EN: Puppet -->
+  <VPEP_Puppet.label>心偶</VPEP_Puppet.label>
+  <!-- EN: This individual is a puppet. They inherit their backstories and traits from their puppetmaster, however they have no needs other than food and rest. They have lowered consiousness and have their experience gain greatly reduced. They will enter the same mental state as their puppeteer. -->
+  <VPEP_Puppet.description>这个人是个心偶。心偶会继承操偶师主人的背景故事和特质，除了基础的食物和休息外没有其它需求。心偶的意识固定偏低，获得的经验也很少。他们的精神状态会与主人同步。</VPEP_Puppet.description>
+  
+  <!-- EN: Puppeteer -->
+  <VPEP_Puppeteer.label>操偶师</VPEP_Puppeteer.label>
+  <!-- EN: This individual is a puppeteer and uses psychic influence to control puppets. Puppets share their experience gain with the puppeteer. If the puppeteer dies, a psychic shockwave will knock all puppets into paralytic abasia. -->
+  <VPEP_Puppeteer.description>这是个能用心灵能量操控傀儡的操偶师。心偶获得的经验同样会提供给操偶师本人。操偶师死亡时释放的心灵冲击会让所有自己的心偶陷入麻痹/</VPEP_Puppeteer.description>
+  
+  <!-- EN: subjugation -->
+  <VPEP_Subjugation.label>叛逆之印</VPEP_Subjugation.label>
+  <!-- EN: A psychic indoctrination that reduces consciousness, manipulation and breathing of the subject until they reach a breaking point and join your colony. -->
+  <VPEP_Subjugation.description>一个灵能烙印，会降低意识，操作和呼吸能力直到心灵崩溃并最终加入你的殖民地。</VPEP_Subjugation.description>
+  <!-- EN: minor -->
+  <VPEP_Subjugation.stages.minor.label>轻度</VPEP_Subjugation.stages.minor.label>
+  <!-- EN: major -->
+  <VPEP_Subjugation.stages.major.label>重度</VPEP_Subjugation.stages.major.label>
+  <!-- EN: extreme -->
+  <VPEP_Subjugation.stages.extreme.label>极度</VPEP_Subjugation.stages.extreme.label>
+  
+</LanguageData>

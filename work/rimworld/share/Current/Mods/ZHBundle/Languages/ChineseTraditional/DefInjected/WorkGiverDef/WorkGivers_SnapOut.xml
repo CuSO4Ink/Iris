@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: calm down another pawn -->
+  <SnapOut_CalmPawnDownWorkgiver.label>安撫夥伴</SnapOut_CalmPawnDownWorkgiver.label>
+  <!-- EN: calming -->
+  <SnapOut_CalmPawnDownWorkgiver.gerund>安撫中</SnapOut_CalmPawnDownWorkgiver.gerund>
+  <!-- EN: calm -->
+  <SnapOut_CalmPawnDownWorkgiver.verb>安撫</SnapOut_CalmPawnDownWorkgiver.verb>
+  
+</LanguageData>

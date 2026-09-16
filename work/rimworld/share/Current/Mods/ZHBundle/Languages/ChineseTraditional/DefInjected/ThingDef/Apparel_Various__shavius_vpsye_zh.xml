@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: prestige plate armor -->
+  <VPE_Apparel_PlateArmorPrestige.label>聖裝板甲</VPE_Apparel_PlateArmorPrestige.label>
+  <!-- EN: Overlapping solid plates of armor covering the entire body from neck to feet.\n\nExpensive and beautiful, prestige armor like this is usually made for those of high status. Embedded eltex threads also enhance the wearer's psychic sensitivity. -->
+  <VPE_Apparel_PlateArmorPrestige.description>一件堅固的重型板甲，從頸部到腳部都用厚實的材料層層堆疊覆蓋。\n\n這種昂貴且華麗的聖裝裝甲通常是為地位顯赫的人而製造。鐫刻的靈質秘紋可以增強使用者的心靈能力。</VPE_Apparel_PlateArmorPrestige.description>
+  
+  <!-- EN: psyring -->
+  <VPE_Psyring.label>智環</VPE_Psyring.label>
+  <!-- EN: An eltex ring created by a skilled technomancer. It holds the knowledge of one particular psycast, and can be used by other psycasters to cast it. -->
+  <VPE_Psyring.description>奧技工用靈質打造的環。它儲存着關於施放單個心靈能力的知識，靈能者佩戴後可以自由施放它。</VPE_Psyring.description>
+  
+</LanguageData>

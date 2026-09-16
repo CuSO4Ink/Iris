@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: abhorrent -->
+  <HAR_EatingAliens_Abhorrent.label>厌恶</HAR_EatingAliens_Abhorrent.label>
+  <!-- EN: Eating the corpse of another sentient species, even in times of starvation, is unthinkably grotesque. -->
+  <HAR_EatingAliens_Abhorrent.description>即便自己饥饿难忍，吃其他知性物种的尸体也是令人深恶痛绝的行为。</HAR_EatingAliens_Abhorrent.description>
+  
+  <!-- EN: acceptable -->
+  <HAR_EatingAliens_Acceptable.label>认可</HAR_EatingAliens_Acceptable.label>
+  <!-- EN: Meat from an alien species is no different from the meat of a muffalo. -->
+  <HAR_EatingAliens_Acceptable.description>外星种族的肉和雪牛肉没什么区别。</HAR_EatingAliens_Acceptable.description>
+  
+  <!-- EN: disapproved -->
+  <HAR_EatingAliens_Disapproved.label>反感</HAR_EatingAliens_Disapproved.label>
+  <!-- EN: Eating the corpse of another sentient species is something that should only be done under dire circumstances. -->
+  <HAR_EatingAliens_Disapproved.description>只有在迫不得已的状况下，我们才能去吃其他知性物种的尸体。</HAR_EatingAliens_Disapproved.description>
+  
+  <!-- EN: preferred -->
+  <HAR_EatingAliens_Preferred.label>喜好</HAR_EatingAliens_Preferred.label>
+  <!-- EN: Alien meat is chalk full of important nutrients and calorically dense, there is little reason not to gravitate towards it. -->
+  <HAR_EatingAliens_Preferred.description>外星种族肉营养丰富，蛋白质更是牛肉的六倍！我们没理由不去享用它们。</HAR_EatingAliens_Preferred.description>
+  <!-- EN: No alien meat for several days -->
+  <HAR_EatingAliens_Preferred.comps.1.description>{HUMANMEATREQUIREDINTERVAL}天没有外星种族肉</HAR_EatingAliens_Preferred.comps.1.description>
+  
+  <!-- EN: required -->
+  <HAR_EatingAliens_RequiredStrong.label>渴望</HAR_EatingAliens_RequiredStrong.label>
+  <!-- EN: Alien meat is preferable to the meat of any insentient creature, in fact, regular consumption should be encouraged. -->
+  <HAR_EatingAliens_RequiredStrong.description>外星种族肉比那些无知性动物的肉更好获得。我们应该经常享用它们。</HAR_EatingAliens_RequiredStrong.description>
+  <!-- EN: No alien meat for {HUMANMEATREQUIREDINTERVAL} days -->
+  <HAR_EatingAliens_RequiredStrong.comps.3.description>{HUMANMEATREQUIREDINTERVAL}天没有外星种族肉</HAR_EatingAliens_RequiredStrong.comps.3.description>
+  
+</LanguageData>

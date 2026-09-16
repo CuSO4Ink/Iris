@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Acid -->
+
+  <DF_VolatileAcid_Burn.label>酸性灼伤</DF_VolatileAcid_Burn.label>
+  <DF_VolatileAcid_Burn.description>酸性灼伤。</DF_VolatileAcid_Burn.description>
+  <DF_VolatileAcid_Burn.comps.0.labelTendedWell>已包扎</DF_VolatileAcid_Burn.comps.0.labelTendedWell>
+  <DF_VolatileAcid_Burn.comps.0.labelTendedWellInner>照料</DF_VolatileAcid_Burn.comps.0.labelTendedWellInner>
+  <DF_VolatileAcid_Burn.comps.0.labelSolidTendedWell>照料</DF_VolatileAcid_Burn.comps.0.labelSolidTendedWell>
+  <DF_VolatileAcid_Burn.comps.HediffComp_GetsPermanent.permanentLabel>烧伤疤痕</DF_VolatileAcid_Burn.comps.HediffComp_GetsPermanent.permanentLabel>
+  <DF_VolatileAcid_Burn.injuryProps.destroyedLabel>烧毁</DF_VolatileAcid_Burn.injuryProps.destroyedLabel>
+  <DF_VolatileAcid_Burn.injuryProps.destroyedOutLabel>烧毁</DF_VolatileAcid_Burn.injuryProps.destroyedOutLabel>
+  <DF_VolatileAcid_Burn.labelNoun>酸性灼伤</DF_VolatileAcid_Burn.labelNoun>
+
+
+</LanguageData>

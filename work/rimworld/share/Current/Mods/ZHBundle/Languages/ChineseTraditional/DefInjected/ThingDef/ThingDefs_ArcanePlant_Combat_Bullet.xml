@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: corn -->
+  <VV_Bullet_Corn.label>玉米</VV_Bullet_Corn.label>
+  
+  <!-- EN: corn kernel -->
+  <VV_Bullet_CornKernel.label>玉米粒</VV_Bullet_CornKernel.label>
+  
+  <!-- EN: pea -->
+  <VV_Bullet_Pea.label>豌豆子彈</VV_Bullet_Pea.label>
+  
+  <!-- EN: high-velocity pea -->
+  <VV_Bullet_PeaFast.label>豌豆子彈</VV_Bullet_PeaFast.label>
+  
+  <!-- EN: fire pea -->
+  <VV_Bullet_PeaFlame.label>燃燒豌豆</VV_Bullet_PeaFlame.label>
+  
+  <!-- EN: ice pea -->
+  <VV_Bullet_PeaIce.label>冰凍豌豆</VV_Bullet_PeaIce.label>
+  
+  <!-- EN: electric pea -->
+  <VV_Bullet_PeaLightning.label>閃電豌豆</VV_Bullet_PeaLightning.label>
+  
+</LanguageData>

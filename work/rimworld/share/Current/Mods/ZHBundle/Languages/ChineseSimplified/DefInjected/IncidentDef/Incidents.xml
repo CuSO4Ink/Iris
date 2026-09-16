@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- VOID Drone -->
+
+  <ChickenVOID_DroneCustomizable.label>V.O.I.D.心灵低语</ChickenVOID_DroneCustomizable.label>
+  <ChickenVOID_DroneCustomizable.letterLabel>V.O.I.D.</ChickenVOID_DroneCustomizable.letterLabel>
+
+  <ChickenVOID_SolarFlare.label>V.O.I.D.耀斑</ChickenVOID_SolarFlare.label>
+  <ChickenVOID_SolarFlare.letterLabel>V.O.I.D.</ChickenVOID_SolarFlare.letterLabel>
+
+  <ChickenVOID_ToxicFalloutCustomizable.label>V.O.I.D.有毒尘埃</ChickenVOID_ToxicFalloutCustomizable.label>
+  <ChickenVOID_ToxicFalloutCustomizable.letterLabel>V.O.I.D.</ChickenVOID_ToxicFalloutCustomizable.letterLabel>
+
+  <VOID_DefoliatorShipPartCrash.label>N-4转换室</VOID_DefoliatorShipPartCrash.label>
+  <VOID_DefoliatorShipPartCrash.letterText>一个神秘的转换室在附近坠毁了。\n\n从内部中蔓延的有毒烟雾会杀死附近的植物。\n\n从中可以隐约听到令人沮丧的哭泣声和嚎叫的回声。\n\n也许你应该远离它。</VOID_DefoliatorShipPartCrash.letterText>
+  <VOID_DefoliatorShipPartCrash.letterLabel>转换室</VOID_DefoliatorShipPartCrash.letterLabel>
+
+
+  <!-- VL -->
+
+  <VOID_VolatileLeaper_ShipPartCrash.label>N-4无定室</VOID_VolatileLeaper_ShipPartCrash.label>
+  <VOID_VolatileLeaper_ShipPartCrash.letterText>一个神秘的转换室在附近坠毁了。\n\n从内部中蔓延的有毒烟雾会杀死附近的植物。\n\n从中可以隐约听到令人沮丧的哭泣声和嚎叫的回声。\n\n也许你应该远离它。</VOID_VolatileLeaper_ShipPartCrash.letterText>
+  <VOID_VolatileLeaper_ShipPartCrash.letterLabel>无定室</VOID_VolatileLeaper_ShipPartCrash.letterLabel>
+
+
+  <!-- BT Chamber -->
+
+  <VOID_BlackTitan_ShipPartCrash.label>N-4再生室</VOID_BlackTitan_ShipPartCrash.label>
+  <VOID_BlackTitan_ShipPartCrash.letterText>一个神秘的球形室在附近坠毁了。\n\n从内部中蔓延的有毒烟雾会杀死附近的植物。\n\n从中可以隐约听到令人不安的砰砰声和不祥的呼吸声。\n\n也许你应该远离它。</VOID_BlackTitan_ShipPartCrash.letterText>
+  <VOID_BlackTitan_ShipPartCrash.letterLabel>再生室</VOID_BlackTitan_ShipPartCrash.letterLabel>
+
+
+  <!-- DH Chamber -->
+
+  <VOID_DevilHound_ShipPartCrash.label>N-4恶魔室</VOID_DevilHound_ShipPartCrash.label>
+  <VOID_DevilHound_ShipPartCrash.letterText>一个神秘的毒气室在附近坠毁了。\n\n里面溢出了仍在生长的肿瘤、红色的皮毛、以及巨大而尖锐的骨头突出。\n\n从内部中蔓延的有毒烟雾会杀死附近的植物。\n\n似乎有什么在里面咆哮，目击者感觉有什么在窥探他们。\n\n逐渐爬上脊椎的凉意警示你，最好别管这东西。</VOID_DevilHound_ShipPartCrash.letterText>
+  <VOID_DevilHound_ShipPartCrash.letterLabel>恶魔室</VOID_DevilHound_ShipPartCrash.letterLabel>
+
+
+  <!-- Planetkiller -->
+
+  <Void_PlanetKiller.label>משמיד עולמות</Void_PlanetKiller.label>
+  <Void_PlanetKiller.letterLabel>行星杀手武器</Void_PlanetKiller.letterLabel>
+
+  <Void_Stalker.label>潜行者</Void_Stalker.label>
+
+  <VOID_N4Manhunter_RedZone.label>N-4徘徊</VOID_N4Manhunter_RedZone.label>
+  <VOID_N4Manhunter_RedZone.letterText>Nerotonin-4型“赤区”突变体在附近出现了，它们似乎非常好斗而且乐于狩猎。</VOID_N4Manhunter_RedZone.letterText>
+  <VOID_N4Manhunter_RedZone.letterLabel>N-4徘徊</VOID_N4Manhunter_RedZone.letterLabel>
+
+  <VOID_N4Manhunter_DeathRow.label>N-4徘徊</VOID_N4Manhunter_DeathRow.label>
+  <VOID_N4Manhunter_DeathRow.letterText>Nerotonin-4型“死区”突变体在附近出现了，它们似乎非常好斗而且乐于狩猎。</VOID_N4Manhunter_DeathRow.letterText>
+  <VOID_N4Manhunter_DeathRow.letterLabel>N-4徘徊</VOID_N4Manhunter_DeathRow.letterLabel>
+
+  <Void_Contact.label>V.O.I.D.初次联络</Void_Contact.label>
+
+
+</LanguageData>

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Trinity implant -->
+
+  <InstallDF_Trinity_Implant.label>安装三位一体植入物</InstallDF_Trinity_Implant.label>
+  <InstallDF_Trinity_Implant.description>安装三位一体植入物。</InstallDF_Trinity_Implant.description>
+  <InstallDF_Trinity_Implant.jobString>正在安装三位一体植入物。</InstallDF_Trinity_Implant.jobString>
+
+  <RemoveDF_Trinity_Implant.label>移除三位一体植入物</RemoveDF_Trinity_Implant.label>
+  <RemoveDF_Trinity_Implant.description>移除三位一体植入物。</RemoveDF_Trinity_Implant.description>
+  <RemoveDF_Trinity_Implant.jobString>正在移除三位一体植入物。</RemoveDF_Trinity_Implant.jobString>
+
+
+  <!-- ghastly implant -->
+
+  <InstallDF_Ghastly_Implant.label>安装恐怖植入物</InstallDF_Ghastly_Implant.label>
+  <InstallDF_Ghastly_Implant.description>安装恐怖植入物。</InstallDF_Ghastly_Implant.description>
+  <InstallDF_Ghastly_Implant.jobString>正在安装恐怖植入物。</InstallDF_Ghastly_Implant.jobString>
+
+  <RemoveDF_Ghastly_Implant.label>移除恐怖植入物</RemoveDF_Ghastly_Implant.label>
+  <RemoveDF_Ghastly_Implant.description>移除恐怖植入物。</RemoveDF_Ghastly_Implant.description>
+  <RemoveDF_Ghastly_Implant.jobString>正在移除恐怖植入物。</RemoveDF_Ghastly_Implant.jobString>
+
+
+  <!-- 迅捷植入物 -->
+
+  <InstallDF_Celerity_Implant.label>安装迅捷植入物</InstallDF_Celerity_Implant.label>
+  <InstallDF_Celerity_Implant.description>安装迅捷植入物。</InstallDF_Celerity_Implant.description>
+  <InstallDF_Celerity_Implant.jobString>正在安装迅捷植入物。</InstallDF_Celerity_Implant.jobString>
+
+  <RemoveDF_Celerity_Implant.label>移除迅捷植入物</RemoveDF_Celerity_Implant.label>
+  <RemoveDF_Celerity_Implant.description>移除迅捷植入物。</RemoveDF_Celerity_Implant.description>
+  <RemoveDF_Celerity_Implant.jobString>正在移除迅捷植入物。</RemoveDF_Celerity_Implant.jobString>
+
+
+  <!-- scrutiny implant -->
+
+  <InstallDF_Scrutiny_Implant.label>安装审查植入物</InstallDF_Scrutiny_Implant.label>
+  <InstallDF_Scrutiny_Implant.description>安装审查植入物。</InstallDF_Scrutiny_Implant.description>
+  <InstallDF_Scrutiny_Implant.jobString>正在安装审查植入物。</InstallDF_Scrutiny_Implant.jobString>
+
+  <RemoveDF_Scrutiny_Implant.label>移除审查植入物</RemoveDF_Scrutiny_Implant.label>
+  <RemoveDF_Scrutiny_Implant.description>移除审查植入物。</RemoveDF_Scrutiny_Implant.description>
+  <RemoveDF_Scrutiny_Implant.jobString>正在移除审查植入物。</RemoveDF_Scrutiny_Implant.jobString>
+
+
+  <!-- versatility implant -->
+
+  <InstallDF_Versatility_Implant.label>安装多功能植入物</InstallDF_Versatility_Implant.label>
+  <InstallDF_Versatility_Implant.description>安装多功能植入物。</InstallDF_Versatility_Implant.description>
+  <InstallDF_Versatility_Implant.jobString>正在安装多功能植入物。</InstallDF_Versatility_Implant.jobString>
+
+  <RemoveDF_Versatility_Implant.label>移除多功能植入物</RemoveDF_Versatility_Implant.label>
+  <RemoveDF_Versatility_Implant.description>移除多功能植入物。</RemoveDF_Versatility_Implant.description>
+  <RemoveDF_Versatility_Implant.jobString>正在移除多功能植入物。</RemoveDF_Versatility_Implant.jobString>
+
+
+  <!-- mastery implant -->
+
+  <InstallDF_Mastery_Implant.label>安装驾驭植入物</InstallDF_Mastery_Implant.label>
+  <InstallDF_Mastery_Implant.description>安装驾驭植入物。</InstallDF_Mastery_Implant.description>
+  <InstallDF_Mastery_Implant.jobString>正在安装驾驭植入物。</InstallDF_Mastery_Implant.jobString>
+
+  <RemoveDF_Mastery_Implant.label>移除驾驭植入物</RemoveDF_Mastery_Implant.label>
+  <RemoveDF_Mastery_Implant.description>移除驾驭植入物。</RemoveDF_Mastery_Implant.description>
+  <RemoveDF_Mastery_Implant.jobString>正在移除驾驭植入物。</RemoveDF_Mastery_Implant.jobString>
+
+
+  <!-- calamity implant -->
+
+  <InstallDF_Calamity_Implant.label>安装灾厄植入物</InstallDF_Calamity_Implant.label>
+  <InstallDF_Calamity_Implant.description>安装灾厄植入物。</InstallDF_Calamity_Implant.description>
+  <InstallDF_Calamity_Implant.jobString>正在安装灾厄植入物。</InstallDF_Calamity_Implant.jobString>
+
+  <RemoveDF_Calamity_Implant.label>移除灾厄植入物</RemoveDF_Calamity_Implant.label>
+  <RemoveDF_Calamity_Implant.description>移除灾厄植入物。</RemoveDF_Calamity_Implant.description>
+  <RemoveDF_Calamity_Implant.jobString>正在移除灾厄植入物。</RemoveDF_Calamity_Implant.jobString>
+
+
+  <!-- lethality implant -->
+
+  <InstallDF_Lethality_Implant.label>安装致命植入物</InstallDF_Lethality_Implant.label>
+  <InstallDF_Lethality_Implant.description>安装致命植入物。</InstallDF_Lethality_Implant.description>
+  <InstallDF_Lethality_Implant.jobString>正在安装致命植入物。</InstallDF_Lethality_Implant.jobString>
+
+  <RemoveDF_Lethality_Implant.label>移除致命植入物</RemoveDF_Lethality_Implant.label>
+  <RemoveDF_Lethality_Implant.description>移除致命植入物。</RemoveDF_Lethality_Implant.description>
+  <RemoveDF_Lethality_Implant.jobString>正在移除致命植入物。</RemoveDF_Lethality_Implant.jobString>
+
+
+  <!-- mortality implant -->
+
+  <InstallDF_Mortality_Implant.label>安装死亡植入物</InstallDF_Mortality_Implant.label>
+  <InstallDF_Mortality_Implant.description>安装死亡植入物。</InstallDF_Mortality_Implant.description>
+  <InstallDF_Mortality_Implant.jobString>正在安装死亡植入物。</InstallDF_Mortality_Implant.jobString>
+
+  <RemoveDF_Mortality_Implant.label>移除死亡植入物</RemoveDF_Mortality_Implant.label>
+  <RemoveDF_Mortality_Implant.description>移除死亡植入物。</RemoveDF_Mortality_Implant.description>
+  <RemoveDF_Mortality_Implant.jobString>正在移除死亡植入物。</RemoveDF_Mortality_Implant.jobString>
+
+
+  <!-- prosperity implant -->
+
+  <InstallDF_Prosperity_Implant.label>安装昌盛植入物</InstallDF_Prosperity_Implant.label>
+  <InstallDF_Prosperity_Implant.description>安装昌盛植入物。</InstallDF_Prosperity_Implant.description>
+  <InstallDF_Prosperity_Implant.jobString>正在安装昌盛植入物。</InstallDF_Prosperity_Implant.jobString>
+
+  <RemoveDF_Prosperity_Implant.label>移除昌盛植入物</RemoveDF_Prosperity_Implant.label>
+  <RemoveDF_Prosperity_Implant.description>移除昌盛植入物。</RemoveDF_Prosperity_Implant.description>
+  <RemoveDF_Prosperity_Implant.jobString>正在移除昌盛植入物。</RemoveDF_Prosperity_Implant.jobString>
+
+
+</LanguageData>

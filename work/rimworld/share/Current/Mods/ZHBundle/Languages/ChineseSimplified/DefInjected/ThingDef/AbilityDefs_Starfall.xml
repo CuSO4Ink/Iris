@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: starfall -->
+  <Miho_Ability_Starfall_Proj.label>陨星</Miho_Ability_Starfall_Proj.label>
+  
+  <!-- EN: starfall -->
+  <Miho_Ability_Starfall_ProjSub.label>陨星</Miho_Ability_Starfall_ProjSub.label>
+  
+  <!-- EN: fire arrow -->
+  <Miho_Fireball_Adept_Proj.label>秘灵之箭</Miho_Fireball_Adept_Proj.label>
+  
+  <!-- EN: fire arrow -->
+  <Miho_Fireball_Adept_ProjSub.label>秘灵之箭</Miho_Fireball_Adept_ProjSub.label>
+  
+  <!-- EN: Mote -->
+  <Miho_Mote_SKYIncoming_Ready.label>特效</Miho_Mote_SKYIncoming_Ready.label>
+  
+  <!-- EN: starfall -->
+  <Miho_SKYIncoming.label>陨星</Miho_SKYIncoming.label>
+  
+  <!-- EN: Miho_SKYIncoming_Ready -->
+  <Miho_SKYIncoming_Ready.label>陨星</Miho_SKYIncoming_Ready.label>
+  
+  <!-- EN: starfall -->
+  <Miho_SKYIncomingPolaris.label>陨星</Miho_SKYIncomingPolaris.label>
+  
+  <!-- EN: starfall -->
+  <Miho_SKYIncomingSmall.label>陨星</Miho_SKYIncomingSmall.label>
+  
+  <!-- EN: Miho_SKYIncomingSmall_Ready -->
+  <Miho_SKYIncomingSmall_Ready.label>陨星</Miho_SKYIncomingSmall_Ready.label>
+  
+  <!-- EN: fire arrow -->
+  <Miho_SKYIncomingSmallArrow.label>秘灵之箭</Miho_SKYIncomingSmallArrow.label>
+  
+  <!-- EN: polaris fireball -->
+  <MihoPolaris_Proj.label>破甲陨星</MihoPolaris_Proj.label>
+  
+</LanguageData>

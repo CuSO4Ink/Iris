@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: [PAWN_nameDef] had an ordinary childhood in the nest. -->
+  <VV_ViviHiveChild.description>[PAWN_nameDef]在蜂巢中度过了一个平平无奇的童年。</VV_ViviHiveChild.description>
+  <!-- EN: vivi hive child -->
+  <VV_ViviHiveChild.title>薇薇蜂巢儿童</VV_ViviHiveChild.title>
+  <!-- EN: hive child -->
+  <VV_ViviHiveChild.titleShort>蜂巢儿童</VV_ViviHiveChild.titleShort>
+  
+</LanguageData>

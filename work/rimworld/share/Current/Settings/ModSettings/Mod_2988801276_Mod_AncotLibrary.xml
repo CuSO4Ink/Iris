@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="AncotLibrary.AncotLibrarySettings">
+		<color_Awful>RGBA(0.660, 0.220, 0.220, 1.000)</color_Awful>
+		<color_Poor>RGBA(0.580, 0.440, 0.340, 1.000)</color_Poor>
+		<color_Normal>RGBA(0.750, 0.750, 0.750, 1.000)</color_Normal>
+		<color_Good>RGBA(0.710, 0.750, 0.320, 1.000)</color_Good>
+		<color_Excellent>RGBA(0.370, 0.750, 0.330, 1.000)</color_Excellent>
+		<color_Masterwork>RGBA(0.000, 1.000, 1.000, 1.000)</color_Masterwork>
+		<color_Legendary>RGBA(0.690, 0.320, 0.790, 0.880)</color_Legendary>
+		<turretSystem_AimingIndicator>True</turretSystem_AimingIndicator>
+		<turretSystem_IndicatorOnlyDrawSelected>True</turretSystem_IndicatorOnlyDrawSelected>
+		<turretSystem_IndicatorOnlyDrawSelected_NonPlayer>False</turretSystem_IndicatorOnlyDrawSelected_NonPlayer>
+		<turretSystem_IndicatorOnlyDrawForced>True</turretSystem_IndicatorOnlyDrawForced>
+		<turretSystem_AimingIndicator_NonPlayer>False</turretSystem_AimingIndicator_NonPlayer>
+		<turretSystem_IndicatorColor_Player>RGBA(1.000, 0.700, 0.700, 1.000)</turretSystem_IndicatorColor_Player>
+		<turretSystem_IndicatorColor_NonPlayer>RGBA(1.000, 0.500, 0.500, 1.000)</turretSystem_IndicatorColor_NonPlayer>
+		<weaponExtraRender_Draw>True</weaponExtraRender_Draw>
+		<apparelPolicy_GenerateAtStart>True</apparelPolicy_GenerateAtStart>
+		<apparelPolicy_AutoSetForColonist>True</apparelPolicy_AutoSetForColonist>
+		<drone_TabAvailable>ButtonAndMenu</drone_TabAvailable>
+	</ModSettings>
+</SettingsBlock>

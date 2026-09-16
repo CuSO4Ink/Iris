@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bullet -->
+  <VV_Bullet_Lava.label>射</VV_Bullet_Lava.label>
+  <!-- EN: {0} has been shot to death. -->
+  <VV_Bullet_Lava.deathMessage> {0} 被射殺了。</VV_Bullet_Lava.deathMessage>
+  
+  <!-- EN: extinguish -->
+  <VV_ExtinguishWithWater.label>消滅</VV_ExtinguishWithWater.label>
+  <!-- EN: {0} has been killed. -->
+  <VV_ExtinguishWithWater.deathMessage> {0} 被殺了。</VV_ExtinguishWithWater.deathMessage>
+  
+  <!-- EN: frostbite -->
+  <VV_Frostbite.label>霜凍</VV_Frostbite.label>
+  <!-- EN: {0} has succumbed to frostbite. -->
+  <VV_Frostbite.deathMessage> {0} 死于霜凍。</VV_Frostbite.deathMessage>
+  
+  <!-- EN: stab -->
+  <VV_RangedToxicStab.label>刺</VV_RangedToxicStab.label>
+  <!-- EN: {0} has been stabbed to death. -->
+  <VV_RangedToxicStab.deathMessage> {0} 被刺死了。</VV_RangedToxicStab.deathMessage>
+  
+  <!-- EN: arrow -->
+  <VV_ToxicArrow.label>射</VV_ToxicArrow.label>
+  <!-- EN: {0} has been shot to death by an arrow. -->
+  <VV_ToxicArrow.deathMessage>  {0} 被射殺了。</VV_ToxicArrow.deathMessage>
+  
+  <!-- EN: stab -->
+  <VV_ToxicStab.label>刺</VV_ToxicStab.label>
+  <!-- EN: {0} has been stabbed to death. -->
+  <VV_ToxicStab.deathMessage> {0} 被刺死了。</VV_ToxicStab.deathMessage>
+  
+</LanguageData>

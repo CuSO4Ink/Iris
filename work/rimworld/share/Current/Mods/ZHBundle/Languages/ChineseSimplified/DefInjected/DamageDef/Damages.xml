@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: destruction -->
+  <Damage_Destruction.label>销毁</Damage_Destruction.label>
+  <!-- EN: {0} has been killed. -->
+  <Damage_Destruction.deathMessage>{0}已被杀死。</Damage_Destruction.deathMessage>
+  
+</LanguageData>

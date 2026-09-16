@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="CommonSense.Settings">
+		<clean_before_work>False</clean_before_work>
+		<drugs_use_potential_mood>False</drugs_use_potential_mood>
+		<adv_cleaning>False</adv_cleaning>
+		<gui_manual_unload>False</gui_manual_unload>
+		<pick_proper_amount>False</pick_proper_amount>
+		<social_relax_economy>False</social_relax_economy>
+		<adv_respect_capacity>False</adv_respect_capacity>
+		<optimal_patching>True</optimal_patching>
+	</ModSettings>
+</SettingsBlock>

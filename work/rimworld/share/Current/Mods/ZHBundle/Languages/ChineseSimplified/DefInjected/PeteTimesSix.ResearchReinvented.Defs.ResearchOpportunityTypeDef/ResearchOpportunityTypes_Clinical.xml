@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: medicine efficacy trial -->
+  <AnalyseMedicine.header_Direct>药效试验</AnalyseMedicine.header_Direct>
+  <!-- EN: Determine efficacy of {0} as applied during surgeries and wound treatment.\n\nAffected by (after surgery and tending):\nSurgeon research speed stat\nPatient (if awake) research speed stat -->
+  <AnalyseMedicine.shortDesc_Direct>在手术与伤口处置中实际使用 {0}，以确定其疗效。\n\n受影响（术后/包扎后）：\n主刀研究速度\n病人（清醒时）研究速度</AnalyseMedicine.shortDesc_Direct>
+
+  <!-- EN: experimental surgery -->
+  <PrototypeSurgery.header_Direct>实验性手术</PrototypeSurgery.header_Direct>
+  <!-- EN: Attempt an experimental surgical procedure: {0}.\n\nAffected by (after surgery):\nSurgeon research speed stat -->
+  <PrototypeSurgery.shortDesc_Direct>尝试一台实验性手术：{0}。\n\n受影响（术后）：\n主刀研究速度</PrototypeSurgery.shortDesc_Direct>
+
+  <!-- EN: drug trial -->
+  <TrialDrug.header_Direct>药物试验</TrialDrug.header_Direct>
+  <!-- EN: Observe the effects of {0} by administering it to living subjects or self-trials.\n\nAffected by (on drug application):\nDoctor research speed stat\nPatient (if awake) research speed stat -->
+  <TrialDrug.shortDesc_Direct>将 {0} 施用于活体对象或自行试用，观察其效果。\n\n受影响（给药时）：\n医生研究速度\n病人（清醒时）研究速度</TrialDrug.shortDesc_Direct>
+
+</LanguageData>

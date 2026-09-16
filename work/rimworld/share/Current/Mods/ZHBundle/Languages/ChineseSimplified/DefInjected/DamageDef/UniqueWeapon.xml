@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: plasma -->
+  <MihoFieryPlasma.label>等离子灼伤</MihoFieryPlasma.label>
+  <!-- EN: {0} has been melted. -->
+  <MihoFieryPlasma.deathMessage>{0}被熔解了。</MihoFieryPlasma.deathMessage>
+  
+  <!-- EN: plasma -->
+  <MihoMeltyPlasma.label>等离子灼伤</MihoMeltyPlasma.label>
+  <!-- EN: {0} has been melted. -->
+  <MihoMeltyPlasma.deathMessage>{0}被熔解了。</MihoMeltyPlasma.deathMessage>
+  
+</LanguageData>

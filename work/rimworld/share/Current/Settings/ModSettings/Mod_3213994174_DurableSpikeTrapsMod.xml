@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="DurableSpikeTraps.DurableSpikeTrapSettings">
+		<damageMultiplier>5</damageMultiplier>
+	</ModSettings>
+</SettingsBlock>

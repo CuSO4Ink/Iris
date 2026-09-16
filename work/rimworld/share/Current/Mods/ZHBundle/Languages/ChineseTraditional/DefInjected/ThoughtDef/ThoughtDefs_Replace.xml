@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: my daughter {0} died -->
+  <VV_MyDaughterDied.stages.my_daughter_died.label>我的女兒 {0} 死了</VV_MyDaughterDied.stages.my_daughter_died.label>
+  <!-- EN: My daughter is dead. My own flesh and blood... -->
+  <VV_MyDaughterDied.stages.my_daughter_died.description>我的女兒死了。我的親骨肉……</VV_MyDaughterDied.stages.my_daughter_died.description>
+  
+  <!-- EN: my daughter {0} lost -->
+  <VV_MyDaughterLost.stages.my_daughter_lost.label>我的女兒 {0} 丟了</VV_MyDaughterLost.stages.my_daughter_lost.label>
+  <!-- EN: My daughter has gone lost. I hope she will get back to us someday. -->
+  <VV_MyDaughterLost.stages.my_daughter_lost.description>我的女兒丟了。我希望她能回來……</VV_MyDaughterLost.stages.my_daughter_lost.description>
+  
+  <!-- EN: my friend {0} died -->
+  <VV_PawnWithGoodOpinionDied.stages.my_friend_died.label>我的朋友 {0} 死了</VV_PawnWithGoodOpinionDied.stages.my_friend_died.label>
+  <!-- EN: Such a wonderful person, gone forever. The universe gets darker every day. -->
+  <VV_PawnWithGoodOpinionDied.stages.my_friend_died.description>多好的人啊，就這么死了。我感到暗淡無光。</VV_PawnWithGoodOpinionDied.stages.my_friend_died.description>
+  
+  <!-- EN: my friend {0} lost -->
+  <VV_PawnWithGoodOpinionLost.stages.my_friend_lost.label>我的朋友 {0} 丟了</VV_PawnWithGoodOpinionLost.stages.my_friend_lost.label>
+  <!-- EN: Such a wonderful person, lost. The universe gets darker every day. -->
+  <VV_PawnWithGoodOpinionLost.stages.my_friend_lost.description>多好的人啊，就這么丟了。我感到暗淡無光。</VV_PawnWithGoodOpinionLost.stages.my_friend_lost.description>
+  
+  <!-- EN: awful barracks -->
+  <VV_SleptInBarracks.stages.awful_barracks.label>糟糕的營房</VV_SleptInBarracks.stages.awful_barracks.label>
+  <!-- EN: I had to sleep in an awful barracks. Not only was it a horrible room, but I also had to share it! -->
+  <VV_SleptInBarracks.stages.awful_barracks.description>我休息的地方不但可怕，還要和別人睡在同一間屋子里！</VV_SleptInBarracks.stages.awful_barracks.description>
+  <!-- EN: dull barracks -->
+  <VV_SleptInBarracks.stages.dull_barracks.label>無聊的營房</VV_SleptInBarracks.stages.dull_barracks.label>
+  <!-- EN: I slept in a dull barracks. -->
+  <VV_SleptInBarracks.stages.dull_barracks.description>我休息的地方很無聊。</VV_SleptInBarracks.stages.dull_barracks.description>
+  <!-- EN: mediocre barracks -->
+  <VV_SleptInBarracks.stages.mediocre_barracks.label>平庸的營房</VV_SleptInBarracks.stages.mediocre_barracks.label>
+  <!-- EN: I slept in a mediocre barracks. -->
+  <VV_SleptInBarracks.stages.mediocre_barracks.description>我休息的地方很平庸。</VV_SleptInBarracks.stages.mediocre_barracks.description>
+  <!-- EN: decent barracks -->
+  <VV_SleptInBarracks.stages.decent_barracks.label>體面的營房</VV_SleptInBarracks.stages.decent_barracks.label>
+  <!-- EN: I slept in a decent barracks. -->
+  <VV_SleptInBarracks.stages.decent_barracks.description>我休息的地方很體面。</VV_SleptInBarracks.stages.decent_barracks.description>
+  <!-- EN: slightly impressive barracks -->
+  <VV_SleptInBarracks.stages.slightly_impressive_barracks.label>令人小有印象的營房</VV_SleptInBarracks.stages.slightly_impressive_barracks.label>
+  <!-- EN: I got to sleep in a pretty nice barracks. -->
+  <VV_SleptInBarracks.stages.slightly_impressive_barracks.description>我休息的地方令人小有印象。</VV_SleptInBarracks.stages.slightly_impressive_barracks.description>
+  <!-- EN: impressive barracks -->
+  <VV_SleptInBarracks.stages.impressive_barracks.label>印象有些深刻的營房</VV_SleptInBarracks.stages.impressive_barracks.label>
+  <!-- EN: I got to sleep in an impressive barracks. -->
+  <VV_SleptInBarracks.stages.impressive_barracks.description>我休息的地方令人印象有些深刻。</VV_SleptInBarracks.stages.impressive_barracks.description>
+  <!-- EN: very impressive barracks -->
+  <VV_SleptInBarracks.stages.very_impressive_barracks.label>印象非常深刻的營房</VV_SleptInBarracks.stages.very_impressive_barracks.label>
+  <!-- EN: I slept in a very impressive barracks. -->
+  <VV_SleptInBarracks.stages.very_impressive_barracks.description>我休息的地方令人印象非常深刻。</VV_SleptInBarracks.stages.very_impressive_barracks.description>
+  <!-- EN: extremely impressive barracks -->
+  <VV_SleptInBarracks.stages.extremely_impressive_barracks.label>印象極度深刻的營房</VV_SleptInBarracks.stages.extremely_impressive_barracks.label>
+  <!-- EN: I slept in an extremely impressive barracks. -->
+  <VV_SleptInBarracks.stages.extremely_impressive_barracks.description>我休息的地方令人印象極度深刻。</VV_SleptInBarracks.stages.extremely_impressive_barracks.description>
+  <!-- EN: unbelievably impressive barracks -->
+  <VV_SleptInBarracks.stages.unbelievably_impressive_barracks.label>難以置信的營房</VV_SleptInBarracks.stages.unbelievably_impressive_barracks.label>
+  <!-- EN: The barracks I slept in was so impressive that I don't even mind sharing it. -->
+  <VV_SleptInBarracks.stages.unbelievably_impressive_barracks.description>我休息的地方令人難以置信以至于我并不介意分享它。</VV_SleptInBarracks.stages.unbelievably_impressive_barracks.description>
+  <!-- EN: wondrously impressive barracks -->
+  <VV_SleptInBarracks.stages.wondrously_impressive_barracks.label>奇跡非凡的營房</VV_SleptInBarracks.stages.wondrously_impressive_barracks.label>
+  <!-- EN: I slept in a barracks that was simply wondrous. Even sharing such a space makes me happy. -->
+  <VV_SleptInBarracks.stages.wondrously_impressive_barracks.description>我休息的地方奇跡非凡，即使分享它也令我十分開心。</VV_SleptInBarracks.stages.wondrously_impressive_barracks.description>
+  
+</LanguageData>

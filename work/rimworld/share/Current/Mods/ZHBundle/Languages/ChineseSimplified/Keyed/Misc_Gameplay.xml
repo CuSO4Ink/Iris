@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_PlumsDrying>梅子正在干燥</VCE_PlumsDrying>
+		<VCE_PlumsCurrentlyFrozen>这些梅子已经冷冻，不会变成梅子干</VCE_PlumsCurrentlyFrozen>
+		<VCE_PlumsCurrentlyRefrigerated>这些梅子已经冷藏，干燥速度放缓（在{0}内变成梅子干）</VCE_PlumsCurrentlyRefrigerated>
+		<VCE_PlumsDryingCorrectly>这些梅子正在以正常速度干燥（在{0}内变成梅子干）</VCE_PlumsDryingCorrectly>
+
+		<!-- EN: Aquatic Growing Zone -->
+		<VCE_AquaticGrowingZone>水生种植区</VCE_AquaticGrowingZone>
+		<!-- EN: Create a zone where your colonists will try to grow aquatic plants. Aquatic plants ignore terrain fertility but take a very long time to sow and harvest.\n\nThese zones can't be placed on oceanic (salty) water. -->
+		<VCE_AquaticGrowingZoneDesc>创建一片可供殖民者种植某种水生作物的区域。水生作物不受肥沃度影响，但需要花费更多的时间来播种与收割。\n\n不能设置在海水上。</VCE_AquaticGrowingZoneDesc>
+		
+		<!-- EN: Sand Growing Zone -->
+		<VCE_SandyGrowingZone>沙地种植区</VCE_SandyGrowingZone>
+		<!-- EN: Create a zone where your colonists will try to grow sandy terrain plants. Sand plants ignore terrain fertility but take a very long time to sow and harvest. -->
+		<VCE_SandyGrowingZoneDesc>创建一片可供殖民者种植沙地作物的区域。沙地作物不受肥沃度影响，但需要花费更多的时间来播种与收割。</VCE_SandyGrowingZoneDesc>
+		
+		<!-- EN: Flower Garden Zone -->
+		<VCE_FlowerGardenGrowingZone>花园区</VCE_FlowerGardenGrowingZone>
+		<!-- EN: Create a zone where your colonists will try to grow decorative flowers. -->
+		<VCE_FlowerGardenGrowingZoneDesc>创建一片可供殖民者种植装饰性花卉的区域。</VCE_FlowerGardenGrowingZoneDesc>
+		
+		<!-- EN: Not in equatorial region (in this planet, below {0} latitude). Growing normally. -->
+		<VCE_NotInEquator>不在热带（需要在当前星球的纬度{0}以内）。生长速度正常。</VCE_NotInEquator>
+		<!-- EN: In equatorial region, growing 30% faster. -->
+		<VCE_InEquator>位于热带，生长速度增加30%。</VCE_InEquator>
+		
+		<!-- EN: This plant needs to grow in shade: outside, but under a roof. -->
+		<VCE_NeedsShade>该作物需要种植在户外的屋顶下。</VCE_NeedsShade>
+		
+		<!-- EN: Apiary found nearby -->
+		<VCE_Pollinated>周围有蜂箱</VCE_Pollinated>
+		<!-- EN: No apiary found in a 6 tiles radius (calculated on sowing) -->
+		<VCE_NotPollinated>半径6格内没有蜂箱（只在播种时计算）</VCE_NotPollinated>
+
+		<!-- EN: Carrots planted nearby: {0}/100 -->
+		<VCE_CarrotsNearby>附近的胡萝卜：{0}/100</VCE_CarrotsNearby>
+		<!-- EN: Green beans planted nearby: {0}/100 -->
+		<VCE_BeansNearby>附近的豆角：{0}/100</VCE_BeansNearby>
+		
+		<!-- EN: Growth reduced due to non-rocky terrain -->
+		<VCE_StuntedGrowthFertility>在非沙硕地形种植，生长缓慢</VCE_StuntedGrowthFertility>
+		<!-- EN: Growth impossible due to too fertile terrain -->
+		<VCE_StoppedGrowthFertility>土地过于肥沃，无法生长</VCE_StoppedGrowthFertility>
+		
+		<!-- EN: A body of water nearby is impeding this plant's growth -->
+		<VCE_WaterNearby>附近的水域减缓了该作物的生长</VCE_WaterNearby>
+		<!-- EN: Lack of a body of water nearby is impeding this plant's growth -->
+		<VCE_NoWaterNearby>附近水域过少，减缓了该作物的生长</VCE_NoWaterNearby>
+		
+		<!-- EN: Too far away from the sea, no extra growth bonus -->
+		<VCE_NoSeaTilesNearby>理海水太远，无生长加成</VCE_NoSeaTilesNearby>
+		<!-- EN: {0} sea tiles nearby, providing {0}% growth bonus -->
+		<VCE_SeaTilesNearby>附近有{0}格海水，增加{0}%的生长速度</VCE_SeaTilesNearby>
+
+    <!-- EN: Mushroom Growing Zone -->
+    <VPE_MushroomGrowingZone>蘑菇种植区</VPE_MushroomGrowingZone>
+    <!-- EN: Create a zone where your colonists will try to grow mushrooms. Bear in mind that terrain will still need the fertility required by the mushroom to be sown. -->
+    <VPE_MushroomGrowingZoneDesc>创建一片可供殖民者种植蘑菇作物的区域。注意一下蘑菇依旧有各自的肥沃度需求。</VPE_MushroomGrowingZoneDesc>
+	</LanguageData>

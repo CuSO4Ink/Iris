@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="ilyvion.LaboratoryMod.IlyvionsLaboratorySettings">
+		<updateNotificationsMarkedAsSeen />
+		<updateNotificationsCutoffDate>639246816000000000</updateNotificationsCutoffDate>
+		<hasInitializedUpdateCutoff>True</hasInitializedUpdateCutoff>
+	</ModSettings>
+</SettingsBlock>

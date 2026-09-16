@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Genetics Expanded</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<success>Always</success>
+			<operations>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="GR_WeirdMilk"]/value</xpath>
+                    <value>
+                        <value>古怪</value>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="GR_MechaMilk"]/value</xpath>
+                    <value>
+                        <value>机械</value>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="GR_BearffaloMilk"]/value</xpath>
+                    <value>
+                        <value>雪牛熊</value>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="GR_ThrumffaloMilk"]/value</xpath>
+                    <value>
+                        <value>雪牛敲击兽</value>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="GR_MuffalochickenMilk"]/value</xpath>
+                    <value>
+                        <value>鸡雪牛</value>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="GR_ChickenffaloMilk"]/value</xpath>
+                    <value>
+                        <value>雪牛鸡</value>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="GR_MuffalobearMilk"]/value</xpath>
+                    <value>
+                        <value>熊雪牛</value>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="GR_WolffaloMilk"]/value</xpath>
+                    <value>
+                        <value>毛</value>
+                    </value>
+                </li>
+                <li Class="PatchOperationReplace"> 
+                    <xpath>/Defs/ThingDef[defName="VCE_Cheese"]/comps/li[@Class="VEF.Things.CompProperties_LabelByIngredients"]/overrides/li[key="GR_RatMilk"]/value</xpath>
+                    <value>
+                        <value>雪牛鼠</value>
+                    </value>
+                </li>
+			</operations>
+		</match>
+	</Operation>
+</Patch>

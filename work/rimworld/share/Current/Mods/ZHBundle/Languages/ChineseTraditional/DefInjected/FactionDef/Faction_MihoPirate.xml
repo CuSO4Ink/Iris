@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 패권주의자 -->
+  <Miho_Faction_Supremacist.label>美狐霸權組織</Miho_Faction_Supremacist.label>
+  <!-- EN: 나르시즘적 성향을 지닌 여우 군사 단체입니다. 인류는 미개하니 자기들의 애완동물이 되야한다 주장합니다. -->
+  <Miho_Faction_Supremacist.description>將“美狐族至上”這一觀念奉為圭臬的霸權主義軍事組織。這些美狐族認為人類都是些未經開化的雜魚，也理應成為受他們支配的寵物。</Miho_Faction_Supremacist.description>
+  <!-- EN: 대장 -->
+  <Miho_Faction_Supremacist.leaderTitle>將軍</Miho_Faction_Supremacist.leaderTitle>
+  <!-- EN: {0} from {1} are attacking your {2}. -->
+  <Miho_Faction_Supremacist.messageDefendersAttacking>來自{1}的{0}正在攻擊你的{2}。</Miho_Faction_Supremacist.messageDefendersAttacking>
+  <!-- EN: 미호 -->
+  <Miho_Faction_Supremacist.pawnSingular>美狐族</Miho_Faction_Supremacist.pawnSingular>
+  <!-- EN: 미호들 -->
+  <Miho_Faction_Supremacist.pawnsPlural>美狐族</Miho_Faction_Supremacist.pawnsPlural>
+  
+</LanguageData>

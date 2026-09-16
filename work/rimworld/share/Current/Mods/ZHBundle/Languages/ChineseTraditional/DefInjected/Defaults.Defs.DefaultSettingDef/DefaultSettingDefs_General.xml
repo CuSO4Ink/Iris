@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <ShowDisabledInSearch.label>show disabled settings in searches</ShowDisabledInSearch.label> -->
+  <ShowDisabledInSearch.label>在搜索中顯示禁用設定</ShowDisabledInSearch.label>
+  <!-- <HideSetAsDefault.label>hide "save as default" buttons</HideSetAsDefault.label> -->
+  <HideSetAsDefault.label>隱藏“另存為默認”按鈕</HideSetAsDefault.label>
+  <!-- <HideLoadDefault.label>hide "load default" buttons</HideLoadDefault.label> -->
+  <HideLoadDefault.label>隱藏“加載默認”按鈕</HideLoadDefault.label>
+  <!-- <SettingsBackupOptions.label>default settings backup</SettingsBackupOptions.label> -->
+  <SettingsBackupOptions.label>默認備份設定</SettingsBackupOptions.label>
+
+
+</LanguageData>

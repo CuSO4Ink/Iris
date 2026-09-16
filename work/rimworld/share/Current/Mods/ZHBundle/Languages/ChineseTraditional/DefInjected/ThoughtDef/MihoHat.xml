@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 격려 받음 -->
+  <Miho_Command_MentalCommand_Hediff_Thought.stages.0.label>受到鼓舞</Miho_Command_MentalCommand_Hediff_Thought.stages.0.label>
+  <!-- EN: 완장을 찬 정착민이 이렇게 말해주니까 난 힘낼 수 있어. -->
+  <Miho_Command_MentalCommand_Hediff_Thought.stages.0.description>既然那位戴著袖章的同伴這麽說了，我也該加把勁才行！</Miho_Command_MentalCommand_Hediff_Thought.stages.0.description>
+  
+  <!-- EN: 오만해짐 -->
+  <Miho_EltexCaptain_Thought.stages.0.label>趾高氣揚（軍官帽）</Miho_EltexCaptain_Thought.stages.0.label>
+  <!-- EN: 이 옷이 안보여? 난 더 많은 특권이 필요해! -->
+  <Miho_EltexCaptain_Thought.stages.0.description>瞧瞧這身帥氣的製服！我也應該享有與它相配的特權才對！</Miho_EltexCaptain_Thought.stages.0.description>
+  
+</LanguageData>

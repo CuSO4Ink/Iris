@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: aggressive heat dump -->
+  <VPE_AggressiveHeatDump.label>攻性熵转移</VPE_AggressiveHeatDump.label>
+  <!-- EN: Instantly dump all of your neural heat into a target, causing them to explode with an area of effect relative to the heat lost and the target’s psychic sensitivity. A good declaration of war. -->
+  <VPE_AggressiveHeatDump.description>立刻把你的所有心灵熵都倾注到目标身上，目标会产生一次爆炸，范围取决于你转移的心灵熵。十分凶猛的战争行为。</VPE_AggressiveHeatDump.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_AggressiveHeatDump.jobReportString>使用能力：{0}</VPE_AggressiveHeatDump.jobReportString>
+  <!-- EN: 攻性熵转移 -->
+  <VPE_AggressiveHeatDump.verbProperties.label>攻击性熵转移</VPE_AggressiveHeatDump.verbProperties.label>
+  
+  <!-- EN: berserk -->
+  <VPE_Berserk.label>激怒</VPE_Berserk.label>
+  <!-- EN: Induce a berserker psychosis in the target's mind, causing them to attack anyone nearby. They regain rationality after 15 seconds, depending on their psychic sensitivity. -->
+  <VPE_Berserk.description>将一个怒不可遏的想法植入到目标心里，这会让他们尝试攻击附近任何人。目标在至少15秒后会恢复正常，具体时间取决于目标的心灵敏感度。</VPE_Berserk.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Berserk.jobReportString>使用能力：{0}</VPE_Berserk.jobReportString>
+  <!-- EN: 激怒 -->
+  <VPE_Berserk.verbProperties.label>激怒</VPE_Berserk.verbProperties.label>
+  
+  <!-- EN: berskerk pulse -->
+  <VPE_BerserkPulse.label>狂暴脉冲</VPE_BerserkPulse.label>
+  <!-- EN: Generate an overwhelming rush of undirected rage in everyone near the target point. Considered an overt act of aggression and lasts several seconds. -->
+  <VPE_BerserkPulse.description>在目标点周围的每个人身上产生一股无法抑制的狂怒。使用该能力是公开的侵略行为，会持续数秒。</VPE_BerserkPulse.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_BerserkPulse.jobReportString>使用能力：{0}</VPE_BerserkPulse.jobReportString>
+  <!-- EN: 狂暴脉冲 -->
+  <VPE_BerserkPulse.verbProperties.label>狂暴脉冲</VPE_BerserkPulse.verbProperties.label>
+  
+  <!-- EN: burden -->
+  <VPE_Burden.label>重负</VPE_Burden.label>
+  <!-- EN: Slow the target for a short time by suppressing motor activity in the brain. Considered a hostile action and affected by the target’s psychic sensitivity. -->
+  <VPE_Burden.description>通过抑制大脑的运动中枢，在短时间内减慢目标的行动能力。被视作敌对行为，效果取决于目标的心灵敏感度。</VPE_Burden.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Burden.jobReportString>使用能力：{0}</VPE_Burden.jobReportString>
+  <!-- EN: 重负 -->
+  <VPE_Burden.verbProperties.label>重负</VPE_Burden.verbProperties.label>
+  
+  <!-- EN: neural heat detonation -->
+  <VPE_NeuralHeatDetonation.label>心熵爆破</VPE_NeuralHeatDetonation.label>
+  <!-- EN: Efficiently but indiscriminately dumps all of the caster’s neural heat into an explosion away from themselves, the size being both relative to the heat lost and their psychic sensitivity. -->
+  <VPE_NeuralHeatDetonation.description>将施放者所有的心灵熵转移到远处并引发爆炸，范围取决于你转移的心灵熵。</VPE_NeuralHeatDetonation.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_NeuralHeatDetonation.jobReportString>使用能力：{0}</VPE_NeuralHeatDetonation.jobReportString>
+  <!-- EN: 心熵爆破 -->
+  <VPE_NeuralHeatDetonation.verbProperties.label>心熵爆破</VPE_NeuralHeatDetonation.verbProperties.label>
+  
+  <!-- EN: neural heat dump -->
+  <VPE_NeuralHeatDump.label>熵转移</VPE_NeuralHeatDump.label>
+  <!-- EN: Instantly dump all your neural heat into a conscious ally. As a side effect, the target will fall into a debilitating, harmless coma for about a day. The target must actively accept the psychic invasion, so only conscious allies can be targeted. -->
+  <VPE_NeuralHeatDump.description>立刻把你的所有心灵熵都倾注到一个友方目标身上。作为副作用，目标会陷入一个大约持续一天的昏迷中。目标必须主动接受精神入侵，所以只有清醒的盟友才能成为目标。</VPE_NeuralHeatDump.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_NeuralHeatDump.jobReportString>使用能力：{0}</VPE_NeuralHeatDump.jobReportString>
+  <!-- EN: 熵转移 -->
+  <VPE_NeuralHeatDump.verbProperties.label>熵转移</VPE_NeuralHeatDump.verbProperties.label>
+  
+  <!-- EN: neuroquake -->
+  <VPE_Neuroquake.label>神经震颤</VPE_Neuroquake.label>
+  <!-- EN: Find a discontinuity in the psychic field and unfold it, releasing a massive amount of psychic energy. Every creature in range but outside of the safe inner circle will be driven violently insane. Casting this takes 12 seconds of meditation, and afterwards, the caster will go into a five-day psychic coma. The disturbing neuroquake echoes will inflict pain on everyone for many kilometers around, causing diplomatic consequences with all factions. -->
+  <VPE_Neuroquake.description>展开精神域场中不连续的地方，释放出大量的精神能量。在安全的内圈之外的每一个生物都会被猛烈的心灵脉冲逼疯。施放这个能力需要12秒的冥想，之后，施放者将进入五天的精神昏迷。令人不安的神经震荡回声将给周围数公里内的人带来痛苦，并且对所有派系产生外交影响。</VPE_Neuroquake.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Neuroquake.jobReportString>使用能力：{0}</VPE_Neuroquake.jobReportString>
+  <!-- EN: If you use neuroquake, everyone in this region will feel the neuroquake echo, you will lose goodwill with every non-hostile faction.\n\nNeuroquake takes 12 seconds to cast, and cannot be interrupted. When complete, the caster will fall into a psychic coma for 5 days.\n\nEveryone in range except those in a small circle around the caster will be affected.\n\nDo you really want to cast neuroquake? -->
+  <VPE_Neuroquake.modExtensions.0.message>如果你使用神经震颤，这个地区的所有人都会感受到“神经震颤”的回响，你将失去与所有非敌对派系的部分好感。\n\n神经震颤需要12秒的释放时间，并且不能被打断。完成后，施放者也会进入心灵休克数天。\n\n地图上除了施放者周围一个小范围的人之外，其他人都会受到影响。\n\n你真的要释放神经震颤吗？</VPE_Neuroquake.modExtensions.0.message>
+  <!-- EN: 神经震颤 -->
+  <VPE_Neuroquake.verbProperties.label>神经震颤</VPE_Neuroquake.verbProperties.label>
+  
+  <!-- EN: psychic drone -->
+  <VPE_PsychicDrone.label>心灵噪音</VPE_PsychicDrone.label>
+  <!-- EN: Creates a massive psychic drone aura around the caster tuned to hostiles, frequently driving them insane until they overcome the break. Duration scales with the caster’s psychic sensitivity. -->
+  <VPE_PsychicDrone.description>在施放者的周围构建一个心灵噪音的光环，范围内的所有敌方单位会持续受到精神上的压力直到他们精神崩溃。持续时间取决于施放者的心灵敏感度。</VPE_PsychicDrone.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_PsychicDrone.jobReportString>使用能力：{0}</VPE_PsychicDrone.jobReportString>
+  <!-- EN: 心灵噪音 -->
+  <VPE_PsychicDrone.verbProperties.label>心灵噪音</VPE_PsychicDrone.verbProperties.label>
+  
+  <!-- EN: psychic shock -->
+  <VPE_PsychicShock.label>心灵冲击</VPE_PsychicShock.label>
+  <!-- EN: Psychically shocks the target's mind with chaotic images, blocking coherent perception and dropping them into a state of psychic shock. There is a risk of brain damage and is overtly hostile. -->
+  <VPE_PsychicShock.description>用混乱的影像冲击目标的大脑，扰乱其感知，使其进入心灵冲击状态一段时间。有很高几率导致大脑损伤。</VPE_PsychicShock.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_PsychicShock.jobReportString>使用能力：{0}</VPE_PsychicShock.jobReportString>
+  <!-- EN: 心灵冲击 -->
+  <VPE_PsychicShock.verbProperties.label>心灵冲击</VPE_PsychicShock.verbProperties.label>
+  
+  <!-- EN: stun -->
+  <VPE_Stun.label>麻痹</VPE_Stun.label>
+  <!-- EN: Momentarily disrupts motor function in the target's brain, preventing any movement. This lasts for a few seconds and is considered a hostile action. -->
+  <VPE_Stun.description>瞬间扰乱目标大脑的运动中枢，使其麻痹无法行动。</VPE_Stun.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Stun.jobReportString>使用能力：{0}</VPE_Stun.jobReportString>
+  <!-- EN: 麻痹 -->
+  <VPE_Stun.verbProperties.label>麻痹</VPE_Stun.verbProperties.label>
+  
+</LanguageData>

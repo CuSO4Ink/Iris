@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- voidtech eye -->
+
+  <RH2_VOIDArchotechEye.label>Voidtech仿生眼</RH2_VOIDArchotechEye.label>
+  <RH2_VOIDArchotechEye.description>一個Voidtech製造的眼睛，在偷來的原始版本上略有改進，可以識別包括無線電波、紅外線、可見光、X射線和伽馬射線在內的多數電磁輻射。其敏銳的視覺識別度甚至可以在20米外辨別字跡。它可以像手電筒一樣發射各種波長的輻射以進行輔助判斷，同時內置的AI可以進行輔助成像並突出重點。它的內部構造對Voidtech以外的人來說是個謎。仿生部分的外觀和感覺與自然部分完全相同。</RH2_VOIDArchotechEye.description>
+
+
+  <!-- voidtech arm -->
+
+  <RH2_VOIDArchotechArm.label>Voidtech仿生臂</RH2_VOIDArchotechArm.label>
+  <RH2_VOIDArchotechArm.description>一種Voidtech製造的仿生臂，在偷來的原始版本上略有改進，強大到可以摧毀硬木，但又精細到能在一粒米的空間寫下十四行詩，它看上去像是自然的手臂，但卻比玻璃鋼還難以摧毀。即使它受到傷害，它也會隨著時間的推移自我修復。它的內部構造對Voidtech以外的人來說是個謎。仿生部分的外觀和感覺與自然部分完全相同。</RH2_VOIDArchotechArm.description>
+
+
+  <!-- voidtech leg -->
+
+  <RH2_VOIDArchotechLeg.label>Voidtech仿生腿</RH2_VOIDArchotechLeg.label>
+  <RH2_VOIDArchotechLeg.description>一支Voidtech製造的仿生腿，在偷來的原始版本上略有改進，相比現代的仿生腿就如同藝術品一般，它看上去就像一條自然的腿，但卻比玻璃鋼更堅固，跑得比汽車還快，即使受到傷害也能飛快地自我修復。它的內部構造對Voidtech以外的人來說是個謎。仿生部分的外觀和感覺與自然部分完全相同。</RH2_VOIDArchotechLeg.description>
+
+
+</LanguageData>

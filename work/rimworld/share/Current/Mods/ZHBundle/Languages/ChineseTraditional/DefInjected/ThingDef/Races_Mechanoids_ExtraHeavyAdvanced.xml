@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 보병지원 다각 중전차 -->
+  <Miho_Mech_Balbari.label>“勇悍犬”步兵支援無人機</Miho_Mech_Balbari.label>
+  <!-- EN: 전투에 쓰이는 발발이급 다각 중전차 입니다. -->
+  <Miho_Mech_Balbari.description>配備有13.7mm機砲和護盾發生器的“勇悍犬”級重型步兵支援無人機。除了能夠為協同作戰的步兵提供援助外，還可以勝任物資搬運工作。\n\n【額外能力I】：機械煙霧\n\n從隱藏的通風口釋放出壓縮煙霧。煙霧會降低穿過它射來的任何砲彈的精準度，並防止被砲塔精確鎖定。\n\n【額外能力II】：反機械導彈\n\n向目標點處發射一枚反機械族等離子導彈。</Miho_Mech_Balbari.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_Balbari.tools.front_left_leg.label>左前腿</Miho_Mech_Balbari.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_Balbari.tools.front_right_leg.label>右前腿</Miho_Mech_Balbari.tools.front_right_leg.label>
+  
+  <!-- EN: plasma AM missile -->
+  <Miho_MechATMissile_Proj.label>反機械族等離子導彈</Miho_MechATMissile_Proj.label>
+  
+  <!-- EN: 미호 다각전차용 기관포 -->
+  <Miho_MechWeapon_HeavyAutoCannon.label>無人機機砲</Miho_MechWeapon_HeavyAutoCannon.label>
+  <!-- EN: 13.7mm탄 호치키스 탄을 사용하는 기관포를 감싼 포탑입니다. 포탑 상부에 중-MAT도 장착되어 있습니다. -->
+  <Miho_MechWeapon_HeavyAutoCannon.description>為“勇悍犬”級步兵支援無人機設計的13.7mm機砲。額外搭載有反機械導彈發射器。</Miho_MechWeapon_HeavyAutoCannon.description>
+  <!-- EN: missile charges -->
+  <Miho_MechWeapon_HeavyAutoCannon.comps.CompEquippableAbilityReloadable.chargeNoun>導彈</Miho_MechWeapon_HeavyAutoCannon.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Miho_MechWeapon_HeavyAutoCannon.comps.CompEquippableAbilityReloadable.cooldownGerund>冷卻中</Miho_MechWeapon_HeavyAutoCannon.comps.CompEquippableAbilityReloadable.cooldownGerund>
+  <!-- EN: barrel -->
+  <Miho_MechWeapon_HeavyAutoCannon.tools.barrel.label>砲管</Miho_MechWeapon_HeavyAutoCannon.tools.barrel.label>
+  <!-- EN: 미호 다각전차용 기관포 -->
+  <Miho_MechWeapon_HeavyAutoCannon.verbs.Verb_Shoot.label>無人機機砲</Miho_MechWeapon_HeavyAutoCannon.verbs.Verb_Shoot.label>
+  
+  <!-- EN: HMG bullet -->
+  <Miho_MechWeapon_HeavyAutoCannon_Proj.label>機砲彈</Miho_MechWeapon_HeavyAutoCannon_Proj.label>
+  
+</LanguageData>

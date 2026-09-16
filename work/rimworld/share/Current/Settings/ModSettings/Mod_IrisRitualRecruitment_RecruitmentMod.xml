@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="IrisRitualRecruitment.RecruitSettings">
+		<allowedRaces>
+			<li>Kiiro_Race</li>
+			<li>Alien_Unicorn</li>
+			<li>Wolfein_Race</li>
+			<li>Mugirl</li>
+			<li>Axolotl</li>
+			<li>Ratkin</li>
+			<li>Dragonian_Race</li>
+			<li>Alien_Epona</li>
+			<li>Alien_Miho</li>
+			<li>Alien_Cinder</li>
+			<li>Alien_Epona_Milira</li>
+			<li>Milira_Race</li>
+			<li>Alien_Unicorn_Milira</li>
+		</allowedRaces>
+	</ModSettings>
+</SettingsBlock>

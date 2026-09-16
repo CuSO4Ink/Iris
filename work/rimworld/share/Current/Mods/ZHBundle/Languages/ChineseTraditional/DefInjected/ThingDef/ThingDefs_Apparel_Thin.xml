@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi basic worker costume -->
+  <VV_BasicWorkerCostume.label>薇薇基礎工人服裝</VV_BasicWorkerCostume.label>
+  <!-- EN: Workwear for vivis focused on convenience and practicality. Comfortable for most tasks while retaining body heat well.\n\nCan wear only normal vivi or childs. -->
+  <VV_BasicWorkerCostume.description>薇薇的工作服，設計上注重便利性和實用性。穿戴者能舒適地活動，服裝能很好地保持體溫，也能提供了一些防御。</VV_BasicWorkerCostume.description>
+  
+  <!-- EN: vivi waterproof coat -->
+  <VV_WaterproofCoat.label>薇薇防水外套</VV_WaterproofCoat.label>
+  <!-- EN: A waterproof coat mainly worn by vivis during extended outdoor activity. Built sturdy to provide high protection. Its waterproof coating keeps it from getting soaked in rain or while crossing water.\n\nCan wear only normal vivi or childs. -->
+  <VV_WaterproofCoat.description>薇薇長期在外活動時通常穿的外套。具有良好的防御性能并涂有防水涂層，所以下雨或經過河流時也不會潮濕。</VV_WaterproofCoat.description>
+  
+  <!-- EN: vivi worker uniform -->
+  <VV_WorkerUniformDress.label>薇薇制式工人服裝</VV_WorkerUniformDress.label>
+  <!-- EN: Uniform for vivis on key duties or outside assignments; offers fair protection and mental steadiness.\n\nCan wear only normal vivi or childs. -->
+  <VV_WorkerUniformDress.description>隸屬于大蜂巢的薇薇統一穿著的制服，能穩定情緒和提供一定防御。</VV_WorkerUniformDress.description>
+  
+</LanguageData>

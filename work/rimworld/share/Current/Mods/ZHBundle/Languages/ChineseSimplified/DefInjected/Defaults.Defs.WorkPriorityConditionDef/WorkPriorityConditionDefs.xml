@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <Always.label>always</Always.label> -->
+  <Always.label>总是</Always.label>
+  <!-- <Passion.label>has passion of at least</Passion.label> -->
+  <Passion.label>至少有激情</Passion.label>
+  <!-- <Skill.label>has skill level</Skill.label> -->
+  <Skill.label>具有技能等级</Skill.label>
+  <!-- <Guest.label>is guest</Guest.label> -->
+  <Guest.label>是访客</Guest.label>
+  <!-- <AgainstIdeo.label>is ideologically opposed</AgainstIdeo.label> -->
+  <AgainstIdeo.label>文化形态冲突</AgainstIdeo.label>
+  <!-- <Slave.label>is slave</Slave.label> -->
+  <Slave.label>是奴隶</Slave.label>
+  <!-- <Age.label>is of age in years</Age.label> -->
+  <Age.label>年龄岁数</Age.label>
+
+
+</LanguageData>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Trinity implant -->
+
+  <DF_Trinity_Implant.label>三位一體植入物</DF_Trinity_Implant.label>
+  <DF_Trinity_Implant.description>三位一體植入物。同時提高使用者的靈活性、承傷能力和學習能力。\n\n它是Epic系列植入物的一部分,由一個被稱為AdminPwn的世界穿越者製作。能夠負擔得起這些高級植入物的生還者以一種稱為信用點的貨幣支付。當這些變體與其他增強身體的植入物一起使用時，精英生還者甚至能夠面對內城中最危險的N-4突變體。</DF_Trinity_Implant.description>
+
+
+  <!-- ghastly implant -->
+
+  <DF_Ghastly_Implant.label>恐怖植入物</DF_Ghastly_Implant.label>
+  <DF_Ghastly_Implant.description>恐怖植入物。提高使用者的移動速度、學習能力和承傷能力。\n\n它是Epic系列植入物的一部分，由一個被稱為AdminPwn的世界穿越者製作。能夠負擔得起這些高級植入物的生還者以一種稱為信用點的貨幣支付。當這些變體與其他增強身體的植入物一起使用時，精英生還者甚至能夠面對內城中最危險的N-4突變體。</DF_Ghastly_Implant.description>
+
+
+  <!-- Celerity implant -->
+
+  <DF_Celerity_Implant.label>迅捷植入物</DF_Celerity_Implant.label>
+  <DF_Celerity_Implant.description>迅捷植入物。提高使用者的移動速度。\n\n它是Epic系列植入物的一部分，由一個被稱為AdminPwn的世界穿越者製作。能夠負擔得起這些高級植入物的生還者以一種稱為信用點的貨幣支付。當這些變體與其他增強身體的植入物一起使用時，精英生還者甚至能夠面對內城中最危險的N-4突變體。</DF_Celerity_Implant.description>
+
+
+  <!-- scrutiny implant -->
+
+  <DF_Scrutiny_Implant.label>審查植入物</DF_Scrutiny_Implant.label>
+  <DF_Scrutiny_Implant.description>審查植入物。提高使用者的學習能力、承傷能力和移動速度。\n\n它是Epic系列植入物的一部分，由一個被稱為AdminPwn的世界穿越者製作。能夠負擔得起這些高級植入物的生還者以一種稱為信用點的貨幣支付。當這些變體與其他增強身體的植入物一起使用時，精英生還者甚至能夠面對內城中最危險的N-4突變體。</DF_Scrutiny_Implant.description>
+
+
+  <!-- versatility implant -->
+
+  <DF_Versatility_Implant.label>多功能植入物</DF_Versatility_Implant.label>
+  <DF_Versatility_Implant.description>多功能植入物。提高使用者的學習能力、戰鬥能力、移動速度和社交能力。\n\n它是Epic系列植入物的一部分，由一個被稱為AdminPwn的世界穿越者製作。能夠負擔得起這些高級植入物的生還者以一種稱為信用點的貨幣支付。當這些變體與其他增強身體的植入物一起使用時，精英生還者甚至能夠面對內城中最危險的N-4突變體。</DF_Versatility_Implant.description>
+
+
+  <!-- mastery implant -->
+
+  <DF_Mastery_Implant.label>駕馭植入物</DF_Mastery_Implant.label>
+  <DF_Mastery_Implant.description>駕馭植入物。顯著提高使用者的學習能力，同時改善情緒調節。\n\n它是Epic系列植入物的一部分，由一個被稱為AdminPwn的世界穿越者製作。能夠負擔得起這些高級植入物的生還者以一種稱為信用點的貨幣支付。當這些變體與其他增強身體的植入物一起使用時，精英生還者甚至能夠面對內城中最危險的N-4突變體。</DF_Mastery_Implant.description>
+
+
+  <!-- calamity implant -->
+
+  <DF_Calamity_Implant.label>災厄植入物</DF_Calamity_Implant.label>
+  <DF_Calamity_Implant.description>災厄植入物。提高使用者的戰鬥能力。\n\n它是Epic系列植入物的一部分，由一個被稱為AdminPwn的世界穿越者製作。能夠負擔得起這些高級植入物的生還者以一種稱為信用點的貨幣支付。當這些變體與其他增強身體的植入物一起使用時，精英生還者甚至能夠面對內城中最危險的N-4突變體。</DF_Calamity_Implant.description>
+
+
+  <!-- lethality implant -->
+
+  <DF_Lethality_Implant.label>致命植入物</DF_Lethality_Implant.label>
+  <DF_Lethality_Implant.description>致命植入物。大幅提高使用者的戰鬥能力。\n\n它是Epic系列植入物的一部分，由一個被稱為AdminPwn的世界穿越者製作。能夠負擔得起這些高級植入物的生還者以一種稱為信用點的貨幣支付。當這些變體與其他增強身體的植入物一起使用時，精英生還者甚至能夠面對內城中最危險的N-4突變體。</DF_Lethality_Implant.description>
+
+
+  <!-- mortality implant -->
+
+  <DF_Mortality_Implant.label>死亡植入物</DF_Mortality_Implant.label>
+  <DF_Mortality_Implant.description>死亡植入物。提高使用者的學習能力和戰鬥技巧。\n\n它是Epic系列植入物的一部分，由一個被稱為AdminPwn的世界穿越者製作。能夠負擔得起這些高級植入物的生還者以一種稱為信用點的貨幣支付。當這些變體與其他增強身體的植入物一起使用時，精英生還者甚至能夠面對內城中最危險的N-4突變體。</DF_Mortality_Implant.description>
+
+
+  <!-- prosperity implant -->
+
+  <DF_Prosperity_Implant.label>昌盛植入物</DF_Prosperity_Implant.label>
+  <DF_Prosperity_Implant.description>昌盛植入物。顯著提高使用者的社交能力。\n\n它是Epic系列植入物的一部分，由一個被稱為AdminPwn的世界穿越者製作。能夠負擔得起這些高級植入物的生還者以一種稱為信用點的貨幣支付。當這些變體與其他增強身體的植入物一起使用時，精英生還者甚至能夠面對內城中最危險的N-4突變體。</DF_Prosperity_Implant.description>
+
+
+</LanguageData>

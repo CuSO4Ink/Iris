@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_Cholesterol.label>高血脂</VCE_Cholesterol.label>
+		<VCE_Cholesterol.description>人體需要適量的膽固醇用來保持健康，但是膽固醇過高的話會增加心臟疾病的風險。高量的膽固醇下，脂肪會堆積在血管內。這些脂肪堆積會逐漸增加，使得血液流量減少。</VCE_Cholesterol.description>
+		<VCE_Cholesterol.stages.0.label>輕微（無礙）</VCE_Cholesterol.stages.0.label>
+		<VCE_Cholesterol.stages.1.label>較輕（無礙）</VCE_Cholesterol.stages.1.label>
+		<VCE_Cholesterol.stages.2.label>較重</VCE_Cholesterol.stages.2.label>
+		<VCE_Cholesterol.stages.3.label>極重</VCE_Cholesterol.stages.3.label>
+		<VCE_Diabetes.label>高血糖</VCE_Diabetes.label>
+		<VCE_Diabetes.description>當血糖濃度超過標準一段時間後，便會造成一系列新陳代謝紊亂。症狀包括尿頻，口渴和食量增大</VCE_Diabetes.description>
+		<VCE_Diabetes.stages.0.label>輕微（無礙）</VCE_Diabetes.stages.0.label>
+		<VCE_Diabetes.stages.1.label>較輕（無礙）</VCE_Diabetes.stages.1.label>
+		<VCE_Diabetes.stages.2.label>較重</VCE_Diabetes.stages.2.label>
+		<VCE_Diabetes.stages.3.label>極重</VCE_Diabetes.stages.3.label>
+		<VCE_HighBloodPressure.label>高血壓</VCE_HighBloodPressure.label>
+		<VCE_HighBloodPressure.description>當血壓持續超標後會造成一系列健康問題，比如心臟病。</VCE_HighBloodPressure.description>
+		<VCE_HighBloodPressure.stages.0.label>輕微（無礙）</VCE_HighBloodPressure.stages.0.label>
+		<VCE_HighBloodPressure.stages.1.label>較輕（無礙）</VCE_HighBloodPressure.stages.1.label>
+		<VCE_HighBloodPressure.stages.2.label>較重</VCE_HighBloodPressure.stages.2.label>
+		<VCE_HighBloodPressure.stages.3.label>極重</VCE_HighBloodPressure.stages.3.label>
+	</LanguageData>

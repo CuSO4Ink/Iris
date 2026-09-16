@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: acceptable -->
+  <HAR_AlienDating_Acceptable.label>认可</HAR_AlienDating_Acceptable.label>
+  <!-- EN: If an alien and oneself mesh well why would romance be out of the question? -->
+  <HAR_AlienDating_Acceptable.description>与情投意合的外星种族恋爱有何不可？</HAR_AlienDating_Acceptable.description>
+  
+  <!-- EN: honorable -->
+  <HAR_AlienDating_Honorable.label>推崇</HAR_AlienDating_Honorable.label>
+  <!-- EN: To take an alien's hand in love and dedication is both exhilarating and exotic and those who choose to do so should be respected for their open-mindedness. -->
+  <HAR_AlienDating_Honorable.description>与外星种族立下山盟海誓是件激动而又惊奇的事情，那些选择这样做的开明者理应受到我们的敬重。</HAR_AlienDating_Honorable.description>
+  
+  <!-- EN: horrible -->
+  <HAR_AlienDating_Horrible.label>畏惧</HAR_AlienDating_Horrible.label>
+  <!-- EN: The idea of mating with an alien is nothing short of ridiculous and there are plenty of reasons to not even entertain the idea. -->
+  <HAR_AlienDating_Horrible.description>与外星种族交合的想法是是如此的荒谬可笑，我们没理由去这么做。</HAR_AlienDating_Horrible.description>
+  <!-- EN: Dating an alien -->
+  <HAR_AlienDating_Horrible.comps.1.description>与外星种族约会</HAR_AlienDating_Horrible.comps.1.description>
+  
+  <!-- EN: preferred -->
+  <HAR_AlienDating_Preferred.label>喜好</HAR_AlienDating_Preferred.label>
+  <!-- EN: Romance with aliens can be an exciting change of pace and should be encouraged. -->
+  <HAR_AlienDating_Preferred.description>与外星种族恋爱令人兴奋，我们应当鼓励这么做。</HAR_AlienDating_Preferred.description>
+  
+  <!-- EN: forbidden -->
+  <HAR_AlienDating_Prohibited.label>忌讳</HAR_AlienDating_Prohibited.label>
+  <!-- EN: Romancing aliens is absolutely off the table, and the thought of copulation with one is disgusting to the point of downright disgust. -->
+  <HAR_AlienDating_Prohibited.description>和外星种族恋爱交合？这种恶心至极的想法绝不该出现！</HAR_AlienDating_Prohibited.description>
+  
+</LanguageData>

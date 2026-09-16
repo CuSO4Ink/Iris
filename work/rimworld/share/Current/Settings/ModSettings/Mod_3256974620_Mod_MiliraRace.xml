@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="Milira.MiliraRaceSettings">
+		<MiliraRace_ModSetting_StoryOverall>True</MiliraRace_ModSetting_StoryOverall>
+		<MiliraRace_ModSetting_MilianClusterInMap>True</MiliraRace_ModSetting_MilianClusterInMap>
+		<MiliraRace_ModSetting_MilianSmallClusterInMap>True</MiliraRace_ModSetting_MilianSmallClusterInMap>
+		<MiliraRace_ModSetting_MilianDifficulty_EquipmentQuality>False</MiliraRace_ModSetting_MilianDifficulty_EquipmentQuality>
+		<MiliraRace_ModSetting_MilianDifficulty_EquipmentMaterial>False</MiliraRace_ModSetting_MilianDifficulty_EquipmentMaterial>
+		<MiliraRace_ModSetting_MilianDifficulty_Promotion>True</MiliraRace_ModSetting_MilianDifficulty_Promotion>
+		<MiliraRace_ModSetting_MilianDifficulty_FastPromotion>False</MiliraRace_ModSetting_MilianDifficulty_FastPromotion>
+		<MiliraRace_ModSetting_MilianDifficulty_WidePromotion>False</MiliraRace_ModSetting_MilianDifficulty_WidePromotion>
+		<MiliraRace_ModSetting_MilianDifficulty_ClusterResonator>True</MiliraRace_ModSetting_MilianDifficulty_ClusterResonator>
+		<MiliraRace_ModSetting_MilianDifficulty_ClusterFortress>False</MiliraRace_ModSetting_MilianDifficulty_ClusterFortress>
+		<MiliraRace_ModSetting_MiliraDifficulty_TirelessFly>False</MiliraRace_ModSetting_MiliraDifficulty_TirelessFly>
+		<MiliraRace_ModSetting_RaceRestrictedApparel>True</MiliraRace_ModSetting_RaceRestrictedApparel>
+		<MiliraRace_ModSetting_MilianConfigTab>True</MiliraRace_ModSetting_MilianConfigTab>
+		<MiliraRace_ModSetting_MilianHairColor>False</MiliraRace_ModSetting_MilianHairColor>
+		<MiliraRace_ModSetting_MilianHairColor_PlayerColorOverride>True</MiliraRace_ModSetting_MilianHairColor_PlayerColorOverride>
+		<MiliraRace_ModSetting_MilianHairColorOffset>False</MiliraRace_ModSetting_MilianHairColorOffset>
+		<MiliraRace_ModSetting_MilianDrawHeadgear>True</MiliraRace_ModSetting_MilianDrawHeadgear>
+		<MiliraRace_ModSetting_MilianDisableWorksGestate>False</MiliraRace_ModSetting_MilianDisableWorksGestate>
+		<currentGameDifficulty>Easy</currentGameDifficulty>
+		<TabAvailable_MilianConfig>ButtonAndMenu</TabAvailable_MilianConfig>
+		<TabAvailable_MilianWork>Button</TabAvailable_MilianWork>
+		<currentMilianModifyScale>Normal</currentMilianModifyScale>
+	</ModSettings>
+</SettingsBlock>

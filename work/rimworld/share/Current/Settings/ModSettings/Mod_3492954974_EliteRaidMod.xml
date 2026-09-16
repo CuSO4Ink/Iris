@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="EliteRaid.EliteRaidSettings">
+		<compressionRatio>6.30000019</compressionRatio>
+		<eliteRaidDifficulty>Hard</eliteRaidDifficulty>
+		<maxAllowLevel>7</maxAllowLevel>
+		<maxRaidEnemy>70</maxRaidEnemy>
+		<maxRaidPoint>20000</maxRaidPoint>
+		<totalDifficulty>Knight</totalDifficulty>
+		<showDetailConfig>True</showDetailConfig>
+		<currentDifficultyIndex>4</currentDifficultyIndex>
+		<isFirstLoad>False</isFirstLoad>
+		<raidScale>3.5</raidScale>
+		<startCompressNum>10</startCompressNum>
+	</ModSettings>
+</SettingsBlock>

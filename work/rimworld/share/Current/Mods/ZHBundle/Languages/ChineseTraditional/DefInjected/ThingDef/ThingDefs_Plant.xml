@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: red vivia -->
+  <VV_Plant_FireArcaneFlower.label>紅色薇薇婭</VV_Plant_FireArcaneFlower.label>
+  <!-- EN: A small, common arcane flower with red petals that grows in the area where Vivis live. It is known to grow around other arcane plants, drawn by their mana, and its petals take on different properties depending on the mana of the plants nearby. Fully grown flowers can have their petals harvested or their honey collected. -->
+  <VV_Plant_FireArcaneFlower.description>一種常見的小型神秘花朵，常生長在薇薇們所居住的地區。薇薇婭會被魔能吸引而生長在其他類型的神秘植物周圍，其花瓣會因周圍神秘植物的性質不同而具有不同的屬性。完全成熟的此類花朵可以被收獲花瓣或采集蜂蜜。</VV_Plant_FireArcaneFlower.description>
+  
+  <!-- EN: blue vivia -->
+  <VV_Plant_IceArcaneFlower.label>藍色薇薇婭</VV_Plant_IceArcaneFlower.label>
+  <!-- EN: A small, common arcane flower with blue petals that grows in the area where Vivis live. It is known to grow around other arcane plants, drawn by their mana, and its petals take on different properties depending on the mana of the plants nearby. Fully grown flowers can have their petals harvested or their honey collected. -->
+  <VV_Plant_IceArcaneFlower.description>一種常見的小型神秘花朵，常生長在薇薇們所居住的地區。薇薇婭會被魔能吸引而生長在其他類型的神秘植物周圍，其花瓣會因周圍神秘植物的性質不同而具有不同的屬性。完全成熟的此類花朵可以被收獲花瓣或采集蜂蜜。</VV_Plant_IceArcaneFlower.description>
+  
+  <!-- EN: yellow vivia -->
+  <VV_Plant_LifeArcaneFlower.label>黃色薇薇婭</VV_Plant_LifeArcaneFlower.label>
+  <!-- EN: A small, common arcane flower with yellow petals that grows in the area where Vivis live. It is known to grow around other arcane plants, drawn by their mana, and its petals take on different properties depending on the mana of the plants nearby. Fully grown flowers can have their petals harvested or their honey collected. -->
+  <VV_Plant_LifeArcaneFlower.description>一種常見的小型神秘花朵，常生長在薇薇們所居住的地區。薇薇婭會被魔能吸引而生長在其他類型的神秘植物周圍，其花瓣會因周圍神秘植物的性質不同而具有不同的屬性。完全成熟的此類花朵可以被收獲花瓣或采集蜂蜜。</VV_Plant_LifeArcaneFlower.description>
+  
+  <!-- EN: purple vivia -->
+  <VV_Plant_LightningArcaneFlower.label>紫色薇薇婭</VV_Plant_LightningArcaneFlower.label>
+  <!-- EN: A small, common arcane flower with purple petals that grows in the area where Vivis live. It is known to grow around other arcane plants, drawn by their mana, and its petals take on different properties depending on the mana of the plants nearby. Fully grown flowers can have their petals harvested or their honey collected. -->
+  <VV_Plant_LightningArcaneFlower.description>一種常見的小型神秘花朵，常生長在薇薇們所居住的地區。薇薇婭會被魔能吸引而生長在其他類型的神秘植物周圍，其花瓣會因周圍神秘植物的性質不同而具有不同的屬性。完全成熟的此類花朵可以被收獲花瓣或采集蜂蜜。</VV_Plant_LightningArcaneFlower.description>
+  
+</LanguageData>

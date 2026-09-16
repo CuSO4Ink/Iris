@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Sun sickness buildup multiplier -->
+  <VEF_SunSicknessBuildupMultiplier.label>日射病累積乘數</VEF_SunSicknessBuildupMultiplier.label>
+  <!-- EN: A factor on how fast sun sickness will be gained during a scorch incident. -->
+  <VEF_SunSicknessBuildupMultiplier.description>在熾灼天災事件發生期間，日射病症狀的加重速度會乘以此項的值。</VEF_SunSicknessBuildupMultiplier.description>
+  
+</LanguageData>

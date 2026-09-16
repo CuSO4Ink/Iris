@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 7 days to die -->
+  <SevenDaysToDie.label>七日杀</SevenDaysToDie.label>
+  <!-- EN: You woke up in an un-familiar environment with nothing but a shirt in your back, some weapons on the floor, and a big sack. You have no memory about how you end-up here, but you feel an ominous cold coursing thorugh your spine. Something is coming for you, and it will come in droves, therefore you need to act fast before it's too late. -->
+  <SevenDaysToDie.description>你缓缓睁开双眼，发现周围的一切都异常陌生。除了身上穿的衬衫外，你所拥有的物品仅剩几支似乎改装过的枪，以及一个装满了补给的大袋子。虽然你失去了自己为何会来到这里的记忆，但总有种不祥的预感萦绕心头。有什么东西正在追你。它们会源源不断地向你袭来，而你则必须赶在为时已晚前武装好自己。</SevenDaysToDie.description>
+  <!-- EN: You woke up in an un-familiar environment with nothing but a shirt in your back, some weapons on the floor, and a big sack. You have no memory about how you end-up here, but you feel an ominous cold coursing thorugh your spine. Something is coming for you, and it will come in droves, therefore you need to act fast before it's too late. -->
+  <SevenDaysToDie.scenario.description>你缓缓睁开双眼，发现周围的一切都异常陌生。除了身上穿的衬衫外，你所拥有的物品仅剩几支似乎改装过的枪，以及一个装满了补给的大袋子。虽然你失去了自己为何会来到这里的记忆，但总有种不祥的预感萦绕心头。有什么东西正在追你。它们会源源不断地向你袭来，而你则必须赶在为时已晚前武装好自己。</SevenDaysToDie.scenario.description>
+  <!-- EN: 7 days to die -->
+  <SevenDaysToDie.scenario.name>七日杀</SevenDaysToDie.scenario.name>
+  <!-- EN: You woke up in an un-familiar environment with nothing but a shirt in your back, some weapons on the floor, and a big sack. You have no memory about how you end-up here, but you feel an ominous cold coursing thorugh your spine. Something is coming for you, and it will come in droves, therefore you need to act fast before it's too late. -->
+  <SevenDaysToDie.scenario.parts.GameStartDialog.text>你缓缓睁开双眼，发现周围的一切都异常陌生。除了身上穿的衬衫外，你所拥有的物品仅剩几支似乎改装过的枪，以及一个装满了补给的大袋子。虽然你失去了自己为何会来到这里的记忆，但总有种不祥的预感萦绕心头。有什么东西正在追你。它们会源源不断地向你袭来，而你则必须赶在为时已晚前武装好自己。</SevenDaysToDie.scenario.parts.GameStartDialog.text>
+  <!-- EN: A lone outlander, surviving a brand new world of hell - probably a difficult start. -->
+  <SevenDaysToDie.scenario.summary>一名力求在这人间炼狱般的新世界中活下去的孤独外来者。高难度。</SevenDaysToDie.scenario.summary>
+  
+</LanguageData>

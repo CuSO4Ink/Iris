@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 오디너리 미호 -->
+  <Xeno_CelestialMiho.label>凡灵种</Xeno_CelestialMiho.label>
+  <!-- EN: 온대 기후에 생존이 최적화 된, 가장 많이 분포하는 미호입니다. -->
+  <Xeno_CelestialMiho.description>最为常见的美狐族分支，他们大多生活在温带地区。</Xeno_CelestialMiho.description>
+  <!-- EN: 온대 기후에 생존이 최적화 된, 가장 많이 분포하는 미호입니다. -->
+  <Xeno_CelestialMiho.descriptionShort>最为常见的美狐族分支，他们大多生活在温带地区。</Xeno_CelestialMiho.descriptionShort>
+  
+  <!-- EN: 아르티코스 미호 -->
+  <Xeno_CelestialMiho_Arctic.label>雪凛种</Xeno_CelestialMiho_Arctic.label>
+  <!-- EN: 아르티코스는 베르그만 법칙과 작은 귀 덕분에 추위를 잘 버티게 되었고, 북반구의 공업화 덕분에 조금의 독성 저항력이 생긴 븍방의 미호입니다. 다만 뇌에 쓸 열량을 보온에 쓴 탓인지 사교능력을 조금 잃었습니다. 그래봤자 보통 인간 수준이지만 말이죠. -->
+  <Xeno_CelestialMiho_Arctic.description>生活在寒冷地区的美狐族分支。得益于伯格曼法则和较为圆短的耳朵，他们要比其他同族更加耐寒；再加上天生出色的手工制作能力，他们偏好聚居在工业化发达的极北城市中。不过，或许是将多余热量都用于维持体温的缘故，雪凛种的社交沟通能力有所退化，但也仅仅是变得与普通人类持平罢了。</Xeno_CelestialMiho_Arctic.description>
+  <!-- EN: 아르티코스는 베르그만 법칙과 작은 귀 덕분에 추위를 잘 버티게 되었고, 북반구의 공업화 덕분에 조금의 독성 저항력이 생긴 븍방의 미호입니다. 다만 뇌에 쓸 열량을 보온에 쓴 탓인지 사교능력을 조금 잃었습니다. 그래봤자 보통 인간 수준이지만 말이죠. -->
+  <Xeno_CelestialMiho_Arctic.descriptionShort>生活在寒冷地区的美狐族分支。得益于伯格曼法则和较为圆短的耳朵，他们要比其他同族更加耐寒；再加上天生出色的手工制作能力，他们偏好聚居在工业化发达的极北城市中。不过，或许是将多余热量都用于维持体温的缘故，雪凛种的社交沟通能力有所退化，但也仅仅是变得与普通人类持平罢了。</Xeno_CelestialMiho_Arctic.descriptionShort>
+  
+  <!-- EN: 코니스 미호 -->
+  <Xeno_CelestialMiho_Desert.label>沙伶种</Xeno_CelestialMiho_Desert.label>
+  <!-- EN: 코니스는 뛰어난 엔지니어이자 상인인 사막의 미호입니다. 호기심이 많고 더위를 잘 버팁니다. 하지만 많은 일들을 기계들에게 맡기다 보니 보통의 미호들보다 게으르다 평가됩니다. -->
+  <Xeno_CelestialMiho_Desert.description>生活在沙漠地区的美狐族分支。他们较为宽大的耳朵是性能优秀的“散热器”，区区高温对其而言根本不值一提。沙伶种拥有旺盛的好奇心与求知欲，许多人在成年后都会选择从事像工程师或研究员这样的职业。先进且便利的无人机技术使他们摆脱了劳累的体力工作，但也因此养成了懒散怠惰的性格态度。</Xeno_CelestialMiho_Desert.description>
+  <!-- EN: 코니스는 뛰어난 엔지니어이자 상인인 사막의 미호입니다. 호기심이 많고 더위를 잘 버팁니다. 하지만 많은 일들을 기계들에게 맡기다 보니 보통의 미호들보다 게으르다 평가됩니다. -->
+  <Xeno_CelestialMiho_Desert.descriptionShort>生活在沙漠地区的美狐族分支。他们较为宽大的耳朵是性能优秀的“散热器”，区区高温对其而言根本不值一提。沙伶种拥有旺盛的好奇心与求知欲，许多人在成年后都会选择从事像工程师或研究员这样的职业。先进且便利的无人机技术使他们摆脱了劳累的体力工作，但也因此养成了懒散怠惰的性格态度。</Xeno_CelestialMiho_Desert.descriptionShort>
+  
+  <!-- EN: 프로드로모스 미호 -->
+  <Xeno_CelestialMiho_Highland.label>战凌种</Xeno_CelestialMiho_Highland.label>
+  <!-- EN: 프로드로모스는 통제된 전장에 맞춰진, 극도로 공격적이고 효율적인 살인귀들 입니다. 유전적으로 고-주스를 필요로 합니다. -->
+  <Xeno_CelestialMiho_Highland.description>为主宰战场局势而生的美狐族分支。这些孤傲的杀手在战斗中冷酷无情，动作精准，身手矫健，其实力足以与人类的骠骑种相抗衡。他们的格斗与射击本领远超其他同族，但性格也更加好斗。他们的基因特征自带对活力水的依赖。</Xeno_CelestialMiho_Highland.description>
+  <!-- EN: 프로드로모스는 통제된 전장에 맞춰진, 극도로 공격적이고 효율적인 살인귀들 입니다. 유전적으로 고-주스를 필요로 합니다. -->
+  <Xeno_CelestialMiho_Highland.descriptionShort>为主宰战场局势而生的美狐族分支。这些孤傲的杀手在战斗中冷酷无情，动作精准，身手矫健，其实力足以与人类的骠骑种相抗衡。他们的格斗与射击本领远超其他同族，但性格也更加好斗。他们的基因特征自带对活力水的依赖。</Xeno_CelestialMiho_Highland.descriptionShort>
+  
+  <!-- EN: 포르네 미호 -->
+  <Xeno_CelestialMiho_Highmate.label>欲琳种</Xeno_CelestialMiho_Highmate.label>
+  <!-- EN: 번화계의 "특별한" 서비스 용도로 설계된 포르네들은 굉장한 사회적 능력과 상대를 매혹시키는 초능력을 가지고 있습니다. 대부분의 접대 상황에서는 엄청난 재능을 보여주지만, 안타깝게도 다른 분야에서는 쉽게 활약하지 못합니다. -->
+  <Xeno_CelestialMiho_Highmate.description>为在闪耀世界提供“特殊服务”而生的美狐族分支。他们情感丰富，身姿曼妙，不仅在社交事务上有不错的天赋，还能使用特殊的灵能。他们的肉体虚弱，极不擅长体力与脑力劳动，精神也不能忍受任何暴力。</Xeno_CelestialMiho_Highmate.description>
+  <!-- EN: 번화계의 "특별한" 서비스 용도로 설계된 포르네들은 굉장한 사회적 능력과 상대를 매혹시키는 초능력을 가지고 있습니다. 대부분의 접대 상황에서는 엄청난 재능을 보여주지만, 안타깝게도 다른 분야에서는 쉽게 활약하지 못합니다. -->
+  <Xeno_CelestialMiho_Highmate.descriptionShort>为在闪耀世界提供“特殊服务”而生的美狐族分支。他们情感丰富，身姿曼妙，不仅在社交事务上有不错的天赋，还能使用特殊的灵能。他们的肉体虚弱，极不擅长体力与脑力劳动，精神也不能忍受任何暴力。</Xeno_CelestialMiho_Highmate.descriptionShort>
+  
+</LanguageData>

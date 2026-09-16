@@ -1,0 +1,18 @@
+[
+  {
+    "file": "Settings/ModSettings/Mod_3551203752_Settings.xml",
+    "fields": [
+      "apiKey",
+      "apiKey",
+      "apiKey",
+      "simpleApiKey"
+    ]
+  },
+  {
+    "file": "Settings/ModSettings/Mod_3562373405_Settings.xml",
+    "fields": [
+      "apiKey",
+      "customApiKey"
+    ]
+  }
+]

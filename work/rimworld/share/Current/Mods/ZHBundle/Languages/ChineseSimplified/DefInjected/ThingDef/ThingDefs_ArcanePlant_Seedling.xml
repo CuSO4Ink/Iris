@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: arcane plant seedling -->
+  <VV_ArcanePlantSeedling.label>神秘植物幼苗</VV_ArcanePlantSeedling.label>
+  <!-- EN: A young arcane plant still in the process of growing. Arcane plants require both mana and nutrients to grow, and they do not grow while packaged.\n\nMana is absorbed from the environment mana and can also be supplied by nearby mana emitter or other arcane plants that produce mana.\n\nNutrients continuously decrease regardless of mana, so a person must regularly apply mana fertilizer. If left without sufficient nutrients for too long, the seedling will die. -->
+  <VV_ArcanePlantSeedling.description>一株仍在生长的神秘植物幼苗。神秘植物需要营养和魔能来生长，打包时生长会暂停。\n\n幼苗会吸收周围环境中或附近产能神秘植物的提供的魔能，或依赖魔能放射器供给。\n\n不管魔能是否充足，幼苗都会持续消耗营养，所以需要定期使用魔法肥料。若幼苗长时间得不到充足的养分便会死去。</VV_ArcanePlantSeedling.description>
+  <!-- EN: Nutrition -->
+  <VV_ArcanePlantSeedling.comps.CompRefuelable.fuelGizmoLabel>营养</VV_ArcanePlantSeedling.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- EN: Nutrition -->
+  <VV_ArcanePlantSeedling.comps.CompRefuelable.fuelLabel>营养</VV_ArcanePlantSeedling.comps.CompRefuelable.fuelLabel>
+  
+</LanguageData>

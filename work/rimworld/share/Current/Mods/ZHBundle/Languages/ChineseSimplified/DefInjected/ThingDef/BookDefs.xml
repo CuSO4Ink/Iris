@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: recipe book -->
+  <VCEV_CookingBook.label>烹饪手册</VCEV_CookingBook.label>
+  <!-- EN: A book detailing different recipes and concepts related to new ingredients and culinary techniques.\n\n
+   Once read, it will provide a new favourite ingredient or meal to the reader, and then it will be destroyed (why is it destroyed? I see you haven't spent much time around a kitchen...) -->
+  <VCEV_CookingBook.description>详尽记述有各种烹饪食谱和见解的手册，其中还涉及到了新奇的食材和料理技巧。\n\n这本书阅读完毕后就会消失。它能让读者爱上一种新的的食材/食物（你问它为什么会消失？我猜你一定没多少亲自下厨的经验吧...）。</VCEV_CookingBook.description>
+  
+</LanguageData>

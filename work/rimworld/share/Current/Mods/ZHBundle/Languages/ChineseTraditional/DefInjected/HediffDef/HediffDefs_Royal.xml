@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: royal vivi -->
+  <VV_RoyalVivi.label>皇家薇薇</VV_RoyalVivi.label>
+  <!-- EN: This Vivi has transformed into a Royal Vivi.\n\nIt can reproduce by laying eggs and its lifespan is greatly increased. Mental strength and cognitive abilities are developed, but movement speed and work efficiency are reduced. -->
+  <VV_RoyalVivi.description>這個薇薇已經成為了一個皇家薇薇。\n\n它可以通過產卵繁殖，壽命大大延長。腦力和認知能力得到了發展，但運動速度和工作效率降低了。</VV_RoyalVivi.description>
+  
+</LanguageData>

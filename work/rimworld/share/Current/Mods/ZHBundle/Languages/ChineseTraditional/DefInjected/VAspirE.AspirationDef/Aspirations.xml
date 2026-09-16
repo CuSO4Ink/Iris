@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: achieve excruciating pain -->
+  <VAspirE_AchieveExcruciatingPain.label>體驗痛不欲生的感覺</VAspirE_AchieveExcruciatingPain.label>
+  <!-- EN: {0} wants to achieve an exquisite, excruciating pain. -->
+  <VAspirE_AchieveExcruciatingPain.description>{0}的願望是體驗痛不欲生的感覺。</VAspirE_AchieveExcruciatingPain.description>
+  <!-- EN: {0} reaches a pain level of 100% (Extreme). -->
+  <VAspirE_AchieveExcruciatingPain.satisfiedWhenText>{0}的疼痛值需要達到100%（極重度）</VAspirE_AchieveExcruciatingPain.satisfiedWhenText>
+  
+  <!-- EN: link with anima tree -->
+  <VAspirE_AnimaTreeLink.label>與生命之樹連結</VAspirE_AnimaTreeLink.label>
+  <!-- EN: {0} wants to undergo an anima tree linking ritual with them as the main recipient of the boons. -->
+  <VAspirE_AnimaTreeLink.description>{0}的願望是與一棵生命之樹連結。</VAspirE_AnimaTreeLink.description>
+  <!-- EN: {0} links with the anima tree. -->
+  <VAspirE_AnimaTreeLink.satisfiedWhenText>{0}需要與一棵生命之樹連結。</VAspirE_AnimaTreeLink.satisfiedWhenText>
+  
+  <!-- EN: attend an inspirational throne speech -->
+  <VAspirE_AttendSpeech.label>參加鼓舞人心的政治演講</VAspirE_AttendSpeech.label>
+  <!-- EN: {0} wants to be there when an inspirational speech is given. -->
+  <VAspirE_AttendSpeech.description>{0}的願望是參加一場能讓聽眾鼓舞人心的政治演講。</VAspirE_AttendSpeech.description>
+  
+  <!-- EN: get a tentacle -->
+  <VAspirE_BecomeAHentaiCharacter.label>長出觸手</VAspirE_BecomeAHentaiCharacter.label>
+  <!-- EN: {0} wants to get a warped body. -->
+  <VAspirE_BecomeAHentaiCharacter.description>{0}的願望是長出一條扭曲的血肉觸手。</VAspirE_BecomeAHentaiCharacter.description>
+  
+  <!-- EN: become disliked -->
+  <VAspirE_BecomeDisliked.label>成為人見人厭的存在</VAspirE_BecomeDisliked.label>
+  <!-- EN: {0} wants to be hated by many of their peers. -->
+  <VAspirE_BecomeDisliked.description>{0}的願望是成為被眾人嫌棄和厭惡的存在。</VAspirE_BecomeDisliked.description>
+  <!-- EN: {0} has 10 people with negative opinion about them. -->
+  <VAspirE_BecomeDisliked.satisfiedWhenText>至少需要10個人對{0}抱有負面看法</VAspirE_BecomeDisliked.satisfiedWhenText>
+  
+  <!-- EN: become a grandparent -->
+  <VAspirE_BecomeGrandParent.label>成為祖父母</VAspirE_BecomeGrandParent.label>
+  <!-- EN: {0} wants to become a grandparent and have a grandchild. -->
+  <VAspirE_BecomeGrandParent.description>{0}的願望是成為一名擁有孫子/孫女的祖父/祖母。</VAspirE_BecomeGrandParent.description>
+  
+  <!-- EN: become an ideological figure -->
+  <VAspirE_BecomeIdeologicalFigure.label>獲得信仰職位</VAspirE_BecomeIdeologicalFigure.label>
+  <!-- EN: {0} wants to become a meaningful figure in their ideology. -->
+  <VAspirE_BecomeIdeologicalFigure.description>{0}的願望是獲得一個信仰職位。</VAspirE_BecomeIdeologicalFigure.description>
+  <!-- EN: {0} gains any role in their ideology - leader, moralist, specialist. -->
+  <VAspirE_BecomeIdeologicalFigure.satisfiedWhenText>{0}需要獲得這些信仰職位中的任意一個：領袖，傳道者，專家</VAspirE_BecomeIdeologicalFigure.satisfiedWhenText>
+  
+  <!-- EN: become inhuman -->
+  <VAspirE_BecomeInhuman.label>踏上非人化之路</VAspirE_BecomeInhuman.label>
+  <!-- EN: {0} wants to be dominated by the psychic patterns of the void and become inhuman. -->
+  <VAspirE_BecomeInhuman.description>{0}的願望是被虛空的心靈模式支配，徹底斷絕自身人性。</VAspirE_BecomeInhuman.description>
+  
+  <!-- EN: become a leader -->
+  <VAspirE_BecomeLeader.label>成為領袖</VAspirE_BecomeLeader.label>
+  <!-- EN: {0} wants to lead their people from a position of power. -->
+  <VAspirE_BecomeLeader.description>{0}的願望是成為一名指引眾人砥礪前行的領袖。</VAspirE_BecomeLeader.description>
+  <!-- EN: {0} becomes an ideology Leader. -->
+  <VAspirE_BecomeLeader.satisfiedWhenText>{0}需要獲得信仰職位：領袖</VAspirE_BecomeLeader.satisfiedWhenText>
+  
+  <!-- EN: become liked -->
+  <VAspirE_BecomeLiked.label>成為人見人愛的存在</VAspirE_BecomeLiked.label>
+  <!-- EN: {0} wants to be liked by many of their peers. -->
+  <VAspirE_BecomeLiked.description>{0}的願望是成為被眾人欣賞和喜愛的存在。</VAspirE_BecomeLiked.description>
+  <!-- EN: {0} has 10 people with positive opinion about them. -->
+  <VAspirE_BecomeLiked.satisfiedWhenText>至少需要10個人對{0}抱有正面看法</VAspirE_BecomeLiked.satisfiedWhenText>
+  
+  <!-- EN: become a mechanitor -->
+  <VAspirE_BecomeMechanitor.label>成為御機使</VAspirE_BecomeMechanitor.label>
+  <!-- EN: {0} wants to control the march of the machines. -->
+  <VAspirE_BecomeMechanitor.description>{0}的願望是成為一名可以控制機械體的御機使。</VAspirE_BecomeMechanitor.description>
+  
+  <!-- EN: become noble -->
+  <VAspirE_BecomeNoble.label>成為帝國貴族</VAspirE_BecomeNoble.label>
+  <!-- EN: {0} wants to join the imperial great hierarchy. -->
+  <VAspirE_BecomeNoble.description>{0}的願望是加入帝國的貴族體系。</VAspirE_BecomeNoble.description>
+  <!-- EN: {0} becomes at least Yeoman. -->
+  <VAspirE_BecomeNoble.satisfiedWhenText>{0}至少需要獲得榮譽頭銜：文書官</VAspirE_BecomeNoble.satisfiedWhenText>
+  
+  <!-- EN: become a parent -->
+  <VAspirE_BecomeParent.label>成為父母</VAspirE_BecomeParent.label>
+  <!-- EN: {0} wants to become a parent and have a child of their own. -->
+  <VAspirE_BecomeParent.description>{0}的願望是成為一名擁有兒子/女兒的父親/母親。</VAspirE_BecomeParent.description>
+  
+  <!-- EN: become a psycaster -->
+  <VAspirE_BecomePsycaster.label>成為靈能者</VAspirE_BecomePsycaster.label>
+  <!-- EN: {0} wants to become acquainted with the psychic powers of psycasters. -->
+  <VAspirE_BecomePsycaster.description>{0}的願望是成為一名可以操縱心靈能量的靈能者。</VAspirE_BecomePsycaster.description>
+  
+  <!-- EN: become rich -->
+  <VAspirE_BecomeRich.label>成為富豪</VAspirE_BecomeRich.label>
+  <!-- EN: {0} wants their colony to prosper and become excessively rich. -->
+  <VAspirE_BecomeRich.description>{0}的願望是讓殖民地變得極其繁榮和富裕。</VAspirE_BecomeRich.description>
+  <!-- EN: {0}』s colony wealth exceeds 300.000. -->
+  <VAspirE_BecomeRich.satisfiedWhenText>{0}的殖民地財富值需要達到300000</VAspirE_BecomeRich.satisfiedWhenText>
+  
+  <!-- EN: become a sanguophage -->
+  <VAspirE_BecomeSanguophage.label>成為血族</VAspirE_BecomeSanguophage.label>
+  <!-- EN: {0} wants to live forever as a sanguophage. -->
+  <VAspirE_BecomeSanguophage.description>{0}的願望是成為一名血族。</VAspirE_BecomeSanguophage.description>
+  
+  <!-- EN: bond with an animal -->
+  <VAspirE_BondWithAnimal.label>與動物建立羈絆</VAspirE_BondWithAnimal.label>
+  <!-- EN: {0} wants to bond with an animal companion. -->
+  <VAspirE_BondWithAnimal.description>{0}的願望是與一隻動物建立羈絆。</VAspirE_BondWithAnimal.description>
+
+  <!-- EN: burn some luciferium -->
+  <VAspirE_BurnSomeLuciferium.label>燒燬路西法強化劑</VAspirE_BurnSomeLuciferium.label>
+  <!-- EN: {0} wants to get rid of some disgusting luciferium in a crematorium or fireplace. -->
+  <VAspirE_BurnSomeLuciferium.description>{0}的願望是用營火或焚化爐燒燬一些害人不淺的路西法強化劑。</VAspirE_BurnSomeLuciferium.description>
+  
+  <!-- EN: complete machine body -->
+  <VAspirE_CompleteMachineBody.label>完成全方位身體改造</VAspirE_CompleteMachineBody.label>
+  <!-- EN: {0} would like to have 6 different artificial body parts. -->
+  <VAspirE_CompleteMachineBody.description>{0}的願望是對自己進行6次不同的身體改造。</VAspirE_CompleteMachineBody.description>
+  
+  <!-- EN: connect with a gauranlen tree -->
+  <VAspirE_ConnectWithGauranlenTree.label>與高嵐樹連結</VAspirE_ConnectWithGauranlenTree.label>
+  <!-- EN: {0} would love to connect with a Gauranlen tree in a tree linking ceremony. -->
+  <VAspirE_ConnectWithGauranlenTree.description>{0}的願望是與一棵高嵐樹連結。</VAspirE_ConnectWithGauranlenTree.description>
+  <!-- EN: {0} connects to a Gauranlen tree via tree linking ceremony. -->
+  <VAspirE_ConnectWithGauranlenTree.satisfiedWhenText>{0}需要與一棵高嵐樹連結。</VAspirE_ConnectWithGauranlenTree.satisfiedWhenText>
+  
+  <!-- EN: consume human meat -->
+  <VAspirE_ConsumeHumanMeat.label>享用人肉</VAspirE_ConsumeHumanMeat.label>
+  <!-- EN: {0} wants to see what long pig tastes like. -->
+  <VAspirE_ConsumeHumanMeat.description>{0}的願望是享用一次人肉，嘗嘗味道究竟如何。</VAspirE_ConsumeHumanMeat.description>
+  
+  <!-- EN: consume luciferium -->
+  <VAspirE_ConsumeLuciferium.label>服用路西法強化劑</VAspirE_ConsumeLuciferium.label>
+  <!-- EN: {0} wants to ride the luciferium high. -->
+  <VAspirE_ConsumeLuciferium.description>{0}的願望是服用一次路西法強化劑，感受這種紅色藥片所帶來的力量。</VAspirE_ConsumeLuciferium.description>
+  
+  <!-- EN: create a legendary work -->
+  <VAspirE_CreateLegendary.label>創造傳奇級物品</VAspirE_CreateLegendary.label>
+  <!-- EN: {0} wants to leave their mark on the world and create a legendary work. -->
+  <VAspirE_CreateLegendary.description>{0}的願望是創造一件傳奇級物品，以在這個世界上留下自己的痕跡。</VAspirE_CreateLegendary.description>
+  <!-- EN: {0} creates any legendary object - weapon, armor, sculpture, furniture, anything. -->
+  <VAspirE_CreateLegendary.satisfiedWhenText>{0}需要製作或建造任意一種傳奇級物品</VAspirE_CreateLegendary.satisfiedWhenText>
+  
+  <!-- EN: dead rival -->
+  <VAspirE_DeadRival.label>目睹死對頭死亡</VAspirE_DeadRival.label>
+  <!-- EN: {0} would like to have a rival, and for them to die. -->
+  <VAspirE_DeadRival.description>{0}的願望是目睹自己的一名死對頭死亡時的樣子。</VAspirE_DeadRival.description>
+  
+  <!-- EN: defeat faction leader -->
+  <VAspirE_DefeatFactionLeader.label>擊敗敵對派系領袖</VAspirE_DefeatFactionLeader.label>
+  <!-- EN: {0} wants to be the one to defeat an enemy faction leader. -->
+  <VAspirE_DefeatFactionLeader.description>{0}的願望是擊敗一名敵對派系的領袖。</VAspirE_DefeatFactionLeader.description>
+  
+  <!-- EN: destroy a mech cluster -->
+  <VAspirE_DestroyCluster.label>擊敗機械軍團</VAspirE_DestroyCluster.label>
+  <!-- EN: {0} wants to completely destroy a mech cluster. -->
+  <VAspirE_DestroyCluster.description>{0}的願望是擊敗一個機械軍團。</VAspirE_DestroyCluster.description>
+  
+  <!-- EN: destroy an insect hive -->
+  <VAspirE_DestroyInsectHive.label>擊敗蟲巢</VAspirE_DestroyInsectHive.label>
+  <!-- EN: {0} wants to completely destroy an insect hive. -->
+  <VAspirE_DestroyInsectHive.description>{0}的願望是擊敗一次蟲災中產生的所有蟲巢。</VAspirE_DestroyInsectHive.description>
+  
+  <!-- EN: experience resurrection -->
+  <VAspirE_ExperienceResurrection.label>體驗被復活的感覺</VAspirE_ExperienceResurrection.label>
+  <!-- EN: {0} wants to experience true death and be resurrected using a mech serum. -->
+  <VAspirE_ExperienceResurrection.description>{0}的願望是體驗一次真正的死亡，以及被復甦機械液重賦生命的感覺。</VAspirE_ExperienceResurrection.description>
+  
+  <!-- EN: feel catharsis -->
+  <VAspirE_FeelCatharsis.label>發洩情緒</VAspirE_FeelCatharsis.label>
+  <!-- EN: {0} wants to unbottle their feelings and feel the serenity afterwards. -->
+  <VAspirE_FeelCatharsis.description>{0}的願望是發洩一次心中的壓力，然後體驗隨之而來的痛快與舒暢感。</VAspirE_FeelCatharsis.description>
+  
+  <!-- EN: form a psychic bond -->
+  <VAspirE_FormPsychicBond.label>建立心靈羈絆</VAspirE_FormPsychicBond.label>
+  <!-- EN: {0} wants to psychically bond with a perfect partner. -->
+  <VAspirE_FormPsychicBond.description>{0}的願望是與一名完美的伴侶建立心靈羈絆。</VAspirE_FormPsychicBond.description>
+  
+  <!-- EN: gain a level five psycast -->
+  <VAspirE_GainALevel5Psycast.label>成為老練靈能者</VAspirE_GainALevel5Psycast.label>
+  <!-- EN: {0} would like to gain access to a psycast of the fifth level. -->
+  <VAspirE_GainALevel5Psycast.description>{0}的願望是成為一名5級的老練靈能者。</VAspirE_GainALevel5Psycast.description>
+  
+  <!-- EN: get a beautiful lover -->
+  <VAspirE_GetBeautifulLover.label>與貌美之人發展浪漫關係</VAspirE_GetBeautifulLover.label>
+  <!-- EN: {0} wants to be told that they are punching above their weight, and become lovers with a beautiful person. -->
+  <VAspirE_GetBeautifulLover.description>{0}的願望是通過自己的努力與一名貌美之人墜入愛河。</VAspirE_GetBeautifulLover.description>
+  <!-- EN: {0} becomes lovers with a pawn with a Beauty stat of 1 or higher. -->
+  <VAspirE_GetBeautifulLover.satisfiedWhenText>{0}需要與一個魅力至少為1的人發展浪漫關係</VAspirE_GetBeautifulLover.satisfiedWhenText>
+  
+  <!-- EN: get bionic spine -->
+  <VAspirE_GetBionicSpine.label>安裝仿生脊椎</VAspirE_GetBionicSpine.label>
+  <!-- EN: {0} would love to have a bionic spine. -->
+  <VAspirE_GetBionicSpine.description>{0}的願望是安裝一根仿生脊椎。</VAspirE_GetBionicSpine.description>
+  
+  <!-- EN: get blackout drunk -->
+  <VAspirE_GetBlackoutDrunk.label>痛飲直至不省人事</VAspirE_GetBlackoutDrunk.label>
+  <!-- EN: {0} wants to get absolutely shitfaced. -->
+  <VAspirE_GetBlackoutDrunk.description>{0}的願望是痛飲一次美酒，直至自己不省人事。</VAspirE_GetBlackoutDrunk.description>
+  
+  <!-- EN: get digested -->
+  <VAspirE_GetDigested.label>體驗被消化的感覺</VAspirE_GetDigested.label>
+  <!-- EN: {0} wants to get digested whole. {0} swears this is not a kink thing. -->
+  <VAspirE_GetDigested.description>{0}的願望是體驗一次被消化的感覺。{0}並不認為這是件很奇怪的事情。</VAspirE_GetDigested.description>
+  
+  <!-- EN: get five burn scars -->
+  <VAspirE_GetFiveBurnScars.label>獲得燒傷疤痕</VAspirE_GetFiveBurnScars.label>
+  <!-- EN: {0} wants to get five burn scars. -->
+  <VAspirE_GetFiveBurnScars.description>{0}的願望是獲得5個燒傷疤痕，因為這樣看起來很酷。</VAspirE_GetFiveBurnScars.description>
+  
+  <!-- EN: get inspiration -->
+  <VAspirE_GetInspiration.label>獲得激勵</VAspirE_GetInspiration.label>
+  <!-- EN: {0} aspires to be inspired. -->
+  <VAspirE_GetInspiration.description>{0}的願望是獲得一個激勵。</VAspirE_GetInspiration.description>
+  <!-- EN: {0} gains any inspiration. -->
+  <VAspirE_GetInspiration.satisfiedWhenText>{0}需要獲得任意一種激勵</VAspirE_GetInspiration.satisfiedWhenText>
+  
+  <!-- EN: get joywired -->
+  <VAspirE_GetJoywired.label>安裝樂絲晶片</VAspirE_GetJoywired.label>
+  <!-- EN: {0} would like to feel the effects of joywire. -->
+  <VAspirE_GetJoywired.description>{0}的願望是安裝一個樂絲晶片，體驗無與倫比的快樂感。</VAspirE_GetJoywired.description>
+  
+  <!-- EN: get married -->
+  <VAspirE_GetMarried.label>與所愛之人結婚</VAspirE_GetMarried.label>
+  <!-- EN: {0} would like to get married. -->
+  <VAspirE_GetMarried.description>{0}的願望是與所愛之人共同步入婚姻的殿堂。</VAspirE_GetMarried.description>
+  
+  <!-- EN: get rid of asthma -->
+  <VAspirE_GetRidOfAsthma.label>擺脫氣喘的困擾</VAspirE_GetRidOfAsthma.label>
+  <!-- EN: {0} wants to get rid of asthma. -->
+  <VAspirE_GetRidOfAsthma.description>{0}的願望是擺脫氣喘的困擾。</VAspirE_GetRidOfAsthma.description>
+  
+  <!-- EN: get rid of cataracts -->
+  <VAspirE_GetRidOfCataracts.label>擺脫白內障的困擾</VAspirE_GetRidOfCataracts.label>
+  <!-- EN: {0} wants to get rid of cataracts. -->
+  <VAspirE_GetRidOfCataracts.description>{0}的願望是擺脫白內障的困擾。</VAspirE_GetRidOfCataracts.description>
+  
+  <!-- EN: get rid of hearing loss -->
+  <VAspirE_GetRidOfHearingLoss.label>擺脫重聽的困擾</VAspirE_GetRidOfHearingLoss.label>
+  <!-- EN: {0} wants to get rid of hearing loss. -->
+  <VAspirE_GetRidOfHearingLoss.description>{0}的願望是擺脫重聽的困擾。</VAspirE_GetRidOfHearingLoss.description>
+  
+  <!-- EN: get some lovin' -->
+  <VAspirE_GetSomeLovin.label>體驗做愛的感覺</VAspirE_GetSomeLovin.label>
+  <!-- EN: {0} would like to get some lovin』. -->
+  <VAspirE_GetSomeLovin.description>{0}的願望是體驗一次做愛的感覺。</VAspirE_GetSomeLovin.description>
+  
+  <!-- EN: get ultimate revenge on a Centipede -->
+  <VAspirE_GetUltimateRevengeOnCentipede.label>對機械蜈蚣進行終極侮辱</VAspirE_GetUltimateRevengeOnCentipede.label>
+  <!-- EN: {0} wants to shred a Centipede blaster to show him who's boss now. -->
+  <VAspirE_GetUltimateRevengeOnCentipede.description>{0}的願望是將一隻機械蜈蚣（光束衝擊砲）打至跪地，然後把它的屍體拆成零件。現在知道誰是老大了霍？</VAspirE_GetUltimateRevengeOnCentipede.description>
+  
+  <!-- EN: grow old -->
+  <VAspirE_GrowOld.label>體驗變老的感覺</VAspirE_GrowOld.label>
+  <!-- EN: {0} wants to live long enough to see a different person in the mirror. -->
+  <VAspirE_GrowOld.description>{0}的願望是活得足夠長久，體驗自己變老的感覺。</VAspirE_GrowOld.description>
+  <!-- EN: {0} gets birthday event/becomes 65, whichever comes first. -->
+  <VAspirE_GrowOld.satisfiedWhenText>{0}需要達到65歲或觸發生日事件</VAspirE_GrowOld.satisfiedWhenText>
+  
+  <!-- EN: have a wonderful room -->
+  <VAspirE_HaveWonderfulRoom.label>獲得世界奇觀的臥室</VAspirE_HaveWonderfulRoom.label>
+  <!-- EN: {0} wants to have the most wonderful bedroom. -->
+  <VAspirE_HaveWonderfulRoom.description>{0}的願望是獲得一間觀感達到世界奇觀的臥室。</VAspirE_HaveWonderfulRoom.description>
+  
+  <!-- EN: hear anima scream -->
+  <VAspirE_HearAnimaScream.label>聆聽精神嚎叫</VAspirE_HearAnimaScream.label>
+  <!-- EN: {0} wants to hear the screams of a dying anima tree. -->
+  <VAspirE_HearAnimaScream.description>{0}的願望是聆聽一次生命之樹死亡後發出的精神嚎叫。</VAspirE_HearAnimaScream.description>
+  
+  <!-- EN: held a concert -->
+  <VAspirE_HeldConcert.label>舉辦音樂會</VAspirE_HeldConcert.label>
+  <!-- EN: {0} would like to hold a concert for other colonists. -->
+  <VAspirE_HeldConcert.description>{0}的願望是為其他殖民者舉辦一場音樂會。</VAspirE_HeldConcert.description>
+  
+  <!-- EN: kill someone -->
+  <VAspirE_KillSomeone.label>體驗殺人的感覺</VAspirE_KillSomeone.label>
+  <!-- EN: {0} wants to inflict pain and kill another being. -->
+  <VAspirE_KillSomeone.description>{0}的願望是體驗一次殺人的感覺。</VAspirE_KillSomeone.description>
+  <!-- EN: {0} kills a humanoid. -->
+  <VAspirE_KillSomeone.satisfiedWhenText>{0}需要殺死一個人</VAspirE_KillSomeone.satisfiedWhenText>
+  
+  <!-- EN: witness flesh shaping -->
+  <VAspirE_LearnToShapeFlesh.label>目睹塑造血肉</VAspirE_LearnToShapeFlesh.label>
+  <!-- EN: {0} wants to see another person use the flesh shaping ability. -->
+  <VAspirE_LearnToShapeFlesh.description>{0}的願望是目睹其他人使用一次塑造血肉能力。</VAspirE_LearnToShapeFlesh.description>
+  
+  <!-- EN: obtain legendary gear -->
+  <VAspirE_ObtainLegendaryGear.label>獲得傳奇級裝備</VAspirE_ObtainLegendaryGear.label>
+  <!-- EN: {0} wants to feel the work of a legendary master in their grasp. -->
+  <VAspirE_ObtainLegendaryGear.description>{0}的願望是近距離端詳一件傳奇級的裝備。</VAspirE_ObtainLegendaryGear.description>
+  <!-- EN: {0} equips a legendary weapon or wears legendary apparel of any kind. -->
+  <VAspirE_ObtainLegendaryGear.satisfiedWhenText>{0}需要裝備/穿戴任意一種傳奇級武器/衣物</VAspirE_ObtainLegendaryGear.satisfiedWhenText>
+  
+  <!-- EN: overdose -->
+  <VAspirE_Overdose.label>體驗用藥過量的感覺</VAspirE_Overdose.label>
+  <!-- EN: {0} wants to see what it』s like to overdose. -->
+  <VAspirE_Overdose.description>{0}的願望是體驗一次用藥過量的感覺。</VAspirE_Overdose.description>
+  
+  <!-- EN: play with a golden cube -->
+  <VAspirE_PlayWithCube.label>把玩黃金立方體</VAspirE_PlayWithCube.label>
+  <!-- EN: {0} wants to play with a golden cube. -->
+  <VAspirE_PlayWithCube.description>{0}的願望是把玩一次黃金立方體。</VAspirE_PlayWithCube.description>
+  
+  <!-- EN: propose -->
+  <VAspirE_Propose.label>向所愛之人求婚</VAspirE_Propose.label>
+  <!-- EN: {0} would like to propose to somebody. -->
+  <VAspirE_Propose.description>{0}的願望是向所愛之人許下山盟海誓。</VAspirE_Propose.description>
+  
+  <!-- EN: read a fascinating tome -->
+  <VAspirE_ReadAFascinatingTome.label>閱讀引人入勝的典籍</VAspirE_ReadAFascinatingTome.label>
+  <!-- EN: {0} wants to read a fascinating eldritch tome. -->
+  <VAspirE_ReadAFascinatingTome.description>{0}的願望是閱讀一本怪異但引人入勝的典籍。</VAspirE_ReadAFascinatingTome.description>
+  
+  <!-- EN: read an amazing book -->
+  <VAspirE_ReadAmazingBook.label>閱讀驚人的課本</VAspirE_ReadAmazingBook.label>
+  <!-- EN: {0} wants to read a book detailing a skill on which they are passionate about. -->
+  <VAspirE_ReadAmazingBook.description>{0}的願望是閱讀一本驚人的課本，並從中習得自己所需的技能知識。</VAspirE_ReadAmazingBook.description>
+  
+  <!-- EN: see an aurora -->
+  <VAspirE_SeeAurora.label>欣賞極光</VAspirE_SeeAurora.label>
+  <!-- EN: {0} wants to skygaze during an aurora. -->
+  <VAspirE_SeeAurora.description>{0}的願望是欣賞一次美麗的極光。</VAspirE_SeeAurora.description>
+  
+  <!-- EN: use a flame weapon -->
+  <VAspirE_UseFireWeapon.label>使用火焰武器</VAspirE_UseFireWeapon.label>
+  <!-- EN: {0} wants to use a flame weapon in combat. -->
+  <VAspirE_UseFireWeapon.description>{0}的願望是在戰鬥中使用一種火焰武器。</VAspirE_UseFireWeapon.description>
+  
+  <!-- EN: wield bladelink weapon -->
+  <VAspirE_WieldBladelink.label>與羈絆武器綁定</VAspirE_WieldBladelink.label>
+  <!-- EN: {0} would like to bond with a bladelink weapon. -->
+  <VAspirE_WieldBladelink.description>{0}的願望是與一把羈絆武器進行綁定。</VAspirE_WieldBladelink.description>
+  <!-- EN: {0} psychically bonds with a bladelink weapon. -->
+  <VAspirE_WieldBladelink.satisfiedWhenText>{0}需要與任意一種羈絆武器進行綁定</VAspirE_WieldBladelink.satisfiedWhenText>
+  
+</LanguageData>

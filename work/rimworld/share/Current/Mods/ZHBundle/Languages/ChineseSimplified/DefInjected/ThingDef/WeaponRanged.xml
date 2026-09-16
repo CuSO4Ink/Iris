@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: blast mark -->
+  <Miho_Filth_BlastMarkSmall.label>爆炸焦痕</Miho_Filth_BlastMarkSmall.label>
+  
+  <!-- EN: 미호 중산탄총 -->
+  <Miho_Weapon_AutoShotgun.label>美狐重型霰弹枪</Miho_Weapon_AutoShotgun.label>
+  <!-- EN: 클래식하지만 위협적인 자동산탄총 입니다. -->
+  <Miho_Weapon_AutoShotgun.description>由美狐族使用的重型霰弹枪，其发射的烧蚀弹可以缓慢地熔解敌人身上的装甲。虽然设计老派，但威力不俗。</Miho_Weapon_AutoShotgun.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_AutoShotgun.tools.stock.label>枪托</Miho_Weapon_AutoShotgun.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_AutoShotgun.tools.barrel.label>枪管</Miho_Weapon_AutoShotgun.tools.barrel.label>
+  <!-- EN: 미호 중산탄총 -->
+  <Miho_Weapon_AutoShotgun.verbs.Verb_Shoot_ShootGun.label>美狐重型霰弹枪</Miho_Weapon_AutoShotgun.verbs.Verb_Shoot_ShootGun.label>
+  
+  <!-- EN: 미호 타정총 -->
+  <Miho_Weapon_Pistol.label>美狐射钉枪</Miho_Weapon_Pistol.label>
+  <!-- EN: 살인을 목적으로 개조된 타정총입니다. 평범한 타정총보다 훨씬 반동이 크고 위력이 강합니다.  원래 목적대로, 평범한 공구로 사용할 수 도 있습니다. -->
+  <Miho_Weapon_Pistol.description>由美狐族使用的射钉枪，其发射的特制钉弹具有很强的穿甲能力。虽说可以用来杀人，但还请不要忘记它也是件普通的工具。</Miho_Weapon_Pistol.description>
+  <!-- EN: nail -->
+  <Miho_Weapon_Pistol.tools.nail.label>钉尖</Miho_Weapon_Pistol.tools.nail.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_Pistol.tools.barrel.label>枪管</Miho_Weapon_Pistol.tools.barrel.label>
+  <!-- EN: 미호 타정총 -->
+  <Miho_Weapon_Pistol.verbs.Verb_Shoot.label>美狐射钉枪</Miho_Weapon_Pistol.verbs.Verb_Shoot.label>
+  
+  <!-- EN: nail -->
+  <Miho_Weapon_Pistol_Proj.label>美狐钉弹</Miho_Weapon_Pistol_Proj.label>
+  
+  <!-- EN: 미호 단총 -->
+  <Miho_Weapon_RifleCQB.label>美狐冲锋枪</Miho_Weapon_RifleCQB.label>
+  <!-- EN: 8mm구경의 소이 권총탄을 사용하는 다용도 기관단총입니다. 인체공학적이지 않고 뭔가 나사빠진 성능을 자랑하지만. 근접교전시 이만한 무기가 없다는게 미호들의 중론입니다. -->
+  <Miho_Weapon_RifleCQB.description>由美狐族使用的8mm多功能冲锋枪，其发射的烧蚀弹可以缓慢地熔解敌人身上的装甲。值得一提的是，这种武器的整体设计并不符合人体工程学，其实战表现也略显怪异。美狐族的士兵们则对此抱有不同的观点：“相信我，没有比这种冲锋枪用起来更顺手的近距离作战武器了！”</Miho_Weapon_RifleCQB.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_RifleCQB.tools.stock.label>枪托</Miho_Weapon_RifleCQB.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RifleCQB.tools.barrel.label>枪管</Miho_Weapon_RifleCQB.tools.barrel.label>
+  <!-- EN: 미호 단총 -->
+  <Miho_Weapon_RifleCQB.verbs.Verb_Shoot.label>美狐冲锋枪</Miho_Weapon_RifleCQB.verbs.Verb_Shoot.label>
+  
+  <!-- EN: smg bullet -->
+  <Miho_Weapon_RifleCQB_Proj.label>美狐冲锋枪子弹</Miho_Weapon_RifleCQB_Proj.label>
+  
+  <!-- EN: 미호 보총 -->
+  <Miho_Weapon_RifleDefence.label>美狐自动步枪</Miho_Weapon_RifleDefence.label>
+  <!-- EN: 6.5mm구경의 소이 소총탄을 사용하는 보병용 자동소총입니다. 소규모의 저개발 공장에서도 쉽게 생산 가능한 이점이 있습니다. -->
+  <Miho_Weapon_RifleDefence.description>由美狐族使用的6.5mm自动步枪，其发射的烧蚀弹可以缓慢地熔解敌人身上的装甲。由于整体设计较为简单，即使是设备匮乏的小型工厂也能轻松量产这种武器。</Miho_Weapon_RifleDefence.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_RifleDefence.tools.stock.label>枪托</Miho_Weapon_RifleDefence.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RifleDefence.tools.barrel.label>枪管</Miho_Weapon_RifleDefence.tools.barrel.label>
+  <!-- EN: 미호 보총 -->
+  <Miho_Weapon_RifleDefence.verbs.Verb_Shoot.label>美狐自动步枪</Miho_Weapon_RifleDefence.verbs.Verb_Shoot.label>
+  
+  <!-- EN: assault rifle bullet -->
+  <Miho_Weapon_RifleDefence_Proj.label>美狐自动步枪子弹</Miho_Weapon_RifleDefence_Proj.label>
+  
+  <!-- EN: 미호 보총 (유탄발사기) -->
+  <Miho_Weapon_RifleDefenceGrenade.label>美狐自动步枪（榴弹）</Miho_Weapon_RifleDefenceGrenade.label>
+  <!-- EN: 6.5mm구경의 소이 소총탄을 사용하는 보병용 자동소총입니다. 소규모의 저개발 공장에서도 쉽게 생산 가능한 이점이 있습니다. 또한 언더바렐 유탄발사기가 달려 있습니다. -->
+  <Miho_Weapon_RifleDefenceGrenade.description>由美狐族使用的6.5mm自动步枪，其发射的烧蚀弹可以缓慢地熔解敌人身上的装甲。由于整体设计较为简单，即使是设备匮乏的小型工厂也能轻松量产这种武器。枪管下额外配备有附挂榴弹发射器。</Miho_Weapon_RifleDefenceGrenade.description>
+  <!-- EN: grenade charges -->
+  <Miho_Weapon_RifleDefenceGrenade.comps.CompEquippableAbilityReloadable.chargeNoun>榴弹</Miho_Weapon_RifleDefenceGrenade.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Miho_Weapon_RifleDefenceGrenade.comps.CompEquippableAbilityReloadable.cooldownGerund>冷却中</Miho_Weapon_RifleDefenceGrenade.comps.CompEquippableAbilityReloadable.cooldownGerund>
+  <!-- EN: stock -->
+  <Miho_Weapon_RifleDefenceGrenade.tools.stock.label>枪托</Miho_Weapon_RifleDefenceGrenade.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RifleDefenceGrenade.tools.barrel.label>枪管</Miho_Weapon_RifleDefenceGrenade.tools.barrel.label>
+  <!-- EN: 미호 보총 (유탄발사기) -->
+  <Miho_Weapon_RifleDefenceGrenade.verbs.Verb_Shoot.label>美狐自动步枪（榴弹）</Miho_Weapon_RifleDefenceGrenade.verbs.Verb_Shoot.label>
+  
+  <!-- EN: 미호 보병 유탄발사기 -->
+  <Miho_Weapon_RifleGrenade.label>美狐榴弹发射器</Miho_Weapon_RifleGrenade.label>
+  <!-- EN: 20mm 파편 유탄을 발사하는 중화기 입니다. -->
+  <Miho_Weapon_RifleGrenade.description>由美狐族使用的20mm榴弹发射器。榴弹爆炸后产生的破片会对敌人造成二次杀伤。</Miho_Weapon_RifleGrenade.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_RifleGrenade.tools.stock.label>枪托</Miho_Weapon_RifleGrenade.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RifleGrenade.tools.barrel.label>枪管</Miho_Weapon_RifleGrenade.tools.barrel.label>
+  <!-- EN: 미호 보병 유탄발사기 -->
+  <Miho_Weapon_RifleGrenade.verbs.Verb_Shoot.label>美狐榴弹发射器</Miho_Weapon_RifleGrenade.verbs.Verb_Shoot.label>
+  
+  <!-- EN: grenade -->
+  <Miho_Weapon_RifleGrenade_Proj.label>榴弹</Miho_Weapon_RifleGrenade_Proj.label>
+  
+  <!-- EN: fragment -->
+  <Miho_Weapon_RifleGrenade_ProjSub.label>榴弹破片</Miho_Weapon_RifleGrenade_ProjSub.label>
+  
+  <!-- EN: 미호 경기관총 -->
+  <Miho_Weapon_RifleMachinegun.label>美狐轻机枪</Miho_Weapon_RifleMachinegun.label>
+  <!-- EN: 6.5mm구경의 소이 소총탄을 사용하는 경기관총입니다. 중거리에서 탄막을 펼치기 좋습니다. -->
+  <Miho_Weapon_RifleMachinegun.description>由美狐族使用的6.5mm轻机枪，其发射的烧蚀弹可以缓慢地熔解敌人身上的装甲。在中远距离作战时能起到很好的火力压制效果。</Miho_Weapon_RifleMachinegun.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_RifleMachinegun.tools.stock.label>枪托</Miho_Weapon_RifleMachinegun.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RifleMachinegun.tools.barrel.label>枪管</Miho_Weapon_RifleMachinegun.tools.barrel.label>
+  <!-- EN: 미호 경기관총 -->
+  <Miho_Weapon_RifleMachinegun.verbs.Verb_Shoot.label>美狐轻机枪</Miho_Weapon_RifleMachinegun.verbs.Verb_Shoot.label>
+  
+  <!-- EN: 미호 구식 보총 -->
+  <Miho_Weapon_RifleOld.label>美狐旧式步枪</Miho_Weapon_RifleOld.label>
+  <!-- EN: 7.7mm구경의 소이 소총탄을 사용하는 보병용 소총입니다. 구식이지만 여전히 괜찮은 집탄률를 지녀 주로 지정사수 소총으로 사용됩니다. 특유의 조준기는 미호의 안구에 최적화 되어있어 다른 종족들이 조준하게 된다면 심하게 어지러울겁니다. -->
+  <Miho_Weapon_RifleOld.description>由美狐族使用的7.7mm步枪，其发射的烧蚀弹可以缓慢地熔解敌人身上的装甲。虽然型号有些老旧，但仍然是深受美狐族神射手们喜爱的武器。\n\n这种武器的瞄准镜是为美狐族量身定制的，其他种族使用时可能会感到头晕。</Miho_Weapon_RifleOld.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_RifleOld.tools.stock.label>枪托</Miho_Weapon_RifleOld.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RifleOld.tools.barrel.label>枪管</Miho_Weapon_RifleOld.tools.barrel.label>
+  <!-- EN: 미호 구식 보총 -->
+  <Miho_Weapon_RifleOld.verbs.Verb_Shoot.label>美狐旧式步枪</Miho_Weapon_RifleOld.verbs.Verb_Shoot.label>
+  
+  <!-- EN: 미호 플라즈마 소총 -->
+  <Miho_Weapon_RiflePlasma.label>美狐等离子步枪</Miho_Weapon_RiflePlasma.label>
+  <!-- EN: 순간적으로 태양 내부의 온도에 필적하는 플라즈마를 투사시킬 수 있는 소총입니다. -->
+  <Miho_Weapon_RiflePlasma.description>由美狐族使用的等离子步枪，其发射的等离子弹可以快速地熔解敌人身上的装甲，且会对建筑造成额外伤害。射程、威力与精度都很优秀。</Miho_Weapon_RiflePlasma.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_RiflePlasma.tools.stock.label>枪托</Miho_Weapon_RiflePlasma.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RiflePlasma.tools.barrel.label>枪管</Miho_Weapon_RiflePlasma.tools.barrel.label>
+  <!-- EN: 미호 플라즈마 소총 -->
+  <Miho_Weapon_RiflePlasma.verbs.Verb_Shoot.label>美狐等离子步枪</Miho_Weapon_RiflePlasma.verbs.Verb_Shoot.label>
+  
+  <!-- EN: plasma bullet -->
+  <Miho_Weapon_RiflePlasma_Proj.label>美狐等离子弹</Miho_Weapon_RiflePlasma_Proj.label>
+  
+  <!-- EN: rifle bullet -->
+  <Miho_Weapon_RiflePrecision_Proj.label>美狐步枪子弹</Miho_Weapon_RiflePrecision_Proj.label>
+  
+  <!-- EN: 미호 강입자 소총 -->
+  <Miho_Weapon_RiflePsychic.label>美狐强子步枪</Miho_Weapon_RiflePsychic.label>
+  <!-- EN: 초소형 입자가속기 입니다. 시전자의 사이킥 능력을 통해 작동하며, 발사된 강입자로 적의 내부를 말 그대로 찢어버립니다. -->
+  <Miho_Weapon_RiflePsychic.description>由美狐族使用的强子加速武器，能借助使用者的心灵能量来加速发射足以从内部撕裂敌人的强子弹。命中后可以麻痹敌人并造成额外属性减益。</Miho_Weapon_RiflePsychic.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_RiflePsychic.tools.stock.label>枪托</Miho_Weapon_RiflePsychic.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_RiflePsychic.tools.barrel.label>枪管</Miho_Weapon_RiflePsychic.tools.barrel.label>
+  <!-- EN: 미호 강입자 소총 -->
+  <Miho_Weapon_RiflePsychic.verbs.Verb_Shoot_ShootGun.label>美狐强子步枪</Miho_Weapon_RiflePsychic.verbs.Verb_Shoot_ShootGun.label>
+  
+  <!-- EN: accelerated pellet -->
+  <Miho_Weapon_RiflePsychic_Proj.label>美狐强子弹</Miho_Weapon_RiflePsychic_Proj.label>
+  
+  <!-- EN: 미호 사냥총 -->
+  <Miho_Weapon_Shotgun.label>美狐霰弹枪</Miho_Weapon_Shotgun.label>
+  <!-- EN: 사냥용으로 적합한 정밀한 산탄총 입니다. 늘 그랬듯이. 특정한 부류(잘 차려입고,비교적 문명화된)의 호모 사피엔스들을 허가없이 사냥하는건 불법입니다. -->
+  <Miho_Weapon_Shotgun.description>由美狐族使用的狩猎用霰弹枪，其发射的烧蚀弹可以缓慢地熔解敌人身上的装甲。请注意，在未取得狩猎证的情况下捕杀某些（身着衣物，相对开化的那种）人类是非法的。</Miho_Weapon_Shotgun.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_Shotgun.tools.stock.label>枪托</Miho_Weapon_Shotgun.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_Shotgun.tools.barrel.label>枪管</Miho_Weapon_Shotgun.tools.barrel.label>
+  <!-- EN: 미호 사냥총 -->
+  <Miho_Weapon_Shotgun.verbs.Verb_Shoot_ShootGun.label>美狐霰弹枪</Miho_Weapon_Shotgun.verbs.Verb_Shoot_ShootGun.label>
+  
+  <!-- EN: pellet -->
+  <Miho_Weapon_Shotgun_Proj.label>美狐霰弹枪子弹</Miho_Weapon_Shotgun_Proj.label>
+  
+  <!-- EN: 미호 가속소총 -->
+  <Miho_Weapon_ShotgunPsychic.label>美狐粒子步枪</Miho_Weapon_ShotgunPsychic.label>
+  <!-- EN: 시전자의 사이킥 능력을 이용해 입자 탄환을 가속시켜 발사하는 소총입니다. 입자가속 무기들중 가장 단순한 편 입니다. -->
+  <Miho_Weapon_ShotgunPsychic.description>由美狐族使用的粒子加速武器，能借助使用者的心灵能量来加速发射威力不俗的粒子弹。命中后可以麻痹敌人并造成额外属性减益。</Miho_Weapon_ShotgunPsychic.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_ShotgunPsychic.tools.stock.label>枪托</Miho_Weapon_ShotgunPsychic.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_ShotgunPsychic.tools.barrel.label>枪管</Miho_Weapon_ShotgunPsychic.tools.barrel.label>
+  <!-- EN: 미호 가속소총 -->
+  <Miho_Weapon_ShotgunPsychic.verbs.Verb_Shoot_ShootGun.label>美狐粒子步枪</Miho_Weapon_ShotgunPsychic.verbs.Verb_Shoot_ShootGun.label>
+
+  <!-- EN: accelerated pellet -->
+  <Miho_Weapon_ShotgunPsychic_Proj.label>美狐粒子加速弹</Miho_Weapon_ShotgunPsychic_Proj.label>
+  
+  <!-- EN: 미호 플라즈마 중형 소총 -->
+  <Miho_Weapon_SniperPlasma.label>美狐重型等离子步枪</Miho_Weapon_SniperPlasma.label>
+  <!-- EN: 순간적으로 태양 내부의 온도에 필적하는 플라즈마를 투사시킬 수 있는 중형 소총입니다. 보통 화력 투사는 다각전차들의 몫이지만. 정예 중보병들의 전술적 다양성을 위해 가끔 채택됩니다. -->
+  <Miho_Weapon_SniperPlasma.description>由美狐族使用的重型等离子步枪，其发射的高能等离子弹不仅会造成小范围爆炸，还可以快速地熔解敌人身上的装甲，且会对建筑造成额外伤害。虽然美狐族主要依靠无人机来发动重火力打击，但为了满足战术方面的多样化，他们也会专门训练一些使用此类武器的重装步兵。</Miho_Weapon_SniperPlasma.description>
+  <!-- EN: stock -->
+  <Miho_Weapon_SniperPlasma.tools.stock.label>枪托</Miho_Weapon_SniperPlasma.tools.stock.label>
+  <!-- EN: barrel -->
+  <Miho_Weapon_SniperPlasma.tools.barrel.label>枪管</Miho_Weapon_SniperPlasma.tools.barrel.label>
+  <!-- EN: 미호 플라즈마 중형 소총 -->
+  <Miho_Weapon_SniperPlasma.verbs.Verb_Shoot.label>美狐重型等离子步枪</Miho_Weapon_SniperPlasma.verbs.Verb_Shoot.label>
+  
+  <!-- EN: plasma -->
+  <Miho_Weapon_SniperPlasma_Proj.label>美狐高能等离子弹</Miho_Weapon_SniperPlasma_Proj.label>
+  
+</LanguageData>

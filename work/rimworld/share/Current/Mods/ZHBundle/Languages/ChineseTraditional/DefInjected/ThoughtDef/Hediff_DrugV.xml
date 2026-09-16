@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 태양화 위험약물 결핍 -->
+  <Miho_PositiveFlower_Juice_Withdrawal.stages.1.label>秘靈烈藥戒斷</Miho_PositiveFlower_Juice_Withdrawal.stages.1.label>
+  <!-- EN: 머리가 깨질듯이 아파... 그뿐이야... -->
+  <Miho_PositiveFlower_Juice_Withdrawal.stages.1.description>我的頭疼的就好像要炸開了一樣...需要再來一瓶朝花湯劑了...</Miho_PositiveFlower_Juice_Withdrawal.stages.1.description>
+  
+  <!-- EN: 태양화 결핍 -->
+  <Miho_PositiveFlower_Tea_Withdrawal.stages.1.label>秘靈藥物戒斷</Miho_PositiveFlower_Tea_Withdrawal.stages.1.label>
+  <!-- EN: 그 꽃내음이 그리워. -->
+  <Miho_PositiveFlower_Tea_Withdrawal.stages.1.description>雖說身體並無不適，但品味不到秘靈向日葵的芳香讓我有些難過。我們真的沒有多余的曜陽煙或煦日茶了嗎？</Miho_PositiveFlower_Tea_Withdrawal.stages.1.description>
+  
+</LanguageData>

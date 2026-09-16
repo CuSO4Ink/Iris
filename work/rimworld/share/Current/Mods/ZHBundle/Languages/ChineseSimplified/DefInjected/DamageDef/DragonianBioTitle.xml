@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Frostbite -->
+  <Dragonian_FrostbiteBreath.label>冻伤</Dragonian_FrostbiteBreath.label>
+  <!-- EN: {0} has succumbed to frostbite. -->
+  <Dragonian_FrostbiteBreath.deathMessage>{0} 已死于冻伤。</Dragonian_FrostbiteBreath.deathMessage>
+  
+</LanguageData>

@@ -1,0 +1,52 @@
+﻿<LanguageData>
+  <PE_Bullet_AssaultRifleTraining.label>训练用突击步枪子弹</PE_Bullet_AssaultRifleTraining.label>
+  <PE_Bullet_PracticeShortBow.label>练习用弓箭</PE_Bullet_PracticeShortBow.label>
+  <PE_Cadaver.description>一个医疗级的布料基线人复刻品，精细到每一块肌肉。学生可以通过在其身上进行模拟手术来训练医疗技能。</PE_Cadaver.description>
+  <PE_Cadaver.label>尸体假人</PE_Cadaver.label>
+  <PE_ElectricSchoolBell.description>用于发出上课信号的自动铃。比普通铃更可靠，因为不需要手动敲击。</PE_ElectricSchoolBell.description>
+  <PE_ElectricSchoolBell.label>电动校铃</PE_ElectricSchoolBell.label>
+  <PE_Gun_AssaultRifleTraining.description>纯粹为教育设计的武器。其弹丸不造成任何伤害。</PE_Gun_AssaultRifleTraining.description>
+  <PE_Gun_AssaultRifleTraining.label>训练步枪</PE_Gun_AssaultRifleTraining.label>
+  <PE_Gun_AssaultRifleTraining.tools.barrel.label>枪管</PE_Gun_AssaultRifleTraining.tools.barrel.label>
+  <PE_Gun_AssaultRifleTraining.tools.stock.label>枪托</PE_Gun_AssaultRifleTraining.tools.stock.label>
+  <PE_Gun_AssaultRifleTraining.verbs.Verb_Shoot.label>训练步枪</PE_Gun_AssaultRifleTraining.verbs.Verb_Shoot.label>
+  <PE_Gun_SpacerTraining.description>纯粹为教育设计的武器。其弹丸不造成任何伤害。</PE_Gun_SpacerTraining.description>
+  <PE_Gun_SpacerTraining.label>训练用电荷步枪</PE_Gun_SpacerTraining.label>
+  <PE_Gun_SpacerTraining.tools.barrel.label>枪管</PE_Gun_SpacerTraining.tools.barrel.label>
+  <PE_Gun_SpacerTraining.tools.stock.label>枪托</PE_Gun_SpacerTraining.tools.stock.label>
+  <PE_Gun_SpacerTraining.verbs.Verb_Shoot.label>训练用电荷步枪</PE_Gun_SpacerTraining.verbs.Verb_Shoot.label>
+  <PE_HoloEducatorScreen.description>交互式全息显示屏。放置一块面板可将该区域标记为教室，随后便可分配课程。</PE_HoloEducatorScreen.description>
+  <PE_HoloEducatorScreen.label>全息教育屏 (1x2)</PE_HoloEducatorScreen.label>
+  <PE_LargeBlackboard.description>平坦的类石表面，可用粉笔书写。放置一块面板可将该区域标记为教室，随后便可分配课程。</PE_LargeBlackboard.description>
+  <PE_LargeBlackboard.label>黑板 (1x3)</PE_LargeBlackboard.label>
+  <PE_LargeHoloEducatorScreen.description>交互式全息显示屏。放置一块面板可将该区域标记为教室，随后便可分配课程。</PE_LargeHoloEducatorScreen.description>
+  <PE_LargeHoloEducatorScreen.label>全息教育屏 (1x3)</PE_LargeHoloEducatorScreen.label>
+  <PE_LargeWhiteboard.description>光滑的表面，可用马克笔书写。放置一块面板可将该区域标记为教室，随后便可分配课程。</PE_LargeWhiteboard.description>
+  <PE_LargeWhiteboard.label>白板 (1x3)</PE_LargeWhiteboard.label>
+  <PE_LessonStone.description>用于授课的朴素表面。放置一块面板可将该区域标记为教室，随后便可分配课程。</PE_LessonStone.description>
+  <PE_LessonStone.label>授课石</PE_LessonStone.label>
+  <PE_PracticeShortBow.description>纯粹为教育设计的武器。其弹丸不造成任何伤害。</PE_PracticeShortBow.description>
+  <PE_PracticeShortBow.label>训练弓</PE_PracticeShortBow.label>
+  <PE_PracticeShortBow.tools.limb.label>弓臂</PE_PracticeShortBow.tools.limb.label>
+  <PE_PracticeShortBow.verbs.Verb_Shoot.label>训练弓</PE_PracticeShortBow.verbs.Verb_Shoot.label>
+  <PE_Projector.description>教室投影仪，可连接到学习面板以提高学习效果。</PE_Projector.description>
+  <PE_Projector.label>投影仪</PE_Projector.label>
+  <PE_SchoolBell.description>用于发出上课信号的响铃。教师会手动敲击它来召集学生。</PE_SchoolBell.description>
+  <PE_SchoolBell.label>校铃</PE_SchoolBell.label>
+  <PE_ShootingTarget.description>配备有训练步枪的金属靶。学生可以向靶子射击以训练射击技能。</PE_ShootingTarget.description>
+  <PE_ShootingTarget.label>枪械训练台</PE_ShootingTarget.label>
+  <PE_StoneSchoolDesk.description>一张不太舒适的课桌，学生可以在普通课程中使用它学习。在大多数课程中运行速度较慢。</PE_StoneSchoolDesk.description>
+  <PE_StoneSchoolDesk.label>粗糙的课桌</PE_StoneSchoolDesk.label>
+  <PE_StrikingBoard.description>一根嵌入地面的木板，上半部分缠绕着减震绳，能够承受直接打击。可在课程中用于训练近战技能。</PE_StrikingBoard.description>
+  <PE_StrikingBoard.label>训练木桩</PE_StrikingBoard.label>
+  <PE_TouchscreenSchoolDesk.description>一张触摸屏显示桌，学生可以坐在普通课程中使用它学习。屏幕上会出现交互式示例，帮助学生以极快的速度学习。</PE_TouchscreenSchoolDesk.description>
+  <PE_TouchscreenSchoolDesk.label>触摸屏课桌</PE_TouchscreenSchoolDesk.label>
+  <PE_TribalBell.description>一种安静、提醒极慢的钟铃，用于发出上课信号。教师会手动敲击它来召集学生。</PE_TribalBell.description>
+  <PE_TribalBell.label>上课钟铃</PE_TribalBell.label>
+  <PE_Whiteboard.description>光滑的表面，可用马克笔书写。放置一块面板可将该区域标记为教室，随后便可分配课程。</PE_Whiteboard.description>
+  <PE_Whiteboard.label>白板 (1x2)</PE_Whiteboard.label>
+  <RoyalCrib.description>一张极其舒适的金床，带有安全的格子护栏，非常适合嗜睡的婴儿。高质量的婴儿床会让婴儿开心。一个卧室里可以放置多张婴儿床而不会使其变成宿舍。</RoyalCrib.description>
+  <RoyalCrib.label>皇家婴儿床</RoyalCrib.label>
+  <TribalCrib.description>一张不太稳定的编织床，非常适合嗜睡的婴儿。高质量的婴儿床会让婴儿开心。一个卧室里可以放置多张婴儿床而不会使其变成宿舍。</TribalCrib.description>
+  <TribalCrib.label>粗糙的婴儿床</TribalCrib.label>
+</LanguageData>

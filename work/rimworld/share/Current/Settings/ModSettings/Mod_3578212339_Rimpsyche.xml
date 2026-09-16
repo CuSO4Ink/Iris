@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="Maux36.RimPsyche.Disposition.RimpsycheDispositionSettings">
+		<Rimpsyche_useIndividualThoughts>True</Rimpsyche_useIndividualThoughts>
+		<Rimpsyche_usePerformanceModeThought>False</Rimpsyche_usePerformanceModeThought>
+		<Rimpsyche_useExperimentation>True</Rimpsyche_useExperimentation>
+		<Rimpsyche_useSenseOfProgress>True</Rimpsyche_useSenseOfProgress>
+		<Rimpsyche_useResilientSpirit>True</Rimpsyche_useResilientSpirit>
+		<Rimpsyche_useHideInShame>True</Rimpsyche_useHideInShame>
+		<Rimpsyche_checkMedicalOverShame>False</Rimpsyche_checkMedicalOverShame>
+		<Rimpsyche_useFightorFlight>True</Rimpsyche_useFightorFlight>
+		<Rimpsyche_enemyFightorFlight>False</Rimpsyche_enemyFightorFlight>
+		<Rimpsyche_moodOptimismC>0.300000012</Rimpsyche_moodOptimismC>
+		<Rimpsyche_moodEmotionalityC>0.300000012</Rimpsyche_moodEmotionalityC>
+		<Rimpsyche_moodIndividualC>0.600000024</Rimpsyche_moodIndividualC>
+		<Rimpsyche_sendExperimentMessage>True</Rimpsyche_sendExperimentMessage>
+		<Rimpsyche_sendShameMessage>True</Rimpsyche_sendShameMessage>
+		<Rimpsyche_showExperimentMote>True</Rimpsyche_showExperimentMote>
+		<Rimpsyche_showResilientSpiritMote>True</Rimpsyche_showResilientSpiritMote>
+		<Rimpsyche_showAdrenalineMote>True</Rimpsyche_showAdrenalineMote>
+		<Rimpsyche_showPanicMote>True</Rimpsyche_showPanicMote>
+	</ModSettings>
+</SettingsBlock>

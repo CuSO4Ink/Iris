@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Patch>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/*//soundMeleeHitBuilding[text()="Pawn_Melee_Punch_HitBuilding"]</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/*//soundMeleeHitBuilding[text()="Pawn_Melee_Punch_HitBuilding"]</xpath>
+      <value>
+        <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding_Generic</soundMeleeHitBuilding>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="RKK_Weapon_MythSword"]//soundInteract[text()="Item_Melee"]</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="RKK_Weapon_MythSword"]//soundInteract[text()="Item_Melee"]</xpath>
+      <value>
+        <soundInteract>Standard_Pickup</soundInteract>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="RKK_Weapon_MythSword"]//soundMeleeHit[text()="MeleeHit_SwordForce"]</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="RKK_Weapon_MythSword"]//soundMeleeHit[text()="MeleeHit_SwordForce"]</xpath>
+      <value>
+        <soundMeleeHit>MeleeHit_Metal_Sharp</soundMeleeHit>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="RKK_Weapon_MythSword"]//soundMeleeHit[text()="MeleeHit_Blunt"]</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="RKK_Weapon_MythSword"]//soundMeleeHit[text()="MeleeHit_Blunt"]</xpath>
+      <value>
+        <soundMeleeHit>MeleeHit_Metal_Blunt</soundMeleeHit>
+      </value>
+    </match>
+  </Operation>
+  <Operation Class="PatchOperationConditional">
+    <xpath>Defs/ThingDef[defName="RKK_Weapon_MythSword"]//soundMeleeMiss[text()="MeleeMiss_Slash"]</xpath>
+    <match Class="PatchOperationReplace">
+      <xpath>Defs/ThingDef[defName="RKK_Weapon_MythSword"]//soundMeleeMiss[text()="MeleeMiss_Slash"]</xpath>
+      <value>
+        <soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+      </value>
+    </match>
+  </Operation>
+</Patch>

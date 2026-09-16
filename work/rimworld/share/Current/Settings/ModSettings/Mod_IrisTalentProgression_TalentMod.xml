@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="IrisTalentProgression.TalentSettings">
+		<scale>1.5</scale>
+		<specialistChance>0.498180747</specialistChance>
+	</ModSettings>
+</SettingsBlock>

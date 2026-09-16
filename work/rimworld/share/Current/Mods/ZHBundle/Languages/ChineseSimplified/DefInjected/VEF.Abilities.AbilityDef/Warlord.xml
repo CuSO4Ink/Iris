@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: adrenaline rush -->
+  <VPE_AdrenalineRush.label>热血浪涌</VPE_AdrenalineRush.label>
+  <!-- EN: Psychically induces a surge of adrenaline in the caster, blocking all pain and augmenting their sight, hearing and movement. Lasts roughly thirty seconds depending on the user’s psychic sensitivity. -->
+  <VPE_AdrenalineRush.description>用灵能激发施放者体内的肾上腺素，止住痛觉并强化视力，听觉和移动能力。持续30秒左右，具体时间取决于施放者的心灵敏感度。</VPE_AdrenalineRush.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_AdrenalineRush.jobReportString>使用能力：{0}</VPE_AdrenalineRush.jobReportString>
+  <!-- EN: 热血浪涌 -->
+  <VPE_AdrenalineRush.verbProperties.label>热血浪涌</VPE_AdrenalineRush.verbProperties.label>
+  
+  <!-- EN: beckon -->
+  <VPE_Beckon.label>召唤</VPE_Beckon.label>
+  <!-- EN: Psychically command the target to approach the caster. -->
+  <VPE_Beckon.description>使用精神力量迫使目标靠近施放者。</VPE_Beckon.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Beckon.jobReportString>使用能力：{0}</VPE_Beckon.jobReportString>
+  <!-- EN: 召唤 -->
+  <VPE_Beckon.verbProperties.label>召唤</VPE_Beckon.verbProperties.label>
+  
+  <!-- EN: blade focus -->
+  <VPE_BladeFocus.label>刀锋专注</VPE_BladeFocus.label>
+  <!-- EN: Psychically augments the muscle fibers, ligaments and joints in the caster’s arms, doubling their melee attack speed for roughly two minutes depending on their psychic sensitivity. -->
+  <VPE_BladeFocus.description>用灵能强化手臂上的肌肉纤维，肌腱和关节，使施放者达到双倍的近战攻速，持续2分钟左右，具体时间取决于施放者的心灵敏感度。</VPE_BladeFocus.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_BladeFocus.jobReportString>使用能力：{0}</VPE_BladeFocus.jobReportString>
+  <!-- EN: 刀锋专注 -->
+  <VPE_BladeFocus.verbProperties.label>刀锋专注</VPE_BladeFocus.verbProperties.label>
+  
+  <!-- EN: controlled frenzy -->
+  <VPE_ControlledFrenzy.label>有限狂化</VPE_ControlledFrenzy.label>
+  <!-- EN: Psychically augments the caster’s prowess and killing urges, doubling their damage output with all weapons. Each kill reduces the caster’s heat by 10 and resets the duration of the frenzy. -->
+  <VPE_ControlledFrenzy.description>用灵能激起施放者的潜力和杀意，使所有武器的输出加倍。每次击杀都会减少施放者10点心灵熵并重置狂化的计时。</VPE_ControlledFrenzy.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_ControlledFrenzy.jobReportString>使用能力：{0}</VPE_ControlledFrenzy.jobReportString>
+  <!-- EN: 有限狂化 -->
+  <VPE_ControlledFrenzy.verbProperties.label>有限狂化</VPE_ControlledFrenzy.verbProperties.label>
+  
+  <!-- EN: firing focus -->
+  <VPE_FiringFocus.label>枪火专注</VPE_FiringFocus.label>
+  <!-- EN: Psychically augments the hands, eyes and reaction speed of the caster, reducing their ranged attack cooldown by 80% for roughly two minutes depending on their psychic sensitivity. -->
+  <VPE_FiringFocus.description>用灵能强化双手，双眼和神经反应速度，减少施放者80%的远程攻击冷却，持续2分钟左右，具体时间取决于施放者的心灵敏感度。</VPE_FiringFocus.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_FiringFocus.jobReportString>使用能力：{0}</VPE_FiringFocus.jobReportString>
+  <!-- EN: 枪火专注 -->
+  <VPE_FiringFocus.verbProperties.label>枪火专注</VPE_FiringFocus.verbProperties.label>
+  
+  <!-- EN: guided shot -->
+  <VPE_GuidedShot.label>灵能枪斗</VPE_GuidedShot.label>
+  <!-- EN: Projects a psychic aura for a few moments that allows the caster to alter the path of any bullet they fire, effectively doubling their weapon range and guaranteeing hits for the duration. Duration scales with psychic sensitivity of the caster. -->
+  <VPE_GuidedShot.description>投射出临时的灵能光环，让施放者可以影响所发射子弹的轨迹，使武器射程加倍，且必定命中。持续时间取决于施放者的心灵敏感度。</VPE_GuidedShot.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_GuidedShot.jobReportString>使用能力：{0}</VPE_GuidedShot.jobReportString>
+  <!-- EN: 灵能枪斗 -->
+  <VPE_GuidedShot.verbProperties.label>灵能枪斗</VPE_GuidedShot.verbProperties.label>
+  
+  <!-- EN: killskip -->
+  <VPE_Killskip.label>杀戮连锁</VPE_Killskip.label>
+  <!-- EN: Teleports to the target and executes a melee strike, weakened or augmented by the caster’s melee skill. If the target is killed, teleports to the next closest enemy at no cost and attacks again, until there is nothing left to kill. -->
+  <VPE_Killskip.description>折跃至目标附近并进行一次近战攻击，造成的伤害会受近战技能的影响。如果目标被击杀，施放者会自动折跃到最近的另一个敌人身边并继续攻击，直到无人能杀为止。</VPE_Killskip.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Killskip.jobReportString>使用能力：{0}</VPE_Killskip.jobReportString>
+  <!-- EN: 杀戮连锁 -->
+  <VPE_Killskip.verbProperties.label>杀戮连锁</VPE_Killskip.verbProperties.label>
+  
+  <!-- EN: mass beckon -->
+  <VPE_MassBeckon.label>群体召唤</VPE_MassBeckon.label>
+  <!-- EN: Psychically command the targets within an area to approach the caster. -->
+  <VPE_MassBeckon.description>使用精神力量迫使区域内的所有目标靠近施放者。</VPE_MassBeckon.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_MassBeckon.jobReportString>使用能力：{0}</VPE_MassBeckon.jobReportString>
+  <!-- EN: 群体召唤 -->
+  <VPE_MassBeckon.verbProperties.label>群体召唤</VPE_MassBeckon.verbProperties.label>
+  
+  <!-- EN: power leap -->
+  <VPE_PowerLeap.label>纵身飞跃</VPE_PowerLeap.label>
+  <!-- EN: Drastically augments the caster’s legs, feet and spine to be able to leap great distances and land without injury, the distance improving with the user’s psychic sensitivity. -->
+  <VPE_PowerLeap.description>瞬间强化施放者的双腿，双脚和脊柱，使其能高高跃过大量距离并安全落地。距离取决于施放者的心灵敏感度。</VPE_PowerLeap.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_PowerLeap.jobReportString>使用能力：{0}</VPE_PowerLeap.jobReportString>
+  <!-- EN: 纵身飞跃 -->
+  <VPE_PowerLeap.verbProperties.label>纵身飞跃</VPE_PowerLeap.verbProperties.label>
+  
+  <!-- EN: speedboost -->
+  <VPE_SpeedBoost.label>疾跑</VPE_SpeedBoost.label>
+  <!-- EN: Psychically augments the muscle fibers, ligaments and joints in the caster’s legs, tripling their movement speed for roughly two minutes depending on their psychic sensitivity. -->
+  <VPE_SpeedBoost.description>用灵能强化腿部的肌肉纤维，肌腱和关节，使施放者的移动速度达到3倍，具体时间取决于施放者的心灵敏感度。</VPE_SpeedBoost.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_SpeedBoost.jobReportString>使用能力：{0}</VPE_SpeedBoost.jobReportString>
+  <!-- EN: 疾跑 -->
+  <VPE_SpeedBoost.verbProperties.label>疾跑</VPE_SpeedBoost.verbProperties.label>
+  
+</LanguageData>

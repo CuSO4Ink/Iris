@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: voltaic pile -->
+  <RR_VoltaicPile.label>伏打电堆</RR_VoltaicPile.label>
+  <!-- EN: A crude but effective means of generating small amounts of electricity. Nonrechargeable.\n\nWhile the metals and electrolytes used vary between designs, all voltaic piles function by harnessing chemically-induced electrical potential between two electrodes. -->
+  <RR_VoltaicPile.description>粗糙却有效的小型发电方式，无法充电复用。\n\n不同设计使用的金属与电解质各异，但原理相同：利用两极间由化学反应产生的电势差来获取电能。</RR_VoltaicPile.description>
+
+  <!-- EN: torch -->
+  <RR_Weapon_Torch.label>火把</RR_Weapon_Torch.label>
+  <!-- EN: Wood from trees or other fibrous plants, wrapped in cloth and soaked in a flammable substance. Can be used as a weapon in a pinch. -->
+  <RR_Weapon_Torch.description>取自树木或其他纤维植物的木材，缠以布条并浸渍可燃物；必要时也可充当武器。</RR_Weapon_Torch.description>
+  <!-- EN: handle -->
+  <RR_Weapon_Torch.tools.handle.label>柄</RR_Weapon_Torch.tools.handle.label>
+  <!-- EN: head -->
+  <RR_Weapon_Torch.tools.head.label>头</RR_Weapon_Torch.tools.head.label>
+
+</LanguageData>

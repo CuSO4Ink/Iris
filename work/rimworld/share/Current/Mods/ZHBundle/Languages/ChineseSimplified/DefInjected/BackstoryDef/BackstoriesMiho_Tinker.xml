@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Miho_Child_TinkerFox.title>好奇心旺盛的美狐儿童</Miho_Child_TinkerFox.title>
+  <Miho_Child_TinkerFox.titleShort>好奇者</Miho_Child_TinkerFox.titleShort>
+  <Miho_Child_TinkerFox.description>{PAWN_nameDef}生来便具有十分旺盛的好奇心，见到什么都想去摆弄一番。虽然{PAWN_pronoun}总是对“好奇心害死猫”这句话嗤之以鼻，但也没少在鬼门关前走上几遭。</Miho_Child_TinkerFox.description>
+
+  <Miho_Child_TinkerFoxTwo.title>好奇心旺盛的美狐儿童</Miho_Child_TinkerFoxTwo.title>
+  <Miho_Child_TinkerFoxTwo.titleShort>好奇者</Miho_Child_TinkerFoxTwo.titleShort>
+  <Miho_Child_TinkerFoxTwo.description>{PAWN_nameDef}生来便具有十分旺盛的好奇心，见到什么都想去摆弄一番。虽然{PAWN_pronoun}总是对“好奇心害死猫”这句话嗤之以鼻，但也没少在鬼门关前走上几遭。</Miho_Child_TinkerFoxTwo.description>
+  
+</LanguageData>

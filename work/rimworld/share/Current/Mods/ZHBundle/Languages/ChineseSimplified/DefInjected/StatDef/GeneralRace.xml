@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Dragon piece -->
+  <DR_DragonSculptureM.label>龙部件</DR_DragonSculptureM.label>
+  <!-- EN: When the Dragonian is equipped with an appropriate weapon, its melee attack power increases. -->
+  <DR_DragonSculptureM.description>当龙人装备合适的武器或成长到一定程度时，其近战攻击力会增强。</DR_DragonSculptureM.description>
+  
+  <!-- EN: Dragon piece -->
+  <DR_DragonSculptureR.label>龙部件</DR_DragonSculptureR.label>
+  <!-- EN: When the Dragonian is equipped with an appropriate weapon, its Aiming speed is increased. -->
+  <DR_DragonSculptureR.description>当龙人装备了合适的武器时，其瞄準速度會提升。</DR_DragonSculptureR.description>
+  
+  <!-- EN: wildness -->
+  <DR_ForagedNutritionPerDay.label>野生</DR_ForagedNutritionPerDay.label>
+  <!-- EN: wildness. -->
+  <DR_ForagedNutritionPerDay.description>野生。</DR_ForagedNutritionPerDay.description>
+  
+</LanguageData>

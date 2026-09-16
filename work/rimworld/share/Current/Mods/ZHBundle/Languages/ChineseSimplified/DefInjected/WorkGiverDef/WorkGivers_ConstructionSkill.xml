@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: deliver resources to blueprints -->
+  <VEF_Art_ConstructDeliverResourcesToBlueprints.label>搬运材料至蓝图</VEF_Art_ConstructDeliverResourcesToBlueprints.label>
+  <!-- EN: working on -->
+  <VEF_Art_ConstructDeliverResourcesToBlueprints.gerund>建造于</VEF_Art_ConstructDeliverResourcesToBlueprints.gerund>
+  <!-- EN: work on -->
+  <VEF_Art_ConstructDeliverResourcesToBlueprints.verb>建造</VEF_Art_ConstructDeliverResourcesToBlueprints.verb>
+  
+  <!-- EN: deliver resources to frames -->
+  <VEF_Art_ConstructDeliverResourcesToFrames.label>搬运材料至框架</VEF_Art_ConstructDeliverResourcesToFrames.label>
+  <!-- EN: working on -->
+  <VEF_Art_ConstructDeliverResourcesToFrames.gerund>建造于</VEF_Art_ConstructDeliverResourcesToFrames.gerund>
+  <!-- EN: work on -->
+  <VEF_Art_ConstructDeliverResourcesToFrames.verb>建造</VEF_Art_ConstructDeliverResourcesToFrames.verb>
+  
+  <!-- EN: construct placed frames -->
+  <VEF_Art_ConstructFinishFrames.label>建造布置好的框架</VEF_Art_ConstructFinishFrames.label>
+  <!-- EN: working on -->
+  <VEF_Art_ConstructFinishFrames.gerund>建造于</VEF_Art_ConstructFinishFrames.gerund>
+  <!-- EN: work on -->
+  <VEF_Art_ConstructFinishFrames.verb>建造</VEF_Art_ConstructFinishFrames.verb>
+  
+</LanguageData>

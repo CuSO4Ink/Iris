@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <Storyteller.label>default storyteller</Storyteller.label> -->
+  <Storyteller.label>默認故事敘述者設定</Storyteller.label>
+  <!-- <Difficulty.label>default difficulty</Difficulty.label> -->
+  <Difficulty.label>默認難度</Difficulty.label>
+  <!-- <Permadeath.label>commitment mode by default</Permadeath.label> -->
+  <Permadeath.label>默認無悔模式</Permadeath.label>
+
+
+</LanguageData>

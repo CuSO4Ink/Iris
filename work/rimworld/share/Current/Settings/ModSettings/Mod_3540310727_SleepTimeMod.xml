@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="AntiAddiction.SleepTimeSettings">
+		<codexvn.AntiAddiction.SleepStartHour>1</codexvn.AntiAddiction.SleepStartHour>
+	</ModSettings>
+</SettingsBlock>

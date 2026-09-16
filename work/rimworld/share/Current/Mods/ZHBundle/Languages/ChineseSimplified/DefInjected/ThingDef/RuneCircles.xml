@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: crude runecircle -->
+  <VPER_Runecircle_Constructible.label>原始卢恩魔圈</VPER_Runecircle_Constructible.label>
+  <!-- EN: An ancient runecircle used by Psycasters known as "Runesmiths". These Runecircles are the basis of the Runesmithing art, acting as a foci for nearly all of their psycasting abilities.\n\nThis particular runecircle was etched by hand, without psychic assistance. As a result, it doesn't boost the effectiveness of whatever psycast makes use of it. Still, it can be useful as a temporary solution for an overworked Runesmith.\n\nAfter being used to Invoke a rune, the Runecircle will fall apart, making it single use. -->
+  <VPER_Runecircle_Constructible.description>一种由被称为“符文匠”的灵能使所用的古代符文圈。这些符文魔圈是符文匠艺术的基础，几乎所有他们的心灵能力都以此为基点。这个特定的符文圈是手工刻制的，没有使用心灵力量的辅助。因此，它不会增强使用它的任何灵能的效力。然而，它仍可作为过度劳累符文匠的临时解决方案。\n\n在用于引动卢恩后，此魔圈将自行瓦解，因此仅限一次性使用。</VPER_Runecircle_Constructible.description>
+  
+  <!-- EN: greater runecircle -->
+  <VPER_Runecircle_Greater.label>至圣卢恩魔圈</VPER_Runecircle_Greater.label>
+  <!-- EN: An ancient runecircle used by Psycasters known as "Runesmiths". These Runecircles are the basis of the Runesmithing art, acting as a foci for nearly all of their psycasting abilities.\n\nThis particular runecircle is of immaculate make, the culmination of the Runesmithing art. Though it takes a long time to enscribe, it's imbued with a whopping 150% of the Runesmith's Psychic Sensitivity as Psychic Charge.\n\nAfter being used to Invoke a rune, the Runecircle will need to recharge for 15 days. -->
+  <VPER_Runecircle_Greater.description>一种由被称为“符文匠”的灵能使所用的古代符文圈。这些符文魔圈是符文匠艺术的基础，几乎所有他们的心灵能力都以此为基点。尽管刻画过程耗时良久，但它蕴含着符文匠150%的心灵敏感度作为充能。\n\n在用于引动卢恩后，此魔圈需要15天时间进行重新充能。</VPER_Runecircle_Greater.description>
+  
+  <!-- EN: standard runecircle -->
+  <VPER_Runecircle_Standard.label>恒常卢恩魔圈</VPER_Runecircle_Standard.label>
+  <!-- EN: An ancient runecircle used by Psycasters known as "Runesmiths". These Runecircles are the basis of the Runesmithing art, acting as a foci for nearly all of their psycasting abilities.\n\nThis particular runecircle is of a standard make, and used by Runesmiths all over the Rim. It takes a few hours for a Runesmith to enscribe this type of circle, but it holds 50% of their Psychic Sensitivity as Psychic Charge.\n\nAfter being used to Invoke a rune, the Runecircle will need to recharge for 10 days. -->
+  <VPER_Runecircle_Standard.description>一种由被称为“符文匠”的灵能使所用的古代符文圈。这些符文魔圈是符文匠艺术的基础，几乎所有他们的心灵能力都以此为基点。\n\n这个特定的符文魔圈是标准型号，被整个边缘世界的符文匠广泛使用。符文匠需要花费数小时来刻画此类符文圈，但它可储存符文匠50%的心理敏感度作为心理能量。\n\n在用于引动卢恩后，此魔圈需要10天时间进行重新充能。</VPER_Runecircle_Standard.description>
+  
+</LanguageData>

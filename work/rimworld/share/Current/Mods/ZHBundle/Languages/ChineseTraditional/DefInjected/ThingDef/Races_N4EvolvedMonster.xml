@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- EV Rumbler -->
+
+  <RH_DF_EvolvedRumbler.label>進化普通士兵</RH_DF_EvolvedRumbler.label>
+  <RH_DF_EvolvedRumbler.description>一種進化的普通士兵。這種生物是Nerotonin-4型突變體，通常出現在瘟疫蔓延的地圖中那些稱為「紫區」的危險地區，這些地區比黑區更危險。由於該地區劫掠者的高死亡率，幸存者將其標記為「死區」。</RH_DF_EvolvedRumbler.description>
+  <RH_DF_EvolvedRumbler.tools.0.label>左爪</RH_DF_EvolvedRumbler.tools.0.label>
+  <RH_DF_EvolvedRumbler.tools.1.label>右爪</RH_DF_EvolvedRumbler.tools.1.label>
+  <RH_DF_EvolvedRumbler.tools.2.label>頭部</RH_DF_EvolvedRumbler.tools.2.label>
+
+
+  <!-- evolved long arm -->
+
+  <RH_DF_EvolvedLongArms.label>進化長臂</RH_DF_EvolvedLongArms.label>
+  <RH_DF_EvolvedLongArms.description>這種生物擁有進化的長臂，其細長的手臂上伸出了加固的骨骼，並形成了刀片的形狀。這種生物是Nerotonin-4型突變體，通常出現在瘟疫蔓延的地圖中那些稱為「紫區」的危險地區，這些地區比黑區更危險。由於該地區劫掠者的高死亡率，幸存者將其標記為「死區」。</RH_DF_EvolvedLongArms.description>
+  <RH_DF_EvolvedLongArms.tools.0.label>左臂刃</RH_DF_EvolvedLongArms.tools.0.label>
+  <RH_DF_EvolvedLongArms.tools.1.label>右臂刃</RH_DF_EvolvedLongArms.tools.1.label>
+  <RH_DF_EvolvedLongArms.tools.2.label>頭部</RH_DF_EvolvedLongArms.tools.2.label>
+
+
+  <!-- irridiated long arm -->
+
+  <RH_DF_IrridiatedLongArms.label>無光長臂</RH_DF_IrridiatedLongArms.label>
+  <RH_DF_IrridiatedLongArms.description>長臂上長有刺，比進化長臂在尺寸、膚色和兇猛程度上的更進一步。這種生物是Nerotonin-4型突變體，通常出現在瘟疫蔓延的地圖中那些稱為「紫區」的危險地區，這些地區比黑區更危險。由於該地區劫掠者的高死亡率，幸存者將其標記為「死區」。</RH_DF_IrridiatedLongArms.description>
+  <RH_DF_IrridiatedLongArms.tools.0.label>左臂刃</RH_DF_IrridiatedLongArms.tools.0.label>
+  <RH_DF_IrridiatedLongArms.tools.1.label>右臂刃</RH_DF_IrridiatedLongArms.tools.1.label>
+  <RH_DF_IrridiatedLongArms.tools.2.label>頭部</RH_DF_IrridiatedLongArms.tools.2.label>
+
+
+  <!-- Volatile Leaper -->
+
+  <RH_DF_VolatileLeaper.label>無定跳躍者</RH_DF_VolatileLeaper.label>
+  <RH_DF_VolatileLeaper.description>無定跳躍者。擁有令人難以置信的速度的進化版的跳躍者，它在死亡時會爆炸並釋放刺激性物質，它的標誌性動作是在以極快的速度移動時會抽動，仿佛是在裝模作樣。\n\n跳躍者是一種臭名昭著的生物，以在費爾維尤殺害毫無戒心的生還者而聞名。然而，其行動能力很弱。舌頭是它們的主要武器，堅硬到可以穿透大多數人類已知的材料，皮膚幾乎免疫小武器傷害。最初，這種生物只有6英尺高的人類大小，無定跳躍者經歷了幾次強製突變，使其在各個方面都優於其前身。\n\n由於N-4病毒的工作原理，這種生物對熱損傷免疫，不過這種生物仍然容易中暑。</RH_DF_VolatileLeaper.description>
+  <RH_DF_VolatileLeaper.tools.0.label>左爪</RH_DF_VolatileLeaper.tools.0.label>
+  <RH_DF_VolatileLeaper.tools.1.label>右爪</RH_DF_VolatileLeaper.tools.1.label>
+  <RH_DF_VolatileLeaper.tools.2.label>舌頭</RH_DF_VolatileLeaper.tools.2.label>
+
+
+  <!-- BLACK TITAN -->
+
+  <RH_DF_BlackTitan.label>漆黑泰坦</RH_DF_BlackTitan.label>
+  <RH_DF_BlackTitan.description>一個武器化的漆黑泰坦，是泰坦在受控環境中長期暴露於高溫的結果。\n\n毫無疑問，它的皮膚呈灰黑色，體型更大，骨骼因「變異」而突出。它比前身更快、更強壯，骨骼和肌肉已經接近鈦合金的硬度。Nerotonin-4病毒已知能在高溫下存活，在適當的環境下可能會進化，以保護其宿主。漆黑泰坦是費爾維尤荒野上最令人恐懼的怪物之一，很少有幸存者活著報告在黑區的目擊事件。\n\n由於N-4病毒的工作原理，這種生物對熱損傷免疫，不過這種生物仍然容易中暑。</RH_DF_BlackTitan.description>
+  <RH_DF_BlackTitan.tools.0.label>左拳</RH_DF_BlackTitan.tools.0.label>
+  <RH_DF_BlackTitan.tools.1.label>右拳</RH_DF_BlackTitan.tools.1.label>
+  <RH_DF_BlackTitan.tools.2.label>頭部</RH_DF_BlackTitan.tools.2.label>
+
+
+  <!-- WRAITH -->
+
+  <RH_DF_BlackWraith.label>漆黑幽靈</RH_DF_BlackWraith.label>
+  <RH_DF_BlackWraith.description>Nerotonin4型變種漆黑幽靈，燒焦的毀滅天使。漆黑幽靈是幽靈變體的進一步進化，這種進化是由受試者持續暴露於高溫環境造成的。\n\n幽靈的觸角能夠穿透坦克中的重型裝甲。它們是所有女性N-4突變體的原型。幽靈可能是受Nerotonin-4型基因突變影響最小的精神動物，這使他們能夠保持生前的精神敏銳度。在它們的世界裏，這被視為人類最美好的一面。\n\nN-4病毒使該受試者具有很強的抗火能力。</RH_DF_BlackWraith.description>
+  <RH_DF_BlackWraith.tools.0.label>觸手</RH_DF_BlackWraith.tools.0.label>
+  <RH_DF_BlackWraith.tools.1.label>觸手</RH_DF_BlackWraith.tools.1.label>
+  <RH_DF_BlackWraith.tools.2.label>頭部</RH_DF_BlackWraith.tools.2.label>
+
+
+  <!-- BLACK LEAPER -->
+
+  <RH_DF_BlackLeaper.label>漆黑跳躍者</RH_DF_BlackLeaper.label>
+  <RH_DF_BlackLeaper.description>一種武器化的漆黑跳躍者，感染了N-4病毒改良毒株的突變體。\n\n跳躍者是一種臭名昭著的生物，以在費爾維尤殺害毫無戒心的生還者而聞名。然而，其行動能力很弱。舌頭是它們的主要武器，堅硬到可以穿透大多數人類已知的材料，皮膚幾乎免疫小武器傷害。最初，這種生物只有6英尺高的人類大小，無定跳躍者經歷了幾次強製突變，使其在各個方面都優於其前身。\n\n由於N-4病毒的工作原理，這種生物對熱損傷免疫，不過這種生物仍然容易中暑。</RH_DF_BlackLeaper.description>
+  <RH_DF_BlackLeaper.tools.0.label>左爪</RH_DF_BlackLeaper.tools.0.label>
+  <RH_DF_BlackLeaper.tools.1.label>右爪</RH_DF_BlackLeaper.tools.1.label>
+  <RH_DF_BlackLeaper.tools.2.label>舌頭</RH_DF_BlackLeaper.tools.2.label>
+
+
+  <!-- Devil Hound -->
+
+  <RH_DF_DevilHound.label>惡魔獵犬</RH_DF_DevilHound.label>
+  <RH_DF_DevilHound.description>可怕的荒野惡魔獵犬，一只感染了不穩定的N-4病毒株的K-9突變體。\n\n惡魔獵犬是有記錄以來最危險的Nerotonin-4型生物之一。雖然它的殺傷力不如無定跳躍者的舌頭，但它仍然是所有突變種中速度最快、最靈活的生物。</RH_DF_DevilHound.description>
+  <RH_DF_DevilHound.tools.0.label>爪子</RH_DF_DevilHound.tools.0.label>
+  <RH_DF_DevilHound.tools.1.label>爪子</RH_DF_DevilHound.tools.1.label>
+  <RH_DF_DevilHound.tools.2.label>頭部</RH_DF_DevilHound.tools.2.label>
+
+
+</LanguageData>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: defairyfication ritual -->
+  <VV_Defairyfication.label>逆仙灵化仪式</VV_Defairyfication.label>
+  <!-- EN: Restores a fairyficated vivi to its original form. Which fairy vivi returns cannot be predicted.\n\nA vivi restored to its original form suffers side effects for one year and cannot be fairyficated again while those side effects persist. -->
+  <VV_Defairyfication.description>将一名仙灵化薇薇逆转至其原始形态。被逆仙灵化的薇薇会随机选定。\n\n被逆仙灵化的薇薇会遭受长达一年的副作用影响，且无法在副作用结束前再次仙灵化。</VV_Defairyfication.description>
+  
+</LanguageData>

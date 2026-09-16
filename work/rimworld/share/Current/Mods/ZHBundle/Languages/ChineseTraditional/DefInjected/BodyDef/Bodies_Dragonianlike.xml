@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Dragonian -->
+  <Dragonian_Body.label>龍人</Dragonian_Body.label>
+  <!-- EN: Tail -->
+  <Dragonian_Body.corePart.parts.Tail.customLabel>尾</Dragonian_Body.corePart.parts.Tail.customLabel>
+  <!-- EN: Left lung -->
+  <Dragonian_Body.corePart.parts.Left_lung.customLabel>左肺</Dragonian_Body.corePart.parts.Left_lung.customLabel>
+  <!-- EN: Right lung -->
+  <Dragonian_Body.corePart.parts.Right_lung.customLabel>右肺</Dragonian_Body.corePart.parts.Right_lung.customLabel>
+  <!-- EN: Left kidney -->
+  <Dragonian_Body.corePart.parts.Left_kidney.customLabel>左腎</Dragonian_Body.corePart.parts.Left_kidney.customLabel>
+  <!-- EN: Right kidney -->
+  <Dragonian_Body.corePart.parts.Right_kidney.customLabel>右腎</Dragonian_Body.corePart.parts.Right_kidney.customLabel>
+  <!-- EN: Left eye -->
+  <Dragonian_Body.corePart.parts.Neck.parts.Head.parts.Left_eye.customLabel>左眼</Dragonian_Body.corePart.parts.Neck.parts.Head.parts.Left_eye.customLabel>
+  <!-- EN: Right eye -->
+  <Dragonian_Body.corePart.parts.Neck.parts.Head.parts.Right_eye.customLabel>右眼</Dragonian_Body.corePart.parts.Neck.parts.Head.parts.Right_eye.customLabel>
+  <!-- EN: Left ear -->
+  <Dragonian_Body.corePart.parts.Neck.parts.Head.parts.Left_ear.customLabel>左耳</Dragonian_Body.corePart.parts.Neck.parts.Head.parts.Left_ear.customLabel>
+  <!-- EN: Right ear -->
+  <Dragonian_Body.corePart.parts.Neck.parts.Head.parts.Right_ear.customLabel>右耳</Dragonian_Body.corePart.parts.Neck.parts.Head.parts.Right_ear.customLabel>
+  <!-- EN: Left shoulder -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.customLabel>左肩</Dragonian_Body.corePart.parts.Left_shoulder.customLabel>
+  <!-- EN: Left clavicle -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_clavicle.customLabel>左鎖骨</Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_clavicle.customLabel>
+  <!-- EN: Left arm -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.customLabel>左臂</Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.customLabel>
+  <!-- EN: Left humerus -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_humerus.customLabel>左肱骨</Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_humerus.customLabel>
+  <!-- EN: Left radius -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_radius.customLabel>左橈骨</Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_radius.customLabel>
+  <!-- EN: Left hand -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.customLabel>左手</Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.customLabel>
+  <!-- EN: Left ring finger -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.parts.Left_ring_finger.customLabel>左尾指</Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.parts.Left_ring_finger.customLabel>
+  <!-- EN: Left middle finger -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.parts.Left_middle_finger.customLabel>左無名指</Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.parts.Left_middle_finger.customLabel>
+  <!-- EN: Left index finger -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.parts.Left_index_finger.customLabel>左中指</Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.parts.Left_index_finger.customLabel>
+  <!-- EN: Left thumb -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.parts.Left_thumb.customLabel>左食指</Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.parts.Left_thumb.customLabel>
+  <!-- EN: Left pinky -->
+  <Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.parts.Left_pinky.customLabel>左大拇指</Dragonian_Body.corePart.parts.Left_shoulder.parts.Left_arm.parts.Left_hand.parts.Left_pinky.customLabel>
+  <!-- EN: Right shoulder -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.customLabel>右肩</Dragonian_Body.corePart.parts.Right_shoulder.customLabel>
+  <!-- EN: Right clavicle -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_clavicle.customLabel>右鎖骨</Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_clavicle.customLabel>
+  <!-- EN: Right arm -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.customLabel>右臂</Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.customLabel>
+  <!-- EN: Right humerus -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_humerus.customLabel>右肱骨</Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_humerus.customLabel>
+  <!-- EN: Right radius -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_radius.customLabel>右橈骨</Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_radius.customLabel>
+  <!-- EN: Right hand -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.customLabel>右手</Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.customLabel>
+  <!-- EN: Right ring finger -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.parts.Right_ring_finger.customLabel>右尾指</Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.parts.Right_ring_finger.customLabel>
+  <!-- EN: Right middle finger -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.parts.Right_middle_finger.customLabel>右無名指</Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.parts.Right_middle_finger.customLabel>
+  <!-- EN: Right index finger -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.parts.Right_index_finger.customLabel>右中指</Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.parts.Right_index_finger.customLabel>
+  <!-- EN: Right thumb -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.parts.Right_thumb.customLabel>右食指</Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.parts.Right_thumb.customLabel>
+  <!-- EN: Right pinky -->
+  <Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.parts.Right_pinky.customLabel>右大拇指</Dragonian_Body.corePart.parts.Right_shoulder.parts.Right_arm.parts.Right_hand.parts.Right_pinky.customLabel>
+  <!-- EN: Left leg -->
+  <Dragonian_Body.corePart.parts.Left_leg.customLabel>左腿</Dragonian_Body.corePart.parts.Left_leg.customLabel>
+  <!-- EN: Left femur -->
+  <Dragonian_Body.corePart.parts.Left_leg.parts.Left_femur.customLabel>左股骨</Dragonian_Body.corePart.parts.Left_leg.parts.Left_femur.customLabel>
+  <!-- EN: Left tibia -->
+  <Dragonian_Body.corePart.parts.Left_leg.parts.Left_tibia.customLabel>左脛骨</Dragonian_Body.corePart.parts.Left_leg.parts.Left_tibia.customLabel>
+  <!-- EN: Left foot -->
+  <Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.customLabel>左足</Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.customLabel>
+  <!-- EN: Left middle toe -->
+  <Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.parts.Left_middle_toe.customLabel>左小趾</Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.parts.Left_middle_toe.customLabel>
+  <!-- EN: Left second toe -->
+  <Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.parts.Left_second_toe.customLabel>左次小趾</Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.parts.Left_second_toe.customLabel>
+  <!-- EN: Left big toe -->
+  <Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.parts.Left_big_toe.customLabel>左三趾</Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.parts.Left_big_toe.customLabel>
+  <!-- EN: Left little toe -->
+  <Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.parts.Left_little_toe.customLabel>左二趾</Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.parts.Left_little_toe.customLabel>
+  <!-- EN: Left fourth toe -->
+  <Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.parts.Left_fourth_toe.customLabel>左大踇趾</Dragonian_Body.corePart.parts.Left_leg.parts.Left_foot.parts.Left_fourth_toe.customLabel>
+  <!-- EN: Right leg -->
+  <Dragonian_Body.corePart.parts.Right_leg.customLabel>右腿</Dragonian_Body.corePart.parts.Right_leg.customLabel>
+  <!-- EN: Right femur -->
+  <Dragonian_Body.corePart.parts.Right_leg.parts.Right_femur.customLabel>右股骨</Dragonian_Body.corePart.parts.Right_leg.parts.Right_femur.customLabel>
+  <!-- EN: Right tibia -->
+  <Dragonian_Body.corePart.parts.Right_leg.parts.Right_tibia.customLabel>右脛骨</Dragonian_Body.corePart.parts.Right_leg.parts.Right_tibia.customLabel>
+  <!-- EN: Right foot -->
+  <Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.customLabel>右足</Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.customLabel>
+  <!-- EN: Right middle toe -->
+  <Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.parts.Right_middle_toe.customLabel>右小趾</Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.parts.Right_middle_toe.customLabel>
+  <!-- EN: Right second toe -->
+  <Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.parts.Right_second_toe.customLabel>右次小趾</Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.parts.Right_second_toe.customLabel>
+  <!-- EN: Right big toe -->
+  <Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.parts.Right_big_toe.customLabel>右三趾</Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.parts.Right_big_toe.customLabel>
+  <!-- EN: Right little toe -->
+  <Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.parts.Right_little_toe.customLabel>右二趾</Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.parts.Right_little_toe.customLabel>
+  <!-- EN: Right fourth toe -->
+  <Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.parts.Right_fourth_toe.customLabel>右大踇趾</Dragonian_Body.corePart.parts.Right_leg.parts.Right_foot.parts.Right_fourth_toe.customLabel>
+  
+</LanguageData>

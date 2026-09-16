@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: harvest aquatic crops -->
+  <VCE_HarvestAquatic.label>收割水生作物</VCE_HarvestAquatic.label>
+  <!-- EN: harvesting aquatic -->
+  <VCE_HarvestAquatic.gerund>收割水生作物</VCE_HarvestAquatic.gerund>
+  <!-- EN: harvest aquatic -->
+  <VCE_HarvestAquatic.verb>收割</VCE_HarvestAquatic.verb>
+  
+  <!-- EN: harvest flowers -->
+  <VCE_HarvestFlowerGarden.label>收割花卉</VCE_HarvestFlowerGarden.label>
+  <!-- EN: harvesting flowers -->
+  <VCE_HarvestFlowerGarden.gerund>收割花卉</VCE_HarvestFlowerGarden.gerund>
+  <!-- EN: harvest flowers -->
+  <VCE_HarvestFlowerGarden.verb>收割</VCE_HarvestFlowerGarden.verb>
+  
+  <!-- EN: harvest sand crops -->
+  <VCE_HarvestSandy.label>收割沙地作物</VCE_HarvestSandy.label>
+  <!-- EN: harvesting sand -->
+  <VCE_HarvestSandy.gerund>收割水生作物</VCE_HarvestSandy.gerund>
+  <!-- EN: harvest sand -->
+  <VCE_HarvestSandy.verb>收割</VCE_HarvestSandy.verb>
+  
+  <!-- EN: sow aquatic crops -->
+  <VCE_SowAquatic.label>播種水生作物</VCE_SowAquatic.label>
+  <!-- EN: sowing aquatic -->
+  <VCE_SowAquatic.gerund>播種水生作物</VCE_SowAquatic.gerund>
+  <!-- EN: sow aquatic -->
+  <VCE_SowAquatic.verb>播種</VCE_SowAquatic.verb>
+  
+  <!-- EN: sow sand crops -->
+  <VCE_SowSandy.label>播種沙地作物</VCE_SowSandy.label>
+  <!-- EN: sowing sand -->
+  <VCE_SowSandy.gerund>播種沙地作物</VCE_SowSandy.gerund>
+  <!-- EN: sow sand -->
+  <VCE_SowSandy.verb>播種</VCE_SowSandy.verb>
+
+  <!-- EN: harvest mushroom crops -->
+  <VPE_HarvestMushroom.label>收割蘑菇作物</VPE_HarvestMushroom.label>
+  <!-- EN: harvesting mushrooms -->
+  <VPE_HarvestMushroom.gerund>收割蘑菇作物</VPE_HarvestMushroom.gerund>
+  <!-- EN: harvest mushrooms -->
+  <VPE_HarvestMushroom.verb>收割蘑菇作物</VPE_HarvestMushroom.verb>
+  
+  <!-- EN: sow mushroom crops -->
+  <VPE_SowMushroom.label>播種蘑菇作物</VPE_SowMushroom.label>
+  <!-- EN: sowing mushrooms -->
+  <VPE_SowMushroom.gerund>播種蘑菇作物</VPE_SowMushroom.gerund>
+  <!-- EN: sow mushrooms -->
+  <VPE_SowMushroom.verb>播種</VPE_SowMushroom.verb>
+
+  <!-- EN: sow flowers -->
+  <VCE_SowFlowerGarden.label>播種花卉</VCE_SowFlowerGarden.label>
+  <!-- EN: sowing flowers -->
+  <VCE_SowFlowerGarden.gerund>播種花卉</VCE_SowFlowerGarden.gerund>
+  <!-- EN: sow flowers -->
+  <VCE_SowFlowerGarden.verb>播種</VCE_SowFlowerGarden.verb>
+  
+</LanguageData>

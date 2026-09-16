@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 장비 만들기 -->
+  <DoBillsMakeApparel_Miho_TableMachining.label>製作裝備</DoBillsMakeApparel_Miho_TableMachining.label>
+  <!-- EN: 제작중 -->
+  <DoBillsMakeApparel_Miho_TableMachining.gerund>製作於</DoBillsMakeApparel_Miho_TableMachining.gerund>
+  <!-- EN: 제작 -->
+  <DoBillsMakeApparel_Miho_TableMachining.verb>製作</DoBillsMakeApparel_Miho_TableMachining.verb>
+  
+</LanguageData>

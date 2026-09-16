@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: exiled vivi -->
+  <VV_PlayerExiledVivi.label>被放逐的薇薇</VV_PlayerExiledVivi.label>
+  <!-- EN: . -->
+  <VV_PlayerExiledVivi.description>。原文這里就是一個點？</VV_PlayerExiledVivi.description>
+  <!-- EN: representative -->
+  <VV_PlayerExiledVivi.leaderTitle>代表</VV_PlayerExiledVivi.leaderTitle>
+  <!-- EN: {0} from {1} are attacking your {2}. -->
+  <VV_PlayerExiledVivi.messageDefendersAttacking>來自{1}的{0}正在攻擊你的{2}</VV_PlayerExiledVivi.messageDefendersAttacking>
+  <!-- EN: vivi -->
+  <VV_PlayerExiledVivi.pawnSingular>薇薇</VV_PlayerExiledVivi.pawnSingular>
+  <!-- EN: vivis -->
+  <VV_PlayerExiledVivi.pawnsPlural>薇薇們</VV_PlayerExiledVivi.pawnsPlural>
+  
+  <!-- EN: vivi -->
+  <VV_PlayerVivi.label>薇薇</VV_PlayerVivi.label>
+  <!-- EN: . -->
+  <VV_PlayerVivi.description>。原文這里就是一個點？</VV_PlayerVivi.description>
+  <!-- EN: representative -->
+  <VV_PlayerVivi.leaderTitle>代表</VV_PlayerVivi.leaderTitle>
+  <!-- EN: {0} from {1} are attacking your {2}. -->
+  <VV_PlayerVivi.messageDefendersAttacking>來自{1}的{0}正在攻擊你的{2}</VV_PlayerVivi.messageDefendersAttacking>
+  <!-- EN: vivi -->
+  <VV_PlayerVivi.pawnSingular>薇薇</VV_PlayerVivi.pawnSingular>
+  <!-- EN: vivis -->
+  <VV_PlayerVivi.pawnsPlural>薇薇們</VV_PlayerVivi.pawnsPlural>
+  
+  <!-- EN: vivi refugee -->
+  <VV_PlayerViviRefugee.label>薇薇難民</VV_PlayerViviRefugee.label>
+  <!-- EN: . -->
+  <VV_PlayerViviRefugee.description>。原文這里就是一個點？</VV_PlayerViviRefugee.description>
+  <!-- EN: representative -->
+  <VV_PlayerViviRefugee.leaderTitle>代表</VV_PlayerViviRefugee.leaderTitle>
+  <!-- EN: {0} from {1} are attacking your {2}. -->
+  <VV_PlayerViviRefugee.messageDefendersAttacking>來自{1}的{0}正在攻擊你的{2}</VV_PlayerViviRefugee.messageDefendersAttacking>
+  <!-- EN: vivi -->
+  <VV_PlayerViviRefugee.pawnSingular>薇薇</VV_PlayerViviRefugee.pawnSingular>
+  <!-- EN: vivis -->
+  <VV_PlayerViviRefugee.pawnsPlural>薇薇們</VV_PlayerViviRefugee.pawnsPlural>
+  
+</LanguageData>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Void_SecronomControlChip.label>N-4控製植入物</Void_SecronomControlChip.label>
+  <Void_SecronomControlChip.description>該植入物中的Voidtech納米機器人正在控製Nerotonin-4型病毒，並使受試者對新主人表現友好。</Void_SecronomControlChip.description>
+  <Void_SecronomControlChip.stages.0.label>N-4重編程納米機器人</Void_SecronomControlChip.stages.0.label>
+  <Void_SecronomControlChip.labelNoun>N-4控製植入物</Void_SecronomControlChip.labelNoun>
+
+
+</LanguageData>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 안경착용 -->
+  <Miho_Glasses_Hediff.label>眼镜辅助</Miho_Glasses_Hediff.label>
+  <!-- EN: 안경착용. -->
+  <Miho_Glasses_Hediff.description>此单位正戴着眼镜，视觉能力因此得到改善。</Miho_Glasses_Hediff.description>
+  <!-- EN: 안경착용 -->
+  <Miho_Glasses_Hediff.labelNoun>眼镜辅助</Miho_Glasses_Hediff.labelNoun>
+  
+  <!-- EN: 매그니파이어착용 -->
+  <Miho_Magnifier_Hediff.label>头戴式战术望远镜辅助</Miho_Magnifier_Hediff.label>
+  <!-- EN: 매그니파이어착용. -->
+  <Miho_Magnifier_Hediff.description>此单位正戴着头戴式战术望远镜，视觉能力因此得到改善。</Miho_Magnifier_Hediff.description>
+  <!-- EN: 매그니파이어착용 -->
+  <Miho_Magnifier_Hediff.labelNoun>头戴式战术望远镜辅助</Miho_Magnifier_Hediff.labelNoun>
+  
+  <!-- EN: 안경착용 -->
+  <Miho_RoundGlasses_Hediff.label>圆形眼镜辅助</Miho_RoundGlasses_Hediff.label>
+  <!-- EN: 안경착용. -->
+  <Miho_RoundGlasses_Hediff.description>此单位正戴着圆形眼镜，视觉能力因此得到改善。</Miho_RoundGlasses_Hediff.description>
+  <!-- EN: 안경착용 -->
+  <Miho_RoundGlasses_Hediff.labelNoun>圆形眼镜辅助</Miho_RoundGlasses_Hediff.labelNoun>
+  
+  <!-- EN: 선글라스착용 -->
+  <Miho_SunGlasses_Hediff.label>防弹太阳镜辅助</Miho_SunGlasses_Hediff.label>
+  <!-- EN: 선글라스착용. -->
+  <Miho_SunGlasses_Hediff.description>此单位正戴着防弹太阳镜，视觉能力因此得到改善。</Miho_SunGlasses_Hediff.description>
+  <!-- EN: 선글라스착용 -->
+  <Miho_SunGlasses_Hediff.labelNoun>防弹太阳镜辅助</Miho_SunGlasses_Hediff.labelNoun>
+
+  <!-- EN: 사격보조컴퓨터 착용 -->
+  <Miho_TacticalAssist_Hediff.label>单兵火控装置辅助</Miho_TacticalAssist_Hediff.label>
+  <!-- EN: 사격보조컴퓨터 착용. -->
+  <Miho_TacticalAssist_Hediff.description>此单位正戴着单兵火控装置，视觉能力因此得到改善。</Miho_TacticalAssist_Hediff.description>
+  <!-- EN: 사격보조컴퓨터 착용 -->
+  <Miho_TacticalAssist_Hediff.labelNoun>单兵火控装置辅助</Miho_TacticalAssist_Hediff.labelNoun>
+  
+  <!-- EN: 방독면착용 -->
+  <Miho_Toxmask_Hediff.label>防毒面罩保护</Miho_Toxmask_Hediff.label>
+  <!-- EN: 방독면착용. -->
+  <Miho_Toxmask_Hediff.description>此单位正戴着防毒面具。</Miho_Toxmask_Hediff.description>
+  <!-- EN: 방독면착용 -->
+  <Miho_Toxmask_Hediff.labelNoun>防毒面罩保护</Miho_Toxmask_Hediff.labelNoun>
+  
+  <!-- EN: 바이저 착용 -->
+  <Miho_Visor_Hediff.label>防弹面甲保护</Miho_Visor_Hediff.label>
+  <!-- EN: 바이저 착용. -->
+  <Miho_Visor_Hediff.description>此单位正戴着防弹面甲。</Miho_Visor_Hediff.description>
+  <!-- EN: 바이저 착용 -->
+  <Miho_Visor_Hediff.labelNoun>防弹面甲保护</Miho_Visor_Hediff.labelNoun>
+  
+</LanguageData>

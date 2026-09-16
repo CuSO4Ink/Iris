@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: breakdown factor -->
+  <VEF_BuildingBreakdownFactor.label>故障頻率系數</VEF_BuildingBreakdownFactor.label>
+  <!-- EN: A multiplier on how often this building breaks down. -->
+  <VEF_BuildingBreakdownFactor.description>建築發生故障的頻率會乘以此項的值。</VEF_BuildingBreakdownFactor.description>
+  
+  <!-- EN: learning rate -->
+  <VEF_BuildingLearningRateOffset.label>學習速率</VEF_BuildingLearningRateOffset.label>
+  <!-- EN: A multiplier on how quickly children learn during lessons which are assisted by this. -->
+  <VEF_BuildingLearningRateOffset.description>兒童在上課期間的學習速率會乘以此項的值。</VEF_BuildingLearningRateOffset.description>
+  
+  <!-- EN: maximum overclock factor -->
+  <VEF_BuildingMaxOverclockFactor.label>最大超頻上限系數</VEF_BuildingMaxOverclockFactor.label>
+  <!-- EN: A multiplier on the maximum possible overclock of a factory. -->
+  <VEF_BuildingMaxOverclockFactor.description>工廠設施所能達到的最大超頻上限會乘以此項的值。</VEF_BuildingMaxOverclockFactor.description>
+  
+  <!-- EN: shield max energy -->
+  <VEF_EnergyShieldEnergyMaxBuilding.label>護盾能量上限</VEF_EnergyShieldEnergyMaxBuilding.label>
+  <!-- EN: The maximum energy the shield can have. More energy allows the shield to absorb more damage. -->
+  <VEF_EnergyShieldEnergyMaxBuilding.description>護盾充能上限。充能越多，能吸收的傷害就越多。</VEF_EnergyShieldEnergyMaxBuilding.description>
+  <!-- EN: {0}00 -->
+  <VEF_EnergyShieldEnergyMaxBuilding.formatString>{0}00</VEF_EnergyShieldEnergyMaxBuilding.formatString>
+  
+  <!-- EN: shield radius -->
+  <VEF_EnergyShieldRadiusBuilding.label>護盾半徑</VEF_EnergyShieldRadiusBuilding.label>
+  <!-- EN: The radius of the energy shield protection. -->
+  <VEF_EnergyShieldRadiusBuilding.description>能量護盾的保護半徑。</VEF_EnergyShieldRadiusBuilding.description>
+  <!-- EN: {0} c -->
+  <VEF_EnergyShieldRadiusBuilding.formatString>{0}格</VEF_EnergyShieldRadiusBuilding.formatString>
+  
+  <!-- EN: shield recharge rate -->
+  <VEF_EnergyShieldRechargeRateBuilding.label>護盾充能係數</VEF_EnergyShieldRechargeRateBuilding.label>
+  <!-- EN: The rate at which the shield recharges energy per second, as long as it is not broken. -->
+  <VEF_EnergyShieldRechargeRateBuilding.description>護盾未被打破時每秒恢復的能量。</VEF_EnergyShieldRechargeRateBuilding.description>
+  <!-- EN: {0}/s -->
+  <VEF_EnergyShieldRechargeRateBuilding.formatString>{0}/秒</VEF_EnergyShieldRechargeRateBuilding.formatString>
+  
+  <!-- EN: heat per second factor -->
+  <VEF_FactoryHeatPerSecondFactor.label>熱量產出系數</VEF_FactoryHeatPerSecondFactor.label>
+  <!-- EN: A multiplier on the heat per second produced by a factory. -->
+  <VEF_FactoryHeatPerSecondFactor.description>工廠設施每秒產生的熱量會乘以此項的值。</VEF_FactoryHeatPerSecondFactor.description>
+  
+</LanguageData>

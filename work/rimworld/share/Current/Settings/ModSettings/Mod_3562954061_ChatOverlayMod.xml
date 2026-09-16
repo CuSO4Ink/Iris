@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="ChatOverlaySettings">
+		<OverlayX>1289.66675</OverlayX>
+		<OverlayY>114.666641</OverlayY>
+		<OverlayW>417.333252</OverlayW>
+		<OverlayH>123.333313</OverlayH>
+		<PackageIds />
+		<DefNames />
+		<SpeakerNames />
+	</ModSettings>
+</SettingsBlock>

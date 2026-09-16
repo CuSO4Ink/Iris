@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: stalker power armor -->
+  <Apparel_StalkerPowerArmor.label>潜猎装甲</Apparel_StalkerPowerArmor.label>
+  <!-- EN: A monolith power armor, inspired by glitterworld's space marines. This armor possess the best armor rating by utilizing plasteel to its highest capacity, renders the wearer immune to toxic fallout and necrotion fallout, provides immunity to fire, and can deploy reloadable broad shields for extra protection. The stalker power armor was created in response to the necronoid threat, providing mankind an edge to combat the necronoids and keeping them at bay. -->
+  <Apparel_StalkerPowerArmor.description>以闪耀世界太空陆战队的制式装备为灵感研发而成的一体式动力装甲，是协助人类对抗殁疫感染体威胁的有力帮手。由于在制造时尽可能多地使用了玻璃钢，潜猎装甲不仅拥有出色的防护性能，还能使穿戴者不受有毒尘埃和殁疫尘埃的影响。它还额外搭载有可复用式低角护盾部署装置，大大提高了被远程武器集火时的生存能力。</Apparel_StalkerPowerArmor.description>
+  <!-- EN: reload -->
+  <Apparel_StalkerPowerArmor.comps.CompApparelReloadable.chargeNoun>护盾</Apparel_StalkerPowerArmor.comps.CompApparelReloadable.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Apparel_StalkerPowerArmor.comps.CompApparelReloadable.cooldownGerund>冷却中</Apparel_StalkerPowerArmor.comps.CompApparelReloadable.cooldownGerund>
+  <!-- EN: deploy low-shield -->
+  <Apparel_StalkerPowerArmor.verbs.deploy_lowshield.label>部署低角护盾</Apparel_StalkerPowerArmor.verbs.deploy_lowshield.label>
+  
+  <!-- EN: imperial monolith power armor -->
+  <Apparel_StalkerPowerArmor_Empire.label>帝国潜猎装甲</Apparel_StalkerPowerArmor_Empire.label>
+  <!-- EN: A special imperial power armor, mainly worn by skilled necro hunters of the empire. Unlike the original stalker power armor, the imperial monolith power armor possess better damage resistance, and offers greater mobility by removing the shield pack deployer and installing enhanced servo units in the leg joints. Such a protective gear further solidifies the empire's title as the bulwark against the necronoid threat, and further solidifes their power throughout the rim. -->
+  <Apparel_StalkerPowerArmor_Empire.description>通常由破碎帝国中最老练的殁疫猎人们使用的特殊动力装甲。与普通的潜猎装甲有所不同，帝国潜猎装甲拥有更优秀的防护性能，其原本的低角护盾部署装置被拆除，取而代之的是能提高穿戴者机动性的腿部增幅传动系统。这种装备的问世不仅巩固了破碎帝国作为抗击殁疫感染体的主力军的地位，也强化了他们在边缘世界中的军事影响力。</Apparel_StalkerPowerArmor_Empire.description>
+  
+</LanguageData>

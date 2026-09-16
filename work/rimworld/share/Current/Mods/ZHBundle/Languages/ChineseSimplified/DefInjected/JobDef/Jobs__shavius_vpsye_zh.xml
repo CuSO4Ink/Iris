@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: transfering essence to TargetA -->
+  <VPE_EssenceTransfer.reportString>正在将生命力传给TargetA</VPE_EssenceTransfer.reportString>
+  
+  <!-- EN: standing. -->
+  <VPE_StandFreeze.reportString>时间冻结</VPE_StandFreeze.reportString>
+  
+  <!-- EN: using TargetA to teleport to TargetB -->
+  <VPE_UseSkipdoor.reportString>使用TargetA传送至TargetB</VPE_UseSkipdoor.reportString>
+
+  <!-- EN: stripping gear. -->
+  <VPEP_StripGear.reportString>脱下装备。</VPEP_StripGear.reportString>
+  
+</LanguageData>

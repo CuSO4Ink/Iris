@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: berserk -->
+  <VV_HornetBerserk.label>狂暴</VV_HornetBerserk.label>
+  <!-- EN: Maddened: Berserk -->
+  <VV_HornetBerserk.baseInspectLine>失控：狂暴</VV_HornetBerserk.baseInspectLine>
+  <!-- EN: {0}'s berserk rage has come to an end. -->
+  <VV_HornetBerserk.recoveryMessage>{0}的狂暴結束了。</VV_HornetBerserk.recoveryMessage>
+  
+</LanguageData>

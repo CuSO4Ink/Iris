@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 간이 제작 장소 -->
+  <Miho_CraftingSpot.label>美狐手工加工点</Miho_CraftingSpot.label>
+  <!-- EN: 간이 제작 장소 입니다. 원시적인 미호 물건을 만들 수 있습니다. -->
+  <Miho_CraftingSpot.description>指定一个制作美狐族简易物品的位置。由于缺乏设备和工具支持，工作速度会很慢。</Miho_CraftingSpot.description>
+  
+  <!-- EN: 미호 종합작업대 -->
+  <Miho_TableMachining.label>美狐通用工作台</Miho_TableMachining.label>
+  <!-- EN: 인간들의 3D 프린터를 따라한 종합작업대 입니다. -->
+  <Miho_TableMachining.description>通过研习人类科技仿制出的3D打印工作台，可用于制作美狐族的武器装备。</Miho_TableMachining.description>
+  
+  <!-- EN: 미호 다다미 -->
+  <Miho_Tatami.label>美狐榻榻米</Miho_Tatami.label>
+  <!-- EN: 다다미 입니다. -->
+  <Miho_Tatami.description>用干草编制而成的美狐族传统榻榻米。</Miho_Tatami.description>
+  
+  <!-- EN: 미호 작업 보조 인공지능 -->
+  <Miho_WorkAI.label>美狐AI助理</Miho_WorkAI.label>
+  <!-- EN: 4가지 인격이 내장되어있는 작업 보조 AI와 홀로그램 투사기 입니다. 고로, 천상의 용광로, 종합작업대에 연결이 가능합니다. -->
+  <Miho_WorkAI.description>搭载了全息投影仪的工作用AI助理，内置有4种不同的人格模式。提高48%工作速度。需要放置在美狐生产设备（美狐通用工作台、美狐高炉和美狐星宇冶锻机）附近。一个美狐生产设备最多可以同时连接一个美狐AI助理。</Miho_WorkAI.description>
+  
+</LanguageData>

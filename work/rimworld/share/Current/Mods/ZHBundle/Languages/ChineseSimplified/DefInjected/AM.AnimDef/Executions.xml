@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Execution: Bash -->
+  <AM_Execution_Bash.label>终结技：猛击</AM_Execution_Bash.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_Bash.jobString>对[OTHER]施展终结技。</AM_Execution_Bash.jobString>
+  
+  <!-- EN: Execution: Big Bash -->
+  <AM_Execution_BashLarge.label>终结技：狂怒猛击</AM_Execution_BashLarge.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_BashLarge.jobString>对[OTHER]施展终结技。</AM_Execution_BashLarge.jobString>
+  
+  <!-- EN: Execution: Behead -->
+  <AM_Execution_Behead.label>终结技：斩首</AM_Execution_Behead.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_Behead.jobString>对[OTHER]施展终结技。</AM_Execution_Behead.jobString>
+  
+  <!-- EN: Execution: Jumping Behead -->
+  <AM_Execution_BeheadHigh.label>终结技：斩首跃击</AM_Execution_BeheadHigh.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_BeheadHigh.jobString>对[OTHER]施展终结技。</AM_Execution_BeheadHigh.jobString>
+
+  <!-- EN: Execution: Fail -->
+  <AM_Execution_Fail.label>终结技：失败</AM_Execution_Fail.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_Fail.jobString>对[OTHER]施展终结技。</AM_Execution_Fail.jobString>
+  
+  <!-- EN: Execution: Head Be Gone -->
+  <AM_Execution_HeadRemoval.label>终结技：身首分离</AM_Execution_HeadRemoval.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_HeadRemoval.jobString>对[OTHER]施展终结技。</AM_Execution_HeadRemoval.jobString>
+
+  <!-- EN: Execution: Gáe Bulg -->
+  <AM_Execution_GaeBulg.label>终结技：穿刺死棘之枪</AM_Execution_GaeBulg.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_GaeBulg.jobString>对[OTHER]施展终结技。</AM_Execution_GaeBulg.jobString>
+  
+  <!-- EN: Execution: Head Stab -->
+  <AM_Execution_HeadStab.label>终结技：穿首刺击</AM_Execution_HeadStab.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_HeadStab.jobString>对[OTHER]施展终结技。</AM_Execution_HeadStab.jobString>
+  
+  <!-- EN: Execution: Jump Throw -->
+  <AM_Execution_JumpThrow.label>终结技：鹘跃掷击</AM_Execution_JumpThrow.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_JumpThrow.jobString>对[OTHER]施展终结技。</AM_Execution_JumpThrow.jobString>
+  
+  <!-- EN: Execution: Knockdown Stab -->
+  <AM_Execution_KnockdownStab.label>终结技：扑袭刺击</AM_Execution_KnockdownStab.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_KnockdownStab.jobString>对[OTHER]施展终结技。</AM_Execution_KnockdownStab.jobString>
+  
+  <!-- EN: Execution: Passover -->
+  <AM_Execution_Passover.label>终结技：回转残杀</AM_Execution_Passover.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_Passover.jobString>对[OTHER]施展终结技。</AM_Execution_Passover.jobString>
+  
+  <!-- EN: Execution: Pocket Sand! -->
+  <AM_Execution_PocketSand.label>终结技：扬沙突袭</AM_Execution_PocketSand.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_PocketSand.jobString>对[OTHER]施展终结技。</AM_Execution_PocketSand.jobString>
+  
+  <!-- EN: Execution: Punt -->
+  <AM_Execution_Punt.label>终结技：巨力冲击</AM_Execution_Punt.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_Punt.jobString>对[OTHER]施展终结技。</AM_Execution_Punt.jobString>
+  
+  <!-- EN: Execution: Acrobatic Backstab -->
+  <AM_Execution_SekiroBS.label>终结技：旋跃背刺</AM_Execution_SekiroBS.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_SekiroBS.jobString>对[OTHER]施展终结技。</AM_Execution_SekiroBS.jobString>
+  
+  <!-- EN: Execution: Shank -->
+  <AM_Execution_Shank.label>终结技：连环追袭</AM_Execution_Shank.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_Shank.jobString>对[OTHER]施展终结技。</AM_Execution_Shank.jobString>
+  
+  <!-- EN: Execution: Spear Stab -->
+  <AM_Execution_SpearLift.label>终结技：贯通刺击</AM_Execution_SpearLift.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_SpearLift.jobString>对[OTHER]施展终结技。</AM_Execution_SpearLift.jobString>
+  
+  <!-- EN: Execution: Stab -->
+  <AM_Execution_Stab.label>终结技：刺击</AM_Execution_Stab.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_Stab.jobString>对[OTHER]施展终结技。</AM_Execution_Stab.jobString>
+  
+  <!-- EN: Execution: Throw Sharp -->
+  <AM_Execution_ThrowSharp.label>终结技：掷击</AM_Execution_ThrowSharp.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_ThrowSharp.jobString>对[OTHER]施展终结技。</AM_Execution_ThrowSharp.jobString>
+  
+  <!-- EN: Execution: Up & Down Slash -->
+  <AM_Execution_UpDownSlash.label>终结技：升龙落日斩</AM_Execution_UpDownSlash.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_UpDownSlash.jobString>对[OTHER]施展终结技。</AM_Execution_UpDownSlash.jobString>
+  
+  <!-- EN: Execution: Upwards Slash -->
+  <AM_Execution_UpSlash.label>终结技：升龙斩</AM_Execution_UpSlash.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_UpSlash.jobString>对[OTHER]施展终结技。</AM_Execution_UpSlash.jobString>
+  
+  <!-- EN: Execution: Upwards Slash (doubletap) -->
+  <AM_Execution_UpSlash_Doubletap.label>终结技：升龙绝息斩</AM_Execution_UpSlash_Doubletap.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_UpSlash_Doubletap.jobString>对[OTHER]施展终结技。</AM_Execution_UpSlash_Doubletap.jobString>
+  
+  <!-- EN: Execution: You insulted m'lady -->
+  <AM_Execution_Weebstick.label>终结技：绯赤终焉</AM_Execution_Weebstick.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_Weebstick.jobString>对[OTHER]施展终结技。</AM_Execution_Weebstick.jobString>
+  
+  <!-- EN: Execution: Whirlwind -->
+  <AM_Execution_Whirlwind.label>终结技：旋风虎击</AM_Execution_Whirlwind.label>
+  <!-- EN: Executing [OTHER]. -->
+  <AM_Execution_Whirlwind.jobString>对[OTHER]施展终结技。</AM_Execution_Whirlwind.jobString>
+  
+  <!-- EN: Execution: Mystic Weapon Summon -->
+  <AM_GilgameshVictim.label>终结技：王之财宝</AM_GilgameshVictim.label>
+  <!-- EN: Casting unique skill: mystic weapon summon -->
+  <AM_GilgameshVictim.description>施展特殊技：王之财宝</AM_GilgameshVictim.description>
+  <!-- EN: Uh oh... -->
+  <AM_GilgameshVictim.jobString>啊哦...</AM_GilgameshVictim.jobString>
+  
+</LanguageData>

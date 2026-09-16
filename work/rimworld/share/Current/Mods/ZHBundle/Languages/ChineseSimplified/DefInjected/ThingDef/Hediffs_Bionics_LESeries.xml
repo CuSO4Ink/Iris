@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- MOTL implant -->
+
+  <DF_MOTL_Implant.label>MOTL植入物</DF_MOTL_Implant.label>
+  <DF_MOTL_Implant.description>活体行进植入物(The March of the Living implant)，也即MOTL植入物。在N-4全球大流行期间，幸存的Secronom科学家David Tolousse博士发明了一种植入物，旨在帮助幸存者在探索内城郊区的荒地时获得更大的优势。在那里，感染者的速度能够超过普通的成年人。多亏了这种植入物，其他的创新植入物也相继被研究制造，帮助使用它们的生还者减少了死亡概率。</DF_MOTL_Implant.description>
+
+
+  <!-- haste implant -->
+
+  <DF_Haste_Implant.label>急速植入物</DF_Haste_Implant.label>
+  <DF_Haste_Implant.description>急速植入物。提高使用者的移动速度。\n\n它是LE系列植入物的一部分，由一个被称为AdminPwn的世界穿越者制作。能够负担得起这些高级植入物的生还者以一种称为信用点的货币支付。当这些变体与其他提高身体的植入物一起使用时，精英生还者甚至能够面对内城中最危险的N-4突变体。</DF_Haste_Implant.description>
+
+
+  <!-- cat eye implant -->
+
+  <DF_CatEye_Implant.label>猫眼植入物</DF_CatEye_Implant.label>
+  <DF_CatEye_Implant.description>猫眼植入物。提高使用者的移动速度。\n\n它是LE系列植入物的一部分，由一个被称为AdminPwn的世界穿越者制作。能够负担得起这些高级植入物的生还者以一种称为信用点的货币支付。当这些变体与其他提高身体的植入物一起使用时，精英生还者甚至能够面对内城中最危险的N-4突变体。</DF_CatEye_Implant.description>
+
+
+  <!-- ghost implant -->
+
+  <DF_Ghost_Implant.label>幽灵植入物</DF_Ghost_Implant.label>
+  <DF_Ghost_Implant.description>幽灵植入物。提高使用者的操作能力、学习能力和抗伤能力。\n\n它是LE系列植入物的一部分，由一个被称为AdminPwn的世界穿越者制作。能够负担得起这些高级植入物的生还者以一种称为信用点的货币支付。当这些变体与其他提高身体的植入物一起使用时，精英生还者甚至能够面对内城中最危险的N-4突变体。</DF_Ghost_Implant.description>
+
+
+  <!-- destruction implant -->
+
+  <DF_Destruction_Implant.label>毁灭植入物</DF_Destruction_Implant.label>
+  <DF_Destruction_Implant.description>毁灭植入物。提高使用者的战斗能力。\n\n它是LE系列植入物的一部分，由一个被称为AdminPwn的世界穿越者制作。能够负担得起这些高级植入物的生还者以一种称为信用点的货币支付。当这些变体与其他提高身体的植入物一起使用时，精英生还者甚至能够面对内城中最危险的N-4突变体。</DF_Destruction_Implant.description>
+
+
+  <!-- amber implant -->
+
+  <DF_Amber_Implant.label>琥珀植入物</DF_Amber_Implant.label>
+  <DF_Amber_Implant.description>琥珀植入物。提高使用者的战斗能力。\n\n它是LE系列植入物的一部分，由一个被称为AdminPwn的世界穿越者制作。能够负担得起这些高级植入物的生还者以一种称为信用点的货币支付。当这些变体与其他提高身体的植入物一起使用时，精英生还者甚至能够面对内城中最危险的N-4突变体。</DF_Amber_Implant.description>
+
+
+  <!-- genius implant -->
+
+  <DF_Genius_Implant.label>天才植入物</DF_Genius_Implant.label>
+  <DF_Genius_Implant.description>天才植入物。显著提高使用者的学习能力，同时改善情绪调节。\n\n它是LE系列植入物的一部分，由一个被称为AdminPwn的世界穿越者制作。能够负担得起这些高级植入物的生还者以一种称为信用点的货币支付。当这些变体与其他提高身体的植入物一起使用时，精英生还者甚至能够面对内城中最危险的N-4突变体。</DF_Genius_Implant.description>
+
+
+  <!-- golden rabbit implant -->
+
+  <DF_GoldenRabbit_Implant.label>金兔植入物</DF_GoldenRabbit_Implant.label>
+  <DF_GoldenRabbit_Implant.description>金兔植入物。显著提高使用者的移动速度和社交能力。\n\n它是LE系列植入物的一部分，由一个被称为AdminPwn的世界穿越者制作。能够负担得起这些高级植入物的生还者以一种称为信用点的货币支付。当这些变体与其他提高身体的植入物一起使用时，精英生还者甚至能够面对内城中最危险的N-4突变体。</DF_GoldenRabbit_Implant.description>
+
+
+  <!-- data implant -->
+
+  <DF_Data_Implant.label>数据植入物</DF_Data_Implant.label>
+  <DF_Data_Implant.description>数据植入物。提高使用者的学习能力、承伤能力和移动速度。\n\n它是LE系列植入物的一部分，由一个被称为AdminPwn的世界穿越者制作。能够负担得起这些高级植入物的生还者以一种称为信用点的货币支付。当这些变体与其他提高身体的植入物一起使用时，精英生还者甚至能够面对内城中最危险的N-4突变体。</DF_Data_Implant.description>
+
+
+  <!-- havoc implant -->
+
+  <DF_Havoc_Implant.label>浩劫植入物</DF_Havoc_Implant.label>
+  <DF_Havoc_Implant.description>浩劫植入物。提高使用者的学习能力和战斗能力。\n\n它是LE系列植入物的一部分，由一个被称为AdminPwn的世界穿越者制作。能够负担得起这些高级植入物的生还者以一种称为信用点的货币支付。当这些变体与其他提高身体的植入物一起使用时，精英生还者甚至能够面对内城中最危险的N-4突变体。</DF_Havoc_Implant.description>
+
+
+</LanguageData>

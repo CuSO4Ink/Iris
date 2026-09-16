@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- ########################### Utilities just for JoinerThreat ############################### -->
+
+  <Void_Util_JoinerWalkIn.questDescriptionRules.rulesStrings.0>rewardDescription-&gt;一位名叫[joiner_nameDef]的[joiner_age]歲[joiner_title]將到達並加入你。[joiner_relationInfo]。</Void_Util_JoinerWalkIn.questDescriptionRules.rulesStrings.0>
+
+  <Void_ThreatReward_Raid_Joiner.root.nodes.5.name>襲擊延遲計數</Void_ThreatReward_Raid_Joiner.root.nodes.5.name>
+  <Void_ThreatReward_Raid_Joiner.questDescriptionRules.rulesStrings.0>questDescription-&gt;一位名叫[joiner_nameDef]的[joiner_age]歲[joiner_title]已經捨棄了V.O.I.D.並在附近呼叫。[joiner_nameDef]因自己曾屬於這個邪惡派系而感到深深的後悔，[joiner_pronoun]向你深表歉意。[joiner_pronoun]承諾幫助你的殖民地，希望以此獲取寬恕。\n\n[joiner_nameDef]被[enemyFaction_name]的[enemyFaction_pawnsPlural]尾隨着！</Void_ThreatReward_Raid_Joiner.questDescriptionRules.rulesStrings.0>
+  <Void_ThreatReward_Raid_Joiner.questDescriptionRules.rulesStrings.1>questDescription-&gt;一位名叫[joiner_nameDef]的[joiner_age]歲[joiner_title]因叛離而遭到V.O.I.D.的追捕。[joiner_nameDef]解釋說[joiner_pronoun]被迫服務V.O.I.D.，但對這些罪惡行爲心懷愧疚。[joiner_nameDef]懇求着你的寬恕，並哭泣着說[joiner_pronoun]別無選擇。\n\n[joiner_nameDef]被[enemyFaction_name]的[enemyFaction_pawnsPlural]尾隨着！</Void_ThreatReward_Raid_Joiner.questDescriptionRules.rulesStrings.1>
+  <Void_ThreatReward_Raid_Joiner.questDescriptionRules.rulesStrings.2>questDescription-&gt;一位名叫[joiner_nameDef]的[joiner_age]歲[joiner_title]已經失控並決定離開V.O.I.D.。[joiner_nameDef]透露，[joiner_pronoun]被綁架後，V.O.I.D.提供了難以想象的財富、更換器官和四肢的服務以換取其效忠。但在看到一個孩子被轉化爲怪物後，[joiner_nameDef]決定逃跑併發誓幫助你對抗V.O.I.D.。\n\n[joiner_nameDef]被[enemyFaction_name]的[enemyFaction_pawnsPlural]尾隨着！</Void_ThreatReward_Raid_Joiner.questDescriptionRules.rulesStrings.2>
+  <Void_ThreatReward_Raid_Joiner.questDescriptionRules.rulesStrings.3>questDescription-&gt;一位名叫[joiner_nameDef]的[joiner_age]歲[joiner_title]被內疚征服並決定拋棄V.O.I.D.。[joiner_nameDef]哭泣着說，[joiner_pronoun]再也無法忍受幫助V.O.I.D.，寧願慘死也不願走上那條邪惡的道路。[joiner_pronoun]懇求你的同情，並承諾誓死效忠。\n\n[joiner_nameDef]被[enemyFaction_name]的[enemyFaction_pawnsPlural]尾隨着！</Void_ThreatReward_Raid_Joiner.questDescriptionRules.rulesStrings.3>
+  <Void_ThreatReward_Raid_Joiner.questDescriptionRules.rulesStrings.4>questDescription-&gt;一位名叫[joiner_nameDef]的[joiner_age]歲[joiner_title]聲稱已經離開V.O.I.D.並尋求你的幫助。[joiner_nameDef]表示[joiner_pronoun]爲這麼一個惡劣的邪惡組織工作，已經犯下了不可饒恕的錯誤，真希望自己從未出生。[joiner_nameDef]表示遺憾後，承諾如果你給[joiner_pronoun]一次機會，[joiner_pronoun]將協助你們。\n\n[joiner_nameDef]被[enemyFaction_name]的[enemyFaction_pawnsPlural]尾隨着！</Void_ThreatReward_Raid_Joiner.questDescriptionRules.rulesStrings.4>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.0>questName-&gt;懺悔的罪人</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.0>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.1>questName-&gt;[joiner_nameDef]的良知</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.1>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.2>questName-&gt;問心有愧</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.2>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.3>questName-&gt;一個V.O.I.D.逃兵</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.3>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.4>questName-&gt;[joiner_nameDef]叛徒</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.4>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.5>questName-&gt;並非英雄</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.5>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.6>questName-&gt;絕望者的希冀</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.6>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.7>questName-&gt;邪惡不會停息</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.7>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.8>questName-&gt;與你同行</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.8>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.9>questName-&gt;紫色逃兵</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.9>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.10>questName-&gt;浪子回頭的寓言</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.10>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.11>questName-&gt;浪子回頭</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.11>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.12>questName-&gt;一顆破碎的紫心</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.12>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.13>questName-&gt;[joiner_nameDef]的譴責</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.13>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.14>questName-&gt;絆腳石</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.14>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.15>questName-&gt;高於人類</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.15>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.16>questName-&gt;迷途的羔羊</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.16>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.17>questName-&gt;尋求寬恕</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.17>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.18>questName-&gt;疲憊的超人類主意者</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.18>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.19>questName-&gt;[joiner_nameDef]的懺悔</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.19>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.20>questName-&gt;[joiner_nameDef]的救贖</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.20>
+  <Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.21>questName-&gt;[joiner_nameDef]的憐憫</Void_ThreatReward_Raid_Joiner.questNameRules.rulesStrings.21>
+
+  <Void_Util_Raid.root.nodes.RaidersArrive.customLetterLabel.slateRef>襲擊:V.O.I.D.</Void_Util_Raid.root.nodes.RaidersArrive.customLetterLabel.slateRef>
+  
+</LanguageData>

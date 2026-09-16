@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="FactionColonies.FCSettings">
+		<settingsModVersion>1.6.35</settingsModVersion>
+		<lastSeenVersions>
+			<keys />
+			<values />
+		</lastSeenVersions>
+		<disabledEventDefs />
+		<savedPickerColors />
+	</ModSettings>
+</SettingsBlock>

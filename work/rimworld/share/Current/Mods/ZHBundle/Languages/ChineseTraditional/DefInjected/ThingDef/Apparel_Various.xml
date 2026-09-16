@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: apron skirt -->
+  <RK_ApronSkirt.label>鼠族連衫圍裙</RK_ApronSkirt.label>
+  <!-- EN: 앞치마가 달린 간단한 의류입니다. -->
+  <RK_ApronSkirt.description>為鼠族設計的簡易連衫圍裙，能提高穿戴者的烹飪與種植速度。</RK_ApronSkirt.description>
+  
+  <!-- EN: ratkin battlesuit -->
+  <RK_BattleSuit.label>鼠族特戰服</RK_BattleSuit.label>
+  <!-- EN: 침투에 유리하도록 디자인된 전투복입니다. 극한의 온도상황에서 활동할 수 있도록 설계되어있습니다. -->
+  <RK_BattleSuit.description>為執行滲透作戰的鼠族設計的制服，能有效抵禦極端溫度。</RK_BattleSuit.description>
+  
+  <!-- EN: Ratkin military helmet -->
+  <RK_BulletProofHelmet.label>鼠族軍用頭盔</RK_BulletProofHelmet.label>
+  <!-- EN: 랫킨용 방탄 모자입니다. 착용자의 공포감을 조금 덜어주고 조준을 수월하게 해줍니다. -->
+  <RK_BulletProofHelmet.description>為鼠族士兵設計的頭盔。能有效降低穿戴者的遠程武器瞄準時間。</RK_BulletProofHelmet.description>
+  
+  <!-- EN: cardigan -->
+  <RK_Cardigan.label>鼠族羊毛衫</RK_Cardigan.label>
+  <!-- EN: 옷 겉에 입는 외투입니다. 옷을 한겹 더입어 추위로부터 몸을 지킬 수 있습니다. -->
+  <RK_Cardigan.description>為鼠族設計的開襟羊毛衫，是出色的外穿禦寒衣物。</RK_Cardigan.description>
+  
+  <!-- EN: chef hat -->
+  <RK_ChefHat.label>鼠族廚師帽</RK_ChefHat.label>
+  <!-- EN: 쉐프 모자입니다. 음식에 머리카락이나 이물질이 들어가지 않도록 방지해줍니다. -->
+  <RK_ChefHat.description>為鼠族廚師設計的帽子，能防止頭髮掉落到食物裡。</RK_ChefHat.description>
+  
+  <!-- EN: chef suit -->
+  <RK_ChefSuit.label>鼠族廚師服</RK_ChefSuit.label>
+  <!-- EN: 쉐프 복장입니다. 요리하기 편하도록 디자인 되어 조리속도를 상승시켜줍니다. -->
+  <RK_ChefSuit.description>為鼠族廚師設計的衣物，能提高穿戴者的烹飪速度。</RK_ChefSuit.description>
+  
+  <!-- EN: coif -->
+  <RK_Coif.label>鼠族頭巾</RK_Coif.label>
+  <!-- EN: 작업할 때 쓰는 모자입니다. 머리카락이 넘어오지 않도록 방지해줍니다. -->
+  <RK_Coif.description>為鼠族設計的工作用頭巾，能束緊頭髮，防止散開。</RK_Coif.description>
+  
+  <!-- EN: explorer hat -->
+  <RK_ExplorerHat.label>鼠族探險帽</RK_ExplorerHat.label>
+  <!-- EN: 탐험 모자입니다. 땡볕을 막아줍니다. -->
+  <RK_ExplorerHat.description>為熱愛探險的鼠族設計的帽子。可以遮擋陽光。</RK_ExplorerHat.description>
+  
+  <!-- EN: explorer wear -->
+  <RK_ExplorerWear.label>鼠族探險服</RK_ExplorerWear.label>
+  <!-- EN: 오지를 탐험할때 입는 옷입니다. 이동에 편리하고 몸에서 나는 소리를 줄여줍니다. -->
+  <RK_ExplorerWear.description>為熱愛探險的鼠族設計的外套。能提高穿戴者的移動速度，並降低狩獵隱蔽率。</RK_ExplorerWear.description>
+  
+  <!-- EN: flatcolor coat -->
+  <RK_FlatColorCoat.label>鼠族單色外套</RK_FlatColorCoat.label>
+  <!-- EN: 단아한 단색 원피스입니다. 편하면서 공식적 자리에 입기 좋아보입니다. -->
+  <RK_FlatColorCoat.description>為鼠族設計的漂亮單色連衣裙。看起來舒適而且得體大方。</RK_FlatColorCoat.description>
+  
+  <!-- EN: frill onepiece -->
+  <RK_FrillOnepiece.label>鼠族褶邊連衣裙</RK_FrillOnepiece.label>
+  <!-- EN: 프릴장식이 있는 귀여운 원피스이빈다. 상류층의 아가씨들에게 인기가 많습니다. -->
+  <RK_FrillOnepiece.description>為鼠族設計的可愛褶邊連衣裙，深受上流人士們的喜愛。</RK_FrillOnepiece.description>
+  
+  <!-- EN: gaurden uniform -->
+  <RK_GaurdenUniform.label>鼠族衛花使制服</RK_GaurdenUniform.label>
+  <!-- EN: 정원 지킴이들이 입는 정장입니다. 농경이 중요한 랫킨의 사회에서 정원을 지키는것은 중요한 일이며 가장 유능한 인재들만이 정원사가 될 수 있습니다. -->
+  <RK_GaurdenUniform.description>為鼠族衛花使設計的制服。在以農耕生活為主的鼠族社會中，花園是非常神聖的地方，只有那些最優秀的鼠族才有資格成為衛花使。</RK_GaurdenUniform.description>
+  
+  <!-- EN: hair corsage -->
+  <RK_HairCorsage.label>鼠族玫瑰髮飾</RK_HairCorsage.label>
+  <!-- EN: 머리에 쓰는 코사주입니다. 코사주의 우아함은 말 한마디마다 힘을 실어줍니다. -->
+  <RK_HairCorsage.description>為鼠族設計的玫瑰髮飾，能提高穿戴者的社交與談判能力。</RK_HairCorsage.description>
+  
+  <!-- EN: Ratkin head band -->
+  <RK_HeadBand.label>鼠族頭帶</RK_HeadBand.label>
+  <!-- EN: 빨간 머리띠입니다. 만약 이 머리띠를 두른 랫킨을 본다면 주의하세요. -->
+  <RK_HeadBand.description>為鼠族設計的紅色頭帶。如果你看見有鼠族戴著它的話，那就一定要小心了。</RK_HeadBand.description>
+  
+  <!-- EN: Ratkin mask helmet -->
+  <RK_Mask.label>鼠族防毒罩盔</RK_Mask.label>
+  <!-- EN: 마스크가 있는 헬멧입니다. 유독성 환경에서도 장시간 활동할 수 있도록 고안되었습니다. -->
+  <RK_Mask.description>為鼠族設計的配有防毒面罩的頭盔，能讓穿戴者在有毒環境中進行長時間的活動。</RK_Mask.description>
+  
+  <!-- EN: Ratkin mask helmet -->
+  <RK_MaskB.label>鼠族防毒罩盔</RK_MaskB.label>
+  <!-- EN: 마스크가 있는 헬멧입니다. 유독성 환경에서도 장시간 활동할 수 있도록 고안되었습니다. -->
+  <RK_MaskB.description>為鼠族設計的配有防毒面罩的頭盔。能讓穿戴者在有毒環境中進行長時間的活動。</RK_MaskB.description>
+  
+  <!-- EN: muffler -->
+  <RK_Muffler.label>鼠族圍巾</RK_Muffler.label>
+  <!-- EN: 목에 두르는 목도리입니다. 목을 통해 체온이 빠져나가는걸 방지해줍니다. 사막을 횡단할때 쓸 수 있습니다. -->
+  <RK_Muffler.description>為鼠族設計的圍巾，能防止體溫從頸部流失。在穿越沙漠時必不可少。</RK_Muffler.description>
+  
+  <!-- EN: ratkin order uniform -->
+  <RK_OrderUniform.label>鼠族作戰服</RK_OrderUniform.label>
+  <!-- EN: 랫킨식 제식 전투복입니다. 랫킨식 전투에 유리하도록 디자인된 의류입니다. 착용자에게 약간의 고양감을 주어 강인한 전투원으로 만들어줍니다. -->
+  <RK_OrderUniform.description>為鼠族設計的作戰服，能讓穿戴者更有氣勢，這樣他們就能忍受多一點的疼痛。</RK_OrderUniform.description>
+  
+  <!-- EN: ratkin glasses -->
+  <RK_ResearchGlasses.label>鼠族眼鏡</RK_ResearchGlasses.label>
+  <!-- EN: 랫킨용 안경입니다. 랫킨들에게 부족한 시력을 높여줍니다. 똑똑해진것 같다는 느낌도 조금 줍니다. -->
+  <RK_ResearchGlasses.description>為鼠族設計的可愛眼鏡，能讓穿戴者感到更聰明。</RK_ResearchGlasses.description>
+  
+  <!-- EN: research gown -->
+  <RK_ResearchGown.label>鼠族科研服</RK_ResearchGown.label>
+  <!-- EN: 연구할때 입는 가운입니다. 먼지를 날리지 않으며 지적으로 보입니다. -->
+  <RK_ResearchGown.description>為鼠族研究員設計的制服，能讓穿戴者感到更聰明。</RK_ResearchGown.description>
+  
+  <!-- EN: ribbon hair band -->
+  <RK_RibbonHairBand.label>鼠族髮帶</RK_RibbonHairBand.label>
+  <!-- EN: 머리에 착용하는 작고 이쁜 리본입니다. 리본의 귀여움은 사탕하나를 더 주고 싶도록 만들것입니다. -->
+  <RK_RibbonHairBand.description>為鼠族設計的小巧髮帶。看到如此可愛的鼠鼠，為什麼不給他們糖吃呢？</RK_RibbonHairBand.description>
+  
+  <!-- EN: Sisters Dress -->
+  <RK_SistersDerss.label>鼠族修女服</RK_SistersDerss.label>
+  <!-- EN: 수녀들이 입는 단아한 원피스입니다. 약간의 옆트임이 있어 움직임이 편합니다. 랫킨의 수녀들은 아픈 사람들을 돌보기도 합니다. -->
+  <RK_SistersDerss.description>為鼠族修女設計的衣物，側部的開口設計能使穿戴者靈活行動。聖潔的鼠族修女們擔負著照料傷患的職責。</RK_SistersDerss.description>
+  
+  <!-- EN: Veil -->
+  <RK_SistersVeil.label>鼠族修女頭紗</RK_SistersVeil.label>
+  <!-- EN: 수녀들이 머리에 쓰는 베일입니다. 머리를 단정하게 해줍니다. -->
+  <RK_SistersVeil.description>為鼠族修女設計的頭紗，能保持穿戴者的頭髮不會被弄亂。</RK_SistersVeil.description>
+  
+  <!-- EN: Straw Hat -->
+  <RK_StrawHat.label>鼠族草帽</RK_StrawHat.label>
+  <!-- EN: 건초로 만든 밀짚모자입니다. 뜨거운 땡볕으로부터 몸을 지켜줍니다. -->
+  <RK_StrawHat.description>為鼠族設計的草帽，能保護穿戴者免受驕陽的熾烤。</RK_StrawHat.description>
+  
+  <!-- EN: summer dress -->
+  <RK_SummerDress.label>鼠族盛夏連衣裙</RK_SummerDress.label>
+  <!-- EN: 여름용 흰 드레스입니다. 통풍이 잘되어 체온을 빠르게 식혀줍니다. -->
+  <RK_SummerDress.description>為鼠族設計的夏季用白色連衣裙。透氣性良好。</RK_SummerDress.description>
+  
+  <!-- EN: winter robe -->
+  <RK_WinterRobe.label>鼠族御寒披袍</RK_WinterRobe.label>
+  <!-- EN: 겨울용 예복입니다. 극지에서 활동할때 입습니다. -->
+  <RK_WinterRobe.description>為鼠族設計的冬季用御寒披袍。</RK_WinterRobe.description>
+  
+  <!-- EN: woolen hat -->
+  <RK_WoolenHat.label>鼠族御寒帽</RK_WoolenHat.label>
+  <!-- EN: 털 달린 모자입니다. -->
+  <RK_WoolenHat.description>為鼠族設計的御寒帽，能讓穿戴者的頭部保持溫暖。</RK_WoolenHat.description>
+  
+  <!-- EN: Ratkin red outfit -->
+  <RK_WorkerWear.label>鼠族工作服</RK_WorkerWear.label>
+  <!-- EN: 작업하기 편한 옷입니다. 일상생활에서 일하기 편하도록 디자인되었습니다. -->
+  <RK_WorkerWear.description>為鼠族設計的紅色工作服，能提高穿戴者的工作速度。</RK_WorkerWear.description>
+  
+</LanguageData>

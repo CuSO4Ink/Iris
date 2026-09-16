@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<LanguageData>
+  <DeityTypeMakerGlobal.rulePack.rulesStrings>
+    <li>r_deityType-&gt;[memeConcept]之[god] </li>
+    <li>god(p=7, gender!=Female)-&gt;神</li>
+    <li>god(p=7, gender==Female)-&gt;女神</li>
+    <li>god(p=4)-&gt;[memeGod]</li>
+    <li>god(p=3)-&gt;灵</li>
+    <li>god-&gt;主</li>
+    <li>god-&gt;主</li>
+    <li>r_deityType-&gt;[god]</li>
+  </DeityTypeMakerGlobal.rulePack.rulesStrings>
+  <LeaderTitleMaker_GenericContent.rulePack.rulesStrings>
+    <li>cultureLeaderAdjective-&gt;高级</li>
+    <li>cultureLeaderAdjective-&gt;大</li>
+    <li>cultureLeaderAdjective-&gt;第一</li>
+    <li>cultureLeaderAdjective-&gt;首席</li>
+    <li>cultureLeaderNoun-&gt;总统</li>
+    <li>cultureLeaderNoun-&gt;理事</li>
+    <li>cultureLeaderNoun-&gt;总督</li>
+    <li>cultureLeaderNoun-&gt;领导</li>
+    <li>cultureLeaderTitle-&gt;[cultureLeaderAdjective][cultureLeaderNoun]</li>
+  </LeaderTitleMaker_GenericContent.rulePack.rulesStrings>
+</LanguageData>

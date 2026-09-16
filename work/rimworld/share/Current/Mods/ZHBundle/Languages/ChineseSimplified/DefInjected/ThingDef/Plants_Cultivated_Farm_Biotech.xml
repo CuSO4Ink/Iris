@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: toxpuff -->
+  <VPE_Plant_Toxpuff.label>毒喷菇</VPE_Plant_Toxpuff.label>
+  <!-- EN: A small, green oval mushroom typically found in highly polluted areas. It puffs out tox gas when anyone steps on it. -->
+  <VPE_Plant_Toxpuff.description>一种小型绿色菇类，常生长在污染严重的区域。当被踩中时会释放出毒气。</VPE_Plant_Toxpuff.description>
+  
+</LanguageData>

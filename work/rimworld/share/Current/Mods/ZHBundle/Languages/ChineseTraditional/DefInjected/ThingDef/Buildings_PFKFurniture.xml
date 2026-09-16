@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: PFK Animal Lamp Chick -->
+  <PFK_AnimalLamp.label>兒童房動物立燈（小雞）</PFK_AnimalLamp.label>
+  <!-- EN: A playful animal-shaped lamp that lights up your space. Lights are essential for smooth movement and work efficiency.\n\nFunctions the same as a regular standing lamp. -->
+  <PFK_AnimalLamp.description>一款富有童心的動物形狀立燈。人們需要光亮才能全速移動、工作。\n\n屬性和功能同原版立燈一致。可通過旋轉來改變此建築的貼圖。</PFK_AnimalLamp.description>
+  
+  <!-- EN: PFK Animal Lamp Cat -->
+  <PFK_AnimalLampB.label>兒童房動物立燈（小貓）</PFK_AnimalLampB.label>
+  <!-- EN: A playful animal-shaped lamp that lights up your space. Lights are essential for smooth movement and work efficiency.\n\nFunctions the same as a regular standing lamp. -->
+  <PFK_AnimalLampB.description>一款富有童心的動物形狀立燈。人們需要光亮才能全速移動、工作。\n\n屬性和功能同原版立燈一致。可通過旋轉來改變此建築的貼圖。</PFK_AnimalLampB.description>
+  
+  <!-- EN: PFK Animal Lamp jellyfish -->
+  <PFK_AnimalLampC.label>兒童房動物立燈（水母）</PFK_AnimalLampC.label>
+  <!-- EN: A playful animal-shaped lamp that lights up your space. Lights are essential for smooth movement and work efficiency.\n\nFunctions the same as a regular standing lamp. -->
+  <PFK_AnimalLampC.description>一款富有童心的動物形狀立燈。人們需要光亮才能全速移動、工作。\n\n屬性和功能同原版立燈一致。可通過旋轉來改變此建築的貼圖。</PFK_AnimalLampC.description>
+  
+  <!-- EN: PFK Animal Lamp Star -->
+  <PFK_AnimalLampD.label>兒童房動物立燈（星星）</PFK_AnimalLampD.label>
+  <!-- EN: A playful animal-shaped lamp that lights up your space. Lights are essential for smooth movement and work efficiency.\n\nFunctions the same as a regular standing lamp. -->
+  <PFK_AnimalLampD.description>一款富有童心的動物形狀立燈。人們需要光亮才能全速移動、工作。\n\n屬性和功能同原版立燈一致。可通過旋轉來改變此建築的貼圖。</PFK_AnimalLampD.description>
+  
+  <!-- EN: PFK Armchair -->
+  <PFK_Armchair.label>兒童房扶手椅</PFK_Armchair.label>
+  <!-- EN: A soft and cozy armchair, perfect for relaxing. Can be used at tables, workstations, or anywhere you need.\n\nMatches the functionality of a standard armchair. -->
+  <PFK_Armchair.description>柔軟且溫馨的扶手椅，放鬆的完美選擇。可以放置在桌子、工作台旁等等。\n\n屬性和功能同原版扶手椅一致。</PFK_Armchair.description>
+  
+  <!-- EN: PFK Bed -->
+  <PFK_BedAa.label>兒童房單人床</PFK_BedAa.label>
+  <!-- EN: A fluffy, woolly bed inspired by sheep.\nIts soft bedding and sheep-shaped pillow will lull you into a cozy sleep.\nHas the same functionality as a vanilla bed. -->
+  <PFK_BedAa.description>一種以綿羊為靈感設計而成的蓬松單人床。它柔軟的被褥和綿羊形狀的枕頭能助孩子們安然入睡。\n\n屬性和功能同原版單人床一致。</PFK_BedAa.description>
+  
+  <!-- EN: PFK Bed (White Bedding) -->
+  <PFK_BedAb.label>兒童房單人床（白色）</PFK_BedAb.label>
+  <!-- EN: A fluffy, woolly bed with pure white bedding, inspired by sheep.\nIts soft bedding and sheep-shaped pillow will lull you into a cozy sleep.\nHas the same functionality as a vanilla bed. -->
+  <PFK_BedAb.description>一種以綿羊為靈感設計而成的蓬松單人床。它柔軟的白色被褥和綿羊形狀的枕頭能助孩子們安然入睡。\n\n屬性和功能同原版單人床一致。</PFK_BedAb.description>
+  
+  <!-- EN: PFK Bedroll -->
+  <PFK_Bedroll.label>兒童房睡袋</PFK_Bedroll.label>
+  <!-- EN: A floor-style bedroll with soft, cozy fabric—perfect for a dreamy night's sleep. One sheep, two sheep... drift away to slumber.\n\nEasily rolled up for convenient transport, it provides comfortable rest even on the road.\nSame stats as a standard bedroll. -->
+  <PFK_Bedroll.description>由柔軟舒適的布料製成的完美落地式睡袋，為孩子們提供夢幻般的睡眠。一隻羊，兩隻羊，很快就睡著了。\n\n屬性和功能同原版睡袋一致。</PFK_Bedroll.description>
+  
+  <!-- EN: PFK DiningChair -->
+  <PFK_DiningChair.label>兒童房餐椅</PFK_DiningChair.label>
+  <!-- EN: A delightful rabbit-themed dining chair. Usable at tables, workstations, and any setting.\n\nDye affects only the cushion.\nSame performance as a regular dining chair. -->
+  <PFK_DiningChair.description>輕快的兔子主題的餐椅，染色僅影響坐墊部分。可以放置在桌子、工作台旁等等。\n\n屬性和功能同原版餐椅一致。</PFK_DiningChair.description>
+  
+  <!-- EN: PFK double bed -->
+  <PFK_DoubleBed.label>兒童房雙人床</PFK_DoubleBed.label>
+  <!-- EN: A cozy double bed with a fluffy blanket and a row of plushies sitting at the foot. Even on the loneliest of nights, one can sleep peacefully under the watchful eyes of their stuffed friends.\n\nStats are identical to its vanilla counterpart. The blanket color remains fixed regardless of bed settings (medical, prisoner, etc.), but it can be recolored using dye. -->
+  <PFK_DoubleBed.description>一種柔軟舒適的雙人床，鋪了蓬松的床墊和床單，床腳處還擺放著一排毛絨玩具。即使是最孤寂的夜晚，孩子們也能在毛絨玩具的守護下安然入睡。\n\n屬性和功能同原版雙人床一致。此建築的顏色不受床位設置（醫療、囚犯等）影響，但可通過粉粉刷來改變。</PFK_DoubleBed.description>
+
+  <!-- EN: PFK Dresser -->
+  <PFK_Dresser.label>兒童房抽屜櫃</PFK_Dresser.label>
+  <!-- EN: A dresser decorated with cherished toys and comic books. Placing it near a bed provides a small comfort bonus. Functionally identical to a standard dresser, aside from its appearance. -->
+  <PFK_Dresser.description>一個裝有孩子們珍重的玩具和漫畫書的抽屜櫃。能讓附近的床小幅提昇舒適度。一張床只能受到一個抽屜櫃的影響。\n\n屬性和功能同原版抽屜櫃一致。</PFK_Dresser.description>
+  
+  <!-- EN: PFK end table -->
+  <PFK_EndTable.label>兒童房床頭櫃</PFK_EndTable.label>
+  <!-- EN: A small bedside table, covered in stickers—who was the little prankster?\nAdds a touch of comfort to nearby beds, but placing more than one won’t increase the effect. Must be placed adjacent to the bed’s head. Same stats as a standard end table. -->
+  <PFK_EndTable.description>佈滿了貼紙的床頭櫃——誰是那個小淘氣啊？能讓附近的床小幅提昇舒適度。必須放置在床頭旁邊。一張床只能受到一個床頭櫃的影響。\n\n屬性和功能同原版床頭櫃一致。可通過旋轉來改變此建築的貼圖。</PFK_EndTable.description>
+  
+  <!-- EN: PFK Fairy Lights -->
+  <PFK_FairyLights.label>兒童房星墜掛燈</PFK_FairyLights.label>
+  <!-- EN: This is a decorative illumination light that brightens only a very small area. It can be placed on top of other furniture or walls.\nYou can enjoy different designs by changing its orientation. -->
+  <PFK_FairyLights.description>只能將一片極小的區域照亮的裝飾性掛燈。可以安裝在墻體或其他家具上。\n\n可通過旋轉來改變此建築的貼圖。</PFK_FairyLights.description>
+  
+  <!-- EN: PFK_Table(1x1) -->
+  <PFK_MiniTable.label>兒童房桌子（1x1）</PFK_MiniTable.label>
+  <!-- EN: People eat off tables when chairs are placed facing them.\nRotate for a new design view. -->
+  <PFK_MiniTable.description>當椅子放置在桌子旁時，人們就會在此用餐。\n\n屬性和功能同原版桌子一致。可通過旋轉來改變此建築的貼圖。</PFK_MiniTable.description>
+  
+  <!-- EN: PFK royal bed -->
+  <PFK_RoyalBed.label>兒童房豪華床</PFK_RoyalBed.label>
+  <!-- EN: A luxurious canopy bed featuring translucent curtains adorned with stitched stars. Its ethereal appearance beckons children to a land of dreams, with a row of plushies watching over from the foot of the bed.\n\nStats are identical to its vanilla counterpart. The blanket color remains fixed regardless of bed settings (medical, prisoner, etc.), but it can be recolored using dye -->
+  <PFK_RoyalBed.description>一種豪華的雙人床，床腳處擺放著一排毛絨玩具。它頂部的半透明紗篷點綴著星星掛飾，縹緲夢幻的外觀吸引著孩子們前往睡夢之鄉。\n\n屬性和功能同原版豪華床一致。此建築的顏色不受床位設置（醫療、囚犯等）影響，但可通過粉刷來改變。</PFK_RoyalBed.description>
+
+  <!-- EN: PFK Stool -->
+  <PFK_Stool.label>兒童房坐凳</PFK_Stool.label>
+  <!-- EN: A straightforward stool with minimal comfort, but it does the job. Suitable for tables, workstations, and various spots.\n\nRotate to view alternate designs.\nHas the same stats as a regular stool. -->
+  <PFK_Stool.description>一種可以坐的簡單板凳。不算很舒適，但有總比沒有好。可以放置在桌子、工作台旁等等。\n\n屬性和功能同原版凳子一致。可通過旋轉來改變此建築的貼圖。</PFK_Stool.description>
+  
+  <!-- EN: PFK_Table(2x2) -->
+  <PFK_Table2x2c.label>兒童房桌子（2x2）</PFK_Table2x2c.label>
+  <!-- EN: People eat off tables when chairs are placed facing them.\nRotate for a new design view. -->
+  <PFK_Table2x2c.description>當椅子放置在桌子旁時，人們就會在此用餐。\n\n屬性和功能同原版桌子一致。可通過旋轉來改變此建築的貼圖。</PFK_Table2x2c.description>
+  
+</LanguageData>

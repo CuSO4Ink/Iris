@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- USE TOOLS/CAPACITIES TO MAKE CUSTOM MELEE SOUNDS (Thank you to O-Negative) -->
+
+  <RNMelee_DFDuskBlade_Sword.label>薄暝剃刀</RNMelee_DFDuskBlade_Sword.label>
+  <RNMelee_DFDuskBlade_Sword.description>薄暝剃刀是一種奇怪而強大的鐮刀狀刀片。\n\n作為薄暝系列的一部分，這些罕見的武器系統籠罩在神秘之中。傳說在其示意圖被解鎖復製之前，獲得它的唯一途徑是在一個因病毒爆發而失去的古老世界——費爾維尤這個封閉的世界——贏得一個生還者的血痕。一個僅被知道名為「AdminPwn」的世界穿越者是薄暝裝備的作者，他同時也是在費爾維尤中心將裝備授予勝利者的人。</RNMelee_DFDuskBlade_Sword.description>
+  <RNMelee_DFDuskBlade_Sword.tools.0.label>鋸齒形刀片</RNMelee_DFDuskBlade_Sword.tools.0.label>
+  <RNMelee_DFDuskBlade_Sword.tools.1.label>刀尖</RNMelee_DFDuskBlade_Sword.tools.1.label>
+
+
+  <!-- Amputator -->
+
+  <RNMelee_DFAmputator_Blade.label>截肢器</RNMelee_DFAmputator_Blade.label>
+  <RNMelee_DFAmputator_Blade.description>一把奇怪的鐮刀狀刀片。相當笨拙和笨拙，但名副其實。在多年的使用後，無論它曾經來自何處，都贏得了它現在的名字。用它來對抗那些能夠忍受失去四肢的生物吧。</RNMelee_DFAmputator_Blade.description>
+  <RNMelee_DFAmputator_Blade.tools.0.label>刀刃</RNMelee_DFAmputator_Blade.tools.0.label>
+  <RNMelee_DFAmputator_Blade.tools.1.label>刀尖</RNMelee_DFAmputator_Blade.tools.1.label>
+
+
+  <!-- Dual Blade -->
+
+  <RNMelee_DFDual_Blade.label>雙刀劍</RNMelee_DFDual_Blade.label>
+  <RNMelee_DFDual_Blade.description>傳說中的雙刀劍。最初是由脅差和太刀的刀刃製成的，這個神秘的生還者的名字已經被歷史遺忘。這件物品的副本被交給了費爾維尤的鐵匠，並開始大規模生產。精英生還者選擇了這種昂貴的武器來參加血戰活動，因為它甚至超越了薄暝剃刀。</RNMelee_DFDual_Blade.description>
+  <RNMelee_DFDual_Blade.tools.0.label>刀刃</RNMelee_DFDual_Blade.tools.0.label>
+  <RNMelee_DFDual_Blade.tools.1.label>刀尖</RNMelee_DFDual_Blade.tools.1.label>
+
+
+</LanguageData>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Completed on:  -->
+  <VAspirE.CompletedOn>达成日期：</VAspirE.CompletedOn>
+    <!-- EN: {0} has achieved their {1} aspiration. -->
+  <VAspirE.AspirationComplete>{0}已达成愿望：{1}。</VAspirE.AspirationComplete>
+    <!-- EN: {0} aspirations complete: {1} -->
+  <VAspirE.AspirationStat>{0}个愿望已达成：{1}</VAspirE.AspirationStat>
+    <!-- EN: {0} gains {1}: {2} -->
+  <VAspirE.Gains>{0}需要获得{1}：{2}</VAspirE.Gains>
+    <!-- EN: implant -->
+  <VAspirE.Implant>植入物</VAspirE.Implant>
+    <!-- EN: thought -->
+  <VAspirE.Thought>想法</VAspirE.Thought>
+    <!-- EN: xenotype -->
+  <VAspirE.Xenotype>异种</VAspirE.Xenotype>
+	<!-- EN: psycast level -->
+  <VAspirE.AbilityLevel>启灵神经等级</VAspirE.AbilityLevel>
+	<!-- EN: abilities -->
+  <VAspirE.Abilities>能力</VAspirE.Abilities>
+	<!-- EN: trait -->
+  <VAspirE.Trait>特性</VAspirE.Trait>
+	<!-- EN: gene -->
+  <VAspirE.Gene>基因</VAspirE.Gene>
+	<!-- EN: {0} completes the recipe {1} -->
+  <VAspirE.Recipe>{0}需要完成制作清单：{1}</VAspirE.Recipe>
+	<!-- EN: {0} gets rid of the health condition {1} -->
+  <VAspirE.HediffRemoval>{0}需要移除健康状态：{1}</VAspirE.HediffRemoval>
+	<!-- EN: {0} completes the recipe {1}, using at least 1 {2} -->
+  <VAspirE.RecipeProduct>{0}需要完成制作清单：{1}，且至少消耗1个{2}</VAspirE.RecipeProduct>
+	<!-- EN: {0} nuzzled by: {1} -->
+  <VAspirE.NuzzledBy>{0}需要被这种动物亲昵：{1}</VAspirE.NuzzledBy>
+	<!-- EN: {0} is in a colony with greater than {1} wealth -->
+  <VAspirE.Wealth>{0}所在殖民地的财富值超过了{1}</VAspirE.Wealth>
+	<!-- EN: royal title -->
+  <VAspirE.Title>荣誉头衔</VAspirE.Title>
+    <!-- EN: {0} becomes {1} to another. -->
+  <VAspirE.Becomes>{0}需要成为其他人或动物的：{1}</VAspirE.Becomes>
+	<!-- EN: {0} becomes {1} to one of these: {2}. -->
+  <VAspirE.BecomesList>{0}需要成为这些之中的{1}：{2}</VAspirE.BecomesList>
+    <!-- EN: condition -->
+  <VAspirE.Condition>健康状态</VAspirE.Condition>
+    <!-- EN: prosthetic -->
+  <VAspirE.Prosthetic>假体</VAspirE.Prosthetic>
+    <!-- EN: Satisfied when:  -->
+  <VAspirE.SatisfiedWhen>达成条件：\n</VAspirE.SatisfiedWhen>
+    <!-- EN: {0} has achieved their {1} aspiration. -->
+  <VAspireE.AspirationComplete>{0}已达成愿望：{1}。</VAspireE.AspirationComplete>
+    <!-- EN: Select an aspiration. -->
+  <VAspirE.SelectAspirationSingular>选择一个愿望。</VAspirE.SelectAspirationSingular>
+    <!-- EN: Select {0} aspirations. -->
+  <VAspirE.SelectAspirationsPlural>选择{0}个愿望。</VAspirE.SelectAspirationsPlural>
+    <!-- EN: Choose an aspiration for {0} to gain: -->
+  <VAspirE.BirthdaySelectAspirationSingular>为{0}选择一个要获得的愿望：</VAspirE.BirthdaySelectAspirationSingular>
+    <!-- EN: Choose aspirations for {0} to gain: -->
+  <VAspirE.BirthdaySelectAspirationsPlural>为{0}选择要获得的愿望：</VAspirE.BirthdaySelectAspirationsPlural>
+    <!-- EN: Aspirations are goals that {0} will want to achieve in their life. Achieving them will increase their mental break threshold, and if all aspirations are fulfilled, {0} will undergo another growth moment. -->
+  <VAspirE.AspirationDesc>愿望是{0}穷极一生都想要达成的目标。\n达成愿望可以降低{0}的崩溃临界值。如果所有愿望都已达成，{0}将会迈入新的成长阶段。</VAspirE.AspirationDesc>
+    <!-- EN: Aspiration {0} was gained. -->
+  <VAspirE.AspirationSelectionArchiveSingular>已获得愿望：{0}。</VAspirE.AspirationSelectionArchiveSingular>
+    <!-- EN: Aspirations were gained: {0}. -->
+  <VAspirE.AspirationSelectionArchivePlural>已获得愿望：{0}。</VAspirE.AspirationSelectionArchivePlural>
+    <!-- EN: {0} has achieved fulfillment from their aspirations and has experienced a growth moment. -->
+  <VAspirE.FullfilledGrowthMoment>{0}的愿望满足值已达到最高，迈入了新的成长阶段！</VAspirE.FullfilledGrowthMoment>
+    <!-- EN: {0_nameDef} has demonstrated excellent determination in meeting their lifelong goals and is incredibly content with what they have achieved in their life. {0_nameDef} hopes that they have made a difference in the world. -->
+  <VAspirE.FullfilledGrowthMoment.Desc>凭借坚定不移的决心，{0_nameDef}达成了自己毕生的愿望，且对此感到心满意足。{0_nameDef}相信世界会因自己而变得不同。</VAspirE.FullfilledGrowthMoment.Desc>
+	<!-- EN:  scar (permanent) -->
+  <VAspirE.Scar>疤痕</VAspirE.Scar>
+	<!-- EN: Vanilla Aspirations Expanded -->
+  <VAspirE.ModName>Vanilla Aspirations Expanded</VAspirE.ModName>
+	<!-- EN: Search -->
+  <VAspirE.Search>查找</VAspirE.Search>
+	<!-- EN: {0} enabled -->
+  <VAspirE.Enabled>“{0}”已启用</VAspirE.Enabled>
+
+</LanguageData>

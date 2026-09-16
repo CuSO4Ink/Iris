@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: This optional feature extends the menus in the Ideo creation screen, allowing search and scroll bars. Used by VE Memes and Alpha Memes. -->
+  <VFE_IdeoFloatMenuPlus.description>此項可選功能擴展了文化創建界面的菜單，允許進行搜索和上下滾動。目前被Vanilla Ideology Expanded - Memes and Structures和Alpha Memes使用。</VFE_IdeoFloatMenuPlus.description>
+  
+  <!-- EN: This optional feature adds a Def extension, TileMutatorExtension, to add new tile mutator mechanics for Odyssey. -->
+  <VFE_TileMutatorMechanics.description>此項可選功能為Def新增了叫作“TileMutatorExtension”的擴展類，用來添加基於奧德賽DLC的地圖元素機制。</VFE_TileMutatorMechanics.description>
+  
+  <!-- EN: This optional feature adds a Def extension to WeaponTraitDefs to allow for new unique weapon behaviours. -->
+  <VFE_WeaponTraitDefMechanics.description>此項可選功能為Def新增了叫作“WeaponTraitDefs”的擴展類，用來為獨特武器添加新的特性。</VFE_WeaponTraitDefMechanics.description>
+  
+</LanguageData>

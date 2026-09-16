@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="GD3.GDSettings">
+		<ReinforceNotApply>False</ReinforceNotApply>
+		<AirforceNotApply>False</AirforceNotApply>
+		<DeveloperMode>False</DeveloperMode>
+		<hitArmorCanNotApply>False</hitArmorCanNotApply>
+		<pauseWhenUnstable>False</pauseWhenUnstable>
+		<threatRate>35</threatRate>
+		<mechDamageRate>100</mechDamageRate>
+		<turretDamageRate>70</turretDamageRate>
+		<damageBlockRate>60</damageBlockRate>
+		<AdvancedNodeCount>4</AdvancedNodeCount>
+		<VaporizeRange>4.9000001</VaporizeRange>
+		<VaporizeRangeFake>49</VaporizeRangeFake>
+		<mechhiveInterval>18</mechhiveInterval>
+		<DetectCooldown>5</DetectCooldown>
+		<TurretConsumePower>500</TurretConsumePower>
+		<NotNeedToResearch>False</NotNeedToResearch>
+		<threatFactorPostfix>1</threatFactorPostfix>
+	</ModSettings>
+</SettingsBlock>

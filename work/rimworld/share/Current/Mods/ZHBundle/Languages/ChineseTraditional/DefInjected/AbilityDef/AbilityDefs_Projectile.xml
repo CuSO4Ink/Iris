@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 사냥그물 -->
+  <Miho_Ability_Ensnare.label>靈縛獵網</Miho_Ability_Ensnare.label>
+  <!-- EN: 메카나이트 함정을 설치합니다. 함정의 걸린 적의 이동속도가 낮다면 무력화 시켜버립니다. -->
+  <Miho_Ability_Ensnare.description>向目標點處拋出一張巨大的靈縛獵網，降低作用範圍內所有單位的移動速度和戰鬥能力。</Miho_Ability_Ensnare.description>
+  
+  <!-- EN: 여우불 -->
+  <Miho_Ability_Fireball.label>秘靈狐焱</Miho_Ability_Fireball.label>
+  <!-- EN: 강력한 파괴력을 지닌 여우불을 소환합니다. 잔불 보다 구조물 공격에 효과적입니다. 소환이라기 보단 무언가를 모은다는게 맞겠군요. -->
+  <Miho_Ability_Fireball.description>向目標點處拋出一團威力十足的狐焱彈。狐焱彈命中後會引發大爆炸，且對建築格外有效。</Miho_Ability_Fireball.description>
+  
+  <!-- EN: 여우잔불 -->
+  <Miho_Ability_Fireball_Small.label>秘靈狐火</Miho_Ability_Fireball_Small.label>
+  <!-- EN: 사람을 죽이기엔 충분한 파괴력을 지닌 작은 여우불을 소환합니다. 소환이라기 보단 무언가를 모은다는게 맞겠군요. -->
+  <Miho_Ability_Fireball_Small.description>向目標點處發射一團威力不俗的狐火彈。狐火彈命中後會引發小爆炸。</Miho_Ability_Fireball_Small.description>
+  
+  <!-- EN: 포식자의 눈빛 -->
+  <Miho_Ability_PredatoryGaze.label>震懾凝視</Miho_Ability_PredatoryGaze.label>
+  <!-- EN: 여우도 포식자이긴 합니다. 무시 못 할 정도로 말이죠. -->
+  <Miho_Ability_PredatoryGaze.description>以捕食者獨有的凝視震懾目標，使其暫時陷入眩暈狀態並造成額外屬性減益。</Miho_Ability_PredatoryGaze.description>
+  
+  <!-- EN: 무의식의 부적 -->
+  <Miho_Ability_StunTalisman.label>眩暈靈符</Miho_Ability_StunTalisman.label>
+  <!-- EN: 상대를 단시간동안 기절시기는 부적을 던집니다. -->
+  <Miho_Ability_StunTalisman.description>向目標拋出一道靈符，令其暫時陷入眩暈狀態。</Miho_Ability_StunTalisman.description>
+  
+</LanguageData>

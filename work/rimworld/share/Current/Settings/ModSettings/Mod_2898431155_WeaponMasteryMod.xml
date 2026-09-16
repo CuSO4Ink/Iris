@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="WeaponMastery.ModSettings">
+		<experienceperlevel>
+			<li>15000</li>
+			<li>20000</li>
+			<li>25000</li>
+		</experienceperlevel>
+		<rangedstats>
+			<li>
+				<stat>ShootingAccuracyPawn</stat>
+				<offset>0.00999999978</offset>
+			</li>
+			<li>
+				<stat>MoveSpeed</stat>
+				<offset>0.200000003</offset>
+			</li>
+			<li>
+				<stat>HuntingStealth</stat>
+				<offset>0.00999999978</offset>
+			</li>
+			<li>
+				<stat>RangedWeapon_Cooldown</stat>
+				<offset>-0.100000001</offset>
+			</li>
+			<li>
+				<stat>AimingDelayFactor</stat>
+				<offset>-0.0199999996</offset>
+			</li>
+		</rangedstats>
+		<meleestats>
+			<li>
+				<stat>MoveSpeed</stat>
+				<offset>0.200000003</offset>
+			</li>
+			<li>
+				<stat>MeleeDodgeChance</stat>
+				<offset>0.00999999978</offset>
+			</li>
+			<li>
+				<stat>MeleeHitChance</stat>
+				<offset>0.00999999978</offset>
+			</li>
+			<li>
+				<stat>CarryingCapacity</stat>
+				<offset>10</offset>
+			</li>
+			<li>
+				<stat>SuppressionPower</stat>
+				<offset>0.00999999978</offset>
+			</li>
+		</meleestats>
+		<customweaponnamespool />
+		<eventweaponnamechance>0.149999991</eventweaponnamechance>
+		<masteryonoutsidepawns>False</masteryonoutsidepawns>
+		<usegeneralmasterysystem>True</usegeneralmasterysystem>
+		<overrideclasses>
+			<keys />
+			<values />
+		</overrideclasses>
+	</ModSettings>
+</SettingsBlock>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="KillFeed.Settings">
+		<DisplayAnimalKill>False</DisplayAnimalKill>
+		<DisplayAllyKill>True</DisplayAllyKill>
+		<DisplayEnemyKill>True</DisplayEnemyKill>
+		<DisplayWeapon>True</DisplayWeapon>
+		<DisplayInFog>False</DisplayInFog>
+		<UseLeftRightPos>False</UseLeftRightPos>
+		<DisplayPositionUpRight>True</DisplayPositionUpRight>
+		<LeftOffset>0</LeftOffset>
+		<TopOffset>0</TopOffset>
+		<Width>0</Width>
+		<Height>0</Height>
+		<TicksBetweenRemovals>5</TicksBetweenRemovals>
+	</ModSettings>
+</SettingsBlock>

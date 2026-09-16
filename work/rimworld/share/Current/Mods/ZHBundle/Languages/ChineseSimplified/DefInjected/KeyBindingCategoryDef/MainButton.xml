@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Colony Groups -->
+  <TG_ColonyGroups.label>殖民地小组</TG_ColonyGroups.label>
+  <!-- EN: Keybinds for Colony Groups. -->
+  <TG_ColonyGroups.description>殖民地小组的绑定键</TG_ColonyGroups.description>
+  
+</LanguageData>

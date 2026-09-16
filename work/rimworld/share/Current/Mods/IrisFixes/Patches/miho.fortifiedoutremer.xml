@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- fix-03:移除无部位强制植入体,避免派系领袖生成时 PawnTechHediffsGenerator
+       对 null Part 的植入体汇总权重得 0 → NRE → WorldGenStep_Factions 中断。 -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>miho.fortifiedoutremer</li>
+      <li>Miho, the celestial fox</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/AlienRace.AlienBackstoryDef[defName="Miho_Child_TinkerFox"]/forcedHediffs/li[text()="RemoteRepairerImplant"]</xpath>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/AlienRace.AlienBackstoryDef[defName="Miho_Child_TinkerFox"]/forcedHediffs/li[text()="RemoteRepairerImplant"]</xpath>
+          </match>
+        </li>
+        <li Class="PatchOperationConditional">
+          <xpath>Defs/AlienRace.AlienBackstoryDef[defName="Miho_Child_TinkerFoxTwo"]/forcedHediffs/li[text()="RemoteRepairerImplant"]</xpath>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/AlienRace.AlienBackstoryDef[defName="Miho_Child_TinkerFoxTwo"]/forcedHediffs/li[text()="RemoteRepairerImplant"]</xpath>
+          </match>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

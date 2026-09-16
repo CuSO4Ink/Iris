@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 메카노이드 제작 -->
+  <DoBillsMake_Miho_MechFactory.label>在机械培育器工作</DoBillsMake_Miho_MechFactory.label>
+  <!-- EN: working at -->
+  <DoBillsMake_Miho_MechFactory.gerund>工作于</DoBillsMake_Miho_MechFactory.gerund>
+  <!-- EN: work at -->
+  <DoBillsMake_Miho_MechFactory.verb>工作</DoBillsMake_Miho_MechFactory.verb>
+  
+</LanguageData>

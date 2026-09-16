@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: lucky -->
+  <VPE_Lucky.label>幸运</VPE_Lucky.label>
+  <!-- EN: Psychically-induced luck that allows this person to always hit their target, and never be hit by their enemy. -->
+  <VPE_Lucky.description>灵能赋予的幸运使这个人能百分百命中目标，并不会被他人命中。</VPE_Lucky.description>
+  
+  <!-- EN: mind control -->
+  <VPE_MindControlled.label>精神控制</VPE_MindControlled.label>
+  <!-- EN: Psychically-induced mind control, giving absolute control to another person. -->
+  <VPE_MindControlled.description>被他人用灵能强行控制。</VPE_MindControlled.description>
+  
+  <!-- EN: mind scramble -->
+  <VPE_MindScramble.label>心智负担</VPE_MindScramble.label>
+  <!-- EN: Psychically-induced mind scramble, caused by attempting to be two people at once. -->
+  <VPE_MindScramble.description>用灵能强行控制了另一个身体造成的负担。</VPE_MindScramble.description>
+  
+  <!-- EN: psychic guidance -->
+  <VPE_PsychicGuidance.label>灵能导引</VPE_PsychicGuidance.label>
+  <!-- EN: Psychically-induced guidance from another person. -->
+  <VPE_PsychicGuidance.description>受到了他人的灵能导引。</VPE_PsychicGuidance.description>
+  
+  <!-- EN: psychic guide -->
+  <VPE_PsychicGuide.label>灵能引导</VPE_PsychicGuide.label>
+  <!-- EN: Psychically-induced absence of mind caused by giving guidance to another person. -->
+  <VPE_PsychicGuide.description>灵能引导他人造成的负担。</VPE_PsychicGuide.description>
+  
+  <!-- EN: unlucky -->
+  <VPE_UnLucky.label>不幸</VPE_UnLucky.label>
+  <!-- EN: Psychically-induced bad luck that stops this person from ever hitting their target, whilst always being hit by the enemy. -->
+  <VPE_UnLucky.description>灵能赋予的不幸使这个人能被他人百分百命中，并不会命中任何人。</VPE_UnLucky.description>
+  
+</LanguageData>

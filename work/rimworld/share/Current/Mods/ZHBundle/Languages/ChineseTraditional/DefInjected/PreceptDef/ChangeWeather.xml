@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: change weather ritual -->
+  <VV_ChangeWeatherRitual.label>天氣改變儀式</VV_ChangeWeatherRitual.label>
+  <!-- EN: Arbitrarily changes the weather in the current area. The resulting weather cannot be predicted. -->
+  <VV_ChangeWeatherRitual.description>隨機變更當前區域的天氣，無法預測因此產生的結果。</VV_ChangeWeatherRitual.description>
+  
+</LanguageData>

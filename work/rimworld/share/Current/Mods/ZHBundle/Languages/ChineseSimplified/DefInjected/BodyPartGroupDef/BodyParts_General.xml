@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- BodyPartGroups Black Leaper -->
+
+  <RH_LeaperTongue.label>舌头</RH_LeaperTongue.label>
+  <RH_LeaperTongue.labelShort>舌头</RH_LeaperTongue.labelShort>
+
+
+  <!-- BodyPartGroups Blade -->
+
+  <RH_LeftClawAB.label>左爪</RH_LeftClawAB.label>
+  <RH_LeftClawAB.labelShort>爪</RH_LeftClawAB.labelShort>
+
+  <RH_RightBlade.label>右刃</RH_RightBlade.label>
+  <RH_RightBlade.labelShort>刃</RH_RightBlade.labelShort>
+
+  <RH_LeftArmBlade.label>左刃</RH_LeftArmBlade.label>
+  <RH_LeftArmBlade.labelShort>刃</RH_LeftArmBlade.labelShort>
+
+
+  <!-- BodyPartGroups Wraith -->
+
+  <RH_LeftTentacle.label>左触手</RH_LeftTentacle.label>
+  <RH_LeftTentacle.labelShort>触手</RH_LeftTentacle.labelShort>
+
+  <RH_RightTentacle.label>右触手</RH_RightTentacle.label>
+  <RH_RightTentacle.labelShort>触手</RH_RightTentacle.labelShort>
+
+
+  <!-- N4 Fist -->
+
+  <RH_N4LeftHand.label>左拳</RH_N4LeftHand.label>
+  <RH_N4LeftHand.labelShort>拳</RH_N4LeftHand.labelShort>
+
+  <RH_N4RightHand.label>右拳</RH_N4RightHand.label>
+  <RH_N4RightHand.labelShort>拳</RH_N4RightHand.labelShort>
+
+
+  <!-- BodyPartGroups GS -->
+
+  <RH_LeftClaw.label>左爪</RH_LeftClaw.label>
+  <RH_LeftClaw.labelShort>爪</RH_LeftClaw.labelShort>
+
+  <RH_RightClaw.label>右爪</RH_RightClaw.label>
+  <RH_RightClaw.labelShort>爪</RH_RightClaw.labelShort>
+
+  <RH_GSTeeth.label>牙齿</RH_GSTeeth.label>
+  <RH_GSTeeth.labelShort>牙齿</RH_GSTeeth.labelShort>
+
+
+  <!-- Generic Teeth -->
+
+  <RH_N4Teeth.label>牙齿</RH_N4Teeth.label>
+  <RH_N4Teeth.labelShort>牙齿</RH_N4Teeth.labelShort>
+
+
+</LanguageData>

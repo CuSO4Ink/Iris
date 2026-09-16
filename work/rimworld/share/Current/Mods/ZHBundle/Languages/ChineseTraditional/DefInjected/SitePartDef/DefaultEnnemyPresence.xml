@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: enemies present -->
+  <KCSG_EnnemiesPresence.label>敵對單位出現</KCSG_EnnemiesPresence.label>
+  <!-- EN: Enemies are present in this place. -->
+  <KCSG_EnnemiesPresence.description>此區域有敵對單位出沒。</KCSG_EnnemiesPresence.description>
+  
+</LanguageData>

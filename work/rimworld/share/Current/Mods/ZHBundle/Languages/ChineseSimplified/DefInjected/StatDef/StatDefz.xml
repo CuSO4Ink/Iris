@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: necrotion environment resistance -->
+  <NecrotionEnvironmentResistance.label>殁疫环境抗性</NecrotionEnvironmentResistance.label>
+  <!-- EN: How resistant this creature is to the effects of necrotion caused by dangerous incidents. -->
+  <NecrotionEnvironmentResistance.description>这种生物对殁疫尘埃所造成影响的抵抗力。</NecrotionEnvironmentResistance.description>
+  
+  <!-- EN: necrotion resistance -->
+  <NecrotionResistance.label>殁疫抗性</NecrotionResistance.label>
+  <!-- EN: How well this creature resists necrotion. -->
+  <NecrotionResistance.description>这种生物抵抗殁疫病毒感染的能力。</NecrotionResistance.description>
+  
+</LanguageData>

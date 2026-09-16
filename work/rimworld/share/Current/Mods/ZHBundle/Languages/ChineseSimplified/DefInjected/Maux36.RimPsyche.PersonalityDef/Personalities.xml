@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: aggressiveness -->
+  <Rimpsyche_Aggressiveness.label>攻击性</Rimpsyche_Aggressiveness.label>
+  <!-- EN: Reflects how easily a person may become confrontational or hostile. Aggressive individuals are quick to assert themselves, often through forceful words or actions, while gentle individuals are more calm, avoiding conflict or aggression in social situations. -->
+  <Rimpsyche_Aggressiveness.description>反映一个人产生对抗或敌意的程度。好斗的个体容易为了维护自我而尖嘴薄舌或大打出手，而温和的个体更倾向于心平气和，避免社交冲突。</Rimpsyche_Aggressiveness.description>
+  <!-- EN: aggressive -->
+  <Rimpsyche_Aggressiveness.high>好斗</Rimpsyche_Aggressiveness.high>
+  <!-- EN: Aggressive individuals are quick to assert themselves through forceful words or actions. -->
+  <Rimpsyche_Aggressiveness.highDescription>好斗的个体很快就用攻击性语词或行为来主张自己观点。</Rimpsyche_Aggressiveness.highDescription>
+  <!-- EN: gentle -->
+  <Rimpsyche_Aggressiveness.low>温和</Rimpsyche_Aggressiveness.low>
+  <!-- EN: Gentle individuals tend to remain calm, avoiding conflict or aggression in social situations. -->
+  <Rimpsyche_Aggressiveness.lowDescription>温和的个体倾向于保持平静，在社交场合避免冲突或斗殴。</Rimpsyche_Aggressiveness.lowDescription>
+  
+  <!-- EN: ambition -->
+  <Rimpsyche_Ambition.label>野心</Rimpsyche_Ambition.label>
+  <!-- EN: Reflects a person's drive and desire for achievement, success, or improvement. Ambitious individuals are highly motivated to set and achieve challenging goals, often seeking advancement, recognition, or personal growth. In contrast, content individuals are generally satisfied with their current situation, showing less inclination to strive for significant changes or higher achievements. -->
+  <Rimpsyche_Ambition.description>反映个体对成就、成功或进步的驱动力。野心勃勃者热衷于设定挑战性目标，太想进步了，而知足常乐者更安于现状，不倾向于追求重大的改变或更高的成就。</Rimpsyche_Ambition.description>
+  <!-- EN: ambitious -->
+  <Rimpsyche_Ambition.high>野心</Rimpsyche_Ambition.high>
+  <!-- EN: Ambitious individuals are highly motivated to pursue achievement, improvement, and challenging goals. -->
+  <Rimpsyche_Ambition.highDescription>野心的个体对追求成就、提升与挑战性目标雄心勃勃。</Rimpsyche_Ambition.highDescription>
+  <!-- EN: content -->
+  <Rimpsyche_Ambition.low>知足</Rimpsyche_Ambition.low>
+  <!-- EN: Content individuals are generally satisfied with their current circumstances and feel little need to pursue greater achievement. -->
+  <Rimpsyche_Ambition.lowDescription>知足的个体通常满足于自身的当前处境，不怎么觉得需要追求更高成就。</Rimpsyche_Ambition.lowDescription>
+  
+  <!-- EN: authenticity -->
+  <Rimpsyche_Authenticity.label>本真性</Rimpsyche_Authenticity.label>
+  <!-- EN: Reflects how much a person prioritizes authenticity over appearances. Authentic individuals value sincerity and often downplay external polish. Superficial individuals, in contrast, are more attuned to external presentation and are more strongly influenced by it. -->
+  <Rimpsyche_Authenticity.description>反映个体忠于自我的程度。赤诚者表里如一，厌恶伪装；修饰者则更注重形象管理，善于塑造他人对自己的认知。</Rimpsyche_Authenticity.description>
+  <!-- EN: authentic -->
+  <Rimpsyche_Authenticity.high>赤诚</Rimpsyche_Authenticity.high>
+  <!-- EN: Authentic individuals value sincerity and often downplay outward appearances. -->
+  <Rimpsyche_Authenticity.highDescription>赤诚的个体珍视真诚，经常淡化表面的光鲜。</Rimpsyche_Authenticity.highDescription>
+  <!-- EN: superficial -->
+  <Rimpsyche_Authenticity.low>做作</Rimpsyche_Authenticity.low>
+  <!-- EN: Superficial individuals place greater importance on external presentation and are more strongly influenced by them. -->
+  <Rimpsyche_Authenticity.lowDescription>做作的个体更重视外在表现，也更容易受到它们的影响。</Rimpsyche_Authenticity.lowDescription>
+  
+  <!-- EN: bravery -->
+  <Rimpsyche_Bravery.label>勇敢</Rimpsyche_Bravery.label>
+  <!-- EN: Reflects a person's willingness to face fear, danger, or difficult situations. Courageous individuals are inclined to confront challenges directly, even in the face of risk or adversity. In contrast, fearful individuals tend to avoid situations that evoke fear or discomfort, often prioritizing safety over confrontation. -->
+  <Rimpsyche_Bravery.description>体现个体面对恐惧与危险的意志力。无所畏惧者即便身处险境也会直面挑战，缩头缩脑者优先考虑安全回避风险，往往逃避会引发恐惧或不适的情境。</Rimpsyche_Bravery.description>
+  <!-- EN: courageous -->
+  <Rimpsyche_Bravery.high>无畏</Rimpsyche_Bravery.high>
+  <!-- EN: Courageous individuals are willing to confront challenges directly, even in the face of risk or adversity. -->
+  <Rimpsyche_Bravery.highDescription>无畏的个体乐意直面挑战，即便是面对风险或逆境。</Rimpsyche_Bravery.highDescription>
+  <!-- EN: fearful -->
+  <Rimpsyche_Bravery.low>怯懦</Rimpsyche_Bravery.low>
+  <!-- EN: Fearful individuals tend to avoid situations that evoke fear or discomfort, prioritizing safety over confrontation. -->
+  <Rimpsyche_Bravery.lowDescription>怯懦的个体倾向于避免会引发恐惧或不适的环境，安全先于对抗。</Rimpsyche_Bravery.lowDescription>
+  
+  <!-- EN: compassion -->
+  <Rimpsyche_Compassion.label>同情心</Rimpsyche_Compassion.label>
+  <!-- EN: Reflects how empathetic and concerned a person is for the suffering of others. Compassionate individuals are deeply moved by the struggles of others, often going out of their way to offer support and show kindness. In contrast, coldhearted individuals tend to be indifferent to others' pain, often focusing on their own needs or goals without much concern for the well-being of others. -->
+  <Rimpsyche_Compassion.description>反映个体对他人的痛苦感同身受和关心的程度。富有同情心的个体会共情到他人的困境，常常主动伸出援手，竭诚以待。冷若冰霜的个体往往对他人的痛苦无动于衷，通常只关注自身需求或目标，很少关心他人福祉。</Rimpsyche_Compassion.description>
+  <!-- EN: compassionate -->
+  <Rimpsyche_Compassion.high>热心</Rimpsyche_Compassion.high>
+  <!-- EN: Compassionate individuals are deeply moved by the suffering of others and readily offer support or kindness. -->
+  <Rimpsyche_Compassion.highDescription>热心的个体对他人的伤痛感同身受，乐意施以援手或报以仁慈。</Rimpsyche_Compassion.highDescription>
+  <!-- EN: coldhearted -->
+  <Rimpsyche_Compassion.low>冷漠</Rimpsyche_Compassion.low>
+  <!-- EN: Coldhearted individuals tend to remain emotionally detached from the suffering of others and prioritize their own concerns. -->
+  <Rimpsyche_Compassion.lowDescription>冷漠的个体倾向于让情感脱离于他人的伤痛，以自己为先。</Rimpsyche_Compassion.lowDescription>
+  
+  <!-- EN: competitiveness -->
+  <Rimpsyche_Competitiveness.label>竞争性</Rimpsyche_Competitiveness.label>
+  <!-- EN: Reflects a person's drive to succeed over others and their inclination to engage in rivalry. Competitive individuals are motivated by comparison and often seek to outperform others, valuing winning and achievement. In contrast, cooperative individuals prefer to work collaboratively, prioritizing shared goals and mutual success over individual triumph. -->
+  <Rimpsyche_Competitiveness.description>反映个体卷过他人的动力和参与竞争的倾向。竞争性强的个体爱比较，常常力求超越他人，重视胜利和成就。合作型的个体更喜欢协作，优先考虑共同目标和相互成功而非个人的胜利。</Rimpsyche_Competitiveness.description>
+  <!-- EN: competitive -->
+  <Rimpsyche_Competitiveness.high>好胜</Rimpsyche_Competitiveness.high>
+  <!-- EN: Competitive individuals are motivated by comparison and often seek to outperform others. -->
+  <Rimpsyche_Competitiveness.highDescription>好胜的个体喜欢作比较，经常试图胜过别人。</Rimpsyche_Competitiveness.highDescription>
+  <!-- EN: cooperative -->
+  <Rimpsyche_Competitiveness.low>合作</Rimpsyche_Competitiveness.low>
+  <!-- EN: Cooperative individuals prefer working together, valuing shared goals and mutual success over personal triumph. -->
+  <Rimpsyche_Competitiveness.lowDescription>合作的个体倾向于齐心协力，珍视共同目标与一起成功，而非个人凯旋。</Rimpsyche_Competitiveness.lowDescription>
+  
+  <!-- EN: confidence -->
+  <Rimpsyche_Confidence.label>自信心</Rimpsyche_Confidence.label>
+  <!-- EN: Describes how certain a person feels about themselves and their actions. Confident individuals are assertive, trusting their abilities and opinions, while insecure individuals may struggle with self-doubt or be easily influenced by others. -->
+  <Rimpsyche_Confidence.description>描述个体对自身和个人行为的坚定程度。自信的个体斩钉截铁，相信自己的能力和判断，而缺乏自信的个体可能会自我怀疑或容易受他人影响。</Rimpsyche_Confidence.description>
+  <!-- EN: confident -->
+  <Rimpsyche_Confidence.high>自信</Rimpsyche_Confidence.high>
+  <!-- EN: Confident individuals are assertive, trusting their abilities and opinions. -->
+  <Rimpsyche_Confidence.highDescription>自信的个体满怀信心，相信自己的能力与观点。</Rimpsyche_Confidence.highDescription>
+  <!-- EN: insecure -->
+  <Rimpsyche_Confidence.low>自卑</Rimpsyche_Confidence.low>
+  <!-- EN: Insecure individuals tend to struggle with self-doubt and are easily influenced by others. -->
+  <Rimpsyche_Confidence.lowDescription>自卑的个体总在自我怀疑中苦苦挣扎，容易受到别人的影响。</Rimpsyche_Confidence.lowDescription>
+  
+  <!-- EN: deliberation -->
+  <Rimpsyche_Deliberation.label>审慎</Rimpsyche_Deliberation.label>
+  <!-- EN: Describes how carefully someone approaches tasks and decisions. Deliberate individuals take their time, favoring accuracy over speed and considering all angles before acting. In contrast, hasty individuals move quickly, often at the cost of precision, preferring immediate action even if it means sacrificing thoroughness. -->
+  <Rimpsyche_Deliberation.description>描述个体处理任务和决策的谨慎程度。审慎的个体行动前先想到方方面面，重视精度而非速度；而草率的个体则更看重速度，雷厉风行但丢三落四，甚至意味着满盘皆输。</Rimpsyche_Deliberation.description>
+  <!-- EN: deliberate -->
+  <Rimpsyche_Deliberation.high>审慎</Rimpsyche_Deliberation.high>
+  <!-- EN: Deliberate individuals take their time, favoring accuracy over speed and considering all angles before acting. -->
+  <Rimpsyche_Deliberation.highDescription>审慎的个体会花时间，精确优于速度，在行动之前虑无不周。</Rimpsyche_Deliberation.highDescription>
+  <!-- EN: hasty -->
+  <Rimpsyche_Deliberation.low>草率</Rimpsyche_Deliberation.low>
+  <!-- EN: Hasty individuals prefer immediate action over careful consideration, often sacrificing thoroughness for speed. -->
+  <Rimpsyche_Deliberation.lowDescription>草率的个体偏好即刻行动而非仔细考量，总是为了速度而牺牲缜密。</Rimpsyche_Deliberation.lowDescription>
+  
+  <!-- EN: diligence -->
+  <Rimpsyche_Diligence.label>勤勉</Rimpsyche_Diligence.label>
+  <!-- EN: Reflects a person's general tendency to apply effort and thoroughness to tasks and responsibilities. Diligent individuals are hardworking, persistent, and committed to completing their duties effectively. In contrast, lazy individuals tend to avoid strenuous activity, show less commitment to tasks, and may prioritize ease or leisure over productivity. -->
+  <Rimpsyche_Diligence.description>反映个体对待任务的投入程度。勤勉的个体工作认真持久，恪尽职守；懈怠的个体敷衍塞责，工作投入度低，常将摸鱼置于效率之上。</Rimpsyche_Diligence.description>
+  <!-- EN: diligent -->
+  <Rimpsyche_Diligence.high>勤勉</Rimpsyche_Diligence.high>
+  <!-- EN: Diligent individuals are hardworking, persistent, and committed to completing their responsibilities effectively. -->
+  <Rimpsyche_Diligence.highDescription>勤勉的个体不辞劳苦，坚持不懈，勉力有效完成自己责任。</Rimpsyche_Diligence.highDescription>
+  <!-- EN: lazy -->
+  <Rimpsyche_Diligence.low>懈怠</Rimpsyche_Diligence.low>
+  <!-- EN: Lazy individuals tend to avoid strenuous effort, showing less commitment to tasks and prioritizing leisure. -->
+  <Rimpsyche_Diligence.lowDescription>懈怠的个体倾向于避免劳神费力，不太投身在任务中，更想闲暇。</Rimpsyche_Diligence.lowDescription>
+  
+  <!-- EN: discipline -->
+  <Rimpsyche_Discipline.label>自律</Rimpsyche_Discipline.label>
+  <!-- EN: Reflects a person's ability to maintain focus, self-control, and adherence to rules or routines. Disciplined individuals are good at sticking to plans, resisting impulses, and working consistently towards goals. Undisciplined individuals may struggle with consistency, be easily distracted, or have difficulty following through. -->
+  <Rimpsyche_Discipline.description>体现个体保持专注、自控及遵循规则的能力。自律的个体善于坚持计划，克制冲动，衔石填海；散漫的个体则三心二意，易受干扰，草率行事。</Rimpsyche_Discipline.description>
+  <!-- EN: disciplined -->
+  <Rimpsyche_Discipline.high>自律</Rimpsyche_Discipline.high>
+  <!-- EN: Disciplined individuals are good at sticking to plans, resisting impulses, and working consistently toward their goals. -->
+  <Rimpsyche_Discipline.highDescription>自律的个体善于坚持计划，抵抗冲动，向自己的目标日拱一卒。</Rimpsyche_Discipline.highDescription>
+  <!-- EN: undisciplined -->
+  <Rimpsyche_Discipline.low>散漫</Rimpsyche_Discipline.low>
+  <!-- EN: Undisciplined individuals may struggle with consistency, become easily distracted, or have difficulty following through. -->
+  <Rimpsyche_Discipline.lowDescription>散漫的个体可能在连贯性上有些费力，变得容易心不在焉，或是难以贯穿始终。</Rimpsyche_Discipline.lowDescription>
+  
+  <!-- EN: emotionality -->
+  <Rimpsyche_Emotionality.label>情绪化</Rimpsyche_Emotionality.label>
+  <!-- EN: Reflects how a person typically experiences and expresses their emotions. Emotional individuals tend to feel their emotions deeply and react strongly to both positive and negative events. On the other hand, phlegmatic individuals experience emotions with less intensity and remains calm and composed. -->
+  <Rimpsyche_Emotionality.description>描述个体情绪体验与表达的强度。情绪化者感受强烈，对事件反应明显；冷静的个体则情绪平稳，泰山崩于前而面不改色。</Rimpsyche_Emotionality.description>
+  <!-- EN: emotional -->
+  <Rimpsyche_Emotionality.high>情绪化</Rimpsyche_Emotionality.high>
+  <!-- EN: Emotional individuals tend to feel their emotions deeply and react strongly to both positive and negative events. -->
+  <Rimpsyche_Emotionality.highDescription>情绪化的个体倾向于情不自禁，会对积极与消极事件表现出强力的反应。</Rimpsyche_Emotionality.highDescription>
+  <!-- EN: phlegmatic -->
+  <Rimpsyche_Emotionality.low>冷静</Rimpsyche_Emotionality.low>
+  <!-- EN: Phlegmatic individuals experience emotions with less intensity and remain calm and composed. -->
+  <Rimpsyche_Emotionality.lowDescription>冷静的个体对情绪更波澜不惊，保持心平气和。</Rimpsyche_Emotionality.lowDescription>
+  
+  <!-- EN: expectation -->
+  <Rimpsyche_Expectation.label>期望</Rimpsyche_Expectation.label>
+  <!-- EN: Reflects how much importance a person places on their own comfort, status, and treatment. Demanding individuals feel they deserve the best and are quick to notice when their needs aren't met. Spartan individuals have low concern for luxury or special treatment, often indifferent to comfort and content with the basics. -->
+  <Rimpsyche_Expectation.description>反映个体对自身待遇的重视程度。高期望的个体非优不取，对不足捕风捉影；简朴的个体不求山珍海味，满足基本需求即可。</Rimpsyche_Expectation.description>
+  <!-- EN: demanding -->
+  <Rimpsyche_Expectation.high>挑剔</Rimpsyche_Expectation.high>
+  <!-- EN: Demanding individualsfeel they deserve the best and are quick to notice when their needs aren't met. -->
+  <Rimpsyche_Expectation.highDescription>挑剔的个体觉得每一刻他们都值得最好的，立马就会发觉自身需求没被满足的情况。</Rimpsyche_Expectation.highDescription>
+  <!-- EN: spartan -->
+  <Rimpsyche_Expectation.low>简朴</Rimpsyche_Expectation.low>
+  <!-- EN: Spartan individuals are content with the basics and place little importance on comfort or luxury. -->
+  <Rimpsyche_Expectation.lowDescription>简朴的个体箪食瓢饮也不改其乐，对舒适或奢侈不放在心上。</Rimpsyche_Expectation.lowDescription>
+  
+  <!-- EN: experimentation -->
+  <Rimpsyche_Experimentation.label>实验精神</Rimpsyche_Experimentation.label>
+  <!-- EN: Reflects a person’s willingness to try new approaches or ideas. Experimental individuals are open to change and innovation, often seeking out new experiences, while conventional individuals prefer familiar methods and stick to what they know works. -->
+  <Rimpsyche_Experimentation.description>体现尝试新方法的意愿。创新型个体乐于变革，主动探索新事物；保守型个体则倾向于墨守成规，循规蹈矩。</Rimpsyche_Experimentation.description>
+  <!-- EN: experimental -->
+  <Rimpsyche_Experimentation.high>创新</Rimpsyche_Experimentation.high>
+  <!-- EN: Experimental individuals are open to change and innovation, often seeking out new approaches and experiences. -->
+  <Rimpsyche_Experimentation.highDescription>创新的个体对改变与发明保持开放，总是想找到新的方法与经验。</Rimpsyche_Experimentation.highDescription>
+  <!-- EN: conventional -->
+  <Rimpsyche_Experimentation.low>守旧</Rimpsyche_Experimentation.low>
+  <!-- EN: Conventional individuals prefer familiar methods and tend to stick with what they know works. -->
+  <Rimpsyche_Experimentation.lowDescription>守旧的个体偏好熟悉的方法，倾向于追随经验可行之事。</Rimpsyche_Experimentation.lowDescription>
+  
+  <!-- EN: focus -->
+  <Rimpsyche_Focus.label>专注力</Rimpsyche_Focus.label>
+  <!-- EN: Reflects how a person directs their attention. Focused individuals are excellent at concentrating on a single task or topic, diving deep into a specific area of interest. Eclectic individuals, in contrast, prefer to spread their attention across a wider range of subjects, finding more joy in discovering new things than in mastering one. -->
+  <Rimpsyche_Focus.description>描述注意力分配方式。专注型个体深耕特定领域；广泛型个体兴趣多元，更享受探索新事物而非专精一门。</Rimpsyche_Focus.description>
+  <!-- EN: focused -->
+  <Rimpsyche_Focus.high>专注</Rimpsyche_Focus.high>
+  <!-- EN: Focused individuals excel at concentrating on a single task or topic, diving deeply into a specific area of interest. -->
+  <Rimpsyche_Focus.highDescription>专注的个体精于关注单一的目标或主题，深耕于兴趣的一个特定领域。</Rimpsyche_Focus.highDescription>
+  <!-- EN: eclectic -->
+  <Rimpsyche_Focus.low>广泛</Rimpsyche_Focus.low>
+  <!-- EN: Eclectic individuals prefer to spread their attention across many different subjects rather than concentrating on just one. -->
+  <Rimpsyche_Focus.lowDescription>广泛的个体偏好将自己的注意力发散到许多不同的主题，而非聚焦在仅仅一个。</Rimpsyche_Focus.lowDescription>
+  
+  <!-- EN: imagination -->
+  <Rimpsyche_Imagination.label>想象力</Rimpsyche_Imagination.label>
+  <!-- EN: Describes how connected a person is to reality versus their imagination. Grounded individuals tend to be practical and focused on tangible matters, while Imaginative individuals are prone to daydreaming, creative thinking, and exploring abstract ideas. -->
+  <Rimpsyche_Imagination.description>衡量个体在现实与幻想之间的倾向。务实型个体专注实际问题，脚踏实地；幻想型个体则常沉浸天马行空的想象，热衷于创造性思维和抽象概念。</Rimpsyche_Imagination.description>
+  <!-- EN: imaginative -->
+  <Rimpsyche_Imagination.high>幻想</Rimpsyche_Imagination.high>
+  <!-- EN: Imaginative individuals are prone to daydreaming, creative thinking, and exploring abstract ideas. -->
+  <Rimpsyche_Imagination.highDescription>幻想的个体倾向于做白日梦，创造性思考与探索抽象观点。</Rimpsyche_Imagination.highDescription>
+  <!-- EN: grounded -->
+  <Rimpsyche_Imagination.low>务实</Rimpsyche_Imagination.low>
+  <!-- EN: Grounded individuals tend to be practical and focused on tangible matters. -->
+  <Rimpsyche_Imagination.lowDescription>务实的个体倾向于保持现实，关注有形的事情。</Rimpsyche_Imagination.lowDescription>
+  
+  <!-- EN: inquisitiveness -->
+  <Rimpsyche_Inquisitiveness.label>求知欲</Rimpsyche_Inquisitiveness.label>
+  <!-- EN: Reflects how curious a person is about the world around them. Inquisitive individuals tend to ask questions, seek new knowledge, and are more likely to engage in conversations beyond their usual interests. Indifferent individuals, on the other hand, show little interest in things outside their immediate focus. -->
+  <Rimpsyche_Inquisitiveness.description>反映个体对周遭世界的好奇程度。求知者敏而好学、渴望新知，常主动拓展话题范围；淡漠型个体则只关注眼前，对外界兴味索然。</Rimpsyche_Inquisitiveness.description>
+  <!-- EN: inquisitive -->
+  <Rimpsyche_Inquisitiveness.high>求知</Rimpsyche_Inquisitiveness.high>
+  <!-- EN: Inquisitive individuals tend to ask questions and seek new knowledge. -->
+  <Rimpsyche_Inquisitiveness.highDescription>求知的个体倾向于提问并寻觅新知。</Rimpsyche_Inquisitiveness.highDescription>
+  <!-- EN: indifferent -->
+  <Rimpsyche_Inquisitiveness.low>淡漠</Rimpsyche_Inquisitiveness.low>
+  <!-- EN: Indifferent individuals show little interest in things outside their immediate focus. -->
+  <Rimpsyche_Inquisitiveness.lowDescription>淡漠的个体对直接关注之外的东西兴趣寥寥。</Rimpsyche_Inquisitiveness.lowDescription>
+  
+  <!-- EN: loyalty -->
+  <Rimpsyche_Loyalty.label>忠诚</Rimpsyche_Loyalty.label>
+  <!-- EN: Reflects a person's faithfulness and commitment. Loyal individuals demonstrate steadfast support and devotion, often prioritizing the well-being and interests of those they are committed to. In contrast, disloyal individuals may be more inclined to prioritize their own self-interest, shift allegiances, or betray trust. -->
+  <Rimpsyche_Loyalty.description>体现个体坚守承诺的可靠程度。忠诚型个体会优先考虑所承诺对象的福祉，坚定选择被选中之刃；背叛型个体则容易见利忘义，为私利改变立场或背信弃义。</Rimpsyche_Loyalty.description>
+  <!-- EN: loyal -->
+  <Rimpsyche_Loyalty.high>忠诚</Rimpsyche_Loyalty.high>
+  <!-- EN: Loyal individuals demonstrate steadfast support and remain devoted to those they support. -->
+  <Rimpsyche_Loyalty.highDescription>忠诚的个体表达出坚定不移的支持，雷打不动地致力于其支持的对象。</Rimpsyche_Loyalty.highDescription>
+  <!-- EN: disloyal -->
+  <Rimpsyche_Loyalty.low>背叛</Rimpsyche_Loyalty.low>
+  <!-- EN: Disloyal individuals are more likely to prioritize their own interests, shift allegiances, or betray trust. -->
+  <Rimpsyche_Loyalty.lowDescription>背叛的个体更偏好自己的兴趣，改换门庭，或是背信弃义。</Rimpsyche_Loyalty.lowDescription>
+  
+  <!-- EN: morality -->
+  <Rimpsyche_Morality.label>道德感</Rimpsyche_Morality.label>
+  <!-- EN: Reflects a person's sense of right and wrong, as well as their adherence to ethical or moral guidelines. Amoral individuals are less concerned with societal or personal morality, often focusing on their own self-interest or practicality. Principled individuals, on the other hand, strongly adhere to a personal or societal code of ethics. They tend to act in ways that align with their internal values, even when inconvenient. -->
+  <Rimpsyche_Morality.description>反映个体对是非准则的重视程度。原则型个体恪守道德规范，即使遭遇不便也守正不阿；功利型个体更关注个人私利，对社会或个人道德较淡漠。</Rimpsyche_Morality.description>
+  <!-- EN: principled -->
+  <Rimpsyche_Morality.high>原则</Rimpsyche_Morality.high>
+  <!-- EN: Principled individuals strongly adhere to their ethical values, even when doing so is inconvenient. -->
+  <Rimpsyche_Morality.highDescription>原则的个体对其伦理价值坚持不渝，即便如此行事会带来不便。</Rimpsyche_Morality.highDescription>
+  <!-- EN: amoral -->
+  <Rimpsyche_Morality.low>功利</Rimpsyche_Morality.low>
+  <!-- EN: Amoral individuals are less concerned with moral principles and tend to focus on practicality or self-interest. -->
+  <Rimpsyche_Morality.lowDescription>功利的个体不怎么关注道德原则，倾向于关注实践性或个人利益。</Rimpsyche_Morality.lowDescription>
+  
+  <!-- EN: openness -->
+  <Rimpsyche_Openness.label>开放性</Rimpsyche_Openness.label>
+  <!-- EN: Describes how willing a person is to consider new ideas, experiences, or perspectives. Open-minded individuals are curious and receptive to different viewpoints. Those who are more traditional tend to stick to familiar beliefs and may dismiss alternative ideas. -->
+  <Rimpsyche_Openness.description>描述个体接纳新事物的意愿。开放型个体从善如流，充满好奇；保守型个体则蹈常袭故，摈斥异见。</Rimpsyche_Openness.description>
+  <!-- EN: open-minded -->
+  <Rimpsyche_Openness.high>开放</Rimpsyche_Openness.high>
+  <!-- EN: Open-minded individuals are curious and receptive to different viewpoints. -->
+  <Rimpsyche_Openness.highDescription>开放的个体保持好奇，尊重不同的观点。</Rimpsyche_Openness.highDescription>
+  <!-- EN: traditional -->
+  <Rimpsyche_Openness.low>保守</Rimpsyche_Openness.low>
+  <!-- EN: Traditional individuals tend to stick to familiar beliefs and may dismiss alternative ideas. -->
+  <Rimpsyche_Openness.lowDescription>保守的个体倾向于坚守相似的信仰，可能无视不同的观点。</Rimpsyche_Openness.lowDescription>
+  
+  <!-- EN: optimism -->
+  <Rimpsyche_Optimism.label>乐观</Rimpsyche_Optimism.label>
+  <!-- EN: Reflects a person's general outlook on life and expectations for the future. Optimistic individuals tend to anticipate positive outcomes, maintain a hopeful attitude even in challenging times, and readily see the good in situations. In contrast, pessimistic individuals are more inclined to expect negative results, focus on potential difficulties, and may feel discouraged more easily. -->
+  <Rimpsyche_Optimism.description>反映个体对生活的总体预期。乐观者总能看到积极面，困境中仍保持希望；悲观者则只看到负面结果，容易因困难而气馁。</Rimpsyche_Optimism.description>
+  <!-- EN: optimistic -->
+  <Rimpsyche_Optimism.high>乐观</Rimpsyche_Optimism.high>
+  <!-- EN: Optimistic individuals tend to expect positive outcomes and maintain a hopeful outlook. -->
+  <Rimpsyche_Optimism.highDescription>乐观的个体倾向于预想积极的结果，保持满怀希望。</Rimpsyche_Optimism.highDescription>
+  <!-- EN: pessimistic -->
+  <Rimpsyche_Optimism.low>悲观</Rimpsyche_Optimism.low>
+  <!-- EN: Pessimistic individuals are more likely to expect negative outcomes and focus on potential difficulties. -->
+  <Rimpsyche_Optimism.lowDescription>悲观的个体更可能预想消极的结果，关注潜在的困难。</Rimpsyche_Optimism.lowDescription>
+  
+  <!-- EN: organization -->
+  <Rimpsyche_Organization.label>条理</Rimpsyche_Organization.label>
+  <!-- EN: Reflects how methodical and structured a person is. Organized individuals tend to keep things in order, following clear systems. Haphazard individuals are less concerned with strict order, often thriving in less structured or even chaotic environments. -->
+  <Rimpsyche_Organization.description>体现个体做事的有序程度。条理型个体办事有章可循，保持井然有序；随性型则从心所欲，在非条理型社会中反而如鱼得水。</Rimpsyche_Organization.description>
+  <!-- EN: organized -->
+  <Rimpsyche_Organization.high>条理</Rimpsyche_Organization.high>
+  <!-- EN: Organized individuals tend to keep things in order and follow clear systems. -->
+  <Rimpsyche_Organization.highDescription>条理的个体倾向于让事物井然有序，遵守清晰的体系。</Rimpsyche_Organization.highDescription>
+  <!-- EN: haphazard -->
+  <Rimpsyche_Organization.low>随性</Rimpsyche_Organization.low>
+  <!-- EN: Haphazard individuals are less concerned with strict order and often thrive in less structured environments. -->
+  <Rimpsyche_Organization.lowDescription>随性的个体不怎么关心严苛的秩序，在结构松散的环境中更为如鱼得水。</Rimpsyche_Organization.lowDescription>
+  
+  <!-- EN: passion -->
+  <Rimpsyche_Passion.label>激情</Rimpsyche_Passion.label>
+  <!-- EN: Reflects the intensity and enthusiasm with which a person pursues their interests, goals, and relationships. Passionate individuals are deeply committed, putting significant energy and emotion into what they care about. In contrast, apathetic individuals may approach things more casually, showing less intensity and focus in their pursuits. -->
+  <Rimpsyche_Passion.description>反映个体投入兴趣、目标和关系的热忱程度。激情型个体全力以赴，在所爱之事上穷心剧力；淡漠型个体则无所用心，缺乏专注与热情。</Rimpsyche_Passion.description>
+  <!-- EN: passionate -->
+  <Rimpsyche_Passion.high>激情</Rimpsyche_Passion.high>
+  <!-- EN: Passionate individuals devote significant energy and emotion to the people, goals, and interests they care about. -->
+  <Rimpsyche_Passion.highDescription>激情的个体向他们关心的人们、目标与利益献出极大的能量与情感。</Rimpsyche_Passion.highDescription>
+  <!-- EN: apathetic -->
+  <Rimpsyche_Passion.low>淡漠</Rimpsyche_Passion.low>
+  <!-- EN: Apathetic individuals tend to approach their interests more casually, with less emotional investment. -->
+  <Rimpsyche_Passion.lowDescription>淡漠的个体倾向于以更随性的态度对待自己的兴趣，投入的情感更少。</Rimpsyche_Passion.lowDescription>
+  
+  <!-- EN: playfulness -->
+  <Rimpsyche_Playfulness.label>玩乐心</Rimpsyche_Playfulness.label>
+  <!-- EN: Reflects a person's inclination to find amusement and express it, as well as their general approach to lightheartedness. Playful individuals enjoy jokes, witty remarks, and tend to approach situations with a lighthearted attitude. In contrast, serious individuals are less inclined to jest, preferring a more earnest and straightforward demeanor. -->
+  <Rimpsyche_Playfulness.description>体现个体寻找和表达乐趣的倾向。乐天派喜欢欢声笑语，处事轻松愉快；严肃型则偏好直截了当，鲜少戏谑。</Rimpsyche_Playfulness.description>
+  <!-- EN: playful -->
+  <Rimpsyche_Playfulness.high>乐天</Rimpsyche_Playfulness.high>
+  <!-- EN: Playful individuals enjoy jokes, witty remarks, and tend to approach situations with a lighthearted attitude. -->
+  <Rimpsyche_Playfulness.highDescription>乐天的个体享受玩笑与妙语，倾向于用轻松愉快的态度对待处境。</Rimpsyche_Playfulness.highDescription>
+  <!-- EN: serious -->
+  <Rimpsyche_Playfulness.low>严肃</Rimpsyche_Playfulness.low>
+  <!-- EN: Serious individuals prefer an earnest, straightforward approach and are less inclined toward humor or jest. -->
+  <Rimpsyche_Playfulness.lowDescription>严肃的个体偏好一丝不苟的、直截了当的方法，不怎么偏好幽默或玩笑。</Rimpsyche_Playfulness.lowDescription>
+  
+  <!-- EN: propriety -->
+  <Rimpsyche_Propriety.label>礼法</Rimpsyche_Propriety.label>
+  <!-- EN: Reflects how strongly a person values decency and decorum. Modest individuals feel discomfort or disapproval when confronted with nudity, vulgarity, or breaches of etiquette. Uninhibited individuals are unbothered by indecency or provocative behavior. -->
+  <Rimpsyche_Propriety.description>反映个体对得体与礼仪的重视程度。持重者面对裸露、粗俗或失礼行为时会感到不适；不羁者则对不雅或挑衅行为泰然处之。</Rimpsyche_Propriety.description>
+  <!-- EN: Modest individuals feel discomfort or disapproval when confronted with nudity, vulgarity, or breaches of etiquette. -->
+  <Rimpsyche_Propriety.highDescription>持重的个体在遭受裸体、下流或失礼时会觉得不适或表达反对。</Rimpsyche_Propriety.highDescription>
+  <!-- EN: Uninhibited individuals are unbothered by indecency or provocative behavior. -->
+  <Rimpsyche_Propriety.lowDescription>不羁的个体不在意下流或挑衅的举止。</Rimpsyche_Propriety.lowDescription>
+  
+  <!-- EN: reflectiveness -->
+  <Rimpsyche_Reflectiveness.label>深思</Rimpsyche_Reflectiveness.label>
+  <!-- EN: Reflects a person's tendency to engage in deep thought, introspection, and consideration of abstract ideas. Contemplative individuals often spend time analyzing and pondering. Reactive individuals tend to focus on immediate, concrete matters. -->
+  <Rimpsyche_Reflectiveness.description>体现深度思考的倾向。沉思型个体热衷内省与抽象思考；务实型个体则更关注当下具体事务。</Rimpsyche_Reflectiveness.description>
+  <!-- EN: contemplative -->
+  <Rimpsyche_Reflectiveness.high>沉思</Rimpsyche_Reflectiveness.high>
+  <!-- EN: Contemplative individuals often spend time analyzing situations and pondering abstract ideas. -->
+  <Rimpsyche_Reflectiveness.highDescription>沉思的个体经常花时间分析情况，琢磨抽象的观点。</Rimpsyche_Reflectiveness.highDescription>
+  <!-- EN: reactive -->
+  <Rimpsyche_Reflectiveness.low>即兴</Rimpsyche_Reflectiveness.low>
+  <!-- EN: Reactive individuals tend to focus on immediate, concrete matters rather than prolonged reflection. -->
+  <Rimpsyche_Reflectiveness.lowDescription>即兴的个体倾向于关注即刻的、具体的问题，而非长期反思。</Rimpsyche_Reflectiveness.lowDescription>
+  
+  <!-- EN: self-interest -->
+  <Rimpsyche_SelfInterest.label>利己</Rimpsyche_SelfInterest.label>
+  <!-- EN: Reflects how much a person prioritizes their own needs versus the well-being of others. Altruistic individuals genuinely focus on helping others, often putting collective good before personal gain. Egocentric individuals, on the other hand, prioritize their own desires and benefits. -->
+  <Rimpsyche_SelfInterest.description>展现利己与利他的平衡倾向。利他型个体优先考虑集体利益，与人为善；自我中心型个体则将自己的需求置于首位。</Rimpsyche_SelfInterest.description>
+  <!-- EN: egocentric -->
+  <Rimpsyche_SelfInterest.high>自私</Rimpsyche_SelfInterest.high>
+  <!-- EN: Egocentric individuals prioritize their own desires and personal benefit. -->
+  <Rimpsyche_SelfInterest.highDescription>自私的个体让自己的欲求与个人利益优先。</Rimpsyche_SelfInterest.highDescription>
+  <!-- EN: altruistic -->
+  <Rimpsyche_SelfInterest.low>利他</Rimpsyche_SelfInterest.low>
+  <!-- EN: Altruistic individuals genuinely prioritize the well-being of others, often placing it above their own interests. -->
+  <Rimpsyche_SelfInterest.lowDescription>利他的个体真诚地让他人的福祉优先，经常将他们自身的利益放在首位。</Rimpsyche_SelfInterest.lowDescription>
+  
+  <!-- EN: sociability -->
+  <Rimpsyche_Sociability.label>社交</Rimpsyche_Sociability.label>
+  <!-- EN: Reflects how naturally someone seeks out and enjoys social interaction. Friendly individuals are more likely to engage with others frequently and comfortably. Reserved individuals tend to keep their distance or limit social contact. -->
+  <Rimpsyche_Sociability.description>描述主动寻求社交互动的自然程度。友善型个体与他人过从甚密，相得无间；孤僻型个体则未与人接，杜门谢客。</Rimpsyche_Sociability.description>
+  <!-- EN: friendly -->
+  <Rimpsyche_Sociability.high>友善</Rimpsyche_Sociability.high>
+  <!-- EN: Friendly individuals are more likely to engage with others frequently and comfortably. -->
+  <Rimpsyche_Sociability.highDescription>友善的个体更可能与他人频繁且舒适地交往。</Rimpsyche_Sociability.highDescription>
+  <!-- EN: reserved -->
+  <Rimpsyche_Sociability.low>孤僻</Rimpsyche_Sociability.low>
+  <!-- EN: Reserved individuals tend to keep their distance or limit social contact. -->
+  <Rimpsyche_Sociability.lowDescription>孤僻的个体请先故意保持距离或限制社交。</Rimpsyche_Sociability.lowDescription>
+  
+  <!-- EN: spontaneity -->
+  <Rimpsyche_Spontaneity.label>随性</Rimpsyche_Spontaneity.label>
+  <!-- EN: Reflects how unpredictable or steady a person tends to be. Those Impulsive individuals often act on impulse, leading to unexpected or varied behavior. Low spontaneity indicates a more measured, consistent nature. -->
+  <Rimpsyche_Spontaneity.description>反映行为可预测性。冲动型常凭直觉行事，行为多变；稳健型则深思熟虑，一以贯之。</Rimpsyche_Spontaneity.description>
+  <!-- EN: impulsive -->
+  <Rimpsyche_Spontaneity.high>冲动</Rimpsyche_Spontaneity.high>
+  <!-- EN: Impulsive individuals tend to acto n impulse, leading to unpredictable or varied behavior. -->
+  <Rimpsyche_Spontaneity.highDescription>冲动的个体倾向于心血来潮，引发出乎预料或各种各样的举止。</Rimpsyche_Spontaneity.highDescription>
+  <!-- EN: consistent -->
+  <Rimpsyche_Spontaneity.low>稳健</Rimpsyche_Spontaneity.low>
+  <!-- EN: Consistent individuals prefer measured, predictable behavior and rarely act on impulse. -->
+  <Rimpsyche_Spontaneity.lowDescription>稳健的个体偏好克制的、可预测的举止，少有按冲动行事。</Rimpsyche_Spontaneity.lowDescription>
+  
+  <!-- EN: stability -->
+  <Rimpsyche_Stability.label>稳定</Rimpsyche_Stability.label>
+  <!-- EN: Reflects how consistent and steady a person's emotional state tends to be. Stable individuals maintain an even emotional baseline, experiencing fewer mood swings and responding to situations with emotional consistency. In contrast, unstable individuals experience more frequent and intense emotional shifts, often reacting more strongly to events. -->
+  <Rimpsyche_Stability.description>反映个体情绪状态的波动程度。稳定型个体心平气定，少有情绪起伏，应对事物始终如一；波动型个体则喜怒无常，常因外界刺激产生剧烈反应。</Rimpsyche_Stability.description>
+  <!-- EN: stable -->
+  <Rimpsyche_Stability.high>稳定</Rimpsyche_Stability.high>
+  <!-- EN: Stable individuals maintain a steady emotional baseline and respond to situations with emotional consistency. -->
+  <Rimpsyche_Stability.highDescription>稳定的个体维持在一个稳定的情绪基准，用情感的连贯性回应情况。</Rimpsyche_Stability.highDescription>
+  <!-- EN: unstable -->
+  <Rimpsyche_Stability.low>波动</Rimpsyche_Stability.low>
+  <!-- EN: Unstable individuals experience more frequent emotional shifts and often react more intensely to events. -->
+  <Rimpsyche_Stability.lowDescription>波动的个体经历更频繁的情绪起伏，经常更激动地回应事件。</Rimpsyche_Stability.lowDescription>
+  
+  <!-- EN: tact -->
+  <Rimpsyche_Tact.label>处事圆融</Rimpsyche_Tact.label>
+  <!-- EN: Shows how considerate someone is in social situations. Diplomatic individuals choose their words carefully and tend to leave a good impression. Brash individuals may come off as rude or blunt. -->
+  <Rimpsyche_Tact.description>体现社交场合的体贴程度。圆融型个体言辞得体，善于给人留下良好印象；直率型个体则可能显得唐突冒失。</Rimpsyche_Tact.description>
+  <!-- EN: diplomatic -->
+  <Rimpsyche_Tact.high>圆融</Rimpsyche_Tact.high>
+  <!-- EN: Diplomatic individuals choose their words carefully and tend to leave a good impression. -->
+  <Rimpsyche_Tact.highDescription>圆融的个体精挑细选自己的语词，留下好印象。</Rimpsyche_Tact.highDescription>
+  <!-- EN: brash -->
+  <Rimpsyche_Tact.low>直率</Rimpsyche_Tact.low>
+  <!-- EN: Brash individuals tend to speak bluntly and may come across as rude. -->
+  <Rimpsyche_Tact.lowDescription>直率的个体倾向于直言不讳，可能让人觉得粗鲁。</Rimpsyche_Tact.lowDescription>
+  
+  <!-- EN: talkativeness -->
+  <Rimpsyche_Talkativeness.label>健谈</Rimpsyche_Talkativeness.label>
+  <!-- EN: Describes how much a person tends to speak and initiate conversation. Outspoken individuals are more likely to start conversations and keep them going. Those who are more taciturn prefer brief exchanges or keep to themselves. -->
+  <Rimpsyche_Talkativeness.description>描述主动交谈的倾向性。健谈者热衷开启并延续交谈；寡言者则偏好简短交流或缄默不语。</Rimpsyche_Talkativeness.description>
+  <!-- EN: outspoken -->
+  <Rimpsyche_Talkativeness.high>健谈</Rimpsyche_Talkativeness.high>
+  <!-- EN: Outspoken individuals are more likely to start conversations and keep them going. -->
+  <Rimpsyche_Talkativeness.highDescription>健谈的个体更可能开启话题并一直聊下去。</Rimpsyche_Talkativeness.highDescription>
+  <!-- EN: taciturn -->
+  <Rimpsyche_Talkativeness.low>寡言</Rimpsyche_Talkativeness.low>
+  <!-- EN: Taciturn individuals prefer brief exchanges or keep to themselves. -->
+  <Rimpsyche_Talkativeness.lowDescription>寡言的个体偏好简要的交流，或是留在心里。</Rimpsyche_Talkativeness.lowDescription>
+  
+  <!-- EN: tenacity -->
+  <Rimpsyche_Tenacity.label>韧性</Rimpsyche_Tenacity.label>
+  <!-- EN: Reflects a person's ability to endure hardship and maintain self-control under pressure. Tenacious individuals can weather stress better, persisting through challenges without losing composure. Fragile individuals may become easily overwhelmed, lose focus, or get frustrated by setbacks. -->
+  <Rimpsyche_Tenacity.description>反映个体承受压力与保持自控的能力。坚韧者能更好地应对压力，在挑战中保持镇定；脆弱者则易被压力击垮，因挫折而失去专注或陷入沮丧。</Rimpsyche_Tenacity.description>
+  <!-- EN: Tenacious individuals persist through hardship and maintain their composure under pressure. -->
+  <Rimpsyche_Tenacity.highDescription>坚韧的个体泰山崩于前面不改色，在压力面前镇定自若。</Rimpsyche_Tenacity.highDescription>
+  <!-- EN: Fragile individuals tend to get easily overwhelmed, lose focus, or get frustrated by setbacks. -->
+  <Rimpsyche_Tenacity.lowDescription>脆弱的个体面对挫折易于不知所措、心神不宁或垂头丧气。</Rimpsyche_Tenacity.lowDescription>
+  
+  <!-- EN: tension -->
+  <Rimpsyche_Tension.label>焦虑</Rimpsyche_Tension.label>
+  <!-- EN: Reflects a person's typical level of inner calm or anxiety. High-strung individuals tend to be easily agitated, often feeling restless or prone to worry, and may react intensely to stress. In contrast, laid-back individuals maintain a relaxed demeanor, are less easily perturbed, and generally approach situations with a calm and easygoing attitude. -->
+  <Rimpsyche_Tension.description>反映内在的焦虑水平。紧绷型个体易受刺激，常感焦躁忧虑；松弛型个体则保持从容，不易被外界干扰。</Rimpsyche_Tension.description>
+  <!-- EN: high-strung -->
+  <Rimpsyche_Tension.high>紧绷</Rimpsyche_Tension.high>
+  <!-- EN: High-strung individuals are easily agitated, often feeling restless or prone to worry. -->
+  <Rimpsyche_Tension.highDescription>紧绷的个体容易焦躁不安，经常感到如坐针毡或怨天尤人。</Rimpsyche_Tension.highDescription>
+  <!-- EN: laid-back -->
+  <Rimpsyche_Tension.low>松弛</Rimpsyche_Tension.low>
+  <!-- EN: Laid-back individuals remain calm and relaxed, even when faced with stressful situations. -->
+  <Rimpsyche_Tension.lowDescription>松弛的个体保持温和与镇静，即便是面对高压情境。</Rimpsyche_Tension.lowDescription>
+  
+  <!-- EN: trust -->
+  <Rimpsyche_Trust.label>信任</Rimpsyche_Trust.label>
+  <!-- EN: Reflects how readily a person places confidence in others. Trusting individuals are inclined to believe in the good faith of others. In contrast, skeptical individuals are more cautious, often questioning motives and requiring proof or repeated positive interactions before extending their trust. -->
+  <Rimpsyche_Trust.description>衡量给予他人信任的难易程度。轻信型倾向于相信他人善意；多疑型则谨慎戒备，需反复验证才会托付信任。</Rimpsyche_Trust.description>
+  <!-- EN: trusting -->
+  <Rimpsyche_Trust.high>轻信</Rimpsyche_Trust.high>
+  <!-- EN: Trusting individuals are inclined to believe in the good faith of others. -->
+  <Rimpsyche_Trust.highDescription>轻信的个体倾向于相信他人的好意。</Rimpsyche_Trust.highDescription>
+  <!-- EN: skeptical -->
+  <Rimpsyche_Trust.low>多疑</Rimpsyche_Trust.low>
+  <!-- EN: Skeptical individuals tend to question others' motives and require proof or repeated positive experiences before extending their trust. -->
+  <Rimpsyche_Trust.lowDescription>多疑的个体倾向于质疑他人的动机，在付出他们的信任之前需要证据或不点的积极经历。</Rimpsyche_Trust.lowDescription>
+  
+</LanguageData>

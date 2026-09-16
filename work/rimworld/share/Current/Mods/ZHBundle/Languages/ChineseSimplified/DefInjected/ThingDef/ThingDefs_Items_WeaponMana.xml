@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: froststing -->
+  <VV_Bullet_Froststing.label>霜柱</VV_Bullet_Froststing.label>
+  
+  <!-- EN: lava fragment -->
+  <VV_Bullet_LavaShredder.label>熔岩碎片</VV_Bullet_LavaShredder.label>
+  
+  <!-- EN: snowman -->
+  <VV_Bullet_Snowman.label>雪人</VV_Bullet_Snowman.label>
+  
+  <!-- EN: chain thunder pistol -->
+  <VV_ChainThunderPistol.label>连锁闪电枪</VV_ChainThunderPistol.label>
+  <!-- EN: A arcane weapon that induces and fires a powerful, unfailing electric current at the aimed target. The current inflicts burn damage and briefly disables electronic equipment.\n\nIt then chains multiple times to nearby enemies for the same damage, making it effective indoors against scattered groups.\n\nEach shot consumes mana; if mana is depleted it cannot fire, and it automatically recharges by absorbing environment mana nearby. -->
+  <VV_ChainThunderPistol.description>一把能向目标发射强力且持久电流的神秘武器，电流会造成烧伤并短路电子装备。\n\n电流会对附近的敌人造成相同的连锁伤害，对室外的敌群十分有效。\n\n每次射击都会消耗魔能，会自动从环境中吸收魔能，魔能耗尽时无法开火。</VV_ChainThunderPistol.description>
+  <!-- EN: barrel -->
+  <VV_ChainThunderPistol.tools.barrel.label>枪管</VV_ChainThunderPistol.tools.barrel.label>
+  <!-- EN: chain thunder pistol -->
+  <VV_ChainThunderPistol.verbs.Verb_ChainLightning.label>连锁闪电枪</VV_ChainThunderPistol.verbs.Verb_ChainLightning.label>
+  
+  <!-- EN: explosive snowman -->
+  <VV_ExplosiveSnowman.label>爆炸雪人</VV_ExplosiveSnowman.label>
+  <!-- EN: A set of large snow bomb piled and shaped to resemble a person. People don't make these for the fear of it. -->
+  <VV_ExplosiveSnowman.description>一组塑造成人形的雪炸弹，人们因恐惧而不去制作之。</VV_ExplosiveSnowman.description>
+  
+  <!-- EN: froststing sniper crossbow -->
+  <VV_FroststingCrossbow.label>冰霜狙击弩</VV_FroststingCrossbow.label>
+  <!-- EN: A crossbow that shoots needle-thin, razor-sharp icicles. With a high-magnification scope it can snipe distant targets with heavy punch and pinpoint accuracy. Each shot burns a lot of mana, forcing frequent recharges, and it's useless at close range.\n\nSeasoned Vivi snipers on solo duty use it to stop threats long before they reach the nest.\n\nEach shot consumes mana; if mana is depleted it cannot fire, and it automatically recharges by absorbing environment mana nearby. -->
+  <VV_FroststingCrossbow.description>一把发射细如针、锋如刃之冰柱的十字弩。凭借高倍瞄准镜，狙击弩可以精确打击远处的目标。狙击弩每次射击都会消耗大量魔能，需要频繁充能且在近程战斗中毫无作用。\n\n经验丰富的薇薇狙击手会在独自执行任务时，在目标接近蜂巢前就抑制它们。\n\n每次射击都会消耗魔能，会自动从环境中吸收魔能，魔能耗尽时无法开火。</VV_FroststingCrossbow.description>
+  <!-- EN: limb -->
+  <VV_FroststingCrossbow.tools.limb.label>弩臂</VV_FroststingCrossbow.tools.limb.label>
+  <!-- EN: froststing sniper crossbow -->
+  <VV_FroststingCrossbow.verbs.Verb_ShootWithMana.label>冰霜狙击弩</VV_FroststingCrossbow.verbs.Verb_ShootWithMana.label>
+  
+  <!-- EN: lava shredder -->
+  <VV_LavaShredder.label>熔岩粉碎机</VV_LavaShredder.label>
+  <!-- EN: A machine gun that sprays searing pellets. Its massive recoil makes precision aiming difficult and each incendiary round is weak, but the weapon compensates with an overwhelming torrent of fire.\n\nLethal against large groups yet hard to control, it poses a fire hazard, so the vivi restrict its use to seasoned operators only.\n\nEach shot consumes mana; if mana is depleted it cannot fire, and it automatically recharges by absorbing environment mana nearby. -->
+  <VV_LavaShredder.description>一把喷射大量灼热弹丸的机关枪。其极大的后坐力会令瞄准十分困难，且单发弹丸破坏力较低，但充沛的火力或可弥补这些缺点。\n\n它对大型敌群十分致命，但难以控制，会引发火灾，所以通常只由经验丰富的射手操作。\n\n每次射击都会消耗魔能，会自动从环境中吸收魔能，魔能耗尽时无法开火。</VV_LavaShredder.description>
+  <!-- EN: stock -->
+  <VV_LavaShredder.tools.stock.label>握把</VV_LavaShredder.tools.stock.label>
+  <!-- EN: barrel -->
+  <VV_LavaShredder.tools.barrel.label>枪管</VV_LavaShredder.tools.barrel.label>
+  <!-- EN: lava shredder -->
+  <VV_LavaShredder.verbs.Verb_ShootWithMana.label>熔岩粉碎机</VV_LavaShredder.verbs.Verb_ShootWithMana.label>
+  
+  <!-- EN: snowman launcher -->
+  <VV_SnowmanLauncher.label>雪人发射器</VV_SnowmanLauncher.label>
+  <!-- EN: a arcane weapon that compacts and launches a snowman. Comical, but it triggers a powerful cold explosion over a wide area at impact, inflicting frostbite.\n\nSnow piles up where the blast passes, and the launched snowman lingers briefly before exploding a second time. Targets that suffer frostbite have their movement briefly slowed.\n\nEach shot consumes mana; if mana is depleted it cannot fire, and it automatically recharges by absorbing environment mana nearby. -->
+  <VV_SnowmanLauncher.description>一把能制作并发射雪人的神秘武器。虽然很滑稽，但雪人在碰撞时会造成巨大、覆盖一片区域的寒冷性爆炸冲击并造成冻伤。\n\n雪片会堆积在爆炸地，发射出去的雪人会在第二次爆炸前短暂留存。遭受冻伤的目标的移动速度会短暂减慢。\n\n每次射击都会消耗魔能，会自动从环境中吸收魔能，魔能耗尽时无法开火。</VV_SnowmanLauncher.description>
+  <!-- EN: barrel -->
+  <VV_SnowmanLauncher.tools.barrel.label>枪管</VV_SnowmanLauncher.tools.barrel.label>
+  <!-- EN: snowman launcher -->
+  <VV_SnowmanLauncher.verbs.Verb_ShootWithMana.label>雪人发射器</VV_SnowmanLauncher.verbs.Verb_ShootWithMana.label>
+  
+  <!-- EN: steam -->
+  <VV_SteamProjectile.label>蒸汽</VV_SteamProjectile.label>
+  
+  <!-- EN: steamthrower -->
+  <VV_Steamthrower.label>蒸汽喷射器</VV_Steamthrower.label>
+  <!-- EN: A arcane weapon that sprays high-pressure hot steam. It inflicts burn damage on all targets in range, but allied units very close to the user are not harmed.\n\nThe steam extinguishes all fires in the area and, if in an enclosed space, raises the temperature. Highly effective against crowds of heat-vulnerable enemies, and vivis also use it to suppress large-scale fires.\n\nEach shot consumes mana; if mana is depleted it cannot fire, and it automatically recharges by absorbing environment mana nearby. -->
+  <VV_Steamthrower.description>一把喷射高压热蒸汽的神秘武器。能对射程内的所有目标造成烧伤伤害，但离使用者非常近的友方单位除外。\n\n蒸汽可扑灭该区域的所有火势，但在封闭空间内会导致升温。对成群的易受高温影响的敌人非常有效，薇薇们也会用它来扑灭大规模火灾。\n\n每次射击都会消耗魔能，会自动从环境中吸收魔能，魔能耗尽时无法开火。</VV_Steamthrower.description>
+  <!-- EN: stock -->
+  <VV_Steamthrower.tools.stock.label>握把</VV_Steamthrower.tools.stock.label>
+  <!-- EN: barrel -->
+  <VV_Steamthrower.tools.barrel.label>枪管</VV_Steamthrower.tools.barrel.label>
+  <!-- EN: steamthrower -->
+  <VV_Steamthrower.verbs.Verb_Steamthrower.label>蒸汽喷射器</VV_Steamthrower.verbs.Verb_Steamthrower.label>
+  
+</LanguageData>

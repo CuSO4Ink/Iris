@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: underground room -->
+  <KCSG_UndergroundRoom.label>地下室</KCSG_UndergroundRoom.label>
+  <!-- EN: An underground room. -->
+  <KCSG_UndergroundRoom.description>一处地下室。</KCSG_UndergroundRoom.description>
+  
+</LanguageData>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: crossbow bolt -->
+  <Bolt_RK_AutoCrossBow.label>弩箭</Bolt_RK_AutoCrossBow.label>
+  
+  <!-- EN: crossbow bolt -->
+  <Bolt_RK_Crossbow.label>弩箭</Bolt_RK_Crossbow.label>
+  
+  <!-- EN: wedge bullet (AP) -->
+  <Bullet_BFR_AP.label>楔形穿甲彈</Bullet_BFR_AP.label>
+  
+  <!-- EN: wedge bullet (HE) -->
+  <Bullet_BFR_HE.label>楔形高爆彈</Bullet_BFR_HE.label>
+  
+  <!-- EN: wedge bullet -->
+  <Bullet_RK_PrototypePulseRifleHeavy.label>楔形彈</Bullet_RK_PrototypePulseRifleHeavy.label>
+  
+  <!-- EN: wedge bullet -->
+  <Bullet_RK_PrototypePulseRifleLight.label>楔形彈</Bullet_RK_PrototypePulseRifleLight.label>
+  
+  <!-- EN: rifle bullet -->
+  <Bullet_RK_Rifle.label>步槍子彈</Bullet_RK_Rifle.label>
+  
+  <!-- EN: rifle bullet -->
+  <Bullet_RK_SniperRifle.label>步槍子彈</Bullet_RK_SniperRifle.label>
+  
+  <!-- EN: autocross bow -->
+  <RK_AutoCrossBow.label>鼠族連弩</RK_AutoCrossBow.label>
+  <!-- EN: 기계식으로 발사되는 반자동 석궁입니다. 원형 탄창에서 빠른속도로 볼트를 발사할 수 있습니다. -->
+  <RK_AutoCrossBow.description>安裝了連射機關結構的半自動弩，其兩側配備的大容量箭筒可以快速供彈。</RK_AutoCrossBow.description>
+  <!-- EN: limb -->
+  <RK_AutoCrossBow.tools.limb.label>弩臂</RK_AutoCrossBow.tools.limb.label>
+  <!-- EN: arrow -->
+  <RK_AutoCrossBow.tools.arrow.label>弩箭</RK_AutoCrossBow.tools.arrow.label>
+  <!-- EN: autocross bow -->
+  <RK_AutoCrossBow.verbs.Verb_Shoot.label>鼠族連弩</RK_AutoCrossBow.verbs.Verb_Shoot.label>
+  
+  <!-- EN: bolter bullet -->
+  <RK_Bullet_Bolter.label>手砲子彈</RK_Bullet_Bolter.label>
+  
+  <!-- EN: RatHolic gun bullet -->
+  <RK_Bullet_RatHolicGun.label>吱特林機槍子彈</RK_Bullet_RatHolicGun.label>
+  
+  <!-- EN: sawedoff bullet -->
+  <RK_Bullet_SawedOff.label>短桿霰彈槍子彈</RK_Bullet_SawedOff.label>
+  
+  <!-- EN: cross bow -->
+  <RK_Crossbow.label>鼠族輕弩</RK_Crossbow.label>
+  <!-- EN: 간단한 석궁입니다. 사냥을 할때 쓰입니다. -->
+  <RK_Crossbow.description>用於狩獵的簡易輕弩。</RK_Crossbow.description>
+  <!-- EN: limb -->
+  <RK_Crossbow.tools.limb.label>弩臂</RK_Crossbow.tools.limb.label>
+  <!-- EN: arrow -->
+  <RK_Crossbow.tools.arrow.label>弩箭</RK_Crossbow.tools.arrow.label>
+  <!-- EN: cross bow -->
+  <RK_Crossbow.verbs.Verb_Shoot.label>鼠族輕弩</RK_Crossbow.verbs.Verb_Shoot.label>
+  
+  <!-- EN: large crossbow bolt -->
+  <RK_Projectile_Arbalest.label>重型弩箭</RK_Projectile_Arbalest.label>
+  
+  <!-- EN: prototype pulse rifle -->
+  <RK_PrototypePulseRifle.label>鼠族原型脈衝步槍</RK_PrototypePulseRifle.label>
+  <!-- EN: 실험용 파동 소총입니다. 실험용 랫킨들을 위해 제작되어 특수망원렌즈가 근거리 원거리 모두 정밀하게 조준해줍니다. 랫킨식 플레셰트탄환에서 아이디어를 얻어 제작한 이 무기는 쇄기모양의 고관통 에너지탄을 빠르게 발사합니다. -->
+  <RK_PrototypePulseRifle.description>專為鼠族實驗體秘密研製的原型脈衝能量步槍，配備有可縮放視距的高精度瞄準鏡。這種武器可發射穿甲能力極強的楔形能量彈，一種基於鼠族傳統箭形彈設計出的新式彈藥。</RK_PrototypePulseRifle.description>
+  <!-- EN: stock -->
+  <RK_PrototypePulseRifle.tools.stock.label>槍托</RK_PrototypePulseRifle.tools.stock.label>
+  <!-- EN: barrel -->
+  <RK_PrototypePulseRifle.tools.barrel.label>槍管</RK_PrototypePulseRifle.tools.barrel.label>
+  <!-- EN: Rapid Fire -->
+  <RK_PrototypePulseRifle.verbs.Rapid_Fire.label>快速射擊</RK_PrototypePulseRifle.verbs.Rapid_Fire.label>
+  
+  <!-- EN: ratkin rifle -->
+  <RK_Rifle.label>鼠族步槍</RK_Rifle.label>
+  <!-- EN: 인간의 라이플을 흉내내 랫킨식 플레셰트 탄환을 쓰는 소총입니다. 관통력이 높고 석궁보다 사거리가 길며, 작은 검을 달아 유사시 창처럼 사용할 수 있습니다. -->
+  <RK_Rifle.description>鼠族仿照人類技術研製的步槍。不僅射程比傳統的弩更遠，其槍口處還下掛有可用於近戰的刺刀。</RK_Rifle.description>
+  <!-- EN: stock -->
+  <RK_Rifle.tools.stock.label>槍托</RK_Rifle.tools.stock.label>
+  <!-- EN: bayonet -->
+  <RK_Rifle.tools.bayonet.label>刺刀</RK_Rifle.tools.bayonet.label>
+  <!-- EN: flechette -->
+  <RK_Rifle.tools.flechette.label>箭形彈</RK_Rifle.tools.flechette.label>
+  <!-- EN: ratkin rifle -->
+  <RK_Rifle.verbs.Verb_Shoot.label>鼠族步槍</RK_Rifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: ratkin sniper rifle -->
+  <RK_SniperRifle.label>鼠族狙擊步槍</RK_SniperRifle.label>
+  <!-- EN: 플레셰트 탄환을 쓰는 랫킨식 망원 소총입니다. 두꺼운 장갑을 갖춘 적도 먼 거리에서 제압할 수 있으며, 가까운 거리는 상대적으로 조준하기 어렵습니다. 유사시 근접을 위해 작은 검을 달았습니다. -->
+  <RK_SniperRifle.description>配備有鼠族專用瞄準鏡的狙擊步槍。射程更遠，但近距離精度不佳。</RK_SniperRifle.description>
+  <!-- EN: stock -->
+  <RK_SniperRifle.tools.stock.label>槍托</RK_SniperRifle.tools.stock.label>
+  <!-- EN: bayonet -->
+  <RK_SniperRifle.tools.bayonet.label>刺刀</RK_SniperRifle.tools.bayonet.label>
+  <!-- EN: flechette -->
+  <RK_SniperRifle.tools.flechette.label>箭形彈</RK_SniperRifle.tools.flechette.label>
+  <!-- EN: ratkin sniper rifle -->
+  <RK_SniperRifle.verbs.Verb_Shoot.label>鼠族狙擊步槍</RK_SniperRifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: large cross bow -->
+  <RK_Weapon_Arbalest.label>鼠族重弩</RK_Weapon_Arbalest.label>
+  <!-- EN: 대형석궁입니다. 큰 힘에는 큰 파괴력이 따릅니다. -->
+  <RK_Weapon_Arbalest.description>尺寸巨大的重弩，具有極強的破壞力。</RK_Weapon_Arbalest.description>
+  <!-- EN: limb -->
+  <RK_Weapon_Arbalest.tools.limb.label>弩臂</RK_Weapon_Arbalest.tools.limb.label>
+  <!-- EN: arrow -->
+  <RK_Weapon_Arbalest.tools.arrow.label>弩箭</RK_Weapon_Arbalest.tools.arrow.label>
+  <!-- EN: large cross bow -->
+  <RK_Weapon_Arbalest.verbs.Verb_Shoot.label>鼠族重弩</RK_Weapon_Arbalest.verbs.Verb_Shoot.label>
+  
+  <!-- EN: BFR 3000 -->
+  <RK_Weapon_BFR.label>BFR-3000</RK_Weapon_BFR.label>
+  <!-- EN: Big Force Rifle 3000. -->
+  <RK_Weapon_BFR.description>由鼠族研製的強擊步槍3000型。其命名靈感可能源自人類開發的某款知名FPS遊戲。\n\n這種武器可以在穿甲彈模式與高爆彈模式間自由切換。</RK_Weapon_BFR.description>
+  <!-- EN: stock -->
+  <RK_Weapon_BFR.tools.stock.label>槍托</RK_Weapon_BFR.tools.stock.label>
+  <!-- EN: barrel -->
+  <RK_Weapon_BFR.tools.barrel.label>槍管</RK_Weapon_BFR.tools.barrel.label>
+  <!-- EN: AP fire -->
+  <RK_Weapon_BFR.verbs.AP_fire.label>穿甲模式</RK_Weapon_BFR.verbs.AP_fire.label>
+  
+  <!-- EN: hand cannon -->
+  <RK_Weapon_Bolter.label>鼠族手砲</RK_Weapon_Bolter.label>
+  <!-- EN: 대구경 핸드캐논 입니다. -->
+  <RK_Weapon_Bolter.description>大口徑的手砲，其威力不容小覷。</RK_Weapon_Bolter.description>
+  <!-- EN: grip -->
+  <RK_Weapon_Bolter.tools.grip.label>握把</RK_Weapon_Bolter.tools.grip.label>
+  <!-- EN: barrel -->
+  <RK_Weapon_Bolter.tools.barrel.label>槍管</RK_Weapon_Bolter.tools.barrel.label>
+  <!-- EN: bolter fire -->
+  <RK_Weapon_Bolter.verbs.bolter_fire.label>鼠族手砲</RK_Weapon_Bolter.verbs.bolter_fire.label>
+  
+  <!-- EN: RatHolic Gun -->
+  <RK_Weapon_RatHolicGun.label>鼠族吱特林機槍</RK_Weapon_RatHolicGun.label>
+  <!-- EN: A multi-barrel machine gun. It's unwieldy, but once it starts firing it fires very fast. Where most self-loading guns are powered by the energy from the gunpowder, the minigun uses an electric motor to rapidly cycle cartridges through the weapon. -->
+  <RK_Weapon_RatHolicGun.description>一把專為鼠族設計的多管機槍。雖然非常笨重，一旦開始射擊時，射速就會變得越來越快。大多數的槍械都是靠火藥的衝勁提供彈藥，吱特林機槍則是靠手搖，快速旋轉彈藥筒來提供彈藥。</RK_Weapon_RatHolicGun.description>
+  <!-- EN: barrels -->
+  <RK_Weapon_RatHolicGun.tools.barrels.label>槍管</RK_Weapon_RatHolicGun.tools.barrels.label>
+  <!-- EN: RatHolic Gun -->
+  <RK_Weapon_RatHolicGun.verbs.Verb_RatHolicGun.label>鼠族吱特林機槍</RK_Weapon_RatHolicGun.verbs.Verb_RatHolicGun.label>
+  
+  <!-- EN: ratkin sawed-off -->
+  <RK_Weapon_SawedOff.label>鼠族短桿霰彈槍</RK_Weapon_SawedOff.label>
+  <!-- EN: 소드오프 샷건입니다. 랫킨 왕국에서는 샷건이 랫킨을 쏩니다. -->
+  <RK_Weapon_SawedOff.description>槍管和槍托被鋸短的緊湊型雙管霰彈槍。在鼠族王國裡，這種武器常被用於撲殺他們的同胞。</RK_Weapon_SawedOff.description>
+  <!-- EN: stock -->
+  <RK_Weapon_SawedOff.tools.stock.label>槍托</RK_Weapon_SawedOff.tools.stock.label>
+  <!-- EN: barrel -->
+  <RK_Weapon_SawedOff.tools.barrel.label>槍管</RK_Weapon_SawedOff.tools.barrel.label>
+  <!-- EN: ratkin sawed-off -->
+  <RK_Weapon_SawedOff.verbs.Verb_Shoot.label>鼠族短桿霰彈槍</RK_Weapon_SawedOff.verbs.Verb_Shoot.label>
+  
+</LanguageData>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Ferment soybeans into soy sauce -->
+  <VCE_SoybeansToSauce.label>发酵大豆酱油</VCE_SoybeansToSauce.label>
+  <!-- EN: Turn 30 soybeans into 15 soy sauce. -->
+  <VCE_SoybeansToSauce.description>用大豆 x30 发酵制作酱油 x15。</VCE_SoybeansToSauce.description>
+  
+</LanguageData>

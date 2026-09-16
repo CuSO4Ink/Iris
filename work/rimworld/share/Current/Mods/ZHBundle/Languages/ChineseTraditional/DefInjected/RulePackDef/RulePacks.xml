@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>r_logentry->Performing a [exec_desc] execution, [INITIATOR_definite] [beat] [RECIPIENT_definite] to death!</li>
+    <li>r_logentry->Performing a [exec_desc] execution, [INITIATOR_definite] [beat] [RECIPIENT_definite] using [INITIATOR_possessive] [TOOL_label].</li>
+  -->
+  <AM_Execution_Blunt.rulePack.rulesStrings>
+    <li>r_logentry->[INITIATOR_definite][exec_desc]地施展了終結技，將[RECIPIENT_definite][beat]至死！</li>
+    <li>r_logentry->[INITIATOR_definite][exec_desc]地施展了終結技，使用[TOOL_label][beat]了[RECIPIENT_definite]。</li>
+  </AM_Execution_Blunt.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>r_logentry->[RECIPIENT_definite] was killed by [INITIATOR_definite] in a [exec_desc] execution.</li>
+  -->
+  <AM_Execution_Generic.rulePack.rulesStrings>
+    <li>r_logentry->[RECIPIENT_definite]被[INITIATOR_definite][exec_desc]的終結技殺死了。</li>
+  </AM_Execution_Generic.rulePack.rulesStrings>
+
+  <!-- EN:
+    <li>r_logentry->In an impressive feat of psycast mastery [INITIATOR_definite] summoned dozens of weapons to impale [RECIPIENT_definite].</li>
+  -->
+  <AM_Execution_Gilgamesh.rulePack.rulesStrings>  
+    <li>r_logentry->精通靈能的[INITIATOR_definite]喚出了大量武器，無情地將[RECIPIENT_definite]刺成了馬蜂窩。</li>
+</AM_Execution_Gilgamesh.rulePack.rulesStrings>
+
+  <!-- EN:
+    <li>exec_desc->skillful</li>
+    <li>exec_desc->swift</li>
+    <li>exec_desc->merciful</li>
+    <li>exec_desc->brutal</li>
+    <li>exec_desc->vengeful</li>
+    <li>exec_desc->crude</li>
+    <li>exec_desc->efficient</li>
+    <li>exec_desc->clean</li>
+    <li>exec_desc->shocking</li>
+    <li>exec_desc->spectacular</li>
+    <li>impaled->impaled</li>
+    <li>impaled->skewered</li>
+    <li>stabbed->stabbed</li>
+    <li>stabbed->skewered</li>
+    <li>slashed->slashed</li>
+    <li>slashed->lacerated</li>
+    <li>slashed->cut into</li>
+    <li>slashed->split open</li>
+    <li>beat->beat</li>
+    <li>beat->battered</li>
+    <li>beat->bludgeoned</li>
+    <li>skillfully->skillfully</li>
+    <li>skillfully->masterfully</li>
+    <li>skillfully->nimbly</li>
+    <li>weeb_legend->the Demonic Spirit</li>
+    <li>weeb_legend(p=6)->[INITIATOR_definite], Slayer of [RECIPIENT_labelPlural]</li>
+    <li>weeb_legend->[INITIATOR_definite] the Undying</li>
+    <li>weeb_legend->[INITIATOR_definite], Conqueror of the Stars</li>
+    <li>weeb_legend->[INITIATOR_definite] the Undead</li>
+    <li>weeb_legend->[INITIATOR_definite] the Edgy</li>
+    <li>weeb_legend->[INITIATOR_definite], Edgelord Supreme</li>
+    <li>weeb_legend->[INITIATOR_definite], Collector of Feetpics</li>
+    <li>weeb_legend->[INITIATOR_definite] the Penetrator</li>
+  -->
+  <AM_Execution_Includes.rulePack.rulesStrings>
+    <li>exec_desc->嫻熟</li>
+    <li>exec_desc->迅猛</li>
+    <li>exec_desc->仁慈</li>
+    <li>exec_desc->凶蠻</li>
+    <li>exec_desc->生疏</li>
+    <li>exec_desc->無情</li>
+    <li>exec_desc->利落</li>
+    <li>exec_desc->高效</li>
+    <li>exec_desc->華麗</li>
+    <li>exec_desc->殘暴</li>
+    <li>impaled->貫穿</li>
+    <li>impaled->穿透</li>
+    <li>stabbed->刺穿</li>
+    <li>stabbed->捅刺</li>
+    <li>slashed->劈碎</li>
+    <li>slashed->撕裂</li>
+    <li>slashed->斬斷</li>
+    <li>slashed->劈開</li>
+    <li>beat->擊打</li>
+    <li>beat->毆打</li>
+    <li>beat->猛擊</li>
+    <li>skillfully->嫻熟地</li>
+    <li>skillfully->熟練地</li>
+    <li>skillfully->迅猛地</li>
+    <li>weeb_legend->「緋赤戮魔」</li>
+    <li>weeb_legend(p=6)->「[RECIPIENT_labelPlural]殺手」[INITIATOR_definite]</li>
+    <li>weeb_legend->「不朽者」[INITIATOR_definite]</li>
+    <li>weeb_legend->「星之主」[INITIATOR_definite]</li>
+    <li>weeb_legend->「不死者」[INITIATOR_definite]</li>
+    <li>weeb_legend->「毀滅者」[INITIATOR_definite]</li>
+    <li>weeb_legend->「劍聖」[INITIATOR_definite]</li>
+    <li>weeb_legend->「劍魔」[INITIATOR_definite]</li>
+    <li>weeb_legend->「劍鬼」[INITIATOR_definite]</li>
+  </AM_Execution_Includes.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>r_logentry->Performing a [exec_desc] execution, [INITIATOR_definite] [impaled] [RECIPIENT_definite] on [INITIATOR_possessive] [TOOL_label], then tossed [RECIPIENT_definite] over [INITIATOR_possessive] back! Brutal!</li>
+  -->
+  <AM_Execution_Passover.rulePack.rulesStrings>
+    <li>r_logentry->[INITIATOR_definite][exec_desc]地施展了終結技，使用[TOOL_label][impaled]了[RECIPIENT_definite]，再將其重重拋至身後。真是凶殘！</li>
+  </AM_Execution_Passover.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>r_logentry->Performing a [exec_desc] execution, [INITIATOR_definite] [slashed] [RECIPIENT_definite] in the [recipient_part0_label].</li>
+    <li>r_logentry->Performing a [exec_desc] execution, [INITIATOR_definite] [slashed] [RECIPIENT_definite] with [INITIATOR_possessive] [TOOL_label].</li>
+  -->
+  <AM_Execution_Slashed.rulePack.rulesStrings>
+    <li>r_logentry->[INITIATOR_definite][exec_desc]地施展了終結技，[slashed]了[RECIPIENT_definite]的[recipient_part0_label]。</li>
+    <li>r_logentry->[INITIATOR_definite][exec_desc]地施展了終結技，使用[TOOL_label][slashed]了[RECIPIENT_definite]。</li>
+  </AM_Execution_Slashed.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>r_logentry->Performing a [exec_desc] execution, [INITIATOR_definite] [stabbed] [RECIPIENT_definite] in the [recipient_part0_label].</li>
+    <li>r_logentry->Performing a [exec_desc] execution, [INITIATOR_definite] [impaled] [RECIPIENT_definite] with [INITIATOR_possessive] [TOOL_label].</li>
+  -->
+  <AM_Execution_Stab.rulePack.rulesStrings>
+    <li>r_logentry->[INITIATOR_definite][exec_desc]地施展了終結技，[stabbed]了[RECIPIENT_definite]的[recipient_part0_label]。</li>
+    <li>r_logentry->[INITIATOR_definite][exec_desc]地施展了終結技，使用[TOOL_label][impaled]了[RECIPIENT_definite]。</li>
+  </AM_Execution_Stab.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>r_logentry->Wielding [INITIATOR_possessive] [TOOL_label], a weapon said to have killed God, [INITIATOR_definite] confronted [RECIPIENT_definite]. Too fast for the eye to follow, [INITIATOR_pronoun] [slashed] [RECIPIENT_definite].\nEverybody clapped.</li>
+    <li>r_logentry(p=5)->Wielding [INITIATOR_possessive] [TOOL_label], a weapon said to have killed God, [INITIATOR_definite] confronted [RECIPIENT_definite]. Too fast for the eye to follow, [INITIATOR_pronoun] [slashed] [RECIPIENT_definite].\nThus the legend of [weeb_legend] was born.</li>
+    <li>r_logentry->Wielding [INITIATOR_possessive] [TOOL_label], a weapon said to have killed God, [INITIATOR_definite] confronted [RECIPIENT_definite]. Too fast for the eye to follow, [INITIATOR_pronoun] [slashed] [RECIPIENT_definite].\nNobody can be sure if the blade dealt the killing blow, or whether [INITIATOR_definite] is simply so edgy that [INITIATOR_possessive] powerful aura completely sapped [RECIPIENT_definite] of the will to live.</li>
+  -->
+  <AM_Execution_Weebstick.rulePack.rulesStrings>
+    <li>r_logentry->[INITIATOR_definite]手握著據傳弒過神的[TOOL_label]，向[RECIPIENT_definite]發起了突襲。電光石火間，[INITIATOR_pronoun]已將[RECIPIENT_definite][slashed]。\n目睹此景的眾人無不拍手歡呼。</li>
+    <li>r_logentry(p=5)->[INITIATOR_definite]手握著據傳弒過神的[TOOL_label]，向[RECIPIENT_definite]發起了突襲。電光石火間，[INITIATOR_pronoun]已將[RECIPIENT_definite][slashed]。\n自此，[weeb_legend]的傳說誕生了。</li>
+    <li>r_logentry->[INITIATOR_definite]手握著據傳弒過神的[TOOL_label]，向[RECIPIENT_definite]發起了突襲。電光石火間，[INITIATOR_pronoun]已將[RECIPIENT_definite][slashed]。\n無人知曉究竟是[TOOL_label]造成了致命一擊，還是[INITIATOR_definite]散發的濃厚殺意扼滅了[RECIPIENT_definite]的生存意志。</li>
+  </AM_Execution_Weebstick.rulePack.rulesStrings>
+  
+</LanguageData>

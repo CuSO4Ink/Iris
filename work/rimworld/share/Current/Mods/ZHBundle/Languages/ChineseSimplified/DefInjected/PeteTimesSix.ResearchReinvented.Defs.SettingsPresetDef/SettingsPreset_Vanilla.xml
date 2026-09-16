@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: vanilla -->
+  <SettingsPreset_RR_Vanilla.label>原版</SettingsPreset_RR_Vanilla.label>
+  <!-- EN: A settings preset that behaves nearly identically to vanilla Rimworld. -->
+  <SettingsPreset_RR_Vanilla.description>这个预设的行为几乎与原版 RimWorld 一致。</SettingsPreset_RR_Vanilla.description>
+
+</LanguageData>

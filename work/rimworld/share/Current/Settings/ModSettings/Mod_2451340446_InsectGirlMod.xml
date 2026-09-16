@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="Kzi.InsectGirlSettings">
+		<enableInsectGirlCanAutoSpawn>False</enableInsectGirlCanAutoSpawn>
+		<enableInsectGirlCanReturnResurrect>True</enableInsectGirlCanReturnResurrect>
+		<enableInsectGirlCanReturnTakeGift>True</enableInsectGirlCanReturnTakeGift>
+		<enableInsectGirlShouldExterminate>False</enableInsectGirlShouldExterminate>
+		<enableHasWildInsectGirlsAlert>True</enableHasWildInsectGirlsAlert>
+	</ModSettings>
+</SettingsBlock>

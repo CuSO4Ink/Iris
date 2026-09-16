@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: tend to other entities -->
+  <DoctorTendToOtherEntities.label>治疗其他单位</DoctorTendToOtherEntities.label>
+  <!-- EN: tending to -->
+  <DoctorTendToOtherEntities.gerund>治疗</DoctorTendToOtherEntities.gerund>
+  <!-- EN: tend to -->
+  <DoctorTendToOtherEntities.verb>治疗</DoctorTendToOtherEntities.verb>
+  
+</LanguageData>

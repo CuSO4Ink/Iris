@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: conversed -->
+  <Rimpsyche_ConversationOpinion.stages.conversed.label>交谈</Rimpsyche_ConversationOpinion.stages.conversed.label>
+  
+  <!-- EN: ignored -->
+  <Rimpsyche_ConvoIgnored.stages.ignored.label>忽略</Rimpsyche_ConvoIgnored.stages.ignored.label>
+  
+  <!-- EN: smalltalk -->
+  <Rimpsyche_Smalltalk.stages.smalltalk.label>闲聊</Rimpsyche_Smalltalk.stages.smalltalk.label>
+  
+</LanguageData>

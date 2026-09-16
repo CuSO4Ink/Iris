@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: prototype construction -->
+  <PrototypeConstruction.header_Direct>原型建造</PrototypeConstruction.header_Direct>
+  <!-- EN: Construct a prototype of {0}.\n\nAffected by (after construction success or failure):\nWorker construction speed\nWorker research speed stat -->
+  <PrototypeConstruction.shortDesc_Direct>建造 {0} 的原型。\n\n受影响（建造成功或失败后）：\n建造者建造速度\n建造者研究速度</PrototypeConstruction.shortDesc_Direct>
+
+  <!-- EN: prototype production -->
+  <PrototypeProduction.header_Direct>原型制作</PrototypeProduction.header_Direct>
+  <!-- EN: Produce a prototype of {0} at the appropriate production facility.\n\nAffected by (after production):\nCrafter speed (by recipe)\nCrafter research speed stat -->
+  <PrototypeProduction.shortDesc_Direct>在相应的生产设施上制作 {0} 的原型。\n\n受影响（制作后）：\n工匠速度（按配方）\n工匠研究速度</PrototypeProduction.shortDesc_Direct>
+
+  <!-- EN: prototype construction -->
+  <PrototypeTerrainConstruction.header_Direct>原型建造</PrototypeTerrainConstruction.header_Direct>
+  <!-- EN: Construct a prototype of {0}.\n\nAffected by (after construction success or failure):\nWorker construction speed\nWorker research speed stat -->
+  <PrototypeTerrainConstruction.shortDesc_Direct>建造 {0} 的原型。\n\n受影响（建造成功或失败后）：\n建造者建造速度\n建造者研究速度</PrototypeTerrainConstruction.shortDesc_Direct>
+
+</LanguageData>

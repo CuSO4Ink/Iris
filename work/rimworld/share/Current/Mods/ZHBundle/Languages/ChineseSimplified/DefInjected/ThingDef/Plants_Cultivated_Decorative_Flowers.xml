@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: amaryllis -->
+  <VPEF_Plant_Amaryllis.label>孤挺花</VPEF_Plant_Amaryllis.label>
+  <!-- EN: A majestic, showy bulb flower known for its large, trumpet-shaped blooms and long, elegant stalks. It is highly valued for its striking beauty and ability to bloom during the deep cold, when conditions are right.\n\nBlooms from 10th day of winter to 5th day of spring. -->
+  <VPEF_Plant_Amaryllis.description>孤挺花是一种雄伟华丽的球根花卉，以其喇叭状的大型花朵和修长优雅的茎干而闻名。它因其醒目的外表和在严寒中开花的能力而备受珍视。\n\n从冬季第10天到春季第5天开花。</VPEF_Plant_Amaryllis.description>
+  
+  <!-- EN: aster -->
+  <VPEF_Plant_Aster.label>紫菀</VPEF_Plant_Aster.label>
+  <!-- EN: A star-shaped, daisy-like flower, often with purple-blue petals, famous for providing vibrant color in the late season. It is a symbol of patience and elegance.\n\nBlooms from 10th day of summer to 10th day of fall. -->
+  <VPEF_Plant_Aster.description>紫菀是一种星形的，类似雏菊的花卉，花瓣通常表现出蓝紫色，以其在晚季提供鲜艳色彩而闻名。它是耐心和优雅的象征。\n\n从夏季第10天到秋季第10天开花。</VPEF_Plant_Aster.description>
+  
+  <!-- EN: bearded iris -->
+  <VPEF_Plant_BeardedIris.label>德国鸢尾</VPEF_Plant_BeardedIris.label>
+  <!-- EN: A distinct perennial known for its unique, beard-like hairs on the lower petals of its large, elegant flowers. It creates a stunning visual display and grows in large clusters.\n\nBlooms from 1st day of spring to 5th day of summer. -->
+  <VPEF_Plant_BeardedIris.description>德国鸢尾是一种独特的多年生植物，以其大型优雅花朵下部独特的胡须状绒毛而闻名。它能展现出令人惊叹的视觉效果，并能长出大型花簇。\n\n从春季第1天到夏季第5天开花。</VPEF_Plant_BeardedIris.description>
+  
+  <!-- EN: bloomaris -->
+  <VPEF_Plant_Bloomaris.label>开花菇</VPEF_Plant_Bloomaris.label>
+  <!-- EN: An exotic, decorative fungus that can be grown in caves. It thrives in almost total darkness, emitting a soft, warm glow.\n\nBlooms almost continuously, but only when the light level is below 20%. It will die if temperature falls below -26C. -->
+  <VPEF_Plant_Bloomaris.description>开花菇是一种奇特的装饰性真菌，可以在洞穴中种植。它能在几乎完全黑暗的环境中茁壮成长，并释放出柔和温暖的光芒。\n\n几乎常年开花，但必须保证光照和温度合适。只有在光照水平低于20%时才会开花。如果温度降至-26°C以下，它会死亡。</VPEF_Plant_Bloomaris.description>
+  
+  <!-- EN: chrysanthemum -->
+  <VPEF_Plant_Chrysanthemum.label>菊花</VPEF_Plant_Chrysanthemum.label>
+  <!-- EN: A widely cultivated flowering plant known for its diverse forms and colors, often blooming in the late year. It is a symbol of joy and a long, vibrant life. Its flowers are much more beautiful outside than inside, especially when fully bloomed.\n\nBlooms from 5th day of fall to 10th day of winter. -->
+  <VPEF_Plant_Chrysanthemum.description>菊花是一种广泛栽培的开花植物，以其多样的形态和颜色而闻名，通常在年末开花。它是快乐和活力生命的象征。它的花朵在室外比室内看着更美丽，尤其是在完全盛开时。\n\n从秋季第5天到冬季第10天开花。</VPEF_Plant_Chrysanthemum.description>
+  
+  <!-- EN: crocus -->
+  <VPEF_Plant_Crocus.label>番红花</VPEF_Plant_Crocus.label>
+  <!-- EN: A small, low-lying flower that is one of the very first signs of spring, often pushing its blooms through the last of the winter snow. Its beautiful, cup-shaped bloom brings a brief but powerful moment of color to the early year.\n\nBlooms from 14th day of winter to 7th day of spring. -->
+  <VPEF_Plant_Crocus.description>番红花是一种小型的低矮花卉，是冬去春来的象征之一，常常在冬雪即将消融时开放。它美丽的杯状花朵能为早春带来短暂而强烈的色彩。\n\n从冬季第14天到春季第7天开花。</VPEF_Plant_Crocus.description>
+  
+  <!-- EN: daffodil -->
+  <VPEF_Plant_Daffodil.label>水仙花</VPEF_Plant_Daffodil.label>
+  <!-- EN: A classic, cheerful spring flower known for its trumpet-shaped central corona and wide petals. It's an early bloomer, symbolizing new beginnings and unrequited love.\n\nBlooms from 5th day of spring to 12th day of spring. -->
+  <VPEF_Plant_Daffodil.description>水仙花是一种让人愉快的经典春季花卉，以其喇叭状的中央花冠和宽大的花瓣而闻名。它是一种早熟的植物，象征着新的开始和无望的爱情。\n\n从春季第5天到第12天开花。</VPEF_Plant_Daffodil.description>
+  
+  <!-- EN: daisy -->
+  <VPEF_Plant_Daisy.label>雏菊</VPEF_Plant_Daisy.label>
+  <!-- EN: A common, cheerful flower with white petals and a yellow center, often found in fields and lawns. It's a symbol of innocence and purity.\n\nBlooms from 12th day of spring to 10th day of fall. -->
+  <VPEF_Plant_Daisy.description>雏菊是一种常见的、令人愉快的花卉，具有白色花瓣和黄色花心，通常出现在田野和草坪上。它是天真和纯洁的象征。\n\n从春季第12天到秋季第10天开花。</VPEF_Plant_Daisy.description>
+  
+  <!-- EN: flame azalea bush -->
+  <VPEF_Plant_FlameAzalea.label>火焰杜鹃</VPEF_Plant_FlameAzalea.label>
+  <!-- EN: A striking, deciduous shrub known for its brilliant, flame-orange clusters of tubular flowers. It thrives in acidic soils and provides a vibrant, fire-like visual contrast in any garden.\n\nBlooms from 5th day of spring to 10th day of summer. -->
+  <VPEF_Plant_FlameAzalea.description>火焰杜鹃是一种颜色醒目的落叶灌木，以其鲜艳的火焰色管状花簇而闻名。它在酸性土壤中生长良好，并能在任何花园中提供火焰一般的视觉效果。\n\n从春季第5天到夏季第10天开花。</VPEF_Plant_FlameAzalea.description>
+  
+  <!-- EN: hyacinth -->
+  <VPEF_Plant_Hiacynth.label>风信子</VPEF_Plant_Hiacynth.label>
+  <!-- EN: A highly fragrant, dense flower known for its clusters of bell-shaped blooms. As a bulb flower, it is one of the earliest signs of spring and is highly valued for its sweet scent.\n\nBlooms from 5th day of spring to 10th day of spring. -->
+  <VPEF_Plant_Hiacynth.description>风信子是一种香气浓郁的密集花卉，以其一簇一簇的钟形花朵而闻名。作为一种球根花卉，它是春天到来的最早象征之一，因其甜美的香气而倍受珍视。\n\n从春季第5天到第10天开花。</VPEF_Plant_Hiacynth.description>
+  
+  <!-- EN: hibiscus -->
+  <VPEF_Plant_Hibiscus.label>木槿</VPEF_Plant_Hibiscus.label>
+  <!-- EN: A large, woody shrub famous for its massive, tropical-looking, trumpet-shaped flowers that bloom continuously in warm weather. Much more beautiful outside than inside. A symbol of delicate beauty and a warm climate staple.\n\nBlooms from 1st day of summer to 10th day of fall. -->
+  <VPEF_Plant_Hibiscus.description>木槿是一种大型的木质灌木，以其巨大的，热带风格的喇叭状花朵而闻名，它会在温暖的天气中长时间开花。它的花朵在室外比室内看着更美丽。它是精致之美和温暖气候的象征。\n\n从夏季第1天到秋季第10天开花。</VPEF_Plant_Hibiscus.description>
+  
+  <!-- EN: hydrangea bush -->
+  <VPEF_Plant_Hydrangea.label>绣球花</VPEF_Plant_Hydrangea.label>
+  <!-- EN: A popular, dense shrub known for its large, round clusters of flowers that bloom for a long season. Their color often changes based on soil acidity.\n\nBlooms from 2nd day of summer to 14th day of fall. -->
+  <VPEF_Plant_Hydrangea.description>绣球花是一种广受欢迎的密集灌木，以其大型的圆形花簇而闻名，它的花簇会开放很长的时间。它们的颜色通常会根据土壤酸度而变化。\n\n从夏季第2天到秋季第14天开花。</VPEF_Plant_Hydrangea.description>
+  
+  <!-- EN: lavender -->
+  <VPEF_Plant_Lavender.label>薰衣草</VPEF_Plant_Lavender.label>
+  <!-- EN: A fragrant perennial herb, known for its calming properties. It's highly prized for its scent and vibrant purple flowers, and its presence can uplift the mood of everyone.\n\nBlooms from 12th day of spring to 5th day of fall. -->
+  <VPEF_Plant_Lavender.description>薰衣草是一种香气浓郁的多年生草本植物，以其镇静人心的效果而闻名。它因其香气和鲜艳的紫色花朵而备受珍视，它的存在可以让每个人都倍感愉悦。\n\n从春季第12天到秋季第5天开花。</VPEF_Plant_Lavender.description>
+  
+  <!-- EN: lilac -->
+  <VPEF_Plant_Lilac.label>丁香</VPEF_Plant_Lilac.label>
+  <!-- EN: A highly fragrant, woody shrub known for its dense clusters of purple or white flowers that signify the start of summer. Very resilient and cold-hardy.\n\nBlooms from 5th day of spring to 10th day of summer. -->
+  <VPEF_Plant_Lilac.description>丁香是一种香气浓郁的木本灌木，以其密集的紫色和白色花朵而闻名，这些花朵标志着夏天的开始。它非常坚韧且耐寒。\n\n从春季第5天到夏季第10天开花。</VPEF_Plant_Lilac.description>
+  
+  <!-- EN: lily -->
+  <VPEF_Plant_Lily.label>百合花</VPEF_Plant_Lily.label>
+  <!-- EN: A stately and elegant perennial flower, known for its large, showy, trumpet-shaped blooms atop a single stem. It grows from a bulb and brings dramatic color to the summer garden.\n\nBlooms from 5th day of summer to 5th day of fall. -->
+  <VPEF_Plant_Lily.description>百合花是一种庄重而优雅的多年生花卉，以其大型鲜艳的喇叭状花朵而闻名，它的多个花朵会生长在同一个茎上。它从鳞茎生长，为夏季花园带来戏剧性的色彩。\n\n从夏季第5天到秋季第5天开花。</VPEF_Plant_Lily.description>
+  
+  <!-- EN: marigold -->
+  <VPEF_Plant_Marigold.label>万寿菊</VPEF_Plant_Marigold.label>
+  <!-- EN: A vibrant, sun-loving flower known for its brilliant orange and yellow blooms. Its presence is sometimes associated with repelling insectoids, though some varieties can have a distinct, pungent scent.\n\nBlooms from 5th day of spring to 14th day of fall. -->
+  <VPEF_Plant_Marigold.description>万寿菊是一种充满活力，喜爱阳光的花卉，以其鲜艳的橙色和黄色花朵而闻名。它的某些品种可能具有独特的强烈香气，很多人认为它能驱赶蚊虫。\n\n从春季第5天到秋季第14天开花。</VPEF_Plant_Marigold.description>
+  
+  <!-- EN: pampas grass -->
+  <VPEF_Plant_PampasGrass.label>蒲苇</VPEF_Plant_PampasGrass.label>
+  <!-- EN: A tall, vigorous ornamental grass famous for its large, feathery white plumes that sway in the wind. It provides structure and height to garden borders and is remarkably resilient.\n\nBlooms from 1st day of summer to 15th day of fall. -->
+  <VPEF_Plant_PampasGrass.description>蒲苇是一种高大的观赏用禾本植物，以其在风中摇曳的羽毛状白色花穗而闻名。它能被栽种在花园的边界处，给花园定型，具有非凡的韧性。\n\n从夏季第1天到秋季第15天开花。</VPEF_Plant_PampasGrass.description>
+  
+  <!-- EN: pansy -->
+  <VPEF_Plant_Pansy.label>三色堇</VPEF_Plant_Pansy.label>
+  <!-- EN: A cultivated hybrid flower famous for its bright, "face-like" blooms. It thrives in cool temperatures and is often one of the first flowers to appear in spring.\n\nBlooms from 1st day of spring to 5th day of summer, and will uplift the spirits of colonists nearby. -->
+  <VPEF_Plant_Pansy.description>三色堇是一种人工培育出来的杂交花卉，以其明亮的人脸状花朵而闻名。它在凉爽的温度下生长良好，通常是春季最早出现的花卉之一。\n\n从春季第1天到夏季第5天开花。会改善附近殖民者的精神健康。</VPEF_Plant_Pansy.description>
+  
+  <!-- EN: peony bush -->
+  <VPEF_Plant_Peony.label>牡丹</VPEF_Plant_Peony.label>
+  <!-- EN: A dense, long-lived shrub known for its large, fragrant, lush blooms. Peonies are slow to establish, but a mature plant can live for decades, rewarding the grower with increasing beauty year after year.\n\nBlooms from 1st day of spring to 5th day of summer. -->
+  <VPEF_Plant_Peony.description>牡丹是一种密集的长寿灌木，以其又大又茂盛的花朵而闻名。牡丹生长缓慢，但成熟的植株可以存活数十年，每年都会为它的主任带来越来越美的花朵。\n\n从春季第1天到夏季第5天开花。</VPEF_Plant_Peony.description>
+  
+  <!-- EN: pink cyclamen -->
+  <VPEF_Plant_PinkCyclamen.label>仙客来</VPEF_Plant_PinkCyclamen.label>
+  <!-- EN: A delicate, low-growing perennial with swept-back petals that seem to dance in the breeze. They prefer cooler temperatures and will not bloom if it’s too hot.\n\nBlooms from 10th day of fall to 10th day of spring. -->
+  <VPEF_Plant_PinkCyclamen.description>仙客来是一种娇嫩、低矮的多年生植物，它的花瓣会反向展开，仿佛在微风中翩翩起舞。仙客来偏好凉爽的气温，天气过热则不会开花。\n\n从秋季的第10天到春季的第10天开花。</VPEF_Plant_PinkCyclamen.description>
+  
+  <!-- EN: plumeria -->
+  <VPEF_Plant_Plumeria.label>鸡蛋花</VPEF_Plant_Plumeria.label>
+  <!-- EN: A tropical flowering tree, also known as frangipani, famous for its intensely fragrant, waxy, pinwheel-shaped flowers. It is a symbol of perfection and spring in tropical climates.\n\nBlooms continuously from 1st day of summer to 14th day of fall. -->
+  <VPEF_Plant_Plumeria.description>鸡蛋花是一种热带开花树，以其强烈的芳香和蜡质的风车状花朵而闻名。它是热带气候中完美和春色的象征。\n\n从夏季第1天到秋季第14天连续开花。</VPEF_Plant_Plumeria.description>
+  
+  <!-- EN: prairie fire -->
+  <VPEF_Plant_PraireFire.label>火焰草</VPEF_Plant_PraireFire.label>
+  <!-- EN: A hardy, vibrant flower known for its fiery red and orange petals that resemble dancing flames. It is exceptionally resilient and thrives in hot, sunny conditions.\n\nBlooms from 5th day of summer to 10th day of fall. -->
+  <VPEF_Plant_PraireFire.description>火焰草是一种色彩鲜艳的坚韧花卉，它那红色和橙色的花瓣看起来像是在跃动的火焰。它有非凡的韧性，在阳光充足的炎热条件下生长良好。\n\n从夏季第5天到秋季第10天开花。</VPEF_Plant_PraireFire.description>
+  
+  <!-- EN: red rose bush -->
+  <VPEF_Plant_RedRoseBush.label>红玫瑰</VPEF_Plant_RedRoseBush.label>
+  <!-- EN: A dense, woody shrub known for producing vibrant, classic roses. With its thick foliage and striking blooms, it serves as an excellent ornamental centerpiece for any garden.\n\nBlooms from 10th day of spring to 5th day of fall. -->
+  <VPEF_Plant_RedRoseBush.description>红玫瑰是一种密集的木质灌木，以其鲜艳的花朵而闻名。它茂密的枝叶和醒目的花朵使其成为任何花园中的绝对中心。\n\n从春季第10天到秋季第5天开花。</VPEF_Plant_RedRoseBush.description>
+  
+  <!-- EN: saintpaulia -->
+  <VPEF_Plant_Saintpaulia.label>非洲堇</VPEF_Plant_Saintpaulia.label>
+  <!-- EN: A small, fuzzy-leafed perennial, commonly known as the african violet. It produces clusters of dainty, colorful flowers almost continuously, making it a highly prized indoor ornamental. It thrives only in stable, warm conditions.\n\nBlooms almost continuously, but only when the temperature is right. It will die if temperature falls below 5C. -->
+  <VPEF_Plant_Saintpaulia.description>非洲堇是一种小型多年生植物，通常也被称为非洲紫罗兰。它会几乎不间断地开出色彩斑斓的精致花朵，使其成为非常珍贵的室内观赏植物。它只能在稳定和温暖的条件下良好生长。\n\n几乎常年开花，但必须保证温度合适。如果温度降至5°C以下就会死亡。</VPEF_Plant_Saintpaulia.description>
+  
+  <!-- EN: sedum -->
+  <VPEF_Plant_Sedum.label>景天</VPEF_Plant_Sedum.label>
+  <!-- EN: Sedums are tough, succulent plants known for their fleshy leaves and star-shaped flower clusters that bloom for a long season. Unlike other plants, they do not enter a leafless state in cold temperatures.\n\nBlooms from 5th day of summer to 10th day of fall. -->
+  <VPEF_Plant_Sedum.description>景天是一种坚韧的多肉植物，以其肉质叶片和星形花序而闻名，花期较长。与其他植物不同，它们在寒冷温度下不会掉光叶子。\n\n从夏季第5天到秋季第10天开花。</VPEF_Plant_Sedum.description>
+  
+  <!-- EN: strelitzia -->
+  <VPEF_Plant_Strelitzia.label>鹤望兰</VPEF_Plant_Strelitzia.label>
+  <!-- EN: An iconic, tropical perennial known as the 'Bird of Paradise' flower. Its crane-like, vibrant orange and blue blooms make it one of the most striking and beautiful plants in a garden. When it withers, it’s incredibly difficult to look at.\n\nBlooms continuously from 5th day of spring to 10th day of fall. -->
+  <VPEF_Plant_Strelitzia.description>鹤望兰是一种标志性的热带多年生植物，也被称作天堂鸟。它那外型和仙鹤一样的橙色和蓝色花朵使其成为花园中最引人注目的植物之一。然而，它枯萎时非常难看。\n\n从春季第5天到秋季第10天连续开花。</VPEF_Plant_Strelitzia.description>
+  
+  <!-- EN: tulip -->
+  <VPEF_Plant_Tulip.label>郁金香</VPEF_Plant_Tulip.label>
+  <!-- EN: A classic spring flower known for its vibrant, cup-shaped blooms on a single stem. They are symbols of perfect love and new beginnings.\n\nBlooms from 3rd day of spring to 10th day of spring. -->
+  <VPEF_Plant_Tulip.description>郁金香是一种经典的春季花卉，以其在单一花茎上绽放的鲜艳杯状花朵而闻名。它们是完美爱情和新生活的象征。\n\n从春季第3天到第10天开花。</VPEF_Plant_Tulip.description>
+  
+</LanguageData>

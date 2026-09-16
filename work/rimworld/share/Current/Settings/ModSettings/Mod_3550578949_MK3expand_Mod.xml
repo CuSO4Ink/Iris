@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="MK3expand.MK3expand_Settings">
+		<toggablePatch>
+			<keys />
+			<values />
+		</toggablePatch>
+	</ModSettings>
+</SettingsBlock>

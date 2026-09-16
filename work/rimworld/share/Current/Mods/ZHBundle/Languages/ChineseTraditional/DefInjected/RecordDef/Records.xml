@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: items destroyed -->
+  <Record_ItemsDestroyed.label>銷毀的物品</Record_ItemsDestroyed.label>
+  <!-- EN: The number of items I have destroyed. -->
+  <Record_ItemsDestroyed.description>已經銷毀的物品數目。</Record_ItemsDestroyed.description>
+  
+</LanguageData>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Tendril -->
+
+  <RH_DF_Tendril.label>卷须</RH_DF_Tendril.label>
+  <RH_DF_Tendril.description>Nerotonin-4型变体卷须。这是一名女性受试者变异出触手一般的手臂，并将其用作武器的结果。\n\n卷须通常出现在红区，即感染变种开始出现特殊突变的区域，而不是通常的失心僵尸群。\n\nN-4病毒允许该受试者拥有抗火能力，但不像大多数极端突变体那样免受火焰的影响。</RH_DF_Tendril.description>
+  <RH_DF_Tendril.tools.0.label>触手</RH_DF_Tendril.tools.0.label>
+  <RH_DF_Tendril.tools.1.label>触手</RH_DF_Tendril.tools.1.label>
+  <RH_DF_Tendril.tools.2.label>头部</RH_DF_Tendril.tools.2.label>
+
+
+  <!-- Bone -->
+
+  <RH_DF_Bone.label>骨突</RH_DF_Bone.label>
+  <RH_DF_Bone.description>Nerotonin-4型变体骨突，通常存在于愤怒的受试者中。具体表现为骨骼突出身体，受试者的肌肉质量显著增加。它是已知的泰坦变体的前身。\n\n骨架通常出现在红区，即感染变种开始出现特殊突变的区域，而不是通常的失心僵尸群。\n\nN-4病毒允许该受试者拥有抗火能力，但不像大多数极端突变体那样免受火焰的影响。</RH_DF_Bone.description>
+  <RH_DF_Bone.tools.0.label>左拳</RH_DF_Bone.tools.0.label>
+  <RH_DF_Bone.tools.1.label>右拳</RH_DF_Bone.tools.1.label>
+  <RH_DF_Bone.tools.2.label>头部</RH_DF_Bone.tools.2.label>
+
+
+  <!-- roid hulk -->
+
+  <RH_DF2_RoidHulk.label>绿巨人</RH_DF2_RoidHulk.label>
+  <RH_DF2_RoidHulk.description>Nerotonin-4型变体绿巨人，通常只有在感染初期体内发现合成代谢或其他形式类固醇的受试者具有这种变体毒株。Nerotonin-4型病毒增加了受试者肌肉生长的速度，这导致生还者将其称为“绿巨人”。\n\n绿巨人通常出现在红区，即感染变种开始出现特殊突变的区域，而不是通常的失心僵尸群。\n\nN-4病毒允许该受试者拥有抗火能力，但不像大多数极端突变体那样免受火焰的影响。</RH_DF2_RoidHulk.description>
+  <RH_DF2_RoidHulk.tools.0.label>左爪</RH_DF2_RoidHulk.tools.0.label>
+  <RH_DF2_RoidHulk.tools.1.label>右爪</RH_DF2_RoidHulk.tools.1.label>
+  <RH_DF2_RoidHulk.tools.2.label>头部</RH_DF2_RoidHulk.tools.2.label>
+
+
+  <!-- Reaper -->
+
+  <RH_DF_Reaper.label>收割者</RH_DF_Reaper.label>
+  <RH_DF_Reaper.description>Nerotonin-4型变体收割者，具有这种进化毒株的受试者手臂上具有一把镰刀状的刀片，许多生还者因此警告他人，尽可能避免与其进行近战。Nerotonin-4型病毒攻击受试者的手臂生理结构，将其变成一种奇怪的有机刀片，甚至足以破坏金属。\n\n收割者通常出现在红区，即感染变种开始出现特殊突变的区域，而不是通常的失心僵尸群。\n\nN-4病毒允许该受试者拥有抗火能力，但不像大多数极端突变体那样免受火焰的影响。</RH_DF_Reaper.description>
+  <RH_DF_Reaper.tools.0.label>左爪</RH_DF_Reaper.tools.0.label>
+  <RH_DF_Reaper.tools.1.label>臂刃</RH_DF_Reaper.tools.1.label>
+  <RH_DF_Reaper.tools.2.label>头部</RH_DF_Reaper.tools.2.label>
+
+
+</LanguageData>

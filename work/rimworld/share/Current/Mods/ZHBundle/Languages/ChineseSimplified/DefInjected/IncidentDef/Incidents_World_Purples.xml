@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: long night -->
+  <VEE_LongNight.label>漫漫长夜</VEE_LongNight.label>
+  
+  <!-- EN: psychic bloom -->
+  <VEE_PsychicBloom.label>灵花绽放</VEE_PsychicBloom.label>
+  
+  <!-- EN: psychic rain -->
+  <VEE_PsychicRain.label>心灵之雨</VEE_PsychicRain.label>
+  <!-- EN: Psychic Rain -->
+  <VEE_PsychicRain.letterLabel>心灵之雨</VEE_PsychicRain.letterLabel>
+  <!-- EN: A dangerous psychic entity caused disturbance on subatomic levels, resonating across all particles of the atmosphere.\n\nA seemingly endless supernatural rain has begun, altering the very composition of time. Any person or creature not under the roof will age significantly faster.\n\nIt will last anywhere between a season to several years. -->
+  <VEE_PsychicRain.letterText>一个危险的心灵实体在亚原子层面引发了某种扰动，使大气中的粒子也随之产生共振。\n\n一场似乎永无尽头的超自然之雨已开始降下，正改变着时间的本质结构。任何不在屋顶下的人类和动物都会加速衰老。\n\n这场全球范围的异常气候将会在一象至数年时间内持续存在。</VEE_PsychicRain.letterText>
+  
+  <!-- EN: scorch -->
+  <VEE_Scorch.label>炽灼天灾</VEE_Scorch.label>
+  
+  <!-- EN: whiteout -->
+  <VEE_Whiteout.label>白幕天灾</VEE_Whiteout.label>
+  
+</LanguageData>

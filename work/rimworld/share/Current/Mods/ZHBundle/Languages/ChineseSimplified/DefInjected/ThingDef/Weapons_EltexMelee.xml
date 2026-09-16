@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: eltex dagger -->
+  <VPE_MeleeWeapon_EltexDagger.label>灵质匕首</VPE_MeleeWeapon_EltexDagger.label>
+  <!-- EN: A medieval dagger threaded with psychic focusing materials. While it enhances the wielder’s psychic sensitivity and neural heat dissipation, it also serves as an excellent melee weapon, as it follows the same idea as any other knife: A handle for holding and a sharp edge for cutting. -->
+  <VPE_MeleeWeapon_EltexDagger.description>一把由灵能材料覆盖的中世纪匕首。它特殊的材料增加了佩戴者的心灵敏感度，并且能够更快地驱散心灵熵，同时也是一把趁手武器，因为根本的理念从未改变过：一个握把和连接在上面的锋利的锋利刀刃。</VPE_MeleeWeapon_EltexDagger.description>
+  <!-- EN: handle -->
+  <VPE_MeleeWeapon_EltexDagger.tools.handle.label>柄</VPE_MeleeWeapon_EltexDagger.tools.handle.label>
+  <!-- EN: blade -->
+  <VPE_MeleeWeapon_EltexDagger.tools.blade.label>刀刃</VPE_MeleeWeapon_EltexDagger.tools.blade.label>
+  <!-- EN: point -->
+  <VPE_MeleeWeapon_EltexDagger.tools.point.label>刀尖</VPE_MeleeWeapon_EltexDagger.tools.point.label>
+  
+  <!-- EN: eltex mace -->
+  <VPE_MeleeWeapon_EltexMace.label>灵质钉锤</VPE_MeleeWeapon_EltexMace.label>
+  <!-- EN: A medieval mace threaded with psychic focusing materials. While it enhances the wielder’s psychic sensitivity and neural heat dissipation, it also serves as an excellent melee weapon, engineered for efficient swinging and deadly impacts. -->
+  <VPE_MeleeWeapon_EltexMace.description>一把由灵能材料覆盖的中世纪钉锤。它特殊的材料增加了佩戴者的心灵敏感度，并且能够更快地驱散心灵熵，同时也是一把趁手武器，在挥舞和杀伤上有特别的设计。</VPE_MeleeWeapon_EltexMace.description>
+  <!-- EN: handle -->
+  <VPE_MeleeWeapon_EltexMace.tools.handle.label>锤柄</VPE_MeleeWeapon_EltexMace.tools.handle.label>
+  <!-- EN: head -->
+  <VPE_MeleeWeapon_EltexMace.tools.head.label>锤头</VPE_MeleeWeapon_EltexMace.tools.head.label>
+  
+  <!-- EN: eltex sword -->
+  <VPE_MeleeWeapon_EltexSword.label>灵质短剑</VPE_MeleeWeapon_EltexSword.label>
+  <!-- EN: A medieval sword threaded with psychic focusing materials. While it enhances the wielder’s psychic sensitivity and neural heat dissipation, it also serves as an excellent melee weapon. Good for stabbing or slashing. It's light and nimble, which sometimes lets it beat bigger, heavier weapons. -->
+  <VPE_MeleeWeapon_EltexSword.description>一把由灵能材料覆盖的中世纪短剑。它特殊的材料增加了佩戴者的心灵敏感度，并且能够更快地驱散心灵熵，同时也是一把趁手武器，劈砍或戳刺都非常有效。它轻巧灵活，这让它有时候能击败更加巨大和沉重的武器。</VPE_MeleeWeapon_EltexSword.description>
+  <!-- EN: handle -->
+  <VPE_MeleeWeapon_EltexSword.tools.handle.label>剑柄</VPE_MeleeWeapon_EltexSword.tools.handle.label>
+  <!-- EN: point -->
+  <VPE_MeleeWeapon_EltexSword.tools.point.label>剑头</VPE_MeleeWeapon_EltexSword.tools.point.label>
+  <!-- EN: edge -->
+  <VPE_MeleeWeapon_EltexSword.tools.edge.label>剑刃</VPE_MeleeWeapon_EltexSword.tools.edge.label>
+  
+</LanguageData>

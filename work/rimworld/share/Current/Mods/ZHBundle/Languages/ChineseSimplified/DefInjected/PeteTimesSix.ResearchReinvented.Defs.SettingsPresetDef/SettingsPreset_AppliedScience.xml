@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: applied science -->
+  <SettingsPreset_RR_AppliedScience.label>应用科学</SettingsPreset_RR_AppliedScience.label>
+  <!-- EN: Theoretical research is disabled. Progress requires experimentation. -->
+  <SettingsPreset_RR_AppliedScience.description>禁用理论研究。进度完全依赖实验与实作。</SettingsPreset_RR_AppliedScience.description>
+
+</LanguageData>

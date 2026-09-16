@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Calculated Attack -->
+  <DR_CalculatedAttack.degreeDatas.Calculated_Attack.label>精密計算的攻擊</DR_CalculatedAttack.degreeDatas.Calculated_Attack.label>
+  <!-- EN: {PAWN_nameDef} can perform a mathematically calculated perfect attack. -->
+  <DR_CalculatedAttack.degreeDatas.Calculated_Attack.description>{PAWN_nameDef} 能夠發動經過數學計算的完美攻擊。</DR_CalculatedAttack.degreeDatas.Calculated_Attack.description>
+  
+</LanguageData>

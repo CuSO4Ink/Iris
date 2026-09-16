@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: stab -->
+  <BloodLetter_Stab.label>刺傷</BloodLetter_Stab.label>
+  <!-- EN: {0} has been stabbed to death. -->
+  <BloodLetter_Stab.deathMessage>{0}被刺死了。</BloodLetter_Stab.deathMessage>
+  
+  <!-- EN: cleansing damage -->
+  <Cleansing.label>凈化</Cleansing.label>
+  <!-- EN: {0} has been cleansed. -->
+  <Cleansing.deathMessage>{0}被凈化了。</Cleansing.deathMessage>
+  
+  <!-- EN: cleansing blast damage -->
+  <CleansingBlast.label>凈化</CleansingBlast.label>
+  <!-- EN: {0} has been cleansed. -->
+  <CleansingBlast.deathMessage>{0}被凈化了。</CleansingBlast.deathMessage>
+  
+  <!-- EN: cleansing damage -->
+  <CleansingGreater.label>凈化</CleansingGreater.label>
+  <!-- EN: {0} has been cleansed. -->
+  <CleansingGreater.deathMessage>{0}被凈化了。</CleansingGreater.deathMessage>
+  
+  <!-- EN: gaping wound -->
+  <GapingWound.label>傷口撕裂</GapingWound.label>
+  <!-- EN: {0} died from a gaping wound. -->
+  <GapingWound.deathMessage>{0}死於傷口撕裂。</GapingWound.deathMessage>
+  
+  <!-- EN: infectious bomb -->
+  <InfectiousBomb.label>感染炸傷</InfectiousBomb.label>
+  <!-- EN: {0} has died from plague bile. -->
+  <InfectiousBomb.deathMessage>{0}被瘟疫膽汁殺死了。</InfectiousBomb.deathMessage>
+  
+  <!-- EN: necronoid damage -->
+  <NecronoidCutDamage.label>歿疫攻擊</NecronoidCutDamage.label>
+  <!-- EN: {0} has died from necronoid damage. -->
+  <NecronoidCutDamage.deathMessage>{0}被歿疫感染體殺死了。</NecronoidCutDamage.deathMessage>
+  
+  <!-- EN: necronoid damage -->
+  <NecronoidMajorCutDamage.label>歿疫攻擊</NecronoidMajorCutDamage.label>
+  <!-- EN: {0} has died from necronoid damage. -->
+  <NecronoidMajorCutDamage.deathMessage>{0}被歿疫感染體殺死了。</NecronoidMajorCutDamage.deathMessage>
+  
+  <!-- EN: necronoid damage -->
+  <NecronoidRangeDamage.label>歿疫攻擊</NecronoidRangeDamage.label>
+  <!-- EN: {0} has died from necronoid damage. -->
+  <NecronoidRangeDamage.deathMessage>{0}被歿疫感染體殺死了。</NecronoidRangeDamage.deathMessage>
+  
+  <!-- EN: necronoid damage -->
+  <NecronoidStabDamage.label>歿疫攻擊</NecronoidStabDamage.label>
+  <!-- EN: {0} has died from necronoid damage. -->
+  <NecronoidStabDamage.deathMessage>{0}被歿疫感染體殺死了。</NecronoidStabDamage.deathMessage>
+  
+  <!-- EN: plague bile -->
+  <PlagueBile.label>瘟疫膽汁</PlagueBile.label>
+  <!-- EN: {0} has died from plague bile. -->
+  <PlagueBile.deathMessage>{0}被瘟疫膽汁殺死了。</PlagueBile.deathMessage>
+  
+  <!-- EN: lung rot gas -->
+  <RottingExplosion.label>肺腐氣體</RottingExplosion.label>
+  <!-- EN: {0} has been killed. -->
+  <RottingExplosion.deathMessage>{0}被殺死了。</RottingExplosion.deathMessage>
+  
+</LanguageData>

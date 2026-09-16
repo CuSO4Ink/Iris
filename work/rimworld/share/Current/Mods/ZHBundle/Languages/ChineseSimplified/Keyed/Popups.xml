@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: {0} now ready: {1} -->
+  <RR_opportunityTypeReady>{0} 已就绪: {1}</RR_opportunityTypeReady>
+  <!-- EN: {0} now ready: {1} and {2} others -->
+  <RR_opportunityTypeReady_Many>{0} 已就绪: {1} 以及其它 {2} 项</RR_opportunityTypeReady_Many>
+</LanguageData>

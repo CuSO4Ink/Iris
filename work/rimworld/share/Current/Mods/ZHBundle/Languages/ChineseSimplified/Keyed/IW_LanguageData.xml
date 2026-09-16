@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<LanguageData>
+  <BetterWorkbenchManagement>工作台功能扩展</BetterWorkbenchManagement>
+  <IW.ClickToDropTip>放到合适的储存区</IW.ClickToDropTip>
+  <IW.ClickToTakeToStockpileTip>放到地上</IW.ClickToTakeToStockpileTip>
+  <IW.CopyJustBillsTip>复制该任务清单</IW.CopyJustBillsTip>
+  <IW.BreakLinkToOtherBillsTip>解除连结</IW.BreakLinkToOtherBillsTip>
+  <IW.RenameBillTip>重新命名任务清单(不填写即恢复预设)</IW.RenameBillTip>
+
+  <IW.CountAwayLabel>包含无法直接取得物品</IW.CountAwayLabel>
+  <IW.CountAwayDesc>计算无法直接取得的殖民者身上的物品，&#10;&#13;例如旅队、运输舱、休眠舱、动物身上。</IW.CountAwayDesc>
+
+  <IW.OutputFilterLabel>新增项目至清单数量要求</IW.OutputFilterLabel>
+
+  <IW.OutputFilterTitle>被勾选项目将与制造项目合并计算数量:</IW.OutputFilterTitle>
+
+  <IW.OpenPreviousBillTip>上一个清单</IW.OpenPreviousBillTip>
+
+  <IW.OpenNextBillTip>下一个清单</IW.OpenNextBillTip>
+
+  <IW.ChangeLinkedBillModeText>前往细项更改模式 (无法在此更改连结清单)</IW.ChangeLinkedBillModeText>
+
+  <IW.CopyAllLabel>复制全部</IW.CopyAllLabel>
+  <IW.CopyAllTip>复制任务清单列表</IW.CopyAllTip>
+
+  <IW.PasteLinkLabel>贴上连结</IW.PasteLinkLabel>
+  <IW.PasteLinkTip>贴上连结任务清单,与原清单即时同步设定</IW.PasteLinkTip>
+
+  <IW.AutoOpenBillTabLabel>自动开启选单</IW.AutoOpenBillTabLabel>
+  <IW.AutoOpenBillTabDesc>选取工作台和储存区时，自动开启选单。</IW.AutoOpenBillTabDesc>
+
+  <IW.EnableDragToReorder>拖拽调整清单顺序</IW.EnableDragToReorder>
+  <IW.EnableDragToReorderDesc>直接拖动任务清单进行排列。</IW.EnableDragToReorderDesc>
+
+  <IW.PasteBillSettings>贴上清单设定(不包含制造项目)</IW.PasteBillSettings>
+
+  <IW.MirrorSuspendedStatus>连结清单同步暂停</IW.MirrorSuspendedStatus>
+  <IW.MirrorSuspendedStatusDesc>同步连结任务清单的启用与暂停(立即同步所有连结任务清单)。</IW.MirrorSuspendedStatusDesc>
+
+  <IW.DropOnFloorByDefault>清单默认放到地上</IW.DropOnFloorByDefault>
+  <IW.DropOnFloorByDefaultDesc>新增的任务清单将被预设为"放到地上"。</IW.DropOnFloorByDefaultDesc>
+
+  <IW.CountOutsideStockpiles>计算储存区外物品</IW.CountOutsideStockpiles>
+  <IW.CountOutsideStockpilesDesc>启用此选项，解决工作台在计算ｘ时&#10;&#13;无法将储存区外的物品统计进去的问题。&#10;&#13;&#10;&#13;[ 已有其他模组处理此问题的话则可禁用 ]</IW.CountOutsideStockpilesDesc>
+
+  <IW.CountCarriedByNonHumans>计算非人类携带资源</IW.CountCarriedByNonHumans>
+  <IW.CountCarriedByNonHumansDesc>原版游戏中存在一个错误，当「资源物品」（例如食物、药品）是由非人类单位携带时（例如运货动物、机器人，或要跟着商队离开的动物），这些物品不会被统计进你的资源清单里。启用这个选项可以修正这个错误。</IW.CountCarriedByNonHumansDesc>
+
+  <IW.WorkbenchRestrictionLabel>同步使用者限制</IW.WorkbenchRestrictionLabel>
+  <IW.WorkbenchRestrictionDesc>勾选这个选项后，使用者限制会套用到工作台上所有其他工作单，不必一个一个手动设。</IW.WorkbenchRestrictionDesc>
+
+  <IW.DefaultRadius>默认材料搜索半径: </IW.DefaultRadius>
+  <IW.UnlimitedRadius>无限制</IW.UnlimitedRadius>
+</LanguageData>

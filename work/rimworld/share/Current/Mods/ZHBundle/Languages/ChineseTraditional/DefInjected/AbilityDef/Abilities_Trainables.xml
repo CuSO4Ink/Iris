@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: controlled blinking -->
+  <VEF_ControlledBlinking.label>閃現</VEF_ControlledBlinking.label>
+  <!-- EN: Override the creature's usual erratic blinking, allowing a directed way to blink to a chosen location within range. -->
+  <VEF_ControlledBlinking.description>遵從指令主動閃現到離原點不遠的特定位置。</VEF_ControlledBlinking.description>
+  
+  <!-- EN: controlled detonation -->
+  <VEF_ControlledDetonation.label>自爆</VEF_ControlledDetonation.label>
+  <!-- EN: Willingly trigger a powerful self-destructive explosion, sacrificing this animal in a final act that unleashes all stored volatile compounds in a devastating blast. -->
+  <VEF_ControlledDetonation.description>遵從指令主動釋放所儲存的全部不穩定化合物，通過犧牲自身來引發威力不容小覷的爆炸。</VEF_ControlledDetonation.description>
+  
+  <!-- EN: controlled invisibility -->
+  <VEF_ControlledInvisibility.label>隱形</VEF_ControlledInvisibility.label>
+  <!-- EN: Shroud the animal in a veil of controlled invisibility, vanishing from sight while retaining full awareness and precision. -->
+  <VEF_ControlledInvisibility.description>遵從指令主動進入隱形狀態，使自身無法從視覺上被感知到。這不會影響其環境洞察能力和動作精密性。</VEF_ControlledInvisibility.description>
+  
+</LanguageData>

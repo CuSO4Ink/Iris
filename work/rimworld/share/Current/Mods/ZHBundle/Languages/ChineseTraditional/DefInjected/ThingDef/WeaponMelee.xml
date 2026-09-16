@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 엘텍스 법봉 (A) -->
+  <Miho_Weapon_EltexA.label>美狐心靈權杖（A）</Miho_Weapon_EltexA.label>
+  <!-- EN: 신경열 저장에 최적화된 싸이킥 법봉 입니다. -->
+  <Miho_Weapon_EltexA.description>用上好木材製成的華美心靈權杖，能夠有效提高使用者的神經熱極限。</Miho_Weapon_EltexA.description>
+  <!-- EN: head -->
+  <Miho_Weapon_EltexA.tools.head.label>杖頭</Miho_Weapon_EltexA.tools.head.label>
+  
+  <!-- EN: 엘텍스 대부월 -->
+  <Miho_Weapon_EltexAxe.label>美狐心靈斬月斧</Miho_Weapon_EltexAxe.label>
+  <!-- EN: 근접 성능이 좋은 엘텍스 무기입니다. -->
+  <Miho_Weapon_EltexAxe.description>斧刃相當鋒利的心靈武器，能夠提高使用者的神經熱極限與消散速率。</Miho_Weapon_EltexAxe.description>
+  <!-- EN: blade -->
+  <Miho_Weapon_EltexAxe.tools.blade.label>斧刃</Miho_Weapon_EltexAxe.tools.blade.label>
+  <!-- EN: point -->
+  <Miho_Weapon_EltexAxe.tools.point.label>斧尖</Miho_Weapon_EltexAxe.tools.point.label>
+  
+  <!-- EN: 엘텍스 법봉 (B) -->
+  <Miho_Weapon_EltexB.label>美狐心靈權杖（B）</Miho_Weapon_EltexB.label>
+  <!-- EN: 신경열 회복에 최적화된 싸이킥 법봉 입니다. -->
+  <Miho_Weapon_EltexB.description>用上好木材製成的華美心靈權杖，能夠有效提高使用者的神經熱消散速率。</Miho_Weapon_EltexB.description>
+  <!-- EN: head -->
+  <Miho_Weapon_EltexB.tools.head.label>杖頭</Miho_Weapon_EltexB.tools.head.label>
+  
+  <!-- EN: 미호 플라즈마 대태도 -->
+  <Miho_Weapon_PlasmaTachi.label>美狐等離子野太刀</Miho_Weapon_PlasmaTachi.label>
+  <!-- EN: 플라즈마가 방출되는 개량된 거대한 외날검 입니다. 이 검의 절단력은 고대 지구의 제트스트림 전사의 검의 절단력과 맞먹습니다. -->
+  <Miho_Weapon_PlasmaTachi.description>整體設計經過大幅改進的單刃武器，其銳利無比的等離子刀刃能夠輕易斬斷鋼鐵。</Miho_Weapon_PlasmaTachi.description>
+  <!-- EN: handle -->
+  <Miho_Weapon_PlasmaTachi.tools.handle.label>握柄</Miho_Weapon_PlasmaTachi.tools.handle.label>
+  <!-- EN: blade -->
+  <Miho_Weapon_PlasmaTachi.tools.blade.label>刀刃</Miho_Weapon_PlasmaTachi.tools.blade.label>
+  <!-- EN: point -->
+  <Miho_Weapon_PlasmaTachi.tools.point.label>刀尖</Miho_Weapon_PlasmaTachi.tools.point.label>
+  
+  <!-- EN: 미호 파워클로 -->
+  <Miho_Weapon_PowerClaw.label>美狐動力爪</Miho_Weapon_PowerClaw.label>
+  <!-- EN: 3개의 날과 1개의 송곳으로 이루어진 미호용 파워클로 입니다. 정원사들에게 인기가 많다고 합니다. -->
+  <Miho_Weapon_PowerClaw.description>由三個金屬刃和一根刺錐組成的華麗爪狀武器。除了用來把人撕成碎片外，也能當做簡易的農具使用。\n\n“這東西可比鋤頭鐮刀什麽的好用多了。”</Miho_Weapon_PowerClaw.description>
+  <!-- EN: blade -->
+  <Miho_Weapon_PowerClaw.tools.blade.label>爪刃</Miho_Weapon_PowerClaw.tools.blade.label>
+  <!-- EN: point -->
+  <Miho_Weapon_PowerClaw.tools.point.label>刺錐</Miho_Weapon_PowerClaw.tools.point.label>
+  
+  <!-- EN: 미호 파워해머 -->
+  <Miho_Weapon_PowerHammer.label>美狐鑿岩機</Miho_Weapon_PowerHammer.label>
+  <!-- EN: 미호들이 쓰는 개조된 착암기 입니다. 건물을 철거할때나 채굴을 할때 좋습니다. -->
+  <Miho_Weapon_PowerHammer.description>經過美狐族改造的鑿岩機，很適合采礦和破拆。</Miho_Weapon_PowerHammer.description>
+  <!-- EN: point -->
+  <Miho_Weapon_PowerHammer.tools.point.label>鉆頭</Miho_Weapon_PowerHammer.tools.point.label>
+  
+  <!-- EN: 미호 환도 -->
+  <Miho_Weapon_RingedBlade.label>美狐環首短刀</Miho_Weapon_RingedBlade.label>
+  <!-- EN: 적을 다져버리는데 좋은 큰 환도 입니다. -->
+  <Miho_Weapon_RingedBlade.description>短小鋒利且易於攜帶的刺砍兩用武器。除了用來把人剁成塊外，也能當做簡易的農具使用。</Miho_Weapon_RingedBlade.description>
+  <!-- EN: handle -->
+  <Miho_Weapon_RingedBlade.tools.handle.label>握柄</Miho_Weapon_RingedBlade.tools.handle.label>
+  <!-- EN: blade -->
+  <Miho_Weapon_RingedBlade.tools.blade.label>刀刃</Miho_Weapon_RingedBlade.tools.blade.label>
+  <!-- EN: point -->
+  <Miho_Weapon_RingedBlade.tools.point.label>刀尖</Miho_Weapon_RingedBlade.tools.point.label>
+  
+  <!-- EN: 미호 자차 -->
+  <Miho_Weapon_Sappertool.label>美狐防暴叉</Miho_Weapon_Sappertool.label>
+  <!-- EN: 보통 '사쓰마타'라 불리는 장대형 무기는 비교적 힘이 약한 미호들이 인류를 효율적으로 제압하기 위해 만들어 졌습니다. -->
+  <Miho_Weapon_Sappertool.description>為力氣較小的美狐族設計的長柄武器，多用於鎮壓不聽話的人類。</Miho_Weapon_Sappertool.description>
+  <!-- EN: head -->
+  <Miho_Weapon_Sappertool.tools.head.label>叉頭</Miho_Weapon_Sappertool.tools.head.label>
+  
+  <!-- EN: 미호 대태도 -->
+  <Miho_Weapon_Tachi.label>美狐野太刀</Miho_Weapon_Tachi.label>
+  <!-- EN: 거대한 외날검 입니다. 고대 지구의 무사들이 즐겨 썼다 합니다. -->
+  <Miho_Weapon_Tachi.description>刀身修長無比的單刃武器，曾廣泛被古地球上的武士們所使用。</Miho_Weapon_Tachi.description>
+  <!-- EN: handle -->
+  <Miho_Weapon_Tachi.tools.handle.label>握柄</Miho_Weapon_Tachi.tools.handle.label>
+  <!-- EN: blade -->
+  <Miho_Weapon_Tachi.tools.blade.label>刀刃</Miho_Weapon_Tachi.tools.blade.label>
+  <!-- EN: point -->
+  <Miho_Weapon_Tachi.tools.point.label>刀尖</Miho_Weapon_Tachi.tools.point.label>
+  
+</LanguageData>

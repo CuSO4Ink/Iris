@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Miho_Adult_LiaisonOfficer.title>美狐外交聯絡官</Miho_Adult_LiaisonOfficer.title>
+  <Miho_Adult_LiaisonOfficer.titleShort>聯絡官</Miho_Adult_LiaisonOfficer.titleShort>
+  <Miho_Adult_LiaisonOfficer.description>{PAWN_nameDef}是一名外交聯絡官，[PAWN_pronoun]主要負責與外界其他派系間的聯絡與物資交換。</Miho_Adult_LiaisonOfficer.description>
+
+  <Miho_Adult_PMCInfantry.title>美狐軍事承包商士兵</Miho_Adult_PMCInfantry.title>
+  <Miho_Adult_PMCInfantry.titleShort>軍事承包商士兵</Miho_Adult_PMCInfantry.titleShort>
+  <Miho_Adult_PMCInfantry.description>{PAWN_nameDef}是某美狐軍事承包商下屬的一名士兵，{PAWN_pronoun}被派往邊緣世界執行美狐族地面殖民地的安保工作。</Miho_Adult_PMCInfantry.description>
+
+  <Miho_Adult_PMCSapper.title>美狐軍事承包商工程師</Miho_Adult_PMCSapper.title>
+  <Miho_Adult_PMCSapper.titleShort>軍事承包商工程師</Miho_Adult_PMCSapper.titleShort>
+  <Miho_Adult_PMCSapper.description>{PAWN_nameDef}是某美狐軍事承包商下屬的一名工程師，{PAWN_pronoun}的主要工作便是利用心靈能力構築陣地並管理爆炸物。當然，這其中肯定會伴隨著不少危險便是。</Miho_Adult_PMCSapper.description>
+
+  <Miho_Adult_PMCSharpshooter.title>美狐軍事承包商神槍手</Miho_Adult_PMCSharpshooter.title>
+  <Miho_Adult_PMCSharpshooter.titleShort>軍事承包商神槍手</Miho_Adult_PMCSharpshooter.titleShort>
+  <Miho_Adult_PMCSharpshooter.description>{PAWN_nameDef}“神槍手”可謂遠近聞名，軍事承包商的同事們都對{PAWN_pronoun}讚歎不已。能取得如此光榮的稱號可並非因為運氣好或視力出眾，這僅僅是{PAWN_pronoun}多年以來腳踏實地刻苦訓練的有力回報罷了。</Miho_Adult_PMCSharpshooter.description>
+
+  <Miho_Adult_HamburgerCook.title>美狐漢堡廚師</Miho_Adult_HamburgerCook.title>
+  <Miho_Adult_HamburgerCook.titleShort>廚師</Miho_Adult_HamburgerCook.titleShort>
+  <Miho_Adult_HamburgerCook.description>{PAWN_nameDef}曾是個小有名氣的漢堡廚師。至少直到{PAWN_pronoun}向漢堡肉餅裡摻人肉前都是如此。</Miho_Adult_HamburgerCook.description>
+
+  <Miho_Adult_SushiCook.title>美狐壽司名廚</Miho_Adult_SushiCook.title>
+  <Miho_Adult_SushiCook.titleShort>名廚</Miho_Adult_SushiCook.titleShort>
+  <Miho_Adult_SushiCook.description>{PAWN_nameDef}原本只是一家旋轉壽司店裡的無名小廚。\n\n{PAWN_pronoun}的師傅曾經這樣教導過{PAWN_pronoun}：“握著這些米，然後用心去感受。當可以準確知曉手中米粒的重量後，你也就能獨當一面了。”謹遵師囑的{PAWN_nameDef}開始沒日沒夜地磨練自身的技藝，最終成功將重量誤差降低到了0.1g以內。{PAWN_pronoun}的名氣因此越來越大，許多其他星球的客人都不惜千里迢迢前來排隊享用{PAWN_pronoun}的壽司。\n\n直到有一天...{PAWN_nameDef}所工作的旋轉壽司店發生了一起大規模食物中毒事件。壽司店最終在受害顧客的起訴下宣告破產，丟掉工作的{PAWN_pronoun}也被迫四處流浪。在機緣巧合下，{PAWN_pronoun}選擇了參加美狐族的邊緣世界大開發計劃，最終乘坐飛船來到了這裡。</Miho_Adult_SushiCook.description>
+
+  <Miho_Adult_VirtualIdol.title>美狐虛擬偶像</Miho_Adult_VirtualIdol.title>
+  <Miho_Adult_VirtualIdol.titleShort>虛擬偶像</Miho_Adult_VirtualIdol.titleShort>
+  <Miho_Adult_VirtualIdol.description>在被帶至邊緣世界之前，{PAWN_nameDef}曾是一名在網絡上活躍的虛擬偶像。憑借陰沉系的眼鏡娘形象與甜美聲音的奇怪組搭，{PAWN_pronoun}成功收穫了大量人氣，一躍變為了萬眾矚目的焦點。在F3遊戲節舉辦的前一天，{PAWN_pronoun}還特地發佈消息通知粉絲們記得參加NFT線下簽名會。\n\n那天，{PAWN_nameDef}興高采烈地離開了家。但{PAWN_pronoun}做夢也想不到，自己這輩子可能都再也無法回來了。簽名會場內，一名{PAWN_nameDef}的狂熱粉絲似乎早早就在這裡等候了。他靠在牆邊，一邊心想著自己單推偶像的可愛形象，一邊發出“嘿嘿”的傻笑聲。{PAWN_nameDef}正式登台後，目睹其真容的他瞬間臉色大變，隨後便頭也不回地離開了現場。簽名會結束後，走在回家路上的{PAWN_nameDef}突然被一擊悶棍放倒。在昏過去前，{PAWN_pronoun}似乎隱約看到了那名狂熱粉絲帶著一臉猙獰的表情站在旁邊。等到再次醒來時，{PAWN_nameDef}就發現自己已經身處於邊緣世界中了。</Miho_Adult_VirtualIdol.description>
+
+  <Miho_Adult_LowAssassin.title>美狐刺客</Miho_Adult_LowAssassin.title>
+  <Miho_Adult_LowAssassin.titleShort>刺客</Miho_Adult_LowAssassin.titleShort>
+  <Miho_Adult_LowAssassin.description>雖然只是低階刺客，但{PAWN_nameDef}可絕非善茬——{PAWN_pronoun}曾憑借美貌誘殺了幾名比自身階級高出許多的刺客同行。在一次前往邊緣世界執行任務的途中，{PAWN_pronoun}所乘坐的太空梭被防空砲擊落，最終墜毀在了地表。幸運的是，{PAWN_nameDef}活了下來，但也並不打算再回到刺客組織了。</Miho_Adult_LowAssassin.description>
+
+  <Miho_Adult_MilitaryCooker.title>美狐自警團炊事員</Miho_Adult_MilitaryCooker.title>
+  <Miho_Adult_MilitaryCooker.titleShort>炊事員</Miho_Adult_MilitaryCooker.titleShort>
+  <Miho_Adult_MilitaryCooker.description>{PAWN_nameDef}是美狐自警團裡的一名炊事員。然而，{PAWN_pronoun}煮的米飯相當難吃，其他人都很好奇{PAWN_pronoun}是怎麼當上這個職務的。</Miho_Adult_MilitaryCooker.description>
+
+  <Miho_Adult_Surgeon.title>美狐外科醫生</Miho_Adult_Surgeon.title>
+  <Miho_Adult_Surgeon.titleShort>外科醫生</Miho_Adult_Surgeon.titleShort>
+  <Miho_Adult_Surgeon.description>雖然{PAWN_nameDef}成功當上了一名外科醫生，但{PAWN_pronoun}的技術水平簡直不堪入目。搞出了諸多醫療事故的{PAWN_pronoun}最終被心懷怨恨的遭殃患者綁架帶走，並送到了邊緣世界上。</Miho_Adult_Surgeon.description>
+
+  <Miho_Adult_SurrogateSurgeon.title>美狐代孕醫生</Miho_Adult_SurrogateSurgeon.title>
+  <Miho_Adult_SurrogateSurgeon.titleShort>代孕醫生</Miho_Adult_SurrogateSurgeon.titleShort>
+  <Miho_Adult_SurrogateSurgeon.description>{PAWN_nameDef}本是一名售貨員，但在機緣巧合下意外發現自己有給別人做代孕手術的天賦。迄今為止，{PAWN_pronoun}成功完成的手術高達1382次。</Miho_Adult_SurrogateSurgeon.description>
+
+  <Miho_Adult_Nurse.title>美狐護士</Miho_Adult_Nurse.title>
+  <Miho_Adult_Nurse.titleShort>護士</Miho_Adult_Nurse.titleShort>
+  <Miho_Adult_Nurse.description>{PAWN_nameDef}是一名護士。多虧了護士這行獨特的“職業文化”，{PAWN_pronoun}學會了怎麼走鋼絲。</Miho_Adult_Nurse.description>
+
+  <Miho_Adult_Massager.title>美狐按摩師</Miho_Adult_Massager.title>
+  <Miho_Adult_Massager.titleShort>按摩師</Miho_Adult_Massager.titleShort>
+  <Miho_Adult_Massager.description>{PAWN_nameDef}在某座美狐族城市裡開了一家按摩店。“咳哼，本店的業務可不包含色色環節哦。這麼想要的話，就請出門左轉直走到下條街那兒去找大型按摩會所吧。”</Miho_Adult_Massager.description>
+
+  <Miho_Adult_SpecialMassager.title>美狐“特殊服務”按摩師</Miho_Adult_SpecialMassager.title>
+  <Miho_Adult_SpecialMassager.titleShort>按摩師</Miho_Adult_SpecialMassager.titleShort>
+  <Miho_Adult_SpecialMassager.description>{PAWN_nameDef}曾在一家非法按摩會所裡工作——這裡表面上是按摩會所，但其本質卻是家妓院。\n\n某一天，當{PAWN_nameDef}將鈔票塞入乳溝中，並正要給客人做按摩時，警察突然闖了進來。{PAWN_pronoun}冷靜地通過作為緊急逃生通道的“狡狐洞”迅速逃離，在途中卻發現有包“白粉”從客人的褲兜裡掉了出來。鬼迷心竅的{PAWN_nameDef}將“白粉”悄悄地藏在了自己身上，然後自以為安全地跑回了家。殊不知，警察早已在“狡狐洞”的出口附近暗中待命，並派出了緝毒無人機暗中跟隨{PAWN_pronoun}。最終，{PAWN_pronoun}稀里糊塗地被以販毒走私（實際上並沒有幹過）的罪名緝拿歸案，徹徹底底的體會到了什麼叫做“倒霉透頂”。</Miho_Adult_SpecialMassager.description>
+
+  <Miho_Adult_Academician.title>美狐學院院士</Miho_Adult_Academician.title>
+  <Miho_Adult_Academician.titleShort>學院院士</Miho_Adult_Academician.titleShort>
+  <Miho_Adult_Academician.description>{PAWN_nameDef}是美狐學院的一名在職院士。十幾年以來，{PAWN_pronoun}一直在努力研究邊緣世界上的人類。</Miho_Adult_Academician.description>
+
+  <Miho_Adult_Forge.title>美狐高爐管理人</Miho_Adult_Forge.title>
+  <Miho_Adult_Forge.titleShort>高爐管理人</Miho_Adult_Forge.titleShort>
+  <Miho_Adult_Forge.description>{PAWN_nameDef}負責管理工廠裡的幾台高爐。利慾熏心的{PAWN_pronoun}收下了工廠競爭對手的錢，並通過大量灌水的方式把高爐搞炸了。最終事情不幸敗露，{PAWN_nameDef}也因此丟了飯碗。</Miho_Adult_Forge.description>
+
+  <Miho_Adult_Gunsmith.title>美狐槍械店老闆</Miho_Adult_Gunsmith.title>
+  <Miho_Adult_Gunsmith.titleShort>槍械店老闆</Miho_Adult_Gunsmith.titleShort>
+  <Miho_Adult_Gunsmith.description>酷愛玩槍的{PAWN_nameDef}在某座美狐族城市裡開了一家槍械店。久而久之，{PAWN_pronoun}發現自己九成以上的顧客都莫名其妙的失去了聯繫。為了尋求新的商機，{PAWN_pronoun}選擇前往戰火紛飛的邊緣世界看一看。</Miho_Adult_Gunsmith.description>
+
+  <Miho_Adult_Calligrapher.title>美狐書法家</Miho_Adult_Calligrapher.title>
+  <Miho_Adult_Calligrapher.titleShort>書法家</Miho_Adult_Calligrapher.titleShort>
+  <Miho_Adult_Calligrapher.description>{PAWN_nameDef}是一名書法家。由於缺乏創作慾望，{PAWN_pronoun}乘飛船來到了邊緣世界，並希望能在這裡找點刺激。</Miho_Adult_Calligrapher.description>
+
+  <Miho_Adult_Miner.title>美狐礦業公司經理</Miho_Adult_Miner.title>
+  <Miho_Adult_Miner.titleShort>礦業公司經理</Miho_Adult_Miner.titleShort>
+  <Miho_Adult_Miner.description>由於對採礦挖掘有著異常的喜好，{PAWN_nameDef}成為了一名礦業公司的經理。除了會親自到礦場幹活外，{PAWN_pronoun}也喜歡和手下的礦工們一起吃晚飯。</Miho_Adult_Miner.description>
+
+  <Miho_Adult_Plantation.title>美狐花店店主</Miho_Adult_Plantation.title>
+  <Miho_Adult_Plantation.titleShort>花店店主</Miho_Adult_Plantation.titleShort>
+  <Miho_Adult_Plantation.description>喜歡養花育花的{PAWN_nameDef}在某座美狐族城市裡開了一家花店。在某次雜交實驗中，{PAWN_pronoun}意外培育出了具有自我意識的高危險性花朵，最終被美狐政府當局放逐到了邊緣世界上。</Miho_Adult_Plantation.description>
+
+  <Miho_Adult_Privateer.title>美狐劫掠者</Miho_Adult_Privateer.title>
+  <Miho_Adult_Privateer.titleShort>劫掠者</Miho_Adult_Privateer.titleShort>
+  <Miho_Adult_Privateer.description>{PAWN_nameDef}是名為“愉悅海盜團”的不法團體中的一員，他們的主要業務便是擄掠並販賣人口。當然，這些骯髒的活計可並不像他們的團名一樣好笑。</Miho_Adult_Privateer.description>
+
+  <Miho_Adult_BrutalPsyker.title>美狐靈能殺手</Miho_Adult_BrutalPsyker.title>
+  <Miho_Adult_BrutalPsyker.titleShort>靈能殺手</Miho_Adult_BrutalPsyker.titleShort>
+  <Miho_Adult_BrutalPsyker.description>{PAWN_nameDef}曾是一名技藝高超的靈能殺手。某天在邊緣世界執行任務時，{PAWN_pronoun}因意外而不幸掉入海中，之後又被湍急的洋流捲走。當地的一位捕魚人將{PAWN_nameDef}救了上來，其所屬部落對此大為震驚，遂又將{PAWN_pronoun}當做神明來看待。{PAWN_nameDef}覺得這樣的生活似乎也不錯，於是便在這兒住了下來。</Miho_Adult_BrutalPsyker.description>
+
+  <Miho_Adult_Battlemage.title>美狐戰鬥術士</Miho_Adult_Battlemage.title>
+  <Miho_Adult_Battlemage.titleShort>戰鬥術士</Miho_Adult_Battlemage.titleShort>
+  <Miho_Adult_Battlemage.description>{PAWN_nameDef}是一名經過專業訓練的戰鬥術士。或許是因為在訓練時長期缺乏與他人的溝通，{PAWN_pronoun}的社交能力可以說是相當差勁了。</Miho_Adult_Battlemage.description>
+
+  <Miho_Adult_Engi.title>美狐機修工</Miho_Adult_Engi.title>
+  <Miho_Adult_Engi.titleShort>機修工</Miho_Adult_Engi.titleShort>
+  <Miho_Adult_Engi.description>{PAWN_nameDef}喜歡擺弄各種各樣的機械設備和無人機。雖然{PAWN_pronoun}在這方面很有天賦，但其個人審美卻有些稀奇古怪。</Miho_Adult_Engi.description>
+
+  <Miho_Adult_EngiTwo.title>美狐機械發燒友</Miho_Adult_EngiTwo.title>
+  <Miho_Adult_EngiTwo.titleShort>機械發燒友</Miho_Adult_EngiTwo.titleShort>
+  <Miho_Adult_EngiTwo.description>{PAWN_nameDef}被各種機械設備和無人機迷得神魂顛倒，就算讓{PAWN_pronoun}和這些東西結婚也樂意至極。</Miho_Adult_EngiTwo.description>
+  
+  <Miho_Adult_Ronin.title>美狐浪人</Miho_Adult_Ronin.title>
+  <Miho_Adult_Ronin.titleShort>浪人</Miho_Adult_Ronin.titleShort>
+  <Miho_Adult_Ronin.description>{PAWN_nameDef}是一名遐邇著聞的浪人。也不知是刻意而為還是本就不善言辭，{PAWN_pronoun}很少會主動與他人溝通。</Miho_Adult_Ronin.description>
+
+  <Miho_Adult_Cute.title>美狐玩物</Miho_Adult_Cute.title>
+  <Miho_Adult_Cute.titleShort>玩物</Miho_Adult_Cute.titleShort>
+  <Miho_Adult_Cute.description>由於種種悲慘的遭遇，{PAWN_nameDef}作為玩物被賣給了一名惡心的死宅。{PAWN_pronoun}每天都要幫主人做飯、為主人清洗身體、露出歐派供主人玩弄...最終，{PAWN_pronoun}受夠了這種生活，在某天趁其主人不註意時，悄悄地逃離了這裡。</Miho_Adult_Cute.description>
+
+  <Miho_Adult_Waifu.title>美狐大和撫子</Miho_Adult_Waifu.title>
+  <Miho_Adult_Waifu.titleShort>大和撫子</Miho_Adult_Waifu.titleShort>
+  <Miho_Adult_Waifu.description>{PAWN_nameDef}是一名性格文靜、溫柔穩重的“大和撫子”，而像{PAWN_pronoun}一樣的美狐族還有很多。\n\n“真想被一個溫柔可愛又賢惠的狐耳美少女抱在懷裡啊。”——狄奧斯·埃皮羅佩五世，一名統治著北極星方向A-62星系的星際主宰如是說道。</Miho_Adult_Waifu.description>
+
+  <Miho_Adult_CatEater.title>美狐食貓者</Miho_Adult_CatEater.title>
+  <Miho_Adult_CatEater.titleShort>美狐食貓者</Miho_Adult_CatEater.titleShort>
+  <Miho_Adult_CatEater.description>由於嫉妒貓的那份可愛，{PAWN_nameDef}便把鎮子裡所有的貓抓起來燉成湯喝了。事情敗露後，{PAWN_pronoun}被放逐到了邊緣世界。</Miho_Adult_CatEater.description>
+
+  <Miho_Adult_Cop.title>美狐警察</Miho_Adult_Cop.title>
+  <Miho_Adult_Cop.titleShort>警察</Miho_Adult_Cop.titleShort>
+  <Miho_Adult_Cop.description>{PAWN_nameDef}所在的地區有些和平過頭了，這對身為警察的{PAWN_pronoun}而言反倒不是什麽好事。為了提高業績，{PAWN_pronoun}開始刻意針對並拘捕那些色色成癮者，也因此結了不少仇。後來{PAWN_nameDef}遭到陷害，被放逐到了邊緣世界。</Miho_Adult_Cop.description>
+  
+  <Miho_Adult_Archaeologist.title>美狐考古學家</Miho_Adult_Archaeologist.title>
+  <Miho_Adult_Archaeologist.titleShort>考古學家</Miho_Adult_Archaeologist.titleShort>
+  <Miho_Adult_Archaeologist.description>在深埋於地下的遠古遺跡裡，{PAWN_nameDef}找到了幾尊小型的塑料雕像。它們看起來像是在祈求豐獲，且樣貌與{PAWN_nameDef}異常相似。為了盡快將這些驚人的發現報告給學術界，{PAWN_pronoun}帶著雕像乘上了太空梭。然而皮膚黝黑且刺有熒光莫西幹紋身的太空梭駕駛員對美麗的雕像打起了歪心思，便將其和{PAWN_nameDef}身上的其他物品洗劫一空。萬幸的是，{PAWN_nameDef}並沒有受到任何傷害。</Miho_Adult_Archaeologist.description>
+
+  <Miho_Adult_VeteranGuard.title>美狐老兵</Miho_Adult_VeteranGuard.title>
+  <Miho_Adult_VeteranGuard.titleShort>老兵</Miho_Adult_VeteranGuard.titleShort>
+  <Miho_Adult_VeteranGuard.description>身經百戰的{PAWN_nameDef}曾見識過各種各樣的殘酷戰場。不知是天生如此還是因經歷戰爭而發生變化，{PAWN_pronoun}對任何事物的態度都無比冷漠。</Miho_Adult_VeteranGuard.description>
+
+  <Miho_Adult_TechWeaver.title>美狐技術工程師</Miho_Adult_TechWeaver.title>
+  <Miho_Adult_TechWeaver.titleShort>技術工程師</Miho_Adult_TechWeaver.titleShort>
+  <Miho_Adult_TechWeaver.description>{PAWN_nameDef}是一名技術工程師，這份工作經常需要高度集中註意力。由於美狐政府當局用公費培養了過剩的技術工程師，其中有許多級別較低且求職無望者決定前往邊緣世界，而{PAWN_nameDef}也是他們中的一份子。由於需要每天盯著屏幕看，{PAWN_pronoun}總是會抱怨“我有點看不清楚遠處的東西了”。</Miho_Adult_TechWeaver.description>
+
+  <Miho_Adult_Hunter.title>美狐獵手</Miho_Adult_Hunter.title>
+  <Miho_Adult_Hunter.titleShort>獵手</Miho_Adult_Hunter.titleShort>
+  <Miho_Adult_Hunter.description>過去的某座美狐族城市裏，曾有過這樣一場爭論：“經過身體改造的半機械人是該當作動物還是機械族看待？”最終結果為後者，因此那些居住於此的半機械人被自由且光榮地“還原成了零件”。為了滿足因此暴漲的養寵需求，像{PAWN_nameDef}這樣的美狐族便開始將邊緣世界的部落人當作動物進口。</Miho_Adult_Hunter.description>
+
+  <Miho_Adult_Paratrooper.title>美狐空降兵</Miho_Adult_Paratrooper.title>
+  <Miho_Adult_Paratrooper.titleShort>空降兵</Miho_Adult_Paratrooper.titleShort>
+  <Miho_Adult_Paratrooper.description>{PAWN_nameDef}是一名曾參加過生還率極低的空降任務的老兵。由於孤立無援得不到補給，{PAWN_pronoun}被迫采集山上的各種植物充饑。現在回想起來，{PAWN_pronoun}慶幸自己有預先吃過一些蠟筆（注：此處是在玩馬潤吃蠟筆的梗）。</Miho_Adult_Paratrooper.description>
+
+  <Miho_Adult_BerryFarmer.title>美狐莓果農夫</Miho_Adult_BerryFarmer.title>
+  <Miho_Adult_BerryFarmer.titleShort>莓果農夫</Miho_Adult_BerryFarmer.titleShort>
+  <Miho_Adult_BerryFarmer.description>{PAWN_nameDef}癡迷於莓果，並不惜為其奉獻自己的人生。為了得到更優質的莓果，{PAWN_pronoun}不僅發明了專用的水栽培裝置，還培育出了新品種。然而也正是因為這份癡迷，導致{PAWN_pronoun}的食譜裏只剩下莓果。</Miho_Adult_BerryFarmer.description>
+
+  <Miho_Adult_Traitor.title>美狐進步變革者</Miho_Adult_Traitor.title>
+  <Miho_Adult_Traitor.titleShort>變革者</Miho_Adult_Traitor.titleShort>
+  <Miho_Adult_Traitor.description>“凡狐者，皆仿猿者而生。”\n“凡神者，皆仿狐者而生。”\n『神 明 已 死』</Miho_Adult_Traitor.description>
+
+  <Miho_Unique_Shoot.title>美狐憨憨</Miho_Unique_Shoot.title>
+  <Miho_Unique_Shoot.titleShort>憨憨</Miho_Unique_Shoot.titleShort>
+  <Miho_Unique_Shoot.description>{PAWN_nameDef}做事總是笨手笨腳的，也常被其他人當做憨憨來看。不過，{PAWN_pronoun}在戰鬥和烹飪方面卻展現出了驚人的天賦。</Miho_Unique_Shoot.description>
+
+</LanguageData>

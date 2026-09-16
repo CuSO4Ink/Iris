@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RH_N4Mutant.label>N4突变体</RH_N4Mutant.label>
+  <RH_N4Mutant.corePart.parts.6.customLabel>左肺</RH_N4Mutant.corePart.parts.6.customLabel>
+  <RH_N4Mutant.corePart.parts.7.customLabel>右肺</RH_N4Mutant.corePart.parts.7.customLabel>
+  <RH_N4Mutant.corePart.parts.8.customLabel>左肾</RH_N4Mutant.corePart.parts.8.customLabel>
+  <RH_N4Mutant.corePart.parts.9.customLabel>右肾</RH_N4Mutant.corePart.parts.9.customLabel>
+  <RH_N4Mutant.corePart.parts.11.parts.0.parts.1.customLabel>左眼</RH_N4Mutant.corePart.parts.11.parts.0.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.11.parts.0.parts.2.customLabel>右眼</RH_N4Mutant.corePart.parts.11.parts.0.parts.2.customLabel>
+  <RH_N4Mutant.corePart.parts.11.parts.0.parts.3.customLabel>左耳</RH_N4Mutant.corePart.parts.11.parts.0.parts.3.customLabel>
+  <RH_N4Mutant.corePart.parts.11.parts.0.parts.4.customLabel>右耳</RH_N4Mutant.corePart.parts.11.parts.0.parts.4.customLabel>
+  <RH_N4Mutant.corePart.parts.12.customLabel>左肩</RH_N4Mutant.corePart.parts.12.customLabel>
+  <RH_N4Mutant.corePart.parts.12.parts.0.customLabel>左锁骨</RH_N4Mutant.corePart.parts.12.parts.0.customLabel>
+  <RH_N4Mutant.corePart.parts.12.parts.1.customLabel>左臂</RH_N4Mutant.corePart.parts.12.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.12.parts.1.parts.0.customLabel>左肱骨</RH_N4Mutant.corePart.parts.12.parts.1.parts.0.customLabel>
+  <RH_N4Mutant.corePart.parts.12.parts.1.parts.1.customLabel>左桡骨</RH_N4Mutant.corePart.parts.12.parts.1.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.12.parts.1.parts.2.customLabel>左手</RH_N4Mutant.corePart.parts.12.parts.1.parts.2.customLabel>
+  <RH_N4Mutant.corePart.parts.12.parts.1.parts.2.parts.0.customLabel>左尾指</RH_N4Mutant.corePart.parts.12.parts.1.parts.2.parts.0.customLabel>
+  <RH_N4Mutant.corePart.parts.12.parts.1.parts.2.parts.1.customLabel>左无名指</RH_N4Mutant.corePart.parts.12.parts.1.parts.2.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.12.parts.1.parts.2.parts.2.customLabel>左中指</RH_N4Mutant.corePart.parts.12.parts.1.parts.2.parts.2.customLabel>
+  <RH_N4Mutant.corePart.parts.12.parts.1.parts.2.parts.3.customLabel>左食指</RH_N4Mutant.corePart.parts.12.parts.1.parts.2.parts.3.customLabel>
+  <RH_N4Mutant.corePart.parts.12.parts.1.parts.2.parts.4.customLabel>左拇指</RH_N4Mutant.corePart.parts.12.parts.1.parts.2.parts.4.customLabel>
+  <RH_N4Mutant.corePart.parts.13.customLabel>右肩</RH_N4Mutant.corePart.parts.13.customLabel>
+  <RH_N4Mutant.corePart.parts.13.parts.0.customLabel>右锁骨</RH_N4Mutant.corePart.parts.13.parts.0.customLabel>
+  <RH_N4Mutant.corePart.parts.13.parts.1.customLabel>右臂</RH_N4Mutant.corePart.parts.13.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.13.parts.1.parts.0.customLabel>右肱骨</RH_N4Mutant.corePart.parts.13.parts.1.parts.0.customLabel>
+  <RH_N4Mutant.corePart.parts.13.parts.1.parts.1.customLabel>右桡骨</RH_N4Mutant.corePart.parts.13.parts.1.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.13.parts.1.parts.2.customLabel>右手</RH_N4Mutant.corePart.parts.13.parts.1.parts.2.customLabel>
+  <RH_N4Mutant.corePart.parts.13.parts.1.parts.2.parts.0.customLabel>右尾指</RH_N4Mutant.corePart.parts.13.parts.1.parts.2.parts.0.customLabel>
+  <RH_N4Mutant.corePart.parts.13.parts.1.parts.2.parts.1.customLabel>右无名指</RH_N4Mutant.corePart.parts.13.parts.1.parts.2.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.13.parts.1.parts.2.parts.2.customLabel>右中指</RH_N4Mutant.corePart.parts.13.parts.1.parts.2.parts.2.customLabel>
+  <RH_N4Mutant.corePart.parts.13.parts.1.parts.2.parts.3.customLabel>右食指</RH_N4Mutant.corePart.parts.13.parts.1.parts.2.parts.3.customLabel>
+  <RH_N4Mutant.corePart.parts.13.parts.1.parts.2.parts.4.customLabel>右拇指</RH_N4Mutant.corePart.parts.13.parts.1.parts.2.parts.4.customLabel>
+  <RH_N4Mutant.corePart.parts.15.customLabel>左腿</RH_N4Mutant.corePart.parts.15.customLabel>
+  <RH_N4Mutant.corePart.parts.15.parts.0.customLabel>左股骨</RH_N4Mutant.corePart.parts.15.parts.0.customLabel>
+  <RH_N4Mutant.corePart.parts.15.parts.1.customLabel>左胫骨</RH_N4Mutant.corePart.parts.15.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.15.parts.2.customLabel>左足</RH_N4Mutant.corePart.parts.15.parts.2.customLabel>
+  <RH_N4Mutant.corePart.parts.15.parts.2.parts.0.customLabel>左脚小趾</RH_N4Mutant.corePart.parts.15.parts.2.parts.0.customLabel>
+  <RH_N4Mutant.corePart.parts.15.parts.2.parts.1.customLabel>左脚无名趾</RH_N4Mutant.corePart.parts.15.parts.2.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.15.parts.2.parts.2.customLabel>左脚中趾</RH_N4Mutant.corePart.parts.15.parts.2.parts.2.customLabel>
+  <RH_N4Mutant.corePart.parts.15.parts.2.parts.3.customLabel>左脚食趾</RH_N4Mutant.corePart.parts.15.parts.2.parts.3.customLabel>
+  <RH_N4Mutant.corePart.parts.15.parts.2.parts.4.customLabel>左脚拇趾</RH_N4Mutant.corePart.parts.15.parts.2.parts.4.customLabel>
+  <RH_N4Mutant.corePart.parts.16.customLabel>右腿</RH_N4Mutant.corePart.parts.16.customLabel>
+  <RH_N4Mutant.corePart.parts.16.parts.0.customLabel>右股骨</RH_N4Mutant.corePart.parts.16.parts.0.customLabel>
+  <RH_N4Mutant.corePart.parts.16.parts.1.customLabel>右胫骨</RH_N4Mutant.corePart.parts.16.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.16.parts.2.customLabel>右足</RH_N4Mutant.corePart.parts.16.parts.2.customLabel>
+  <RH_N4Mutant.corePart.parts.16.parts.2.parts.0.customLabel>右脚小趾</RH_N4Mutant.corePart.parts.16.parts.2.parts.0.customLabel>
+  <RH_N4Mutant.corePart.parts.16.parts.2.parts.1.customLabel>右脚无名趾</RH_N4Mutant.corePart.parts.16.parts.2.parts.1.customLabel>
+  <RH_N4Mutant.corePart.parts.16.parts.2.parts.2.customLabel>右脚中趾</RH_N4Mutant.corePart.parts.16.parts.2.parts.2.customLabel>
+  <RH_N4Mutant.corePart.parts.16.parts.2.parts.3.customLabel>右脚食趾</RH_N4Mutant.corePart.parts.16.parts.2.parts.3.customLabel>
+  <RH_N4Mutant.corePart.parts.16.parts.2.parts.4.customLabel>右脚拇趾</RH_N4Mutant.corePart.parts.16.parts.2.parts.4.customLabel>
+
+
+</LanguageData>

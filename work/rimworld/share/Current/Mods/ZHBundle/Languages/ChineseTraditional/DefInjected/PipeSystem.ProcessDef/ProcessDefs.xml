@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Cook Fine Soup -->
+  <VCE_FineSoupRecipe.label>烹製精緻湯食</VCE_FineSoupRecipe.label>
+  <!-- EN: Turns an uncooked fine soup into 10 cooked fine soups. -->
+  <VCE_FineSoupRecipe.description>用精緻湯料 x1 烹製精緻湯食 x10。</VCE_FineSoupRecipe.description>
+  
+  <!-- EN: Cook Gourmet Soup -->
+  <VCE_GourmetSoupRecipe.label>烹製豪華湯食</VCE_GourmetSoupRecipe.label>
+  <!-- EN: Turns an uncooked gourmet soup into 10 cooked gourmet soups. -->
+  <VCE_GourmetSoupRecipe.description>用豪華湯料 x1 烹製豪華湯食 x10。</VCE_GourmetSoupRecipe.description>
+  
+  <!-- EN: Insect jelly into cheese -->
+  <VCE_JellyIntoCheese.label>用蟲膠發酵製作奶酪</VCE_JellyIntoCheese.label>
+  <!-- EN: Turns 50 insect jelly into 25 cheese. -->
+  <VCE_JellyIntoCheese.description>用蟲膠 x50 發酵製作奶酪 x25。</VCE_JellyIntoCheese.description>
+  <!-- EN: Turn 50 insect jelly into 25 cheese. -->
+  <VCE_JellyIntoCheese.labelOverride>用蟲膠 x50 發酵製作奶酪 x25</VCE_JellyIntoCheese.labelOverride>
+  
+  <!-- EN: Cook Lavish Soup -->
+  <VCE_LavishSoupRecipe.label>烹製奢侈湯食</VCE_LavishSoupRecipe.label>
+  <!-- EN: Turns an uncooked lavish soup into 10 cooked lavish soups. -->
+  <VCE_LavishSoupRecipe.description>用奢侈湯料 x1 烹製奢侈湯食 x10。</VCE_LavishSoupRecipe.description>
+  
+  <!-- EN: Milk into cheese -->
+  <VCE_MilkIntoCheese.label>用奶發酵製作奶酪</VCE_MilkIntoCheese.label>
+  <!-- EN: Turns 50 milk into 25 cheese. -->
+  <VCE_MilkIntoCheese.description>用奶 x50 發酵製作奶酪 x25。</VCE_MilkIntoCheese.description>
+  <!-- EN: Turn 50 milk into 25 cheese. -->
+  <VCE_MilkIntoCheese.labelOverride>用奶 x50 發酵製作奶酪 x25</VCE_MilkIntoCheese.labelOverride>
+  
+  <!-- EN: Cook Simple Soup -->
+  <VCE_SimpleSoupRecipe.label>烹製簡單湯食</VCE_SimpleSoupRecipe.label>
+  <!-- EN: Turns an uncooked simple soup into 10 cooked simple soups. -->
+  <VCE_SimpleSoupRecipe.description>用簡單湯料 x1 烹製簡單湯食 x10。</VCE_SimpleSoupRecipe.description>
+  
+</LanguageData>

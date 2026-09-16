@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <!-- Animal transport pod crash -->
+    <VEE_AnimalPodCrashLabel>动物逃生舱坠毁</VEE_AnimalPodCrashLabel>
+    <VEE_AnimalPodCrashDesc>动物逃生舱在附近坠毁了，里面载有名叫{PAWN_nameDef}的{PAWN_kind}。\n\n即使在撞击后活了下来，它也会受重伤。如果你救援并治疗它，它可能会留在你的殖民地。</VEE_AnimalPodCrashDesc>
+    <VEE_AnimalPodCrashLabel_AceptedJoining>获救动物加入</VEE_AnimalPodCrashLabel_AceptedJoining>
+    <VEE_AnimalPodCrashDesc_AceptedJoining>被你救助的动物加入殖民地了。</VEE_AnimalPodCrashDesc_AceptedJoining>
+    <VEE_AnimalPodCrashLabel_RefusedJoining>获救动物未加入</VEE_AnimalPodCrashLabel_RefusedJoining>
+    <VEE_AnimalPodCrashDesc_RefusedJoining>被你救助的动物未加入殖民地。</VEE_AnimalPodCrashDesc_RefusedJoining>
+
+    <!-- Traitor -->
+    <VEE_TraitorLabel>背叛者：{PAWN_nameDef}</VEE_TraitorLabel>
+    <VEE_TraitorDesc>{PAWN_nameDef}露出了{PAWN_possessive}真面目！\n\n{PAWN_pronoun}实际上是{Hostile_FactionName}派来执行渗透任务的间谍。{PAWN_pronoun}现已倒戈相向，正打算从内部攻破你的殖民地。你可以俘虏{PAWN_objective}来招募或奴役，或是直接将其杀死。</VEE_TraitorDesc>
+	<VEE_TraitorGroupLabel>袭击（访客）</VEE_TraitorGroupLabel>
+	<VEE_TraitorGroupDesc>这些访客实际上是来自{0}的袭击部队！他们已卸除伪装，且将立即进攻。</VEE_TraitorGroupDesc>
+
+    <!-- Orbital ship crash -->
+    <VEE_OrbitalCrashLabel>轨道飞船坠毁</VEE_OrbitalCrashLabel>
+    <VEE_OrbitalCrashDesc>一艘途径此区域正上方的巨型轨道飞船产生了灾难性的结构故障！这艘飞船隶属于{0}。\n\n在接下来的数个小时内，将会有大量的船体残骸、不稳定引擎部件、货物贮存舱和逃生舱如雨水般散落至此区域。\n\n最好让你的殖民者和动物待在室内，或尽可能远离碎片与残骸坠毁的地点。等到这场事故结束后，你可以尝试从中回收有价值的资源，并救援那些还活着的幸存者。</VEE_OrbitalCrashDesc>
+	
+    <!-- Shuttle Crash -->
+    <VEE_ShuttleCrashLabel>穿梭机坠毁</VEE_ShuttleCrashLabel>
+    <VEE_ShuttleCrashDesc>一艘严重受损的穿梭机从天边掠过，且即将在附近坠毁。\n\n剧烈的冲击会使穿梭机内的化合燃料飞溅四散，从而引发危险的火灾。\n\n穿梭机的残骸中或许存在幸免于难的货物和乘客。\n\n如果你想要救援幸存者、回收货物并阻止火灾蔓延，最好迅速采取行动。</VEE_ShuttleCrashDesc>
+
+    <!-- Earthquake -->
+    <VEE_EarthquakeLabel>局部地震（震级：{0}）</VEE_EarthquakeLabel>
+    <VEE_EarthquakeDesc>一场震级为{0}的局部地震席卷了此区域！\n\n剧烈的震动将导致地面开裂，震中附近的建筑也会严重受损。维修与重建工作在所难免。</VEE_EarthquakeDesc>
+
+    <!-- Cargo pods (weapons) -->
+    <VEE_WeaponCargoPodLabel>货舱坠毁（武器）</VEE_WeaponCargoPodLabel>
+    <VEE_WeaponCargoPodDesc>你侦测到了一组货舱在附近坠毁了。\n\n你或许能在残骸中找到不少有用的武器。</VEE_WeaponCargoPodDesc>
+
+    <!-- Cargo pods (apparel) -->
+    <VEE_ApparelCargoPodLabel>货舱坠毁（衣物）</VEE_ApparelCargoPodLabel>
+    <VEE_ApparelCargoPodDesc>你侦测到了一组货舱在附近坠毁了。\n\n你或许能在残骸中找到不少有用的衣物。</VEE_ApparelCargoPodDesc>
+
+    <!-- Caravan animals wander in -->
+    <VEE_CaravanAnimalsWanderLabel>游荡的驮兽</VEE_CaravanAnimalsWanderLabel>
+    <VEE_CaravanAnimalsWanderDesc>一小群{0}从野外游荡到此区域。\n\n从身上满载货物的背囊来看，它们似乎曾属于某支失踪或被毁的商队。\n\n你可以尝试驯服它们以安全占有货物，抑或选择狩猎它们来强行夺取。</VEE_CaravanAnimalsWanderDesc>
+
+    <!-- Crop sprout -->
+    <VEE_CropSproutLabel>野生{0}萌芽</VEE_CropSproutLabel>
+    <VEE_CropSproutDesc>附近有一片野生的{0}发芽了！如果你等这些植物长成，就可以收获它们。</VEE_CropSproutDesc>
+
+    <!-- Battle animals wander in -->
+    <VEE_BattleAnimalsWanderLabel>战兽加入</VEE_BattleAnimalsWanderLabel>
+    <VEE_BattleAnimalsWanderDesc>一小群{0}从野外游荡到此区域。\n\n它们似乎习惯与人类相处，并且加入了殖民地。\n\n考虑到它们是天生的战兽，你可以指派一名驯兽师训练它们，使它们成为殖民地优秀的守卫力量。如果你不想饲养它们，也可以直接将其杀死以获取食物。</VEE_BattleAnimalsWanderDesc>
+
+    <!-- wild men wander in -->
+    <VEE_WildMenWanderLabel>游荡的野人</VEE_WildMenWanderLabel>
+    <VEE_WildMenWanderDesc>一支长期以来像动物一样生存的小型聚落群体游荡到了此区域。\n\n野蛮而又饥饿的他们会主动到附近寻觅食物——包括啃食你的作物或袭击看管不当的粮库。\n\n你可以尝试去驯化或拘捕他们。如果你觉得他们太过碍事，也可以直接将其杀死。</VEE_WildMenWanderDesc>
+
+    <!-- Hunting party -->
+    <VEE_HuntingPartyLabel>狩猎小队</VEE_HuntingPartyLabel>
+    <VEE_HuntingPartyDesc>一支来自{0}的狩猎小队已进入此区域。\n\n为了补充定居点的肉类和皮革储备，他们打算在这里猎捕一些野生动物。他们不想引起任何事端，也不会攻击你的殖民者，但很可能导致当地可狩猎的动物数量锐减。当每名猎人都打到一头猎物后，便会心满意足地带着它们离开。</VEE_HuntingPartyDesc>
+
+    <VEE_Decay>因旱灾肆虐而变得贫瘠。</VEE_Decay>
+    <VEE_DroughtGui>肥沃度因旱灾降低至：{0}</VEE_DroughtGui>
+	
+	<!--Single manhunter-->
+	<VEE_ManhunterSingleArrivalLabel>猎杀人类：{0}</VEE_ManhunterSingleArrivalLabel>
+	<VEE_ManhunterSingleArrivalDesc>一只猎杀人类的{0}已进入此区域。它被狂暴症逼疯了，将四处游荡猎杀人类。\n\n让你的殖民者待在室内，或征召他们解决这一威胁。\n\n这只患上狂暴症的{0}可能会在几天内自行死亡。</VEE_ManhunterSingleArrivalDesc>
+	
+	<!--Crashlanded-->
+	<VEE_CrashlandedLabel>迫降</VEE_CrashlandedLabel>
+	<VEE_CrashlandedDesc>三个逃生舱在附近迫降了。\n\n三名幸存者狼狈地从残骸中爬出来，看起来既迷茫又手足无措。他们似乎刚从一场令在轨飞船四分五裂的事故中侥幸逃生。他们可能会先在原地歇息一会，待到低温休眠症消退后再离开。</VEE_CrashlandedDesc>
+    <VEE_CrashlandedChoiceLabel>幸存者请求加入</VEE_CrashlandedChoiceLabel>
+    <VEE_CrashlandedChoiceText>迫降的幸存者们注意到你的殖民地缺少人手。想到在这个边缘世界里独自活下去简直难如登天，他们便请求带着宠物和所有物资加入你的殖民地。\n\n你是否要接受他们的请求？</VEE_CrashlandedChoiceText>
+	<VEE_CrashlandedLeaving>迫降的幸存者们开始收拾和打包散落的物资，准备离开这里。</VEE_CrashlandedLeaving>
+
+    <!-- Whiteout Refugees -->
+    <VEE_WhiteoutRefugees>绝望的难民</VEE_WhiteoutRefugees>
+    <VEE_WhiteoutRefugeesText>{0}名快要冻僵的难民出现在你的殖民地外围。\n\n由于宛如白幕般的恐怖暴风雪持续不断，他们早已严重失温且食不果腹。他们祈求你敞开大门，施舍一些温暖与食物。\n\n请务必当心：绝望之人往往会行绝望之事。如果你将他们拒之门外，任其冻死在暴风雪中，他们很可能会选择殊死一搏，以武力强夺你的殖民地。\n\n你是否要接纳他们？</VEE_WhiteoutRefugeesText>
+    <VEE_WhiteoutRefugees_Accepted>难民们对你的慷慨与仁慈感激不尽，并加入了殖民地。相信他们很快就能从先前经历的磨难中恢复过来。</VEE_WhiteoutRefugees_Accepted>
+    <VEE_WhiteoutRefugees_Rejected>难民们对你发起了袭击！在遭拒与绝望的双重煎熬下，他们决定殊死一搏，以武力强夺你的殖民地。\n\n他们将立即进攻。</VEE_WhiteoutRefugees_Rejected>
+	
+	<!-- Psychic stimulation -->
+	
+	<VEE_Young>年轻</VEE_Young>
+	<VEE_Elder>年长</VEE_Elder>
+	
+	<!-- Psychic overdrive -->
+	
+	<VEE_Male>男性</VEE_Male>
+	<VEE_Female>女性</VEE_Female>
+	
+	<!-- All stage incidents -->
+	<VEE_CurrentStage>当前阶段：{0}\n已持续时间：{1}</VEE_CurrentStage>
+</LanguageData>

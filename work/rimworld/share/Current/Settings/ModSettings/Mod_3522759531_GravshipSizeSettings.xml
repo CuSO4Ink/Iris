@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="GravshipSize.GravshipSettings">
+		<BG_gravEngineSupport>5000</BG_gravEngineSupport>
+		<BG_gravExtenderMax>100</BG_gravExtenderMax>
+		<BG_gravExtenderMaxDistanceFromEngine>100</BG_gravExtenderMaxDistanceFromEngine>
+	</ModSettings>
+</SettingsBlock>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 대형 메카나이트 코어 -->
+  <Miho_Mech_HeavyMechCore.label>纳米机械引擎</Miho_Mech_HeavyMechCore.label>
+  <!-- EN: 미호들의 대형 메카노이드에 쓰이는 거대한 메카나이트 엔진 입니다. -->
+  <Miho_Mech_HeavyMechCore.description>为了驱动美狐族的重型无人机，这种纳米机械引擎是必不可少的。</Miho_Mech_HeavyMechCore.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_HeavyMechCore.tools.front_left_leg.label>左前腿</Miho_Mech_HeavyMechCore.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_HeavyMechCore.tools.front_right_leg.label>右前腿</Miho_Mech_HeavyMechCore.tools.front_right_leg.label>
+  <!-- EN: blade -->
+  <Miho_Mech_HeavyMechCore.tools.blade.label>镰刃</Miho_Mech_HeavyMechCore.tools.blade.label>
+  
+  <!-- EN: 미호 포병 컴퓨터 -->
+  <Miho_Mech_HeavyRocketCore.label>火炮计算芯片</Miho_Mech_HeavyRocketCore.label>
+  <!-- EN: 다연장 로켓 메카노이드의 장전과 방열, 포격을 관장하는 컴퓨터칩 입니다. -->
+  <Miho_Mech_HeavyRocketCore.description>无论是装弹、散热还是开火，美狐族无人机所配备的多管火箭炮都高度依赖于这种计算芯片。</Miho_Mech_HeavyRocketCore.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_HeavyRocketCore.tools.front_left_leg.label>左前腿</Miho_Mech_HeavyRocketCore.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_HeavyRocketCore.tools.front_right_leg.label>右前腿</Miho_Mech_HeavyRocketCore.tools.front_right_leg.label>
+  <!-- EN: blade -->
+  <Miho_Mech_HeavyRocketCore.tools.blade.label>镰刃</Miho_Mech_HeavyRocketCore.tools.blade.label>
+  
+</LanguageData>

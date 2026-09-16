@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: resonator -->
+  <VV_Fairyfication.roles.0.label>共鸣者</VV_Fairyfication.roles.0.label>
+  <!-- EN: fairyfied vivi -->
+  <VV_Fairyfication.roles.1.label>仙灵化薇薇</VV_Fairyfication.roles.1.label>
+  <!-- EN: Vivi is not reachable. -->
+  <VV_Fairyfication.stages.0.failTriggers.0.desc>薇薇不可及</VV_Fairyfication.stages.0.failTriggers.0.desc>
+  <!-- EN: resonator asleep -->
+  <VV_Fairyfication.stages.0.failTriggers.1.desc>共鸣者睡眠中</VV_Fairyfication.stages.0.failTriggers.1.desc>
+  
+</LanguageData>

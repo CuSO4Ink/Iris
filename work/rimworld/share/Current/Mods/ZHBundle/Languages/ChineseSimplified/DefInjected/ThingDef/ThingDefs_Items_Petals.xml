@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cooling petal -->
+  <VV_CoolingPetal.label>冷却花瓣</VV_CoolingPetal.label>
+  <!-- EN: An petals obtained from deconstructing a arcane flower. There's a slight but cold air remaining.\n\nIf brewed into a tea, it can slightly cool down the body and it's also used in crafting some equipment. -->
+  <VV_CoolingPetal.description>自神秘花朵中获得的花瓣，还残留有一股轻微的冷气。\n\n如果泡成茶，可以使身体感到凉爽，也可以用于制作一些设备。</VV_CoolingPetal.description>
+  
+  <!-- EN: heating petal -->
+  <VV_HeatingPetal.label>加热花瓣</VV_HeatingPetal.label>
+  <!-- EN: An petals obtained from deconstructing a arcane flower. There's a slight but warm heat remaining.\n\nIf boiled and drunk as tea, it warms up the body a bit and is also used in the production of some equipment. -->
+  <VV_HeatingPetal.description>自神秘花朵中获得的花瓣，还残留有一股轻微的热气。\n\n如果泡成茶，可以使身体感到温暖，也可以用于制作一些设备。</VV_HeatingPetal.description>
+  
+  <!-- EN: living leaf -->
+  <VV_LivingLeaf.label>活叶</VV_LivingLeaf.label>
+  <!-- EN: an Leaves obtained from deconstructing a arcane plant. It reacts vigorously to the surrounding stimuli and mana, as if it's alive.\n\nIt's incredibly durable and has the ability to self-recover, primarily used for weaving lifestrand. -->
+  <VV_LivingLeaf.description>自神秘植物中获得的叶子。对周围的刺激和魔能有强烈的反应，就好像它仍是活着的一样。\n\n非常耐用，具有自我恢复的能力，主要用于编织生命缕织。</VV_LivingLeaf.description>
+  
+  <!-- EN: perfuming petal -->
+  <VV_PerfumingPetal.label>萃香花瓣</VV_PerfumingPetal.label>
+  <!-- EN: An petals obtained from deconstructing a arcane flower. Even though some time has passed, it still gives off a pleasant scent.\n\nWhen brewed into a tea with milk, it temporarily uplifts the mood and contains ingredients that are beneficial for fatigue recovery. -->
+  <VV_PerfumingPetal.description>自神秘花朵中获得的花瓣，还残留有一股轻微的香气。\n\n如果与牛奶冲泡成茶，可以使身体感到愉悦，并有益于缓解疲劳。</VV_PerfumingPetal.description>
+  
+  <!-- EN: skyweed fluff -->
+  <VV_SkyweedFluff.label>天蓬英绒毛</VV_SkyweedFluff.label>
+  <!-- EN: These are fluff obtained from deconstructing skyweed. They are very light and have properties that allow them to float in the air due to the remaining mana. By tying the fluff together, objects can be sent flying into the sky. -->
+  <VV_SkyweedFluff.description>自天蓬英中获得的绒毛。它们非常轻，由于残存的魔能而能漂浮在空中。如果在物体上绑上这些绒毛，就可以将它送上天空。</VV_SkyweedFluff.description>
+  
+  <!-- EN: sparkling petal -->
+  <VV_SparklingPetal.label>电光花瓣</VV_SparklingPetal.label>
+  <!-- EN: An petals obtained from deconstructing a arcane flower. When touched, a slight static electricity is felt.\n\n      \nEven in petal form, it has the property of good mana flow, making it useful in various materials. -->
+  <VV_SparklingPetal.description>自神秘花朵中获得的花瓣，还残留有一点轻微的静电。\n\n即使是花瓣形态，也具有良好的导魔能性，能用于多种用途。</VV_SparklingPetal.description>
+  
+</LanguageData>

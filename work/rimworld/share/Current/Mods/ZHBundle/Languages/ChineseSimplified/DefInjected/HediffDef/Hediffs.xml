@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: knocked out -->
+  <AM_KnockedOut.label>被击倒</AM_KnockedOut.label>
+  <!-- EN: The result of being knocked out during melee combat.\nRecovery will happen automatically over time, or it can be cured by another pawn, even without medicine. -->
+  <AM_KnockedOut.description>此单位在近战时被击倒了。\n击倒状态可通过被他人救助（等同于治疗伤口疾病，但完全可以不用医药）来立即解除。当此状态的持续时间结束后，被击倒的单位也会自行起身。</AM_KnockedOut.description>
+  <!-- EN: being knocked out -->
+  <AM_KnockedOut.labelNoun>被击倒</AM_KnockedOut.labelNoun>
+  
+</LanguageData>

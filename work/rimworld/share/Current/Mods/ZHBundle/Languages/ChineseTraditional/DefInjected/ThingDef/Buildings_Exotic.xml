@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: shuttle chunk (incoming) -->
+  <ShuttleChunkIncoming.label>墜毀的太空梭（下落中）</ShuttleChunkIncoming.label>
+  
+  <!-- EN: slag (incoming) -->
+  <SlagIncoming.label>金屬碎片（下落中）</SlagIncoming.label>
+  
+  <!-- EN: orbital ship chunk -->
+  <VEE_ShipChunkHuman.label>軌道星艦殘骸</VEE_ShipChunkHuman.label>
+  <!-- EN: A large chunk of an orbital ship, violently torn off during a catastrophic structural failure in high orbit. Having crashlanded not long ago, it still contains useful resources which you can acquire by deconstructing it. -->
+  <VEE_ShipChunkHuman.description>軌道星艦的一部分，因在高軌道航行時產生的災難性結構故障而被撕裂解體。\n\n剛墜落沒多久，還能夠透過拆除來獲得有用的資源。</VEE_ShipChunkHuman.description>
+  <!-- EN: Deconstruct for valuable resources. -->
+  <VEE_ShipChunkHuman.comps.CompInspectString.inspectString>拆除它以回收有價值的資源。</VEE_ShipChunkHuman.comps.CompInspectString.inspectString>
+  
+  <!-- EN: orbital ship chunk -->
+  <VEE_ShipChunkHuman_Cargo.label>軌道星艦殘骸</VEE_ShipChunkHuman_Cargo.label>
+  <!-- EN: A large chunk of an orbital ship, violently torn off during a catastrophic structural failure in high orbit. Having crashlanded not long ago, it still contains useful resources which you can acquire by deconstructing it. -->
+  <VEE_ShipChunkHuman_Cargo.description>軌道星艦的一部分，因在高軌道航行時產生的災難性結構故障而被撕裂解體。\n\n剛墜落沒多久，還能夠透過拆除來獲得有用的資源。</VEE_ShipChunkHuman_Cargo.description>
+  <!-- EN: Deconstruct for valuable resources. -->
+  <VEE_ShipChunkHuman_Cargo.comps.CompInspectString.inspectString>拆除它以回收有價值的資源。</VEE_ShipChunkHuman_Cargo.comps.CompInspectString.inspectString>
+  
+  <!-- EN: orbital ship chunk -->
+  <VEE_ShipChunkHuman_DropPod_Spawner.label>軌道星艦殘骸</VEE_ShipChunkHuman_DropPod_Spawner.label>
+  <!-- EN: A large chunk of an orbital ship, violently torn off during a catastrophic structural failure in high orbit. Having crashlanded not long ago, it still contains useful resources which you can acquire by deconstructing it. -->
+  <VEE_ShipChunkHuman_DropPod_Spawner.description>軌道星艦的一部分，因在高軌道航行時產生的災難性結構故障而被撕裂解體。\n\n剛墜落沒多久，還能夠透過拆除來獲得有用的資源。</VEE_ShipChunkHuman_DropPod_Spawner.description>
+  <!-- EN: Deconstruct for valuable resources. -->
+  <VEE_ShipChunkHuman_DropPod_Spawner.comps.CompInspectString.inspectString>拆除它以回收有價值的資源。</VEE_ShipChunkHuman_DropPod_Spawner.comps.CompInspectString.inspectString>
+  
+  <!-- EN: orbital ship chunk -->
+  <VEE_ShipChunkHuman_Volatile_Spawner.label>軌道星艦殘骸</VEE_ShipChunkHuman_Volatile_Spawner.label>
+  <!-- EN: A large chunk of an orbital ship, violently torn off during a catastrophic structural failure in high orbit. Having crashlanded not long ago, it still contains useful resources which you can acquire by deconstructing it. -->
+  <VEE_ShipChunkHuman_Volatile_Spawner.description>軌道星艦的一部分，因在高軌道航行時產生的災難性結構故障而被撕裂解體。\n\n剛墜落沒多久，還能夠透過拆除來獲得有用的資源。</VEE_ShipChunkHuman_Volatile_Spawner.description>
+  <!-- EN: Deconstruct for valuable resources. -->
+  <VEE_ShipChunkHuman_Volatile_Spawner.comps.CompInspectString.inspectString>拆除它以回收有價值的資源。</VEE_ShipChunkHuman_Volatile_Spawner.comps.CompInspectString.inspectString>
+  
+  <!-- EN: orbital ship chunk (incoming) -->
+  <VEE_ShipChunkHumanIncoming.label>軌道星艦殘骸（下落中）</VEE_ShipChunkHumanIncoming.label>
+  
+  <!-- EN: orbital ship chunk (incoming) -->
+  <VEE_ShipChunkHumanIncoming_Cargo.label>軌道星艦殘骸（下落中）</VEE_ShipChunkHumanIncoming_Cargo.label>
+  
+  <!-- EN: orbital ship chunk (incoming) -->
+  <VEE_ShipChunkHumanIncoming_DropPod.label>軌道星艦殘骸（下落中）</VEE_ShipChunkHumanIncoming_DropPod.label>
+  
+  <!-- EN: orbital ship chunk (incoming) -->
+  <VEE_ShipChunkHumanIncoming_Volatile.label>軌道星艦殘骸（下落中）</VEE_ShipChunkHumanIncoming_Volatile.label>
+  
+  <!-- EN: crashed shuttle -->
+  <VEE_Shuttle.label>墜毀的太空梭</VEE_Shuttle.label>
+  <!-- EN: A crashed, spacer-tech shuttle designed for transit between surface and orbit. Can be deconstructed to yield some valuable salvage. -->
+  <VEE_Shuttle.description>墜毀的太空梭，用於往返地表和軌道；或往返衛星和行星。\n\n拆除該太空梭能得到一個太空梭引擎和其他的珍貴資源。</VEE_Shuttle.description>
+  
+  <!-- EN: crashed shuttle -->
+  <VEE_Shuttle_Combat.label>墜毀的太空梭</VEE_Shuttle_Combat.label>
+  <!-- EN: A crashed, spacer-tech shuttle designed for transit between surface and orbit. Can be deconstructed to yield some valuable salvage. -->
+  <VEE_Shuttle_Combat.description>墜毀的太空梭，用於往返地表和軌道；或往返衛星和行星。\n\n拆除該太空梭能得到一個太空梭引擎和其他的珍貴資源。</VEE_Shuttle_Combat.description>
+  
+  <!-- EN: crashed shuttle -->
+  <VEE_Shuttle_Heavy.label>墜毀的太空梭</VEE_Shuttle_Heavy.label>
+  <!-- EN: A crashed, spacer-tech shuttle designed for transit between surface and orbit. Can be deconstructed to yield some valuable salvage. -->
+  <VEE_Shuttle_Heavy.description>墜毀的太空梭，用於往返地表和軌道；或往返衛星和行星。\n\n拆除該太空梭能得到一個太空梭引擎和其他的珍貴資源。</VEE_Shuttle_Heavy.description>
+  
+  <!-- EN: crashed shuttle (incoming) -->
+  <VEE_ShuttleChunkIncoming_Combat.label>墜毀的太空梭（下落中）</VEE_ShuttleChunkIncoming_Combat.label>
+  
+  <!-- EN: crashed shuttle (incoming) -->
+  <VEE_ShuttleChunkIncoming_Heavy.label>墜毀的太空梭（下落中）</VEE_ShuttleChunkIncoming_Heavy.label>
+  
+</LanguageData>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: [PAWN_nameDef]'s genes have become extremely unstable. In the worst case, something terrible might happen. -->
+  <VV_Vivi.hediffGivers.VV_GeneticUnstability.letter>[PAWN_nameDef]的基因变得非常不稳定，在最坏的情况下，可能会有糟糕的事情发生。</VV_Vivi.hediffGivers.VV_GeneticUnstability.letter>
+  <!-- EN: Genetic unstable -->
+  <VV_Vivi.hediffGivers.VV_GeneticUnstability.letterLabel>基因不稳定</VV_Vivi.hediffGivers.VV_GeneticUnstability.letterLabel>
+  
+</LanguageData>

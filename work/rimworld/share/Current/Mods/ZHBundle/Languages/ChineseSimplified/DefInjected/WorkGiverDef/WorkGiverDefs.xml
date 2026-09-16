@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: gather around workbench -->
+  <VV_DoBillsGathering.label>围绕工作台采集</VV_DoBillsGathering.label>
+  <!-- EN: gathering -->
+  <VV_DoBillsGathering.gerund>采集中</VV_DoBillsGathering.gerund>
+  <!-- EN: gather -->
+  <VV_DoBillsGathering.verb>采集</VV_DoBillsGathering.verb>
+  
+  <!-- EN: work at workbench -->
+  <VV_DoBillsRefiningWorkbench.label>工作于工作台</VV_DoBillsRefiningWorkbench.label>
+  <!-- EN: refining at -->
+  <VV_DoBillsRefiningWorkbench.gerund>精炼某物中于</VV_DoBillsRefiningWorkbench.gerund>
+  <!-- EN: refine -->
+  <VV_DoBillsRefiningWorkbench.verb>精炼</VV_DoBillsRefiningWorkbench.verb>
+  
+  <!-- EN: equip weapon to shootus -->
+  <VV_EquipShootus.label>给射人掌装备武器</VV_EquipShootus.label>
+  <!-- EN: hauling to -->
+  <VV_EquipShootus.gerund>搬运至</VV_EquipShootus.gerund>
+  <!-- EN: haul to -->
+  <VV_EquipShootus.verb>搬运</VV_EquipShootus.verb>
+  
+  <!-- EN: fortify honeycomb walls -->
+  <VV_FortifyHoneycombWalls.label>加固蜂巢墙</VV_FortifyHoneycombWalls.label>
+  <!-- EN: fortifying -->
+  <VV_FortifyHoneycombWalls.gerund>加固中</VV_FortifyHoneycombWalls.gerund>
+  <!-- EN: fortify -->
+  <VV_FortifyHoneycombWalls.verb>加固</VV_FortifyHoneycombWalls.verb>
+  
+  <!-- EN: haul vivi eggs to safe hatchery -->
+  <VV_HaulViviEggToHatchery.label>将薇薇蜂卵搬运至安全的孵化器</VV_HaulViviEggToHatchery.label>
+  <!-- EN: hauling -->
+  <VV_HaulViviEggToHatchery.gerund>搬运中</VV_HaulViviEggToHatchery.gerund>
+  <!-- EN: haul -->
+  <VV_HaulViviEggToHatchery.verb>搬运</VV_HaulViviEggToHatchery.verb>
+  
+  <!-- EN: plant arcane seeds -->
+  <VV_PlantArcaneSeed.label>播下神秘种子</VV_PlantArcaneSeed.label>
+  <!-- EN: planting -->
+  <VV_PlantArcaneSeed.gerund>种植中</VV_PlantArcaneSeed.gerund>
+  <!-- EN: plant -->
+  <VV_PlantArcaneSeed.verb>种植</VV_PlantArcaneSeed.verb>
+  
+</LanguageData>

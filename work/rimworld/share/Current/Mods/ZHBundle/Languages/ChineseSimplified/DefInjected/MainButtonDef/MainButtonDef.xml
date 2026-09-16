@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: emergency speaker -->
+  <AAAA_EmergencySpeaker.label>警报</AAAA_EmergencySpeaker.label>
+  <!-- EN: You can manually issue evacuation and unevacuation commands to colonists.\nBecause the speakers are virtual, they also work for colonists with hearing loss. -->
+  <AAAA_EmergencySpeaker.description>你可以手动向殖民者发出撤离或取消撤离的命令。\n警报是虚拟的，所以对听力受损的殖民者也生效。</AAAA_EmergencySpeaker.description>
+  
+</LanguageData>

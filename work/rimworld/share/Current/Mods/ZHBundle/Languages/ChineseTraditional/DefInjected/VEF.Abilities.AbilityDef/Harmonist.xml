@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bend probability -->
+  <VPE_BendProbability.label>概率扭曲</VPE_BendProbability.label>
+  <!-- EN: Creates a ripple of cosmic scale that will force something to happen. -->
+  <VPE_BendProbability.description>創造一個宇宙尺度的波紋，讓一個隨機事件立刻發生。</VPE_BendProbability.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_BendProbability.jobReportString>使用能力：{0}</VPE_BendProbability.jobReportString>
+  <!-- EN: 概率扭曲 -->
+  <VPE_BendProbability.verbProperties.label>概率扭曲</VPE_BendProbability.verbProperties.label>
+  
+  <!-- EN: health swap -->
+  <VPE_HealthSwap.label>傷勢轉移</VPE_HealthSwap.label>
+  <!-- EN: Through the law of equivalent exchange, returns the primary target’s vitality to its origin, transferring all foreign objects and injuries to the secondary target. -->
+  <VPE_HealthSwap.description>在兩個目標的生命力之間創造一個勢差，讓所有的負面健康特性互換。不能轉移的傷勢則會被直接治癒。</VPE_HealthSwap.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_HealthSwap.jobReportString>使用能力：{0}</VPE_HealthSwap.jobReportString>
+  <!-- EN: 傷勢轉移 -->
+  <VPE_HealthSwap.verbProperties.label>傷勢轉移</VPE_HealthSwap.verbProperties.label>
+  
+  <!-- EN: heat focus -->
+  <VPE_HeatFocus.label>心熵聚焦</VPE_HeatFocus.label>
+  <!-- EN: Initiates harmonic meditation which converts all accumulated heat in psyfocus after 10 seconds. Can neither overcharge psyfocus nor heat dump. -->
+  <VPE_HeatFocus.description>用制衡之力展開冥想，將所有心靈熵轉換成精神力。超過精神力上限的部分不會被轉換。</VPE_HeatFocus.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_HeatFocus.jobReportString>使用能力：{0}</VPE_HeatFocus.jobReportString>
+  <!-- EN: 心熵聚焦 -->
+  <VPE_HeatFocus.verbProperties.label>心熵聚焦</VPE_HeatFocus.verbProperties.label>
+  
+  <!-- EN: location swap -->
+  <VPE_LocationSwap.label>換位</VPE_LocationSwap.label>
+  <!-- EN: Using precision skipgates, swaps the positions of the caster and a visible target. -->
+  <VPE_LocationSwap.description>在施放者和目標之間生成一對一次性折躍門，讓二人位置互換。</VPE_LocationSwap.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_LocationSwap.jobReportString>使用能力：{0}</VPE_LocationSwap.jobReportString>
+  <!-- EN: 換位 -->
+  <VPE_LocationSwap.verbProperties.label>換位</VPE_LocationSwap.verbProperties.label>
+  
+  <!-- EN: luck transfer -->
+  <VPE_LuckTransfer.label>幸運轉移</VPE_LuckTransfer.label>
+  <!-- EN: Creates a rift in karmic balance by shifting the negative karma from the first target onto the second target, as well as receiving their positive karma. Only affects combat and the duration scales with the first target’s psychic sensitivity. -->
+  <VPE_LuckTransfer.description>創造一個命運裂隙，將第一個目標的所有不幸轉移給第二個目標，並收到第二個目標的幸運。只會影響戰鬥相關的幸運，持續時間取決於第一個目標的心靈敏感度。</VPE_LuckTransfer.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_LuckTransfer.jobReportString>使用能力：{0}</VPE_LuckTransfer.jobReportString>
+  <!-- EN: 幸運轉移 -->
+  <VPE_LuckTransfer.verbProperties.label>幸運轉移</VPE_LuckTransfer.verbProperties.label>
+  
+  <!-- EN: mind control -->
+  <VPE_Mindcontrol.label>精神控制</VPE_Mindcontrol.label>
+  <!-- EN: Psychically dominate a target for a brief period, scaling with their psychic sensitivity, giving the caster a second body. However, it’s difficult being two people at once. -->
+  <VPE_Mindcontrol.description>用靈能強行暫時控制住目標，持續時間取決於目標心靈敏感度。然而，施放者並不能自如地同時控制兩個身體。</VPE_Mindcontrol.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Mindcontrol.jobReportString>使用能力：{0}</VPE_Mindcontrol.jobReportString>
+  <!-- EN: 精神控制 -->
+  <VPE_Mindcontrol.verbProperties.label>精神控制</VPE_Mindcontrol.verbProperties.label>
+  
+  <!-- EN: psychic guidance -->
+  <VPE_PsychicGuidance.label>靈能導引</VPE_PsychicGuidance.label>
+  <!-- EN: Dampens the caster’s sight, hearing, movement and manipulation in exchange for overcharging the target’s own physical abilities. -->
+  <VPE_PsychicGuidance.description>讓施放者的視力，聽力，運動和操作能力下降，換得目標的屬性上升。</VPE_PsychicGuidance.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_PsychicGuidance.jobReportString>使用能力：{0}</VPE_PsychicGuidance.jobReportString>
+  <!-- EN: 靈能導引 -->
+  <VPE_PsychicGuidance.verbProperties.label>靈能導引</VPE_PsychicGuidance.verbProperties.label>
+  
+  <!-- EN: skillroll -->
+  <VPE_SkillRoll.label>洗點</VPE_SkillRoll.label>
+  <!-- EN: Initiates a shift in the target’s knowledge and accumulated skills, attempting to rebalance them somewhat chaotically with some beneficial guidance. The strain puts the caster in a coma for a day, but can be reduced with psychic sensitivity. -->
+  <VPE_SkillRoll.description>讓目標的所有技能，在略微強化總體能力的情況下，以混沌的方法重新分配。劇烈的精神壓力會讓施放者昏迷一天，精神敏感度會減少昏迷時間。</VPE_SkillRoll.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_SkillRoll.jobReportString>使用能力：{0}</VPE_SkillRoll.jobReportString>
+  <!-- EN: 洗點 -->
+  <VPE_SkillRoll.verbProperties.label>洗點</VPE_SkillRoll.verbProperties.label>
+  
+  <!-- EN: transmutation -->
+  <VPE_Transmutation.label>物質嬗變</VPE_Transmutation.label>
+  <!-- EN: Through the law of equivalent exchange, converts a targeted (stack of) item(s) into an item of equal or lesser value. Completely unpredictable. -->
+  <VPE_Transmutation.description>使用等價交換的煉金法則，將一個物品轉化成另一個，或一組價值小於等於原本的物品。隨機性很大。</VPE_Transmutation.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Transmutation.jobReportString>使用能力：{0}</VPE_Transmutation.jobReportString>
+  <!-- EN: 物質嬗變 -->
+  <VPE_Transmutation.verbProperties.label>物質嬗變</VPE_Transmutation.verbProperties.label>
+  
+  <!-- EN: transmute stone -->
+  <VPE_TransmuteStone.label>石質轉化</VPE_TransmuteStone.label>
+  <!-- EN: Designates an area of stone which will have its minerals swapped out for a single, randomized type from an underground strata. -->
+  <VPE_TransmuteStone.description>汲取未知地層中的礦物，將一片區域內的石質轉化成另一種隨機種類的石頭。</VPE_TransmuteStone.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_TransmuteStone.jobReportString>使用能力：{0}</VPE_TransmuteStone.jobReportString>
+  <!-- EN: 石質轉化 -->
+  <VPE_TransmuteStone.verbProperties.label>石質轉化</VPE_TransmuteStone.verbProperties.label>
+  
+</LanguageData>

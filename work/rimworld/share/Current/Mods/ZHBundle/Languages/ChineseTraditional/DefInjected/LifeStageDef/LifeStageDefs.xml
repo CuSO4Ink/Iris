@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: adult -->
+  <HumanlikeAdult_Vivi.label>成年</HumanlikeAdult_Vivi.label>
+  
+  <!-- EN: child -->
+  <HumanlikeChild_Vivi.label>兒童</HumanlikeChild_Vivi.label>
+  
+  <!-- EN: preteen -->
+  <HumanlikePreTeenager_Vivi.label>少年</HumanlikePreTeenager_Vivi.label>
+  
+  <!-- EN: teenager -->
+  <HumanlikeTeenager_Vivi.label>青少年</HumanlikeTeenager_Vivi.label>
+  <!-- EN: teenage -->
+  <HumanlikeTeenager_Vivi.adjective>青少年</HumanlikeTeenager_Vivi.adjective>
+  
+  <!-- EN: adult -->
+  <VV_TitanicHornetAdult.label>成年</VV_TitanicHornetAdult.label>
+  
+</LanguageData>

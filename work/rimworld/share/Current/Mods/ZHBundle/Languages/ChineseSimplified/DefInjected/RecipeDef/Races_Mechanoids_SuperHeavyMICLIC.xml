@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 다각 개척공병전차 제작 -->
+  <Miho_Mech_Clibanar.label>组装“铁骑兵”先锋拓进无人机</Miho_Mech_Clibanar.label>
+  <!-- EN: 다각 개척공병전차 제작. -->
+  <Miho_Mech_Clibanar.description>组装一台“铁骑兵”先锋拓进无人机。</Miho_Mech_Clibanar.description>
+  <!-- EN: Gestating mech. -->
+  <Miho_Mech_Clibanar.jobString>正在组装无人机。</Miho_Mech_Clibanar.jobString>
+  
+</LanguageData>

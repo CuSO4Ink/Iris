@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<!-- Sauce fermenter -->
+	
+	
+	<!-- EN: Fermenting Item -->
+  <VCE_InsertSoybeansDesc>發酵物</VCE_InsertSoybeansDesc>
+	
+	<!-- EN: Bring Soybeans -->
+  <VCE_StartSoybeanInsertion>添加大豆</VCE_StartSoybeanInsertion>
+	<!-- EN: Bring soybeans to the fermenter to start fermentation process -->
+  <VCE_StartSoybeanInsertionDesc>向發酵桶添加大豆以開始發酵。</VCE_StartSoybeanInsertionDesc>
+	
+	<!-- EN: Cancel Bringing Soybeans -->
+  <VCE_CancelBringingSoybeans>取消添加大豆</VCE_CancelBringingSoybeans>
+	<!-- EN: Cancel bringing soybeans to the fermenter. -->
+  <VCE_CancelBringingSoybeansDesc>取消添加大豆</VCE_CancelBringingSoybeansDesc>
+	
+	<!-- EN: Remove Soy Sauce ({0}) -->
+  <VCE_RemoveSoySauce>移除醬油（{0}）</VCE_RemoveSoySauce>
+	<!-- EN: Remove soy sauce from the fermenter. The sauce will be ready at the present quality level ({0}) -->
+  <VCE_RemoveSoySauceDesc>從醬油發酵桶移除醬油。該醬油會在{0}質量完成</VCE_RemoveSoySauceDesc>
+	
+	<!-- EN: This soy sauce fermenter is not working at the moment -->
+  <VCE_SoyFermenterNotWorking>該醬油發酵桶目前沒在運作</VCE_SoyFermenterNotWorking>
+	
+	<!-- Condiment stats (using code from AnimalBehaviours) -->
+	
+
+	<!-- EN: Consuming meals that include this condiment increases mood by 5 and increases blood pumping and filtration by 5% for 12 hours. -->
+  <VCE_CondimentEffectsSoy>食用帶有該調料的食物會在12小時裡增加55點心情，增加5%的血液循環能力。</VCE_CondimentEffectsSoy>
+	<!-- EN: Consuming meals that include this condiment increases consciousness and breathing by 5%, decreases mood by 1 and decreases minimum lower temperature by 10ºC, all for 12 hours. -->
+  <VCE_CondimentEffectsWasabi>食用帶有該調料的食物會在12小時裡增加5%的意識和呼吸能力，減少1點心情和10ºC的溫度下限。</VCE_CondimentEffectsWasabi>
+
+	
+
+</LanguageData>

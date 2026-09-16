@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ratkin dagger -->
+  <RK_Dagger.label>鼠族匕首</RK_Dagger.label>
+  <!-- EN: 작고 깜찍한 단검입니다. 가벼운만큼 빠르게 찌를 수 있습니다. 손잡이가 너무 작아 인간이 사용하기 힘들어 보입니다. -->
+  <RK_Dagger.description>小巧輕便的匕首，能以極快的速度刺穿對手。由於握把太小，並不適合人類使用。</RK_Dagger.description>
+  <!-- EN: point -->
+  <RK_Dagger.tools.point.label>刀尖</RK_Dagger.tools.point.label>
+  <!-- EN: edge -->
+  <RK_Dagger.tools.edge.label>刀刃</RK_Dagger.tools.edge.label>
+  
+  <!-- EN: Halberd -->
+  <RK_Halberd.label>鼠族長戟</RK_Halberd.label>
+  <!-- EN: 장대에 단검과 도끼와 끌개가 함께 부착된 무기입니다. 험난한 전장에서 유용한 무기입니다. -->
+  <RK_Halberd.description>攻擊方式相當多樣的奇特武器，曾幫助鼠族撐過了一場又一場艱苦卓絕的戰鬥。</RK_Halberd.description>
+  <!-- EN: point -->
+  <RK_Halberd.tools.point.label>戟尖</RK_Halberd.tools.point.label>
+  <!-- EN: edge -->
+  <RK_Halberd.tools.edge.label>戟刃</RK_Halberd.tools.edge.label>
+  
+  <!-- EN: ratkin heavy lance -->
+  <RK_HeavyLance.label>鼠族重騎槍</RK_HeavyLance.label>
+  <!-- EN: 크고 무거운 금속 랜스입니다. 육중한 무게로 대상의 장갑을 확실하게 뚫을 수 있습니다. 무게 때문에 숙달되지 않으면 명중시키기 힘들어 보입니다. 손잡이가 너무 작아 인간이 사용하기 힘들어 보입니다. -->
+  <RK_HeavyLance.description>用金屬材料製成的騎槍，能借助巨大的衝擊力來刺穿對手。由於太過笨重，本領不足的使用者很難用它擊中敵人。由於握把太小，並不適合人類使用。</RK_HeavyLance.description>
+  <!-- EN: point -->
+  <RK_HeavyLance.tools.point-0.label>槍尖</RK_HeavyLance.tools.point-0.label>
+  <!-- EN: point -->
+  <RK_HeavyLance.tools.point-1.label>槍尖</RK_HeavyLance.tools.point-1.label>
+  <!-- EN: shaft -->
+  <RK_HeavyLance.tools.shaft.label>握柄</RK_HeavyLance.tools.shaft.label>
+  
+  <!-- EN: ratkin wooden lance -->
+  <RK_LightLance.label>鼠族木騎槍</RK_LightLance.label>
+  <!-- EN: 철을 덧대어 파괴력을 높힌 목재 랜스입니다. 무게 때문에 숙달되지 않으면 명중시키기 힘들어 보입니다. 손잡이가 너무 작아 인간이 사용하기 힘들어 보입니다. -->
+  <RK_LightLance.description>用鐵環加固過的木騎槍，能借助巨大的衝擊力來刺穿對手。由於太過笨重，本領不足的使用者很難用它擊中敵人。由於握把太小，並不適合人類使用。</RK_LightLance.description>
+  <!-- EN: point -->
+  <RK_LightLance.tools.point-0.label>槍尖</RK_LightLance.tools.point-0.label>
+  <!-- EN: point -->
+  <RK_LightLance.tools.point-1.label>槍尖</RK_LightLance.tools.point-1.label>
+  <!-- EN: shaft -->
+  <RK_LightLance.tools.shaft.label>握柄</RK_LightLance.tools.shaft.label>
+  
+  <!-- EN: ratkin guardening sword -->
+  <RK_LongSword.label>鼠族衛花使佩劍</RK_LongSword.label>
+  <!-- EN: 화단을 지키는 정원사들의 검입니다. 정원손질에 쓰거나 적들을 손질할때 씁니다. -->
+  <RK_LongSword.description>鼠族衛花使們使用的佩劍。打理花園和砍殺敵人兩不誤。</RK_LongSword.description>
+  <!-- EN: point -->
+  <RK_LongSword.tools.point.label>劍尖</RK_LongSword.tools.point.label>
+  <!-- EN: edge -->
+  <RK_LongSword.tools.edge.label>劍刃</RK_LongSword.tools.edge.label>
+  <!-- EN: handle -->
+  <RK_LongSword.tools.handle.label>握柄</RK_LongSword.tools.handle.label>
+  
+  <!-- EN: ratkin Mace -->
+  <RK_Mace.label>鼠族釘頭錘</RK_Mace.label>
+  <!-- EN: 한손에 들 수 있는 철퇴입니다. 완벽한 무게 밸런스를 이루고 있습니다. 손잡이가 너무 작아 인간이 사용하기 힘들어 보입니다. -->
+  <RK_Mace.description>依靠揮舞來造成殺傷的單手釘頭錘。由於握把太小，並不適合人類使用。</RK_Mace.description>
+  <!-- EN: Head -->
+  <RK_Mace.tools.Head.label>錘頭</RK_Mace.tools.Head.label>
+  <!-- EN: handle -->
+  <RK_Mace.tools.handle.label>握柄</RK_Mace.tools.handle.label>
+  
+  <!-- EN: ratkin one handed sword -->
+  <RK_OneHanded.label>鼠族片手劍</RK_OneHanded.label>
+  <!-- EN: 한손에 들 수 있는 검입니다. 완벽한 무게 밸런스를 이루고 있습니다. 손잡이가 너무 작아 인간이 사용하기 힘들어 보입니다. -->
+  <RK_OneHanded.description>一把單手使用的劍。完美的重量平衡感。由於握把太小，並不適合人類使用。</RK_OneHanded.description>
+  <!-- EN: point -->
+  <RK_OneHanded.tools.point.label>劍尖</RK_OneHanded.tools.point.label>
+  <!-- EN: edge -->
+  <RK_OneHanded.tools.edge.label>劍刃</RK_OneHanded.tools.edge.label>
+  <!-- EN: handle -->
+  <RK_OneHanded.tools.handle.label>握柄</RK_OneHanded.tools.handle.label>
+  
+  <!-- EN: Spear -->
+  <RK_Spear.label>鼠族長矛</RK_Spear.label>
+  <!-- EN: 간단하게 만든 창입니다. 길이가 짧아서 인간이 보기에는 단창처럼 보입니다. -->
+  <RK_Spear.description>做工簡單的長矛。雖然鼠族用起來很順手，但對人類而言就顯得有點短了。</RK_Spear.description>
+  <!-- EN: shaft -->
+  <RK_Spear.tools.shaft.label>握柄</RK_Spear.tools.shaft.label>
+  <!-- EN: point -->
+  <RK_Spear.tools.point.label>矛尖</RK_Spear.tools.point.label>
+  
+  <!-- EN: ratkin two handed sword -->
+  <RK_TwoHanded.label>鼠族雙手劍</RK_TwoHanded.label>
+  <!-- EN: 양손으로 들 수 있는 검입니다. 무겁지만 적을 확실하게 두동강 낼 수 있습니다. -->
+  <RK_TwoHanded.description>必須要雙手才能舉起的劍。雖然很笨重，但是完全可以把敵人劈成兩截。</RK_TwoHanded.description>
+  <!-- EN: handle -->
+  <RK_TwoHanded.tools.handle.label>握柄</RK_TwoHanded.tools.handle.label>
+  <!-- EN: point -->
+  <RK_TwoHanded.tools.point.label>劍尖</RK_TwoHanded.tools.point.label>
+  <!-- EN: edge -->
+  <RK_TwoHanded.tools.edge.label>劍刃</RK_TwoHanded.tools.edge.label>
+  
+</LanguageData>

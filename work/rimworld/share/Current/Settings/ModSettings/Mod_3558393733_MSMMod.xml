@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="MSM.MSMSettings">
+		<extremeStressMultiplier>0.100000001</extremeStressMultiplier>
+		<moderateStressMultiplier>0.310000002</moderateStressMultiplier>
+		<minorStressMultiplier>0.920000017</minorStressMultiplier>
+		<goodMoodMultiplier>1.13999999</goodMoodMultiplier>
+		<excellentMoodMultiplier>1.29999995</excellentMoodMultiplier>
+		<DzalianexcellentMoodMultiplier>1.5</DzalianexcellentMoodMultiplier>
+	</ModSettings>
+</SettingsBlock>

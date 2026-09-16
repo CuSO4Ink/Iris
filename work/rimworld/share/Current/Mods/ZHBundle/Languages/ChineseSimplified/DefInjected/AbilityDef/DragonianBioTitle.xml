@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Flame Breath -->
+  <Dragonian_DragonbornBreath_Flame.label>火焰吐息</Dragonian_DragonbornBreath_Flame.label>
+  <!-- EN: Emits Flame Breath over a wide area. -->
+  <Dragonian_DragonbornBreath_Flame.description>向广范围内喷出火焰吐息。</Dragonian_DragonbornBreath_Flame.description>
+  
+  <!-- EN: Frost Breath -->
+  <Dragonian_DragonbornBreath_Frost.label>冰霜吐息</Dragonian_DragonbornBreath_Frost.label>
+  <!-- EN: Emits Frost Breath over a wide area. -->
+  <Dragonian_DragonbornBreath_Frost.description>向广范围内喷出冰霜吐息。</Dragonian_DragonbornBreath_Frost.description>
+  
+</LanguageData>

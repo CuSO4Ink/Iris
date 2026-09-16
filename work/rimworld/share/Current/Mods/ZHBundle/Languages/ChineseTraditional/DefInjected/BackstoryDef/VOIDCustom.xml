@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RH2_CustomVOID_Childhood.title>末日生還者</RH2_CustomVOID_Childhood.title>
+  <RH2_CustomVOID_Childhood.titleShort>末日</RH2_CustomVOID_Childhood.titleShort>
+  <RH2_CustomVOID_Childhood.description>Nerotonin-4型病毒的那場災難性爆發後，[PAWN_nameDef]幸運地生還並長大成人。[PAWN_pronoun]住在費爾維尤的眾多據點之一，先後從霍德特遷移到了Secronom碉堡。\n\n[PAWN_nameDef]經歷了許多恐怖的事，每天都要忍受失去朋友和家人的痛苦，還要在內城墻與永不停息的感染生物戰鬥。\n\n搶劫難以實施，作物生長緩慢，在這種情形下如果想要活下去，只有戰鬥。除此之外，[PAWN_nameDef]在[PAWN_possessive]幼年時期學習到了許多以物易物的知識。</RH2_CustomVOID_Childhood.description>
+
+  <RH2_CustomDFChildhood_B.title>死區劫掠者</RH2_CustomDFChildhood_B.title>
+  <RH2_CustomDFChildhood_B.titleShort>死區</RH2_CustomDFChildhood_B.titleShort>
+  <RH2_CustomDFChildhood_B.description>[PAWN_nameDef]曾是Nerotonin-4型病毒爆發期間的一名拾荒者。努力求生的過程中，[PAWN_pronoun]遇到了相當多的危險生物，並因此失去了許多朋友。[PAWN_pronoun]以承擔內城中最危險的任務而聞名——劫掠「死區」，一個被進化毒株占據的紫色高危區域。\n\n[PAWN_nameDef]年幼時就不斷磨練自己的戰鬥能力，以此為[PAWN_possessive]的家庭提供食物，除此之外，[PAWN_pronoun]也在不斷增進自己的口才和人際關系。</RH2_CustomDFChildhood_B.description>
+
+  <RH2_CustomDFAdulthood_A.title>精銳生還者</RH2_CustomDFAdulthood_A.title>
+  <RH2_CustomDFAdulthood_A.titleShort>精銳</RH2_CustomDFAdulthood_A.titleShort>
+  <RH2_CustomDFAdulthood_A.description>被火焰和堆積的屍體充斥的內城中，顯現出一個神秘的組織。[PAWN_nameDef]並沒有主動請求加入，但很快得到了邀請。自那時起，[PAWN_possessive]的生活永遠改變了。這個集團擁有世界上最強大的武器——薄暝裝備。同時他們操縱市場，囤積居奇，而其他幸存者只能在內城劫掠中勉力維生。\n\n[PAWN_nameDef]接受了每個集團成員必須經歷的所有可選技能的培訓，並通過植入物高速學習。普通的拾荒者仍在掙紮求生的時候，這個集團已經秘密地對航天系統進行了再開發，並找到了逃離這顆星球的方法。</RH2_CustomDFAdulthood_A.description>
+
+  <RH2_CustomDFAdulthood_B.title>薄暝冠軍</RH2_CustomDFAdulthood_B.title>
+  <RH2_CustomDFAdulthood_B.titleShort>薄暝</RH2_CustomDFAdulthood_B.titleShort>
+  <RH2_CustomDFAdulthood_B.description>在費爾維尤的薄暝活動期間，[PAWN_nameDef]參加了一場被稱為頂級生還者的比賽。[PAWN_pronoun]在失去幾個朋友和同黨後最終獲勝，期間他們清除了荒野裏無數被感染的N-4部落，與遭遇的其他集團作戰——這一切都是為了贏得世人青睞的薄暝裝備。\n\n得益於[PAWN_possessive]天賦，[PAWN_pronoun]之後被一個神秘組織接納，並在心中留下了難以磨滅的記憶。</RH2_CustomDFAdulthood_B.description>
+
+
+</LanguageData>

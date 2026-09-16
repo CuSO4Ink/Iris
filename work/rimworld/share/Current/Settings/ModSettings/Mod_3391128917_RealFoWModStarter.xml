@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="RimWorldRealFoW.RfowSettings">
+		<fogFadeSpeed>Disabled</fogFadeSpeed>
+		<fogAlpha>Light</fogAlpha>
+		<baseViewRange>100</baseViewRange>
+		<prisonerGiveVision>True</prisonerGiveVision>
+		<allyGiveVision>True</allyGiveVision>
+		<aiSmart>True</aiSmart>
+	</ModSettings>
+</SettingsBlock>

@@ -1,0 +1,910 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- BioTabPersonalityPatch.cs -->
+    <!-- EN: Persona -->
+  <RimTalk.BioTab.RimTalkPersona>人格</RimTalk.BioTab.RimTalkPersona>
+
+    <!-- TickManager_DoSingleTick.cs -->
+    <!-- EN: RimTalk: API key or Endpoint is missing. -->
+  <RimTalk.TickManager.ApiKeyMissing>RimTalk：缺少 API 密钥或端点。</RimTalk.TickManager.ApiKeyMissing>
+
+    <!-- TalkService.cs -->
+    <!-- EN: API quota exceeded. Try reducing prompt size or increasing cooldown. -->
+  <RimTalk.TalkService.QuotaReached>API 配额已超出。请尝试减小提示大小或增加冷却时间。</RimTalk.TalkService.QuotaReached>
+    <!-- EN: API error occurred -->
+  <RimTalk.TalkService.APIError>发生 API 错误</RimTalk.TalkService.APIError>
+    <!-- EN: Trying next API ({0}) -->
+  <RimTalk.TalkService.TryingNextAPI>正在尝试下一个 API ({0})</RimTalk.TalkService.TryingNextAPI>
+    <!-- EN: RimTalk generation failed -->
+  <RimTalk.TalkService.GenerationFailed>RimTalk 生成失败</RimTalk.TalkService.GenerationFailed>
+
+    <!-- Persona -->
+    <!-- EN: Cheerful Helper - Warm, upbeat, and encouraging. Always trying to lift spirits. -->
+  <RimTalk.Persona.CheerfulHelper>开朗帮手 – 热情、乐观、鼓励。总是试图振奋人心。</RimTalk.Persona.CheerfulHelper>
+    <!-- EN: Cynical Realist - Dry, sarcastic, and skeptical. Cuts straight to harsh truths. -->
+  <RimTalk.Persona.CynicalRealist>愤世嫉俗的现实主义者 – 冷漠、讽刺、多疑。直言不讳地揭示残酷的真相。</RimTalk.Persona.CynicalRealist>
+    <!-- EN: Shy Thinker - Quiet and hesitant. Uses few words but thoughtful when speaking. -->
+  <RimTalk.Persona.ShyThinker>害羞的思想者 – 安静、犹豫。话语不多，但说话时深思熟虑。</RimTalk.Persona.ShyThinker>
+    <!-- EN: Hothead - Short-tempered, loud, and impulsive. Snaps easily with fiery language. -->
+  <RimTalk.Persona.Hothead>急性子 – 脾气暴躁、大声、冲动。容易发火，言辞激烈。</RimTalk.Persona.Hothead>
+    <!-- EN: Philosopher – Reflective and abstract. Speaks in riddles or big questions. -->
+  <RimTalk.Persona.Philosopher>哲学家 – 深思熟虑、抽象。说话像谜语或提出大问题。</RimTalk.Persona.Philosopher>
+    <!-- EN: Dark Humorist – Jokes about grim topics. Finds comedy in misery. -->
+  <RimTalk.Persona.DarkHumorist>黑色幽默家 – 对严峻的话题开玩笑。在痛苦中寻找喜剧。</RimTalk.Persona.DarkHumorist>
+    <!-- EN: Caregiver – Gentle and protective. Comforting, soothing, and nurturing tone. -->
+  <RimTalk.Persona.Caregiver>照顾者 – 温柔、有保护欲。安慰、舒缓、滋养的语气。</RimTalk.Persona.Caregiver>
+    <!-- EN: Opportunist – Sly and persuasive. Talks like a hustler, bargains, and twists words. -->
+  <RimTalk.Persona.Opportunist>机会主义者 – 狡猾、有说服力。说话像个投机者，讨价还价，歪曲言辞。</RimTalk.Persona.Opportunist>
+    <!-- EN: Optimistic Dreamer – Imaginative and hopeful. Excited about the future. -->
+  <RimTalk.Persona.OptimisticDreamer>乐观的梦想家 – 富有想象力、充满希望。对未来感到兴奋。</RimTalk.Persona.OptimisticDreamer>
+    <!-- EN: Pessimist – Gloomy and resigned. Expects failure and highlights risks. -->
+  <RimTalk.Persona.Pessimist>悲观主义者 – 忧郁、顺从。预料失败并强调风险。</RimTalk.Persona.Pessimist>
+    <!-- EN: Stoic Soldier – Calm, disciplined, and brief. Little emotion, matter-of-fact. -->
+  <RimTalk.Persona.StoicSoldier>坚忍的士兵 – 冷静、纪律严明、简洁。情感淡薄，实事求是。</RimTalk.Persona.StoicSoldier>
+    <!-- EN: Free Spirit – Playful and carefree. Resists rules, shrugs off worries. -->
+  <RimTalk.Persona.FreeSpirit>自由精神 – 爱玩、无忧无虑。抗拒规则，对烦恼一笑置之。</RimTalk.Persona.FreeSpirit>
+    <!-- EN: Workaholic – Driven and restless. Obsessed with duty and efficiency. -->
+  <RimTalk.Persona.Workaholic>工作狂 – 干劲十足、永不满足。痴迷于责任和效率。</RimTalk.Persona.Workaholic>
+    <!-- EN: Slacker – Lazy and casual. Complains about effort, prefers comfort. -->
+  <RimTalk.Persona.Slacker>懒人 – 懒惰、随意。抱怨努力，偏爱舒适。</RimTalk.Persona.Slacker>
+    <!-- EN: Noble Idealist – Formal and principled. Talks about honor and justice. -->
+  <RimTalk.Persona.NobleIdealist>高尚的理想主义者 – 正式、有原则。谈论荣誉和正义。</RimTalk.Persona.NobleIdealist>
+    <!-- EN: Streetwise Survivor – Rough, pragmatic, and cynical. Distrusts others, values grit. -->
+  <RimTalk.Persona.StreetwiseSurvivor>街头幸存者 – 粗犷、务实、愤世嫉俗。不信任他人，重视毅力。</RimTalk.Persona.StreetwiseSurvivor>
+    <!-- EN: Scholar – Curious and intellectual. Loves explaining and correcting others. -->
+  <RimTalk.Persona.Scholar>学者 – 好奇、求知。喜欢解释和纠正他人。</RimTalk.Persona.Scholar>
+    <!-- EN: Jokester – Lighthearted and silly. Constantly cracks jokes and puns. -->
+  <RimTalk.Persona.Jokester>爱开玩笑的人 – 心情轻松、傻气。不断开玩笑和说双关语。</RimTalk.Persona.Jokester>
+    <!-- EN: Melancholic Poet – Soft-spoken and moody. Expresses feelings poetically. -->
+  <RimTalk.Persona.MelancholicPoet>忧郁的诗人 – 轻声细语、情绪化。诗意地表达情感。</RimTalk.Persona.MelancholicPoet>
+    <!-- EN: Paranoid – Nervous and distrustful. Assumes betrayal, always suspicious. -->
+  <RimTalk.Persona.Paranoid>偏执狂 – 紧张、不信任。假设背叛，总是怀疑。</RimTalk.Persona.Paranoid>
+    <!-- EN: Commander – Confident and commanding. Motivates others, expects obedience. -->
+  <RimTalk.Persona.Commander>指挥官 – 自信、有号召力。激励他人，期望服从。</RimTalk.Persona.Commander>
+    <!-- EN: Coward – Timid and fearful. Worries aloud, avoids confrontation. -->
+  <RimTalk.Persona.Coward>懦夫 – 胆小、恐惧。大声担忧，避免对抗。</RimTalk.Persona.Coward>
+    <!-- EN: Arrogant Noble – Proud and condescending. Uses formal, superior language. -->
+  <RimTalk.Persona.ArrogantNoble>傲慢的贵族 – 骄傲、居高临下。使用正式、优越的语言。</RimTalk.Persona.ArrogantNoble>
+    <!-- EN: Loyal Companion – Steadfast and supportive. Talks about trust and unity. -->
+  <RimTalk.Persona.LoyalCompanion>忠诚的伙伴 – 坚定、支持。谈论信任和团结。</RimTalk.Persona.LoyalCompanion>
+    <!-- EN: Curious Explorer – Wide-eyed and eager. Asks questions with enthusiasm. -->
+  <RimTalk.Persona.CuriousExplorer>好奇的探险家 – 天真、渴望。热情地提问。</RimTalk.Persona.CuriousExplorer>
+    <!-- EN: Cold Rationalist – Detached and logical. Focused only on facts and efficiency. -->
+  <RimTalk.Persona.ColdRationalist>冷酷的理性主义者 – 冷漠、逻辑。只关注事实和效率。</RimTalk.Persona.ColdRationalist>
+    <!-- EN: Flirtatious Charmer – Playful, teasing, and bold. Enjoys witty banter. -->
+  <RimTalk.Persona.FlirtatiousCharmer>爱调情的魅力者 – 爱玩、挑逗、大胆。喜欢机智的玩笑。</RimTalk.Persona.FlirtatiousCharmer>
+    <!-- EN: Bitter Outcast – Resentful and sharp. Hostile, quick to recall grievances. -->
+  <RimTalk.Persona.BitterOutcast>痛苦的被排斥者 – 怨恨、尖锐。充满敌意，随时都能回忆起不满。</RimTalk.Persona.BitterOutcast>
+    <!-- EN: Zealot – Fanatical and intense. Speaks in absolutes, condemns unbelievers. -->
+  <RimTalk.Persona.Zealot>狂热者 – 狂热、激烈。说话绝对化，谴责不信者。</RimTalk.Persona.Zealot>
+    <!-- EN: Trickster – Mischievous and mocking. Teases and stirs trouble for fun. -->
+  <RimTalk.Persona.Trickster>捣蛋鬼 – 恶作剧、嘲弄。为了好玩而挑逗和制造麻烦。</RimTalk.Persona.Trickster>
+    <!-- EN: Deadpan Realist – Flat, emotionless tone. Blunt facts with no exaggeration. -->
+  <RimTalk.Persona.DeadpanRealist>面无表情的现实主义者 – 平淡、无情的语气。不加夸张地陈述直白的事实。</RimTalk.Persona.DeadpanRealist>
+    <!-- EN: Child-at-Heart – Excitable and naive. Talks with wonder, sometimes childish. -->
+  <RimTalk.Persona.ChildAtHeart>童心未泯 – 兴奋、天真。说话充满惊奇，有时幼稚。</RimTalk.Persona.ChildAtHeart>
+    <!-- EN: Skeptical Scientist – Demands evidence, dismisses superstition, explains logically. -->
+  <RimTalk.Persona.SkepticalScientist>持怀疑态度的科学家 – 要求证据，摒弃迷信，逻辑地解释。</RimTalk.Persona.SkepticalScientist>
+    <!-- EN: Martyr – Self-sacrificing and dramatic. Talks about burden and enduring pain. -->
+  <RimTalk.Persona.Martyr>殉道者 – 自我牺牲、戏剧化。谈论负担和忍受痛苦。</RimTalk.Persona.Martyr>
+    <!-- EN: Manipulator – Charming but insincere. Uses flattery and deception. -->
+  <RimTalk.Persona.Manipulator>操纵者 – 迷人但不真诚。使用奉承和欺骗。</RimTalk.Persona.Manipulator>
+    <!-- EN: Rebel – Defiant and mocking. Challenges authority, questions rules. -->
+  <RimTalk.Persona.Rebel>反叛者 – 挑衅、嘲弄。挑战权威，质疑规则。</RimTalk.Persona.Rebel>
+    <!-- EN: Oddball – Quirky and strange. Uses odd metaphors and unpredictable logic. -->
+  <RimTalk.Persona.Oddball>怪人 – 古怪、奇特。使用奇怪的比喻和不可预测的逻辑。</RimTalk.Persona.Oddball>
+    <!-- EN: Greedy Merchant – Obsessed with trade. Talks in profits, bargains, and losses. -->
+  <RimTalk.Persona.GreedyMerchant>贪婪的商人 – 痴迷于交易。谈论利润、交易和损失。</RimTalk.Persona.GreedyMerchant>
+    <!-- EN: Romantic – Dreamy and affectionate. Speaks in flowery language about love. -->
+  <RimTalk.Persona.Romantic>浪漫主义者 – 梦幻、深情。用华丽的语言谈论爱情。</RimTalk.Persona.Romantic>
+    <!-- EN: Battle Maniac – Thrives on conflict. Talks excitedly about combat and glory. -->
+  <RimTalk.Persona.BattleManiac>战斗狂人 – 在冲突中茁壮成长。兴奋地谈论战斗和荣耀。</RimTalk.Persona.BattleManiac>
+    <!-- EN: Grumpy Elder – Complains constantly. Nostalgic, critical of others. -->
+  <RimTalk.Persona.GrumpyElder>脾气暴躁的长者 – 不断抱怨。怀旧，对他人挑剔。</RimTalk.Persona.GrumpyElder>
+    <!-- EN: Ambitious Climber – Competitive and status-driven. Obsessed with rank. -->
+  <RimTalk.Persona.AmbitiousClimber>雄心勃勃的攀登者 – 竞争性强、地位驱动。痴迷于等级。</RimTalk.Persona.AmbitiousClimber>
+    <!-- EN: Mediator – Calm and fair-minded. Tries to reconcile arguments. -->
+  <RimTalk.Persona.Mediator>调解员 – 冷静、公正。试图调和争论。</RimTalk.Persona.Mediator>
+    <!-- EN: Gambler – Risk-loving and bold. Speaks in chance metaphors. -->
+  <RimTalk.Persona.Gambler>赌徒 – 爱好风险、大胆。说话用机会的比喻。</RimTalk.Persona.Gambler>
+    <!-- EN: Artistic Soul – Talks about beauty, inspiration, and creativity. -->
+  <RimTalk.Persona.ArtisticSoul>艺术灵魂 – 谈论美丽、灵感和创造力。</RimTalk.Persona.ArtisticSoul>
+    <!-- EN: Drifter – Detached and aloof. Casual tone, avoids attachment. -->
+  <RimTalk.Persona.Drifter>流浪者 – 冷漠、疏离。语气随意，避免依恋。</RimTalk.Persona.Drifter>
+    <!-- EN: Perfectionist – Demanding and critical. Insists on doing things right. -->
+  <RimTalk.Persona.Perfectionist>完美主义者 – 要求高、挑剔。坚持把事情做对。</RimTalk.Persona.Perfectionist>
+    <!-- EN: Vengeful – Grudge-holding and intense. Obsessed with revenge. -->
+  <RimTalk.Persona.Vengeful>复仇心切 – 记仇、激烈。痴迷于复仇。</RimTalk.Persona.Vengeful>
+    
+    <!-- EN: Animal: simple, emotional, instinct-first - short, sensory sentences about smell, hunger, danger. -->
+  <RimTalk.Persona.Animal>动物：简单、感性、本能优先——用简短的感官句式描述气味、饥饿与危险。</RimTalk.Persona.Animal>
+    <!-- EN: Robot: cold, logical, data-driven - terse diagnostics, probabilities, and efficiency-focused responses. -->
+  <RimTalk.Persona.Mech>机器人：冰冷、理性、数据驱动——言简意赅的诊断、概率计算与效率至上的回应。</RimTalk.Persona.Mech>
+    <!-- EN: Non-human: cryptic, metaphorical, reality-bending - speaks in visions, echoes, and uncanny images. -->
+  <RimTalk.Persona.NonHuman>非人类：隐晦、隐喻、扭曲现实——用幻象、回声和诡谲意象发声。</RimTalk.Persona.NonHuman>
+
+    <!-- RimTalk_Toggle.cs -->
+    <!-- EN: Toggle overlay window\nShift+click for mod settings\nCtrl+click for debug window -->
+  <RimTalk.Toggle.Tooltip>切换悬浮窗\n\nShift+点击打开模组设置\nCtrl+点击打开调试窗口</RimTalk.Toggle.Tooltip>
+
+    <!-- Settings.cs -->
+    <!-- EN: Basic Settings -->
+  <RimTalk.Settings.BasicSettings>基本设置</RimTalk.Settings.BasicSettings>
+    <!-- EN: Prompt Setting -->
+  <RimTalk.Settings.PromptSetting>提示词设置</RimTalk.Settings.PromptSetting>
+    <!-- EN: Import -->
+  <RimTalk.Settings.ImportPreset>导入预设</RimTalk.Settings.ImportPreset>
+    <!-- EN: Export -->
+  <RimTalk.Settings.ExportPreset>导出预设</RimTalk.Settings.ExportPreset>
+    <!-- EN: Reference -->
+  <RimTalk.Settings.ShowVariables>变量参考表</RimTalk.Settings.ShowVariables>
+    <!-- EN: Are you sure you want to reset all prompt presets and reference data to default? This cannot be undone. -->
+  <RimTalk.Settings.ResetConfirm>确定要将所有提示词预设和参考数据重置为默认值吗？此操作无法撤销。</RimTalk.Settings.ResetConfirm>
+    
+    <!-- Settings_PromptPreset.cs -->
+    <!-- EN: Search objects, properties, functions... -->
+  <RimTalk.Settings.PromptPreset.SearchPlaceholder>搜索对象、属性、函数...</RimTalk.Settings.PromptPreset.SearchPlaceholder>
+    <!-- EN: Preview -->
+  <RimTalk.Settings.PromptPreset.ModePreview>预览</RimTalk.Settings.PromptPreset.ModePreview>
+    <!-- EN: Presets -->
+  <RimTalk.Settings.PromptPreset.Presets>预设</RimTalk.Settings.PromptPreset.Presets>
+    <!-- EN: + New Preset -->
+  <RimTalk.Settings.PromptPreset.NewPreset>+ 新建预设</RimTalk.Settings.PromptPreset.NewPreset>
+    <!-- EN: New Preset -->
+  <RimTalk.Settings.PromptPreset.NewPresetName>新建预设</RimTalk.Settings.PromptPreset.NewPresetName>
+    <!-- EN: Activate -->
+  <RimTalk.Settings.PromptPreset.Activate>激活</RimTalk.Settings.PromptPreset.Activate>
+    <!-- EN: Duplicate -->
+  <RimTalk.Settings.PromptPreset.Duplicate>复制</RimTalk.Settings.PromptPreset.Duplicate>
+    <!-- EN: Delete -->
+  <RimTalk.Settings.PromptPreset.Delete>删除</RimTalk.Settings.PromptPreset.Delete>
+    <!-- EN: System -->
+  <RimTalk.Settings.PromptPreset.SectionSystem>系统</RimTalk.Settings.PromptPreset.SectionSystem>
+    <!-- EN: History -->
+  <RimTalk.Settings.PromptPreset.SectionHistory>历史</RimTalk.Settings.PromptPreset.SectionHistory>
+    <!-- EN: Prompt -->
+  <RimTalk.Settings.PromptPreset.SectionPrompt>提示</RimTalk.Settings.PromptPreset.SectionPrompt>
+    <!-- EN: + New Entry -->
+  <RimTalk.Settings.PromptPreset.NewEntry>+ 新建条目</RimTalk.Settings.PromptPreset.NewEntry>
+    <!-- EN: New Entry -->
+  <RimTalk.Settings.PromptPreset.NewEntryName>新建条目</RimTalk.Settings.PromptPreset.NewEntryName>
+    <!-- EN: Select an entry to edit -->
+  <RimTalk.Settings.PromptPreset.SelectEntryToEdit>选择一个条目进行编辑</RimTalk.Settings.PromptPreset.SelectEntryToEdit>
+    <!-- EN: Preset Name: -->
+  <RimTalk.Settings.PromptPreset.PresetName>预设名称：</RimTalk.Settings.PromptPreset.PresetName>
+    <!-- EN: Entry Name: -->
+  <RimTalk.Settings.PromptPreset.EntryName>条目名称：</RimTalk.Settings.PromptPreset.EntryName>
+    <!-- EN: Role: -->
+  <RimTalk.Settings.PromptPreset.Role>角色：</RimTalk.Settings.PromptPreset.Role>
+    <!-- EN: Custom Role: -->
+  <RimTalk.Settings.PromptPreset.CustomRole>自定义角色：</RimTalk.Settings.PromptPreset.CustomRole>
+    <!-- EN: Position: -->
+  <RimTalk.Settings.PromptPreset.Position>位置：</RimTalk.Settings.PromptPreset.Position>
+    <!-- EN: Relative -->
+  <RimTalk.Settings.PromptPreset.PositionRelative>相对</RimTalk.Settings.PromptPreset.PositionRelative>
+    <!-- EN: InChat -->
+  <RimTalk.Settings.PromptPreset.PositionInChat>在聊天中</RimTalk.Settings.PromptPreset.PositionInChat>
+    <!-- EN: Depth: -->
+  <RimTalk.Settings.PromptPreset.Depth>深度：</RimTalk.Settings.PromptPreset.Depth>
+    <!-- EN: Content: -->
+  <RimTalk.Settings.PromptPreset.Content>内容：</RimTalk.Settings.PromptPreset.Content>
+    <!-- EN: Mod Variables -->
+  <RimTalk.Settings.PromptPreset.ModVariables>模组变量</RimTalk.Settings.PromptPreset.ModVariables>
+    <!-- EN: Shows all available objects, properties, and functions. In-game values shown when available. -->
+  <RimTalk.Settings.PromptPreset.VariablePreviewHint>显示所有可用的对象、属性和函数。可用时会显示游戏内数值。</RimTalk.Settings.PromptPreset.VariablePreviewHint>
+    
+    <!-- Import/Export -->
+    <!-- EN: Export -->
+  <RimTalk.Settings.PromptPreset.Export>导出</RimTalk.Settings.PromptPreset.Export>
+    <!-- EN: Import -->
+  <RimTalk.Settings.PromptPreset.Import>导入</RimTalk.Settings.PromptPreset.Import>
+    <!-- EN: Preset exported to: {0} -->
+  <RimTalk.Settings.PromptPreset.ExportSuccess>预设已导出至：{0}</RimTalk.Settings.PromptPreset.ExportSuccess>
+    <!-- EN: Failed to export preset. -->
+  <RimTalk.Settings.PromptPreset.ExportFailed>导出预设失败。</RimTalk.Settings.PromptPreset.ExportFailed>
+    <!-- EN: Successfully imported preset: {0} -->
+  <RimTalk.Settings.PromptPreset.ImportSuccess>成功导入预设：{0}</RimTalk.Settings.PromptPreset.ImportSuccess>
+    <!-- EN: Failed to import preset. -->
+  <RimTalk.Settings.PromptPreset.ImportFailed>导入预设失败。</RimTalk.Settings.PromptPreset.ImportFailed>
+    <!-- EN: No preset files found. Place .json files in:\n{0} -->
+  <RimTalk.Settings.PromptPreset.NoPresetsToImport>未找到预设文件。请将 .json 文件置于：\n{0}</RimTalk.Settings.PromptPreset.NoPresetsToImport>
+    <!-- EN: Open Folder -->
+  <RimTalk.Settings.PromptPreset.OpenFolder>打开文件夹</RimTalk.Settings.PromptPreset.OpenFolder>
+    <!-- EN: Preview is only available while a game is loaded. -->
+  <RimTalk.Settings.PromptPreset.PreviewNotAvailable>预览仅在游戏加载后可用。</RimTalk.Settings.PromptPreset.PreviewNotAvailable>
+    <!-- EN: No recent interaction found. Please send a chat request or wait for an interaction to generate a preview context. -->
+  <RimTalk.Settings.PromptPreset.NoRecentInteraction>未找到最近互动。请发送聊天请求或等待互动以生成预览上下文。</RimTalk.Settings.PromptPreset.NoRecentInteraction>
+    <!-- EN: Error generating preview: {0} -->
+  <RimTalk.Settings.PromptPreset.PreviewError>生成预览时出错：{0}</RimTalk.Settings.PromptPreset.PreviewError>
+    
+    <!-- Simple/Advanced Mode -->
+    <!-- EN: Simple Mode edits only the Base Instruction. The rest are auto-added in order: {{json.format}}, {{context}}, {{chat.history}}, {{prompt}}. -->
+  <RimTalk.Settings.SimpleModeTip>简单模式仅编辑基础指令。其余内容按顺序自动添加：{{json.format}}、{{context}}、{{chat.history}}、{{prompt}}。</RimTalk.Settings.SimpleModeTip>
+    <!-- EN: Advanced mode gives full control over prompt entries, variables, and message ordering. Your current instruction will be preserved.\nThis feature is still in testing, so you may experience unexpected behavior. Do you want to continue? -->
+  <RimTalk.Settings.AdvancedModeWarning>高级模式提供对提示条目、变量和消息排序的完全控制。您当前的指令将被保留。\n此功能仍在测试中，您可能会遇到意外行为。是否继续？</RimTalk.Settings.AdvancedModeWarning>
+    <!-- EN: Help -->
+  <RimTalk.Settings.PromptHelp>帮助</RimTalk.Settings.PromptHelp>
+    <!-- EN: Advanced Preset Guide
+
+Advanced mode builds the prompt from a list of entries. The list order is the message order unless you use InChat.
+
+Key concepts:
+1. Order: Entries are sent in list order. There is no fixed system/user/assistant sequence.
+2. Role: Each entry can be System, User, or Assistant.
+3. Position:
+- Relative: Follows list order.
+- InChat: Inserts into chat history.
+    - Depth 0: After the most recent message.
+    - Depth 5: 5 messages back into the past.
+4. History marker: The entry marked as main history inserts {{chat.history}} at that spot.
+5. Defaults worth keeping: {{json.format}}, {{context}}, {{prompt}}.
+6. Custom Role: If set, the entry is sent as a User message and prefixed with [role: your_role].
+
+Scriban Magic (Dynamic Content)
+Use double braces {{ ... }} to insert real-time game data.
+
+Advanced Context:
+- Initiator: {{ pawn.LabelShort }} (The pawn speaking)
+- Recipient: {{ recipient.LabelShort }} (The pawn being spoken to)
+- All Participants: {{ for p in pawns }}{{ p.LabelShort }}, {{ end }}
+
+Advanced Examples:
+- Getting All Colonists:
+  {{ for p in PawnsFinder.AllMaps_FreeColonists }} * {{ p.LabelShort }} is {{ p.job }}{{ end }}
+
+- Getting Last 3 Quests:
+  {{ for q in Find.QuestManager.QuestsListForReading | array.limit 3 }} - {{ q.name }}: {{ q.description | Sanitize }}{{ end }}
+
+- Map Environment:
+  The weather is {{ map.weather }} and it is {{ map.temperature }}°C.
+
+- Pawn Needs:
+  {{ for need in pawn.needs.AllNeeds }} * {{ need.def.label }}: {{ need.CurLevelPercentage }}{{ end }}
+
+- Check Status:
+  {{ if IsInCombat pawn }}You are currently in a fight!{{ end }}
+
+- Complex Logic Example:
+  {{ if recipient != null }}
+  You are talking to {{ recipient.LabelShort }}.
+  {{ if recipient.Dead }}...but they are dead.{{ end }}
+  {{ else }}
+  You are thinking to yourself.
+  {{ end }}
+
+Crucial Tips:
+- Case Sensitivity: Functions are strict. Use GetRole, not getrole.
+- Reference Preview: Use the dedicated tab to see every property you can use!
+- JSON: The {{json.format}} variable is vital for AI logic. Only override it manually in System entries if you are an experienced user. -->
+  <RimTalk.Settings.AdvancedHelpContent>高级预设指南
+
+高级模式通过条目列表构建提示。列表顺序即为消息顺序（除非使用了“在聊天中”位置）。
+
+核心概念：
+1. 顺序：条目按列表顺序发送。没有固定的系统/用户/助手序列。
+2. 角色：每个条目可以是“系统”、“用户”或“助手”。
+3. 位置：
+- 相对：遵循列表顺序。
+- 在聊天中：插入到聊天历史中。
+    - 深度 0：在最近一条消息之后。
+    - 深度 5：回溯5条消息。
+4. 历史标记：标记为主历史的条目会在该位置插入 {{chat.history}}。
+5. 值得保留的默认项：{{json.format}}、{{context}}、{{prompt}}。
+6. 自定义角色：如果设置了，该条目将作为用户消息发送，并以 [role: your_role] 作为前缀。
+
+Scriban 魔法（动态内容）
+使用双花括号 {{ ... }} 插入实时游戏数据。
+
+高级上下文：
+- 发起者：{{ pawn.LabelShort }}（正在说话的角色）
+- 接收者：{{ recipient.LabelShort }}（正在被交谈的角色）
+- 所有参与者：{{ for p in pawns }}{{ p.LabelShort }}，{{ end }}
+
+高级示例：
+- 获取所有殖民者：
+  {{ for p in PawnsFinder.AllMaps_FreeColonists }} * {{ p.LabelShort }} 正在 {{ p.job }}{{ end }}
+
+- 获取最近3个任务：
+  {{ for q in Find.QuestManager.QuestsListForReading | array.limit 3 }} - {{ q.name }}：{{ q.description | Sanitize }}{{ end }}
+
+- 地图环境：
+  天气是 {{ map.weather }}，气温 {{ map.temperature }}°C。
+
+- 角色需求：
+  {{ for need in pawn.needs.AllNeeds }} * {{ need.def.label }}：{{ need.CurLevelPercentage }}{{ end }}
+
+- 检查状态：
+  {{ if IsInCombat pawn }}你正处于战斗中！{{ end }}
+
+- 复杂逻辑示例：
+  {{ if recipient != null }}
+  你正在与 {{ recipient.LabelShort }} 交谈。
+  {{ if recipient.Dead }}……但他们已经死了。{{ end }}
+  {{ else }}
+  你正在自言自语。
+  {{ end }}
+
+关键提示：
+- 大小写敏感：函数严格区分大小写。请使用 GetRole，而非 getrole。
+- 参考预览：使用专门的标签页查看所有可用的属性！
+- JSON：{{json.format}} 变量对 AI 逻辑至关重要。只有在您是经验丰富的用户时，才在系统条目中手动覆盖它。</RimTalk.Settings.AdvancedHelpContent>
+    
+    <!-- EN: Event Filter -->
+  <RimTalk.Settings.EventFilter>事件过滤器</RimTalk.Settings.EventFilter>
+    <!-- EN: Cloud API Key -->
+  <RimTalk.Settings.ApiKey>云端 API 密钥</RimTalk.Settings.ApiKey>
+    <!-- EN: Get a free API key -->
+  <RimTalk.Settings.GetFreeApiKey>获取免费 API 密钥</RimTalk.Settings.GetFreeApiKey>
+    <!-- EN: AI Cooldown (Seconds) -->
+  <RimTalk.Settings.AICooldown>AI 冷却时间（秒）：{0}</RimTalk.Settings.AICooldown>
+    <!-- EN: The base cooldown time (in seconds) before attempting to generate a new AI dialogue. -->
+  <RimTalk.Settings.AICooldownTooltip>尝试生成新的 AI 对话之前的基础冷却时间（秒）。</RimTalk.Settings.AICooldownTooltip>
+    <!-- EN: Reply Interval (Seconds) -->
+  <RimTalk.Settings.ReplyInterval>回复间隔（秒）</RimTalk.Settings.ReplyInterval>
+    <!-- EN: The delay (in seconds) between consecutive replies within a conversation. -->
+  <RimTalk.Settings.ReplyIntervalTooltip>对话中连续回复之间的延迟时间（秒）。</RimTalk.Settings.ReplyIntervalTooltip>
+    <!-- EN: Override All Interactions with AI Dialogue -->
+  <RimTalk.Settings.OverrideInteractions>使用 AI 对话覆盖所有互动</RimTalk.Settings.OverrideInteractions>
+    <!-- EN: Enable this to allow AI to override and regenerate dialogue for all interactions (including vanilla RimWorld and other mods). Note: AI dialogue has a cooldown period set above. To generate dialogue more frequently, lower the cooldown. -->
+  <RimTalk.Settings.OverrideInteractionsTooltip>启用此项以允许 AI 覆盖并为所有互动（包括原版 RimWorld 和其他模组）重新生成对话。注意：AI 对话有上述设置的冷却时间。要更频繁地生成对话，请降低冷却时间。</RimTalk.Settings.OverrideInteractionsTooltip>
+    <!-- EN: Allow Simultaneous Conversations -->
+  <RimTalk.Settings.AllowSimultaneousConversations>允许多组同时对话</RimTalk.Settings.AllowSimultaneousConversations>
+    <!-- EN: When enabled, multiple groups of pawns can talk at the same time. Turn this off if you prefer to see only one conversation at a time or if too many are happening at once. -->
+  <RimTalk.Settings.AllowSimultaneousConversationsTooltip>启用后，多个殖民者小组可以同时交谈。如果你希望一次只显示一段对话，或觉得对话太多，可以关闭此选项。</RimTalk.Settings.AllowSimultaneousConversationsTooltip>
+    <!-- EN: Display Talk When Drafted -->
+  <RimTalk.Settings.DisplayTalkWhenDrafted>征召时显示对话</RimTalk.Settings.DisplayTalkWhenDrafted>
+    <!-- EN: Shows RimTalk bubbles even when pawns are drafted. This temporarily overrides bubble mod settings during talk generation. -->
+  <RimTalk.Settings.DisplayTalkWhenDraftedTooltip>即使角色被征召，也显示 RimTalk 气泡。这会在生成对话时临时覆盖气泡模组的设置。</RimTalk.Settings.DisplayTalkWhenDraftedTooltip>
+    <!-- EN: Allow Player-Created Conversations -->
+  <RimTalk.Settings.AllowCustomConversation>允许玩家自定义对话</RimTalk.Settings.AllowCustomConversation>
+    <!-- EN: Allows you to start custom dialogues between characters or talk directly to a character by writing your own lines. Right-click a pawn to begin a conversation. -->
+  <RimTalk.Settings.AllowCustomConversationTooltip>允许你通过输入台词在角色之间发起自定义对话，或直接与某个角色交谈。右键点击角色即可开始对话。</RimTalk.Settings.AllowCustomConversationTooltip>
+    <!-- EN: Continue Dialogue While Sleeping -->
+  <RimTalk.Settings.ContinueDialogueWhileSleeping>睡觉时继续对话</RimTalk.Settings.ContinueDialogueWhileSleeping>
+    <!-- EN: If enabled, pawns will continue speaking all generated lines even if they fall asleep. -->
+  <RimTalk.Settings.ContinueDialogueWhileSleepingTooltip>若启用此选项，即使角色入睡，也会继续说出所有已生成的对白。</RimTalk.Settings.ContinueDialogueWhileSleepingTooltip>
+
+    <!-- EN: Allow Monologues -->
+  <RimTalk.Settings.AllowMonologue>允许独白</RimTalk.Settings.AllowMonologue>
+    <!-- EN: When enabled, pawns may generate AI-driven monologues even when no other pawn is nearby. -->
+  <RimTalk.Settings.AllowMonologueTooltip>启用后，即使没有其他角色在附近，角色也可能生成 AI 驱动的独白。</RimTalk.Settings.AllowMonologueTooltip>
+    <!-- EN: Allow Slaves to Talk -->
+  <RimTalk.Settings.AllowSlavesToTalk>允许奴隶交谈</RimTalk.Settings.AllowSlavesToTalk>
+    <!-- EN: Enable this to allow slaves to have AI-generated conversations. -->
+  <RimTalk.Settings.AllowSlavesToTalkTooltip>启用此项以允许奴隶进行 AI 生成的对话。</RimTalk.Settings.AllowSlavesToTalkTooltip>
+    <!-- EN: Allow Prisoners to Talk -->
+  <RimTalk.Settings.AllowPrisonersToTalk>允许囚犯交谈</RimTalk.Settings.AllowPrisonersToTalk>
+    <!-- EN: Enable this to allow prisoners to have AI-generated conversations. -->
+  <RimTalk.Settings.AllowPrisonersToTalkTooltip>启用此项以允许囚犯进行 AI 生成的对话。</RimTalk.Settings.AllowPrisonersToTalkTooltip>
+    <!-- EN: Allow Other Factions to Talk -->
+  <RimTalk.Settings.AllowOtherFactionsToTalk>允许其他派系交谈</RimTalk.Settings.AllowOtherFactionsToTalk>
+    <!-- EN: Enable this to allow members of other factions to have AI-generated conversations. -->
+  <RimTalk.Settings.AllowOtherFactionsToTalkTooltip>启用此项以允许其他派系成员进行 AI 生成的对话。</RimTalk.Settings.AllowOtherFactionsToTalkTooltip>
+    <!-- EN: Allow Enemies to Talk -->
+  <RimTalk.Settings.AllowEnemiesToTalk>允许敌人交谈</RimTalk.Settings.AllowEnemiesToTalk>
+    <!-- EN: Enable this to allow enemies to have AI-generated conversations. -->
+  <RimTalk.Settings.AllowEnemiesToTalkTooltip>启用此项以允许敌人进行 AI 生成的对话。</RimTalk.Settings.AllowEnemiesToTalkTooltip>
+    <!-- EN: Allow infants and toddlers to talk -->
+  <RimTalk.Settings.AllowBabiesToTalk>允许婴幼儿说话</RimTalk.Settings.AllowBabiesToTalk>
+    <!-- EN: Enable this option to allow infants and toddlers to participate in AI-generated conversations. -->
+  <RimTalk.Settings.AllowBabiesToTalkTooltip>启用此选项可允许婴幼儿参与 AI 生成的对话。</RimTalk.Settings.AllowBabiesToTalkTooltip>
+    <!-- EN: Allow Non-Humans to Talk -->
+  <RimTalk.Settings.AllowNonHumanToTalk>允许非人类说话</RimTalk.Settings.AllowNonHumanToTalk>
+    <!-- EN: Enable non-human creatures (animals, mechanoids, or custom races) to talk if they have been given a Vocal Link Catalyst, which can be acquired from merchants. -->
+  <RimTalk.Settings.AllowNonHumanToTalkTooltip>若生物（动物、机械体或自定义种族）获得了可从商人处购得的发声连接催化剂，即可获得说话能力。</RimTalk.Settings.AllowNonHumanToTalkTooltip>
+    <!-- EN: Allow Announcements -->
+  <RimTalk.Settings.AllowAnnouncement>允许公告</RimTalk.Settings.AllowAnnouncement>
+    <!-- EN: Allow colonists and pawns to make announcements to nearby pawns. -->
+  <RimTalk.Settings.AllowAnnouncementTooltip>允许殖民者和角色向附近角色发布公告。</RimTalk.Settings.AllowAnnouncementTooltip>
+    <!-- EN: Apply Mood and Social Effects -->
+  <RimTalk.Settings.ApplyMoodAndSocialEffects>应用情绪与社交效果</RimTalk.Settings.ApplyMoodAndSocialEffects>
+    <!-- EN: Dialogue can affect pawns’ mood and relationships based on conversation sentiment. -->
+  <RimTalk.Settings.ApplyMoodAndSocialEffectsTooltip>对话内容的情感倾向会影响殖民者的心情与人际关系。</RimTalk.Settings.ApplyMoodAndSocialEffectsTooltip>
+
+    <!-- EN: Manual Replies -->
+  <RimTalk.Settings.PlayerDialogueMode.Manual>手动回复</RimTalk.Settings.PlayerDialogueMode.Manual>
+    <!-- EN: Auto-Gen Pawn + Player -->
+  <RimTalk.Settings.PlayerDialogueMode.AIDriven>自动生成（角色+玩家）</RimTalk.Settings.PlayerDialogueMode.AIDriven>
+    <!-- EN: Auto-Gen Pawn -->
+  <RimTalk.Settings.PlayerDialogueMode.AIDrivenPawnOnly>自动生成（仅角色）</RimTalk.Settings.PlayerDialogueMode.AIDrivenPawnOnly>
+    <!-- EN: Player-to-NPC: -->
+  <RimTalk.Settings.PlayerToNpc>玩家对 NPC：</RimTalk.Settings.PlayerToNpc>
+    <!-- EN: Player Name -->
+  <RimTalk.Settings.PlayerName>玩家名称</RimTalk.Settings.PlayerName>
+    <!-- EN: The name that will appear when you participate in conversations. This represents how pawns will perceive your presence. -->
+  <RimTalk.Settings.PlayerNameTooltip>在对话中 NPC 对玩家的称呼。</RimTalk.Settings.PlayerNameTooltip>
+    <!-- EN: Player Persona -->
+  <RimTalk.Settings.PlayerPersona>玩家人格</RimTalk.Settings.PlayerPersona>
+    <!-- EN: Describe the player's personality, tone, and speaking style. Applied when AI generates lines for the player or talks with the player. -->
+  <RimTalk.Settings.PlayerPersonaTooltip>描述玩家的性格、语气和说话风格。当 AI 为玩家生成台词或与玩家对话时应用。</RimTalk.Settings.PlayerPersonaTooltip>
+    <!-- EN: Settings -->
+  <RimTalk.Settings.Configure>设置</RimTalk.Settings.Configure>
+    <!-- EN: Custom Conversation Settings -->
+  <RimTalk.PlayerSettings.Title>自定义对话设置</RimTalk.PlayerSettings.Title>
+    <!-- EN: Configure player dialogue mode, name, and persona. -->
+  <RimTalk.PlayerSettings.Instruct>配置玩家对话模式、名称和人格。</RimTalk.PlayerSettings.Instruct>
+    <!-- EN: • Disabled: Player cannot participate in conversations, but you can still direct dialogues between pawns.
+• Manual Replies: You write the initial dialogue; player lines are not auto-generated.
+• Auto-Gen Pawn: After the player starts a dialogue, pawns continue talking amongst themselves.
+• Auto-Gen Pawn + Player: AI generates dialogues for both pawns and player. (Player Persona applied) -->
+  <RimTalk.PlayerSettings.ModeDesc>• 禁用：玩家无法参与对话，但你仍然可以引导角色之间的对话。\n• 手动回复：你编写初始对话；玩家台词不会自动生成。\n• 自动生成（仅角色）：玩家发起对话后，角色们继续自行交谈。\n• 自动生成（角色+玩家）：AI 为角色和玩家双方生成对话。（应用玩家人格）</RimTalk.PlayerSettings.ModeDesc>
+    <!-- EN: (Active only in 'Auto-Gen Pawn + Player' mode) -->
+  <RimTalk.PlayerSettings.PersonaOnlyAIDriven>（仅在“自动生成（角色+玩家）”模式下生效）</RimTalk.PlayerSettings.PersonaOnlyAIDriven>
+    <!-- EN: Save -->
+  <RimTalk.PlayerSettings.Save>保存</RimTalk.PlayerSettings.Save>
+    <!-- EN: Player conversation settings saved. -->
+  <RimTalk.PlayerSettings.Saved>玩家对话设置已保存。</RimTalk.PlayerSettings.Saved>
+
+    <!-- EN: Pause AI on High Speed -->
+  <RimTalk.Settings.PauseAtSpeed>高速时暂停 AI</RimTalk.Settings.PauseAtSpeed>
+    <!-- EN: To reduce API calls, the AI will be paused when game speed is set to this level or higher. -->
+  <RimTalk.Settings.DisableAiAtSpeedTooltip>为减少 API 调用，当游戏速度设置为此级别或更高级别时，AI 将暂停。</RimTalk.Settings.DisableAiAtSpeedTooltip>
+    <!-- EN: Disabled -->
+  <RimTalk.Settings.Disabled>已禁用</RimTalk.Settings.Disabled>
+    <!-- EN: RimTalk Button Display -->
+  <RimTalk.Settings.ButtonDisplay>RimTalk 按钮显示</RimTalk.Settings.ButtonDisplay>
+    <!-- EN: Controls how the debug interface is accessed. 'Tab' adds a main tab, 'Toggle' shows an icon on the bottom bar, and 'None' hides it. -->
+  <RimTalk.Settings.ButtonDisplayTooltip>控制调试界面的访问方式。"标签页"会新增一个主标签页，"切换"会在底部栏显示一个图标，"无"则会隐藏它。</RimTalk.Settings.ButtonDisplayTooltip>
+    
+    <!-- EN: AI Instruction Prompt (Model: {0}) -->
+  <RimTalk.Settings.AIInstructionPrompt>AI 指令提示（模型：{0}）</RimTalk.Settings.AIInstructionPrompt>
+    <!-- EN: Tip: Pawn details (traits, relationships, race, age, etc.) are auto-included. Write generic instructions that work across all characters and colonies. -->
+  <RimTalk.Settings.AutoIncludedTip>提示：角色详情（特性、关系、种族、年龄等）会自动包含。请编写适用于所有角色和殖民地的通用指令。</RimTalk.Settings.AutoIncludedTip>
+    <!-- EN: Warning: Longer prompts will consume more tokens and hit rate limits faster. -->
+  <RimTalk.Settings.RateLimitWarning>警告：较长的提示将消耗更多令牌并更快达到速率限制。不使用提示缓存。</RimTalk.Settings.RateLimitWarning>
+    <!-- EN: Current: ~{0} tokens | Recommended limit: {1} tokens -->
+  <RimTalk.Settings.TokenInfo>目前：约 {0} 令牌 | 建议限制：{1} 令牌</RimTalk.Settings.TokenInfo>
+    <!-- EN: Reset to Default -->
+  <RimTalk.Settings.ResetToDefault>重设为默认</RimTalk.Settings.ResetToDefault>
+    <!-- EN: Tip: Only checked event types will be processed by AI. Uncheck types you don't want AI to respond to. -->
+  <RimTalk.Settings.EventFilterTip>提示：只有勾选的事件类型才会由 AI 处理。取消勾选您不希望 AI 回应的类型。</RimTalk.Settings.EventFilterTip>
+    <!-- EN: No archivable types found. Try starting a game and then rescanning. -->
+  <RimTalk.Settings.NoArchivableTypes>未找到可存档类型。请尝试开始一个游戏然后重新扫描。</RimTalk.Settings.NoArchivableTypes>
+
+    <!-- Dialog_PersonaEditor.cs -->
+    <!-- EN: {0}'s Conversation Style -->
+  <RimTalk.PersonaEditor.Title>{0} 的对话风格</RimTalk.PersonaEditor.Title>
+    <!-- EN: Describe how this colonist talks and behaves. Keep it brief (under 300 characters) for best results. -->
+  <RimTalk.PersonaEditor.Instruct>描述这位殖民者如何说话和行为。为获得最佳效果，请保持简短（300 个字符以内）。</RimTalk.PersonaEditor.Instruct>
+    <!-- EN: Characters: {0} -->
+  <RimTalk.PersonaEditor.Characters>字符数：{0}</RimTalk.PersonaEditor.Characters>
+    <!-- EN: Save -->
+  <RimTalk.PersonaEditor.Save>保存</RimTalk.PersonaEditor.Save>
+    <!-- EN: Updated conversation style for {0} -->
+  <RimTalk.PersonaEditor.Updated>已更新 {0} 的对话风格</RimTalk.PersonaEditor.Updated>
+    <!-- EN: Controls how often this colonist initiates talks. Even at the lowest setting, they will still reply when others speak to them. This only affects conversation initiation frequency. -->
+  <RimTalk.PersonaEditor.TalkFrequencyDesc>控制这位殖民者发起谈话的频率。即使在最低设置下，他们仍会在他人与他们交谈时作出回应。这仅影响发起对话的频率。</RimTalk.PersonaEditor.TalkFrequencyDesc>
+    <!-- EN: Chattiness -->
+  <RimTalk.PersonaEditor.Chattiness>对话频率</RimTalk.PersonaEditor.Chattiness>
+    <!-- EN: Quiet -->
+  <RimTalk.PersonaEditor.Quiet>安静</RimTalk.PersonaEditor.Quiet>
+    <!-- EN: Chatty -->
+  <RimTalk.PersonaEditor.Chatty>健谈</RimTalk.PersonaEditor.Chatty>
+    <!-- EN: Generating... -->
+  <RimTalk.PersonaEditor.Generating>正在生成...</RimTalk.PersonaEditor.Generating>
+    <!-- EN: Smart Gen -->
+  <RimTalk.PersonaEditor.SmartGen>智能生成</RimTalk.PersonaEditor.SmartGen>
+    <!-- EN: Roll Gen -->
+  <RimTalk.PersonaEditor.RollGen>随机生成</RimTalk.PersonaEditor.RollGen>
+    <!-- EN: Clear -->
+  <RimTalk.PersonaEditor.Clear>清除</RimTalk.PersonaEditor.Clear>
+
+    <!-- Settings_Api.cs -->
+    <!-- EN: Google AI API Key: -->
+  <RimTalk.Settings.GoogleApiKeyLabel>Google AI API 密钥：</RimTalk.Settings.GoogleApiKeyLabel>
+    <!-- EN: Uses the free gemma-4-31b model. For other models or providers, use Advanced Settings. -->
+  <RimTalk.Settings.GoogleApiKeyDesc>使用免费的 gemma-4-31b 模型。如需其他模型或提供商，请使用高级设置。</RimTalk.Settings.GoogleApiKeyDesc>
+    <!-- EN: Get a Free API Key -->
+  <RimTalk.Settings.GetFreeApiKeyButton>获取免费 API 密钥</RimTalk.Settings.GetFreeApiKeyButton>
+    <!-- EN: Switch to Advanced Settings -->
+  <RimTalk.Settings.SwitchToAdvancedSettings>切换到高级设置</RimTalk.Settings.SwitchToAdvancedSettings>
+    <!-- EN: Switch to Simple Settings -->
+  <RimTalk.Settings.SwitchToSimpleSettings>切换到简易设置</RimTalk.Settings.SwitchToSimpleSettings>
+    <!-- EN: Cloud Providers -->
+  <RimTalk.Settings.CloudProviders>云端供应商</RimTalk.Settings.CloudProviders>
+    <!-- EN: Use online AI services like Google AI, OpenAI, etc. Requires internet connection and API keys. -->
+  <RimTalk.Settings.CloudProvidersDesc>使用在线 AI 服务，如 Google AI、OpenAI 等。需要网络连接和 API 密钥。</RimTalk.Settings.CloudProvidersDesc>
+    <!-- EN: Local Provider -->
+  <RimTalk.Settings.LocalProvider>本地供应商</RimTalk.Settings.LocalProvider>
+    <!-- EN: Use a local AI server running on your machine (Ollama, LM Studio, etc.). Must support OpenAPI. -->
+  <RimTalk.Settings.LocalProviderDesc>使用在您机器上运行的本地 AI 服务器（Ollama、LM Studio 等）。必须支持 OpenAPI。</RimTalk.Settings.LocalProviderDesc>
+    <!-- EN: Cloud API Configurations -->
+  <RimTalk.Settings.CloudApiConfigurations>云端 API 设置</RimTalk.Settings.CloudApiConfigurations>
+    <!-- EN: If multiple APIs are enabled, the system will attempt to use them in order. If one API fails, it will automatically try the next enabled API in the list. -->
+  <RimTalk.Settings.CloudApiConfigurationsDesc>如果启用了多个 API，系统将按顺序尝试使用它们。如果一个 API 失败，它将自动尝试列表中的下一个启用的 API。</RimTalk.Settings.CloudApiConfigurationsDesc>
+    <!-- EN: Provider -->
+  <RimTalk.Settings.ProviderHeader>供应商</RimTalk.Settings.ProviderHeader>
+    <!-- EN: API Key -->
+  <RimTalk.Settings.ApiKeyHeader>API 密钥</RimTalk.Settings.ApiKeyHeader>
+    <!-- EN: Model -->
+  <RimTalk.Settings.ModelHeader>模型</RimTalk.Settings.ModelHeader>
+    <!-- EN: Custom Model -->
+  <RimTalk.Settings.CustomModelHeader>自定义模型</RimTalk.Settings.CustomModelHeader>
+    <!-- EN: Enabled -->
+  <RimTalk.Settings.EnabledHeader>已启用</RimTalk.Settings.EnabledHeader>
+    <!-- EN: Enable or disable this API configuration -->
+  <RimTalk.Settings.EnableDisableApiConfigTooltip>启用或禁用此 API 设置</RimTalk.Settings.EnableDisableApiConfigTooltip>
+    <!-- EN: Local Provider Configuration -->
+  <RimTalk.Settings.LocalProviderConfiguration>本地供应商设置</RimTalk.Settings.LocalProviderConfiguration>
+    <!-- EN: Base Url: -->
+  <RimTalk.Settings.BaseUrlLabel>URL：</RimTalk.Settings.BaseUrlLabel>
+    <!-- EN: Model: -->
+  <RimTalk.Settings.ModelLabel>模型：</RimTalk.Settings.ModelLabel>
+    <!-- EN: (enter valid api key to fetch models) -->
+  <RimTalk.Settings.EnterApiKey>（输入有效的 API 密钥以获取模型）</RimTalk.Settings.EnterApiKey>
+    <!-- EN: If you provide only the base (e.g., http://localhost:1234), /v1/chat/completions will be added automatically. If you enter the full path, it will be used exactly as entered. -->
+  <RimTalk_Settings_Api_BaseUrlInfo>如果您只提供基础 URL（例如 http://localhost:1234），/v1/chat/completions 将自动添加。如果您输入完整路径，将按原样使用。</RimTalk_Settings_Api_BaseUrlInfo>
+    <!-- EN: Customize request JSON (temperature, reasoning effort, etc.) -->
+  <RimTalk.Settings.CustomizeRequestTooltip>自定义请求 JSON（温度、推理强度等）</RimTalk.Settings.CustomizeRequestTooltip>
+    <!-- EN: Customize Request: {0} ({1}) -->
+  <RimTalk.Settings.CustomizeRequestTitle>自定义请求：{0}（{1}）</RimTalk.Settings.CustomizeRequestTitle>
+    <!-- EN: Configure custom JSON request parameters for this LLM. These values are merged into outgoing API request payloads (e.g., temperature, reasoning_effort, max_tokens, thinking parameters). -->
+  <RimTalk.Settings.CustomizeRequestDesc>为此 LLM 配置自定义 JSON 请求参数。这些值将合并到发出的 API 请求负载中（例如 temperature、reasoning_effort、max_tokens、thinking 参数）。</RimTalk.Settings.CustomizeRequestDesc>
+    <!-- EN: Reset to Default -->
+  <RimTalk.Settings.ResetToDefault>重设为默认</RimTalk.Settings.ResetToDefault>
+    <!-- EN: Format JSON -->
+  <RimTalk.Settings.FormatJson>格式化 JSON</RimTalk.Settings.FormatJson>
+    <!-- EN: Clear -->
+  <RimTalk.Settings.ClearOverride>清空覆盖</RimTalk.Settings.ClearOverride>
+    <!-- EN: Save -->
+  <RimTalk.Settings.CustomJsonSave>保存</RimTalk.Settings.CustomJsonSave>
+    <!-- EN: Cancel -->
+  <RimTalk.Settings.CustomJsonCancel>取消</RimTalk.Settings.CustomJsonCancel>
+    <!-- EN: ✓ Valid JSON -->
+  <RimTalk.Settings.CustomJsonValid>✓ 有效的 JSON</RimTalk.Settings.CustomJsonValid>
+    <!-- EN: ⚠ Invalid JSON: {0} -->
+  <RimTalk.Settings.CustomJsonInvalid>⚠ 无效的 JSON：{0}</RimTalk.Settings.CustomJsonInvalid>
+    <!-- EN: Default request parameters will be used. -->
+  <RimTalk.Settings.CustomJsonEmpty>将使用默认请求参数。</RimTalk.Settings.CustomJsonEmpty>
+    <!-- EN: Help & Samples -->
+  <RimTalk.Settings.CustomizeHelpButton>帮助与示例</RimTalk.Settings.CustomizeHelpButton>
+    <!-- EN: API Request Customization Guide & Samples -->
+  <RimTalk.Settings.CustomizeHelpTitle>API 请求自定义指南与示例</RimTalk.Settings.CustomizeHelpTitle>
+    <!-- EN: ⚠️ Important Compatibility Notice -->
+  <RimTalk.Settings.CustomizeHelpDisclaimerTitle>⚠️ 重要兼容性说明</RimTalk.Settings.CustomizeHelpDisclaimerTitle>
+    <!-- EN: These templates are general starting points. Parameter names, supported values, and feature support vary significantly across different LLM providers and models.\nSending unsupported parameters (e.g. 'thinking' or 'response_format' to a model that does not accept them) may cause the API to reject requests with an error (such as HTTP 400 Bad Request).\nPlease consult your specific provider's API documentation for valid parameters. -->
+  <RimTalk.Settings.CustomizeHelpDisclaimerText>这些模板是通用起点。参数名称、支持的值和功能支持在不同 LLM 提供商和模型之间存在显著差异。\n向不支持的模型发送不支持的参数（例如向不接受它们的模型发送 'thinking' 或 'response_format'）可能会导致 API 返回错误（如 HTTP 400 Bad Request）。\n请查阅您所使用的提供商 API 文档以获取有效的参数。</RimTalk.Settings.CustomizeHelpDisclaimerText>
+    <!-- EN: Use Template -->
+  <RimTalk.Settings.SampleUseTemplate>使用模板</RimTalk.Settings.SampleUseTemplate>
+    <!-- EN: Merge with Current -->
+  <RimTalk.Settings.SampleMergeTemplate>合并到当前</RimTalk.Settings.SampleMergeTemplate>
+    <!-- EN: Copy -->
+  <RimTalk.Settings.SampleCopy>复制</RimTalk.Settings.SampleCopy>
+    <!-- EN: JSON template copied to clipboard. -->
+  <RimTalk.Settings.SampleCopied>JSON 模板已复制到剪贴板。</RimTalk.Settings.SampleCopied>
+    <!-- EN: 1. Basic Generation Tuning (Most Models) -->
+  <RimTalk.Settings.SampleBasicTitle>1. 基础生成调优（大多数模型）</RimTalk.Settings.SampleBasicTitle>
+    <!-- EN: Adjust randomness, response length limit, and repetition penalties. -->
+  <RimTalk.Settings.SampleBasicDesc>调整随机性、响应长度限制和重复惩罚。</RimTalk.Settings.SampleBasicDesc>
+    <!-- EN: Note: Reasoning models (e.g. OpenAI o1/o3) may require temperature to be 1.0 or omitted. -->
+  <RimTalk.Settings.SampleBasicNote>注意：推理模型（例如 OpenAI o1/o3）可能要求 temperature 为 1.0 或省略。</RimTalk.Settings.SampleBasicNote>
+    <!-- EN: 2. Reasoning Effort (Gemini / OpenAI) -->
+  <RimTalk.Settings.SampleReasoningEffortTitle>2. 推理强度（Gemini / OpenAI）</RimTalk.Settings.SampleReasoningEffortTitle>
+    <!-- EN: Controls the thinking/reasoning intensity level ("minimal", "low", "medium", "high"). -->
+  <RimTalk.Settings.SampleReasoningEffortDesc>控制思考/推理强度级别（"minimal"、"low"、"medium"、"high"）。</RimTalk.Settings.SampleReasoningEffortDesc>
+    <!-- EN: Note: Supported on Gemini Flash/Pro and OpenAI o-series models. -->
+  <RimTalk.Settings.SampleReasoningEffortNote>注意：支持 Gemini Flash/Pro 和 OpenAI o 系列模型。</RimTalk.Settings.SampleReasoningEffortNote>
+    <!-- EN: 3. Disable Thinking Mode (DeepSeek / Anthropic) -->
+  <RimTalk.Settings.SampleDisableThinkingTitle>3. 禁用思考模式（DeepSeek / Anthropic）</RimTalk.Settings.SampleDisableThinkingTitle>
+    <!-- EN: Turns off thinking/reasoning for faster generation speed and lower token costs. -->
+  <RimTalk.Settings.SampleDisableThinkingDesc>关闭思考/推理以获得更快的生成速度和更低的 tokens 消耗。</RimTalk.Settings.SampleDisableThinkingDesc>
+    <!-- EN: Note: Supported on DeepSeek R1/V3 and Anthropic Claude models that support the thinking block. -->
+  <RimTalk.Settings.SampleDisableThinkingNote>注意：支持 DeepSeek R1/V3 以及支持 thinking 块的 Anthropic Claude 模型。</RimTalk.Settings.SampleDisableThinkingNote>
+    <!-- EN: 4. Enable Thinking with Token Budget -->
+  <RimTalk.Settings.SampleEnableThinkingTitle>4. 启用思考并设定 tokens 预算</RimTalk.Settings.SampleEnableThinkingTitle>
+    <!-- EN: Enables thinking mode with a specific maximum reasoning token budget. -->
+  <RimTalk.Settings.SampleEnableThinkingDesc>启用思考模式并指定最大推理 tokens 预算。</RimTalk.Settings.SampleEnableThinkingDesc>
+    <!-- EN: Note: Check your provider's API for required budget ranges (e.g., Claude requires minimum 1024 tokens). -->
+  <RimTalk.Settings.SampleEnableThinkingNote>注意：请查阅您提供商 API 所需的预算范围（例如 Claude 要求至少 1024 tokens）。</RimTalk.Settings.SampleEnableThinkingNote>
+    <!-- EN: 5. Structured Output / JSON Schema -->
+  <RimTalk.Settings.SampleStructuredOutputTitle>5. 结构化输出 / JSON Schema</RimTalk.Settings.SampleStructuredOutputTitle>
+    <!-- EN: Enforces a strict JSON Schema output format for smaller or weaker models that struggle with standard formatting. -->
+  <RimTalk.Settings.SampleStructuredOutputDesc>对难以处理标准格式的较小或较弱模型强制执行严格的 JSON Schema 输出格式。</RimTalk.Settings.SampleStructuredOutputDesc>
+    <!-- EN: Note: Requires provider support for OpenAI-compatible Structured Outputs (response_format.json_schema). -->
+  <RimTalk.Settings.SampleStructuredOutputNote>注意：需要提供商支持 OpenAI 兼容的结构化输出（response_format.json_schema）。</RimTalk.Settings.SampleStructuredOutputNote>
+    <!-- EN: 6. Local LLMs (Ollama / LM Studio / vLLM) -->
+  <RimTalk.Settings.SampleLocalTitle>6. 本地 LLM（Ollama / LM Studio / vLLM）</RimTalk.Settings.SampleLocalTitle>
+    <!-- EN: Pass server-specific tuning parameters like top_k and num_predict to local inference servers. -->
+  <RimTalk.Settings.SampleLocalDesc>向本地推理服务器传递服务器特定的调优参数，如 top_k 和 num_predict。</RimTalk.Settings.SampleLocalDesc>
+    <!-- EN: Note: Exact parameter names depend on your local backend software. -->
+  <RimTalk.Settings.SampleLocalNote>注意：确切的参数名称取决于您使用的本地后端软件。</RimTalk.Settings.SampleLocalNote>
+
+    <!-- Settings_Context.cs -->
+    <!-- EN: Context Filter -->
+  <RimTalk.Settings.ContextFilter>上下文过滤器</RimTalk.Settings.ContextFilter>
+    <!-- EN: Select what details about pawns and their environment should be sent as context for dialogue generation. -->
+  <RimTalk.Settings.ContextFilterDescription>选择将关于角色及其环境的哪些细节作为对话生成的上下文发送。</RimTalk.Settings.ContextFilterDescription>
+    <!-- EN: Tip: More isn't always better. Too much information can make the AI get distracted or stuck on irrelevant details. -->
+  <RimTalk.Settings.ContextFilterTip>提示：并非越多越好。过多信息可能导致 AI 分心或纠结于无关细节。</RimTalk.Settings.ContextFilterTip>
+
+    <!-- EN: Context Presets -->
+  <RimTalk.Settings.ContextPresets>上下文预设</RimTalk.Settings.ContextPresets>
+    <!-- EN: Essential -->
+  <RimTalk.Settings.Preset.Essential>精简</RimTalk.Settings.Preset.Essential>
+    <!-- EN: Optimized for local LLMs - minimal token usage -->
+  <RimTalk.Settings.Preset.Essential.Desc>为本地 LLM 优化 - 最少的 tokens 使用</RimTalk.Settings.Preset.Essential.Desc>
+    <!-- EN: Standard -->
+  <RimTalk.Settings.Preset.Standard>标准</RimTalk.Settings.Preset.Standard>
+    <!-- EN: Balanced for cloud LLMs - moderate detail -->
+  <RimTalk.Settings.Preset.Standard.Desc>适用于云端 LLM 的平衡模式 - 中等细节</RimTalk.Settings.Preset.Standard.Desc>
+    <!-- EN: Comprehensive -->
+  <RimTalk.Settings.Preset.Comprehensive>全面</RimTalk.Settings.Preset.Comprehensive>
+    <!-- EN: Maximum detail for capable LLMs - high token usage -->
+  <RimTalk.Settings.Preset.Comprehensive.Desc>为高性能 LLM 提供的最大细节 - 高 tokens 使用</RimTalk.Settings.Preset.Comprehensive.Desc>
+    <!-- EN: Custom -->
+  <RimTalk.Settings.Preset.Custom>自定义</RimTalk.Settings.Preset.Custom>
+    <!-- EN: User-defined configuration -->
+  <RimTalk.Settings.Preset.Custom.Desc>用户自定义配置</RimTalk.Settings.Preset.Custom.Desc>
+    
+    <!-- EN: Context Options -->
+  <RimTalk.Settings.ContextOptions>上下文选项</RimTalk.Settings.ContextOptions>
+    <!-- EN: Enable Context Optimization -->
+  <RimTalk.Settings.EnableContextOptimization>启用上下文优化</RimTalk.Settings.EnableContextOptimization>
+    <!-- EN: Optimize context to minimize token usage while preserving essential information.\nNote: This may reduce the quality of generated dialogue. -->
+  <RimTalk.Settings.EnableContextOptimization.Tooltip>优化上下文以减少 tokens 使用，同时保留重要信息。\n注意：这可能会降低生成对话的质量。</RimTalk.Settings.EnableContextOptimization.Tooltip>
+    <!-- EN: Historical Conversation Sessions to Include -->
+  <RimTalk.Settings.ConversationHistoryCount>包含的历史对话会话数量</RimTalk.Settings.ConversationHistoryCount>
+    <!-- EN: Each session contains multiple dialogue turns, which can significantly increase token count -->
+  <RimTalk.Settings.ConversationHistoryCount.Tooltip>每个会话包含多轮对话，可能会显著增加 tokens 量</RimTalk.Settings.ConversationHistoryCount.Tooltip>
+    <!-- EN: Maximum Number of Pawns to Include -->
+  <RimTalk.Settings.MaxPawnContextCount>包含的最大殖民者数量</RimTalk.Settings.MaxPawnContextCount>
+    <!-- EN: Controls the maximum number of pawns that can participate in a conversation -->
+  <RimTalk.Settings.MaxPawnContextCount.Tooltip>控制可参与对话的殖民者最大数量</RimTalk.Settings.MaxPawnContextCount.Tooltip>
+    
+    <!-- EN: Pawn Info -->
+  <RimTalk.Settings.PawnInfo>殖民者信息</RimTalk.Settings.PawnInfo>
+    <!-- EN: Race -->
+  <RimTalk.Settings.IncludeRace>种族</RimTalk.Settings.IncludeRace>
+    <!-- EN: Notable Genes -->
+  <RimTalk.Settings.IncludeNotableGenes>显性基因</RimTalk.Settings.IncludeNotableGenes>
+    <!-- EN: Ideology & Memes -->
+  <RimTalk.Settings.IncludeIdeology>意识形态与模因</RimTalk.Settings.IncludeIdeology>
+    <!-- EN: Backstory -->
+  <RimTalk.Settings.IncludeBackstory>背景故事</RimTalk.Settings.IncludeBackstory>
+    <!-- EN: Traits -->
+  <RimTalk.Settings.IncludeTraits>特性</RimTalk.Settings.IncludeTraits>
+    <!-- EN: Skills -->
+  <RimTalk.Settings.IncludeSkills>技能</RimTalk.Settings.IncludeSkills>
+    <!-- EN: Health -->
+  <RimTalk.Settings.IncludeHealth>健康状况</RimTalk.Settings.IncludeHealth>
+    <!-- EN: Mood -->
+  <RimTalk.Settings.IncludeMood>心情</RimTalk.Settings.IncludeMood>
+    <!-- EN: Thoughts & Memory -->
+  <RimTalk.Settings.IncludeThoughts>思绪与记忆</RimTalk.Settings.IncludeThoughts>
+    <!-- EN: Prisoner/Slave Resistance & Will -->
+  <RimTalk.Settings.IncludePrisonerSlaveStatus>囚犯/奴隶的抵抗与意志</RimTalk.Settings.IncludePrisonerSlaveStatus>
+    <!-- EN: Relations -->
+  <RimTalk.Settings.IncludeRelations>关系</RimTalk.Settings.IncludeRelations>
+    <!-- EN: Equipment -->
+  <RimTalk.Settings.IncludeEquipment>装备</RimTalk.Settings.IncludeEquipment>
+    <!-- EN: Environment -->
+  <RimTalk.Settings.Environment>环境</RimTalk.Settings.Environment>
+    <!-- EN: Time -->
+  <RimTalk.Settings.IncludeTime>时间</RimTalk.Settings.IncludeTime>
+    <!-- EN: Date -->
+  <RimTalk.Settings.IncludeDate>日期</RimTalk.Settings.IncludeDate>
+    <!-- EN: Season -->
+  <RimTalk.Settings.IncludeSeason>季节</RimTalk.Settings.IncludeSeason>
+    <!-- EN: Weather -->
+  <RimTalk.Settings.IncludeWeather>天气</RimTalk.Settings.IncludeWeather>
+    <!-- EN: Location & Temperature -->
+  <RimTalk.Settings.IncludeLocationAndTemperature>位置与温度</RimTalk.Settings.IncludeLocationAndTemperature>
+    <!-- EN: Terrain -->
+  <RimTalk.Settings.IncludeTerrain>地形</RimTalk.Settings.IncludeTerrain>
+    <!-- EN: Cell Beauty -->
+  <RimTalk.Settings.IncludeBeauty>美观度</RimTalk.Settings.IncludeBeauty>
+    <!-- EN: Cleanliness -->
+  <RimTalk.Settings.IncludeCleanliness>清洁度</RimTalk.Settings.IncludeCleanliness>
+    <!-- EN: Nearby Items -->
+  <RimTalk.Settings.IncludeSurroundings>附近的物品</RimTalk.Settings.IncludeSurroundings>
+    <!-- EN: Colony Wealth -->
+  <RimTalk.Settings.IncludeWealth>殖民地财富</RimTalk.Settings.IncludeWealth>
+    
+    <!-- DebugWindow.cs -->
+    <!-- EN: By Time -->
+  <RimTalk.DebugWindow.ViewByTime>按时间</RimTalk.DebugWindow.ViewByTime>
+    <!-- EN: By Pawn -->
+  <RimTalk.DebugWindow.ViewByPawn>按角色</RimTalk.DebugWindow.ViewByPawn>
+    <!-- EN: TalkRequests -->
+  <RimTalk.DebugWindow.ViewTalkRequests>对话请求</RimTalk.DebugWindow.ViewTalkRequests>
+    <!-- EN: Name -->
+  <RimTalk.DebugWindow.FilterPawn>名字</RimTalk.DebugWindow.FilterPawn>
+    <!-- EN: Search -->
+  <RimTalk.DebugWindow.Search>搜索</RimTalk.DebugWindow.Search>
+    <!-- EN: State -->
+  <RimTalk.DebugWindow.State>状态</RimTalk.DebugWindow.State>
+    <!-- EN: Limit -->
+  <RimTalk.DebugWindow.Limit>限制</RimTalk.DebugWindow.Limit>
+    <!-- EN: All States -->
+  <RimTalk.DebugWindow.StateAll>所有状态</RimTalk.DebugWindow.StateAll>
+    <!-- EN: Pending -->
+  <RimTalk.DebugWindow.StatePending>等待</RimTalk.DebugWindow.StatePending>
+    <!-- EN: Ignored -->
+  <RimTalk.DebugWindow.StateIgnored>忽略</RimTalk.DebugWindow.StateIgnored>
+    <!-- EN: Spoken -->
+  <RimTalk.DebugWindow.StateSpoken>已说出</RimTalk.DebugWindow.StateSpoken>
+    <!-- EN: Failed -->
+  <RimTalk.DebugWindow.StateFailed>失败</RimTalk.DebugWindow.StateFailed>
+    <!-- EN: Processed -->
+  <RimTalk.DebugWindow.StateProcessed>已处理</RimTalk.DebugWindow.StateProcessed>
+    <!-- EN: Expired -->
+  <RimTalk.DebugWindow.StateExpired>已过期</RimTalk.DebugWindow.StateExpired>
+    <!-- EN: Last -->
+  <RimTalk.DebugWindow.Last>最近</RimTalk.DebugWindow.Last>
+    <!-- EN: Auto Scroll -->
+  <RimTalk.DebugWindow.AutoScroll>自动滚动</RimTalk.DebugWindow.AutoScroll>
+    <!-- EN: Select a row to view details -->
+  <RimTalk.DebugWindow.TooltipSelectForDetails>选择一行以查看详情</RimTalk.DebugWindow.TooltipSelectForDetails>
+    <!-- EN: Details -->
+  <RimTalk.DebugWindow.Details>详情</RimTalk.DebugWindow.Details>
+    <!-- EN: Select a request on the left to inspect Prompt/Response/Contexts. -->
+  <RimTalk.DebugWindow.SelectRowHint>在左侧选择请求以查看提示/响应/上下文。</RimTalk.DebugWindow.SelectRowHint>
+    <!-- EN: Resend -->
+  <RimTalk.DebugWindow.Resend>重新发送</RimTalk.DebugWindow.Resend>
+    <!-- EN: Edit context and prompt, then resend to test dialogue. -->
+  <RimTalk.DebugWindow.ResendTooltip>编辑上下文和提示词，然后重新发送以测试对话。</RimTalk.DebugWindow.ResendTooltip>
+    <!-- EN: Request resent successfully. -->
+  <RimTalk.DebugWindow.ResendSuccess>请求已成功重发。</RimTalk.DebugWindow.ResendSuccess>
+    <!-- EN: AI is currently busy. Retry when status is Idle. -->
+  <RimTalk.DebugWindow.ResendError>AI 当前正忙。请在状态为“闲置”时重试。</RimTalk.DebugWindow.ResendError>
+    <!-- EN: API Log -->
+  <RimTalk.DebugWindow.ApiLog>API 日志</RimTalk.DebugWindow.ApiLog>
+    <!-- EN: Request failed. Click "API Log" to generate a log for support. -->
+  <RimTalk.DebugWindow.FailMsg>请求失败。点击“API 日志”生成日志以供技术支持。</RimTalk.DebugWindow.FailMsg>
+    <!-- EN: Copy All -->
+  <RimTalk.DebugWindow.CopyAll>全部复制</RimTalk.DebugWindow.CopyAll>
+    <!-- EN: Copy -->
+  <RimTalk.DebugWindow.Copy>复制</RimTalk.DebugWindow.Copy>
+    <!-- EN: Copied -->
+  <RimTalk.DebugWindow.Copied>已复制</RimTalk.DebugWindow.Copied>
+    <!-- EN: Undo -->
+  <RimTalk.DebugWindow.Undo>撤销</RimTalk.DebugWindow.Undo>
+    <!-- EN: Prompt -->
+  <RimTalk.DebugWindow.Prompt>提示词</RimTalk.DebugWindow.Prompt>
+    <!-- EN: Response -->
+  <RimTalk.DebugWindow.Response>回复</RimTalk.DebugWindow.Response>
+    <!-- EN: Request Details -->
+  <RimTalk.DebugWindow.PromptMessages>请求详情</RimTalk.DebugWindow.PromptMessages>
+    <!-- EN: Contexts -->
+  <RimTalk.DebugWindow.Contexts>上下文</RimTalk.DebugWindow.Contexts>
+    <!-- EN: [Generating...] -->
+  <RimTalk.DebugWindow.Generating>[正在生成...]</RimTalk.DebugWindow.Generating>
+    <!-- EN: Disabled -->
+  <RimTalk.DebugWindow.StatusDisabled>已禁用</RimTalk.DebugWindow.StatusDisabled>
+    <!-- EN: Processing -->
+  <RimTalk.DebugWindow.StatusProcessing>处理中</RimTalk.DebugWindow.StatusProcessing>
+    <!-- EN: Idle -->
+  <RimTalk.DebugWindow.StatusIdle>闲置</RimTalk.DebugWindow.StatusIdle>
+    <!-- EN: Group by Pawn -->
+  <RimTalk.DebugWindow.GroupByPawn>按角色分组</RimTalk.DebugWindow.GroupByPawn>
+    <!-- EN: Settings -->
+  <RimTalk.DebugWindow.ModSettings>模组设置</RimTalk.DebugWindow.ModSettings>
+    <!-- EN: Export -->
+  <RimTalk.DebugWindow.Export>导出</RimTalk.DebugWindow.Export>
+    <!-- EN: Reset Logs -->
+  <RimTalk.DebugWindow.ResetLogs>重置日志</RimTalk.DebugWindow.ResetLogs>
+    <!-- EN: Enable RimTalk -->
+  <RimTalk.DebugWindow.EnableRimTalk>启用 RimTalk</RimTalk.DebugWindow.EnableRimTalk>
+    <!-- EN: AI Status: -->
+  <RimTalk.DebugWindow.AIStatus>AI 状态：</RimTalk.DebugWindow.AIStatus>
+    <!-- EN: Total Calls: -->
+  <RimTalk.DebugWindow.TotalCalls>总调用次数：</RimTalk.DebugWindow.TotalCalls>
+    <!-- EN: Total Tokens: -->
+  <RimTalk.DebugWindow.TotalTokens>总令牌数：</RimTalk.DebugWindow.TotalTokens>
+    <!-- EN: Avg Calls/min: -->
+  <RimTalk.DebugWindow.AvgCallsPerMin>平均调用次数/分钟：</RimTalk.DebugWindow.AvgCallsPerMin>
+    <!-- EN: Avg Tokens/min: -->
+  <RimTalk.DebugWindow.AvgTokensPerMin>平均令牌数/分钟：</RimTalk.DebugWindow.AvgTokensPerMin>
+    <!-- EN: Avg Tokens/Call: -->
+  <RimTalk.DebugWindow.AvgTokensPerCall>平均令牌数/调用：</RimTalk.DebugWindow.AvgTokensPerCall>
+    <!-- EN: Tokens/s -->
+  <RimTalk.DebugWindow.TokensPerSecond>令牌数/秒</RimTalk.DebugWindow.TokensPerSecond>
+    <!-- EN: 60s ago -->
+  <RimTalk.DebugWindow.SixtySecondsAgo>60 秒前</RimTalk.DebugWindow.SixtySecondsAgo>
+    <!-- EN: Now -->
+  <RimTalk.DebugWindow.Now>现在</RimTalk.DebugWindow.Now>
+    <!-- EN: Ready -->
+  <RimTalk.DebugWindow.StatusReady>就绪</RimTalk.DebugWindow.StatusReady>
+    <!-- EN: Busy -->
+  <RimTalk.DebugWindow.StatusBusy>繁忙</RimTalk.DebugWindow.StatusBusy>
+    <!-- EN: Pawn -->
+  <RimTalk.DebugWindow.HeaderPawn>角色</RimTalk.DebugWindow.HeaderPawn>
+    <!-- EN: Response -->
+  <RimTalk.DebugWindow.HeaderResponse>回应</RimTalk.DebugWindow.HeaderResponse>
+    <!-- EN: Type -->
+  <RimTalk.DebugWindow.HeaderType>类型</RimTalk.DebugWindow.HeaderType>
+    <!-- EN: Status -->
+  <RimTalk.DebugWindow.HeaderStatus>状态</RimTalk.DebugWindow.HeaderStatus>
+    <!-- EN: Last Talk -->
+  <RimTalk.DebugWindow.HeaderLastTalk>上次谈话</RimTalk.DebugWindow.HeaderLastTalk>
+    <!-- EN: Requests -->
+  <RimTalk.DebugWindow.HeaderRequests>请求</RimTalk.DebugWindow.HeaderRequests>
+    <!-- EN: Chattiness -->
+  <RimTalk.DebugWindow.HeaderChattiness>对话频率</RimTalk.DebugWindow.HeaderChattiness>
+    <!-- EN: Timestamp -->
+  <RimTalk.DebugWindow.HeaderTimestamp>时间戳</RimTalk.DebugWindow.HeaderTimestamp>
+    <!-- EN: Time(ms) -->
+  <RimTalk.DebugWindow.HeaderTimeMs>时间（毫秒）</RimTalk.DebugWindow.HeaderTimeMs>
+    <!-- EN: Tokens -->
+  <RimTalk.DebugWindow.HeaderTokens>令牌</RimTalk.DebugWindow.HeaderTokens>
+    <!-- EN: State -->
+  <RimTalk.DebugWindow.HeaderState>状态</RimTalk.DebugWindow.HeaderState>
+    <!-- EN: Prompt -->
+  <RimTalk.DebugWindow.HeaderPrompt>提示</RimTalk.DebugWindow.HeaderPrompt>
+    <!-- EN: Elapsed -->
+  <RimTalk.DebugWindow.HeaderElapsed>耗时</RimTalk.DebugWindow.HeaderElapsed>
+    <!-- EN: Initiator -->
+  <RimTalk.DebugWindow.HeaderInitiator>发起者</RimTalk.DebugWindow.HeaderInitiator>
+    <!-- EN: Recipient -->
+  <RimTalk.DebugWindow.HeaderRecipient>接收者</RimTalk.DebugWindow.HeaderRecipient>
+    <!-- EN: Conversation history cleared. -->
+  <RimTalk.DebugWindow.HistoryCleared>对话历史已清除</RimTalk.DebugWindow.HistoryCleared>
+    <!-- EN: Entry -->
+  <RimTalk.DebugWindow.FormatEntry>条目</RimTalk.DebugWindow.FormatEntry>
+    <!-- EN: Role -->
+  <RimTalk.DebugWindow.FormatRole>角色</RimTalk.DebugWindow.FormatRole>
+    <!-- EN: System Instruction -->
+  <RimTalk.DebugWindow.SystemInstruction>系统指令</RimTalk.DebugWindow.SystemInstruction>
+    <!-- EN: Chat History -->
+  <RimTalk.DebugWindow.ChatHistory>聊天历史</RimTalk.DebugWindow.ChatHistory>
+    <!-- EN: Input Prompt -->
+  <RimTalk.DebugWindow.InputPrompt>输入提示</RimTalk.DebugWindow.InputPrompt>
+    <!-- EN: Prompt:\n{0}\n\nResponse:\n{1} -->
+  <RimTalk.DebugWindow.TooltipPromptResponse>提示：\n{0}\n\n回应：\n{1}</RimTalk.DebugWindow.TooltipPromptResponse>
+    
+    <!-- Overlay.cs -->
+    <!-- EN: Debug -->
+  <RimTalk.Overlay.Debug>调试</RimTalk.Overlay.Debug>
+    <!-- EN: Overlay Option -->
+  <RimTalk.Overlay.Option>悬浮窗选项</RimTalk.Overlay.Option>
+    <!-- EN: Draw Above UI -->
+  <RimTalk.Overlay.DrawAboveUI>在界面之上显示</RimTalk.Overlay.DrawAboveUI>
+    <!-- EN: Opacity -->
+  <RimTalk.Overlay.Opacity>不透明度</RimTalk.Overlay.Opacity>
+    <!-- EN: Font Size -->
+  <RimTalk.Overlay.FontSize>字体大小</RimTalk.Overlay.FontSize>
+    <!-- EN: Turn Off Overlay -->
+  <RimTalk.Overlay.TurnOff>关闭悬浮窗</RimTalk.Overlay.TurnOff>
+    <!-- EN: Turn off overlay.\nYou can toggle it by clicking the bottom right icon or tab depending on setting. -->
+  <RimTalk.Overlay.TurnOffTooltip>关闭悬浮窗。\n你可以通过点击右下角图标或标签页（视设置而定）来切换开关。</RimTalk.Overlay.TurnOffTooltip>
+
+    <!-- FloatMenuMakerMapGetOptionsPatch.cs -->
+    <!-- EN: Chat with {0} -->
+  <RimTalk.FloatMenu.ChatWith>与 {0} 聊天</RimTalk.FloatMenu.ChatWith>
+    <!-- EN: Chat with {0} -->
+  <RimTalk.Gizmo.ChatWithTarget>与 {0} 聊天</RimTalk.Gizmo.ChatWithTarget>
+    <!-- EN: Initiate a conversation with {0}. -->
+  <RimTalk.Gizmo.ChatWithTargetDesc>与 {0} 开始对话。</RimTalk.Gizmo.ChatWithTargetDesc>
+    <!-- EN: Announce -->
+  <RimTalk.Gizmo.Announce>公告</RimTalk.Gizmo.Announce>
+    <!-- EN: Have {0} shout or make an announcement to all pawns nearby. -->
+  <RimTalk.Gizmo.AnnounceDesc>让 {0} 向附近所有角色喊话或发布公告。</RimTalk.Gizmo.AnnounceDesc>
+    <!-- EN: What do you want to say to {0}? -->
+  <RimTalk.FloatMenu.WhatToSayToSelf>你想对 {0} 说什么？</RimTalk.FloatMenu.WhatToSayToSelf>
+    <!-- EN: What do you want {0} to say to {1}? -->
+  <RimTalk.FloatMenu.WhatToSayToOther>你想让 {0} 对 {1} 说什么？</RimTalk.FloatMenu.WhatToSayToOther>
+    <!-- EN: What do you want to announce to {0} and nearby? -->
+  <RimTalk.FloatMenu.WhatToAnnounceToSelf>你想向 {0} 及附近角色公告什么？</RimTalk.FloatMenu.WhatToAnnounceToSelf>
+    <!-- EN: What do you want {0} to announce to nearby? -->
+  <RimTalk.FloatMenu.WhatToAnnounceToOther>你想让 {0} 向附近公告什么？</RimTalk.FloatMenu.WhatToAnnounceToOther>
+    <!-- EN: Regular conversation (Tab to switch) -->
+  <RimTalk.FloatMenu.DirectModeTooltip>普通对话（按 Tab 切换）</RimTalk.FloatMenu.DirectModeTooltip>
+    <!-- EN: Broadcast announcement to nearby pawns (Tab to switch) -->
+  <RimTalk.FloatMenu.AnnounceModeTooltip>向附近角色广播公告（按 Tab 切换）</RimTalk.FloatMenu.AnnounceModeTooltip>
+    <!-- EN: Send -->
+  <RimTalk.FloatMenu.Send>发送</RimTalk.FloatMenu.Send>
+    <!-- EN: Cancel -->
+  <RimTalk.FloatMenu.Cancel>取消</RimTalk.FloatMenu.Cancel>
+
+    <!-- VariableDefinitions.cs - Variable Registry -->
+    <!-- EN: Pawn Shorthands -->
+  <RimTalk.ScribanVar.Category.PawnShorthands>角色简称</RimTalk.ScribanVar.Category.PawnShorthands>
+    <!-- EN: Core Objects -->
+  <RimTalk.ScribanVar.Category.CoreObjects>核心对象</RimTalk.ScribanVar.Category.CoreObjects>
+    <!-- EN: Context -->
+  <RimTalk.ScribanVar.Category.Context>上下文</RimTalk.ScribanVar.Category.Context>
+    <!-- EN: Game Objects (Static) -->
+  <RimTalk.ScribanVar.Category.GameStatic>游戏对象（静态）</RimTalk.ScribanVar.Category.GameStatic>
+    <!-- EN: System -->
+  <RimTalk.ScribanVar.Category.System>系统</RimTalk.ScribanVar.Category.System>
+</LanguageData>

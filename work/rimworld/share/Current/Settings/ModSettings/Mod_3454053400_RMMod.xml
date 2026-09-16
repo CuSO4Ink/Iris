@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="RigorMortis.RMSettings">
+		<QuestSentInterval>10</QuestSentInterval>
+		<UnrottenBoneNum>20</UnrottenBoneNum>
+		<DisableInvulnerability>True</DisableInvulnerability>
+		<DisableInvulnerabilityFactor>1</DisableInvulnerabilityFactor>
+		<DisallowZombieAppear>False</DisallowZombieAppear>
+		<DisallowDrawIncantation>False</DisallowDrawIncantation>
+		<DisallowDrawIncantationPatch>True</DisallowDrawIncantationPatch>
+		<ZombieDamageFactor>100</ZombieDamageFactor>
+		<ZombieHurtFactor>100</ZombieHurtFactor>
+		<ZombieMalevolentReduceFactor>100</ZombieMalevolentReduceFactor>
+		<ArtifactsCostFactor>100</ArtifactsCostFactor>
+		<SkipEnding>False</SkipEnding>
+		<DisallowFoodWhenDanger>True</DisallowFoodWhenDanger>
+		<DisableWorshipMoon>False</DisableWorshipMoon>
+		<DisableBegForFood>False</DisableBegForFood>
+		<DisablePaintedSkin>False</DisablePaintedSkin>
+	</ModSettings>
+</SettingsBlock>

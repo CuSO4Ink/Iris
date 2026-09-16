@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Acid Volatile -->
+
+  <RHDamageDef_DF_VolatileAcid.label>揮發酸</RHDamageDef_DF_VolatileAcid.label>
+  <RHDamageDef_DF_VolatileAcid.deathMessage>{0}死於爆炸。</RHDamageDef_DF_VolatileAcid.deathMessage>
+
+
+</LanguageData>

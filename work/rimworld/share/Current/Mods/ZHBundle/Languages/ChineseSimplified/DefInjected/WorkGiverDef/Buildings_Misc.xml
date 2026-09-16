@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cook things at the gas cooker -->
+  <DoBillsMobileGasCooker.label>在便携燃气炉烹饪食物</DoBillsMobileGasCooker.label>
+  <!-- EN: cooking at -->
+  <DoBillsMobileGasCooker.gerund>烹饪于</DoBillsMobileGasCooker.gerund>
+  <!-- EN: cook -->
+  <DoBillsMobileGasCooker.verb>烹饪</DoBillsMobileGasCooker.verb>
+  
+</LanguageData>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: adult -->
+  <HumanlikeAdult_Dragonian.label>成年</HumanlikeAdult_Dragonian.label>
+
+  <!-- EN: adult -->
+  <HumanlikeAdult_Dragonian_Elder.label>成年</HumanlikeAdult_Dragonian_Elder.label>
+  
+  <!-- EN: baby -->
+  <HumanlikeBaby_Dragonian.label>婴儿</HumanlikeBaby_Dragonian.label>
+  <!-- EN: Mood represents how happy or stressed someone is. Babies with low mood are more likely to cry, while babies with a high mood are more likely to giggle. -->
+  <HumanlikeBaby_Dragonian.customMoodTipString>情绪体现了一个人的快乐程度或压力程度。情绪低落的婴儿更容易哭闹，而情绪高涨的婴儿更容易咯咯笑。</HumanlikeBaby_Dragonian.customMoodTipString>
+  
+  <!-- EN: child -->
+  <HumanlikeChild_Dragonian.label>儿童</HumanlikeChild_Dragonian.label>
+  
+  <!-- EN: preteen -->
+  <HumanlikePreTeenager_Dragonian.label>青少年</HumanlikePreTeenager_Dragonian.label>
+  
+  <!-- EN: teenager -->
+  <HumanlikeTeenager_Dragonian.label>青年</HumanlikeTeenager_Dragonian.label>
+  <!-- EN: teenage -->
+  <HumanlikeTeenager_Dragonian.adjective>青年</HumanlikeTeenager_Dragonian.adjective>
+  
+</LanguageData>

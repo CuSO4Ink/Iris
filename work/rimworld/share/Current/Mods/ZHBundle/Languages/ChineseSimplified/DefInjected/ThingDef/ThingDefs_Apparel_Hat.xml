@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi crown -->
+  <VV_Crown.label>薇薇王冠</VV_Crown.label>
+  <!-- EN: A small crown for royal vivis. Wearing it gives one a touch of authority. -->
+  <VV_Crown.description>皇家薇薇戴的小小王冠，给人一种威严感。</VV_Crown.description>
+  
+  <!-- EN: vivi hunting cap -->
+  <VV_HuntingCap.label>薇薇狩猎帽</VV_HuntingCap.label>
+  <!-- EN: a hat mainly worn by vivi who engage in outdoor activities. Unlike uniform hats, its color varies depending on the material used, making it a popular choice among vivi with strong personalities. It might not provide much defense, but it does bring a sense of stability to the mind. -->
+  <VV_HuntingCap.description>由主要从事户外活动的薇薇戴的帽子。不像制式帽子，它的颜色随所用材料而变化，因此是想展现个性薇薇的热门选择。它不能提供多少防护，但能提供一种心理上的稳定感。</VV_HuntingCap.description>
+  
+  <!-- EN: vivi uniform hat -->
+  <VV_UniformHat.label>薇薇制式帽</VV_UniformHat.label>
+  <!-- EN: The uniform hat worn by vivis affiliated with a large hive. It might not provide much defense, but it does bring a sense of stability to the mind. -->
+  <VV_UniformHat.description>隶属于大蜂巢的薇薇戴的统一的制式帽子。可能不会提供多少防御，但能给头脑带来一种稳定的感觉。</VV_UniformHat.description>
+  
+  <!-- EN: vivi uniform helmet -->
+  <VV_UniformHelmet.label>薇薇制式头盔</VV_UniformHelmet.label>
+  <!-- EN: The uniform helmet worn by vivis affiliated with a large hive. Although it has a similar design to a hat, its metal material makes it sturdy. -->
+  <VV_UniformHelmet.description>隶属于大蜂巢的薇薇戴的统一的制式头盔，虽然设计与制服帽相似，但其内部添加的金属材料使它相对坚固耐用。</VV_UniformHelmet.description>
+  
+</LanguageData>

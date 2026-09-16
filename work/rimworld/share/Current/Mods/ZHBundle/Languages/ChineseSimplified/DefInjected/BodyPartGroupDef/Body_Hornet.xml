@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: hornet wing -->
+  <VV_HornetWing.label>黄蜂翅</VV_HornetWing.label>
+  <!-- EN: wing -->
+  <VV_HornetWing.labelShort>翅</VV_HornetWing.labelShort>
+  
+  <!-- EN: left claw -->
+  <VV_LeftClaw.label>左爪</VV_LeftClaw.label>
+  <!-- EN: claw -->
+  <VV_LeftClaw.labelShort>爪</VV_LeftClaw.labelShort>
+  
+  <!-- EN: right claw -->
+  <VV_RightClaw.label>右爪</VV_RightClaw.label>
+  <!-- EN: claw -->
+  <VV_RightClaw.labelShort>爪</VV_RightClaw.labelShort>
+  
+</LanguageData>

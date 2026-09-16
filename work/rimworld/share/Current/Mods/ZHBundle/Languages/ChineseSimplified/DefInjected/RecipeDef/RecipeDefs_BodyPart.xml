@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: install bionic antennae -->
+  <VV_InstallBionicAntennae.label>安装仿生触须</VV_InstallBionicAntennae.label>
+  <!-- EN: Install a bionic antennae. -->
+  <VV_InstallBionicAntennae.description>安装仿生触须</VV_InstallBionicAntennae.description>
+  <!-- EN: Installing bionic antennae. -->
+  <VV_InstallBionicAntennae.jobString>安装仿生触须</VV_InstallBionicAntennae.jobString>
+  
+  <!-- EN: install bionic wing -->
+  <VV_InstallBionicWing.label>安装仿生翅</VV_InstallBionicWing.label>
+  <!-- EN: Install a bionic wing. -->
+  <VV_InstallBionicWing.description>安装仿生翅</VV_InstallBionicWing.description>
+  <!-- EN: Installing bionic wing. -->
+  <VV_InstallBionicWing.jobString>安装仿生翅</VV_InstallBionicWing.jobString>
+  
+  <!-- EN: install fake antennae -->
+  <VV_InstallFakeAntennae.label>安装假触须</VV_InstallFakeAntennae.label>
+  <!-- EN: Install a fake antennae. -->
+  <VV_InstallFakeAntennae.description>安装假触须</VV_InstallFakeAntennae.description>
+  <!-- EN: Installing fake antennae. -->
+  <VV_InstallFakeAntennae.jobString>安装假触须</VV_InstallFakeAntennae.jobString>
+  
+  <!-- EN: install fake wing -->
+  <VV_InstallFakeWing.label>安装假翅</VV_InstallFakeWing.label>
+  <!-- EN: Install a fake wing. -->
+  <VV_InstallFakeWing.description>安装假翅</VV_InstallFakeWing.description>
+  <!-- EN: Installing fake wing. -->
+  <VV_InstallFakeWing.jobString>安装假翅</VV_InstallFakeWing.jobString>
+  
+  <!-- EN: install glider wing -->
+  <VV_InstallGliderWing.label>安装滑翔翅</VV_InstallGliderWing.label>
+  <!-- EN: Install a glider wing. -->
+  <VV_InstallGliderWing.description>安装滑翔翅</VV_InstallGliderWing.description>
+  <!-- EN: Installing glider wing. -->
+  <VV_InstallGliderWing.jobString>安装滑翔翅</VV_InstallGliderWing.jobString>
+  
+</LanguageData>

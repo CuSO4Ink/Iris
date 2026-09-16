@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: gunshot -->
+  <MihoGunshot.label>枪伤</MihoGunshot.label>
+  <!-- EN: {0} has been melted. -->
+  <MihoGunshot.deathMessage>{0}被熔解了。</MihoGunshot.deathMessage>
+  
+  <!-- EN: gunshot -->
+  <MihoGunshotDemo.label>枪伤</MihoGunshotDemo.label>
+  <!-- EN: {0} has been melted. -->
+  <MihoGunshotDemo.deathMessage>{0}被熔解了。</MihoGunshotDemo.deathMessage>
+  
+  <!-- EN: gunshot -->
+  <MihoGunshotFrag.label>枪伤</MihoGunshotFrag.label>
+  <!-- EN: {0} has been melted. -->
+  <MihoGunshotFrag.deathMessage>{0}被熔解了。</MihoGunshotFrag.deathMessage>
+  
+  <!-- EN: arcane shot -->
+  <MihoMagicFrag.label>纳米机械碎晶</MihoMagicFrag.label>
+  <!-- EN: {0} has been melted. -->
+  <MihoMagicFrag.deathMessage>{0}被熔解了。</MihoMagicFrag.deathMessage>
+  
+  <!-- EN: plasma -->
+  <MihoPlasma.label>等离子灼伤</MihoPlasma.label>
+  <!-- EN: {0} has been melted. -->
+  <MihoPlasma.deathMessage>{0}被熔解了。</MihoPlasma.deathMessage>
+  
+  <!-- EN: plasma -->
+  <PlasmaFlame.label>等离子灼伤</PlasmaFlame.label>
+  <!-- EN: {0} has burned to death. -->
+  <PlasmaFlame.deathMessage>{0}被烧死了。</PlasmaFlame.deathMessage>
+  
+</LanguageData>

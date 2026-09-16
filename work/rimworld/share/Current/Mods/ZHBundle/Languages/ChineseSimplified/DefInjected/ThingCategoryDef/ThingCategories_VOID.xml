@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- DF Melee -->
+
+  <DF_MeleeMain.label>费尔维尤近战武器</DF_MeleeMain.label>
+  <DF_RangedMain.label>费尔维尤远程武器</DF_RangedMain.label>
+
+
+  <!-- DF Armors -->
+
+  <DF_VoidtechApparel.label>Voidtech服装</DF_VoidtechApparel.label>
+  <DF_ArmorHeadgear.label>费尔维尤装甲头盔</DF_ArmorHeadgear.label>
+  <DF_Armor.label>费尔维尤装甲</DF_Armor.label>
+  <!-- EN: VOID monsters -->
+  <VOID_Monsters.label>VOID怪物</VOID_Monsters.label>
+
+
+</LanguageData>

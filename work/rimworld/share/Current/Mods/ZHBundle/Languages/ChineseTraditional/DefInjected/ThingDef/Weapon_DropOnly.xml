@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ratkin magic wand -->
+  <RK_MagicWand.label>鼠族魔術棒</RK_MagicWand.label>
+  <!-- EN: 충격에 민감한 랫킨제 요술봉입니다. 잠긴 문을 열거나 가구를 치울때 사용합니다. 제정신인 랫킨이라면 이걸 던지겠지만.. -->
+  <RK_MagicWand.description>容易因衝擊而引爆的“魔術棒”，很適合用來炸爛上鎖的門或傢俱。正常的鼠族都會對其敬而遠之，但總有些腦子不正常的...</RK_MagicWand.description>
+  <!-- EN: head -->
+  <RK_MagicWand.tools.head.label>棒頭</RK_MagicWand.tools.head.label>
+  <!-- EN: edge -->
+  <RK_MagicWand.tools.edge.label>握柄</RK_MagicWand.tools.edge.label>
+  
+</LanguageData>

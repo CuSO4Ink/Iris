@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_Sugarcane.label>甘蔗</VCE_Sugarcane.label>
+		<VCE_Sugarcane.description>一种节茎热带草本植物。虽然直接吃没什么营养，这种转基因甘蔗能被轻松碾成白糖并被用于厨艺。</VCE_Sugarcane.description>
+		<VCE_Allspice.label>多香果</VCE_Allspice.label>
+		<VCE_Allspice.description>一种奇怪又难吃的绿色果实，长在多叶的藤蔓上。当被碾磨时果实会有一种香辣的味道，可以用来给菜品调味。</VCE_Allspice.description>
+		<VCE_Wheat.label>小麦</VCE_Wheat.label>
+		<VCE_Wheat.description>一种琥珀色的谷物，需要花费整个适耕季来成熟。这种脆弱又费时间的转基因小麦一碰就会碎成面粉。</VCE_Wheat.description>
+		<VCE_Soybean.label>大豆</VCE_Soybean.label>
+		<VCE_Soybean.description>有多种用途的可食用豆类植物。大豆生长很快但是对温度非常敏感，最佳生长环境是20至30 °C（68至86 °F）。在理想温度以外会大大减少生长速度。</VCE_Soybean.description>
+		<VCE_Wasabi.label>山葵</VCE_Wasabi.label>
+		<VCE_Wasabi.description>辣根科植物。其根部磨成的末可以用来调味寿司和其它食物。其辣味主要刺激呼吸道而不是舌头。山葵种植非常困难，因为它对温度和湿度的要求都及其高。如果半径6格内有少于20格水的话生长速度会变慢。</VCE_Wasabi.description>
+	</LanguageData>

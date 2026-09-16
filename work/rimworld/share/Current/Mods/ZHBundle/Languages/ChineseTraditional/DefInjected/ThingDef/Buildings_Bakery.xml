@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: electric bakery oven -->
+  <VCE_BakeryOven_Electric.label>電烤箱</VCE_BakeryOven_Electric.label>
+  <!-- EN: An electric oven designed for baking cookies, pastries, and cakes with reliable, consistent heat distribution for perfect results every time. -->
+  <VCE_BakeryOven_Electric.description>使用電力的烤箱，用於烘焙餅乾，油麵包和蛋糕一類的點心。它能提供穩定的熱量，讓糕點均勻成型，讓烘焙效果更上一層樓。</VCE_BakeryOven_Electric.description>
+  
+  <!-- EN: fueled bakery oven -->
+  <VCE_BakeryOven_Fueled.label>燃料烤箱</VCE_BakeryOven_Fueled.label>
+  <!-- EN: A wood-fueled oven designed for baking cookies, pastries, and cakes. Its steady heat ensures even cooking and sweet results, though it requires a constant supply of fuel. -->
+  <VCE_BakeryOven_Fueled.description>使用木頭作為燃料的烤箱，用於烘焙餅乾，油麵包和蛋糕一類的點心。它能提供穩定的熱量，讓糕點均勻成型，因此需要持續消耗燃料。</VCE_BakeryOven_Fueled.description>
+  
+</LanguageData>

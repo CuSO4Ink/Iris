@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: combat hormone -->
+  <VV_CombatHormoneJelly.label>战斗激素</VV_CombatHormoneJelly.label>
+  <!-- EN: It is in a state where combat hormones that greatly enhance the Vivi's inherent aggressiveness have been injected. Combat-related skills are enhanced, and sensitivity to pain is reduced; they do not panic at the sight of fire, but they tire very quickly and become hungry. -->
+  <VV_CombatHormoneJelly.description>注射战斗激素大大增强了薇薇原有的攻击性。战斗相关技能增强，对疼痛的敏感性降低；他们不再会一看到火焰就恐慌，但他们会加速疲劳，更易饥饿。</VV_CombatHormoneJelly.description>
+  <!-- EN: Temporarily prevents mental break caused by the 'Fire Terror' gene. -->
+  <VV_CombatHormoneJelly.stages.0.extraTooltip>暂时防止由恐火症基因引发的精神崩溃。</VV_CombatHormoneJelly.stages.0.extraTooltip>
+  
+  <!-- EN: high on ice tea -->
+  <VV_CoolingFloralTea.label>冰茶兴奋</VV_CoolingFloralTea.label>
+  <!-- EN: Drunk ice flowering tea, making their body more resistant to heat. -->
+  <VV_CoolingFloralTea.description>喝下冰花茶抵御炎热。</VV_CoolingFloralTea.description>
+  
+  <!-- EN: relaxed on flowering tea -->
+  <VV_FloralTea.label>花茶放松</VV_FloralTea.label>
+  <!-- EN: Drunk flowering tea and are now in a serene state of mind. -->
+  <VV_FloralTea.description>喝了花茶，让心情平静。</VV_FloralTea.description>
+  
+  <!-- EN: flower scent -->
+  <VV_FlowerScent.label>花香</VV_FlowerScent.label>
+  <!-- EN: Emitting a floral scent from body. It becomes easier to focus psychic energy. -->
+  <VV_FlowerScent.description>正散发出花香，更易集中精神力。</VV_FlowerScent.description>
+  
+  <!-- EN: royal jelly effect -->
+  <VV_RoyalJelly.label>蜂王浆影响</VV_RoyalJelly.label>
+  <!-- EN: The effects of royal jelly slow down aging. In the case of child Vivi, their bodies are transforming into Royal Vivi.\n\nConsuming additional royal jelly will not stack the effects. -->
+  <VV_RoyalJelly.description>蜂王浆具有延缓衰老的功效。令幼体薇薇向皇家薇薇转化。\n\n蜂王浆效果不会叠加。</VV_RoyalJelly.description>
+  
+  <!-- EN: learning boost -->
+  <VV_ViviGrowthBoost.label>学习促进</VV_ViviGrowthBoost.label>
+  <!-- EN: Gain additional bonuses to global learning speed and growth point. -->
+  <VV_ViviGrowthBoost.description>获得全局学习速度和成长点的额外加成。</VV_ViviGrowthBoost.description>
+  
+  <!-- EN: high on warm tea -->
+  <VV_WarmingFloralTea.label>热茶兴奋</VV_WarmingFloralTea.label>
+  <!-- EN: Drunk warm flowering tea, making their body more resistant to the cold. -->
+  <VV_WarmingFloralTea.description>喝下热花茶抵御严寒。</VV_WarmingFloralTea.description>
+  
+</LanguageData>

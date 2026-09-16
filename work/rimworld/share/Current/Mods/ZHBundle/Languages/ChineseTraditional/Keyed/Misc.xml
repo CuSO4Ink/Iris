@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Interested in it -->
+  <VSE.Expertise0>熱情萌生</VSE.Expertise0>
+    <!-- EN: Hobbyist -->
+  <VSE.Expertise1>業余愛好</VSE.Expertise1>
+    <!-- EN: Aspiring Apprentice -->
+  <VSE.Expertise2>篤信好學</VSE.Expertise2>
+    <!-- EN: Apprentice -->
+  <VSE.Expertise3>學有所獲</VSE.Expertise3>
+    <!-- EN: Excellent Apprentice -->
+  <VSE.Expertise4>初試鋒芒</VSE.Expertise4>
+    <!-- EN: Weak Professional -->
+  <VSE.Expertise5>嶄露頭角</VSE.Expertise5>
+    <!-- EN: Professional -->
+  <VSE.Expertise6>胸有成竹</VSE.Expertise6>
+    <!-- EN: Employable Professional -->
+  <VSE.Expertise7>熟能生巧</VSE.Expertise7>
+    <!-- EN: Solid Professional -->
+  <VSE.Expertise8>駕輕就熟</VSE.Expertise8>
+    <!-- EN: Skilled Professional -->
+  <VSE.Expertise9>融會貫通</VSE.Expertise9>
+    <!-- EN: Very Skilled Professional -->
+  <VSE.Expertise10>庖丁解牛</VSE.Expertise10>
+    <!-- EN: Almost Expert -->
+  <VSE.Expertise11>出神入化</VSE.Expertise11>
+    <!-- EN: Self-Proclaimed Expert -->
+  <VSE.Expertise12>巧奪天工</VSE.Expertise12>
+    <!-- EN: Expert -->
+  <VSE.Expertise13>行家裏手</VSE.Expertise13>
+    <!-- EN: Strong Expert -->
+  <VSE.Expertise14>入室升堂</VSE.Expertise14>
+    <!-- EN: Very Strong Expert -->
+  <VSE.Expertise15>超群絕倫</VSE.Expertise15>
+    <!-- EN: Colony-Known Expert -->
+  <VSE.Expertise16>聲名鵲起</VSE.Expertise16>
+    <!-- EN: Region-Known Expert -->
+  <VSE.Expertise17>家喻戶曉</VSE.Expertise17>
+    <!-- EN: Region-Leading Expert -->
+  <VSE.Expertise18>遠近聞名</VSE.Expertise18>
+    <!-- EN: Planet-Known Expert -->
+  <VSE.Expertise19>名揚四海</VSE.Expertise19>
+    <!-- EN: Legendary Expert -->
+  <VSE.Expertise20>德藝雙馨</VSE.Expertise20>
+    <!-- EN: Expertise -->
+  <VSE.Expertise>專精</VSE.Expertise>
+    <!-- EN: Forgetting Speed -->
+  <VSE.ForgetSpeed>遺忘速度</VSE.ForgetSpeed>
+    <!-- EN: Effects: -->
+  <VSE.Effects>效果：</VSE.Effects>
+    <!-- EN: Effects (per level): -->
+  <VSE.Effects.PerLevel>效果（每級）：</VSE.Effects.PerLevel>
+    <!-- EN: Colonist can gain expertise -->
+  <VSE.ExpertiseAvailable>殖民者有專精技能可用</VSE.ExpertiseAvailable>
+    <!-- EN: Colonists can gain expertise -->
+  <VSE.ExpertiseAvailableMultiple>殖民者有專精技能可用</VSE.ExpertiseAvailableMultiple>
+    <!-- EN: Select expertise -->
+  <VSE.SelectExpertise>選擇專精技能</VSE.SelectExpertise>
+    <!-- EN: Selecting an expertise will unlock a new skill that your pawn will level up, granting them powerful, but very specific bonuses.\nYou can only select {0} expertise, and only in skills your pawns is passionate about. -->
+  <VSE.ExpertiseDesc>當殖民者的某項技能達到15級，且熱情度較高（興趣、熱情、偏長或恃才）時，你可以為他們選擇一項屬性加成強力的專精技能。每名殖民者只能選擇{0}個專精技能，它們會像普通技能一樣出現在殖民者的「角色」面板裏。</VSE.ExpertiseDesc>
+    <!-- EN: Your colonist has reached high enough level in a skill they are passionate about that they can gain expertise.\n\nConsider picking an expertise for them to gain new bonuses to the work type they are good at.\n\nColonists that can get expertise:\n\n -->
+  <VSE.ExpertiseAvailableDesc>你的殖民者已有熱情度較高的技能達到了足夠等級，他們可以獲得一項新的專精技能了。打開殖民者的「角色」面板，點擊右上方的「★」按鈕即可進行選擇。\n\n專精技能選擇後將無法更改，因此請深思熟慮過後再做決定。\n\n以下殖民者有專精技能可用：\n\n</VSE.ExpertiseAvailableDesc>
+    <!-- EN: \n   - Learns {0}\n   - Forgets {1} -->
+  <VSE.LearnsForgets>\n   - 學習速度 {0}\n   - 遺忘速度 {1}</VSE.LearnsForgets>
+    <!-- EN: \n   - Learns Others {0} -->
+  <VSE.LearnOther>\n   - 學習速度(其他技能) {0}</VSE.LearnOther>
+    <!-- EN: No passion -->
+  <VSE.NoPassion>熱情度不足</VSE.NoPassion>
+    <!-- EN: Insufficient skill -->
+  <VSE.SkillTooLow>技能等級不足</VSE.SkillTooLow>
+    <!-- EN: At max expertise -->
+  <VSE.AtMaxExpertise>專精技能已達上限</VSE.AtMaxExpertise>
+    <!-- EN: Expertise overlap -->
+  <VSE.ExpertiseOverlap>專精技能不可疊加</VSE.ExpertiseOverlap>
+    <!-- EN: Vanilla Skills Expanded -->
+  <VSE>Vanilla Skills Expanded</VSE>
+    <!-- EN: Maximum expertise per colonist: -->
+  <VSE.MaxExpertise>每名殖民者最多可獲得的專精技能數量</VSE.MaxExpertise>
+    <!-- EN: Allow multiple critical passions -->
+  <VSE.AllowMultiCritical>角色是否可以擁有多個“偏長”熱情度</VSE.AllowMultiCritical>
+    <!-- EN: If false, will ensure that only one Critical passion will generate per pawn, to avoid them overlapping and causing them both to be useless. -->
+  <VSE.AllowMultiCritical.Desc>如果禁用此項，每個角色在生成時將只會擁有一個“偏長”熱情度，多個同時存在會導致所有技能的學習速度都變得很慢。</VSE.AllowMultiCritical.Desc>
+    <!-- EN: Critical effects passions -->
+  <VSE.CriticalEffectPassions>“偏長”熱情度的減益效果是否會影響其他技能</VSE.CriticalEffectPassions>
+    <!-- EN: If false, the learn rate factor debuff on other skills from Critical will not effect other skills the pawn is passionate about. -->
+  <VSE.CriticalEffectPassions.Desc>如果禁用此項，“偏長”熱情度的“學習速度(其他技能)”減益將不會對角色其他熱情度較高的技能造成影響。</VSE.CriticalEffectPassions.Desc>
+    <!-- EN: Edit passion commonalities, groups are separate -->
+  <VSE.Commonalities>熱情度生成率設置</VSE.Commonalities>
+    <!-- EN: Reset to default -->
+  <VSE.Reset>重設為默認</VSE.Reset>
+    <!-- EN: Bad: -->
+  <VSE.Bad>【負面】熱情度</VSE.Bad>
+    <!-- EN: Good: -->
+  <VSE.Good>【正面】熱情度</VSE.Good>
+    <!-- EN: Allow expertise overlap -->
+  <VSE.AllowExpertiseOverlap>殖民者的專精技能是否可以疊加</VSE.AllowExpertiseOverlap>
+    <!-- EN: If false, then only 1 expertise can be chosen per skill, regardless of max expertise setting. -->
+  <VSE.AllowExpertiseOverlap.Desc>如果禁用此項，則每個技能只能選擇一項專精（比如射擊達到15級後，選擇了瞄準專精就不能再選擇神射和裝填專精了）。此項僅在“殖民者最大專精技能數量”設置為2以上時生效。</VSE.AllowExpertiseOverlap.Desc>
+    <!-- EN: Re-enable skill loss -->
+  <VSE.EnableSkillLoss>重新啟用技能遺忘機製</VSE.EnableSkillLoss>
+    <!-- EN: Enable "Expertise Available" alert -->
+  <VSE.EnableAlert>啟用右下角“殖民者有專精技能可用”的提示</VSE.EnableAlert>
+    <!-- EN: By default, Ducks' Insane Skills disables all skill loss. By selecting this option, this mod will override Ducks and enable it again. Use this if you still want to be able to take advantage of the forget speed changes in the new passions. -->
+  <VSE.EnableSkillsLoss.Desc>默認狀況下，Ducks' Insane Skills會關掉原版的技能遺忘機製。啟用此項後，本mod將會通過覆蓋Ducks' Insane Skills的設置來達到再次啟用技能遺忘機製的目的。</VSE.EnableSkillsLoss.Desc>
+	<!-- EN: Minimum skill to get an expertise -->
+  <VSE.MinSkillForExpertise>解鎖專精技能所需的最小技能等級</VSE.MinSkillForExpertise>
+	<!-- EN: The colonist will need to reach this skill level before being offered an expertise. -->
+  <VSE.MinSkillForExpertiseDesc>殖民者的技能等級需要達到多少後，才可以解鎖對應的專精技能。</VSE.MinSkillForExpertiseDesc>
+	<!-- EN: Expertise stat factor / offset multiplier -->
+  <VSE.StatMultiplier>專精技能屬性系數/偏移乘數</VSE.StatMultiplier>
+	<!-- EN: Is our balance too easy? Too hard? Go bitch on Reddit! Errrr... I mean, change it with this slider! The effects expertise have on stats will be multiplied by this number, so 0.1 will make expertise super weak, while 5 will make them incredibly overpowered. -->
+  <VSE.StatMultiplierDesc>你覺得這個mod的平衡性搞得太簡單或太難了？那就試著通過此項來調整吧。專精技能的屬性加成將會乘以此項的值（乘數為0.1時加成極低，乘數為5時加成極高）。</VSE.StatMultiplierDesc>
+	<!-- EN: Random passion chance in growth moments -->
+  <VSE.GrowthMomentRandomPassions>成長時刻隨機獲得熱情度的幾率</VSE.GrowthMomentRandomPassions>
+	<!-- EN: By default, 5% of the time a growth moment will select one of the skills that have no passions and assign either a Natural or an Apathy passion. -->
+  <VSE.GrowthMomentRandomPassionsDesc>默認情況下，當殖民者到達新的成長時刻時，有5%的幾率會隨機選擇一項“無”熱情度的技能，並賦予其“恃才”或“乏味”熱情度。</VSE.GrowthMomentRandomPassionsDesc>
+	<!-- EN: Passion: {0} -->
+  <VSE_Passion>熱情度：{0}</VSE_Passion>
+  
+</LanguageData>

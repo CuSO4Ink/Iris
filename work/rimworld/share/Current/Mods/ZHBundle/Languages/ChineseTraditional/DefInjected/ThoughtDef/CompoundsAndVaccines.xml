@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: high on XJ9 - Compound -->
+  <MiracleCompoundHigh.stages.high_on_XJ9_Compound.label>XJ9合劑亢奮</MiracleCompoundHigh.stages.high_on_XJ9_Compound.label>
+  <!-- EN: I don't feel tired and hungry at all! -->
+  <MiracleCompoundHigh.stages.high_on_XJ9_Compound.description>我現在感覺非常好！疲憊與飢餓感全都一掃而空了！</MiracleCompoundHigh.stages.high_on_XJ9_Compound.description>
+  
+  <!-- EN: XJ9 - Compound withdrawal -->
+  <MiracleCompoundWithdrawal.stages.XJ9_Compound_withdrawal.label>XJ9合劑戒斷</MiracleCompoundWithdrawal.stages.XJ9_Compound_withdrawal.label>
+  <!-- EN: I feel very..... Very.... Tired....... -->
+  <MiracleCompoundWithdrawal.stages.XJ9_Compound_withdrawal.description>我...感覺...好累啊...</MiracleCompoundWithdrawal.stages.XJ9_Compound_withdrawal.description>
+  
+  <!-- EN: high on vaccine -->
+  <VaccineHigh.stages.high_on_vaccine.label>歿疫解藥亢奮</VaccineHigh.stages.high_on_vaccine.label>
+  <!-- EN: I can feel a sudden surge of energy flowing through me!. -->
+  <VaccineHigh.stages.high_on_vaccine.description>有股奇妙的力量正在我體內不斷奔湧！這感覺可真棒！</VaccineHigh.stages.high_on_vaccine.description>
+  
+  <!-- EN: vaccine withdrawal -->
+  <VaccineWithdrawal.stages.vaccine_withdrawal.label>歿疫解藥戒斷</VaccineWithdrawal.stages.vaccine_withdrawal.label>
+  <!-- EN: I don't feel so good..... -->
+  <VaccineWithdrawal.stages.vaccine_withdrawal.description>我感覺...好難受...</VaccineWithdrawal.stages.vaccine_withdrawal.description>
+  
+</LanguageData>

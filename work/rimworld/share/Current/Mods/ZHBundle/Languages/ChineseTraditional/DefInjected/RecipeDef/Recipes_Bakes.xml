@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_CookBakeSimple.label>烹飪簡單面點 x2</VCE_CookBakeSimple.label>
+		<VCE_CookBakeSimple.description>用少許麵粉和其它材料烹飪兩份簡單的面點。</VCE_CookBakeSimple.description>
+		<VCE_CookBakeSimple.jobString>正在烹飪兩份簡單面點。</VCE_CookBakeSimple.jobString>
+		<VCE_CookBakeSimpleBulk.label>烹飪簡單面點 x8</VCE_CookBakeSimpleBulk.label>
+		<VCE_CookBakeSimpleBulk.description>用少許麵粉和其它材料烹飪八份簡單的面點。</VCE_CookBakeSimpleBulk.description>
+		<VCE_CookBakeSimpleBulk.jobString>正在烹飪八份簡單面點。</VCE_CookBakeSimpleBulk.jobString>
+		<VCE_CookBakeFine.label>烹飪精緻面點 x2</VCE_CookBakeFine.label>
+		<VCE_CookBakeFine.description>將多種材料組合，烹飪兩份相對複雜的面點。</VCE_CookBakeFine.description>
+		<VCE_CookBakeFine.jobString>正在烹飪兩份精緻面點。</VCE_CookBakeFine.jobString>
+		<VCE_CookBakeFineBulk.label>烹飪份精緻面點 x8</VCE_CookBakeFineBulk.label>
+		<VCE_CookBakeFineBulk.description>將多種材料組合，烹飪八份相對複雜的面點。</VCE_CookBakeFineBulk.description>
+		<VCE_CookBakeFineBulk.jobString>正在烹飪八份精緻面點。</VCE_CookBakeFineBulk.jobString>
+		<VCE_CookBakeLavish.label>烹飪奢侈面點 x2</VCE_CookBakeLavish.label>
+		<VCE_CookBakeLavish.description>烹飪兩份藝術般的面點，可以蕩滌身心。</VCE_CookBakeLavish.description>
+		<VCE_CookBakeLavish.jobString>正在烹飪兩份奢侈面點。</VCE_CookBakeLavish.jobString>
+		<VCE_CookBakeLavishBulk.label>烹飪奢侈面點 x8</VCE_CookBakeLavishBulk.label>
+		<VCE_CookBakeLavishBulk.description>烹飪八份藝術般的面點，可以蕩滌身心。</VCE_CookBakeLavishBulk.description>
+		<VCE_CookBakeLavishBulk.jobString>正在烹飪八份奢侈面點。</VCE_CookBakeLavishBulk.jobString>
+		<VCE_CookBakeGourmet.label>烹飪豪華面點 x2</VCE_CookBakeGourmet.label>
+		<VCE_CookBakeGourmet.description>烹飪兩份精雕細琢的面點，美艷絕倫，雖然量不多。</VCE_CookBakeGourmet.description>
+		<VCE_CookBakeGourmet.jobString>正在烹飪兩份豪華面點。</VCE_CookBakeGourmet.jobString>
+	</LanguageData>

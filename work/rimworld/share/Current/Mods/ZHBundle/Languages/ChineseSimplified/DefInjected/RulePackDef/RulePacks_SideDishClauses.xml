@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>sidedish->[connector_clause] [description]</li>
+    <li>description->. [conjunction] this [verb] {1}</li>
+    <li>description->, which [verb] {1}</li>
+    <li>description(p=0.2)->. What is {0}? [conjunction] it [verb] {1}</li>
+    <li>description(p=0.1)->. What is {0}? [conjunction] it's {1}</li>
+    <li>conjunction(p=8)-></li>
+    <li>conjunction->in more detail</li>
+    <li>conjunction->to go into more detail</li>
+    <li>conjunction->to explain this better</li>
+    <li>conjunction->as a better explanation</li>
+    <li>conjunction->to elaborate</li>
+    <li>conjunction(p=0.2)->for the reader's edification</li>
+    <li>conjunction(p=0.1)->for readers unfamiliar with the history of Old Earth cuisine</li>
+    <li>verb(p=6)->is</li>
+    <li>verb(p=0.3)->is a historical name for</li>
+    <li>verb(p=0.3)->is a native name for</li>
+    <li>connector_clause->[maindish_clause] [serving] {0} [dep_clause_null]</li>
+    <li>connector_clause->[serving] {0} is served as well</li>
+    <li>connector_clause->[serving] {0} is served [dep_clause]</li>
+    <li>connector_clause->{0} is also offered [dep_clause_null]</li>
+    <li>connector_clause->[serving] {0} sits next to it [manner_null]</li>
+    <li>connector_clause->{0} sits on the side</li>
+    <li>connector_clause->[dep_clause], you find {0}</li>
+    <li>connector_clause->[dep_clause], there is [serving] {0}</li>
+    <li>connector_clause->[dep_clause], one is presented with {0}</li>
+    <li>connector_clause->[dep_clause], there sits [serving] {0}</li>
+    <li>connector_clause->[serving] {0} is put forward [dep_clause]</li>
+    <li>connector_clause->[maindish] is laid on a bed of {0} [dep_clause_null]</li>
+    <li>connector_clause(p=0.2)->the chef has additionally selected {0} [dep_clause]</li>
+    <li>connector_clause(p=0.1)->the center of [maindish] has been removed in order to hold [serving] {0} [manner_null]</li>
+    <li>maindish->this</li>
+    <li>maindish->this dish</li>
+    <li>maindish->this entree</li>
+    <li>maindish->the meal</li>
+    <li>maindish(p=0.5)->the previous</li>
+    <li>maindish(p=0.5)->the above</li>
+    <li>maindish(p=0.2)->this repast</li>
+    <li>maindish_clause->[maindish] comes with</li>
+    <li>maindish_clause->[maindish] is topped with</li>
+    <li>maindish_clause->[maindish] is covered with</li>
+    <li>maindish_clause->[maindish] is accompanied by</li>
+    <li>maindish_clause->[maindish] also comes with</li>
+    <li>maindish_clause->[maindish] is followed by</li>
+    <li>maindish_clause(p=0.5)->[maindish] is one of several courses in the meal, which also includes</li>
+    <li>maindish_clause(p=0.5)->[maindish] is mixed together with</li>
+    <li>maindish_clause(p=0.5)->[maindish] wouldn't be complete without</li>
+    <li>dep_clause_null->[dep_clause]</li>
+    <li>dep_clause_null-></li>
+    <li>dep_clause(p=3)->[manner]</li>
+    <li>dep_clause->[location]</li>
+    <li>manner_null->[manner]</li>
+    <li>manner_null-></li>
+    <li>manner->to complement the flavor</li>
+    <li>manner(p=0.4)->as a pairing</li>
+    <li>manner(p=0.4)->as the perfect pairing</li>
+    <li>manner(p=0.4)->in an interesting pairing</li>
+    <li>manner->as a second course</li>
+    <li>manner->as an appetizer</li>
+    <li>manner->as a palate cleanser</li>
+    <li>manner->for aesthethic purposes</li>
+    <li>manner->, according to the diner's tastes</li>
+    <li>manner->to fully satisfy the diner</li>
+    <li>manner->to top it all off</li>
+    <li>manner->in a surprising twist</li>
+    <li>manner->as an additional option</li>
+    <li>manner(p=0.3)->, assembled into the shape of a [Animal]</li>
+    <li>manner(p=0.2)->, dyed a brilliant shade of [Color]</li>
+    <li>manner(p=0.2)->in a study of fusion cuisine</li>
+    <li>manner(p=0.2)->, though not intended to be eaten</li>
+    <li>manner(p=0.1)->, though there should be a law against it</li>
+    <li>manner(p=0.1)->, though the state of it calls into question whether it should be classified as food or vomit</li>
+    <li>location->, arranged in a [Shape] around it</li>
+    <li>location->on the side</li>
+    <li>location->on a smaller plate to the side</li>
+    <li>location->as a side dish</li>
+    <li>serving(p=2)-></li>
+    <li>serving->some</li>
+    <li>serving->a bit of</li>
+    <li>serving->[size] helping of</li>
+    <li>serving->[size] portion of</li>
+    <li>serving->[size] side of</li>
+    <li>serving->[size] amount of</li>
+    <li>serving->[size] plate of</li>
+    <li>serving->[size] bowl of</li>
+    <li>serving->[size] cup of</li>
+    <li>serving->[size] mound of</li>
+    <li>serving(p=0.5)->so much</li>
+    <li>serving(p=0.5)->just the right amount of</li>
+    <li>serving(p=0.2)->an ungodly amount of</li>
+    <li>serving(p=0.2)->an unbelievable amount of</li>
+    <li>serving(p=0.2)->a disgusting amount of</li>
+    <li>size->a</li>
+    <li>size->a large</li>
+    <li>size->a healthy</li>
+    <li>size->a hearty</li>
+    <li>size->a heaping</li>
+    <li>size->a small</li>
+    <li>size->a miniscule</li>
+    <li>size->a tiny</li>
+    <li>size->a moderate</li>
+    <li>size->a reasonably sized</li>
+    <li>size->a paltry</li>
+    <li>size(p=0.2)->just the tiniest</li>
+  -->
+  <FT_SideDishClauses.rulePack.rulesStrings>
+    <li>sidedish->[connector_clause] [description]</li>
+    <li>description->. [conjunction] this [verb] {1}</li>
+    <li>description->, which [verb] {1}</li>
+    <li>description(p=0.2)->. What is {0}? [conjunction] it [verb] {1}</li>
+    <li>description(p=0.1)->. What is {0}? [conjunction] it's {1}</li>
+    <li>conjunction(p=8)-></li>
+    <li>conjunction->更详细地说</li>
+    <li>conjunction->为了更详细说明</li>
+    <li>conjunction->为了更好地解释这一点</li>
+    <li>conjunction->作为一个更好的解释</li>
+    <li>conjunction->详细说明一下</li>
+    <li>conjunction(p=0.2)->为了启发读者</li>
+    <li>conjunction(p=0.1)->为不熟悉旧地球美食历史的读者们</li>
+    <li>verb(p=6)->是</li>
+    <li>verb(p=0.3)->是一个历史上的名称，指代</li>
+    <li>verb(p=0.3)->是一个本地名称，指代</li>
+    <li>connector_clause->[maindish_clause] [serving] {0} [dep_clause_null]</li>
+    <li>connector_clause->[serving] {0} 也同样被供应着</li>
+    <li>connector_clause->[serving] {0} 被供应上来 [dep_clause]</li>
+    <li>connector_clause->{0} 也同样被提供 [dep_clause_null]</li>
+    <li>connector_clause->[serving] {0} 就放在它旁边 [manner_null]</li>
+    <li>connector_clause->{0} 放在一侧</li>
+    <li>connector_clause->[dep_clause], 你会发现 {0}</li>
+    <li>connector_clause->[dep_clause], 那里有 [serving] {0}</li>
+    <li>connector_clause->[dep_clause], 呈现在你面前的是 {0}</li>
+    <li>connector_clause->[dep_clause], 那里摆放着 [serving] {0}</li>
+    <li>connector_clause->[serving] {0} 被呈递上来 [dep_clause]</li>
+    <li>connector_clause->[maindish] 被置于一层 {0} 之上 [dep_clause_null]</li>
+    <li>connector_clause(p=0.2)->厨师额外选择了 {0} [dep_clause]</li>
+    <li>connector_clause(p=0.1)->[maindish] 的中心被挖空，以便盛放 [serving] {0} [manner_null]</li>
+    <li>maindish->这个</li>
+    <li>maindish->这道菜</li>
+    <li>maindish->这道主菜</li>
+    <li>maindish->这顿饭</li>
+    <li>maindish(p=0.5)->前一道</li>
+    <li>maindish(p=0.5)->上述的</li>
+    <li>maindish(p=0.2)->这餐饭</li>
+    <li>maindish_clause->[maindish] 配有</li>
+    <li>maindish_clause->[maindish] 上面覆盖着</li>
+    <li>maindish_clause->[maindish] 表面铺着</li>
+    <li>maindish_clause->[maindish] 搭配着</li>
+    <li>maindish_clause->[maindish] 还配有</li>
+    <li>maindish_clause->[maindish] 之后上的是</li>
+    <li>maindish_clause(p=0.5)->[maindish] 只是这顿饭的其中一道菜，这顿饭还包括</li>
+    <li>maindish_clause(p=0.5)->[maindish] 与……混合在一起</li>
+    <li>maindish_clause(p=0.5)->[maindish] 若是没有……就不完整</li>
+    <li>dep_clause_null->[dep_clause]</li>
+    <li>dep_clause_null-></li>
+    <li>dep_clause(p=3)->[manner]</li>
+    <li>dep_clause->[location]</li>
+    <li>manner_null->[manner]</li>
+    <li>manner_null-></li>
+    <li>manner->为了补充风味</li>
+    <li>manner(p=0.4)->作为搭配</li>
+    <li>manner(p=0.4)->作为完美的搭配</li>
+    <li>manner(p=0.4)->以一种有趣的搭配方式</li>
+    <li>manner->作为第二道菜</li>
+    <li>manner->作为开胃菜</li>
+    <li>manner->作为清口小食</li>
+    <li>manner->出于美观目的</li>
+    <li>manner->，根据用餐者的口味</li>
+    <li>manner->为了充分满足用餐者</li>
+    <li>manner->作为画龙点睛之笔</li>
+    <li>manner->以一个出乎意料的方式</li>
+    <li>manner->作为一个额外的选择</li>
+    <li>manner(p=0.3)->，被摆成了[Animal]的形状</li>
+    <li>manner(p=0.2)->，染成了鲜艳的[Color]色</li>
+    <li>manner(p=0.2)->作为融合菜系的一种尝试</li>
+    <li>manner(p=0.2)->，虽然本意并非供人食用</li>
+    <li>manner(p=0.1)->，尽管按理说这应该被法律禁止</li>
+    <li>manner(p=0.1)->，尽管其状态让人质疑它究竟该被归类为食物还是呕吐物</li>
+    <li>location->，以[Shape]的形状排列在周围</li>
+    <li>location->在旁边</li>
+    <li>location->在旁边的一个小盘子上</li>
+    <li>location->作为一道配菜</li>
+    <li>serving(p=2)-></li>
+    <li>serving->一些</li>
+    <li>serving->一点</li>
+    <li>serving->[size] 份的</li>
+    <li>serving->[size] 份量的</li>
+    <li>serving->[size] 配菜量的</li>
+    <li>serving->[size] 量的</li>
+    <li>serving->[size] 盘的</li>
+    <li>serving->[size] 碗的</li>
+    <li>serving->[size] 杯的</li>
+    <li>serving->[size] 堆的</li>
+    <li>serving(p=0.5)->如此多的</li>
+    <li>serving(p=0.5)->恰到好处的</li>
+    <li>serving(p=0.2)->多得离谱的</li>
+    <li>serving(p=0.2)->多得难以置信的</li>
+    <li>serving(p=0.2)->多得令人恶心的</li>
+    <li>size->一</li>
+    <li>size->一大</li>
+    <li>size->一健康</li>
+    <li>size->一丰盛</li>
+    <li>size->一满满</li>
+    <li>size->一小</li>
+    <li>size->一极小</li>
+    <li>size->一微小</li>
+    <li>size->一中</li>
+    <li>size->一合理份量的</li>
+    <li>size->一少得可怜的</li>
+    <li>size(p=0.2)->最最微小的</li>
+  </FT_SideDishClauses.rulePack.rulesStrings>
+  
+</LanguageData>

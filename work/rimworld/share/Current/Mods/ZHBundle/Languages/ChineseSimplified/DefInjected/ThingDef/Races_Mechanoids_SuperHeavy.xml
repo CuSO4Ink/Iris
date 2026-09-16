@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 다각 공병전차 (클러스터 로켓 포대) -->
+  <Miho_Mech_CataphractCluRocket.label>“铁骑兵”集束火箭无人机</Miho_Mech_CataphractCluRocket.label>
+  <!-- EN: 개마급 다각 공병전차에 다연장 로켓포대를 장착한 모델입니다. -->
+  <Miho_Mech_CataphractCluRocket.description>配备有57mm多管火箭炮和6.5mm同轴轻机枪的“铁骑兵”级重型集束火箭无人机。除了提供火力覆盖外，还可以胜任物资搬运和采矿工作。</Miho_Mech_CataphractCluRocket.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_CataphractCluRocket.tools.front_left_leg.label>左前腿</Miho_Mech_CataphractCluRocket.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_CataphractCluRocket.tools.front_right_leg.label>右前腿</Miho_Mech_CataphractCluRocket.tools.front_right_leg.label>
+  
+  <!-- EN: 다각 공병전차 (열압력 로켓 포대) -->
+  <Miho_Mech_CataphractRocket.label>“铁骑兵”温压火箭无人机</Miho_Mech_CataphractRocket.label>
+  <!-- EN: 개마급 다각 공병전차에 다연장 로켓포대를 장착한 모델입니다. -->
+  <Miho_Mech_CataphractRocket.description>配备有100mm多管火箭炮和6.5mm同轴轻机枪的“铁骑兵”级重型温压火箭无人机。除了提供火力覆盖外，还可以胜任物资搬运和采矿工作。\n\n【额外能力】：燃烧榴弹\n\n向目标点处发射一枚燃烧榴弹。</Miho_Mech_CataphractRocket.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_CataphractRocket.tools.front_left_leg.label>左前腿</Miho_Mech_CataphractRocket.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_CataphractRocket.tools.front_right_leg.label>右前腿</Miho_Mech_CataphractRocket.tools.front_right_leg.label>
+  
+  <!-- EN: 미호 다각전차용 다연장로켓 (집속탄) -->
+  <Miho_MechWeapon_CluRocket.label>无人机多管集束火箭炮</Miho_MechWeapon_CluRocket.label>
+  <!-- EN: 57mm 로켓을 사용하는 다연장 발사 시스템 입니다. 경장갑을 관통 가능한 클러스터를 뿌립니다. 100칸의 사거리를 지닙니다. -->
+  <Miho_MechWeapon_CluRocket.description>为“铁骑兵”级集束火箭无人机设计的57mm曲射型多管火箭炮。可以从远处打击成群的轻甲敌人。最大射程为100格。</Miho_MechWeapon_CluRocket.description>
+  <!-- EN: barrel -->
+  <Miho_MechWeapon_CluRocket.tools.barrel.label>发射管</Miho_MechWeapon_CluRocket.tools.barrel.label>
+  <!-- EN: 미호 다각전차용 다연장로켓 (집속탄) -->
+  <Miho_MechWeapon_CluRocket.verbs.Verb_Shoot_ShootGun.label>无人机多管集束火箭炮</Miho_MechWeapon_CluRocket.verbs.Verb_Shoot_ShootGun.label>
+  
+  <!-- EN: cluster rocket -->
+  <Miho_MechWeapon_CluRocket_Proj.label>集束火箭弹</Miho_MechWeapon_CluRocket_Proj.label>
+  
+  <!-- EN: fragment -->
+  <Miho_MechWeapon_CluRocket_ProjSub.label>破片</Miho_MechWeapon_CluRocket_ProjSub.label>
+  
+  <!-- EN: 미호 다각전차용 다연장로켓 (열압력탄) -->
+  <Miho_MechWeapon_Rocket.label>无人机多管温压火箭炮</Miho_MechWeapon_Rocket.label>
+  <!-- EN: 100mm 로켓을 사용하는 다연장 발사 시스템 입니다. 곡사가 가능하며 넓은 지대를 불바다로 만들어 버립니다. 55칸의 사거리를 지닙니다. -->
+  <Miho_MechWeapon_Rocket.description>为“铁骑兵”级温压火箭无人机设计的100mm曲射型多管火箭炮。可以从远处将一大片区域化作火海。最大射程为55格。</Miho_MechWeapon_Rocket.description>
+  <!-- EN: barrel -->
+  <Miho_MechWeapon_Rocket.tools.barrel.label>发射管</Miho_MechWeapon_Rocket.tools.barrel.label>
+  <!-- EN: 미호 다각전차용 다연장로켓 (열압력탄) -->
+  <Miho_MechWeapon_Rocket.verbs.Verb_Shoot_ShootGun.label>无人机多管温压火箭炮</Miho_MechWeapon_Rocket.verbs.Verb_Shoot_ShootGun.label>
+
+  <!-- EN: thermobaric rocket -->
+  <Miho_MechWeapon_Rocket_Proj.label>温压火箭弹</Miho_MechWeapon_Rocket_Proj.label>
+  
+</LanguageData>

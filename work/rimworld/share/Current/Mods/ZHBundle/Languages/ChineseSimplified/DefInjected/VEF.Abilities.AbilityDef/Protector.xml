@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: focus -->
+  <VPE_Focus.label>注意集中</VPE_Focus.label>
+  <!-- EN: Psychically focus the target's mind for a minute, boosting their sight, hearing and moving capacities. -->
+  <VPE_Focus.description>在精神上操纵目标使其集中注意力，提高他们的视觉、听觉和移动能力。</VPE_Focus.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Focus.jobReportString>使用能力：{0}</VPE_Focus.jobReportString>
+  <!-- EN: 注意集中 -->
+  <VPE_Focus.verbProperties.label>注意集中</VPE_Focus.verbProperties.label>
+  
+  <!-- EN: guardian skipbarrier -->
+  <VPE_GuardianSkipbarrier.label>守御折跃盾</VPE_GuardianSkipbarrier.label>
+  <!-- EN: Generate a spherical skipgate around the caster that sends all incoming ground-level projectiles to some distant place, lasting as long as they can manage the heat accumulation. People and items are not affected. It takes immense concentration to hold, as such the caster needs to be mindful of their steps. -->
+  <VPE_GuardianSkipbarrier.description>在施放者周围生成一个球形的折跃区，将所有射入的子弹都传送到遥远的地方。人员和物品的进出不受影响。只要能够承受心灵熵就可以不断维持。维持护盾需要十分集中的注意力，所以施放者需要注意自己的行动。</VPE_GuardianSkipbarrier.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_GuardianSkipbarrier.jobReportString>使用能力：{0}</VPE_GuardianSkipbarrier.jobReportString>
+  <!-- EN: 守御折跃盾 -->
+  <VPE_GuardianSkipbarrier.verbProperties.label>守御折跃盾</VPE_GuardianSkipbarrier.verbProperties.label>
+  
+  <!-- EN: invisibility -->
+  <VPE_Invisibility.label>隐身</VPE_Invisibility.label>
+  <!-- EN: Psychically manipulate the visual centers of everyone nearby, rendering them unable to perceive a particular individual for a short time. -->
+  <VPE_Invisibility.description>在精神上操纵附近每个人的视觉中心，使他们在短时间内无法感知特定的个体。</VPE_Invisibility.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Invisibility.jobReportString>使用能力：{0}</VPE_Invisibility.jobReportString>
+  <!-- EN: 隐身 -->
+  <VPE_Invisibility.verbProperties.label>隐身</VPE_Invisibility.verbProperties.label>
+  
+  <!-- EN: overshield -->
+  <VPE_Overshield.label>赋予护盾</VPE_Overshield.label>
+  <!-- EN: Generate a spherical skipgate on a target that sends all incoming ground-level projectiles to some distant place, the duration scaling with the target’s psychic sensitivity. People and items are not affected. -->
+  <VPE_Overshield.description>在目标身上生成一个球形的折跃区，将所有射入的子弹都传送到遥远的地方。人员和物品的进出不受影响。持续时间取决于目标的心灵敏感度。</VPE_Overshield.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Overshield.jobReportString>使用能力：{0}</VPE_Overshield.jobReportString>
+  <!-- EN: 赋予护盾 -->
+  <VPE_Overshield.verbProperties.label>赋予护盾</VPE_Overshield.verbProperties.label>
+  
+  <!-- EN: painblock -->
+  <VPE_Painblock.label>止痛</VPE_Painblock.label>
+  <!-- EN: Severely limit pain pathways in the target's brain for a couple of minutes. This can allow a person to move and act even with grievous injuries which would normally incapacitate them. -->
+  <VPE_Painblock.description>短时间内干扰目标大脑的痛觉中枢，使目标即使收到严重伤害也能继续屹立不倒、持续作战。</VPE_Painblock.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Painblock.jobReportString>使用能力：{0}</VPE_Painblock.jobReportString>
+  <!-- EN: 止痛 -->
+  <VPE_Painblock.verbProperties.label>止痛</VPE_Painblock.verbProperties.label>
+  
+  <!-- EN: regrow limbs -->
+  <VPE_RegrowLimbs.label>肢体再生</VPE_RegrowLimbs.label>
+  <!-- EN: Induces a psychic, regenerative coma in the target that lasts for a full day. The psychic energy assists the target by slowly regrowing any missing limbs. -->
+  <VPE_RegrowLimbs.description>在目标失去的肢体根部用复杂的灵能信号驱动再生程序。再生效果需要一整天才能完成，而且由于它会刺激目标的幻肢症状，造成极度不适。</VPE_RegrowLimbs.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_RegrowLimbs.jobReportString>使用能力：{0}</VPE_RegrowLimbs.jobReportString>
+  <!-- EN: 肢体再生 -->
+  <VPE_RegrowLimbs.verbProperties.label>肢体再生</VPE_RegrowLimbs.verbProperties.label>
+  
+  <!-- EN: skipshield -->
+  <VPE_Skipshield.label>折跃护盾</VPE_Skipshield.label>
+  <!-- EN: Generate a spherical skipgate that sends all incoming and outgoing ground-level projectiles to some distant place. People and items are not affected. Duration scales with psychic sensitivity of the caster. -->
+  <VPE_Skipshield.description>生成一个球形的折跃区，将所有射入和射出的子弹都传送到遥远的地方。人员和物品的进出不受影响。</VPE_Skipshield.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Skipshield.jobReportString>使用能力：{0}</VPE_Skipshield.jobReportString>
+  <!-- EN: 折跃护盾 -->
+  <VPE_Skipshield.verbProperties.label>折跃护盾</VPE_Skipshield.verbProperties.label>
+  
+  <!-- EN: stabilize -->
+  <VPE_Stabilize.label>止血</VPE_Stabilize.label>
+  <!-- EN: Temporarily puts the target’s cardiovascular system in stasis, which prevents them from bleeding out for a time, scaling with the psychic sensitivity of the caster. -->
+  <VPE_Stabilize.description>暂时将目标的心血管系统收紧，使其在一定时间内不会失血，持续时间取决于施放者的心灵敏感度。</VPE_Stabilize.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_Stabilize.jobReportString>使用能力：{0}</VPE_Stabilize.jobReportString>
+  <!-- EN: 止血 -->
+  <VPE_Stabilize.verbProperties.label>止血</VPE_Stabilize.verbProperties.label>
+  
+  <!-- EN: word of healing -->
+  <VPE_WordofHealing.label>痊愈之语</VPE_WordofHealing.label>
+  <!-- EN: Psychically stimulates a person’s regenerative capabilities into overdrive, effectively tripling their natural healing factor for a few days. -->
+  <VPE_WordofHealing.description>用灵能刺激过载目标的再生能力，在数天内将目标的自然治愈系数提升至三倍。</VPE_WordofHealing.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_WordofHealing.jobReportString>使用能力：{0}</VPE_WordofHealing.jobReportString>
+  <!-- EN: 痊愈之语 -->
+  <VPE_WordofHealing.verbProperties.label>痊愈之语</VPE_WordofHealing.verbProperties.label>
+  
+  <!-- EN: word of immunity -->
+  <VPE_WordofImmunity.label>免疫之语</VPE_WordofImmunity.label>
+  <!-- EN: Psychically stimulates a person’s immune system into overdrive, effectively nearly doubling their immunity gain speed for a few days. -->
+  <VPE_WordofImmunity.description>用灵能刺激过载目标的免疫系统，在数天内将目标的免疫速度提升至三倍。</VPE_WordofImmunity.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_WordofImmunity.jobReportString>使用能力：{0}</VPE_WordofImmunity.jobReportString>
+  <!-- EN: 免疫之语 -->
+  <VPE_WordofImmunity.verbProperties.label>免疫之语</VPE_WordofImmunity.verbProperties.label>
+  
+</LanguageData>

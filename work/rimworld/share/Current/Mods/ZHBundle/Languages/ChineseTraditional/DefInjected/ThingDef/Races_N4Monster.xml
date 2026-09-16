@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- MOTHER -->
+
+  <RH_DF_Mother.label>母體</RH_DF_Mother.label>
+  <RH_DF_Mother.description>Nerotonin-4型感染者母體。這名受試者以前是一名孕婦，其未出生的孩子與母親的腹部明顯融合，形成了第二張臉。\n\n母體是N4病毒最可怕的結果之一，一具懷孕的行屍走肉，表明未出世嬰兒的人生將永遠如此。與其他變體相比，母體的移動速度較慢，但其具有遠程攻擊能力，能吐出快速消散的無定酸，這些酸足以融化裝甲和建築。\n\nN-4病毒使該受試者具有很強的抗火能力。</RH_DF_Mother.description>
+  <RH_DF_Mother.tools.0.label>左爪</RH_DF_Mother.tools.0.label>
+  <RH_DF_Mother.tools.1.label>右爪</RH_DF_Mother.tools.1.label>
+  <RH_DF_Mother.tools.2.label>頭部</RH_DF_Mother.tools.2.label>
+
+
+  <!-- TITAN -->
+
+  <RH_DF_Titan.label>泰坦</RH_DF_Titan.label>
+  <RH_DF_Titan.description>Nerotonin-4型變體泰坦，一種體型增大、骨骼突出、肌肉發達的受試者。\n\n「泰坦」的強大之處在於它能夠橫越街道，穿過道路上的車輛，但幾乎沒有速度追趕獵物。N-4突變使受試者的骨骼變得更堅固，即使在強度上不等於混凝土也相差無幾了。這有效地使泰坦成為了一輛活坦克，讓它能夠在倒下前承受多次致命一擊。\n\nN-4病毒使該受試者具有很強的抗火能力。</RH_DF_Titan.description>
+  <RH_DF_Titan.tools.0.label>左拳</RH_DF_Titan.tools.0.label>
+  <RH_DF_Titan.tools.1.label>右拳</RH_DF_Titan.tools.1.label>
+  <RH_DF_Titan.tools.2.label>頭部</RH_DF_Titan.tools.2.label>
+
+
+  <!-- WRAITH -->
+
+  <RH_DF_Wraith.label>幽靈</RH_DF_Wraith.label>
+  <RH_DF_Wraith.description>Nerotonin-4型變體幽靈，也被稱為「毀滅天使」。n\n幽靈的觸角能夠穿透坦克中的重型裝甲。它們是所有女性N-4突變體的原型。幽靈可能是受Nerotonin-4型基因突變影響最小的精神動物，這使他們能夠保持生前的精神敏銳度。在它們的世界裏，這被視為人類最美好的一面。\n\nN-4病毒使該受試者具有很強的抗火能力。</RH_DF_Wraith.description>
+  <RH_DF_Wraith.tools.0.label>觸手</RH_DF_Wraith.tools.0.label>
+  <RH_DF_Wraith.tools.1.label>觸手</RH_DF_Wraith.tools.1.label>
+  <RH_DF_Wraith.tools.2.label>頭部</RH_DF_Wraith.tools.2.label>
+
+
+  <!-- GIANT SPIDER -->
+
+  <RH_DF_GiantSpider.label>巨型蜘蛛</RH_DF_GiantSpider.label>
+  <RH_DF_GiantSpider.description>Nerotonin-4型變體巨型蜘蛛，是運動型受試者中發現的一種變體。\n\n這種Nerotonin-4型病毒表現出「蜘蛛」突變的進化形式，它會導致受感染者長出一套額外的4條手臂。\n\n目前尚不清楚它們是如何以指數級增長的。據推測，N-4病毒導致其垂體突變，分泌了大量的生長激素，這種突變可能也能在泰坦和幽靈身上發現。這種生物的智力和它的前身差不多，這是一個讓它很容易被困住的缺點。\n\nN-4病毒使該受試者具有很強的抗火能力。</RH_DF_GiantSpider.description>
+  <RH_DF_GiantSpider.tools.0.label>左爪</RH_DF_GiantSpider.tools.0.label>
+  <RH_DF_GiantSpider.tools.1.label>右爪</RH_DF_GiantSpider.tools.1.label>
+  <RH_DF_GiantSpider.tools.2.label>牙齒</RH_DF_GiantSpider.tools.2.label>
+
+
+</LanguageData>

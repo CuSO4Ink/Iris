@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: centipede sheriff -->
+  <Mech_CentipedeSheriff.label>机械执法蜈蚣</Mech_CentipedeSheriff.label>
+  <!-- EN: centipede sheriffs -->
+  <Mech_CentipedeSheriff.labelPlural>机械执法蜈蚣</Mech_CentipedeSheriff.labelPlural>
+  
+  <!-- EN: militor "Courier Six" -->
+  <Mech_CourierSix.label>“六号邮差”机械小蠊</Mech_CourierSix.label>
+  
+  <!-- EN: militor "Gun Slinger" -->
+  <Mech_GunSlinger.label>“西部枪手”机械小蠊</Mech_GunSlinger.label>
+  
+</LanguageData>

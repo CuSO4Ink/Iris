@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: drop pod -->
+  <ActiveDropPodNecronoid.label>空投艙</ActiveDropPodNecronoid.label>
+  
+  <!-- EN: corrupted ship -->
+  <CorruptedDropShip.label>母巢飛船</CorruptedDropShip.label>
+  <!-- EN: A former military drop ship that was corrupted by a necronoid biomass, now it became a fetid war machine that can land anywhere on the map and deploy fetid marines to cause chaos and bloodbath, all while polluting the atmosphere in necrotion fallout. -->
+  <CorruptedDropShip.description>曾經載滿了人類士兵的軍用運輸飛船，如今卻化作了血肉與鋼鐵雜糅而成的歿疫戰爭母巢。這艘幾乎堅不可摧飛船就連反粒子彈頭引發的巨大爆炸也能輕松擋下，它不僅可以在周圍部署膿腐陸戰隊並源源不斷地構建歿疫砲塔，還會產生籠罩整片區域的感染性歿疫霧霾。\n\n火攻是對付母巢飛船的最佳方法。</CorruptedDropShip.description>
+  
+  <!-- EN: corrupted ship landing -->
+  <CorruptedDropShipLanding.label>母巢飛船（臨近）</CorruptedDropShipLanding.label>
+  
+  <!-- EN: corrupted ship -->
+  <CorruptedShip.label>母巢飛船</CorruptedShip.label>
+  <!-- EN: A former civilian transport ship full of human passengers, now transformed into a hive ship made of steel and human flesh. The ship is almost nigh indestructable that is capable of shruging-off an anti-grain blast, can slowly create a hive by itself using necronoid biomasses and turrets, and can pollute the entire region's atmosphere with necrotion fallout.\n\nFire is the only solution in order to destroy this corrupted ship. -->
+  <CorruptedShip.description>曾經載滿了人類乘客的民用運輸飛船，如今卻化作了血肉與鋼鐵雜糅而成的歿疫母巢。這艘幾乎堅不可摧飛船就連反粒子彈頭引發的巨大爆炸也能輕松擋下，它不僅可以源源不斷地在周圍構建歿疫砲塔與歿疫屍巢，還會產生籠罩整片區域的感染性歿疫霧霾。\n\n火攻是對付母巢飛船的最佳方法。</CorruptedShip.description>
+  
+  <!-- EN: corrupted ship landing -->
+  <CorruptedShipLanding.label>母巢飛船（臨近）</CorruptedShipLanding.label>
+  
+  <!-- EN: drop pod (incoming) -->
+  <DropPodIncomingNecronoid.label>空投艙（下落中）</DropPodIncomingNecronoid.label>
+  
+  <!-- EN: necro turret gun -->
+  <Gun_NecroTurret.label>骨刺發射器</Gun_NecroTurret.label>
+  <!-- EN: An automatic boneshard launcher made to be mounted on a turret. -->
+  <Gun_NecroTurret.description>安裝在歿疫砲塔上的自動骨刺發射器。</Gun_NecroTurret.description>
+  <!-- EN: necro turret gun -->
+  <Gun_NecroTurret.verbs.Verb_Shoot.label>骨刺發射器</Gun_NecroTurret.verbs.Verb_Shoot.label>
+  
+  <!-- EN: necronoid biomass -->
+  <Necro_Biomass.label>歿疫屍巢</Necro_Biomass.label>
+  <!-- EN: A biomass capable of spawning humanoid-type necronoids. Fairly resistant against conventional damages except fire. -->
+  <Necro_Biomass.description>可不斷孵化歿疫感染體的小型巢穴。火攻是對付它的最佳方法。</Necro_Biomass.description>
+  
+  <!-- EN: flesh pit -->
+  <Necro_InfestedBiomass.label>血肉淵窟</Necro_InfestedBiomass.label>
+  <!-- EN: A giant pit made of necronoid biomass, capable of spawning dozens of necronoid grunts and a few boss-like entities. -->
+  <Necro_InfestedBiomass.description>由歿疫屍巢轉化而來的血肉淵窟，可孵化出數十只普通歿疫感染體和一只高階歿疫感染體。</Necro_InfestedBiomass.description>
+  
+  <!-- EN: necro turret -->
+  <Turret_NecroTurret.label>歿疫砲塔</Turret_NecroTurret.label>
+  <!-- EN: An automatic, self-powered turret made of flesh and bones. -->
+  <Turret_NecroTurret.description>由血肉和骨骼組成的活體自動砲塔。火攻是對付它的最佳方法。</Turret_NecroTurret.description>
+  
+</LanguageData>

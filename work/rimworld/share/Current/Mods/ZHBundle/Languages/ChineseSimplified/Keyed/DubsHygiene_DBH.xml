@@ -1,0 +1,504 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+    <!-- EN: Things: -->
+  <dbh.Things>物品：</dbh.Things>
+    <!-- EN: Terrain: -->
+  <dbh.Terrain>地形：</dbh.Terrain>
+    <!-- EN: Environment: -->
+  <dbh.Environment>环境：</dbh.Environment>
+    <!-- EN: Pollution -->
+  <dbh.Pollution>污染：</dbh.Pollution>
+    <!-- EN: Sewage contamination -->
+  <dbh.Sewagecontamination>污水污染</dbh.Sewagecontamination>
+
+	<!--Construction-->
+	<!-- EN: Remove pipes -->
+  <DesignatorRemovePlumbing>拆除管道</DesignatorRemovePlumbing>
+	<!-- EN: Designate sections of a pipe type for deconstruction. -->
+  <DesignatorRemovePlumbingDesc>拆除指定的管道。</DesignatorRemovePlumbingDesc>
+	<!-- EN: Remove sewage -->
+  <RemoveSewage>清除污水</RemoveSewage>
+	<!-- EN: Remove sewage from the ground and place it into barrels. -->
+  <RemoveSewageDesc>清除地面的污水并将其放入桶中。</RemoveSewageDesc>
+	<!-- EN: Remove plumbing -->
+  <RemovePlumbing>拆除管道</RemovePlumbing>
+	<!-- EN: Remove air-con -->
+  <RemoveAirCon>拆除空调管道</RemoveAirCon>
+
+	<!--Warnings-->
+	<!-- EN: Room is too large to heat!\nMaximum of 50 cells per heater\nAdd more sauna heaters or shrink the room -->
+  <DBH.requiresSaunaRoom>桑拿室因面积过大而无法加热！\n每台桑拿加热器最多支持50格。\n请添置新的桑拿加热器或缩小桑拿室。</DBH.requiresSaunaRoom>
+	<!-- EN: Pool is heated -->
+  <DBH.HeatedPool>游泳池已加热</DBH.HeatedPool>
+	<!-- EN: Cannot use pool now: -->
+  <DBH.CantUsePool>目前无法使用游泳池：</DBH.CantUsePool>
+ 	<!-- EN: Raining -->
+  <DBH.PoolRaining>下雨中</DBH.PoolRaining>
+ 	<!-- EN: Too cold {0} -->
+  <DBH.PoolTooCold>温度过冷（{0}）</DBH.PoolTooCold>
+ 	<!-- EN: Prison needs water source -->
+  <DBHPrisonWater>囚犯缺少水源</DBHPrisonWater>
+ 	<!-- EN: A prison cell has no access to drinking water, build at least 1 drinking water source like a water tub or basin so that prisoners have free access to drinking water -->
+  <DBHPrisonWaterEx>囚犯缺少可用的水源。请确保每间牢房至少拥有1个水盆或洗手池，以便他们能够解决饮水需求。</DBHPrisonWaterEx>
+	<!-- EN: Missing water tower -->
+  <Alert_MissingTower>缺少蓄水设备</Alert_MissingTower>
+	<!-- EN: A water tower or water butt is required to store water pumped from wells. -->
+  <Alert_MissingTowerDesc>需要水塔、集水桶等蓄水设备来储存抽出的水。</Alert_MissingTowerDesc>
+	<!-- EN: Missing well -->
+  <Alert_MissingWell>缺少水井</Alert_MissingWell>
+	<!-- EN: Pumps require a piped well to access ground water. -->
+  <Alert_MissingWellDesc>需要水井才能抽水。</Alert_MissingWellDesc>
+	<!-- EN: Missing water pump -->
+  <Alert_MissingPump>缺少水泵</Alert_MissingPump>
+	<!-- EN: A water pump is required to pump the water from a well to a water tower. -->
+  <Alert_MissingPumpDesc>需要水泵才能抽水。</Alert_MissingPumpDesc>
+	<!-- EN: Fallout water contamination -->
+  <DBHFalloutWarning>有毒尘埃水污染</DBHFalloutWarning>
+	<!-- EN: After 2 days of toxic fallout the buildup will contaminate any water storage tanks connected to water wells.\n\nPrepare by creating a reserve of water and then using a valve to disconnect the wells to protect the water from contamination before it is too late.\n\nYou can also use a deep well to access uncontaminated water, or install a water treatment system which will eliminate all contamination from water reserves. -->
+  <DBHFalloutWarningEx>有毒尘埃持续2天后，有毒沉积物会污染与水井相连的所有蓄水设备。\n\n为了避免上述情况，你需要提前用阀门断开水井的连接，用储存的水渡过难关。\n\n你也可以使用深水井获取未受污染的水，或安装水处理设施来过滤污染物。</DBHFalloutWarningEx>
+    <!-- EN: In a vacuum -->
+  <DBHVacuum>无法在真空中使用</DBHVacuum>
+	<!-- EN: Low cooling capacity. You can increase the power of outdoor units. -->
+  <LowCoolingCap>制冷量低，请提高室外机的功率。</LowCoolingCap>
+	<!-- EN: Access restricted -->
+  <NotOwned>访问受限</NotOwned>
+	<!-- EN: {0} only -->
+  <GenderRestricted>{0}专用</GenderRestricted>
+	<!-- EN: Prisoners only -->
+  <PrisonersOnly>囚犯专用</PrisonersOnly>
+	<!-- EN: A sewage outlet has become blocked. -->
+  <BlockedSewage>排污口堵塞</BlockedSewage>
+	<!-- EN: Sewage has built up around the drain hole and is blocking the outlet.\n\nBuild more outlets or add a septic tank to create a buffer and reduce pressure on the outlets. -->
+  <BlockedSewageDesc>排污口被堵塞，污水在周围蔓延。\n\n建造更多出水口或用化粪池提供缓冲区，降低排污压力。</BlockedSewageDesc>
+	<!-- EN: Low water temp -->
+  <LowWaterTemp>水温低</LowWaterTemp>
+	<!-- EN: The water temperature in this tank is too low; colonists expecting to use hot water may get annoyed.\n\nTurn on boilers, increase the heating capacity, or add another hot water tank. -->
+  <LowWaterTempDesc>热水箱的水温过低，这会让希望使用热水的殖民者感到恼火。\n\n开启锅炉以提高加热量或建造更多的热水箱，确保热水能够正常供给。</LowWaterTempDesc>
+	<!-- EN: Must be placed over a cell with ground water. -->
+  <WellNeedsWater>必须放置在有地下水的区域上。</WellNeedsWater>
+    <!-- EN: Must be placed over a cell with subsurface ice deposits -->
+  <WellNeedsIce>必须放置在有地下冰层的区域上。</WellNeedsIce>
+	<!-- EN: The fixture must be inside a room to restrict it. -->
+  <AssigningRequiresRoom>此设备必须放置在室内。</AssigningRequiresRoom>
+	<!-- EN: Requires water storage tower -->
+  <NoWaterTowers>需要蓄水设备</NoWaterTowers>
+	<!-- EN: Assigning requires bladder need, but {0} doesn't have bladder need. -->
+  <AssigningRequiresBladderNeed>{0}没有排泄需求，无法指定。</AssigningRequiresBladderNeed>
+    <!-- EN: Equipment frozen: {0} -->
+  <DBHExtractorFrozen>设备冻结：{0}</DBHExtractorFrozen>
+	<!-- EN: No composting material -->
+  <NoCompostingMaterial>缺少堆肥材料</NoCompostingMaterial>
+	<!-- EN: No water capacity -->
+  <Nowater>缺少蓄水设备</Nowater>
+	<!-- EN: No sewage capacity -->
+  <Nosewage>缺少排污设备</Nosewage>
+	<!-- EN: Requires plumbing -->
+  <RequiresPlumbing>需要管道</RequiresPlumbing>
+	<!-- EN: Access restricted -->
+  <AccessRestricted>无法抵达</AccessRestricted>
+
+	<!-- EN: Too hot: x{0} -->
+  <TooHot>过热：x{0}</TooHot>
+	<!-- EN: In rain: x{0} -->
+  <InRain>淋雨：x{0}</InRain>
+	<!-- EN: Exertion: x{0} -->
+  <PhysicalActivity>效能：x{0}</PhysicalActivity>
+	<!-- EN: Room: x{0} -->
+  <FilthyRoom>房间：x{0}</FilthyRoom>
+	<!-- EN: Total: x{0} -->
+  <TotalHygieneStat>总和：x{0}</TotalHygieneStat>
+	<!-- EN: Dirty hands - Disease risk -->
+  <DirtyHands>肮脏的手 - 疾病风险</DirtyHands>
+
+	<!-- EN: A drain has become blocked. -->
+  <LetterLabelBlockedDrain>下水道堵塞</LetterLabelBlockedDrain>
+	<!-- EN: A drain has become blocked. A cleaner must clean the blockage. -->
+  <LetterBlockedDrain>排水管堵塞，需要清洁工疏通清理。</LetterBlockedDrain>
+
+	<!-- EN: Contaminated water -->
+  <ContaminationAlert>水污染</ContaminationAlert>
+	<!-- EN: A well has become polluted.\n\nSources of contamination:\n{0}\n\nEither move the well, remove the sources of contamination, or if you are using piped wells add a water treatment system, which will also clean contaminated water towers over time. -->
+  <ContaminationAlertDesc>一个水井受到污染。\n\n污染源为：\n{0}\n\n你可以移动水井或清除污染源。如果水井与管道相连，也可以建造水过滤器，它会逐渐净化受污染的蓄水设备。</ContaminationAlertDesc>
+	<!-- EN: Contaminated water tower -->
+  <ContaminatiedTowerAlert>蓄水设备受污染</ContaminatiedTowerAlert>
+	<!-- EN: A water tower has become polluted, posing a serious health risk to your colonists. Solve the cause of the pollution and then drain the tank, or build a water treatment system. -->
+  <ContaminatiedTowerAlertDesc>一个蓄水设备受到污染，这将对殖民者健康构成严重威胁！\n\n你需要解决造成污染的原因并排空蓄水设备，或建造水过滤器。</ContaminatiedTowerAlertDesc>
+
+	<!-- EN: {0} has contracted {1} because of bad personal hygiene -->
+  <MessageHygieneDisease>由于糟糕的个人卫生，{0}染上了{1}</MessageHygieneDisease>
+	<!-- EN: {0} has contracted {1} from drinking untreated water -->
+  <MessageWaterDisease>由于饮用未经处理的水，{0}染上了{1}</MessageWaterDisease>
+	<!-- EN: {0} has contracted {1} from drinking contaminated water -->
+  <MessageWaterDiseaseContaminated>由于饮用被污染的水，{0}染上了{1}</MessageWaterDiseaseContaminated>
+
+	<!--Restrictions-->
+	<!-- EN: Change gender restriction -->
+  <ChangeGenderRestriction>改变性别限制</ChangeGenderRestriction>
+	<!-- EN: Medical -->
+  <CommandFixtureSetAsMedicalLabel>医疗</CommandFixtureSetAsMedicalLabel>
+	<!-- EN: Limit this fixture to patients only. -->
+  <CommandFixtureSetAsMedicalDesc>仅限病人使用。</CommandFixtureSetAsMedicalDesc>
+	<!-- EN: Patients only -->
+  <PatientsOnly>病人专用</PatientsOnly>
+	<!-- EN: Attack helicopter -->
+  <AttackHelicopter>武装直升机</AttackHelicopter>
+	<!-- EN: Unisex -->
+  <Unisex>不分性别</Unisex>
+	<!-- EN: Link bed -->
+  <ConnectFixturesToBed>与床链接</ConnectFixturesToBed>
+	<!-- EN: Connect the fixtures to a nearby bed so they inherit the ownership. Hold shift to assign multiple beds -->
+  <ConnectFixturesToBedDesc>将此卫生设备链接到附近的床上，让它只能被床的所属者使用。按住“shift”键可以链接到多个床。</ConnectFixturesToBedDesc>
+	<!-- EN: Clear bed link -->
+  <CancelConnectFixturesToBed>取消链接</CancelConnectFixturesToBed>
+	<!-- EN: Clear the link to beds -->
+  <CancelConnectFixturesToBedDesc>取消此卫生设备与床的链接。</CancelConnectFixturesToBedDesc>
+	<!-- EN: Animals only -->
+  <dbh.Animalsonly>动物专用</dbh.Animalsonly>
+	<!-- EN: Occupancy Check -->
+  <ChangeOccupancyRestriction>使用检查</ChangeOccupancyRestriction>
+	<!-- EN: Should pawns check if anything in the room is reserved before trying to use the fixture, prevents pawns from walking in on each other to use basins and toilets at the same time -->
+  <ChangeOccupancyRestrictionDesc>角色在使用卫生设备之前会检查房间中是否有任何物件已被预留，以防角色同时使用相同的洗手池和马桶</ChangeOccupancyRestrictionDesc>
+	<!-- EN: Colonists -->
+  <dbh.AllowColonists>殖民者</dbh.AllowColonists>
+	<!-- EN: Slaves -->  
+  <dbh.AllowSlaves>奴隶</dbh.AllowSlaves>
+	<!-- EN: Guests -->  
+  <dbh.AllowGuests>访客</dbh.AllowGuests>
+	<!-- EN: Colonists restricted -->  
+  <dbh.NoColonists>殖民者使用受限</dbh.NoColonists>
+	<!-- EN: Slaves restricted -->  
+  <dbh.NoSlaves>奴隶使用受限</dbh.NoSlaves>
+	<!-- EN: Guests restricted -->  
+  <dbh.NoGuests>访客使用受限</dbh.NoGuests>
+
+
+	<!--Heating-->
+	<!-- EN: Water temp: {0} -->
+  <WaterTemp>水温：{0}</WaterTemp>
+	<!-- EN: Connected demand/capacity: {0} / {1} U ({2}) -->
+  <ConnectedHeatingCapacity>总需求/总加热量：{0} / {1} U（{2}）</ConnectedHeatingCapacity>
+	<!-- EN: Connected demand/capacity: {0} / {1} U ({2}) -->
+  <ConnectedCoolingCapacity>总需求/总制冷量：{0} / {1} U（{2}）</ConnectedCoolingCapacity>
+	<!-- EN: Heating usage: {0} U -->
+  <HeatingUnits>加热量需求：{0} U</HeatingUnits>
+	<!-- EN: Cooling usage: {0} U -->
+  <CoolingUnits>制冷量需求：{0} U</CoolingUnits>
+	<!-- EN: Heating units/power: {0} U / {1} W -->
+  <HeatingMode>加热量/功率：{0} U / {1} W</HeatingMode>
+	<!-- EN: Cooling units/power: {0} U / {1} W -->
+  <CoolingMode>制冷量/功率：{0} U / {1} W</CoolingMode>
+	<!-- EN: Efficiency: {0} -->
+  <CoolingEfficiencyGood>效能：{0}</CoolingEfficiencyGood>
+	<!-- EN: Efficiency: {0} overheating -->
+  <CoolingEfficiencyBad>效能：{0} 过热</CoolingEfficiencyBad>
+	<!-- EN: Minimum temp: {0} -->
+  <TargetTemp>最低温度：{0}</TargetTemp>
+	<!-- EN: Reduce power -->
+  <LowerPower>降低功率</LowerPower>
+	<!-- EN: Reduce the heating capacity. -->
+  <LowerPowerDesc>降低加热量。</LowerPowerDesc>
+	<!-- EN: Increase power -->
+  <RaisePower>提高功率</RaisePower>
+	<!-- EN: Increase the heating capacity. -->
+  <RaisePowerDesc>提高加热量。</RaisePowerDesc>
+	<!-- EN: Hot water capacity: {0} -->
+  <HotwaterCapacity>热水容量：{0}</HotwaterCapacity>
+	<!-- EN: Override thermostat -->
+  <OverrideThermostat>温控器过载</OverrideThermostat>
+	<!-- EN: Force the boiler to run continuously. -->
+  <OverrideThermostatDesc>强制锅炉连续运行。</OverrideThermostatDesc>
+	<!-- EN: Exhaust vents must be kept clear! -->
+  <MustPlaceFreezerWithFreeSpaces>排气口必须保持畅通！</MustPlaceFreezerWithFreeSpaces>
+	<!-- EN: Too cold -->
+  <SolarEfficiencyCold>过冷</SolarEfficiencyCold>
+	<!-- EN: Roofed -->
+  <SolarEfficiencyRoof>有屋顶</SolarEfficiencyRoof>
+	<!-- EN: Heating units (efficiency): {0} U ({1}) -->
+  <SolarEfficiencyGood>加热量（效能）：{0} U（{1}）</SolarEfficiencyGood>
+	<!-- EN: Radiator temp: {0} -->
+  <RadCurrentCap>暖气片温度：{0}</RadCurrentCap>
+	<!-- EN: Thermostat overridden by hot water tanks. Set all connected hot water tanks to thermostat mode. -->
+  <ThermostatSetupWarning>温控器失去控制...\n将所有连接的热水箱设置为恒温模式</ThermostatSetupWarning>
+	<!-- EN: Thermostat control -->
+  <HotWaterTankUseThermostat>温控器控制</HotWaterTankUseThermostat>
+	<!-- EN: Turn on boilers for 1 hour when the tank temperature is low. If this is disabled then boilers will run continuously and ignore room thermostats. -->
+  <HotWaterTankUseThermostatDesc>水箱温度较低时开启锅炉1小时，如果禁用此功能，锅炉将忽略温控器的控制，连续运行。</HotWaterTankUseThermostatDesc>
+
+	<!--Hygiene-->
+	<!-- EN: Wash hands -->
+  <WashHands>洗手</WashHands>
+	<!-- EN: Wash -->
+  <Wash>洗澡</Wash>
+	<!-- EN: Use -->
+  <UseToilet>使用</UseToilet>
+	<!-- EN: Usage = {0} -->
+  <SewageUsage>利用率 = {0}</SewageUsage>
+	<!-- EN: Must be plumbing -->
+  <MustBePlumbing>需要管道</MustBePlumbing>
+	<!-- EN: Blocked drain -->
+  <BlockedDrain>下水道堵塞</BlockedDrain>
+	<!-- EN: Plumb or empty the latrine -->
+  <PlumbOrEmpty>疏通便池</PlumbOrEmpty>
+	<!-- EN: Running... -->
+  <WashingMachineSpinning>运行中...</WashingMachineSpinning>
+	<!-- EN: Unload now -->
+  <WashingMachineUnload>立即取出</WashingMachineUnload>
+	<!-- EN: Load: {0}/{1} -->
+  <WashingMachineLoad>衣物数量: {0}/{1}</WashingMachineLoad>
+	<!-- EN: No dirty clothes -->
+  <NoDirtyClothes>缺少脏衣物</NoDirtyClothes>
+	<!-- EN: No space -->
+  <WashingNoSpace>没有空间不足</WashingNoSpace>
+	<!-- EN: No unreserved water sources of the highest available quality. -->
+  <NoUnreservedSource>没有高质量的预留水源</NoUnreservedSource>
+	<!--Water-->
+	<!-- EN: Flow +50L -->
+  <RaiseFillRate>流量 +50L</RaiseFillRate>
+	<!-- EN: Flow -50L -->
+  <LowerFillRate>流量 -50L</LowerFillRate>
+	<!-- EN: Fill Rate: {0}L/h -->
+  <WaterFillRate>填充速率：{0} L/小时</WaterFillRate>
+	<!-- EN: Drink -->
+  <dbhDrink>喝</dbhDrink>
+	<!-- EN: Toggle valve -->
+  <CommandDesignateOpenCloseValveLabel>指派开关阀门</CommandDesignateOpenCloseValveLabel>
+	<!-- EN: Toggle the valve between open and closed. -->
+  <CommandDesignateOpenCloseValveDesc>指定一个需要切换开关的管道阀门。一名殖民者将随后前往拧动阀门。</CommandDesignateOpenCloseValveDesc>
+	<!-- EN: Valve closed -->
+  <ValveClosed>阀门关闭</ValveClosed>
+
+	<!-- EN: Pump capacity: {0} L/day -->
+  <PumpCapacity>抽水能力：{0} L/天</PumpCapacity>
+	<!-- EN: Ground capacity: {0} L/day -->
+  <GroundCapacity>供水能力：{0} L/天</GroundCapacity>
+	<!-- EN: Piped pump/Ground capacity: {0}/{1} L/day ({2}) -->
+  <PipedPumpCapacity>总抽水能力/总供水能力：{0}/{1} L/天 ({2})</PipedPumpCapacity>
+
+	<!-- EN: Water stored: {0} L -->
+  <WaterStorage>储水量：{0} L</WaterStorage>
+	<!-- EN: Piped water stored: {0} L -->
+  <TotalWaterStorage>总储水量：{0} L</TotalWaterStorage>
+
+	<!-- EN: Pollution level: {0} -->
+  <PollutionLevel>污染等级：{0}</PollutionLevel>
+
+	<!-- EN: Decrease radius -->
+  <CommandSprinkleDown>缩小半径</CommandSprinkleDown>
+	<!-- EN: Increase radius -->
+  <CommandSprinkleUp>增大半径</CommandSprinkleUp>
+	<!-- EN: Quality: Untreated - Small disease risk -->
+  <UntreatedWater>质量：未处理 - 低疾病风险</UntreatedWater>
+	<!-- EN: Quality: Contaminated - High disease risk! -->
+  <ContaminatedWater>质量：受污染！ - 高疾病风险！</ContaminatedWater>
+	<!-- EN: Quality: Treated - Safe -->
+  <TreatedWater>质量：已处理 - 安全</TreatedWater>
+
+	<!-- EN: Drain tank -->
+  <DrainTank>排空</DrainTank>
+	<!-- EN: Drain the tank and remove contamination. -->
+  <DrainTankDesc>排空蓄水设备并清除污染。</DrainTankDesc>
+
+	<!-- EN: Water value: {0} for {1} L -->
+  <WaterValueOffset>水值：{0} for {1} L</WaterValueOffset>
+	<!-- EN: Water -->
+  <HyWater>水</HyWater>
+
+	<!-- EN: Overlaps with {0} wells -->
+  <OverlapsWells>与{0}井范围重叠</OverlapsWells>
+
+  <!-- EN: Transfer Tank -->
+  <TransferStorageTank>转移内容物</TransferStorageTank>
+  <!-- EN: Transfer the contents of this tank to other available tanks -->
+  <TransferStorageTankDesc>将此容器中的内容物转移至其他可用的容器中。</TransferStorageTankDesc>
+
+	<!--Sewage-->
+	<!-- EN: Sewage {0} -->
+  <dbh.SewageReadout>污水 {0}</dbh.SewageReadout>
+	<!-- EN: Drain -->
+  <DrainSepticTank>排水</DrainSepticTank>
+	<!-- EN: Set the level at which fecal sludge should be emptied into barrels. Fecal sludge can be moved and knocked over, burned, or turned into biosolids or fuel. -->
+  <DrainSepticTankDesc>设置粪便污泥排入桶中的水平。粪桶可以移动，翻倒，焚烧或精炼成化合燃料</DrainSepticTankDesc>
+	<!-- EN: Treating: {0} L/d. Holding: {1} L ({2}) -->
+  <SewageProcessing>处理能力: {0} L/天 未处理：{1} L（{2}）</SewageProcessing>
+	<!-- EN: Do not drain -->
+  <DoNotDrainTank>不要排空</DoNotDrainTank>
+	<!-- EN: Drain tank at {0} -->
+  <DrainSepticTankAt>排空蓄水设备于{0}</DrainSepticTankAt>
+
+	<!-- EN: Pit: {0} -->
+  <PitCapacity>粪池容量：{0}</PitCapacity>
+	<!-- EN: Pit is full, empty now! -->
+  <PitFull>粪池已满，需要马上清空！</PitFull>
+	<!-- EN: Kick over -->
+  <KickOver>踢倒</KickOver>
+	<!-- EN: Spill this barrel of sewage on the ground. -->
+  <KickOverDesc>将污水洒到地上</KickOverDesc>
+
+	<!--Composting-->
+	<!-- EN: Contains compost: {0}/{1} L -->
+  <ContainsCompost>包含堆肥：{0}/{1}</ContainsCompost>
+	<!-- EN: Contains fecal sludge: {0}/{1} L -->
+  <ContainsFecalSludge>包含粪便污泥：{0}/{1} L</ContainsFecalSludge>
+	<!-- EN: Composted -->
+  <Composted>堆肥</Composted>
+	<!-- EN: Composting progress: {0} ({1}) -->
+  <CompostingProgress>堆肥进度：{0}（{1}）</CompostingProgress>
+	<!-- EN: Composter has non-ideal temperature -->
+  <ComposterOutOfIdealTemperature>堆肥超出理想温度</ComposterOutOfIdealTemperature>
+	<!-- EN: Ideal composting temperature -->
+  <IdealCompostingTemperature>理想的堆肥温度</IdealCompostingTemperature>
+	<!-- EN: Growing zone sowing disabled -->
+  <GrowingZoneNotAllowed>种植区域播种已禁用</GrowingZoneNotAllowed>
+	<!-- EN: No fertilizer found -->
+  <NoFertilizerFound>未找到肥料</NoFertilizerFound>
+	<!-- EN: Fertilizer area -->
+  <AreaPlaceFertilizer>施肥区</AreaPlaceFertilizer>
+	<!-- EN: Designate areas to fertilize with biosolids. -->
+  <AreaPlaceFertilizerDesc>创建施用肥料的区域。</AreaPlaceFertilizerDesc>
+	<!-- EN: Add area -->
+  <AddFertilizerArea>添加区域</AddFertilizerArea>
+	<!-- EN: Remove area -->
+  <RemoveFertilizerArea>删除区域</RemoveFertilizerArea>
+
+	<!--Mod Options-->
+	<!-- EN: Drink packing search range: {0} -->
+  <dbh.DrinkPackSearchRange>水壶补充范围：{0}</dbh.DrinkPackSearchRange>
+	<!-- EN: Drink packing: search at {0}, pack {1} -->
+  <dbh.DrinksToPack>水壶携带量：当身上携带的水壶数少于{0}时会自动补充，最大携带量为{1}</dbh.DrinksToPack>
+    <!-- EN: Restart -->
+  <dbh.restartconfirm>重启游戏</dbh.restartconfirm>
+    <!-- EN: Later -->
+  <dbh.restartlater>稍后再说</dbh.restartlater>
+	<!-- EN: Prioritize indoor cleaning -->
+  <dbh.PriorityIndoorCleaning>优先室内清洁</dbh.PriorityIndoorCleaning>
+	<!-- EN: Enables a higher priority cleaning job to clean indoors first -->
+  <dbh.PriorityIndoorCleaningTip>室内清洁工作优先级较其他清洁工作要高。</dbh.PriorityIndoorCleaningTip>
+	<!-- EN: Mod removal assist -->
+  <dbh.ModRemove>Mod卸载助手</dbh.ModRemove>
+	<!-- EN: Steps:\n\n1: Save your game immediately after pressing confirm\n2: Quit to the main menu and disable the mod and restart the game\n3: Load your save game, ignore any exceptions and save it again\nLoad the save game once more and there shouldn't be any exceptions related to missing bad hygiene defs or classes! -->
+  <dbh.ModRemoveDesc>步骤：\n\n1：按确认后立即保存游戏\n2：退出主菜单并禁用Mod并重新启动游戏\n3：加载您的存档，忽略任何异常并再次保存\n再一次加载存档，此时应卸载成功！</dbh.ModRemoveDesc>
+	<!-- EN: Pet thirst -->
+  <PetsGetThirst>宠物饮水需求</PetsGetThirst>
+	<!-- EN: Pets get the thirst need -->
+  <PetsGetThirstTip>宠物也有饮水需求</PetsGetThirstTip>
+	<!-- EN: A restart is required to add quality and art comps back in.\n\n restart now? -->
+  <fixtureQualityRequiresRestart>需要重新启动才能将品质和艺术信息重新添加。\n\n现在重新启动？</fixtureQualityRequiresRestart>
+	<!-- EN: Fixture quality and art -->
+  <fixtureQuality>卫生设备的品质和艺术信息</fixtureQuality>
+	<!-- EN: Enable quality and art comps for fixtures like toilets -->
+  <fixtureQualityTip>为卫生设备添加品质和艺术信息，例如马桶</fixtureQualityTip>
+	<!-- EN: Quit to main menu to change. -->
+  <QuitToMenuToChange>退到主菜单更改</QuitToMenuToChange>
+	<!-- EN: Rimefeller link -->
+  <RimefellerLink>边缘石油（Rimefeller）联动</RimefellerLink>
+	<!-- EN: Enable water usage on crackers and refiners in Rimefeller. -->
+  <RimefellerLinkTip>启用将为边缘石油mod中的炼油厂和加工厂增加水需求</RimefellerLinkTip>
+	<!-- EN: Rimatomics link -->
+  <RimatomicsLink>边缘核能（Rimatomics）联动</RimatomicsLink>
+	<!-- EN: Enable water usage on cooling towers in Rimatomics. -->
+  <RimatomicsLinkTip>启用将为边缘核能mod中的冷却塔增加水需求</RimatomicsLinkTip>
+	<!-- EN: Manually disable needs by body type, race, or active hediff. -->
+  <OverrideNeedSettingsTip>禁用特定体型、种族或特定hediff处于活跃状态的相关需求</OverrideNeedSettingsTip>
+	<!-- EN: Needs filter -->
+  <OverrideNeedsSettings>需求过滤器</OverrideNeedsSettings>
+	<!-- EN: Disable bladder need -->
+  <Disablebladderneed>禁用排泄需求</Disablebladderneed>
+	<!-- EN: Disable hygiene need -->
+  <Disablehygieneneed>禁用卫生需求</Disablehygieneneed>
+	<!-- EN: Needs -->
+  <DisableNeedsLabel>激活需求</DisableNeedsLabel>
+	<!-- EN: Tick to enable -->
+  <NeedCheckboxTip>勾选启用</NeedCheckboxTip>
+	<!-- EN: Prisoners -->
+  <PrisonersGetNeeds>囚犯</PrisonersGetNeeds>
+	<!-- EN: Set if prisoners should have needs -->
+  <PrisonersGetNeedsTip>相关需求是否适用于囚犯</PrisonersGetNeedsTip>
+	<!-- EN: Guests -->
+  <HospitalityGuestsGetNeeds>访客招募（Hospitality）的访客</HospitalityGuestsGetNeeds>
+	<!-- EN: Set if guests have needs -->
+  <HospitalityGuestsGetNeedsTip>相关需求是否适用于访客招募mod的访客</HospitalityGuestsGetNeedsTip>
+	<!-- EN: Privacy -->
+  <PrivacyChecks>隐私</PrivacyChecks>
+	<!-- EN: Colonists care about privacy when bathing or using toilets. -->
+  <PrivacyChecksTip>殖民者在洗澡或如厕时会关心隐私</PrivacyChecksTip>
+	<!-- EN: Cooling efficiency -->
+  <CoolingEfficiency>冷却效率</CoolingEfficiency>
+	<!-- EN: Set if high temperature should affect cooling efficiency like standard AC -->
+  <CoolingEfficiencyTip>高温是否会影响标准空调的冷却效率</CoolingEfficiencyTip>
+	<!-- EN: Rain irrigation -->
+  <RainIrrigation>雨水灌溉</RainIrrigation>
+	<!-- EN: Rain will give the same boost as sprinklers. Might reduce game performance. -->
+  <RainIrrigationTip>雨水会有与喷灌器相同的效果，但会降低游戏性能</RainIrrigationTip>
+	<!-- EN: Toggle needs -->
+  <DisableNeeds>禁用需求</DisableNeeds>
+	<!-- EN: Disable needs entirely. Overrides all other settings. -->
+  <DisableNeedsTip>完全禁用所有需求，覆盖所有设置</DisableNeedsTip>
+	<!-- EN: Allow modded drinks -->
+  <AllowModdedDrinks>允许Mod饮料</AllowModdedDrinks>
+	<!-- EN: Pawns will also be allowed to drink and pack any modded drinks. VGP and RimCuisine drinks can be used default, others will require modding an extension to the def. -->
+  <AllowModdedDrinksTip>允许目标饮用和携带其他Mod的饮料来满足饮水需求。\n默认情况下已支持联动菜园子（VGP）和边缘美食（RimCuisine），其他mod需要对def进行扩展</AllowModdedDrinksTip>
+	<!-- EN: Pack water bottles -->
+  <AllowDrinkPacking>携带水壶</AllowDrinkPacking>
+	<!-- EN: Pawns will automatically pack water bottles into their inventory when they can.\n\nMay not work with some mods, for CE you will need to manually manage your loadout to include water bottles else they will keep dropping them. -->
+  <AllowDrinkPackingTip>允许目标在远行时将水壶自动带在身上。\n\n可能不适用于某些mod，对于战斗扩展（CombatExtended），你需要手动管理目标身上的物品以使其携带水壶，否则水壶会被不断丢弃</AllowDrinkPackingTip>
+	<!-- EN: Needs filter -->
+  <NeedsFilter>需求过滤器</NeedsFilter>
+	<!-- EN: Main features -->
+  <MainFeatures>主要功能</MainFeatures>
+	<!-- EN: Experimental features -->
+  <ExperimentalFeatures>实验性功能</ExperimentalFeatures>
+	<!-- EN: Pet bladders -->
+  <PetsGetBladder>宠物排泄需求</PetsGetBladder>
+	<!-- EN: Enable bladder need on pets. Also adds litter boxes for pets. -->
+  <PetsGetBladderTip>启用宠物的排泄需求，并为宠物添加相关的排泄用品</PetsGetBladderTip>
+	<!-- EN: Wild animal bladders -->
+  <WildAnimalsGetBladder>野生动物排泄需求</WildAnimalsGetBladder>
+	<!-- EN: Enable bladder need on all wild animals. This could get messy. -->
+  <WildAnimalsGetBladderTip>启用所有野生动物的排泄需求，这可能会变得混乱。</WildAnimalsGetBladderTip>
+	<!-- EN: Thirst need -->
+  <ThirstNeed>饮水需求</ThirstNeed>
+	<!-- EN: Enable thirst need on all colonists with bladder need. Adds drinking fountains and water bottles. Requires a restart. -->
+  <ThirstNeedTip>对拥有饮水需求的所有殖民者启用饮水需求，增加饮水设备和水壶，需要重新启动游戏</ThirstNeedTip>
+	<!-- EN: Fertilizer visible -->
+  <FertilizerVisible>肥料可见</FertilizerVisible>
+	<!-- EN: Set if the fertilizer grid should be visible -->
+  <FertilizerVisibleTip>使肥料坐标方格可见</FertilizerVisibleTip>
+	<!-- EN: Non-human colonists -->
+  <AllowNonHuman>非人类殖民者</AllowNonHuman>
+	<!-- EN: Enables needs on non-human colonists. You can disable specific beings with the needs filter. -->
+  <AllowNonHumanTip>允许非人类的殖民者拥有相关需求，你可以通过设置令特定的生物禁用相关需求</AllowNonHumanTip>
+	<!-- EN: Extra features -->
+  <dbh.ExtraFeatures>附加功能</dbh.ExtraFeatures>
+	<!-- EN: Lite Mode (Simplifies the mod) -->
+  <DBHLiteMode>轻量模式（简化Mod）</DBHLiteMode>
+	<!-- EN: Switch the mod into a simplified mode which removes pipes, water and sewage management, and any buildings and jobs not directly related to hygiene and thirst.\n\nThis will prevent many defs from loading and requires a restart.\n\nIf you are trying to load a save with existing hygiene buildings you may need to save and reload it after activating -->
+  <DBHLiteModeTip>将本Mod切换到简化模式，移除管道、水和污水管理以及任何与卫生和水需求没有直接关系的建筑物和工作。\n\n这将阻止加载许多defs并需要重新启动。\n\n如果你是在已有存档的基础上进行简化，可能需要在激活后保存并重新加载</DBHLiteModeTip>
+	<!-- EN: You must reload the game after changing the Lite mode setting\n\nIf you are trying to load a save with existing hygiene buildings you may need to save and reload it after activating to clear errors -->
+  <LiteRequiresRestart>你必须在激活轻量模式后重新加载游戏\n\n如果你是在已有存档的基础上进行简化，可能需要在激活后保存并重新加载</LiteRequiresRestart>
+	<!-- EN: Passive coolers use water -->
+  <PassiveWaterCoolersLink>蒸发制冷器使用水</PassiveWaterCoolersLink>
+	<!-- EN: Passive coolers have their wood fueling removed and are instead filled with water, similar to water tubs. -->
+  <PassiveWaterCoolersLinkTip>蒸发制冷器将不再消耗木材燃料，取而代之的是消耗水，就像水盆一样。</PassiveWaterCoolersLinkTip>
+	<!-- EN: SoS2 integration -->
+  <sos2int>SoS2适配</sos2int>
+	<!-- EN: Adds water and sewage processing to life support, and adds pipes to ship structures. -->
+  <sos2intTip>将水和污水处理添加到生命维持系统中，并为飞船结构添加管道功能。</sos2intTip>
+	<!-- EN: Stockpile water x{0} -->
+  <StockpileWater>库存水 x{0}</StockpileWater>
+	<!-- EN: Bad Hygiene Wiki -->
+  <HygieneWiki>卫生与温控 Wiki</HygieneWiki>
+	<!-- EN: Go to the Bad Hygiene Wiki -->
+  <HygieneWikiDesc>打开卫生与温控的维基页面</HygieneWikiDesc>
+	<!-- EN: Survival mode -->
+  <SurvivalMode>生存模式</SurvivalMode>
+	<!-- EN: Limits the default shallow water grid generation to very small patches. Terrain features no longer generate water, and the radius around surface water is reduced.\n\nA new game is not required; works with existing saves. -->
+  <SurvivalModeTip>大幅缩小浅层地下水和围绕地表水的地下水面积\n\n不需要重新开始新游戏。</SurvivalModeTip>
+	<!-- EN: Hydroponics -->
+  <HydroponicsLink>水栽培联动</HydroponicsLink>
+	<!-- EN: Powered growing buildings like hydroponics have water tanks that require filling from pipes. Plants die from lack of water instead of power, but water tanks only fill when the building is powered. -->
+  <HydroponicsLinkTip>水栽培植物盆需要管道连接水箱以获得水，水箱只有在通电状态下才能供水，水栽培的植物只会因缺水而不会因为断电而死亡。</HydroponicsLinkTip>
+	<!-- EN: A restart is required to add and remove thirst-related items.\n\nRestart now? -->
+  <ThirstRequiresRestart>只有重启游戏才能添加或删除与饮水相关的内容\n\n立即重启？</ThirstRequiresRestart>
+
+</LanguageData>

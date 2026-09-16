@@ -1,0 +1,6 @@
+**/.vs/
+**/obj/
+**/bin/
+**/__pycache__/
+*.pdb
+*.bak

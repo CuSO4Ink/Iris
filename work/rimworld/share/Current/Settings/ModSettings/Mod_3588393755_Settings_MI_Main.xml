@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="MiliraImperium.Settings_MI">
+		<Weapon_Patch5_MI>0.400000006</Weapon_Patch5_MI>
+		<Weapon_Patch6_MI>0.5</Weapon_Patch6_MI>
+		<Weapon_Patch11_MI>0.300000012</Weapon_Patch11_MI>
+		<Weapon_Patch_Civilian_Damage_MI>0.800000012</Weapon_Patch_Civilian_Damage_MI>
+		<Turret_Damage_Factor_MI>0.400000006</Turret_Damage_Factor_MI>
+		<Turret_Health_Factor_MI>0.400000006</Turret_Health_Factor_MI>
+		<Shield_CapacityFactor_MI>0.100000001</Shield_CapacityFactor_MI>
+		<Permit_CooldownFactor_MI>2</Permit_CooldownFactor_MI>
+		<EnableUniqueRecruits>True</EnableUniqueRecruits>
+		<Weapon_Cost_Factor_MI>0.5</Weapon_Cost_Factor_MI>
+		<Damage_Penetration_Factor_MI>0.100000001</Damage_Penetration_Factor_MI>
+		<EnableDisruptorRandomizedDamage>True</EnableDisruptorRandomizedDamage>
+		<DialogModSettingGuideEnabled>False</DialogModSettingGuideEnabled>
+	</ModSettings>
+</SettingsBlock>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Ultra Boost Implant -->
+
+  <DF_UltraBoost_Implant.label>超促进植入物</DF_UltraBoost_Implant.label>
+  <DF_UltraBoost_Implant.description>一个已安装的超促进植入物</DF_UltraBoost_Implant.description>
+  <DF_UltraBoost_Implant.labelNoun>一个超促进植入物</DF_UltraBoost_Implant.labelNoun>
+
+
+  <!-- devil's implant -->
+
+  <DF_Devils_Implant.label>魔鬼植入物</DF_Devils_Implant.label>
+  <DF_Devils_Implant.description>一个已安装的魔鬼植入物</DF_Devils_Implant.description>
+  <DF_Devils_Implant.labelNoun>一个魔鬼植入物</DF_Devils_Implant.labelNoun>
+
+
+  <!-- volatile implant -->
+
+  <DF_Volatile_Implant.label>无定植入物</DF_Volatile_Implant.label>
+  <DF_Volatile_Implant.description>一个已安装的无定植入物</DF_Volatile_Implant.description>
+  <DF_Volatile_Implant.labelNoun>一个无定植入物</DF_Volatile_Implant.labelNoun>
+
+
+  <!-- X-Dusk Implant -->
+
+  <DF_XDusk_Implant.label>X-薄暝植入物</DF_XDusk_Implant.label>
+  <DF_XDusk_Implant.description>一个已安装的X-薄暝植入物</DF_XDusk_Implant.description>
+  <DF_XDusk_Implant.labelNoun>一个X-薄暝植入物</DF_XDusk_Implant.labelNoun>
+
+
+  <!-- dawn implant -->
+
+  <DF_Dawn_Implant.label>破晓植入物</DF_Dawn_Implant.label>
+  <DF_Dawn_Implant.description>一个已安装的破晓植入物</DF_Dawn_Implant.description>
+  <DF_Dawn_Implant.labelNoun>一个破晓植入物</DF_Dawn_Implant.labelNoun>
+
+
+</LanguageData>

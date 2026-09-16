@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="XmlExtensions.XmlModBaseSettings">
+		<dataDict>
+			<keys>
+				<li>InertialMage.BeautyStatMod;toggleded1</li>
+				<li>InertialMage.BeautyStatMod;toggleded2</li>
+				<li>InertialMage.BeautyStatMod;toggleded3</li>
+				<li>InertialMage.BeautyStatMod;toggleded4</li>
+				<li>InertialMage.BeautyStatMod;toggleded5</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_Bound</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_StoneBlock</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_PackedVegetable</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_PackedMeat</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_LeatherPlain</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_LeatherThrumbo</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_Synthread</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_Hyperweave</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_ChemfuelCorpse</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_Neutroamine</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_ReinforcedBarrel</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_SubcoreRegular</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_SubcoreHigh</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_HemogenPack</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_PackedFish</li>
+				<li>SiMeng.EzGame;SMXE_EzGame_SMRecipe_StoneBlockVacstone</li>
+			</keys>
+			<values>
+				<li>true</li>
+				<li>true</li>
+				<li>true</li>
+				<li>true</li>
+				<li>true</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+				<li>False</li>
+			</values>
+		</dataDict>
+		<PinnedMods />
+	</ModSettings>
+</SettingsBlock>

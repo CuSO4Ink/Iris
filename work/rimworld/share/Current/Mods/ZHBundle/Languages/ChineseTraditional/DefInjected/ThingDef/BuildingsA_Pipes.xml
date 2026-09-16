@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: air-con pipe (hidden) -->
+  <airPipeHidden.label>隱藏空調管道</airPipeHidden.label>
+  <!-- EN: Pipe for connecting air-conditioning units.(hidden). -->
+  <airPipeHidden.description>用於連接空調設備的隱藏管道。</airPipeHidden.description>
+  
+  <!-- EN: plumbing (hidden) -->
+  <sewagePipeHidden.label>隱藏管道</sewagePipeHidden.label>
+  <!-- EN: Plumbing for connecting plumbed things (hidden). -->
+  <sewagePipeHidden.description>用於連接衛生設備的隱藏管道。</sewagePipeHidden.description>
+  
+</LanguageData>

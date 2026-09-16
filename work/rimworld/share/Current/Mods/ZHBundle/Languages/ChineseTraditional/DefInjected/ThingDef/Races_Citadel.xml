@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 죽음의 눈 -->
+  <Miho_AbomiWeapon_DeathBlink.label>死滅之眼</Miho_AbomiWeapon_DeathBlink.label>
+  <!-- EN: 이런 괴물이 마법소녀마냥 윙크를 하면 눈에서 별모양 투사체가 날아가 눈 앞에 있던 적이 잿더미가 됩니다. 배덕감 미쳤어. -->
+  <Miho_AbomiWeapon_DeathBlink.description>當駭憎魔械像魔法少女一樣眨眼時，星形的機械分子雷彈會從其眼部飛射而出，將面前的敵人化為灰燼。真是違和感拉滿的攻擊方式。</Miho_AbomiWeapon_DeathBlink.description>
+  <!-- EN: 죽음의 눈 -->
+  <Miho_AbomiWeapon_DeathBlink.verbs.Verb_Shoot.label>死滅之眼</Miho_AbomiWeapon_DeathBlink.verbs.Verb_Shoot.label>
+  
+  <!-- EN: Blink -->
+  <Miho_AbomiWeapon_DeathBlink_Proj.label>死滅之眼雷彈</Miho_AbomiWeapon_DeathBlink_Proj.label>
+  
+  <!-- EN: 미호 혐오체 로켓 -->
+  <Miho_AbomiWeapon_MissileTurret.label>駭憎多管火箭砲</Miho_AbomiWeapon_MissileTurret.label>
+  <!-- EN: 매우 탄속이 빠른 광역제압 로켓입니다. -->
+  <Miho_AbomiWeapon_MissileTurret.description>射速極快的多管火箭砲，具有極強的大範圍壓製能力。</Miho_AbomiWeapon_MissileTurret.description>
+  <!-- EN: 미호 혐오체 로켓 -->
+  <Miho_AbomiWeapon_MissileTurret.verbs.Verb_Shoot_ShootGun.label>駭憎多管火箭砲</Miho_AbomiWeapon_MissileTurret.verbs.Verb_Shoot_ShootGun.label>
+  
+  <!-- EN: Mote -->
+  <Miho_Mote_GraserBeamBase.label>特效</Miho_Mote_GraserBeamBase.label>
+  
+</LanguageData>

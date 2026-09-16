@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bladder -->
+  <Bladder.label>排泄</Bladder.label>
+  <!-- EN: To prevent the risk of disease it is important to maintain a good level of sanitation by removing or treating waste, and preventing sewage from contaminating your water supply. -->
+  <Bladder.description>生物需要定期將新陳代謝過程中產生的廢物排出體外。為了預防疾病風險，需要凈化或處理糞便污泥，防止污水污染飲用水源，以及保持良好的衛生習慣。</Bladder.description>
+  
+  <!-- EN: thirst -->
+  <DBHThirst.label>飲水</DBHThirst.label>
+  <!-- EN: Water is required for many of life’s physiological processes. If this reaches zero then the creature will slowly die of dehydration. -->
+  <DBHThirst.description>水乃生命之源，生物的許多生理過程都離不開水。當飲水值降至0時，生物將慢慢死於脫水。</DBHThirst.description>
+  
+  <!-- EN: hygiene -->
+  <Hygiene.label>衛生</Hygiene.label>
+  <!-- EN: Good personal hygiene is important for reducing the risk of disease and keeping colonists happy and healthy. -->
+  <Hygiene.description>良好的個人衛生對於降低疾病風險和使殖民者保持快樂非常重要。</Hygiene.description>
+  
+</LanguageData>

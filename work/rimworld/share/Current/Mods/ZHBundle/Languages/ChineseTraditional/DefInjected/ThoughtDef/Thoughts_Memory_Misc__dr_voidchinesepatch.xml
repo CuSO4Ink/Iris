@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Void_EerieNoises.stages.0.label>怪異的噪音</Void_EerieNoises.stages.0.label>
+  <Void_EerieNoises.stages.0.description>怪異的噪音。</Void_EerieNoises.stages.0.description>
+
+  <Void_AteMutantMeat.stages.0.label>吃了突變肉</Void_AteMutantMeat.stages.0.label>
+  <Void_AteMutantMeat.stages.0.description>我剛才吃了變異生物的肉！我想我會生病的。</Void_AteMutantMeat.stages.0.description>
+
+  <Void_AteMutantCorpse.stages.0.label>吃了突變生物</Void_AteMutantCorpse.stages.0.label>
+  <Void_AteMutantCorpse.stages.0.description>我不得不吃一個死亡的變異生物，甚至連屠宰或烹飪的過程都沒有！</Void_AteMutantCorpse.stages.0.description>
+
+
+</LanguageData>

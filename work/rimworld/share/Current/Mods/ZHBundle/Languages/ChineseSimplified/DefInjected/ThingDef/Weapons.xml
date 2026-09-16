@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: runesmith battleaxe -->
+  <VPER_MeleeWeapon_RunesmithBattleaxe.label>符文匠战斧</VPER_MeleeWeapon_RunesmithBattleaxe.label>
+  <!-- EN: A hefty battleaxe commonly used by Runesmiths. While still quite effective at cleaving limbs and splitting skulls, the runes engraved into the axe provide a sizeable boost to psychic sensitivity, almost comparable to that of an eltex staff. However, this comes at the cost of the axe not helping with the dispersion of neural heat, unlike other eltex-threaded equipment. -->
+  <VPER_MeleeWeapon_RunesmithBattleaxe.description>一种符文匠常用的重型战斧。尽管在砍断肢体和劈开颅骨方面也相当有效，但战斧上刻有的符文能显著提升心灵敏感能力，其效果几乎可与灵质法杖相媲美。然而，这种提升是以战斧无法帮助分散心灵熵为代价的。</VPER_MeleeWeapon_RunesmithBattleaxe.description>
+  <!-- EN: handle -->
+  <VPER_MeleeWeapon_RunesmithBattleaxe.tools.handle.label>把手</VPER_MeleeWeapon_RunesmithBattleaxe.tools.handle.label>
+  <!-- EN: edge -->
+  <VPER_MeleeWeapon_RunesmithBattleaxe.tools.edge.label>边刃</VPER_MeleeWeapon_RunesmithBattleaxe.tools.edge.label>
+  
+</LanguageData>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: minimum neural heat -->
+  <VPE_PsychicEntropyMinimum.label>心灵熵下限</VPE_PsychicEntropyMinimum.label>
+  <!-- EN: The minimum amount of neural heat. This is increased by maintaining certain psycasts, which give heat that never fades. -->
+  <VPE_PsychicEntropyMinimum.description>心灵熵的最低值，有些需要长时间维持的心灵能力会持续占用施放者的心灵熵。</VPE_PsychicEntropyMinimum.description>
+  
+  <!-- EN: psyfocus cost factor -->
+  <VPE_PsyfocusCostFactor.label>精神力消耗系数</VPE_PsyfocusCostFactor.label>
+  <!-- EN: A multiplier on psyfocus cost of psycasts. -->
+  <VPE_PsyfocusCostFactor.description>精神力消耗量的乘数。</VPE_PsyfocusCostFactor.description>
+  
+</LanguageData>

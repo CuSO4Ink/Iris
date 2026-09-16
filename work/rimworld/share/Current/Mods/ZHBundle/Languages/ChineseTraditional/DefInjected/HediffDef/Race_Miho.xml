@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 쏘지마시발 -->
+  <Miho_DontShootMe_Hediff.label>逃兵</Miho_DontShootMe_Hediff.label>
+  <!-- EN: 쏘지마시발 -->
+  <Miho_DontShootMe_Hediff.description>逃兵。</Miho_DontShootMe_Hediff.description>
+  <!-- EN: a -->
+  <Miho_DontShootMe_Hediff.stages.a.label>A</Miho_DontShootMe_Hediff.stages.a.label>
+  
+  <!-- EN: large ears -->
+  <Miho_Ear_Hediff.label>large ears</Miho_Ear_Hediff.label>
+  <!-- EN: large ears -->
+  <Miho_Ear_Hediff.description>large ears</Miho_Ear_Hediff.description>
+  
+  <!-- EN: Hidden -->
+  <Miho_Hidden_Hediff.label>Hidden</Miho_Hidden_Hediff.label>
+  <!-- EN: Hidden -->
+  <Miho_Hidden_Hediff.description>Hidden</Miho_Hidden_Hediff.description>
+  
+  <!-- EN: Tail -->
+  <Miho_Tail_Hediff.label>Tail</Miho_Tail_Hediff.label>
+  <!-- EN: Tail -->
+  <Miho_Tail_Hediff.description>Tail</Miho_Tail_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Tail_Hediff.stages.a.label>A</Miho_Tail_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Tail_Hediff.stages.b.label>B</Miho_Tail_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Tail_Hediff.stages.c.label>C</Miho_Tail_Hediff.stages.c.label>
+  
+</LanguageData>

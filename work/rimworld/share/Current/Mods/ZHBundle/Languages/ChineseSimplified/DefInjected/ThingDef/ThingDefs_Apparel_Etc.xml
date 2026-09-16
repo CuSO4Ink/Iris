@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi childrenswear -->
+  <VV_Childrenswear.label>薇薇儿童服饰</VV_Childrenswear.label>
+  <!-- EN: A small outfit for child vivis. It's warm, designed for children's activities and uses little material to make, but it's too small to be worn once they become adults. -->
+  <VV_Childrenswear.description>一套为薇薇儿童设计的小号服装。温暖而专为儿童活动设计，需要的材料很少，但薇薇长大后就小得不能穿了。</VV_Childrenswear.description>
+  
+  <!-- EN: vivi combat coat -->
+  <VV_GuardianCoat.label>薇薇守卫外套</VV_GuardianCoat.label>
+  <!-- EN: A very sturdy coat tailored from biostrands for the vivis primary frontline fighters. It looks like ordinary cloth, yet provides very high protection, and with superior materials can rival heavy heavy-armor suits.\n\nCan wear only adult vivi. -->
+  <VV_GuardianCoat.description>为消灭蜂巢敌人的薇薇守卫准备的外套。从生命缕织上裁取，所以看起来就像普通的布衣，但能提供极高的防御能力。</VV_GuardianCoat.description>
+  
+  <!-- EN: vivi winter cape -->
+  <VV_WinterCape.label>薇薇冬季斗篷</VV_WinterCape.label>
+  <!-- EN: A cape worn by vivis to get through the winter. It has excellent insulation but is not suitable for warm places.\n\nCan wear only any vivi. -->
+  <VV_WinterCape.description>薇薇为度过严冬穿的斗篷。具有很好的保温能力，但不适合在温暖的地方穿。</VV_WinterCape.description>
+  
+</LanguageData>

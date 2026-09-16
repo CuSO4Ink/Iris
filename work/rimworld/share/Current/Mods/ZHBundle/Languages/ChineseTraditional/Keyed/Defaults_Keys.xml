@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <!-- <Defaults_SetDefaults>Set defaults</Defaults_SetDefaults> -->
+  <Defaults_SetDefaults>設定默認值</Defaults_SetDefaults>
+  <!-- <Defaults_SetAsDefault>Set as default</Defaults_SetAsDefault> -->
+  <Defaults_SetAsDefault>設定為默認值</Defaults_SetAsDefault>
+  <!-- <Defaults_SetAsDefaultConfirmed>Saved settings as default.</Defaults_SetAsDefaultConfirmed> -->
+  <Defaults_SetAsDefaultConfirmed>已將設定保存為默認值。</Defaults_SetAsDefaultConfirmed>
+  <!-- <Defaults_Schedules>Colonist schedules</Defaults_Schedules> -->
+  <Defaults_Schedules>殖民者時間表</Defaults_Schedules>
+  <!-- <Defaults_Medicine>Medicine settings</Defaults_Medicine> -->
+  <Defaults_Medicine>藥品設定</Defaults_Medicine>
+  <!-- <Defaults_MedicineToCarry>Default medicine to carry</Defaults_MedicineToCarry> -->
+  <Defaults_MedicineToCarry>默認攜帶藥品</Defaults_MedicineToCarry>
+  <!-- <Defaults_MedicineAmountToCarry>Default medicine amount to carry</Defaults_MedicineAmountToCarry> -->
+  <Defaults_MedicineAmountToCarry>默認攜帶藥品數量</Defaults_MedicineAmountToCarry>
+  <!-- <Defaults_GuestsCarryMedicine>Guests pick up medicine to carry, too</Defaults_GuestsCarryMedicine> -->
+  <Defaults_GuestsCarryMedicine>來客會拿起藥品來攜帶</Defaults_GuestsCarryMedicine>
+  <!-- <Defaults_Rewards>Reward preferences</Defaults_Rewards> -->
+  <Defaults_Rewards>報酬偏好</Defaults_Rewards>
+  <!-- <Defaults_HostilityResponse>Default hostility response</Defaults_HostilityResponse> -->
+  <Defaults_HostilityResponse>默認敵意反應</Defaults_HostilityResponse>
+  <!-- <Defaults_PlantType>Default plant type</Defaults_PlantType> -->
+  <Defaults_PlantType>默認植物類型</Defaults_PlantType>
+  <!-- <Defaults_AutoRebuild>Default auto rebuild setting</Defaults_AutoRebuild> -->
+  <Defaults_AutoRebuild>默認自動重建設定</Defaults_AutoRebuild>
+  <!-- <Defaults_AutoHomeArea>Default auto home area setting</Defaults_AutoHomeArea> -->
+  <Defaults_AutoHomeArea>默認自動添加生活區設定</Defaults_AutoHomeArea>
+  <!-- <Defaults_ResourceCategories>Expanded resource categories</Defaults_ResourceCategories> -->
+  <Defaults_ResourceCategories>展開資源分類</Defaults_ResourceCategories>
+  <!-- <Defaults_Storyteller>Storyteller settings</Defaults_Storyteller> -->
+  <Defaults_Storyteller>故事敘述者設定</Defaults_Storyteller>
+  <!-- <Defaults_StockpileZones>Storage settings</Defaults_StockpileZones> -->
+  <Defaults_StockpileZones>儲存區設定</Defaults_StockpileZones>
+  <!-- <Defaults_ShelfSettings>Shelf storage settings</Defaults_ShelfSettings> -->
+  <Defaults_ShelfSettings>置物架儲存設定</Defaults_ShelfSettings>
+  <!-- <Defaults_WorkbenchBills>Workbench bills</Defaults_WorkbenchBills> -->
+  <Defaults_WorkbenchBills>工作桌選單</Defaults_WorkbenchBills>
+  <!-- <Defaults_MiscSettings>Miscellaneous defaults</Defaults_MiscSettings> -->
+  <Defaults_MiscSettings>雜項默認</Defaults_MiscSettings>
+  <!-- <Defaults_ManualPriorities>Use manual work priorities by default</Defaults_ManualPriorities> -->
+  <Defaults_ManualPriorities>默認情况下使用自定工作優先度</Defaults_ManualPriorities>
+  <!-- <Defaults_WorldSettings>World settings</Defaults_WorldSettings> -->
+  <Defaults_WorldSettings>世界設定</Defaults_WorldSettings>
+  <!-- <Defaults_MapSettings>Advanced world settings</Defaults_MapSettings> -->
+  <Defaults_MapSettings>高級世界設定</Defaults_MapSettings>
+  <!-- <Defaults_Policies>Policies</Defaults_Policies> -->
+  <Defaults_Policies>計畫</Defaults_Policies>
+  <!-- <Defaults_ApparelPolicies>apparel policies</Defaults_ApparelPolicies> -->
+  <Defaults_ApparelPolicies>穿著計畫</Defaults_ApparelPolicies>
+  <!-- <Defaults_FoodPolicies>food policies</Defaults_FoodPolicies> -->
+  <Defaults_FoodPolicies>食物計畫</Defaults_FoodPolicies>
+  <!-- <Defaults_DrugPolicies>drug policies</Defaults_DrugPolicies> -->
+  <Defaults_DrugPolicies>用藥計畫</Defaults_DrugPolicies>
+  <!-- <Defaults_ReadingPolicies>reading policies</Defaults_ReadingPolicies> -->
+  <Defaults_ReadingPolicies>閱讀計畫</Defaults_ReadingPolicies>
+  <!-- <Defaults_PregnancyApproach>Default pregnancy approach</Defaults_PregnancyApproach> -->
+  <Defaults_PregnancyApproach>默認妊娠方式</Defaults_PregnancyApproach>
+  <!-- <Defaults_TargetTemperatureHeater>Target temperature for heaters</Defaults_TargetTemperatureHeater> -->
+  <Defaults_TargetTemperatureHeater>電暖爐的目標溫度</Defaults_TargetTemperatureHeater>
+  <!-- <Defaults_TargetTemperatureCooler>Target temperature for coolers</Defaults_TargetTemperatureCooler> -->
+  <Defaults_TargetTemperatureCooler>空調的目標溫度</Defaults_TargetTemperatureCooler>
+  <!-- <Defaults_BabyFeedingSettings>Baby feeding settings</Defaults_BabyFeedingSettings> -->
+  <Defaults_BabyFeedingSettings>嬰兒餵養設定</Defaults_BabyFeedingSettings>
+  <!-- <Defaults_WorkModeFirst>First mech control group work mode</Defaults_WorkModeFirst> -->
+  <Defaults_WorkModeFirst>第一機械操控組行動模式</Defaults_WorkModeFirst>
+  <!-- <Defaults_WorkModeSecond>Second mech control group work mode</Defaults_WorkModeSecond> -->
+  <Defaults_WorkModeSecond>第二機械操控組行動模式</Defaults_WorkModeSecond>
+  <!-- <Defaults_WorkModeAdditional>Additional mech control groups work mode</Defaults_WorkModeAdditional> -->
+  <Defaults_WorkModeAdditional>附加機械操控組行動模式</Defaults_WorkModeAdditional>
+  <!-- <Defaults_ResetAllSettings>Reset all settings to vanilla</Defaults_ResetAllSettings> -->
+  <Defaults_ResetAllSettings>重置所有設定</Defaults_ResetAllSettings>
+  <!-- <Defaults_ResetTheseSettings>Reset to vanilla</Defaults_ResetTheseSettings> -->
+  <Defaults_ResetTheseSettings>將這些設定重置為原版</Defaults_ResetTheseSettings>
+  <!-- <Defaults_ConfirmResetAllSettings>Do you want to reset all mod settings to their vanilla values? All settings categories will be enabled and all general settings will return to their default values. This action cannot be undone.</Defaults_ConfirmResetAllSettings> -->
+  <Defaults_ConfirmResetAllSettings>你想將所有設定重置為原版設定嗎？此操作無法撤銷。</Defaults_ConfirmResetAllSettings>
+  <!-- <Defaults_ConfirmResetTheseSettings>Do you want to reset all {0} to their vanilla values? This action cannot be undone.</Defaults_ConfirmResetTheseSettings> -->
+  <Defaults_ConfirmResetTheseSettings>是否將所有 {0} 重置為其原版值？此操作無法撤銷。</Defaults_ConfirmResetTheseSettings>
+  <!-- <Defaults_ConfirmResetWorkbenchBills>Do you want to reset all default workbench bill settings to their vanilla values? This action will delete all default workbench bills and cannot be undone.</Defaults_ConfirmResetWorkbenchBills> -->
+  <Defaults_ConfirmResetWorkbenchBills>你想將所有默認工作桌選單設定重置為其原版值嗎？此操作將删除所有默認工作桌選單且無法撤銷。</Defaults_ConfirmResetWorkbenchBills>
+  <!-- <Defaults_ScheduleName>Schedule {0}</Defaults_ScheduleName> -->
+  <Defaults_ScheduleName>時間表 {0}</Defaults_ScheduleName>
+  <!-- <Defaults_UseSchedule>Use</Defaults_UseSchedule> -->
+  <Defaults_UseSchedule>使用</Defaults_UseSchedule>
+  <!-- <Defaults_UseScheduleTip>Indicates whether the schedule will automatically be assigned to colonists.</Defaults_UseScheduleTip> -->
+  <Defaults_UseScheduleTip>是否將時間表自動分配給殖民者。</Defaults_UseScheduleTip>
+  <!-- <Defaults_SaveNewDefaultSchedule>Save as new default schedule</Defaults_SaveNewDefaultSchedule> -->
+  <Defaults_SaveNewDefaultSchedule>另存為新的默認時間表</Defaults_SaveNewDefaultSchedule>
+  <!-- <Defaults_ScheduleSavedAs>Schedule saved as {0}.</Defaults_ScheduleSavedAs> -->
+  <Defaults_ScheduleSavedAs>時間表另存為 {0}。</Defaults_ScheduleSavedAs>
+  <!-- <Defaults_ReplaceWithDefaultSchedule>Replace with default schedule</Defaults_ReplaceWithDefaultSchedule> -->
+  <Defaults_ReplaceWithDefaultSchedule>替換為默認時間表</Defaults_ReplaceWithDefaultSchedule>
+  <!-- <Defaults_AddAlternateSchedule>Add alternate</Defaults_AddAlternateSchedule> -->
+  <Defaults_AddAlternateSchedule>添加備選</Defaults_AddAlternateSchedule>
+  <!-- <Defaults_AcceptRoyalFavor>Accept {0}</Defaults_AcceptRoyalFavor> -->
+  <Defaults_AcceptRoyalFavor>接受 {0}</Defaults_AcceptRoyalFavor>
+  <!-- <Defaults_AcceptRoyalFavorDesc>Whether you wish to be rewarded with {0} from {1}.\n\nIf this is disabled, {1} will offer other types of rewards instead.\n\nThis setting only affects newly-arriving quests.</Defaults_AcceptRoyalFavorDesc> -->
+  <Defaults_AcceptRoyalFavorDesc>是否希望從 {1} 中獲得 {0}。\n\n如果禁用此功能，{1} 將提供其它類型的報酬。\n\n此設置只會影響新到達的任務。</Defaults_AcceptRoyalFavorDesc>
+  <!-- <Defaults_AcceptGoodwillDesc>Whether you wish to be rewarded via improved faction relations with {0}.\n\nIf this is disabled, {0} will offer other types of rewards instead.\n\nThis setting only affects newly-generated quests.</Defaults_AcceptGoodwillDesc> -->
+  <Defaults_AcceptGoodwillDesc>是否希望獲得可以提昇與 {0} 的關係的任務。\n\n如果禁用此功能，{0} 將提供它類型的報酬。\n\n此設置只會影響新接到的任務。</Defaults_AcceptGoodwillDesc>
+  <!-- <Defaults_PlantTypeTip>The default plant type for new growing zones.</Defaults_PlantTypeTip> -->
+  <Defaults_PlantTypeTip>新種植區的默認植物類型。</Defaults_PlantTypeTip>
+  <!-- <Defaults_CurrentPlantType>Current plant type</Defaults_CurrentPlantType> -->
+  <Defaults_CurrentPlantType>當前植物類型</Defaults_CurrentPlantType>
+  <!-- <Defaults_MedicineToCarryTip>The default medicine for pawns to carry when assigned.</Defaults_MedicineToCarryTip> -->
+  <Defaults_MedicineToCarryTip>小人在派遣時默認攜帶的藥品。</Defaults_MedicineToCarryTip>
+  <!-- <Defaults_CurrentMedicineToCarry>Current medicine to carry</Defaults_CurrentMedicineToCarry> -->
+  <Defaults_CurrentMedicineToCarry>當前需要攜帶的藥物</Defaults_CurrentMedicineToCarry>
+  <!-- <Defaults_AddNew>Add new</Defaults_AddNew> -->
+  <Defaults_AddNew>新增</Defaults_AddNew>
+  <!-- <Defaults_CorpseStockpileZoneDesc>Create a stockpile where your colonists will store corpses.\nThis tool can also expand any existing stockpile.</Defaults_CorpseStockpileZoneDesc> -->
+  <Defaults_CorpseStockpileZoneDesc>創建一個儲存區，你的殖民者將在那裡存放屍體。\n該工具還可以擴展任何現有的儲存區。</Defaults_CorpseStockpileZoneDesc>
+  <!-- <Defaults_CantDeleteDefaultPolicy>You cannot delete the default policy.</Defaults_CantDeleteDefaultPolicy> -->
+  <Defaults_CantDeleteDefaultPolicy>你不能删除默認計畫。</Defaults_CantDeleteDefaultPolicy>
+  <!-- <Defaults_SaveNewDefaultPolicy>Save as new default policy</Defaults_SaveNewDefaultPolicy> -->
+  <Defaults_SaveNewDefaultPolicy>另存為新的默認計畫</Defaults_SaveNewDefaultPolicy>
+  <!-- <Defaults_PolicySavedAs>Policy saved as {0}.</Defaults_PolicySavedAs> -->
+  <Defaults_PolicySavedAs>計畫另存為 {0}。</Defaults_PolicySavedAs>
+  <!-- <Defaults_LoadDefaultPolicy>Add from...</Defaults_LoadDefaultPolicy> -->
+  <Defaults_LoadDefaultPolicy>從默認加載</Defaults_LoadDefaultPolicy>
+  <!-- <Defaults_LockSetting>Lock this setting to prevent automatic changes when new mods or DLC are added</Defaults_LockSetting> -->
+  <Defaults_LockSetting>鎖定此設定以防止添加新模組或 DLC 時自動更改</Defaults_LockSetting>
+  <!-- <Defaults_UnavailableCaps>UNAVAILABLE</Defaults_UnavailableCaps> -->
+  <Defaults_UnavailableCaps>不可用</Defaults_UnavailableCaps>
+  <!-- <Defaults_SaveNewDefaultBill>Save as new default bill</Defaults_SaveNewDefaultBill> -->
+  <Defaults_SaveNewDefaultBill>另存為新的默認選單</Defaults_SaveNewDefaultBill>
+  <!-- <Defaults_SaveBillConfirmed>Saved bill as default.</Defaults_SaveBillConfirmed> -->
+  <Defaults_SaveBillConfirmed>已將清單保存為默認。</Defaults_SaveBillConfirmed>
+  <!-- <Defaults_LoadDefaultBill>Load default</Defaults_LoadDefaultBill> -->
+  <Defaults_LoadDefaultBill>加載默認選單</Defaults_LoadDefaultBill>
+  <!-- <Defaults_UseBill>Use</Defaults_UseBill> -->
+  <Defaults_UseBill>使用</Defaults_UseBill>
+  <!-- <Defaults_UseBillTip>Indicates whether this bill will automatically be added to new workbenches.</Defaults_UseBillTip> -->
+  <Defaults_UseBillTip>訓示此選單是否會自動添加到新工作桌。</Defaults_UseBillTip>
+  <!-- <Defaults_GlobalBillSettings>Global bill settings</Defaults_GlobalBillSettings> -->
+  <Defaults_GlobalBillSettings>全域選單設定</Defaults_GlobalBillSettings>
+  <!-- <Defaults_BirtherParent>Birthgiver</Defaults_BirtherParent> -->
+  <Defaults_BirtherParent>生育者</Defaults_BirtherParent>
+  <!-- <Defaults_ParentLactating>Non-birthgiver parent (lactating)</Defaults_ParentLactating> -->
+  <Defaults_ParentLactating>非生育父母（哺乳期）</Defaults_ParentLactating>
+  <!-- <Defaults_ParentNonlactating>Non-birthgiver parent (not lactating)</Defaults_ParentNonlactating> -->
+  <Defaults_ParentNonlactating>非生育父母（非哺乳期）</Defaults_ParentNonlactating>
+  <!-- <Defaults_NonparentLactating>Non-parent (lactating)</Defaults_NonparentLactating> -->
+  <Defaults_NonparentLactating>非父母（哺乳期）</Defaults_NonparentLactating>
+  <!-- <Defaults_NonparentNonlactating>Non-parent (not lactating)</Defaults_NonparentNonlactating> -->
+  <Defaults_NonparentNonlactating>非父母（非哺乳期）</Defaults_NonparentNonlactating>
+  <!-- <Defaults_SearchResults>Search results</Defaults_SearchResults> -->
+  <Defaults_SearchResults>搜索結果</Defaults_SearchResults>
+  <!-- <Defaults_DefaultSettingsCategories>Setting categories</Defaults_DefaultSettingsCategories> -->
+  <Defaults_DefaultSettingsCategories>設定類別</Defaults_DefaultSettingsCategories>
+  <!-- <Defaults_DefaultSettings>Individual settings</Defaults_DefaultSettings> -->
+  <Defaults_DefaultSettings>個人設定</Defaults_DefaultSettings>
+  <!-- <Defaults_NewDLC>New DLC added: {0}</Defaults_NewDLC> -->
+  <Defaults_NewDLC>新增DLC: {0}</Defaults_NewDLC>
+  <!-- <Defaults_NewPoliciesDLC>1trickPwnyta's Defaults can incorporate policies available in newly installed DLC if you'd like. {0} adds the following default policies to the game. Select the ones you want to enable.</Defaults_NewPoliciesDLC> -->
+  <Defaults_NewPoliciesDLC>如果你願意，1trickPwnyta's Defaults 可以在新安裝的 DLC 中加入可用的方案。{0} 在遊戲中添加了以下默認方案。選擇要啟用的選項。</Defaults_NewPoliciesDLC>
+  <!-- <Defaults_Vanilla>Vanilla</Defaults_Vanilla> -->
+  <Defaults_Vanilla>原版</Defaults_Vanilla>
+  <!-- <Defaults_Defaults>Defaults</Defaults_Defaults> -->
+  <Defaults_Defaults>默認</Defaults_Defaults>
+  <!-- <Defaults_HostilityReponseTip>Change how colonists will react to nearby enemies when not drafted.</Defaults_HostilityReponseTip> -->
+  <Defaults_HostilityReponseTip>改變殖民者在未被徵召時遭遇敵人後的反應。</Defaults_HostilityReponseTip>
+  <!-- <Defaults_NoSearchResults>Your search "{0}" did not match any settings.</Defaults_NoSearchResults> -->
+  <Defaults_NoSearchResults>你搜索 "{0}" 與任何設定都不匹配。</Defaults_NoSearchResults>
+  <!-- <Defaults_ChooseRewardsDesc>Tell other factions what kinds of rewards you want in quests.</Defaults_ChooseRewardsDesc> -->
+  <Defaults_ChooseRewardsDesc>告訴其它派系你在任務中想要什麼樣的報酬。</Defaults_ChooseRewardsDesc>
+  <!-- <Defaults_StorageBuildingSettings>{0} storage settings</Defaults_StorageBuildingSettings> -->
+  <Defaults_StorageBuildingSettings>{0} 储存设定</Defaults_StorageBuildingSettings>
+  <!-- <Defaults_StockpileStorageSettings>stockpile zones</Defaults_StockpileStorageSettings> -->
+  <Defaults_StockpileStorageSettings>儲存區</Defaults_StockpileStorageSettings>
+  <!-- <Defaults_BuildingStorageSettings>storage buildings</Defaults_BuildingStorageSettings> -->
+  <Defaults_BuildingStorageSettings>儲存建築</Defaults_BuildingStorageSettings>
+  <!-- <Defaults_ConfirmResetStockpileZoneSettings>Do you want to reset all default stockpile zone settings to their vanilla values? This action will delete all custom stockpile zones as well and cannot be undone.</Defaults_ConfirmResetStockpileZoneSettings> -->
+  <Defaults_ConfirmResetStockpileZoneSettings>你想將所有默認儲存區設定重置為其原版值嗎？此操作也將删除所有自定義儲存區且無法撤銷。</Defaults_ConfirmResetStockpileZoneSettings>
+  <!-- <Defaults_ConfirmResetAllowedAreaSettings>Do you want to reset all default allowed area settings to their vanilla values? This action will delete all allowed areas and cannot be undone.</Defaults_ConfirmResetAllowedAreaSettings> -->
+  <Defaults_ConfirmResetAllowedAreaSettings>你想將所有默認活動區設定重置為其原版值嗎？此操作將删除所有活動區且無法撤銷。</Defaults_ConfirmResetAllowedAreaSettings>
+  <!-- <Defaults_FullAreaTip>This allowed area will include the full map by default.</Defaults_FullAreaTip> -->
+  <Defaults_FullAreaTip>默認情况下此活動區將包括全地圖。</Defaults_FullAreaTip>
+  <!-- <Defaults_EmptyAreaTip>This allowed area will be empty by default.</Defaults_EmptyAreaTip> -->
+  <Defaults_EmptyAreaTip>默認情况下此活動區將為空。</Defaults_EmptyAreaTip>
+  <!-- <Defaults_ClickToChangeAllowedAreaColor>Click to change allowed area color.</Defaults_ClickToChangeAllowedAreaColor> -->
+  <Defaults_ClickToChangeAllowedAreaColor>按一下以更改活動區顏色。</Defaults_ClickToChangeAllowedAreaColor>
+  <!-- <Defaults_DragToReorder>Drag to reorder.</Defaults_DragToReorder> -->
+  <Defaults_DragToReorder>拖動以重新排序。</Defaults_DragToReorder>
+  <!-- <Defaults_DefaultPawnAllowedAreas>Default area restrictions for pawns</Defaults_DefaultPawnAllowedAreas> -->
+  <Defaults_DefaultPawnAllowedAreas>生物的默認區域限制</Defaults_DefaultPawnAllowedAreas>
+  <!-- <Defaults_AdultColonists>adult colonists</Defaults_AdultColonists> -->
+  <Defaults_AdultColonists>成年殖民者</Defaults_AdultColonists>
+  <!-- <Defaults_ChildColonists>child colonists</Defaults_ChildColonists> -->
+  <Defaults_ChildColonists>兒童殖民者</Defaults_ChildColonists>
+  <!-- <Defaults_Slaves>slaves</Defaults_Slaves> -->
+  <Defaults_Slaves>奴隸</Defaults_Slaves>
+  <!-- <Defaults_Guests>guests</Defaults_Guests> -->
+  <Defaults_Guests>來客</Defaults_Guests>
+  <!-- <Defaults_Mechs>mechs</Defaults_Mechs> -->
+  <Defaults_Mechs>機械</Defaults_Mechs>
+  <!-- <Defaults_Animals>animals</Defaults_Animals> -->
+  <Defaults_Animals>動物</Defaults_Animals>
+  <!-- <Defaults_Ghouls>ghouls</Defaults_Ghouls> -->
+  <Defaults_Ghouls>食屍鬼</Defaults_Ghouls>
+  <!-- <Defaults_Enable>Enable</Defaults_Enable> -->
+  <Defaults_Enable>啟用</Defaults_Enable>
+  <!-- <Defaults_EnableAll>Enable all settings categories</Defaults_EnableAll> -->
+  <Defaults_EnableAll>啟用所有設定類別</Defaults_EnableAll>
+  <!-- <Defaults_Disable>Disable</Defaults_Disable> -->
+  <Defaults_Disable>禁用</Defaults_Disable>
+  <!-- <Defaults_DisableAll>Disable all settings categories</Defaults_DisableAll> -->
+  <Defaults_DisableAll>禁用所有設定類別</Defaults_DisableAll>
+  <!-- <Defaults_SettingsCategoryDisabled>{0} are currently disabled and will not affect gameplay.</Defaults_SettingsCategoryDisabled> -->
+  <Defaults_SettingsCategoryDisabled>{0} 當前已禁用。不會影響遊戲。</Defaults_SettingsCategoryDisabled>
+  <!-- <Defaults_RestartRequired>Restart required</Defaults_RestartRequired> -->
+  <Defaults_RestartRequired>需要重啓</Defaults_RestartRequired>
+  <!-- <Defaults_RestartRequiredDesc>Disabling or enabling entire settings categories will not take effect until the game is restarted. Do you want to restart now?</Defaults_RestartRequiredDesc> -->
+  <Defaults_RestartRequiredDesc>在遊戲重新啟動之前，禁用或啟用整個設定類別不會生效。你想現在重新啟動嗎？</Defaults_RestartRequiredDesc>
+  <!-- <Defaults_Restart>Restart RimWorld</Defaults_Restart> -->
+  <Defaults_Restart>重啓 RimWorld</Defaults_Restart>
+  <!-- <Defaults_NotNow>Not now</Defaults_NotNow> -->
+  <Defaults_NotNow>不是現在</Defaults_NotNow>
+  <!-- <Defaults_EnableCategoryToViewSettings>You need to enable {0} and then restart the game in order to view these settings.</Defaults_EnableCategoryToViewSettings> -->
+  <Defaults_EnableCategoryToViewSettings>你需要啟用 {0} 然後重新啟動遊戲才能查看這個設定。</Defaults_EnableCategoryToViewSettings>
+  <!-- <Defaults_LimitBillsTo15>Limit workbench bills to 15 max</Defaults_LimitBillsTo15> -->
+  <Defaults_LimitBillsTo15>限制工作桌選單最多15個</Defaults_LimitBillsTo15>
+  <!-- <Defaults_BillsLimitedto15>Only the first 15 bills will apply to workbenches built in the game.</Defaults_BillsLimitedto15> -->
+  <Defaults_BillsLimitedto15>只有前15個選單將應用於遊戲中建造的工作桌。要取消此限制，請更改全域選單設定。</Defaults_BillsLimitedto15>
+  <!-- <Defaults_NoPauseOptionsTitle>No Pause Challenge settings enabled.</Defaults_NoPauseOptionsTitle> -->
+  <Defaults_NoPauseOptionsTitle>未啟用暫停挑戰設定。</Defaults_NoPauseOptionsTitle>
+  <!-- <Defaults_BetterWorkbenchOptionsTitle>Better Workbench Management settings</Defaults_BetterWorkbenchOptionsTitle> -->
+  <Defaults_BetterWorkbenchOptionsTitle>Better Workbench Management 設定</Defaults_BetterWorkbenchOptionsTitle>
+  <!-- <Defaults_WorkPrioritiesAdvancedMode>Advanced work priorities mode</Defaults_WorkPrioritiesAdvancedMode> -->
+  <Defaults_WorkPrioritiesAdvancedMode>高級工作優先度模式</Defaults_WorkPrioritiesAdvancedMode>
+  <!-- <Defaults_BasicWorkPrioritiesDesc>Select a work priority for each work type. New colonists will automatically be assigned those priorities when they join your colony.</Defaults_BasicWorkPrioritiesDesc> -->
+  <Defaults_BasicWorkPrioritiesDesc>為每種工作類型選擇工作優先度。新殖民者加入你的殖民地時，將自動分配這些優先度。</Defaults_BasicWorkPrioritiesDesc>
+  <!-- <Defaults_AdvancedWorkPrioritiesDesc>Customize the logic for determining the work priority for each work type. New colonists will automatically be assigned priorities based on your custom logic when they join your colony.</Defaults_AdvancedWorkPrioritiesDesc> -->
+  <Defaults_AdvancedWorkPrioritiesDesc>自訂安排每種工作類型的工作優先度的邏輯。新殖民者加入你的殖民地時，將根據你的自訂邏輯自動分配優先度。</Defaults_AdvancedWorkPrioritiesDesc>
+  <!-- <Defaults_WorkPriorityTynansChoice>game decides</Defaults_WorkPriorityTynansChoice> -->
+  <Defaults_WorkPriorityTynansChoice>遊戲决定</Defaults_WorkPriorityTynansChoice>
+  <!-- <Defaults_WorkPriorityDoNotDo>off</Defaults_WorkPriorityDoNotDo> -->
+  <Defaults_WorkPriorityDoNotDo>禁用</Defaults_WorkPriorityDoNotDo>
+  <!-- <Defaults_WorkPriorityDo>on</Defaults_WorkPriorityDo> -->
+  <Defaults_WorkPriorityDo>啟用</Defaults_WorkPriorityDo>
+  <!-- <Defaults_WorkPriorityRulesGlobal>Global rules</Defaults_WorkPriorityRulesGlobal> -->
+  <Defaults_WorkPriorityRulesGlobal>全域規則</Defaults_WorkPriorityRulesGlobal>
+  <!-- <Defaults_WorkPriorityRulesGlobalDesc>Global rules apply to all work types.</Defaults_WorkPriorityRulesGlobalDesc> -->
+  <Defaults_WorkPriorityRulesGlobalDesc>全域規則適用於所有工作類型。</Defaults_WorkPriorityRulesGlobalDesc>
+  <!-- <Defaults_WorkPriorityRulesSpecificDesc>Each work type can have its own specific rules. These rules are applied after the global rules are applied.</Defaults_WorkPriorityRulesSpecificDesc> -->
+  <Defaults_WorkPriorityRulesSpecificDesc>每種工作類型都可以有自己的特定規則。這些規則在應用全域規則後應用。</Defaults_WorkPriorityRulesSpecificDesc>
+  <!-- <Defaults_WorkPriorityRulesDesc>Rules apply in order from top to bottom.</Defaults_WorkPriorityRulesDesc> -->
+  <Defaults_WorkPriorityRulesDesc>規則從上到下依次應用。</Defaults_WorkPriorityRulesDesc>
+  <!-- <Defaults_WorkPriorityAddRule>Add rule</Defaults_WorkPriorityAddRule> -->
+  <Defaults_WorkPriorityAddRule>添加規則</Defaults_WorkPriorityAddRule>
+  <!-- <Defaults_WorkPriorityCondition>Condition</Defaults_WorkPriorityCondition> -->
+  <Defaults_WorkPriorityCondition>條件</Defaults_WorkPriorityCondition>
+  <!-- <Defaults_WorkPriorityEffect>Effect</Defaults_WorkPriorityEffect> -->
+  <Defaults_WorkPriorityEffect>效果</Defaults_WorkPriorityEffect>
+  <!-- <Defaults_Years>years</Defaults_Years> -->
+  <Defaults_Years>年齡</Defaults_Years>
+  <!-- <Defaults_WorkPriorityAllowDecreaseToZero>Allow disabling this work type if the priority is decreased beyond {0}</Defaults_WorkPriorityAllowDecreaseToZero> -->
+  <Defaults_WorkPriorityAllowDecreaseToZero>如果優先度降低到 {0} 以下，允許禁用此工作類型</Defaults_WorkPriorityAllowDecreaseToZero>
+  <!-- <Defaults_WorkPriorityAllowIncreaseFromZero>Allow enabling this work type if it is not already</Defaults_WorkPriorityAllowIncreaseFromZero> -->
+  <Defaults_WorkPriorityAllowIncreaseFromZero>如果尚未啟用此工作類型，則允許啟用它</Defaults_WorkPriorityAllowIncreaseFromZero>
+  <!-- <Defaults_RecalculateWorkPriorities>Reset to default work priorities</Defaults_RecalculateWorkPriorities> -->
+  <Defaults_RecalculateWorkPriorities>重置為默認工作優先度</Defaults_RecalculateWorkPriorities>
+  <!-- <Defaults_WorkPriorityRulesInvalid>Missing condition and/or effect. Define them or delete this rule.</Defaults_WorkPriorityRulesInvalid> -->
+  <Defaults_WorkPriorityRulesInvalid>缺少條件或效果。定義它們或删除此規則。</Defaults_WorkPriorityRulesInvalid>
+  <!-- <Defaults_EditSubrules>Edit subrules</Defaults_EditSubrules> -->
+  <Defaults_EditSubrules>編輯子規則</Defaults_EditSubrules>
+  <!-- <Defaults_WorkPriorityRulesSpecific>{0} rules</Defaults_WorkPriorityRulesSpecific> -->
+  <Defaults_WorkPriorityRulesSpecific>{0} 規則</Defaults_WorkPriorityRulesSpecific>
+  <!-- <Defaults_AdditionalSettings>Additional settings</Defaults_AdditionalSettings> -->
+  <Defaults_AdditionalSettings>其它設定</Defaults_AdditionalSettings>
+  <!-- <Defaults_Configure>Configure...</Defaults_Configure> -->
+  <Defaults_Configure>配寘...</Defaults_Configure>
+  <!-- <Defaults_SettingsBackupOptionsTitle>Settings backup</Defaults_SettingsBackupOptionsTitle> -->
+  <Defaults_SettingsBackupOptionsTitle>備份設定</Defaults_SettingsBackupOptionsTitle>
+  <!-- <Defaults_SettingsBackupPath>Backup path</Defaults_SettingsBackupPath> -->
+  <Defaults_SettingsBackupPath>備份路徑</Defaults_SettingsBackupPath>
+  <!-- <Defaults_InvalidFolder>The path {0} does not exist and couldn't be created.</Defaults_InvalidFolder> -->
+  <Defaults_InvalidFolder>路徑 {0} 不存在無法創建。</Defaults_InvalidFolder>
+  <!-- <Defaults_BackupNow>Back up default settings now</Defaults_BackupNow> -->
+  <Defaults_BackupNow>立即備份默認設定</Defaults_BackupNow>
+  <!-- <Defaults_InputIsInvalid>Invalid input.</Defaults_InputIsInvalid> -->
+  <Defaults_InputIsInvalid>無效輸入。</Defaults_InputIsInvalid>
+  <!-- <Defaults_BackupName>settings_{0}</Defaults_BackupName> -->
+  <Defaults_BackupName>設定_{0}</Defaults_BackupName>
+  <!-- <Defaults_InvalidFilename>The file name is invalid.</Defaults_InvalidFilename> -->
+  <Defaults_InvalidFilename>檔案名無效。</Defaults_InvalidFilename>
+  <!-- <Defaults_FileExists>The file already exists.</Defaults_FileExists> -->
+  <Defaults_FileExists>檔案已存在。</Defaults_FileExists>
+  <!-- <Defaults_PathTooLong>The file name is too long.</Defaults_PathTooLong> -->
+  <Defaults_PathTooLong>檔案名太長。</Defaults_PathTooLong>
+  <!-- <Defaults_CantOpenFolder>Couldn't open the folder.</Defaults_CantOpenFolder> -->
+  <Defaults_CantOpenFolder>無法打開資料夾。</Defaults_CantOpenFolder>
+  <!-- <Defaults_SettingsBackupComplete>Defaults settings backup successfully created as {0}.</Defaults_SettingsBackupComplete> -->
+  <Defaults_SettingsBackupComplete>默認設定備份已成功創建為 {0}。</Defaults_SettingsBackupComplete>
+  <!-- <Defaults_EnterBackupName>Enter a file name for the backup.</Defaults_EnterBackupName> -->
+  <Defaults_EnterBackupName>輸入備份檔案名稱。</Defaults_EnterBackupName>
+  <!-- <Defaults_RestoreFromBackup>Restore default settings from backup</Defaults_RestoreFromBackup> -->
+  <Defaults_RestoreFromBackup>從備份還原默認設定</Defaults_RestoreFromBackup>
+  <!-- <Defaults_SelectBackupFile>Select a backup file to restore from. This action cannot be undone.</Defaults_SelectBackupFile> -->
+  <Defaults_SelectBackupFile>選擇要從中恢復的備份檔案。此操作無法撤銷。</Defaults_SelectBackupFile>
+  <!-- <Defaults_SettingsRestoreFailed>Failed to restore default settings from backup: {0}</Defaults_SettingsRestoreFailed> -->
+  <Defaults_SettingsRestoreFailed>無法從備份還原默認設定: {0}</Defaults_SettingsRestoreFailed>
+  <!-- <Defaults_SettingsRestoreComplete>Default settings successfully restored from {0}. It is recommended that you restart the game to avoid potential errors. Do you want to restart now?</Defaults_SettingsRestoreComplete> -->
+  <Defaults_SettingsRestoreComplete>已成功還原默認設定從 {0}。建議你重新啟動遊戲以避免潜在錯誤。你想現在重新啟動嗎？</Defaults_SettingsRestoreComplete>
+  <!-- <Defaults_ResetAllSettingsComplete>All settings have been successfully reset to their vanilla values.</Defaults_ResetAllSettingsComplete> -->
+  <Defaults_ResetAllSettingsComplete>所有設定均已成功重置為原版值。</Defaults_ResetAllSettingsComplete>
+  <!-- <Defaults_SettingsBackupSchedule>Backup schedule</Defaults_SettingsBackupSchedule> -->
+  <Defaults_SettingsBackupSchedule>備份計畫</Defaults_SettingsBackupSchedule>
+  <!-- <Defaults_SettingsBackupFrequency>When to back up:</Defaults_SettingsBackupFrequency> -->
+  <Defaults_SettingsBackupFrequency>何時備份:</Defaults_SettingsBackupFrequency>
+  <!-- <Defaults_SettingsBackupFrequency_Never>Never</Defaults_SettingsBackupFrequency_Never> -->
+  <Defaults_SettingsBackupFrequency_Never>從不</Defaults_SettingsBackupFrequency_Never>
+  <!-- <Defaults_SettingsBackupFrequency_Startup>At game startup</Defaults_SettingsBackupFrequency_Startup> -->
+  <Defaults_SettingsBackupFrequency_Startup>遊戲啟動時</Defaults_SettingsBackupFrequency_Startup>
+  <!-- <Defaults_SettingsBackupFrequency_OnChange>When settings are saved</Defaults_SettingsBackupFrequency_OnChange> -->
+  <Defaults_SettingsBackupFrequency_OnChange>保存設定時</Defaults_SettingsBackupFrequency_OnChange>
+  <!-- <Defaults_SettingsBackupDuration>How long to keep backups:</Defaults_SettingsBackupDuration> -->
+  <Defaults_SettingsBackupDuration>保留備份多久:</Defaults_SettingsBackupDuration>
+  <!-- <Defaults_SettingsBackupDuration_Forever>Forever</Defaults_SettingsBackupDuration_Forever> -->
+  <Defaults_SettingsBackupDuration_Forever>永遠</Defaults_SettingsBackupDuration_Forever>
+  <!-- <Defaults_SettingsBackupDuration_Count>Keep X backup files...</Defaults_SettingsBackupDuration_Count> -->
+  <Defaults_SettingsBackupDuration_Count>保留 X 個備份檔案...</Defaults_SettingsBackupDuration_Count>
+  <!-- <Defaults_SettingsBackupDuration_TimeInterval>Keep backup files for X days...</Defaults_SettingsBackupDuration_TimeInterval> -->
+  <Defaults_SettingsBackupDuration_TimeInterval>保留備份檔案 X 天...</Defaults_SettingsBackupDuration_TimeInterval>
+  <!-- <Defaults_X>X: </Defaults_X> -->
+  <Defaults_X>X:</Defaults_X>
+  <!-- <Defaults_SettingsBackupOptionsDesc>This mod's settings can be backed up regularly so that if anything goes awry, you don't need to lose all the work you put into crafting your perfect defaults.</Defaults_SettingsBackupOptionsDesc> -->
+  <Defaults_SettingsBackupOptionsDesc>這個模組的設定可以定期備份，這樣如果出了什麼問題，你就不需要失去為製作完美預設值所做的所有工作。</Defaults_SettingsBackupOptionsDesc>
+  <!-- <Defaults_PinBackup>Pinned backups are exempt from being routinely purged.</Defaults_PinBackup> -->
+  <Defaults_PinBackup>固定備份以避免通常清除。</Defaults_PinBackup>
+  <!-- <Defaults_DeleteBackup>Permanently delete this backup file.</Defaults_DeleteBackup> -->
+  <Defaults_DeleteBackup>永久删除此備份檔案。</Defaults_DeleteBackup>
+  <!-- <Defaults_DeleteBackupFailed>Failed to delete backup file {0}.</Defaults_DeleteBackupFailed> -->
+  <Defaults_DeleteBackupFailed>删除備份檔案失敗 {0}.</Defaults_DeleteBackupFailed>
+  <!-- <Defaults_ConfirmOverwriteBackup>{0} already exists and will be overwritten.</Defaults_ConfirmOverwriteBackup> -->
+  <Defaults_ConfirmOverwriteBackup>{0} 已存在將被覆蓋。</Defaults_ConfirmOverwriteBackup>
+  <!-- <Defaults_GetBackupFilesFailed>Failed to get settings backup files from {0}: {1}</Defaults_GetBackupFilesFailed> -->
+  <Defaults_GetBackupFilesFailed>無法獲取設定於備份檔案 {0}: {1}</Defaults_GetBackupFilesFailed>
+  <!-- <Defaults_NoBackupsToRestore>No default settings backup files found in {0}.</Defaults_NoBackupsToRestore> -->
+  <Defaults_NoBackupsToRestore>找不到默認設置於備份檔案 {0}。</Defaults_NoBackupsToRestore>
+  <!-- <Defaults_ResetToDefault>Reset to default</Defaults_ResetToDefault> -->
+  <Defaults_ResetToDefault>重置為默認</Defaults_ResetToDefault>
+  <!-- <Defaults_ResetFishingZoneDesc>Reset all fishing zone settings to default settings.</Defaults_ResetFishingZoneDesc> -->
+  <Defaults_ResetFishingZoneDesc>重置所有釣魚區設定為默認值</Defaults_ResetFishingZoneDesc>
+  <!-- <Defaults_SetDefaultFishingZoneDesc>Save this fishing zone's settings as the default for all new fishing zones going forward.</Defaults_SetDefaultFishingZoneDesc> -->
+  <Defaults_SetDefaultFishingZoneDesc>將此釣魚區的設定保存為以後所有新釣魚區的默認設定。</Defaults_SetDefaultFishingZoneDesc>
+  <!-- <Defaults_OpenMainSettings>Open 1trickPwnyta's Defaults mod settings</Defaults_OpenMainSettings> -->
+  <Defaults_OpenMainSettings>打開 1trickPwnyta's Defaults 模組設定</Defaults_OpenMainSettings>
+  <!-- <Defaults_PawnType>Pawn type</Defaults_PawnType> -->
+  <Defaults_PawnType>生物類型</Defaults_PawnType>
+  <!-- <Defaults_DefaultPolicyAssignments>Default policy assignments</Defaults_DefaultPolicyAssignments> -->
+  <Defaults_DefaultPolicyAssignments>默認計畫分配</Defaults_DefaultPolicyAssignments>
+  <!-- <Defaults_DefaultPolicyAssignmentsDesc>Assign each pawn type to a default policy of each type, or leave them as (default) to use whatever policy is set as the default. Colonists will be assigned policies accordingly.</Defaults_DefaultPolicyAssignmentsDesc> -->
+  <Defaults_DefaultPolicyAssignmentsDesc>為每種類型的生物分配一種默認計畫，或者保留（默認）以使用任何設定為默認的計畫。 殖民者將以此被分配計畫。</Defaults_DefaultPolicyAssignmentsDesc>
+  <Defaults_EmptyString></Defaults_EmptyString>
+  <!-- <Defaults_RemoveLimit>Remove limit</Defaults_RemoveLimit> -->
+  <Defaults_RemoveLimit>移除限制</Defaults_RemoveLimit>
+
+  <!-- <CommandResetTempDesc>Reset the target temperature to default temperature.</CommandResetTempDesc> -->
+  <CommandResetTempDesc>將目標溫度重置為默認溫度。</CommandResetTempDesc>
+
+</LanguageData>

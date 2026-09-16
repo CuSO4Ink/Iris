@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fertilize TargetA. -->
+  <VV_FertilizeArcanePlant.reportString>向 TargetA 施肥</VV_FertilizeArcanePlant.reportString>
+  
+  <!-- EN: managing arcane plant at TargetA. -->
+  <VV_ManageArcanePlantFarm.reportString>管理 TargetA 的神秘植物</VV_ManageArcanePlantFarm.reportString>
+  
+</LanguageData>

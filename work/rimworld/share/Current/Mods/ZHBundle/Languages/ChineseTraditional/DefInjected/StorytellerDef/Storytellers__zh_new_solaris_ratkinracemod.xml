@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Rotty Milden -->
+  <RK_Storyteller_RottyMilden.label>溫和羅蒂</RK_Storyteller_RottyMilden.label>
+  <!-- EN: 로티 마일던은 시골과 같은 느긋한 이야기를 들려주는 스토리텔러입니다.\n새 마을이 자라며 낯선 이가 들르고, 상인과 나그네의 발길로 마을이 조금씩 북적이는 경험을 할 수 있습니다.\n\n로티 마일던은 작은 장난을 좋아하는 시골 소녀입니다.\n\n그녀의 자잘한 장난 덕에 이야기가 지루해지지 않지만, 가끔은 뜻밖의 큰 소동을 일으키기도 합니다.\n\n큰 위협은 잦지 않은 대신, 방문과 거래, 길 위에서의 만남, 새 동료가 합류하는 소식이 더 자주 이어집니다. -->
+  <RK_Storyteller_RottyMilden.description>羅蒂是個有點淘氣的鄉下姑娘，擅長講述田園般的悠閒故事。\n\n隨著新殖民地的興起，會有商人與陌生旅者不斷經過，他們的到訪將使這裡逐漸熱鬧起來。\n\n羅蒂喜歡搞一些不會惹人生厭的小惡作劇，但偶爾也會惹出大麻煩。\n\n諸如訪客、商隊之類的隨機小型事件在這裡會經常發生，而大型事件的出現頻率則相對較低。</RK_Storyteller_RottyMilden.description>
+  
+</LanguageData>

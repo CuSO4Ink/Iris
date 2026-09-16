@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: everflower fatigue -->
+  <VV_EverflowerImpact.label>永盛镇静</VV_EverflowerImpact.label>
+  <!-- EN: Somewhat tired due to the influence of the everflower's fragrance. -->
+  <VV_EverflowerImpact.description>此人受永盛花的香味影响而感到疲倦。</VV_EverflowerImpact.description>
+  
+  <!-- EN: everflower resonance -->
+  <VV_EverflowerLink.label>永盛花共鸣</VV_EverflowerLink.label>
+  <!-- EN: An resonance link with an everflower is active. If the everflower moves to a different area or becomes isolated, the link will be temporarily severed.\n\nThe higher an everflower's attunement level, the more varied effects it grants. -->
+  <VV_EverflowerLink.description>与永盛花存在活跃的共鸣链接，若永盛花被移动到其他区域或被隔离，心灵链接会暂时中断。\n\n永盛花的共鸣等级越高，可获得的效果越多。</VV_EverflowerLink.description>
+  <!-- EN: I -->
+  <VV_EverflowerLink.stages.I.label>I</VV_EverflowerLink.stages.I.label>
+  <!-- EN: II -->
+  <VV_EverflowerLink.stages.II.label>II</VV_EverflowerLink.stages.II.label>
+  <!-- EN: III -->
+  <VV_EverflowerLink.stages.III.label>III</VV_EverflowerLink.stages.III.label>
+  <!-- EN: IV -->
+  <VV_EverflowerLink.stages.IV.label>IV</VV_EverflowerLink.stages.IV.label>
+  
+  <!-- EN: fairyfication sickness -->
+  <VV_FairyficationSickness.label>仙灵病</VV_FairyficationSickness.label>
+  <!-- EN: after-effect that occurs when fairy form ends and the original body is restored. While under this after-effect, they cannot undergo fairyfication again. -->
+  <VV_FairyficationSickness.description>从仙灵形态脱离后产生的后遗症。在后遗症的影响结束前无法再次仙灵化。</VV_FairyficationSickness.description>
+  
+  <!-- EN: vivi fairy -->
+  <VV_ViviFairyFollow.label>薇薇仙灵</VV_ViviFairyFollow.label>
+  <!-- EN: A fairy vivi is bound, aiding learning and focus and sometimes absorbing damage. too many bound fairies steadily increase fatigue. -->
+  <VV_ViviFairyFollow.description>仙灵薇薇会被绑定以提供专注和学习加成，并在某些时候吸收伤害，过多的仙灵绑定会不断增加疲劳。</VV_ViviFairyFollow.description>
+  <!-- EN: I -->
+  <VV_ViviFairyFollow.stages.I.label>I</VV_ViviFairyFollow.stages.I.label>
+  <!-- EN: II -->
+  <VV_ViviFairyFollow.stages.II.label>II</VV_ViviFairyFollow.stages.II.label>
+  <!-- EN: III -->
+  <VV_ViviFairyFollow.stages.III.label>III</VV_ViviFairyFollow.stages.III.label>
+  <!-- EN: IV -->
+  <VV_ViviFairyFollow.stages.IV.label>IV</VV_ViviFairyFollow.stages.IV.label>
+  <!-- EN: V -->
+  <VV_ViviFairyFollow.stages.V.label>V</VV_ViviFairyFollow.stages.V.label>
+  <!-- EN: VI -->
+  <VV_ViviFairyFollow.stages.VI.label>VI</VV_ViviFairyFollow.stages.VI.label>
+  <!-- EN: VII -->
+  <VV_ViviFairyFollow.stages.VII.label>VII</VV_ViviFairyFollow.stages.VII.label>
+  <!-- EN: VIII -->
+  <VV_ViviFairyFollow.stages.VIII.label>VIII</VV_ViviFairyFollow.stages.VIII.label>
+  <!-- EN: IX -->
+  <VV_ViviFairyFollow.stages.IX.label>IX</VV_ViviFairyFollow.stages.IX.label>
+  <!-- EN: X -->
+  <VV_ViviFairyFollow.stages.X.label>X</VV_ViviFairyFollow.stages.X.label>
+  
+</LanguageData>

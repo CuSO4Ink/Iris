@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: field research speed multiplier -->
+  <FieldResearchSpeedMultiplier.label>实地研究速度乘数</FieldResearchSpeedMultiplier.label>
+  <!-- EN: Affects how fast this person performs research in the field. -->
+  <FieldResearchSpeedMultiplier.description>影响人物实地研究的速度</FieldResearchSpeedMultiplier.description>
+
+</LanguageData>

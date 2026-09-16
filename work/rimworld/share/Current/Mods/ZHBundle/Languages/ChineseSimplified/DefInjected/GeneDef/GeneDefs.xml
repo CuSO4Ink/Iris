@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fructose dependency -->
+  <VV_HoneyDepedency.label>果糖依赖</VV_HoneyDepedency.label>
+  <!-- EN: Carriers of this gene need to ingest vivi honey or ambrosia on a regular basis to survive. After 15 days without vivi honey or ambrosia, carriers will suffer from fructose deficiency. -->
+  <VV_HoneyDepedency.description>这种基因的携带者需要定期摄入薇薇蜂蜜或仙馐果才能生存。在没有薇薇蜂蜜或仙馐果5天后，携带者将出现果糖缺乏症状。</VV_HoneyDepedency.description>
+  
+  <!-- EN: skin color -->
+  <VV_Skin_Melanin.label>肤色</VV_Skin_Melanin.label>
+  <!-- EN: Carriers of this gene have a particular skin color. With multiple skin color genes, one is randomly selected. -->
+  <VV_Skin_Melanin.description>这种基因的携带者会表现一种特殊的肤色。当存在多个肤色基因时，随机选择其中一个表达。</VV_Skin_Melanin.description>
+  
+  <!-- EN: excessive metabolism -->
+  <VV_ViviMetabolism.label>过度代谢</VV_ViviMetabolism.label>
+  <!-- EN: Vivi's unique genes greatly boost skill learning speed and grant learning bonuses during growth stages. Growth and aging are very rapid, and it cannot reproduce by normal means. -->
+  <VV_ViviMetabolism.description>薇薇独特的基因大大提高了他们研究科技的速度，他们在发育阶段会获得学习加成。\n\n他们成长和衰老的速度非常快，无法通过传统方法繁殖。</VV_ViviMetabolism.description>
+  <!-- EN: vivi -->
+  <VV_ViviMetabolism.symbolPack.suffixSymbols.0.symbol>薇薇</VV_ViviMetabolism.symbolPack.suffixSymbols.0.symbol>
+  
+</LanguageData>

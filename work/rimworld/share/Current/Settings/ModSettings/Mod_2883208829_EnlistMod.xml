@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="Enlist.EnlistSettings">
+		<enlistStates>
+			<keys>
+				<li>RH_VOID</li>
+			</keys>
+			<values>
+				<li>True</li>
+			</values>
+		</enlistStates>
+	</ModSettings>
+</SettingsBlock>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: [Prototype] -->
+  <RR_PrototypePrefix>[原型]</RR_PrototypePrefix>
+  <!-- EN: Prototype -->
+  <RR_PrototypeLabel>原型</RR_PrototypeLabel>
+
+  <!-- EN: [Experimental] -->
+  <RR_ExperimentalSurgeryPrefix>[实验]</RR_ExperimentalSurgeryPrefix>
+  <!-- EN: Experimental -->
+  <RR_ExperimentalSurgeryLabel>实验</RR_ExperimentalSurgeryLabel>
+
+  <!-- EN: Equivalent research bench -->
+  <RR_EquivalentResearchBench>等效研究台</RR_EquivalentResearchBench>
+  <!-- EN: This kit provides portable versions of the tools available at this type of research bench. -->
+  <RR_EquivalentResearchBench_desc>此套件提供了该类研究台的便携版工具。</RR_EquivalentResearchBench_desc>
+  <!-- EN: Equivalent research facilities -->
+  <RR_EquivalentResearchFacilities>等效研究设施</RR_EquivalentResearchFacilities>
+  <!-- EN: This kit provides portable versions of these research facilities. -->
+  <RR_EquivalentResearchFacilities_desc>此套件提供了便携版的该类研究设施。</RR_EquivalentResearchFacilities_desc>
+  <!-- EN: Remote connection facility -->
+  <RR_RemoteConnectionFacility>远程链接设备</RR_RemoteConnectionFacility>
+  <!-- EN: Establishes connection to research benches (and their networked facilities) through this facility. -->
+  <RR_RemoteConnectionFacility_desc>通过该设施建立与研究台及其网络设施的连接。</RR_RemoteConnectionFacility_desc>
+  <!-- EN: Research speed factor (via uplink) -->
+  <RR_UplinkResearchSpeedFactor>研究速度因子（通过上行链路）</RR_UplinkResearchSpeedFactor>
+  <!-- EN: Research speed multiplier provided by remote connection to the research facility. -->
+  <RR_UplinkResearchSpeedFactor_desc>远程连接到研究设施提供的研究速度乘数。</RR_UplinkResearchSpeedFactor_desc>
+
+  <!-- EN: Category finished -->
+  <RR_CategoryFinishedBook>类别已完成</RR_CategoryFinishedBook>
+</LanguageData>

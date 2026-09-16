@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: add custom structure to starting map -->
+  <VFEC_AddStartingStructure.label>向初始地图增加自定义建筑结构</VFEC_AddStartingStructure.label>
+  
+  <!-- EN: forced faction relations -->
+  <VFEC_ForcedFactionGoodwill.label>锁定派系关系</VFEC_ForcedFactionGoodwill.label>
+  
+  <!-- EN: pawn arrive method -->
+  <VFEC_PlayerPawnsArriveMethodEdge.label>角色到达方式</VFEC_PlayerPawnsArriveMethodEdge.label>
+  
+</LanguageData>

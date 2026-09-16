@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 플라즈마 분사 -->
+  <Miho_MechPlasmaSpray.label>爆能彈幕</Miho_MechPlasmaSpray.label>
+  <!-- EN: 초고열의 플라즈마를 단거리 분사합니다. -->
+  <Miho_MechPlasmaSpray.description>向目標點處噴射大量高能等離子彈。</Miho_MechPlasmaSpray.description>
+  
+  <!-- EN: 연막탄 -->
+  <Miho_MechSmoke.label>煙霧榴彈</Miho_MechSmoke.label>
+  <!-- EN: 연막탄을 발사합니다. -->
+  <Miho_MechSmoke.description>向目標點處發射一枚煙霧榴彈。</Miho_MechSmoke.description>
+  
+  <!-- EN: 연막유탄 -->
+  <Miho_MechSmokeGrenade.label>煙霧榴彈</Miho_MechSmokeGrenade.label>
+  <!-- EN: 연막탄을 발사합니다. -->
+  <Miho_MechSmokeGrenade.description>向目標點處發射一枚大範圍煙霧榴彈。</Miho_MechSmokeGrenade.description>
+  
+  <!-- EN: 박격포 발사 -->
+  <Miho_MechThermobaricGrenade.label>曲射砲擊</Miho_MechThermobaricGrenade.label>
+  <!-- EN: 고각으로 박격포탄을 발사합니다. 75칸의 사거리를 지닙니다. -->
+  <Miho_MechThermobaricGrenade.description>向目標點處發射一枚迫擊砲彈。最大射程為75格。</Miho_MechThermobaricGrenade.description>
+  
+</LanguageData>

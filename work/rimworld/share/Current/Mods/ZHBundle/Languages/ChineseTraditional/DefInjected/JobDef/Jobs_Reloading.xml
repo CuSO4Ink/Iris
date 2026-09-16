@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: reloading TargetA. -->
+  <BetterReload.reportString>裝填TargetA。</BetterReload.reportString>
+  
+  <!-- EN: reloading TargetA. -->
+  <ReloadFromInventory.reportString>裝填TargetA。</ReloadFromInventory.reportString>
+  
+  <!-- EN: unloading TargetA. -->
+  <Unload.reportString>裝卸TargetA。</Unload.reportString>
+  
+  <!-- EN: reloading TargetA. -->
+  <VEF_ReloadWeaponTrait.reportString>裝填TargetA。</VEF_ReloadWeaponTrait.reportString>
+  
+</LanguageData>

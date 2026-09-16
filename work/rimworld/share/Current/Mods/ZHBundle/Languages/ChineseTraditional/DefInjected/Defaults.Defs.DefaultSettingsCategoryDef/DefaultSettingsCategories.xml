@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <Storyteller.label>default storyteller settings</Storyteller.label> -->
+  <Storyteller.label>默認故事敘述者設定</Storyteller.label>
+  <!-- <Storyteller.description>Set the default storyteller/difficulty settings to use for a new colony, including custom difficulty settings.</Storyteller.description> -->
+  <Storyteller.description>為新殖民地設定默認的故事敘述者/難度設定，包括自定義難度設定。</Storyteller.description>
+
+  <!-- <World.label>default world settings</World.label> -->
+  <World.label>默認世界設定</World.label>
+  <!-- <World.description>Set the default world, map, and faction settings to use for a new colony.</World.description> -->
+  <World.description>設定新殖民地所使用的默認世界、地圖和派系設定。</World.description>
+
+  <!-- <Schedule.label>default colonist schedules</Schedule.label> -->
+  <Schedule.label>默認殖民者時間表</Schedule.label>
+  <!-- <Schedule.description>Set custom default schedules for colonists. You can create alternating schedules and the mod will cycle between them when assigning them to new colonists.</Schedule.description> -->
+  <Schedule.description>為殖民者設定自定義默認時間表。你可以創建交替時間表，當將它們分配給新殖民者時，該模組會在它們之間迴圈。</Schedule.description>
+
+  <!-- <Policies.label>default policies</Policies.label> -->
+  <Policies.label>默認計畫</Policies.label>
+  <!-- <Policies.description>Set custom default apparel, food, drug, and reading policies that will be copied to each new colony. Assign different default policies to different types of pawns.</Policies.description> -->
+  <Policies.description>設定自定義的默認穿著、食物、用藥和閱讀計畫，這些計畫將被複製到每個新殖民地。</Policies.description>
+
+  <!-- <BabyFeeding.label>default baby feeding settings</BabyFeeding.label> -->
+  <BabyFeeding.label>默認嬰兒餵養設定</BabyFeeding.label>
+  <!-- <BabyFeeding.description>Set the default autofeed setting for colonists based on relationship to baby and whether they are lactating. Set which foods babies can be fed by default.</BabyFeeding.description> -->
+  <BabyFeeding.description>根據與嬰兒的關係以及是否處於哺乳期，為殖民者設定默認的自動餵食設定。此外，還可以設定默認情况下嬰兒可以食用哪些食物。</BabyFeeding.description>
+
+  <!-- <Medicine.label>default medicine settings</Medicine.label> -->
+  <Medicine.label>默認醫藥設定</Medicine.label>
+  <!-- <Medicine.description>Set the default medicine settings to use for a new colony as well as the type and amount of medicine that new colonists will carry.</Medicine.description> -->
+  <Medicine.description>設定新殖民地使用的默認醫藥設定，以及新殖民者將攜帶的藥物類型和數量。</Medicine.description>
+
+  <!-- <Rewards.label>default reward preferences</Rewards.label> -->
+  <Rewards.label>默認報酬偏好</Rewards.label>
+  <!-- <Rewards.description>Set the default reward preferences to use for a new colony.</Rewards.description> -->
+  <Rewards.description>設定新殖民地的默認報酬偏好。</Rewards.description>
+
+  <!-- <ResourceCategories.label>default expanded resource categories</ResourceCategories.label> -->
+  <ResourceCategories.label>默認展開的資源分類</ResourceCategories.label>
+  <!-- <ResourceCategories.description>Set which resource tree categories are expanded by default in categorized mode.</ResourceCategories.description> -->
+  <ResourceCategories.description>設定在分類模式下默認展開的資源分類。</ResourceCategories.description>
+
+  <!-- <Storage.label>default storage settings</Storage.label> -->
+  <Storage.label>默認儲存設定</Storage.label>
+  <!-- <Storage.description>Configure the default settings for stockpile zones, dumping stockpile zones, and storage buildings such as shelves. You can also create your own custom stockpile zone types with their own settings.</Storage.description> -->
+  <Storage.description>默認儲存設為儲存區、垃圾儲存區和貨架等儲存建築配寘默認設置。你還可以創建自己的自定義儲存區類型，並為其設定特定的設定。</Storage.description>
+
+  <!-- <WorkbenchBills.label>default workbench bills</WorkbenchBills.label> -->
+  <WorkbenchBills.label>默認工作桌選單</WorkbenchBills.label>
+  <!-- <WorkbenchBills.description>Set default bills for workbenches that will populate automatically upon building a workbench.</WorkbenchBills.description> -->
+  <WorkbenchBills.description>為工作桌設定默認選單，這些選單將在建造工作桌時自動填充。</WorkbenchBills.description>
+
+  <!-- <AllowedAreas.label>default allowed areas</AllowedAreas.label> -->
+  <AllowedAreas.label>默認活动区</AllowedAreas.label>
+  <!-- <AllowedAreas.description>Create default allowed areas for new colonies and control which types of pawns get automatically assigned to which areas.</AllowedAreas.description> -->
+  <AllowedAreas.description>為新殖民地創建默認的活動區，並控制哪些類型的生物會被自動分配到哪些區域。</AllowedAreas.description>
+
+  <!-- <Fishing.label>default fishing zone settings</Fishing.label> -->
+  <Fishing.label>默認釣魚區設定</Fishing.label>
+  <!-- <Fishing.description>Configure the default settings for fishing zones.</Fishing.description> -->
+  <Fishing.description>配寘釣魚區的默認設定。</Fishing.description>
+
+  <!-- <WorkPriorities.label>default work priorities</WorkPriorities.label> -->
+  <WorkPriorities.label>默認工作優先度</WorkPriorities.label>
+  <!-- <WorkPriorities.description>Create default work priorities for new colonists based on their passions and skills.</WorkPriorities.description> -->
+  <WorkPriorities.description>根據新殖民者的激情和技能為他們創建默認的工作優先度。</WorkPriorities.description>
+
+  <!-- <PlaySettings.label>default play settings</PlaySettings.label> -->
+  <PlaySettings.label>默認遊戲設定</PlaySettings.label>
+  <!-- <PlaySettings.description>Configure default play settings. These are generally the toggle buttons in the bottom-right corner of the screen.</PlaySettings.description> -->
+  <PlaySettings.description>配寘默認遊戲設定。這些通常是荧幕右下角的切換按鈕。</PlaySettings.description>
+
+  <!-- <Misc.label>miscellaneous defaults</Misc.label> -->
+  <Misc.label>雜項默認</Misc.label>
+  <!-- <Misc.description>Other default settings that don't fit neatly into one of the other categories.</Misc.description> -->
+  <Misc.description>其它不符合其它任何類別的默認設定。</Misc.description>
+
+  <!-- <General.label>general settings</General.label> -->
+  <General.label>常規設定</General.label>
+  <!-- <General.description>General settings for this mod.</General.description> -->
+  <General.description>此模組的常規設定。</General.description>
+
+
+</LanguageData>

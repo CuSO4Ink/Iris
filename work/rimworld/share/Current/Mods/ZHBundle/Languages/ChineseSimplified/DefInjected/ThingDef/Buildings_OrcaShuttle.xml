@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: light rocket -->
+  <Miho_MechWeapon_LightRocket_Proj.label>轻型火箭弹</Miho_MechWeapon_LightRocket_Proj.label>
+  
+  <!-- EN: 미호 순항 오니솝터 로켓 포드 -->
+  <Miho_MechWeapon_LightRocketTurret.label>巡航扑翼机火箭发射器</Miho_MechWeapon_LightRocketTurret.label>
+  <!-- EN: 57mm 고폭 로켓이 8발 들어간 포드 입니다. -->
+  <Miho_MechWeapon_LightRocketTurret.description>为巡航扑翼机设计的57mm火箭发射器。</Miho_MechWeapon_LightRocketTurret.description>
+  <!-- EN: 미호 순항 오니솝터 로켓 포드 -->
+  <Miho_MechWeapon_LightRocketTurret.verbs.Verb_Shoot.label>巡航扑翼机火箭发射器</Miho_MechWeapon_LightRocketTurret.verbs.Verb_Shoot.label>
+  
+  <!-- EN: 미호 군용 순항 오니솝터 -->
+  <Miho_Shuttle.label>美狐军用巡航扑翼机</Miho_Shuttle.label>
+  <!-- EN: 경장갑을 갖추고, 로켓 포드가 탑재된 순항 오니솝터 입니다. 기존의 화학연료 대신 아침동안 모인 태양열 에너지로 메카나이트 코어를 가동시켜 금속제 인공근육으로 날갯짓을 합니다. 메카나이트 코어는 친환경적이란 장점이 있지만. 보통 과열되기 쉽고, 식히기는 어려워 순항거리가 짧고, 엔진 과열로 인한 비행 대기 시간이 보통 셔틀에 비해 깁니다.\n		\n주의사항 : 연료량이 15이상이면 로켓 포드가 자동 발사 됩니다! -->
+  <Miho_Shuttle.description>巡航扑翼机的军用型号。它的机翼采用金属人造肌肉制成，看起来很像昆虫的翅膀。它的纳米机械引擎由白天储存的太阳能驱动，而非传统的化合燃料。虽然这种设计相当环保节能，但存在易过热且散热困难的缺陷。受制于此的它不仅航程较短，每次飞行后也需要更长的冷却时间。\n\n这种巡航扑翼机额外加装了轻型装甲和火箭发射器。当燃料量超过15时，火箭发射器便会自动开火。</Miho_Shuttle.description>
+  <!-- EN: {0} is ready to launch again. -->
+  <Miho_Shuttle.comps.CompLaunchable.cooldownEndedMessage>{0}已准备好再次发射。</Miho_Shuttle.comps.CompLaunchable.cooldownEndedMessage>
+  <!-- EN: Chemfuel -->
+  <Miho_Shuttle.comps.CompRefuelable.fuelGizmoLabel>化合燃料</Miho_Shuttle.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- EN: Chemfuel -->
+  <Miho_Shuttle.comps.CompRefuelable.fuelLabel>化合燃料</Miho_Shuttle.comps.CompRefuelable.fuelLabel>
+  
+  <!-- EN: 미호 순항 오니솝터 -->
+  <Miho_Shuttle_Civ.label>美狐巡航扑翼机</Miho_Shuttle_Civ.label>
+  <!-- EN: 셔틀의 대체품인 순항 오니솝터 입니다. 기존의 화학연료 대신 아침동안 모인 태양열 에너지로 메카나이트 코어를 가동시켜 금속제 인공근육으로 날갯짓을 합니다. 메카나이트 코어는 친환경적이란 장점이 있지만. 보통 과열되기 쉽고, 식히기는 어려워 순항거리가 짧고, 엔진 과열로 인한 비행 대기 시간이 보통 셔틀에 비해 깁니다. 아웃도어용 작은 화학연료 발전기 또한 장착되어 있습니다. -->
+  <Miho_Shuttle_Civ.description>巡航扑翼机是美狐族所研发的穿梭机替代品。它的机翼采用金属人造肌肉制成，看起来很像昆虫的翅膀。它的纳米机械引擎由白天储存的太阳能驱动，而非传统的化合燃料。虽然这种设计相当环保节能，但存在易过热且散热困难的缺陷。受制于此的它不仅航程较短，每次飞行后也需要更长的冷却时间。\n\n这种巡航扑翼机额外加装了野外用的小型化合燃料发电机。</Miho_Shuttle_Civ.description>
+  <!-- EN: {0} is ready to launch again. -->
+  <Miho_Shuttle_Civ.comps.CompLaunchable.cooldownEndedMessage>{0}已准备好再次发射。</Miho_Shuttle_Civ.comps.CompLaunchable.cooldownEndedMessage>
+  <!-- EN: Chemfuel -->
+  <Miho_Shuttle_Civ.comps.CompRefuelable.fuelGizmoLabel>化合燃料</Miho_Shuttle_Civ.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- EN: Chemfuel -->
+  <Miho_Shuttle_Civ.comps.CompRefuelable.fuelLabel>化合燃料</Miho_Shuttle_Civ.comps.CompRefuelable.fuelLabel>
+  
+</LanguageData>

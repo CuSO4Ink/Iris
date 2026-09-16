@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Favorite Weapon Equipped -->
+  <SK_WM_MasteredWeaponEquipped.stages.Favorite_Weapon_Equipped.label>裝備了鍾愛的武器</SK_WM_MasteredWeaponEquipped.stages.Favorite_Weapon_Equipped.label>
+  <!-- EN: I feel like I can take an army with this weapon. -->
+  <SK_WM_MasteredWeaponEquipped.stages.Favorite_Weapon_Equipped.description>只要好搭檔在手，我一人便能抵擋千軍萬馬！</SK_WM_MasteredWeaponEquipped.stages.Favorite_Weapon_Equipped.description>
+  
+  <!-- EN: Favorite Weapon Lost -->
+  <SK_WM_MasteredWeaponUnequipped.stages.Favorite_Weapon_Lost.label>失去了鍾愛的武器</SK_WM_MasteredWeaponUnequipped.stages.Favorite_Weapon_Lost.label>
+  <!-- EN: Oh, what am I going to do without that weapon? -->
+  <SK_WM_MasteredWeaponUnequipped.stages.Favorite_Weapon_Lost.description>不！沒了好搭檔，我還怎麼活啊！</SK_WM_MasteredWeaponUnequipped.stages.Favorite_Weapon_Lost.description>
+  
+</LanguageData>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: weave lifestrand -->
+  <VV_MakeLifestrand.label>制作生命缕织</VV_MakeLifestrand.label>
+  <!-- EN: Process devilstrand with mana-infused materials to weave lifestrand. -->
+  <VV_MakeLifestrand.description>将魔能材料注入魔菇布，制作生命缕织。</VV_MakeLifestrand.description>
+  <!-- EN: weaving lifestrand. -->
+  <VV_MakeLifestrand.jobString>制作生命缕织中</VV_MakeLifestrand.jobString>
+  
+  <!-- EN: refine titanic hornet wing -->
+  <VV_RefineTitanicHornetWing.label>加工巨型黄蜂翅</VV_RefineTitanicHornetWing.label>
+  <!-- EN: Refine lifestrand from titanic hornet wing. -->
+  <VV_RefineTitanicHornetWing.description>将黄蜂翅加工为生命缕织。</VV_RefineTitanicHornetWing.description>
+  <!-- EN: refining hornet wing. -->
+  <VV_RefineTitanicHornetWing.jobString>加工黄蜂翅中</VV_RefineTitanicHornetWing.jobString>
+  
+</LanguageData>

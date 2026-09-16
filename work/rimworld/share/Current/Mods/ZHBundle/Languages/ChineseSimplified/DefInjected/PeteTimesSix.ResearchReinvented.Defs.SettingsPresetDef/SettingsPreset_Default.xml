@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: default -->
+  <SettingsPreset_RR_Default.label>默认</SettingsPreset_RR_Default.label>
+  <!-- EN: Default settings preset. Research will be faster if your colony is well-organized and has an adequate supply of research subjects, and slower if not. -->
+  <SettingsPreset_RR_Default.description>默认预设：当你的殖民地组织良好、研究对象供应充足时，研究会更快；反之则更慢。</SettingsPreset_RR_Default.description>
+
+</LanguageData>

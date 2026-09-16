@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: rock construct -->
+  <VPE_RockConstruct.label>岩石構裝體</VPE_RockConstruct.label>
+  <!-- EN: A piece of rock chunk, animated by powerful psychic energy. It will do simple work around the colony tirelessly and with maximum dedication.\n\n<color=#E5E54C>Gameplay effect:</color>Constructs generate constant heat for the caster that summoned them. Keeping too many constructs alive could prevent the psycaster from casting other abilities. -->
+  <VPE_RockConstruct.description>一塊被強大靈能活化的石頭。它會在殖民地內不知疲倦地做一些簡單工作。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;構裝體會持續占用造主的心靈熵。維持太多構裝體可能會使造主無法施放其它能力。</VPE_RockConstruct.description>
+  <!-- EN: head -->
+  <VPE_RockConstruct.tools.head.label>頭部</VPE_RockConstruct.tools.head.label>
+  
+  <!-- EN: steel construct -->
+  <VPE_SteelConstruct.label>鋼鐵構裝體</VPE_SteelConstruct.label>
+  <!-- EN: A piece of steel slag, animated by powerful psychic energy. It will engage nearby threats and defend the master from any harm that may come to them.\n\n<color=#E5E54C>Gameplay effect:</color>Constructs generate constant heat for the caster that summoned them. Keeping too many constructs alive could prevent the psycaster from casting other abilities. -->
+  <VPE_SteelConstruct.description>一塊被強大靈能活化的鋼渣。它會攻擊附近的威脅，並保護主人不受傷害。\n\n&lt;color=#E5E54C&gt;遊戲效果：&lt;/color&gt;構裝體會持續占用造主的心靈熵。維持太多構裝體可能會使造主無法施放其它能力。</VPE_SteelConstruct.description>
+  <!-- EN: head -->
+  <VPE_SteelConstruct.tools.head.label>頭部</VPE_SteelConstruct.tools.head.label>
+  
+</LanguageData>

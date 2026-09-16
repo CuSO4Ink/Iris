@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 수리 -->
+  <Miho_Skill_I_Repair_Hediff.label>战地维修</Miho_Skill_I_Repair_Hediff.label>
+  <!-- EN: 수리 -->
+  <Miho_Skill_I_Repair_Hediff.description>战地维修。</Miho_Skill_I_Repair_Hediff.description>
+  
+  <!-- EN: 포술 -->
+  <Miho_Skill_II_Accuracy_Hediff.label>全息定位</Miho_Skill_II_Accuracy_Hediff.label>
+  <!-- EN: 포술 -->
+  <Miho_Skill_II_Accuracy_Hediff.description>全息定位。</Miho_Skill_II_Accuracy_Hediff.description>
+  
+  <!-- EN: 장갑 -->
+  <Miho_Skill_II_Armor_Hediff.label>装甲硬化</Miho_Skill_II_Armor_Hediff.label>
+  <!-- EN: 장갑 -->
+  <Miho_Skill_II_Armor_Hediff.description>装甲硬化。</Miho_Skill_II_Armor_Hediff.description>
+  
+  <!-- EN: 의식 좀먹기 -->
+  <Miho_Skill_III_HackingSlow_Hediff.label>心智骇入（意识侵蚀）</Miho_Skill_III_HackingSlow_Hediff.label>
+  <!-- EN: 의식 좀먹기 -->
+  <Miho_Skill_III_HackingSlow_Hediff.description>心智骇入（意识侵蚀）。</Miho_Skill_III_HackingSlow_Hediff.description>
+  
+  <!-- EN: 오버 -->
+  <Miho_Skill_III_Overclock_Hediff.label>机能超频</Miho_Skill_III_Overclock_Hediff.label>
+  <!-- EN: 오버 -->
+  <Miho_Skill_III_Overclock_Hediff.description>机能超频。</Miho_Skill_III_Overclock_Hediff.description>
+  
+  <!-- EN: 탄지 -->
+  <Miho_Skill_IV_BulletHell_Hediff.label>枪弹地狱</Miho_Skill_IV_BulletHell_Hediff.label>
+  <!-- EN: 탄지 -->
+  <Miho_Skill_IV_BulletHell_Hediff.description>枪弹地狱。</Miho_Skill_IV_BulletHell_Hediff.description>
+  
+  <!-- EN: 에너지 지원 -->
+  <Miho_Skill_IV_SpawnGenerator_Hediff.label>应急能源</Miho_Skill_IV_SpawnGenerator_Hediff.label>
+  <!-- EN: 에너지 지원 -->
+  <Miho_Skill_IV_SpawnGenerator_Hediff.description>应急能源。</Miho_Skill_IV_SpawnGenerator_Hediff.description>
+  
+  <!-- EN: 땜장이 (I) -->
+  <Miho_Tinker_I_Hediff.label>驭械士-I</Miho_Tinker_I_Hediff.label>
+  <!-- EN: 땜장이 -->
+  <Miho_Tinker_I_Hediff.description>I级驭械士。</Miho_Tinker_I_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Tinker_I_Hediff.stages.a.label>A阶</Miho_Tinker_I_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Tinker_I_Hediff.stages.b.label>B阶</Miho_Tinker_I_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Tinker_I_Hediff.stages.c.label>C阶</Miho_Tinker_I_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Tinker_I_Hediff.stages.d.label>D阶</Miho_Tinker_I_Hediff.stages.d.label>
+  
+  <!-- EN: 땜장이 (II) -->
+  <Miho_Tinker_II_Hediff.label>驭械士-II</Miho_Tinker_II_Hediff.label>
+  <!-- EN: 땜장이 -->
+  <Miho_Tinker_II_Hediff.description>II级驭械士。</Miho_Tinker_II_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Tinker_II_Hediff.stages.a.label>A阶</Miho_Tinker_II_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Tinker_II_Hediff.stages.b.label>B阶</Miho_Tinker_II_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Tinker_II_Hediff.stages.c.label>C阶</Miho_Tinker_II_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Tinker_II_Hediff.stages.d.label>D阶</Miho_Tinker_II_Hediff.stages.d.label>
+  
+  <!-- EN: 땜장이 (III) -->
+  <Miho_Tinker_III_Hediff.label>驭械士-III</Miho_Tinker_III_Hediff.label>
+  <!-- EN: 땜장이 -->
+  <Miho_Tinker_III_Hediff.description>III级驭械士。</Miho_Tinker_III_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Tinker_III_Hediff.stages.a.label>A阶</Miho_Tinker_III_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Tinker_III_Hediff.stages.b.label>B阶</Miho_Tinker_III_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Tinker_III_Hediff.stages.c.label>C阶</Miho_Tinker_III_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Tinker_III_Hediff.stages.d.label>D阶</Miho_Tinker_III_Hediff.stages.d.label>
+  
+  <!-- EN: 땜장이 (IV) -->
+  <Miho_Tinker_IV_Hediff.label>驭械士-IV</Miho_Tinker_IV_Hediff.label>
+  <!-- EN: 땜장이 -->
+  <Miho_Tinker_IV_Hediff.description>IV级驭械士。</Miho_Tinker_IV_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Tinker_IV_Hediff.stages.a.label>A阶</Miho_Tinker_IV_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Tinker_IV_Hediff.stages.b.label>B阶</Miho_Tinker_IV_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Tinker_IV_Hediff.stages.c.label>C阶</Miho_Tinker_IV_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Tinker_IV_Hediff.stages.d.label>D阶</Miho_Tinker_IV_Hediff.stages.d.label>
+  
+  <!-- EN: 땜장이 (행성 적응중) -->
+  <Miho_Tinker_Start_Hediff.label>驭械士（星球适应）</Miho_Tinker_Start_Hediff.label>
+  <!-- EN: 땜장이 -->
+  <Miho_Tinker_Start_Hediff.description>驭械士。</Miho_Tinker_Start_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Tinker_Start_Hediff.stages.a.label>A</Miho_Tinker_Start_Hediff.stages.a.label>
+  <!-- EN: c -->
+  <Miho_Tinker_Start_Hediff.stages.c.label>C</Miho_Tinker_Start_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Tinker_Start_Hediff.stages.d.label>D</Miho_Tinker_Start_Hediff.stages.d.label>
+  <!-- EN: e -->
+  <Miho_Tinker_Start_Hediff.stages.e.label>E</Miho_Tinker_Start_Hediff.stages.e.label>
+  <!-- EN: f -->
+  <Miho_Tinker_Start_Hediff.stages.f.label>F</Miho_Tinker_Start_Hediff.stages.f.label>
+  <!-- EN: g -->
+  <Miho_Tinker_Start_Hediff.stages.g.label>G</Miho_Tinker_Start_Hediff.stages.g.label>
+  
+  <!-- EN: 땜장이 (V) -->
+  <Miho_Tinker_V_Hediff.label>驭械士-V</Miho_Tinker_V_Hediff.label>
+  <!-- EN: 땜장이 -->
+  <Miho_Tinker_V_Hediff.description>V级驭械士。</Miho_Tinker_V_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Tinker_V_Hediff.stages.a.label>A阶</Miho_Tinker_V_Hediff.stages.a.label>
+  
+</LanguageData>

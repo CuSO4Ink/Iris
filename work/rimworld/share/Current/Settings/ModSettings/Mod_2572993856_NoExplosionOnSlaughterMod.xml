@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="NoExplosionOnSlaughter.NoExplosionOnSlaughterSettings">
+		<disabledDeathActions>
+			<li>RimWorld.DeathActionWorker_SmallExplosion</li>
+			<li>RimWorld.DeathActionWorker_BigExplosion</li>
+			<li>RimWorld.DeathActionWorker_ToxCloud</li>
+			<li>AlphaBehavioursAndEvents.DeathActionWorker_AcidExplosion</li>
+			<li>AlphaBehavioursAndEvents.DeathActionWorker_FrostbiteExplosion</li>
+			<li>AlphaBehavioursAndEvents.DeathActionWorker_GargantuanExplosion</li>
+			<li>AlphaBehavioursAndEvents.DeathActionWorker_LuciferiumExplosion</li>
+			<li>AlphaBehavioursAndEvents.DeathActionWorker_RedAcidExplosion</li>
+			<li>AlphaBehavioursAndEvents.DeathActionWorker_SmallRedAcidExplosion</li>
+		</disabledDeathActions>
+	</ModSettings>
+</SettingsBlock>

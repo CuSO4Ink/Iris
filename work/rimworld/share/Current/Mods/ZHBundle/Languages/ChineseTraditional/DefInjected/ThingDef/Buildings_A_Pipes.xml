@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Console Loom -->
+  <controllerLoom.label>數據電纜</controllerLoom.label>
+  <!-- EN: Wiring loom for transmitting signals between a core and a control console. Can be placed under walls and other buildings. -->
+  <controllerLoom.description>用於在反應堆與控制台之間傳輸信號。\n\n可以放置於墻壁和其他建築物之下。</controllerLoom.description>
+  
+  <!-- EN: console loom (hidden) -->
+  <controllerLoomHidden.label>數據電纜（隱藏）</controllerLoomHidden.label>
+  <!-- EN: Hidden wiring loom for transmitting signals between a core and a control console. Can be placed under walls and other buildings. -->
+  <controllerLoomHidden.description>用於在反應堆與控制台之間傳輸信號。\n\n可以放置於墻壁和其他建築物之下。</controllerLoomHidden.description>
+  
+  <!-- EN: Coolant valve -->
+  <coolantValve.label>冷卻劑閥門</coolantValve.label>
+  <!-- EN: Opens or closes connections between coolant pipes. -->
+  <coolantValve.description>打開或關閉冷卻液導管之間的連通。</coolantValve.description>
+  
+  <!-- EN: coolant pipe -->
+  <coolingPipe.label>冷卻劑導管</coolingPipe.label>
+  <!-- EN: Pipes for pumping coolant from the turbine to cooling systems. Can be placed under walls and other buildings. -->
+  <coolingPipe.description>用於在渦輪機與冷卻系統之間輸送冷卻劑。\n\n可以放置於墻壁和其他建築物之下。</coolingPipe.description>
+  
+  <!-- EN: coolant pipe (hidden) -->
+  <coolingPipeHidden.label>冷卻劑導管（隱藏）</coolingPipeHidden.label>
+  <!-- EN: Hidden pipes for pumping coolant from the turbine to cooling systems. Can be placed under walls and other buildings. -->
+  <coolingPipeHidden.description>用於在渦輪機與冷卻系統之間輸送冷卻劑。\n\n可以放置於墻壁和其他建築物之下。</coolingPipeHidden.description>
+  
+  <!-- EN: High Voltage -->
+  <HighVoltage.label>高壓電纜</HighVoltage.label>
+  <!-- EN: Cable for transporting high voltage power from turbines to transformers. Can be placed under walls and other buildings. -->
+  <HighVoltage.description>用於在渦輪與變壓器之間輸送高壓電。\n\n可以放置於墻壁和其他建築物之下。</HighVoltage.description>
+  
+  <!-- EN: high voltage (hidden) -->
+  <HighVoltageHidden.label>高壓電纜（隱藏）</HighVoltageHidden.label>
+  <!-- EN: Hidden cable for transporting high voltage power from turbines to transformers. Can be placed under walls and other buildings. -->
+  <HighVoltageHidden.description>用於在渦輪與變壓器之間輸送高壓電。\n\n可以放置於墻壁和其他建築物之下。</HighVoltageHidden.description>
+  
+  <!-- EN: Steam pipe -->
+  <steamPipe.label>蒸汽導管</steamPipe.label>
+  <!-- EN: Pipes for pumping high pressure steam from the reactor to turbines. Can be placed under walls and other buildings. -->
+  <steamPipe.description>用於在反應堆與渦輪之間輸送高壓蒸汽。\n\n可以放置於墻壁和其他建築物之下。</steamPipe.description>
+  
+  <!-- EN: steam water pipe (hidden) -->
+  <steamPipeHidden.label>蒸汽導管（隱藏）</steamPipeHidden.label>
+  <!-- EN: Hidden pipes for pumping high pressure steam from the reactor to turbines. Can be placed under walls and other buildings. -->
+  <steamPipeHidden.description>用於在反應堆與渦輪之間輸送高壓蒸汽。\n\n可以放置於墻壁和其他建築物之下。</steamPipeHidden.description>
+  
+  <!-- EN: Steam valve -->
+  <steamValve.label>蒸汽閥門</steamValve.label>
+  <!-- EN: Opens or closes connections between steam pipes. -->
+  <steamValve.description>打開或關閉蒸汽導管之間的連通。</steamValve.description>
+  
+  <!-- EN: cold water pipe -->
+  <waterPipe.label>冷水導管</waterPipe.label>
+  <!-- EN: Pipes for pumping cold water from the turbine or heat exchanger back to the core. Can be placed under walls and other buildings. -->
+  <waterPipe.description>用於在渦輪或熱交換器與反應堆之間輸送冷水。\n\n可以放置於墻壁和其他建築物之下。</waterPipe.description>
+  
+  <!-- EN: cold water pipe (hidden) -->
+  <waterPipeHidden.label>冷水導管（隱藏）</waterPipeHidden.label>
+  <!-- EN: Hidden pipes for pumping cold water from the turbine or heat exchanger back to the core. Can be placed under walls and other buildings. -->
+  <waterPipeHidden.description>用於在渦輪或熱交換器與反應堆之間輸送冷水。\n\n可以放置於墻壁和其他建築物之下。</waterPipeHidden.description>
+  
+  <!-- EN: Cold water valve -->
+  <waterValve.label>冷水閥門</waterValve.label>
+  <!-- EN: Opens or closes connections between cold water pipes. -->
+  <waterValve.description>打開或關閉冷水導管之間的連通。</waterValve.description>
+  
+</LanguageData>

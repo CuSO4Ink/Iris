@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: no pain sensitivity -->
+  <VPE_NoPain.label>痛觉无感</VPE_NoPain.label>
+  <!-- EN: This creature has a reduced pain sensitivity, and it takes longer to be downed due to pain. -->
+  <VPE_NoPain.description>该生物对痛觉十分迟钝，更难因痛觉而倒地。</VPE_NoPain.description>
+  
+  <!-- EN: psychic shock -->
+  <VPE_PsychicShock.label>心灵冲击</VPE_PsychicShock.label>
+  <!-- EN: A state of psychic chaos in the brain and mind. Caused by psychic attacks or critical level of neural heat, this effect is debilitating until it wears off. -->
+  <VPE_PsychicShock.description>大脑的一种精神紊乱状态。由精神波影响脑内激素失调或精神熵的超标引起，这种效果会让生物直到影响消失前都处于精神衰弱的状态。</VPE_PsychicShock.description>
+  <!-- EN: a psychic shock -->
+  <VPE_PsychicShock.labelNoun>心灵冲击</VPE_PsychicShock.labelNoun>
+  
+</LanguageData>

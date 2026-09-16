@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: [PAWN_nameDef]是龙人。\n它是一种美丽的生物，具有人类和龙的特征。它主要出现在野外。它们的银发毛皮强度高且柔软，这使得它们在黑市上价格昂贵，经常成为猎人的目标。 -->
+  <Dragonian_BS.description>[PAWN_nameDef]是龙人。\n它是一种美丽的生物，具有人类和龙的特征。它主要出现在野外。它们的银发毛皮强度高且柔软，这使得它们在黑市上价格昂贵，经常成为猎人的目标。/n此外，他们也被帝国视为非法的灵能力使用者，因此可能遭到逮捕，甚至被当场处决。</Dragonian_BS.description>
+  <!-- EN: 龙人 -->
+  <Dragonian_BS.title>龙人</Dragonian_BS.title>
+  <!-- EN: 龙人 -->
+  <Dragonian_BS.titleShort>龙人</Dragonian_BS.titleShort>
+  
+  <!-- EN: [PAWN_nameDef]是龙人。\n它是一种美丽的生物，具有人类和龙的特征。它主要出现在野外。它们的银发毛皮强度高且柔软，这使得它们在黑市上价格昂贵，经常成为猎人的目标。 -->
+  <Dragonian_BS_B.description>[PAWN_nameDef]是龙人。\n它是一种美丽的生物，具有人类和龙的特征。它主要出现在野外。它们的银发毛皮强度高且柔软，这使得它们在黑市上价格昂贵，经常成为猎人的目标。/n此外，他们也被帝国视为非法的灵能力使用者，因此可能遭到逮捕，甚至被当场处决。</Dragonian_BS_B.description>
+  <!-- EN: 龙人 -->
+  <Dragonian_BS_B.title>龙人</Dragonian_BS_B.title>
+  <!-- EN: 龙人 -->
+  <Dragonian_BS_B.titleShort>龙人</Dragonian_BS_B.titleShort>
+  
+</LanguageData>

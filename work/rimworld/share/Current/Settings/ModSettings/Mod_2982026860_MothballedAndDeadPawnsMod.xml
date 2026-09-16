@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="MothballedAndDeadPawns.Settings">
+		<detailedReport>False</detailedReport>
+		<discardPawnsAfter>8</discardPawnsAfter>
+		<discardColonistsAfter>40</discardColonistsAfter>
+		<discardAnimalsAfter>10</discardAnimalsAfter>
+		<runDiscardQuests>True</runDiscardQuests>
+		<discardQuestsAfter>90</discardQuestsAfter>
+	</ModSettings>
+</SettingsBlock>

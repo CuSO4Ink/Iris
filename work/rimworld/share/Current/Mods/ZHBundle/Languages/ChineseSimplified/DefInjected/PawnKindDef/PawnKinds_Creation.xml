@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 메카나이트 혐오체 -->
+  <Miho_Abomi.label>骇憎魔械</Miho_Abomi.label>
+  
+  <!-- EN: 칼날나비 -->
+  <Miho_Butterfly.label>刃舞蝶</Miho_Butterfly.label>
+  
+  <!-- EN: 미호 운반여우 -->
+  <Miho_Fox.label>秘灵狐</Miho_Fox.label>
+  <!-- EN: red fox puppy -->
+  <Miho_Fox.lifeStages.red_fox_puppy.label>秘灵狐幼崽</Miho_Fox.lifeStages.red_fox_puppy.label>
+  <!-- EN: red fox puppies -->
+  <Miho_Fox.lifeStages.red_fox_puppy.labelPlural>秘灵狐幼崽</Miho_Fox.lifeStages.red_fox_puppy.labelPlural>
+  
+  <!-- EN: 사냥매 -->
+  <Miho_Hawk.label>秘灵猎鹰</Miho_Hawk.label>
+  
+</LanguageData>

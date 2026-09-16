@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Iris Ritual Recruitment · 仪式招募白名单</name>
+  <author>Iris</author>
+  <packageId>local.irisritualrecruitment</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <description>只为文化仪式的随机加入奖励设置种族白名单，保留仪式信仰和原有成功概率。MOD设置中选择允许的种族。</description>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2009463077</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>erdelf.humanoidalienraces</li>
+    <li>local.irisfixes</li>
+    <li>local.iristalentprogression</li>
+  </loadAfter>
+</ModMetaData>

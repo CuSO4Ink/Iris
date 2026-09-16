@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: make eltex cape -->
+  <VPE_Make_EltexCape.label>制作灵质披肩</VPE_Make_EltexCape.label>
+  <!-- EN: Make an eltex cape. -->
+  <VPE_Make_EltexCape.description>制作一件灵质披肩。</VPE_Make_EltexCape.description>
+  <!-- EN: Making eltex cape. -->
+  <VPE_Make_EltexCape.jobString>正在制作灵质披肩。</VPE_Make_EltexCape.jobString>
+  
+  <!-- EN: make eltex helmet -->
+  <VPE_Make_EltexHelmet.label>制作灵质头盔</VPE_Make_EltexHelmet.label>
+  <!-- EN: Make an eltex helmet. -->
+  <VPE_Make_EltexHelmet.description>制作一件灵质头盔</VPE_Make_EltexHelmet.description>
+  <!-- EN: Making eltex helmet. -->
+  <VPE_Make_EltexHelmet.jobString>正在制作灵质头盔</VPE_Make_EltexHelmet.jobString>
+  
+  <!-- EN: make eltex mask -->
+  <VPE_Make_EltexMask.label>制作灵质面具</VPE_Make_EltexMask.label>
+  <!-- EN: Make an eltex mask. -->
+  <VPE_Make_EltexMask.description>制作一件灵质面具</VPE_Make_EltexMask.description>
+  <!-- EN: Making eltex mask. -->
+  <VPE_Make_EltexMask.jobString>正在制作灵质面具</VPE_Make_EltexMask.jobString>
+  
+  <!-- EN: make eltex robe -->
+  <VPE_Make_EltexRobe.label>制作灵质长袍</VPE_Make_EltexRobe.label>
+  <!-- EN: Make an eltex robe. -->
+  <VPE_Make_EltexRobe.description>制作一件灵质长袍</VPE_Make_EltexRobe.description>
+  <!-- EN: Making eltex robe. -->
+  <VPE_Make_EltexRobe.jobString>正在制作灵质长袍</VPE_Make_EltexRobe.jobString>
+  
+  <!-- EN: make eltex shirt -->
+  <VPE_Make_EltexShirt.label>制作灵质衬衫</VPE_Make_EltexShirt.label>
+  <!-- EN: Make an eltex shirt. -->
+  <VPE_Make_EltexShirt.description>制作一件灵质衬衫</VPE_Make_EltexShirt.description>
+  <!-- EN: Making eltex shirt. -->
+  <VPE_Make_EltexShirt.jobString>正在制作灵质衬衫</VPE_Make_EltexShirt.jobString>
+  
+  <!-- EN: make eltex skullcap -->
+  <VPE_Make_EltexSkullcap.label>制作灵质头套</VPE_Make_EltexSkullcap.label>
+  <!-- EN: Make an eltex skullcap. -->
+  <VPE_Make_EltexSkullcap.description>制作一件灵质头套</VPE_Make_EltexSkullcap.description>
+  <!-- EN: Making eltex skullcap. -->
+  <VPE_Make_EltexSkullcap.jobString>正在制作灵质头套</VPE_Make_EltexSkullcap.jobString>
+  
+  <!-- EN: make eltex staff -->
+  <VPE_Make_EltexStaff.label>制作灵质权杖</VPE_Make_EltexStaff.label>
+  <!-- EN: Make an eltex staff. -->
+  <VPE_Make_EltexStaff.description>制作一件灵质权杖</VPE_Make_EltexStaff.description>
+  <!-- EN: Making eltex staff. -->
+  <VPE_Make_EltexStaff.jobString>正在制作灵质权杖</VPE_Make_EltexStaff.jobString>
+  
+  <!-- EN: make eltex vest -->
+  <VPE_Make_EltexVest.label>制作灵质马甲</VPE_Make_EltexVest.label>
+  <!-- EN: Make an eltex vest. -->
+  <VPE_Make_EltexVest.description>制作一件灵质马甲</VPE_Make_EltexVest.description>
+  <!-- EN: Making eltex vest. -->
+  <VPE_Make_EltexVest.jobString>正在制作灵质马甲</VPE_Make_EltexVest.jobString>
+  
+</LanguageData>

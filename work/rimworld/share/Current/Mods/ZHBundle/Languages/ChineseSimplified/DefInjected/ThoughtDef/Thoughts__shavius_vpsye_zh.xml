@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: bliss -->
+  <VPE_Bliss.stages.bliss-0.label>极乐</VPE_Bliss.stages.bliss-0.label>
+  <!-- EN: Maybe it isn't all bad. -->
+  <VPE_Bliss.stages.bliss-0.description>万事都还不错嘛。</VPE_Bliss.stages.bliss-0.description>
+  <!-- EN: bliss -->
+  <VPE_Bliss.stages.bliss-1.label>极乐</VPE_Bliss.stages.bliss-1.label>
+  <!-- EN: I think things are getting better. -->
+  <VPE_Bliss.stages.bliss-1.description>有些事正在变好。</VPE_Bliss.stages.bliss-1.description>
+  <!-- EN: bliss -->
+  <VPE_Bliss.stages.bliss-2.label>极乐</VPE_Bliss.stages.bliss-2.label>
+  <!-- EN: Everything is improving, slowly but surely. -->
+  <VPE_Bliss.stages.bliss-2.description>所有事情都在好转，尽管是个缓慢的过程。</VPE_Bliss.stages.bliss-2.description>
+  <!-- EN: bliss -->
+  <VPE_Bliss.stages.bliss-3.label>极乐</VPE_Bliss.stages.bliss-3.label>
+  <!-- EN: I'm feeling good right now, things are looking up. -->
+  <VPE_Bliss.stages.bliss-3.description>我感觉挺好的，要乐观。</VPE_Bliss.stages.bliss-3.description>
+  <!-- EN: bliss -->
+  <VPE_Bliss.stages.bliss-4.label>极乐</VPE_Bliss.stages.bliss-4.label>
+  <!-- EN: I feel warm and fuzzy, just being alive feels great. -->
+  <VPE_Bliss.stages.bliss-4.description>感觉懒洋洋的，活着可真好啊。</VPE_Bliss.stages.bliss-4.description>
+  <!-- EN: bliss -->
+  <VPE_Bliss.stages.bliss-5.label>极乐</VPE_Bliss.stages.bliss-5.label>
+  <!-- EN: I'm just about to burst with excitement. I love this colony, I love this world and all the lives on it. -->
+  <VPE_Bliss.stages.bliss-5.description>我的心情实在抑制不住，我喜欢这个地方，我喜欢这个世界，我喜欢世上的一切。</VPE_Bliss.stages.bliss-5.description>
+  <!-- EN: bliss -->
+  <VPE_Bliss.stages.bliss-6.label>极乐</VPE_Bliss.stages.bliss-6.label>
+  <!-- EN: All the colors of this world are so vivid, the sounds are so tranquil, the air is so crisp. This life leaves me breathless. -->
+  <VPE_Bliss.stages.bliss-6.description>世界上的一切色彩都是如此活泼，一切声音是如此静谧，空气是如此香甜。生活的美好要让我窒息了。</VPE_Bliss.stages.bliss-6.description>
+  <!-- EN: bliss -->
+  <VPE_Bliss.stages.bliss-7.label>极乐</VPE_Bliss.stages.bliss-7.label>
+  <!-- EN: This is it, isn't it? I've truly reached nirvana itself. Life itself is the very embodiment of happiness. -->
+  <VPE_Bliss.stages.bliss-7.description>来了，要来了，我感觉我要涅槃重生了。生命本身就是如此幸福。</VPE_Bliss.stages.bliss-7.description>
+  
+  <!-- EN: I know my future! -->
+  <VPE_Future.stages.I_know_my_future.label>知天命</VPE_Future.stages.I_know_my_future.label>
+  <!-- EN: I know my future, and things are looking good! -->
+  <VPE_Future.stages.I_know_my_future.description>我知道未来会怎样了，情况不错！</VPE_Future.stages.I_know_my_future.description>
+  
+  <!-- EN: mind wiped -->
+  <VPE_MindWiped.stages.mind_wiped.label>记忆清除</VPE_MindWiped.stages.mind_wiped.label>
+  <!-- EN: I don’t remember anything, I’m exploring everything anew! -->
+  <VPE_MindWiped.stages.mind_wiped.description>我什么都不记得了，一切都是如此新奇！</VPE_MindWiped.stages.mind_wiped.description>
+  
+  <!-- EN: Thrall -->
+  <VPE_Thrall.stages.Thrall.label>无心奴</VPE_Thrall.stages.Thrall.label>
+  <!-- EN: Ughhh ugghhh aaaahhhh -->
+  <VPE_Thrall.stages.Thrall.description>呃呃呃呃啊啊啊啊啊啊</VPE_Thrall.stages.Thrall.description>
+  
+  <!-- EN: time quake -->
+  <VPE_TimeQuake.stages.time_quake.label>时空震颤</VPE_TimeQuake.stages.time_quake.label>
+  <!-- EN: Everyone I knew has changed so much. This timequake really did a number on me. -->
+  <VPE_TimeQuake.stages.time_quake.description>我所知的一切都物是人非了。这时空震颤可真狠狠摆了我一道，</VPE_TimeQuake.stages.time_quake.description>
+  
+  <!-- EN: soaked in blood -->
+  <VPEH_SoakedInBlood.stages.soaked_in_blood-0.label>浴血</VPEH_SoakedInBlood.stages.soaked_in_blood-0.label>
+  <!-- EN: I'm soaking in blood. -->
+  <VPEH_SoakedInBlood.stages.soaked_in_blood-0.description>我沐浴与鲜血之中</VPEH_SoakedInBlood.stages.soaked_in_blood-0.description>
+  <!-- EN: soaked in blood -->
+  <VPEH_SoakedInBlood.stages.soaked_in_blood-1.label>浴血</VPEH_SoakedInBlood.stages.soaked_in_blood-1.label>
+  <!-- EN: I'm soaking in blood. -->
+  <VPEH_SoakedInBlood.stages.soaked_in_blood-1.description>我沐浴与鲜血之中</VPEH_SoakedInBlood.stages.soaked_in_blood-1.description>
+</LanguageData>

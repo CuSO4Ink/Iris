@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Drum -->
+  <sbz_Drum.label>金属大桶</sbz_Drum.label>
+  <!-- EN: The drum can hold up to 6 items of various kinds. -->
+  <sbz_Drum.description>用于储存各种物品的金属大桶。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：6组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物，人类尸体</sbz_Drum.description>
+  
+  <!-- EN: meat hook -->
+  <sbz_MeatHook.label>挂肉钩</sbz_MeatHook.label>
+  <!-- EN: A meat hook that can hang up to 12 pieces of meat or corpses. -->
+  <sbz_MeatHook.description>用于储存并陈列尸体或肉类的挂肉钩。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C>储存能力：&lt;/color>\n\n【最大储存量】：12组\n【可储存类型】：肉类，尸体</sbz_MeatHook.description>
+  
+  <!-- EN: Safe -->
+  <sbz_Safe.label>保险箱</sbz_Safe.label>
+  <!-- EN: The safe can hold up to 6 items of various kinds. -->
+  <sbz_Safe.description>用于安全储存各种物品的保险箱。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：6组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_Safe.description>
+  
+  <!-- EN: textile rack -->
+  <sbz_TextileRack.label>织物架</sbz_TextileRack.label>
+  <!-- EN: A textile rack that can hold up to 6 fabrics of various kinds. -->
+  <sbz_TextileRack.description>用于储存并陈列各种织物的架子。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C>储存能力：&lt;/color>\n\n【最大储存量】：6组\n【可储存类型】：织物</sbz_TextileRack.description>
+  
+</LanguageData>

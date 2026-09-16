@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: royal vivi -->
+  <VV_RoyalVivi.label>皇家薇薇</VV_RoyalVivi.label>
+  
+  <!-- EN: vivi federation representative -->
+  <VV_RoyalViviEmpress.label>皇家薇薇女皇</VV_RoyalViviEmpress.label>
+  
+  <!-- EN: vivi leader -->
+  <VV_RoyalViviLeader.label>皇家薇薇領導者</VV_RoyalViviLeader.label>
+  
+  <!-- EN: vivi trader -->
+  <VV_RoyalViviTrader.label>皇家薇薇</VV_RoyalViviTrader.label>
+  
+  <!-- EN: vivi archer -->
+  <VV_ViviArcher.label>薇薇射手</VV_ViviArcher.label>
+  
+  <!-- EN: vivi firefighter -->
+  <VV_ViviFirefighter.label>薇薇消防員</VV_ViviFirefighter.label>
+  
+  <!-- EN: vivi guard -->
+  <VV_ViviGuard.label>薇薇守衛</VV_ViviGuard.label>
+  
+  <!-- EN: vivi sniper -->
+  <VV_ViviSniper.label>薇薇狙擊手</VV_ViviSniper.label>
+  
+  <!-- EN: vivi tribesman -->
+  <VV_ViviTribesman.label>薇薇部眾</VV_ViviTribesman.label>
+  
+</LanguageData>

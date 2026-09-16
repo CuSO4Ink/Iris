@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_UncookedSoupSimple.label>簡單湯料</VCE_UncookedSoupSimple.label>
+		<VCE_UncookedSoupSimple.description>未被煮過的簡單湯料，需要在電湯鍋被燉熟後才能食用。</VCE_UncookedSoupSimple.description>
+		<VCE_CookedSoupSimple.label>簡單湯食</VCE_CookedSoupSimple.label>
+		<VCE_CookedSoupSimple.description>用少許材料慢慢烹飪出的一份簡單湯食。</VCE_CookedSoupSimple.description>
+		<VCE_UncookedSoupFine.label>精緻湯料</VCE_UncookedSoupFine.label>
+		<VCE_UncookedSoupFine.description>未被煮過的精緻湯料，需要在電湯鍋被燉熟後才能食用。</VCE_UncookedSoupFine.description>
+		<VCE_CookedSoupFine.label>精緻湯食</VCE_CookedSoupFine.label>
+		<VCE_CookedSoupFine.description>選擇多種原料，精心烹飪出的一份相對複雜的湯食。</VCE_CookedSoupFine.description>
+		<VCE_UncookedSoupLavish.label>奢侈湯料</VCE_UncookedSoupLavish.label>
+		<VCE_UncookedSoupLavish.description>未被煮過的奢侈湯料，需要在電湯鍋被燉熟後才能食用。</VCE_UncookedSoupLavish.description>
+		<VCE_CookedSoupLavish.label>奢侈湯食</VCE_CookedSoupLavish.label>
+		<VCE_CookedSoupLavish.description>廚藝界的大師級作品，這份湯食同時滋養了身體、思想和靈魂。</VCE_CookedSoupLavish.description>
+		<VCE_UncookedSoupGourmet.label>豪華湯料</VCE_UncookedSoupGourmet.label>
+		<VCE_UncookedSoupGourmet.description>未被煮過的豪華湯料，需要在電湯鍋被燉熟後才能食用。</VCE_UncookedSoupGourmet.description>
+		<VCE_CookedSoupGourmet.label>豪華湯食</VCE_CookedSoupGourmet.label>
+		<VCE_CookedSoupGourmet.description>精雕細琢的湯食，美艷絕倫，雖然成品的量不多。</VCE_CookedSoupGourmet.description>
+	</LanguageData>

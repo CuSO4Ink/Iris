@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 메딕아머 -->
+  <Miho_Medic_Hediff.label>军医战术背心輔助</Miho_Medic_Hediff.label>
+  <!-- EN: 메딕아머. -->
+  <Miho_Medic_Hediff.description>此单位正穿着军医战术背心，可以使用额外搭载的医疗模块来快速包扎并治愈他人身上的伤口与疾病。</Miho_Medic_Hediff.description>
+  <!-- EN: 메딕아머 -->
+  <Miho_Medic_Hediff.labelNoun>军医战术背心輔助</Miho_Medic_Hediff.labelNoun>
+  
+</LanguageData>

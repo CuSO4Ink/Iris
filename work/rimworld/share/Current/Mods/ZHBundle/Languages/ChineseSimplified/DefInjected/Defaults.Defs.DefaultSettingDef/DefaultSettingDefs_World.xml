@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <PlanetCoverage.label>default globe coverage</PlanetCoverage.label> -->
+  <PlanetCoverage.label>默认全球覆盖率</PlanetCoverage.label>
+  <!-- <OverallRainfall.label>default planet rainfall</OverallRainfall.label> -->
+  <OverallRainfall.label>默认星球降雨量</OverallRainfall.label>
+  <!-- <OverallTemperature.label>default planet temperature</OverallTemperature.label> -->
+  <OverallTemperature.label>默认星球温度</OverallTemperature.label>
+  <!-- <OverallPopulation.label>default planet population</OverallPopulation.label> -->
+  <OverallPopulation.label>默认星球人口密度</OverallPopulation.label>
+  <!-- <LandmarkDensity.label>default landmark density</LandmarkDensity.label> -->
+  <LandmarkDensity.label>默认地标密度</LandmarkDensity.label>
+  <!-- <PlanetPollution.label>default planet pollution</PlanetPollution.label> -->
+  <PlanetPollution.label>默认星球污染</PlanetPollution.label>
+  <!-- <MapSize.label>default map size</MapSize.label> -->
+  <MapSize.label>默认地图大小</MapSize.label>
+  <!-- <StartingSeason.label>default starting season</StartingSeason.label> -->
+  <StartingSeason.label>默认起始季节</StartingSeason.label>
+
+
+</LanguageData>

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: flashbud -->
+  <VV_Shockerbud.label>闪电芽</VV_Shockerbud.label>
+  <!-- EN: a arcane flower that discharges electricity within its transparent petals. It can be wired to store a large amount of power, but consumes mana in proportion.\n\nIf it receives external shocks, the internal voltage becomes unstable, generating massive electromagnetic pulses in the vicinity and discharging mana.\n\nIf placed adjacent to a peashooter, it has a 50% chance to fire an electric pea instead when the peashooter attacks. Electric peas briefly stun targets instead of physical damage.\nIf multiple flashbud or thunderpetals are adjacent, the effect stacks. -->
+  <VV_Shockerbud.description>一种神秘花朵，拥有透明的能放电的花瓣，能够连接到电线储存电力，但会按比消耗一定魔能。\n\n如果它受到外部冲击，内部电压会变得不稳定，在附近产生大量电磁脉冲并释放魔能。\n\n当附近有豌豆射手时，闪电芽有50%的概率会令豌豆射手攻击时改为发射闪电豌豆。闪电豌豆不造成伤害但能击晕目标。\n复数闪电芽或雷鸣瓣相邻时这一效果会叠加。</VV_Shockerbud.description>
+  
+  <!-- EN: thunderpetals -->
+  <VV_Thunderpetals.label>鸣雷瓣</VV_Thunderpetals.label>
+  <!-- EN: a arcane flower with stamens that conduct electricity, capable of connecting to power lines to convert mana into electricity. When lightning strikes and the mana is sufficient, it attracts the lightning to itself and converts it into mana.\n\nIf placed adjacent to a peashooter, it has a 50% chance to fire an electric pea instead when the peashooter attacks. Electric peas briefly stun targets instead of physical damage.\nIf multiple flashbud or thunderpetals are adjacent, the effect stacks. -->
+  <VV_Thunderpetals.description>一种神秘花朵，雄蕊可以导电，能够连接到电线将魔能转化为电力。当鸣雷瓣魔能充足时，会被吸引雷击并将其转化为魔能。\n\n当附近有豌豆射手时，闪电芽有50%的概率会令豌豆射手攻击时改为发射闪电豌豆。闪电豌豆不造成伤害但能击晕目标。\n复数闪电芽或雷鸣瓣相邻时这一效果会叠加。</VV_Thunderpetals.description>
+  
+</LanguageData>

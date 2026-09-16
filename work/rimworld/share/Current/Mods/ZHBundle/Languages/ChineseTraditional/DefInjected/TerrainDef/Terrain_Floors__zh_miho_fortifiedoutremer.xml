@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 세라믹 타일 -->
+  <Miho_Ceramics_Floor.label>美狐陶瓷地磚</Miho_Ceramics_Floor.label>
+  <!-- EN: 청결하고 무던한 세라믹 타일 입니다. -->
+  <Miho_Ceramics_Floor.description>潔凈且觀感尚可的陶瓷地磚。</Miho_Ceramics_Floor.description>
+  
+  <!-- EN: 미호 세라믹 타일 (청) -->
+  <Miho_CeramicsBlue_Floor.label>美狐陶瓷地磚（藍色）</Miho_CeramicsBlue_Floor.label>
+  <!-- EN: 청결하고 무던한 세라믹 타일 입니다. -->
+  <Miho_CeramicsBlue_Floor.description>潔凈且觀感尚可的陶瓷地磚。</Miho_CeramicsBlue_Floor.description>
+  
+  <!-- EN: 고급 미호 세라믹 바닥 -->
+  <Miho_CeramicsGood_Floor.label>華麗美狐陶瓷地磚</Miho_CeramicsGood_Floor.label>
+  <!-- EN: 마치 최고급 대리석 같은 아름다운 세라믹 타일 입니다. -->
+  <Miho_CeramicsGood_Floor.description>宛若頂級大理石般華麗的陶瓷地磚。</Miho_CeramicsGood_Floor.description>
+  
+</LanguageData>

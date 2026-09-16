@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: haute meal -->
+  <VCE_MealHaute.label>臻艺食物</VCE_MealHaute.label>
+  <!-- EN: An opulent symphony of flavor and form, where the finest ingredients and masterful technique unite in a transcendent culinary masterpiece. Provides exquisite mood when eaten, and ensures that colonists eating it together will form strong opinions of each other. -->
+  <VCE_MealHaute.description>色香味俱全的顶级食物，精心选配的食材被大厨使出浑身解数匠心打造而成。被食用后会提供大量心情加成，趣味相投的食客也会对彼此产生大量好感。</VCE_MealHaute.description>
+  <!-- EN: Haute Customization -->
+  <VCE_MealHaute.comps.CompGraphicCustomization.customizationTitle>臻艺食物自定义</VCE_MealHaute.comps.CompGraphicCustomization.customizationTitle>
+  
+</LanguageData>

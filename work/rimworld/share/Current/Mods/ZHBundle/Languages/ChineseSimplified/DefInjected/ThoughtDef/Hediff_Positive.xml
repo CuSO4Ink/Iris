@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 양기 결핍 -->
+  <Miho_Plus_Thought.stages.0.label>阳气匮乏</Miho_Plus_Thought.stages.0.label>
+  <!-- EN: 캬오! -->
+  <Miho_Plus_Thought.stages.0.description>呜嗷！</Miho_Plus_Thought.stages.0.description>
+  <!-- EN: 양기 부족 -->
+  <Miho_Plus_Thought.stages.1.label>阳气不足</Miho_Plus_Thought.stages.1.label>
+  <!-- EN: 양기가 부족해! 온갖 원초적인 감정들이 날 괴롭히고 있어. -->
+  <Miho_Plus_Thought.stages.1.description>我需要补充一些阳气了。那些诞自本能的原始情感快要压抑不住了！</Miho_Plus_Thought.stages.1.description>
+  <!-- EN: 양기가 충분함 -->
+  <Miho_Plus_Thought.stages.3.label>阳气充足</Miho_Plus_Thought.stages.3.label>
+  <!-- EN: 양기가 충분해. 진정으로 사람이 된 것 같아. -->
+  <Miho_Plus_Thought.stages.3.description>我体内的阳气很充足。</Miho_Plus_Thought.stages.3.description>
+  <!-- EN: 양기가 넘침 -->
+  <Miho_Plus_Thought.stages.4.label>阳气满盈</Miho_Plus_Thought.stages.4.label>
+  <!-- EN: 양기가 넘쳐. 부담스럽긴 하지만. 진정으로 사람이 된 것 같아. -->
+  <Miho_Plus_Thought.stages.4.description>虽然有些负担，不过体内满盈的阳气让我切实体会到自己是知性生物而不是野兽。</Miho_Plus_Thought.stages.4.description>
+  
+  <!-- EN: 태양화 담배를 핌 -->
+  <Miho_PositiveFlower_Pipe_High_Thought.stages.0.label>吸了曜阳烟</Miho_PositiveFlower_Pipe_High_Thought.stages.0.label>
+  <!-- EN: 정신이 맑아진 느낌이야. -->
+  <Miho_PositiveFlower_Pipe_High_Thought.stages.0.description>曜阳烟真是能让人提神醒脑的好东西。</Miho_PositiveFlower_Pipe_High_Thought.stages.0.description>
+  
+  <!-- EN: 태양화 차를 마심 -->
+  <Miho_PositiveFlower_Tea_High_Thought.stages.0.label>喝了煦日茶</Miho_PositiveFlower_Tea_High_Thought.stages.0.label>
+  <!-- EN: 맛있는 차야. -->
+  <Miho_PositiveFlower_Tea_High_Thought.stages.0.description>这煦日茶的味道与口感可谓一绝啊！</Miho_PositiveFlower_Tea_High_Thought.stages.0.description>
+  
+  <!-- EN: 생화를 먹음 -->
+  <Miho_PositiveFlower_Thought.stages.0.label>吃了生的秘灵葵花瓣</Miho_PositiveFlower_Thought.stages.0.label>
+  <!-- EN: 달달하고 꽃향이 나. 생으로 먹는건 좋진 않지만... -->
+  <Miho_PositiveFlower_Thought.stages.0.description>我不得不吃下生的秘灵葵花瓣。虽然味道甜甜的，但...</Miho_PositiveFlower_Thought.stages.0.description>
+  
+  <!-- EN: 봉인 (거부) -->
+  <Miho_Restraint_Thought.stages.0.label>灵符封印（抗拒）</Miho_Restraint_Thought.stages.0.label>
+  <!-- EN: 이게 뭐하는 짓이야! 풀어줘! -->
+  <Miho_Restraint_Thought.stages.0.description>这是要做什么！快把它从我身上揭下来！</Miho_Restraint_Thought.stages.0.description>
+  <!-- EN: 봉인 (부분적) -->
+  <Miho_Restraint_Thought.stages.1.label>灵符封印（起效）</Miho_Restraint_Thought.stages.1.label>
+  <!-- EN: 캥..! -->
+  <Miho_Restraint_Thought.stages.1.description>吭...咕呜...！</Miho_Restraint_Thought.stages.1.description>
+  <!-- EN: 봉인 (순응) -->
+  <Miho_Restraint_Thought.stages.2.label>灵符封印（顺从）</Miho_Restraint_Thought.stages.2.label>
+  <!-- EN: 주잉닝.... 캥...! 조아요오... -->
+  <Miho_Restraint_Thought.stages.2.description>汪...汪汪！嗷呜...</Miho_Restraint_Thought.stages.2.description>
+  
+</LanguageData>

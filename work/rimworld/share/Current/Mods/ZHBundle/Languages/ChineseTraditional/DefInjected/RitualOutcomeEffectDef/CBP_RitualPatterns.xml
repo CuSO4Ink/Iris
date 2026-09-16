@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.description>根據儀式的結果，參與者將在{MOODDAYS}天內獲得{MINMOOD}到{MAXMOOD}的心情值。</CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.description>
+  <CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.comps.0.label>{PAWN_labelShort}的 社交影響</CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.comps.0.label>
+  <CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.comps.1.label>參與者數量</CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.comps.1.label>
+  <CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.comps.2.label>房間印象</CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.comps.2.label>
+  <CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.outcomeChances.0.label>糟糕的祈福</CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.outcomeChances.0.label>
+  <CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.outcomeChances.1.label>平淡的祈福</CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.outcomeChances.1.label>
+  <CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.outcomeChances.2.label>成功的祈福</CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.outcomeChances.2.label>
+  <CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.outcomeChances.3.label>完美的祈福</CBP_RitualOutcomeEffect_RitualOfChildBirthPrayer.outcomeChances.3.label>
+
+
+</LanguageData>

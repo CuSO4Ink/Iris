@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 고급의복 -->
+  <Miho_ApparelAdvanced.label>美狐復雜衣物</Miho_ApparelAdvanced.label>
+  <!-- EN: 복잡한 미호들의 의복을 제작 할 수 있습니다. -->
+  <Miho_ApparelAdvanced.description>解鎖製作更復雜的美狐族衣物。</Miho_ApparelAdvanced.description>
+  <!-- EN:
+    <li>subject->미호 고급의복</li>
+    <li>subject_story->좋은 패션 디자인이 많아지자 아름다움에 도취된 여우들이 많아졌습니다</li>
+    <li>subject_story->좋은 패션 디자인이 많아지자 귀여움에 도취된 여우들이 많아졌습니다</li>
+    <li>subject_gerund->발전된 여우 의복</li>
+  -->
+  <Miho_ApparelAdvanced.generalRules.rulesStrings>
+    <li>subject->美狐復雜衣物</li>
+    <li>subject_story->隨著優秀的服裝設計與日俱增，有越來越多的美狐族開始追求漂亮</li>
+    <li>subject_story->隨著優秀的服裝設計與日俱增，有越來越多的美狐族開始追求可愛</li>
+    <li>subject_gerund->製作美狐復雜衣物</li>
+  </Miho_ApparelAdvanced.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 암살자 의복 -->
+  <Miho_ApparelAssassin.label>美狐特戰衣物</Miho_ApparelAssassin.label>
+  <!-- EN: 신체 능력을 강화시킬수 있는 암살자 의복을 제작할 수 있습니다. -->
+  <Miho_ApparelAssassin.description>解鎖製作美狐族的特種作戰衣物。</Miho_ApparelAssassin.description>
+  <!-- EN:
+    <li>subject->퍼라이어 전투 의복</li>
+    <li>subject_story->초능력이 억제되는 대신 신체능력이 상승했습니다</li>
+    <li>subject_gerund->초능력 억제법</li>
+  -->
+  <Miho_ApparelAssassin.generalRules.rulesStrings>
+    <li>subject->美狐特戰衣物</li>
+    <li>subject_story->雖然抑製了靈能的使用，但也強化了戰鬥能力</li>
+    <li>subject_gerund->製作美狐特戰衣物</li>
+  </Miho_ApparelAssassin.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 문화 -->
+  <Miho_ApparelBasic.label>美狐文化</Miho_ApparelBasic.label>
+  <!-- EN: 미호들의 문화를 배웁니다. -->
+  <Miho_ApparelBasic.description>研究美狐族的傳統與文化，解鎖製作較為簡易的美狐族衣物與食物。</Miho_ApparelBasic.description>
+  <!-- EN:
+    <li>subject->미호 문화</li>
+    <li>subject_story->정말 뭐라 형용하기 힘든 문화입니다</li>
+    <li>subject_story->기초적인 나르시즘에 빠진 결과 좀 더 귀여워졌습니다</li>
+    <li>subject_gerund->여우들의 문화 탐방</li>
+  -->
+  <Miho_ApparelBasic.generalRules.rulesStrings>
+    <li>subject->美狐文化</li>
+    <li>subject_story->真是難以形容的奇怪文化</li>
+    <li>subject_story->陷入了自我迷戀中，覺得自己越來越可愛了</li>
+    <li>subject_gerund->調查美狐文化</li>
+  </Miho_ApparelBasic.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 엘텍스 의복 -->
+  <Miho_ApparelEltex.label>美狐心靈衣物</Miho_ApparelEltex.label>
+  <!-- EN: 초능력치의 한계를 높혀주는 엘텍스 의복을 제작할 수 있습니다. -->
+  <Miho_ApparelEltex.description>解鎖製作可以強化心靈能力的美狐族心靈衣物。</Miho_ApparelEltex.description>
+  <!-- EN:
+    <li>subject->마법 의복</li>
+    <li>subject_story->신경열이 내려가는 이상한 현상을 발견했습니다</li>
+    <li>subject_story->메카나이트 초능력을 보조했습니다</li>
+    <li>subject_gerund->여우들의 마법 의복</li>
+  -->
+  <Miho_ApparelEltex.generalRules.rulesStrings>
+    <li>subject->美狐心靈衣物</li>
+    <li>subject_story->發現了心靈熵消散的奇特現象</li>
+    <li>subject_story->通過活化機械分子來增強靈能</li>
+    <li>subject_gerund->製作美狐心靈衣物</li>
+  </Miho_ApparelEltex.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 마법사 의복 -->
+  <Miho_ApparelSorcerees.label>美狐術士衣物</Miho_ApparelSorcerees.label>
+  <!-- EN: 메카나이트-마법 능력을 강화시킬수 있는 마법사 의복을 제작할 수 있습니다. -->
+  <Miho_ApparelSorcerees.description>解鎖製作可以大幅強化心靈能力的美狐族術士衣物。</Miho_ApparelSorcerees.description>
+  <!-- EN:
+    <li>subject->마법사 의복</li>
+    <li>subject_story->고위 초능력자들이 기능성 의복을 의뢰했습니다</li>
+    <li>subject_gerund->고위 초능력 의복</li>
+  -->
+  <Miho_ApparelSorcerees.generalRules.rulesStrings>
+    <li>subject->美狐術士衣物</li>
+    <li>subject_story->受高階靈能者委托製作具有強化效果的衣物</li>
+    <li>subject_gerund->製作美狐術士衣物</li>
+  </Miho_ApparelSorcerees.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 기초 공장 -->
+  <Miho_BasicFactory.label>美狐工廠基礎</Miho_BasicFactory.label>
+  <!-- EN: 세라믹을 생산할 수 있는 기본적인 기술을 배웁니다. -->
+  <Miho_BasicFactory.description>解鎖建造較為基礎的美狐族工廠設備。</Miho_BasicFactory.description>
+  <!-- EN:
+    <li>subject->미호 기초 공업</li>
+    <li>subject_story->미호들은 기초적인 공업기술을 '항성'에게서 배웠습니다</li>
+    <li>subject_story->도기 제작 기술을 배우고자 노력했습니다</li>
+    <li>subject_story->높은 용광로를 만들었습니다</li>
+    <li>subject_story->초능력으로 부품을 재봉했습니다</li>
+    <li>subject_gerund->미호 공업 시스템 구축</li>
+  -->
+  <Miho_BasicFactory.generalRules.rulesStrings>
+    <li>subject->美狐工廠基礎</li>
+    <li>subject_story->在「恒星」的指引下掌握了基礎的工業技術</li>
+    <li>subject_story->努力學習了陶瓷的生產工藝</li>
+    <li>subject_story->製造了高爐</li>
+    <li>subject_story->操縱心靈能量製作了零部件</li>
+    <li>subject_gerund->構建美狐工業體系</li>
+  </Miho_BasicFactory.generalRules.rulesStrings>
+  
+  <!-- EN: 초월질량엮기 -->
+  <Miho_Celestial.label>美狐星宇冶鍛</Miho_Celestial.label>
+  <!-- EN: 페르소나 AI에게 도움받는 대형 합금 생산소 입니다. 중성자별의 핵과 이종물질을 합금하여 만드는 "천상비늘"을 제작 할 수 있게 됩니다. -->
+  <Miho_Celestial.description>解鎖製作性能無比優越合金材料星宇鱗金。</Miho_Celestial.description>
+  <!-- EN:
+    <li>subject->초월질량엮기</li>
+    <li>subject_story->초월체에게 도움을 받아 비로소 완성되었습니다</li>
+    <li>subject_story->상상할 수 없을 만큼 밀집된 금속을 제작했습니다</li>
+    <li>subject_gerund->초신성 용광로 건설</li>
+  -->
+  <Miho_Celestial.generalRules.rulesStrings>
+    <li>subject->美狐星宇冶鍛</li>
+    <li>subject_story->得到了超凡智能的幫助</li>
+    <li>subject_story->製作了密度大到難以想象的合金材料</li>
+    <li>subject_gerund->建造美狐星宇冶鍛機</li>
+  </Miho_Celestial.generalRules.rulesStrings>
+  
+  <!-- EN: 싸이베이스 드론 -->
+  <Miho_CommandDrone.label>美狐靈能支援無人機</Miho_CommandDrone.label>
+  <!-- EN: 초능력과 접목된 메카노이드들을 개발 할 수 있는 기술입니다. -->
+  <Miho_CommandDrone.description>深入研究心靈能量的運用與擴展，解鎖組裝美狐族的靈能支援無人機。</Miho_CommandDrone.description>
+  <!-- EN:
+    <li>subject->미호 초능력 메카노이드</li>
+    <li>subject_story->전장에서 여우들이 많이 사망하자 개발되었습니다</li>
+    <li>subject_story->여우들을 대체하기 위해 만들었지만 너무 비쌌습니다</li>
+    <li>subject_gerund->미호 초능력 전차</li>
+  -->
+  <Miho_CommandDrone.generalRules.rulesStrings>
+    <li>subject->美狐靈能支援無人機</li>
+    <li>subject_story->在有大量美狐族命喪戰場後研發了新型無人機</li>
+    <li>subject_story->雖然是為替代美狐族士兵而製造的，但成本過於昂貴</li>
+    <li>subject_gerund->組裝美狐靈能支援無人機</li>
+  </Miho_CommandDrone.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 초급 메카노이드 -->
+  <Miho_Drone.label>美狐園藝&amp;回收無人機</Miho_Drone.label>
+  <!-- EN: 초급적인 메카노이드들을 개발할 수 있는 기술입니다. -->
+  <Miho_Drone.description>解鎖組裝美狐族用於收割種植的園藝無人機和用於清潔的回收無人機。</Miho_Drone.description>
+  <!-- EN:
+    <li>subject->미호 기초 메카노이드</li>
+    <li>subject_story->1차산업에 관련된 메카노이드들을 제작했습니다</li>
+    <li>subject_story->단순노동을 대체해 혁신을 이뤘습니다</li>
+    <li>subject_gerund->미호 기계공학</li>
+  -->
+  <Miho_Drone.generalRules.rulesStrings>
+    <li>subject->美狐園藝&amp;回收無人機</li>
+    <li>subject_story->製造了與基礎產業相關的無人機</li>
+    <li>subject_story->用無人機替代了美狐族勞動力，實現了技術革新</li>
+    <li>subject_gerund->組裝美狐園藝&amp;回收無人機</li>
+  </Miho_Drone.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 포탑 메카노이드 -->
+  <Miho_GuardDrone.label>美狐偵查無人機</Miho_GuardDrone.label>
+  <!-- EN: 메카노이드와 포탑을 연결하는 기술입니다. -->
+  <Miho_GuardDrone.description>解鎖組裝美狐族的多用途偵查無人機。</Miho_GuardDrone.description>
+  <!-- EN:
+    <li>subject->미호 포탑 메카노이드</li>
+    <li>subject_story->인간들을 통제하기 위해 무서운걸 만들었습니다</li>
+    <li>subject_story->단순히 자동포탑을 달았지만 전쟁의 혁신이었습니다</li>
+    <li>subject_gerund->미호 기계포탑</li>
+  -->
+  <Miho_GuardDrone.generalRules.rulesStrings>
+    <li>subject->美狐偵查無人機</li>
+    <li>subject_story->為控製人類而製造了可怕的東西</li>
+    <li>subject_story->雖然只是在無人機上加裝了自動砲塔，但仍引領戰爭走向了新時代</li>
+    <li>subject_gerund->組裝美狐偵查無人機</li>
+  </Miho_GuardDrone.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 중공업 -->
+  <Miho_HeavyFactory.label>美狐工廠進階</Miho_HeavyFactory.label>
+  <!-- EN: 무기, 갑옷, 전투드론, 뭐든지 대량생산 할 수 있습니다. -->
+  <Miho_HeavyFactory.description>解鎖建造用於組裝無人機的復雜工廠設備。</Miho_HeavyFactory.description>
+  <!-- EN:
+    <li>subject->미호 중공업</li>
+    <li>subject_story->미호들은 중공업기술을 '항성'에게서 배웠습니다</li>
+    <li>subject_story->서브코어 없이 메카노이드들을 만들었습니다</li>
+    <li>subject_story->정착지의 모든 부품들을 자동공장에 투입했습니다</li>
+    <li>subject_gerund->미호 중공업 구축</li>
+  -->
+  <Miho_HeavyFactory.generalRules.rulesStrings>
+    <li>subject->美狐工廠進階</li>
+    <li>subject_story->在「恒星」的指引下掌握了更先進的重工業技術</li>
+    <li>subject_story->製造了不需要次生核心的機械族，即為美狐族的無人機</li>
+    <li>subject_story->將定居點的所有零部件都用於建造自動化工廠</li>
+    <li>subject_gerund->構建美狐重工業體系</li>
+  </Miho_HeavyFactory.generalRules.rulesStrings>
+  
+  <!-- EN: 보병 합동 작전 -->
+  <Miho_HeavyPlasma.label>步兵合同戰術</Miho_HeavyPlasma.label>
+  <!-- EN: 효과적인 전술 체계를 개발합니다. -->
+  <Miho_HeavyPlasma.description>研究並探索更有效的步兵合同戰術體系。</Miho_HeavyPlasma.description>
+  <!-- EN:
+    <li>subject->미호 보병합동</li>
+    <li>subject_story->제국군과 효율적으로 싸우기 위해서는 메카노이드와 유기적인 합동이 필요했습니다</li>
+    <li>subject_story->보호막이 달린 전차를 개발했습니다</li>
+    <li>subject_gerund->보병합동 메카노이드 개발</li>
+  -->
+  <Miho_HeavyPlasma.generalRules.rulesStrings>
+    <li>subject->步兵合同戰術</li>
+    <li>subject_story->為了更有效地對抗帝國部隊，讓無人機與步兵協同作戰</li>
+    <li>subject_story->研發出了能生成護盾的支援無人機</li>
+    <li>subject_gerund->研究步兵合同戰術</li>
+  </Miho_HeavyPlasma.generalRules.rulesStrings>
+  
+  <!-- EN: 메카노이드 중형 포대 -->
+  <Miho_HeavyWarBattery.label>美狐集束火箭&amp;先鋒拓進無人機</Miho_HeavyWarBattery.label>
+  <!-- EN: 집속탄 포대를 장착한 메카노이드를 개발합니다. -->
+  <Miho_HeavyWarBattery.description>解鎖組裝美狐族用於火力覆蓋的集束火箭無人機和用於蕩平前行道路的先鋒拓進無人機。</Miho_HeavyWarBattery.description>
+  <!-- EN:
+    <li>subject->미호 더 많은 미사일 시스템</li>
+    <li>subject_story->더많고 많은 화력이 필요했습니다</li>
+    <li>subject_story->둘, 삼, 쏴! 개박살을 내버려!</li>
+    <li>subject_gerund->여우들의 더 많은 포병</li>
+  -->
+  <Miho_HeavyWarBattery.generalRules.rulesStrings>
+    <li>subject->美狐集束火箭無人機</li>
+    <li>subject_story->意識到需要更多更強的火力</li>
+    <li>subject_story->三、二、一、開火！把他們全都送上天！</li>
+    <li>subject_gerund->組裝美狐集束火箭無人機</li>
+  </Miho_HeavyWarBattery.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 대형 전쟁 메카노이드 -->
+  <Miho_HeavyWarDrone.label>美狐溫壓火箭無人機</Miho_HeavyWarDrone.label>
+  <!-- EN: 경전차 대용의 메카노이드를 개발합니다. -->
+  <Miho_HeavyWarDrone.description>解鎖組裝美狐族用於火力覆蓋的溫壓火箭無人機。</Miho_HeavyWarDrone.description>
+  <!-- EN:
+    <li>subject->미호 미사일 시스템</li>
+    <li>subject_story->많은 화력이 필요했습니다</li>
+    <li>subject_story->둘, 삼, 쏴! 개박살을 내버려!</li>
+    <li>subject_gerund->여우들의 포병</li>
+  -->
+  <Miho_HeavyWarDrone.generalRules.rulesStrings>
+    <li>subject->美狐溫壓火箭無人機</li>
+    <li>subject_story->意識到需要更多的火力</li>
+    <li>subject_story->三、二、一、開火！把他們全都送上天！</li>
+    <li>subject_gerund->組裝美狐溫壓火箭無人機</li>
+  </Miho_HeavyWarDrone.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 정밀 무기 -->
+  <Miho_HeavyWeapon.label>美狐進階軍備</Miho_HeavyWeapon.label>
+  <!-- EN: 정밀한 미호들의 무기를 제작 할 수 있습니다. -->
+  <Miho_HeavyWeapon.description>解鎖製作更高級的美狐族軍備。</Miho_HeavyWeapon.description>
+  <!-- EN:
+    <li>subject->미호 차세대 무기</li>
+    <li>subject_story->더 많은 화력이 필요했습니다</li>
+    <li>subject_story->정밀한 부품으로 대량살상무기를 제조했습니다</li>
+    <li>subject_gerund->차세대 무기 개발</li>
+  -->
+  <Miho_HeavyWeapon.generalRules.rulesStrings>
+    <li>subject->美狐進階軍備</li>
+    <li>subject_story->意識到火力的不足</li>
+    <li>subject_story->用精密的零部件製作大規模殺傷性武器</li>
+    <li>subject_gerund->製作美狐進階軍備</li>
+  </Miho_HeavyWeapon.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 전쟁 메카노이드 -->
+  <Miho_LightWarDrone.label>美狐坦獵&amp;榴彈無人機</Miho_LightWarDrone.label>
+  <!-- EN: 본격적인 전쟁에 쓰이는 메카노이드들을 개발 할 수 있는 기술입니다. -->
+  <Miho_LightWarDrone.description>解鎖組裝美狐族用於反坦克的坦獵無人機和用於打擊成群輕甲敵人的榴彈無人機。</Miho_LightWarDrone.description>
+  <!-- EN:
+    <li>subject->미호 전쟁 메카노이드</li>
+    <li>subject_story->복잡한 중형전차를 요구했습니다</li>
+    <li>subject_story->복합재 장갑과 활강포는 메카노이드 전쟁에서 효과적이었습니다</li>
+    <li>subject_gerund->미호 중전차</li>
+  -->
+  <Miho_LightWarDrone.generalRules.rulesStrings>
+    <li>subject->美狐坦獵&amp;榴彈無人機</li>
+    <li>subject_story->意識到需要研發更復雜的重型無人機</li>
+    <li>subject_story->認識到反坦克砲和榴彈砲很適合裝在無人機上</li>
+    <li>subject_gerund->組裝美狐坦獵&amp;榴彈無人機</li>
+  </Miho_LightWarDrone.generalRules.rulesStrings>
+  
+  <!-- EN: 대형 메카나이트 코어 -->
+  <Miho_MechCore.label>機械分子引擎</Miho_MechCore.label>
+  <!-- EN: 완벽한 메카나이트 순환이 가능한 코어를 제작할 수 있는 기술을 개발합니다. -->
+  <Miho_MechCore.description>解鎖組裝能完美實現機械分子自循環的引擎，可用於驅動美狐族的重型無人機。</Miho_MechCore.description>
+  <!-- EN:
+    <li>subject->메카나이트 코어</li>
+    <li>subject_story->메카나이트들의 움직임을 관찰했습니다</li>
+    <li>subject_story->신개념 유압펌프를 고안했습니다</li>
+    <li>subject_story->메카나이트 엔진을 기획했습니다</li>
+    <li>subject_gerund->완벽순환 코어 제조</li>
+  -->
+  <Miho_MechCore.generalRules.rulesStrings>
+    <li>subject->機械分子引擎</li>
+    <li>subject_story->觀察了機械分子的運作方式</li>
+    <li>subject_story->研發了新型的油壓泵</li>
+    <li>subject_story->設計了機械分子引擎</li>
+    <li>subject_gerund->組裝機械分子引擎</li>
+  </Miho_MechCore.generalRules.rulesStrings>
+  
+  <!-- EN: 메카나이트 해킹 -->
+  <Miho_MechHack.label>機械分子駭入</Miho_MechHack.label>
+  <!-- EN: 눈에 보이지 않을정도로 조그만 메카노이드들을 해킹할 수 있는 기술을 배웁니다. 바이러스 같은것도 생체 메카나이트로 볼 수 있겠죠. 이 기술의 주 목적은 미호들의 초능력 혈청을 변형시키는 것 입니다. -->
+  <Miho_MechHack.description>學習如何駭入肉眼看不見的機械分子。這些如同病毒般的存在或許也可以被視作一種生物機械。此研究的主要目的是探索強化美狐族靈能的可能性。</Miho_MechHack.description>
+  <!-- EN:
+    <li>subject->메크해킹</li>
+    <li>subject_story->메카나이트들을 분석했습니다</li>
+    <li>subject_story->새로운 전자현미경을 구축했습니다</li>
+    <li>subject_story->분자단위 해킹을 배웠습니다</li>
+    <li>subject_gerund->분자단위 해킹</li>
+  -->
+  <Miho_MechHack.generalRules.rulesStrings>
+    <li>subject->機械分子駭入</li>
+    <li>subject_story->對機械分子進行了分析</li>
+    <li>subject_story->製作了全新的電子顯微鏡</li>
+    <li>subject_story->學會了如何駭入奈米級別的微小物質</li>
+    <li>subject_gerund->研究機械分子駭入</li>
+  </Miho_MechHack.generalRules.rulesStrings>
+  
+  <!-- EN: 조화객관환원이론 -->
+  <Miho_Persona.label>協調客觀還原理論</Miho_Persona.label>
+  <!-- EN: 기계장치에 양자적 영혼을 심어줄수있는 기술을 배웁니다. -->
+  <Miho_Persona.description>解鎖製作更加先進化、智能化的美狐族軍備。</Miho_Persona.description>
+  <!-- EN:
+    <li>subject->조화객관환원이론</li>
+    <li>subject_story->양자적 영혼에 대해 토론했습니다</li>
+    <li>subject_story->부족민들의 초월 숭배에 대해 기록했습니다</li>
+    <li>subject_story->고급 메카노이드들의 인공지능에 도움이 되었습니다</li>
+    <li>subject_gerund->Orch OR</li>
+  -->
+  <Miho_Persona.generalRules.rulesStrings>
+    <li>subject->協調客觀還原理論</li>
+    <li>subject_story->討論了量子靈魂的存在</li>
+    <li>subject_story->記錄了部落人對「超凡飛升」的崇拜</li>
+    <li>subject_story->推動了高級無人機的AI研發</li>
+    <li>subject_gerund->研究協調客觀還原理論</li>
+  </Miho_Persona.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 플라즈마 무기 -->
+  <Miho_PlasmaWeapon.label>美狐等離子軍備</Miho_PlasmaWeapon.label>
+  <!-- EN: 플라즈마상태의 원소를 이용하는 미호들의 무기를 제작 할 수 있습니다. -->
+  <Miho_PlasmaWeapon.description>解鎖製作美狐族的等離子軍備。</Miho_PlasmaWeapon.description>
+  <!-- EN:
+    <li>subject->미호 플라즈마 무기</li>
+    <li>subject_story->더욱 더 많은 화력이 필요했습니다</li>
+    <li>subject_story->화력에 대한 열망으로 항성을 따라했습니다</li>
+    <li>subject_gerund->플라즈마 무기 개발</li>
+  -->
+  <Miho_PlasmaWeapon.generalRules.rulesStrings>
+    <li>subject->美狐等離子軍備</li>
+    <li>subject_story->意識到需要更強的火力</li>
+    <li>subject_story->為尋求更強大的火力而模仿了恒星的熱量</li>
+    <li>subject_gerund->製作美狐等離子軍備</li>
+  </Miho_PlasmaWeapon.generalRules.rulesStrings>
+  
+  <!-- EN: 화현비단 -->
+  <Miho_Silk.label>火玄絲綢</Miho_Silk.label>
+  <!-- EN: 부드럽고 열기에 강한 비단을 생산할수 있습니다. -->
+  <Miho_Silk.description>解鎖火玄絲綢的生產法。</Miho_Silk.description>
+  <!-- EN:
+    <li>subject->화현비단</li>
+    <li>subject_story->최고의 비단을 재배했습니다</li>
+    <li>subject_story->불에 타지 않아 군사적 용도로도 탁월했습니다</li>
+    <li>subject_gerund->화현 뽕나무 재배</li>
+  -->
+  <Miho_Silk.generalRules.rulesStrings>
+    <li>subject->火玄絲綢</li>
+    <li>subject_story->種植了最優秀的桑樹</li>
+    <li>subject_story->發現火玄絲綢防火，可用於製作軍事裝備</li>
+    <li>subject_gerund->種植火玄桑樹</li>
+  </Miho_Silk.generalRules.rulesStrings>
+  
+  <!-- EN: 해수구제 -->
+  <Miho_VerminControlWeapon.label>“害蟲”防治</Miho_VerminControlWeapon.label>
+  <!-- EN: 언제나 그랬듯이. 못생기고 도움 안되는 동물들은 해수였습니다. 그런 친구들 죽이기에 좋은 무기가 있죠. -->
+  <Miho_VerminControlWeapon.description>解鎖製作美狐重型霰彈槍。\n\n“還是老樣子，那些又醜又沒用的動物和‘害蟲’沒什麽區別。是時候拿出更高效的武器消滅它們了。”</Miho_VerminControlWeapon.description>
+  <!-- EN:
+    <li>subject->자동 산탄총</li>
+    <li>subject_story->덜떨어지는 친구들을 소탕하기 위해 개발했습니다</li>
+    <li>subject_story->적대적인 개체들을 효과적이게 줄였습니다</li>
+    <li>subject_gerund->해수구제용 산탄총 개발</li>
+  -->
+  <Miho_VerminControlWeapon.generalRules.rulesStrings>
+    <li>subject->美狐重型霰彈槍</li>
+    <li>subject_story->為消滅無用的動物而研製了新武器</li>
+    <li>subject_story->有效地清理了所仇視的存在</li>
+    <li>subject_gerund->研製用於“害蟲”防治的霰彈槍</li>
+  </Miho_VerminControlWeapon.generalRules.rulesStrings>
+  
+  <!-- EN: 미호 무기 -->
+  <Miho_Weapon.label>美狐軍備</Miho_Weapon.label>
+  <!-- EN: 간단한 미호들의 무기를 제작 할 수 있습니다. -->
+  <Miho_Weapon.description>解鎖製作美狐族的基礎軍備。</Miho_Weapon.description>
+  <!-- EN:
+    <li>subject->소이철갑탄</li>
+    <li>subject_story->장갑판을 녹이기 위해 많은 노력을 했습니다</li>
+    <li>subject_story->소이탄과 철갑탄의 장점을 합쳤습니다</li>
+    <li>subject_gerund->소이철갑탄 개발</li>
+  -->
+  <Miho_Weapon.generalRules.rulesStrings>
+    <li>subject->美狐軍備</li>
+    <li>subject_story->為熔解裝甲板做了很多努力</li>
+    <li>subject_story->結合了燃燒彈與穿甲彈的優點</li>
+    <li>subject_gerund->製作美狐軍備</li>
+  </Miho_Weapon.generalRules.rulesStrings>
+  
+</LanguageData>

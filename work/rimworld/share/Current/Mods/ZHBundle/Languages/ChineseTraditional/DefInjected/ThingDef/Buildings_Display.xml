@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: display cabinet -->
+  <sbz_DisplayCabinet.label>櫥櫃</sbz_DisplayCabinet.label>
+  <!-- EN: A display cabinet that can store up to 8 different items. -->
+  <sbz_DisplayCabinet.description>用於儲存並陳列各種物品的櫥櫃。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：8組\n【可儲存類型】：食物，製成品，原材料，物品，近戰&amp;遠程武器，衣物</sbz_DisplayCabinet.description>
+  
+  <!-- EN: display shelf -->
+  <sbz_DisplayShelf.label>陳列架</sbz_DisplayShelf.label>
+  <!-- EN: A display shelf that can store up to 6 different items. -->
+  <sbz_DisplayShelf.description>用於儲存並陳列各種物品的架子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：6組\n【可儲存類型】：食物，製成品，原材料，物品，近戰&amp;遠程武器，衣物</sbz_DisplayShelf.description>
+  
+  <!-- EN: display table -->
+  <sbz_DisplayTable.label>陳列台</sbz_DisplayTable.label>
+  <!-- EN: A display table that can showcase up to 1 item. -->
+  <sbz_DisplayTable.description>用於儲存並陳列心儀物品的桌台。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：1組\n【可儲存類型】：食物，製成品，原材料，物品，近戰&amp;遠程武器，衣物</sbz_DisplayTable.description>
+
+  <!-- EN: round pedestal -->
+  <sbz_RoundPedestal.label>陳列圓座</sbz_RoundPedestal.label>
+  <!-- EN: A round pedestal that can showcase up to 1 item. -->
+  <sbz_RoundPedestal.description>用於儲存並陳列心儀物品的圓座。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：1組\n【可儲存類型】：食物，製成品，原材料，物品，近戰&amp;遠程武器，衣物</sbz_RoundPedestal.description>
+  
+  <!-- EN: narrow hanger shelf -->
+  <sbz_HangerShelf.label>窄衣櫃</sbz_HangerShelf.label>
+  <!-- EN: A clothes hanger rack that can hold up to 4 pieces of clothing. -->
+  <sbz_HangerShelf.description>用於儲存並陳列各種衣物的窄櫃子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：4組\n【可儲存類型】：衣物</sbz_HangerShelf.description>
+  
+  <!-- EN: narrow display cabinet -->
+  <sbz_NarrowDisplayCabinet.label>窄櫥櫃</sbz_NarrowDisplayCabinet.label>
+  <!-- EN: A narrow display cabinet that can store up to 4 different items. -->
+  <sbz_NarrowDisplayCabinet.description>用於儲存並陳列各種物品的窄櫥櫃。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：4組\n【可儲存類型】：食物，製成品，原材料，物品，近戰&amp;遠程武器，衣物</sbz_NarrowDisplayCabinet.description>
+  
+  <!-- EN: narrow tall display shelf -->
+  <sbz_NarrowTallDisplayShelf.label>窄高陳列架</sbz_NarrowTallDisplayShelf.label>
+  <!-- EN: A narrow and tall display shelf that can stack up to 6 different items. -->
+  <sbz_NarrowTallDisplayShelf.description>用於儲存並陳列各種物品的窄高架子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：6組\n【可儲存類型】：食物，製成品，原材料，物品，近戰&amp;遠程武器，衣物</sbz_NarrowTallDisplayShelf.description>
+  
+  <!-- EN: open shelf -->
+  <sbz_OpenShelf.label>貨架</sbz_OpenShelf.label>
+  <!-- EN: A open shelf that can store up to 12 different items. -->
+  <sbz_OpenShelf.description>用於儲存並陳列各種物品的貨架。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：12組\n【可儲存類型】：食物，製成品，原材料，物品，近戰&amp;遠程武器，衣物</sbz_OpenShelf.description>
+  
+  <!-- EN: small display shelf -->
+  <sbz_SmallDisplayShelf.label>小陳列架</sbz_SmallDisplayShelf.label>
+  <!-- EN: A small display shelf that can store up to 3 different items. -->
+  <sbz_SmallDisplayShelf.description>用於儲存並陳列各種物品的小架子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：3組\n【可儲存類型】：食物，製成品，原材料，物品，近戰&amp;遠程武器，衣物</sbz_SmallDisplayShelf.description>
+  
+  <!-- EN: tall display shelf -->
+  <sbz_TallDisplayShelf.label>高陳列架</sbz_TallDisplayShelf.label>
+  <!-- EN: A tall display shelf that can stack up to 12 different items. -->
+  <sbz_TallDisplayShelf.description>用於儲存並陳列各種物品的高架子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：12組\n【可儲存類型】：食物，製成品，原材料，物品，近戰&amp;遠程武器，衣物</sbz_TallDisplayShelf.description>
+  
+  <!-- EN: 2-tier display shelf -->
+  <sbz_TwoTierDisplayShelf.label>雙層陳列架</sbz_TwoTierDisplayShelf.label>
+  <!-- EN: A 2-tier display shelf that can store up to 12 different items. -->
+  <sbz_TwoTierDisplayShelf.description>用於儲存並陳列各種物品的雙層架子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：12組\n【可儲存類型】：食物，製成品，原材料，物品，近戰&amp;遠程武器，衣物</sbz_TwoTierDisplayShelf.description>
+  
+  <!-- EN: hanger shelf -->
+  <sbz_WideHangerShelf.label>衣櫃</sbz_WideHangerShelf.label>
+  <!-- EN: A clothes hanger rack that can hold up to 8 pieces of clothing. -->
+  <sbz_WideHangerShelf.description>用於儲存並陳列各種衣物的櫃子。存放在裡面的物品永遠不會老化，也不會影響周圍環境的美觀度。\n\n&lt;color=#E5E54C&gt;儲存能力：&lt;/color&gt;\n\n【最大儲存量】：8組\n【可儲存類型】：衣物</sbz_WideHangerShelf.description>
+  
+</LanguageData>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="RimworldPrefabProject.PrefabProjectSettings">
+		<favoritePrefabs />
+		<categoryClickCounts>
+			<keys>
+				<li>Dormitory</li>
+				<li>Storage</li>
+				<li>Other</li>
+				<li>PlantingArea</li>
+				<li>Canteen</li>
+				<li>AnimalFarm</li>
+				<li>Medical</li>
+				<li>DefenseWorks</li>
+				<li>IdeologyDLC</li>
+				<li>Research</li>
+				<li>BaseBlueprint</li>
+			</keys>
+			<values>
+				<li>36</li>
+				<li>16</li>
+				<li>10</li>
+				<li>7</li>
+				<li>6</li>
+				<li>3</li>
+				<li>1</li>
+				<li>1</li>
+				<li>2</li>
+				<li>1</li>
+				<li>1</li>
+			</values>
+		</categoryClickCounts>
+		<favoriteFoldGroups />
+		<aiTranslationTargetLanguages>
+			<li>zh-CN</li>
+			<li>zh-TW</li>
+			<li>en</li>
+			<li>ru</li>
+			<li>fr</li>
+			<li>de</li>
+			<li>es</li>
+			<li>ja</li>
+			<li>ko</li>
+		</aiTranslationTargetLanguages>
+	</ModSettings>
+</SettingsBlock>

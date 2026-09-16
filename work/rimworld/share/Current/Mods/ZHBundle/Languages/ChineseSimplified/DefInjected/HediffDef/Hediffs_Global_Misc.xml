@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: high on blisscap -->
+  <VPE_AteBlisscap.label>极乐菇亢奋</VPE_AteBlisscap.label>
+  <!-- EN: This person has consumed blisscap, which makes people incredibly high, but also incredibly drowsy. -->
+  <VPE_AteBlisscap.description>摄入极乐菇能产生大量快感，同时也会催生困意。</VPE_AteBlisscap.description>
+  
+</LanguageData>

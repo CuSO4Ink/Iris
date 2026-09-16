@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi refugees -->
+  <VV_ViviRefugeeStart.label>薇薇難民</VV_ViviRefugeeStart.label>
+  <!-- EN: Your nest was destroyed by titanic hornet swarms. The surviving Vivis scattered, and your small group of refugees escaped with minimal supplies.\n\nFortunately, you managed to evade pursuit, but the future looks grim for your group as it lacks a Royal Vivi. Can the Vivis rebuild their nest? -->
+  <VV_ViviRefugeeStart.description>你所在的蜂巢被成群的巨型黃蜂摧毀了。幸存的薇薇們四散而逃，你跟著一小群難民帶著極少的物資逃走了。\n\n幸運的是，你成功地逃脫了黃蜂追捕，但由于缺少皇家薇薇，蜂群的未來看起來很不容樂觀。薇薇們能重建她們的蜂巢嗎？</VV_ViviRefugeeStart.description>
+  <!-- EN: Your nest was destroyed by titanic hornet swarms. The surviving Vivis scattered, and your small group of refugees escaped with minimal supplies.\n\nFortunately, you managed to evade pursuit, but the future looks grim for your group as it lacks a Royal Vivi. Can the Vivis rebuild their nest? -->
+  <VV_ViviRefugeeStart.scenario.description>你所在的蜂巢被成群的巨型黃蜂摧毀了。幸存的薇薇們四散而逃，你跟著一小群難民帶著極少的物資逃走了。\n\n幸運的是，你成功地逃脫了黃蜂追捕，但由于缺少皇家薇薇，蜂群的未來看起來很不容樂觀。薇薇們能重建她們的蜂巢嗎？</VV_ViviRefugeeStart.scenario.description>
+  <!-- EN: vivi refugees -->
+  <VV_ViviRefugeeStart.scenario.name>薇薇難民</VV_ViviRefugeeStart.scenario.name>
+  <!-- EN: Your group of Vivi refugees, led by you, has confirmed that the pursuers are no longer following and has decided to stay here.\n\nSince the lifespan of regular Vivis is short and they cannot reproduce, you must raise a new Royal Vivi. Hatch Vivi eggs and feed them royal jelly to grow a new Royal Vivi, or recruit another Royal Vivi from outside. -->
+  <VV_ViviRefugeeStart.scenario.parts.GameStartDialog.text>你領導的薇薇難民們已經確定黃蜂不再追捕你們，你們決定留在這里。\n\n由于普通薇薇的壽命很短且無法繁殖，你必須培養一只新的皇家薇薇。孵化薇薇蜂卵，喂它們蜂王漿，培育一只新的皇家薇薇，或者從外面招募一只皇家薇薇。</VV_ViviRefugeeStart.scenario.parts.GameStartDialog.text>
+  <!-- EN: adult vivi -->
+  <VV_ViviRefugeeStart.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.0.description>成年薇薇</VV_ViviRefugeeStart.scenario.parts.ConfigurePawnsXenotypes.xenotypeCounts.0.description>
+  <!-- EN: A well-armed group of Vivi refugees. -->
+  <VV_ViviRefugeeStart.scenario.summary>一窩全副武裝的薇薇難民。</VV_ViviRefugeeStart.scenario.summary>
+  
+</LanguageData>

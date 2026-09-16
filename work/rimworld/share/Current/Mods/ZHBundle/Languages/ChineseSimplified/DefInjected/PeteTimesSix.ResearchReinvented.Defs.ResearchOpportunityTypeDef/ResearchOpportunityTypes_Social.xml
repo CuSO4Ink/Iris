@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: Brainstorm new ideas and approaches during social exchanges between members of {0}.\n\nAffected by (after conversation):\nParticipant research speed stat -->
+  <Brainstorming.shortDesc_Direct>在 {0} 成员的社交交流中，碰撞新想法与新方法。\n\n受影响（对话后）：\n参与者研究速度属性</Brainstorming.shortDesc_Direct>
+
+  <!-- EN: learn faction knowledge -->
+  <GainFactionKnowledge.header_Direct>学习派系知识</GainFactionKnowledge.header_Direct>
+  <!-- EN: Learn applicable knowledge from members of {0}, either by cooperative exchange of ideas, or extracting information from prisoners.\n\nAffected by (after conversation/interrogation):\nWarden/speaker research speed stat\nWarden/speaker social skill\nPrisoner/counterpart research speed stat\nPrisoner/counterpart social skill\nPrisoner/counterpart mood -->
+  <GainFactionKnowledge.shortDesc_Direct>通过 {0} 成员获取可用知识，方式可以是思想交流，也可以是从囚犯处提取信息。\n\n受影响（交谈/审讯后）：\n看守/发言者研究速度\n看守/发言者社交\n囚犯/对方研究速度\n囚犯/对方社交\n囚犯/对方心情</GainFactionKnowledge.shortDesc_Direct>
+
+  <!-- EN: learn outsider knowledge -->
+  <GainFactionlessKnowledge.header_Direct>学习外人知识</GainFactionlessKnowledge.header_Direct>
+  <!-- EN: Learn applicable knowledge from outsiders that are not members of any faction.\n\nAffected by (after conversation/interrogation):\nWarden/speaker research speed stat\nWarden/speaker social skill\nPrisoner/counterpart research speed stat\nPrisoner/counterpart social skill\nPrisoner/counterpart mood -->
+  <GainFactionlessKnowledge.shortDesc_Direct>从不属于任何派系的外人那里获取可用知识。\n\n受影响（交谈/审讯后）：\n看守/发言者研究速度\n看守/发言者社交\n囚犯/对方研究速度\n囚犯/对方社交\n囚犯/对方心情</GainFactionlessKnowledge.shortDesc_Direct>
+
+</LanguageData>

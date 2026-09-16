@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_SimpleDessert.label>简单甜点</VCE_SimpleDessert.label>
+		<VCE_SimpleDessert.description>用少许水果和其它材料快速烹饪出的一份简单甜点。</VCE_SimpleDessert.description>
+		<VCE_FineDessert.label>精致甜点</VCE_FineDessert.label>
+		<VCE_FineDessert.description>选择多种原料，精心烹饪出的一份相对复杂的甜点。</VCE_FineDessert.description>
+		<VCE_LavishDessert.label>奢侈甜点</VCE_LavishDessert.label>
+		<VCE_LavishDessert.description>厨艺界的大师级作品，这份甜点同时滋养了身体、思想和灵魂。</VCE_LavishDessert.description>
+		<VCE_GourmetDessert.label>豪华甜点</VCE_GourmetDessert.label>
+		<VCE_GourmetDessert.description>精雕细琢的甜点，美艳绝伦，虽然量不多。</VCE_GourmetDessert.description>
+	</LanguageData>

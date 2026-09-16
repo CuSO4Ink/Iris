@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Psycasts -->
+  <VPE.Psycasts>靈能</VPE.Psycasts>
+    <!-- EN: Psycaster Level: {0} -->
+  <VPE.PsyLevel>靈能等級：{0}</VPE.PsyLevel>
+    <!-- EN: Earn psycaster experience by meditating. -->
+  <VPE.EarnXP>通過冥想獲得靈能經驗。</VPE.EarnXP>
+    <!-- EN: Available points to spend: {0} -->
+  <VPE.Points>剩餘技能點：{0}</VPE.Points>
+    <!-- EN: Spend points on unlocking new paths, unlocking psycasts, unlocking meditation foci, improving stats, etc. -->
+  <VPE.SpendPoints>使用技能點來解鎖新道系，心靈能力，靈媒，提升屬性等等。</VPE.SpendPoints>
+    <!-- EN: Psycaster stats -->
+  <VPE.PsycasterStats>靈能屬性</VPE.PsycasterStats>
+    <!-- EN: Upgrade -->
+  <VPE.Upgrade>升級</VPE.Upgrade>
+    <!-- EN: Focus types: -->
+  <VPE.FocusTypes>靈媒類別：</VPE.FocusTypes>
+    <!-- EN: Customize Psysets -->
+  <VPE.PsysetCustomize>自定義技能組</VPE.PsysetCustomize>
+    <!-- EN: Drag and drop learnt psycasts into psysets that you can cycle between ingame. -->
+  <VPE.PsysetDesc>拖動已學習的心靈能力至技能組裡，以便在遊戲內快速切換選用。</VPE.PsysetDesc>
+    <!-- EN: Create Psyset -->
+  <VPE.CreatePsyset>創建技能組</VPE.CreatePsyset>
+    <!-- EN: Unlock -->
+  <VPE.Unlock>解鎖</VPE.Unlock>
+    <!-- EN: Click to Unlock -->
+  <VPE.ClickToUnlock>點擊以解鎖</VPE.ClickToUnlock>
+    <!-- EN: Use alternative backgrounds -->
+  <VPE.UseAltBackground>切換背景</VPE.UseAltBackground>
+    <!-- EN: Destroy -->
+  <VPE.DestroySkipdoor>摧毀</VPE.DestroySkipdoor>
+    <!-- EN: Destroy this skipdoor. It will no longer be usable, but will no longer impact the max heat of {0}. -->
+  <VPE.DestroySkipdoor.Desc>摧毀此折躍門。它將不能再被使用，但也不會再占用{0}的心靈熵。</VPE.DestroySkipdoor.Desc>
+    <!-- EN: Rename -->
+  <VPE.RenameSkipdoor>重命名</VPE.RenameSkipdoor>
+    <!-- EN: Rename this skipdoor. -->
+  <VPE.RenameSkipdoor.Desc>重命名此折躍門。</VPE.RenameSkipdoor.Desc>
+    <!-- EN: Teleport to {0} -->
+  <VPE.TeleportTo>傳送至{0}</VPE.TeleportTo>
+    <!-- EN: Cancel Skipbarrier -->
+  <VPE.CancelSkipbarrier>關閉折躍護盾</VPE.CancelSkipbarrier>
+    <!-- EN: Click to cancel Skipbarrier on the caster. -->
+  <VPE.CancelSkipbarrierDesc>關閉靈能者身上的折躍護盾。</VPE.CancelSkipbarrierDesc>
+    <!-- EN: Edit -->
+  <VPE.Edit>編輯</VPE.Edit>
+    <!-- EN: Rename -->
+  <VPE.Rename>重命名</VPE.Rename>
+    <!-- EN: Untitled -->
+  <VPE.Untitled>未命名</VPE.Untitled>
+    <!-- EN: Remove -->
+  <VPE.Remove>移除</VPE.Remove>
+    <!-- EN: Contents: -->
+  <VPE.Contents>內容：</VPE.Contents>
+    <!-- EN: Click to Remove -->
+  <VPE.ClickRemove>點擊以移除</VPE.ClickRemove>
+    <!-- EN: Selling Eltex is against Imperial law. This may or may not affect your relations with the Empire in the future. -->
+  <VPE.SellingEltexWarning>私自販賣靈質是違反帝國法律的行為。這在未來可能會影響你與帝國的關係。</VPE.SellingEltexWarning>
+    <!-- EN: Gifting Eltex is against Imperial law. This may or may not affect your relations with the Empire in the future. -->
+  <VPE.GiftingEltexWarning>私自贈予靈質是違反帝國法律的行為。這在未來可能會影響你與帝國的關係。</VPE.GiftingEltexWarning>
+    <!-- EN: Empire angered -->
+  <VPE.EmpireAngeredTitle>觸怒帝國</VPE.EmpireAngeredTitle>
+    <!-- EN: Empire caught wind that you have been {0} Eltex behind their back. They consider it to be against Imperial law, and your relations have degraded. -->
+  <VPE.EmpireAngeredDesc>帝國已經獲悉你在私下{0}靈質的行為。因為此行為嚴重違反了帝國法律，你們的關係下降了。</VPE.EmpireAngeredDesc>
+    <!-- EN: gifting -->
+  <VPE.Gifting>贈予</VPE.Gifting>
+    <!-- EN: trading -->
+  <VPE.Trading>交易</VPE.Trading>
+    <!-- EN: Goodwill with {FACTION_name} is now {1}. (Reduced by {2}) -->
+  <VPE.FactionRelationReducedInfo>與{FACTION_name}的關係現為{1}。（下降了{2}）</VPE.FactionRelationReducedInfo>
+    <!-- EN: Choose Psycast: -->
+  <VPE.CreatePsyringTitle>選擇心靈能力</VPE.CreatePsyringTitle>
+    <!-- EN: Create Psyring -->
+  <VPE.CreatePsyringButton>打造智環</VPE.CreatePsyringButton>
+    <!-- EN: Locked -->
+  <VPE.Locked>鎖定</VPE.Locked>
+    <!-- EN: Bodies consumed: +{0} -->
+  <VPE.StatsReport_BodiesConsumed>已煉化的屍體：+{0}</VPE.StatsReport_BodiesConsumed>
+    <!-- EN: Developer mode -->
+  <VPE.DevMode>開發者模式</VPE.DevMode>
+    <!-- EN: Not enough points available -->
+  <VPE.NotEnoughPoints>技能點不足</VPE.NotEnoughPoints>
+    <!-- EN: Psycasts included: -->
+  <VPE.AbilitiesList>已包含心靈能力：</VPE.AbilitiesList>
+    <!-- EN: hover -->
+  <VPE.Hover>鼠標移到這裡查看</VPE.Hover>
+    <!-- EN: {0}
+
+Capturing psycasters is a viable strategy and can be considered beneficial. -->
+  <VPE.PsycasterRaidDescription>{0}\n\n    捕獲靈能者是非常有益的策略。\n  </VPE.PsycasterRaidDescription>
+<!-- EN: Locked: Requires a Royal Title -->
+  <VPE.LockedTitle>已鎖定：需要皇權頭銜</VPE.LockedTitle>
+<!-- EN: Locked: Cannot be unlocked with points -->
+  <VPE.LockedLocked>已鎖定：無法用技能點解鎖</VPE.LockedLocked>
+  <!-- EN: Success chance -->
+  <VPE.SuccessChance>成功率</VPE.SuccessChance>
+    <!-- EN: Psychic coma for -->
+  <VPE.PsychicComaDuration>昏迷時長</VPE.PsychicComaDuration>
+</LanguageData>

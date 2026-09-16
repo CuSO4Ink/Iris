@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: plasma -->
+  <Miho_Ability_HotFireball_Proj.label>爆能狐焱</Miho_Ability_HotFireball_Proj.label>
+  
+  <!-- EN: 빛나는 금속 -->
+  <Miho_GoldBuilding.label>熔融金属（黄金）</Miho_GoldBuilding.label>
+  <!-- EN: 고온의 금속덩어리 입니다. -->
+  <Miho_GoldBuilding.description>尚未冷却成形的高温熔融金属。</Miho_GoldBuilding.description>
+  
+  <!-- EN: 빛나는 금속 -->
+  <Miho_PlasteelBuilding.label>熔融金属（玻璃钢）</Miho_PlasteelBuilding.label>
+  <!-- EN: 고온의 금속덩어리 입니다. -->
+  <Miho_PlasteelBuilding.description>尚未冷却成形的高温熔融金属。</Miho_PlasteelBuilding.description>
+  
+  <!-- EN: 빛나는 금속 -->
+  <Miho_SteelBuilding.label>熔融金属（钢铁）</Miho_SteelBuilding.label>
+  <!-- EN: 고온의 금속덩어리 입니다. -->
+  <Miho_SteelBuilding.description>尚未冷却成形的高温熔融金属。</Miho_SteelBuilding.description>
+  
+  <!-- EN: 여우 태양등 -->
+  <Miho_Sunlamp.label>天阳辉灯</Miho_Sunlamp.label>
+  <!-- EN: 열과 작물이 자라기에 충분한 빛을 제공하는 마법 램프입니다. -->
+  <Miho_Sunlamp.description>永久存在但非常脆弱的天阳辉灯，可将一片区域照亮到足以种植农作物。</Miho_Sunlamp.description>
+  
+</LanguageData>

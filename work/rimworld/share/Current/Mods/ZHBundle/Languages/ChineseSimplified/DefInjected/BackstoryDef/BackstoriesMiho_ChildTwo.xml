@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Miho_Child_FoxTwo.title>美狐平凡儿童</Miho_Child_FoxTwo.title>
+  <Miho_Child_FoxTwo.titleShort>平凡儿童</Miho_Child_FoxTwo.titleShort>
+  <Miho_Child_FoxTwo.description>{PAWN_nameDef}是一名生活在美狐族城市中的平凡儿童。{PAWN_pronoun}毕业于一所平凡的学校，并在那儿学会了许多平凡的知识。</Miho_Child_FoxTwo.description>
+
+  <Miho_Child_RuralTwo.title>美狐乡下儿童</Miho_Child_RuralTwo.title>
+  <Miho_Child_RuralTwo.titleShort>乡下儿童</Miho_Child_RuralTwo.titleShort>
+  <Miho_Child_RuralTwo.description>{PAWN_nameDef}是一名在乡下悠闲度日的儿童。照料动物、打理菜地、林中漫步...{PAWN_pronoun}的每一天都过得非常快乐。</Miho_Child_RuralTwo.description>
+
+  <Miho_Child_HuntFoxTwo.title>美狐小猎手</Miho_Child_HuntFoxTwo.title>
+  <Miho_Child_HuntFoxTwo.titleShort>小猎手</Miho_Child_HuntFoxTwo.titleShort>
+  <Miho_Child_HuntFoxTwo.description>{PAWN_nameDef}年纪轻轻就成为了一名本领高强的猎手，但似乎没人知道{PAWN_pronoun}究竟是因为天赋异禀还是经过不懈努力才达成这一步的。</Miho_Child_HuntFoxTwo.description>
+
+  <Miho_Child_OrphanTwo.title>美狐弃儿</Miho_Child_OrphanTwo.title>
+  <Miho_Child_OrphanTwo.titleShort>弃儿</Miho_Child_OrphanTwo.titleShort>
+  <Miho_Child_OrphanTwo.description>我们尚不知晓{PAWN_nameDef}究竟是被双亲狠心抛弃了还是因意外失去了他们。但至少可以肯定的是，{PAWN_pronoun}从未放弃过努力活下去的念头。</Miho_Child_OrphanTwo.description>
+
+  <Miho_Child_GiftedTwo.title>美狐神童</Miho_Child_GiftedTwo.title>
+  <Miho_Child_GiftedTwo.titleShort>神童</Miho_Child_GiftedTwo.titleShort>
+  <Miho_Child_GiftedTwo.description>{PAWN_nameDef}自幼便展现出了惊人的智慧。由于跟同龄段的朋友没有太多共通话题，{PAWN_pronoun}更喜欢和成年人待在一起。</Miho_Child_GiftedTwo.description>
+
+  <Miho_Child_DesertTwo.title>美狐沙漠儿童</Miho_Child_DesertTwo.title>
+  <Miho_Child_DesertTwo.titleShort>沙漠儿童</Miho_Child_DesertTwo.titleShort>
+  <Miho_Child_DesertTwo.description>{PAWN_nameDef}从小就在人迹罕至的沙漠中生活，略微极端的生活环境使{PAWN_pronoun}对炎热有着异常高的忍耐力。</Miho_Child_DesertTwo.description>
+
+  <Miho_Child_HatihoTwo.title>美狐森林儿童</Miho_Child_HatihoTwo.title>
+  <Miho_Child_HatihoTwo.titleShort>森林儿童</Miho_Child_HatihoTwo.titleShort>
+  <Miho_Child_HatihoTwo.description>{PAWN_nameDef}从小就在森林里生活，喜欢与动物做朋友。</Miho_Child_HatihoTwo.description>
+
+  <Miho_Child_BraveTwo.title>美狐淘气包</Miho_Child_BraveTwo.title>
+  <Miho_Child_BraveTwo.titleShort>淘气包</Miho_Child_BraveTwo.titleShort>
+  <Miho_Child_BraveTwo.description>{PAWN_nameDef}是一名胆子非常大的淘气包，{PAWN_pronoun}总是喜欢跑到一些危险的地方玩耍。也正因如此，没有多少同龄人愿意与{PAWN_pronoun}做朋友。</Miho_Child_BraveTwo.description>
+
+</LanguageData>

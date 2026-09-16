@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <VoidContact.voidStartingText>五个穿着得体，戴着紫色面具的全副武装的人正在向你靠近，他们的蓝眼睛似乎能穿透你的灵魂。他们带着礼物前来并明确表示，他们是来谈判的，而不是来战斗的。\n\n“您好。我们是V.O.I.D.”\n\n“您非法侵入了我们新吞并的领土。您必须立即离开这个世界，否则我们将不得不强行驱逐您。”\n\n“必须立即高效地离开这颗星球。”\n\n顾问将基于你的回复，对你进行简要评估。你有以下三个回应选项。</VoidContact.voidStartingText>
+
+  <VoidContact.begOptionText>乞求仁慈。试着向他们的人性乞求，他们似乎是通情达理的人。</VoidContact.begOptionText>
+  
+  <VoidContact.disrespectOptionText>说一些极具侮辱性的话，并且立即攻击他们。</VoidContact.disrespectOptionText>
+  
+  <VoidContact.respectfulDeclineOptionText>礼貌地拒绝。你来这里不是为了向某人乞求或投降的。</VoidContact.respectfulDeclineOptionText>
+  
+  <VoidContact.begOptionResponses.0>“我们理解。我们并非不讲理的人。您将被延长30天的逗留时间，之后我们必须按照我们作为这个世界的未来政府新制定的法律行事。”\n\n“请接受我们的款待，一份告别礼物。”\n\n“再见。”</VoidContact.begOptionResponses.0>
+  
+  <VoidContact.begOptionResponses.1>“我们理解。这种情况对每个人来说都不容易。特此授予您30天的宽限期，在此之前我们不会强行驱逐您。”\n\n“请接受我们的款待，一份告别礼物。”\n\n“再见。”</VoidContact.begOptionResponses.1>
+  
+  <VoidContact.begOptionResponses.2>“请不要担心。我们允许您延期30天，这是对您的最后警告。如果期限抵达后您仍在这里，我们将会返回此处。”\n\n“请接受我们的款待，一份告别礼物。”\n\n“再见。”</VoidContact.begOptionResponses.2>
+  
+  <VoidContact.begOptionResponses.3>“无需恐惧，我们是来帮助您的。您被允许延期30天，V.O.I.D.将在这段时间内让您独处。期限抵达后，您将不再受到保护。”\n\n“请接受我们的款待，一份告别礼物。”\n\n“再见。”</VoidContact.begOptionResponses.3>
+  
+  <VoidContact.begOptionResponses.4>当你试图用言语打动他们时，V.O.I.D.的顾问冷漠无情地蔑视着你。\n\n“您有30天的时间。在您让我们别无选择之前，我们将给您这最后一次宽限期。请反馈我们给予您的礼遇和尊重，然后我们将找到共同点。”\n\n“最后一件事，请接受我们的款待。我们向您献上一份告别礼物。”\n\n“再见。”</VoidContact.begOptionResponses.4>
+  
+  <VoidContact.disrespectOptionResponses.0>V.O.I.D.顾问对你的回答摇了摇头。\n\n“就像在和无知的孩童交谈。”</VoidContact.disrespectOptionResponses.0>
+  
+  <VoidContact.disrespectOptionResponses.1>V.O.I.D.顾问对你粗鲁的回答感到惊讶，他点了点头。\n\n“我明白了，您把我们的善良误认为是软弱。”</VoidContact.disrespectOptionResponses.1>
+  
+  <VoidContact.disrespectOptionResponses.2>V.O.I.D.顾问对你的言论感到惊讶，用一种平和、居高临下的语气回应。\n\n“这种态度从何而来？”</VoidContact.disrespectOptionResponses.2>
+  
+  <VoidContact.disrespectOptionResponses.3>V.O.I.D.顾问认为你的回复并不正确。\n\n“有趣。你一定很糊涂。”</VoidContact.disrespectOptionResponses.3>
+  
+  <VoidContact.disrespectOptionResponses.4>V.O.I.D.顾问仍然一动不动，他毫无情绪地说了一句话。\n\n“有趣。”</VoidContact.disrespectOptionResponses.4>
+  
+  <VoidContact.disrespectOptionResponses.5>V.O.I.D.顾问的面具上显现出一个微笑的印记，他锐利的眼睛朝着你微微发亮。\n\n“这将是我们今天的娱乐节目。谢谢您。”</VoidContact.disrespectOptionResponses.5>
+  
+  <VoidContact.disrespectOptionResponses.6>你看到V.O.I.D.顾问面具下露出一丝微笑。\n\n“这很容易。”</VoidContact.disrespectOptionResponses.6>
+  
+  <VoidContact.disrespectOptionResponses.7>V.O.I.D.顾问对你的反应感到惊讶。\n\n“这会很有趣。”</VoidContact.disrespectOptionResponses.7>
+  
+  <VoidContact.disrespectOptionResponses.8>顾问对你的回答耸耸肩，好像他们预料到了一样。\n\n“很好。我猜到您会这么说。”</VoidContact.disrespectOptionResponses.8>
+  
+  <VoidContact.disrespectOptionResponses.9>由于你的回应，V.O.I.D.顾问的语气从平淡转为轻微的沮丧。\n\n“大错特错。”</VoidContact.disrespectOptionResponses.9>
+  
+  <VoidContact.disrespectOptionResponses.10>顾问在你回答后简要分析了情况，然后回头看着你。\n\n“您犯了一个大错。”</VoidContact.disrespectOptionResponses.10>
+  
+  <VoidContact.disrespectOptionResponses.11>你看到了顾问的微笑，即使在面具后也如此显眼。\n\n“和我们期望的回答一样。”</VoidContact.disrespectOptionResponses.11>
+  
+  <VoidContact.disrespectOptionResponses.12>你似乎激怒了V.O.I.D.的顾问。他冷硬面具后的声音充满愤怒。\n\n“你已经失去救赎。”</VoidContact.disrespectOptionResponses.12>
+  
+  <VoidContact.disrespectOptionResponses.13>冷静而谨慎的V.O.I.D.顾问在短暂的片刻后对你的反应做出反应。\n\n“我正希望您能这么回答。”</VoidContact.disrespectOptionResponses.13>
+  
+  <VoidContact.disrespectOptionResponses.14>V.O.I.D.顾问用一种干巴巴的、居高临下的语气对你的回应进行了讥讽。\n\n“我还以为您是等待解救的少女，原来不是？”</VoidContact.disrespectOptionResponses.14>
+  
+  <VoidContact.disrespectOptionResponses.15>你看到V.O.I.D.派来的顾问对你的敌意有点困惑，然后立即意识到你的意图。\n\n“您会立即为这个决定后悔。”</VoidContact.disrespectOptionResponses.15>
+  
+  <VoidContact.disrespectOptionResponses.16>V.O.I.D.顾问的语气就像一位失望的家长。\n\n“您是个傻瓜。”</VoidContact.disrespectOptionResponses.16>
+  
+  <VoidContact.respectfulDeclineOptionResponses.0>V.O.I.D.顾问热情地向你点头，并开始向你告别。\n\n“我们理解。我希望您和我能够再次相遇。”\n\n“请接受我们的款待，一份告别礼物。”</VoidContact.respectfulDeclineOptionResponses.0>
+  
+  <VoidContact.respectfulDeclineOptionResponses.1>V.O.I.D.顾问用他的手轻轻地向你鞠躬，并向你道别。\n“我们理解。直到我们再次见面。”\n\n“请接受我们的款待，一份告别礼物。”</VoidContact.respectfulDeclineOptionResponses.1>
+  
+  <VoidContact.respectfulDeclineOptionResponses.2>V.O.I.D.顾问点头示意保镖准备离开。\n“感谢您抽出时间。”\n\n“请接受我们的款待，一份告别礼物。”</VoidContact.respectfulDeclineOptionResponses.2>
+  
+  <VoidContact.respectfulDeclineOptionResponses.3>V.O.I.D.顾问看着其中一名保镖，然后对你说了最后的话。\n“可以理解。我们尊重您的勇气和正直。”\n\n“请接受我们的款待，一份告别礼物。”</VoidContact.respectfulDeclineOptionResponses.3>
+  
+  <VoidContact.respectfulDeclineOptionResponses.4>V.O.I.D.顾问对你厚颜无耻的回应感到惊讶，他们的肢体语言揭示了这一点。\n\n“我明白了。这是一个意外的转折。我们马上就要出发了。”\n\n“请接受我们的款待，一份告别礼物。”</VoidContact.respectfulDeclineOptionResponses.4>
+  
+  <VoidContact.respectfulDeclineOptionResponses.5>V.O.I.D.的顾问一动不动，几乎没有情绪。他们突然准备动身离开。\n“可以理解。祝您愉快。”\n\n“请接受我们的款待，一份告别礼物。”</VoidContact.respectfulDeclineOptionResponses.5>
+
+</LanguageData>

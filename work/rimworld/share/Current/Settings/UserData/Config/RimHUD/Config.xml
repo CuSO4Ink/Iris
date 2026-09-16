@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config Version="1.17.5">
+  <General>
+    <RefreshRate>30</RefreshRate>
+  </General>
+  <TutorialComplete />
+</Config>

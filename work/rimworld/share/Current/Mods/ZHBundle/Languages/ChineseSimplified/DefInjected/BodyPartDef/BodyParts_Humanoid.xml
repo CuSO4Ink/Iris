@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RH_N4Mutant_Torso.label>躯干</RH_N4Mutant_Torso.label>
+  <RH_N4Mutant_Shoulder.label>肩</RH_N4Mutant_Shoulder.label>
+  <RH_N4Mutant_Arm.label>臂</RH_N4Mutant_Arm.label>
+  <RH_N4Mutant_Hand.label>手</RH_N4Mutant_Hand.label>
+  <RH_N4Mutant_Finger.label>手指</RH_N4Mutant_Finger.label>
+  <RH_N4Mutant_Waist.label>腰</RH_N4Mutant_Waist.label>
+  <RH_N4Mutant_Toe.label>脚趾</RH_N4Mutant_Toe.label>
+
+
+  <!-- Bones -->
+
+  <RH_N4Mutant_Clavicle.label>锁骨</RH_N4Mutant_Clavicle.label>
+  <RH_N4Mutant_Sternum.label>胸骨</RH_N4Mutant_Sternum.label>
+  <RH_N4Mutant_Humerus.label>肱骨</RH_N4Mutant_Humerus.label>
+  <RH_N4Mutant_Radius.label>桡骨</RH_N4Mutant_Radius.label>
+  <RH_N4Mutant_Pelvis.label>骨盆</RH_N4Mutant_Pelvis.label>
+  <RH_N4Mutant_Femur.label>股骨</RH_N4Mutant_Femur.label>
+  <RH_N4Mutant_Tibia.label>胫骨</RH_N4Mutant_Tibia.label>
+
+
+</LanguageData>

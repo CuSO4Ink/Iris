@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 卫生 tab -->
+  <Architect_Hygiene.label>卫生标签</Architect_Hygiene.label>
+  <!-- EN: Key bindings for the "卫生" section of the Architect menu -->
+  <Architect_Hygiene.description>用于建造菜单"卫生"部分的快捷键</Architect_Hygiene.description>
+  
+</LanguageData>

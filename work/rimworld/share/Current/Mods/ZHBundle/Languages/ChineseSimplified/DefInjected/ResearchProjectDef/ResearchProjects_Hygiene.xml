@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: spacer hygiene recycling -->
+  <SpacerHygieneRecycling.label>生活用水回收</SpacerHygieneRecycling.label>
+  <!-- EN: Compact high-efficiency recycling nodes that recover and reuse water from showers and sinks. -->
+  <SpacerHygieneRecycling.description>小巧高效的回收设备，能够从淋浴器和水槽中回收并二次利用。</SpacerHygieneRecycling.description>
+  
+  <!-- EN: asteroid cryo mining -->
+  <AsteroidCryoMining.label>小行星表层低温萃取</AsteroidCryoMining.label>
+  <!-- EN: Extract and sublimate volatile ices trapped beneath asteroid regolith. -->
+  <AsteroidCryoMining.description>提取并升华深埋于小行星表层之下所包裹的可挥发的冰层物质。</AsteroidCryoMining.description>
+  
+</LanguageData>

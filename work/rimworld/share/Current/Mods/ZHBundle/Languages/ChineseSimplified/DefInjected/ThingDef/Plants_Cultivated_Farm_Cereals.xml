@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: barley plant -->
+  <VCE_Barley.label>大麦</VCE_Barley.label>
+  <!-- EN: A cereal grain that people can use in bread, beverages, stews, and other dishes. As a whole grain, barley provides fiber, vitamins, and minerals. It has been genetically engineered to gently break into flour with a mere touch.\n\n<color=#E5E54C>Gameplay effect:</color> Barley is a "dual crop", in the sense that it produces both flour and hay. -->
+  <VCE_Barley.description>用途广泛的谷物，可以被做成面包，酿酒，烧汤，和其它各式菜品。大麦是全粒谷物，能提供充分的纤维素，维生素和矿物质。这种转基因大麦一碰就会碎成面粉。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;大麦是一种两用作物，不仅麦能粒被收割为面粉，麦秆也同样能被当作干草使用。</VCE_Barley.description>
+  
+  <!-- EN: oat plant -->
+  <VCE_Oats.label>燕麦</VCE_Oats.label>
+  <!-- EN: The oat, sometimes called the common oat, is a species of cereal grain grown for its seed, which is known by the same name. Oats have numerous uses in gastronomy, and they can also be turned into vegetable milk.\n\n<color=#E5E54C>Gameplay effect:</color> Oat has low yield, but it is very versatile, being a "dual crop", in the sense that it produces both flour and oats which can be either used as a vegetable or turned into milk. -->
+  <VCE_Oats.description>燕麦在烹饪中运用广泛，也可以被制作成植物乳。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;燕麦的产量较低，但它是一种两用作物，既可以产出面粉，也可以产出单独的燕麦粒。</VCE_Oats.description>
+  
+  <!-- EN: rye plant -->
+  <VCE_Rye.label>黑麦</VCE_Rye.label>
+  <!-- EN: A plant that grows well in much poorer soils than those necessary for most cereal grains. Thus, it is an especially valuable crop in regions where the soil has sand or peat. It has been genetically engineered to gently break into flour with a mere touch.\n\n<color=#E5E54C>Gameplay effect:</color> Rye is only growable in sandy growing zones, which ignore fertility. These plants will however take a long time to sow and harvest, basically exchanging colonist work for growing plants in a normally unused space. Rye needs to be grown away from large bodies of water (water within 10 tiles of it will stop its growth). -->
+  <VCE_Rye.description>这种谷物适合在土质较差的地方生长。因而常被有大量沙地的区域种植。这种转基因黑麦一碰就会碎成面粉。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;该作物只能在沙地种植区中种植，也因而不受肥沃度影响。这类作物需要花费更多的时间来播种与收割，也就是以工作量来换取生长空间的限制。黑麦需要避水种植，10格内如果有水体会停止生长。</VCE_Rye.description>
+  
+  <!-- EN: sorghum plant -->
+  <VCE_Sorghum.label>高粱</VCE_Sorghum.label>
+  <!-- EN: A drought resistant cereal used for food, animal fodder, the production of alcoholic beverages, and biofuels. Sorghum grain is gluten free, high in resistant starch, and more abundant and diverse phenolic compounds compared to other major cereal crops.\n\n<color=#E5E54C>Gameplay effect:</color> Sorghum stalks can grow to up to 2.5 meters in height, and grow very close together. A sorghum field can be used as quite effective cover. -->
+  <VCE_Sorghum.description>一种能抗干旱的谷物，可以用作食材，动物饲料，酿酒和提炼生物燃料。高粱不含麸质，有大量抗性淀粉，同时比其它谷物有更多的酚类化合物。\n\n&lt;color=#E5E54C&gt;游戏效果：&lt;/color&gt;高粱如其名，长得很高，平均能涨到2.5米，同时每一株都长得很密集。因而可以被当作掩体使用</VCE_Sorghum.description>
+  
+</LanguageData>

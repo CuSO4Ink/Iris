@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Research Rate -->
+  <Outposts.Settings.ResearchRate>研究速率</Outposts.Settings.ResearchRate>
+    <!-- EN: Time To Drill (Needs to happen before production starts) -->
+  <Outposts.Settings.WorkToDrill>钻井时间（开始产出前的准备时间）</Outposts.Settings.WorkToDrill>
+    <!-- EN: Cooldown -->
+  <Outposts.Settings.Cooldown>冷却时间</Outposts.Settings.Cooldown>
+    <!-- EN: Shooting Importance -->
+  <Outposts.Settings.Shooting>射击技能等级对产出的影响</Outposts.Settings.Shooting>
+    <!-- EN: Animals Importance -->
+  <Outposts.Settings.Animals>驯兽技能等级对产出的影响</Outposts.Settings.Animals>
+    <!-- EN: Need Transport Pods Tech to Deploy Reinforcements? -->
+  <Outposts.Settings.NeedPods>是否需要解锁运输舱科技才能空投援军？</Outposts.Settings.NeedPods>
+    <!-- EN: Leather Multiplier -->
+  <Outposts.Settings.Leather>皮革产出乘数</Outposts.Settings.Leather>
+    <!-- EN: Meat Multiplier -->
+  <Outposts.Settings.Meat>肉类产出乘数</Outposts.Settings.Meat>
+    <!-- EN: Intercept Incoming Raids? -->
+  <Outposts.Settings.DoIntercept>是否拦截对主殖民地发动的袭击？</Outposts.Settings.DoIntercept>
+  	<!-- EN: Intercept Difficulty Multiplier -->
+  <Outposts.Settings.InterceptDifficultyMultiplier>拦截难度乘数</Outposts.Settings.InterceptDifficultyMultiplier>
+	  <!-- EN: This is in on top of your global difficulty modifier and intercept is already harder then regular defense raids. Adjust upwards at your own risk -->
+  <Outposts.Settings.InterceptDifficultyMultiplierTooltip>此项是作用在全局袭击难度乘数之上的，而且事实上拦截战本来就比寻常的袭击防御战难得多。请仔细斟酌后再做修改。</Outposts.Settings.InterceptDifficultyMultiplierTooltip>
+    <!-- EN: Recruit chance Multiplier -->
+  <Outposts.Settings.Chance>招募几率乘数</Outposts.Settings.Chance>
+  	<!-- EN: Drop Pods Require Fuel -->
+  <Outposts.Settings.NeedFuel>是否需要燃料才能使用空投舱？</Outposts.Settings.NeedFuel>
+  	<!-- EN: Amount of Fuel -->
+  <Outposts.Settings.NeedFuelAmount>燃料量</Outposts.Settings.NeedFuelAmount>
+    <!-- EN: Artillery Strike -->
+  <Outposts.Commands.Fire.Label>火炮打击</Outposts.Commands.Fire.Label>
+    <!-- EN: Begin targeting for an artillery strike -->
+  <Outposts.Commands.Fire.Desc>开始对目标地点进行火炮打击。</Outposts.Commands.Fire.Desc>
+    <!-- EN: Still on cooldown -->
+  <Outposts.Commands.Disabled.Cooldown>正在冷却</Outposts.Commands.Disabled.Cooldown>
+    <!-- EN: On cooldown: {0} left -->
+  <Outposts.Cooldown>正在冷却：剩余{0}</Outposts.Cooldown>
+    <!-- EN: Raid Intercepted -->
+  <Outposts.Letters.Intercept.Label>袭击被拦截</Outposts.Letters.Intercept.Label>
+    <!-- EN: A raid bound for {0} has been intercepted by the defensive outpost {0}. Hopefully they can survive this brave maneuver. -->
+  <Outposts.Letters.Intercept.Text>一次袭击已被防御据点{0}拦截。希望驻守的士兵们能在这次英勇行动中存活下来。</Outposts.Letters.Intercept.Text>
+  	<!-- EN: Outpost Intercept Raid -->
+  <Outposts.Intercept.Title>据点袭击拦截战</Outposts.Intercept.Title>
+	  <!-- EN: Defenders at {0} have detected a raid from {1} heading towards {2}! \n\nThey are in position to ambush part of the raiding force, that if successful should cause the rest to scatter and return. They estimate the force they will fight is composed of: \n{3} -->
+  <Outposts.Intercept.CanIntercept>驻守在{0}的殖民者们已侦查到{1}向{2}发动的袭击！\n\n你可以选择让他们伏击部分敌人。一旦成功，其他敌人就会因战局不利而选择撤退。以下为预计将要遭遇的敌人：\n{3}</Outposts.Intercept.CanIntercept>
+	  <!-- EN: Maneuver and intercept the raiders -->
+  <Outposts.Intercept.InterceptRaid>准备拦截袭击者</Outposts.Intercept.InterceptRaid>
+	  <!-- EN: Stand down, and return to the outpost -->
+  <Outposts.Intercept.DontIntercept>撤退并返回据点</Outposts.Intercept.DontIntercept>
+    <!-- EN: Send Reinforcements -->
+  <Outposts.Commands.Deploy.Label>发射援军</Outposts.Commands.Deploy.Label>
+    <!-- EN: Deploy the garrison of this outpost in drop pods to assist one of your combat engagements. -->
+  <Outposts.Commands.Deploy.Desc>将此据点的殖民者装载进运输舱中以协助你进行一次作战。</Outposts.Commands.Deploy.Desc>
+    <!-- EN: Cannot send: Drop pods are not available to you -->
+  <Outposts.Commands.Deploy.Disabled>无法发射：运输舱科技未解锁。</Outposts.Commands.Deploy.Disabled>
+    <!-- EN: Cannot send last pawn -->
+  <Outposts.Commands.Deploy.Only1>无法发射最后一名殖民者。</Outposts.Commands.Deploy.Only1>
+  	<!-- EN: Cannot send not enough stored fuel -->
+  <Outposts.Commands.Deploy.NotEnoughFuel>无法发射：储存的燃料不足。</Outposts.Commands.Deploy.NotEnoughFuel>
+    <!-- EN: Drilling boreholes. {0} done. Estimated time remaining: {1} -->
+  <Outposts.Drilling>正在钻井。剩余工作量：{0}。预计剩余时间：{1}</Outposts.Drilling>
+    <!-- EN: Must be made in the {0} -->
+  <Outposts.MustBeMade>必须建立在{0}上</Outposts.MustBeMade>
+    <!-- EN: Must be made in mountains or hills -->
+  <Outposts.MustBeMade.Hill>必须建立在山地或丘陵地形上</Outposts.MustBeMade.Hill>
+    <!-- EN: Total skill too low, needs {0} -->
+  <Outposts.SkillTooLow>总技能等级过低，需求{0}</Outposts.SkillTooLow>
+    <!-- EN: Not enough nearby settlements, need {0} within {1} tiles -->
+  <Outposts.NearbySettlements>附近没有足够的定居点。周围{1}格内必须拥有{0}个定居点才能建立城镇</Outposts.NearbySettlements>
+    <!-- EN: Pawns Recruited: {0} -->
+  <Outposts.Letters.Recruit.Label>已招募的殖民者：{0}</Outposts.Letters.Recruit.Label>
+    <!-- EN: The following pawns have been newly recruited in the town of {0}:\n{1} -->
+  <Outposts.Letters.Recruit.Desc>下列殖民者是在{0}镇被招募的</Outposts.Letters.Recruit.Desc>
+    <!-- EN: Change Factory -->
+  <Outposts.Commands.Factory.Label>更改工厂类型</Outposts.Commands.Factory.Label>
+    <!-- EN: Change which factory building this outpost uses to produce items for you -->
+  <Outposts.Commands.Factory.Desc>更改此据点建造的工厂类型。</Outposts.Commands.Factory.Desc>
+    <!-- EN: Change Result -->
+  <Outposts.Commands.Comb.Label>更改产物</Outposts.Commands.Comb.Label>
+    <!-- EN: Change what the factory produces -->
+  <Outposts.Commands.Comb.Desc>更改工厂的产出物。</Outposts.Commands.Comb.Desc>
+    <!-- EN: Must be made on the coast or a river -->
+  <Outposts.MustBeOnCoastOrRiver>必须建立在海岸或河流地形上</Outposts.MustBeOnCoastOrRiver>
+    <!-- EN: All occupants must be armed and ready for combat. -->
+  <Outposts.MustBeArmed>所有殖民者都必须配备武器并时刻准备作战</Outposts.MustBeArmed>
+    <!-- EN: May recruit some new pawns in {0} -->
+  <Outposts.WillProduce.Pawns>可在{0}招募一些殖民者</Outposts.WillProduce.Pawns>
+    <!-- EN: Raid Ambush Won -->
+  <Outposts.Defensive.Won.Label>伏击胜利</Outposts.Defensive.Won.Label>
+    <!-- EN: Your soldiers have successfully defeated the incoming raid before it could reach your settlement. -->
+  <Outposts.Defensive.Won.Desc>你的殖民者们成功伏击了敌人！他们已经落荒而逃了。</Outposts.Defensive.Won.Desc>
+    <!-- EN: Raid Ambush Lost -->
+  <Outposts.Defensive.Lost.Label>伏击失败</Outposts.Defensive.Lost.Label>
+    <!-- EN: Your soldiers have been defeated whilst ambushing a raid targetting your settlement. Luckily, the raiders have been discouraged by your audacity and have decided to return home without continuing on to your settlement. Your soldiers' sacrifice is not in vain. -->
+  <Outposts.Defensive.Lost.Desc>你的殖民者们在伏击时失利了。不过幸运的是，敌人显然被你大胆的行动吓到了，他们最终放弃了这次的袭击计划。你的殖民者们并没有白白牺牲。</Outposts.Defensive.Lost.Desc>
+</LanguageData>

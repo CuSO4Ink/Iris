@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Category: GenderSupremacy -->
+
+  <LBWP_LesbianDevotee.label>百合至上</LBWP_LesbianDevotee.label>
+  <LBWP_LesbianDevotee.description>百合賽高！♡</LBWP_LesbianDevotee.description>
+  <LBWP_LesbianDevotee.generalRules.rulesStrings.0>memeAdjective-&gt;lesbian</LBWP_LesbianDevotee.generalRules.rulesStrings.0>
+  <LBWP_LesbianDevotee.generalRules.rulesStrings.1>memeAdjective-&gt;homo</LBWP_LesbianDevotee.generalRules.rulesStrings.1>
+  <LBWP_LesbianDevotee.generalRules.rulesStrings.2>memeHyphenPrefix-&gt;les</LBWP_LesbianDevotee.generalRules.rulesStrings.2>
+  <LBWP_LesbianDevotee.generalRules.rulesStrings.3>memeHyphenPrefix-&gt;hom</LBWP_LesbianDevotee.generalRules.rulesStrings.3>
+  <LBWP_LesbianDevotee.generalRules.rulesStrings.4>memeConcept-&gt;lesbian</LBWP_LesbianDevotee.generalRules.rulesStrings.4>
+  <LBWP_LesbianDevotee.generalRules.rulesStrings.5>memeConcept-&gt;homosexsual</LBWP_LesbianDevotee.generalRules.rulesStrings.5>
+  <LBWP_LesbianDevotee.generalRules.rulesStrings.6>memeGod-&gt;Mother</LBWP_LesbianDevotee.generalRules.rulesStrings.6>
+  <LBWP_LesbianDevotee.generalRules.rulesStrings.7>memeLeaderNoun-&gt;Lesbian</LBWP_LesbianDevotee.generalRules.rulesStrings.7>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.0>creation(tag=meme_FemaleSupremacy)       -&gt;[deity0_name] 賜予女性智慧，使她們可以引導和調和易激動的男人和兒童，並告誡那些擾亂神聖秩序的人。</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.0>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.1>episode(uses=1,tag=meme_FemaleSupremacy) -&gt;女信徒發現自己被墮落的男人虐待，與他們抗爭，[deity0_name] 給予她們神聖的幫助，她們得到了應有的位置。</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.1>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.2>setup(tag=meme_FemaleSupremacy)          -&gt;在一個自私、暴力的男人濫用全人類來滿足他們的欲望的世界裡， [founderName] 召集了一個強大的女性協會，並開始努力為所有人建立一個更美好的世界。</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.2>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.3>story(uses=1,tag=meme_FemaleSupremacy)   -&gt;男信徒吹噓打架， [founderName] 將他們趕出領袖會議。</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.3>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.4>lessonIntro(tag=meme_FemaleSupremacy)         -&gt;再一次，一個男人正在解釋如何做我剛剛做的事情。它只是向我強調了這一點</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.4>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.5>lesson(tag=meme_FemaleSupremacy)              -&gt;女性是唯一擁有統治智慧和力量的人</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.5>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.6>lessonReinforcement(tag=meme_FemaleSupremacy) -&gt;最聰明的女人早在興奮、咕噥的男人之前就發現了這一點。</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.6>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.7>archistBasis(tag=meme_FemaleSupremacy)    -&gt;人類孕育了母神並培育了他們，因為他們已經超越了他們的母親。</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.7>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.8>archistFact(tag=meme_FemaleSupremacy)     -&gt;母神培育人類，雖然人類不知道為什麼。</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.8>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.9>archistProphecy(tag=meme_FemaleSupremacy) -&gt;[inTheEnd]，母神將回到他們的母親身邊，教他們如何孕育人類發展的下一個階段。</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.9>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.10>animistFact(tag=meme_FemaleSupremacy)     -&gt;最聰明的精神是女人的精神，她們應該用自己的智慧來領導男人。</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.10>
+  <LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.11>animistProphecy(tag=meme_FemaleSupremacy) -&gt;[itIsSaid] 強大的毀滅精神將終結宇宙，但女性將運用 [relic0_name] 的精神重新創造宇宙。</LBWP_LesbianDevotee.descriptionMaker.rules.rulesStrings.11>
+  <LBWP_LesbianDevotee.symbolPacks.0.adjective>gynist</LBWP_LesbianDevotee.symbolPacks.0.adjective>
+  <LBWP_LesbianDevotee.symbolPacks.1.adjective>fertilist</LBWP_LesbianDevotee.symbolPacks.1.adjective>
+
+
+</LanguageData>

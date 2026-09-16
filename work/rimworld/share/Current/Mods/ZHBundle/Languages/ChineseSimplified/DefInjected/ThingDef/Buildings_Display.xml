@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: display cabinet -->
+  <sbz_DisplayCabinet.label>橱柜</sbz_DisplayCabinet.label>
+  <!-- EN: A display cabinet that can store up to 8 different items. -->
+  <sbz_DisplayCabinet.description>用于储存并陈列各种物品的橱柜。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：8组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_DisplayCabinet.description>
+  
+  <!-- EN: display shelf -->
+  <sbz_DisplayShelf.label>陈列架</sbz_DisplayShelf.label>
+  <!-- EN: A display shelf that can store up to 6 different items. -->
+  <sbz_DisplayShelf.description>用于储存并陈列各种物品的架子。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：6组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_DisplayShelf.description>
+  
+  <!-- EN: display table -->
+  <sbz_DisplayTable.label>陈列台</sbz_DisplayTable.label>
+  <!-- EN: A display table that can showcase up to 1 item. -->
+  <sbz_DisplayTable.description>用于储存并陈列心仪物品的桌台。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：1组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_DisplayTable.description>
+  
+  <!-- EN: round pedestal -->
+  <sbz_RoundPedestal.label>陈列圆座</sbz_RoundPedestal.label>
+  <!-- EN: A round pedestal that can showcase up to 1 item. -->
+  <sbz_RoundPedestal.description>用于储存并陈列心仪物品的圆座。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：1组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_RoundPedestal.description>
+
+  <!-- EN: narrow hanger shelf -->
+  <sbz_HangerShelf.label>窄衣柜</sbz_HangerShelf.label>
+  <!-- EN: A clothes hanger rack that can hold up to 4 pieces of clothing. -->
+  <sbz_HangerShelf.description>用于储存并陈列各种衣物的窄柜子。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：4组\n【可储存类型】：衣物</sbz_HangerShelf.description>
+  
+  <!-- EN: narrow display cabinet -->
+  <sbz_NarrowDisplayCabinet.label>窄橱柜</sbz_NarrowDisplayCabinet.label>
+  <!-- EN: A narrow display cabinet that can store up to 4 different items. -->
+  <sbz_NarrowDisplayCabinet.description>用于储存并陈列各种物品的窄橱柜。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：4组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_NarrowDisplayCabinet.description>
+  
+  <!-- EN: narrow tall display shelf -->
+  <sbz_NarrowTallDisplayShelf.label>窄高陈列架</sbz_NarrowTallDisplayShelf.label>
+  <!-- EN: A narrow and tall display shelf that can stack up to 6 different items. -->
+  <sbz_NarrowTallDisplayShelf.description>用于储存并陈列各种物品的窄高架子。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：6组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_NarrowTallDisplayShelf.description>
+  
+  <!-- EN: open shelf -->
+  <sbz_OpenShelf.label>货架</sbz_OpenShelf.label>
+  <!-- EN: A open shelf that can store up to 12 different items. -->
+  <sbz_OpenShelf.description>用于储存并陈列各种物品的货架。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：12组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_OpenShelf.description>
+  
+  <!-- EN: small display shelf -->
+  <sbz_SmallDisplayShelf.label>小陈列架</sbz_SmallDisplayShelf.label>
+  <!-- EN: A small display shelf that can store up to 3 different items. -->
+  <sbz_SmallDisplayShelf.description>用于储存并陈列各种物品的小架子。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：3组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_SmallDisplayShelf.description>
+  
+  <!-- EN: tall display shelf -->
+  <sbz_TallDisplayShelf.label>高陈列架</sbz_TallDisplayShelf.label>
+  <!-- EN: A tall display shelf that can stack up to 12 different items. -->
+  <sbz_TallDisplayShelf.description>用于储存并陈列各种物品的高架子。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：12组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_TallDisplayShelf.description>
+  
+  <!-- EN: 2-tier display shelf -->
+  <sbz_TwoTierDisplayShelf.label>双层陈列架</sbz_TwoTierDisplayShelf.label>
+  <!-- EN: A 2-tier display shelf that can store up to 12 different items. -->
+  <sbz_TwoTierDisplayShelf.description>用于储存并陈列各种物品的双层架子。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：12组\n【可储存类型】：食物，制成品，原材料，物品，近战&amp;远程武器，衣物</sbz_TwoTierDisplayShelf.description>
+  
+  <!-- EN: hanger shelf -->
+  <sbz_WideHangerShelf.label>衣柜</sbz_WideHangerShelf.label>
+  <!-- EN: A clothes hanger rack that can hold up to 8 pieces of clothing. -->
+  <sbz_WideHangerShelf.description>用于储存并陈列各种衣物的柜子。存放在里面的物品永远不会老化，也不会影响周围环境的美观度。\n\n&lt;color=#E5E54C&gt;储存能力：&lt;/color&gt;\n\n【最大储存量】：8组\n【可储存类型】：衣物</sbz_WideHangerShelf.description>
+  
+</LanguageData>

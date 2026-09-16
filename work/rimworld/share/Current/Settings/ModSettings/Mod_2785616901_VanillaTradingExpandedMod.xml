@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="VanillaTradingExpanded.Settings">
+		<playerTransactionImpactMultiplier>0.600419104</playerTransactionImpactMultiplier>
+	</ModSettings>
+</SettingsBlock>

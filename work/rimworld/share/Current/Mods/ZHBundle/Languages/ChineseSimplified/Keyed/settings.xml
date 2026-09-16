@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: The pawn clean up runs when game save is loaded -->
+  <MBADP.Settings.RunsOnSaveLoad>当游戏保存加载时，pawn清理运行。</MBADP.Settings.RunsOnSaveLoad>
+
+	<!-- EN: Enable extra pawn cleanup functionality -->
+  <MBADP.Settings.ExtraCleanUpCheckbox>启用特别pawn清理功能</MBADP.Settings.ExtraCleanUpCheckbox>
+
+	<!-- EN: More "gentle" pawn cleanup (read the tooltip for details) -->
+  <MBADP.Settings.GentleCleanUpCheckbox>更“温和”的pawn清理（详细信息请阅读提示信息）</MBADP.Settings.GentleCleanUpCheckbox>
+	<!-- EN: You may need to turn this option if you use RIMMSqol, or some other mods.
+The reason: some mods may create non-standard map objects that store pawns. If the mod in question fails to mark the pawn as forever-kept, pawn may be removed by the garbage collection.
+This option TRIES to address the issue -->
+  <MBADP.Settings.GentleCleanUpTooltip>如果你使用rimmsql或其他mod，你可能需要打开这个选项。\n原因是：一些mod可能会创建非标准的地图对象来封存pawn。如果有问题的mod没有将pawn标记为永久保存，那么pawn可能会被当成废弃pawn所删除。\n此选项尝试解决该问题</MBADP.Settings.GentleCleanUpTooltip>
+
+	<!-- EN: Forcibly run pawns mothballer on save load? -->
+  <MBADP.Settings.RunMothballerCheckbox>在存档加载时强制执行“pawn封存”吗？</MBADP.Settings.RunMothballerCheckbox>
+	
+	<!-- EN: Run animals cleanup? -->
+  <MBADP.Settings.RunAnimalsCleanUpCheckbox>对动物进行清理？</MBADP.Settings.RunAnimalsCleanUpCheckbox>
+	<!-- EN: Discard eligible animals (regardless of faction) after {0} days (60 days = 1 year) -->
+  <MBADP.Settings.DiscardAnimalsAfter>{0}天后（60天= 1年）丢弃符合条件的动物（无论派系）</MBADP.Settings.DiscardAnimalsAfter>
+
+	<!-- EN: Run (current or former) colonists cleanup? -->
+  <MBADP.Settings.RunColonistsCleanUpCheckbox>对（当前或以前）殖民者进行清理？</MBADP.Settings.RunColonistsCleanUpCheckbox>
+	<!-- EN: Discard eligible colonist pawns after {0} days (60 days = 1 year) -->
+  <MBADP.Settings.DiscardColonistsAfter>在{0}天后（60天= 1年）丢弃符合条件的殖民者</MBADP.Settings.DiscardColonistsAfter>
+
+	<!-- EN: Run a cleanup for all the other pawns? -->
+  <MBADP.Settings.RunOtherPawnsCleanUpCheckbox>对所有其它的pawn进行清理？</MBADP.Settings.RunOtherPawnsCleanUpCheckbox>
+	<!-- EN: Discard eligible pawns after {0} days (60 days = 1 year) -->
+  <MBADP.Settings.DiscardOtherPawnsAfter>{0}天后（60天= 1年）弃掉符合条件的pawn</MBADP.Settings.DiscardOtherPawnsAfter>
+
+	<!-- EN: You can set it to 0 and discard world pawns immediately, but it's not advised -->
+  <MBADP.Settings.DiscardTooltip>你可以将其设置为0并立即清理世界pawn，但不建议这样做。</MBADP.Settings.DiscardTooltip>
+
+	<!-- EN: Run a cleanup for old quest records? -->
+  <MBADP.Settings.RunQuestsCleanUpCheckbox>对旧任务记录进行清理？</MBADP.Settings.RunQuestsCleanUpCheckbox>
+	<!-- EN: Discard old quests after {0} days (60 days = 1 year) -->
+  <MBADP.Settings.DiscardQuestsAfter>在{0}天后放弃旧任务（60天= 1年）</MBADP.Settings.DiscardQuestsAfter>
+	<!-- EN: Won't improve your performance much, but may reduce save file size -->
+  <MBADP.Settings.DiscardQuestsAfterTooltip>不会提高你的性能，但可能会减少保存文件的大小</MBADP.Settings.DiscardQuestsAfterTooltip>
+
+	<!-- EN: Remove thrown Throwing Axe? (to fix a possible VFE-Medieval 2 and CE compatibility issue) -->
+  <MBADP.Settings.RunBadBulletsCleanupCheckbox>清理已投掷的投掷斧？（以修复 VFE-中世纪2 与 CE 可能存在的兼容性问题）</MBADP.Settings.RunBadBulletsCleanupCheckbox>
+
+	<!-- EN: Totally disable report letter -->
+  <MBADP.Settings.DisableLetter>完全禁用报告信件</MBADP.Settings.DisableLetter>
+
+	<!-- EN: Provide detailed report about discarded pawns? It may generate HUGE letters. -->
+  <MBADP.Settings.DetailedReportLetter>提供关于丢弃pawn的详细报告？它可能会产生巨大的信件。</MBADP.Settings.DetailedReportLetter>
+	<!-- EN: Provide report about the pawns not eligible for cleanup? Useful for debugging -->
+  <MBADP.Settings.AlivePawnsReportLetter>提供不符合清理条件的pawn的报告？用于调试。</MBADP.Settings.AlivePawnsReportLetter>
+
+	<!-- EN: Default Settings -->
+  <MBADP.Settings.Default>默认设置</MBADP.Settings.Default>
+</LanguageData>

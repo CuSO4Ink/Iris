@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="Kzm.MimikkoSettings">
+		<mimikkoTalentDelayMul>50</mimikkoTalentDelayMul>
+	</ModSettings>
+</SettingsBlock>

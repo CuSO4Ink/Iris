@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: vivi -->
+  <VV_Vivi.label>薇薇種</VV_Vivi.label>
+  <!-- EN: A race similar to a kind of fairy that lives a lifestyle similar to bees.\n\nTheir origin is unknown, but their lifestyle is mostly similar to bees, and unlike normal humans, they reproduce through parthenogenesis, and are known to have their unique mode of communication and a short lifespan.\n\nVivi genes are abnormally prone to mutations compared to other creatures, so it is common to be born with random xenogenes. For this reason, despite parthenogenesis, they show a diverse genetic distribution.\n\nTypically, Vivis live only near their nests, so they are not commonly seen outside, but occasionally you can see Vivi who wander to create new nests. -->
+  <VV_Vivi.description>一個和傳說中小仙靈類似的種族，生活方式與蜜蜂接近。\n\n它們的起源尚不清楚，但它們的生活方式與蜜蜂相似，而非人類，薇薇以其單性生殖、獨特的交流方式和較短的壽命而聞名。\n\n薇薇基因與其他生物相比更容易發生異常突變，因此天生具有某種異種基因對她們來說是很常見的。因此，盡管單性生殖，它們也能表現出多樣化的遺傳分布。\n\n通常，薇薇只居住在它們的蜂巢附近，所以它們在外并不常見，但偶爾也能看到有薇薇四處游蕩，以期創造新的蜂巢。</VV_Vivi.description>
+  <!-- EN: A race similar to a kind of fairy that lives a lifestyle similar to bees. -->
+  <VV_Vivi.descriptionShort>一個和小仙靈相似的種族，生活方式與蜜蜂接近。</VV_Vivi.descriptionShort>
+  
+</LanguageData>

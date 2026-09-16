@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 신경열 떠넘기기 -->
+  <Miho_EntropyDump_High.label>熵熱吸收</Miho_EntropyDump_High.label>
+  <!-- EN: 신경열 떠넘기기 -->
+  <Miho_EntropyDump_High.description>此單位身上積聚的神經熱正被“驅鬼犬”靈能支援無人機快速吸收。</Miho_EntropyDump_High.description>
+  <!-- EN: 신경열 떠넘기기 -->
+  <Miho_EntropyDump_High.labelNoun>熵熱吸收</Miho_EntropyDump_High.labelNoun>
+  
+  <!-- EN: 태양화 위험약물 중독 -->
+  <Miho_PositiveFlower_Juice_Addiction.label>秘靈烈藥成癮</Miho_PositiveFlower_Juice_Addiction.label>
+  <!-- EN: 태양화 위험약물에 중독되었습니다. -->
+  <Miho_PositiveFlower_Juice_Addiction.description>秘靈烈藥的化學成癮。長期飲用秘靈烈藥會造成細胞內的神經適應秘靈烈藥，導致大腦沒有秘靈烈藥的話就無法運作。\n\n如果沒有定期飲用朝花湯劑，戒斷反應就會開始。然而，長時間的戒斷會迫使大腦恢復正常狀態，解決成癮問題。</Miho_PositiveFlower_Juice_Addiction.description>
+  <!-- EN: withdrawal -->
+  <Miho_PositiveFlower_Juice_Addiction.stages.withdrawal.label>戒斷</Miho_PositiveFlower_Juice_Addiction.stages.withdrawal.label>
+  
+  <!-- EN: 탕약의 효과 -->
+  <Miho_PositiveFlower_Juice_High.label>朝花湯劑效果</Miho_PositiveFlower_Juice_High.label>
+  <!-- EN: 탕약의 효능 : 맛없다 -->
+  <Miho_PositiveFlower_Juice_High.description>朝花湯劑正在使心靈熵快速消散。順帶一提，這東西可並不怎麽好喝。</Miho_PositiveFlower_Juice_High.description>
+  <!-- EN: 탕약의 효과 -->
+  <Miho_PositiveFlower_Juice_High.labelNoun>朝花湯劑效果</Miho_PositiveFlower_Juice_High.labelNoun>
+  
+  <!-- EN: 태양화 위험약물 허용치 -->
+  <Miho_PositiveFlower_Juice_Tolerance.label>秘靈烈藥耐受</Miho_PositiveFlower_Juice_Tolerance.label>
+  <!-- EN: 태양화 위험약물 -->
+  <Miho_PositiveFlower_Juice_Tolerance.description>對秘靈烈藥的耐受性。耐受性越嚴重，達到同樣效果所需要的朝花湯劑也就越多。</Miho_PositiveFlower_Juice_Tolerance.description>
+  <!-- EN: small -->
+  <Miho_PositiveFlower_Juice_Tolerance.stages.small.label>輕微</Miho_PositiveFlower_Juice_Tolerance.stages.small.label>
+  <!-- EN: large -->
+  <Miho_PositiveFlower_Juice_Tolerance.stages.large.label>強烈</Miho_PositiveFlower_Juice_Tolerance.stages.large.label>
+  <!-- EN: massive -->
+  <Miho_PositiveFlower_Juice_Tolerance.stages.massive.label>極強</Miho_PositiveFlower_Juice_Tolerance.stages.massive.label>
+  
+  <!-- EN: 태양화 경약물 중독 -->
+  <Miho_PositiveFlower_Tea_Addiction.label>秘靈藥物成癮</Miho_PositiveFlower_Tea_Addiction.label>
+  <!-- EN: 태양화를 이용한 경약물에 딱히 휘험한 상황에 처하진 않습니다. 단지 특유의 꽃내음이 그리워질 뿐이죠. -->
+  <Miho_PositiveFlower_Tea_Addiction.description>秘靈藥物的化學成癮。長期飲用秘靈藥物會造成細胞內的神經適應秘靈藥物，導致大腦沒有秘靈藥物的話就無法運作。\n\n如果沒有定期攝取曜陽煙或煦日茶，戒斷反應就會開始。雖然美狐族不會因此出現身體不適的情況，但無法品味到秘靈向日葵的芳香會使他們感到難過。</Miho_PositiveFlower_Tea_Addiction.description>
+  <!-- EN: withdrawal -->
+  <Miho_PositiveFlower_Tea_Addiction.stages.withdrawal.label>戒斷</Miho_PositiveFlower_Tea_Addiction.stages.withdrawal.label>
+  
+  <!-- EN: 태양화 경약물 허용치 -->
+  <Miho_PositiveFlower_Tea_Tolerance.label>秘靈藥物耐受</Miho_PositiveFlower_Tea_Tolerance.label>
+  <!-- EN: 태양화 경약물 -->
+  <Miho_PositiveFlower_Tea_Tolerance.description>對秘靈藥物的耐受性。耐受性越嚴重，達到同樣效果所需要的曜陽煙或煦日茶也就越多。</Miho_PositiveFlower_Tea_Tolerance.description>
+  <!-- EN: small -->
+  <Miho_PositiveFlower_Tea_Tolerance.stages.small.label>輕微</Miho_PositiveFlower_Tea_Tolerance.stages.small.label>
+  <!-- EN: large -->
+  <Miho_PositiveFlower_Tea_Tolerance.stages.large.label>強烈</Miho_PositiveFlower_Tea_Tolerance.stages.large.label>
+  <!-- EN: massive -->
+  <Miho_PositiveFlower_Tea_Tolerance.stages.massive.label>極強</Miho_PositiveFlower_Tea_Tolerance.stages.massive.label>
+  
+</LanguageData>

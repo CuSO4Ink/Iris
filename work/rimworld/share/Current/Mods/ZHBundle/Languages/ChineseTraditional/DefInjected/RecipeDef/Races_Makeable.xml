@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 대형 메카나이트 코어 제작 -->
+  <Miho_Mech_HeavyMechCore.label>組裝機械分子引擎</Miho_Mech_HeavyMechCore.label>
+  <!-- EN: 대형 메카나이트 코어 제작. -->
+  <Miho_Mech_HeavyMechCore.description>組裝機械分子引擎。</Miho_Mech_HeavyMechCore.description>
+  <!-- EN: Gestating mech. -->
+  <Miho_Mech_HeavyMechCore.jobString>組裝機械分子引擎。</Miho_Mech_HeavyMechCore.jobString>
+  
+  <!-- EN: 미호 포병 컴퓨터 제작 -->
+  <Miho_Mech_HeavyRocketCore.label>組裝火砲計算芯片</Miho_Mech_HeavyRocketCore.label>
+  <!-- EN: 미호 포병 컴퓨터 제작. -->
+  <Miho_Mech_HeavyRocketCore.description>組裝火砲計算芯片。</Miho_Mech_HeavyRocketCore.description>
+  <!-- EN: Gestating mech. -->
+  <Miho_Mech_HeavyRocketCore.jobString>組裝火砲計算芯片。</Miho_Mech_HeavyRocketCore.jobString>
+  
+</LanguageData>

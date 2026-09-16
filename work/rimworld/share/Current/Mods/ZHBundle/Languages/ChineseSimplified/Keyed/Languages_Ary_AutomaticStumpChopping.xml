@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: Automatic Stump Chopping -->
+  <ARY_AutomaticStumpChopping_Title>斩草除根</ARY_AutomaticStumpChopping_Title>
+
+	<!-- EN: Automatically Designate The Stump For Chopping ? -->
+  <ARYASC_enable_cut_stump_Label>是否自动指派割除树桩？</ARYASC_enable_cut_stump_Label>
+	<!-- EN: Default:  ✔
+Tall trees will have their stump chopped right after being chopped.
+Changing this will NOT require a restart! -->
+  <ARYASC_Stump_NoRestart>默认：✔\n较高的树木会在砍伐后直接继续割除其树桩！\n此设置无需重启即可生效！</ARYASC_Stump_NoRestart>
+
+	<!-- EN: Automatically Designate Blighted Plants For Cutting ? -->
+  <ARYASC_enable_cut_blight_Label>是否自动指派割除患枯萎病的植物？</ARYASC_enable_cut_blight_Label>
+	<!-- EN: Default:  ✔
+Any future blight on plants will be immediately designated for cutting.
+Changing this will NOT require a restart! -->
+  <ARYASC_Blight_NoRestart>默认：✔\n将来所有患枯萎病的植物都将立刻被指派割除。\n此设置无需重启即可生效！</ARYASC_Blight_NoRestart>
+
+	<!-- EN: Chopped Tall Trees Have Falling Visual Effect ? -->
+  <ARYASC_enable_visual_Label>是否启用树木倒下的视觉效果？</ARYASC_enable_visual_Label>
+	<!-- EN: Default:  ✔
+Most tall trees will have a falling visual effect after being chopped.
+Changing this will NOT require a restart! -->
+  <ARYASC_Visual_NoRestart>默认：✔\n大部分的树木将会有倒下的视觉特效。\n此设置无需重启即可生效！</ARYASC_Visual_NoRestart>
+
+
+
+	<!-- EN: Enable the "Chop stumps" order button ? -->
+  <ARYASC_enable_AllStumpsChop_Label>是否启用「割除树桩」按钮?</ARYASC_enable_AllStumpsChop_Label>
+	<!-- EN: Default:  ✔
+Show or hide the button
+"Chop stumps".
+Changing this will require a restart! -->
+  <ARYASC_AllStumpsChop_Restart>默认: ✔\n启用或隐藏「割除树桩」按钮。\n此设置需要重启方可生效！</ARYASC_AllStumpsChop_Restart>
+
+	<!-- EN: Enable the "Chop fully grown trees" order button ? -->
+  <ARYASC_enable_FullyGrownTreesChop_Label>是否启用「割除成熟树木」按钮?</ARYASC_enable_FullyGrownTreesChop_Label>
+	<!-- EN: Default:  ✔
+Show or hide the button
+"Chop fully grown trees".
+Changing this will require a restart! -->
+  <ARYASC_FullyGrownTreesChop_Restart>默认: ✔\n启用或隐藏「割除成熟树木」按钮。\n此设置需要重启方可生效！</ARYASC_FullyGrownTreesChop_Restart>
+
+	<!-- EN: Enable the "Harvest fully grown crops" order button ? -->
+  <ARYASC_enable_FullyGrownCropsChop_Label>是否启用「收获成熟庄稼」按钮?</ARYASC_enable_FullyGrownCropsChop_Label>
+	<!-- EN: Default:  ✔
+Show or hide the button
+"Harvest fully grown crops".
+Changing this will require a restart! -->
+  <ARYASC_FullyGrownCropsChop_Restart>默认: ✔\n启用或隐藏「收获成熟庄稼」按钮。\n此设置需要重启方可生效！</ARYASC_FullyGrownCropsChop_Restart>
+
+
+
+	<!-- EN: Enable this mod's debug log messages ? -->
+  <ARYASC_enable_messages_Label>启用本模组的开发者日志？</ARYASC_enable_messages_Label>
+	<!-- EN: Default:  ✘
+You may need to enable the development mode.
+Changing this will NOT require a restart! -->
+  <ARYASC_Messages_NoRestart>默认：✘\n你需要启用开发者模式。\n此设置无需重启即可生效！</ARYASC_Messages_NoRestart>
+
+
+
+	<!-- EN: Click here to reset this mod to its default settings -->
+  <ARYASC_Reset_Settings>点击此处以重置该模组的设定。</ARYASC_Reset_Settings>
+
+	<!-- EN: Chop stumps -->
+  <Designator_AllStumpsChop_Label>割除树桩</Designator_AllStumpsChop_Label>
+	<!-- EN: Marks stumps to be chopped down for wood. -->
+  <Designator_AllStumpsChop_Descr>标记待割除的树桩以收获木材。</Designator_AllStumpsChop_Descr>
+
+	<!-- EN: Chop fully grown trees -->
+  <Designator_FullyGrownTreesChop_Label>砍伐完全成熟的树木</Designator_FullyGrownTreesChop_Label>
+	<!-- EN: Marks fully grown trees to be chopped down for wood. Most special trees, such as the anima tree, are not affected by this tool. -->
+  <Designator_FullyGrownTreesChop_Descr>标记完全成熟的树木以收获木材。一些特殊的树将不会被标记。</Designator_FullyGrownTreesChop_Descr>
+
+	<!-- EN: Harvest fully grown crops -->
+  <Designator_FullyGrownCropsChop_Label>收获完全成熟的庄稼</Designator_FullyGrownCropsChop_Label>
+	<!-- EN: Marks fully grown plants to be harvested for their food or other products. -->
+  <Designator_FullyGrownCropsChop_Descr>标记完全成熟的庄稼以收获食物或其它产出。</Designator_FullyGrownCropsChop_Descr>
+
+</LanguageData>

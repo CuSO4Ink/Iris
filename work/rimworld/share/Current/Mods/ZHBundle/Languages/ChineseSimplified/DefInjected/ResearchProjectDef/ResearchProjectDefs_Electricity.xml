@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: electricity -->
+  <RR_ElectricityBasics.label>电</RR_ElectricityBasics.label>
+  <!-- EN: Harness the power of electricity. -->
+  <RR_ElectricityBasics.description>驾驭电力。</RR_ElectricityBasics.description>
+  <!-- EN: Your colony has harnessed the power which outsiders call "electricity". It has the potential to transform every aspect of your people's way of life.\n\nYou have now unlocked the Power tab in the Architect menu from which you may build electric generators, power conduits, and other mechanisms to control this new force. The Power tab also displays the electric grid which connects electric generators and appliances. -->
+  <RR_ElectricityBasics.discoveredLetterText>你的殖民地掌握了外人所谓的“电力”。它有潜力改造人民生活的方方面面。\n\n你现在可以在「建筑规划」菜单中新解锁的「电力」选项卡内建造发电机、电缆，以及其他用于控制这一新力量的装置。该选项卡还会显示连接发电机与用电设备的电网。</RR_ElectricityBasics.discoveredLetterText>
+  <!-- EN: About: Electricity -->
+  <RR_ElectricityBasics.discoveredLetterTitle>关于：电力</RR_ElectricityBasics.discoveredLetterTitle>
+  <!-- EN:
+    <li>subject->electricity</li>
+    <li>subject_story->was struck by lighting and became determined to harness it</li>
+    <li>subject_story->created the first lightbulb on a medieval world</li>
+    <li>subject_story->was executed on a feudal world for the blasphemy of creating light</li>
+    <li>subject_gerund->harnessing electricity</li>
+  -->
+  <RR_ElectricityBasics.generalRules.rulesStrings.0>subject->电力</RR_ElectricityBasics.generalRules.rulesStrings.0>
+  <RR_ElectricityBasics.generalRules.rulesStrings.1>subject_story->曾被雷击，从此立志驾驭它</RR_ElectricityBasics.generalRules.rulesStrings.1>
+  <RR_ElectricityBasics.generalRules.rulesStrings.2>subject_story->在中世纪科技世界制作了第一只灯泡</RR_ElectricityBasics.generalRules.rulesStrings.2>
+  <RR_ElectricityBasics.generalRules.rulesStrings.3>subject_story->在封建世界因制造光明而被处死</RR_ElectricityBasics.generalRules.rulesStrings.3>
+  <RR_ElectricityBasics.generalRules.rulesStrings.4>subject_gerund->驾驭电力</RR_ElectricityBasics.generalRules.rulesStrings.4>
+
+  <!-- EN: EMP weapons -->
+  <RR_EMP.label>EMP 武器</RR_EMP.label>
+  <!-- EN: Build weaponry that exploits electromagnetic pulses to stun mechanical enemies. -->
+  <RR_EMP.description>建造利用电磁脉冲来眩晕机械敌人的武器。</RR_EMP.description>
+  <!-- EN:
+    <li>subject->EMPs</li>
+    <li>subject->elecromagnetic pulses</li>
+    <li>subject_story->accidentally caused a city block-wide blackout</li>
+    <li>subject_story->experimented with arrangements of coils and magnets</li>
+    <li>subject_story->raided mechanoid hives through clever use of stun grenades</li>
+    <li>subject_gerund->generating electrical pulses</li>
+    <li>subject_gerund->producing pulses</li>
+  -->
+  <RR_EMP.generalRules.rulesStrings.0>subject->电磁脉冲</RR_EMP.generalRules.rulesStrings.0>
+  <RR_EMP.generalRules.rulesStrings.1>subject->电磁脉冲波</RR_EMP.generalRules.rulesStrings.1>
+  <RR_EMP.generalRules.rulesStrings.2>subject_story->曾一不小心让整片街区停电</RR_EMP.generalRules.rulesStrings.2>
+  <RR_EMP.generalRules.rulesStrings.3>subject_story->尝试过各种线圈与磁体的排列</RR_EMP.generalRules.rulesStrings.3>
+  <RR_EMP.generalRules.rulesStrings.4>subject_story->借助眩晕手雷巧妙突袭过机群巢穴</RR_EMP.generalRules.rulesStrings.4>
+  <RR_EMP.generalRules.rulesStrings.5>subject_gerund->产生电磁脉冲</RR_EMP.generalRules.rulesStrings.5>
+  <RR_EMP.generalRules.rulesStrings.6>subject_gerund->制造脉冲</RR_EMP.generalRules.rulesStrings.6>
+
+  <!-- EN: heating elements -->
+  <RR_HeatingElements.label>加热元件</RR_HeatingElements.label>
+  <!-- EN: Learn how to effectively use the power of electricity to generate heat. -->
+  <RR_HeatingElements.description>学习如何高效利用电力来产生热量。</RR_HeatingElements.description>
+  <!-- EN:
+    <li>subject->heaters</li>
+    <li>subject->heating elements</li>
+    <li>subject_story->nearly died of frostbite during the winter</li>
+    <li>subject_story->got burned while replacing an old lightbulb</li>
+    <li>subject_story->decided a safer method of heating was needed after causing a forest fire</li>
+    <li>subject_gerund->building heaters</li>
+  -->
+  <RR_HeatingElements.generalRules.rulesStrings.0>subject->加热器</RR_HeatingElements.generalRules.rulesStrings.0>
+  <RR_HeatingElements.generalRules.rulesStrings.1>subject->加热元件</RR_HeatingElements.generalRules.rulesStrings.1>
+  <RR_HeatingElements.generalRules.rulesStrings.2>subject_story->曾在严冬差点被冻伤</RR_HeatingElements.generalRules.rulesStrings.2>
+  <RR_HeatingElements.generalRules.rulesStrings.3>subject_story->更换旧灯泡时被烫到</RR_HeatingElements.generalRules.rulesStrings.3>
+  <RR_HeatingElements.generalRules.rulesStrings.4>subject_story->在引发森林火灾后决定寻找更安全的取暖方式</RR_HeatingElements.generalRules.rulesStrings.4>
+  <RR_HeatingElements.generalRules.rulesStrings.5>subject_gerund->建造加热器</RR_HeatingElements.generalRules.rulesStrings.5>
+
+  <!-- EN: dynamos -->
+  <RR_PowerGenerators.label>发电机</RR_PowerGenerators.label>
+  <!-- EN: Build electricity generators based on the simple principle of converting motive power into electrical power. -->
+  <RR_PowerGenerators.description>建造基于“将机械动能转化为电能”这一简单原理的发电设备。</RR_PowerGenerators.description>
+  <!-- EN:
+    <li>subject->dynamos</li>
+    <li>subject->generators</li>
+    <li>subject_story->noticed that motors generated power when spun by hand</li>
+    <li>subject_story->experimented with arrangements of coils and magnets</li>
+    <li>subject_story->understood the relation between magnetism and electricity</li>
+    <li>subject_gerund->generating electricity</li>
+    <li>subject_gerund->building generators</li>
+  -->
+  <RR_PowerGenerators.generalRules.rulesStrings.0>subject->发电机</RR_PowerGenerators.generalRules.rulesStrings.0>
+  <RR_PowerGenerators.generalRules.rulesStrings.1>subject->发电设备</RR_PowerGenerators.generalRules.rulesStrings.1>
+  <RR_PowerGenerators.generalRules.rulesStrings.2>subject_story->注意到电机手摇时也会发电</RR_PowerGenerators.generalRules.rulesStrings.2>
+  <RR_PowerGenerators.generalRules.rulesStrings.3>subject_story->尝试过各种线圈与磁体的排列</RR_PowerGenerators.generalRules.rulesStrings.3>
+  <RR_PowerGenerators.generalRules.rulesStrings.4>subject_story->理解了磁与电之间的关系</RR_PowerGenerators.generalRules.rulesStrings.4>
+  <RR_PowerGenerators.generalRules.rulesStrings.5>subject_gerund->发电</RR_PowerGenerators.generalRules.rulesStrings.5>
+  <RR_PowerGenerators.generalRules.rulesStrings.6>subject_gerund->建造发电机</RR_PowerGenerators.generalRules.rulesStrings.6>
+
+</LanguageData>

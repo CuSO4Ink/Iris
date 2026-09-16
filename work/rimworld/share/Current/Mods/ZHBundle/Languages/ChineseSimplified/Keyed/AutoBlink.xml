@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Auto Blink -->
+  <AutoBlink.AutoBlink_Label>自动传送</AutoBlink.AutoBlink_Label>
+  <!-- EN: Toggles automatic blink movement.\nRight-click to open detailed settings. -->
+  <AutoBlink.AutoBlink_Desc>开关自动传送。\n右键打开详细设置。</AutoBlink.AutoBlink_Desc>
+
+  <!-- EN: Drafted -->
+  <AutoBlink.Drafted_Label>征召时传送</AutoBlink.Drafted_Label>
+  <!-- EN: Idle -->
+  <AutoBlink.Idle_Label>工作时传送</AutoBlink.Idle_Label>
+
+  <!-- EN: Min Dist: {0} -->
+  <AutoBlink.MinDist_Format>进行传送的最小距离： {0}</AutoBlink.MinDist_Format>
+</LanguageData>

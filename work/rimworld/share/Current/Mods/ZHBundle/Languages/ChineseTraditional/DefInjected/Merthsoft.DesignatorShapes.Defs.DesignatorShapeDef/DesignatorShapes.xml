@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <Circle.label>圓形</Circle.label>
+  <Circle.description>劃定一個圓形區域。</Circle.description>
+  
+  <CircleFilled.label>實心圓形</CircleFilled.label>
+  <CircleFilled.description>劃定一個實心的圓形區域。</CircleFilled.description>
+  
+  <Ellipse.label>橢圓</Ellipse.label>
+  <Ellipse.description>劃定一個橢圓形區域。</Ellipse.description>
+  
+  <Ellipse_Input.label>自訂橢圓</Ellipse_Input.label>
+  <Ellipse_Input.description>劃定一個自訂尺寸的橢圓形區域。</Ellipse_Input.description>
+  
+  <EllipseFilled.label>實心橢圓</EllipseFilled.label>
+  <EllipseFilled.description>劃定一個實心的橢圓形區域。</EllipseFilled.description>
+  
+  <EllipseFilled_Input.label>自訂實心橢圓</EllipseFilled_Input.label>
+  <EllipseFilled_Input.description>劃定一個自訂尺寸的實心橢圓形區域。</EllipseFilled_Input.description>
+  
+  <FloodFill.label>填充</FloodFill.label>
+  <FloodFill.description>對一個被牆壁等障礙物封閉的區域進行填充。</FloodFill.description>
+  
+  <GridFiveByFive.label>5x5 網格</GridFiveByFive.label>
+  <GridFiveByFive.description>劃定一個5x5的網格區域。</GridFiveByFive.description>
+  
+  <GridFiveByFiveInverse.label>反向5x5網格</GridFiveByFiveInverse.label>
+  <GridFiveByFiveInverse.description>劃定一個反向的5x5網格區域。</GridFiveByFiveInverse.description>
+  
+  <GridFourByFour.label>4x4 網格</GridFourByFour.label>
+  <GridFourByFour.description>劃定一個4x4的網格區域。</GridFourByFour.description>
+  
+  <GridFourByFourInverse.label>反向4x4網格</GridFourByFourInverse.label>
+  <GridFourByFourInverse.description>劃定一個反向的4x4網格區域。</GridFourByFourInverse.description>
+  
+  <GridSevenBySeven.label>7x7 網格</GridSevenBySeven.label>
+  <GridSevenBySeven.description>劃定一個7x7的網格區域。</GridSevenBySeven.description>
+  
+  <GridSevenBySevenInverse.label>反向7x7網格</GridSevenBySevenInverse.label>
+  <GridSevenBySevenInverse.description>劃定一個反向的7x7網格區域。</GridSevenBySevenInverse.description>
+  
+  <GridSixBySix.label>6x6 網格</GridSixBySix.label>
+  <GridSixBySix.description>劃定一個6x6的網格區域。</GridSixBySix.description>
+  
+  <GridSixBySixInverse.label>反向6x6網格</GridSixBySixInverse.label>
+  <GridSixBySixInverse.description>劃定一個反向的6x6網格區域。</GridSixBySixInverse.description>
+  
+  <GridSizeInput.label>自訂網格</GridSizeInput.label>
+  <GridSizeInput.description>劃定一個自訂尺寸的網格區域。</GridSizeInput.description>
+  
+  <GridSizeInputInverse.label>自訂反向網格</GridSizeInputInverse.label>
+  <GridSizeInputInverse.description>劃定一個自訂尺寸的反向網格區域。</GridSizeInputInverse.description>
+  
+  <GridThreeByThree.label>3x3 網格</GridThreeByThree.label>
+  <GridThreeByThree.description>劃定一個3x3的網格區域。</GridThreeByThree.description>
+  
+  <GridThreeByThreeInverse.label>反向3x3網格</GridThreeByThreeInverse.label>
+  <GridThreeByThreeInverse.description>劃定一個反向的3x3網格區域。</GridThreeByThreeInverse.description>
+  
+  <Hexagon.label>六邊形</Hexagon.label>
+  <Hexagon.description>劃定一個六邊形區域。</Hexagon.description>
+  
+  <HexagonFilled.label>實心六邊形</HexagonFilled.label>
+  <HexagonFilled.description>劃定一個實心的六邊形區域。</HexagonFilled.description>
+  
+  <Line.label>線段</Line.label>
+  <Line.description>劃定一條直線。</Line.description>
+  
+  <LineFreeform.label>自由曲線</LineFreeform.label>
+  <LineFreeform.description>像用筆一樣，自由地劃定曲線。</LineFreeform.description>
+  
+  <MidpointHexagon.label>中心點六邊形</MidpointHexagon.label>
+  <MidpointHexagon.description>從中心點開始劃定一個六邊形區域。</MidpointHexagon.description>
+  
+  <MidpointHexagonFilled.label>實心中心點六邊形</MidpointHexagonFilled.label>
+  <MidpointHexagonFilled.description>從中心點開始劃定一個實心的六邊形區域。</MidpointHexagonFilled.description>
+  
+  <Pentagon.label>五邊形</Pentagon.label>
+  <Pentagon.description>劃定一個五邊形區域。</Pentagon.description>
+  
+  <PentagonFilled.label>實心五邊形</PentagonFilled.label>
+  <PentagonFilled.description>劃定一個實心的五邊形區域。</PentagonFilled.description>
+  
+  <Rectangle.label>矩形</Rectangle.label>
+  <Rectangle.description>劃定一個矩形區域。</Rectangle.description>
+  
+  <Rectangle_Input.label>自訂矩形</Rectangle_Input.label>
+  <Rectangle_Input.description>劃定一個自訂尺寸的矩形區域。</Rectangle_Input.description>
+  
+  <RectangleFilled.label>實心矩形</RectangleFilled.label>
+  <RectangleFilled.description>劃定一個實心的矩形區域。</RectangleFilled.description>
+  
+  <RectangleFilled_Input.label>自訂實心矩形</RectangleFilled_Input.label>
+  <RectangleFilled_Input.description>劃定一個自訂尺寸的實心矩形區域。</RectangleFilled_Input.description>
+  
+  <Redo.label>重作</Redo.label>
+  <Redo.description>重作上一步被復原的操作。僅在遊戲暫停時可用。</Redo.description>
+  
+  <SunLamp.label>太陽燈範圍</SunLamp.label>
+  <SunLamp.description>劃定一個太陽燈的照射範圍。</SunLamp.description>
+  
+  <SunLampOutline.label>太陽燈範圍輪廓</SunLampOutline.label>
+  <SunLampOutline.description>劃定太陽燈照射範圍的輪廓。</SunLampOutline.description>
+  
+  <TradeBeacon.label>軌道貿易信標範圍</TradeBeacon.label>
+  <TradeBeacon.description>劃定一個軌道貿易信標的作用範圍。</TradeBeacon.description>
+  
+  <TradeBeaconOutline.label>軌道貿易信標範圍輪廓</TradeBeaconOutline.label>
+  <TradeBeaconOutline.description>劃定軌道貿易信標作用範圍的輪廓。</TradeBeaconOutline.description>
+  
+  <Undo.label>復原</Undo.label>
+  <Undo.description>復原上一步操作。僅在遊戲暫停時可用。</Undo.description>
+  
+</LanguageData>

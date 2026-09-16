@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 천상비늘 -->
+  <Miho_CelestialScale.label>星宇鱗金</Miho_CelestialScale.label>
+  <!-- EN: 중성자 별의 핵에 비견될 정도로 극단적으로 압축된 플라스틸과 음의 질량을 지닌 이종물질로 이루어진 인류 역사를 통틀어 가장 강력한 합금입니다... 라고 미호들은 설명합니다. -->
+  <Miho_CelestialScale.description>“這就是用經過超壓縮處理的塑鋼與密度堪比中子星內核的異態秘質冶鍛而成的強力合金，或許是我們美狐族史上性能最為優質的材料。”一名美狐族科學家正如此解釋道。</Miho_CelestialScale.description>
+  
+  <!-- EN: 미호 세라믹 -->
+  <Miho_Ceramics.label>美狐陶瓷</Miho_Ceramics.label>
+  <!-- EN: 튼튼한 도기 입니다. -->
+  <Miho_Ceramics.description>被美狐族廣泛使用的陶瓷。雖然不及鋼鐵堅硬，但仍是一種美觀且不易燃的建築材料。</Miho_Ceramics.description>
+  <Miho_Ceramics.stuffProps.stuffAdjective>陶瓷</Miho_Ceramics.stuffProps.stuffAdjective>
+  
+  <!-- EN: 이종물질 -->
+  <Miho_ExoticMatter.label>異態秘質</Miho_ExoticMatter.label>
+  <!-- EN: 음의 질량을 가지고 있는, 변방계에서는 거의 찾아볼수 없는 희귀한 물질 입니다. -->
+  <Miho_ExoticMatter.description>質量為負數的奇異物質，很難在偏遠的邊緣世界中找到。\n\n有傳言稱，這種物質是構成虛量發電機的材料之一。</Miho_ExoticMatter.description>
+  
+  <!-- EN: 미호 대형 메카나이트 코어 -->
+  <Miho_HeavyMechCore.label>機械分子引擎</Miho_HeavyMechCore.label>
+  <!-- EN: 미호들의 대형 메카노이드에 쓰이는 거대한 메카나이트 엔진 입니다. -->
+  <Miho_HeavyMechCore.description>為了驅動美狐族的重型無人機，這種機械分子引擎是必不可少的。</Miho_HeavyMechCore.description>
+  
+  <!-- EN: 미호 포병 컴퓨터 -->
+  <Miho_HeavyRocketCore.label>火砲計算芯片</Miho_HeavyRocketCore.label>
+  <!-- EN: 다연장 로켓 메카노이드의 장전과 방열, 포격을 관장하는 컴퓨터칩 입니다. -->
+  <Miho_HeavyRocketCore.description>無論是裝彈、散熱還是開火，美狐族無人機所配備的多管火箭砲都高度依賴於這種計算芯片。</Miho_HeavyRocketCore.description>
+  
+  <!-- EN: 미호 유부초밥 -->
+  <Miho_InariZushi.label>特製豆皮壽司</Miho_InariZushi.label>
+  <!-- EN: 여우들이 환장한다는 초밥 도시락 입니다. 대체 유부를 통해 제작되었습니다. -->
+  <Miho_InariZushi.description>令美狐族為之瘋狂的特製豆皮壽司。油炸豆皮部分可以用其他素食原料代替製作。</Miho_InariZushi.description>
+  
+  <!-- EN: 미호 군용 방탄 세라믹 -->
+  <Miho_MilitaryGradeBalisticCeramics.label>美狐軍用陶瓷</Miho_MilitaryGradeBalisticCeramics.label>
+  <!-- EN: 강철과 세라믹을 합친 강화 소재 입니다. -->
+  <Miho_MilitaryGradeBalisticCeramics.description>用鋼鐵進一步強化過的軍規級防彈陶瓷材料。雖然不及普通美狐陶瓷那般美觀，但相當堅硬耐用。</Miho_MilitaryGradeBalisticCeramics.description>
+  <Miho_MilitaryGradeBalisticCeramics.stuffProps.stuffAdjective>軍用陶瓷</Miho_MilitaryGradeBalisticCeramics.stuffProps.stuffAdjective>
+  
+  <!-- EN: 미호 기술 문서 -->
+  <Miho_Schematic.label>美狐圖紙</Miho_Schematic.label>
+  <!-- EN: 미호들의 기술이 담긴 문서입니다 -->
+  <Miho_Schematic.description>一本記載美狐科技及其使用方法的書。閱讀圖紙可以幫助解鎖新美狐技術。</Miho_Schematic.description>
+  
+</LanguageData>

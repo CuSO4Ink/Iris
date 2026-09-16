@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<!-- Various -->
+
+	<!-- EN: Fishing Zone -->
+  <VCEF_FishingGrowingZone>钓鱼区</VCEF_FishingGrowingZone>
+	<!-- EN: Create a zone where your colonists will try to fish -->
+  <VCEF_FishingGrowingZoneDesc>创造一片区域，殖民者会尝试在这里钓鱼。</VCEF_FishingGrowingZoneDesc>
+
+	<!-- EN: Choose catch -->
+  <VCEF_ChooseFish>筛捕选项</VCEF_ChooseFish>
+	<!-- EN: Choose prefered fish size to catch from those inhabiting this biome. Smaller fish take less time but are less nutritive, while larger fish take longer and are more nutritive. Medium fish are balanced between the two extremes. There is always a chance to catch some different fish or special items -->
+  <VCEF_ChooseFishDesc>选择目标渔获的尺寸。钓更小的鱼类花费更少时间，但鱼的营养也更少。反之亦然。但总会有意外，偶尔会钓来一些并不符合你所选大小的鱼类和一些特殊物品。</VCEF_ChooseFishDesc>
+
+
+	<!-- EN: Catch Small Fish -->
+  <VCEF_ChooseFishSmallLabel>钓小型鱼类</VCEF_ChooseFishSmallLabel>
+	<!-- EN: Catch Medium Fish -->
+  <VCEF_ChooseFishMediumLabel>钓中型鱼类</VCEF_ChooseFishMediumLabel>
+	<!-- EN: Catch Large Fish -->
+  <VCEF_ChooseFishLargeLabel>钓大型鱼类</VCEF_ChooseFishLargeLabel>
+
+	<!-- EN: Allow Fishing -->
+  <VCEF_CommandAllowFishing>允许钓鱼</VCEF_CommandAllowFishing>
+	<!-- EN: Allow fishing to take place in this fishing zone -->
+  <VCEF_CommandAllowFishingDesc>允许在此区域内钓鱼。</VCEF_CommandAllowFishingDesc>
+
+	<!-- EN: This zone of size {0} is set to catch fish of size -->
+  <VCEF_ZoneSetTo>此区域（{0}格）已被设置为只准钓指定大小的鱼类</VCEF_ZoneSetTo>
+	<!-- EN: Fish in this zone:  -->
+  <VCEF_FishesInThisZone>此钓鱼区内的鱼类: </VCEF_FishesInThisZone>
+	<!-- EN: Oceanic fishing zone:  -->
+  <VCEF_IsZoneOceanZone>海洋钓鱼区: </VCEF_IsZoneOceanZone>
+	<!-- EN: Yes -->
+  <VCEF_Yes>是</VCEF_Yes>
+	<!-- EN: No -->
+  <VCEF_No>否</VCEF_No>
+	<!-- EN: This zone is too small (size {0}). Fishing zones need to be at least {1} tiles to be valid (this calculation is made every few seconds: unpause to update). -->
+  <VCEF_ZoneTooSmall>这个钓鱼区太小了（{0}格）。至少需要{1}格才能钓鱼（每过几秒就会检测一次，取消暂停才会更新检测结果）。</VCEF_ZoneTooSmall>
+
+	<!-- EN: No fish to catch in this biome (this could happen with modded biomes, ask the owner to add support! Or perhaps you are in a lifeless biome) -->
+  <VCEF_NoFish>此生态群落无鱼可钓！（可能是因为你所在的环境本身就不应该有鱼，或者你用了其他影响生态群落类型的Mod）</VCEF_NoFish>
+
+	<!-- EN: While fishing, {0} has caught something special: {1} -->
+  <VCEF_CaughtSpecial>{0}在钓鱼时捕获了一些特别的东西：{1}</VCEF_CaughtSpecial>
+
+	<!-- Options -->
+	
+	<!-- EN: Minimum Fishing Zone size -->
+  <VCEF_minimumZoneSize>钓鱼区最小尺寸</VCEF_minimumZoneSize>
+	<!-- EN: Minimum Fishing Zone size, default is 25 tiles -->
+  <VCEF_minimumZoneSizeTooltip>钓鱼区的最小尺寸，默认为25格</VCEF_minimumZoneSizeTooltip>
+	
+	<!-- EN: Base Fishing Duration in ticks -->
+  <VCEF_smallFishDurationFactor>基础钓鱼时长（以ticks为单位）</VCEF_smallFishDurationFactor>
+	<!-- EN: Base Fishing Duration in ticks. Default is 4500 for small fish. Medium fish take double this time, while large fish take three times as much. Decreasing this increases food yield per day, and viceversa. -->
+  <VCEF_smallFishDurationFactorTooltip>钓鱼消耗的时长。默认钓小型鱼类占时4500，钓中型鱼类占时双倍，大型鱼类则是三倍。降低这个值可以增加每日的水产产出，反之亦然。</VCEF_smallFishDurationFactorTooltip>
+
+	<!-- EN: Chance to get an special item instead of fish -->
+  <VCEF_chanceForSpecials>钓鱼获得特殊物品的几率</VCEF_chanceForSpecials>
+	<!-- EN: Chance to get an special item instead of fish. Default is 1% per fishing operation. -->
+  <VCEF_chanceForSpecialsTooltip>每次钓鱼时，获得特殊物品而非鱼类的几率，默认值是1%。</VCEF_chanceForSpecialsTooltip>
+	<!-- EN: Chance to get an special item instead of fish. Default is 1% per fishing operation. Bear in mind in Odyssey there is by default a 5 day timer between "rare" catches, that you can tweak via these options too. -->
+  <VCEF_chanceForSpecialsTooltip_Odyssey>每次钓鱼时，获得特殊物品而非鱼类的几率，默认值是1%。请注意，奥德赛DLC的“罕见渔获”事件之间存在5天的触发间隔，你可以通过调整其他选项来更改它。</VCEF_chanceForSpecialsTooltip_Odyssey>
+	
+	<!-- EN: Minimum days between rare catches -->
+  <VCEF_minDaysBetweenRareCatches>“罕见渔获”事件的最小触发间隔</VCEF_minDaysBetweenRareCatches>
+	<!-- EN: By default in Odyssey "rare" catches can only happen when 5 days have passed since the last "rare" catch. You can change that minimum interval here. -->
+  <VCEF_minDaysBetweenRareCatchesTooltip>默认情况下，当触发奥德赛DLC的“罕见渔获”事件后，需要间隔5天才能再次触发。你可以通过调整此项来更改它。</VCEF_minDaysBetweenRareCatchesTooltip>
+	
+	<!-- EN: Minimum map temperature for reduced fish yield -->
+  <VCEF_minMapTempForLowFish>妨害钓鱼效率的最低温度临界值</VCEF_minMapTempForLowFish>
+	<!-- EN: Minimum map temperature for reduced fish yield. Below this temperature fish yield will be greatly reduced. Default is 0ºC. -->
+  <VCEF_minMapTempForLowFishTooltip>当地图的温度低于此项的值时，钓鱼效率会大幅降低。默认为0℃。</VCEF_minMapTempForLowFishTooltip>
+	
+	<!-- EN: Maximum map temperature for reduced fish yield -->
+  <VCEF_maxMapTempForLowFish>妨害钓鱼效率的最高气温临界值</VCEF_maxMapTempForLowFish>
+	<!-- EN: Maximum map temperature for reduced fish yield. Above this temperature fish yield will be greatly reduced. Default is 50ºC. -->
+  <VCEF_maxMapTempForLowFishTooltip>当地图的温度高于此项的值时，钓鱼效率会大幅降低。默认为0℃。</VCEF_maxMapTempForLowFishTooltip>
+	
+	<!-- EN: Fishing Yield multiplier -->
+  <VCEF_fishingYieldMultiplier>钓鱼效率乘数</VCEF_fishingYieldMultiplier>
+	<!-- EN: The amount of fish caught will be scaled by this multiplier. -->
+  <VCEF_fishingYieldMultiplierTooltip>钓鱼效率会乘以此项的值。</VCEF_fishingYieldMultiplierTooltip>
+	
+	<!-- EN: Fishing Speed multiplier -->
+  <VCEF_fishingSpeedMultiplier>钓鱼速度乘数</VCEF_fishingSpeedMultiplier>
+	<!-- EN: The speed to catch the fish will be scaled by this multiplier. -->
+  <VCEF_fishingSpeedMultiplierTooltip>钓鱼速度会乘以此项的值。</VCEF_fishingSpeedMultiplierTooltip>
+	
+	<!-- EN: Max fish population multiplier -->
+  <VCEF_maxFishPopulationMultiplier>最大鱼类数量乘数</VCEF_maxFishPopulationMultiplier>
+	<!-- EN: In Odyssey, max fish population in a body of water is defined per biome. This multiplier will be applied to that limit. -->
+  <VCEF_maxFishPopulationMultiplierTooltip>奥德赛DLC为每个生态群落的水域鱼类数量都做了定义。这一限制会乘以此项的值。</VCEF_maxFishPopulationMultiplierTooltip>
+	
+	<!-- EN: Fish amount (in fishing zone) multiplier -->
+  <VCEF_fishAmountMultiplier>钓鱼区内的鱼类数量乘数</VCEF_fishAmountMultiplier>
+	<!-- EN: Amount of fish that will be present on a fishing zone. This multiplier will be applied to that amount. -->
+  <VCEF_fishAmountMultiplierTooltip>钓鱼区内存在的鱼类数量会乘以此项的值。</VCEF_fishAmountMultiplierTooltip>
+	
+	<!-- EN: Chance for negative outcomes -->
+  <VCEF_chanceForNegativeOutcome>钓鱼出现负面结果的几率</VCEF_chanceForNegativeOutcome>
+	<!-- EN: By default there is a 2% chance that any fishing will result in a negative outcome. -->
+  <VCEF_chanceForNegativeOutcomeTooltip>每次钓鱼时，出现负面结果（例如被鱼咬伤、被鱼袭击、被鱼逃脱等）的几率，默认值是2%。</VCEF_chanceForNegativeOutcomeTooltip>
+	
+	<!-- EN: Fisher drops fish on the ground instead of hauling to stockpiles -->
+  <VCEF_dropFish>渔夫把渔获放置在地上，而非立刻搬去储存区。</VCEF_dropFish>
+	
+	<!-- EN: Reset all -->
+  <VCEF_Reset_Plain>重设所有</VCEF_Reset_Plain>
+	
+	<!-- EN: Disable Gill Rot -->
+  <VCEF_DisableGillRot>禁用鳃腐病</VCEF_DisableGillRot>
+	<!-- EN: If checked, it will make Gill Rit impossible to happen under any circumstances. -->
+  <VCEF_DisableGillRotDesc>禁用鳃腐病，使其在任何情况下都不会发生。</VCEF_DisableGillRotDesc>
+	
+	<!-- EN: Separate "Fish" work type from Hunting (requires game reload) -->
+  <VCEF_UseWorktype>将“钓鱼”工作从“狩猎”工作中分离出来（需要重新加载）</VCEF_UseWorktype>
+	<!-- EN: By default, Odyssey uses the Hunting work type for fishing jobs. By activating this toggle you can revert the behaviour to how it was in this mod before Odyssey, with its own "Fish" work type that sits almost at the bottom of the work type priority list. Requires a game reload to take effect. -->
+  <VCEF_UseWorktypeDesc>默认情况下，奥德赛DLC需要为殖民者勾选“狩猎”工作才能钓鱼。如果启用此项，则“钓鱼”工作会从“狩猎”工作中分离出来。“钓鱼”工作通常会排在工作列表的最右侧。需要重新加载游戏才能生效。</VCEF_UseWorktypeDesc>
+	
+	<!-- Biotech -->
+	
+	<!-- EN: This fishing zone is too polluted to fish -->
+  <VCEF_TooPolluted>此渔猎区污染太严重，无法钓鱼</VCEF_TooPolluted>
+
+
+
+
+
+</LanguageData>

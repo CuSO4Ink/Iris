@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_DeepFriedBigMeat.label>油炸肉</VCE_DeepFriedBigMeat.label>
+		<VCE_DeepFriedBigMeat.description>將肉嫩化後切塊，在麵糊裡面滾完再浸入滾燙的熱油炸熟。隨後的產物就是一塊又脆又香但不健康的食物。量沒有普通份餐食一樣多，但非常好吃。油炸食物不冷凍的話也會腐爛。</VCE_DeepFriedBigMeat.description>
+		<VCE_DeepFriedVegetables.label>油炸素菜</VCE_DeepFriedVegetables.label>
+		<VCE_DeepFriedVegetables.description>將素菜切片拍干，下油鍋炸至金黃。量沒有普通份餐食一樣多，但非常好吃。油炸食物不冷凍的話也會腐爛。</VCE_DeepFriedVegetables.description>
+		<VCE_DeepFriedFish.label>油炸魚肉</VCE_DeepFriedFish.label>
+		<VCE_DeepFriedFish.description>將魚肉嫩化後切塊，在麵糊裡面滾完再浸入滾燙的熱油炸熟。隨後的產物就是一塊又脆又香但不健康的食物。量沒有普通份餐食一樣多，但非常好吃。油炸食物不冷凍的話也會腐爛。</VCE_DeepFriedFish.description>
+		<VCE_DeepFriedSushi.label>油炸壽司</VCE_DeepFriedSushi.label>
+		<VCE_DeepFriedSushi.description>壽司是一種養生的食物，但是油炸後就未必了。它是一種香脆美味但不健康的食物。油炸食物不冷凍的話也會腐爛。</VCE_DeepFriedSushi.description>
+	</LanguageData>

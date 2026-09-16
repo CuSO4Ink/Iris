@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: eltex meteorite -->
+  <VPE_EltexMeteorite.label>靈質隕石</VPE_EltexMeteorite.label>
+  <!-- EN: Eltex Meteorite -->
+  <VPE_EltexMeteorite.letterLabel>靈質隕石</VPE_EltexMeteorite.letterLabel>
+  <!-- EN: A large meteorite has struck ground in the area. It has left behind a lump of eltex. Eltex can be used to create psyfocus-enhancing gear, or sold to the Empire to gain honor. -->
+  <VPE_EltexMeteorite.letterText>一顆巨大的隕石撞擊了此區域的地面。留下了一塊靈質。靈質可以用來打造強化心靈能力的裝備，或是賣給帝國徵募官。</VPE_EltexMeteorite.letterText>
+  
+</LanguageData>

@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Miho_Adult_LiaisonOfficer.title>美狐外交联络官</Miho_Adult_LiaisonOfficer.title>
+  <Miho_Adult_LiaisonOfficer.titleShort>联络官</Miho_Adult_LiaisonOfficer.titleShort>
+  <Miho_Adult_LiaisonOfficer.description>{PAWN_nameDef}是一名外交联络官，[PAWN_pronoun]主要负责与外界其他派系间的联络与物资交换。</Miho_Adult_LiaisonOfficer.description>
+
+  <Miho_Adult_PMCInfantry.title>美狐军事承包商士兵</Miho_Adult_PMCInfantry.title>
+  <Miho_Adult_PMCInfantry.titleShort>军事承包商士兵</Miho_Adult_PMCInfantry.titleShort>
+  <Miho_Adult_PMCInfantry.description>{PAWN_nameDef}是某美狐军事承包商下属的一名士兵，{PAWN_pronoun}被派往边缘世界执行美狐族地面殖民地的安保工作。</Miho_Adult_PMCInfantry.description>
+
+  <Miho_Adult_PMCSapper.title>美狐军事承包商工程师</Miho_Adult_PMCSapper.title>
+  <Miho_Adult_PMCSapper.titleShort>军事承包商工程师</Miho_Adult_PMCSapper.titleShort>
+  <Miho_Adult_PMCSapper.description>{PAWN_nameDef}是某美狐军事承包商下属的一名工程师，{PAWN_pronoun}的主要工作便是利用灵能构筑阵地并管理爆炸物。当然，这其中肯定会伴随着不少危险便是。</Miho_Adult_PMCSapper.description>
+
+  <Miho_Adult_PMCSharpshooter.title>美狐军事承包商神枪手</Miho_Adult_PMCSharpshooter.title>
+  <Miho_Adult_PMCSharpshooter.titleShort>军事承包商神枪手</Miho_Adult_PMCSharpshooter.titleShort>
+  <Miho_Adult_PMCSharpshooter.description>{PAWN_nameDef}“神枪手”可谓远近闻名，军事承包商的同事们都对{PAWN_pronoun}赞叹不已。能取得如此光荣的称号可并非因为运气好或视力出众，这仅仅是{PAWN_pronoun}多年以来脚踏实地刻苦训练的有力回报罢了。</Miho_Adult_PMCSharpshooter.description>
+
+  <Miho_Adult_HamburgerCook.title>美狐汉堡厨师</Miho_Adult_HamburgerCook.title>
+  <Miho_Adult_HamburgerCook.titleShort>厨师</Miho_Adult_HamburgerCook.titleShort>
+  <Miho_Adult_HamburgerCook.description>{PAWN_nameDef}曾是个小有名气的汉堡厨师。至少直到{PAWN_pronoun}向汉堡肉饼里掺人肉前都是如此。</Miho_Adult_HamburgerCook.description>
+
+  <Miho_Adult_SushiCook.title>美狐寿司名厨</Miho_Adult_SushiCook.title>
+  <Miho_Adult_SushiCook.titleShort>名厨</Miho_Adult_SushiCook.titleShort>
+  <Miho_Adult_SushiCook.description>{PAWN_nameDef}原本只是一家旋转寿司店里的无名小厨。\n\n{PAWN_pronoun}的师傅曾经这样教导过{PAWN_pronoun}：“握着这些米，然后用心去感受。当可以准确知晓手中米粒的重量后，你也就能独当一面了。”谨遵师嘱的{PAWN_nameDef}开始没日没夜地磨练自身的技艺，最终成功将重量误差降低到了0.1g以内。{PAWN_pronoun}的名气因此越来越大，许多其他星球的客人都不惜千里迢迢前来排队享用{PAWN_pronoun}的寿司。\n\n直到有一天...{PAWN_nameDef}所工作的旋转寿司店发生了一起大规模食物中毒事件。寿司店最终在受害顾客的起诉下宣告破产，丢掉工作的{PAWN_pronoun}也被迫四处流浪。在机缘巧合下，{PAWN_pronoun}选择了参加美狐族的边缘世界大开发计划，最终乘坐飞船来到了这里。</Miho_Adult_SushiCook.description>
+
+  <Miho_Adult_VirtualIdol.title>美狐虚拟偶像</Miho_Adult_VirtualIdol.title>
+  <Miho_Adult_VirtualIdol.titleShort>虚拟偶像</Miho_Adult_VirtualIdol.titleShort>
+  <Miho_Adult_VirtualIdol.description>在被带至边缘世界之前，{PAWN_nameDef}曾是一名在网络上活跃的虚拟偶像。凭借阴沉系的眼镜娘形象与甜美声音的奇怪组搭，{PAWN_pronoun}成功收获了大量人气，一跃变为了万众瞩目的焦点。在F3游戏节举办的前一天，{PAWN_pronoun}还特地发布消息通知粉丝们记得参加NFT线下签名会。\n\n那天，{PAWN_nameDef}兴高采烈地离开了家。但{PAWN_pronoun}做梦也想不到，自己这辈子可能都再也无法回来了。签名会场内，一名{PAWN_nameDef}的狂热粉丝似乎早早就在这里等候了。他靠在墙边，一边心想着自己单推偶像的可爱形象，一边发出“嘿嘿”的傻笑声。{PAWN_nameDef}正式登台后，目睹其真容的他瞬间脸色大变，随后便头也不回地离开了现场。签名会结束后，走在回家路上的{PAWN_nameDef}突然被一击闷棍放倒。在昏过去前，{PAWN_pronoun}似乎隐约看到了那名狂热粉丝带着一脸狰狞的表情站在旁边。等到再次醒来时，{PAWN_nameDef}就发现自己已经身处于边缘世界中了。</Miho_Adult_VirtualIdol.description>
+
+  <Miho_Adult_LowAssassin.title>美狐刺客</Miho_Adult_LowAssassin.title>
+  <Miho_Adult_LowAssassin.titleShort>刺客</Miho_Adult_LowAssassin.titleShort>
+  <Miho_Adult_LowAssassin.description>虽然只是低阶刺客，但{PAWN_nameDef}可绝非善茬——{PAWN_pronoun}曾凭借美貌诱杀了几名比自身阶级高出许多的刺客同行。在一次前往边缘世界执行任务的途中，{PAWN_pronoun}所乘坐的穿梭机被防空炮击落，最终坠毁在了地表。幸运的是，{PAWN_nameDef}活了下来，但也并不打算再回到刺客组织了。</Miho_Adult_LowAssassin.description>
+
+  <Miho_Adult_MilitaryCooker.title>美狐自警团炊事员</Miho_Adult_MilitaryCooker.title>
+  <Miho_Adult_MilitaryCooker.titleShort>炊事员</Miho_Adult_MilitaryCooker.titleShort>
+  <Miho_Adult_MilitaryCooker.description>{PAWN_nameDef}是美狐自警团里的一名炊事员。然而，{PAWN_pronoun}煮的米饭相当难吃，其他人都很好奇{PAWN_pronoun}是怎么当上这个职务的。</Miho_Adult_MilitaryCooker.description>
+
+  <Miho_Adult_Surgeon.title>美狐外科医生</Miho_Adult_Surgeon.title>
+  <Miho_Adult_Surgeon.titleShort>外科医生</Miho_Adult_Surgeon.titleShort>
+  <Miho_Adult_Surgeon.description>虽然{PAWN_nameDef}成功当上了一名外科医生，但{PAWN_pronoun}的技术水平简直不堪入目。搞出了诸多医疗事故的{PAWN_pronoun}最终被心怀怨恨的遭殃患者绑架带走，并送到了边缘世界上。</Miho_Adult_Surgeon.description>
+
+  <Miho_Adult_SurrogateSurgeon.title>美狐代孕医生</Miho_Adult_SurrogateSurgeon.title>
+  <Miho_Adult_SurrogateSurgeon.titleShort>代孕医生</Miho_Adult_SurrogateSurgeon.titleShort>
+  <Miho_Adult_SurrogateSurgeon.description>{PAWN_nameDef}本是一名售货员，但在机缘巧合下意外发现自己有给别人做代孕手术的天赋。迄今为止，{PAWN_pronoun}成功完成的手术高达1382次。</Miho_Adult_SurrogateSurgeon.description>
+
+  <Miho_Adult_Nurse.title>美狐护士</Miho_Adult_Nurse.title>
+  <Miho_Adult_Nurse.titleShort>护士</Miho_Adult_Nurse.titleShort>
+  <Miho_Adult_Nurse.description>{PAWN_nameDef}是一名护士。多亏了护士这行独特的“职业文化”，{PAWN_pronoun}学会了怎么走钢丝。</Miho_Adult_Nurse.description>
+
+  <Miho_Adult_Massager.title>美狐按摩师</Miho_Adult_Massager.title>
+  <Miho_Adult_Massager.titleShort>按摩师</Miho_Adult_Massager.titleShort>
+  <Miho_Adult_Massager.description>{PAWN_nameDef}在某座美狐族城市里开了一家按摩店。“咳哼，本店的业务可不包含色色环节哦。这么想要的话，就请出门左转直走到下条街那儿去找大型按摩会所吧。”</Miho_Adult_Massager.description>
+
+  <Miho_Adult_SpecialMassager.title>美狐“特殊服务”按摩师</Miho_Adult_SpecialMassager.title>
+  <Miho_Adult_SpecialMassager.titleShort>按摩师</Miho_Adult_SpecialMassager.titleShort>
+  <Miho_Adult_SpecialMassager.description>{PAWN_nameDef}曾在一家非法按摩会所里工作——这里表面上是按摩会所，但其本质却是家妓院。\n\n某一天，当{PAWN_nameDef}将钞票塞入乳沟中，并正要给客人做按摩时，警察突然闯了进来。{PAWN_pronoun}冷静地通过作为紧急逃生通道的“狡狐洞”迅速逃离，在途中却发现有包“白粉”从客人的裤兜里掉了出来。鬼迷心窍的{PAWN_nameDef}将“白粉”悄悄地藏在了自己身上，然后自以为安全地跑回了家。殊不知，警察早已在“狡狐洞”的出口附近暗中待命，并派出了缉毒无人机暗中跟随{PAWN_pronoun}。最终，{PAWN_pronoun}稀里糊涂地被以贩毒走私（实际上并没有干过）的罪名缉拿归案，彻彻底底的体会到了什么叫做“倒霉透顶”。</Miho_Adult_SpecialMassager.description>
+
+  <Miho_Adult_Academician.title>美狐学院院士</Miho_Adult_Academician.title>
+  <Miho_Adult_Academician.titleShort>学院院士</Miho_Adult_Academician.titleShort>
+  <Miho_Adult_Academician.description>{PAWN_nameDef}是美狐学院的一名在职院士。十几年以来，{PAWN_pronoun}一直在努力研究边缘世界上的人类。</Miho_Adult_Academician.description>
+
+  <Miho_Adult_Forge.title>美狐高炉管理人</Miho_Adult_Forge.title>
+  <Miho_Adult_Forge.titleShort>高炉管理人</Miho_Adult_Forge.titleShort>
+  <Miho_Adult_Forge.description>{PAWN_nameDef}负责管理工厂里的几台高炉。利欲熏心的{PAWN_pronoun}收下了工厂竞争对手的钱，并通过大量灌水的方式把高炉搞炸了。最终事情不幸败露，{PAWN_nameDef}也因此丢了饭碗。</Miho_Adult_Forge.description>
+
+  <Miho_Adult_Gunsmith.title>美狐枪械店老板</Miho_Adult_Gunsmith.title>
+  <Miho_Adult_Gunsmith.titleShort>枪械店老板</Miho_Adult_Gunsmith.titleShort>
+  <Miho_Adult_Gunsmith.description>酷爱玩枪的{PAWN_nameDef}在某座美狐族城市里开了一家枪械店。久而久之，{PAWN_pronoun}发现自己九成以上的顾客都莫名其妙的失去了联系。为了寻求新的商机，{PAWN_pronoun}选择前往战火纷飞的边缘世界看一看。</Miho_Adult_Gunsmith.description>
+
+  <Miho_Adult_Calligrapher.title>美狐书法家</Miho_Adult_Calligrapher.title>
+  <Miho_Adult_Calligrapher.titleShort>书法家</Miho_Adult_Calligrapher.titleShort>
+  <Miho_Adult_Calligrapher.description>{PAWN_nameDef}是一名书法家。由于缺乏创作欲望，{PAWN_pronoun}乘飞船来到了边缘世界，并希望能在这里找点刺激。</Miho_Adult_Calligrapher.description>
+
+  <Miho_Adult_Miner.title>美狐矿业公司经理</Miho_Adult_Miner.title>
+  <Miho_Adult_Miner.titleShort>矿业公司经理</Miho_Adult_Miner.titleShort>
+  <Miho_Adult_Miner.description>由于对采矿挖掘有着异常的喜好，{PAWN_nameDef}成为了一名矿业公司的经理。除了会亲自到矿场干活外，{PAWN_pronoun}也喜欢和手下的矿工们一起吃晚饭。</Miho_Adult_Miner.description>
+
+  <Miho_Adult_Plantation.title>美狐花店店主</Miho_Adult_Plantation.title>
+  <Miho_Adult_Plantation.titleShort>花店店主</Miho_Adult_Plantation.titleShort>
+  <Miho_Adult_Plantation.description>喜欢养花育花的{PAWN_nameDef}在某座美狐族城市里开了一家花店。在某次杂交实验中，{PAWN_pronoun}意外培育出了具有自我意识的高危险性花朵，最终被美狐政府当局放逐到了边缘世界上。</Miho_Adult_Plantation.description>
+
+  <Miho_Adult_Privateer.title>美狐劫掠者</Miho_Adult_Privateer.title>
+  <Miho_Adult_Privateer.titleShort>劫掠者</Miho_Adult_Privateer.titleShort>
+  <Miho_Adult_Privateer.description>{PAWN_nameDef}是名为“愉悦海盗团”的不法团体中的一员，他们的主要业务便是掳掠并贩卖人口。当然，这些肮脏的活计可并不像他们的团名一样好笑。</Miho_Adult_Privateer.description>
+
+  <Miho_Adult_BrutalPsyker.title>美狐灵能杀手</Miho_Adult_BrutalPsyker.title>
+  <Miho_Adult_BrutalPsyker.titleShort>灵能杀手</Miho_Adult_BrutalPsyker.titleShort>
+  <Miho_Adult_BrutalPsyker.description>{PAWN_nameDef}曾是一名技艺高超的灵能杀手。某天在边缘世界执行任务时，{PAWN_pronoun}因意外而不幸掉入海中，之后又被湍急的洋流卷走。当地的一位捕鱼人将{PAWN_nameDef}救了上来，其所属部落对此大为震惊，遂又将{PAWN_pronoun}当做神明来看待。{PAWN_nameDef}觉得这样的生活似乎也不错，于是便在这儿住了下来。</Miho_Adult_BrutalPsyker.description>
+
+  <Miho_Adult_Battlemage.title>美狐战斗术士</Miho_Adult_Battlemage.title>
+  <Miho_Adult_Battlemage.titleShort>战斗术士</Miho_Adult_Battlemage.titleShort>
+  <Miho_Adult_Battlemage.description>{PAWN_nameDef}是一名经过专业训练的战斗术士。或许是因为在训练时长期缺乏与他人的沟通，{PAWN_pronoun}的社交能力可以说是相当差劲了。</Miho_Adult_Battlemage.description>
+
+  <Miho_Adult_Engi.title>美狐机修工</Miho_Adult_Engi.title>
+  <Miho_Adult_Engi.titleShort>机修工</Miho_Adult_Engi.titleShort>
+  <Miho_Adult_Engi.description>{PAWN_nameDef}喜欢摆弄各种各样的机械设备和无人机。虽然{PAWN_pronoun}在这方面很有天赋，但其个人审美却有些稀奇古怪。</Miho_Adult_Engi.description>
+
+  <Miho_Adult_EngiTwo.title>美狐机械发烧友</Miho_Adult_EngiTwo.title>
+  <Miho_Adult_EngiTwo.titleShort>机械发烧友</Miho_Adult_EngiTwo.titleShort>
+  <Miho_Adult_EngiTwo.description>{PAWN_nameDef}被各种机械设备和无人机迷得神魂颠倒，就算让{PAWN_pronoun}和这些东西结婚也乐意至极。</Miho_Adult_EngiTwo.description>
+  
+  <Miho_Adult_Ronin.title>美狐浪人</Miho_Adult_Ronin.title>
+  <Miho_Adult_Ronin.titleShort>浪人</Miho_Adult_Ronin.titleShort>
+  <Miho_Adult_Ronin.description>{PAWN_nameDef}是一名遐迩著闻的浪人。也不知是刻意而为还是本就不善言辞，{PAWN_pronoun}很少会主动与他人沟通。</Miho_Adult_Ronin.description>
+  
+  <Miho_Adult_Cute.title>美狐玩物</Miho_Adult_Cute.title>
+  <Miho_Adult_Cute.titleShort>玩物</Miho_Adult_Cute.titleShort>
+  <Miho_Adult_Cute.description>由于种种悲惨的遭遇，{PAWN_nameDef}作为玩物被卖给了一名恶心的死宅。{PAWN_pronoun}每天都要帮主人做饭、为主人清洗身体、露出欧派供主人玩弄...最终，{PAWN_pronoun}受够了这种生活，在某天趁其主人不注意时，悄悄地逃离了这里。</Miho_Adult_Cute.description>
+  
+  <Miho_Adult_Waifu.title>美狐大和抚子</Miho_Adult_Waifu.title>
+  <Miho_Adult_Waifu.titleShort>大和抚子</Miho_Adult_Waifu.titleShort>
+  <Miho_Adult_Waifu.description>{PAWN_nameDef}是一名性格文静、温柔稳重的“大和抚子”，而像{PAWN_pronoun}一样的美狐族还有很多。\n\n“真想被一个温柔可爱又贤惠的狐耳美少女抱在怀里啊。”——狄奥斯·埃皮罗佩五世，一名统治着北极星方向A-62星系的星际主宰如是说道。</Miho_Adult_Waifu.description>
+  
+  <Miho_Adult_CatEater.title>美狐食猫者</Miho_Adult_CatEater.title>
+  <Miho_Adult_CatEater.titleShort>食猫者</Miho_Adult_CatEater.titleShort>
+  <Miho_Adult_CatEater.description>由于嫉妒猫的那份可爱，{PAWN_nameDef}便把镇子里所有的猫抓起来炖成汤喝了。事情败露后，{PAWN_pronoun}被放逐到了边缘世界。</Miho_Adult_CatEater.description>
+  
+  <Miho_Adult_Cop.title>美狐警察</Miho_Adult_Cop.title>
+  <Miho_Adult_Cop.titleShort>警察</Miho_Adult_Cop.titleShort>
+  <Miho_Adult_Cop.description>{PAWN_nameDef}所在的地区有些和平过头了，这对身为警察的{PAWN_pronoun}而言反倒不是什么好事。为了提高业绩，{PAWN_pronoun}开始刻意针对并拘捕那些色色成瘾者，也因此结了不少仇。后来{PAWN_nameDef}遭到陷害，被放逐到了边缘世界。</Miho_Adult_Cop.description>
+  
+  <Miho_Adult_Archaeologist.title>美狐考古学家</Miho_Adult_Archaeologist.title>
+  <Miho_Adult_Archaeologist.titleShort>考古学家</Miho_Adult_Archaeologist.titleShort>
+  <Miho_Adult_Archaeologist.description>在深埋于地下的远古遗迹里，{PAWN_nameDef}找到了几尊小型的塑料雕像。它们看起来像是在祈求丰获，且样貌与{PAWN_nameDef}异常相似。为了尽快将这些惊人的发现报告给学术界，{PAWN_pronoun}带着雕像乘上了穿梭机。然而皮肤黝黑且刺有荧光莫西干纹身的穿梭机驾驶员对美丽的雕像打起了歪心思，便将其和{PAWN_nameDef}身上的其他物品洗劫一空。万幸的是，{PAWN_nameDef}并没有受到任何伤害。</Miho_Adult_Archaeologist.description>
+  
+  <Miho_Adult_VeteranGuard.title>美狐老兵</Miho_Adult_VeteranGuard.title>
+  <Miho_Adult_VeteranGuard.titleShort>老兵</Miho_Adult_VeteranGuard.titleShort>
+  <Miho_Adult_VeteranGuard.description>身经百战的{PAWN_nameDef}曾见识过各种各样的残酷战场。不知是天生如此还是因经历战争而发生变化，{PAWN_pronoun}对任何事物的态度都无比冷漠。</Miho_Adult_VeteranGuard.description>
+
+  <Miho_Adult_TechWeaver.title>美狐技术工程师</Miho_Adult_TechWeaver.title>
+  <Miho_Adult_TechWeaver.titleShort>技术工程师</Miho_Adult_TechWeaver.titleShort>
+  <Miho_Adult_TechWeaver.description>{PAWN_nameDef}是一名技术工程师，这份工作经常需要高度集中注意力。由于美狐政府当局用公费培养了过剩的技术工程师，其中有许多级别较低且求职无望者决定前往边缘世界，而{PAWN_nameDef}也是他们中的一份子。由于需要每天盯着屏幕看，{PAWN_pronoun}总是会抱怨“我有点看不清楚远处的东西了”。</Miho_Adult_TechWeaver.description>
+
+  <Miho_Adult_Hunter.title>美狐猎手</Miho_Adult_Hunter.title>
+  <Miho_Adult_Hunter.titleShort>猎手</Miho_Adult_Hunter.titleShort>
+  <Miho_Adult_Hunter.description>过去的某座美狐族城市里，曾有过这样一场争论：“经过身体改造的半机械人是该当作动物还是机械族看待？”最终结果为后者，因此那些居住于此的半机械人被自由且光荣地“还原成了零件”。为了满足因此暴涨的养宠需求，像{PAWN_nameDef}这样的美狐族便开始将边缘世界的部落人当作动物进口。</Miho_Adult_Hunter.description>
+
+  <Miho_Adult_Paratrooper.title>美狐空降兵</Miho_Adult_Paratrooper.title>
+  <Miho_Adult_Paratrooper.titleShort>空降兵</Miho_Adult_Paratrooper.titleShort>
+  <Miho_Adult_Paratrooper.description>{PAWN_nameDef}是一名曾参加过生还率极低的空降任务的老兵。由于孤立无援得不到补给，{PAWN_pronoun}被迫采集山上的各种植物充饥。现在回想起来，{PAWN_pronoun}庆幸自己有预先吃过一些蜡笔（注：此处是在玩马润吃蜡笔的梗）。</Miho_Adult_Paratrooper.description>
+
+  <Miho_Adult_BerryFarmer.title>美狐莓果农夫</Miho_Adult_BerryFarmer.title>
+  <Miho_Adult_BerryFarmer.titleShort>莓果农夫</Miho_Adult_BerryFarmer.titleShort>
+  <Miho_Adult_BerryFarmer.description>{PAWN_nameDef}痴迷于莓果，并不惜为其奉献自己的人生。为了得到更优质的莓果，{PAWN_pronoun}不仅发明了专用的水栽培装置，还培育出了新品种。然而也正是因为这份痴迷，导致{PAWN_pronoun}的食谱里只剩下莓果。</Miho_Adult_BerryFarmer.description>
+
+  <Miho_Adult_Traitor.title>美狐进步变革者</Miho_Adult_Traitor.title>
+  <Miho_Adult_Traitor.titleShort>变革者</Miho_Adult_Traitor.titleShort>
+  <Miho_Adult_Traitor.description>“凡狐者，皆仿猿者而生。”\n“凡神者，皆仿狐者而生。”\n『神 明 已 死』</Miho_Adult_Traitor.description>
+
+  <Miho_Unique_Shoot.title>美狐憨憨</Miho_Unique_Shoot.title>
+  <Miho_Unique_Shoot.titleShort>憨憨</Miho_Unique_Shoot.titleShort>
+  <Miho_Unique_Shoot.description>{PAWN_nameDef}做事总是笨手笨脚的，也常被其他人当做憨憨来看。不过，{PAWN_pronoun}在战斗和烹饪方面却展现出了惊人的天赋。</Miho_Unique_Shoot.description>
+
+</LanguageData>

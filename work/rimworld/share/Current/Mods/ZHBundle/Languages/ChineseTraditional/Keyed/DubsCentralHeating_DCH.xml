@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<!--Construction-->
+	<!-- EN: Remove pipes -->
+  <DesignatorRemovePlumbing>拆除管道</DesignatorRemovePlumbing>
+	<!-- EN: Designate sections of a pipe type for deconstruction. -->
+  <DesignatorRemovePlumbingDesc>拆除指定的管道。</DesignatorRemovePlumbingDesc>
+	<!-- EN: Remove plumbing -->
+  <RemovePlumbing>拆除管道</RemovePlumbing>
+	<!-- EN: Remove air-con -->
+  <RemoveAirCon>拆除空調管道</RemoveAirCon>
+
+	<!--Warnings-->
+	<!-- EN: Low cooling capacity. You can increase the power of outdoor units. -->
+  <LowCoolingCap>製冷量低，請提高室外機的功率。</LowCoolingCap>
+	<!-- EN: Low water temp -->
+  <LowWaterTemp>水溫低</LowWaterTemp>
+	<!-- EN: The water temperature in this tank is too low; colonists expecting to use hot water may get annoyed.\n\nTurn on boilers, increase the heating capacity, or add another hot water tank. -->
+  <LowWaterTempDesc>熱水箱的水溫過低，這會讓希望使用熱水的殖民者感到惱火。\n\n開啟鍋爐以提高加熱量或建造更多的熱水箱，確保熱水能夠正常供給。</LowWaterTempDesc>
+
+	<!--Heating-->
+	<!-- EN: Water temp: {0} -->
+  <WaterTemp>水溫：{0}</WaterTemp>
+	<!-- EN: Connected demand/capacity: {0} / {1} U ({2}) -->
+  <ConnectedHeatingCapacity>總需求/總加熱量：{0} / {1} U ({2})</ConnectedHeatingCapacity>
+	<!-- EN: Connected demand/capacity: {0} / {1} U ({2}) -->
+  <ConnectedCoolingCapacity>總需求/總製冷量：{0} / {1} U ({2})</ConnectedCoolingCapacity>
+	<!-- EN: Heating usage: {0} U -->
+  <HeatingUnits>加熱量需求：{0} U</HeatingUnits>
+	<!-- EN: Cooling usage: {0} U -->
+  <CoolingUnits>製冷量需求：{0} U</CoolingUnits>
+	<!-- EN: Heating units/power: {0} U / {1} W -->
+  <HeatingMode>加熱量/功率：{0} U / {1} W</HeatingMode>
+	<!-- EN: Cooling units/power: {0} U / {1} W -->
+  <CoolingMode>製冷量/功率：{0} U / {1} W</CoolingMode>
+	<!-- EN: Efficiency: {0} -->
+  <CoolingEfficiencyGood>效能：{0}</CoolingEfficiencyGood>
+	<!-- EN: Efficiency: {0} overheating -->
+  <CoolingEfficiencyBad>效能：{0} 過熱</CoolingEfficiencyBad>
+	<!-- EN: Minimum temp: {0} -->
+  <TargetTemp>最低溫度：{0}</TargetTemp>
+	<!-- EN: Reduce power -->
+  <LowerPower>降低功率</LowerPower>
+	<!-- EN: Reduce the heating capacity. -->
+  <LowerPowerDesc>降低加熱量。</LowerPowerDesc>
+	<!-- EN: Increase power -->
+  <RaisePower>提高功率</RaisePower>
+	<!-- EN: Increase the heating capacity. -->
+  <RaisePowerDesc>提高加熱量。</RaisePowerDesc>
+	<!-- EN: Hot water capacity: {0} -->
+  <HotwaterCapacity>熱水容量：{0}</HotwaterCapacity>
+	<!-- EN: Override thermostat -->
+  <OverrideThermostat>溫控器過載</OverrideThermostat>
+	<!-- EN: Force the boiler to run continuously. -->
+  <OverrideThermostatDesc>強制鍋爐連續運行。</OverrideThermostatDesc>
+	<!-- EN: Exhaust vents must be kept clear! -->
+  <MustPlaceFreezerWithFreeSpaces>排氣口必須保持暢通！</MustPlaceFreezerWithFreeSpaces>
+	<!-- EN: Too cold -->
+  <SolarEfficiencyCold>過冷</SolarEfficiencyCold>
+	<!-- EN: Roofed -->
+  <SolarEfficiencyRoof>有屋頂</SolarEfficiencyRoof>
+	<!-- EN: Heating units (efficiency): {0} U ({1}) -->
+  <SolarEfficiencyGood>加熱量(效能)：{0} U ({1})</SolarEfficiencyGood>
+	<!-- EN: Radiator temp: {0} -->
+  <RadCurrentCap>散熱器溫度：{0}</RadCurrentCap>
+	<!-- EN: Thermostat overridden by hot water tanks. Set all connected hot water tanks to thermostat mode. -->
+  <ThermostatSetupWarning>溫控器失去控制...\n將所有連接的熱水箱設置為恆溫模式</ThermostatSetupWarning>
+	<!-- EN: Thermostat control -->
+  <HotWaterTankUseThermostat>溫控器控制</HotWaterTankUseThermostat>
+	<!-- EN: Turn on boilers for 1 hour when the tank temperature is low. If this is disabled then boilers will run continuously and ignore room thermostats. -->
+  <HotWaterTankUseThermostatDesc>水箱溫度較低時開啟鍋爐1小時，如果禁用此功能，鍋爐將忽略溫控器的控制，連續運行。</HotWaterTankUseThermostatDesc>
+
+	<!--Water-->
+	<!-- EN: Toggle valve -->
+  <CommandDesignateOpenCloseValveLabel>指派開關閥門</CommandDesignateOpenCloseValveLabel>
+	<!-- EN: Toggle the valve between open and closed. -->
+  <CommandDesignateOpenCloseValveDesc>指定一個需要切換開關的管道閥門。一名殖民者將隨後前往擰動閥門。</CommandDesignateOpenCloseValveDesc>
+	<!-- EN: Valve closed -->
+  <ValveClosed>閥門關閉</ValveClosed>
+
+	<!--Mod Options-->
+	<!-- EN: Restart -->
+  <dbh.restartconfirm>重啟遊戲</dbh.restartconfirm>
+	<!-- EN: Mod removal assist -->
+  <dbh.ModRemove>Mod卸載助手</dbh.ModRemove>
+	<!-- EN: Steps:\n\n1: Save your game immediately after pressing confirm\n2: Quit to the main menu and disable the mod and restart the game\n3: Load your save game, ignore any exceptions and save it again\nLoad the save game once more and there shouldn't be any exceptions related to missing bad hygiene defs or classes! -->
+  <dbh.ModRemoveDesc>步驟：\n\n1：按確認後立即保存遊戲\n2：退出主菜單並禁用Mod並重新啟動遊戲\n3：加載您的存檔，忽略任何異常並再次保存\n再一次加載存檔，此時應卸載成功！</dbh.ModRemoveDesc>
+	<!-- EN: Quit to main menu to change. -->
+  <QuitToMenuToChange>退到主菜單更改</QuitToMenuToChange>
+	<!-- EN: Cooling efficiency -->
+  <CoolingEfficiency>冷卻效率</CoolingEfficiency>
+	<!-- EN: Set if high temperature should affect cooling efficiency like standard AC -->
+  <CoolingEfficiencyTip>高溫是否會影響標準空調的冷卻效率</CoolingEfficiencyTip>
+	<!-- EN: Main features -->
+  <MainFeatures>主要功能</MainFeatures>
+	<!-- EN: Experimental features -->
+  <ExperimentalFeatures>實驗性功能</ExperimentalFeatures>
+	<!-- EN: Extra features -->
+  <dbh.ExtraFeatures>附加功能</dbh.ExtraFeatures>
+
+	<!-- EN: Bad Hygiene Wiki -->
+  <HygieneWiki>衛生與溫控 Wiki</HygieneWiki>
+	<!-- EN: Go to the Bad Hygiene Wiki -->
+  <HygieneWikiDesc>打開衛生與溫控的維基頁面</HygieneWikiDesc>
+
+</LanguageData>

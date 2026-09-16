@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: PFK_Carpet Dot -->
+  <PFK_CarpetDot.label>儿童房地毯（圆点）</PFK_CarpetDot.label>
+  <!-- EN: A polka dot carpet perfect for a kids' room. It’s cozy, comfortable, and enhances the room’s beauty. However, it’s highly flammable and requires frequent cleaning. Functionally identical to a regular carpet -->
+  <PFK_CarpetDot.description>完美适合儿童房地面的圆点地毯，既舒适又温馨。能提高房间的美观度。同原版的地毯一致，它不仅相当易燃，清洁起来也十分费力。</PFK_CarpetDot.description>
+  
+  <!-- EN: PFK_Carpet DotB -->
+  <PFK_CarpetDotB.label>儿童房地毯（圆点B）</PFK_CarpetDotB.label>
+  <!-- EN: A polka dot carpet perfect for a kids' room. It’s cozy, comfortable, and enhances the room’s beauty. However, it’s highly flammable and requires frequent cleaning. Functionally identical to a regular carpet -->
+  <PFK_CarpetDotB.description>完美适合儿童房地面的圆点地毯，既舒适又温馨。能提高房间的美观度。同原版的地毯一致，它不仅相当易燃，清洁起来也十分费力。</PFK_CarpetDotB.description>
+  
+  <!-- EN: PFK_Carpet Sky -->
+  <PFK_CarpetSky.label>儿童房地毯（天空）</PFK_CarpetSky.label>
+  <!-- EN: A sky-themed carpet perfect for a kids' room. It’s cozy, comfortable, and enhances the room’s beauty. However, it’s highly flammable and requires frequent cleaning. Functionally identical to a regular carpet. -->
+  <PFK_CarpetSky.description>完美适合儿童房地面的天空风格地毯，既舒适又温馨。能提高房间的美观度。同原版的地毯一致，它不仅相当易燃，清洁起来也十分费力。</PFK_CarpetSky.description>
+  
+  <!-- EN: PFK_Carpet StarGray -->
+  <PFK_CarpetStarGray.label>儿童房地毯（灰星）</PFK_CarpetStarGray.label>
+  <!-- EN: A star-patterned carpet perfect for a kids' room. It’s cozy, comfortable, and enhances the room’s beauty. However, it’s highly flammable and requires frequent cleaning. Functionally identical to a regular carpet. -->
+  <PFK_CarpetStarGray.description>完美适合儿童房地面的灰色星点地毯，既舒适又温馨。能提高房间的美观度。同原版的地毯一致，它不仅相当易燃，清洁起来也十分费力。</PFK_CarpetStarGray.description>
+  
+  <!-- EN: PFK_Carpet StarNavy -->
+  <PFK_CarpetStarNavy.label>儿童房地毯（海蓝星）</PFK_CarpetStarNavy.label>
+  <!-- EN: A star-patterned carpet perfect for a kids' room. It’s cozy, comfortable, and enhances the room’s beauty. However, it’s highly flammable and requires frequent cleaning. Functionally identical to a regular carpet. -->
+  <PFK_CarpetStarNavy.description>完美适合儿童房地面的海蓝色星点地毯，既舒适又温馨。能提高房间的美观度。同原版的地毯一致，它不仅相当易燃，清洁起来也十分费力。</PFK_CarpetStarNavy.description>
+  
+  <!-- EN: PFK_Carpet StarWhite -->
+  <PFK_CarpetStarWhite.label>儿童房地毯（白星）</PFK_CarpetStarWhite.label>
+  <!-- EN: A star-patterned carpet perfect for a kids' room. It’s cozy, comfortable, and enhances the room’s beauty. However, it’s highly flammable and requires frequent cleaning. Functionally identical to a regular carpet. -->
+  <PFK_CarpetStarWhite.description>完美适合儿童房地面的白色星点地毯，既舒适又温馨。能提高房间的美观度。同原版的地毯一致，它不仅相当易燃，清洁起来也十分费力。</PFK_CarpetStarWhite.description>
+  
+  <!-- EN: PFK_Carpet StarWhiteB -->
+  <PFK_CarpetStarWhiteB.label>儿童房地毯（白星B）</PFK_CarpetStarWhiteB.label>
+  <!-- EN: A star-patterned carpet perfect for a kids' room. It’s cozy, comfortable, and enhances the room’s beauty. However, it’s highly flammable and requires frequent cleaning. Functionally identical to a regular carpet. -->
+  <PFK_CarpetStarWhiteB.description>完美适合儿童房地面的白色星点地毯，既舒适又温馨。能提高房间的美观度。同原版的地毯一致，它不仅相当易燃，清洁起来也十分费力。</PFK_CarpetStarWhiteB.description>
+  
+  <!-- EN: PFK BlueSky Tiles -->
+  <PFK_TilesBlueSky.label>儿童房地砖（天空）</PFK_TilesBlueSky.label>
+  <!-- EN: A floor tile patterned with a blue sky design.\nWhile it requires more materials and work time than Metal Tile, it provides a beauty bonus equivalent to that of a carpet. -->
+  <PFK_TilesBlueSky.description>完美适合儿童房地面的天空风格地砖。\n\n与寻常的钢质地砖相比，它的铺设速度更慢，建造成本也更高，但能提供和地毯相同的美观度。</PFK_TilesBlueSky.description>
+  
+  <!-- EN: PFK Colorful Tiles A -->
+  <PFK_TilesColorful.label>儿童房地毯（彩格A）</PFK_TilesColorful.label>
+  <!-- EN: A colorful floor tile perfect for children’s rooms.\nIllustrated tiles featuring animals and fruits add playful accents.\nWhile it requires more materials and work time than Metal Tile, it provides a beauty bonus equivalent to that of a carpet. -->
+  <PFK_TilesColorful.description>完美适合儿童房地面的彩色格子地砖。作为点缀的动物和水果图案为其增添了趣味性。\n\n与寻常的钢质地砖相比，它的铺设速度更慢，建造成本也更高，但能提供和地毯相同的美观度。</PFK_TilesColorful.description>
+  
+  <!-- EN: PFK Colorful Tiles B -->
+  <PFK_TilesColorfulB.label>儿童房地毯（彩格B）</PFK_TilesColorfulB.label>
+  <!-- EN: A colorful floor tile perfect for children’s rooms.\nThere's something timeless about the urge to step only on certain colors.\n“Step on the blue tile, and you’re out!”\nWhile it requires more materials and work time than Metal Tile, it provides a beauty bonus equivalent to that of a carpet. -->
+  <PFK_TilesColorfulB.description>完美适合儿童房地面的彩色格子地砖。无论什么时代，人们总是会忍不住只去踩某种颜色的格子。\n\n“嘿，踩到蓝色格子上你就输了！”\n\n与寻常的钢质地砖相比，它的铺设速度更慢，建造成本也更高，但能提供和地毯相同的美观度。</PFK_TilesColorfulB.description>
+  
+  <!-- EN: PFK Colorful Tiles C -->
+  <PFK_TilesColorfulC.label>儿童房地毯（彩格C）</PFK_TilesColorfulC.label>
+  <!-- EN: Vibrant floor tiles ideal for children’s rooms.\nThere’s something universal about the game of stepping on specific tiles.\n“Don’t step on the blue one, or you lose!”\nThese tiles require more materials and crafting time than Metal Tiles but provide the same beauty bonus as carpets. -->
+  <PFK_TilesColorfulC.description>完美适合儿童房地面的彩色格子地砖。虽然人类演化出了各种各样的文明，但总是会出现相似的踩格子游戏。\n\n“嘿，踩到蓝色格子上你就输了！”\n\n与寻常的钢质地砖相比，它的铺设速度更慢，建造成本也更高，但能提供和地毯相同的美观度。</PFK_TilesColorfulC.description>
+  
+  <!-- EN: PFK Stars Tiles -->
+  <PFK_TilesStars.label>儿童房地砖（星空）</PFK_TilesStars.label>
+  <!-- EN: A floor tile patterned with a starry sky design.\nWhile it requires more materials and work time than Metal Tile, it provides a beauty bonus equivalent to that of a carpet. -->
+  <PFK_TilesStars.description>完美适合儿童房地面的星空风格地砖。\n\n与寻常的钢质地砖相比，它的铺设速度更慢，建造成本也更高，但能提供和地毯相同的美观度。</PFK_TilesStars.description>
+  
+</LanguageData>

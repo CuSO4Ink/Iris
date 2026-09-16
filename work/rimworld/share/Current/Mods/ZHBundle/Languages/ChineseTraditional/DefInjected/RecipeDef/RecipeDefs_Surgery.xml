@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: inject propolis -->
+  <VV_InjectPropolis.label>注射蜂膠</VV_InjectPropolis.label>
+  <!-- EN: Process propolis into antibiotics for administration. This antibiotic is effective against infections, flu, plague, and malaria, it won't completely cure the diseases but it can significantly delay their progression. -->
+  <VV_InjectPropolis.description>將蜂膠加工成抗生素進行給藥。這種抗生素對感染、流感、瘟疫和瘧疾有效，它不能完全治愈疾病，但可以顯著延緩疾病的進展。</VV_InjectPropolis.description>
+  <!-- EN: injecting propolis. -->
+  <VV_InjectPropolis.jobString>注射蜂膠中</VV_InjectPropolis.jobString>
+  
+</LanguageData>

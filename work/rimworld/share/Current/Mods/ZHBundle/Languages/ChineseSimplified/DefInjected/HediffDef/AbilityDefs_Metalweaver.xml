@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 여우의 불타는 망토 -->
+  <Miho_Ability_HeatArmor_Hediff.label>狐火护体</Miho_Ability_HeatArmor_Hediff.label>
+  <!-- EN: 고열의 결계를 이용하여 방어력과 열기 적응력을 향상시켰습니다. -->
+  <Miho_Ability_HeatArmor_Hediff.description>此单位身上环绕着高温烈焰，其防护能力、近战能力和耐热抗寒能力有所提高。</Miho_Ability_HeatArmor_Hediff.description>
+  
+</LanguageData>

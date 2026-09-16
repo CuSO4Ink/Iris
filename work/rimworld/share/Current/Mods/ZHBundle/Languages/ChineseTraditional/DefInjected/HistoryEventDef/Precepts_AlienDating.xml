@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: begin romance with alien -->
+  <HAR_AlienDating_BeginRomance.label>與外星種族戀愛</HAR_AlienDating_BeginRomance.label>
+  
+  <!-- EN: in a relationship with alien -->
+  <HAR_AlienDating_Dating.label>與外星種族建立關系</HAR_AlienDating_Dating.label>
+  
+  <!-- EN: share bed with alien -->
+  <HAR_AlienDating_SharedBed.label>與外星種族共用床鋪</HAR_AlienDating_SharedBed.label>
+  
+</LanguageData>

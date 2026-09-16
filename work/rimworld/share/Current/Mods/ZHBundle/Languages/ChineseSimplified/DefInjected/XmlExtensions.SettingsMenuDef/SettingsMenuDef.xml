@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <InertialMage.BeautyStatMod.label>魅力很重要</InertialMage.BeautyStatMod.label>
+  <InertialMage.BeautyStatMod.settings.0.label>启用压制能力补丁？</InertialMage.BeautyStatMod.settings.0.label>
+  <InertialMage.BeautyStatMod.settings.1.label>启用教化能力补丁？</InertialMage.BeautyStatMod.settings.1.label>
+  <InertialMage.BeautyStatMod.settings.2.label>启用社交影响补丁？</InertialMage.BeautyStatMod.settings.2.label>
+  <InertialMage.BeautyStatMod.settings.3.label>启用谈判能力补丁？</InertialMage.BeautyStatMod.settings.3.label>
+  <InertialMage.BeautyStatMod.settings.4.label>启用贸易价格改善补丁？</InertialMage.BeautyStatMod.settings.4.label>
+
+
+</LanguageData>

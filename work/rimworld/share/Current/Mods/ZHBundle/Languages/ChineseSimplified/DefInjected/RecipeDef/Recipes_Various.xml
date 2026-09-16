@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cook army ration -->
+  <CookArmyRation.label>烹饪奢侈军粮</CookArmyRation.label>
+  <!-- EN: Prepare a packaged army ration. -->
+  <CookArmyRation.description>烹饪一份包装好的奢侈军粮。</CookArmyRation.description>
+  <!-- EN: protein -->
+  <CookArmyRation.ingredients.0.filter.customSummary>蛋白质</CookArmyRation.ingredients.0.filter.customSummary>
+  <!-- EN: Cooking army ration. -->
+  <CookArmyRation.jobString>正在烹饪奢侈军粮。</CookArmyRation.jobString>
+  
+  <!-- EN: cook army ration in bulk -->
+  <CookArmyRationBulk.label>烹饪奢侈军粮 x4</CookArmyRationBulk.label>
+  <!-- EN: Prepare a packaged army ration in bulk. -->
+  <CookArmyRationBulk.description>烹饪四份包装好的奢侈军粮。</CookArmyRationBulk.description>
+  <!-- EN: protein -->
+  <CookArmyRationBulk.ingredients.0.filter.customSummary>蛋白质</CookArmyRationBulk.ingredients.0.filter.customSummary>
+  <!-- EN: Cooking army rations. -->
+  <CookArmyRationBulk.jobString>正在烹饪奢侈军粮。</CookArmyRationBulk.jobString>
+  
+  <!-- EN: cook necro meat skewer -->
+  <CookNecroMeatSkewer.label>烹饪殁疫肉串</CookNecroMeatSkewer.label>
+  <!-- EN: Cook some necronoid meat into some delicious meat skewers. -->
+  <CookNecroMeatSkewer.description>将串起来的殁疫肉用猛火烤制。</CookNecroMeatSkewer.description>
+  <!-- EN: cooking necro meat skewer. -->
+  <CookNecroMeatSkewer.jobString>正在烹饪殁疫肉串。</CookNecroMeatSkewer.jobString>
+  
+  <!-- EN: cook necro meat skewer in bulk -->
+  <CookNecroMeatSkewerBulk.label>烹饪殁疫肉串 x4</CookNecroMeatSkewerBulk.label>
+  <!-- EN: Cook some necronoid meat into some delicious meat skewers in bulk. -->
+  <CookNecroMeatSkewerBulk.description>将串起来的殁疫肉用猛火烤制。</CookNecroMeatSkewerBulk.description>
+  <!-- EN: cooking necro meat skewers. -->
+  <CookNecroMeatSkewerBulk.jobString>正在烹饪殁疫肉串。</CookNecroMeatSkewerBulk.jobString>
+  
+  <!-- EN: re-heat army ration -->
+  <ReheatArmyRation.label>加热奢侈军粮</ReheatArmyRation.label>
+  <!-- EN: Re-heat an army ration into and army ration meal. -->
+  <ReheatArmyRation.description>将一份奢侈军粮加热以改善口感。</ReheatArmyRation.description>
+  <!-- EN: Re-heating army ration. -->
+  <ReheatArmyRation.jobString>正在加热奢侈军粮。</ReheatArmyRation.jobString>
+  
+  <!-- EN: re-heat army ration in bulk -->
+  <ReheatArmyRationBulk.label>加热奢侈军粮 x4</ReheatArmyRationBulk.label>
+  <!-- EN: Re-heat an army ration into and army ration meal in bulk. -->
+  <ReheatArmyRationBulk.description>将四份奢侈军粮加热以改善口感。</ReheatArmyRationBulk.description>
+  <!-- EN: Re-heating army rations. -->
+  <ReheatArmyRationBulk.jobString>正在加热奢侈军粮。</ReheatArmyRationBulk.jobString>
+  
+  <!-- EN: resurrect heavy modified mechanoids -->
+  <ResurrectHeavyModifiedMech.label>复活重型改装机械体</ResurrectHeavyModifiedMech.label>
+  <!-- EN: Resurrect a friendly modified mechanoid of the heavy weight class. So long as the mechanoid's body is not completely destroyed, it can be resurrected. -->
+  <ResurrectHeavyModifiedMech.description>复活一台友方重型改装机械体。前提是机械体的身体未被完全摧毁。</ResurrectHeavyModifiedMech.description>
+  <!-- EN: Resurrecting mech. -->
+  <ResurrectHeavyModifiedMech.jobString>正在复活机械体。</ResurrectHeavyModifiedMech.jobString>
+  
+  <!-- EN: resurrect light modified mechanoids -->
+  <ResurrectLightModifiedMech.label>复活轻型改装机械体</ResurrectLightModifiedMech.label>
+  <!-- EN: Resurrect a friendly modified mechanoid of the light weight class. So long as the mechanoid's body is not completely destroyed, it can be resurrected. -->
+  <ResurrectLightModifiedMech.description>复活一台友方轻型改装机械体。前提是机械体的身体未被完全摧毁。</ResurrectLightModifiedMech.description>
+  <!-- EN: Resurrecting mech. -->
+  <ResurrectLightModifiedMech.jobString>正在复活机械体。</ResurrectLightModifiedMech.jobString>
+  
+</LanguageData>

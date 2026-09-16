@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="TacticalGroups.TacticalGroupsSettings">
+		<DisplayColorBars>True</DisplayColorBars>
+		<DisableLabelBackground>True</DisableLabelBackground>
+		<MarginTop>5.61797762</MarginTop>
+		<ColonistBarPositionX>-112.35955</ColonistBarPositionX>
+		<PawnCameraOffsetX>0.0187275056</PawnCameraOffsetX>
+		<PawnCameraOffsetZ>0.288390428</PawnCameraOffsetZ>
+		<OverridePawnRowCount>True</OverridePawnRowCount>
+		<PawnRowCount>8</PawnRowCount>
+		<AllGroupPresetsSaveable IsNull="True" />
+	</ModSettings>
+</SettingsBlock>

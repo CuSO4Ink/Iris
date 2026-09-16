@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Void.SettlementIsDefeated>V.O.I.D.扩张</Void.SettlementIsDefeated>
+  <Void.SettlementIsDefeatedDesc>在一次侵袭中，{FACTION_name}被彻底压制，{0}已被V.O.I.D.攻占。</Void.SettlementIsDefeatedDesc>
+  <Void.EnableVoidExpansion>允许V.O.I.D.扩张</Void.EnableVoidExpansion>
+  <Void.tickToSpawnHostiles>威胁生成日：</Void.tickToSpawnHostiles>
+  <Void.EnableVoidContact>允许V.O.I.D.初次联络</Void.EnableVoidContact>
+  <Void.IncludeN7MonstersInManhunterEvents>允许N-4怪物在“猎杀人类”事件中作为野生动物出现</Void.IncludeN7MonstersInManhunterEvents>
+
+  <Void.MessageMutantAssembled>一个N-4突变体已从休眠中苏醒。</Void.MessageMutantAssembled>
+  <Void.MessageMutantLeftToAssemble>仍处于休眠状态的突变体数量</Void.MessageMutantLeftToAssemble>
+  <Void.MutantAssemblyCompleteIn>{0}的休眠将在{1}结束。</Void.MutantAssemblyCompleteIn>
+  <Void.MutantAssemblyNextType>即将苏醒</Void.MutantAssemblyNextType>
+
+  <UseJetPack>使用 跳跃背包</UseJetPack>
+  <UseJetPackDesc>使用跳跃背包前往目的地</UseJetPackDesc>
+  <NotEnoughFuelForJetPackDesc>没有足够的燃料</NotEnoughFuelForJetPackDesc>
+  <CurrentFuelAmount>跳跃背包燃油数量：{0}</CurrentFuelAmount>
+  <RefuelJetPack>充能 跳跃背包</RefuelJetPack>
+  <RefuelJetPackDesc>使用化学燃料为跳跃包充能</RefuelJetPackDesc>
+  <EnoughFuelForJetPackDesc>没有足够的燃料</EnoughFuelForJetPackDesc>
+
+  <!--<DropSuppliesLabel>DropSuppliesLabel</DropSuppliesLabel>
+	<DropSuppliesDesc>DropSuppliesDesc</DropSuppliesDesc>-->
+
+  <Void_ResurrectionLabel>{PAWN_nameDef}的复活</Void_ResurrectionLabel>
+  <Void_ResurrectionDesc>{PAWN_nameDef}已经复活，但所有物品都在这段时间内丢失了。</Void_ResurrectionDesc>
+
+  <Void.EnableSpawnOfNewVoidBasesNearby>允许玩家殖民地附近出现新的V.O.I.D.基地</Void.EnableSpawnOfNewVoidBasesNearby>
+  <Void.MaxAmountOfNewVoidBasesNearby>玩家殖民地附近新V.O.I.D.基地的最大数量</Void.MaxAmountOfNewVoidBasesNearby>
+  <Void.BunkerPasswordMessage>请输入密码：</Void.BunkerPasswordMessage>
+  <Void.AccessDenied>拒绝访问</Void.AccessDenied>
+  <Void.NukeIntercepted>你的核弹在轨道上被拦截了。</Void.NukeIntercepted>
+
+  <Void.VoidContact>V.O.I.D.初次联络</Void.VoidContact>
+  <Void.VoidVisitorsDesc>V.O.I.D.派来了一位顾问，就你的投降事宜进行协商。</Void.VoidVisitorsDesc>
+  <Void.Contact>联络</Void.Contact>
+  <Void.Hostile>V.O.I.D.</Void.Hostile>
+  <Void.HostileDesc>一个洪亮的、熟悉的、单调的声音从天空传来，如同雷声一样轰轰作响，向你和你的殖民地发言。这与V.O.I.D.顾问的声音非常相似。\n\n“您已经被警告要离开这个世界，但您现在仍然留在这里。说明您已经明确表示——您无法被说服。我们将这视作宣战。”\n\nV.O.I.D.现在对你的殖民地充满敌意。</Void.HostileDesc>
+  <Void.CannotEnlist>V.O.I.D.拒绝</Void.CannotEnlist>
+  
+  <Void.Hostile_DeclinedBeg>V.O.I.D.拒绝停火</Void.Hostile_DeclinedBeg>
+  <Void.HostileDesc_DeclinedBeg>V.O.I.D.理事会成员进行了集体投票，推翻了你们之间的和平协定。V.O.I.D.现在对你的殖民地充满敌意。</Void.HostileDesc_DeclinedBeg>
+
+  <Void.EnterProtocol>协议</Void.EnterProtocol>
+  <Void.EnterProtocolDesc>向控制该部门的V.O.I.D.主管提交协议。协议是理事会规定的准则，即使是由初级成员提交，在特殊情况下也必须被遵守。</Void.EnterProtocolDesc>
+  <Void.EnterProtocolText>输入协议代码</Void.EnterProtocolText>
+  <Void.InvalidProtocol>无法识别协议代码</Void.InvalidProtocol>
+  <Void.ProjectArgentTitle>协议：ARGENT</Void.ProjectArgentTitle>
+  <Void.ProjectArgentText>协议：ARGENT将在1天内启动</Void.ProjectArgentText>
+
+  <Void.ProjectArgentInitiatedTitle>协议：ARGENT启动</Void.ProjectArgentInitiatedTitle>
+  <Void.ProjectArgentInitiatedText>通过巧舌如簧和大量赔偿，V.O.I.D.成功地与所有非敌对派系领导人进行了谈判。和平已经宣布，条约已经签署，周围社区都感到困惑和惊讶。\n\n注意：天生敌对的派系领导人拒绝签署和平条约。</Void.ProjectArgentInitiatedText>
+
+	<!-- EN: Defence Pact Protocol -->
+  <Void.ProjectDefencePactTitle>协议：共同防御</Void.ProjectDefencePactTitle>
+	<!-- EN: Defence Pact Protocol will initiate in 1 day -->
+  <Void.ProjectDefencePactText>协议：共同防御将在1天内启动</Void.ProjectDefencePactText>
+	<!-- EN: Defence Pact Protocol initiated -->
+  <Void.ProjectDefencePactInitiatedTitle>协议：共同防御启动</Void.ProjectDefencePactInitiatedTitle>
+	<!-- EN: Through silver tongue and much reparations, V.O.I.D. has negotiated successfully with all non-hostile faction leaders. Peace has been declared, treaties have been signed and to the much confusion and surprise of the surrounding communities.\n\nBe warned, naturally hostile faction leaders have rejected signing the peace treaty. -->
+  <Void.ProjectDefencePactInitiatedText>通过巧舌如簧和大量赔偿，V.O.I.D.成功地与所有非敌对派系领导人进行了谈判。和平已经宣布，条约已经签署，周围社区都感到困惑和惊讶。\n\n注意：天生敌对的派系领导人拒绝签署和平条约。</Void.ProjectDefencePactInitiatedText>
+
+	<!-- EN: Peace Protocol -->
+  <Void.ProjectFrenemyTitle>协议：和平</Void.ProjectFrenemyTitle>
+	<!-- EN: Peace Protocol will initiate in 3 days -->
+  <Void.ProjectFrenemyText>协议：和平将在3天内启动</Void.ProjectFrenemyText>
+	<!-- EN: Peace Protocol initiated -->
+  <Void.ProjectFrenemyInitiatedTitle>协议：和平启动</Void.ProjectFrenemyInitiatedTitle>
+	<!-- EN: Non-permanently hostile factions have been bought out by V.O.I.D. negotiators. -->
+  <Void.ProjectFrenemyInitiatedText>非永久敌对派系已被V.O.I.D.谈判代表收买。</Void.ProjectFrenemyInitiatedText>
+  
+</LanguageData>
+

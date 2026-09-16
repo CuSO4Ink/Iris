@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <QualityBuilder>建造品质</QualityBuilder>
+  <QualityBuilderCommand.Label>建造品质</QualityBuilderCommand.Label>
+
+  <QualityBuilderOn.Label>启用建造品质</QualityBuilderOn.Label>
+  <QualityBuilderOn.Desc>当前设置：{0}。仅允许娴熟工人建造家具</QualityBuilderOn.Desc>
+  <QualityBuilder.Already></QualityBuilder.Already>
+
+  <QualityBuilderOff.Label>关闭建造品质</QualityBuilderOff.Label>
+  <QualityBuilderOff.Desc>当前设置：{0}。取消仅娴熟工人建造的限制</QualityBuilderOff.Desc>
+  <QualityBuilder.Nothing></QualityBuilder.Nothing>
+
+  <QualityBuilder.SelectedSettings>当前配置</QualityBuilder.SelectedSettings>
+  <QualityBuilder.CurrentMap>当前地图</QualityBuilder.CurrentMap>
+  <QualityBuilder.Global>全局默认</QualityBuilder.Global>
+  <QualityBuilder.EnableByDefault>默认启用建造品质</QualityBuilder.EnableByDefault>
+  <QualityBuilder.IgnoreAtSkill>技能≥{0}时忽略限制</QualityBuilder.IgnoreAtSkill>
+  <QualityBuilder.MinQuality>默认最低品质</QualityBuilder.MinQuality>
+  <QualityBuilder.OverrideBestBuilder>优先让最能工巧匠的人建造</QualityBuilder.OverrideBestBuilder>
+
+</LanguageData>

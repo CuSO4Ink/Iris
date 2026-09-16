@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Miho Ornithopter -->
+  <Miho_Shuttle.label>美狐军用巡航扑翼机</Miho_Shuttle.label>
+  <!-- EN: A Miho Ornithopter in flight. -->
+  <Miho_Shuttle.description>一艘正在飞行中的军用巡航扑翼机。</Miho_Shuttle.description>
+  
+  <!-- EN: Miho Ornithopter -->
+  <Miho_Shuttle_Civ.label>美狐巡航扑翼机</Miho_Shuttle_Civ.label>
+  <!-- EN: A Miho Ornithopter in flight. -->
+  <Miho_Shuttle_Civ.description>一艘正在飞行中的巡航扑翼机。</Miho_Shuttle_Civ.description>
+  
+</LanguageData>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- V.O.I.D. implant -->
+
+  <InstallDF_Voidtech_Implant.label>安装V.O.I.D.植入物</InstallDF_Voidtech_Implant.label>
+  <InstallDF_Voidtech_Implant.description>安装V.O.I.D.植入物。</InstallDF_Voidtech_Implant.description>
+  <InstallDF_Voidtech_Implant.jobString>正在安装V.O.I.D.植入物。</InstallDF_Voidtech_Implant.jobString>
+
+  <RemoveDF_Voidtech_Implant.label>移除V.O.I.D.植入物</RemoveDF_Voidtech_Implant.label>
+  <RemoveDF_Voidtech_Implant.description>移除V.O.I.D.植入物。</RemoveDF_Voidtech_Implant.description>
+  <RemoveDF_Voidtech_Implant.jobString>正在移除V.O.I.D.植入物。</RemoveDF_Voidtech_Implant.jobString>
+
+
+</LanguageData>

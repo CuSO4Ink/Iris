@@ -1,0 +1,159 @@
+﻿<LanguageData>
+  <PE_AddKids>年龄增长时可接收儿童</PE_AddKids>
+  <PE_AddKids_Desc>启用后，此教室中的托儿所允许在儿童年龄增长时将其加入。</PE_AddKids_Desc>
+  <PE_AddStudents>添加学生</PE_AddStudents>
+  <PE_AddedToDaycareOnAgeUp>{0} 已年龄增长，并已被自动添加到“{1}”托儿所。</PE_AddedToDaycareOnAgeUp>
+  <PE_AlreadyHasLearningBoard>此房间已有一块学习板。</PE_AlreadyHasLearningBoard>
+  <PE_AsAStudent>作为学生</PE_AsAStudent>
+  <PE_AsATeacher>作为教师</PE_AsATeacher>
+  <PE_Bell>上课铃</PE_Bell>
+  <PE_BellNotPowered>上课铃未通电</PE_BellNotPowered>
+  <PE_BestowProficiency>授予新专长</PE_BestowProficiency>
+  <PE_BestowProficiencyDesc>选择一名殖民者来接收已研究的专长。他们必须能够进行脑力劳动。</PE_BestowProficiencyDesc>
+  <PE_BestowProficiencyDescWithProf>你已研究出 {0}。选择一名殖民者来接收已研究的专长。他们必须能够进行脑力劳动。</PE_BestowProficiencyDescWithProf>
+  <PE_BestowProficiencyToAll>研究完成后是否将专长授予所有当前人口？</PE_BestowProficiencyToAll>
+  <PE_CannotAddOngoing>无法将其添加到他们未参与的进行中的课程中。</PE_CannotAddOngoing>
+  <PE_CannotAttendClass>课程 {0} 已暂停，因为教师不可用。</PE_CannotAttendClass>
+  <PE_CannotEquipItem>殖民者必须被教授 {0} 专长。</PE_CannotEquipItem>
+  <PE_CannotParticipateScheduled>无法参与：已安排在 {0} 时 - {1} 时参加“{2}”课程。</PE_CannotParticipateScheduled>
+  <PE_CannotRescheduleScheduled>无法重新安排：{0} 已安排在 {1} 时 - {2} 时参加“{3}”课程。</PE_CannotRescheduleScheduled>
+  <PE_CannotSchedule>无法安排：{0} 已安排在 {1} 时 - {2} 时在 {3} 教室上课。</PE_CannotSchedule>
+  <PE_CannotTradeMute>无法交易：{0} 失语</PE_CannotTradeMute>
+  <PE_CannotUnsuspendNoStudents>无法恢复课程：没有学生</PE_CannotUnsuspendNoStudents>
+  <PE_CannotUnsuspendNoTeacher>无法恢复课程：教师无法授课</PE_CannotUnsuspendNoTeacher>
+  <PE_CantChangeTeacher>课程正在进行中，因此教师角色已锁定</PE_CantChangeTeacher>
+  <PE_ChangeColor>更改颜色</PE_ChangeColor>
+  <PE_ClassCancelled>课程已取消：{0}</PE_ClassCancelled>
+  <PE_ClassCancelledDesc>课程“{0}”已取消，因为并非所有学生都能及时赶到教室。</PE_ClassCancelledDesc>
+  <PE_ClassCancelledOffMap>由于成员不在地图上，{0} 课程今日已取消。</PE_ClassCancelledOffMap>
+  <PE_ClassCancelledToday>{0} 课程今日已取消，</PE_ClassCancelledToday>
+  <PE_ClassCompleted>课程已完成：{0}</PE_ClassCompleted>
+  <PE_ClassCompletedDesc>课程“{0}”已成功完成本学期。</PE_ClassCompletedDesc>
+  <PE_ClassGraduates>毕业生：{0}</PE_ClassGraduates>
+  <PE_ClassHours>课时</PE_ClassHours>
+  <PE_ClassName>课程名称</PE_ClassName>
+  <PE_ClassPartiallyFunctioningWarning>课程 {0} 将降低效率运行，因为并非所有参与者都在场。</PE_ClassPartiallyFunctioningWarning>
+  <PE_ClassScheduling>查看日程</PE_ClassScheduling>
+  <PE_ClassSpeed>上课速度</PE_ClassSpeed>
+  <PE_Classes>进行中的课程</PE_Classes>
+  <PE_Classroom>教室</PE_Classroom>
+  <PE_ClassroomSettings>教室设置</PE_ClassroomSettings>
+  <PE_Classrooms>教室</PE_Classrooms>
+  <PE_ClassroomsDescription>当你在殖民地建造教室时，它们将显示在此处。</PE_ClassroomsDescription>
+  <PE_ConfirmDeleteClass>你确定要删除此课程吗？</PE_ConfirmDeleteClass>
+  <PE_Create>创建</PE_Create>
+  <PE_CreateClass>创建课程</PE_CreateClass>
+  <PE_CreateClassDesc>创建新的课程学期。课程训练学生各种技能。托儿所仅面向儿童，每次课程根据教师的专长和学生可学内容教授一项随机技能。所有课程都能满足儿童的学习需求。</PE_CreateClassDesc>
+  <PE_CreateClassroomFirst>请先创建教室。</PE_CreateClassroomFirst>
+  <PE_Daycare>满足儿童的学习需求。已安排日程直到被删除。</PE_Daycare>
+  <PE_DaycareClassesLearningSpeed>儿童学习需求速度</PE_DaycareClassesLearningSpeed>
+  <PE_DeleteClass>删除课程</PE_DeleteClass>
+  <PE_EditClass>编辑课程</PE_EditClass>
+  <PE_EditClassDesc>更新进行中课程的名册、重命名或更改课时。可以自由移除学生，但如果课程已取得任何进度，则无法将他们添加进去。</PE_EditClassDesc>
+  <PE_EditClassroom>编辑教室</PE_EditClassroom>
+  <PE_EnableDebugMode>启用调试模式</PE_EnableDebugMode>
+  <PE_EnableKnowledgePanel>启用知识面板？（禁用则以标准特质显示）</PE_EnableKnowledgePanel>
+  <PE_EnableProficiencySystem>启用专长系统</PE_EnableProficiencySystem>
+  <PE_EnableSpeechProficiency>启用演讲专长</PE_EnableSpeechProficiency>
+  <PE_EnableVehicleProficiency>启用载具专长</PE_EnableVehicleProficiency>
+  <PE_EnableWeaponProficiency>启用武器专长</PE_EnableWeaponProficiency>
+  <PE_EnterClassName>输入课程名称</PE_EnterClassName>
+  <PE_GiddyUpNeedRiding>必须教殖民者动物骑乘专长。</PE_GiddyUpNeedRiding>
+  <PE_GlobalLearningSpeed>全局学习速度</PE_GlobalLearningSpeed>
+  <PE_HourlyProgress>每小时进度</PE_HourlyProgress>
+  <PE_HourlyTeaching>每小时教学</PE_HourlyTeaching>
+  <PE_InterruptJobsDuringClass>中断所有工作以在此上课</PE_InterruptJobsDuringClass>
+  <PE_InterruptJobsDuringClass_Desc>启用后，当上课铃响起时，殖民者将中断当前所有工作来此教室上课。</PE_InterruptJobsDuringClass_Desc>
+  <PE_JobReport_WaitingForClass>等待课程开始</PE_JobReport_WaitingForClass>
+  <PE_JobReport_WaitingForStudents>等待学生</PE_JobReport_WaitingForStudents>
+  <PE_Knowledge>知识</PE_Knowledge>
+  <PE_LearningBoard>学习板</PE_LearningBoard>
+  <PE_LearningBoardIsBlocked>{0} 被阻挡。</PE_LearningBoardIsBlocked>
+  <PE_LearningBoardNearby>附近有一块学习板距离太近。</PE_LearningBoardNearby>
+  <PE_LearningFactor>学习系数</PE_LearningFactor>
+  <PE_LessonOptions>课程选项</PE_LessonOptions>
+  <PE_MissingStudents>缺席学生：{0}</PE_MissingStudents>
+  <PE_MustBeChild>必须是儿童。</PE_MustBeChild>
+  <PE_NameClassroom>命名教室</PE_NameClassroom>
+  <PE_NewClassroomCreated>新教室：{0}</PE_NewClassroomCreated>
+  <PE_NewClassroomCreatedDesc>你已创建一间教室。可以在底部栏的教室菜单中管理课程。</PE_NewClassroomCreatedDesc>
+  <PE_NoBell>地图中未找到上课铃</PE_NoBell>
+  <PE_NoBellToCreateClass>你必须先建造上课铃或编钟，然后才能创建课程。</PE_NoBellToCreateClass>
+  <PE_NoClassesScheduled>没有安排课程。点击加号按钮创建课程。</PE_NoClassesScheduled>
+  <PE_NoClassroomsAvailable>没有可用的教室。</PE_NoClassroomsAvailable>
+  <PE_NoLearningBoard>教室中未找到学习板</PE_NoLearningBoard>
+  <PE_NoLearningNeed>没有学习需求。</PE_NoLearningNeed>
+  <PE_NoStudents>课程 {0} 已取消，因为没有学生。</PE_NoStudents>
+  <PE_NoTeacherForBell>未找到教室的有效教师。无法打铃。</PE_NoTeacherForBell>
+  <PE_NotEnoughBenches>没有足够的 {0}。需要：{1}，拥有：{2}。</PE_NotEnoughBenches>
+  <PE_NotParticipating>未参与</PE_NotParticipating>
+  <PE_NotPresent>不在地图上</PE_NotPresent>
+  <PE_PasteHex>粘贴十六进制</PE_PasteHex>
+  <PE_PerSession>每节课</PE_PerSession>
+  <PE_Present>（{0} 人出席）</PE_Present>
+  <PE_ProficiencyClassNeverStarted>课程 {0} 未能开始，因为并非所有学生都按时到达。</PE_ProficiencyClassNeverStarted>
+  <PE_ProficiencyClassesLearningSpeed>熟练度课程学习速度</PE_ProficiencyClassesLearningSpeed>
+  <PE_ProficiencyFirearm>火器</PE_ProficiencyFirearm>
+  <PE_ProficiencyFocus>熟练度重点</PE_ProficiencyFocus>
+  <PE_ProficiencyHighTech>高科技</PE_ProficiencyHighTech>
+  <PE_ProficiencyLowTech>低阶</PE_ProficiencyLowTech>
+  <PE_ProgressFormat>{0} / {1}</PE_ProgressFormat>
+  <PE_RemovedFromDaycareOnAgeUp>{0} 已成年，已从“{1}”日托中心移除。</PE_RemovedFromDaycareOnAgeUp>
+  <PE_RequiredProficiencyStat>所需熟练度</PE_RequiredProficiencyStat>
+  <PE_RequiredProficiencyStatDesc>有效使用此武器所需的熟练度等级。</PE_RequiredProficiencyStatDesc>
+  <PE_RequiredProficiencyStatVehicleDesc>有效使用此载具所需的熟练度等级。</PE_RequiredProficiencyStatVehicleDesc>
+  <PE_Requirements>要求</PE_Requirements>
+  <PE_RestrictReservationsDuringClass>禁止在教室进行传统工作</PE_RestrictReservationsDuringClass>
+  <PE_RestrictReservationsDuringClass_Desc>如果启用，小人将无法使用教室家具（课桌等）。</PE_RestrictReservationsDuringClass_Desc>
+  <PE_ResumeClass>恢复课程</PE_ResumeClass>
+  <PE_ScenPart_ForcedProficiencyTrait>初始殖民者将是 {0}。</PE_ScenPart_ForcedProficiencyTrait>
+  <PE_ScenPart_ForcedProficiencyTrait_NoTrait>所有初始殖民者都将拥有一个熟练度特性。</PE_ScenPart_ForcedProficiencyTrait_NoTrait>
+  <PE_ScheduleTime>{0}时 - {1}时</PE_ScheduleTime>
+  <PE_SchoolDesks>课桌</PE_SchoolDesks>
+  <PE_Select>选择</PE_Select>
+  <PE_SelectAtLeastOneStudent>至少选择一名学生</PE_SelectAtLeastOneStudent>
+  <PE_SelectClassroom>选择教室</PE_SelectClassroom>
+  <PE_SelectTeacher>选择一名教师</PE_SelectTeacher>
+  <PE_SelectTrait>选择熟练度特性</PE_SelectTrait>
+  <PE_SemesterGoal>学期目标</PE_SemesterGoal>
+  <PE_SemesterProgress>学期进度</PE_SemesterProgress>
+  <PE_SkillClassesLearningSpeed>技能课程学习速度</PE_SkillClassesLearningSpeed>
+  <PE_SkillFocus>技能重点</PE_SkillFocus>
+  <PE_SkillFocusMissing>缺少技能重点</PE_SkillFocusMissing>
+  <PE_SkillPassionBonus>热情</PE_SkillPassionBonus>
+  <PE_Spectators>旁观者</PE_Spectators>
+  <PE_StudentAlreadyHasProficiency>{0} 已拥有所需或更高的 {1} 熟练度。</PE_StudentAlreadyHasProficiency>
+  <PE_StudentMustBeOneTierBelow>所有学生必须是 {0}。</PE_StudentMustBeOneTierBelow>
+  <PE_StudentNotQualifiedProficiency>{0} 没有所需的 {1} 熟练度。</PE_StudentNotQualifiedProficiency>
+  <PE_StudentRole>学生</PE_StudentRole>
+  <PE_StudentSkillDisabled>{0} 的 {1} 技能被禁用，无法训练。</PE_StudentSkillDisabled>
+  <PE_StudentUnqualified>{0} 无法参与课程：{1}</PE_StudentUnqualified>
+  <PE_StudentsOffMap>学生在地图外</PE_StudentsOffMap>
+  <PE_StudyGroupFull>学习小组已有 {0} 名学生，无法接收更多。</PE_StudyGroupFull>
+  <PE_StudySessionsNeeded>预计需要学习课程：{0}</PE_StudySessionsNeeded>
+  <PE_StudyTimeNeeded>需要连续学习时间：{0}</PE_StudyTimeNeeded>
+  <PE_Subject>科目</PE_Subject>
+  <PE_SubjectDaycare>日托</PE_SubjectDaycare>
+  <PE_SubjectProficiency>熟练度</PE_SubjectProficiency>
+  <PE_SubjectSkill>技能</PE_SubjectSkill>
+  <PE_SuspendClass>暂停课程</PE_SuspendClass>
+  <PE_Suspended>（已暂停）</PE_Suspended>
+  <PE_TeacherBellFailure>课程未能开始，因为教师无法在预定时间内通知到足够的学生。请考虑升级上课铃或延长课程时间。</PE_TeacherBellFailure>
+  <PE_TeacherMustHaveProficiency>教师必须至少拥有 {0} 熟练度。</PE_TeacherMustHaveProficiency>
+  <PE_TeacherNotQualifiedProficiency>{0} 没有教学所需的 {1} 熟练度。</PE_TeacherNotQualifiedProficiency>
+  <PE_TeacherNotQualifiedSkill>{0} 的 {1} 技能太低，无法教学（必须至少为 5）。</PE_TeacherNotQualifiedSkill>
+  <PE_TeacherOffMap>课程 {0} 已取消，因为教师不在其地图上。</PE_TeacherOffMap>
+  <PE_TeacherRole>教师</PE_TeacherRole>
+  <PE_TeacherRoleOnlyForAdults>只有成年人才能成为教师。</PE_TeacherRoleOnlyForAdults>
+  <PE_TeacherRoleRequiresSocialSkill>教师必须启用社交技能。</PE_TeacherRoleRequiresSocialSkill>
+  <PE_TeacherSkillDisabled>{0} 的 {1} 技能被禁用，因此无法教学。</PE_TeacherSkillDisabled>
+  <PE_TeacherUnassigned>{0} 已被取消教师分配：{1}</PE_TeacherUnassigned>
+  <PE_TeachingFactor>教学系数</PE_TeachingFactor>
+  <PE_ToggleStudentList>编辑课程</PE_ToggleStudentList>
+  <PE_TooYoung>{0} 太年轻了。</PE_TooYoung>
+  <PE_TrainingProficiency>教授 {0} 熟练度</PE_TrainingProficiency>
+  <PE_TrainingSkill>训练 {0} 技能</PE_TrainingSkill>
+  <PE_TriedToEquipButCouldNotDueToLackOfProficiency>{0} 试图装备 {1}，但因缺乏熟练度而失败</PE_TriedToEquipButCouldNotDueToLackOfProficiency>
+  <PE_VehicleProficiencyRequired>需要 {0} 熟练度</PE_VehicleProficiencyRequired>
+  <PE_Xp>{0} 经验</PE_Xp>
+</LanguageData>

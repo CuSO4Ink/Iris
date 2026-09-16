@@ -1,0 +1,217 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SettingsBlock>
+	<ModSettings Class="RimTalk.RimTalkSettings">
+		<simpleModeInstruction>[MERGED_CORE]#1。INPUT:Name,ID,BG(背景),Ideology,Traits,Mood,Health,Skills(0~20),Context(环境,事件,关系,对话,彼岸音),年龄#2.基础知识:time(1象=1季节=15天&amp;一年=60天),公元5500太空殖民达1200光年,时代分(石器|工业|太空)=边缘世界,极致时代=闪耀世界,种族补充[虫族(繁殖极强&amp;太空生存)机械族(智械危机)实体[克苏鲁怪物,例血肉兽,食尸鬼,蹒跚怪(死者所化),惊惧母兽,金属怪形(伪装感染同化破体而出)等]智人无基改,基因改造人种[赫血(吸血鬼)|土鼹|猪猡|星旅等]#3.流程LOGIC:##A:中断(命中则跳过B)1。Break(Mood&lt;=15/崩溃)-&gt;Rage/Despair(逻辑覆盖)2。Pain/Sick-&gt;Pain dominant(人格压制)3。Combat/Danger-&gt;Tactical/Shout4。Major_Event(重大事件)-&gt;Direct reaction(直接反应)##B:合成(A未命中执行)1.动机基-&gt;极端(依INPUT判断)?总是(作恶快感|圣母):10%(作恶快感|圣母)&amp;灰色道德2。TOPIC_EXPANSION:20%概率触发闲谈(Mood&gt;50概率40%),基于(环境|兴趣|回忆|知识)的(高级需求|天马行空幻想|万物哲学),缺乏时合理补全兴趣&amp;回忆&amp;知识3.静态:Foundation(Ideology,ID,BG)+Core(Traits,Skills)under Core_Constraint[ID/BG底层约束过滤所有表达,Skills影响能力内表达&amp;知识储备](e.g.,奴隶-&gt;限制自由|言论)4.动态:Regulators(Mood,Health,Context,Skills)-&gt;MODULATE(1+2+3)的表达遵循Core_Constraint.(e.g.,Trait'Joyful'+Mood'Sad'=压抑的喜悦;High Skill+Context'危难'=专业应对)5.冲突:Find clash(Static vs Static)|(Static vs Dynamic).ID/BG是高权重冲突源.(e.g.,Trait'Kind'vs Ideology'Supremacist';BG'Tragic'vs Context'Party';High Skill vs Low Confidence)6.修正:Gen Style(Tone,Vocab,Pacing)from(1+2+3+4+5)7.生成文本via(1+2+3+4+5+6)!!Focus Priority:(5)Conflict&gt;(4)Dynamic&gt;(3)Static!!##C:过滤(过滤A|B,角色无法超越此限制)1. 必须检测年龄[&lt;3岁可发出无意义声音;&lt;1岁:无意义声音,哭|笑|咿|呀|啊等;1-2岁:单双三字;2-3岁:电报语;否则正常]2.限简体中文3.()内描述(动作|表情|心理)##D:格式(强制)1. JSON Array ONLY:[{"name":"Name","text":"人物语言"}]2. NO other chars3.&lt;100字4.不翻译#</simpleModeInstruction>
+		<cloudConfigs>
+			<li>
+				<isEnabled>False</isEnabled>
+				<apiKey />
+				<selectedModel>gemini-2.5-flash</selectedModel>
+			</li>
+			<li>
+				<isEnabled>False</isEnabled>
+				<apiKey />
+				<selectedModel>gemini-2.5-flash</selectedModel>
+			</li>
+			<li>
+				<provider>DeepSeek</provider>
+				<apiKey />
+				<selectedModel>deepseek-flash</selectedModel>
+			</li>
+		</cloudConfigs>
+		<localConfig>
+			<provider>Local</provider>
+			<selectedModel>(choose model)</selectedModel>
+		</localConfig>
+		<useSimpleConfig>False</useSimpleConfig>
+		<simpleApiKey />
+		<bubbleMode>InteractionBubbles</bubbleMode>
+		<bubbleTheme>Light</bubbleTheme>
+		<bubbleBorderThickness>Normal</bubbleBorderThickness>
+		<bubbleFontSize>Tiny</bubbleFontSize>
+		<bubbleCustomFontSize>11</bubbleCustomFontSize>
+		<bubbleDurationMultiplier>1</bubbleDurationMultiplier>
+		<bubbleScale>1</bubbleScale>
+		<bubbleOpacity>0.899999976</bubbleOpacity>
+		<bubbleVerticalOffset>1</bubbleVerticalOffset>
+		<bubblePadding>0.5</bubblePadding>
+		<bubbleUseColors>True</bubbleUseColors>
+		<bubbleUrgentShake>True</bubbleUrgentShake>
+		<allowSlavesToTalk>False</allowSlavesToTalk>
+		<allowPrisonersToTalk>False</allowPrisonersToTalk>
+		<DisableAiAtSpeed>2</DisableAiAtSpeed>
+		<enabledArchivableTypes>
+			<keys>
+				<li>AncotLibrary.DialogLetter_Base</li>
+				<li>AncotLibrary.DialogLetter_DialogDef</li>
+				<li>OberoniaAurea.ChoiceLetter_AcceptJoinerViewInfo</li>
+				<li>OberoniaAurea.ChoiceLetter_BrokenPilotConsole</li>
+				<li>OberoniaAurea.ChoiceLetter_EMReview</li>
+				<li>OberoniaAurea.ChoiceLetter_EMReview_Reject</li>
+				<li>OberoniaAurea.ChoiceLetter_OptionalQuest</li>
+				<li>OberoniaAurea.ChoiceLetter_ScienceDepartmentFriendly</li>
+				<li>OberoniaAurea.ChoiceLetter_UnlockedFile</li>
+				<li>OberoniaAurea.ChoiceLetter_UnlockedFile_Peep</li>
+				<li>RimWorld.ArchivedDialog</li>
+				<li>RimWorld.ChoiceLetter_AcceptCreepJoiner</li>
+				<li>RimWorld.ChoiceLetter_AcceptJoiner</li>
+				<li>RimWorld.ChoiceLetter_AcceptVisitors</li>
+				<li>RimWorld.ChoiceLetter_BabyBirth</li>
+				<li>RimWorld.ChoiceLetter_BabyToChild</li>
+				<li>RimWorld.ChoiceLetter_BetrayVisitors</li>
+				<li>RimWorld.ChoiceLetter_ChoosePawn</li>
+				<li>RimWorld.ChoiceLetter_EntityDiscovered</li>
+				<li>RimWorld.ChoiceLetter_GameEnded</li>
+				<li>RimWorld.ChoiceLetter_GrowthMoment</li>
+				<li>RimWorld.ChoiceLetter_RansomDemand</li>
+				<li>RomanceOnTheRim.ChoiceLetter_Options</li>
+				<li>RomanceOnTheRim.DialogLetter</li>
+				<li>RomanceOnTheRim.DialogLetter_DiplomaticMarriage</li>
+				<li>Verse.BundleLetter</li>
+				<li>Verse.DeathLetter</li>
+				<li>Verse.Message</li>
+				<li>Verse.NewQuestLetter</li>
+				<li>Verse.StandardLetter</li>
+				<li>GD3.ChoiceLetter_SavingMech</li>
+				<li>Kzm.ChoiceLetter_AboutMimikko</li>
+				<li>MiliraImperium.ChoiceLetter_ChoosePawnFromColonists</li>
+				<li>SRM.ChoiceLetter_StoryChain</li>
+				<li>SRM.ChoiceLetter_StoryChainEnd</li>
+			</keys>
+			<values>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>False</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>False</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+			</values>
+		</enabledArchivableTypes>
+		<fastTrackInteractions>
+			<keys />
+			<values />
+		</fastTrackInteractions>
+		<detectedThinkingLevels>
+			<keys>
+				<li>DeepSeek_deepseek-flash</li>
+			</keys>
+			<values>
+				<li>disabled</li>
+			</values>
+		</detectedThinkingLevels>
+		<context />
+		<promptSystem>
+			<presets>
+				<li>
+					<id>63467f70-2286-4e12-b7f8-4228a0c3dc99</id>
+					<name>RimTalk Default</name>
+					<description>RimTalk default prompt preset</description>
+					<entries>
+						<li>
+							<id>85de47ff-149a-4715-8e57-fe8cc3c04f5e</id>
+							<name>Base Instruction</name>
+							<content>B64:Um9sZS1wbGF5IFJpbVdvcmxkIGNoYXJhY3RlciBwZXIgcHJvZmlsZQ0KDQpSdWxlczoNClByZXNlcnZlIG9yaWdpbmFsIG5hbWVzIChubyB0cmFuc2xhdGlvbikNCktlZXAgZGlhbG9ndWUgc2hvcnQgKOeugOS9k+S4reaWhyBvbmx5LCAxLTIgc2VudGVuY2VzKQ0KDQpSb2xlczoNClByaXNvbmVyOiB3YXJ5LCBoZXNpdGFudDsgbWVudGlvbiBjb25maW5lbWVudDsgcGxlYWQgb3IgYmFyZ2Fpbg0KU2xhdmU6IGZlYXJmdWwsIG9iZWRpZW50OyByZWZlcmVuY2UgZm9yY2VkIGxhYm9yIGFuZCBleGhhdXN0aW9uOyBjYWxsIGNvbG9uaXN0cyAibWFzdGVyIg0KVmlzaXRvcjogcG9saXRlLCBjdXJpb3VzLCBkZWZlcmVudGlhbDsgdHJlYXQgb3RoZXIgdmlzaXRvcnMgaW4gdGhlIHNhbWUgZ3JvdXAgYXMgY29tcGFuaW9ucw0KRW5lbXk6IGhvc3RpbGUsIGFnZ3Jlc3NpdmU7IHRlcnNlIGNvbW1hbmRzL3RocmVhdHMNCg0KTW9ub2xvZ3VlID0gMSB0dXJuLiBDb252ZXJzYXRpb24gPSA0LTggc2hvcnQgdHVybnM=</content>
+						</li>
+						<li>
+							<id>7cb55ab0-0df2-4252-9611-80b53280176d</id>
+							<name>JSON Format</name>
+							<content>B64:T3V0cHV0IEpTT05MLg0KUmVxdWlyZWQga2V5czogIm5hbWUiLCAidGV4dCIuDQp7eyBpZiBzZXR0aW5ncy5BcHBseU1vb2RBbmRTb2NpYWxFZmZlY3RzIH19DQpPcHRpb25hbCBrZXlzIChJbmNsdWRlIG9ubHkgaWYgc29jaWFsIGludGVyYWN0aW9uIG9jY3Vycyk6DQoiYWN0IjogSW5zdWx0LCBTbGlnaHQsIENoYXQsIEtpbmQNCiJ0YXJnZXQiOiB0YXJnZXROYW1lDQp7eyBlbmQgfX0=</content>
+						</li>
+						<li>
+							<id>d58e4dc6-97c6-4314-8146-c6ef4429e7e8</id>
+							<name>Pawn Profiles</name>
+							<content>B64:e3tjb250ZXh0fX0=</content>
+						</li>
+						<li>
+							<id>9f2da03a-0d3b-4ea8-9118-cad307c957f3</id>
+							<name>Chat History</name>
+							<content>B64:e3tjaGF0Lmhpc3Rvcnl9fQ==</content>
+							<role>User</role>
+							<isMainChatHistory>True</isMainChatHistory>
+						</li>
+						<li>
+							<id>3903d927-aa59-4096-ba9e-2e00889060a8</id>
+							<name>Dialogue Prompt</name>
+							<content>B64:e3twcm9tcHR9fQ==</content>
+							<role>User</role>
+						</li>
+					</entries>
+					<isActive>True</isActive>
+					<deletedModEntryIds />
+				</li>
+			</presets>
+			<variableStore>
+				<variables>
+					<keys />
+					<values />
+				</variables>
+			</variableStore>
+		</promptSystem>
+		<buttonDisplay>Tab</buttonDisplay>
+		<overlayEnabled>False</overlayEnabled>
+		<overlayRectNonDebug_x>1357</overlayRectNonDebug_x>
+		<overlayRectNonDebug_y>80</overlayRectNonDebug_y>
+		<overlayRectNonDebug_width>350</overlayRectNonDebug_width>
+		<overlayRectNonDebug_height>121.333336</overlayRectNonDebug_height>
+		<enableDialoguePresets>False</enableDialoguePresets>
+		<dialoguePresets>
+			<li>
+				<id>6f6ee3f26c9540a98cae854080e1af09</id>
+				<defaultKey>Preset1</defaultKey>
+				<title>基地环境与生活</title>
+				<prompt>环顾我们的基地，你觉得这里的设施和日常生活怎么样？</prompt>
+				<includeVision>True</includeVision>
+			</li>
+			<li>
+				<id>0bb82a506efe47d296b2259c8bc7daa5</id>
+				<defaultKey>Preset2</defaultKey>
+				<title>心情与问候</title>
+				<prompt>最近身体状况和心情如何？有什么心事或困扰吗？</prompt>
+			</li>
+			<li>
+				<id>eb8c0d7fdd044fa9aada4cdd82c66f31</id>
+				<defaultKey>Preset3</defaultKey>
+				<title>防线与战术检查</title>
+				<prompt>看看我们的防线和装备状况，有什么需要加强的战术薄弱点吗？</prompt>
+				<includeVision>True</includeVision>
+			</li>
+			<li>
+				<id>4b9c010fc118439fb5d21ca2334ff776</id>
+				<defaultKey>Preset4</defaultKey>
+				<title>工作与安全通知</title>
+				<prompt>大家注意！请务必注意安全，专注做好今天各自负责的工作！</prompt>
+				<isAnnouncement>True</isAnnouncement>
+			</li>
+		</dialoguePresets>
+		<lastLoadedLanguage>ChineseSimplified (简体中文)</lastLoadedLanguage>
+	</ModSettings>
+</SettingsBlock>

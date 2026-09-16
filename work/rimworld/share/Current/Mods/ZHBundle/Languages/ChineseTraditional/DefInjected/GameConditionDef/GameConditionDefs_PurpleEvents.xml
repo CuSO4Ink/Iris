@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Psychic Rain -->
+  <PsychicRain.label>心靈之雨</PsychicRain.label>
+  <!-- EN: A dangerous psychic entity caused disturbance on subatomic levels, resonating across all particles of the atmosphere.\n\nA seemingly endless supernatural rain has begun, altering the very composition of time. Any person or creature not under the roof will age significantly faster.\n\nIt will last anywhere between a season to several years. -->
+  <PsychicRain.description>一個危險的心靈實體在亞原子層面引發了某種擾動，使得大氣中的粒子也隨之產生共振。\n\n一場似乎永無盡頭的超自然之雨已開始降下，正改變著時間的本質結構。任何不在屋頂下的人類和動物都會加速衰老。\n\n這場全球範圍的異常氣候將會在一月至數年時間內持續存在。</PsychicRain.description>
+  <!-- EN: The psychic rain is ending -->
+  <PsychicRain.endMessage>心靈之雨結束了。</PsychicRain.endMessage>
+  
+  <!-- EN: long night -->
+  <VEE_LongNight.label>漫漫長夜</VEE_LongNight.label>
+  <!-- EN: A catastrophic celestial eclipse that blankets the world in an endless, freezing twilight, forcing the world to adapt to artificial light and increased psychic sensitivity as nocturnal predators and subterranean threats emerge in the darkness. -->
+  <VEE_LongNight.description>一場災難性的天體日蝕令整個世界籠罩在無盡且寒冷的暮色中。隨著夜行掠食者與地下威脅自黑暗中悄然浮現，人們將不得不依靠人造光源生存，並適應心靈敏感度激增的異常狀況。</VEE_LongNight.description>
+  <!-- EN: The long night is ending -->
+  <VEE_LongNight.endMessage>漫漫長夜結束了。</VEE_LongNight.endMessage>
+  <!-- EN: the penumbra -->
+  <VEE_LongNight.modExtensions.0.stages.0.letterLabel>初虧之時</VEE_LongNight.modExtensions.0.stages.0.letterLabel>
+  <!-- EN: A space entity of unimaginable size has made first contact with a local star, resulting in the beginning of a long lasting eclipse.\n\nThe daylight is beginning to dim, casting a vast penumbra over the planet. Solar output and temperatures will continue to drop as the eclipse deepens. Prepare your power grids and indoor agriculture before the true darkness arrives. -->
+  <VEE_LongNight.modExtensions.0.stages.0.letterText>一個龐大到難以想像的未知太空實體與本星系的恆星發生接觸，漫長的日蝕由此拉開序幕。\n\n日光開始黯淡下來，無邊的半影區正籠罩著整個世界。隨著日蝕程度逐漸加劇，太陽能板的電力輸出和氣溫也將持續下降。在真正的黑暗降臨之前，你最好建立起完備的電力系統和室內農業設施。</VEE_LongNight.modExtensions.0.stages.0.letterText>
+  <!-- EN: the umbra -->
+  <VEE_LongNight.modExtensions.0.stages.1.letterLabel>食既之時</VEE_LongNight.modExtensions.0.stages.1.letterLabel>
+  <!-- EN: The celestial entity has begun to cross the center of the sun.\n\nThe planet has been plunged into a deep, freezing twilight. Solar generators are now struggling to produce power, and surface flora is dying. Rely on artificial lights and indoor heating to survive the coming black. -->
+  <VEE_LongNight.modExtensions.0.stages.1.letterText>未知太空實體已開始橫越恆星的中心。\n\n整個世界被栗烈觱發的暮色所籠罩。太陽能板難以再提供有效的電力輸出，地表的植物亦成死灰槁木。只有依靠人造光源和室內取暖，方能熬過行將到來的黑暗。</VEE_LongNight.modExtensions.0.stages.1.letterText>
+  <!-- EN: the totality -->
+  <VEE_LongNight.modExtensions.0.stages.2.letterLabel>食甚之時</VEE_LongNight.modExtensions.0.stages.2.letterLabel>
+  <!-- EN: The sun has been completely blotted out. \n\nTotality has been achieved, and an endless, freezing night has fallen across the world. The celestial entity is emitting a heavy cosmic resonance. Your colonists will tire much faster than normal, and their psychic sensitivity has been dangerously amplified.\n\nThe animals became a lot more aggressive. Guard your brightly lit base against the nocturnal predators and subterranean insectoids. -->
+  <VEE_LongNight.modExtensions.0.stages.2.letterText>曾為萬物帶來光明與溫暖的恆星已被完全遮蔽。\n\n食甚之時的降臨，令整個世界深陷於無盡的寒夜中。未知太空實體散發著強烈的宇宙共鳴，使你的殖民者更容易感到疲憊，其心靈敏感度也將被嚴重放大。\n\n動物們會變得更具攻擊性。守護好你那燈火通明的殖民地，抵禦夜行掠食者與地下蟲族的侵襲。</VEE_LongNight.modExtensions.0.stages.2.letterText>
+  <!-- EN: the emergence -->
+  <VEE_LongNight.modExtensions.0.stages.3.letterLabel>生光之時</VEE_LongNight.modExtensions.0.stages.3.letterLabel>
+  <!-- EN: A brilliant flash of light has pierced the horizon!\n\nThe cosmic entity is finally shifting away from the sun's center. Totality has ended. The absolute darkness has broken into twilight. Your solar panels will begin generating power once again, and plants will resume growth as the temperature increases. -->
+  <VEE_LongNight.modExtensions.0.stages.3.letterText>一束耀眼的光芒刺破了地平線！\n\n未知太空實體終於開始移離恆星的中心，食甚之時結束了。黑暗碎裂，暮色再臨。太陽能板將重新運作，而隨著氣溫的回升，各種植物也會再度生長。</VEE_LongNight.modExtensions.0.stages.3.letterText>
+  <!-- EN: the restoration -->
+  <VEE_LongNight.modExtensions.0.stages.4.letterLabel>復圓之時</VEE_LongNight.modExtensions.0.stages.4.letterLabel>
+  <!-- EN: The celestial object is making its final pass across the sun.\n\nThe long night is ending. Over the coming days, the remaining shadows will clear, temperatures will normalize, and the planet will fully awaken from the dark. -->
+  <VEE_LongNight.modExtensions.0.stages.4.letterText>未知太空實體已邁入橫越恆星的最終階段。\n\n漫漫長夜即將結束。在接下來的幾天裡，剩餘的暗影會被逐漸滌除，而氣溫也會回歸正常。整個世界將徹底掙脫黑暗，重煥生機。</VEE_LongNight.modExtensions.0.stages.4.letterText>
+  
+  <!-- EN: psychic bloom -->
+  <VEE_PsychicBloom.label>靈花綻放</VEE_PsychicBloom.label>
+  <!-- EN: A dimensional rift tears through the sky, blanketing the world in a perpetual purple aurora while alien seedlings sprout and mutate local flora into psychic lotuses, forcing the world to manage rapidly growing, otherworldly vegetation and intensifying psychic pressure. -->
+  <VEE_PsychicBloom.description>一道維度裂隙撕裂了天空，將整個世界籠罩在永恆的紫色極光下。自異域而來的幼苗開始萌動怒放，使本地的植物突變成心靈荷花。人們將不得不應對迅速蔓延的異域植被與不斷加劇的心靈重壓。</VEE_PsychicBloom.description>
+  <!-- EN: The psychic bloom is ending -->
+  <VEE_PsychicBloom.endMessage>靈花綻放結束了。</VEE_PsychicBloom.endMessage>
+  <!-- EN: the seeding -->
+  <VEE_PsychicBloom.modExtensions.0.stages.0.letterLabel>萌芽之時</VEE_PsychicBloom.modExtensions.0.stages.0.letterLabel>
+  <!-- EN: The veil between our reality and somewhere else is wearing dangerously thin.\n\nA tear in the dimensional fabric has ignited a permanent, unnatural purple aurora across the sky. Where the psychic energy bleeds through to the surface, bizarre, alien seedlings are manifesting in the soil. While they are harmless for now, they do not belong in this dimension. You may want to uproot them before they anchor themselves to our reality. -->
+  <VEE_PsychicBloom.modExtensions.0.stages.0.letterText>分割現實與異域維度的帷幕已被磨蝕得岌岌可危。\n\n一道維度結構的裂隙在天空中燃起了永恆而非自然的紫色極光。在心靈能量滲入地表之處，怪誕的異域幼苗正破土而出。雖然它們目前尚且無害，但卻並不屬於你所在的維度。或許你應該趕在它們完全錨定於現實維度之前，將其連根拔除。</VEE_PsychicBloom.modExtensions.0.stages.0.letterText>
+  <!-- EN: the bloom -->
+  <VEE_PsychicBloom.modExtensions.0.stages.1.letterLabel>綻放之時</VEE_PsychicBloom.modExtensions.0.stages.1.letterLabel>
+  <!-- EN: The dimensional overlap is widening. The seedlings have matured into psychic lotuses, and they are actively terraforming our world to match their own.\n\nThe lotuses are mutating nearby flora into vibrant, otherworldly variants, and the ambient psychic sensitivity of everyone in the region has doubled.\n\nBeware the weather, as clouds from the other side are bleeding through. Psychic rain can have devastating effects on anyone caught outside, as time behaves differently in its home dimension. -->
+  <VEE_PsychicBloom.modExtensions.0.stages.1.letterText>兩個維度之間的重疊正逐漸擴大。異域幼苗已蛻變為心靈荷花，且在肆無忌憚地將這個世界改造成它們原生世界的風貌。\n\n心靈荷花正將附近的植物突變為妖艷的異域變種，並使此區域內所有人的心靈敏感度翻倍。\n\n當心天氣的變化——來自另一維度的雲層已開始侵入。心靈之雨將會對身處室外的生物造成不可估量的影響，因為時間在其原屬維度中的性質和結構是截然不同的。</VEE_PsychicBloom.modExtensions.0.stages.1.letterText>
+  <!-- EN: the superbloom -->
+  <VEE_PsychicBloom.modExtensions.0.stages.2.letterLabel>盛放之時</VEE_PsychicBloom.modExtensions.0.stages.2.letterLabel>
+  <!-- EN: The boundary between realities has completely collapsed!\n\nThe otherworldly flora has entered a catastrophic superbloom, spreading at an uncontrollable rate. Worse, the psychic lotuses are acting as conduits for the crushing psychic weight of an entirely different universe. The intensity of this maddening drone is directly tied to how many lotuses are anchoring the rift to your map.\n\nYou must sever their connection by cutting down the lotuses immediately, or the sheer psychic pressure of another dimension will drive your colonists insane. -->
+  <VEE_PsychicBloom.modExtensions.0.stages.2.letterText>分割現實與異域維度的帷幕已徹底土崩瓦解！\n\n異域植被邁入了災難性的盛放階段，且正以脫韁之勢迅速蔓延。更雪上加霜的是，心靈荷花還充當著將另一維度的心靈重壓輸送至這個世界的傳導媒介。重壓所引發的心靈干擾令人們感到狂躁不安，而其強度取決於錨定在當前地圖上的心靈荷花的數量。\n\n你必須立即將這些心靈荷花剷除殆盡以切斷它們的鏈接，否則另一維度的純粹心靈重壓將會逼瘋你的殖民者。</VEE_PsychicBloom.modExtensions.0.stages.2.letterText>
+  <!-- EN: the withering -->
+  <VEE_PsychicBloom.modExtensions.0.stages.3.letterLabel>凋謝之時</VEE_PsychicBloom.modExtensions.0.stages.3.letterLabel>
+  <!-- EN: Reality has violently reasserted itself.\n\nThe dimensional rift has snapped shut. Cut off from the psychic energy of their home universe, the superbloom has instantly collapsed into a hideous, withered wasteland. The maddening drone is gone, but the dead flora will take years to decay naturally. You will need to burn or chop away these wilted plants to make room for your crops to return.\n\nPsychic Rain remains a lingering threat until the sky fully heals and the aurora dissipates. -->
+  <VEE_PsychicBloom.modExtensions.0.stages.3.letterText>現實維度開始強勢重奪自身主導地位。\n\n維度裂隙驟然閉合。失去原屬維度的心靈能量供給後，處於盛放階段的異域植被瞬間崩毀，化為不堪入目的枯萎廢土。令人狂躁不安的心靈干擾蕩然無存，然而那些凋謝的植物需要耗時數年才能自然腐爛。你需要主動將它們焚燒或割除，才能為作物的再耕種騰出空間。\n\n在天空平復如舊，極光消散無蹤之前，心靈之雨仍是個揮之不去的威脅。</VEE_PsychicBloom.modExtensions.0.stages.3.letterText>
+  
+  <!-- EN: Scorch -->
+  <VEE_Scorch.label>熾灼天災</VEE_Scorch.label>
+  <!-- EN: A catastrophic global heatwave that plunges the planet into extreme heat, halting all outdoor farming and travel while forcing the world to survive an extended, dangerous summer. -->
+  <VEE_Scorch.description>一股災難性的全球熱浪將整個世界捲入極端高溫中。所有室外種植與旅行都宣告停擺，人們將不得不在這個漫長而危險的酷夏裡掙扎求生。</VEE_Scorch.description>
+  <!-- EN: The scorch ending -->
+  <VEE_Scorch.endMessage>熾灼天災結束了。</VEE_Scorch.endMessage>
+  <!-- EN: the swelter -->
+  <VEE_Scorch.modExtensions.0.stages.0.letterLabel>熱浪初湧</VEE_Scorch.modExtensions.0.stages.0.letterLabel>
+  <!-- EN: The planet's atmosphere is beginning to trap immense amounts of solar radiation, bathing the region in an unnatural, oppressive heat.\n\nTravellers warn that this is just the beginning of a massive thermal event. Temperatures will continue to rise drastically. You have a short window to secure your food supply, build coolers, and tailor protective headgear for your colonists before the sun becomes deadly. -->
+  <VEE_Scorch.modExtensions.0.stages.0.letterText>這顆行星的大氣層開始積聚大量太陽輻射，使此區域沐浴在非自然而沉悶的熱浪中。\n\n來往的旅者們警告稱，這僅僅是大範圍酷熱事件的開始，氣溫還將不斷激增下去。在太陽變得能置人於死地之前，你還有一段窗口期準備食物供給、建造製冷器以及為你的殖民者製作防護性的頭部裝備。</VEE_Scorch.modExtensions.0.stages.0.letterText>
+  <!-- EN: the scorch -->
+  <VEE_Scorch.modExtensions.0.stages.1.letterLabel>熾灼遍野</VEE_Scorch.modExtensions.0.stages.1.letterLabel>
+  <!-- EN: The heat has reached dangerous levels, and rain clouds have vanished completely.\n\nOutdoor crops are struggling to grow in the baked earth. Furthermore, the intense UV radiation is causing sun sickness for anyone caught outside without a hat. This sickness makes victims extremely susceptible to heatstroke. Keep your colonists under roofs or ensure they are wearing headgear. -->
+  <VEE_Scorch.modExtensions.0.stages.1.letterText>高溫已達到危險水平，雨雲徹底化為烏有。\n\n室外的作物在被烤焦的土地上掙扎求生。強烈的紫外線輻射會使身處室外且未戴帽子之人患上日射病，他們將變得更容易中暑。\n\n讓你的殖民者待在屋頂下，或是為其準備好頭部裝備。</VEE_Scorch.modExtensions.0.stages.1.letterText>
+  <!-- EN: the inferno -->
+  <VEE_Scorch.modExtensions.0.stages.2.letterLabel>獄火燎原</VEE_Scorch.modExtensions.0.stages.2.letterLabel>
+  <!-- EN: The heat has peaked into a catastrophic inferno. \n\nA thick, sweltering haze has settled over the area, and outdoor plant growth has completely halted. Worse yet, the superheated atmosphere is generating massive dry thunderstorms. Expect frequent lightning strikes and devastating wildfires.\n\nStay indoors, keep the coolers running, and wait for the rain to come back. -->
+  <VEE_Scorch.modExtensions.0.stages.2.letterText>極速躥升的高溫最終演變為災難性的獄火燎原。\n\n厚重蒸騰的霧靄在此區域揮之不去，室外的作物已完全停止生長。禍不單行，過熱的大氣層正不斷催生大範圍的旱天雷，預計會有頻繁的雷擊與勢不可擋的野火。\n\n將你的殖民者的活動區域限制在室內，並保證製冷器正常運作，然後靜待久旱逢甘霖的那一天。</VEE_Scorch.modExtensions.0.stages.2.letterText>
+  <!-- EN: the relief -->
+  <VEE_Scorch.modExtensions.0.stages.3.letterLabel>炎威漸退</VEE_Scorch.modExtensions.0.stages.3.letterLabel>
+  <!-- EN: The oppressive haze is finally lifting, and the sun's glare seems less deadly today.\n\nThe scorch is ending. Temperatures will slowly return to normal over the coming days, and rain clouds will soon return. -->
+  <VEE_Scorch.modExtensions.0.stages.3.letterText>厚重蒸騰的霧靄終於消散，刺眼的太陽今天似乎也沒那麼毒辣了。\n\n熾灼天災即將結束。在接下來的幾天裡，氣溫會逐漸回歸正常，雨雲也會重新聚集起來。</VEE_Scorch.modExtensions.0.stages.3.letterText>
+  
+  <!-- EN: whiteout -->
+  <VEE_Whiteout.label>白幕天災</VEE_Whiteout.label>
+  <!-- EN: A catastrophic global deep freeze that plunges the planet into extreme cold, halting all human travel and trade while forcing the world to survive an extended, dangerous winter. -->
+  <VEE_Whiteout.description>一股災難性的全球寒潮將整個世界捲入極端低溫中。所有貿易與旅行都宣告停擺，人們將不得不在這個漫長而危險的嚴冬裡掙扎求生。</VEE_Whiteout.description>
+  <!-- EN: The whiteout is ending. -->
+  <VEE_Whiteout.endMessage>白幕天災結束了。</VEE_Whiteout.endMessage>
+  <!-- EN: the frost -->
+  <VEE_Whiteout.modExtensions.0.stages.0.letterLabel>寒潮初至</VEE_Whiteout.modExtensions.0.stages.0.letterLabel>
+  <!-- EN: Atmospheric temperatures are steadily dropping across the planet.\n\nThis is not a standard cold snap. You predict a catastrophic deep freeze is approaching, eventually leading to a complete whiteout. You have a short window to stockpile fuel, harvest your remaining crops, and build heaters before the true cold sets in. -->
+  <VEE_Whiteout.modExtensions.0.stages.0.letterText>這顆行星的大氣溫度正穩步下降。\n\n這絕非尋常的寒流或寒潮。你預測到災難性的極寒天氣即將來臨，最終會演變為宛如白幕般的恐怖暴風雪。在真正的低溫到來之前，你還有一段窗口期儲存燃料、建造加熱器以及搶收剩餘的作物。</VEE_Whiteout.modExtensions.0.stages.0.letterText>
+  <!-- EN: the deep freeze -->
+  <VEE_Whiteout.modExtensions.0.stages.1.letterLabel>霜凍大地</VEE_Whiteout.modExtensions.0.stages.1.letterLabel>
+  <!-- EN: The cold has deepened drastically.\n\nWildlife is fleeing the region, and the flora is dying off. Ensure your colony stays indoors and that your power grid can handle the immense strain of constant heating. The worst is still yet to come. -->
+  <VEE_Whiteout.modExtensions.0.stages.1.letterText>降溫愈演愈烈了。\n\n野生動物正慌忙逃離此區域，周圍只見得一片百花凋謝的景象。\n\n將你的殖民者的活動區域限制在室內，並確保電力系統能承受住持續供暖的重擔。“好日子”還在後頭呢。</VEE_Whiteout.modExtensions.0.stages.1.letterText>
+  <!-- EN: the whiteout -->
+  <VEE_Whiteout.modExtensions.0.stages.2.letterLabel>白幕封疆</VEE_Whiteout.modExtensions.0.stages.2.letterLabel>
+  <!-- EN: The whiteout has arrived.\n\nTemperatures have plummeted to unsurvivable levels. Human travel across the planet is now entirely unadvised; you will receive no trade caravans or human raids. However, the bitter cold does not bother mechanoids.\n\nIf you persevere, the freeze will eventually break. -->
+  <VEE_Whiteout.modExtensions.0.stages.2.letterText>宛如白幕般的恐怖暴風雪席捲了此區域。\n\n氣溫已暴跌至難以求生的水平。如今的狀況完全不適合任何人外出旅行；你將不會遇到人類的商隊或襲擊，但機械族卻並不受刺骨低溫的影響。\n\n等待，並心懷希望吧。這場極寒終將過去。</VEE_Whiteout.modExtensions.0.stages.2.letterText>
+  <!-- EN: the thaw -->
+  <VEE_Whiteout.modExtensions.0.stages.3.letterLabel>雪融冰消</VEE_Whiteout.modExtensions.0.stages.3.letterLabel>
+  <!-- EN: The skies are finally clearing and the bitter cold is beginning to recede.\n\nThe whiteout is ending. Temperatures will slowly return to normal over the next quadrum, and life will eventually return. -->
+  <VEE_Whiteout.modExtensions.0.stages.3.letterText>天空終於開始放晴，極寒正逐漸消退。\n\n白幕天災即將結束。在接下來的一個月裡，氣溫會逐漸回歸正常，生命也會重新煥發生機。</VEE_Whiteout.modExtensions.0.stages.3.letterText>
+  
+</LanguageData>

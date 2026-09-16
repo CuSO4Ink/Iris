@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<!-- EN: canning -->
+		<VCE_Canning.label>装罐</VCE_Canning.label>
+		<!-- EN: Canning is a method of preserving food in which the food contents are processed and sealed in an airtight container (jars like Mason jars, and steel and tin cans). Canning provides a shelf life of several years. A freeze-dried canned product, such as canned dried lentils, could last as long as 30 years in an edible state. This research gives access to the canning machine. -->
+		<VCE_Canning.description>将食物密封在容器内来更好地保存食物。罐装食物能有数年的保质期。该研究允许建造装罐机。</VCE_Canning.description>
+		<!-- EN:
+			<li>subject->the vaults of flavor</li>
+			<li>subject_story->revolutionized food preservation through canning, extending the bounty of the harvest</li>
+			<li>subject_story->mastered the science of sealing freshness and taste, ensuring nourishment year-round</li>
+			<li>subject_story->introduced the canning machine, a key to unlocking the potential of prolonged food storage</li>
+			<li>subject_gerund->preserving the essence of the seasons within every jar and can</li>
+		-->
+		<VCE_Canning.generalRules.rulesStrings>
+			<li>subject->味觉避难所</li>
+			<li>subject_story->用罐头革新了食物储存技术，让收获的果实得以保存长久</li>
+			<li>subject_story->掌握了用科学方法封装新鲜食材，让它在数年后仍能保存营养</li>
+			<li>subject_story->发明了装罐机，让人可以批量将食物入库</li>
+			<li>subject_gerund->在罐头中保存每一丝食材该有的味道</li>
+		</VCE_Canning.generalRules.rulesStrings>
+		
+		<!-- EN: cheese making -->
+		<VCE_CheeseMaking.label>奶酪制作</VCE_CheeseMaking.label>
+		<!-- EN: Cheesemaking (or caseiculture) is the craft of making cheese. The production of cheese, like many other food preservation processes, allows the nutritional and economic value of milk to be preserved in concentrated form. Cheesemaking allows the production of the cheese with diverse flavors and consistencies. This research gives access to the cheese press. -->
+		<VCE_CheeseMaking.description>制作奶酪的手艺。将原乳制成奶酪能浓缩它的营养价值。制作出的奶酪味道和浓度各异。该科技允许建造奶酪压制器。</VCE_CheeseMaking.description>
+		<!-- EN:
+			<li>subject->alchemy of milk</li>
+			<li>subject_story->transformed the humble origins of milk into the rich complexity of cheese</li>
+			<li>subject_story->cultivated an array of cheeses, each a testament to the craft and culture of cheesemaking</li>
+			<li>subject_story->designed the cheese press, squeezing out new traditions and tastes from an ancient practice</li>
+			<li>subject_gerund->crafting cultures and flavors in the artful creation of cheese</li>
+		-->
+		<VCE_CheeseMaking.generalRules.rulesStrings>
+			<li>subject->牛奶炼金术</li>
+			<li>subject_story->将廉价的牛奶加工成了精致的奶酪</li>
+			<li>subject_story->量产了堆积如山的奶酪，精进这一古老工艺</li>
+			<li>subject_story->设计出了奶酪压制器，从老祖宗的指挥里榨出浓厚的风味</li>
+			<li>subject_gerund->在奶酪这一惊奇发明中挥洒高雅的味道</li>
+		</VCE_CheeseMaking.generalRules.rulesStrings>
+		
+		<!-- EN: food condiments -->
+		<VCE_CondimentsResearch.label>食物调料</VCE_CondimentsResearch.label>
+		<!-- EN: A condiment is a spice, sauce, or preparation that is added to food, either after or during cooking, to impart a specific flavor, to enhance the flavor, or to complement the dish. All condiments are created at the condiment prep table. -->
+		<VCE_CondimentsResearch.description>香料，酱料或药剂一类的调料，在烹饪前或后加入，用来调整，强化或辅助风味。所有调料都需在调料制备台制作。</VCE_CondimentsResearch.description>
+		<!-- EN:
+			<li>subject->flavors of distinction</li>
+			<li>subject_story->unlocked the secrets of enhancing flavor through the creation of diverse condiments</li>
+			<li>subject_story->pioneered the use of herbs, spices, and sauces to transform simple meals into culinary experiences</li>
+			<li>subject_story->cultivated a rich culture of taste, encouraging culinary experimentation and innovation</li>
+			<li>subject_gerund->elevating the art of flavor through condiment mastery</li>
+		-->
+		<VCE_CondimentsResearch.generalRules.rulesStrings>
+			<li>subject->异来之香</li>
+			<li>subject_story->通过制作一连串的调料打开了通往新味道的大门</li>
+			<li>subject_story->创新地用草药，香料和酱汁将普普通通的食物变成独一无二的工艺品</li>
+			<li>subject_story->创造出丰富的各式风味，给了厨师们一片可以肆意开拓的新大陆</li>
+			<li>subject_gerund->熟用调料，将烹饪之艺提升到全新境界</li>
+		</VCE_CondimentsResearch.generalRules.rulesStrings>
+		
+		<!-- EN: deep frying -->
+		<VCE_DeepFrying.label>油炸</VCE_DeepFrying.label>
+		<!-- EN: Deep frying (also referred to as deep fat frying) is a cooking method in which food is submerged in hot fat, most commonly oil, as opposed to the shallow oil used in conventional frying done in a frying pan. This research gives access to the deep fryer. -->
+		<VCE_DeepFrying.description>油炸是将食物放进大量油之中的一种烹饪方式。该研究允许建造油锅。</VCE_DeepFrying.description>
+		<!-- EN:
+			<li>subject->the golden crunch</li>
+			<li>subject_story->discovered the transformative effect of deep frying, enveloping foods in a crispy, golden exterior</li>
+			<li>subject_story->engineered the deep fryer, a marvel of culinary technology, to achieve consistent and perfect results</li>
+			<li>subject_story->elevated the simple act of frying into a culinary craft, celebrated across cultures</li>
+			<li>subject_gerund->delving into the depths of flavor with the magic of deep frying</li>
+		-->
+		<VCE_DeepFrying.generalRules.rulesStrings>
+			<li>subject->唇齿间的黄金</li>
+			<li>subject_story->发现了油炸这种革命性的烹调方法，可以把任何食材炸到酥脆金黄</li>
+			<li>subject_story->打造出了油炸锅，烹饪史上的奇迹，可以大量产出全新的油炸产品</li>
+			<li>subject_story->将简单的元素融合成一种举世皆爱的味道</li>
+			<li>subject_gerund->用油炸法探明烹饪之艺的全新深度</li>
+		</VCE_DeepFrying.generalRules.rulesStrings>
+		
+		<!-- EN: grilling -->
+		<VCE_Grilling.label>烧烤</VCE_Grilling.label>
+		<!-- EN: Grilling is a form of cooking that involves dry heat applied to the surface of food, commonly from above, below or from the side. Grilling usually involves a significant amount of direct, radiant heat, and tends to be used for cooking meat and vegetables quickly. This research gives access to the grill. -->
+		<VCE_Grilling.description>烤是一种烹饪方式，用干火从四周烧灼食物。烤制食物时会放出大量热量，所以可以快速烹制肉和菜。该研究允许建造烤架。</VCE_Grilling.description>
+		<!-- EN:
+			<li>subject->the primal art of fire</li>
+			<li>subject_story->embraced the primal connection between fire and food, perfecting the technique of grilling</li>
+			<li>subject_story->transformed the act of cooking into a celebration of flavor, texture, and aroma</li>
+			<li>subject_story->innovated with designs for grills that enhance the natural qualities of meats and vegetables</li>
+			<li>subject_gerund->searing perfection into every meal with the mastery of grilling</li>
+		-->
+		<VCE_Grilling.generalRules.rulesStrings>
+			<li>subject->火与肉的最初羁绊</li>
+			<li>subject_story->追忆起了火与食物的初次见面，将烤肉的魅力再次发掘</li>
+			<li>subject_story->将简单的食材烤出了有层次感的味道</li>
+			<li>subject_story->用天然的手法结合肉与蔬菜，创造出了全新的烧烤菜式</li>
+			<li>subject_gerund->用烧烤的技艺丰富每一张餐桌</li>
+		</VCE_Grilling.generalRules.rulesStrings>
+		
+		<!-- EN: soup cooking -->
+		<VCE_SoupCooking.label>炖汤</VCE_SoupCooking.label>
+		<!-- EN: Soup is a primarily liquid food, generally served warm or hot, that is made by combining ingredients of meat or vegetables with stock, or water. Hot soups are additionally characterized by boiling solid ingredients in liquids in a pot until the flavors are extracted. This research also gives access to the electric pot necessary to cook soups. -->
+		<VCE_SoupCooking.description>汤是肉和菜在水里熬制成的温热液态食物。热汤必须在锅内被持续熬制直到所有味道都分解出来。该研究会允许建造炖汤必不可少的电汤锅。</VCE_SoupCooking.description>
+		<!-- EN:
+			<li>subject->the essence of nourishment</li>
+			<li>subject_story->mastered the delicate balance of ingredients to create soups that comfort and heal</li>
+			<li>subject_story->introduced the electric pot, revolutionizing soup preparation with efficiency and precision</li>
+			<li>subject_story->expanded the culinary repertoire, exploring the depths of flavor achievable in liquid form</li>
+			<li>subject_gerund->crafting the soul of cuisine in every pot of soup</li>
+		-->
+		<VCE_SoupCooking.generalRules.rulesStrings>
+			<li>subject->营养的精华</li>
+			<li>subject_story->学会了将精细配比的食材煮成暖人身心的汤</li>
+			<li>subject_story->引进了电煮锅，极大地提升了炖汤的效率</li>
+			<li>subject_story->增加了菜式多样性，让液体能拥有它独特的味道</li>
+			<li>subject_gerund->煮出一锅锅烹饪的灵魂</li>
+		</VCE_SoupCooking.generalRules.rulesStrings>
+
+		<!-- EN: stew cooking -->
+		<VCE_StewCooking.label>炖菜</VCE_StewCooking.label>
+		<!-- EN: Stew is a form of a very nourishing meal, cooked in bulk over fire. This research also gives access to the wood-fired pot necessary to cook stews. -->
+		<VCE_StewCooking.description>炖菜是一种非常滋补的食物，在火上批量熬制而成。该研究允许建造炖菜必不可少的燃料炖锅。</VCE_StewCooking.description>
+		<!-- EN:
+			<li>subject->hearth and heart</li>
+			<li>subject_story->embraced the tradition of stew cooking, bringing together community and cuisine over the warmth of a shared pot</li>
+			<li>subject_story->cultivated techniques to craft stews that are not only nourishing but carry the flavors of cultural heritage and togetherness</li>
+			<li>subject_story->introduced the wood-fired pot, an essential tool for preparing these hearty meals in the traditional way</li>
+			<li>subject_gerund->nurturing bodies and souls with the communal art of stew making</li>
+		-->
+		<VCE_StewCooking.generalRules.rulesStrings>
+			<li>subject->炉与心</li>
+			<li>subject_story->复兴了传统的炖菜，让街坊邻居可以聚到炉子前吃大锅饭</li>
+			<li>subject_story->学会了烧出非同一般的炖菜，不炖出营养还能炖出团结</li>
+			<li>subject_story->引进了木柴炖锅，用传统的方法烹饪这种用心的食物</li>
+			<li>subject_gerund->在其乐融融的氛围中充实身心</li>
+		</VCE_StewCooking.generalRules.rulesStrings>
+		<!-- EN: soybean fermentation -->
+		<VCE_SoyFermentation.label>大豆发酵</VCE_SoyFermentation.label>
+		<!-- EN: Soybean fermentation is the process by which soybeans are submitted to a chemical breakdown by bacteria, yeasts, or other microorganisms, transforming into new products. This research gives access to the soy sauce fermenter. -->
+		<VCE_SoyFermentation.description>大豆发酵是指大豆被细菌、酵母或其他微生物进行化学分解，转化为新产品的过程。本研究为酱油发酵罐的研制提供了途径。</VCE_SoyFermentation.description>
+		<!-- EN:
+			<li>subject->innovation's path</li>
+			<li>subject_story->unveiled simple truths behind complex phenomena</li>
+			<li>subject_story->simplified the intricate to make way for practical applications</li>
+			<li>subject_story->harnessed basic principles to achieve remarkable feats</li>
+			<li>subject_gerund->streamlining the essence of discovery</li>
+			<li>subject->building blocks of progress</li>
+			<li>subject_story->laid the groundwork for monumental leaps forward</li>
+			<li>subject_story->connected dots across disciplines to reveal new insights</li>
+			<li>subject_story->crafted the foundation upon which future innovations stand</li>
+			<li>subject_gerund->laying down the keystones of advancement</li>
+			<li>subject->seeds of tomorrow</li>
+			<li>subject_story->planted ideas that would grow into transformative solutions</li>
+			<li>subject_story->cultivated a garden of knowledge, ripe with potential</li>
+			<li>subject_story->nurtured the roots of change with care and foresight</li>
+			<li>subject_gerund->sowing the future with today’s discoveries</li>
+			<li>subject->the ripple of curiosity</li>
+			<li>subject_story->set forth waves of inquiry that echoed through time</li>
+			<li>subject_story->dropped pebbles of innovation into the pond of knowledge</li>
+			<li>subject_story->watched as one question led to another, expanding the circle of understanding</li>
+			<li>subject_gerund->casting stones to create waves of progress</li>
+			<li>subject->the alchemy of progress</li>
+			<li>subject_story->merged disparate disciplines to unlock new realms of possibility</li>
+			<li>subject_story->turned the impossible into the inevitable through sheer ingenuity</li>
+			<li>subject_story->crafted solutions that reshaped the understanding of what's achievable</li>
+			<li>subject_gerund->blending science and magic into the fabric of reality</li>
+			<li>subject->the tapestry of discovery</li>
+			<li>subject_story->wove together threads of knowledge from the four corners of the world</li>
+			<li>subject_story->revealed patterns in the chaos, charting paths to untold innovations</li>
+			<li>subject_story->embroidered the annals of history with tales of serendipitous breakthroughs</li>
+			<li>subject_gerund->weaving the future from the loom of the present</li>
+			<li>subject->the crucible of creation</li>
+			<li>subject_story->fused raw elements into the building blocks of tomorrow</li>
+			<li>subject_story->tempered the fires of creativity to forge unprecedented technologies</li>
+			<li>subject_story->quenched the thirst for knowledge with the elixir of invention</li>
+			<li>subject_gerund->molding the raw materials of today into the artifacts of the future</li>
+			<li>subject->the beacon of enlightenment</li>
+			<li>subject_story->illuminated the dark corners of ignorance, guiding the way forward</li>
+			<li>subject_story->cast light on the unknown, making the unseen visible to curious minds</li>
+			<li>subject_story->ignited the flames of curiosity, kindling a worldwide pursuit of understanding</li>
+			<li>subject_gerund->lighting the torches of progress and knowledge</li>
+			<li>subject->the frontier of knowledge</li>
+			<li>subject_story->crossed new horizons in the pursuit of understanding</li>
+			<li>subject_story->challenged the status quo with groundbreaking theories</li>
+			<li>subject_story->merged ancient wisdom with modern technology for innovative solutions</li>
+			<li>subject_gerund->pushing the boundaries of science and art</li>
+			<li>subject->the essence of innovation</li>
+			<li>subject_story->transformed everyday materials into extraordinary tools</li>
+			<li>subject_story->paved the way for future generations with sustainable practices</li>
+			<li>subject_story->harnessed the power of nature to fuel new advancements</li>
+			<li>subject_gerund->fostering an ecosystem of creativity and progress</li>
+			<li>subject->the architects of tomorrow</li>
+			<li>subject_story->built the foundations for a utopia where technology serves all</li>
+			<li>subject_story->envisioned a future where harmony between technology and nature thrives</li>
+			<li>subject_story->crafted tools that empower humanity to reach its fullest potential</li>
+			<li>subject_gerund->laying the keystones for future landscapes</li>
+			<li>subject->exploratory leaps</li>
+			<li>subject_story->stepped boldly into uncharted territories of knowledge</li>
+			<li>subject_story->bridged the gap between the known and the unknown</li>
+			<li>subject_story->ventured where curiosity dared to lead</li>
+			<li>subject_gerund->embarking on journeys of discovery</li>
+			<li>subject->the essence of ingenuity</li>
+			<li>subject_story->transformed challenges into opportunities for growth</li>
+			<li>subject_story->applied creative thinking to overcome traditional obstacles</li>
+			<li>subject_story->crafted elegant solutions with a blend of art and science</li>
+			<li>subject_gerund->unlocking potential through innovation</li>
+			<li>subject->knowledge’s harvest</li>
+			<li>subject_story->gathered insights as one reaps the fields at harvest</li>
+			<li>subject_story->cultivated a bounty of understanding from the seeds of inquiry</li>
+			<li>subject_story->shared the fruits of research with the world</li>
+			<li>subject_gerund->reaping the rewards of relentless curiosity</li>
+			<li>subject->the puzzle of progress</li>
+			<li>subject_story->assembled the pieces of mystery to reveal the big picture</li>
+			<li>subject_story->matched theory with practice to solve longstanding puzzles</li>
+			<li>subject_story->uncovered hidden connections that unlocked new possibilities</li>
+			<li>subject_gerund->piecing together the elements of advancement</li>
+		-->
+		<VCE_SoyFermentation.generalRules.rulesStrings>
+			<li>subject->改革之路</li>
+			<li>subject_story->揭开隐藏于复杂现象背后的简单真理</li>
+			<li>subject_story->简化结构并将重心放在实用性上</li>
+			<li>subject_story->利用基本原理实现辉煌成就</li>
+			<li>subject_gerund->精炼所发现的本质</li>
+			<li>subject->进步的基石</li>
+			<li>subject_story->为取得重大突破奠定了基础</li>
+			<li>subject_story->将多个学科的交汇点连接起来，以此形成新的见解</li>
+			<li>subject_story->为未来的改革观点打下基础</li>
+			<li>subject_gerund->正为进步发展奠定基础</li>
+			<li>subject->明日之种</li>
+			<li>subject_story->根植于心的想法将会成长为革新性的解决方案</li>
+			<li>subject_story->栽培了成熟且有潜力的知识花园</li>
+			<li>subject_story->以细心和远见培养变化的根源</li>
+			<li>subject_gerund->以今日的发现播种未来</li>
+			<li>subject->求知欲的涟漪</li>
+			<li>subject_story->发起的阵阵询问在时间中回响</li>
+			<li>subject_story->将象征改革的小石子丢入知识的池塘中</li>
+			<li>subject_story->观察着接连不断产生的问题，拓宽了自己的理解能力</li>
+			<li>subject_gerund->投出石块以创造出进步的波浪</li>
+			<li>subject->进步带来的强大力量</li>
+			<li>subject_story->融合各种不同的学科以揭示可能性的新领域</li>
+			<li>subject_story->通过十足的独创力来讲原本不可能之事变为必然</li>
+			<li>subject_story->提出的解决方案改变了人们对事物可行性的认知</li>
+			<li>subject_gerund->将科学与魔法融入现实的结构中</li>
+			<li>subject->名为“发现”的挂毯</li>
+			<li>subject_story->将来自世界各地的知识之线编织在一起</li>
+			<li>subject_story->揭示了混乱中的有序，为数不尽的改革创新绘制道路</li>
+			<li>subject_story->将偶然间产生技术突破的故事绣缝在史书中</li>
+			<li>subject_gerund->用名为“现在”的织布机纺制未来</li>
+			<li>subject->创造的大熔炉</li>
+			<li>subject_story->将基础元素融入到明天的基石中</li>
+			<li>subject_story->调合创造力之火，打造空前绝后的新技术</li>
+			<li>subject_story->用名为“创造”的圣水解知识之渴</li>
+			<li>subject_gerund->将名为“今天”的原材料筑成被称作“未来”的圣器</li>
+			<li>subject->启迪的灯塔</li>
+			<li>subject_story->照亮了无知且黑暗的角落，为前行的人们指引方向</li>
+			<li>subject_story->照亮未知以让求知者们发现无形之物</li>
+			<li>subject_story->燃起求知欲的火焰，让全世界陷入寻求理解的热潮中</li>
+			<li>subject_gerund->点燃进步与知识的火把</li>
+			<li>subject->知识的开拓者</li>
+			<li>subject_story->在寻求理解时跨入了新天地</li>
+			<li>subject_story->以突破性理论挑战现状</li>
+			<li>subject_story->通过融合远古智慧与现代技术来创造革新的解决方案</li>
+			<li>subject_gerund->突破科学与艺术的界限</li>
+			<li>subject->改革的本质</li>
+			<li>subject_story->将平时随处可见的材料转化成非凡的工具</li>
+			<li>subject_story->坚持可持续发展的原则，为后人铺平道路</li>
+			<li>subject_story->利用大自然的力量驱动新发展</li>
+			<li>subject_gerund->培养创造力与进步的生态系统</li>
+			<li>subject->缔造明天</li>
+			<li>subject_story->为技术造福大众的乌托邦奠定了基础</li>
+			<li>subject_story->想象了一个技术与自然和谐共处的繁荣未来</li>
+			<li>subject_story->制造了能让人类发挥最大潜力的工具</li>
+			<li>subject_gerund->为未来的愿景奠定基石</li>
+			<li>subject->探索的飞跃</li>
+			<li>subject_story->大胆地迈向未知领域</li>
+			<li>subject_story->弥补未知与已知间的差距</li>
+			<li>subject_story->在求知欲促动的地方冒险</li>
+			<li>subject_gerund->踏上探索之旅</li>
+			<li>subject->独创力的本质</li>
+			<li>subject_story->将挑战转化为成长机会</li>
+			<li>subject_story->运用创造性思维来攻克传统观念上的阻碍</li>
+			<li>subject_story->创造融合了艺术与科学的华丽解决方案</li>
+			<li>subject_gerund->通过改革创新释放潜能</li>
+			<li>subject->知识的丰获</li>
+			<li>subject_story->收获了独到的见解</li>
+			<li>subject_story->用探究之种培育了渊博的见识</li>
+			<li>subject_story->与全世界分享研究成果</li>
+			<li>subject_gerund->取得无穷的求知欲所带来的回报</li>
+			<li>subject->进步的难题</li>
+			<li>subject_story->将神秘的碎片组装起来以纵览全局</li>
+			<li>subject_story->将理论与实践想搭配以解决长期存在的难题</li>
+			<li>subject_story->发现隐藏的关系以解开新的可能性</li>
+			<li>subject_gerund->将发展所需的元素拼起来</li>
+		</VCE_SoyFermentation.generalRules.rulesStrings>
+	</LanguageData>

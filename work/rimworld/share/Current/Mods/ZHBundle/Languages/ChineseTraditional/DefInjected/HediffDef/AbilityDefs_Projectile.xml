@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 혐오체 폭주 -->
+  <Miho_Abomi_Hediff.label>駭憎魔械暴走</Miho_Abomi_Hediff.label>
+  <!-- EN: 혐오체가 폭주중 입니다! 재생속도가 빨라지고 통제가 불가능 해집니다. -->
+  <Miho_Abomi_Hediff.description>駭憎魔械已陷入暴走狀態！它的自愈能力、移動速度和近戰傷害將大幅提高，但會完全失控。</Miho_Abomi_Hediff.description>
+  
+  <!-- EN: "그 것" 목격 -->
+  <Miho_AbomiSeen_Hediff.label>目睹駭憎魔械</Miho_AbomiSeen_Hediff.label>
+  <!-- EN: 지끔까지 겪어보지 못했던 혐오감이 느껴집니다. -->
+  <Miho_AbomiSeen_Hediff.description>此單位目睹到了駭憎魔械，身與心都因此產生了前所未有的極度不適。</Miho_AbomiSeen_Hediff.description>
+  
+  <!-- EN: 나약 -->
+  <Miho_Analysis_Hediff.label>弱化</Miho_Analysis_Hediff.label>
+  <!-- EN: 온 몸이 나약해져 더 아프게 맞습니다. -->
+  <Miho_Analysis_Hediff.description>弱化激光會增加此單位所受的傷害。</Miho_Analysis_Hediff.description>
+  
+  <!-- EN: 피식자의 마음 -->
+  <Miho_Gaze_Hediff.label>震懾凝視</Miho_Gaze_Hediff.label>
+  <!-- EN: 원초적 공포에 관해서는 몸은 무엇보다도 솔직합니다. -->
+  <Miho_Gaze_Hediff.description>此單位被捕食者獨有的凝視所震懾。</Miho_Gaze_Hediff.description>
+  
+  <!-- EN: 인스네어 -->
+  <Miho_Hawk_Hediff.label>獵網束縛</Miho_Hawk_Hediff.label>
+  <!-- EN: 메카나이트 그물로 적을 묶어버립니다. -->
+  <Miho_Hawk_Hediff.description>此單位已被靈縛獵網困住，其移動和戰鬥能力有所降低。</Miho_Hawk_Hediff.description>
+  
+  <!-- EN: 매 -->
+  <Miho_HawkInjury_Hediff.label>獵鷹襲擾</Miho_HawkInjury_Hediff.label>
+  <!-- EN: 매 -->
+  <Miho_HawkInjury_Hediff.description>獵鷹襲擾</Miho_HawkInjury_Hediff.description>
+  <!-- EN: scar -->
+  <Miho_HawkInjury_Hediff.comps.HediffComp_GetsPermanent.permanentLabel>疤痕</Miho_HawkInjury_Hediff.comps.HediffComp_GetsPermanent.permanentLabel>
+  <!-- EN: 매 -->
+  <Miho_HawkInjury_Hediff.labelNoun>獵鷹襲擾</Miho_HawkInjury_Hediff.labelNoun>
+  <!-- EN: {0} in the {1} -->
+  <Miho_HawkInjury_Hediff.labelNounPretty>{1}中的{0}</Miho_HawkInjury_Hediff.labelNounPretty>
+  
+  <!-- EN: 혐오체 -->
+  <Miho_PreAbomi_Hediff.label>駭憎魔械</Miho_PreAbomi_Hediff.label>
+  <!-- EN: 혐오스러운 메카나이트 군집입니다. -->
+  <Miho_PreAbomi_Hediff.description>由大量機械分子組成的駭憎魔械。</Miho_PreAbomi_Hediff.description>
+  
+  <!-- EN: 감전 -->
+  <Miho_Thunder_Hediff.label>雷彈電擊</Miho_Thunder_Hediff.label>
+  <!-- EN: 메카나이트들을 이용한 특수 전하로 메카노이드든 사람이든 공평하게 감전시킵니다. -->
+  <Miho_Thunder_Hediff.description>此單位被駭憎魔械發射的死滅之眼雷彈擊中。組成雷彈的機械分子帶有特殊電荷，能使生物或機械體陷入電擊狀態。</Miho_Thunder_Hediff.description>
+  
+</LanguageData>

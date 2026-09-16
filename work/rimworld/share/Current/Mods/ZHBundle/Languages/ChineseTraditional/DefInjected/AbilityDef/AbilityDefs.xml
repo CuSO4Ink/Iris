@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: morale booster -->
+  <RK_Ability_MeleeMoraleBooster.label>士氣增幅</RK_Ability_MeleeMoraleBooster.label>
+  <!-- EN: Boost the morale of everyone nearby. -->
+  <RK_Ability_MeleeMoraleBooster.description>通過揮舞戰旗來強化附近所有人的士氣。</RK_Ability_MeleeMoraleBooster.description>
+  
+  <!-- EN: prayer service -->
+  <RK_PrayerService.label>禱告服務</RK_PrayerService.label>
+  <!-- EN: hosting prayer service that makes people calm and peaceful. -->
+  <RK_PrayerService.description>舉行禱告會，讓人們獲得平靜與安寧。</RK_PrayerService.description>
+  
+</LanguageData>

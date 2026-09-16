@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: exiled vivi -->
+  <VV_ViviStart.label>被放逐的薇薇</VV_ViviStart.label>
+  <!-- EN: You dreamed of becoming a distinguished Royal Vivi, feasting on the expensive royal jelly in the nest. That dream came true when you became an adult, except for the fact that your body did not grow at all.\n\nThe regular Vivis did not treat you as a Royal Vivi due to your small stature. Enduring oppression and discrimination, one day you decided to leave the nest.\n\nAfter wandering the planet and experiencing many things, you resolved to fulfill your first dream again. It's time to build your own new nest.\n\nNote: The game starts with one Royal Vivi who lacks combat and work abilities, making it more challenging. -->
+  <VV_ViviStart.description>你曾梦想成为一名能在蜂巢中享用昂贵的蜂王浆的非凡皇家薇薇。成年后，这个梦想终于实现了，但你的身材却根本没有成长。\n\n由于你身材矮小，普通薇薇们没有把你当作皇家薇薇。由于无法忍受她们的压迫和歧视，你决定离开巢穴。\n\n在星球上的漫游中，你经历了许多事情，并决心再次实现你的梦想——是时候建造你自己的新蜂巢了。\n\n注意：游戏以一个缺乏战斗和工作能力的皇家薇薇开始，这是一个具有挑战性的开局。</VV_ViviStart.description>
+  <!-- EN: You dreamed of becoming a distinguished Royal Vivi, feasting on the expensive royal jelly in the nest. That dream came true when you became an adult, except for the fact that your body did not grow at all.\n\nThe regular Vivis did not treat you as a Royal Vivi due to your small stature. Enduring oppression and discrimination, one day you decided to leave the nest.\n\nAfter wandering the planet and experiencing many things, you resolved to fulfill your first dream again. It's time to build your own new nest.\n\nNote: The game starts with one Royal Vivi who lacks combat and work abilities, making it more challenging. -->
+  <VV_ViviStart.scenario.description>你曾梦想成为一名能在蜂巢中享用昂贵的蜂王浆的非凡皇家薇薇。成年后，这个梦想终于实现了，但你的身材却根本没有成长。\n\n由于你身材矮小，普通薇薇们没有把你当作皇家薇薇。由于无法忍受她们的压迫和歧视，你决定离开巢穴。\n\n在星球上的漫游中，你经历了许多事情，并决心再次实现你的梦想——是时候建造你自己的新蜂巢了。\n\n注意：游戏以一个缺乏战斗和工作能力的皇家薇薇开始，这是一个具有挑战性的开局。</VV_ViviStart.scenario.description>
+  <!-- EN: exiled vivi -->
+  <VV_ViviStart.scenario.name>被放逐的薇薇</VV_ViviStart.scenario.name>
+  <!-- EN: You've decided to build a new nest here. As a rightful Queen Vivi, you will build a big nest to show your old friends that looks don't matter.\n\nYou've unpacked everything, including the precious eggs you laid while roaming the planet. There's a lot to do, but the first thing is to build a simple house and incubator to increase the number of Vivis to help you.\n\nTip: You can quickly build walls with Vivi cream, which can be later refined and strengthened. Be careful with the eggs, as they are sensitive to cold and can break. -->
+  <VV_ViviStart.scenario.parts.GameStartDialog.text>你决定在这里建一个新蜂巢。作为合法的薇薇女王，你将建造一个大蜂巢，向你的旧识们展示外表并不重要。\n\n你已经打包了你所有的东西，包括你在星球上漫游时产下的珍贵蜂卵。你有很多事情要做，但第一件事是建造简单的房子和孵化器，以增加薇薇协助你。\n\n提示：你可以用薇薇乳脂快速建造墙壁，稍后可以对其进行提纯和加固。注意蜂卵，它们对冷很敏感，可能会因此坏掉。</VV_ViviStart.scenario.parts.GameStartDialog.text>
+  <!-- EN: An exiled Royal Vivi dreaming of becoming a new queen. -->
+  <VV_ViviStart.scenario.summary>被放逐的皇家薇薇梦想成为新蜂巢女王。</VV_ViviStart.scenario.summary>
+  
+</LanguageData>

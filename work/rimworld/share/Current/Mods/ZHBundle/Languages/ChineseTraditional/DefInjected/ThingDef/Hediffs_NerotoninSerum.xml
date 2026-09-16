@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- NV -->
+
+  <RH2_NerotoninV_Implant.label>Nerotonin-5型血清</RH2_NerotoninV_Implant.label>
+  <RH2_NerotoninV_Implant.description>Nerotonin-5型血清能夠讓使用者延長其預期壽命至1000年，同時讓使用者具備極高的抗毒能力。\n\nOVID與Voidtech在Secronom研究的基礎上合作，並以Nerotonin-4型病毒為原型創造出了這種血清。它的極限目前尚且未知。</RH2_NerotoninV_Implant.description>
+
+
+  <!-- N2 -->
+
+  <RH2_Nerotonin2b_Implant.label>Nerotonin-2b型血清</RH2_Nerotonin2b_Implant.label>
+  <RH2_Nerotonin2b_Implant.description>Nerotonin-2b型血清能夠讓使用者快速愈合並獲得免疫力，甚至能使失去的肢體得以再生，至於癌癥更是不在話下。\n\n在Nerotonin-2型血清的基礎上，OVID與Voidtech聯合製造了這種產品。它可以被理解為一種經過特殊基因工程化，具有自我復製能力的智能細胞。OVID將這一成果歸功於現已倒閉的Secronom公司的原始研究。</RH2_Nerotonin2b_Implant.description>
+
+
+  <!-- The nerotonin-4b serum -->
+
+  <RH2_Nerotonin4b_Implant.label>Nerotonin-4b型血清</RH2_Nerotonin4b_Implant.label>
+  <RH2_Nerotonin4b_Implant.description>據傳，Nerotonin-4b型血清是OVID和Voidtech秘密創造的「死亡療法」。它復製了Nerotonin-4型病毒能夠復活屍體的特性，同時抹除了病毒的負面影響，不會使受試者變成充滿攻擊性的僵屍。\n\n然而，Nerotonin-4b型血清的開發付出了血腥的代價，它的研發過程間接導致了多個中寰世界和都市世界的毀滅。\n\n這種血清的起源可以追溯到已倒閉的Secronom公司，這家公司製造了最初的Nerotonin-4型病毒。OVID對這家公司的成果進行了大量研究。</RH2_Nerotonin4b_Implant.description>
+
+
+</LanguageData>

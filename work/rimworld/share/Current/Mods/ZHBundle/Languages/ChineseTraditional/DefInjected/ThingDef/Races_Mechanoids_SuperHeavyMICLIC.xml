@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 다각 개척공병전차 -->
+  <Miho_Mech_Clibanar.label>“鐵騎兵”先鋒拓進無人機</Miho_Mech_Clibanar.label>
+  <!-- EN: 중무장한 개마급 다각 공병전차에 엔진을 개량하고, 험지개척탄을 장착한 모델입니다. -->
+  <Miho_Mech_Clibanar.description>配備有13.7mm機砲和6.5mm同軸輕機槍的“鐵騎兵”級先鋒拓進無人機。除了負責蕩平前行的道路外，還可以勝任物資搬運工作。\n\n【額外能力】：險地拓進導彈\n\n向目標點處發射一枚險地拓進導彈，會對沿途的一切物體和單位造成傷害。</Miho_Mech_Clibanar.description>
+  <!-- EN: front left leg -->
+  <Miho_Mech_Clibanar.tools.front_left_leg.label>左前腿</Miho_Mech_Clibanar.tools.front_left_leg.label>
+  <!-- EN: front right leg -->
+  <Miho_Mech_Clibanar.tools.front_right_leg.label>右前腿</Miho_Mech_Clibanar.tools.front_right_leg.label>
+  
+  <!-- EN: 미호 다각 개척공병전차용 포탑 -->
+  <Miho_MechWeapon_Miclic.label>無人機機砲</Miho_MechWeapon_Miclic.label>
+  <!-- EN: 13.7mm탄 호치키스 탄을 사용하는 기관포를 감싼 포탑입니다. 기존 기관포보다 조금 더 정밀하며, 포탑 상부에 험지개척탄도 장착되어 있습니다. -->
+  <Miho_MechWeapon_Miclic.description>為“鐵騎兵”級先鋒拓進無人機設計的13.7mm機砲。額外搭載有險地拓進導彈發射器。</Miho_MechWeapon_Miclic.description>
+  <!-- EN: missile charges -->
+  <Miho_MechWeapon_Miclic.comps.CompEquippableAbilityReloadable.chargeNoun>導彈</Miho_MechWeapon_Miclic.comps.CompEquippableAbilityReloadable.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Miho_MechWeapon_Miclic.comps.CompEquippableAbilityReloadable.cooldownGerund>冷卻中</Miho_MechWeapon_Miclic.comps.CompEquippableAbilityReloadable.cooldownGerund>
+  <!-- EN: barrel -->
+  <Miho_MechWeapon_Miclic.tools.barrel.label>砲管</Miho_MechWeapon_Miclic.tools.barrel.label>
+  <!-- EN: 미호 다각 개척공병전차용 포탑 -->
+  <Miho_MechWeapon_Miclic.verbs.Verb_Shoot.label>無人機機砲</Miho_MechWeapon_Miclic.verbs.Verb_Shoot.label>
+  
+  <!-- EN: meow -->
+  <Miho_MechWeapon_Miclic_Proj.label>喵？</Miho_MechWeapon_Miclic_Proj.label>
+  
+  <!-- EN: 험지개척탄 -->
+  <Miho_Miclic.label>險地拓進導彈</Miho_Miclic.label>
+  <!-- EN: 펑 -->
+  <Miho_Miclic.description>Boom！</Miho_Miclic.description>
+  
+  <!-- EN: 험지개척탄 -->
+  <Miho_MiclicReady.label>險地拓進導彈</Miho_MiclicReady.label>
+  <!-- EN: 펑 -->
+  <Miho_MiclicReady.description>Boom！</Miho_MiclicReady.description>
+  
+</LanguageData>

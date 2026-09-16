@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: titanic hornet -->
+  <VV_TitanicHornet.label>巨型黃蜂</VV_TitanicHornet.label>
+  <!-- EN: left leg -->
+  <VV_TitanicHornet.corePart.parts.left_leg.customLabel>左腿</VV_TitanicHornet.corePart.parts.left_leg.customLabel>
+  <!-- EN: left claw -->
+  <VV_TitanicHornet.corePart.parts.left_leg.parts.left_claw.customLabel>左爪</VV_TitanicHornet.corePart.parts.left_leg.parts.left_claw.customLabel>
+  <!-- EN: right leg -->
+  <VV_TitanicHornet.corePart.parts.right_leg.customLabel>右腿</VV_TitanicHornet.corePart.parts.right_leg.customLabel>
+  <!-- EN: right claw -->
+  <VV_TitanicHornet.corePart.parts.right_leg.parts.right_claw.customLabel>右爪</VV_TitanicHornet.corePart.parts.right_leg.parts.right_claw.customLabel>
+  <!-- EN: left wing -->
+  <VV_TitanicHornet.corePart.parts.left_wing.customLabel>左翅</VV_TitanicHornet.corePart.parts.left_wing.customLabel>
+  <!-- EN: right wing -->
+  <VV_TitanicHornet.corePart.parts.right_wing.customLabel>右翅</VV_TitanicHornet.corePart.parts.right_wing.customLabel>
+  <!-- EN: left eye -->
+  <VV_TitanicHornet.corePart.parts.Pronotum.parts.InsectHead.parts.left_eye.customLabel>左眼</VV_TitanicHornet.corePart.parts.Pronotum.parts.InsectHead.parts.left_eye.customLabel>
+  <!-- EN: right eye -->
+  <VV_TitanicHornet.corePart.parts.Pronotum.parts.InsectHead.parts.right_eye.customLabel>右眼</VV_TitanicHornet.corePart.parts.Pronotum.parts.InsectHead.parts.right_eye.customLabel>
+  <!-- EN: left antenna -->
+  <VV_TitanicHornet.corePart.parts.Pronotum.parts.InsectHead.parts.left_antenna.customLabel>左觸須</VV_TitanicHornet.corePart.parts.Pronotum.parts.InsectHead.parts.left_antenna.customLabel>
+  <!-- EN: right antenna -->
+  <VV_TitanicHornet.corePart.parts.Pronotum.parts.InsectHead.parts.right_antenna.customLabel>右觸須</VV_TitanicHornet.corePart.parts.Pronotum.parts.InsectHead.parts.right_antenna.customLabel>
+  
+</LanguageData>

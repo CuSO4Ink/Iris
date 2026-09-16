@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="Notice.Notice_Settings">
+		<noticeHistory>
+			<keys>
+				<li>SR_UpgradeNotice</li>
+				<li>CMC_Update_10102025</li>
+			</keys>
+			<values>
+				<li>20251001</li>
+				<li>2025101016</li>
+			</values>
+		</noticeHistory>
+	</ModSettings>
+</SettingsBlock>

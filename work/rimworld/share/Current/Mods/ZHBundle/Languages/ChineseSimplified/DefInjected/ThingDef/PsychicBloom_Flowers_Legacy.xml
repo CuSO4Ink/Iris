@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: bluebell -->
+  <VEE_Plant_Bluebell.label>蓝铃花</VEE_Plant_Bluebell.label>
+  <!-- EN: A garden flower with a violet–blue teint, with strongly recurved petals. Bluebells are very beautiful, and last long. -->
+  <VEE_Plant_Bluebell.description>花瓣下弯的蓝紫色漂亮花朵。它的花期很长。</VEE_Plant_Bluebell.description>
+  
+  <!-- EN: gardenia -->
+  <VEE_Plant_Gardenia.label>栀子花</VEE_Plant_Gardenia.label>
+  <!-- EN: A flower with large petals. Gardenias are very beautiful. -->
+  <VEE_Plant_Gardenia.description>长有硕大花瓣的漂亮花朵。</VEE_Plant_Gardenia.description>
+  
+  <!-- EN: gentian -->
+  <VEE_Plant_Gentian.label>龙胆草</VEE_Plant_Gentian.label>
+  <!-- EN: A large cultivated flower with inimitable blue petals. Gentians are very beautiful. -->
+  <VEE_Plant_Gentian.description>长有蓝色连瓣的漂亮大型花朵。</VEE_Plant_Gentian.description>
+  
+  <!-- EN: petunia -->
+  <VEE_Plant_Petunia.label>矮牵牛</VEE_Plant_Petunia.label>
+  <!-- EN: A long lasting flower with purple petals. Petunias are very beautiful. -->
+  <VEE_Plant_Petunia.description>长有紫色花瓣的漂亮花朵。它的花期很长。</VEE_Plant_Petunia.description>
+  
+</LanguageData>

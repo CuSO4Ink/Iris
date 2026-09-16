@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <UseSecronomControlChip.reportString>使用Secronom控制芯片。</UseSecronomControlChip.reportString>
+  <Void_Contact.reportString>联络目标A。</Void_Contact.reportString>
+  <Void_SwallowTarget.reportString>吞咽目标A。</Void_SwallowTarget.reportString>
+  <Void_ReleasePrisoner.reportString>释放目标A。</Void_ReleasePrisoner.reportString>
+
+
+</LanguageData>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- STALKER -->
+
+  <RH_DF2_Stalker.label>潜行者</RH_DF2_Stalker.label>
+  <RH_DF2_Stalker.description>作为一种新式Nerotonin-4型变体，潜行者表现出极高的智商，似乎能够因狩猎而欣喜。从潜行者手下逃脱的生还者表示，当接近它的视野范围时，会听到不祥的沉重呼吸声。</RH_DF2_Stalker.description>
+  <RH_DF2_Stalker.tools.0.label>左爪</RH_DF2_Stalker.tools.0.label>
+  <RH_DF2_Stalker.tools.1.label>右拳</RH_DF2_Stalker.tools.1.label>
+  <RH_DF2_Stalker.tools.2.label>头部</RH_DF2_Stalker.tools.2.label>
+
+
+</LanguageData>

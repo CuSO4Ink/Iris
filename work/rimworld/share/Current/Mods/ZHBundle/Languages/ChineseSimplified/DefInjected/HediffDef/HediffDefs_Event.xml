@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: genetic unstable -->
+  <VV_GeneticUnstability.label>基因不稳定</VV_GeneticUnstability.label>
+  <!-- EN: Vivi's genes have become extremely unstable, leading to unpredictable cell division. Continuous treatment is necessary, and in the worst case, something terrible will happen.. -->
+  <VV_GeneticUnstability.description>薇薇的基因变得极不稳定，导致了不可控的细胞分裂。持续治疗是必要的，否则可能会发生可怕的事情。</VV_GeneticUnstability.description>
+  <!-- EN: genetic unstability -->
+  <VV_GeneticUnstability.labelNoun>基因不稳定性</VV_GeneticUnstability.labelNoun>
+  <!-- EN: painful -->
+  <VV_GeneticUnstability.stages.painful.label>痛苦</VV_GeneticUnstability.stages.painful.label>
+  <!-- EN: debilitating -->
+  <VV_GeneticUnstability.stages.debilitating.label>衰弱中</VV_GeneticUnstability.stages.debilitating.label>
+  <!-- EN: fatal -->
+  <VV_GeneticUnstability.stages.fatal.label>致命</VV_GeneticUnstability.stages.fatal.label>
+  
+</LanguageData>

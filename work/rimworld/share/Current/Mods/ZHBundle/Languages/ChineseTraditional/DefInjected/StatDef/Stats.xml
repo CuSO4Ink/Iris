@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fishing luck -->
+  <VCEF_FishingLuckOffset.label>釣魚時運</VCEF_FishingLuckOffset.label>
+  <!-- EN: The chance for every fishing attempt to fish a special item instead of a regular fish is increased by this offset. -->
+  <VCEF_FishingLuckOffset.description>每次釣魚時，獲得特殊物品而非普通漁獲的幾率會根據此項的值偏移。</VCEF_FishingLuckOffset.description>
+  
+</LanguageData>

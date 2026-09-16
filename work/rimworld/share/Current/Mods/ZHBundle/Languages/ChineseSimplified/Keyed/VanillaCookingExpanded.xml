@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: Allow chronic health conditions in food (Diabetes, Cholesterol and High Blood Pressure) -->
+  <VCE_AllowConditions>开启食物可能会引发慢性健康疾病的机制（例如糖尿病、胆固醇和高血压）</VCE_AllowConditions>
+	<!-- EN: Vanilla Cooking Expanded must be installed for these options to have any effect -->
+  <VCE_MustBeInstalled>必须安装原版烹饪扩展（Vanilla Cooking Expanded）才能使这些机制生效。</VCE_MustBeInstalled>
+	<!-- EN: Apiary found nearby -->
+  <VCE_Pollinated>周围有蜂箱</VCE_Pollinated>
+	<!-- EN: No apiary found in a 6 tiles radius (calculated on sowing) -->
+  <VCE_NotPollinated>半径6格内没有蜂箱（只在播种时计算）</VCE_NotPollinated>
+	<!-- EN: Not in equatorial region (in this planet, below {0} latitude). Growing normally. -->
+  <VCE_NotInEquator>不在热带（需要在当前星球的纬度{0}以内）。生长速度正常。</VCE_NotInEquator>
+	<!-- EN: In equatorial region, growing 30% faster. -->
+  <VCE_InEquator>位于热带，生长速度增加30%。</VCE_InEquator>
+	<!-- EN: This plant needs to grow in shade: outside, but under a roof. -->
+  <VCE_NeedsShade>该作物需要种植在户外的屋顶下。</VCE_NeedsShade>
+	<!-- EN: Growth reduced due to non-rocky terrain -->
+  <VCE_StuntedGrowthFertility>在非沙硕地形种植，生长缓慢</VCE_StuntedGrowthFertility>
+	<!-- EN: Growth impossible due to too fertile terrain -->
+  <VCE_StoppedGrowthFertility>土地过于肥沃，无法生长</VCE_StoppedGrowthFertility>
+	<!-- EN: A body of water nearby is impeding this plant's growth -->
+  <VCE_WaterNearby>附近的水域减缓了该作物的生长</VCE_WaterNearby>
+	<!-- EN: Lack of a body of water nearby is impeding this plant's growth -->
+  <VCE_NoWaterNearby>附近水域过少，减缓了该作物的生长</VCE_NoWaterNearby>
+	<!-- EN: Too far away from the sea, no extra growth bonus -->
+  <VCE_NoSeaTilesNearby>理海水太远，无生长加成</VCE_NoSeaTilesNearby>
+	<!-- EN: {0} sea tiles nearby, providing {0}% growth bonus -->
+  <VCE_SeaTilesNearby>附近有{0}格海水，增加{0}%的生长速度</VCE_SeaTilesNearby>
+</LanguageData>

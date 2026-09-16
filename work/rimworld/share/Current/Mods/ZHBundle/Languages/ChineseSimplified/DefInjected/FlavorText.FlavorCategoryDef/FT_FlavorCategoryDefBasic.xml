@@ -1,0 +1,674 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: Flavor Text animal foods -->
+  <FT_AnimalFoods.label>动物食品风味文本</FT_AnimalFoods.label>
+  <!-- EN: hay -->
+  <FT_AnimalFoods.keywords.0>干草</FT_AnimalFoods.keywords.0>
+  <!-- EN: kibble -->
+  <FT_AnimalFoods.keywords.1>宠物粮</FT_AnimalFoods.keywords.1>
+  <!-- EN: silage -->
+  <FT_AnimalFoods.keywords.2>青贮饲料</FT_AnimalFoods.keywords.2>
+  <!-- EN: feed pellet -->
+  <FT_AnimalFoods.keywords.3>饲料颗粒</FT_AnimalFoods.keywords.3>
+  <!-- EN: animal food -->
+  <FT_AnimalFoods.keywords.4>动物食品</FT_AnimalFoods.keywords.4>
+  <!-- EN: pet food -->
+  <FT_AnimalFoods.keywords.5>宠物食品</FT_AnimalFoods.keywords.5>
+  <!-- EN: dog food -->
+  <FT_AnimalFoods.keywords.6>狗粮</FT_AnimalFoods.keywords.6>
+  <!-- EN: cat food -->
+  <FT_AnimalFoods.keywords.7>猫粮</FT_AnimalFoods.keywords.7>
+  <!-- EN: cattle feed -->
+  <FT_AnimalFoods.keywords.8>牛饲料</FT_AnimalFoods.keywords.8>
+  
+  <!-- EN: Flavor Text animal product -->
+  <FT_AnimalProductRaw.label>动物产品风味文本</FT_AnimalProductRaw.label>
+  <!-- EN: animal product -->
+  <FT_AnimalProductRaw.keywords.0>动物产品</FT_AnimalProductRaw.keywords.0>
+  <!-- EN: skin -->
+  <FT_AnimalProductRaw.keywords.1>皮</FT_AnimalProductRaw.keywords.1>
+  <!-- EN: bile -->
+  <FT_AnimalProductRaw.keywords.2>胆汁</FT_AnimalProductRaw.keywords.2>
+  <!-- EN: jelly -->
+  <FT_AnimalProductRaw.keywords.3>果冻</FT_AnimalProductRaw.keywords.3>
+  <!-- EN: insect jelly -->
+  <FT_AnimalProductRaw.keywords.4>昆虫果冻</FT_AnimalProductRaw.keywords.4>
+  
+  <!-- EN: Flavor Text berry -->
+  <FT_Berry.label>浆果风味文本</FT_Berry.label>
+  <!-- EN: berry -->
+  <FT_Berry.keywords.0>浆果</FT_Berry.keywords.0>
+  <!-- EN: berries -->
+  <FT_Berry.keywords.1>浆果</FT_Berry.keywords.1>
+  <!-- EN: currant -->
+  <FT_Berry.keywords.2>醋栗</FT_Berry.keywords.2>
+  <!-- EN: jaboticaba -->
+  <FT_Berry.keywords.3>嘉宝果</FT_Berry.keywords.3>
+  <!-- EN: jabuticaba -->
+  <FT_Berry.keywords.4>嘉宝果</FT_Berry.keywords.4>
+  <!-- EN: strawberry -->
+  <FT_Berry.keywords.5>草莓</FT_Berry.keywords.5>
+  <!-- EN: raspberry -->
+  <FT_Berry.keywords.6>树莓</FT_Berry.keywords.6>
+  <!-- EN: gooseberry -->
+  <FT_Berry.keywords.7>醋栗</FT_Berry.keywords.7>
+  <!-- EN: boysenberry -->
+  <FT_Berry.keywords.8>波森莓</FT_Berry.keywords.8>
+  <!-- EN: blackberry -->
+  <FT_Berry.keywords.9>黑莓</FT_Berry.keywords.9>
+  <!-- EN: blueberry -->
+  <FT_Berry.keywords.10>蓝莓</FT_Berry.keywords.10>
+  <!-- EN: cloudberry -->
+  <FT_Berry.keywords.11>云莓</FT_Berry.keywords.11>
+  <!-- EN: bearberry -->
+  <FT_Berry.keywords.12>熊果</FT_Berry.keywords.12>
+  <!-- EN: mulberry -->
+  <FT_Berry.keywords.13>桑葚</FT_Berry.keywords.13>
+  <!-- EN: black currant -->
+  <FT_Berry.keywords.14>黑醋栗</FT_Berry.keywords.14>
+  <!-- EN: guarana berry -->
+  <FT_Berry.keywords.15>瓜拉那莓</FT_Berry.keywords.15>
+  <!-- EN: strawberries -->
+  <FT_Berry.keywords.16>草莓</FT_Berry.keywords.16>
+  <!-- EN: raspberries -->
+  <FT_Berry.keywords.17>树莓</FT_Berry.keywords.17>
+  <!-- EN: gooseberries -->
+  <FT_Berry.keywords.18>醋栗</FT_Berry.keywords.18>
+  <!-- EN: boysenberries -->
+  <FT_Berry.keywords.19>波森莓</FT_Berry.keywords.19>
+  <!-- EN: blackberries -->
+  <FT_Berry.keywords.20>黑莓</FT_Berry.keywords.20>
+  <!-- EN: blueberries -->
+  <FT_Berry.keywords.21>蓝莓</FT_Berry.keywords.21>
+  <!-- EN: cloudberries -->
+  <FT_Berry.keywords.22>云莓</FT_Berry.keywords.22>
+  <!-- EN: bearberries -->
+  <FT_Berry.keywords.23>熊果</FT_Berry.keywords.23>
+  <!-- EN: mulberries -->
+  <FT_Berry.keywords.24>桑葚</FT_Berry.keywords.24>
+  <!-- EN: black currant -->
+  <FT_Berry.keywords.25>黑醋栗</FT_Berry.keywords.25>
+  <!-- EN: guarana berries -->
+  <FT_Berry.keywords.26>瓜拉那莓</FT_Berry.keywords.26>
+  
+  <!-- EN: Flavor Text buildings -->
+  <FT_Buildings.label>建筑风味文本</FT_Buildings.label>
+  <!-- EN: building -->
+  <FT_Buildings.keywords.0>建筑</FT_Buildings.keywords.0>
+  <!-- EN: production -->
+  <FT_Buildings.keywords.1>生产</FT_Buildings.keywords.1>
+  
+  <!-- EN: Flavor Text chocolate -->
+  <FT_Chocolate.label>巧克力风味文本</FT_Chocolate.label>
+  <!-- EN: chocolate -->
+  <FT_Chocolate.keywords.0>巧克力</FT_Chocolate.keywords.0>
+  <!-- EN: cocoa -->
+  <FT_Chocolate.keywords.1>可可</FT_Chocolate.keywords.1>
+  <!-- EN: cocoa bean -->
+  <FT_Chocolate.keywords.2>可可豆</FT_Chocolate.keywords.2>
+  <!-- EN: cacao -->
+  <FT_Chocolate.keywords.3>可可</FT_Chocolate.keywords.3>
+  <!-- EN: cacao nib -->
+  <FT_Chocolate.keywords.4>可可碎粒</FT_Chocolate.keywords.4>
+  <!-- EN: white chocolate -->
+  <FT_Chocolate.keywords.5>白巧克力</FT_Chocolate.keywords.5>
+  <!-- EN: cocoa butter -->
+  <FT_Chocolate.keywords.6>可可脂</FT_Chocolate.keywords.6>
+  <!-- EN: chocolate syrup -->
+  <FT_Chocolate.keywords.7>巧克力糖浆</FT_Chocolate.keywords.7>
+  <!-- EN: chocolate chips -->
+  <FT_Chocolate.keywords.8>巧克力碎片</FT_Chocolate.keywords.8>
+  <!-- EN: milk chocolate -->
+  <FT_Chocolate.keywords.9>牛奶巧克力</FT_Chocolate.keywords.9>
+  <!-- EN: dark chocolate -->
+  <FT_Chocolate.keywords.10>黑巧克力</FT_Chocolate.keywords.10>
+  <!-- EN: semisweet chocolate -->
+  <FT_Chocolate.keywords.11>半甜巧克力</FT_Chocolate.keywords.11>
+  <!-- EN: semi-sweet chocolate -->
+  <FT_Chocolate.keywords.12>半甜巧克力</FT_Chocolate.keywords.12>
+  
+  <!-- EN: Flavor Text condiment -->
+  <FT_Condiment.label>调味品风味文本</FT_Condiment.label>
+  <!-- EN: condiment -->
+  <FT_Condiment.keywords.0>调味品</FT_Condiment.keywords.0>
+  <!-- EN: flavoring -->
+  <FT_Condiment.keywords.1>调味料</FT_Condiment.keywords.1>
+  <!-- EN: garnish -->
+  <FT_Condiment.keywords.2>装饰</FT_Condiment.keywords.2>
+  <!-- EN: spread -->
+  <FT_Condiment.keywords.3>涂抹酱</FT_Condiment.keywords.3>
+  <!-- EN: dressing -->
+  <FT_Condiment.keywords.4>调料</FT_Condiment.keywords.4>
+  <!-- EN: sauce -->
+  <FT_Condiment.keywords.5>酱汁</FT_Condiment.keywords.5>
+  <!-- EN: drizzle -->
+  <FT_Condiment.keywords.6>淋酱</FT_Condiment.keywords.6>
+  <!-- EN: topping -->
+  <FT_Condiment.keywords.7>浇头</FT_Condiment.keywords.7>
+  <!-- EN: wasabi -->
+  <FT_Condiment.keywords.8>芥末</FT_Condiment.keywords.8>
+  <!-- EN: wasabi paste -->
+  <FT_Condiment.keywords.9>芥末酱</FT_Condiment.keywords.9>
+  <!-- EN: mayo -->
+  <FT_Condiment.keywords.10>美乃滋</FT_Condiment.keywords.10>
+  <!-- EN: mayonnaise -->
+  <FT_Condiment.keywords.11>蛋黄酱</FT_Condiment.keywords.11>
+  <!-- EN: salt -->
+  <FT_Condiment.keywords.12>盐</FT_Condiment.keywords.12>
+  <!-- EN: vinegar -->
+  <FT_Condiment.keywords.13>醋</FT_Condiment.keywords.13>
+  <!-- EN: ketchup -->
+  <FT_Condiment.keywords.14>番茄酱</FT_Condiment.keywords.14>
+  <!-- EN: mustard -->
+  <FT_Condiment.keywords.15>芥末酱</FT_Condiment.keywords.15>
+  <!-- EN: mint -->
+  <FT_Condiment.keywords.16>薄荷</FT_Condiment.keywords.16>
+  <!-- EN: nanite -->
+  <FT_Condiment.keywords.17>纳米机器人</FT_Condiment.keywords.17>
+  <!-- EN: caviar -->
+  <FT_Condiment.keywords.18>鱼子酱</FT_Condiment.keywords.18>
+  
+  <!-- EN: Flavor Text cooking stations -->
+  <FT_CookingStations.label>烹饪台风味文本</FT_CookingStations.label>
+  <!-- EN: cooking -->
+  <FT_CookingStations.keywords.0>烹饪</FT_CookingStations.keywords.0>
+  <!-- EN: station -->
+  <FT_CookingStations.keywords.1>台</FT_CookingStations.keywords.1>
+  <!-- EN: dispenser -->
+  <FT_CookingStations.keywords.2>分配器</FT_CookingStations.keywords.2>
+  <!-- EN: dripper -->
+  <FT_CookingStations.keywords.3>滴漏器</FT_CookingStations.keywords.3>
+  <!-- EN: table -->
+  <FT_CookingStations.keywords.4>桌子</FT_CookingStations.keywords.4>
+  <!-- EN: bench -->
+  <FT_CookingStations.keywords.5>工作台</FT_CookingStations.keywords.5>
+  <!-- EN: counter -->
+  <FT_CookingStations.keywords.6>柜台</FT_CookingStations.keywords.6>
+  <!-- EN: cutting board -->
+  <FT_CookingStations.keywords.7>切菜板</FT_CookingStations.keywords.7>
+  <!-- EN: prep table -->
+  <FT_CookingStations.keywords.8>准备台</FT_CookingStations.keywords.8>
+  
+  <!-- EN: Flavor Text corn -->
+  <FT_Corn.label>玉米风味文本</FT_Corn.label>
+  <!-- EN: corn -->
+  <FT_Corn.keywords.0>玉米</FT_Corn.keywords.0>
+  <!-- EN: maize -->
+  <FT_Corn.keywords.1>玉米</FT_Corn.keywords.1>
+  <!-- EN: hominy -->
+  <FT_Corn.keywords.2>玉米粒</FT_Corn.keywords.2>
+  <!-- EN: masa -->
+  <FT_Corn.keywords.3>玛莎</FT_Corn.keywords.3>
+  <!-- EN: cornmeal -->
+  <FT_Corn.keywords.4>玉米粉</FT_Corn.keywords.4>
+  <!-- EN: cornstarch -->
+  <FT_Corn.keywords.5>玉米淀粉</FT_Corn.keywords.5>
+  
+  <!-- EN: Flavor Text dairy -->
+  <FT_Dairy.label>乳制品风味文本</FT_Dairy.label>
+  <!-- EN: dairy -->
+  <FT_Dairy.keywords.0>乳制品</FT_Dairy.keywords.0>
+  
+  <!-- EN: Flavor Text egg -->
+  <FT_Egg.label>蛋类风味文本</FT_Egg.label>
+  <!-- EN: egg -->
+  <FT_Egg.keywords.0>蛋</FT_Egg.keywords.0>
+  <!-- EN: yolk -->
+  <FT_Egg.keywords.1>蛋黄</FT_Egg.keywords.1>
+  <!-- EN: meringue -->
+  <FT_Egg.keywords.2>蛋白霜</FT_Egg.keywords.2>
+  <!-- EN: human egg -->
+  <FT_Egg.keywords.3>人蛋</FT_Egg.keywords.3>
+  
+  <!-- EN: Flavor Text egg (fert.) -->
+  <FT_EggFertilized.label>受精蛋风味文本</FT_EggFertilized.label>
+  <!-- EN: egg fertilized -->
+  <FT_EggFertilized.keywords.0>受精蛋</FT_EggFertilized.keywords.0>
+  <!-- EN: eggs fertilized -->
+  <FT_EggFertilized.keywords.1>受精蛋</FT_EggFertilized.keywords.1>
+  <!-- EN: fertilized -->
+  <FT_EggFertilized.keywords.2>受精</FT_EggFertilized.keywords.2>
+  <!-- EN: fert -->
+  <FT_EggFertilized.keywords.3>受精</FT_EggFertilized.keywords.3>
+  <!-- EN: embryo -->
+  <FT_EggFertilized.keywords.4>胚胎</FT_EggFertilized.keywords.4>
+  <!-- EN: balut -->
+  <FT_EggFertilized.keywords.5>鸭胚蛋</FT_EggFertilized.keywords.5>
+  
+  <!-- EN: Flavor Text egg (unfert.) -->
+  <FT_EggUnfertilized.label>未受精蛋风味文本</FT_EggUnfertilized.label>
+  <!-- EN: egg unfertilized -->
+  <FT_EggUnfertilized.keywords.0>未受精蛋</FT_EggUnfertilized.keywords.0>
+  <!-- EN: eggs unfertilized -->
+  <FT_EggUnfertilized.keywords.1>未受精蛋</FT_EggUnfertilized.keywords.1>
+  <!-- EN: unfertilized -->
+  <FT_EggUnfertilized.keywords.2>未受精</FT_EggUnfertilized.keywords.2>
+  <!-- EN: unfert -->
+  <FT_EggUnfertilized.keywords.3>未受精</FT_EggUnfertilized.keywords.3>
+  
+  <!-- EN: Flavor Text open flame cooking stations -->
+  <FT_Fire.label>明火烹饪台风味文本</FT_Fire.label>
+  <!-- EN: campfire -->
+  <FT_Fire.keywords.0>营火</FT_Fire.keywords.0>
+  <!-- EN: camp fire -->
+  <FT_Fire.keywords.1>营火</FT_Fire.keywords.1>
+  <!-- EN: grill -->
+  <FT_Fire.keywords.2>烤架</FT_Fire.keywords.2>
+  <!-- EN: bbq -->
+  <FT_Fire.keywords.3>烧烤</FT_Fire.keywords.3>
+  <!-- EN: barbecue -->
+  <FT_Fire.keywords.4>烧烤</FT_Fire.keywords.4>
+  
+  <!-- EN: Flavor Text all meals -->
+  <FT_FoodMeals.label>所有餐食风味文本</FT_FoodMeals.label>
+  <!-- EN: haute -->
+  <FT_FoodMeals.keywords.0>高级</FT_FoodMeals.keywords.0>
+  <!-- EN: haute meal -->
+  <FT_FoodMeals.keywords.1>高级餐食</FT_FoodMeals.keywords.1>
+  <!-- EN: hardtack -->
+  <FT_FoodMeals.keywords.2>硬饼干</FT_FoodMeals.keywords.2>
+  <!-- EN: hard tack -->
+  <FT_FoodMeals.keywords.3>硬面包干</FT_FoodMeals.keywords.3>
+  <!-- EN: sushi -->
+  <FT_FoodMeals.keywords.4>寿司</FT_FoodMeals.keywords.4>
+  <!-- EN: pemmican -->
+  <FT_FoodMeals.keywords.5>肉干</FT_FoodMeals.keywords.5>
+  <!-- EN: sushi -->
+  <FT_FoodMeals.keywords.6>寿司</FT_FoodMeals.keywords.6>
+  <!-- EN: caviar -->
+  <FT_FoodMeals.blacklist.0>鱼子酱</FT_FoodMeals.blacklist.0>
+  
+  <!-- EN: Flavor Text raw food -->
+  <FT_FoodRaw.label>生食风味文本</FT_FoodRaw.label>
+  <!-- EN: food raw -->
+  <FT_FoodRaw.keywords.0>生食</FT_FoodRaw.keywords.0>
+  <!-- EN: raw food -->
+  <FT_FoodRaw.keywords.1>生食</FT_FoodRaw.keywords.1>
+  
+  <!-- EN: Flavor Text foods -->
+  <FT_Foods.label>食品风味文本</FT_Foods.label>
+  <!-- EN: food -->
+  <FT_Foods.keywords.0>食品</FT_Foods.keywords.0>
+  
+  <!-- EN: Flavor Text fruitarian -->
+  <FT_Fruit.label>水果风味文本</FT_Fruit.label>
+  <!-- EN: fruit -->
+  <FT_Fruit.keywords.0>水果</FT_Fruit.keywords.0>
+  <!-- EN: juice -->
+  <FT_Fruit.keywords.1>果汁</FT_Fruit.keywords.1>
+  <!-- EN: papaya -->
+  <FT_Fruit.keywords.2>木瓜</FT_Fruit.keywords.2>
+  <!-- EN: persimmon -->
+  <FT_Fruit.keywords.3>柿子</FT_Fruit.keywords.3>
+  <!-- EN: cashew apple -->
+  <FT_Fruit.keywords.4>腰果苹果</FT_Fruit.keywords.4>
+  <!-- EN: cashew fruit -->
+  <FT_Fruit.keywords.5>腰果果实</FT_Fruit.keywords.5>
+  <!-- EN: cashew nut -->
+  <FT_Fruit.blacklist.0>腰果</FT_Fruit.blacklist.0>
+  <!-- EN: agave -->
+  <FT_Fruit.blacklist.1>龙舌兰</FT_Fruit.blacklist.1>
+  
+  <!-- EN: Flavor Text fungus -->
+  <FT_Fungus.label>真菌风味文本</FT_Fungus.label>
+  <!-- EN: mushroom -->
+  <FT_Fungus.keywords.0>蘑菇</FT_Fungus.keywords.0>
+  <!-- EN: shroom -->
+  <FT_Fungus.keywords.1>蘑菇</FT_Fungus.keywords.1>
+  <!-- EN: fungus -->
+  <FT_Fungus.keywords.2>真菌</FT_Fungus.keywords.2>
+  <!-- EN: fungi -->
+  <FT_Fungus.keywords.3>真菌</FT_Fungus.keywords.3>
+  <!-- EN: morel -->
+  <FT_Fungus.keywords.4>羊肚菌</FT_Fungus.keywords.4>
+  <!-- EN: cap -->
+  <FT_Fungus.keywords.5>菌盖</FT_Fungus.keywords.5>
+  <!-- EN: stool -->
+  <FT_Fungus.keywords.6>菌柄</FT_Fungus.keywords.6>
+  <!-- EN: myco -->
+  <FT_Fungus.keywords.7>菌类</FT_Fungus.keywords.7>
+  <!-- EN: mycelium -->
+  <FT_Fungus.keywords.8>菌丝体</FT_Fungus.keywords.8>
+  <!-- EN: truffle -->
+  <FT_Fungus.keywords.9>松露</FT_Fungus.keywords.9>
+  
+  <!-- EN: Flavor Text grain -->
+  <FT_Grain.label>谷物风味文本</FT_Grain.label>
+  <!-- EN: grain -->
+  <FT_Grain.keywords.0>谷物</FT_Grain.keywords.0>
+  <!-- EN: kernel -->
+  <FT_Grain.keywords.1>谷粒</FT_Grain.keywords.1>
+  <!-- EN: starch -->
+  <FT_Grain.keywords.2>淀粉</FT_Grain.keywords.2>
+  
+  <!-- EN: Flavor Text baby food -->
+  <FT_MealsBaby.label>婴儿食品风味文本</FT_MealsBaby.label>
+  <!-- EN: baby -->
+  <FT_MealsBaby.keywords.0>婴儿</FT_MealsBaby.keywords.0>
+  <!-- EN: baby food -->
+  <FT_MealsBaby.keywords.1>婴儿食品</FT_MealsBaby.keywords.1>
+  
+  <!-- EN: Flavor Text cooked meals -->
+  <FT_MealsCooked.label>熟食餐点风味文本</FT_MealsCooked.label>
+  
+  <!-- EN: Flavor Text fine meals -->
+  <FT_MealsFine.label>精致餐食风味文本</FT_MealsFine.label>
+  <!-- EN: fine -->
+  <FT_MealsFine.keywords.0>精致</FT_MealsFine.keywords.0>
+  <!-- EN: fine meal -->
+  <FT_MealsFine.keywords.1>精致餐食</FT_MealsFine.keywords.1>
+  
+  <!-- EN: Flavor Text all meal kinds -->
+  <FT_MealsKinds.label>所有餐点种类风味文本</FT_MealsKinds.label>
+  
+  <!-- EN: Flavor Text lavish meals -->
+  <FT_MealsLavish.label>奢华餐食风味文本</FT_MealsLavish.label>
+  <!-- EN: lavish -->
+  <FT_MealsLavish.keywords.0>奢华</FT_MealsLavish.keywords.0>
+  <!-- EN: lavish meal -->
+  <FT_MealsLavish.keywords.1>奢华餐食</FT_MealsLavish.keywords.1>
+  
+  <!-- EN: Flavor Text non specialty meals -->
+  <FT_MealsNonSpecial.label>非特殊餐食风味文本</FT_MealsNonSpecial.label>
+  <!-- EN: meal -->
+  <FT_MealsNonSpecial.keywords.0>餐食</FT_MealsNonSpecial.keywords.0>
+  <!-- EN: cooked -->
+  <FT_MealsNonSpecial.keywords.1>熟食</FT_MealsNonSpecial.keywords.1>
+  <!-- EN: dish -->
+  <FT_MealsNonSpecial.keywords.2>菜肴</FT_MealsNonSpecial.keywords.2>
+  <!-- EN: plate -->
+  <FT_MealsNonSpecial.keywords.3>盘子</FT_MealsNonSpecial.keywords.3>
+  <!-- EN: bowl -->
+  <FT_MealsNonSpecial.keywords.4>碗</FT_MealsNonSpecial.keywords.4>
+  <!-- EN: breakfast -->
+  <FT_MealsNonSpecial.keywords.5>早餐</FT_MealsNonSpecial.keywords.5>
+  <!-- EN: lunch -->
+  <FT_MealsNonSpecial.keywords.6>午餐</FT_MealsNonSpecial.keywords.6>
+  <!-- EN: dinner -->
+  <FT_MealsNonSpecial.keywords.7>晚餐</FT_MealsNonSpecial.keywords.7>
+  <!-- EN: main -->
+  <FT_MealsNonSpecial.keywords.8>主菜</FT_MealsNonSpecial.keywords.8>
+  <!-- EN: course -->
+  <FT_MealsNonSpecial.keywords.9>课程</FT_MealsNonSpecial.keywords.9>
+  <!-- EN: serving -->
+  <FT_MealsNonSpecial.keywords.10>一份</FT_MealsNonSpecial.keywords.10>
+  <!-- EN: appetizer -->
+  <FT_MealsNonSpecial.keywords.11>开胃菜</FT_MealsNonSpecial.keywords.11>
+  <!-- EN: appetiser -->
+  <FT_MealsNonSpecial.keywords.12>开胃菜</FT_MealsNonSpecial.keywords.12>
+  <!-- EN: appertif -->
+  <FT_MealsNonSpecial.keywords.13>开胃酒</FT_MealsNonSpecial.keywords.13>
+  <!-- EN: antipasto -->
+  <FT_MealsNonSpecial.keywords.14>意式前菜</FT_MealsNonSpecial.keywords.14>
+  <!-- EN: d'oevre -->
+  <FT_MealsNonSpecial.keywords.15>开胃小菜</FT_MealsNonSpecial.keywords.15>
+  <!-- EN: oevre -->
+  <FT_MealsNonSpecial.keywords.16>作品</FT_MealsNonSpecial.keywords.16>
+  <!-- EN: horderve -->
+  <FT_MealsNonSpecial.keywords.17>开胃菜</FT_MealsNonSpecial.keywords.17>
+  <!-- EN: starter -->
+  <FT_MealsNonSpecial.keywords.18>前菜</FT_MealsNonSpecial.keywords.18>
+  <!-- EN: backpacking -->
+  <FT_MealsNonSpecial.keywords.19>徒步</FT_MealsNonSpecial.keywords.19>
+  <!-- EN: clay pot -->
+  <FT_MealsNonSpecial.keywords.20>陶锅</FT_MealsNonSpecial.keywords.20>
+  <!-- EN: pastry -->
+  <FT_MealsNonSpecial.keywords.21>糕点</FT_MealsNonSpecial.keywords.21>
+  <!-- EN: pastries -->
+  <FT_MealsNonSpecial.keywords.22>糕点</FT_MealsNonSpecial.keywords.22>
+  <!-- EN: candy -->
+  <FT_MealsNonSpecial.keywords.23>糖果</FT_MealsNonSpecial.keywords.23>
+  <!-- EN: candies -->
+  <FT_MealsNonSpecial.keywords.24>糖果</FT_MealsNonSpecial.keywords.24>
+  <!-- EN: paste -->
+  <FT_MealsNonSpecial.blacklist.0>膏</FT_MealsNonSpecial.blacklist.0>
+  <!-- EN: nutrient paste -->
+  <FT_MealsNonSpecial.blacklist.1>营养膏</FT_MealsNonSpecial.blacklist.1>
+  <!-- EN: haute -->
+  <FT_MealsNonSpecial.blacklist.2>高级</FT_MealsNonSpecial.blacklist.2>
+  <!-- EN: haute meal -->
+  <FT_MealsNonSpecial.blacklist.3>高级餐食</FT_MealsNonSpecial.blacklist.3>
+  
+  <!-- EN: Flavor Text normal meals -->
+  <FT_MealsNormal.label>普通餐食风味文本</FT_MealsNormal.label>
+  
+  <!-- EN: Flavor Text nutrient paste meals -->
+  <FT_MealsPaste.label>营养膏餐食风味文本</FT_MealsPaste.label>
+  <!-- EN: paste -->
+  <FT_MealsPaste.keywords.0>膏</FT_MealsPaste.keywords.0>
+  <!-- EN: nutrient paste -->
+  <FT_MealsPaste.keywords.1>营养膏</FT_MealsPaste.keywords.1>
+  
+  <!-- EN: Flavor Text cooked meals -->
+  <FT_MealsQualities.label>熟食品质风味文本</FT_MealsQualities.label>
+  <!-- EN: paste -->
+  <FT_MealsQualities.blacklist.0>膏</FT_MealsQualities.blacklist.0>
+  <!-- EN: nutrient paste -->
+  <FT_MealsQualities.blacklist.1>营养膏</FT_MealsQualities.blacklist.1>
+  <!-- EN: haute -->
+  <FT_MealsQualities.blacklist.2>高级</FT_MealsQualities.blacklist.2>
+  <!-- EN: haute meal -->
+  <FT_MealsQualities.blacklist.3>高级餐食</FT_MealsQualities.blacklist.3>
+  
+  <!-- EN: Flavor Text simple meals -->
+  <FT_MealsSimple.label>简单餐食风味文本</FT_MealsSimple.label>
+  <!-- EN: simple -->
+  <FT_MealsSimple.keywords.0>简单</FT_MealsSimple.keywords.0>
+  <!-- EN: simple meal -->
+  <FT_MealsSimple.keywords.1>简单餐食</FT_MealsSimple.keywords.1>
+  
+  <!-- EN: Flavor Text survival pack meals -->
+  <FT_MealsSurvivalPack.label>生存包餐食风味文本</FT_MealsSurvivalPack.label>
+  <!-- EN: survival -->
+  <FT_MealsSurvivalPack.keywords.0>生存</FT_MealsSurvivalPack.keywords.0>
+  <!-- EN: survival pack -->
+  <FT_MealsSurvivalPack.keywords.1>生存包</FT_MealsSurvivalPack.keywords.1>
+  <!-- EN: survival pack meal -->
+  <FT_MealsSurvivalPack.keywords.2>生存包餐食</FT_MealsSurvivalPack.keywords.2>
+  <!-- EN: backpacking -->
+  <FT_MealsSurvivalPack.keywords.3>徒步</FT_MealsSurvivalPack.keywords.3>
+  <!-- EN: mre -->
+  <FT_MealsSurvivalPack.keywords.4>即食餐</FT_MealsSurvivalPack.keywords.4>
+  <!-- EN: ration -->
+  <FT_MealsSurvivalPack.keywords.5>配给</FT_MealsSurvivalPack.keywords.5>
+  
+  <!-- EN: Flavor Text meals with flavor comp -->
+  <FT_MealsWithCompFlavor.label>含风味成分餐食风味文本</FT_MealsWithCompFlavor.label>
+  <!-- EN: haute -->
+  <FT_MealsWithCompFlavor.blacklist.0>高级</FT_MealsWithCompFlavor.blacklist.0>
+  <!-- EN: haute meal -->
+  <FT_MealsWithCompFlavor.blacklist.1>高级餐食</FT_MealsWithCompFlavor.blacklist.1>
+  <!-- EN: hardtack -->
+  <FT_MealsWithCompFlavor.blacklist.2>硬饼干</FT_MealsWithCompFlavor.blacklist.2>
+  <!-- EN: hard tack -->
+  <FT_MealsWithCompFlavor.blacklist.3>硬面包干</FT_MealsWithCompFlavor.blacklist.3>
+  <!-- EN: caviar -->
+  <FT_MealsWithCompFlavor.blacklist.4>鱼子酱</FT_MealsWithCompFlavor.blacklist.4>
+  <!-- EN: sushi -->
+  <FT_MealsWithCompFlavor.blacklist.5>寿司</FT_MealsWithCompFlavor.blacklist.5>
+  
+  <!-- EN: Flavor Text meat -->
+  <FT_MeatRaw.label>生肉风味文本</FT_MeatRaw.label>
+  <!-- EN: meat -->
+  <FT_MeatRaw.keywords.0>肉</FT_MeatRaw.keywords.0>
+  <!-- EN: meat raw -->
+  <FT_MeatRaw.keywords.1>生肉</FT_MeatRaw.keywords.1>
+  <!-- EN: cut -->
+  <FT_MeatRaw.keywords.2>切块</FT_MeatRaw.keywords.2>
+  <!-- EN: ground -->
+  <FT_MeatRaw.keywords.3>绞碎</FT_MeatRaw.keywords.3>
+  <!-- EN: smoked -->
+  <FT_MeatRaw.keywords.4>熏制</FT_MeatRaw.keywords.4>
+  <!-- EN: marinated -->
+  <FT_MeatRaw.keywords.5>腌制</FT_MeatRaw.keywords.5>
+  <!-- EN: jerky -->
+  <FT_MeatRaw.keywords.6>肉干</FT_MeatRaw.keywords.6>
+  <!-- EN: jerk -->
+  <FT_MeatRaw.keywords.7>肉干</FT_MeatRaw.keywords.7>
+  <!-- EN: lizard meat -->
+  <FT_MeatRaw.keywords.8>蜥蜴肉</FT_MeatRaw.keywords.8>
+  <!-- EN: snake meat -->
+  <FT_MeatRaw.keywords.9>蛇肉</FT_MeatRaw.keywords.9>
+  
+  <!-- EN: Flavor Text milk -->
+  <FT_Milk.label>牛奶风味文本</FT_Milk.label>
+  <!-- EN: milk -->
+  <FT_Milk.keywords.0>牛奶</FT_Milk.keywords.0>
+  <!-- EN: cream -->
+  <FT_Milk.keywords.1>奶油</FT_Milk.keywords.1>
+  <!-- EN: butter -->
+  <FT_Milk.keywords.2>黄油</FT_Milk.keywords.2>
+  <!-- EN: buttermilk -->
+  <FT_Milk.keywords.3>酪乳</FT_Milk.keywords.3>
+  <!-- EN: yogurt -->
+  <FT_Milk.keywords.4>酸奶</FT_Milk.keywords.4>
+  <!-- EN: kefir -->
+  <FT_Milk.keywords.5>开菲尔</FT_Milk.keywords.5>
+  
+  <!-- EN: Flavor Text plant food -->
+  <FT_PlantFoodRaw.label>植物食品风味文本</FT_PlantFoodRaw.label>
+  <!-- EN: plant -->
+  <FT_PlantFoodRaw.keywords.0>植物</FT_PlantFoodRaw.keywords.0>
+  <!-- EN: plant food -->
+  <FT_PlantFoodRaw.keywords.1>植物食品</FT_PlantFoodRaw.keywords.1>
+  <!-- EN: plant food raw -->
+  <FT_PlantFoodRaw.keywords.2>生植物食品</FT_PlantFoodRaw.keywords.2>
+  <!-- EN: raw plant -->
+  <FT_PlantFoodRaw.keywords.3>生植物</FT_PlantFoodRaw.keywords.3>
+  <!-- EN: produce -->
+  <FT_PlantFoodRaw.keywords.4>农产品</FT_PlantFoodRaw.keywords.4>
+  <!-- EN: puree -->
+  <FT_PlantFoodRaw.keywords.5>泥</FT_PlantFoodRaw.keywords.5>
+  
+  <!-- EN: Flavor Text potato -->
+  <FT_Potato.label>土豆风味文本</FT_Potato.label>
+  <!-- EN: potato -->
+  <FT_Potato.keywords.0>土豆</FT_Potato.keywords.0>
+  <!-- EN: potato chip -->
+  <FT_Potato.keywords.1>薯片</FT_Potato.keywords.1>
+  <!-- EN: fries -->
+  <FT_Potato.keywords.2>薯条</FT_Potato.keywords.2>
+  <!-- EN: spud -->
+  <FT_Potato.keywords.3>土豆</FT_Potato.keywords.3>
+  <!-- EN: tater -->
+  <FT_Potato.keywords.4>土豆</FT_Potato.keywords.4>
+  <!-- EN: tots -->
+  <FT_Potato.keywords.5>土豆块</FT_Potato.keywords.5>
+  
+  <!-- EN: Flavor Text rice -->
+  <FT_Rice.label>米饭风味文本</FT_Rice.label>
+  <!-- EN: rice -->
+  <FT_Rice.keywords.0>米饭</FT_Rice.keywords.0>
+  <!-- EN: mochi -->
+  <FT_Rice.keywords.1>麻糬</FT_Rice.keywords.1>
+  <!-- EN: jasmine rice -->
+  <FT_Rice.keywords.2>茉莉香米</FT_Rice.keywords.2>
+  <!-- EN: basmati rice -->
+  <FT_Rice.keywords.3>巴斯马蒂米</FT_Rice.keywords.3>
+  <!-- EN: white rice -->
+  <FT_Rice.keywords.4>白米</FT_Rice.keywords.4>
+  <!-- EN: brown rice -->
+  <FT_Rice.keywords.5>糙米</FT_Rice.keywords.5>
+  <!-- EN: black rice -->
+  <FT_Rice.keywords.6>黑米</FT_Rice.keywords.6>
+  <!-- EN: yellow rice -->
+  <FT_Rice.keywords.7>黄米</FT_Rice.keywords.7>
+  <!-- EN: red rice -->
+  <FT_Rice.keywords.8>红米</FT_Rice.keywords.8>
+  
+  <!-- EN: Flavor Text root -->
+  <FT_Root.label>根茎风味文本</FT_Root.label>
+  
+  <!-- EN: Flavor Text root vegetable -->
+  <FT_RootVeg.label>根茎蔬菜风味文本</FT_RootVeg.label>
+  <!-- EN: root -->
+  <FT_RootVeg.keywords.0>根茎</FT_RootVeg.keywords.0>
+  <!-- EN: tuber -->
+  <FT_RootVeg.keywords.1>块茎</FT_RootVeg.keywords.1>
+  <!-- EN: Jerusalem artichoke -->
+  <FT_RootVeg.keywords.2>菊芋</FT_RootVeg.keywords.2>
+  
+  <!-- EN: Flavor Text stoves -->
+  <FT_Stoves.label>炉灶风味文本</FT_Stoves.label>
+  <!-- EN: stove -->
+  <FT_Stoves.keywords.0>炉灶</FT_Stoves.keywords.0>
+  <!-- EN: fueled stove -->
+  <FT_Stoves.keywords.1>燃料炉灶</FT_Stoves.keywords.1>
+  <!-- EN: electric stove -->
+  <FT_Stoves.keywords.2>电炉</FT_Stoves.keywords.2>
+  <!-- EN: oven -->
+  <FT_Stoves.keywords.3>烤箱</FT_Stoves.keywords.3>
+  <!-- EN: fryer -->
+  <FT_Stoves.keywords.4>炸锅</FT_Stoves.keywords.4>
+  <!-- EN: fry -->
+  <FT_Stoves.keywords.5>油炸</FT_Stoves.keywords.5>
+  <!-- EN: griddle -->
+  <FT_Stoves.keywords.6>煎饼锅</FT_Stoves.keywords.6>
+  <!-- EN: toaster -->
+  <FT_Stoves.keywords.7>烤面包机</FT_Stoves.keywords.7>
+  <!-- EN: microwave -->
+  <FT_Stoves.keywords.8>微波炉</FT_Stoves.keywords.8>
+  
+  <!-- EN: Flavor Text sugar -->
+  <FT_Sugar.label>糖类风味文本</FT_Sugar.label>
+  <!-- EN: agave -->
+  <FT_Sugar.keywords.0>龙舌兰</FT_Sugar.keywords.0>
+  <!-- EN: agave fruit -->
+  <FT_Sugar.keywords.1>龙舌兰果实</FT_Sugar.keywords.1>
+  <!-- EN: sugar -->
+  <FT_Sugar.keywords.2>糖</FT_Sugar.keywords.2>
+  <!-- EN: sweet -->
+  <FT_Sugar.keywords.3>甜</FT_Sugar.keywords.3>
+  <!-- EN: sweetened -->
+  <FT_Sugar.keywords.4>加糖</FT_Sugar.keywords.4>
+  <!-- EN: sweetener -->
+  <FT_Sugar.keywords.5>甜味剂</FT_Sugar.keywords.5>
+  <!-- EN: syrup -->
+  <FT_Sugar.keywords.6>糖浆</FT_Sugar.keywords.6>
+  <!-- EN: maple -->
+  <FT_Sugar.keywords.7>枫树</FT_Sugar.keywords.7>
+  <!-- EN: sugar beet -->
+  <FT_Sugar.keywords.8>甜菜</FT_Sugar.keywords.8>
+  <!-- EN: cane -->
+  <FT_Sugar.keywords.9>甘蔗</FT_Sugar.keywords.9>
+  <!-- EN: monkfruit -->
+  <FT_Sugar.keywords.10>罗汉果</FT_Sugar.keywords.10>
+  <!-- EN: powdered sugar -->
+  <FT_Sugar.keywords.11>糖粉</FT_Sugar.keywords.11>
+  <!-- EN: corn syrup -->
+  <FT_Sugar.keywords.12>玉米糖浆</FT_Sugar.keywords.12>
+  <!-- EN: sucrose -->
+  <FT_Sugar.keywords.13>蔗糖</FT_Sugar.keywords.13>
+  <!-- EN: fructose -->
+  <FT_Sugar.keywords.14>果糖</FT_Sugar.keywords.14>
+  <!-- EN: glucose -->
+  <FT_Sugar.keywords.15>葡萄糖</FT_Sugar.keywords.15>
+  <!-- EN: stevia -->
+  <FT_Sugar.keywords.16>甜菊糖</FT_Sugar.keywords.16>
+  
+  <!-- EN: Flavor Text toxipotato -->
+  <FT_Toxipotato.label>毒土豆风味文本</FT_Toxipotato.label>
+  <!-- EN: toxipotato -->
+  <FT_Toxipotato.keywords.0>毒土豆</FT_Toxipotato.keywords.0>
+  <!-- EN: chuno -->
+  <FT_Toxipotato.keywords.1>丘诺</FT_Toxipotato.keywords.1>
+  
+  <!-- EN: Flavor Text vegetable -->
+  <FT_Vegetable.label>蔬菜风味文本</FT_Vegetable.label>
+  <!-- EN: vegetable -->
+  <FT_Vegetable.keywords.0>蔬菜</FT_Vegetable.keywords.0>
+  <!-- EN: veggie -->
+  <FT_Vegetable.keywords.1>蔬菜</FT_Vegetable.keywords.1>
+  <!-- EN: veg -->
+  <FT_Vegetable.keywords.2>蔬菜</FT_Vegetable.keywords.2>
+  <!-- EN: cactus -->
+  <FT_Vegetable.keywords.3>仙人掌</FT_Vegetable.keywords.3>
+  <!-- EN: cacti -->
+  <FT_Vegetable.keywords.4>仙人掌</FT_Vegetable.keywords.4>
+  <!-- EN: nopale -->
+  <FT_Vegetable.keywords.5>诺帕尔</FT_Vegetable.keywords.5>
+  <!-- EN: bamboo shoot -->
+  <FT_Vegetable.keywords.6>竹笋</FT_Vegetable.keywords.6>
+
+</LanguageData>

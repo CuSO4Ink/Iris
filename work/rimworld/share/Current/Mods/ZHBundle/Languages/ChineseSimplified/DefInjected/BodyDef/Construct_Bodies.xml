@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: metal construct -->
+  <VPE_MetalConstructBody.label>金属构装体</VPE_MetalConstructBody.label>
+  <!-- EN: metal body -->
+  <VPE_MetalConstructBody.corePart.parts.metal_body.customLabel>金属身体</VPE_MetalConstructBody.corePart.parts.metal_body.customLabel>
+  
+  <!-- EN: rock construct -->
+  <VPE_RockConstructBody.label>岩石构装体</VPE_RockConstructBody.label>
+  <!-- EN: rocky body -->
+  <VPE_RockConstructBody.corePart.parts.rocky_body.customLabel>岩石身体</VPE_RockConstructBody.corePart.parts.rocky_body.customLabel>
+  
+</LanguageData>

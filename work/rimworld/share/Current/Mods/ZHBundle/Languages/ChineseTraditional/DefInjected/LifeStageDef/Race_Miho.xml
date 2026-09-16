@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: baby -->
+  <MiholikeBaby.label>嬰兒</MiholikeBaby.label>
+  <!-- EN: Mood represents how happy or stressed someone is. Babies with low mood are more likely to cry, while babies with a high mood are more likely to giggle. -->
+  <MiholikeBaby.customMoodTipString>心情值代表著某人的快樂或焦慮。心情值低的嬰兒更容易哭鬧，當嬰兒心情值高時則更容易笑。</MiholikeBaby.customMoodTipString>
+  
+  <!-- EN: child -->
+  <MiholikeChild.label>孩童</MiholikeChild.label>
+  
+  <!-- EN: preteen -->
+  <MiholikePreTeenager.label>少兒</MiholikePreTeenager.label>
+  
+  <!-- EN: teenager -->
+  <MiholikeTeenager.label>青少年</MiholikeTeenager.label>
+  <!-- EN: teenage -->
+  <MiholikeTeenager.adjective>青少年</MiholikeTeenager.adjective>
+  
+</LanguageData>

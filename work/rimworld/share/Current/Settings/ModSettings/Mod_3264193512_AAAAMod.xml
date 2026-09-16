@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="seekiworks_AllowedAreaAutomaticAdapter.Setting">
+		<soundEffectNormalMode>False</soundEffectNormalMode>
+		<manualButton>True</manualButton>
+	</ModSettings>
+</SettingsBlock>

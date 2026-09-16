@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+<VV_JobFailReasonNoHarvestablePlants>附近无可收获植物</VV_JobFailReasonNoHarvestablePlants>
+<VV_JobFailReasonNoHarvestablePollenFilths>附近无可收集花粉污迹</VV_JobFailReasonNoHarvestablePollenFilths>
+<VV_JobFailReasonNotVivi>并薇薇</VV_JobFailReasonNotVivi>
+<VV_JobFailReasonNoIngredients>无原料</VV_JobFailReasonNoIngredients>
+
+<VV_AbilityDisabledNoFood>{0_labelShort} 因为饥饿而无法使用此能力</VV_AbilityDisabledNoFood>
+<VV_AbilityDisabledNoBodyPart>{0_labelShort} 缺少{2} {1} 个身体部位</VV_AbilityDisabledNoBodyPart>
+
+<VV_GeneDefHoneyNeedDurationDesc>{PAWN_nameDef} 必须定期食用蜂蜜才能生存。如果{PAWN_nameDef}在{DEFICIENCYDURATION}内不食用蜂蜜，则缺乏症状会随着时间的推移而加剧。</VV_GeneDefHoneyNeedDurationDesc>
+<VV_LastHoneyIngestedDurationAgo>距上次食用蜂蜜已过{DURATION}。</VV_LastHoneyIngestedDurationAgo>
+
+<VV_ShowManaOverlayTooltip>切换到环境魔能视图。\n环境中的魔能会因稀有植物或神秘植物而增减，并随时间推移而扩散。\n当魔能积累超过一定阈值时，薇薇娅之花或可自然出现，一些薇薇装备可以利用环境魔能。</VV_ShowManaOverlayTooltip>
+
+<VV_ModSettings_AllowSelectModGenes>允许在模组中添加的基因</VV_ModSettings_AllowSelectModGenes>
+<VV_ModSettings_AllowSelectModGenesDesc>设置是否允许薇薇在获得随机基因时使用其他模组中添加的基因。</VV_ModSettings_AllowSelectModGenesDesc>
+
+<VV_ModSettings_RoyalJellyNeedMultiplier>蜂王浆需求倍率</VV_ModSettings_RoyalJellyNeedMultiplier>
+<VV_ModSettings_RoyalJellyNeedMultiplierDesc>设定年轻薇薇蜂王浆需求的比率，该数值越高，转化为皇家薇薇所需要的蜂王浆越少。</VV_ModSettings_RoyalJellyNeedMultiplierDesc>
+
+<VV_ModSettings_AlwaysShowManaGridOnSelect>选中神秘植物时总是显示魔能视图</VV_ModSettings_AlwaysShowManaGridOnSelect>
+<VV_ModSettings_AlwaysShowManaGridOnSelectDesc>设置是否总是在选中神秘植物或是使用魔能的建筑时显示魔能视图。仅在“神秘植物学”研究完成后生效。</VV_ModSettings_AlwaysShowManaGridOnSelectDesc>
+
+<VV_Thing_Seed>{0}种子</VV_Thing_Seed>
+<VV_Thing_SeedDesc>一颗{0}的种子。种在土壤或神秘植物栽培盆里后会变为幼苗，而后会成长为{0}。\n神秘植物需要魔能和营养生长。\n\n幼苗会吸收周围环境中或附近产能神秘植物的提供的魔能，或依赖魔能放射器供给。\n\n不管魔能是否充足，幼苗都会持续消耗营养，所以需要定期使用魔法肥料。若幼苗长时间得不到充足的养分便会死去。</VV_Thing_SeedDesc>
+
+<VV_Thing_Seedling>{0} 幼苗</VV_Thing_Seedling>
+
+<VV_FailReason_EverflowerOnPot>因永盛花无法拆解</VV_FailReason_EverflowerOnPot>
+<VV_FailReason_RitualCooldown>仪式冷却中，将在 {0} 后可用。</VV_FailReason_RitualCooldown>
+
+<VV_FailReason_HasNoFairyVivi>无仙灵薇薇</VV_FailReason_HasNoFairyVivi>
+<VV_FailReason_FairyViviFull>仙灵薇薇数量过多</VV_FailReason_FairyViviFull>
+<VV_FailReason_NotRoyalVivi>无皇家薇薇</VV_FailReason_NotRoyalVivi>
+<VV_FailReason_NotAttunedEverflower>未同永盛花共鸣</VV_FailReason_NotAttunedEverflower>
+<VV_FailReason_AlreadyAttunedOther>已经同另一株永盛花共鸣</VV_FailReason_AlreadyAttunedOther>
+<VV_FailReason_FairyficationSickness>存在仙灵病</VV_FailReason_FairyficationSickness>
+<VV_FailReason_NotVivi>并非薇薇</VV_FailReason_NotVivi>
+<VV_FailReason_RoyalVivi>无法指定皇家薇薇</VV_FailReason_RoyalVivi>
+<VV_FailReason_NotMyChild>并非母女关系</VV_FailReason_NotMyChild>
+
+
+<VV_TextMote_GatherFailed>因笨拙的收获而受损</VV_TextMote_GatherFailed>
+<VV_TextMote_DamageBlockedByFairy>被仙灵保护</VV_TextMote_DamageBlockedByFairy>
+
+<VV_RitualTarget_Everflower>永盛花</VV_RitualTarget_Everflower>
+
+<VV_ModSettings_ManaGridOpacity>魔能视图不透明度</VV_ModSettings_ManaGridOpacity>
+<VV_ModSettings_ManaGridOpacityDesc>设置选中神秘植物或开启环境魔能显示时，魔能网格视图的不透明度。仅在“奥秘植物学”研究完成时适用。</VV_ModSettings_ManaGridOpacityDesc>
+
+</LanguageData>

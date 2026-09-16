@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- MOTL implant -->
+
+  <DF_MOTL_Implant.label>MOTL植入物</DF_MOTL_Implant.label>
+  <DF_MOTL_Implant.description>一個已安裝的MOTL植入物</DF_MOTL_Implant.description>
+  <DF_MOTL_Implant.labelNoun>一個MOTL植入物</DF_MOTL_Implant.labelNoun>
+
+
+  <!-- haste implant -->
+
+  <DF_Haste_Implant.label>急速植入物</DF_Haste_Implant.label>
+  <DF_Haste_Implant.description>一個已安裝的急速植入物</DF_Haste_Implant.description>
+  <DF_Haste_Implant.labelNoun>一個急速植入物</DF_Haste_Implant.labelNoun>
+
+
+  <!-- cat eye implant -->
+
+  <DF_CatEye_Implant.label>貓眼植入物</DF_CatEye_Implant.label>
+  <DF_CatEye_Implant.description>一個已安裝的貓眼植入物</DF_CatEye_Implant.description>
+  <DF_CatEye_Implant.labelNoun>一個貓眼植入物</DF_CatEye_Implant.labelNoun>
+
+
+  <!-- ghost implant -->
+
+  <DF_Ghost_Implant.label>幽靈植入物</DF_Ghost_Implant.label>
+  <DF_Ghost_Implant.description>一個已安裝的幽靈植入物</DF_Ghost_Implant.description>
+  <DF_Ghost_Implant.labelNoun>一個幽靈植入物</DF_Ghost_Implant.labelNoun>
+
+
+  <!-- destruction implant -->
+
+  <DF_Destruction_Implant.label>毀滅植入物</DF_Destruction_Implant.label>
+  <DF_Destruction_Implant.description>一個已安裝的毀滅植入物</DF_Destruction_Implant.description>
+  <DF_Destruction_Implant.labelNoun>一個毀滅植入物</DF_Destruction_Implant.labelNoun>
+
+
+  <!-- amber implant -->
+
+  <DF_Amber_Implant.label>琥珀植入物</DF_Amber_Implant.label>
+  <DF_Amber_Implant.description>一個已安裝的琥珀植入物</DF_Amber_Implant.description>
+  <DF_Amber_Implant.labelNoun>一個琥珀植入物</DF_Amber_Implant.labelNoun>
+
+
+  <!-- genius implant -->
+
+  <DF_Genius_Implant.label>天才植入物</DF_Genius_Implant.label>
+  <DF_Genius_Implant.description>一個已安裝的天才植入物</DF_Genius_Implant.description>
+  <DF_Genius_Implant.labelNoun>一個天才植入物</DF_Genius_Implant.labelNoun>
+
+
+  <!-- golden rabbit implant -->
+
+  <DF_GoldenRabbit_Implant.label>金兔植入物</DF_GoldenRabbit_Implant.label>
+  <DF_GoldenRabbit_Implant.description>一個已安裝的金兔植入物</DF_GoldenRabbit_Implant.description>
+  <DF_GoldenRabbit_Implant.labelNoun>一個金兔植入物</DF_GoldenRabbit_Implant.labelNoun>
+
+
+  <!-- data implant -->
+
+  <DF_Data_Implant.label>數據植入物</DF_Data_Implant.label>
+  <DF_Data_Implant.description>一個已安裝的數據植入物</DF_Data_Implant.description>
+  <DF_Data_Implant.labelNoun>一個數據植入物</DF_Data_Implant.labelNoun>
+
+
+  <!-- havoc implant -->
+
+  <DF_Havoc_Implant.label>浩劫植入物</DF_Havoc_Implant.label>
+  <DF_Havoc_Implant.description>一個已安裝的浩劫植入物</DF_Havoc_Implant.description>
+  <DF_Havoc_Implant.labelNoun>一個浩劫植入物</DF_Havoc_Implant.labelNoun>
+
+
+</LanguageData>

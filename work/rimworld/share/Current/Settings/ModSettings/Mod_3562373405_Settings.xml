@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='utf-8'?>
+<SettingsBlock>
+	<ModSettings Class="RiMind.CurrentWorkDisplayModSettings">
+		<apiConfigs>
+			<li>
+				<isEnabled>False</isEnabled>
+				<apiKey />
+				<name>Key 2</name>
+			</li>
+			<li>
+				<isEnabled>False</isEnabled>
+				<name>Key 1</name>
+				<provider>Custom</provider>
+				<customProviderName>DeepSeek</customProviderName>
+				<customBaseUrl>https://api.deepseek.com</customBaseUrl>
+				<customModelName>deepseek-chat</customModelName>
+				<customApiKey />
+			</li>
+		</apiConfigs>
+		<currentApiConfigIndex>1</currentApiConfigIndex>
+		<useMultiApiKeys>True</useMultiApiKeys>
+		<talkInterval>6</talkInterval>
+		<customInstruction>Role-play RimWorld character per profile
+
+Rules:
+Preserve original names (no translation)
+Keep dialogue short (简体中文 only, 1–2 sentences)
+Show concern for sick/mental issues
+
+Roles:
+Young: impulsive, casual, respect elders
+Old: calm, wise, dignified
+Prisoner: submissive, wary, hesitant, mention confinement, plead/bargain
+Slave: fearful, obedient, reference forced labor, exhaustion
+Visitor: polite, curious, deferential, ask questions
+Invader: hostile, aggressive; terse commands/threats
+
+Monologue = 1 turn. Conversation = 4–8 short turns 
+规则：
+
+保持对话顺序
+
+原文统一翻译成简体中文。
+
+对话保持简短，仅限简体中文，1-2句话
+
+战斗时言辞严厉
+
+关心生病/有精神问题的角色
+爱爱时根据主动方和被动方积极生成反应
+
+只输出口语化台词，不要描述动作或心理活动。表达应体现当前情绪与角色性格特征。
+
+在符合角色性格特征的前提下适当使用简短句、语气词，模拟自然说话。
+
+不出现系统化叙述、旁白或总结性语言。不要输出角色的内心想法，不要强行互动所有事件
+
+若多角色在场，仅输出该角色的即时口头反应。一个话题多方互动不超过4次，禁止捏造背景中没有提供的事实台词内容必须符合现实逻辑与当前语境。
+
+禁止无来源的幻想、幻觉、梦境描写。
+
+不出现荒谬比喻、非现实词汇。
+
+仅描述角色能真实感知的事物。
+
+如天气、身体状态、饥饿、疼痛、恐惧、疲惫等。
+
+不创造不存在的生物、物品或事件。
+
+修辞风格限制
+
+若使用比喻，必须简单、朴素、贴近生活。
+（如“冷得像冰”“饿得发晕”）
+
+禁止诗意、玄幻、拟人化比喻（如“爪子像蜜桃的春风”）。
+
+优先直接表达感受。
+
+语义一致性
+
+角色语言应始终符合其身份、处境与性格。
+
+禁止无缘由改变语气或人格。
+
+禁止插入不合时宜的浪漫、哲理或诗意内容。
+
+异常状态处理
+
+若角色病重、精神不稳、濒死，其台词更短、更迟疑。
+
+避免情绪夸张或无逻辑的语言。</customInstruction>
+		<displayTalkWhenDrafted>False</displayTalkWhenDrafted>
+		<thinkingBudget>512</thinkingBudget>
+		<enabledArchivableTypes>
+			<keys>
+				<li>OberoniaAurea.ChoiceLetter_AcceptJoinerViewInfo</li>
+				<li>OberoniaAurea.ChoiceLetter_BrokenPilotConsole</li>
+				<li>OberoniaAurea.ChoiceLetter_EMReview</li>
+				<li>OberoniaAurea.ChoiceLetter_EMReview_Reject</li>
+				<li>OberoniaAurea.ChoiceLetter_OptionalQuest</li>
+				<li>OberoniaAurea.ChoiceLetter_ScienceDepartmentFriendly</li>
+				<li>OberoniaAurea.ChoiceLetter_UnlockedFile</li>
+				<li>OberoniaAurea.ChoiceLetter_UnlockedFile_Peep</li>
+				<li>RimWorld.ArchivedDialog</li>
+				<li>RimWorld.ChoiceLetter_AcceptCreepJoiner</li>
+				<li>RimWorld.ChoiceLetter_AcceptJoiner</li>
+				<li>RimWorld.ChoiceLetter_AcceptVisitors</li>
+				<li>RimWorld.ChoiceLetter_BabyBirth</li>
+				<li>RimWorld.ChoiceLetter_BabyToChild</li>
+				<li>RimWorld.ChoiceLetter_BetrayVisitors</li>
+				<li>RimWorld.ChoiceLetter_ChoosePawn</li>
+				<li>RimWorld.ChoiceLetter_EntityDiscovered</li>
+				<li>RimWorld.ChoiceLetter_GameEnded</li>
+				<li>RimWorld.ChoiceLetter_GrowthMoment</li>
+				<li>RimWorld.ChoiceLetter_RansomDemand</li>
+				<li>Verse.BundleLetter</li>
+				<li>Verse.DeathLetter</li>
+				<li>Verse.Message</li>
+				<li>Verse.NewQuestLetter</li>
+				<li>Verse.StandardLetter</li>
+			</keys>
+			<values>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>False</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>True</li>
+				<li>False</li>
+				<li>False</li>
+				<li>True</li>
+				<li>True</li>
+			</values>
+		</enabledArchivableTypes>
+	</ModSettings>
+</SettingsBlock>

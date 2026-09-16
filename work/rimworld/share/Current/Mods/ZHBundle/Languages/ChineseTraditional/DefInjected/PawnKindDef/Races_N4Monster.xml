@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- MOTHER END -->
+
+  <RH_DF_Mother.label>母體</RH_DF_Mother.label>
+  <RH_DF_Mother.labelPlural>母體</RH_DF_Mother.labelPlural>
+  <RH_DF_Mother.labelMale>男性 母體</RH_DF_Mother.labelMale>
+  <RH_DF_Mother.labelMalePlural>男性 母體</RH_DF_Mother.labelMalePlural>
+  <RH_DF_Mother.labelFemale>女性 母體</RH_DF_Mother.labelFemale>
+  <RH_DF_Mother.labelFemalePlural>女性 母體</RH_DF_Mother.labelFemalePlural>
+
+
+  <!-- TITAN END -->
+
+  <RH_Titan.label>泰坦</RH_Titan.label>
+  <RH_Titan.labelPlural>泰坦</RH_Titan.labelPlural>
+  <RH_Titan.labelMale>男性 泰坦</RH_Titan.labelMale>
+  <RH_Titan.labelMalePlural>男性 泰坦</RH_Titan.labelMalePlural>
+  <RH_Titan.labelFemale>女性 泰坦</RH_Titan.labelFemale>
+  <RH_Titan.labelFemalePlural>女性 泰坦</RH_Titan.labelFemalePlural>
+
+
+  <!-- WRAITH END -->
+
+  <RH_Wraith.label>幽靈</RH_Wraith.label>
+  <RH_Wraith.labelPlural>幽靈</RH_Wraith.labelPlural>
+  <RH_Wraith.labelMale>男性 幽靈</RH_Wraith.labelMale>
+  <RH_Wraith.labelMalePlural>男性 幽靈</RH_Wraith.labelMalePlural>
+  <RH_Wraith.labelFemale>女性 幽靈</RH_Wraith.labelFemale>
+  <RH_Wraith.labelFemalePlural>女性 幽靈</RH_Wraith.labelFemalePlural>
+
+
+  <!-- TITAN END -->
+
+  <RH_DFGiantSpider.label>巨型蜘蛛</RH_DFGiantSpider.label>
+  <RH_DFGiantSpider.labelPlural>巨型蜘蛛</RH_DFGiantSpider.labelPlural>
+  <RH_DFGiantSpider.labelMale>男性 巨型蜘蛛</RH_DFGiantSpider.labelMale>
+  <RH_DFGiantSpider.labelMalePlural>男性 巨型蜘蛛</RH_DFGiantSpider.labelMalePlural>
+  <RH_DFGiantSpider.labelFemale>女性 巨型蜘蛛</RH_DFGiantSpider.labelFemale>
+  <RH_DFGiantSpider.labelFemalePlural>女性 巨型蜘蛛</RH_DFGiantSpider.labelFemalePlural>
+
+
+</LanguageData>

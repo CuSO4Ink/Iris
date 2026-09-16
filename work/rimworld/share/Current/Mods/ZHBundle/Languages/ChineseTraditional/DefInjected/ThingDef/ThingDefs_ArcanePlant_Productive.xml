@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: purifimint -->
+  <VV_Purifimint.label>凈化薄荷</VV_Purifimint.label>
+  <!-- EN: a arcane plant that emits a small glow around it will slowly absorb toxic wastepacks placed, producing mana and also purifying the surrounding pollutions. It is also aesthetically pleasing and used for decoration.\n\nIf placed adjacent to a peashooter, it slightly increases the power of its peas when fired. If multiple richflowers or purifimints are adjacent, the effect stacks. -->
+  <VV_Purifimint.description>一種能夠發光的小型神秘植物，能緩慢吸收周圍的污染包（有毒垃圾），將其轉化為魔能并精華周圍的污染。凈化薄荷有一種令人愉悅的美感，可作為裝飾。\n\n當附近有豌豆射手時，凈化薄荷會稍微增加豌豆的傷害。復數凈化薄荷或沃土花相鄰時這一效果會疊加。</VV_Purifimint.description>
+  <!-- EN: Wastepack -->
+  <VV_Purifimint.comps.CompRefuelable.fuelGizmoLabel>污染包</VV_Purifimint.comps.CompRefuelable.fuelGizmoLabel>
+  <!-- EN: Wastepack -->
+  <VV_Purifimint.comps.CompRefuelable.fuelLabel>污染包</VV_Purifimint.comps.CompRefuelable.fuelLabel>
+  
+  <!-- EN: radiantflower -->
+  <VV_Radiantflower.label>輻日葵</VV_Radiantflower.label>
+  <!-- EN: a arcane flower resembling a sunflower that converts sunlight into mana. In environments where sunlight is blocked by roofs and cannot be received, it consumes mana to emit strong light that allows crops to grow in the vicinity. -->
+  <VV_Radiantflower.description>一種類似向日葵的神秘花朵，能吸收陽光轉化為魔能。在被屋頂阻擋而無法吸收陽光的環境中，它會消耗魔能來發出強光，使作物能在附近生長。</VV_Radiantflower.description>
+  
+  <!-- EN: richflower -->
+  <VV_Richflower.label>沃土花</VV_Richflower.label>
+  <!-- EN: a arcane flower with large petals that periodically spreads pollen on the surrounding ground and yields a lot of honey when harvested.\n\nGenerates mana proportional to the soil's fertility and slowly enriches nearby soil and increases the growth speed of adjacent arcane plant seedlings by 10%.\n\nIf placed adjacent to a peashooter, it slightly increases the power of its peas when fired. If multiple richflowers or purifimints are adjacent, the effect stacks. -->
+  <VV_Richflower.description>一種神秘花朵，擁有巨大的花瓣，能周期性地在周圍散播花粉，收獲時能產生大量蜂蜜。\n\n它能從基于土地肥力產生魔能，并緩慢增加周圍土壤肥力，且能令相鄰神秘植物生長速度增加10%。\n\n當附近有豌豆射手時，凈化薄荷會稍微增加豌豆的傷害。復數凈化薄荷或沃土花相鄰時這一效果會疊加。</VV_Richflower.description>
+  
+  <!-- EN: starlitflower -->
+  <VV_Starlitflower.label>星輝花</VV_Starlitflower.label>
+  <!-- EN: a arcane flower blooms exclusively at night, generating and emitting mana while radiating light. During the day, the flower wilts and absorbs a small amount of mana.\n\nIt always produces mana in space, but at a reduced rate. It also generates a field that grants nearby units vacuum resistance. -->
+  <VV_Starlitflower.description>一種只在夜間開放的神秘花朵，會同時放出光芒和魔能。在晝間，星輝花會枯萎并吸收少量魔能。\n\n若處在太空中，星輝花將持續但略慢地產出魔能，且生成為周圍單位提供真空抗性的力場。</VV_Starlitflower.description>
+  
+  <!-- EN: waterdrops -->
+  <VV_Waterdrops.label>滴水蘭</VV_Waterdrops.label>
+  <!-- EN: a arcane flower shaped like a water droplet that absorbs surrounding water and converts it into mana. It can also be planted on water, and the more adjacent water tiles there are, the more mana it produces. When it detects a nearby fire, it converts stored mana into water and ejects it to extinguish the fire.\n\nHoneywater fruits periodically grow; once fully ripe, they fall to the ground and can be eaten or used as decorations. -->
+  <VV_Waterdrops.description>一種神秘花朵，形狀很像水滴，可以吸收周圍的水并將其轉化為魔能。它也可以種植在水上，相鄰的水域越多，它產生的魔能就越多。當它探測到附近有火時，它會將儲存的魔能轉化為水并噴出以滅火。\n\n滴水蘭會周期性長出蜜水果，蜜水果成熟時會落到地上，可被食用或用作裝飾。</VV_Waterdrops.description>
+  
+</LanguageData>

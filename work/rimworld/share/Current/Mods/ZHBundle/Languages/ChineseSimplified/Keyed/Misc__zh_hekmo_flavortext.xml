@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: Lax Recipe Matching -->
+  <laxRecipeMatching>宽松配方匹配</laxRecipeMatching>
+	<!-- EN: If a modded meal kind is present, labels for that meal kind will still appear on the normal vanilla meals. E.g. if modded soups are present, "egg drop soup" can still appear as the name for a simple meal.\n\nWill take effect on game restart. -->
+  <laxRecipeMatchingTooltip>如果存在模组添加的餐食种类，那么该餐食种类的标签仍会出现在普通的原版餐食上。例如，如果存在模组添加的汤类，“蛋花汤”仍可能作为简单餐食的名称出现。</laxRecipeMatchingTooltip>
+
+	<!-- EN: Dynamic Meal Incorporation -->
+  <dynamicMealIncorporation>动态餐点整合</dynamicMealIncorporation>
+	<!-- EN: Flavor Text will attempt to find extra meals that should receive flavor text, outside of those vanilla and modded ones explicitly defined. May occasionaly pick up inappropriate meals.\n\nWill take effect on game restart. -->
+  <dynamicMealIncorporationTooltip>风味文本功能将尝试寻找应获得风味文本的额外餐点，包括那些未明确定义的的原版或模组餐点。偶尔可能会选取到不合适的餐点。</dynamicMealIncorporationTooltip>
+
+</LanguageData>

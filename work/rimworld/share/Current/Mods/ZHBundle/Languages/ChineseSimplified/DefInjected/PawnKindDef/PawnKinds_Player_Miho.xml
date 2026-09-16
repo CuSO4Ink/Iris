@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Miho colonist (Caster) -->
+  <Miho_PlayerColonist.label>美狐殖民者（灵能者）</Miho_PlayerColonist.label>
+  
+  <!-- EN: 정착지 미호 -->
+  <Miho_PlayerColonistBorn.label>美狐殖民者</Miho_PlayerColonistBorn.label>
+  
+  <!-- EN: 야생 미호 -->
+  <Miho_PlayerColonistFeral.label>野生美狐</Miho_PlayerColonistFeral.label>
+  
+  <!-- EN: Miho colonist -->
+  <Miho_PlayerColonistNonMagic.label>美狐殖民者</Miho_PlayerColonistNonMagic.label>
+  
+</LanguageData>

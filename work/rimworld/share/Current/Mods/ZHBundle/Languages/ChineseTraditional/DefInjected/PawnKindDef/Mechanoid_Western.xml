@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: centipede sheriff -->
+  <Mech_CentipedeSheriff.label>機械蜈蚣治安官</Mech_CentipedeSheriff.label>
+  <!-- EN: centipede sheriffs -->
+  <Mech_CentipedeSheriff.labelPlural>機械蜈蚣治安官</Mech_CentipedeSheriff.labelPlural>
+  
+  <!-- EN: militor "Courier Six" -->
+  <Mech_CourierSix.label>“六號郵差”微力者</Mech_CourierSix.label>
+  
+  <!-- EN: militor "Gun Slinger" -->
+  <Mech_GunSlinger.label>“西部槍手”微力者</Mech_GunSlinger.label>
+  
+</LanguageData>

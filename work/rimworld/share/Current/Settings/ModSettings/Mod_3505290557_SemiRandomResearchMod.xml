@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="CM_Semi_Random_Research.SemiRandomResearchModSettings">
+		<allowManualReroll>Once</allowManualReroll>
+		<amountSelection>PerColonist</amountSelection>
+		<reofferAfterAmountOfRerolls>10</reofferAfterAmountOfRerolls>
+		<availableProjectCount>1</availableProjectCount>
+		<additionalProjectPerXColonists>1</additionalProjectPerXColonists>
+		<maxProjectCount>20</maxProjectCount>
+		<progressAddsChoice>AddChoice</progressAddsChoice>
+		<allowOneHigherTechProject>True</allowOneHigherTechProject>
+		<allowSwitchingResearch>True</allowSwitchingResearch>
+		<equalizeCost>True</equalizeCost>
+		<experimentalAnomalySupport>True</experimentalAnomalySupport>
+	</ModSettings>
+</SettingsBlock>

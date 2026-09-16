@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RH_VOID.label>???</RH_VOID.label>
+  <RH_VOID.description>V.O.I.D.是一家星際企業集團，該集團由「Omnitech Viral Intelligence Development」(簡稱OVID)和「Voidtech」組成，並以其在航空航天、仿生學和醫用製藥這三個方面的突破性科學成果而聞名。\n\nOVID被指控在多個中寰世界和都市世界引發了數次災難性的病毒爆發。作為一家公司，他們的使命是找到治愈死亡的方法，不計代價。\n至於二級子公司「Voidtech」，他們為V.O.I.D.秘密生產仿生部件和武器裝備，只有極其富有的個人才會成為他們的目標客戶。\n\nV.O.I.D.的起源仍然眾說紛紜。據說，他們的神奇藥丸「Nerotonin」是從「Secronom」公司竊取而來的技術。傳言稱，V.O.I.D.操縱著不同世界的地緣政治以謀求利益或作為個人娛樂。</RH_VOID.description>
+  <RH_VOID.fixedName>V.O.I.D.</RH_VOID.fixedName>
+  <RH_VOID.pawnsPlural>職員</RH_VOID.pawnsPlural>
+  <RH_VOID.leaderTitle>高管</RH_VOID.leaderTitle>
+  <RH_VOID.pawnSingular>職員</RH_VOID.pawnSingular>
+  <RH_VOID.modExtensions.0.customIdeoDescription>只有通過混亂才能建立真正的秩序。人類的是非觀念過於主觀，因此並不可靠，那些沒有意願衝破道德和個人弱點束縛的人應該被排除在外。儘管如此，不必要的殘忍和令人厭惡的野蠻行爲在我們的文化中並不受歡迎，至於背信棄義的行徑更爲可恥。如果我們尊重他人，甚至尊重我們的敵人，那麼作爲他們未來的統治者，我們就樹立了一個很好的榜樣。\n\n有一種比我們所有人都強大的事物，它遲早會毀滅我們所有人。只有通過人類的干預、研究和大量犧牲，才能建立一個真正的烏托邦，進而超越一切自然限制，乃至戰勝死亡本身。我們能夠通過大自然提供的工具操縱現實，至於其中造成的犧牲都無關緊要，不擇手段。爲了不讓其他人阻礙我們實現這一遠大的目標，我們必須征服所有人。</RH_VOID.modExtensions.0.customIdeoDescription>
+
+</LanguageData>

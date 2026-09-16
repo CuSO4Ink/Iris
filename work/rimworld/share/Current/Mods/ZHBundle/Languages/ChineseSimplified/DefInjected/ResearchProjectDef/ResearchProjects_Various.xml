@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: caster gear -->
+  <VPE_CasterGear.label>灵能者装备</VPE_CasterGear.label>
+  <!-- EN: Craft simple psycaster apparel, armor and gear using eltex. -->
+  <VPE_CasterGear.description>用灵质制作简单的灵能者装备。</VPE_CasterGear.description>
+  <!-- EN:
+    <li>subject->innovation's path</li>
+    <li>subject_story->unveiled simple truths behind complex phenomena</li>
+    <li>subject_story->simplified the intricate to make way for practical applications</li>
+    <li>subject_story->harnessed basic principles to achieve remarkable feats</li>
+    <li>subject_gerund->streamlining the essence of discovery</li>
+    <li>subject->building blocks of progress</li>
+    <li>subject_story->laid the groundwork for monumental leaps forward</li>
+    <li>subject_story->connected dots across disciplines to reveal new insights</li>
+    <li>subject_story->crafted the foundation upon which future innovations stand</li>
+    <li>subject_gerund->laying down the keystones of advancement</li>
+    <li>subject->seeds of tomorrow</li>
+    <li>subject_story->planted ideas that would grow into transformative solutions</li>
+    <li>subject_story->cultivated a garden of knowledge, ripe with potential</li>
+    <li>subject_story->nurtured the roots of change with care and foresight</li>
+    <li>subject_gerund->sowing the future with today’s discoveries</li>
+    <li>subject->the ripple of curiosity</li>
+    <li>subject_story->set forth waves of inquiry that echoed through time</li>
+    <li>subject_story->dropped pebbles of innovation into the pond of knowledge</li>
+    <li>subject_story->watched as one question led to another, expanding the circle of understanding</li>
+    <li>subject_gerund->casting stones to create waves of progress</li>
+    <li>subject->the alchemy of progress</li>
+    <li>subject_story->merged disparate disciplines to unlock new realms of possibility</li>
+    <li>subject_story->turned the impossible into the inevitable through sheer ingenuity</li>
+    <li>subject_story->crafted solutions that reshaped the understanding of what's achievable</li>
+    <li>subject_gerund->blending science and magic into the fabric of reality</li>
+    <li>subject->the tapestry of discovery</li>
+    <li>subject_story->wove together threads of knowledge from the four corners of the world</li>
+    <li>subject_story->revealed patterns in the chaos, charting paths to untold innovations</li>
+    <li>subject_story->embroidered the annals of history with tales of serendipitous breakthroughs</li>
+    <li>subject_gerund->weaving the future from the loom of the present</li>
+    <li>subject->the crucible of creation</li>
+    <li>subject_story->fused raw elements into the building blocks of tomorrow</li>
+    <li>subject_story->tempered the fires of creativity to forge unprecedented technologies</li>
+    <li>subject_story->quenched the thirst for knowledge with the elixir of invention</li>
+    <li>subject_gerund->molding the raw materials of today into the artifacts of the future</li>
+    <li>subject->the beacon of enlightenment</li>
+    <li>subject_story->illuminated the dark corners of ignorance, guiding the way forward</li>
+    <li>subject_story->cast light on the unknown, making the unseen visible to curious minds</li>
+    <li>subject_story->ignited the flames of curiosity, kindling a worldwide pursuit of understanding</li>
+    <li>subject_gerund->lighting the torches of progress and knowledge</li>
+    <li>subject->the frontier of knowledge</li>
+    <li>subject_story->crossed new horizons in the pursuit of understanding</li>
+    <li>subject_story->challenged the status quo with groundbreaking theories</li>
+    <li>subject_story->merged ancient wisdom with modern technology for innovative solutions</li>
+    <li>subject_gerund->pushing the boundaries of science and art</li>
+    <li>subject->the essence of innovation</li>
+    <li>subject_story->transformed everyday materials into extraordinary tools</li>
+    <li>subject_story->paved the way for future generations with sustainable practices</li>
+    <li>subject_story->harnessed the power of nature to fuel new advancements</li>
+    <li>subject_gerund->fostering an ecosystem of creativity and progress</li>
+    <li>subject->the architects of tomorrow</li>
+    <li>subject_story->built the foundations for a utopia where technology serves all</li>
+    <li>subject_story->envisioned a future where harmony between technology and nature thrives</li>
+    <li>subject_story->crafted tools that empower humanity to reach its fullest potential</li>
+    <li>subject_gerund->laying the keystones for future landscapes</li>
+    <li>subject->exploratory leaps</li>
+    <li>subject_story->stepped boldly into uncharted territories of knowledge</li>
+    <li>subject_story->bridged the gap between the known and the unknown</li>
+    <li>subject_story->ventured where curiosity dared to lead</li>
+    <li>subject_gerund->embarking on journeys of discovery</li>
+    <li>subject->the essence of ingenuity</li>
+    <li>subject_story->transformed challenges into opportunities for growth</li>
+    <li>subject_story->applied creative thinking to overcome traditional obstacles</li>
+    <li>subject_story->crafted elegant solutions with a blend of art and science</li>
+    <li>subject_gerund->unlocking potential through innovation</li>
+    <li>subject->knowledge’s harvest</li>
+    <li>subject_story->gathered insights as one reaps the fields at harvest</li>
+    <li>subject_story->cultivated a bounty of understanding from the seeds of inquiry</li>
+    <li>subject_story->shared the fruits of research with the world</li>
+    <li>subject_gerund->reaping the rewards of relentless curiosity</li>
+    <li>subject->the puzzle of progress</li>
+    <li>subject_story->assembled the pieces of mystery to reveal the big picture</li>
+    <li>subject_story->matched theory with practice to solve longstanding puzzles</li>
+    <li>subject_story->uncovered hidden connections that unlocked new possibilities</li>
+    <li>subject_gerund->piecing together the elements of advancement</li>
+  -->
+  <VPE_CasterGear.generalRules.rulesStrings>
+    <li>subject->改革之路</li>
+    <li>subject_story->揭开隐藏于复杂现象背后的简单真理</li>
+    <li>subject_story->简化结构并将重心放在实用性上</li>
+    <li>subject_story->利用基本原理实现辉煌成就</li>
+    <li>subject_gerund->精炼所发现的本质</li>
+    <li>subject->进步的基石</li>
+    <li>subject_story->为取得重大突破奠定了基础</li>
+    <li>subject_story->将多个学科的交汇点连接起来，以此形成新的见解</li>
+    <li>subject_story->为未来的改革观点打下基础</li>
+    <li>subject_gerund->正为进步发展奠定基础</li>
+    <li>subject->明日之种</li>
+    <li>subject_story->根植于心的想法将会成长为革新性的解决方案</li>
+    <li>subject_story->栽培了成熟且有潜力的知识花园</li>
+    <li>subject_story->以细心和远见培养变化的根源</li>
+    <li>subject_gerund->以今日的发现播种未来</li>
+    <li>subject->求知欲的涟漪</li>
+    <li>subject_story->发起的阵阵询问在时间中回响</li>
+    <li>subject_story->将象征改革的小石子丢入知识的池塘中</li>
+    <li>subject_story->观察着接连不断产生的问题，拓宽了自己的理解能力</li>
+    <li>subject_gerund->投出石块以创造出进步的波浪</li>
+    <li>subject->进步带来的强大力量</li>
+    <li>subject_story->融合各种不同的学科以揭示可能性的新领域</li>
+    <li>subject_story->通过十足的独创力来讲原本不可能之事变为必然</li>
+    <li>subject_story->提出的解决方案改变了人们对事物可行性的认知</li>
+    <li>subject_gerund->将科学与魔法融入现实的结构中</li>
+    <li>subject->名为“发现”的挂毯</li>
+    <li>subject_story->将来自世界各地的知识之线编织在一起</li>
+    <li>subject_story->揭示了混乱中的有序，为数不尽的改革创新绘制道路</li>
+    <li>subject_story->将偶然间产生技术突破的故事绣缝在史书中</li>
+    <li>subject_gerund->用名为“现在”的织布机纺制未来</li>
+    <li>subject->创造的大熔炉</li>
+    <li>subject_story->将基础元素融入到明天的基石中</li>
+    <li>subject_story->调合创造力之火，打造空前绝后的新技术</li>
+    <li>subject_story->用名为“创造”的圣水解知识之渴</li>
+    <li>subject_gerund->将名为“今天”的原材料筑成被称作“未来”的圣器</li>
+    <li>subject->启迪的灯塔</li>
+    <li>subject_story->照亮了无知且黑暗的角落，为前行的人们指引方向</li>
+    <li>subject_story->照亮未知以让求知者们发现无形之物</li>
+    <li>subject_story->燃起求知欲的火焰，让全世界陷入寻求理解的热潮中</li>
+    <li>subject_gerund->点燃进步与知识的火把</li>
+    <li>subject->知识的开拓者</li>
+    <li>subject_story->在寻求理解时跨入了新天地</li>
+    <li>subject_story->以突破性理论挑战现状</li>
+    <li>subject_story->通过融合远古智慧与现代技术来创造革新的解决方案</li>
+    <li>subject_gerund->突破科学与艺术的界限</li>
+    <li>subject->改革的本质</li>
+    <li>subject_story->将平时随处可见的材料转化成非凡的工具</li>
+    <li>subject_story->坚持可持续发展的原则，为后人铺平道路</li>
+    <li>subject_story->利用大自然的力量驱动新发展</li>
+    <li>subject_gerund->培养创造力与进步的生态系统</li>
+    <li>subject->缔造明天</li>
+    <li>subject_story->为技术造福大众的乌托邦奠定了基础</li>
+    <li>subject_story->想象了一个技术与自然和谐共处的繁荣未来</li>
+    <li>subject_story->制造了能让人类发挥最大潜力的工具</li>
+    <li>subject_gerund->为未来的愿景奠定基石</li>
+    <li>subject->探索的飞跃</li>
+    <li>subject_story->大胆地迈向未知领域</li>
+    <li>subject_story->弥补未知与已知间的差距</li>
+    <li>subject_story->在求知欲促动的地方冒险</li>
+    <li>subject_gerund->踏上探索之旅</li>
+    <li>subject->独创力的本质</li>
+    <li>subject_story->将挑战转化为成长机会</li>
+    <li>subject_story->运用创造性思维来攻克传统观念上的阻碍</li>
+    <li>subject_story->创造融合了艺术与科学的华丽解决方案</li>
+    <li>subject_gerund->通过改革创新释放潜能</li>
+    <li>subject->知识的丰获</li>
+    <li>subject_story->收获了独到的见解</li>
+    <li>subject_story->用探究之种培育了渊博的见识</li>
+    <li>subject_story->与全世界分享研究成果</li>
+    <li>subject_gerund->取得无穷的求知欲所带来的回报</li>
+    <li>subject->进步的难题</li>
+    <li>subject_story->将神秘的碎片组装起来以纵览全局</li>
+    <li>subject_story->将理论与实践想搭配以解决长期存在的难题</li>
+    <li>subject_story->发现隐藏的关系以解开新的可能性</li>
+    <li>subject_gerund->将发展所需的元素拼起来</li>
+  </VPE_CasterGear.generalRules.rulesStrings>
+  
+  <!-- EN: eltex gear -->
+  <VPE_EltexGear.label>灵质装备</VPE_EltexGear.label>
+  <!-- EN: Tailor and craft complex eltex apparel, capable of improving psychic focus of your psycasters, as well as an eltex-infused staff. -->
+  <VPE_EltexGear.description>用灵质编制复杂的衣物，和赋有灵质的权杖，它们可以增加灵能者的心灵集中。</VPE_EltexGear.description>
+  <!-- EN:
+    <li>subject->innovation's path</li>
+    <li>subject_story->unveiled simple truths behind complex phenomena</li>
+    <li>subject_story->simplified the intricate to make way for practical applications</li>
+    <li>subject_story->harnessed basic principles to achieve remarkable feats</li>
+    <li>subject_gerund->streamlining the essence of discovery</li>
+    <li>subject->building blocks of progress</li>
+    <li>subject_story->laid the groundwork for monumental leaps forward</li>
+    <li>subject_story->connected dots across disciplines to reveal new insights</li>
+    <li>subject_story->crafted the foundation upon which future innovations stand</li>
+    <li>subject_gerund->laying down the keystones of advancement</li>
+    <li>subject->seeds of tomorrow</li>
+    <li>subject_story->planted ideas that would grow into transformative solutions</li>
+    <li>subject_story->cultivated a garden of knowledge, ripe with potential</li>
+    <li>subject_story->nurtured the roots of change with care and foresight</li>
+    <li>subject_gerund->sowing the future with today’s discoveries</li>
+    <li>subject->the ripple of curiosity</li>
+    <li>subject_story->set forth waves of inquiry that echoed through time</li>
+    <li>subject_story->dropped pebbles of innovation into the pond of knowledge</li>
+    <li>subject_story->watched as one question led to another, expanding the circle of understanding</li>
+    <li>subject_gerund->casting stones to create waves of progress</li>
+    <li>subject->the alchemy of progress</li>
+    <li>subject_story->merged disparate disciplines to unlock new realms of possibility</li>
+    <li>subject_story->turned the impossible into the inevitable through sheer ingenuity</li>
+    <li>subject_story->crafted solutions that reshaped the understanding of what's achievable</li>
+    <li>subject_gerund->blending science and magic into the fabric of reality</li>
+    <li>subject->the tapestry of discovery</li>
+    <li>subject_story->wove together threads of knowledge from the four corners of the world</li>
+    <li>subject_story->revealed patterns in the chaos, charting paths to untold innovations</li>
+    <li>subject_story->embroidered the annals of history with tales of serendipitous breakthroughs</li>
+    <li>subject_gerund->weaving the future from the loom of the present</li>
+    <li>subject->the crucible of creation</li>
+    <li>subject_story->fused raw elements into the building blocks of tomorrow</li>
+    <li>subject_story->tempered the fires of creativity to forge unprecedented technologies</li>
+    <li>subject_story->quenched the thirst for knowledge with the elixir of invention</li>
+    <li>subject_gerund->molding the raw materials of today into the artifacts of the future</li>
+    <li>subject->the beacon of enlightenment</li>
+    <li>subject_story->illuminated the dark corners of ignorance, guiding the way forward</li>
+    <li>subject_story->cast light on the unknown, making the unseen visible to curious minds</li>
+    <li>subject_story->ignited the flames of curiosity, kindling a worldwide pursuit of understanding</li>
+    <li>subject_gerund->lighting the torches of progress and knowledge</li>
+    <li>subject->the frontier of knowledge</li>
+    <li>subject_story->crossed new horizons in the pursuit of understanding</li>
+    <li>subject_story->challenged the status quo with groundbreaking theories</li>
+    <li>subject_story->merged ancient wisdom with modern technology for innovative solutions</li>
+    <li>subject_gerund->pushing the boundaries of science and art</li>
+    <li>subject->the essence of innovation</li>
+    <li>subject_story->transformed everyday materials into extraordinary tools</li>
+    <li>subject_story->paved the way for future generations with sustainable practices</li>
+    <li>subject_story->harnessed the power of nature to fuel new advancements</li>
+    <li>subject_gerund->fostering an ecosystem of creativity and progress</li>
+    <li>subject->the architects of tomorrow</li>
+    <li>subject_story->built the foundations for a utopia where technology serves all</li>
+    <li>subject_story->envisioned a future where harmony between technology and nature thrives</li>
+    <li>subject_story->crafted tools that empower humanity to reach its fullest potential</li>
+    <li>subject_gerund->laying the keystones for future landscapes</li>
+    <li>subject->exploratory leaps</li>
+    <li>subject_story->stepped boldly into uncharted territories of knowledge</li>
+    <li>subject_story->bridged the gap between the known and the unknown</li>
+    <li>subject_story->ventured where curiosity dared to lead</li>
+    <li>subject_gerund->embarking on journeys of discovery</li>
+    <li>subject->the essence of ingenuity</li>
+    <li>subject_story->transformed challenges into opportunities for growth</li>
+    <li>subject_story->applied creative thinking to overcome traditional obstacles</li>
+    <li>subject_story->crafted elegant solutions with a blend of art and science</li>
+    <li>subject_gerund->unlocking potential through innovation</li>
+    <li>subject->knowledge’s harvest</li>
+    <li>subject_story->gathered insights as one reaps the fields at harvest</li>
+    <li>subject_story->cultivated a bounty of understanding from the seeds of inquiry</li>
+    <li>subject_story->shared the fruits of research with the world</li>
+    <li>subject_gerund->reaping the rewards of relentless curiosity</li>
+    <li>subject->the puzzle of progress</li>
+    <li>subject_story->assembled the pieces of mystery to reveal the big picture</li>
+    <li>subject_story->matched theory with practice to solve longstanding puzzles</li>
+    <li>subject_story->uncovered hidden connections that unlocked new possibilities</li>
+    <li>subject_gerund->piecing together the elements of advancement</li>
+  -->
+  <VPE_EltexGear.generalRules.rulesStrings>
+    <li>subject->改革之路</li>
+    <li>subject_story->揭开隐藏于复杂现象背后的简单真理</li>
+    <li>subject_story->简化结构并将重心放在实用性上</li>
+    <li>subject_story->利用基本原理实现辉煌成就</li>
+    <li>subject_gerund->精炼所发现的本质</li>
+    <li>subject->进步的基石</li>
+    <li>subject_story->为取得重大突破奠定了基础</li>
+    <li>subject_story->将多个学科的交汇点连接起来，以此形成新的见解</li>
+    <li>subject_story->为未来的改革观点打下基础</li>
+    <li>subject_gerund->正为进步发展奠定基础</li>
+    <li>subject->明日之种</li>
+    <li>subject_story->根植于心的想法将会成长为革新性的解决方案</li>
+    <li>subject_story->栽培了成熟且有潜力的知识花园</li>
+    <li>subject_story->以细心和远见培养变化的根源</li>
+    <li>subject_gerund->以今日的发现播种未来</li>
+    <li>subject->求知欲的涟漪</li>
+    <li>subject_story->发起的阵阵询问在时间中回响</li>
+    <li>subject_story->将象征改革的小石子丢入知识的池塘中</li>
+    <li>subject_story->观察着接连不断产生的问题，拓宽了自己的理解能力</li>
+    <li>subject_gerund->投出石块以创造出进步的波浪</li>
+    <li>subject->进步带来的强大力量</li>
+    <li>subject_story->融合各种不同的学科以揭示可能性的新领域</li>
+    <li>subject_story->通过十足的独创力来讲原本不可能之事变为必然</li>
+    <li>subject_story->提出的解决方案改变了人们对事物可行性的认知</li>
+    <li>subject_gerund->将科学与魔法融入现实的结构中</li>
+    <li>subject->名为“发现”的挂毯</li>
+    <li>subject_story->将来自世界各地的知识之线编织在一起</li>
+    <li>subject_story->揭示了混乱中的有序，为数不尽的改革创新绘制道路</li>
+    <li>subject_story->将偶然间产生技术突破的故事绣缝在史书中</li>
+    <li>subject_gerund->用名为“现在”的织布机纺制未来</li>
+    <li>subject->创造的大熔炉</li>
+    <li>subject_story->将基础元素融入到明天的基石中</li>
+    <li>subject_story->调合创造力之火，打造空前绝后的新技术</li>
+    <li>subject_story->用名为“创造”的圣水解知识之渴</li>
+    <li>subject_gerund->将名为“今天”的原材料筑成被称作“未来”的圣器</li>
+    <li>subject->启迪的灯塔</li>
+    <li>subject_story->照亮了无知且黑暗的角落，为前行的人们指引方向</li>
+    <li>subject_story->照亮未知以让求知者们发现无形之物</li>
+    <li>subject_story->燃起求知欲的火焰，让全世界陷入寻求理解的热潮中</li>
+    <li>subject_gerund->点燃进步与知识的火把</li>
+    <li>subject->知识的开拓者</li>
+    <li>subject_story->在寻求理解时跨入了新天地</li>
+    <li>subject_story->以突破性理论挑战现状</li>
+    <li>subject_story->通过融合远古智慧与现代技术来创造革新的解决方案</li>
+    <li>subject_gerund->突破科学与艺术的界限</li>
+    <li>subject->改革的本质</li>
+    <li>subject_story->将平时随处可见的材料转化成非凡的工具</li>
+    <li>subject_story->坚持可持续发展的原则，为后人铺平道路</li>
+    <li>subject_story->利用大自然的力量驱动新发展</li>
+    <li>subject_gerund->培养创造力与进步的生态系统</li>
+    <li>subject->缔造明天</li>
+    <li>subject_story->为技术造福大众的乌托邦奠定了基础</li>
+    <li>subject_story->想象了一个技术与自然和谐共处的繁荣未来</li>
+    <li>subject_story->制造了能让人类发挥最大潜力的工具</li>
+    <li>subject_gerund->为未来的愿景奠定基石</li>
+    <li>subject->探索的飞跃</li>
+    <li>subject_story->大胆地迈向未知领域</li>
+    <li>subject_story->弥补未知与已知间的差距</li>
+    <li>subject_story->在求知欲促动的地方冒险</li>
+    <li>subject_gerund->踏上探索之旅</li>
+    <li>subject->独创力的本质</li>
+    <li>subject_story->将挑战转化为成长机会</li>
+    <li>subject_story->运用创造性思维来攻克传统观念上的阻碍</li>
+    <li>subject_story->创造融合了艺术与科学的华丽解决方案</li>
+    <li>subject_gerund->通过改革创新释放潜能</li>
+    <li>subject->知识的丰获</li>
+    <li>subject_story->收获了独到的见解</li>
+    <li>subject_story->用探究之种培育了渊博的见识</li>
+    <li>subject_story->与全世界分享研究成果</li>
+    <li>subject_gerund->取得无穷的求知欲所带来的回报</li>
+    <li>subject->进步的难题</li>
+    <li>subject_story->将神秘的碎片组装起来以纵览全局</li>
+    <li>subject_story->将理论与实践想搭配以解决长期存在的难题</li>
+    <li>subject_story->发现隐藏的关系以解开新的可能性</li>
+    <li>subject_gerund->将发展所需的元素拼起来</li>
+  </VPE_EltexGear.generalRules.rulesStrings>
+  
+</LanguageData>

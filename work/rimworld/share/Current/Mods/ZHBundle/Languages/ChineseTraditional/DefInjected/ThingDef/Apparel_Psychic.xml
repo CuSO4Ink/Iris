@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: eltex cape -->
+  <VPE_Apparel_EltexCape.label>靈質披肩</VPE_Apparel_EltexCape.label>
+  <!-- EN: A long cape of mystical design. It hangs over one side of the torso. Its special materials enhance the wearer's psychic sensitivity and dissipate neural heat. -->
+  <VPE_Apparel_EltexCape.description>造型神秘的長披肩。懸於軀幹的一側之上。它特殊的材料增加了佩戴者的心靈敏感度，並且能夠更快地驅散心靈熵。</VPE_Apparel_EltexCape.description>
+  
+  <!-- EN: eltex mask -->
+  <VPE_Apparel_EltexMask.label>靈質面具</VPE_Apparel_EltexMask.label>
+  <!-- EN: An artistically impressive mask emanating psychic energy. Hides the face of the wearer but provides little physical protection. Its special materials enhance the wearer's psychic sensitivity and dissipate neural heat. -->
+  <VPE_Apparel_EltexMask.description>一張十分精美的面具，散發着靈能的光芒。它會隱藏佩戴者的面部，但不會提供太多保護。它特殊的材料增加了佩戴者的心靈敏感度，並且能夠更快地驅散心靈熵。</VPE_Apparel_EltexMask.description>
+  
+</LanguageData>

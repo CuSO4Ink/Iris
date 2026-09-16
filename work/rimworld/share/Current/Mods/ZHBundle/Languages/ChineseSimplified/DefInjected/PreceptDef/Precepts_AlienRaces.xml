@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: abhorrent -->
+  <HAR_AlienRaces_Abhorrent.label>厌恶</HAR_AlienRaces_Abhorrent.label>
+  <!-- EN: Xenos shouldn’t even think of trying to make friends with our kind. They wish for nothing but our demise and we won’t tolerate being around them. -->
+  <HAR_AlienRaces_Abhorrent.description>那些外星种族甚至都不想和我们做朋友。他们只希望我们趁早死掉，而我们也不能容忍他们在周围乱晃。</HAR_AlienRaces_Abhorrent.description>
+  
+  <!-- EN: exalted -->
+  <HAR_AlienRaces_Exalted.label>高尚</HAR_AlienRaces_Exalted.label>
+  <!-- EN: Xenos from beyond our solar system are incredible, and we’re blessed to serve the role as their cordial hosts. -->
+  <HAR_AlienRaces_Exalted.description>这些来自母星系外的种族真是令人不可思议，我们很荣幸能成为热情接待他们的东道主。</HAR_AlienRaces_Exalted.description>
+  
+  <!-- EN: disliked -->
+  <HAR_AlienRaces_Horrible.label>反感</HAR_AlienRaces_Horrible.label>
+  <!-- EN: Xenos are different from us - too different. We need to be watchful and keep them at arm's length. -->
+  <HAR_AlienRaces_Horrible.description>外星种族和我们间的差异实在是太大了。我们需要时刻警惕并与他们保持距离。</HAR_AlienRaces_Horrible.description>
+  
+  <!-- EN: respected -->
+  <HAR_AlienRaces_Respected.label>重视</HAR_AlienRaces_Respected.label>
+  <!-- EN: Xenos from beyond our home world deserve our admiration. -->
+  <HAR_AlienRaces_Respected.description>这些来自我们家园之外的种族值得敬佩。</HAR_AlienRaces_Respected.description>
+  
+  <!-- EN: neutral -->
+  <HAR_AlienRaces_Standard.label>中立</HAR_AlienRaces_Standard.label>
+  <!-- EN: Xenos from beyond should be seen as no lesser or greater than us. -->
+  <HAR_AlienRaces_Standard.description>外星种族和我们没什么不同。</HAR_AlienRaces_Standard.description>
+  
+</LanguageData>

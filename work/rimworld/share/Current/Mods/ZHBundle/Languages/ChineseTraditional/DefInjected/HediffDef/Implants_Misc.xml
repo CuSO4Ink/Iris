@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: brain parasite -->
+  <BrainParasites.label>洗腦惑蟲</BrainParasites.label>
+  <!-- EN: An implanted brain parasite. -->
+  <BrainParasites.description>用於洗腦人類並將他們轉化為活體“特洛伊木馬”的歿疫寄生物。如果被寄生者因過度疼痛而倒地，則洗腦惑蟲會迫使其體內的膿腐蜱蟲加速孵化並破體而出。EMP傷害會使被寄生者陷入“大腦休克”狀態，此時可通過手術移除洗腦惑蟲來幫助他們擺脫控製。</BrainParasites.description>
+  <!-- EN: a brain parasite -->
+  <BrainParasites.labelNoun>洗腦惑蟲</BrainParasites.labelNoun>
+  <!-- EN: initial -->
+  <BrainParasites.stages.initial.label>寄生</BrainParasites.stages.initial.label>
+  
+</LanguageData>

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: sad wandering -->
+  <VPE_Wander_Sad.label>悲傷徘徊</VPE_Wander_Sad.label>
+  <!-- EN: Mental state: Sad wandering -->
+  <VPE_Wander_Sad.baseInspectLine>精神狀態: 悲傷徘徊</VPE_Wander_Sad.baseInspectLine>
+  <!-- EN: {0} has broken down and is wandering around in sadness. -->
+  <VPE_Wander_Sad.beginLetter>{0} 已經失控，悲傷着四處徘徊。</VPE_Wander_Sad.beginLetter>
+  <!-- EN: sad wander -->
+  <VPE_Wander_Sad.beginLetterLabel>悲傷徘徊</VPE_Wander_Sad.beginLetterLabel>
+  <!-- EN: {0} is no longer wandering in sadness. -->
+  <VPE_Wander_Sad.recoveryMessage>{0}不再悲傷徘徊。</VPE_Wander_Sad.recoveryMessage>
+  
+</LanguageData>

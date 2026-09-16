@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cold shock -->
+  <DR_SoulMace.label>寒冰冲击</DR_SoulMace.label>
+  <!-- EN: {0} has been beaten to death. -->
+  <DR_SoulMace.deathMessage>{0} 已被毆打致死。</DR_SoulMace.deathMessage>
+  
+</LanguageData>

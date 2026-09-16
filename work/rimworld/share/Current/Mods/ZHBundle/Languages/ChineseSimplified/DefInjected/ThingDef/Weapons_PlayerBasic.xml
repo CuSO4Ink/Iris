@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: toxic boneshard -->
+  <Bullet_ADVToxFlesh.label>剧毒骨刺弹</Bullet_ADVToxFlesh.label>
+  
+  <!-- EN: cleansing shot -->
+  <Bullet_Cleansing.label>净世弹</Bullet_Cleansing.label>
+  
+  <!-- EN: cleansing shot -->
+  <Bullet_CleansingAutocannon.label>净世弹</Bullet_CleansingAutocannon.label>
+  
+  <!-- EN: cleansing pellet -->
+  <Bullet_CleansingShotgun.label>净世弹</Bullet_CleansingShotgun.label>
+  
+  <!-- EN: AP incendiary bullet -->
+  <Bullet_Lahti.label>L-39反坦克步枪穿甲燃烧弹</Bullet_Lahti.label>
+  
+  <!-- EN: AP incendiary bullet -->
+  <Bullet_MachineGunz.label>MG42通用机枪穿甲燃烧弹</Bullet_MachineGunz.label>
+  
+  <!-- EN: toxic boneshard -->
+  <Bullet_MGToxFlesh.label>剧毒骨刺弹</Bullet_MGToxFlesh.label>
+  
+  <!-- EN: AP incendiary bullet -->
+  <Bullet_Sturmgewehr.label>StG44突击步枪穿甲燃烧弹</Bullet_Sturmgewehr.label>
+  
+  <!-- EN: slug shot -->
+  <Bullet_SuperShotGun.label>改装M870霰弹枪子弹</Bullet_SuperShotGun.label>
+  
+  <!-- EN: heavy SMG bullet -->
+  <Bullet_SuperSMG.label>改装PPSh-41冲锋枪子弹</Bullet_SuperSMG.label>
+  
+  <!-- EN: sniper bullet -->
+  <Bullet_SurvivalistSniperRifle.label>改装狩猎步枪子弹</Bullet_SurvivalistSniperRifle.label>
+  
+  <!-- EN: toxic boneshard -->
+  <Bullet_ToxFlesh.label>剧毒骨刺弹</Bullet_ToxFlesh.label>
+  
+  <!-- EN: cleansing boltgun -->
+  <Gun_CleansingBolter.label>净世爆弹枪</Gun_CleansingBolter.label>
+  <!-- EN: One of the most effective anti-neconoid firearm developed by the brilliant minds of the glitterworld mechanists. This bolter fires bolter rounds which is filled with ANB "Anti Necronoid Biomass" nanites, where once inside a necronoid, it'll run rampant and destroy necronoid cells, dealing heavy amounts of damage to a necronoid entity while deals normal damage to normal living beings.\n\nSuch a weapon was developed after experiencing countless deaths and losses, where humanity finally reached a breakthrough in pushing back the necronoid army. -->
+  <Gun_CleansingBolter.description>由闪耀世界最顶尖的技师研制的先进武器，也是最适合反制殁疫感染体的武器。净世爆弹枪所使用的弹药内装有反殁疫病毒（简称“ANB”）纳米机械，击中殁疫感染体后会迅速破坏它们的细胞组织，以此造成极高的额外伤害。\n\n虽然这种武器的研制伴随着无数的流血与牺牲，但也帮助人类在击退殁疫尸军方面取得了重大进展。</Gun_CleansingBolter.description>
+  <!-- EN: grip -->
+  <Gun_CleansingBolter.tools.grip.label>握把</Gun_CleansingBolter.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_CleansingBolter.tools.barrel.label>枪管</Gun_CleansingBolter.tools.barrel.label>
+  <!-- EN: cleansing boltgun -->
+  <Gun_CleansingBolter.verbs.Verb_Shoot.label>净世爆弹枪</Gun_CleansingBolter.verbs.Verb_Shoot.label>
+  
+  <!-- EN: cleansing rocket launcher -->
+  <Gun_CleansingRocketLauncher.label>净世火箭发射器</Gun_CleansingRocketLauncher.label>
+  <!-- EN: A single use rocket launcher used to destroy fortified necronoid structures and boss-like necronoid entities. The rocket launcher fires a concentrated ANB nanite rockets in a single exchange, and can decimate anything under a 2.9 blast radius. The rocket launcher has a maximum number of 100 shots before it becomes un-usable. -->
+  <Gun_CleansingRocketLauncher.description>用于高效摧毁殁疫建筑和对抗高阶殁疫感染体的武器。净世火箭发射器所使用的火箭弹内装有反殁疫病毒（简称“ANB”）纳米机械，击中殁疫感染体后会迅速破坏它们的细胞组织，以此造成极高的额外伤害。\n\n\n\n这种武器仅装有100枚火箭弹，消耗完毕后将无法使用。</Gun_CleansingRocketLauncher.description>
+  <!-- EN: charge -->
+  <Gun_CleansingRocketLauncher.comps.CompReloadable_Weapon.chargeNoun>火箭弹</Gun_CleansingRocketLauncher.comps.CompReloadable_Weapon.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Gun_CleansingRocketLauncher.comps.CompReloadable_Weapon.cooldownGerund>冷却中</Gun_CleansingRocketLauncher.comps.CompReloadable_Weapon.cooldownGerund>
+  <!-- EN: barrel -->
+  <Gun_CleansingRocketLauncher.tools.barrel.label>枪管</Gun_CleansingRocketLauncher.tools.barrel.label>
+  <!-- EN: cleansing rocket launcher -->
+  <Gun_CleansingRocketLauncher.verbs.VerbShootReloadable.label>净世火箭发射器</Gun_CleansingRocketLauncher.verbs.VerbShootReloadable.label>
+  
+  <!-- EN: cleansing shotgun -->
+  <Gun_CleansingShotgun.label>净世霰弹枪</Gun_CleansingShotgun.label>
+  <!-- EN: A KS 23 shotgun carbine that fires cleansing shotgun shells. Due to its rifled barrel, the cleansing shotgun can fire cleansing pellets at an incredible range, which is a stark contrast towards other shotguns out there. Though it possess a slow fire rate, each shot packs a lot of fire power coupled with a strong stopping power which is capable of nailing down fast moving opponents in its place. This shotgun also deals a monstrous damage againsts any necronoid entity, giving it a fitting title as "The Doom Giver". -->
+  <Gun_CleansingShotgun.description>以KS-23泵动霰弹枪为蓝本研制而成的武器，其使用的弹药内装有反殁疫病毒（简称“ANB”）纳米机械，击中殁疫感染体后会迅速破坏它们的细胞组织，以此造成极高的额外伤害。净世霰弹枪配备有特殊改装过的枪管，射程要比寻常的霰弹枪远得多。虽然射速不快，但在它强劲的伤害与抑制能力面前，任何殁疫感染体都无法前进半步，有些人便据此将其称作“毁灭使者”。</Gun_CleansingShotgun.description>
+  <!-- EN: grip -->
+  <Gun_CleansingShotgun.tools.grip.label>握把</Gun_CleansingShotgun.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_CleansingShotgun.tools.barrel.label>枪管</Gun_CleansingShotgun.tools.barrel.label>
+  <!-- EN: cleansing shotgun -->
+  <Gun_CleansingShotgun.verbs.Verb_Shoot.label>净世霰弹枪</Gun_CleansingShotgun.verbs.Verb_Shoot.label>
+  
+  <!-- EN: advanced boneshard rifle -->
+  <Gun_Craftable_AdvancedBoneshardRifle.label>高级骨刺步枪</Gun_Craftable_AdvancedBoneshardRifle.label>
+  <!-- EN: A flesh charge rifle now repurposed for human use. -->
+  <Gun_Craftable_AdvancedBoneshardRifle.description>经过调整后可为人类所用的高级骨刺步枪。这种由血肉和骨骼组成的活体武器内部长有可以合成碎裂骨刺的特殊器官，击中敌人时能撕裂血肉并造成中毒。</Gun_Craftable_AdvancedBoneshardRifle.description>
+  <!-- EN: grip -->
+  <Gun_Craftable_AdvancedBoneshardRifle.tools.grip.label>握把</Gun_Craftable_AdvancedBoneshardRifle.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_Craftable_AdvancedBoneshardRifle.tools.barrel.label>枪管</Gun_Craftable_AdvancedBoneshardRifle.tools.barrel.label>
+  <!-- EN: advanced boneshard rifle -->
+  <Gun_Craftable_AdvancedBoneshardRifle.verbs.Verb_Shoot.label>高级骨刺步枪</Gun_Craftable_AdvancedBoneshardRifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: boneshard avenger -->
+  <Gun_Craftable_BoneshardRapidBlaster.label>骨刺速射机枪</Gun_Craftable_BoneshardRapidBlaster.label>
+  <!-- EN: A flesh minigun now repurposed for human use. -->
+  <Gun_Craftable_BoneshardRapidBlaster.description>经过调整后可为人类所用的骨刺速射机枪。这种由血肉和骨骼组成的活体武器内部长有可以合成碎裂骨刺的特殊器官，击中敌人时能撕裂血肉并造成中毒。</Gun_Craftable_BoneshardRapidBlaster.description>
+  <!-- EN: grip -->
+  <Gun_Craftable_BoneshardRapidBlaster.tools.grip.label>握把</Gun_Craftable_BoneshardRapidBlaster.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_Craftable_BoneshardRapidBlaster.tools.barrel.label>枪管</Gun_Craftable_BoneshardRapidBlaster.tools.barrel.label>
+  <!-- EN: boneshard avenger -->
+  <Gun_Craftable_BoneshardRapidBlaster.verbs.Verb_Shoot.label>骨刺速射机枪</Gun_Craftable_BoneshardRapidBlaster.verbs.Verb_Shoot.label>
+  
+  <!-- EN: boneshard rifle -->
+  <Gun_Craftable_BoneshardRifle.label>骨刺步枪</Gun_Craftable_BoneshardRifle.label>
+  <!-- EN: A flesh rifle now repurposed for human use. -->
+  <Gun_Craftable_BoneshardRifle.description>经过调整后可为人类所用的骨刺步枪。这种由血肉和骨骼组成的活体武器内部长有可以合成碎裂骨刺的特殊器官，击中敌人时能撕裂血肉并造成中毒。</Gun_Craftable_BoneshardRifle.description>
+  <!-- EN: grip -->
+  <Gun_Craftable_BoneshardRifle.tools.grip.label>握把</Gun_Craftable_BoneshardRifle.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_Craftable_BoneshardRifle.tools.barrel.label>枪管</Gun_Craftable_BoneshardRifle.tools.barrel.label>
+  <!-- EN: boneshard rifle -->
+  <Gun_Craftable_BoneshardRifle.verbs.Verb_Shoot.label>骨刺步枪</Gun_Craftable_BoneshardRifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: boneshard shotgun -->
+  <Gun_Craftable_BoneshardShotgun.label>骨刺霰弹枪</Gun_Craftable_BoneshardShotgun.label>
+  <!-- EN: A flesh shotgun now repurposed for human use. -->
+  <Gun_Craftable_BoneshardShotgun.description>经过调整后可为人类所用的骨刺霰弹枪。这种由血肉和骨骼组成的活体武器内部长有可以合成碎裂骨刺的特殊器官，击中敌人时能撕裂血肉并造成中毒。</Gun_Craftable_BoneshardShotgun.description>
+  <!-- EN: grip -->
+  <Gun_Craftable_BoneshardShotgun.tools.grip.label>握把</Gun_Craftable_BoneshardShotgun.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_Craftable_BoneshardShotgun.tools.barrel.label>枪管</Gun_Craftable_BoneshardShotgun.tools.barrel.label>
+  <!-- EN: boneshard shotgun -->
+  <Gun_Craftable_BoneshardShotgun.verbs.Verb_Shoot.label>骨刺霰弹枪</Gun_Craftable_BoneshardShotgun.verbs.Verb_Shoot.label>
+  
+  <!-- EN: boneshard sniper rifle -->
+  <Gun_Craftable_BoneshardSniperRifle.label>骨刺狙击步枪</Gun_Craftable_BoneshardSniperRifle.label>
+  <!-- EN: A flesh sniper rifle now repurposed for human use. -->
+  <Gun_Craftable_BoneshardSniperRifle.description>经过调整后可为人类所用的骨刺狙击步枪。这种由血肉和骨骼组成的活体武器内部长有可以合成碎裂骨刺的特殊器官，击中敌人时能撕裂血肉并造成中毒。</Gun_Craftable_BoneshardSniperRifle.description>
+  <!-- EN: grip -->
+  <Gun_Craftable_BoneshardSniperRifle.tools.grip.label>握把</Gun_Craftable_BoneshardSniperRifle.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_Craftable_BoneshardSniperRifle.tools.barrel.label>枪管</Gun_Craftable_BoneshardSniperRifle.tools.barrel.label>
+  <!-- EN: boneshard sniper rifle -->
+  <Gun_Craftable_BoneshardSniperRifle.verbs.Verb_Shoot.label>骨刺狙击步枪</Gun_Craftable_BoneshardSniperRifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: heavy flamer -->
+  <Gun_HeavyFlamer.label>重型怒焰喷射器</Gun_HeavyFlamer.label>
+  <!-- EN: A long-ranged heavy flamer. This weapon is capable of spreading fire in a very wide area, plunging an entire area in a sea of inferno. Very effective in taking down necronoid structures in a safe distance.\n\nThis weapon only has a limited number of 500 shots before the weapon becomes un-usable. -->
+  <Gun_HeavyFlamer.description>能快速令大片区域化作火海的重型怒焰喷射器。射程极远，适合用来高效摧毁各种殁疫感染体建筑。\n\n这种武器仅装有500单位的燃料，消耗完毕后将无法使用。</Gun_HeavyFlamer.description>
+  <!-- EN: charge -->
+  <Gun_HeavyFlamer.comps.CompReloadable_Weapon.chargeNoun>燃料</Gun_HeavyFlamer.comps.CompReloadable_Weapon.chargeNoun>
+  <!-- EN: on cooldown -->
+  <Gun_HeavyFlamer.comps.CompReloadable_Weapon.cooldownGerund>冷却中</Gun_HeavyFlamer.comps.CompReloadable_Weapon.cooldownGerund>
+  <!-- EN: stock -->
+  <Gun_HeavyFlamer.tools.stock.label>枪托</Gun_HeavyFlamer.tools.stock.label>
+  <!-- EN: barrel -->
+  <Gun_HeavyFlamer.tools.barrel.label>枪管</Gun_HeavyFlamer.tools.barrel.label>
+  <!-- EN: heavy flamer -->
+  <Gun_HeavyFlamer.verbs.VerbSpewFireReloadable.label>重型怒焰喷射器</Gun_HeavyFlamer.verbs.VerbSpewFireReloadable.label>
+  
+  <!-- EN: imperial cleansing autocannon -->
+  <Gun_ImperialCleansingAutocannon.label>帝国净世重炮</Gun_ImperialCleansingAutocannon.label>
+  <!-- EN: One of the most effective heavy weapon againsts any necronoid entity. The autocannon uses a special 20mm AP cleansing bullet, capable of breaching even the hardest of necronoid flesh and deals massive amounts of damage upon impact. This weapon is seen being used by the imperial necro hunters. -->
+  <Gun_ImperialCleansingAutocannon.description>通常由破碎帝国的殁疫猎人们使用的重型武器，其使用的20mm穿甲弹药内装有反殁疫病毒（简称“ANB”）纳米机械，击中殁疫感染体后会迅速破坏它们的细胞组织，以此造成极高的额外伤害。即使抛开这些不谈，帝国净世重炮本身的伤害与穿甲能力也足够出色，任何殁疫感染体都无法挡下它的一击。</Gun_ImperialCleansingAutocannon.description>
+  <!-- EN: grip -->
+  <Gun_ImperialCleansingAutocannon.tools.grip.label>握把</Gun_ImperialCleansingAutocannon.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_ImperialCleansingAutocannon.tools.barrel.label>枪管</Gun_ImperialCleansingAutocannon.tools.barrel.label>
+  <!-- EN: imperial cleansing autocannon -->
+  <Gun_ImperialCleansingAutocannon.verbs.Verb_Shoot.label>帝国净世重炮</Gun_ImperialCleansingAutocannon.verbs.Verb_Shoot.label>
+  
+  <!-- EN: imperial cleansing boltgun -->
+  <Gun_ImperialCleansingBolter.label>帝国净世爆弹枪</Gun_ImperialCleansingBolter.label>
+  <!-- EN: A special cleansing bolter designed for imperial use. Unlike the original, this weapon receives better modifications, giving it extented bolter magazine and reinforced gun barrel. -->
+  <Gun_ImperialCleansingBolter.description>专为破碎帝国的士兵们设计的先进武器，其使用的弹药内装有反殁疫病毒（简称“ANB”）纳米机械，击中殁疫感染体后会迅速破坏它们的细胞组织，以此造成极高的额外伤害。与普通的净世爆弹枪有所不同，帝国净世爆弹枪经过了诸多改装，配备有更出色的加长弹匣和加固枪管。</Gun_ImperialCleansingBolter.description>
+  <!-- EN: grip -->
+  <Gun_ImperialCleansingBolter.tools.grip.label>握把</Gun_ImperialCleansingBolter.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_ImperialCleansingBolter.tools.barrel.label>枪管</Gun_ImperialCleansingBolter.tools.barrel.label>
+  <!-- EN: imperial cleansing boltgun -->
+  <Gun_ImperialCleansingBolter.verbs.Verb_Shoot.label>帝国净世爆弹枪</Gun_ImperialCleansingBolter.verbs.Verb_Shoot.label>
+  
+  <!-- EN: imperial cleansing bolter machinegun -->
+  <Gun_ImperialCleansingBolterMG.label>帝国净世爆弹机枪</Gun_ImperialCleansingBolterMG.label>
+  <!-- EN: A special cleansing bolter machinegun designed for imperial use. Although slightly in-accurate, it can fire a barrage of cleansing bullets at long distances, perfect for providing suppressive fire. -->
+  <Gun_ImperialCleansingBolterMG.description>专为破碎帝国的士兵们设计的先进武器，其使用的弹药内装有反殁疫病毒（简称“ANB”）纳米机械，击中殁疫感染体后会迅速破坏它们的细胞组织，以此造成极高的额外伤害。虽然精度不高，但帝国净世爆弹机枪能远距离提供极强的压制火力。</Gun_ImperialCleansingBolterMG.description>
+  <!-- EN: grip -->
+  <Gun_ImperialCleansingBolterMG.tools.grip.label>握把</Gun_ImperialCleansingBolterMG.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_ImperialCleansingBolterMG.tools.barrel.label>枪管</Gun_ImperialCleansingBolterMG.tools.barrel.label>
+  <!-- EN: imperial cleansing bolter machinegun -->
+  <Gun_ImperialCleansingBolterMG.verbs.Verb_Shoot.label>帝国净世爆弹机枪</Gun_ImperialCleansingBolterMG.verbs.Verb_Shoot.label>
+  
+  <!-- EN: Lahti L-39 "incendiary" -->
+  <Gun_IncendiaryAntiMaterial.label>L-39反坦克步枪（怒焰）</Gun_IncendiaryAntiMaterial.label>
+  <!-- EN: An incendiary version of the Lahti L-39 anti- material, which uses AP incendiary rounds. This gun hits the hardest among the other incendiary weapons, thanks to its frame made of plasteel, the gun wont be destroyed due to the immense recoil. -->
+  <Gun_IncendiaryAntiMaterial.description>于古地球第二次世界大战期间研制并生产的反坦克步枪。这种武器因具有出色的精度、射程和穿甲能力而荣获“猎象枪”的绰号，但亦有不便携带、后坐力过大等缺点。\n\n这种武器发射特制的穿甲燃烧弹，经过玻璃钢加固的枪身显著降低了它开火时产生的后坐力。</Gun_IncendiaryAntiMaterial.description>
+  <!-- EN: stock -->
+  <Gun_IncendiaryAntiMaterial.tools.stock.label>枪托</Gun_IncendiaryAntiMaterial.tools.stock.label>
+  <!-- EN: barrel -->
+  <Gun_IncendiaryAntiMaterial.tools.barrel.label>枪管</Gun_IncendiaryAntiMaterial.tools.barrel.label>
+  <!-- EN: Lahti L-39 "incendiary" -->
+  <Gun_IncendiaryAntiMaterial.verbs.Verb_Shoot.label>L-39反坦克步枪（怒焰）</Gun_IncendiaryAntiMaterial.verbs.Verb_Shoot.label>
+  
+  <!-- EN: Sturmgewehr 44 "incendiary" -->
+  <Gun_IncendiaryAssaultRifle.label>StG44突击步枪（怒焰）</Gun_IncendiaryAssaultRifle.label>
+  <!-- EN: An incendiary version of the standard sturmgewehr 44, which uses AP incendiary rounds. This gun is somewhat light-weight and very compact which offers ease of use during deployment, and just like the MG-42, its barrel is reinforced in plasteel for continous automatic fire in medium range. -->
+  <Gun_IncendiaryAssaultRifle.description>于古地球第二次世界大战末期研制并生产的突击步枪，也是人类史上首种大规模装备的、真正意义上的突击步枪。\n\n这种武器发射特制的穿甲燃烧弹，经过玻璃钢加固的枪管使它可以更频繁地连续开火。</Gun_IncendiaryAssaultRifle.description>
+  <!-- EN: stock -->
+  <Gun_IncendiaryAssaultRifle.tools.stock.label>枪托</Gun_IncendiaryAssaultRifle.tools.stock.label>
+  <!-- EN: barrel -->
+  <Gun_IncendiaryAssaultRifle.tools.barrel.label>枪管</Gun_IncendiaryAssaultRifle.tools.barrel.label>
+  <!-- EN: Sturmgewehr 44 "incendiary" -->
+  <Gun_IncendiaryAssaultRifle.verbs.Verb_Shoot.label>StG44突击步枪（怒焰）</Gun_IncendiaryAssaultRifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: MG-42 "incendiary" -->
+  <Gun_IncendiaryMachineGun.label>MG42通用机枪（怒焰）</Gun_IncendiaryMachineGun.label>
+  <!-- EN: An incendiary version of the standard mg-42, which uses AP incendiary rounds. Using plasteel as a material for the gun barrel, the gun is immune to over-heating which allows for continuous firing, although it requires an amount of finesse to accurately use this gun. -->
+  <Gun_IncendiaryMachineGun.description>于古地球第二次世界大战末期被德军广泛使用的气冷式通用机枪。这种射速极高的武器开火时有着“滋滋滋滋”的独特枪声，因此荣获“希特勒的电锯”、“撕布机”等绰号。\n\n这种武器发射特制的穿甲燃烧弹，经过玻璃钢加固的枪管使它可以更频繁地连续开火。</Gun_IncendiaryMachineGun.description>
+  <!-- EN: stock -->
+  <Gun_IncendiaryMachineGun.tools.stock.label>枪托</Gun_IncendiaryMachineGun.tools.stock.label>
+  <!-- EN: barrel -->
+  <Gun_IncendiaryMachineGun.tools.barrel.label>枪管</Gun_IncendiaryMachineGun.tools.barrel.label>
+  <!-- EN: MG-42 "incendiary" -->
+  <Gun_IncendiaryMachineGun.verbs.Verb_Shoot.label>MG42通用机枪（怒焰）</Gun_IncendiaryMachineGun.verbs.Verb_Shoot.label>
+  
+  <!-- EN: custom remington 870 -->
+  <Gun_SuperShotGun.label>M870霰弹枪（改装）</Gun_SuperShotGun.label>
+  <!-- EN: A custom pump shotgun that was modified by an unknown outlander. The shotgun almost never miss in medium range, can inflict better damage, and has a chance to stun an enemy in every shot.\n\nIts custom origin can be differentiated based on the amount of cloth wrapped-up in the gun itself, acting as makeshift duct tape. -->
+  <Gun_SuperShotGun.description>由古地球美国雷明顿武器公司研制并生产的泵动式霰弹枪，曾颇受多国军队、特种部队、执法部门、现金押运和保安公司的青睐。\n\n这种武器被某位身份不明的外来者改装过，枪身上缠有许多充当简易管道胶带使用的碎布条。它不仅具有极其出色的精度与威力，击中敌人时还有几率造成眩晕效果。</Gun_SuperShotGun.description>
+  <!-- EN: grip -->
+  <Gun_SuperShotGun.tools.grip.label>握把</Gun_SuperShotGun.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_SuperShotGun.tools.barrel.label>枪管</Gun_SuperShotGun.tools.barrel.label>
+  <!-- EN: custom remington 870 -->
+  <Gun_SuperShotGun.verbs.Verb_Shoot.label>M870霰弹枪（改装）</Gun_SuperShotGun.verbs.Verb_Shoot.label>
+  
+  <!-- EN: custom ppsh-41 submachine gun -->
+  <Gun_SuperSMG.label>PPSh-41冲锋枪（改装）</Gun_SuperSMG.label>
+  <!-- EN: A Soviet submachine gun that was modified by an unknown outlander, giving it better range, more burst shots, and better damage than a regular heavy smg would.\n\nIts custom origin can be differentiated based on the amount of cloth wrapped-up in the gun itself, acting as makeshift duct tape. -->
+  <Gun_SuperSMG.description>于古地球第二次世界大战期间研制并生产的冲锋枪，其设计目的是为了取代构造复杂且成本高昂的PPD-40冲锋枪。PPSh-41冲锋枪也被称为“波波沙”或“手提机关枪”，是苏军在二战中的标志性装备之一。\n\n这种武器被某位身份不明的外来者改装过，枪身上缠有许多充当简易管道胶带使用的碎布条。它不仅具有极其出色的射程与威力，每次开火时还能射出更多的子弹。</Gun_SuperSMG.description>
+  <!-- EN: grip -->
+  <Gun_SuperSMG.tools.grip.label>握把</Gun_SuperSMG.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_SuperSMG.tools.barrel.label>枪管</Gun_SuperSMG.tools.barrel.label>
+  <!-- EN: custom ppsh-41 submachine gun -->
+  <Gun_SuperSMG.verbs.Verb_Shoot.label>PPSh-41冲锋枪（改装）</Gun_SuperSMG.verbs.Verb_Shoot.label>
+  
+  <!-- EN: custom hunting rifle -->
+  <Gun_SurvivalistSniperRifle.label>狩猎步枪（改装）</Gun_SurvivalistSniperRifle.label>
+  <!-- EN: A custom bolt action sniper rifle that was modified by an unknown outlander. Despite its crude design, this sniper rifle offers bonus to hunting stealth and great accuracy, making it the perfect weapon for hunting big games.\n\nIts custom origin can be differentiated based on the amount of cloth wrapped-up in the gun itself, acting as makeshift duct tape.. -->
+  <Gun_SurvivalistSniperRifle.description>样式古老的栓动式狙击步枪。\n\n这种武器被某位身份不明的外来者改装过，枪身上缠有许多充当简易管道胶带使用的碎布条。虽然手艺略显粗糙，但它具有极其出色的射程与精度，是用来狩捕大型猎物的完美武器。</Gun_SurvivalistSniperRifle.description>
+  <!-- EN: grip -->
+  <Gun_SurvivalistSniperRifle.tools.grip.label>握把</Gun_SurvivalistSniperRifle.tools.grip.label>
+  <!-- EN: barrel -->
+  <Gun_SurvivalistSniperRifle.tools.barrel.label>枪管</Gun_SurvivalistSniperRifle.tools.barrel.label>
+  <!-- EN: custom hunting rifle -->
+  <Gun_SurvivalistSniperRifle.verbs.Verb_Shoot.label>狩猎步枪（改装）</Gun_SurvivalistSniperRifle.verbs.Verb_Shoot.label>
+  
+  <!-- EN: rocket -->
+  <Rocket_Cleanse.label>净世火箭弹</Rocket_Cleanse.label>
+  
+</LanguageData>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ration high -->
+  <RationHigh.label>军粮饱腹</RationHigh.label>
+  <!-- EN: A benefitial effect after eating an army ration. -->
+  <RationHigh.description>吃了一份奢侈军粮。在一段时间内将会饿得更慢。</RationHigh.description>
+  <!-- EN: a ration high -->
+  <RationHigh.labelNoun>军粮饱腹</RationHigh.labelNoun>
+  
+  <!-- EN: ration meal high -->
+  <RationMealHigh.label>加热军粮饱腹</RationMealHigh.label>
+  <!-- EN: A benefitial effect after eating an army ration meal. -->
+  <RationMealHigh.description>吃了一份加热过的奢侈军粮。在一段时间内将会饿得更慢。</RationMealHigh.description>
+  <!-- EN: a ration high -->
+  <RationMealHigh.labelNoun>加热军粮饱腹</RationMealHigh.labelNoun>
+  
+</LanguageData>

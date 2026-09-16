@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fortifying honeycomb wall. -->
+  <VV_FortifyHoneycombWall.reportString>加固蜂巢墻</VV_FortifyHoneycombWall.reportString>
+  
+  <!-- EN: planting TargetA. -->
+  <VV_PlantArcaneSeed.reportString>種植TargetA</VV_PlantArcaneSeed.reportString>
+  
+</LanguageData>

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- EN: Character features -->
+  <HAR.CharacterFeatures>角色特征</HAR.CharacterFeatures>
+    <!-- EN: Racial features -->
+  <HAR.RaceFeatures>种族特征</HAR.RaceFeatures>
+    <!-- EN: Body addons -->
+  <HAR.BodyAddons>身体附件</HAR.BodyAddons>
+    <!-- EN: Match skin color -->
+  <HAR.MatchSkinColor>适配肤色</HAR.MatchSkinColor>
+    <!-- EN: Colors -->
+  <HAR.Colors>颜色</HAR.Colors>
+    <!-- EN: Linked from: -->
+  <HAR.LinkedFrom>关联自：</HAR.LinkedFrom>
+    <!-- EN: Linked to: -->
+  <HAR.LinkedTo>关联到：</HAR.LinkedTo>
+    <!-- EN: ~{0}: {1} -->
+  <HAR.LinkText>~{0}：{1}</HAR.LinkText>
+    <!-- EN: first color -->
+  <HAR.FirstColor>首选颜色</HAR.FirstColor>
+    <!-- EN: second color -->
+  <HAR.SecondColor>次级颜色</HAR.SecondColor>
+    <!-- EN: No customizable addons found -->
+  <HAR.NoAddonsForList>未找到自定义附件</HAR.NoAddonsForList>
+    <!-- EN: No customizable colors found -->
+  <HAR.NoColorsForList>未找到自定义颜色</HAR.NoColorsForList>
+    <!-- EN: Randomize -->
+  <HAR.RandomizeColors>随机</HAR.RandomizeColors>
+    <!-- EN: This color is determined by the standard Hair color. Change the colonist's normal hair color to change this color. -->
+  <HAR.HairOneInfo>该颜色由发色决定。可通过改变殖民者的常规发色来改变此颜色。</HAR.HairOneInfo>
+    <!-- EN: Race Restriction: {0} -->
+  <HAR.StartingRace>种族限制：{0}</HAR.StartingRace>
+    <!-- EN: Restrict randomization to a specific alien race. -->
+  <HAR.StartingRaceDescription>将随机规则限制为特定的外星种族。</HAR.StartingRaceDescription>
+    <!-- EN: {genderOne} {raceOne} can not reproduce with {genderTwo} {raceTwo} -->
+  <HAR.ReproductionNotAllowed>{genderOne} {raceOne} 与 {genderTwo} {raceTwo} 存在生殖隔离</HAR.ReproductionNotAllowed>
+    <!-- EN: Display Texture Loading Logs -->
+  <HAR.Options.TextureLoadingLogs_Label>显示贴图加载日志</HAR.Options.TextureLoadingLogs_Label>
+    <!-- EN: True: Texture loading logs are displayed on startup.\nFalse: Texture loading logs and details are suppressed.\nNote: This is intended for race mod debugging and development. -->
+  <HAR.Options.TextureLoadingLogs_Tooltip>√：启动时显示贴图加载日志。\n×：启动时隐藏贴图加载日志。\n注：此功能仅用于外星种族Mod的调试和开发。</HAR.Options.TextureLoadingLogs_Tooltip>
+    <!-- EN: Randomize Starting Pawns on Reroll -->
+  <HAR.Options.RandomizeStartingPawns_Label>重载时随机初始角色</HAR.Options.RandomizeStartingPawns_Label>
+    <!-- EN: True: Randomizing a starting pawn will allow for a complete reroll.\nFalse: All Settings stay on a reroll and only details will change. -->
+  <HAR.Options.RandomizeStartingPawns_Tooltip>√：重载时随机初始角色。\n×：重载时保留所有设置。</HAR.Options.RandomizeStartingPawns_Tooltip>
+    <!-- EN: Starting with Humanlikes -->
+  <HAR.StartingHumanlikesScenPart.Label>开局额外人数（人类或外星种族）</HAR.StartingHumanlikesScenPart.Label>
+</LanguageData>

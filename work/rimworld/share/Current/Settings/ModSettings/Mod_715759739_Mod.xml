@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="FollowMe.Settings">
+		<followMeKey>
+			<label>切换跟随对象</label>
+			<key>RightBracket</key>
+		</followMeKey>
+		<cinematicCameraKey>
+			<label>切换摄影模式</label>
+			<key>End</key>
+		</cinematicCameraKey>
+	</ModSettings>
+</SettingsBlock>

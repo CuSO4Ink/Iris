@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: fisherman -->
+  <VCEF_Fisherman.degreeDatas.fisherman.label>漁夫</VCEF_Fisherman.degreeDatas.fisherman.label>
+  <!-- EN: {PAWN_nameDef} enjoys the solitude and tranquility inherent to long fishing sessions. {PAWN_pronoun} will prefer fishing above other activities. -->
+  <VCEF_Fisherman.degreeDatas.fisherman.description>{PAWN_nameDef}喜歡享受獨處和寧靜。找個地方打好窩，{PAWN_pronoun}就能釣上一整天的魚。比起其他活動，{PAWN_pronoun}會優先選擇去釣魚。</VCEF_Fisherman.degreeDatas.fisherman.description>
+  
+</LanguageData>

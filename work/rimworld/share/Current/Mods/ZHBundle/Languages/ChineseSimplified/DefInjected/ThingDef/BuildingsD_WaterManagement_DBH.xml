@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cryogenic extraction node -->
+  <CryogenicExtractionNode.label>低温提取装置</CryogenicExtractionNode.label>
+  <!-- EN: Extracts and sublimates volatile ices trapped beneath asteroid regolith. It produces usable water and generates substantial heat—handle with care when operating in enclosed environments. -->
+  <CryogenicExtractionNode.description>从小行星内部提取和升华易挥发冰层，并将其转化成可用水的装置。由于这一过程会产生大量热量，因此它不太适合放置在室内。需要搭配水泵使用。</CryogenicExtractionNode.description>
+  
+  <!-- EN: deep water well -->
+  <DeepWaterWellInlet.label>深水井</DeepWaterWellInlet.label>
+  <!-- EN: Accesses a large area of ground water which can be pumped by water pumps. Deep wells are unaffected by pollution. -->
+  <DeepWaterWellInlet.description>可以通过水泵获取大量地下水，不受地面污水影响。</DeepWaterWellInlet.description>
+  
+  <!-- EN: electric pump -->
+  <ElectricPump.label>电力水泵</ElectricPump.label>
+  <!-- EN: Pumps water from wells to water towers. Pumping capacity: 1500 L/day. -->
+  <ElectricPump.description>将井里的水抽到蓄水设备中。\n\n【抽水能力】： 1500 L/天</ElectricPump.description>
+  
+  <!-- EN: pumping station -->
+  <PumpingStation.label>水泵站</PumpingStation.label>
+  <!-- EN: Pumps water from wells to water towers. Pumping capacity: 10000 L/day. -->
+  <PumpingStation.description>将井里的水抽到蓄水设备中。\n\n【抽水能力】： 10000 L/天</PumpingStation.description>
+  
+  <!-- EN: sewage dump port -->
+  <SewageDumpPort.label>真空排污口</SewageDumpPort.label>
+  <!-- EN: A vacuum-sealed sewage expulsion port for use in spacecraft. When connected to a vacuum toilet, it safely ejects waste into the void of space.\nMust be mounted on an exterior wall of a ship. -->
+  <SewageDumpPort.description>专为飞船或其他航天器设计的真空密封型排污口。通过管道与真空马桶相连接后，尿液和粪便会被安全地排放至太空中。\n\n必须放置在飞船的外部舱壁上。</SewageDumpPort.description>
+  
+  <!-- EN: sewage outlet -->
+  <SewageOutlet.label>排污口</SewageOutlet.label>
+  <!-- EN: Can be placed anywhere. Sewage will pool and spread on land or disperse in water. Sewage cleans up over time; the presence of trees, water, or rain will speed this up. -->
+  <SewageOutlet.description>可以放置在任何地方。污水会排放至地上或流进水中。随着时间推移，污水会慢慢消失；树木、水域或降雨则能加快这一过程。</SewageOutlet.description>
+  
+  <!-- EN: septic tank -->
+  <SewageSepticTank.label>化粪池</SewageSepticTank.label>
+  <!-- EN: Slowly cleans sewage over time. Sewage is directed to septic tanks first. If it reaches full capacity, excess sewage is sent to sewage outlets. -->
+  <SewageSepticTank.description>随时间逐渐清理污水的设备。污水会先进入化粪池，达到满负荷后，多余的污水将不经处理直接从排污口排出。</SewageSepticTank.description>
+  
+  <!-- EN: sewage treatment -->
+  <SewageTreatment.label>污水处理池</SewageTreatment.label>
+  <!-- EN: Slowly cleans sewage over time. If it reaches full capacity then excess sewage is sent directly to sewage outlets without treatment. -->
+  <SewageTreatment.description>随时间逐渐清理污水的设备。污水会首先进入污水处理设备，处理90%，剩余10%通过排污口排出。达到满负荷后，多余的污水将不经处理，直接从排污口排出。</SewageTreatment.description>
+  
+  <!-- EN: water recovery system -->
+  <SpacerWaterRecoverySystem.label>水循环系统</SpacerWaterRecoverySystem.label>
+  <!-- EN: A compact high-efficiency recycling node that recovers and reuses water from showers and sinks. -->
+  <SpacerWaterRecoverySystem.description>高效的紧凑型循环装置，可以将淋浴器、洗手池等卫生设备用掉的水回收再利用。</SpacerWaterRecoverySystem.description>
+  
+  <!-- EN: water butt -->
+  <WaterButt.label>集水桶</WaterButt.label>
+  <!-- EN: Stores water for use by plumbed fixtures. Slowly fills when raining. The water must be drained if it becomes contaminated. Capacity: 100. -->
+  <WaterButt.description>储水并输送给其他卫生设备使用的集水桶。可以缓慢收集雨水。如果集水桶中的水被污染，必须将其排空才能确保安全。\n\n【最大储水量】：100 L</WaterButt.description>
+  
+  <!-- EN: water tank -->
+  <WaterTankSmall.label>水箱</WaterTankSmall.label>
+  <!-- EN: Stores water for use by plumbed fixtures. The water must be drained if it becomes contaminated. Capacity: 2000. -->
+  <WaterTankSmall.description>储水并输送给其他卫生设备使用的水箱。如果水箱中的水被污染，必须将其排空才能确保安全。\n\n【最大储水量】：2000 L</WaterTankSmall.description>
+  
+  <!-- EN: huge water tower -->
+  <WaterTowerL.label>巨型水塔</WaterTowerL.label>
+  <!-- EN: Stores water for use by plumbed fixtures. The water must be drained if it becomes contaminated. Capacity: 50,000. -->
+  <WaterTowerL.description>储水并输送给其他卫生设备使用的巨型水塔。如果巨型水塔中的水被污染，必须将其排空才能确保安全。\n\n【最大储水量】：50000 L</WaterTowerL.description>
+  
+  <!-- EN: water tower -->
+  <WaterTowerS.label>水塔</WaterTowerS.label>
+  <!-- EN: Stores water for use by plumbed fixtures. The water must be drained if it becomes contaminated. Capacity: 8000. -->
+  <WaterTowerS.description>储水并输送给其他卫生设备使用的水塔。如果水塔中的水被污染，必须将其排空才能确保安全。\n\n【最大储水量】：8000 L</WaterTowerS.description>
+  
+  <!-- EN: water treatment -->
+  <WaterTreatment.label>水过滤器</WaterTreatment.label>
+  <!-- EN: Cleans 99.99% of germs! Filters existing water in storage towers, and any water used by fixtures, eliminating the risk of disease. -->
+  <WaterTreatment.description>清除99.99%的细菌！过滤地下水和蓄水设备中的水，消除疾病风险。</WaterTreatment.description>
+  
+  <!-- EN: water well -->
+  <WaterWellInlet.label>水井</WaterWellInlet.label>
+  <!-- EN: Accesses ground water which can be pumped by water pumps. The presence of sewage or other pollution will reduce water quality and can cause contamination. -->
+  <WaterWellInlet.description>可以通过水泵获取地下水，如果取水范围内存在污水或其他污染物，会降低水质并有卫生疾病风险。</WaterWellInlet.description>
+  
+  <!-- EN: wind pump -->
+  <WindPump.label>风力水泵</WindPump.label>
+  <!-- EN: Pumps water from wells to water towers. Pumping capacity: 3000 L/day. -->
+  <WindPump.description>将井里的水抽到蓄水设备中。\n\n【抽水能力】：3000 L/天</WindPump.description>
+  
+</LanguageData>

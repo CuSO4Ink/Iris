@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: biology -->
+  <Biology.label>生物</Biology.label>
+  <!-- EN: Analysis of biological samples, such as plant cuttings or seeds. -->
+  <Biology.description>生物样本分析，如植物枝条或种子。</Biology.description>
+
+  <!-- EN: corpus familiarization -->
+  <Books.label>文献阅读</Books.label>
+  <!-- EN: Study of preexisting recorded knowledge, such as schematics or techprints. -->
+  <Books.description>阅读当前存在的相关文献，如相关书籍和科研蓝图。</Books.description>
+
+  <!-- EN: chemistry -->
+  <Chemistry.label>化学</Chemistry.label>
+  <!-- EN: Analysis of chemical samples, such as pharmaceuticals or other drugs. -->
+  <Chemistry.description>化学样本分析，如药物和成瘾品。</Chemistry.description>
+
+  <!-- EN: clinical -->
+  <Clinical.label>临床</Clinical.label>
+  <!-- EN: Experimental treatments and medicine. Experimental treatments are riskier and require skilled surgeons that are also capable of research. -->
+  <Clinical.description>实验治疗和医学。实验治疗是很危险的，需要经验丰富且有科研能力的外科医生才能胜任。</Clinical.description>
+
+  <!-- EN: production experience -->
+  <ForwardEngineering.label>产品测试</ForwardEngineering.label>
+  <!-- EN: Gathering experience from products with an already known production process. -->
+  <ForwardEngineering.description>从已知制作过程的产品中获取经验。</ForwardEngineering.description>
+
+  <!-- EN: gastronomy -->
+  <Gastronomy.label>餐饮</Gastronomy.label>
+  <!-- EN: Analysis of edible ingredients or meals. -->
+  <Gastronomy.description>分析食用成分。</Gastronomy.description>
+
+  <!-- EN: geology -->
+  <Geology.label>地理</Geology.label>
+  <!-- EN: Analysis of geological samples. -->
+  <Geology.description>地理样本分析</Geology.description>
+
+  <!-- EN: logistics -->
+  <Logistics.label>后勤</Logistics.label>
+  <!-- EN: Determining effective means of resupply. -->
+  <Logistics.description>确定有效的补给方式。</Logistics.description>
+
+  <!-- EN: material studies -->
+  <Material.label>材料分析</Material.label>
+  <!-- EN: Studies of viability of possible raw materials used in construction or production. -->
+  <Material.description>研究制作或建造所需要的原材料。</Material.description>
+
+  <!-- EN: prototyping -->
+  <Prototyping.label>原型制作</Prototyping.label>
+  <!-- EN: Construction of prototypes. Prototypes take much longer to produce and are typically of lower quality due to their experimental nature. The researcher will require both research skill as well as the product's applicable work skill. -->
+  <Prototyping.description>原型的制作。制作原型通常需要更多的时间，而且由于其实验性的，所以通常品质较低。科研者既需要科研能力也需要满足制作该产品的技能要求。</Prototyping.description>
+
+  <!-- EN: reverse engineering -->
+  <ReverseEngineering.label>逆向工程</ReverseEngineering.label>
+  <!-- EN: Reverse engineering of existing sample products. -->
+  <ReverseEngineering.description>现存样本的逆向工程。</ReverseEngineering.description>
+
+  <!-- EN: information exchange -->
+  <Social.label>社交</Social.label>
+  <!-- EN: Knowledge gained from social interactions between your faction members and members of other factions. -->
+  <Social.description>通过殖民者和其他派系成员的社交活动获取信息。</Social.description>
+
+  <!-- EN: theory -->
+  <Theory.label>原理</Theory.label>
+  <!-- EN: Theoretical or abstract research. -->
+  <Theory.description>理论或抽象研究</Theory.description>
+
+  <!-- EN: tooling -->
+  <Tooling.label>工具</Tooling.label>
+  <!-- EN: Analysis of tools used in the production of the researched products. -->
+  <Tooling.description>关于制作该科研产品的工具的分析。</Tooling.description>
+
+</LanguageData>

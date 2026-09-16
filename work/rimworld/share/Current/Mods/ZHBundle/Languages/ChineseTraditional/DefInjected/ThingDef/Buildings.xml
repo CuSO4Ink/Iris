@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_ElectricPot.label>電湯鍋</VCE_ElectricPot.label>
+		<VCE_ElectricPot.description>用來維持液體沸騰的電熱鍋。它通常用來在燉湯時提供持續的熱源。材料在水中燉煮很長時間，讓所有味道都分解出來。</VCE_ElectricPot.description>
+		<VCE_StewPot.label>燉鍋</VCE_StewPot.label>
+		<VCE_StewPot.description>一個燃燒木頭供熱的爐灶，上面有一口大鍋。由於並不需要電力，非常適合旅者和中世紀的平民。燉菜比普通湯食更容易烹飪。燉菜里的食物經常會融合在一起，可以去除奇怪的肉味。</VCE_StewPot.description>
+		<VCE_Grill.label>烤架</VCE_Grill.label>
+		<VCE_Grill.description>這是一個燃燒木頭供熱的烤架，用至下而上的火焰烤熟食物。</VCE_Grill.description>
+		<VCE_DeepFrier.label>油鍋</VCE_DeepFrier.label>
+		<VCE_DeepFrier.description>用來油炸食物的廚具。將食物浸入175°C和190°C（350 °F到375 °F）之間的熱油後炸熟。</VCE_DeepFrier.description>
+		<VCE_CanningMachine.label>裝罐機</VCE_CanningMachine.label>
+		<VCE_CanningMachine.description>用來把食物裝入金屬罐頭。會持續消耗鋼鐵。</VCE_CanningMachine.description>
+		<VCE_CondimentPrepTable.label>調料製備台</VCE_CondimentPrepTable.label>
+		<VCE_CondimentPrepTable.description>一個用來製備豪華食物專用調料的工作檯。</VCE_CondimentPrepTable.description>
+		<VCE_CheesePress.label>奶酪壓制器</VCE_CheesePress.label>
+		<VCE_CheesePress.description>用來壓制凝乳中乳清的機器。壓制器會影響奶酪的硬度，口感以及形狀。同時也會讓奶酪發酵，發酵時間越長質量越高。</VCE_CheesePress.description>
+		<VCE_SushiPrepTable.label>壽司製備台</VCE_SushiPrepTable.label>
+		<VCE_SushiPrepTable.description>一個專門用來製備壽司的工作檯。</VCE_SushiPrepTable.description>
+		<VCE_SoyFermenter.label>醬油發酵桶</VCE_SoyFermenter.label>
+		<VCE_SoyFermenter.description>一個圓柱狀的金屬發酵桶，其中大豆會被壓制，和麴黴菌，穀物混合併發酵很長的一段時間。發酵時間越長，醬油質量越高。</VCE_SoyFermenter.description>
+	</LanguageData>

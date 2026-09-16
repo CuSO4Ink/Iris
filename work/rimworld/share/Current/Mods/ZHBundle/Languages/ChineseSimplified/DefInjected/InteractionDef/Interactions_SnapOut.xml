@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: calm down -->
+  <SnapOut_CalmDownInteraction.label>冷静</SnapOut_CalmDownInteraction.label>
+  <!-- EN: r_logentry->Tried to calm [RECIPIENT_nameDef] down. -->
+  <SnapOut_CalmDownInteraction.logRulesInitiator.rulesStrings.0>r_logentry->尝试让[RECIPIENT_nameDef]冷静下来。</SnapOut_CalmDownInteraction.logRulesInitiator.rulesStrings.0>
+  <!-- EN: r_logentry->[INITIATOR_nameDef] tried to calm me down. -->
+  <SnapOut_CalmDownInteraction.logRulesRecipient.rulesStrings.0>r_logentry->[INITIATOR_nameDef]试图让我冷静下来。</SnapOut_CalmDownInteraction.logRulesRecipient.rulesStrings.0>
+  
+</LanguageData>

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: nojobplz -->
+  <Miho_Nojob.label>nojobplz</Miho_Nojob.label>
+  <!-- EN: nojobplz -->
+  <Miho_Nojob.description>nojobplz</Miho_Nojob.description>
+  <!-- EN: a -->
+  <Miho_Nojob.stages.a.label>A</Miho_Nojob.stages.a.label>
+  
+  <!-- EN: 천상술사 개화 -->
+  <Miho_PositiveFlower_ChildCelestial_High.label>潜力发掘（天阳术士）</Miho_PositiveFlower_ChildCelestial_High.label>
+  <!-- EN: 천상술사 개화 -->
+  <Miho_PositiveFlower_ChildCelestial_High.description>潜力发掘（天阳术士）。</Miho_PositiveFlower_ChildCelestial_High.description>
+  <!-- EN: 천상술사 개화 -->
+  <Miho_PositiveFlower_ChildCelestial_High.labelNoun>潜力发掘（天阳术士）</Miho_PositiveFlower_ChildCelestial_High.labelNoun>
+  
+  <!-- EN: 사냥꾼 개화 -->
+  <Miho_PositiveFlower_ChildHuntress_High.label>潜力发掘（猎手）</Miho_PositiveFlower_ChildHuntress_High.label>
+  <!-- EN: 사냥꾼 개화 -->
+  <Miho_PositiveFlower_ChildHuntress_High.description>潜力发掘（猎手）。</Miho_PositiveFlower_ChildHuntress_High.description>
+  <!-- EN: 사냥꾼 개화 -->
+  <Miho_PositiveFlower_ChildHuntress_High.labelNoun>潜力发掘（猎手）</Miho_PositiveFlower_ChildHuntress_High.labelNoun>
+  
+  <!-- EN: 무녀 개화 -->
+  <Miho_PositiveFlower_ChildShamaness_High.label>潜力发掘（巫女）</Miho_PositiveFlower_ChildShamaness_High.label>
+  <!-- EN: 무녀 개화 -->
+  <Miho_PositiveFlower_ChildShamaness_High.description>潜力发掘（巫女）。</Miho_PositiveFlower_ChildShamaness_High.description>
+  <!-- EN: 무녀 개화 -->
+  <Miho_PositiveFlower_ChildShamaness_High.labelNoun>潜力发掘（巫女）</Miho_PositiveFlower_ChildShamaness_High.labelNoun>
+  
+  <!-- EN: 소환사 개화 -->
+  <Miho_PositiveFlower_ChildSummoner_High.label>潜力发掘（唤灵师）</Miho_PositiveFlower_ChildSummoner_High.label>
+  <!-- EN: 소환사 개화 -->
+  <Miho_PositiveFlower_ChildSummoner_High.description>潜力发掘（唤灵师）。</Miho_PositiveFlower_ChildSummoner_High.description>
+  <!-- EN: 소환사 개화 -->
+  <Miho_PositiveFlower_ChildSummoner_High.labelNoun>潜力发掘（唤灵师）</Miho_PositiveFlower_ChildSummoner_High.labelNoun>
+  
+  <!-- EN: 무사 개화 -->
+  <Miho_PositiveFlower_ChildTemptress_High.label>潜力发掘（灵侍）</Miho_PositiveFlower_ChildTemptress_High.label>
+  <!-- EN: 무사 개화 -->
+  <Miho_PositiveFlower_ChildTemptress_High.description>潜力发掘（灵侍）。</Miho_PositiveFlower_ChildTemptress_High.description>
+  <!-- EN: 무사 개화 -->
+  <Miho_PositiveFlower_ChildTemptress_High.labelNoun>潜力发掘（灵侍）</Miho_PositiveFlower_ChildTemptress_High.labelNoun>
+  
+  <!-- EN: 땜장이 개화 -->
+  <Miho_PositiveFlower_ChildTinker_High.label>潜力发掘（驭械士）</Miho_PositiveFlower_ChildTinker_High.label>
+  <!-- EN: 땜장이 개화 -->
+  <Miho_PositiveFlower_ChildTinker_High.description>潜力发掘（驭械士）。</Miho_PositiveFlower_ChildTinker_High.description>
+  <!-- EN: 땜장이 개화 -->
+  <Miho_PositiveFlower_ChildTinker_High.labelNoun>潜力发掘（驭械士）</Miho_PositiveFlower_ChildTinker_High.labelNoun>
+  
+</LanguageData>

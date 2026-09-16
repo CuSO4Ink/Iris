@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 미호 -->
+  <Alien_Miho.label>美狐族</Alien_Miho.label>
+  <!-- EN: 오디너리를 비롯한 많은 미호 종들의 공통조상은 인간이 아니라 붉은 여우로 추정됩니다. 당연히 자연 진화는 아니고 초월적인 무언가에 의해 지성화(Uplift) 당한걸로 추정됩니다. 인간처럼 생겼지만 인간이 아니라는 이야기 입니다. 그들의 몸에는 체내 메카나이트와 연동되는 일조량에 따라 초능력의 강도가 정해지는 안개꽃 기관이 있습니다. 이 기관덕에 여우들은 태양과 에너지를 숭상합니다. -->
+  <Alien_Miho.description>浑身散发着神秘气息的类人种族——美狐族。有传言说，他们的共同祖先并非人类，而是另一种生物狐狸。被超凡智能赋予智慧的他们有着极为优秀的灵能天赋，任何目睹过其绝世容颜的人都会被瞬间迷住。不过世间毕竟不存在完美之物，美狐族的自愈能力较差，性格普遍好斗，且很容易被毒素或污染物所影响。此外，他们也极不擅长对付动物。比起饲养那些未开化的野兽，他们似乎更喜欢与人类打交道。\n\n美狐族的生体结构略显奇特，他们的体内长有一种被称为“秘兰灵腺”的感光性器官，其从阳光中吸收的能量（美狐族将这种能量称为“阳气”）会与遍布全身的纳米机械产生相互作用，进而对美狐族的灵能强度与精神状态造成影响。也正因如此，美狐族对太阳抱有相当诚挚的敬仰之心。</Alien_Miho.description>
+  <!-- EN: Left Punch -->
+  <Alien_Miho.tools.Left_Punch-0.label>左拳</Alien_Miho.tools.Left_Punch-0.label>
+  <!-- EN: Right Punch -->
+  <Alien_Miho.tools.Right_Punch-0.label>右拳</Alien_Miho.tools.Right_Punch-0.label>
+  <!-- EN: Teeth -->
+  <Alien_Miho.tools.Teeth-0.label>牙齿</Alien_Miho.tools.Teeth-0.label>
+  <!-- EN: Left Punch -->
+  <Alien_Miho.tools.Left_Punch-1.label>左拳</Alien_Miho.tools.Left_Punch-1.label>
+  <!-- EN: Right Punch -->
+  <Alien_Miho.tools.Right_Punch-1.label>右拳</Alien_Miho.tools.Right_Punch-1.label>
+  <!-- EN: Teeth -->
+  <Alien_Miho.tools.Teeth-1.label>牙齿</Alien_Miho.tools.Teeth-1.label>
+  
+  <!-- EN: 미호 털 -->
+  <Miho_Hair_Filth.label>美狐族毛发</Miho_Hair_Filth.label>
+  
+</LanguageData>

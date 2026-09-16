@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <VoidPrisonerReleaseDemandDef.defName>Void囚犯释放请求</VoidPrisonerReleaseDemandDef.defName> -->
+  
+  <VoidPrisonerReleaseDemand.voidStartingTitle>V.O.I.D: 囚犯释放请求</VoidPrisonerReleaseDemand.voidStartingTitle>
+  
+  <VoidPrisonerReleaseDemand.voidStartingText>您好。V.O.I.D的成员之一被您扣押作为人质，我们已经知晓。\n\n这是我们的提议：\n您有24小时的时间释放战俘，否则您的举措将引来严重后果。\n\n这是您得到的第一次也是唯一一次警告。\n\n此致，\nV.O.I.D.</VoidPrisonerReleaseDemand.voidStartingText>
+
+  <VoidPrisonerReleaseDemand.thankYouMessageTitle>V.O.I.D讯息</VoidPrisonerReleaseDemand.thankYouMessageTitle>
+
+  <VoidPrisonerReleaseDemand.thankYouMessageText>感谢您与我们的合作，我们很高兴您是通情达理的人。\n\n-V.O.I.D.</VoidPrisonerReleaseDemand.thankYouMessageText>
+
+
+</LanguageData>

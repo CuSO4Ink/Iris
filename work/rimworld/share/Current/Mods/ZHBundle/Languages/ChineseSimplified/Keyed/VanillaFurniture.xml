@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+<!-- Auto Drill -->
+
+<!-- EN: Drill for {0} -->
+  <VFE_ChunkToMine>挖掘{0}</VFE_ChunkToMine>
+<!-- EN: Drill for Random Chunks -->
+  <VFE_ChunkRandomMine>挖掘随机石块</VFE_ChunkRandomMine>
+<!-- EN: Choose chunk type to drill -->
+  <VFE_ChooseMine>选择要挖掘的石块种类</VFE_ChooseMine>
+<!-- EN: Choose chunk type to drill. You can choose any of the map's rock types, or random -->
+  <VFE_ChooseMineDesc>选择要挖掘的石块种类。你可以选择该地图存在的任意一种石块种类经行挖掘，或者随机挖掘。</VFE_ChooseMineDesc>
+<!-- EN: Random chunk -->
+  <VFE_RandomRock>随机石块</VFE_RandomRock>
+<!-- EN: Select machine output -->
+  <VFE_PleaseSelectOutput>选择设备产出</VFE_PleaseSelectOutput>
+<!-- EN: This building must be placed on water -->
+  <VFE_NeedsWater>必须放置在水上</VFE_NeedsWater>
+<!-- EN: This building must be placed on sand -->
+  <VFE_NeedsSand>必须放置在沙地上</VFE_NeedsSand>
+
+<!-- Random Building Graphics -->
+
+<!-- EN: Random Graphic -->
+  <VFE_ChangeGraphic>随机贴图</VFE_ChangeGraphic>
+<!-- EN: Change Graphic of this building randomly between those available -->
+  <VFE_ChangeGraphicDesc>在可用的贴图之间随机更改此建筑的贴图。</VFE_ChangeGraphicDesc>
+
+<!-- EN: Choose Graphic -->
+  <VFE_ChooseGraphic>选择贴图</VFE_ChooseGraphic>
+<!-- EN: Choose Graphic of this building via a menu with all available options -->
+  <VFE_ChooseGraphicDesc>在弹出的菜单中为此建筑选择贴图。</VFE_ChooseGraphicDesc>
+
+<!-- EN: This building doesn't have extra random graphics to choose from. Some modder added the comp class to the building without alternative graphics, which is weird -->
+  <VFE_NoGraphics>此建筑没有其他随机贴图可供选择。看起来有个粗心的Modder没准备额外的替换贴图就在它的Def中加上了这条Comp，你最好到创意工坊的评论区反馈一下。</VFE_NoGraphics>
+
+<!-- Random Building Graphics, Options -->
+
+<!--<VFE_RandomOrSequentially>"Change Graphic" button changes graphic randomly (deselect for sequentially)</VFE_RandomOrSequentially>-->
+<!-- EN: Hide the "Random Graphic" and "Choose Graphic" buttons -->
+  <VFE_HideRandomizeButton>隐藏“更改贴图”选项</VFE_HideRandomizeButton>
+<!-- EN: Make random graphics buildings NOT start randomized -->
+  <VFE_RandomBuildingsDontStartRandom>建筑在建造完毕时使用默认贴图</VFE_RandomBuildingsDontStartRandom>
+
+<!-- EN: Switch light color -->
+  <VFE.SwitchLightColor>切换灯光颜色</VFE.SwitchLightColor>
+<!-- EN: Change current light colour. -->
+  <VFE.SwitchLightColorDesc>更改当前灯光颜色。</VFE.SwitchLightColorDesc>
+<!-- EN: Change color to {0} -->
+  <VFE.ChangeColorTo>将颜色更改为{0}</VFE.ChangeColorTo>
+<!-- EN: Power is off. Impossible to switch color. -->
+  <VFE.ColorSwitchPowerOff>已断电。无法切换颜色。</VFE.ColorSwitchPowerOff>
+	
+</LanguageData>

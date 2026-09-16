@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: sewage dump port -->
+  <SewageDumpPort.label>太空排污口</SewageDumpPort.label>
+  <!-- EN: A vacuum-sealed sewage expulsion port for use in spacecraft. When connected to a vacuum toilet, it safely ejects waste into the void of space.\nMust be mounted on an exterior wall of a ship. -->
+  <SewageDumpPort.description>用于航天器的真空密闭式污水排放口。当与真空马桶连接时，它能将排泄物安全地排放到太空的真空环境中。\n必须安装在飞船的外壁上。</SewageDumpPort.description>
+  
+  <!-- EN: cryogenic extraction node -->
+  <CryogenicExtractionNode.label>低温萃取节点</CryogenicExtractionNode.label>
+  <!-- EN: Extracts and sublimates volatile ices trapped beneath asteroid regolith. It produces usable water and generates substantial heat—handle with care when operating in enclosed environments.. -->
+  <CryogenicExtractionNode.description>从小行星地表下的尘土层中提取并升华其中所含的挥发性冰块。它能产出可用的水，并产生大量热量——在封闭环境中操作时请务必小心处理。</CryogenicExtractionNode.description>
+
+  <!-- EN: water recovery system -->
+  <SpacerWaterRecoverySystem.label>水回收系统</SpacerWaterRecoverySystem.label>
+  <!-- EN: A compact high-efficiency recycling node that recovers and reuses water from showers and sinks. -->
+  <SpacerWaterRecoverySystem.description>紧凑而高效回收设备，从淋浴器和水槽中回收并再利用水。</SpacerWaterRecoverySystem.description>
+  
+  <!-- EN: water tank -->
+  <WaterTankSmall.label>水箱</WaterTankSmall.label>
+  <!-- EN: Stores water for use by plumbed fixtures. The water must be drained if it becomes contaminated. Capacity: 2000. -->
+  <WaterTankSmall.description>该设备用于储存水,以供管道装置使用。若水受到污染,则必须将其排空。\n\n【容量】:  2000 L</WaterTankSmall.description>
+  
+</LanguageData>

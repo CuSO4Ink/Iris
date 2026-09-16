@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="Growth_weapons.Settings_GW">
+		<Weapon_Patch0>0.25</Weapon_Patch0>
+		<Weapon_Patch>50</Weapon_Patch>
+		<Weapon_Patch0>0.25</Weapon_Patch0>
+		<Weapon_Patch>50</Weapon_Patch>
+	</ModSettings>
+</SettingsBlock>

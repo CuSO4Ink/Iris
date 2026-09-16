@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+  <ModSettings Class="IrisTextureBudget.TextureBudgetSettings">
+    <environmentOnly>True</environmentOnly>
+    <generalMaxDimension>512</generalMaxDimension>
+    <targetedLargeTextures>True</targetedLargeTextures>
+  </ModSettings>
+</SettingsBlock>

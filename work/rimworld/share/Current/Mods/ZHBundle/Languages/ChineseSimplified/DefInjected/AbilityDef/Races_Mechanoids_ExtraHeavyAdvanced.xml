@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 플라즈마 대메카유도탄 -->
+  <Miho_MechATMissile.label>反机械导弹</Miho_MechATMissile.label>
+  <!-- EN: 대메카노이드 미사일을 발사합니다. -->
+  <Miho_MechATMissile.description>向目标点处发射一枚反机械族等离子导弹。</Miho_MechATMissile.description>
+  
+  <!-- EN: 플라즈마 대메카유도탄 -->
+  <Miho_MechATMissileReloadable.label>反机械导弹</Miho_MechATMissileReloadable.label>
+  <!-- EN: 대메카노이드 미사일을 발사합니다. -->
+  <Miho_MechATMissileReloadable.description>向目标点处发射一枚反机械族等离子导弹。</Miho_MechATMissileReloadable.description>
+  
+</LanguageData>

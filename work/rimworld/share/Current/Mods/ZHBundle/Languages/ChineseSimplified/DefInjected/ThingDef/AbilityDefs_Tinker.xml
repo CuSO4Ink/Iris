@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: NeuroKill -->
+  <Miho_NeuroKill_Proj.label>废热爆散</Miho_NeuroKill_Proj.label>
+  
+  <!-- EN: NeuroSlow -->
+  <Miho_NeuroSlow_Proj.label>意识侵蚀</Miho_NeuroSlow_Proj.label>
+  
+  <!-- EN: 야전 핵융합로 -->
+  <Miho_UnstablePowerCell.label>野战聚变反应堆</Miho_UnstablePowerCell.label>
+  <!-- EN: 비상상황이나 캠핑용으로 적합한 야전 핵융합로 입니다. 하루 뒤에 사라집니다. -->
+  <Miho_UnstablePowerCell.description>可当作应急能源使用的发电装置。它的电力输出较为可观，但只能运行24小时。</Miho_UnstablePowerCell.description>
+  
+</LanguageData>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- voidtech spine -->
+
+  <RH_VOIDBionicSpine.label>Voidtech仿生脊椎</RH_VOIDBionicSpine.label>
+  <RH_VOIDBionicSpine.description>一个已安装的Voidtech仿生脊椎</RH_VOIDBionicSpine.description>
+  <RH_VOIDBionicSpine.labelNoun>一个Voidtech仿生脊椎</RH_VOIDBionicSpine.labelNoun>
+
+
+  <!-- voidtech heart -->
+
+  <RH_VOIDBionicHeart.label>Voidtech仿生心脏</RH_VOIDBionicHeart.label>
+  <RH_VOIDBionicHeart.description>一个已安装的Voidtech仿生心脏</RH_VOIDBionicHeart.description>
+  <RH_VOIDBionicHeart.labelNoun>一个Voidtech仿生心脏</RH_VOIDBionicHeart.labelNoun>
+
+
+  <!-- voidtech stomach -->
+
+  <RH_VOIDBionicStomach.label>Voidtech仿生胃</RH_VOIDBionicStomach.label>
+  <RH_VOIDBionicStomach.description>一个已安装的Voidtech仿生胃</RH_VOIDBionicStomach.description>
+  <RH_VOIDBionicStomach.labelNoun>一个Voidtech仿生胃</RH_VOIDBionicStomach.labelNoun>
+
+
+  <!-- voidtech ear -->
+
+  <RH_VOIDBionicEar.label>Voidtech仿生耳</RH_VOIDBionicEar.label>
+  <RH_VOIDBionicEar.description>一个已安装的Voidtech仿生耳</RH_VOIDBionicEar.description>
+  <RH_VOIDBionicEar.labelNoun>一个Voidtech仿生耳</RH_VOIDBionicEar.labelNoun>
+
+
+  <!-- voidtechlung -->
+
+  <RH_VOIDBionicLung.label>Voidtech仿生肺</RH_VOIDBionicLung.label>
+  <RH_VOIDBionicLung.description>一个已安装的Voidtech仿生肺</RH_VOIDBionicLung.description>
+  <RH_VOIDBionicLung.labelNoun>一个Voidtech仿生肺</RH_VOIDBionicLung.labelNoun>
+
+
+  <!-- voidtechkidney -->
+
+  <RH_VOIDBionicKidney.label>Voidtech仿生肾</RH_VOIDBionicKidney.label>
+  <RH_VOIDBionicKidney.description>一个已安装的Voidtech仿生肾</RH_VOIDBionicKidney.description>
+  <RH_VOIDBionicKidney.labelNoun>一个Voidtech仿生肾</RH_VOIDBionicKidney.labelNoun>
+
+
+  <!-- voidtechliver -->
+
+  <RH_VOIDBionicLiver.label>Voidtech仿生肝</RH_VOIDBionicLiver.label>
+  <RH_VOIDBionicLiver.description>一个已安装的Voidtech仿生肝</RH_VOIDBionicLiver.description>
+  <RH_VOIDBionicLiver.labelNoun>一个Voidtech仿生肝</RH_VOIDBionicLiver.labelNoun>
+
+
+  <!-- voidtech half-cycler -->
+
+  <RH_VOIDCircadianHalfCycler.label>Voidtech作息节律器</RH_VOIDCircadianHalfCycler.label>
+  <RH_VOIDCircadianHalfCycler.description>一个已安装的Voidtech作息节律器</RH_VOIDCircadianHalfCycler.description>
+  <RH_VOIDCircadianHalfCycler.labelNoun>一个Voidtech作息节律器</RH_VOIDCircadianHalfCycler.labelNoun>
+
+
+  <!-- knowledge implant -->
+
+  <VOIDBrain_Implant.label>Voidtech神经计算机</VOIDBrain_Implant.label>
+  <VOIDBrain_Implant.description>一个已安装的Voidtech神经计算机</VOIDBrain_Implant.description>
+  <VOIDBrain_Implant.labelNoun>一个Voidtech神经计算机</VOIDBrain_Implant.labelNoun>
+
+
+  <!-- voidtech nose -->
+
+  <RH_VOIDAestheticNose.label>Voidtech仿生鼻</RH_VOIDAestheticNose.label>
+  <RH_VOIDAestheticNose.description>一个已安装的Voidtech仿生鼻</RH_VOIDAestheticNose.description>
+  <RH_VOIDAestheticNose.labelNoun>一个Voidtech仿生鼻</RH_VOIDAestheticNose.labelNoun>
+
+
+</LanguageData>

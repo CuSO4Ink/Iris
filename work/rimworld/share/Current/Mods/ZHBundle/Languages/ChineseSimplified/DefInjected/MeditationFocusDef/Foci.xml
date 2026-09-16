@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: archotechnology -->
+  <VPE_Archotech.label>超凡</VPE_Archotech.label>
+  
+  <!-- EN: group -->
+  <VPE_Group.label>群众</VPE_Group.label>
+  
+  <!-- EN: science -->
+  <VPE_Science.label>科学</VPE_Science.label>
+  
+  <!-- EN: wealth -->
+  <VPE_Wealth.label>财富</VPE_Wealth.label>
+  
+  <!-- EN: deathrest -->
+  <VPEH_Deathrest.label>死眠</VPEH_Deathrest.label>
+  
+</LanguageData>

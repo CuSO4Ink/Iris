@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: gather honey -->
+  <VV_GatherHoney.label>收获蜂蜜</VV_GatherHoney.label>
+  <!-- EN: Gather honey from mature flowers or fruit trees. The speed and yield of honey gathering must be greater than 0 to perform the job. Some arcane plants can also gather honey, but arcane plants do not produce pollen.\n\nIf the worker's plant skill is low, they may damage gathered plant. -->
+  <VV_GatherHoney.description>从成熟的花或是果树上收集蜂蜜。蜂蜜采集速度和产量必须大于0才能执行此任务。一些神秘植物也会产出蜂蜜，但其不会产生花粉。\n\n如果工作者种植技能过低，可能会损坏采集的植物。</VV_GatherHoney.description>
+  <!-- EN: Gathering honey. -->
+  <VV_GatherHoney.jobString>收获蜂蜜中</VV_GatherHoney.jobString>
+  
+  <!-- EN: gather living leaf -->
+  <VV_GatherLivingLeaf.label>收获活叶</VV_GatherLivingLeaf.label>
+  <!-- EN: Gather rare living leaves from arcane plants. The speed and yield of living leaf gathering must be greater than 0 to perform the job, and it takes a significant amount of time to gather.\n\nIf the worker's plant skill is low, they may damage gathered plant. -->
+  <VV_GatherLivingLeaf.description>从神秘植物中收集稀有的活叶。活叶的采集速度和产量必须大于0才能进行这项工作，采集需要大量时间。\n\n如果工作者种植技能过低，可能会损坏采集的植物。</VV_GatherLivingLeaf.description>
+  <!-- EN: Gathering living leaves. -->
+  <VV_GatherLivingLeaf.jobString>收获活叶中</VV_GatherLivingLeaf.jobString>
+  
+  <!-- EN: gather propolis -->
+  <VV_GatherPropolis.label>采集蜂胶</VV_GatherPropolis.label>
+  <!-- EN: Gather rare propolis from surrounding trees. The speed and yield of propolis gathering must be greater than 0 to perform the job, and it takes a significant amount of time to gather.\n\nIf the worker's plant skill is low, they may damage gathered plant. -->
+  <VV_GatherPropolis.description>从周围的树上采集稀有的蜂胶。蜂胶采集速度和产量必须大于0才能执行此任务，采集需要大量时间。\n\n如果工作者种植技能过低，可能会损坏采集的植物。</VV_GatherPropolis.description>
+  <!-- EN: Gathering propolis. -->
+  <VV_GatherPropolis.jobString>采集蜂胶中</VV_GatherPropolis.jobString>
+  
+</LanguageData>

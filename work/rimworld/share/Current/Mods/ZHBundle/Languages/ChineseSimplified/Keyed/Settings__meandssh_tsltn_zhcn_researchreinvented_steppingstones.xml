@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: Gate electrical buildings behind electricity -->
+  <RR_SS_setting_doPowerPreregs>用电建筑需要「电力」科技作前置</RR_SS_setting_doPowerPreregs>
+  <!-- EN: Ensures powered buildings require electricity to invent. -->
+  <RR_SS_setting_doPowerPreregs_tooltip>确保依赖电力的建筑需要解锁「电力」科技。</RR_SS_setting_doPowerPreregs_tooltip>
+
+  <!-- EN: Gate advanced surgery -->
+  <RR_SS_setting_doSurgeryPreregs>外科手术分级前置</RR_SS_setting_doSurgeryPreregs>
+  <!-- EN: Ensures installation of advanced artifical bodyparts requires an appropriate understanding of medicine and prosthetics. For example, installing a simple wooden peg leg only requires the most basic understanding of apparel, while installing a bionic leg requires understanding the inner workings of basic prosthetics. -->
+  <RR_SS_setting_doSurgeryPreregs_tooltip>安装高级义体需具备相应的医学与义肢学理解。例如，木制假腿仅需最基础的服饰类理解，而仿生肢体需要理解基础义肢的内部原理。</RR_SS_setting_doSurgeryPreregs_tooltip>
+  <!-- EN: Off -->
+  <RR_SS_setting_doSurgeryPreregs_option_Off>关闭</RR_SS_setting_doSurgeryPreregs_option_Off>
+  <!-- EN: Easy -->
+  <RR_SS_setting_doSurgeryPreregs_option_Easy>简化</RR_SS_setting_doSurgeryPreregs_option_Easy>
+  <!-- EN: Normal -->
+  <RR_SS_setting_doSurgeryPreregs_option_Normal>正常</RR_SS_setting_doSurgeryPreregs_option_Normal>
+
+  <!-- EN: Disable entirely. -->
+  <RR_SS_setting_doSurgeryPreregs_option_Off_tooltip>完全禁用。</RR_SS_setting_doSurgeryPreregs_option_Off_tooltip>
+  <!-- EN: Assign prerequisites from earlier in the tech tree. -->
+  <RR_SS_setting_doSurgeryPreregs_option_Easy_tooltip>采用更早期的前置项目，降低解锁门槛。</RR_SS_setting_doSurgeryPreregs_option_Easy_tooltip>
+  <!-- EN: Assign prerequisites as normal. -->
+  <RR_SS_setting_doSurgeryPreregs_option_Normal_tooltip>按默认规则分配前置项目。</RR_SS_setting_doSurgeryPreregs_option_Normal_tooltip>
+
+  <!-- EN: Restarting the game is required for the above to apply. -->
+  <RR_settings_restartWarning>以上设置需重启游戏后生效。</RR_settings_restartWarning>
+</LanguageData>

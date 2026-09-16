@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: make chemfuel from canola -->
+  <VCE_Make_ChemfuelFromCanola.label>用油菜榨油</VCE_Make_ChemfuelFromCanola.label>
+  <!-- EN: Make a batch of chemfuel by extracting biofuel from canola flowers. -->
+  <VCE_Make_ChemfuelFromCanola.description>榨取油菜花里的生物燃料以制造化学染料。</VCE_Make_ChemfuelFromCanola.description>
+  <!-- EN: Refining chemfuel from canola. -->
+  <VCE_Make_ChemfuelFromCanola.jobString>正在用油菜榨油</VCE_Make_ChemfuelFromCanola.jobString>
+  <!-- EN: weave cloth from mycothread -->
+  <VPE_WeaveClothFromMycothread.label>将菌丝布编织为布料</VPE_WeaveClothFromMycothread.label>
+  <!-- EN: Weaves cloth from mycothread. -->
+  <VPE_WeaveClothFromMycothread.description>将菌丝布编织为布料。</VPE_WeaveClothFromMycothread.description>
+  <!-- EN: Making cloth from mycothread. -->
+  <VPE_WeaveClothFromMycothread.jobString>正在将菌丝布编织为布料。</VPE_WeaveClothFromMycothread.jobString>
+  
+</LanguageData>

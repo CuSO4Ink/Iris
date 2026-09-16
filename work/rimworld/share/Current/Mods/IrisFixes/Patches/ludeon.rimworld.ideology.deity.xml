@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- fix-04:给 DeityTypeMakerGlobal 尾部追加不依赖 memeConcept 的兜底分支,
+       使 r_deityType 恒可解析,避免中文解析全死后进英文回退(NRE 或命名回退)。 -->
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>ludeon.rimworld.ideology</li>
+      <li>Ideology</li>
+    </mods>
+    <match Class="PatchOperationConditional">
+      <xpath>Defs/RulePackDef[defName="DeityTypeMakerGlobal"]/rulePack/rulesStrings/li[text()="r_deityType->[god]"]</xpath>
+      <nomatch Class="PatchOperationAdd">
+        <xpath>Defs/RulePackDef[defName="DeityTypeMakerGlobal"]/rulePack/rulesStrings</xpath>
+        <value>
+          <li>r_deityType->[god]</li>
+        </value>
+      </nomatch>
+    </match>
+  </Operation>
+</Patch>

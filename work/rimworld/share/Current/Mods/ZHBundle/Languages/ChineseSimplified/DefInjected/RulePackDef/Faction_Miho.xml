@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN:
+    <li>cultureLeaderTitle->[cultureLeaderAdjective] [cultureLeaderNoun]</li>
+    <li>cultureLeaderAdjective->빛나는</li>
+    <li>cultureLeaderAdjective->찬란한</li>
+    <li>cultureLeaderNoun->나라님</li>
+    <li>cultureLeaderNoun->한기</li>
+    <li>cultureLeaderNoun->어라하</li>
+    <li>cultureLeaderNoun->곤기시</li>
+  -->
+  <LeaderTitleMaker_Miho.rulePack.rulesStrings>
+    <li>cultureLeaderTitle->[cultureLeaderAdjective] [cultureLeaderNoun]</li>
+    <li>cultureLeaderAdjective->光辉</li>
+    <li>cultureLeaderAdjective->圣阳</li>
+    <li>cultureLeaderNoun->君主</li>
+    <li>cultureLeaderNoun->君王</li>
+    <li>cultureLeaderNoun->国君</li>
+    <li>cultureLeaderNoun->之王</li>
+  </LeaderTitleMaker_Miho.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>r_name(p=4)->[ofThing]의 [empire]</li>
+    <li>r_name(p=3)->[ofThing] [empire]</li>
+    <li>r_name->은여우 [empire]</li>
+    <li>r_name->일미 [empire]</li>
+    <li>r_name->우로키온 [empire]</li>
+    <li>r_name->페넥 [empire]</li>
+    <li>r_name->이나리 [empire]</li>
+    <li>r_name->검은꼬리 [empire]</li>
+    <li>r_name->키츠네 [empire]</li>
+    <li>r_name->여의 [empire]</li>
+    <li>r_name->레드폭스 [empire]</li>
+    <li>r_name->홋포 [empire]</li>
+    <li>r_name->[Color] [empire]</li>
+    <li>empire(p=4)->자치령</li>
+    <li>empire->총독부</li>
+    <li>empire->보호령</li>
+    <li>empire->군벌</li>
+    <li>empire->왕국</li>
+    <li>ofThing(p=4)->천상</li>
+    <li>ofThing->항성</li>
+    <li>ofThing->천명</li>
+    <li>ofThing->여우</li>
+    <li>ofThing->북슬북슬</li>
+    <li>ofThing->반짝반짝</li>
+  -->
+  <NamerFaction_Miho.rulePack.rulesStrings>
+    <li>r_name(p=4)->[ofThing][empire]</li>
+    <li>r_name(p=3)->[ofThing]之庭</li>
+    <li>r_name->银狐[empire]</li>
+    <li>r_name->金狐[empire]</li>
+    <li>r_name->灰狐[empire]</li>
+    <li>r_name->白狐[empire]</li>
+    <li>r_name->灵狐[empire]</li>
+    <li>r_name->如意[empire]</li>
+    <li>r_name->妖狐[empire]</li>
+    <li>r_name->青狐[empire]</li>
+    <li>r_name->赤狐[empire]</li>
+    <li>r_name->玄狐[empire]</li>
+    <li>r_name->[Color][empire]</li>
+    <li>empire(p=4)->自治领</li>
+    <li>empire->御领</li>
+    <li>empire->保护领</li>
+    <li>empire->军阀</li>
+    <li>empire->总督府</li>
+    <li>ofThing(p=4)->星宇</li>
+    <li>ofThing->恒星</li>
+    <li>ofThing->天命</li>
+    <li>ofThing->天狐</li>
+    <li>ofThing->毛茸</li>
+    <li>ofThing->光辉</li>
+    <li>ofThing->稻荷</li>
+    <li>ofThing->玉面</li>
+    <li>ofThing->天穹</li>
+    <li>ofThing->天宇</li>
+    <li>ofThing->琼宇</li>
+    <li>ofThing->圣阳</li>
+    <li>ofThing->玉宇</li>
+    <li>ofThing->日耀</li>
+    <li>ofThing->天照</li>
+  </NamerFaction_Miho.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>r_ideoName->미호 율령제</li>
+    <li>r_ideoName->미호율</li>
+    <li>r_ideoName->천상 신전법</li>
+    <li>r_ideoName->여우 보통법</li>
+    <li>r_ideoName->여우법</li>
+    <li>r_ideoName->불페스법</li>
+    <li>r_ideoName->항성법</li>
+    <li>r_ideoAdjective->미호</li>
+    <li>r_memberName->여우과</li>
+  -->
+  <NamerIdeo_Miho.rulePack.rulesStrings>
+    <li>r_ideoName->美狐礼律</li>
+    <li>r_ideoName->美狐法理</li>
+    <li>r_ideoName->天授律法</li>
+    <li>r_ideoName->圣阳之法</li>
+    <li>r_ideoName->天狐律法</li>
+    <li>r_ideoName->美狐至上</li>
+    <li>r_ideoName->恒星礼律</li>
+    <li>r_ideoAdjective->美狐</li>
+    <li>r_memberName->美狐至上者</li>
+  </NamerIdeo_Miho.rulePack.rulesStrings>
+  
+  <!-- EN:
+    <li>r_name(p=12)->[townname_wordgen]</li>
+    <li>r_name(p=4)->[townname_combo]</li>
+    <li>r_name->[townname_near]</li>
+    <li>topicalnoun->[Vegetable]</li>
+    <li>topicalnoun->[Game]</li>
+    <li>topicalnoun->[Color]</li>
+    <li>topicalnoun->[BodyPart]</li>
+    <li>townname_combo->[topicalnoun] [TerrainFeature] [Mihotownend]</li>
+    <li>townname_combo->[topicalnoun] [Community] [Mihotownend]</li>
+    <li>townname_combo->[topicalnoun]의 [TerrainFeature] [Mihotownend]</li>
+    <li>townname_combo->[topicalnoun]의 [Community] [Mihotownend]</li>
+    <li>townname_combo(p=2)->[concept_positive]의 [TerrainFeature] [Mihotownend]</li>
+    <li>townname_combo(p=2)->[concept_positive] [TerrainFeature] [Mihotownend]</li>
+    <li>townname_combo(p=2)->[concept_positive] [Community] [Mihotownend]</li>
+    <li>townname_combo(p=3)->[Character]의 [TerrainFeature] [Mihotownend]</li>
+    <li>townname_combo(p=3)->[Character]의 [Community] [Mihotownend]</li>
+    <li>townname_near->[TerrainFeature]앞의 [nearnameinitial] [Mihotownend]</li>
+    <li>townname_near->[TerrainFeature]뒤의 [nearnameinitial] [Mihotownend]</li>
+    <li>townname_near->[TerrainFeature]위의 [nearnameinitial] [Mihotownend]</li>
+    <li>nearnameinitial->[Community]</li>
+    <li>townname_wordgen(p=0.5)->[MihoWeird][MihoWeirdtwo] [Mihotownend]</li>
+    <li>townname_wordgen(p=0.5)->[MihoWeird][MihoWeirdtwo][MihoWeirdthree] [Mihotownend]</li>
+    <li>townname_wordgen(p=0.5)->[MihoWeird] [Mihotownend]</li>
+    <li>townname_wordgen->[TerrainFeature] [Mihotownend]</li>
+    <li>townname_wordgen->[topicalnoun] [Mihotownend]</li>
+    <li>MihoWeird->으앙</li>
+    <li>MihoWeird->뚜방</li>
+    <li>MihoWeird->캥캥</li>
+    <li>MihoWeirdtwo->으앙</li>
+    <li>MihoWeirdtwo->뚜방</li>
+    <li>MihoWeirdtwo->캥캥</li>
+    <li>MihoWeirdthree->으앙</li>
+    <li>MihoWeirdthree->뚜방</li>
+    <li>MihoWeirdthree->캥캥</li>
+    <li>Mihotownend->연구소</li>
+    <li>Mihotownend->여우촌</li>
+    <li>Mihotownend->여우굴</li>
+    <li>Mihotownend->탐사소</li>
+    <li>Mihotownend->연구소</li>
+    <li>Mihotownend->재식 농원</li>
+    <li>Mihotownend->광산</li>
+    <li>Mihotownend->산업 단지</li>
+    <li>Mihotownend->유부 공장</li>
+    <li>Mihotownend->물류 허브</li>
+    <li>Mihotownend->로켓 발사장</li>
+    <li>Mihotownend->기갑 기지</li>
+    <li>Mihotownend->향토보안대 요새</li>
+  -->
+  <NamerSettlement_Miho.rulePack.rulesStrings>
+    <li>r_name(p=12)->[townname_wordgen]</li>
+    <li>r_name(p=4)->[townname_combo]</li>
+    <li>r_name->[townname_near]</li>
+    <li>topicalnoun->[Vegetable]</li>
+    <li>topicalnoun->[Color]</li>
+    <li>townname_combo->[topicalnoun][TerrainFeature][Mihotownend]</li>
+    <li>townname_combo(p=2)->[concept_positive][Mihotownend]</li>
+    <li>townname_combo(p=2)->[TerrainFeature][Mihotownend]</li>
+    <li>townname_near->[TerrainFeature][nearnameinitial][Mihotownend]</li>
+    <li>townname_near->[TerrainFeature][nearnameinitial][Mihotownend]</li>
+    <li>townname_near->[TerrainFeature][nearnameinitial][Mihotownend]</li>
+    <li>nearnameinitial->[Community]</li>
+    <li>townname_wordgen(p=0.5)->[MihoWeirdtwo][Mihotownend]</li>
+    <li>townname_wordgen(p=0.5)->[MihoWeirdthree][Mihotownend]</li>
+    <li>townname_wordgen(p=0.5)->[MihoWeird][Mihotownend]</li>
+    <li>townname_wordgen->[TerrainFeature][Mihotownend]</li>
+    <li>townname_wordgen->[topicalnoun][Mihotownend]</li>
+    <li>MihoWeird->呼噜</li>
+    <li>MihoWeird->嗷呜</li>
+    <li>MihoWeird->嘤嘤</li>
+    <li>MihoWeird->吭吭</li>
+    <li>MihoWeirdtwo->呼噜</li>
+    <li>MihoWeirdtwo->嗷呜</li>
+    <li>MihoWeirdtwo->嘤嘤</li>
+    <li>MihoWeirdtwo->吭吭</li>
+    <li>MihoWeirdthree->呼噜</li>
+    <li>MihoWeirdthree->嗷呜</li>
+    <li>MihoWeirdthree->嘤嘤</li>
+    <li>MihoWeirdthree->吭吭</li>
+    <li>Mihotownend->实验室</li>
+    <li>Mihotownend->集散地</li>
+    <li>Mihotownend->殖民地</li>
+    <li>Mihotownend->观测站</li>
+    <li>Mihotownend->勘察站</li>
+    <li>Mihotownend->研究所</li>
+    <li>Mihotownend->种植园</li>
+    <li>Mihotownend->前哨</li>
+    <li>Mihotownend->农场</li>
+    <li>Mihotownend->采掘场</li>
+    <li>Mihotownend->工业园</li>
+    <li>Mihotownend->装配中心</li>
+    <li>Mihotownend->豆皮工厂</li>
+    <li>Mihotownend->冶炼厂</li>
+    <li>Mihotownend->物流站</li>
+    <li>Mihotownend->贸易站</li>
+    <li>Mihotownend->火箭中心</li>
+    <li>Mihotownend->装甲基地</li>
+    <li>Mihotownend->自警团关口</li>
+  </NamerSettlement_Miho.rulePack.rulesStrings>
+  
+</LanguageData>

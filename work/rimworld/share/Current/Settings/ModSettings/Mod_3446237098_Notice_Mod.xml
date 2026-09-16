@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="Notice.Notice_Settings">
+		<noticeHistory>
+			<keys>
+				<li>CMC_Update_3082025</li>
+				<li>CMC_Update_10102025</li>
+				<li>SR_UpgradeNotice</li>
+				<li>CMC_Update_12302025</li>
+				<li>SR_UpdataNotice</li>
+				<li>CMC_Update_12312025</li>
+				<li>MI_Update_20260315</li>
+				<li>Epona_Telegraph</li>
+				<li>CMC_Update_202604041</li>
+				<li>MI_Update_20260430</li>
+				<li>MI_Update_20260506</li>
+				<li>MI_Update_20260516</li>
+				<li>MI_Update_20260524</li>
+				<li>MI_Update_20260620</li>
+			</keys>
+			<values>
+				<li>2025083016</li>
+				<li>2025101016</li>
+				<li>20251001</li>
+				<li>20251230</li>
+				<li>20251221</li>
+				<li>20251231</li>
+				<li>20260315</li>
+				<li>2026067</li>
+				<li>202604041</li>
+				<li>20260430C</li>
+				<li>20260506A</li>
+				<li>20260516</li>
+				<li>20260524</li>
+				<li>20260620</li>
+			</values>
+		</noticeHistory>
+	</ModSettings>
+</SettingsBlock>

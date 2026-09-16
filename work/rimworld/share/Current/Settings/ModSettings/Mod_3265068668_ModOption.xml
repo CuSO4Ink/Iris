@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="seekiworks_GiverTheColonyHelper.ModSettings">
+		<notes>
+			<li>
+				<tick>1394437</tick>
+				<persistentRandomValue>-42148990</persistentRandomValue>
+				<id>1760136903</id>
+				<label>死亡: Giver 1</label>
+				<text>Giver 1死于割伤。</text>
+				<ver>3230</ver>
+			</li>
+			<li>
+				<tick>4771643</tick>
+				<persistentRandomValue>-940249057</persistentRandomValue>
+				<id>1889584184</id>
+				<label>死亡: Giver 1</label>
+				<text>Giver 1死于割伤。</text>
+				<ver>3230</ver>
+			</li>
+			<li>
+				<tick>6473804</tick>
+				<persistentRandomValue>1788938670</persistentRandomValue>
+				<id>2010792358</id>
+				<ver>3230</ver>
+			</li>
+		</notes>
+		<defs />
+	</ModSettings>
+</SettingsBlock>

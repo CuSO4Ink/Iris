@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<!-- Stews -->
+	
+	
+	<!-- EN: Stew to Cook -->
+  <VCE_InsertStewDesc>加入燉料燉湯</VCE_InsertStewDesc>
+	
+	<!-- EN: Bring Stew -->
+  <VCE_StartStewInsertion>添加燉料</VCE_StartStewInsertion>
+	<!-- EN: Bring a stew to the stew pot to start cooking -->
+  <VCE_StartStewInsertionDesc>往該燉鍋添加燉料以開始熬製。</VCE_StartStewInsertionDesc>
+	
+	<!-- EN: Cancel Bringing Stew -->
+  <VCE_CancelBringingStew>取消添加燉料</VCE_CancelBringingStew>
+	<!-- EN: Cancel bringing stew to the stew pot. -->
+  <VCE_CancelBringingStewDesc>取消往該燉鍋添加燉料。</VCE_CancelBringingStewDesc>
+	
+	<!-- EN: The stew has spoiled due to a lack of fuel in the stew pot -->
+  <VCE_StewFailurePower>由於燉鍋斷電，燉菜已經變質。</VCE_StewFailurePower>
+	<!-- EN: The stew is spoiling fast due to a lack of fuel in the stew pot -->
+  <VCE_StewFailurePowerWarning>由於燉鍋斷電，燉菜正在快速變質。</VCE_StewFailurePowerWarning>
+	
+	<!-- EN: A simple stew is ready and waiting for pickup -->
+  <VCE_FinishedSimpleStew>一份燉菜已經完成熬製，等待被收取</VCE_FinishedSimpleStew>
+	<!-- EN: A fine stew is ready and waiting for pickup -->
+  <VCE_FinishedFineStew>一份燉菜已經完成熬製，等待被收取</VCE_FinishedFineStew>
+	<!-- EN: A lavish stew is ready and waiting for pickup -->
+  <VCE_FinishedLavishStew>一份燉菜已經完成熬製，等待被收取</VCE_FinishedLavishStew>
+
+
+	
+
+</LanguageData>

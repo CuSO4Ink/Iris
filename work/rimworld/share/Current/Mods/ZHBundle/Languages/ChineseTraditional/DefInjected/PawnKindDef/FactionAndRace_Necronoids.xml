@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: flesh boss -->
+  <FleshBoss.label>血肉傀首</FleshBoss.label>
+  <!-- EN: flesh bosses -->
+  <FleshBoss.labelPlural>血肉傀首</FleshBoss.labelPlural>
+  
+  <!-- EN: flesh slave -->
+  <LowTier_FleshSlave.label>血肉傀奴</LowTier_FleshSlave.label>
+  
+  <!-- EN: beta flesh slave -->
+  <MidTier_FleshSlave.label>血肉傀仆</MidTier_FleshSlave.label>
+  
+  <!-- EN: bladed ghoul -->
+  <Necronoid_BladedGhoul.label>刃爪屍鬼</Necronoid_BladedGhoul.label>
+  <!-- EN: bladed ghouls -->
+  <Necronoid_BladedGhoul.labelPlural>刃爪屍鬼</Necronoid_BladedGhoul.labelPlural>
+  
+  <!-- EN: bloated ogre -->
+  <Necronoid_BloatedOgre.label>腫脹巨獸</Necronoid_BloatedOgre.label>
+  <!-- EN: bloated ogres -->
+  <Necronoid_BloatedOgre.labelPlural>腫脹巨獸</Necronoid_BloatedOgre.labelPlural>
+  
+  <!-- EN: bloodletter ghoul -->
+  <Necronoid_BloodLetterGhoul.label>放血屍鬼</Necronoid_BloodLetterGhoul.label>
+  <!-- EN: bloodletter ghouls -->
+  <Necronoid_BloodLetterGhoul.labelPlural>放血屍鬼</Necronoid_BloodLetterGhoul.labelPlural>
+  
+  <!-- EN: chupacabra -->
+  <Necronoid_Chupacabra.label>血噬獸</Necronoid_Chupacabra.label>
+  <!-- EN: chupacabras -->
+  <Necronoid_Chupacabra.labelPlural>血噬獸</Necronoid_Chupacabra.labelPlural>
+  
+  <!-- EN: crazed butcher -->
+  <Necronoid_CrazedButcher.label>癲狂屠夫</Necronoid_CrazedButcher.label>
+  <!-- EN: crazed butchers -->
+  <Necronoid_CrazedButcher.labelPlural>癲狂屠夫</Necronoid_CrazedButcher.labelPlural>
+  
+  <!-- EN: executioner ghoul -->
+  <Necronoid_ExecutionerGhoul.label>戮刑屍鬼</Necronoid_ExecutionerGhoul.label>
+  <!-- EN: executioner ghouls -->
+  <Necronoid_ExecutionerGhoul.labelPlural>戮刑屍鬼</Necronoid_ExecutionerGhoul.labelPlural>
+  
+  <!-- EN: fetid brute -->
+  <Necronoid_FetidBrute.label>膿腐瘟獸</Necronoid_FetidBrute.label>
+  <!-- EN: fetid brutes -->
+  <Necronoid_FetidBrute.labelPlural>膿腐瘟獸</Necronoid_FetidBrute.labelPlural>
+  
+  <!-- EN: fetid ghoul -->
+  <Necronoid_FetidGhoul.label>膿腐屍鬼</Necronoid_FetidGhoul.label>
+  <!-- EN: fetid ghouls -->
+  <Necronoid_FetidGhoul.labelPlural>膿腐屍鬼</Necronoid_FetidGhoul.labelPlural>
+  
+  <!-- EN: fetid hulk -->
+  <Necronoid_FetidHulk.label>膿腐屍魔</Necronoid_FetidHulk.label>
+  <!-- EN: fetid hulks -->
+  <Necronoid_FetidHulk.labelPlural>膿腐屍魔</Necronoid_FetidHulk.labelPlural>
+  
+  <!-- EN: fetid marine -->
+  <Necronoid_FetidMarine.label>膿腐陸戰隊</Necronoid_FetidMarine.label>
+  <!-- EN: fetid marines -->
+  <Necronoid_FetidMarine.labelPlural>膿腐陸戰隊</Necronoid_FetidMarine.labelPlural>
+  
+  <!-- EN: fetid parasite -->
+  <Necronoid_FetidParasite.label>膿腐蜱蟲</Necronoid_FetidParasite.label>
+  <!-- EN: fetid parasites -->
+  <Necronoid_FetidParasite.labelPlural>膿腐蜱蟲</Necronoid_FetidParasite.labelPlural>
+  
+  <!-- EN: fetid soldier -->
+  <Necronoid_FetidSoldier.label>膿腐屍卒</Necronoid_FetidSoldier.label>
+  <!-- EN: fetid soldiers -->
+  <Necronoid_FetidSoldier.labelPlural>膿腐屍卒</Necronoid_FetidSoldier.labelPlural>
+  
+  <!-- EN: fetid wolf -->
+  <Necronoid_FetidWolf.label>膿腐惡狼</Necronoid_FetidWolf.label>
+  <!-- EN: fetid wolves -->
+  <Necronoid_FetidWolf.labelPlural>膿腐惡狼</Necronoid_FetidWolf.labelPlural>
+  
+  <!-- EN: flesh tyrant -->
+  <Necronoid_FleshTyrant.label>血肉暴君</Necronoid_FleshTyrant.label>
+  <!-- EN: flesh tyrants -->
+  <Necronoid_FleshTyrant.labelPlural>血肉暴君</Necronoid_FleshTyrant.labelPlural>
+  
+  <!-- EN: hag spider -->
+  <Necronoid_HagSpider.label>妖婦駭蛛</Necronoid_HagSpider.label>
+  <!-- EN: hag spiders -->
+  <Necronoid_HagSpider.labelPlural>妖婦駭蛛</Necronoid_HagSpider.labelPlural>
+  
+  <!-- EN: howling spider -->
+  <Necronoid_HowlingSpider.label>尖嘯駭蛛</Necronoid_HowlingSpider.label>
+  <!-- EN: howling spiders -->
+  <Necronoid_HowlingSpider.labelPlural>尖嘯駭蛛</Necronoid_HowlingSpider.labelPlural>
+  
+  <!-- EN: wendigo -->
+  <Necronoid_Wendigo.label>溫迪戈</Necronoid_Wendigo.label>
+  <!-- EN: wendigos -->
+  <Necronoid_Wendigo.labelPlural>溫迪戈</Necronoid_Wendigo.labelPlural>
+  
+</LanguageData>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: frozen -->
+  <VV_Frozen.label>霜凍</VV_Frozen.label>
+  <!-- EN: It has frozen. It  slows movement speed, but can be recovered in a few moments. -->
+  <VV_Frozen.description>已被霜凍，移動速度減慢，稍后會恢復正常。</VV_Frozen.description>
+  <!-- EN: freeze -->
+  <VV_Frozen.battleStateLabel>凍結</VV_Frozen.battleStateLabel>
+  <!-- EN: frozen -->
+  <VV_Frozen.labelNoun>冰結</VV_Frozen.labelNoun>
+  
+</LanguageData>

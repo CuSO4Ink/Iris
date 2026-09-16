@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    
+<VV_Alert_ViviDangerousEggs>薇薇蜂卵受損</VV_Alert_ViviDangerousEggs>
+<VV_Alert_ViviDangerousEggsDesc>由于溫度不適宜，被忽視或在孵化器中的蜂卵正在被損壞。\n如果蜂卵完全損壞，它們就會被摧毀，所以請將蜂卵儲存的溫度保持在{MINTEMP}度和{MAXTEMP}度之間。</VV_Alert_ViviDangerousEggsDesc>
+
+</LanguageData>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+    <VEE_ResetSettings>重設</VEE_ResetSettings>
+    <VEE_NeedToBeIngame>只能在存檔內終止遊戲狀態</VEE_NeedToBeIngame>
+    <VEE_StopWorldCondition>終止世界地圖上的遊戲狀態...</VEE_StopWorldCondition>
+    <VEE_StopMapCondition>終止當前地圖上的遊戲狀態...</VEE_StopMapCondition>
+    <VEE_DaysBetweenPurpleEvents>紫色事件的觸發間隔：</VEE_DaysBetweenPurpleEvents>
+</LanguageData>

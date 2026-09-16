@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: wilted cyllen cluster -->
+  <VEE_Plant_CyllenCluster_Wilted.label>凋謝的睽睽植簇</VEE_Plant_CyllenCluster_Wilted.label>
+  <!-- EN: A dense grouping of bulbous alien foliage that pulsed with a slow, heartbeat-like rhythm. Now dead and withering. -->
+  <VEE_Plant_CyllenCluster_Wilted.description>一簇密集的球類異星枝葉，曾以緩慢如心跳般的節奏跳動著。現在的它早已凋謝枯死。</VEE_Plant_CyllenCluster_Wilted.description>
+  
+  <!-- EN: wilted myrlox tree -->
+  <VEE_Plant_MyrloxTree_Wilted.label>凋謝的虯結燔樹</VEE_Plant_MyrloxTree_Wilted.label>
+  <!-- EN: A robust, twisted growth that resembles petrified muscle more than wood. Now dead and withering. -->
+  <VEE_Plant_MyrloxTree_Wilted.description>一種結實扭曲的植物，比起樹木更像是石化的肌肉。現在的它早已凋謝枯死。</VEE_Plant_MyrloxTree_Wilted.description>
+  
+  <!-- EN: wilted phorax tree -->
+  <VEE_Plant_PhoraxTree_Wilted.label>凋謝的刺麻蕈樹</VEE_Plant_PhoraxTree_Wilted.label>
+  <!-- EN: A towering, bizarre formation barely resembling a giant mushroom. Now dead and withering. -->
+  <VEE_Plant_PhoraxTree_Wilted.description>一種高聳怪異的結構體，看起來勉強像是巨大的蕈菇。現在的它早已凋謝枯死。</VEE_Plant_PhoraxTree_Wilted.description>
+  
+  <!-- EN: wilted psychic lotus -->
+  <VEE_Plant_PsychicLotus_Wilted.label>凋謝的心靈荷花</VEE_Plant_PsychicLotus_Wilted.label>
+  <!-- EN: A wilted, ethereal bloom that acted as a dimensional anchor. Now dead and withering. -->
+  <VEE_Plant_PsychicLotus_Wilted.description>一種不再迷人卻依舊縹緲的花卉。曾作為維度錨點而存在的它，散發過宛如螢火蟲般的浮游光斑。現在的它早已凋謝枯死。</VEE_Plant_PsychicLotus_Wilted.description>
+  
+  <!-- EN: wilted vysp strands -->
+  <VEE_Plant_VyspStrands_Wilted.label>凋謝的囀唧絲株</VEE_Plant_VyspStrands_Wilted.label>
+  <!-- EN: Bizarre, thread-like growths that hummed faintly when approached. Now dead and withering. -->
+  <VEE_Plant_VyspStrands_Wilted.description>一種怪異的絲狀植物，靠近時曾會發出微弱的嗡鳴聲。現在的它早已凋謝枯死。</VEE_Plant_VyspStrands_Wilted.description>
+  
+  <!-- EN: wilted xyril tree -->
+  <VEE_Plant_XyrilTree_Wilted.label>凋謝的稜晶幻樹</VEE_Plant_XyrilTree_Wilted.label>
+  <!-- EN: A wilted, tree-like structure that refracted light in impossible colors. Now dead and withering. -->
+  <VEE_Plant_XyrilTree_Wilted.description>一種不再美麗的樹狀結構，曾以不可能的色澤折射光線。現在的它早已凋謝枯死。</VEE_Plant_XyrilTree_Wilted.description>
+  
+</LanguageData>

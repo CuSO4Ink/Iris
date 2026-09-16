@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 오니솝터 (농업용) -->
+  <Miho_Mech_DesertSphex.label>“泥蜂”園藝無人機</Miho_Mech_DesertSphex.label>
+  <!-- EN: 농업에 적합한 팔과 커터가 달린 스펙스급 오니솝터 입니다. -->
+  <Miho_Mech_DesertSphex.description>配備有機械臂與收割刀的“泥蜂”級輕型園藝無人機，不僅能夠勝任各種各樣的播種與收割工作，在戰鬥中的表現也毫不遜色。\n\n【額外能力】：高速飛行\n\n借助機體內因燃燒高溫產生的蒸汽能量，快速飛行到遠處。</Miho_Mech_DesertSphex.description>
+  <!-- EN: right blade -->
+  <Miho_Mech_DesertSphex.tools.right_blade.label>右鐮刃</Miho_Mech_DesertSphex.tools.right_blade.label>
+  
+  <!-- EN: 오니솝터 (자폭공격용) -->
+  <Miho_Mech_DesertSphexExplosion.label>“泥蜂”自爆無人機</Miho_Mech_DesertSphexExplosion.label>
+  <!-- EN: 농업에 적합한 팔과 커터가 달렸었던 스펙스급 오니솝터 입니다. 폭탄을 달기 위해 굉장히 경량화 되었습니다. -->
+  <Miho_Mech_DesertSphexExplosion.description>配備有機械臂與收割刀的“泥蜂”級輕型自爆無人機。為了提高移動速度和裝載更多炸藥，其機體內部不必要的系統和組件均已移除。\n\n【額外能力】：高速飛行（自爆）\n\n借助機體內因燃燒高溫產生的蒸汽能量，快速飛行到遠處，隨後引爆身上裝載的所有炸藥。</Miho_Mech_DesertSphexExplosion.description>
+  <!-- EN: right blade -->
+  <Miho_Mech_DesertSphexExplosion.tools.right_blade.label>右鐮刃</Miho_Mech_DesertSphexExplosion.tools.right_blade.label>
+  
+  <!-- EN: explosion -->
+  <Miho_MechAbility_High_JumpExplosion_Proj.label>爆破</Miho_MechAbility_High_JumpExplosion_Proj.label>
+
+</LanguageData>

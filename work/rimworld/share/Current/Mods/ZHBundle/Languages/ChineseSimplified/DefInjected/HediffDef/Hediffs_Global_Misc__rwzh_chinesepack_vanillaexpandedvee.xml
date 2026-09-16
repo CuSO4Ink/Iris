@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: might join -->
+  <MightJoin.label>可能加入</MightJoin.label>
+  <!-- EN: might join -->
+  <MightJoin.description>可能加入。</MightJoin.description>
+  
+  <!-- EN: traitor -->
+  <Traitor.label>背叛者</Traitor.label>
+  <!-- EN: Oh you dirty cheater, stop peeking behind the curtain! -->
+  <Traitor.description>哦天哪，你这个妄图偷窥幕后的肮脏作弊者，我一定要用靴子狠狠地踢你的屁股！</Traitor.description>
+  
+  <!-- EN: psychic bloom -->
+  <VEE_BloomPsychicSensitivity.label>灵花绽放</VEE_BloomPsychicSensitivity.label>
+  <!-- EN: The psychic lotuses are mutating nearby flora into vibrant, otherworldly variants, and the ambient psychic sensitivity of everyone in the region has doubled. -->
+  <VEE_BloomPsychicSensitivity.description>心灵荷花正将附近的植物突变为妖艳的异域变种，并使此区域内所有人的心灵敏感度翻倍。</VEE_BloomPsychicSensitivity.description>
+  
+  <!-- EN: long night -->
+  <VEE_LongNight.label>漫漫长夜</VEE_LongNight.label>
+  <!-- EN: The celestial entity is emitting a heavy cosmic resonance. Organic beings will tire much faster than normal, and their psychic sensitivity will be dangerously amplified. -->
+  <VEE_LongNight.description>未知太空实体散发着强烈的宇宙共鸣，使此人更容易感到疲惫，其心灵敏感度也将被严重放大。</VEE_LongNight.description>
+  
+  <!-- EN: psychic hum -->
+  <VEE_PsychicHumHediff.label>心灵嗡鸣</VEE_PsychicHumHediff.label>
+  <!-- EN: A weird, discordant psychic hum is vibrating through the minds of some people, seemingly chosen at random. -->
+  <VEE_PsychicHumHediff.description>一种诡异且不和谐的心灵嗡鸣正此人的脑海中回荡。\n\n此人将无法正常休息或缓解压力，而随着疲惫感和娱乐需求的激增，其精神状态也会快速恶化。</VEE_PsychicHumHediff.description>
+  
+  <!-- EN: psychic overdrive -->
+  <VEE_PsychicOverdriveHediff.label>心灵超频</VEE_PsychicOverdriveHediff.label>
+  <!-- EN: A wave of psychic energy has washed over the colony, resonating specifically with the minds of some of your colonists! -->
+  <VEE_PsychicOverdriveHediff.description>一阵心灵能量波席卷了此区域，并与此人产生了精神共鸣！\n\n此人的思维正飞速运转，身体也以前所未有的的效率行动着。几天内，心灵超频将显著提高其工作速度。</VEE_PsychicOverdriveHediff.description>
+  
+  <!-- EN: psychic relaxation -->
+  <VEE_PsychicRelaxationHediff.label>心灵激悦</VEE_PsychicRelaxationHediff.label>
+  <!-- EN: Some distant engine of joy sent psychic vibrations that washed over the region, specifically resonating with the minds of a particular demographic. -->
+  <VEE_PsychicRelaxationHediff.description>在遥远地区的某个东西释放出的心灵振波席卷了此区域，并与此人产生了精神共鸣！\n\n无形缥缈的能量刺激并取悦着此人的精神，使其感受到一种深沉而又舒缓的宁静。在这种精神状态下，此人能获得极大程度的放松。几天内，其娱乐需求将被完全满足。</VEE_PsychicRelaxationHediff.description>
+  
+  <!-- EN: sun sickness -->
+  <VEE_SunSickness.label>日射病</VEE_SunSickness.label>
+  <!-- EN: Severe cellular damage and blistering caused by unprotected exposure to solar radiation. Recovery is incredibly slow and leaves the skin highly sensitive for days. -->
+  <VEE_SunSickness.description>不做防护便直接暴露于太阳辐射下，从而引起的细胞严重受损与水疱滋生症状。这种疾病的自愈速度极其缓慢，患者的皮肤将在几天内变得异常敏感。</VEE_SunSickness.description>
+  <!-- EN: initial -->
+  <VEE_SunSickness.stages.initial.label>轻微</VEE_SunSickness.stages.initial.label>
+  <!-- EN: minor -->
+  <VEE_SunSickness.stages.minor.label>较轻</VEE_SunSickness.stages.minor.label>
+  <!-- EN: moderate -->
+  <VEE_SunSickness.stages.moderate.label>中等</VEE_SunSickness.stages.moderate.label>
+  <!-- EN: serious -->
+  <VEE_SunSickness.stages.serious.label>严重</VEE_SunSickness.stages.serious.label>
+  <!-- EN: extreme -->
+  <VEE_SunSickness.stages.extreme.label>极重</VEE_SunSickness.stages.extreme.label>
+  
+</LanguageData>

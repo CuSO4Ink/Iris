@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: healing exhaustion -->
+  <VPER_Healing_Ban.label>愈合疲劳</VPER_Healing_Ban.label>
+  <!-- EN: The mentally-engraved rune of Berkana was used to restore this pawn's health some time ago. However, this has left them feeling slightly drained.\n\nWhile this effect lingers, the pawn cannot be healed by the effects of Invoke: Berkana. -->
+  <VPER_Healing_Ban.description>该角色近期受到过深刻于心灵的伯卡纳符文恢复。然而也使其感到些许疲惫。\n\n在该效果持续期间，该角色无法通过“引动：伯卡纳”的效果获得治疗。</VPER_Healing_Ban.description>
+  
+  <!-- EN: engraved Algiz -->
+  <VPER_Runecircle_Defense.label>奥吉兹印刻</VPER_Runecircle_Defense.label>
+  <!-- EN: The mentally-engraved rune of Algiz is reducing the damage this pawn takes. -->
+  <VPER_Runecircle_Defense.description>深刻于心灵的奥吉兹符文正在守护该角色降低其受到的伤害。</VPER_Runecircle_Defense.description>
+  
+  <!-- EN: engraved Teiwaz -->
+  <VPER_Runecircle_Melee.label>帝瓦兹印刻</VPER_Runecircle_Melee.label>
+  <!-- EN: The mentally-engraved rune of Teiwaz is boosting this pawn's melee prowess. -->
+  <VPER_Runecircle_Melee.description>深刻于心灵的帝瓦兹符文大幅增强了该角色的近战威力。</VPER_Runecircle_Melee.description>
+  
+  <!-- EN: engraved Ehwaz -->
+  <VPER_Runecircle_Speed.label>耶瓦兹印刻</VPER_Runecircle_Speed.label>
+  <!-- EN: The mentally-engraved rune of Ehwaz is boosting the speed of this pawn. -->
+  <VPER_Runecircle_Speed.description>深刻于心灵的耶瓦兹符文大幅增强了该角色的速度。</VPER_Runecircle_Speed.description>
+  
+  <!-- EN: clinging frost -->
+  <VPER_Slow.label>覆霜</VPER_Slow.label>
+  <!-- EN: Clinging frost is slowing down the movement of this pawn. -->
+  <VPER_Slow.description>结覆的寒霜正在减缓该角色的移速。</VPER_Slow.description>
+  
+  <!-- EN: clinging ice -->
+  <VPER_SlowFragile.label>覆冰</VPER_SlowFragile.label>
+  <!-- EN: Clinging ice is slowing down the movement of this pawn and causing them to take increased damage. -->
+  <VPER_SlowFragile.description>结覆的冰凌正在减缓该角色的移速，并使其承受更多伤害。</VPER_SlowFragile.description>
+  
+</LanguageData>

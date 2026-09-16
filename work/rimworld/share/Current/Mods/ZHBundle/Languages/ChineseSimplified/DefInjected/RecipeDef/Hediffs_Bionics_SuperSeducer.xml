@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- super seducer -->
+
+  <InstallRH_AestheticShaper.label>安装诱惑植入物</InstallRH_AestheticShaper.label>
+  <InstallRH_AestheticShaper.description>安装诱惑植入物。</InstallRH_AestheticShaper.description>
+  <InstallRH_AestheticShaper.jobString>正在安装诱惑植入物。</InstallRH_AestheticShaper.jobString>
+
+  <RemoveRH_AestheticShaper.label>移除诱惑植入物</RemoveRH_AestheticShaper.label>
+  <RemoveRH_AestheticShaper.description>移除诱惑植入物。</RemoveRH_AestheticShaper.description>
+  <RemoveRH_AestheticShaper.jobString>正在移除诱惑植入物。</RemoveRH_AestheticShaper.jobString>
+
+
+</LanguageData>

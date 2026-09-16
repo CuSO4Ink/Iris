@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: field research kit -->
+  <RR_FieldResearchKitHiTech.label>实地科研套件</RR_FieldResearchKitHiTech.label>
+  <!-- EN: This advanced field research kit contains the tools necessary to perform research in the field, where a researcher does not have access to a full-sized research bench. The advanced tools in this kit allow researching technologies that would ordinarily require a hi-tech research bench. -->
+  <RR_FieldResearchKitHiTech.description>此套件含了实地科研所需的高级工具，允许研究那些原先需要在高级研究台开展的项目。</RR_FieldResearchKitHiTech.description>
+
+  <!-- EN: field research analyzer-kit -->
+  <RR_FieldResearchKitMultiAnalyzer.label>实地科研分析套件</RR_FieldResearchKitMultiAnalyzer.label>
+  <!-- EN: This advanced field research kit contains the tools necessary to perform research in the field, where a researcher does not have access to a full-sized research bench. The advanced tools in this kit allow researching technologies that would ordinarily require a hi-tech research bench. An expansion module contains a portable microanalyzer. -->
+  <RR_FieldResearchKitMultiAnalyzer.description>此套件含了实地科研所需的高级工具，允许研究那些原先需要在高级研究台开展的项目。其扩展模块含便携式多元分析仪。</RR_FieldResearchKitMultiAnalyzer.description>
+
+  <!-- EN: remote field research kit -->
+  <RR_FieldResearchKitRemote.label>远程实地科研套件</RR_FieldResearchKitRemote.label>
+  <!-- EN: This advanced field research kit contains the tools necessary to perform research in the field, where a researcher does not have access to a full-sized research bench. The advanced tools in this kit allow researching technologies that would ordinarily require a hi-tech research bench. An expansion module contains an uplink system that allows remote usage of local research benches by connecting to their microanalyzer. -->
+  <RR_FieldResearchKitRemote.description>此套件含了实地科研所需的高级工具，允许研究那些原先需要在高级研究台开展的项目。其扩展模块含上行链路系统，允许与本地研究台的便携式多元分析仪连接并使用它们。</RR_FieldResearchKitRemote.description>
+
+  <!-- EN: simple field research kit -->
+  <RR_FieldResearchKitSimple.label>基础实地科研套件</RR_FieldResearchKitSimple.label>
+  <!-- EN: This basic field research kit contains the tools necessary to perform research in the field, where a researcher does not have access to a full-sized research bench. -->
+  <RR_FieldResearchKitSimple.description>此套件含了实地科研所需的基础工具，允许研究那些原先需要在基础研究台开展的项目。</RR_FieldResearchKitSimple.description>
+
+</LanguageData>

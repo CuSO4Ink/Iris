@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: army ration -->
+  <ArmyRation.label>豪華軍糧</ArmyRation.label>
+  <!-- EN: A widely known food item used by militaries of well developed civilizations. The ration contains a variety of preserved meats and vegetables, canned goods, some salted biscuits, and breads. Although pre-cooked and packaged, it can still be edible for longer periods of time, which is perfect for long term military campaigns. -->
+  <ArmyRation.description>裝有臘肉、醃菜、罐頭、鹹餅乾、麵包等食物的軍用制式包裝食品，常見於那些繁榮文明世界中。雖然不會腐爛，但是放在露天環境裡依然會劣化，長途行軍的首選食物。加熱過後口感和風味更佳。</ArmyRation.description>
+  
+  <!-- EN: army ration meal -->
+  <ArmyRationMeal.label>豪華軍糧（加熱）</ArmyRationMeal.label>
+  <!-- EN: A delicious meal made by reheating an army ration. Very fulfilling which reduces hunger rate temporarily. -->
+  <ArmyRationMeal.description>經過加熱後變得熱氣騰騰的豪華軍糧，食用後能得到額外的滿足感與飽腹感。</ArmyRationMeal.description>
+  
+  <!-- EN: modified mech beacon -->
+  <CustomMechBeacon.label>改裝機械信標</CustomMechBeacon.label>
+  <!-- EN: A mechanoid artifact that was modified by an unknown outlader. Upon using it, the artifact will send a frequency where modified mechs will immediately converge in your area via transport pod, ready to serve their new master. Be warned, the mech will arrive un-controlled, so make sure you have a mechlink installed in you. -->
+  <CustomMechBeacon.description>被某位身份不明的外來者改裝過的機械族造物。被激活的信標會對外發送一段頻率特殊的信號，隨後將有渴望為新主人服務的改裝機械體乘坐運輸艙抵達此處。\n\n警告：新抵達的改裝機械體處於未被控制狀態，請確保你有一位頻寬足夠的御機使。</CustomMechBeacon.description>
+  <!-- EN: Activate {0_label} -->
+  <CustomMechBeacon.comps.CompUsable-0.useLabel>激活{0_label}</CustomMechBeacon.comps.CompUsable-0.useLabel>
+  <!-- EN: Activate {0_label} -->
+  <CustomMechBeacon.comps.CompUsable-1.useLabel>激活{0_label}</CustomMechBeacon.comps.CompUsable-1.useLabel>
+  
+  <!-- EN: antigen organ -->
+  <Necro_AntigenOrgan.label>抗原器官</Necro_AntigenOrgan.label>
+  <!-- EN: A unique organ which contains antigens that combats the necronoid infection. According to analysis, these oragans are used to balance the necronoid infection inside a necronoid, preventing it from overwhelming the host and preserve the body for long periods of time. This organ is a vital ingredient in creating vaccines against the necronoid infection. -->
+  <Necro_AntigenOrgan.description>含有歿疫病毒抗原的特殊器官。分析結果表明，這種器官的主要功能是抑制歿疫病毒的超速增殖，防止它們過度侵蝕和毀壞宿主的肉體。製作歿疫解藥時需要用到抗原器官。</Necro_AntigenOrgan.description>
+  
+  <!-- EN: 歿疫肉 -->
+  <Necro_Meat.label>歿疫肉</Necro_Meat.label>
+  <!-- EN: 新鮮屠宰的歿疫感染體肉。雖然生吃後會感染弱性歿疫病毒，但有些人覺得這種肉是用來折磨拷問和犯下戰爭罪行的優秀工具。 -->
+  <Necro_Meat.description>新鮮屠宰的歿疫感染體肉。雖然生吃後會感染弱性歿疫病毒，但有些人覺得這種肉是用來折磨拷問和犯下戰爭罪行的優秀工具。</Necro_Meat.description>
+  
+  <!-- EN: necro meat skewers -->
+  <NecroMeatSkewers.label>歿疫肉串</NecroMeatSkewers.label>
+  <!-- EN: A delicious meat skewers made from necronoid meat. -->
+  <NecroMeatSkewers.description>用猛火烤制的歿疫肉串，嘗起來還挺香的。</NecroMeatSkewers.description>
+  
+  <!-- EN: note -->
+  <PaperNote.label>神秘的便簽</PaperNote.label>
+  <!-- EN: It appears to be a note written for you, it reads......\n\nDear Outlander\n\nHey! You are finally awake. You may not know me, and apparently it is for the best, but I left you some few supplies inside the sack and some weapons outside the sack, please pay no mind the crude design of the weapons and properly arm yourself.\n\nI bet you are confused on why you are recieving these, but you're gonna need it, because in 7 days, those "things" will come after you, and they will never stop. No matter what happens, don't panic. Establish yourself asap and build lots of traps, but no matter what you do, do not fight them in melee range, because you'll get infected if you do. If that happens, use the vaccines inside the sack, because if you leave it be, you're fucked.\n\nAlways remember to wear your gasmask at all times, since necrotion fallout can randomly appear in your region, and if you're exposed on it for too long, you'll become permanently paralyzed where you'll basically become a sitting duck.\n\nThis is all I can do for you, the rest is up to you. Good luck!\n\nBM -->
+  <PaperNote.description>這張神秘的便簽似乎是給你的。上面寫著：\n\n&lt;color=#C2E7F2>親愛的外來者，\n\n喲！你總算是醒了。你可能並不認識我，但這樣或許才是最好的。我在你身旁留了個大袋子，裡面裝著很多補給品。呃，還有幾支槍，雖然它們看著可能挺丑挺糙的，但請放心，用來武裝你自己是絕對足夠的。\n\n我猜你現在肯定很奇怪為什麼我要給你這些東西，對吧？因為..7天之後，那些“傢伙”必定會找到你，然後發起無休止的攻擊。不管發生了什麼，都請保持鎮定，切不可驚慌失措。你需要盡快建立起可靠的庇護所，然後佈置好各種各樣的陷阱。但有一點你無論如何都要牢記：不要試圖和它們近戰。如果不小心被抓傷或咬傷了，那就會感染它們身上攜帶的致命病毒。我在袋子裡留了幾支解藥以備不測，你不幸中招的時候就請用吧。\n\n對了，如果你需要夥伴的話，就激活那個機械信標吧。這會喚來一些我親自改裝過的機械體，它們肯定能幫上你的忙的。只是別忘了先把機絆搞到手！\n\n這就是我能為你做的一切了，剩下的就得靠你自己了！祝你好運，兄弟！\n\nBM&lt;/color></PaperNote.description>
+  
+  <!-- EN: parasite -->
+  <Parasite.label>膿腐蜱蟲</Parasite.label>
+  <!-- EN: contains parasites. -->
+  <Parasite.description>膿腐蜱蟲。</Parasite.description>
+  
+  <!-- EN: sack of supplies -->
+  <Supply_Sack.label>補給袋</Supply_Sack.label>
+  <!-- EN: A sack full of useful supplies, containing a mobile gas cooker, chemfuel, army rations, medicines, components, a custom mech beacon, and a note. -->
+  <Supply_Sack.description>裝有便攜燃氣爐、化合燃料、豪華軍糧、歿疫解藥、零部件、醫藥以及改裝機械信標的大補給袋。啊，裡面還有一張寫給你的神秘便簽。</Supply_Sack.description>
+  <!-- EN: Open Sack -->
+  <Supply_Sack.comps.CompUsable.useLabel>打開補給袋</Supply_Sack.comps.CompUsable.useLabel>
+  
+</LanguageData>

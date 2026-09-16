@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Blindfold -->
+  <DR_Blindfold.label>眼罩</DR_Blindfold.label>
+  <!-- EN: A blindfold is blocking this person's vision. -->
+  <DR_Blindfold.description>眼罩擋住了這個人的視線。</DR_Blindfold.description>
+  
+</LanguageData>

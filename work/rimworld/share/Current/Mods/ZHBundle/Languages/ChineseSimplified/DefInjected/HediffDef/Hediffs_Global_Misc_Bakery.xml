@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: consumed confection -->
+  <VCE_ConsumedConfection.label>食用了糕点</VCE_ConsumedConfection.label>
+  <!-- EN: This colonist has recently consumed a confection. Eating another one before 3 days will have no mood nullification effects. -->
+  <VCE_ConsumedConfection.description>该殖民者最近食用了糕点，3天内再次食用无法触发心情中和效果。</VCE_ConsumedConfection.description>
+  
+</LanguageData>

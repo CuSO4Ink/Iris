@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 여우의 불타는 망토 -->
+  <Miho_Ability_HeatArmor.label>狐火護體</Miho_Ability_HeatArmor.label>
+  <!-- EN: 고열의 결계를 몽에 둘러 피시전자를 보호하고, 근접 공격력을 강화시킵니다. -->
+  <Miho_Ability_HeatArmor.description>將心靈能量化作護體的高溫烈焰，提高目標的防護能力、近戰能力和耐熱抗寒能力。</Miho_Ability_HeatArmor.description>
+  
+  <!-- EN: 뜨거운 여우불 -->
+  <Miho_Ability_HotFireball.label>爆能狐焱</Miho_Ability_HotFireball.label>
+  <!-- EN: 강력한 파괴력을 지닌 플라즈마 여우불을 소환합니다. 취급주의!!! -->
+  <Miho_Ability_HotFireball.description>召喚並向目標發射一團威力驚人的等離子狐焱彈。命中後會產生小範圍爆炸。\n\n“使用時小心點！”</Miho_Ability_HotFireball.description>
+  
+  <!-- EN: 메탈위빙 (금) -->
+  <Miho_Ability_MakeGold.label>金屬織構（黃金）</Miho_Ability_MakeGold.label>
+  <!-- EN: 금 75개를 메탈위빙 합니다. 처음에는 고온의 금속덩어리로 나오지만, 식으면서 온전한 금이 됩니다. -->
+  <Miho_Ability_MakeGold.description>操縱心靈能量織構金屬。剛形成的熔融金屬溫度極高，但經過一段時間冷卻後就會變成75個黃金。</Miho_Ability_MakeGold.description>
+  
+  <!-- EN: 메탈위빙 (플라스틸) -->
+  <Miho_Ability_MakePlasteel.label>金屬織構（塑鋼）</Miho_Ability_MakePlasteel.label>
+  <!-- EN: 플라스틸 50개를 메탈위빙 합니다. 처음에는 고온의 금속덩어리로 나오지만, 식으면서 온전한 플라스틸이 됩니다. -->
+  <Miho_Ability_MakePlasteel.description>操縱心靈能量織構金屬。剛形成的熔融金屬溫度極高，但經過一段時間冷卻後就會變成50個塑鋼。</Miho_Ability_MakePlasteel.description>
+  
+  <!-- EN: 메탈위빙 (강철) -->
+  <Miho_Ability_MakeSteel.label>金屬織構（鋼鐵）</Miho_Ability_MakeSteel.label>
+  <!-- EN: 강철 225개를 메탈위빙 합니다. 처음에는 고온의 금속덩어리로 나오지만, 식으면서 온전한 강철이 됩니다. -->
+  <Miho_Ability_MakeSteel.description>操縱心靈能量織構金屬。剛形成的熔融金屬溫度極高，但經過一段時間冷卻後就會變成225個鋼鐵。</Miho_Ability_MakeSteel.description>
+  
+  <!-- EN: 여우 태양등 -->
+  <Miho_Ability_Sunlamp.label>天陽輝燈</Miho_Ability_Sunlamp.label>
+  <!-- EN: 따뜻한 열과 작물이 자라기에 충분한 빛을 제공하는 마법 램프를 소환합니다. -->
+  <Miho_Ability_Sunlamp.description>在目標點處召喚一個永久存在但非常脆弱的天陽輝燈，可將一片區域照亮到足以種植農作物。</Miho_Ability_Sunlamp.description>
+  
+</LanguageData>

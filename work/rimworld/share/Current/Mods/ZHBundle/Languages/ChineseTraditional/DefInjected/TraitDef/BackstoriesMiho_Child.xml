@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 불이 좋아 -->
+  <Miho_EnergyMeditation_Trait.degreeDatas.0.label>火焰迷戀</Miho_EnergyMeditation_Trait.degreeDatas.0.label>
+  <!-- EN: 방화광 정도는 아닙니다만. 불을 굉장히 좋아합니다. -->
+  <Miho_EnergyMeditation_Trait.degreeDatas.0.description>{PAWN_nameDef}迷戀火焰，但並不會像縱火狂一樣為緩解壓力而四處放火。{PAWN_pronoun}可以在火焰附近進行冥想。</Miho_EnergyMeditation_Trait.degreeDatas.0.description>
+  
+</LanguageData>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="MiliraKiiroCuddle.KiiroCuddleModSetting">
+		<maxCuddleDistance>50</maxCuddleDistance>
+		<maxJoyGain>10</maxJoyGain>
+		<cuddlingChance>2</cuddlingChance>
+		<disableRaceLimit>True</disableRaceLimit>
+	</ModSettings>
+</SettingsBlock>

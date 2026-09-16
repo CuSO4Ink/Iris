@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Flavour mastery -->
+  <VCE_FlavourMaster.label>趣味</VCE_FlavourMaster.label>
+  <!-- EN: An expertise in randomly adding cooking condiments to meals on a whim. -->
+  <VCE_FlavourMaster.description>有幾率在烹飪過程中額外添加隨機調味品的專精。</VCE_FlavourMaster.description>
+  
+  <!-- EN: Gourmet cooking -->
+  <VCE_GourmetChef.label>臻廚</VCE_GourmetChef.label>
+  <!-- EN: An expertise in improving meals beyond their usual level of quality. -->
+  <VCE_GourmetChef.description>有幾率提升食物質量的專精。</VCE_GourmetChef.description>
+  
+</LanguageData>

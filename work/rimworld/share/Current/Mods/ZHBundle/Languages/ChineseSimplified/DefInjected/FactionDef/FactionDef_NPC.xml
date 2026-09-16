@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Commonwealth of vivi -->
+  <VV_ViviFederation.label>薇薇联邦</VV_ViviFederation.label>
+  <!-- EN: Federation established by independent Vivi nests for their common interest. There was once a unified Vivi Empire, but due to the influx and attack of outsiders, it is currently divided into individual, independent nests.\nOnly a few traces of the former empire remain, in the form of certain traditions and administrative structures. They are uninterested in anything beyond their own activities, rarely initiate attacks, but are aggressive to those who pose a threat and defend themselves with their unique peculiar technology. -->
+  <VV_ViviFederation.description>由独立的薇薇蜂巢为共同利益而建立的联盟。曾经存在一个统一的薇薇帝国，但由于外来者的涌入与攻击，它们目前被划分为相互独立的蜂巢。\n联邦有少数前帝国以传统和行政结构的形式存在的遗痕。他们对自己活动之外的任何事情都不感兴趣，很少发起攻击，但对那些构成威胁的人很有攻击性，联邦使用他们独特的技术自卫。</VV_ViviFederation.description>
+  <!-- EN: federation representative -->
+  <VV_ViviFederation.leaderTitle>女皇</VV_ViviFederation.leaderTitle>
+  <!-- EN: {0} from {1} are attacking your {2}. -->
+  <VV_ViviFederation.messageDefendersAttacking>来自{1}的{0}正在攻击你的{2}</VV_ViviFederation.messageDefendersAttacking>
+  <!-- EN: vivi -->
+  <VV_ViviFederation.pawnSingular>薇薇</VV_ViviFederation.pawnSingular>
+  <!-- EN: vivis -->
+  <VV_ViviFederation.pawnsPlural>薇薇们</VV_ViviFederation.pawnsPlural>
+  
+</LanguageData>

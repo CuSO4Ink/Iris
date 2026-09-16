@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: entering TargetA. -->
+  <KCSG_GoToPassage.reportString>進入TargetA。</KCSG_GoToPassage.reportString>
+  
+  <!-- EN: customizing TargetA. -->
+  <VEF_CustomizeItem.reportString>定制TargetA。</VEF_CustomizeItem.reportString>
+  
+<!-- EN: extracting a flower. -->
+  <VEF_ExtractFlower.reportString>移植花卉。</VEF_ExtractFlower.reportString>
+  
+  <!-- EN: refueling TargetA with ammunition. -->
+  <VEF_RefuelSecondary.reportString>為TargetA補充彈藥。</VEF_RefuelSecondary.reportString>
+  
+  <!-- EN: removing weeds. -->
+  <VEF_RemoveWeeds.reportString>移除雜草。</VEF_RemoveWeeds.reportString>
+  
+  <!-- EN: using TargetA to teleport to TargetB -->
+  <VEF_UseDoorTeleporter.reportString>使用TargetA傳送至TargetB。</VEF_UseDoorTeleporter.reportString>
+  
+  <!-- EN: looting TargetA. -->
+  <VFE_Loot.reportString>搜刮TargetA。</VFE_Loot.reportString>
+  
+  <!-- EN: studying TargetA. -->
+  <VFE_StudyBuilding.reportString>調查TargetA。</VFE_StudyBuilding.reportString>
+  
+  <!-- EN: equipping TargetA. -->
+  <VFEC_EquipShield.reportString>裝備TargetA。</VFEC_EquipShield.reportString>
+  
+  <!-- EN: leaving. -->
+  <VFEC_LeaveMap.reportString>離開地圖。</VFEC_LeaveMap.reportString>
+  
+</LanguageData>

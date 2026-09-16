@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+    <WallHeater.label>壁挂式加热器</WallHeater.label>
+    <WallHeater.description>一个将电能转换成热能的电器设备。它会自动根据当前室内温度开关以达到设定的目标温度。可以挂在墙上。</WallHeater.description>
+</LanguageData>

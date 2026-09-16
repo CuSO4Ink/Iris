@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Void_RapidHealing.label>N-4愈合</Void_RapidHealing.label>
+  <Void_RapidHealing.description>Nerotonin-4型病毒引發的快速愈合。它將在長時間避免身體創傷後被激活。</Void_RapidHealing.description>
+  <Void_RapidHealing.stages.0.label>未激活</Void_RapidHealing.stages.0.label>
+  <Void_RapidHealing.stages.1.label>激活</Void_RapidHealing.stages.1.label>
+  <Void_RapidHealing.labelNoun>N-4愈合</Void_RapidHealing.labelNoun>
+
+  <Void_Painstopper.label>N-4止痛</Void_Painstopper.label>
+  <Void_Painstopper.description>Nerotonin-4型病毒引發的止痛作用。</Void_Painstopper.description>
+  <Void_Painstopper.labelNoun>N-4止痛</Void_Painstopper.labelNoun>
+
+
+</LanguageData>

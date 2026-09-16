@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cook haute meal -->
+  <VCE_CookMealHaute.label>烹飪臻藝食物</VCE_CookMealHaute.label>
+  <!-- EN: Compose an opulent symphony of flavor and form, where the finest ingredients and\n      masterful technique unite in a transcendent culinary masterpiece. -->
+  <VCE_CookMealHaute.description>用精選食材搭配極致的廚藝，烹飪出色香味俱全的臻藝食物。</VCE_CookMealHaute.description>
+  <!-- EN: Cooking haute meal. -->
+  <VCE_CookMealHaute.jobString>正在烹飪臻藝食物。</VCE_CookMealHaute.jobString>
+  
+</LanguageData>

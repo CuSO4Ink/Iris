@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: PFK Ball -->
+  <PFK_Ball.label>兒童房裝飾球</PFK_Ball.label>
+  <!-- EN: A decorative ball to brighten up your room.\n\nIt provides a slight boost to room beauty, but has no other effects. The ball type changes with each orientation. -->
+  <PFK_Ball.description>一個裝飾用的球，適合點綴房間。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_Ball.description>
+  
+  <!-- EN: PFK Big Curtain -->
+  <PFK_BigCurtain.label>兒童房大幕簾</PFK_BigCurtain.label>
+  <!-- EN: A larger version of the PFK Curtains. Use it over doorways or combine with other items for various decorative effects.\n\nThey provide a small beauty boost, but no other effects. Different styles can be viewed by changing orientation -->
+  <PFK_BigCurtain.description>兒童房幕簾的大號版本。將它和門或其他物體結合以達成預期的裝飾效果。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_BigCurtain.description>
+  
+  <!-- EN: PFK BuntingA -->
+  <PFK_Bunting.label>兒童房小彩旗A</PFK_Bunting.label>
+  <!-- EN: Decorate your room with vibrant triangular bunting!\n\nIt gives a slight boost to room beauty, but has no other effects. -->
+  <PFK_Bunting.description>用這個充滿活力的三角旗裝飾你的房間！\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_Bunting.description>
+  
+  <!-- EN: PFK BuntingAb -->
+  <PFK_BuntingAb.label>兒童房小彩旗B</PFK_BuntingAb.label>
+  <!-- EN: Decorate your room with vibrant triangular bunting!\n\nIt gives a slight boost to room beauty, but has no other effects. -->
+  <PFK_BuntingAb.description>用這個充滿活力的三角旗裝飾你的房間！\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_BuntingAb.description>
+  
+  <!-- EN: PFK BuntingB -->
+  <PFK_BuntingB.label>兒童房小彩旗C</PFK_BuntingB.label>
+  <!-- EN: Brighten your room with bunting in fun shapes like tulips, stars, and fish!\n\nIt slightly enhances room beauty, with no other effects. Different designs can be displayed by changing orientation. -->
+  <PFK_BuntingB.description>用鬱金香、星星和魚的圖案組合裝飾你的房間！\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_BuntingB.description>
+  
+  <!-- EN: PFK_Curtain -->
+  <PFK_Curtain.label>兒童房幕簾</PFK_Curtain.label>
+  <!-- EN: Curtains perfect for decorating arched windows.\n\nThey provide a small beauty boost, but no other effects. Different styles can be viewed by changing orientation. -->
+  <PFK_Curtain.description>能夠完美裝飾門窗的兒童房幕簾。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_Curtain.description>
+  
+  <!-- EN: PFK Cushion -->
+  <PFK_Cushion.label>兒童房軟墊</PFK_Cushion.label>
+  <!-- EN: A plush, cozy cushion to add comfort to your room. It slightly enhances room beauty, but has no other effects.\n\nDifferent designs are available by adjusting orientation. -->
+  <PFK_Cushion.description>柔軟舒適的靠墊，用來為房間增添舒適感。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_Cushion.description>
+  
+  <!-- EN: PFK Giant Plushie T -->
+  <PFK_GiantPlushie.label>兒童房巨型毛絨玩具（熊）</PFK_GiantPlushie.label>
+  <!-- EN: A huge plushie as tall as an adult—its presence is truly impressive!\n\nIt adds a slight beauty boost to the room, but has no other effects.\nTeddy bears are dyeable. -->
+  <PFK_GiantPlushie.description>一個幾乎和成年人一樣高，令人印象深刻的毛絨玩具！\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_GiantPlushie.description>
+  
+  <!-- EN: PFK Giant Plushie B -->
+  <PFK_GiantPlushieB.label>兒童房巨型毛絨玩具（兔子）</PFK_GiantPlushieB.label>
+  <!-- EN: A huge plushie as tall as an adult—its presence is truly impressive!\n\nIt adds a slight beauty boost to the room, but has no other effects. -->
+  <PFK_GiantPlushieB.description>一個幾乎和成年人一樣高，令人印象深刻的毛絨玩具！\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_GiantPlushieB.description>
+  
+  <!-- EN: PFK Giant Plushie M -->
+  <PFK_GiantPlushieM.label>兒童房巨型毛絨玩具（大地懶）</PFK_GiantPlushieM.label>
+  <!-- EN: A huge plushie as tall as an adult—its presence is truly impressive!\n\nIt adds a slight beauty boost to the room, but has no other effects. -->
+  <PFK_GiantPlushieM.description>一個幾乎和成年人一樣高，令人印象深刻的毛絨玩具！\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_GiantPlushieM.description>
+  
+  <!-- EN: PFK Mobile -->
+  <PFK_Mobile.label>兒童房掛飾</PFK_Mobile.label>
+  <!-- EN: A hanging decoration to bring charm to your room.\n\nIt slightly enhances the room's beauty but has no other effects. Different designs can be displayed by changing orientation. -->
+  <PFK_Mobile.description>為房間內提供溫馨感的掛飾。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_Mobile.description>
+  
+  <!-- EN: PFK PKCPlushie Dog -->
+  <PFK_PKCDog.label>兒童房毛絨玩具（小狗）</PFK_PKCDog.label>
+  <!-- EN: The familiar Dog Plushie from PKC has now made its debut here.\nIt can now be placed facing sideways or backwards, allowing for more flexible arrangements.\nIt also supports recoloring with Tinctoria. -->
+  <PFK_PKCDog.description>首次流通至邊緣世界的高人氣小狗毛絨玩具。試著用染料將其變成你喜歡的顏色吧。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的朝向。可通過粉刷來改變此建築的顏色。</PFK_PKCDog.description>
+  
+  <!-- EN: PFK PKCPlushie Robo -->
+  <PFK_PKCRobo.label>兒童房毛絨玩具（機器人）</PFK_PKCRobo.label>
+  <!-- EN: The familiar Robo Plushie from PKC has now made its debut here.\nIt can now be placed facing sideways or backwards, allowing for more flexible arrangements.\nIt also supports recoloring with Tinctoria. -->
+  <PFK_PKCRobo.description>首次流通至邊緣世界的高人氣機器人毛絨玩具。試著用染料將其變成你喜歡的顏色吧。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的朝向。可通過粉刷來改變此建築的顏色。</PFK_PKCRobo.description>
+  
+  <!-- EN: PFK Wooden Toy train -->
+  <PFK_WoodenToy.label>兒童房木製玩具（火車）</PFK_WoodenToy.label>
+  <!-- EN: A wooden toy to liven up your room.\n\nIt slightly enhances room beauty, but has no other effects. -->
+  <PFK_WoodenToy.description>這種木製的玩具可以讓房間更有活力。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_WoodenToy.description>
+  
+  <!-- EN: PFK Wooden Toy box -->
+  <PFK_WoodenToyB.label>兒童房木製玩具（方盒）</PFK_WoodenToyB.label>
+  <!-- EN: A wooden toy to liven up your room.\n\nIt slightly enhances room beauty, but has no other effects. -->
+  <PFK_WoodenToyB.description>這種木製的玩具可以讓房間更有活力。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_WoodenToyB.description>
+  
+  <!-- EN: PFK Wooden Toy house -->
+  <PFK_WoodenToyC.label>兒童房木製玩具（小屋）</PFK_WoodenToyC.label>
+  <!-- EN: A wooden toy to liven up your room.\n\nIt slightly enhances room beauty, but has no other effects. -->
+  <PFK_WoodenToyC.description>這種木製的玩具可以讓房間更有活力。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_WoodenToyC.description>
+  
+  <!-- EN: PFK Wooden Toy bike -->
+  <PFK_WoodenToyD.label>兒童房木製玩具（單車）</PFK_WoodenToyD.label>
+  <!-- EN: A wooden toy to liven up your room.\n\nIt slightly enhances room beauty, but has no other effects. -->
+  <PFK_WoodenToyD.description>這種木製的玩具可以讓房間更有活力。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_WoodenToyD.description>
+  
+  <!-- EN: PFK Wooden Toy S train -->
+  <PFK_WoodenToyS.label>兒童房袖珍木製玩具（火車）</PFK_WoodenToyS.label>
+  <!-- EN: A wooden toy to liven up your room.\n\nIt slightly enhances room beauty, but has no other effects. -->
+  <PFK_WoodenToyS.description>這種木製的玩具可以讓房間更有活力，適合放置在其他家具或建築上。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_WoodenToyS.description>
+  
+  <!-- EN: PFK WoodenToy S box -->
+  <PFK_WoodenToySB.label>兒童房袖珍木製玩具（方盒）</PFK_WoodenToySB.label>
+  <!-- EN: A wooden toy to liven up your room.\n\nIt slightly enhances room beauty, but has no other effects. -->
+  <PFK_WoodenToySB.description>這種木製的玩具可以讓房間更有活力，適合放置在其他家具或建築上。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_WoodenToySB.description>
+  
+  <!-- EN: PFK Wooden Toy S house -->
+  <PFK_WoodenToySC.label>兒童房袖珍木製玩具（小屋）</PFK_WoodenToySC.label>
+  <!-- EN: A wooden toy to liven up your room.\n\nIt slightly enhances room beauty, but has no other effects. -->
+  <PFK_WoodenToySC.description>這種木製的玩具可以讓房間更有活力，適合放置在其他家具或建築上。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_WoodenToySC.description>
+  
+  <!-- EN: PFK Wooden Toy S bike -->
+  <PFK_WoodenToySD.label>兒童房袖珍木製玩具（單車）</PFK_WoodenToySD.label>
+  <!-- EN: A wooden toy to liven up your room.\n\nIt slightly enhances room beauty, but has no other effects. -->
+  <PFK_WoodenToySD.description>這種木製的玩具可以讓房間更有活力，適合放置在其他家具或建築上。\n\n除了能略微提高房間的美觀度外，它並無其他效果。可通過旋轉來改變此建築的貼圖。</PFK_WoodenToySD.description>
+  
+</LanguageData>

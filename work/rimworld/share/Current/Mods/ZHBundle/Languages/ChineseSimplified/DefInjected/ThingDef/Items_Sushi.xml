@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_Chirashizushi.label>散寿司（简单）</VCE_Chirashizushi.label>
+		<VCE_Chirashizushi.description>用少许材料快速制作出的简单散寿司。散寿司，即将生鱼蔬菜等寿司材料盖在饭上。量足又制作简单。</VCE_Chirashizushi.description>
+		<VCE_Norimaki.label>卷寿司（简单）</VCE_Norimaki.label>
+		<VCE_Norimaki.description>用少许材料快速制作出的卷寿司。卷寿司，即用紫菜包裹材料的寿司。</VCE_Norimaki.description>
+		<VCE_Uramaki.label>反卷寿司（精致）</VCE_Uramaki.label>
+		<VCE_Uramaki.description>选择多种原料，精心制作出的一份相对复杂的反卷寿司。反卷寿司，即用米饭包裹紫菜和其它材料的一种中型寿司。</VCE_Uramaki.description>
+		<VCE_Nigiri.label>握寿司（精致）</VCE_Nigiri.label>
+		<VCE_Nigiri.description>选择多种原料，精心制作出的一份相对复杂的握寿司。握寿司，即将长条形的米饭和配料用手握在一起定型成的寿司。</VCE_Nigiri.description>
+		<VCE_Temaki.label>手卷寿司（奢侈）</VCE_Temaki.label>
+		<VCE_Temaki.description>厨艺界的大师级作品，这份寿司同时滋养了身体、思想和灵魂。手卷寿司，即用一大片紫菜包裹住材料卷成的锥形寿司。手卷寿司一般有10cm左右长，通常用手拿着吃。</VCE_Temaki.description>
+		<VCE_Futomaki.label>太卷寿司（奢侈）</VCE_Futomaki.label>
+		<VCE_Futomaki.description>厨艺界的大师级作品，这份寿司同时滋养了身体、思想和灵魂。太卷寿司，即用海苔包裹的大块柱状寿司。太卷寿司直径一般5-6cm。配料多种多样，塑造出复杂多变的外观和味道。</VCE_Futomaki.description>
+		<VCE_Gunkanmaki.label>军舰卷寿司（豪华）</VCE_Gunkanmaki.label>
+		<VCE_Gunkanmaki.description>精雕细琢的寿司，美艳绝伦，虽然量不多。军舰卷寿司，即手捏海苔包裹椭圆柱状的饭团，米饭之上盛有一层松软的顶料。</VCE_Gunkanmaki.description>
+		<VCE_Oshizushi.label>押寿司（豪华）</VCE_Oshizushi.label>
+		<VCE_Oshizushi.description>精雕细琢的寿司，美艳绝伦，虽然量不多。押寿司，即原料层层叠加装在一个木盒里压制再切块制成的寿司。</VCE_Oshizushi.description>
+		<VCE_HumanSurimi.label>人肉膏</VCE_HumanSurimi.label>
+		<VCE_HumanSurimi.description>一种膏状食物，外表看上去与虾肉和蟹肉差不多，但这个。。。是用人肉做的，食人者的天堂，正常人的地狱。</VCE_HumanSurimi.description>
+	</LanguageData>

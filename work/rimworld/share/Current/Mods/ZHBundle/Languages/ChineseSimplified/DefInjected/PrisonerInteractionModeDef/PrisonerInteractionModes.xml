@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: knowledge extraction -->
+  <RR_ScienceInterrogation.label>提取知识</RR_ScienceInterrogation.label>
+  <!-- EN: Extract useful knowledge relating to current research project. -->
+  <RR_ScienceInterrogation.description>提取关于当前科研项目的有用知识。</RR_ScienceInterrogation.description>
+
+</LanguageData>

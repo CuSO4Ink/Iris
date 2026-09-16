@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Architecture -->
+  <Architect.label>精筑</Architect.label>
+  <!-- EN: An expertise in creating complex and beautiful buildings. -->
+  <Architect.description>在提高建造品质和建造成功率方面得到专精加成。</Architect.description>
+  
+  <!-- EN: First Aid -->
+  <BattlefieldMedic.label>急救</BattlefieldMedic.label>
+  <!-- EN: An expertise at rapid treatment and medical tend speed. -->
+  <BattlefieldMedic.description>在提高患者的治疗速度方面得到专精加成。</BattlefieldMedic.description>
+  
+  <!-- EN: Dueling -->
+  <Blunt.label>搏杀</Blunt.label>
+  <!-- EN: An expertise in the fast-paced armed melee combat. -->
+  <Blunt.description>在降低近战攻击的冷却时间方面得到专精加成。</Blunt.description>
+  
+  <!-- EN: Butchering -->
+  <Butcher.label>屠宰</Butcher.label>
+  <!-- EN: An expertise in butchering dead animals. -->
+  <Butcher.description>在提高屠宰速度和屠宰效率方面得到专精加成。</Butcher.description>
+  
+  <!-- EN: Aiming -->
+  <CloseQuarters.label>瞄准</CloseQuarters.label>
+  <!-- EN: An expertise in aiming when firing both high-tech and low-tech ranged weapons. -->
+  <CloseQuarters.description>在降低远程攻击的瞄准时间方面得到专精加成。</CloseQuarters.description>
+  
+  <!-- EN: Drilling -->
+  <Driller.label>钻井</Driller.label>
+  <!-- EN: An expertise in using a deep drill to mine resources more efficiently. -->
+  <Driller.description>在提高深钻井的操作速度方面得到专精加成。</Driller.description>
+  
+  <!-- EN: Drug Cooking -->
+  <DrugChef.label>酿造</DrugChef.label>
+  <!-- EN: An expertise in creating drugs. -->
+  <DrugChef.description>在提高酿造速度方面得到专精加成。</DrugChef.description>
+  
+  <!-- EN: Flooring -->
+  <Flooring.label>铺设</Flooring.label>
+  <!-- EN: An expertise in constructing floors. -->
+  <Flooring.description>在提高地板铺设速度方面得到专精加成。</Flooring.description>
+  
+  <!-- EN: Foraging -->
+  <Forager.label>觅食</Forager.label>
+  <!-- EN: An expertise in living off the land and foraging the fruits of the forest. -->
+  <Forager.description>在增强远行时的觅食能力方面得到专精加成。</Forager.description>
+  
+  <!-- EN: Building -->
+  <Foreman.label>速筑</Foreman.label>
+  <!-- EN: An expertise in constructing massive amounts of buildings quickly and efficiently. -->
+  <Foreman.description>在提高建造速度方面得到专精加成。</Foreman.description>
+  
+  <!-- EN: Geology -->
+  <Geologist.label>地质</Geologist.label>
+  <!-- EN: An expertise in rocks and obtaining more stone chunks when digging. -->
+  <Geologist.description>在提高开采山岩时的石块产出率方面得到专精加成。</Geologist.description>
+  
+  <!-- EN: Sowing -->
+  <GreenThumb.label>播种</GreenThumb.label>
+  <!-- EN: An expertise in quickly sowing and harvesting large amounts of plants. -->
+  <GreenThumb.description>在提高种植速度方面得到专精加成。</GreenThumb.description>
+  
+  <!-- EN: Reloading -->
+  <Gunner.label>装填</Gunner.label>
+  <!-- EN: An expertise in reloading both high-tech and low-tech ranged weapons. -->
+  <Gunner.description>在降低远程攻击的冷却时间方面得到专精加成。</Gunner.description>
+  
+  <!-- EN: Hacking -->
+  <Hacker.label>骇入</Hacker.label>
+  <!-- EN: An expertise in hacking terminals and ancient systems. -->
+  <Hacker.description>在提高远古终端机与远古设备的破解速度方面得到专精加成。</Hacker.description>
+  
+  <!-- EN: Harvesting -->
+  <HarvesterCareful.label>收获</HarvesterCareful.label>
+  <!-- EN: An expertise in ensuring no parts of the plant are wasted on harvesting. -->
+  <HarvesterCareful.description>在提高植物收获效率方面得到专精加成。</HarvesterCareful.description>
+  
+  <!-- EN: Hunting -->
+  <Hunter.label>狩猎</Hunter.label>
+  <!-- EN: An expertise in the art of hunting. -->
+  <Hunter.description>在提高狩猎隐蔽率方面得到专精加成。</Hunter.description>
+  
+  <!-- EN: Feeding -->
+  <IndustrialChef.label>炊食</IndustrialChef.label>
+  <!-- EN: An expertise in creating large amounts of meals to feed many people quickly. -->
+  <IndustrialChef.description>在提高烹饪速度方面得到专精加成。</IndustrialChef.description>
+  
+  <!-- EN: Fabricating -->
+  <IndustrialProcessExpert.label>组装</IndustrialProcessExpert.label>
+  <!-- EN: An expertise in crafting components efficiently. -->
+  <IndustrialProcessExpert.description>在提高零部件的制作速度方面得到专精加成。</IndustrialProcessExpert.description>
+  
+  <!-- EN: Nursing -->
+  <InfectiousDiseaseExpert.label>护理</InfectiousDiseaseExpert.label>
+  <!-- EN: An expertise in caring for ill patients, suffering from various diseases. -->
+  <InfectiousDiseaseExpert.description>在提高患者的治疗质量方面得到专精加成。</InfectiousDiseaseExpert.description>
+  
+  <!-- EN: Disassembler -->
+  <MechanoidExpert.label>拆解</MechanoidExpert.label>
+  <!-- EN: An expertise in all things mechanoids, including shredding and disassembling them. -->
+  <MechanoidExpert.description>在提高机械体拆解速度和机械体拆解效率方面得到专精加成。</MechanoidExpert.description>
+  
+  <!-- EN: Negotiating -->
+  <Negotiator.label>谈判</Negotiator.label>
+  <!-- EN: An expertise in handling negotiations and trading. -->
+  <Negotiator.description>在提高和平谈判成功率和交易价格改善方面得到专精加成。</Negotiator.description>
+  
+  <!-- EN: Prospecting -->
+  <OreExpert.label>探矿</OreExpert.label>
+  <!-- EN: An expertise in digging up ore and finding more of it. -->
+  <OreExpert.description>在提高采矿效率方面得到专精加成。</OreExpert.description>
+  
+  <!-- EN: Synthesizing -->
+  <Pharmacologist.label>制药</Pharmacologist.label>
+  <!-- EN: An expertise in creating complex drugs efficiently. -->
+  <Pharmacologist.description>在提高制药速度方面得到专精加成。</Pharmacologist.description>
+  
+  <!-- EN: Sharpshooting -->
+  <Precision.label>神射</Precision.label>
+  <!-- EN: An expertise in accuracy when firing both high-tech and low-tech ranged weapons. -->
+  <Precision.description>在提高远程攻击的射击精度方面得到专精加成。</Precision.description>
+  
+  <!-- EN: Proselytizing -->
+  <Proselytizer.label>教化</Proselytizer.label>
+  <!-- EN: An expertise in converting others to their own ways of thinking. -->
+  <Proselytizer.description>在增强教化能力方面得到专精加成。</Proselytizer.description>
+  
+  <!-- EN: Art Quality -->
+  <QualityExpert.label>精艺</QualityExpert.label>
+  <!-- EN: An expertise in creating works of art with increased quality. -->
+  <QualityExpert.description>在提高艺术品的制作品质方面得到专精加成。</QualityExpert.description>
+  
+  <!-- EN: Art Quantity -->
+  <QuantityExpert.label>速艺</QuantityExpert.label>
+  <!-- EN: An expertise in creating works of art quickly and efficiently. -->
+  <QuantityExpert.description>在提高艺术品的制作速度方面得到专精加成。</QuantityExpert.description>
+  
+  <!-- EN: Ranching -->
+  <Rancher.label>畜牧</Rancher.label>
+  <!-- EN: An expertise in ranching and animal produce gathering. -->
+  <Rancher.description>在提高动物收集效率和动物收集速度方面得到专精加成。</Rancher.description>
+  
+  <!-- EN: Repairing -->
+  <Repairman.label>修理</Repairman.label>
+  <!-- EN: An expertise in repairing broken down and damaged structures. -->
+  <Repairman.description>在提高修理速度和成功率方面得到专精加成。</Repairman.description>
+  
+  <!-- EN: Researching -->
+  <Researcher.label>科研</Researcher.label>
+  <!-- EN: An expertise in researching new technologies. -->
+  <Researcher.description>在提高研究速度方面得到专精加成。</Researcher.description>
+  
+  <!-- EN: Piercing -->
+  <Sharp.label>破甲</Sharp.label>
+  <!-- EN: An expertise in armor piercing when using sharp melee weapons. -->
+  <Sharp.description>在提高近战攻击的护甲穿透方面得到专精加成。</Sharp.description>
+  
+  <!-- EN: Surgery -->
+  <Surgeon.label>外科</Surgeon.label>
+  <!-- EN: An expertise in performing safe and effective surgeries. -->
+  <Surgeon.description>在提高患者的手术成功率方面得到专精加成。</Surgeon.description>
+  
+  <!-- EN: Tailoring -->
+  <Tailor.label>缝制</Tailor.label>
+  <!-- EN: An expertise in tailoring excellent clothes. -->
+  <Tailor.description>在提高衣物的缝制速度方面得到专精加成。</Tailor.description>
+  
+  <!-- EN: Taming -->
+  <Tamer.label>驯服</Tamer.label>
+  <!-- EN: An expertise in taming wild animals. -->
+  <Tamer.description>在提高驯服动物的成功率方面得到专精加成。</Tamer.description>
+  
+  <!-- EN: Food Hygiene -->
+  <TopChef.label>食安</TopChef.label>
+  <!-- EN: An expertise in creating safe to consume meals in any environment. -->
+  <TopChef.description>在降低食物的有毒率方面得到专精加成。</TopChef.description>
+  
+  <!-- EN: Handling -->
+  <Trainer.label>驯练</Trainer.label>
+  <!-- EN: An expertise in handling and training colony animals. -->
+  <Trainer.description>在提高训练动物的成功率方面得到专精加成。</Trainer.description>
+  
+  <!-- EN: Pruning -->
+  <Treespeaker.label>修剪</Treespeaker.label>
+  <!-- EN: An expertise in communicating psychically and pruning the Gauranlen trees. -->
+  <Treespeaker.description>在提高母树的修剪速度方面得到专精加成。</Treespeaker.description>
+  
+  <!-- EN: Tunnelling -->
+  <Tunneller.label>开凿</Tunneller.label>
+  <!-- EN: An expertise in digging massive tunnels and caverns. -->
+  <Tunneller.description>在提高采矿速度方面得到专精加成。</Tunneller.description>
+  
+  <!-- EN: Dark study -->
+  <VSE_DarkStudy.label>虚识</VSE_DarkStudy.label>
+  <!-- EN: An expertise in analyzing and learning from entities and absorbing dark knowledge. -->
+  <VSE_DarkStudy.description>在提高与异象相关的调查速率方面得到专精加成。</VSE_DarkStudy.description>
+  
+  <!-- EN: Operating -->
+  <VSE_Operating.label>手术</VSE_Operating.label>
+  <!-- EN: An expertise in performing surgeries quickly and efficiently. -->
+  <VSE_Operating.description>在提高患者的手术速度方面得到专精加成。</VSE_Operating.description>
+  
+  <!-- EN: Smoothing -->
+  <VSE_Smoothing.label>打磨</VSE_Smoothing.label>
+  <!-- EN: An expertise in smoothing surfaces such as walls and floors. -->
+  <VSE_Smoothing.description>在提高墙体和地板的打磨速度方面得到专精加成。</VSE_Smoothing.description>
+  
+  <!-- EN: Sniping -->
+  <VSE_Sniping.label>狙击</VSE_Sniping.label>
+  <!-- EN: An expertise in firing ranged weapons over much longer distances. -->
+  <VSE_Sniping.description>在提高远程攻击的射程方面得到专精加成。</VSE_Sniping.description>
+  
+  <!-- EN: Striking -->
+  <VSE_Striking.label>袭打</VSE_Striking.label>
+  <!-- EN: An expertise in hitting accurately with melee attacks. -->
+  <VSE_Striking.description>在提高近战攻击的命中率方面得到专精加成。</VSE_Striking.description>
+
+  <!-- EN: Wardening -->
+  <Warden.label>监管</Warden.label>
+  <!-- EN: An expertise in handling prisoners and slaves, recruiting them and arresting them if needed. -->
+  <Warden.description>在提高拘捕成功率、压制能力和囚犯招募速度方面得到专精加成。</Warden.description>
+  
+  <!-- EN: Weaponsmithing -->
+  <Weaponsmith.label>锻兵</Weaponsmith.label>
+  <!-- EN: An expertise in creating excellent weapons. -->
+  <Weaponsmith.description>在提高武器的制作速度方面得到专精加成。</Weaponsmith.description>
+  
+</LanguageData>

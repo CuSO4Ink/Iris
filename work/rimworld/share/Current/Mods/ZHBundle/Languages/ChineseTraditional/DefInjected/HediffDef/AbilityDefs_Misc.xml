@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 치유받음 -->
+  <Miho_Heal_Hediff.label>快速治癒</Miho_Heal_Hediff.label>
+  <!-- EN: 메카나이트-초능력을 이용한 치유를 받고 있습니다. -->
+  <Miho_Heal_Hediff.description>機械分子正在快速治癒此單位身上的傷口與疾病。</Miho_Heal_Hediff.description>
+  
+</LanguageData>

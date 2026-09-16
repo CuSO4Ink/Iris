@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ate an army ration -->
+  <AteArmyRation.stages.ate_an_army_ration.label>吃了豪華軍糧</AteArmyRation.stages.ate_an_army_ration.label>
+  <!-- EN: Hm! Delicious, though it'll be great if I re-heat the army ration. -->
+  <AteArmyRation.stages.ate_an_army_ration.description>嗚呣...雖然直接吃味道也很棒，但我覺得再加熱一下或許會更好。</AteArmyRation.stages.ate_an_army_ration.description>
+  
+  <!-- EN: ate an army ration meal -->
+  <AteArmyRationMeal.stages.ate_an_army_ration_meal.label>吃了加熱過的豪華軍糧</AteArmyRationMeal.stages.ate_an_army_ration_meal.label>
+  <!-- EN: Oh yeah, that hits the spot! -->
+  <AteArmyRationMeal.stages.ate_an_army_ration_meal.description>果然還是熱乎的軍糧吃起來最香啊！</AteArmyRationMeal.stages.ate_an_army_ration_meal.description>
+  
+  <!-- EN: ate a necro meat skewers -->
+  <AteNecroMeatSkewers.stages.ate_a_necro_meat_skewers.label>吃了歿疫肉串</AteNecroMeatSkewers.stages.ate_a_necro_meat_skewers.label>
+  <!-- EN: Hm.... It tastes good for some reason. -->
+  <AteNecroMeatSkewers.stages.ate_a_necro_meat_skewers.description>嗚呣...這肉串的味道出乎意料地還不錯。</AteNecroMeatSkewers.stages.ate_a_necro_meat_skewers.description>
+  
+</LanguageData>

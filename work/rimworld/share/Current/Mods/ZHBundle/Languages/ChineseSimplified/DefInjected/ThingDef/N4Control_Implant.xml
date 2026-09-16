@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Void_SecronomControlChip.label>N-4控制植入物</Void_SecronomControlChip.label>
+  <Void_SecronomControlChip.description>Nerotonin-4型控制植入物，由Voidtech与OVID合作开发，仅用于Nerotonin-4感染者的突变体。\n\n不幸的是，该植入体只能在近距离内检测到目标Nerotonin-4突变体，这意味着你必须与你想要控制的对象保持密切的距离。\n\n该设备内置人工智能，能够让触须猛烈地附着在突变体的身体上，以便攀爬和钻入大脑，并注入大量的纳米机器，从而中和Nerotonin-4病毒，使突变体成为友好的傀儡。在控制芯片完成其工作后，它将继续留在突变体的大脑内，调节纳米机器并持续施以控制。\n\n有传言称，这是从Lazarus项目和Secronom公司失落的技术中窃取的。Nerotonin-4的极端突变体已被秘密组织作为武器单位，同时也是在找到治愈方法前暂时控制感染者的手段。可悲的是，在无休止的试验之后，治愈被认为是“不可能的”。因此，N-4控制植入物已经超出了人道主义援助的范围，体现出了另一个邪恶的用途。</Void_SecronomControlChip.description>
+  <Void_SecronomControlChip.comps.CompUsable.useLabel>已激活</Void_SecronomControlChip.comps.CompUsable.useLabel>
+  <Void_SecronomControlChip.comps.1.useLabel>已激活</Void_SecronomControlChip.comps.1.useLabel>
+
+
+</LanguageData>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 한 꼬리 혜성을 위하여. -->
+  <Miho_Start.label>美狐族冒險者</Miho_Start.label>
+  <!-- EN: 이 외로운 마법사는 과연 어떤 결말을 맞게 될까요. -->
+  <Miho_Start.description>日復一日的平凡生活有些枯燥無味。為了尋求刺激感，你收拾好了行囊，並花光所有積蓄買下了一張前往邊緣世界的船票。不過，這裡看起來危險重重，但好在自己學習了如何使用靈能。冒險真的會如你所願的那般順利嗎？</Miho_Start.description>
+  <!-- EN: 이 외로운 마법사는 과연 어떤 결말을 맞게 될까요. -->
+  <Miho_Start.scenario.description>日復一日的平凡生活有些枯燥無味。為了尋求刺激感，你收拾好了行囊，並花光所有積蓄買下了一張前往邊緣世界的船票。不過，這裡看起來危險重重，但好在自己學習了如何使用靈能。冒險真的會如你所願的那般順利嗎？</Miho_Start.scenario.description>
+  <!-- EN: 한 꼬리 혜성을 위하여. -->
+  <Miho_Start.scenario.name>美狐族冒險者</Miho_Start.scenario.name>
+  <!-- EN: 한명의 마법사 미호로 시작합니다. -->
+  <Miho_Start.scenario.parts.ConfigurePawnsXenotypes.customSummary>以一名美狐族靈能者開局。</Miho_Start.scenario.parts.ConfigurePawnsXenotypes.customSummary>
+  <!-- EN: 한 여우의 삶의 전환점. -->
+  <Miho_Start.scenario.summary>一名為尋求刺激感而前往邊緣世界冒險的美狐族。</Miho_Start.scenario.summary>
+  
+  <!-- EN: 개척자 세 여우들. -->
+  <Miho_Start_Three.label>美狐族開拓者</Miho_Start_Three.label>
+  <!-- EN: 이 세마리의 귀여운 개척자 여우들은 변방계를 물 보듯 보고있습니다. 빨리 혼쭐내줍시다. -->
+  <Miho_Start_Three.description>你們三人既天真又可愛，竟打起了前往邊緣世界闖蕩一番的註意。不過，殘酷無情的現實很快就會為你們好好上一課。</Miho_Start_Three.description>
+  <!-- EN: 이 세마리의 귀여운 개척자 여우들은 변방계를 물 보듯 보고있습니다. 빨리 혼쭐내줍시다. -->
+  <Miho_Start_Three.scenario.description>你們三人既天真又可愛，竟打起了前往邊緣世界闖蕩一番的註意。不過，殘酷無情的現實很快就會為你們好好上一課。</Miho_Start_Three.scenario.description>
+  <!-- EN: 개척자 세 여우들. -->
+  <Miho_Start_Three.scenario.name>美狐族開拓者</Miho_Start_Three.scenario.name>
+  <!-- EN: 세명의 비능력자 미호로 시작합니다. -->
+  <Miho_Start_Three.scenario.parts.ConfigurePawnsXenotypes.customSummary>以三名美狐族非靈能者開局。</Miho_Start_Three.scenario.parts.ConfigurePawnsXenotypes.customSummary>
+  <!-- EN: 세 여우들의 삶의 전환점. -->
+  <Miho_Start_Three.scenario.summary>三名即將迎來人生轉折點的美狐族。</Miho_Start_Three.scenario.summary>
+  
+</LanguageData>

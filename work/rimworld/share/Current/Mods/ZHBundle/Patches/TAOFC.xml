@@ -1,0 +1,18 @@
+<Patch>
+
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="Necro_Meat"]/label</xpath>
+        <success>Normal</success>
+        <value>
+            <label>殁疫肉</label>
+        </value>
+    </Operation>
+    <Operation Class="PatchOperationReplace">
+        <xpath>/Defs/ThingDef[defName="Necro_Meat"]/description</xpath>
+        <success>Normal</success>
+        <value>
+            <description>新鲜屠宰的殁疫感染体肉。虽然生吃后会感染弱性殁疫病毒，但有些人觉得这种肉是用来折磨拷问和犯下战争罪行的优秀工具。</description>
+        </value>
+    </Operation>
+
+</Patch>

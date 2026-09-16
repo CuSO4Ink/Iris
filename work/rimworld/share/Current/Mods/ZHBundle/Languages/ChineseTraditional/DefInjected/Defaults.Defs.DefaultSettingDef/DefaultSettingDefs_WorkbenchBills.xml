@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- <BillIngredientSearchRadius.label>default ingredient search radius for workbench bills</BillIngredientSearchRadius.label> -->
+  <BillIngredientSearchRadius.label>工作桌選單默認原料搜索範圍</BillIngredientSearchRadius.label>
+  <!-- <BillAllowedSkillRange.label>default skill range for workbench bills</BillAllowedSkillRange.label> -->
+  <BillAllowedSkillRange.label>工作桌選單默認技能範圍</BillAllowedSkillRange.label>
+  <!-- <BillStoreMode.label>default store mode for workbench bills</BillStoreMode.label> -->
+  <BillStoreMode.label>工作桌選單默認儲存模式</BillStoreMode.label>
+  <!-- <LimitBillsTo15.label>limit workbenches to 15 bills</LimitBillsTo15.label> -->
+  <LimitBillsTo15.label>限制工作桌選單為15個</LimitBillsTo15.label>
+
+
+</LanguageData>

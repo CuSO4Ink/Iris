@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: everfloweer seed -->
+  <VV_Seed_Everflower.label>永盛花种</VV_Seed_Everflower.label>
+  <!-- EN: A seed of everflower. When planted in soil or an arcane plant pot, it becomes a seedling, which will eventually grow into everflower. It's extremely rare and is obtained by dismantling an everflower. Arcane plants require both mana and nutrients to grow.\n\nMana is absorbed from the environment mana and can also be supplied by nearby mana emitter or other arcane plants that produce mana.\n\nutrients continuously decrease regardless of mana, so a person must regularly apply mana fertilizer. If left without sufficient nutrients for too long, the seedling will die.\n\nOnce planted, an everflower can't be moved until a royal vivi attunes to it, and once attuned it can no longer be dismantled. -->
+  <VV_Seed_Everflower.description>一颗永盛花的种子。当种植在土壤或神秘植物栽培盆中会成长为一株幼苗，最终长成永盛花。永盛花种极为罕见，在拆解永盛花时才能偶尔取得。\n\n植物会吸收周围环境中或附近产能神秘植物的提供的魔能，或依赖魔能放射器供给。\n\n不管魔能是否充足，幼苗都会持续消耗营养，所以需要定期使用魔法肥料。若幼苗长时间得不到充足的养分便会死去。\n\n一旦种下，永盛花便不能再被移栽，除非被皇家薇薇共鸣，且一旦共鸣后就不能再被拆解。</VV_Seed_Everflower.description>
+  
+  <!-- EN: titanic hornet wing -->
+  <VV_TitanicHornetWing.label>巨型黄蜂翅</VV_TitanicHornetWing.label>
+  <!-- EN: a piece of a titanic hornet's wing. It's difficult to obtain, but thanks to its special components, it's lightweight and durable, making it a high-quality equipment material. It will decompose at room temperature, so it is recommended to keep it in a freezer. -->
+  <VV_TitanicHornetWing.description>一片巨型黄蜂的翅膀。很难获得，但由于其特殊的成分而轻盈、耐用，是一种高质量的材料。黄蜂翅在室温下会分解，所以建议将其冷藏储存。</VV_TitanicHornetWing.description>
+  
+</LanguageData>

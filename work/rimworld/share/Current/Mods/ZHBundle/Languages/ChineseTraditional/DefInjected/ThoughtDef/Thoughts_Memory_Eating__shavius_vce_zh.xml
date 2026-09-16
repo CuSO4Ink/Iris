@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_ConsumedSugar.stages.0.label>食用了蔗糖</VCE_ConsumedSugar.stages.0.label>
+		<VCE_ConsumedSugar.stages.0.description>戀愛一樣的甜味。</VCE_ConsumedSugar.stages.0.description>
+		<VCE_ConsumedChocolateSyrup.stages.0.label>使用了巧克力醬</VCE_ConsumedChocolateSyrup.stages.0.label>
+		<VCE_ConsumedChocolateSyrup.stages.0.description>真正戀愛的感覺！</VCE_ConsumedChocolateSyrup.stages.0.description>
+		<VCE_ConsumedInsectJelly.stages.0.label>食用了蟲膠醬</VCE_ConsumedInsectJelly.stages.0.label>
+		<VCE_ConsumedInsectJelly.stages.0.description>濃郁的芳香和甜味!</VCE_ConsumedInsectJelly.stages.0.description>
+		<VCE_SmokeleafButterHigh.stages.0.label>大麻黃油亢奮</VCE_SmokeleafButterHigh.stages.0.label>
+		<VCE_SmokeleafButterHigh.stages.0.description>嗯，感覺不錯，你說什麼？</VCE_SmokeleafButterHigh.stages.0.description>
+		<VCE_ConsumedSalt.stages.0.label>食用了鹽</VCE_ConsumedSalt.stages.0.label>
+		<VCE_ConsumedSalt.stages.0.description>一撮鹽讓這道菜鮮美極了。</VCE_ConsumedSalt.stages.0.description>
+		<VCE_ConsumedMayo.stages.0.label>食用了蛋黃醬</VCE_ConsumedMayo.stages.0.label>
+		<VCE_ConsumedMayo.stages.0.description>吃了些很美味的蛋黃醬，很飽！</VCE_ConsumedMayo.stages.0.description>
+		<VCE_ConsumedAgave.stages.0.label>食用了花蜜</VCE_ConsumedAgave.stages.0.label>
+		<VCE_ConsumedAgave.stages.0.description>我吃了些美味的龍舌蘭蜜。</VCE_ConsumedAgave.stages.0.description>
+		<VCE_ConsumedSpices.stages.0.label>食用了香料</VCE_ConsumedSpices.stages.0.label>
+		<VCE_ConsumedSpices.stages.0.description>好辣！</VCE_ConsumedSpices.stages.0.description>
+		<VCE_AteGourmetMeal.stages.0.label>吃了豪華食物</VCE_AteGourmetMeal.stages.0.label>
+		<VCE_AteGourmetMeal.stages.0.description>無與倫比的體驗，超凡脫俗的味道。</VCE_AteGourmetMeal.stages.0.description>
+		<VCE_AteSimpleDessert.stages.0.label>吃了簡單甜點</VCE_AteSimpleDessert.stages.0.label>
+		<VCE_AteSimpleDessert.stages.0.description>那個甜點雖然簡單但味道還是不錯。</VCE_AteSimpleDessert.stages.0.description>
+		<VCE_AteFineDessert.stages.0.label>吃了精緻甜點</VCE_AteFineDessert.stages.0.label>
+		<VCE_AteFineDessert.stages.0.description>那個甜點真不錯！下次再吃！</VCE_AteFineDessert.stages.0.description>
+		<VCE_AteLavishDessert.stages.0.label>吃了奢侈甜點</VCE_AteLavishDessert.stages.0.label>
+		<VCE_AteLavishDessert.stages.0.description>那個甜點味道太好了，總覺得吃不夠！</VCE_AteLavishDessert.stages.0.description>
+		<VCE_AteGourmetDessert.stages.0.label>吃了豪華甜點</VCE_AteGourmetDessert.stages.0.label>
+		<VCE_AteGourmetDessert.stages.0.description>我了個大草！前所未有的驚艷味道讓我的舌頭高潮了！還要還要還要！</VCE_AteGourmetDessert.stages.0.description>
+		<VCE_AteSimpleGrill.stages.0.label>吃了簡單烤肉</VCE_AteSimpleGrill.stages.0.label>
+		<VCE_AteSimpleGrill.stages.0.description>挺樸素的烤肉哈。</VCE_AteSimpleGrill.stages.0.description>
+		<VCE_AteFineGrill.stages.0.label>吃了精緻烤肉</VCE_AteFineGrill.stages.0.label>
+		<VCE_AteFineGrill.stages.0.description>吃了點烤肉配菜，味道挺好。</VCE_AteFineGrill.stages.0.description>
+		<VCE_AteLavishGrill.stages.0.label>吃了奢侈烤肉</VCE_AteLavishGrill.stages.0.label>
+		<VCE_AteLavishGrill.stages.0.description>我吃了份妙不可言的烤肉以及一些配菜，好吃！</VCE_AteLavishGrill.stages.0.description>
+		<VCE_AteGourmetGrill.stages.0.label>吃了豪華烤肉</VCE_AteGourmetGrill.stages.0.label>
+		<VCE_AteGourmetGrill.stages.0.description>那。。真的不可描述。每塊肉入口即化。總之就是好。</VCE_AteGourmetGrill.stages.0.description>
+		<VCE_AteFriedGoods.stages.0.label>吃了油炸食品</VCE_AteFriedGoods.stages.0.label>
+		<VCE_AteFriedGoods.stages.0.description>油膩的食品，真好吃。</VCE_AteFriedGoods.stages.0.description>
+		<VCE_ConsumedDigestibleResurrectorNanites.stages.0.label>復活機械醬</VCE_ConsumedDigestibleResurrectorNanites.stages.0.label>
+		<VCE_ConsumedDigestibleResurrectorNanites.stages.0.description>老子死不了了！</VCE_ConsumedDigestibleResurrectorNanites.stages.0.description>
+		<VCE_ConsumedCannedGoods.stages.0.label>吃了罐裝食品</VCE_ConsumedCannedGoods.stages.0.label>
+		<VCE_ConsumedCannedGoods.stages.0.description>跟在地上吃飯一樣糟糕。</VCE_ConsumedCannedGoods.stages.0.description>
+		<VCE_ConsumedKetchup.stages.0.label>吃了番茄醬</VCE_ConsumedKetchup.stages.0.label>
+		<VCE_ConsumedKetchup.stages.0.description>酸酸甜甜的真好吃</VCE_ConsumedKetchup.stages.0.description>
+		<VCE_ConsumedHotSauce.stages.0.label>痛並快樂着</VCE_ConsumedHotSauce.stages.0.label>
+		<VCE_ConsumedHotSauce.stages.0.description>辣到讓人想死！再來一口！</VCE_ConsumedHotSauce.stages.0.description>
+		<VCE_ConsumedSoySauce.stages.0.label>食用了醬油</VCE_ConsumedSoySauce.stages.0.label>
+		<VCE_ConsumedSoySauce.stages.0.description>一些鹹味，適度的鮮味，甜味和非常輕微的苦味。完美！</VCE_ConsumedSoySauce.stages.0.description>
+		<VCE_ConsumedWasabi.stages.0.label>龍之吐息</VCE_ConsumedWasabi.stages.0.label>
+		<VCE_ConsumedWasabi.stages.0.description>我的整個鼻子都燒起來了！！！再來一點！</VCE_ConsumedWasabi.stages.0.description>
+		<VCE_AteSimpleSushi.stages.0.label>食用了簡單壽司</VCE_AteSimpleSushi.stages.0.label>
+		<VCE_AteSimpleSushi.stages.0.description>即使是最基本的壽司也是佳餚。</VCE_AteSimpleSushi.stages.0.description>
+		<VCE_AteFineSushi.stages.0.label>食用了精緻壽司</VCE_AteFineSushi.stages.0.label>
+		<VCE_AteFineSushi.stages.0.description>我吃了一個用蔬菜做的精緻壽司。超棒！</VCE_AteFineSushi.stages.0.description>
+		<VCE_AteLavishSushi.stages.0.label>食用了奢侈壽司</VCE_AteLavishSushi.stages.0.label>
+		<VCE_AteLavishSushi.stages.0.description>我吃了一盤美味的奢侈壽司。美味!</VCE_AteLavishSushi.stages.0.description>
+		<VCE_AteGourmetSushi.stages.0.label>食用了豪華壽司</VCE_AteGourmetSushi.stages.0.label>
+		<VCE_AteGourmetSushi.stages.0.description>那…那真是太棒了！魚片在我嘴裡融化，難以置信！</VCE_AteGourmetSushi.stages.0.description>
+		<VCE_AteFriedSushi.stages.0.label>食用了油炸壽司</VCE_AteFriedSushi.stages.0.label>
+		<VCE_AteFriedSushi.stages.0.description>油膩的食物。真好吃！</VCE_AteFriedSushi.stages.0.description>
+		<VCE_AteMechaCheese.label>吃了機械奶酪</VCE_AteMechaCheese.label>
+		<VCE_AteMechaCheese.description>這...是...呃...好痛！我全身就像是被千刀萬剮了一樣！</VCE_AteMechaCheese.description>
+		<VCE_AteBearffaloCheese.label>吃了雪牛熊奶酪</VCE_AteBearffaloCheese.label>
+		<VCE_AteBearffaloCheese.description>唔，這奶酪味道可真不錯！雖然口感有些膩，但是真的很好吃！</VCE_AteBearffaloCheese.description>
+
+		<!-- EN: ate awful cheese -->
+		<VCE_AteCheese.stages.ate_awful_cheese.label>吃了極差的奶酪</VCE_AteCheese.stages.ate_awful_cheese.label>
+		<!-- EN: I ate some poorly curdled milk with barely any cheese flavour. Disgusting. -->
+		<VCE_AteCheese.stages.ate_awful_cheese.description>吃了坨沒有半點奶酪風味的奶糊糊，真噁心。</VCE_AteCheese.stages.ate_awful_cheese.description>
+		<!-- EN: ate poor cheese -->
+		<VCE_AteCheese.stages.ate_poor_cheese.label>吃了較差的奶酪</VCE_AteCheese.stages.ate_poor_cheese.label>
+		<!-- EN: That cheese wasn't horrible but wasn't great either. The aftertaste was kinda icky. -->
+		<VCE_AteCheese.stages.ate_poor_cheese.description>那奶酪不算太差吧，但回味還是有點齁。</VCE_AteCheese.stages.ate_poor_cheese.description>
+		<!-- EN: ate normal cheese -->
+		<VCE_AteCheese.stages.ate_normal_cheese.label>吃了一般的奶酪</VCE_AteCheese.stages.ate_normal_cheese.label>
+		<!-- EN: That was some OK cheese. -->
+		<VCE_AteCheese.stages.ate_normal_cheese.description>那奶酪還行吧。</VCE_AteCheese.stages.ate_normal_cheese.description>
+		<!-- EN: ate good cheese -->
+		<VCE_AteCheese.stages.ate_good_cheese.label>吃了良好的奶酪</VCE_AteCheese.stages.ate_good_cheese.label>
+		<!-- EN: I ate some fine cheese. Delicious. -->
+		<VCE_AteCheese.stages.ate_good_cheese.description>吃了點製作精良的奶酪，真不錯。</VCE_AteCheese.stages.ate_good_cheese.description>
+		<!-- EN: ate excellent cheese -->
+		<VCE_AteCheese.stages.ate_excellent_cheese.label>吃了極佳的奶酪</VCE_AteCheese.stages.ate_excellent_cheese.label>
+		<!-- EN: I ate some fine cheese. You can tell when it has had a good amount of time to mature. -->
+		<VCE_AteCheese.stages.ate_excellent_cheese.description>吃了點製作精良的奶酪，這味道肯定用了不少時間發酵。</VCE_AteCheese.stages.ate_excellent_cheese.description>
+		<!-- EN: ate masterwork cheese -->
+		<VCE_AteCheese.stages.ate_masterwork_cheese.label>吃了大師級奶酪</VCE_AteCheese.stages.ate_masterwork_cheese.label>
+		<!-- EN: That cheese was simply amazing! It doesn't get much better than this. -->
+		<VCE_AteCheese.stages.ate_masterwork_cheese.description>那種奶酪真是好極了！其它的凡品都難以與它相比！</VCE_AteCheese.stages.ate_masterwork_cheese.description>
+		<!-- EN: ate legendary cheese -->
+		<VCE_AteCheese.stages.ate_legendary_cheese.label>吃了傳說級奶酪</VCE_AteCheese.stages.ate_legendary_cheese.label>
+		<!-- EN: I've eaten quite possibly some of the best cheese I've ever tasted! -->
+		<VCE_AteCheese.stages.ate_legendary_cheese.description>吃到這等人間珍品實乃人生一大幸事。</VCE_AteCheese.stages.ate_legendary_cheese.description>
+	</LanguageData>

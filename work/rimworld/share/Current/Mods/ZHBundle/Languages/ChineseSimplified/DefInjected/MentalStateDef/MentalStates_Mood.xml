@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: xenophobic rage -->
+  <VEF_XenophobicRage.label>发狂仇外</VEF_XenophobicRage.label>
+  <!-- EN: Mental state: Xenophobic rage -->
+  <VEF_XenophobicRage.baseInspectLine>精神状态: 发狂仇外</VEF_XenophobicRage.baseInspectLine>
+  <!-- EN: {0} has flown into a xenophobic rage.\n\n[PAWN_pronoun] has decided to kill {1}. -->
+  <VEF_XenophobicRage.beginLetter>{0}陷入了发狂仇外之中。\n\n[PAWN_pronoun]正打算杀死{1}。</VEF_XenophobicRage.beginLetter>
+  <!-- EN: {0} is no longer in a xenophobic rage. -->
+  <VEF_XenophobicRage.recoveryMessage>{0}已从发狂仇外状态脱离出来。</VEF_XenophobicRage.recoveryMessage>
+  
+</LanguageData>

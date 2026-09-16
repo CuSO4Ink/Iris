@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: animal pod crash -->
+  <VEE_AnimalPodCrash.label>动物逃生舱坠毁</VEE_AnimalPodCrash.label>
+  
+  <!-- EN: battle animals wander in -->
+  <VEE_BattleAnimalsWanderIn.label>战兽加入</VEE_BattleAnimalsWanderIn.label>
+  
+  <!-- EN: caravan animals wander in -->
+  <VEE_CaravanAnimalsWanderIn.label>游荡的驮兽</VEE_CaravanAnimalsWanderIn.label>
+  
+  <!-- EN: cargo pods (apparel) -->
+  <VEE_Cargopodsapparel.label>货舱坠毁（衣物）</VEE_Cargopodsapparel.label>
+  
+  <!-- EN: cargo pods (weapon) -->
+  <VEE_Cargopodsweapons.label>货舱坠毁（武器）</VEE_Cargopodsweapons.label>
+  
+  <!-- EN: crashlanded survivors -->
+  <VEE_Crashlanded.label>迫降幸存者</VEE_Crashlanded.label>
+  
+  <!-- EN: crop sprout -->
+  <VEE_CropSprout.label>作物萌芽</VEE_CropSprout.label>
+  
+  <!-- EN: drought -->
+  <VEE_Drought.label>旱灾</VEE_Drought.label>
+  <!-- EN: Drought -->
+  <VEE_Drought.letterLabel>旱灾</VEE_Drought.letterLabel>
+  <!-- EN: An extreme drought has set over the area. Rain clouds have vanished, and the sun is baking the earth.\n\nOutdoor crops and wild plants will suffer heavily from the lack of moisture, almost halting their growth and eventually dying off. The fires will spread much quicker.\n\nPlants sown in hydroponics systems are not affected. -->
+  <VEE_Drought.letterText>一场极端的旱灾已开始在此区域肆虐。烈日正炙烤着大地，而雨云却不见踪影。\n\n室外的作物和野生植物将因缺水而逐渐停止生长，最终难逃枯死的命运。此外，火灾也将以更快的速度蔓延。\n\n种植于水栽培植物盆中的植物不受影响。</VEE_Drought.letterText>
+  
+  <!-- EN: earthquake -->
+  <VEE_Earthquake.label>局部地震</VEE_Earthquake.label>
+  
+  <!-- EN: hunting party -->
+  <VEE_HuntingParty.label>狩猎小队</VEE_HuntingParty.label>
+  
+  <!-- EN: manhunter animal -->
+  <VEE_ManhunterSingleArrival.label>猎杀人类</VEE_ManhunterSingleArrival.label>
+  
+  <!-- EN: meteorite shower -->
+  <VEE_MeteoriteShower.label>陨石雨</VEE_MeteoriteShower.label>
+  <!-- EN: Meteorite Shower -->
+  <VEE_MeteoriteShower.letterLabel>陨石雨</VEE_MeteoriteShower.letterLabel>
+  <!-- EN: A cluster of meteorites has entered the atmosphere and is breaking apart directly over your area! \n\nSeveral rocks will strike the ground in a localized area over the next few hours. They will obliterate anything they hit.\n\nMeteorites like that are likely to leave behind some resources. -->
+  <VEE_MeteoriteShower.letterText>一颗异常巨大的陨石突破了大气层，并在此区域的上空解体了！\n\n数颗碎裂的岩块将会撞击此区域的地面，摧毁所触及到的任何东西。\n\n陨石中或许包含一些可开采的资源。</VEE_MeteoriteShower.letterText>
+  
+  <!-- EN: psychic hum -->
+  <VEE_PsychicHum.label>心灵嗡鸣</VEE_PsychicHum.label>
+  
+  <!-- EN: psychic overdrive -->
+  <VEE_PsychicOverdrive.label>心灵超频</VEE_PsychicOverdrive.label>
+  
+  <!-- EN: psychic stimulation -->
+  <VEE_PsychicStimulation.label>心灵激悦</VEE_PsychicStimulation.label>
+  
+  <!-- EN: shuttle crash -->
+  <VEE_ShuttleCrash.label>穿梭机坠毁</VEE_ShuttleCrash.label>
+  
+  <!-- EN: orbital ship crash -->
+  <VEE_SpaceBattle.label>轨道飞船坠毁</VEE_SpaceBattle.label>
+  
+  <!-- EN: visitor group -->
+  <VEE_VisitorGroupRaid.label>访客团</VEE_VisitorGroupRaid.label>
+  
+  <!-- EN: wanderer join (traitor) -->
+  <VEE_WandererJoinsTraitor.label>流浪者加入（背叛者）</VEE_WandererJoinsTraitor.label>
+  
+  <!-- EN: wild men wander in -->
+  <VEE_WildMenWanderIn.label>游荡的野人</VEE_WildMenWanderIn.label>
+  
+</LanguageData>

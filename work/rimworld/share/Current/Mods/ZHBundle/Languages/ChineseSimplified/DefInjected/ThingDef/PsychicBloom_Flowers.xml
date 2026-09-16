@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cyllen cluster -->
+  <VEE_Plant_CyllenCluster.label>睽睽植簇</VEE_Plant_CyllenCluster.label>
+  <!-- EN: A dense grouping of bulbous alien foliage that pulses with a slow, heartbeat-like rhythm. Standing near it leaves observers with the uneasy, creeping sensation of being watched by a thousand eyes. -->
+  <VEE_Plant_CyllenCluster.description>一簇密集的球类异域枝叶，以缓慢如心跳般的节奏不停搏动着。站在它附近时，会让观察者产生不安的、处于众目睽睽之下的蚁行感。</VEE_Plant_CyllenCluster.description>
+  
+  <!-- EN: myrlox tree -->
+  <VEE_Plant_MyrloxTree.label>虬结燔树</VEE_Plant_MyrloxTree.label>
+  <!-- EN: A robust, twisted growth that resembles petrified muscle more than wood. It radiates a barely felt, unnatural warmth and smells sharply of ozone and burning copper. -->
+  <VEE_Plant_MyrloxTree.description>一种结实扭曲的植物，比起树木更像是石化的肌肉。它散发出难以察觉的、非自然的暖意，闻起来还有股强烈的臭氧与灼铜味。</VEE_Plant_MyrloxTree.description>
+  
+  <!-- EN: phorax tree -->
+  <VEE_Plant_PhoraxTree.label>刺麻蕈树</VEE_Plant_PhoraxTree.label>
+  <!-- EN: A towering, bizarre formation barely resembling a giant mushroom. Touching its trunk leaves a lingering, static-like tingling sensation in the mind. -->
+  <VEE_Plant_PhoraxTree.description>一种高耸怪异的结构体，看起来勉强像是巨大的蕈菇。触碰其树干，会在脑海中留下挥之不去的、有如静电般的刺麻感。</VEE_Plant_PhoraxTree.description>
+  
+  <!-- EN: pink grass -->
+  <VEE_Plant_PinkGrass.label>粉草</VEE_Plant_PinkGrass.label>
+  <!-- EN: A vibrant, otherworldly groundcover that feels unsettlingly smooth to the touch. It appears to feed on ambient psychic energy rather than soil or sunlight. -->
+  <VEE_Plant_PinkGrass.description>一种艳丽的异域地被植物，摸起来光滑得令人不安。它似乎以周遭的心灵能量而非土壤或阳光为食。</VEE_Plant_PinkGrass.description>
+  
+  <!-- EN: psychic lotus -->
+  <VEE_Plant_PsychicLotus.label>心灵荷花</VEE_Plant_PsychicLotus.label>
+  <!-- EN: A mesmerizing, ethereal bloom that acts as a dimensional anchor, emitting floating, firefly-like flecks of light. It actively terraforms the area by continuously spawning alien flora around it. Destroying it may trigger a final, rapid burst of otherworldly growth. -->
+  <VEE_Plant_PsychicLotus.description>一种迷人而又缥缈的花卉。作为维度锚点而存在的它，散发出宛如萤火虫般的浮游光斑。它能通过持续在自身周围增殖异域植被的方式来主动改造环境。将其摧毁可能会引发一次类似“亡语”的爆发性异域滋长。</VEE_Plant_PsychicLotus.description>
+  
+  <!-- EN: psychic lotus seedling -->
+  <VEE_Plant_PsychicLotusSeedling.label>心灵荷花幼苗</VEE_Plant_PsychicLotusSeedling.label>
+  <!-- EN: An unnatural, faintly glowing sprout that seems to root itself in reality rather than soil. While harmless, it is the beginning of a highly dangerous bloom and should be uprooted before it matures. -->
+  <VEE_Plant_PsychicLotusSeedling.description>一种非自然的、微微发光的新芽，似乎锚定于现实中而非土壤里。虽然目前尚且无害，但它的存在预示着险象环生的绽放之时即将到来，应在成熟之前就将其连根拔除。</VEE_Plant_PsychicLotusSeedling.description>
+  
+  <!-- EN: tall pink grass -->
+  <VEE_Plant_TallPinkGrass.label>高粉草</VEE_Plant_TallPinkGrass.label>
+  <!-- EN: Overgrown stalks of alien grass. Its long, vibrant blades sway rhythmically, completely ignoring the direction of the local wind. -->
+  <VEE_Plant_TallPinkGrass.description>一种蔓生的异域草茎。它修长且艳丽的叶片有节奏地摇曳着，完全无视当地的风向。</VEE_Plant_TallPinkGrass.description>
+  
+  <!-- EN: vysp strands -->
+  <VEE_Plant_VyspStrands.label>啭唧丝株</VEE_Plant_VyspStrands.label>
+  <!-- EN: Bizarre, thread-like growths that hum faintly when approached. The strands vibrate constantly, potentially echoing the psychic pressure of their home dimension. -->
+  <VEE_Plant_VyspStrands.description>一种怪异的丝状植物，靠近时会发出微弱的嗡鸣声。它的丝线结构不断震颤着，可能是在回应其原属维度的心灵重压。</VEE_Plant_VyspStrands.description>
+  
+  <!-- EN: xyril tree -->
+  <VEE_Plant_XyrilTree.label>棱晶幻树</VEE_Plant_XyrilTree.label>
+  <!-- EN: A hauntingly beautiful, tree-like structure that refracts light in impossible colors. It appears almost crystalline and fragile, despite piercing the earth to anchor itself. -->
+  <VEE_Plant_XyrilTree.description>一种美丽得令人流连忘返的树状结构，以不可能的色泽折射光线。尽管它将自己深度锚定于大地中，但看起来几乎如晶体般脆弱不堪。</VEE_Plant_XyrilTree.description>
+  
+</LanguageData>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: shield radius -->
+  <VEF_EnergyShieldRadiusApparel.label>護盾半徑</VEF_EnergyShieldRadiusApparel.label>
+  <!-- EN: The area covered when the energy shield is active. -->
+  <VEF_EnergyShieldRadiusApparel.description>啟動時，能量護盾的作用範圍。</VEF_EnergyShieldRadiusApparel.description>
+  <!-- EN: {0} c -->
+  <VEF_EnergyShieldRadiusApparel.formatString>{0}地格</VEF_EnergyShieldRadiusApparel.formatString>
+  
+  <!-- EN: piercing damage modifier -->
+  <VEF_GaussProjectileDamageModifier.label>穿透傷害修正</VEF_GaussProjectileDamageModifier.label>
+  <!-- EN: How much the damage dealt is modified (as a percentage of the base damage) for each previously hit target. -->
+  <VEF_GaussProjectileDamageModifier.description>對於每個先前已命中並穿透的目標，此武器所造成的傷害將按照該比例（以基礎傷害的百分比計算）進行修正。</VEF_GaussProjectileDamageModifier.description>
+
+  <!-- EN: melee weapon range -->
+  <VEF_MeleeWeaponRange.label>近戰攻擊範圍</VEF_MeleeWeaponRange.label>
+  <!-- EN: The range of this melee weapon. -->
+  <VEF_MeleeWeaponRange.description>近戰武器的攻擊範圍。</VEF_MeleeWeaponRange.description>
+  
+  <!-- EN: ranged cooldown factor -->
+  <VEF_RangedCooldownFactor.label>遠程冷卻時間係數</VEF_RangedCooldownFactor.label>
+  <!-- EN: The cooldown on ranged weapons of the wearer is multiplied by this value. -->
+  <VEF_RangedCooldownFactor.description>穿戴者的遠程武器冷卻時間會乘以此項的值。</VEF_RangedCooldownFactor.description>
+  
+</LanguageData>

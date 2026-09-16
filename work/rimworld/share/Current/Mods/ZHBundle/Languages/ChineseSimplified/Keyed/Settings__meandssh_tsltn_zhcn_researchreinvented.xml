@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+	<!-- EN: Global config -->
+	<RR_setting_tab_GLOBAL_CONFIG>全局配置</RR_setting_tab_GLOBAL_CONFIG>
+	<!-- EN: Category presets -->
+	<RR_setting_tab_CATEGORY_PRESETS>类别预设</RR_setting_tab_CATEGORY_PRESETS>
+	<!-- EN: Category config -->
+	<RR_setting_tab_CATEGORY_CONFIG>类别设置</RR_setting_tab_CATEGORY_CONFIG>
+	<!-- EN: Mod integrations -->
+	<RR_setting_tab_MOD_INTEGRATIONS>模组整合</RR_setting_tab_MOD_INTEGRATIONS>
+
+	<!-- EN: Configure global Research Reinvented settings. -->
+	<RR_setting_tab_GLOBAL_CONFIG_tooltip>配置「科研重塑」的全局设置。</RR_setting_tab_GLOBAL_CONFIG_tooltip>
+	<!-- EN: Select a preset of research point distribution between opportunity categories. -->
+	<RR_setting_tab_CATEGORY_PRESETS_tooltip>选择各研究机会类别的研究点分配预设。</RR_setting_tab_CATEGORY_PRESETS_tooltip>
+	<!-- EN: Configure individual research opportunity categories. -->
+	<RR_setting_tab_CATEGORY_CONFIG_tooltip>配置各个研究机会类别。</RR_setting_tab_CATEGORY_CONFIG_tooltip>
+	<!-- EN: Display and configure optional integrations with other mods. -->
+	<RR_setting_tab_MOD_INTEGRATIONS_tooltip>显示并设置与其他模组的可选整合功能。</RR_setting_tab_MOD_INTEGRATIONS_tooltip>
+
+	<!-- EN: Changes in settings. Regenerate? -->
+	<RR_setting_fixupButton>设置已变更。重新生成？</RR_setting_fixupButton>
+	<!-- EN: Clear all currently generated opportunities? This will NOT reset research progress! -->
+	<RR_setting_fixupConfirm>清除当前已生成的所有研究机会？这不会重置研究进度！</RR_setting_fixupConfirm>
+	<!-- EN: Changes made here will not correctly apply to research projects already started (including progress gained from reading schematics).\nIf you are currently in game you will be prompted for applying a fix after closing this window, otherwise a fix button will be available in the in-game menu after loading a save with older settings.\n(The fix is not applied automatically in case you want to avoid accidentally double-dipping). -->
+	<RR_setting_changeWarning>此处的改动不会正确应用到已开始的研究项目（包含通过阅读图纸获得的进度）。\n如果你正在游戏中，关闭此窗口后会提示你应用修复；否则在加载使用旧设置的存档后，游戏内菜单将提供修复按钮。\n（为避免误触导致重复获取，修复不会自动应用。）</RR_setting_changeWarning>
+
+	<!-- EN: Show progress motes -->
+	<RR_setting_showProgressMotes>显示研究进度飘字</RR_setting_showProgressMotes>
+	<!-- EN: When enabled, motes (floating messages) will briefly appear above pawns that have made significant research progress. -->
+	<RR_setting_defaultCompactMode_showProgressMotes_tooltip>启用后，当殖民者获得显著研究进展时，会在其头顶短暂显示飘字。</RR_setting_defaultCompactMode_showProgressMotes_tooltip>
+
+	<!-- EN: Research window defaults to compact mode -->
+	<RR_setting_defaultCompactMode>研究窗口默认使用紧凑模式</RR_setting_defaultCompactMode>
+	<!-- EN: When enabled, the research opportunities list window will default to compact mode. -->
+	<RR_setting_defaultCompactMode_tooltip>启用后，研究机会列表窗口将默认以紧凑模式显示。</RR_setting_defaultCompactMode_tooltip>
+
+
+	<!-- EN: Allow field research without research kit -->
+	<RR_setting_kitlessResearch>允许无套件时进行实地研究</RR_setting_kitlessResearch>
+	<!-- EN: When enabled, field research can be performed without any research kit for research projects that only require a simple research table/kit. -->
+	<RR_setting_kitlessResearch_tooltip>启用后，对于仅需基础研究台/套件的项目，可在没有任何研究套件的情况下进行实地研究。</RR_setting_kitlessResearch_tooltip>
+
+	<!-- EN: Allow field research without kit for neolithic technologies -->
+	<RR_setting_kitlessNeolithicResearch>允许旧石器科技无套件实地研究</RR_setting_kitlessNeolithicResearch>
+	<!-- EN: When enabled, field research can be performed without any research kit for research projects that are of neolithic tech level. -->
+	<RR_setting_kitlessNeolithicResearch_tooltip>启用后，旧石器科技等级的项目可在没有任何研究套件的情况下进行实地研究。</RR_setting_kitlessNeolithicResearch_tooltip>
+
+
+	<!-- EN: Disable prototype bill cancellation -->
+	<RR_setting_disablePrototypeBillCancellation>禁用原型清单自动取消</RR_setting_disablePrototypeBillCancellation>
+	<!-- EN: Some people experience issues where switching or finishing research results in cancelled construction or bills. Toggle this setting on to disable the function responsible - note that you will be able to exploit prototype bills/constructions by switching research! -->
+	<RR_setting_disablePrototypeBillCancellation_tooltip>切换或完成研究时，有人会遇到建造或工作台清单被取消的问题。开启本选项以禁用相关功能——注意：你将可以通过切换研究来利用原型清单/建造！</RR_setting_disablePrototypeBillCancellation_tooltip>
+
+	<!-- EN: Enable prisoner knowledge extraction by default -->
+	<RR_setting_enableScienceInterrogationByDefault>默认启用囚犯知识提取</RR_setting_enableScienceInterrogationByDefault>
+	<!-- EN: If enabled, all new prisoners have knowledge extraction automatically enabled. -->
+	<RR_setting_enableScienceInterrogationByDefault_tooltip>启用后，所有新囚犯将自动开启「提取知识」。</RR_setting_enableScienceInterrogationByDefault_tooltip>
+
+	<!-- EN: Select category -->
+	<RR_setting_category_selector>选择类别</RR_setting_category_selector>
+
+	<!-- EN: Category enabled -->
+	<RR_setting_category_enabled>启用此类别</RR_setting_category_enabled>
+	<!-- EN: Toggle this to disable this category of research opportunities entirely. -->
+	<RR_setting_category_enabled_tooltip>关闭后，将完全禁用该研究机会类别。</RR_setting_category_enabled_tooltip>
+
+	<!-- EN: Available at overall progress -->
+	<RR_setting_category_availableAtOverallProgress>在总体进度的哪个阶段可用</RR_setting_category_availableAtOverallProgress>
+	<!-- EN: Controls during which phase of research is this category available. -->
+	<RR_setting_category_availableAtOverallProgress_tooltip>控制该类别在研究过程的哪个阶段可用。</RR_setting_category_availableAtOverallProgress_tooltip>
+
+	<!-- EN: Static project cost fraction -->
+	<RR_setting_category_importanceStatic>静态研究点数</RR_setting_category_importanceStatic>
+	<!-- EN: How many research points this category will give, based only on the cost of the project itself.\nThese points are in addition to any given from the distributed points system.\n\nA value of 100% means projects can be completed entirely by doing only this category. -->
+	<RR_setting_category_importanceStatic_tooltip>仅基于项目自身成本，该类别提供的研究点数量。\n这些点数会叠加到「分配点数系统」之外。\n\n若设为 100%，意味着只做这一类别即可完全完成项目。</RR_setting_category_importanceStatic_tooltip>
+
+	<!-- EN: Distributed project cost weight -->
+	<RR_setting_category_importanceMultiplier>分配权重</RR_setting_category_importanceMultiplier>
+	<!-- EN: When distributing the project research points, this value determines how many points it will give relative to other categories.\n\nHigher value means more points. -->
+	<RR_setting_category_importanceMultiplier_tooltip>在按类别分配项目研究点时，相对其他类别本类别应获得的点数权重。\n\n数值越高，分配到的点越多。</RR_setting_category_importanceMultiplier_tooltip>
+
+	<!-- EN: Weight counted for other categories -->
+	<RR_setting_category_importanceMultiplierCounted>其他类别的权重</RR_setting_category_importanceMultiplierCounted>
+	<!-- EN: Used when calculating the research points distributed to other categories.\nMust be smaller or equal to the actual importance multiplier.\n\nLower value here means fewer points from this category are required to complete the project, and setting it to 0% makes it entirely optional. -->
+	<RR_setting_category_importanceMultiplierCounted_tooltip>用于计算分配给「其他类别」的研究点时所采用的本类别权重。\n必须小于或等于实际的分配成本权重。\n\n越低表示完成项目所需来自本类别的点数越少；设为 0% 则使本类别完全可选。</RR_setting_category_importanceMultiplierCounted_tooltip>
+
+	<!-- EN: Required completions -->
+	<RR_setting_category_targetIterations>所需完成次数</RR_setting_category_targetIterations>
+	<!-- EN: The maximum individual opportunities required to fully complete this category.\nAutomatically reduced for projects with fewer generated opportunities. -->
+	<RR_setting_category_targetIterations_tooltip>为完全完成该类别所需的最大个体机会数量。\n若某项目生成的机会较少，会自动降低。</RR_setting_category_targetIterations_tooltip>
+
+	<!-- EN: Infinite overflow -->
+	<RR_setting_category_infiniteOverflow>无限溢出</RR_setting_category_infiniteOverflow>
+	<!-- EN: Allow research in this category to continue as long as there are more opportunities of this type available, even after the points maximum is reached. -->
+	<RR_setting_category_infiniteOverflow_tooltip>即使已达到该类别的点数上限，只要仍有此类研究机会可用，研究仍可继续。</RR_setting_category_infiniteOverflow_tooltip>
+
+	<!-- EN: Research speed multiplier -->
+	<RR_setting_category_researchSpeedMultiplier>研究速度乘数</RR_setting_category_researchSpeedMultiplier>
+	<!-- EN: Opportunities of this category will have their research speed multiplied by the set percentage.\n\nFor most categories, this is a multiplier applied to the pawn's normal research speed stat. -->
+	<RR_setting_category_researchSpeedMultiplier_tooltip>该类别的研究速度将使用于此乘数。\n\n对于大多数类别，这将应用于殖民者的正常科研速度。</RR_setting_category_researchSpeedMultiplier_tooltip>
+
+	<!-- EN: Distributed weight multiplier -->
+	<RR_setting_category_fractionAxis>分配权重</RR_setting_category_fractionAxis>
+	<!-- EN: Research speed -->
+	<RR_setting_category_researchSpeedAxis>研究速度</RR_setting_category_researchSpeedAxis>
+
+	<!-- EN: Reset to preset default -->
+	<RR_setting_category_resetToDefault>重置为预设默认值</RR_setting_category_resetToDefault>
+
+
+	<!--- Mod compat -->
+
+	<!-- EN: {0} patch active. -->
+	<RR_setting_modCompat_active>{0} 兼容补丁已启用。</RR_setting_modCompat_active>
+	<!-- EN: {0} patch failed. -->
+	<RR_setting_modCompat_fail>{0} 兼容补丁加载失败。</RR_setting_modCompat_fail>
+	<!-- EN: {0} not detected. -->
+	<RR_setting_modCompat_notDetected>未检测到 {0}。</RR_setting_modCompat_notDetected>
+
+	<!-- EN: Combat Extended -->
+	<RR_setting_modCompat_combatExtended>Combat Extended</RR_setting_modCompat_combatExtended>
+	<!-- EN: Dubs Mint Menus -->
+	<RR_setting_modCompat_dubsMintMenus>Dubs Mint Menus</RR_setting_modCompat_dubsMintMenus>
+	<!-- EN: Humanoid Alien Races -->
+	<RR_setting_modCompat_humanoidAlienRaces>Humanoid Alien Races</RR_setting_modCompat_humanoidAlienRaces>
+	<!-- EN: Research Data -->
+	<RR_setting_modCompat_researchData>Research Data</RR_setting_modCompat_researchData>
+
+	<!-- EN: Compatibility mode -->
+	<RR_setting_modCompat_researchData_mode>兼容模式</RR_setting_modCompat_researchData_mode>
+	<!-- EN: Theory only -->
+	<RR_modCompat_researchData_mode_TheoryOnly>仅理论研究</RR_modCompat_researchData_mode_TheoryOnly>
+	<!-- EN: Research Data "fuel" will only be needed and consumed by theory research. -->
+	<RR_modCompat_researchData_mode_TheoryOnly_tooltip>仅理论研究需要并消耗 Research Data 中的「燃料」。</RR_modCompat_researchData_mode_TheoryOnly_tooltip>
+	<!-- EN: All research -->
+	<RR_modCompat_researchData_mode_AllBenchResearch>所有台面研究</RR_modCompat_researchData_mode_AllBenchResearch>
+	<!-- EN: Research Data "fuel" will be needed and consumed by any research done at a research bench. -->
+	<RR_modCompat_researchData_mode_AllBenchResearch_tooltip>任何在研究台上进行的研究都需要并消耗 Research Data 中的「燃料」。</RR_modCompat_researchData_mode_AllBenchResearch_tooltip>
+
+	<!--- Obsolete -->
+	<!-- EN: Enable debug mode -->
+	<RR_setting_debugPrintouts>启用调试模式</RR_setting_debugPrintouts>
+	<!-- EN: When enabled, various developer printouts and visuals will be active. -->
+	<RR_setting_debugPrintouts_tooltip>启用后，将显示开发用的各类调试输出与可视化。</RR_setting_debugPrintouts_tooltip>
+
+	<!-- EN: Target fraction multiplier -->
+	<RR_setting_category_targetFractionMultiplier>目标分配系数</RR_setting_category_targetFractionMultiplier>
+	<!-- EN: The generated opportunities try to split the research cost of the project according to the relative fraction sizes of categories, depending on this value. -->
+	<RR_setting_category_targetFractionMultiplier_tooltip>根据各类别的相对占比分配项目总体研究成本时所采用的系数。</RR_setting_category_targetFractionMultiplier_tooltip>
+
+	<!-- EN: Extra fraction multiplier -->
+	<RR_setting_category_extraFractionMultiplier>额外分配系数</RR_setting_category_extraFractionMultiplier>
+	<!-- EN: Additional research allowed for this category that is not included in the initial fraction assigned to it. -->
+	<RR_setting_category_extraFractionMultiplier_tooltip>超出初始分配占比之外，允许给予本类别的额外研究量。</RR_setting_category_extraFractionMultiplier_tooltip>
+
+</LanguageData>

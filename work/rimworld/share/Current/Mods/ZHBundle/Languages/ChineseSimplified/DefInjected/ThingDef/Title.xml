@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Dragonian cold Mace -->
+  <DR_SoulMace.label>龙人 寒冰锤</DR_SoulMace.label>
+  <!-- EN: A mace made of an unknown metal.\nThere is a phrase engraved on the handle that seems to contain anger or hope.\n\n-For evil soul will be smash off- -->
+  <DR_SoulMace.description>用不明金属制成的锤子。\n手柄上刻有愤怒或希望的字句。\n\n-邪恶的灵魂终将被粉碎-</DR_SoulMace.description>
+  <!-- EN: head -->
+  <DR_SoulMace.tools.head.label>锤头</DR_SoulMace.tools.head.label>
+  
+  <!-- EN: Dragonian Hot Graeatsword -->
+  <DR_Soulsword.label>龙人炽热大剑</DR_Soulsword.label>
+  <!-- EN: A Graeatsword made of an unknown metal.\nProbabilistic area-of-effect attacks are possible.\nThere is a phrase engraved on the handle that seems to contain anger or hope.\n\n-For evil soul will be smash off- -->
+  <DR_Soulsword.description>由某种未知金属所打造的重型武器。\n有一定概率能触发范围火焰攻击。\n剑柄上刻有一段语句，似乎寄宿着某种愤怒或愿望。\n\n-邪恶的灵魂终将被粉碎-</DR_Soulsword.description>
+  <!-- EN: Blunt blade -->
+  <DR_Soulsword.tools.Blunt_blade.label>钝重的剑锋</DR_Soulsword.tools.Blunt_blade.label>
+  
+  <!-- EN: explosion -->
+  <DragonianMeleeExplosion.label>爆炸</DragonianMeleeExplosion.label>
+  
+</LanguageData>

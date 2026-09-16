@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: talk about science -->
+  <RR_ScienceTalk.label>研讨会</RR_ScienceTalk.label>
+  <!-- EN:
+    <li>r_logentry->[RECIPIENT_nameDef] [talkabout] [knowledge] related to [subject] with [INITIATOR_nameDef].</li>
+    <li>talkabout->shared</li>
+    <li>talkabout->talked about</li>
+    <li>talkabout->discussed</li>
+    <li>talkabout->had a discussion about</li>
+    <li>subject->current research</li>
+    <li>subject->current project</li>
+    <li>knowledge->knowledge</li>
+    <li>knowledge->science</li>
+    <li>knowledge->previous experiments</li>
+    <li>knowledge->[RECIPIENT_possessive] knowledge</li>
+  -->
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.0>r_logentry->[RECIPIENT_nameDef] [talkabout] 了 [knowledge]，关于 [subject]，与 [INITIATOR_nameDef]。</RR_ScienceTalk.logRulesInitiator.rulesStrings.0>
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.1>talkabout->分享</RR_ScienceTalk.logRulesInitiator.rulesStrings.1>
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.2>talkabout->谈论</RR_ScienceTalk.logRulesInitiator.rulesStrings.2>
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.3>talkabout->讨论</RR_ScienceTalk.logRulesInitiator.rulesStrings.3>
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.4>talkabout->讨论</RR_ScienceTalk.logRulesInitiator.rulesStrings.4>
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.5>subject->当前研究</RR_ScienceTalk.logRulesInitiator.rulesStrings.5>
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.6>subject->当前项目</RR_ScienceTalk.logRulesInitiator.rulesStrings.6>
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.7>knowledge->知识</RR_ScienceTalk.logRulesInitiator.rulesStrings.7>
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.8>knowledge->科学</RR_ScienceTalk.logRulesInitiator.rulesStrings.8>
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.9>knowledge->既往实验</RR_ScienceTalk.logRulesInitiator.rulesStrings.9>
+  <RR_ScienceTalk.logRulesInitiator.rulesStrings.10>knowledge->[RECIPIENT_possessive] 知识</RR_ScienceTalk.logRulesInitiator.rulesStrings.10>
+
+</LanguageData>

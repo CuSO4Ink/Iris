@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: XJ9 - Compound -->
+  <Chemical_MiracleCompound.label>XJ9合劑</Chemical_MiracleCompound.label>
+  <!-- EN: Because of a compound addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms. -->
+  <Chemical_MiracleCompound.description>因為XJ9合劑成癮，此人需要經常注射XJ9合劑，避免戒斷症狀。</Chemical_MiracleCompound.description>
+  
+  <!-- EN: vaccine -->
+  <Chemical_Vaccine_AntiNecrotion.label>歿疫解藥</Chemical_Vaccine_AntiNecrotion.label>
+  <!-- EN: Because of a vaccine addiction, this person needs to regularly consume the drug to avoid withdrawal symptoms. -->
+  <Chemical_Vaccine_AntiNecrotion.description>因為XJ9合劑成癮，此人需要經常注射歿疫解藥，避免戒斷症狀。</Chemical_Vaccine_AntiNecrotion.description>
+  
+</LanguageData>

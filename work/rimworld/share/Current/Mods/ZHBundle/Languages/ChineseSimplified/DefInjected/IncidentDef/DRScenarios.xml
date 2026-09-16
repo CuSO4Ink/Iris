@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: innocent steps -->
+  <DR_scenario_WandererJoin.label>天真的脚步声</DR_scenario_WandererJoin.label>
+  <!-- EN: innocent steps -->
+  <DR_scenario_WandererJoin.letterLabel>天真的脚步声</DR_scenario_WandererJoin.letterLabel>
+  <!-- EN: Someone lonely joined. -->
+  <DR_scenario_WandererJoin.letterText>孤独的龙人加入了殖民地。</DR_scenario_WandererJoin.letterText>
+  
+</LanguageData>

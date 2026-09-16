@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: power showers -->
+  <AdvancedShowers.label>電力淋浴器</AdvancedShowers.label>
+  <!-- EN: Build power showers which halve the time spent showering and improve comfort. -->
+  <AdvancedShowers.description>解鎖建造電力淋浴設備，縮短淋浴時間並提高舒適度。</AdvancedShowers.description>
+
+  <!-- EN: smart toilets -->
+  <AdvancedToilets.label>智能馬桶</AdvancedToilets.label>
+  <!-- EN: Build comfortable, self cleaning, super efficient smart toilets. -->
+  <AdvancedToilets.description>解鎖建造智能馬桶，提高水利用率和舒適度。</AdvancedToilets.description>
+  
+  <!-- EN: asteroid cryo mining -->
+  <AsteroidCryoMining.label>小行星冰層開采</AsteroidCryoMining.label>
+  <!-- EN: Extract and sublimate volatile ices trapped beneath asteroid regolith. -->
+  <AsteroidCryoMining.description>解鎖建造低溫提取裝置，從小行星內部提取和升華易揮發冰層，並將其轉化成可用水。</AsteroidCryoMining.description>
+
+  <!-- EN: central heating -->
+  <CentralHeating.label>集中供暖</CentralHeating.label>
+  <!-- EN: Build central heating systems with radiators, hot water tanks, boilers and thermostats. -->
+  <CentralHeating.description>解鎖建造集中供暖系統，使用管道將復數暖氣片、熱水箱、鍋爐、溫控器等設備連接在一起。</CentralHeating.description>
+
+  <!-- EN: deep wells -->
+  <DeepWells.label>深水井</DeepWells.label>
+  <!-- EN: Drill deeper wells to access a much larger area of ground water. -->
+  <DeepWells.description>鉆探更深的井以獲得更大面積的地下水。</DeepWells.description>
+
+  <!-- EN: electric pumps -->
+  <ElectricPumps.label>電力抽水機</ElectricPumps.label>
+  <!-- EN: Powered water pumps for pressurized continuous water pumping. -->
+  <ElectricPumps.description>解鎖建造用電力驅動並穩定工作的抽水設備。</ElectricPumps.description>
+
+  <!-- EN: fire suppression -->
+  <FireSuppression.label>滅火系統</FireSuppression.label>
+  <!-- EN: Build sprinklers that suppress fires with a spray of water. -->
+  <FireSuppression.description>解鎖建造可以產生水霧抑製火災的噴淋滅火器。</FireSuppression.description>
+
+  <!-- EN: Geothermal Heating -->
+  <GeothermalHeating.label>地熱供暖</GeothermalHeating.label>
+  <!-- EN: Build geothermal heaters which can be built over geysers to generate heat for central heating and hot water tanks. -->
+  <GeothermalHeating.description>解鎖建造可為暖氣片和熱水箱供熱的地熱加熱器。必須放置在蒸汽間歇噴泉上。</GeothermalHeating.description>
+
+  <!-- EN: hot tubs -->
+  <HotTubs.label>熱水按摩浴缸</HotTubs.label>
+  <!-- EN: Build hot tubs which can be used for hydrotherapy, relaxation, and pleasure. -->
+  <HotTubs.description>解鎖建造熱水按摩浴缸，用於水療放松，在清潔的同時提高娛樂和舒適度。</HotTubs.description>
+
+  <!-- EN: Hygiene Bionics -->
+  <HygieneBionics.label>衛生仿生學</HygieneBionics.label>
+  <!-- EN: Craft bionics that help to process bodily waste and manage personal hygiene. -->
+  <HygieneBionics.description>解鎖製作有助於處理身體廢物和管理個人衛生的仿生體。</HygieneBionics.description>
+
+  <!-- EN: irrigation -->
+  <Irrigation.label>灌溉</Irrigation.label>
+  <!-- EN: Build sprinklers that can irrigate soil to improve fertility. -->
+  <Irrigation.description>解鎖建造可以灌溉土地以提高肥沃度的噴灌器。</Irrigation.description>
+
+  <!-- EN: industrial-scale pumps -->
+  <LargeWaterPumps.label>工業規模化</LargeWaterPumps.label>
+  <!-- EN: Build industrial-scale water pumps and storage tanks. -->
+  <LargeWaterPumps.description>解鎖建造工業級別的抽水和儲水設備。</LargeWaterPumps.description>
+
+  <!-- EN: heating -->
+  <LogBoilers.label>供暖</LogBoilers.label>
+  <!-- EN: Build log boilers which can be used to heat rooms and can be placed adjacent to baths to heat bathwater. -->
+  <LogBoilers.description>解鎖建造能提高房間溫度並給相鄰洗浴用水加熱的鍋爐。</LogBoilers.description>
+
+  <!-- EN: modern bathroom fixtures -->
+  <ModernFixtures.label>現代浴室設備</ModernFixtures.label>
+  <!-- EN: Build modern-style bathroom fixtures like toilets and showers. -->
+  <ModernFixtures.description>解鎖建造現代風格的浴室設備，包括馬桶和淋浴器等。</ModernFixtures.description>
+
+  <!-- EN: multi-split air conditioning -->
+  <MultiSplitAirCon.label>多分體空調</MultiSplitAirCon.label>
+  <!-- EN: Build multi-split air conditioning systems with outdoor units piped to indoor units and freezers. -->
+  <MultiSplitAirCon.description>解鎖建造多分體空調系統，使用空調管道將復數室外機、室內機和製冷機連接在一起。</MultiSplitAirCon.description>
+
+  <!-- EN: plumbing -->
+  <Plumbing.label>管道系統</Plumbing.label>
+  <!-- EN: Use pipes, plumbing fixtures, storage tanks, wind pumps and other apparatuses to deliver and drain water and sewage. -->
+  <Plumbing.description>解鎖建造管道、衛生設備、蓄水設備、水井、抽水機和其他基礎給排水設備。</Plumbing.description>
+
+  <!-- EN: saunas -->
+  <Saunas.label>桑拿浴</Saunas.label>
+  <!-- EN: Build a dedicated room with a sauna heater where colonists can relax and clean, frequent use can reduce the chance of heart attacks. -->
+  <Saunas.description>解鎖建造桑拿加熱器與桑拿坐凳。殖民者可以在桑拿室中放松娛樂並清潔身體，定期蒸桑拿浴可以降低心臟病發作的風險。</Saunas.description>
+
+  <!-- EN: septic tanks -->
+  <SepticTanks.label>化糞池</SepticTanks.label>
+  <!-- EN: Build septic tanks which accumulate sewage and provide moderate treatment of sewage. -->
+  <SepticTanks.description>解鎖建造化糞池，可以過濾污水並提供基礎的污水處理。</SepticTanks.description>
+
+  <!-- EN: sewage sludge composting -->
+  <SewageSludgeComposting.label>堆肥</SewageSludgeComposting.label>
+  <!-- EN: When properly treated and processed, sewage sludge becomes biosolids that offer a small boost to terrain fertility. Useful for harsh environments with limited space to grow. Biosolids also produce a large boost to the fertility of sand which can make it fertile when combined with irrigation. -->
+  <SewageSludgeComposting.description>解鎖堆肥技術。污水和糞便經過適當處理和發酵後營養物質豐富，可作為有機肥料提高土地的肥沃度。</SewageSludgeComposting.description>
+
+  <!-- EN: sewage treatment -->
+  <SewageTreatment.label>污水處理</SewageTreatment.label>
+  <!-- EN: Build large sewage treatment systems which accumulate large amounts of sewage and provide fast treatment of sewage. -->
+  <SewageTreatment.description>解鎖建造污水處理池，可以快速處理大量污水。</SewageTreatment.description>
+
+  <!-- EN: spacer hygiene recycling -->
+  <SpacerHygieneRecycling.label>太空水循環</SpacerHygieneRecycling.label>
+  <!-- EN: Compact high-efficiency recycling nodes that recover and reuse water from showers and sinks. -->
+  <SpacerHygieneRecycling.description>解鎖建造水循環系統，可以將淋浴器、洗手池等衛生設備用掉的水回收再利用。</SpacerHygieneRecycling.description>
+
+  <!-- EN: swimming pools -->
+  <SwimmingPools.label>游泳池</SwimmingPools.label>
+  <!-- EN: Build swimming pools. -->
+  <SwimmingPools.description>解鎖建造游泳池。</SwimmingPools.description>
+
+  <!-- EN: washing machines -->
+  <WashingMachines.label>洗衣機</WashingMachines.label>
+  <!-- EN: Build washing machines that can wash clothes so well that you couldn't even tell someone died wearing it! -->
+  <WashingMachines.description>解鎖建造可清洗衣物的洗衣機。這種機器如此優秀，以至於殖民者甚至無法發現身上的衣物曾被死人穿過！</WashingMachines.description>
+
+  <!-- EN: water filtration -->
+  <WaterFiltration.label>水過濾</WaterFiltration.label>
+  <!-- EN: Build water filtration systems which treat the water supply, eliminating the risk of disease. -->
+  <WaterFiltration.description>解鎖建造水過濾器，用水經過處理能夠消除疾病風險。</WaterFiltration.description>
+  
+</LanguageData>

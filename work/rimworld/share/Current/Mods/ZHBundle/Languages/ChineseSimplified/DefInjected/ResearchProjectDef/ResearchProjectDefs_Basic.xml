@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: agriculture -->
+  <RR_Agriculture.label>农业</RR_Agriculture.label>
+  <!-- EN: Fundamentals of agriculture. -->
+  <RR_Agriculture.description>农业基础。</RR_Agriculture.description>
+  <!-- EN:
+    <li>subject->agriculture</li>
+    <li>subject_story->was enslaved as a manual laborer</li>
+    <li>subject_story->was fascinated by the neolithic revolution at the beginning of history</li>
+    <li>subject_story->applied the simple principles of farming after crashlanding on an uninhabited planet</li>
+    <li>subject_gerund->farming</li>
+    <li>subject_gerund->cultivating plants</li>
+  -->
+  <RR_Agriculture.generalRules.rulesStrings.0>subject->农业</RR_Agriculture.generalRules.rulesStrings.0>
+  <RR_Agriculture.generalRules.rulesStrings.1>subject_story->曾被迫做过体力奴工</RR_Agriculture.generalRules.rulesStrings.1>
+  <RR_Agriculture.generalRules.rulesStrings.2>subject_story->对历史之初的新石器革命着迷</RR_Agriculture.generalRules.rulesStrings.2>
+  <RR_Agriculture.generalRules.rulesStrings.3>subject_story->在无人星球迫降后应用了朴素的耕作原则</RR_Agriculture.generalRules.rulesStrings.3>
+  <RR_Agriculture.generalRules.rulesStrings.4>subject_gerund->务农</RR_Agriculture.generalRules.rulesStrings.4>
+  <RR_Agriculture.generalRules.rulesStrings.5>subject_gerund->栽培植物</RR_Agriculture.generalRules.rulesStrings.5>
+
+  <!-- EN: simple apparel -->
+  <RR_BasicApparel.label>简易服饰</RR_BasicApparel.label>
+  <!-- EN: Crafting of simple apparel. -->
+  <RR_BasicApparel.description>制作简易服饰。</RR_BasicApparel.description>
+  <!-- EN:
+    <li>subject->simple apparel</li>
+    <li>subject->clothing</li>
+    <li>subject_story->learned to craft simple garments from furs on a feral world</li>
+    <li>subject_story->was responsible for disposal of tribal raiders clothes on a remote rimworld</li>
+    <li>subject_story->woke up naked inside a drop pod after what was supposed to be a minor surgery</li>
+    <li>subject_gerund->crafting simple clothes</li>
+  -->
+  <RR_BasicApparel.generalRules.rulesStrings.0>subject->简易服饰</RR_BasicApparel.generalRules.rulesStrings.0>
+  <RR_BasicApparel.generalRules.rulesStrings.1>subject->服装</RR_BasicApparel.generalRules.rulesStrings.1>
+  <RR_BasicApparel.generalRules.rulesStrings.2>subject_story->在蛮荒世界学会用毛皮制作简易衣物</RR_BasicApparel.generalRules.rulesStrings.2>
+  <RR_BasicApparel.generalRules.rulesStrings.3>subject_story->在偏远边缘世界负责处理部落袭击者的衣物</RR_BasicApparel.generalRules.rulesStrings.3>
+  <RR_BasicApparel.generalRules.rulesStrings.4>subject_story->小手术后在投放舱内醒来却一丝不挂</RR_BasicApparel.generalRules.rulesStrings.4>
+  <RR_BasicApparel.generalRules.rulesStrings.5>subject_gerund->制作简易衣物</RR_BasicApparel.generalRules.rulesStrings.5>
+
+  <!-- EN: crafting facilities -->
+  <RR_BasicCraftingFacilities.label>基础制作设施</RR_BasicCraftingFacilities.label>
+  <!-- EN: Basic crafting facilities. -->
+  <RR_BasicCraftingFacilities.description>基础制作设施。</RR_BasicCraftingFacilities.description>
+  <!-- EN:
+    <li>subject->crafting facilities</li>
+    <li>subject_story->catalogued the abstract properties shared by workbenches, laboratories, and factories alike</li>
+    <li>subject_story->whittled small toys from wood for their tribe's children</li>
+    <li>subject_story->led a tribe of warriors to victory, wielding only fire-sharpened spears</li>
+    <li>subject_gerund->building crafting facilities</li>
+  -->
+  <RR_BasicCraftingFacilities.generalRules.rulesStrings.0>subject->制作设施</RR_BasicCraftingFacilities.generalRules.rulesStrings.0>
+  <RR_BasicCraftingFacilities.generalRules.rulesStrings.1>subject_story->归纳工作台、实验室与工厂的共通抽象特性</RR_BasicCraftingFacilities.generalRules.rulesStrings.1>
+  <RR_BasicCraftingFacilities.generalRules.rulesStrings.2>subject_story->为部落孩童削木做小玩具</RR_BasicCraftingFacilities.generalRules.rulesStrings.2>
+  <RR_BasicCraftingFacilities.generalRules.rulesStrings.3>subject_story->仅凭火烧硬化的长矛就率部落勇士取胜</RR_BasicCraftingFacilities.generalRules.rulesStrings.3>
+  <RR_BasicCraftingFacilities.generalRules.rulesStrings.4>subject_gerund->建设制作设施</RR_BasicCraftingFacilities.generalRules.rulesStrings.4>
+
+  <!-- EN: food preparation -->
+  <RR_BasicFoodPrep.label>食物准备</RR_BasicFoodPrep.label>
+  <!-- EN: Preparation of food. -->
+  <RR_BasicFoodPrep.description>食物准备。</RR_BasicFoodPrep.description>
+  <!-- EN:
+    <li>subject->food preparation</li>
+    <li>subject_story->once spent an entire year vomiting because of an incompetent cook</li>
+    <li>subject_story->collected simple, uncomplicated recipes for a cookbook</li>
+    <li>subject_story->learned to create variety from limited ingredients in college</li>
+    <li>subject_gerund->preparing food</li>
+  -->
+  <RR_BasicFoodPrep.generalRules.rulesStrings.0>subject->食物准备</RR_BasicFoodPrep.generalRules.rulesStrings.0>
+  <RR_BasicFoodPrep.generalRules.rulesStrings.1>subject_story->曾因不称职的厨师而吐了一整年</RR_BasicFoodPrep.generalRules.rulesStrings.1>
+  <RR_BasicFoodPrep.generalRules.rulesStrings.2>subject_story->收集了简单易做的菜谱编成食谱</RR_BasicFoodPrep.generalRules.rulesStrings.2>
+  <RR_BasicFoodPrep.generalRules.rulesStrings.3>subject_story->在大学时期学会用有限食材做出变化</RR_BasicFoodPrep.generalRules.rulesStrings.3>
+  <RR_BasicFoodPrep.generalRules.rulesStrings.4>subject_gerund->准备食物</RR_BasicFoodPrep.generalRules.rulesStrings.4>
+
+  <!-- EN: simple furniture -->
+  <RR_BasicFurniture.label>简易家具</RR_BasicFurniture.label>
+  <!-- EN: Simple, but reliable furniture. -->
+  <RR_BasicFurniture.description>简单但可靠的家具。</RR_BasicFurniture.description>
+  <!-- EN:
+    <li>subject->furniture</li>
+    <li>subject_story->furnished their home using only scrap wood and cinderblocks from a nearby scrapyard</li>
+    <li>subject_story->was the tenth member of a tribe that built a village around a circle of nine stumps</li>
+    <li>subject_story->worked in an urbworld factory mass-producing lawn chairs</li>
+    <li>subject_gerund->constructing furniture</li>
+  -->
+  <RR_BasicFurniture.generalRules.rulesStrings.0>subject->家具</RR_BasicFurniture.generalRules.rulesStrings.0>
+  <RR_BasicFurniture.generalRules.rulesStrings.1>subject_story->只用附近废品场的废木与煤渣砖布置了家</RR_BasicFurniture.generalRules.rulesStrings.1>
+  <RR_BasicFurniture.generalRules.rulesStrings.2>subject_story->是那个围着九个树桩建村的部落的第十名成员</RR_BasicFurniture.generalRules.rulesStrings.2>
+  <RR_BasicFurniture.generalRules.rulesStrings.3>subject_story->在超城世界的工厂流水线大量生产躺椅</RR_BasicFurniture.generalRules.rulesStrings.3>
+  <RR_BasicFurniture.generalRules.rulesStrings.4>subject_gerund->建造家具</RR_BasicFurniture.generalRules.rulesStrings.4>
+
+  <!-- EN: medicinal herbs -->
+  <RR_BasicHerbLore.label>药草学基础</RR_BasicHerbLore.label>
+  <!-- EN: Utilization of basic medicinal herbs. -->
+  <RR_BasicHerbLore.description>基础药用草本的利用。</RR_BasicHerbLore.description>
+  <!-- EN:
+    <li>subject->medicinal herbs</li>
+    <li>subject_story->survived a nasty infection with the help of a tribal shaman</li>
+    <li>subject_story->ran a field hospital on a primitive warworld</li>
+    <li>subject_story->learned a few tricks during a jungle world safari gone wrong</li>
+    <li>subject_gerund->growing medicinal plants</li>
+    <li>subject_gerund->cultivating herbs</li>
+  -->
+  <RR_BasicHerbLore.generalRules.rulesStrings.0>subject->药用草本</RR_BasicHerbLore.generalRules.rulesStrings.0>
+  <RR_BasicHerbLore.generalRules.rulesStrings.1>subject_story->在部落萨满的帮助下挺过了严重感染</RR_BasicHerbLore.generalRules.rulesStrings.1>
+  <RR_BasicHerbLore.generalRules.rulesStrings.2>subject_story->在原始战争世界经营过野战医院</RR_BasicHerbLore.generalRules.rulesStrings.2>
+  <RR_BasicHerbLore.generalRules.rulesStrings.3>subject_story->在热带雨林狩猎旅途中出了岔子却学到几招</RR_BasicHerbLore.generalRules.rulesStrings.3>
+  <RR_BasicHerbLore.generalRules.rulesStrings.4>subject_gerund->种植药用植物</RR_BasicHerbLore.generalRules.rulesStrings.4>
+  <RR_BasicHerbLore.generalRules.rulesStrings.5>subject_gerund->栽培草药</RR_BasicHerbLore.generalRules.rulesStrings.5>
+
+  <!-- EN: melee weapons -->
+  <RR_BasicMeleeWeapons.label>近战武器</RR_BasicMeleeWeapons.label>
+  <!-- EN: Crafting of simple melee weapons. -->
+  <RR_BasicMeleeWeapons.description>制作简易近战武器。</RR_BasicMeleeWeapons.description>
+  <!-- EN:
+    <li>subject->melee weapons</li>
+    <li>subject_story->relied on improvised weaponry during a time of great strife</li>
+    <li>subject_story->played with sticks as a child</li>
+    <li>subject_story->had an unusual fascination with primitive weaponry employed by tribals</li>
+    <li>subject_gerund->crafting melee weapons</li>
+  -->
+  <RR_BasicMeleeWeapons.generalRules.rulesStrings.0>subject->近战武器</RR_BasicMeleeWeapons.generalRules.rulesStrings.0>
+  <RR_BasicMeleeWeapons.generalRules.rulesStrings.1>subject_story->在动荡年代依赖简易武器自保</RR_BasicMeleeWeapons.generalRules.rulesStrings.1>
+  <RR_BasicMeleeWeapons.generalRules.rulesStrings.2>subject_story->小时候爱玩树枝</RR_BasicMeleeWeapons.generalRules.rulesStrings.2>
+  <RR_BasicMeleeWeapons.generalRules.rulesStrings.3>subject_story->对部落所用的原始武器有着异乎寻常的兴趣</RR_BasicMeleeWeapons.generalRules.rulesStrings.3>
+  <RR_BasicMeleeWeapons.generalRules.rulesStrings.4>subject_gerund->制作近战武器</RR_BasicMeleeWeapons.generalRules.rulesStrings.4>
+
+  <!-- EN: ranged weapons -->
+  <RR_BasicRangedWeapons.label>远程武器</RR_BasicRangedWeapons.label>
+  <!-- EN: Crafting of simple ranged weapons. -->
+  <RR_BasicRangedWeapons.description>制作简易远程武器。</RR_BasicRangedWeapons.description>
+  <!-- EN:
+    <li>subject->ranged weapons</li>
+    <li>subject_story->relied on improvised weaponry during a time of great strife</li>
+    <li>subject_story->played with sticks as a child</li>
+    <li>subject_story->had an unusual fascination with primitive weaponry employed by tribals</li>
+    <li>subject_gerund->crafting ranged weapons</li>
+  -->
+  <RR_BasicRangedWeapons.generalRules.rulesStrings.0>subject->远程武器</RR_BasicRangedWeapons.generalRules.rulesStrings.0>
+  <RR_BasicRangedWeapons.generalRules.rulesStrings.1>subject_story->在动荡年代依赖简易武器自保</RR_BasicRangedWeapons.generalRules.rulesStrings.1>
+  <RR_BasicRangedWeapons.generalRules.rulesStrings.2>subject_story->小时候爱玩树枝</RR_BasicRangedWeapons.generalRules.rulesStrings.2>
+  <RR_BasicRangedWeapons.generalRules.rulesStrings.3>subject_story->对部落所用的原始武器有着异乎寻常的兴趣</RR_BasicRangedWeapons.generalRules.rulesStrings.3>
+  <RR_BasicRangedWeapons.generalRules.rulesStrings.4>subject_gerund->制作远程武器</RR_BasicRangedWeapons.generalRules.rulesStrings.4>
+
+  <!-- EN: structures -->
+  <RR_BasicStructures.label>结构</RR_BasicStructures.label>
+  <!-- EN: Stable, solid foundations and reliable walls. -->
+  <RR_BasicStructures.description>稳固的地基与可靠的墙壁。</RR_BasicStructures.description>
+  <!-- EN:
+    <li>subject->structures</li>
+    <li>subject->walls</li>
+    <li>subject->doors</li>
+    <li>subject->pillars</li>
+    <li>subject_story->learned how important a solid roof is after spending a month under constant rain on an abandoned jungle world</li>
+    <li>subject_story->built the only house that remained standing after a hurricane swept through their village</li>
+    <li>subject_story->was an architect on an urbworld that specialized in cheap, reliable construction</li>
+    <li>subject_gerund->constructing structures</li>
+  -->
+  <RR_BasicStructures.generalRules.rulesStrings.0>subject->结构</RR_BasicStructures.generalRules.rulesStrings.0>
+  <RR_BasicStructures.generalRules.rulesStrings.1>subject->墙</RR_BasicStructures.generalRules.rulesStrings.1>
+  <RR_BasicStructures.generalRules.rulesStrings.2>subject->门</RR_BasicStructures.generalRules.rulesStrings.2>
+  <RR_BasicStructures.generalRules.rulesStrings.3>subject->立柱</RR_BasicStructures.generalRules.rulesStrings.3>
+  <RR_BasicStructures.generalRules.rulesStrings.4>subject_story->在废弃的丛林世界经历整月的连绵阴雨后，深知坚固屋顶的重要性</RR_BasicStructures.generalRules.rulesStrings.4>
+  <RR_BasicStructures.generalRules.rulesStrings.5>subject_story->飓风席卷村庄后，家中房屋是唯一仍然屹立的</RR_BasicStructures.generalRules.rulesStrings.5>
+  <RR_BasicStructures.generalRules.rulesStrings.6>subject_story->在超城世界担任专精廉价可靠建造的建筑师</RR_BasicStructures.generalRules.rulesStrings.6>
+  <RR_BasicStructures.generalRules.rulesStrings.7>subject_gerund->建造结构</RR_BasicStructures.generalRules.rulesStrings.7>
+
+  <!-- EN: Fire -->
+  <RR_Fire.label>用火</RR_Fire.label>
+  <!-- EN: Intentional creation, maintenance and management of combustion, also known as fire. -->
+  <RR_Fire.description>有意识地生火、维持与管理燃烧（即“火”）。</RR_Fire.description>
+  <!-- EN:
+    <li>subject->combustion</li>
+    <li>subject->fire</li>
+    <li>subject_story->decided to apply their pyromania to more useful purposes</li>
+    <li>subject_story->catalogued primitive fire-keeping traditions and techniques</li>
+    <li>subject_story->was always interested in the crackle of a warm fireplace</li>
+    <li>subject_gerund->starting fires</li>
+  -->
+  <RR_Fire.generalRules.rulesStrings.0>subject->燃烧</RR_Fire.generalRules.rulesStrings.0>
+  <RR_Fire.generalRules.rulesStrings.1>subject->火</RR_Fire.generalRules.rulesStrings.1>
+  <RR_Fire.generalRules.rulesStrings.2>subject_story->决定将其纵火癖用于更有用的目的</RR_Fire.generalRules.rulesStrings.2>
+  <RR_Fire.generalRules.rulesStrings.3>subject_story->编纂原始的保火传统与技巧</RR_Fire.generalRules.rulesStrings.3>
+  <RR_Fire.generalRules.rulesStrings.4>subject_story->总是迷恋壁炉里木柴噼啪作响</RR_Fire.generalRules.rulesStrings.4>
+  <RR_Fire.generalRules.rulesStrings.5>subject_gerund->点火</RR_Fire.generalRules.rulesStrings.5>
+
+  <!-- EN: incendiary weapons -->
+  <RR_IncendiaryWeapons.label>燃烧武器</RR_IncendiaryWeapons.label>
+  <!-- EN: Crafting of incendiary weaponry. -->
+  <RR_IncendiaryWeapons.description>制作燃烧性武器。</RR_IncendiaryWeapons.description>
+  <!-- EN:
+    <li>subject->incendiary weapons</li>
+    <li>subject->flaming weapons</li>
+    <li>subject_story->threw burning bundles of sticks</li>
+    <li>subject_story->set a forest on fire</li>
+    <li>subject_story->operated a furnace for ten years</li>
+    <li>subject_gerund->crafting incendiary weapons</li>
+  -->
+  <RR_IncendiaryWeapons.generalRules.rulesStrings.0>subject->燃烧武器</RR_IncendiaryWeapons.generalRules.rulesStrings.0>
+  <RR_IncendiaryWeapons.generalRules.rulesStrings.1>subject->燃烧性武器</RR_IncendiaryWeapons.generalRules.rulesStrings.1>
+  <RR_IncendiaryWeapons.generalRules.rulesStrings.2>subject_story->曾经投掷燃烧的木束</RR_IncendiaryWeapons.generalRules.rulesStrings.2>
+  <RR_IncendiaryWeapons.generalRules.rulesStrings.3>subject_story->曾引燃过一整片森林</RR_IncendiaryWeapons.generalRules.rulesStrings.3>
+  <RR_IncendiaryWeapons.generalRules.rulesStrings.4>subject_story->操作过十年的熔炉</RR_IncendiaryWeapons.generalRules.rulesStrings.4>
+  <RR_IncendiaryWeapons.generalRules.rulesStrings.5>subject_gerund->制作燃烧武器</RR_IncendiaryWeapons.generalRules.rulesStrings.5>
+
+  <!-- EN: lateral thinking -->
+  <RR_LateralThinking.label>横向思维</RR_LateralThinking.label>
+  <!-- EN: Consideration and allowances for a more lateral approach.\n(This is a prerequisite to any orphan research tech, including modded ones.) -->
+  <RR_LateralThinking.description>对更为横向的思考路径进行考量并予以允许。\n（这是所有“孤立”研究项目的前置，包括模组新增的那些。）</RR_LateralThinking.description>
+
+  <!-- EN: organization -->
+  <RR_Organization.label>组织</RR_Organization.label>
+  <!-- EN: Fundamentals of organization. -->
+  <RR_Organization.description>组织的基础。</RR_Organization.description>
+
+  <!-- EN: trapping -->
+  <RR_Trapping.label>设陷</RR_Trapping.label>
+  <!-- EN: Construction of simplistic traps for the purposes of hunting or defense. -->
+  <RR_Trapping.description>为狩猎或防御而建造简易陷阱。</RR_Trapping.description>
+  <!-- EN:
+    <li>subject->traps</li>
+    <li>subject->snares</li>
+    <li>subject_story->learned the dangers of simple traps when an IED blew their foot off</li>
+    <li>subject_story->fed a family of three despite being too injured to use a bow</li>
+    <li>subject_story->enjoyed devising deadly scenarios in a virtual reality sim of a rimworld</li>
+    <li>subject_gerund->trapping</li>
+    <li>subject_gerund->snaring</li>
+  -->
+  <RR_Trapping.generalRules.rulesStrings.0>subject->陷阱</RR_Trapping.generalRules.rulesStrings.0>
+  <RR_Trapping.generalRules.rulesStrings.1>subject->套索</RR_Trapping.generalRules.rulesStrings.1>
+  <RR_Trapping.generalRules.rulesStrings.2>subject_story->在简易爆炸装置炸飞了一只脚后，明白了简易陷阱的危险</RR_Trapping.generalRules.rulesStrings.2>
+  <RR_Trapping.generalRules.rulesStrings.3>subject_story->即便伤重无法使弓，也仍供养了三口之家</RR_Trapping.generalRules.rulesStrings.3>
+  <RR_Trapping.generalRules.rulesStrings.4>subject_story->在关于边缘世界的虚拟现实模拟中，乐于设计致命场景</RR_Trapping.generalRules.rulesStrings.4>
+  <RR_Trapping.generalRules.rulesStrings.5>subject_gerund->设陷</RR_Trapping.generalRules.rulesStrings.5>
+  <RR_Trapping.generalRules.rulesStrings.6>subject_gerund->布套</RR_Trapping.generalRules.rulesStrings.6>
+
+</LanguageData>

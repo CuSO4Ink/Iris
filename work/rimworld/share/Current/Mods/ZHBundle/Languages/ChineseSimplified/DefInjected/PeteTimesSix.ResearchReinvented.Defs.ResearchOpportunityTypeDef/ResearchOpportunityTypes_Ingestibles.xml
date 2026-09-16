@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: iterate on recipe -->
+  <AnalyseFood.header_Ancestor>配方迭代</AnalyseFood.header_Ancestor>
+  <!-- EN: reproduce recipe -->
+  <AnalyseFood.header_Direct>复现配方</AnalyseFood.header_Direct>
+  <!-- EN: Gather subjective opinions on the quality of the recipe used to create {0}.\n\nAffected by (when consuming):\nConsumer's research speed stat -->
+  <AnalyseFood.shortDesc_Ancestor>收集对用于制作 {0} 的配方品质的主观评价。\n\n受影响（食用时）：\n食用者研究速度</AnalyseFood.shortDesc_Ancestor>
+  <!-- EN: Attempt to determine the recipe used to create {0}.\n\nAffected by (when consuming):\nConsumer's research speed stat -->
+  <AnalyseFood.shortDesc_Direct>尝试推断用于制作 {0} 的配方。\n\n受影响（食用时）：\n食用者研究速度</AnalyseFood.shortDesc_Direct>
+
+  <!-- EN: nutrient content analysis -->
+  <AnalyseFuelFood.header_Direct>营养含量分析</AnalyseFuelFood.header_Direct>
+  <!-- EN: Determine the nutrient content of {0}, either by scientific analysis at research benches or by subsisting on {0} directly.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat\n\nAffected by (when consuming):\nConsumer research speed stat -->
+  <AnalyseFuelFood.shortDesc_Direct>通过研究台的科学分析，或直接以 {0} 为食，确定其营养含量。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度\n\n受影响（食用时）：\n食用者研究速度</AnalyseFuelFood.shortDesc_Direct>
+
+  <!-- EN: determine flavor profile -->
+  <AnalyseRawFood.header_Direct>风味特征判定</AnalyseRawFood.header_Direct>
+  <!-- EN: Determine the flavor profile of {0}, either by scientific analysis at research benches or by directly tasting {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat\n\nAffected by (when consuming):\nConsumer research speed stat -->
+  <AnalyseRawFood.shortDesc_Direct>在研究台进行科学分析，或直接品尝 {0}，以确定其风味特征。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度\n\n受影响（食用时）：\n食用者研究速度</AnalyseRawFood.shortDesc_Direct>
+
+</LanguageData>

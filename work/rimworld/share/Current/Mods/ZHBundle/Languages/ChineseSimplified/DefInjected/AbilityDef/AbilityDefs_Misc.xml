@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 도약 발도 -->
+  <Miho_Ability_Batto.label>拔刀瞬斩</Miho_Ability_Batto.label>
+  <!-- EN: 빠르게 마법의 검을 뽑아 적을 일격에 살해하는 기술입니다. -->
+  <Miho_Ability_Batto.description>操纵心灵能量将附近飘荡的纳米机械聚合成秘灵之刃，折跃至目标面前并迅速施展致命的拔刀斩。</Miho_Ability_Batto.description>
+  
+  <!-- EN: 사자후 -->
+  <Miho_Ability_BerserkPulse.label>恐惧怒吼</Miho_Ability_BerserkPulse.label>
+  <!-- EN: 주변에 있는 모든걸 쫄게 만듭니다. -->
+  <Miho_Ability_BerserkPulse.description>在目标点周围的每个单位身上产生一股无法抑制的恐惧，使他们仓皇而逃。</Miho_Ability_BerserkPulse.description>
+  
+  <!-- EN: 치유의 손길 -->
+  <Miho_Ability_Heal.label>灵愈圣手</Miho_Ability_Heal.label>
+  <!-- EN: 병을 낫게하고 상처를 아물게 해주는 치유의 손길을 발산합니다. -->
+  <Miho_Ability_Heal.description>操纵心灵能量驱使纳米机械，瞬间包扎并加速治愈目标身上的伤口和疾病。</Miho_Ability_Heal.description>
+  
+  <!-- EN: 도약 -->
+  <Miho_Ability_Jump.label>秘灵长跃</Miho_Ability_Jump.label>
+  <!-- EN: 메카나이트 근육 강화로 멀리 도약합니다. -->
+  <Miho_Ability_Jump.description>使用纳米机械强化过的大腿跳跃到远处。</Miho_Ability_Jump.description>
+  <!-- EN: jump -->
+  <Miho_Ability_Jump.verbProperties.label>跳跃</Miho_Ability_Jump.verbProperties.label>
+  
+  <!-- EN: 여우 보호막 -->
+  <Miho_Ability_Shield.label>秘灵护盾</Miho_Ability_Shield.label>
+  <!-- EN: 일종의 요격형 보호장치로, 메카나이트를을 발진시켜 낮은 운동량의 투사체를 요격합니다. -->
+  <Miho_Ability_Shield.description>操纵心灵能量振动附近飘荡的纳米机械，生成一个球形的折跃区，将所有射入的子弹都传送到遥远的地方。这个折跃区也会引爆具有爆炸物性质的弹药。人员和物品的进出不受影响。</Miho_Ability_Shield.description>
+  
+  <!-- EN: 재조립 도약 -->
+  <Miho_Ability_Skip.label>秘灵折跃</Miho_Ability_Skip.label>
+  <!-- EN: 특정한 위치로 텔레포트 시킬 수 있는 기술 입니다. -->
+  <Miho_Ability_Skip.description>将目标传送到离原点不远的特定位置，作用范围比普通的折跃能力更大一些。</Miho_Ability_Skip.description>
+  
+</LanguageData>

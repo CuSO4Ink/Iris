@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <Ellipse.label>椭圆</Ellipse.label>
+  
+  <Ellipse_Input.label>自定义椭圆</Ellipse_Input.label>
+  <Ellipse_Input.description>创建并使用用户自定义尺寸的椭圆</Ellipse_Input.description>
+  
+  <Etc.label>其它</Etc.label>
+  <Etc.description>RimWorld预设的特殊形状</Etc.description>
+  
+  <FloodFill.label>填充</FloodFill.label>
+  <FloodFill.description>对一个被墙壁等障碍物封闭的区域进行填充</FloodFill.description>
+
+  <Grids.label>网格</Grids.label>
+  <Grids.description>创建各种网格形状。</Grids.description>
+  
+  <Grids_Input.label>自定义网格</Grids_Input.label>
+  <Grids_Input.description>创建自定义尺寸的网格。</Grids_Input.description>
+  
+  <Grids_Inverse.label>反向网格</Grids_Inverse.label>
+  <Grids_Inverse.description>创建各种反向网格形状。</Grids_Inverse.description>
+  
+  <Grids_Inverse_Input.label>自定义反向网格</Grids_Inverse_Input.label>
+  <Grids_Inverse_Input.description>创建自定义尺寸的反向网格。</Grids_Inverse_Input.description>
+  
+  <Line.label>线段与曲线</Line.label>
+  
+  <MoreShapes.label>更多形状</MoreShapes.label>
+  <MoreShapes.description>更多几何图形</MoreShapes.description>
+  
+  <Rectangle.label>矩形</Rectangle.label>
+  
+  <Rectangle_Input.label>自定义矩形</Rectangle_Input.label>
+  <Rectangle_Input.description>创建并使用用户自定义尺寸的矩形</Rectangle_Input.description>
+  
+</LanguageData>

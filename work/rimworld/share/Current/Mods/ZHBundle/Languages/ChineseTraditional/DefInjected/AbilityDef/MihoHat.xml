@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 돌격 지휘 -->
+  <Miho_Ability_Command_Charge.label>突擊命令</Miho_Ability_Command_Charge.label>
+  <!-- EN: 초능력을 통한 텔레파시로 효율적인 돌격 명령을 내립니다. -->
+  <Miho_Ability_Command_Charge.description>通過心靈感應下達突擊命令，提高附近所有人的移動速度和近戰能力。</Miho_Ability_Command_Charge.description>
+  
+  <!-- EN: 격려 지휘 -->
+  <Miho_Ability_Command_Mental.label>鼓舞命令</Miho_Ability_Command_Mental.label>
+  <!-- EN: 초능력을 통한 텔레파시로 주변 인물들을 격려합니다. -->
+  <Miho_Ability_Command_Mental.description>通過心靈感應下達鼓舞命令，提高附近所有人的心情。</Miho_Ability_Command_Mental.description>
+  
+</LanguageData>

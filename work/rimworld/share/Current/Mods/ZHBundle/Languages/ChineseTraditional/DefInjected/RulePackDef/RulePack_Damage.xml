@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <VV_Damage_Frostbite.rulePack.rulesStrings>
+	<li>damaged_past(p=2)->霜凍</li>
+    <li>damaged_past->受創</li>
+    <li>damaged_past->傷害</li>
+    <li>damaged_past->傷口</li>
+    <li>damaged_past->受傷</li>
+    <li>damaged_present(p=2)->霜凍</li>
+    <li>damaged_present->受創</li>
+    <li>damaged_present->傷害</li>
+    <li>damaged_present->傷口</li>
+    <li>damaged_present->受傷</li>
+    <li>destroyed_past->殲滅</li>
+    <li>destroyed_past->引爆</li>
+    <li>destroyed_present->殲滅</li>
+    <li>destroyed_present->引爆</li>
+  </VV_Damage_Frostbite.rulePack.rulesStrings>
+  
+</LanguageData>

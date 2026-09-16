@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 무녀 (I) -->
+  <Miho_Shamaness_I_Hediff.label>巫女-I</Miho_Shamaness_I_Hediff.label>
+  <!-- EN: 무녀 -->
+  <Miho_Shamaness_I_Hediff.description>I級巫女。</Miho_Shamaness_I_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Shamaness_I_Hediff.stages.a.label>A階</Miho_Shamaness_I_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Shamaness_I_Hediff.stages.b.label>B階</Miho_Shamaness_I_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Shamaness_I_Hediff.stages.c.label>C階</Miho_Shamaness_I_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Shamaness_I_Hediff.stages.d.label>D階</Miho_Shamaness_I_Hediff.stages.d.label>
+  
+  <!-- EN: 무녀 (II) -->
+  <Miho_Shamaness_II_Hediff.label>巫女-II</Miho_Shamaness_II_Hediff.label>
+  <!-- EN: 무녀 -->
+  <Miho_Shamaness_II_Hediff.description>II級巫女。</Miho_Shamaness_II_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Shamaness_II_Hediff.stages.a.label>A階</Miho_Shamaness_II_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Shamaness_II_Hediff.stages.b.label>B階</Miho_Shamaness_II_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Shamaness_II_Hediff.stages.c.label>C階</Miho_Shamaness_II_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Shamaness_II_Hediff.stages.d.label>D階</Miho_Shamaness_II_Hediff.stages.d.label>
+  
+  <!-- EN: 무녀 (III) -->
+  <Miho_Shamaness_III_Hediff.label>巫女-III</Miho_Shamaness_III_Hediff.label>
+  <!-- EN: 무녀 -->
+  <Miho_Shamaness_III_Hediff.description>III級巫女。</Miho_Shamaness_III_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Shamaness_III_Hediff.stages.a.label>A階</Miho_Shamaness_III_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Shamaness_III_Hediff.stages.b.label>B階</Miho_Shamaness_III_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Shamaness_III_Hediff.stages.c.label>C階</Miho_Shamaness_III_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Shamaness_III_Hediff.stages.d.label>D階</Miho_Shamaness_III_Hediff.stages.d.label>
+  
+  <!-- EN: 무녀 (IV) -->
+  <Miho_Shamaness_IV_Hediff.label>巫女-IV</Miho_Shamaness_IV_Hediff.label>
+  <!-- EN: 무녀 -->
+  <Miho_Shamaness_IV_Hediff.description>IV級巫女。</Miho_Shamaness_IV_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Shamaness_IV_Hediff.stages.a.label>A階</Miho_Shamaness_IV_Hediff.stages.a.label>
+  <!-- EN: b -->
+  <Miho_Shamaness_IV_Hediff.stages.b.label>B階</Miho_Shamaness_IV_Hediff.stages.b.label>
+  <!-- EN: c -->
+  <Miho_Shamaness_IV_Hediff.stages.c.label>C階</Miho_Shamaness_IV_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Shamaness_IV_Hediff.stages.d.label>D階</Miho_Shamaness_IV_Hediff.stages.d.label>
+  
+  <!-- EN: 무녀 (행성 적응중) -->
+  <Miho_Shamaness_Start_Hediff.label>巫女（星球適應）</Miho_Shamaness_Start_Hediff.label>
+  <!-- EN: 무녀 -->
+  <Miho_Shamaness_Start_Hediff.description>巫女。</Miho_Shamaness_Start_Hediff.description>
+  <!-- EN: a -->
+  <Miho_Shamaness_Start_Hediff.stages.a.label>A</Miho_Shamaness_Start_Hediff.stages.a.label>
+  <!-- EN: c -->
+  <Miho_Shamaness_Start_Hediff.stages.c.label>C</Miho_Shamaness_Start_Hediff.stages.c.label>
+  <!-- EN: d -->
+  <Miho_Shamaness_Start_Hediff.stages.d.label>D</Miho_Shamaness_Start_Hediff.stages.d.label>
+  <!-- EN: e -->
+  <Miho_Shamaness_Start_Hediff.stages.e.label>E</Miho_Shamaness_Start_Hediff.stages.e.label>
+  <!-- EN: f -->
+  <Miho_Shamaness_Start_Hediff.stages.f.label>F</Miho_Shamaness_Start_Hediff.stages.f.label>
+  <!-- EN: g -->
+  <Miho_Shamaness_Start_Hediff.stages.g.label>G</Miho_Shamaness_Start_Hediff.stages.g.label>
+  
+  <!-- EN: 무녀 (V) -->
+  <Miho_Shamaness_V_Hediff.label>巫女-V</Miho_Shamaness_V_Hediff.label>
+  <!-- EN: 무녀 -->
+  <Miho_Shamaness_V_Hediff.description>V級巫女。</Miho_Shamaness_V_Hediff.description>
+  <!-- EN: d -->
+  <Miho_Shamaness_V_Hediff.stages.d.label>D階</Miho_Shamaness_V_Hediff.stages.d.label>
+  
+</LanguageData>

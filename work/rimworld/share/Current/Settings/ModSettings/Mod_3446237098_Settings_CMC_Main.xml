@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="CeleTech.Base.Settings_CMC">
+		<Weapon_Patch3_CMC>False</Weapon_Patch3_CMC>
+		<Weapon_Patch5_CMC>0.5</Weapon_Patch5_CMC>
+		<Weapon_Patch6_CMC>0.5</Weapon_Patch6_CMC>
+		<Weapon_Patch7_CMC>0.5</Weapon_Patch7_CMC>
+		<Weapon_Patch3_CMC>False</Weapon_Patch3_CMC>
+		<Weapon_Patch5_CMC>0.5</Weapon_Patch5_CMC>
+		<Weapon_Patch6_CMC>0.5</Weapon_Patch6_CMC>
+		<Weapon_Patch7_CMC>0.5</Weapon_Patch7_CMC>
+	</ModSettings>
+</SettingsBlock>

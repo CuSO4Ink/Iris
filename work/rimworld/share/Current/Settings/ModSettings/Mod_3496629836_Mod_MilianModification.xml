@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="MilianModification.MilianModificationSettings">
+		<MilianModification_NonExploreMode>False</MilianModification_NonExploreMode>
+		<MilianModification_SimpleResearch>False</MilianModification_SimpleResearch>
+		<MermeisterStorytellerAvaliable>False</MermeisterStorytellerAvaliable>
+		<MilianModification_FindComponentInfoChance>0.5</MilianModification_FindComponentInfoChance>
+		<MilianModification_ButcherDropInterfaceUnitChance>0.200000003</MilianModification_ButcherDropInterfaceUnitChance>
+		<MilianModification_ButcherDropComponentChance>0</MilianModification_ButcherDropComponentChance>
+	</ModSettings>
+</SettingsBlock>

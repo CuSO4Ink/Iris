@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <Outpost_GemMine.label>宝石据点</Outpost_GemMine.label>
+  <Outpost_GemMine.description>一处能够自给自足的临时性据点，专门负责开采珍贵的宝石。一旦收集至足够的数量，驻守在此据点的殖民者将会把宝石交付至派系主殖民地的指定地点。</Outpost_GemMine.description>
+  <Outpost_GemMine.modExtensions.0.ChooseDesc>点击来改变开采目标</Outpost_GemMine.modExtensions.0.ChooseDesc>
+  <Outpost_GemMine.modExtensions.0.ChooseLabel>开采{0}</Outpost_GemMine.modExtensions.0.ChooseLabel>
+  
+</LanguageData>

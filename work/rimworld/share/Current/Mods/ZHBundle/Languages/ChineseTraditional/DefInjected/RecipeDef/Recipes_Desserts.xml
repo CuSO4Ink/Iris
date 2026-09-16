@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+	<LanguageData>
+		<VCE_CookDessertSimple.label>烹飪簡單甜點</VCE_CookDessertSimple.label>
+		<VCE_CookDessertSimple.description>用少許水果和其它材料烹飪一份簡單甜點。</VCE_CookDessertSimple.description>
+		<VCE_CookDessertSimple.jobString>正在烹飪簡單甜點</VCE_CookDessertSimple.jobString>
+		<VCE_CookDessertSimpleBulk.label>烹飪簡單甜點 x4</VCE_CookDessertSimpleBulk.label>
+		<VCE_CookDessertSimpleBulk.description>用少許水果和其它材料烹飪四份簡單甜點。</VCE_CookDessertSimpleBulk.description>
+		<VCE_CookDessertSimpleBulk.jobString>正在烹飪四份簡單甜點。</VCE_CookDessertSimpleBulk.jobString>
+		<VCE_CookDessertFine.label>烹飪精緻甜點</VCE_CookDessertFine.label>
+		<VCE_CookDessertFine.description>將多種材料組合，烹飪一份相對複雜的甜點。</VCE_CookDessertFine.description>
+		<VCE_CookDessertFine.jobString>正在烹飪精緻甜點。</VCE_CookDessertFine.jobString>
+		<VCE_CookDessertFineBulk.label>烹飪精緻甜點 x4</VCE_CookDessertFineBulk.label>
+		<VCE_CookDessertFineBulk.description>將多種材料組合，烹飪四份相對複雜的甜點。</VCE_CookDessertFineBulk.description>
+		<VCE_CookDessertFineBulk.jobString> 正在烹飪四份精緻甜點。</VCE_CookDessertFineBulk.jobString>
+		<VCE_CookDessertLavish.label>烹飪奢侈甜點</VCE_CookDessertLavish.label>
+		<VCE_CookDessertLavish.description>烹飪一份藝術般的甜點，可以蕩滌身心。</VCE_CookDessertLavish.description>
+		<VCE_CookDessertLavish.jobString>正在烹飪奢侈甜點。</VCE_CookDessertLavish.jobString>
+		<VCE_CookDessertLavishBulk.label>烹飪奢侈甜點 x4</VCE_CookDessertLavishBulk.label>
+		<VCE_CookDessertLavishBulk.description>烹飪四份藝術般的甜點，可以蕩滌身心。</VCE_CookDessertLavishBulk.description>
+		<VCE_CookDessertLavishBulk.jobString>正在烹飪四份奢侈的甜點。</VCE_CookDessertLavishBulk.jobString>
+		<VCE_CookDessertGourmet.label>烹飪豪華甜點</VCE_CookDessertGourmet.label>
+		<VCE_CookDessertGourmet.description>烹飪一份精雕細琢的甜點，美艷絕倫，雖然量不多。</VCE_CookDessertGourmet.description>
+		<VCE_CookDessertGourmet.jobString>正在烹飪豪華的甜點。</VCE_CookDessertGourmet.jobString>
+	</LanguageData>

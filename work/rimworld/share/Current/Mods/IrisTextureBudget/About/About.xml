@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Iris Texture Budget</name>
+  <author>Iris local performance project</author>
+  <packageId>local.iristexturebudget</packageId>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+    <li>telefonmast.graphicssettings</li>
+  </loadAfter>
+  <incompatibleWith>
+    <li>dev.soeur.imageopt</li>
+  </incompatibleWith>
+  <description>
+Local texture-memory budget for this RimWorld installation.
+
+It reduces retained texture memory while assets load. DDS textures start directly at a safe lower mip level whenever possible; irregular textures are resampled only when necessary and reused through a source-validated persistent cache. The default balanced profile keeps UI textures up to 1024 px, general textures up to 512 px, and pawn/apparel textures up to 256 px.
+
+Do not enable together with Image Opt. This mod does not alter Workshop files or saves.
+  </description>
+</ModMetaData>

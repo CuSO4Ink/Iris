@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <RHMelee_DFBladeSlash.label>切割</RHMelee_DFBladeSlash.label>
+  <RHMelee_DFBladeStab.label>穿刺</RHMelee_DFBladeStab.label>
+
+
+  <!-- AMP -->
+
+  <RHMelee_AmputatorSlash.label>切割</RHMelee_AmputatorSlash.label>
+  <RHMelee_AmputatorStab.label>穿刺</RHMelee_AmputatorStab.label>
+
+
+</LanguageData>

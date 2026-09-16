@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<!-- EN: UI settings -->
+  <PO.UISettings>UI设置</PO.UISettings>
+	<!-- EN: Hide resource readout -->
+  <PO.HideResourceReadout>隐藏资源显示</PO.HideResourceReadout>
+	<!-- EN: Hide bottom button bar -->
+  <PO.HideBottomButtonBar>隐藏底部按钮栏</PO.HideBottomButtonBar>
+	<!-- EN: Hide bottom right overlay buttons -->
+  <PO.HideBottomRightOverlayButtons>隐藏右下角覆盖按钮</PO.HideBottomRightOverlayButtons>
+	<!-- EN: Minimize alerts readout -->
+  <PO.MinimizeAlertsReadout>最小化警报显示</PO.MinimizeAlertsReadout>
+	<!-- EN: Hide speed buttons -->
+  <PO.HideSpeedButtons>隐藏速度按钮</PO.HideSpeedButtons>
+	<!-- EN: Disable speed buttons (leave only keybindings) -->
+  <PO.DisableSpeedButtons>禁用速度按钮（仅保留按键绑定）</PO.DisableSpeedButtons>
+	
+	<!-- EN: Performance & misc. tweaks -->
+  <PO.PerformanceSettings>性能和杂项调整</PO.PerformanceSettings>
+	<!-- EN: Faster GetComp methods replacement -->
+  <PO.FasterGetCompReplacement>更快的GetComp方法替换</PO.FasterGetCompReplacement>
+	<!-- EN: Cache text size calculations -->
+  <PO.CacheTextSizeCalc>缓存文本大小计算</PO.CacheTextSizeCalc>
+	<!-- EN: Cache gizmos retrieval from selected objects -->
+  <PO.CacheGizmos>缓存选中对象的小工具检索</PO.CacheGizmos>
+	<!-- EN: Disable Steam Manager callbacks checks -->
+  <PO.DisableSteamManagerCallbacksChecks>禁用Steam管理器回调检查</PO.DisableSteamManagerCallbacksChecks>
+	<!-- EN: Disable plant sway calculations if plant sway is disabled -->
+  <PO.DisablePlantSwayShaderUpdateIfSwayDisabled>如果植物摇摆被禁用则禁用植物摇摆计算</PO.DisablePlantSwayShaderUpdateIfSwayDisabled>
+	<!-- EN: Disable sounds completely -->
+  <PO.DisableSoundsCompletely>完全禁用声音</PO.DisableSoundsCompletely>
+	<!-- EN: Try to fix duplicate XML nodes errors -->
+  <PO.FixCheckForDuplicateNodes>尝试修复重复XML节点错误</PO.FixCheckForDuplicateNodes>
+	<!-- EN: Cache Faction:OfPlayer -->
+  <PO.CacheFactionOfPlayer>缓存Faction:OfPlayer</PO.CacheFactionOfPlayer>
+	<!-- EN: Cache StatWorker_MarketValue:CalculableRecipe -->
+  <PO.CacheStatWorker_MarketValue>缓存StatWorker_MarketValue:CalculableRecipe</PO.CacheStatWorker_MarketValue>
+	
+	<!-- EN: Cache and throttle settings -->
+  <PO.CacheSettings>缓存和节流设置</PO.CacheSettings>
+	<!-- EN: QuestUtility:IsQuestLodger -->
+  <PO.QuestLodger>QuestUtility:IsQuestLodger</PO.QuestLodger>
+	<!-- EN: PawnUtility:IsTeetotaler -->
+  <PO.IsTeetotaler>PawnUtility:IsTeetotaler</PO.IsTeetotaler>
+	<!-- EN: ExpectationsUtility:CurrentExpectationForPawn -->
+  <PO.CurrentExpectationForPawn>ExpectationsUtility:CurrentExpectationForPawn</PO.CurrentExpectationForPawn>
+	<!-- EN: ExpectationsUtility:CurrentExpectationForMap -->
+  <PO.CurrentExpectationForMap>ExpectationsUtility:CurrentExpectationForMap</PO.CurrentExpectationForMap>
+	<!-- EN: ThoughtHandler:TotalMoodOffset -->
+  <PO.TotalMoodOffset>ThoughtHandler:TotalMoodOffset</PO.TotalMoodOffset>
+	<!-- EN: MentalBreaker:BreakThresholdMinor -->
+  <PO.BreakThresholdMinor>MentalBreaker:BreakThresholdMinor</PO.BreakThresholdMinor>
+	<!-- EN: MentalBreaker:BreakThresholdMajor -->
+  <PO.BreakThresholdMajor>MentalBreaker:BreakThresholdMajor</PO.BreakThresholdMajor>
+	<!-- EN: MentalBreaker:BreakThresholdExtreme -->
+  <PO.BreakThresholdExtreme>MentalBreaker:BreakThresholdExtreme</PO.BreakThresholdExtreme>
+	<!-- EN: Thing:AmbientTemperature -->
+  <PO.AmbientTemperature>Thing:AmbientTemperature</PO.AmbientTemperature>
+	<!-- EN: Need_Beauty:CurrentInstantBeauty -->
+  <PO.CurrentInstantBeauty>Need_Beauty:CurrentInstantBeauty</PO.CurrentInstantBeauty>
+	<!-- EN: IdeoUtility:GetStyleDominance -->
+  <PO.GetStyleDominance>IdeoUtility:GetStyleDominance</PO.GetStyleDominance>
+	<!-- EN: JobDriver:CheckCurrentToilEndOrFail -->
+  <PO.CheckCurrentToilEndOrFail>JobDriver:CheckCurrentToilEndOrFail</PO.CheckCurrentToilEndOrFail>
+	<!-- EN: InspectGizmoGrid:DrawInspectGizmoGridFor GetGizmos -->
+  <PO.InspectGizmoGrid>InspectGizmoGrid:DrawInspectGizmoGridFor GetGizmos</PO.InspectGizmoGrid>
+	<!-- EN: BuildCopyCommandUtility:FindAllowedDesignator -->
+  <PO.FindAllowedDesignator>BuildCopyCommandUtility:FindAllowedDesignator</PO.FindAllowedDesignator>
+	<!-- EN: GridsUtility:GetRoom -->
+  <PO.GridsUtilityGetRoom>GridsUtility:GetRoom</PO.GridsUtilityGetRoom>
+	<!-- EN: GridsUtility:Fogged -->
+  <PO.GridsUtilityFogged>GridsUtility:Fogged</PO.GridsUtilityFogged>
+	<!-- EN: PawnCollisionTweenerUtility:PawnCollisionPosOffsetFor -->
+  <PO.PawnCollisionPosOffsetFor>PawnCollisionTweenerUtility:PawnCollisionPosOffsetFor</PO.PawnCollisionPosOffsetFor>
+	<!-- EN: refresh rate {0} -->
+  <PO.RefreshRate>刷新率 {0}</PO.RefreshRate>
+	<!-- EN: throttle rate {0} -->
+  <PO.ThrottleRate>节流率 {0}</PO.ThrottleRate>
+	
+	<!-- EN: Performance Optimizer mod overview -->
+  <PO.PerformanceOptimizerOverview>性能优化器MOD概述</PO.PerformanceOptimizerOverview>
+	<!-- EN: Greetings, you have installed Performance Optimizer mod! After that you usually don't need to do anything, but I recommend going into the mod settings, where you can configure everything in the mod. The mod also comes with UI elements hiding (shows on hover), which is disabled by default. If you want some extra FPS/TPS, you can enable them in the mod settings. -->
+  <PO.PerformanceOptimizerOverviewDesc>您好，您已安装性能优化器MOD！通常您无需进行任何操作，但建议进入MOD设置，在那里您可以配置MOD的所有功能。该MOD还提供UI元素隐藏功能（悬停时显示），默认情况下是禁用的。如果您想获得额外的FPS/TPS提升，可以在MOD设置中启用这些功能。</PO.PerformanceOptimizerOverviewDesc>
+	<!-- EN: UI hiding key toggle -->
+  <PO.UIToggle>UI隐藏按键切换</PO.UIToggle>
+	<!-- EN: One key mode -->
+  <PO.OneKeyMode>单键模式</PO.OneKeyMode>
+	<!-- EN: Cache Traverse reflections -->
+  <PO.CacheTraverseReflections>缓存Traverse反射</PO.CacheTraverseReflections>
+	<!-- EN: Pawn_JobTracker:DetermineNextConstantThinkTreeJob -->
+  <PO.DetermineNextConstantThinkTreeJob>Pawn_JobTracker:DetermineNextConstantThinkTreeJob</PO.DetermineNextConstantThinkTreeJob>
+	<!-- EN: JobGiver_ConfigurableHostilityResponse:TryGiveJob -->
+  <PO.JobGiver_ConfigurableHostilityResponse>JobGiver_ConfigurableHostilityResponse:TryGiveJob</PO.JobGiver_ConfigurableHostilityResponse>
+	<!-- EN: Pawn:Label -->
+  <PO.PawnLabel>Pawn:Label</PO.PawnLabel>
+	<!-- EN: Pawn:DrawPos -->
+  <PO.PawnDrawPos>Pawn:DrawPos</PO.PawnDrawPos>
+	<!-- EN: Building_Door:DoorRotationAt -->
+  <PO.DoorRotationAt>Building_Door:DoorRotationAt</PO.DoorRotationAt>
+	<!-- EN: Cache HediffDef:PossibleToDevelopImmunityNaturally -->
+  <PO.CacheHediffDef_PossibleToDevelopImmunityNaturally>缓存HediffDef:PossibleToDevelopImmunityNaturally</PO.CacheHediffDef_PossibleToDevelopImmunityNaturally>
+	<!-- EN: Optimize Thing:Spawned -->
+  <PO.OptimizeThingSpawned>优化Thing:Spawned</PO.OptimizeThingSpawned>
+	<!-- EN: Pawn_InteractionsTracker:CurrentSocialMode -->
+  <PO.Pawn_InteractionsTracker_CurrentSocialMode>Pawn_InteractionsTracker:CurrentSocialMode</PO.Pawn_InteractionsTracker_CurrentSocialMode>
+	<!-- EN: Plant:TickLong -->
+  <PO.Plant_TickLong>Plant:TickLong</PO.Plant_TickLong>
+	<!-- EN: Building_Door:FreePassage -->
+  <PO.FreePassage>Building_Door:FreePassage</PO.FreePassage>
+	<!-- EN: GenCelestial:CurCelestialSunGlow -->
+  <PO.GenCelestial_CurCelestialSunGlow>GenCelestial:CurCelestialSunGlow</PO.GenCelestial_CurCelestialSunGlow>
+	<!-- EN: PlantFallColors:GetFallColorFactor -->
+  <PO.PlantFallColors_GetFallColorFactor>PlantFallColors:GetFallColorFactor</PO.PlantFallColors_GetFallColorFactor>
+	<!-- EN: GenTemperature:AverageTemperatureAtTileForTwelfth -->
+  <PO.GenTemperature_AverageTemperatureAtTileForTwelfth>GenTemperature:AverageTemperatureAtTileForTwelfth</PO.GenTemperature_AverageTemperatureAtTileForTwelfth>
+	<!-- EN: Optimize IdeoBuildingPresenceDemand:BuildingPresent -->
+  <PO.IdeoBuildingPresenceDemand_BuildingPresent>优化IdeoBuildingPresenceDemand:BuildingPresent</PO.IdeoBuildingPresenceDemand_BuildingPresent>
+	<!-- EN: Cache WorldGrid:LongLatOf -->
+  <PO.WorldGrid_LongLatOf>缓存WorldGrid:LongLatOf</PO.WorldGrid_LongLatOf>
+	<!-- EN: Precept_RoleMulti:RecacheActivity -->
+  <PO.Precept_RoleMulti_RecacheActivity>Precept_RoleMulti:RecacheActivity</PO.Precept_RoleMulti_RecacheActivity>
+	<!-- EN: Precept_RoleSingle:RecacheActivity -->
+  <PO.Precept_RoleSingle_RecacheActivity>Precept_RoleSingle:RecacheActivity</PO.Precept_RoleSingle_RecacheActivity>
+	<!-- EN: SkillRecord:LearnRateFactor -->
+  <PO.SkillRecord_LearnRateFactor>SkillRecord:LearnRateFactor</PO.SkillRecord_LearnRateFactor>
+	<!-- EN: Frame:WorkToBuild -->
+  <PO.Frame_WorkToBuild>Frame:WorkToBuild</PO.Frame_WorkToBuild>
+	<!-- EN: Building_Door:TicksToOpenNow -->
+  <PO.TicksToOpenNow>Building_Door:TicksToOpenNow</PO.TicksToOpenNow>
+	<!-- EN: PawnUtility:IsInvisible -->
+  <PO.IsInvisible>PawnUtility:IsInvisible</PO.IsInvisible>
+	<!-- EN: ForbidUtility:IsForbidden -->
+  <PO.IsForbidden>ForbidUtility:IsForbidden</PO.IsForbidden>
+	<!-- EN: Designator:CreateReverseDesignationGizmo -->
+  <PO.CreateReverseDesignationGizmo>Designator:CreateReverseDesignationGizmo</PO.CreateReverseDesignationGizmo>
+	<!-- EN: FormCaravanComp:AnyActiveThreatNow -->
+  <PO.FormCaravanComp_AnyActiveThreatNow>FormCaravanComp:AnyActiveThreatNow</PO.FormCaravanComp_AnyActiveThreatNow>
+	<!-- EN: Building_Door:ClearReachabilityCache -->
+  <PO.Building_Door_CheckClearReachabilityCacheBecauseOpenedOrClosed>Building_Door:ClearReachabilityCache</PO.Building_Door_CheckClearReachabilityCacheBecauseOpenedOrClosed>
+	<!-- EN: CompOverseerSubject:CanGoFeral -->
+  <PO.CanGoFeral>CompOverseerSubject:CanGoFeral</PO.CanGoFeral>
+</LanguageData>

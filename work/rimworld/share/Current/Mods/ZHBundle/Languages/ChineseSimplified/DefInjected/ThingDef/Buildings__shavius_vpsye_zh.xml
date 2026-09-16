@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ice crystal -->
+  <VPE_IceCrystal.label>低温水晶</VPE_IceCrystal.label>
+  <!-- EN: A small crystal of ice that cools down the temperature in the room. Can help freeze perishable items. -->
+  <VPE_IceCrystal.description>一小块冰晶，可以降低房间内的温度。可以用来制造冷库。</VPE_IceCrystal.description>
+  
+  <!-- EN: ice wall -->
+  <VPE_IceWall.label>冰墙</VPE_IceWall.label>
+  <!-- EN: A fragile wall made of ice. It will melt in heat. -->
+  <VPE_IceWall.description>冰块构成的脆弱墙壁。高温下会融化。</VPE_IceWall.description>
+  
+  <!-- EN: skipdoor -->
+  <VPE_Skipdoor.label>折跃门</VPE_Skipdoor.label>
+  <!-- EN: A psychic entry-point to a portal network. -->
+  <VPE_Skipdoor.description>折跃网络的灵能入口。</VPE_Skipdoor.description>
+  
+</LanguageData>

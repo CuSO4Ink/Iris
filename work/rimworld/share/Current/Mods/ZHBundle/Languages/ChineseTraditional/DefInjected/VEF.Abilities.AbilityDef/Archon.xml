@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: blinding pulse -->
+  <VPE_BlindingPulse.label>致盲脈衝</VPE_BlindingPulse.label>
+  <!-- EN: Induce noise in the visual centers of the brain, obscuring vision of everyone near the target point. Lasts for half a minute, affected by psychic sensitivity. -->
+  <VPE_BlindingPulse.description>通過干擾大腦的視覺中樞，使目標點周圍的每個人的視覺模糊。持續半分鐘，受到心靈敏感度影響。</VPE_BlindingPulse.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_BlindingPulse.jobReportString>使用能力：{0}</VPE_BlindingPulse.jobReportString>
+  <!-- EN: 致盲脈衝 -->
+  <VPE_BlindingPulse.verbProperties.label>致盲脈衝</VPE_BlindingPulse.verbProperties.label>
+  
+  <!-- EN: drain psyessence -->
+  <VPE_DrainPsyessence.label>靈能篡取</VPE_DrainPsyessence.label>
+  <!-- EN: Targeting a downed psychically-talented pawn, induces intense harmonic psychic noise to liquify their flesh and convert it into psyessence to be absorbed by the caster as their own accumulated psychic talent. The final moments of psychic disintegration will be felt by everyone for many kilometers around, causing diplomatic consequences with all factions. -->
+  <VPE_DrainPsyessence.description>選定一個倒地的靈能者，使用高頻諧振的心靈脈衝將對方的血肉精煉成液態的靈能，隨後將其的修為吸收為自己所用。此等褻瀆之舉造成的心靈波動即便在數千米外也能被人感應到，因而影響所有派系的外交關係。</VPE_DrainPsyessence.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_DrainPsyessence.jobReportString>使用能力：{0}</VPE_DrainPsyessence.jobReportString>
+  <!-- EN: 靈能篡取 -->
+  <VPE_DrainPsyessence.verbProperties.label>靈能篡取</VPE_DrainPsyessence.verbProperties.label>
+  
+  <!-- EN: group link -->
+  <VPE_GroupLink.label>心靈鏈接</VPE_GroupLink.label>
+  <!-- EN: Creates a sphere of psychic suggestion around the caster, linking all pawns within to the caster and allowing any single target 「Word of」 psycast to affect all others. The effect ends when those linked move out of range. -->
+  <VPE_GroupLink.description>在施放者的周邊創建一個心靈暗示的領域，將所有範圍內的人與施放者的心靈相連，任何一人如果受到「XX之語」的影響都會將其共享給所有人。如果移動到範圍之外則鏈接中斷。</VPE_GroupLink.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_GroupLink.jobReportString>使用能力：{0}</VPE_GroupLink.jobReportString>
+  <!-- EN: 心靈鏈接 -->
+  <VPE_GroupLink.verbProperties.label>心靈鏈接</VPE_GroupLink.verbProperties.label>
+  
+  <!-- EN: mass hallucination -->
+  <VPE_MassHallucination.label>群體幻術</VPE_MassHallucination.label>
+  <!-- EN: Creating a massive burst of psychic suggestion, convinced nearby pawns that rooms are the absolute best they could possibly be. The resulting coma for the caster and the effect lasts for five days. -->
+  <VPE_MassHallucination.description>釋放出強大的心靈暗示，讓所有周圍的人真心相信自己的生活環境已經無比優越。施放者將進入五天的精神昏迷。</VPE_MassHallucination.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_MassHallucination.jobReportString>使用能力：{0}</VPE_MassHallucination.jobReportString>
+  <!-- EN: 群體幻術 -->
+  <VPE_MassHallucination.verbProperties.label>群體幻術</VPE_MassHallucination.verbProperties.label>
+  
+  <!-- EN: mind break -->
+  <VPE_MindBreak.label>心智崩毀</VPE_MindBreak.label>
+  <!-- EN: Using concentrated harmonic psychic noise, lobotomizes the target and turns them into a serving, restless thrall. Very much unappreciated by their former factions. -->
+  <VPE_MindBreak.description>用高度集中的心靈雜音摧垮目標的心智，讓它變為一個失去自我意識的無心奴。會大大惹怒目標原本所屬的派系。</VPE_MindBreak.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_MindBreak.jobReportString>使用能力：{0}</VPE_MindBreak.jobReportString>
+  <!-- EN: 心智崩毀 -->
+  <VPE_MindBreak.verbProperties.label>心智崩毀</VPE_MindBreak.verbProperties.label>
+  
+  <!-- EN: word of alliance -->
+  <VPE_WordofAlliance.label>團結之語</VPE_WordofAlliance.label>
+  <!-- EN: Speak words of friendship and benefits to a close target using psychic suggestion, helping them realize that you’re not all that bad. Only works on those willing to listen and effect scales with the caster's psychic sensitivity. -->
+  <VPE_WordofAlliance.description>對附近一個其它派系的人釋放，用大量關於團結友愛的話語間加上心靈暗示影響對方，讓其對你的派系產生親切感。對方必須有聆聽的意願，受到施放者心靈敏感度影響。</VPE_WordofAlliance.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_WordofAlliance.jobReportString>使用能力：{0}</VPE_WordofAlliance.jobReportString>
+  <!-- EN: 團結之語 -->
+  <VPE_WordofAlliance.verbProperties.label>團結之語</VPE_WordofAlliance.verbProperties.label>
+  
+  <!-- EN: word of pain -->
+  <VPE_WordofPain.label>痛苦之語</VPE_WordofPain.label>
+  <!-- EN: Induces noise in the target’s pain centers of the brain and overstimulates their nerve endings, scaling with their psychic sensitivity. -->
+  <VPE_WordofPain.description>在目標們大腦的痛覺中心引起心靈雜音並過度激化他們的神經末梢。受到心靈敏感度影響。</VPE_WordofPain.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_WordofPain.jobReportString>使用能力：{0}</VPE_WordofPain.jobReportString>
+  <!-- EN: 痛苦之語 -->
+  <VPE_WordofPain.verbProperties.label>痛苦之語</VPE_WordofPain.verbProperties.label>
+  
+  <!-- EN: word of productivity -->
+  <VPE_WordofProductivity.label>勤勞之語</VPE_WordofProductivity.label>
+  <!-- EN: Using words of motivation with a heaping boost to metabolism, makes the touched target a more productive member of society for the next few days. Considered a hostile action and duration is affected by the target’s psychic sensitivity. -->
+  <VPE_WordofProductivity.description>對目標灌輸鼓動的話語，同時強化對方的新陳代謝，讓受到觸動的人在幾天內更加勤勞。該行為會被目標反感，持續時間受到目標心靈敏感度影響。</VPE_WordofProductivity.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_WordofProductivity.jobReportString>使用能力：{0}</VPE_WordofProductivity.jobReportString>
+  <!-- EN: 勤勞之語 -->
+  <VPE_WordofProductivity.verbProperties.label>勤勞之語</VPE_WordofProductivity.verbProperties.label>
+  
+  <!-- EN: word of protection -->
+  <VPE_WordofProtection.label>守護之語</VPE_WordofProtection.label>
+  <!-- EN: Using harmonic psychic noise, physically alters the target’s body to be more durable and resistant to damage. Lasts a long time and scales with the caster’s psychic sensitivity. -->
+  <VPE_WordofProtection.description>使用心靈雜音的諧振，強化目標的身體使其更加耐打。持續時間受到施放者心靈敏感度影響。</VPE_WordofProtection.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_WordofProtection.jobReportString>使用能力：{0}</VPE_WordofProtection.jobReportString>
+  <!-- EN: 守護之語 -->
+  <VPE_WordofProtection.verbProperties.label>守護之語</VPE_WordofProtection.verbProperties.label>
+  
+  <!-- EN: word of trust -->
+  <VPE_WordofTrust.label>信賴之語</VPE_WordofTrust.label>
+  <!-- EN: Speak to the prisoner while using psychic suggestion to reduce his resistance to recruitment. This psycast can only reduce a prisoner's resistance, but cannot recruit him. -->
+  <VPE_WordofTrust.description>與囚犯交談，同時使用心理暗示來降低他對招募的抵抗情緒。這個心靈能力只能降低囚犯的抵抗，並不能招募他。</VPE_WordofTrust.description>
+  <!-- EN: Using ability: {0} -->
+  <VPE_WordofTrust.jobReportString>使用能力：{0}</VPE_WordofTrust.jobReportString>
+  <!-- EN: 信賴之語 -->
+  <VPE_WordofTrust.verbProperties.label>信賴之語</VPE_WordofTrust.verbProperties.label>
+  
+</LanguageData>

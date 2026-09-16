@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="FS_UGUIFramework.FS_ModSettings">
+		<font>AK_Font_YouYuan</font>
+	</ModSettings>
+</SettingsBlock>

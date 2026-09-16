@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 여우불 화살 -->
+  <Miho_Ability_Fireball_Adept.label>秘靈箭雨</Miho_Ability_Fireball_Adept.label>
+  <!-- EN: 수십개의 여우불 화살을 하늘로 날려 적에게 내리꽃습니다. -->
+  <Miho_Ability_Fireball_Adept.description>在目標點處召喚大量秘靈之箭。每支秘靈之箭命中後都會引發小爆炸。</Miho_Ability_Fireball_Adept.description>
+  
+  <!-- EN: 으뜸별 -->
+  <Miho_Ability_Polaris.label>破甲隕星</Miho_Ability_Polaris.label>
+  <!-- EN: 다루기 힘든 플라즈마화 메카나이트를 발사합니다. 중장갑 개체에 효과적입니다. -->
+  <Miho_Ability_Polaris.description>在目標點處召喚一顆等離子機械分子隕星。隕星命中後會引發恐怖的爆炸，且對重甲單位格外有效。</Miho_Ability_Polaris.description> 
+  
+  <!-- EN: 별떨구기 -->
+  <Miho_Ability_Starfall.label>隕星風暴</Miho_Ability_Starfall.label>
+  <!-- EN: 하늘에서 운석이 떨어져 다친 경험이 있으신가요? 이번에는 반드시 실패하지 않을겁니다. -->
+  <Miho_Ability_Starfall.description>在目標點處召喚大量機械分子隕星。每顆隕星命中後都會引發毀滅性的大爆炸。\n\n“你是否體驗過被隕星砸中的感覺呢？別擔心，這次你不會再錯過了。”</Miho_Ability_Starfall.description>
+  
+</LanguageData>

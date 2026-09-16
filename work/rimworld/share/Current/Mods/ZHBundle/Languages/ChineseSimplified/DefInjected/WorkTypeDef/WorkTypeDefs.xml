@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Harvest useful resources without completely depleting them. Low skill can damage the target. -->
+  <VV_Gathering.description>收获资源而不完全耗尽之。</VV_Gathering.description>
+  <!-- EN: gathering -->
+  <VV_Gathering.gerundLabel>采集中</VV_Gathering.gerundLabel>
+  <!-- EN: gather -->
+  <VV_Gathering.labelShort>采集</VV_Gathering.labelShort>
+  <!-- EN: Gather -->
+  <VV_Gathering.pawnLabel>采集</VV_Gathering.pawnLabel>
+  <!-- EN: Gather -->
+  <VV_Gathering.verb>采集</VV_Gathering.verb>
+  
+</LanguageData>

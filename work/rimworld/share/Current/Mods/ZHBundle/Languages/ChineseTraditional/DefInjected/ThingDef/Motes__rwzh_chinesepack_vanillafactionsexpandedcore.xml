@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Mote -->
+  <KCSG_LongMote_DustPuff.label>特效</KCSG_LongMote_DustPuff.label>
+  
+  <!-- EN: Mote -->
+  <Mote_Firetrail.label>特效</Mote_Firetrail.label>
+  
+  <!-- EN: Mote -->
+  <Mote_FTSmoketrail.label>特效</Mote_FTSmoketrail.label>
+  
+  <!-- EN: Mote -->
+  <Mote_GreenSmoketrail.label>特效</Mote_GreenSmoketrail.label>
+  
+  <!-- EN: Mote -->
+  <Mote_Smoketrail.label>特效</Mote_Smoketrail.label>
+  
+  <!-- EN: Mote -->
+  <VEF_FlintlockSmoke.label>特效</VEF_FlintlockSmoke.label>
+  
+</LanguageData>

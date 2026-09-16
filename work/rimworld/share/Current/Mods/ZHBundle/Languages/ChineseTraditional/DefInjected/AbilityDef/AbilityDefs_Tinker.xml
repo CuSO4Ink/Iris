@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 홀로그램 포술 -->
+  <Miho_Ability_Accuracy.label>全息定位</Miho_Ability_Accuracy.label>
+  <!-- EN: 3차원적인 포격 본능을 도입해 더욱 높은 명중률을 선 보일 수 있습니다. -->
+  <Miho_Ability_Accuracy.description>操縱心靈能量強化目標機械族或無人機的全息定位裝置，大幅提高其射擊精度。</Miho_Ability_Accuracy.description>
+  
+  <!-- EN: 메카나이트 경화 장갑 -->
+  <Miho_Ability_Armor.label>裝甲硬化</Miho_Ability_Armor.label>
+  <!-- EN: 드론 내부의 메카나이트를 경화시켜 추가 방어력을 제공합니다. -->
+  <Miho_Ability_Armor.description>操縱心靈能量硬化附著在目標機械族或無人機裝甲上的機械分子，大幅提高其防護能力。</Miho_Ability_Armor.description>
+  
+  <!-- EN: 탄막지옥 -->
+  <Miho_Ability_BulletHell.label>槍彈地獄</Miho_Ability_BulletHell.label>
+  <!-- EN: 장전속도를 급도로 상승시켜 꼼꼼한 화망을 구성하게 합니다. -->
+  <Miho_Ability_BulletHell.description>操縱心靈能量強化目標機械族或無人機的彈藥裝填系統，大幅減少其瞄準時間與遠程冷卻時間。</Miho_Ability_BulletHell.description>
+  
+  <!-- EN: 뉴로해킹 (폐열 폭발) -->
+  <Miho_Ability_HackingKill.label>心智駭入（廢熱爆散）</Miho_Ability_HackingKill.label>
+  <!-- EN: 메카노이드의 열 발산을 촉진시켜 안의 회로를 녹여버립니다. -->
+  <Miho_Ability_HackingKill.description>操縱心靈能量過載目標機械族或無人機的運算中樞，由此產生的巨額熱量會快速熔化其內部電路。</Miho_Ability_HackingKill.description>
+  
+  <!-- EN: 뉴로해킹 (의식 좀먹기) -->
+  <Miho_Ability_HackingSlow.label>心智駭入（意識侵蝕）</Miho_Ability_HackingSlow.label>
+  <!-- EN: 인공지능의 의식을 좀먹어 전반적인 의식 수준을 내립니다. -->
+  <Miho_Ability_HackingSlow.description>操縱心靈能量擾亂目標機械族或無人機的運算中樞，在短時間內癱瘓其各項系統，並持續降低意識與移動速度。</Miho_Ability_HackingSlow.description>
+  
+  <!-- EN: 오버클럭 -->
+  <Miho_Ability_Overclock.label>機能超頻</Miho_Ability_Overclock.label>
+  <!-- EN: "압도적인 힘으로!" 메카노이드의 의식을 향상시킵니다. -->
+  <Miho_Ability_Overclock.description>操縱心靈能量超頻強化目標機械族或無人機的運算中樞，大幅提高其意識與移動速度。</Miho_Ability_Overclock.description>
+  
+  <!-- EN: 야전수리 -->
+  <Miho_Ability_Repair.label>戰地維修</Miho_Ability_Repair.label>
+  <!-- EN: 메카노이드를 패널티 없이 바로 수리합니다. -->
+  <Miho_Ability_Repair.description>操縱心靈能量驅使機械分子，立即修復目標機械族或無人機受到的損傷。</Miho_Ability_Repair.description>
+  
+  <!-- EN: 야전 핵융합로 소환 -->
+  <Miho_Ability_SpawnGenerator.label>應急能源</Miho_Ability_SpawnGenerator.label>
+  <!-- EN: 엄청난 에너지를 제공하지만 하루밖에 가지 않는 상온 핵융합로를 소환합니다. -->
+  <Miho_Ability_SpawnGenerator.description>在目標點處召喚一台不會產生熱量的野戰聚變反應堆，可當作應急能源使用。它的電力輸出較為可觀，但只能運行24小時。</Miho_Ability_SpawnGenerator.description>
+  
+</LanguageData>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="cedaro.NoHopelessRomance.NHR_ModSetting">
+		<R_SameFaction>True</R_SameFaction>
+		<R_Orientation>True</R_Orientation>
+		<R_AHasNoSpouse>True</R_AHasNoSpouse>
+		<R_BHasNoSpouse>True</R_BHasNoSpouse>
+		<R_Compatibility>-2</R_Compatibility>
+		<R_LoverOpinionThreshold>25</R_LoverOpinionThreshold>
+		<M_OpinionThreshold>42</M_OpinionThreshold>
+		<alwaysSucceed>True</alwaysSucceed>
+	</ModSettings>
+</SettingsBlock>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: plague bile -->
+  <PlagueBile.label>瘟疫胆汁</PlagueBile.label>
+  <!-- EN: Spray an infectious bile that can inflict the plague on multiple targets. -->
+  <PlagueBile.description>从嘴巴吐出可以传播瘟疫的胆汁。</PlagueBile.description>
+  
+</LanguageData>

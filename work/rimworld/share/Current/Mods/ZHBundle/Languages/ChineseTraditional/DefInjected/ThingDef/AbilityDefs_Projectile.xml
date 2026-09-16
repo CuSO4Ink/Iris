@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 메카나이트 결정 -->
+  <Filth_MihoMechanite.label>機械分子碎晶</Filth_MihoMechanite.label>
+  
+  <!-- EN: 여우 보호막 -->
+  <Miho_BulletShieldPsychic.label>秘靈護盾</Miho_BulletShieldPsychic.label>
+  
+  <!-- EN: Ensnare -->
+  <Miho_Ensnare_Proj.label>靈縛獵網</Miho_Ensnare_Proj.label>
+  
+  <!-- EN: fireball -->
+  <Miho_Fireball_Proj.label>秘靈狐焱</Miho_Fireball_Proj.label>
+  
+  <!-- EN: fireball -->
+  <Miho_Fireball_Small_Proj.label>秘靈狐火</Miho_Fireball_Small_Proj.label>
+  
+  <!-- EN: Mote -->
+  <Miho_Mote_Ensnare.label>特效</Miho_Mote_Ensnare.label>
+  
+  <!-- EN: predatory gaze -->
+  <Miho_PredatoryGaze_Proj.label>震懾凝視</Miho_PredatoryGaze_Proj.label>
+  
+  <!-- EN: Talisman -->
+  <Miho_TalismanStun_Proj.label>靈符</Miho_TalismanStun_Proj.label>
+  
+</LanguageData>

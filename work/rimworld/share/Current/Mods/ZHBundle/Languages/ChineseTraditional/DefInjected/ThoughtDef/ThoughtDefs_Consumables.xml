@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: ate pollen -->
+  <VV_AtePollen.stages.ate_pollen.label>吃了花粉</VV_AtePollen.stages.ate_pollen.label>
+  <!-- EN: It's bitter and dry. Do you usually eat this kind of food? -->
+  <VV_AtePollen.stages.ate_pollen.description>又苦又干，我們難道非要吃這種東西嗎？</VV_AtePollen.stages.ate_pollen.description>
+  
+  <!-- EN: drink flowering tea -->
+  <VV_FloralTea.stages.drink_flowering_tea.label>喝了花茶</VV_FloralTea.stages.drink_flowering_tea.label>
+  <!-- EN: Drinking that flowering tea made me feel relaxed. -->
+  <VV_FloralTea.stages.drink_flowering_tea.description>喝點花茶讓我感覺很放松。</VV_FloralTea.stages.drink_flowering_tea.description>
+  
+  <!-- UNUSED -->
+  <VV_FloralTea.stages.drink_floral_tea.label>喝了花茶</VV_FloralTea.stages.drink_floral_tea.label>
+  <VV_FloralTea.stages.drink_floral_tea.description>喝點花茶讓我感覺很放松。</VV_FloralTea.stages.drink_floral_tea.description>
+  
+  <!-- EN: flower scent -->
+  <VV_FlowerScent.stages.flower_scent.label>花香四溢</VV_FlowerScent.stages.flower_scent.label>
+  <!-- EN: Feel like I'm radiating a scent of flowers. -->
+  <VV_FlowerScent.stages.flower_scent.description>就像我在散發花香一般。</VV_FlowerScent.stages.flower_scent.description>
+  
+</LanguageData>

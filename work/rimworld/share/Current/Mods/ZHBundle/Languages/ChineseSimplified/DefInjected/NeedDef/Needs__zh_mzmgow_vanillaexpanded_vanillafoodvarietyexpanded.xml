@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: food variety -->
+  <VCEV_FoodVariety.label>饮食多样性</VCEV_FoodVariety.label>
+  <!-- EN: Represents the assortment of different foods in a colonist's diet, reflecting their ability to access and consume a wide range of nutrients and flavors, calculated as an average of the variety in meals and the variety in ingredients in those meals.\n\nLow values will cause a mood penalty, while higher values will cause a mood bonus. -->
+  <VCEV_FoodVariety.description>饮食多样性需求反映了殖民者在日常饮食中享用食材/食物种类的丰富程度。\n\n此项的值为食物多样性和食材多样性两者相加后求得的平均值。\n\n享用食材/食物的种类越丰富，此项的值就越高，殖民者也会获得心情增益；反之，享用食材/食物的种类越单一，此项的值就越低，殖民者也会获得心情减益。</VCEV_FoodVariety.description>
+  
+</LanguageData>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Body tattoo -->
+  <VV_Vivi.root.children.0.children.0.debugLabel>躯干纹身</VV_Vivi.root.children.0.children.0.debugLabel>
+  <!-- EN: Wounds - pre apparel -->
+  <VV_Vivi.root.children.0.children.1.debugLabel>伤口-内部</VV_Vivi.root.children.0.children.1.debugLabel>
+  <!-- EN: Baby swaddle -->
+  <VV_Vivi.root.children.0.children.2.debugLabel>襁褓</VV_Vivi.root.children.0.children.2.debugLabel>
+  <!-- EN: Apparel root -->
+  <VV_Vivi.root.children.0.children.3.debugLabel>服装根部</VV_Vivi.root.children.0.children.3.debugLabel>
+  <!-- EN: Wounds - post apparel -->
+  <VV_Vivi.root.children.0.children.4.debugLabel>伤口-内部</VV_Vivi.root.children.0.children.4.debugLabel>
+  <!-- EN: Weapon/carried thing -->
+  <VV_Vivi.root.children.0.children.6.debugLabel>装备/携带某物</VV_Vivi.root.children.0.children.6.debugLabel>
+  <!-- EN: Head stump -->
+  <VV_Vivi.root.children.1.debugLabel>头部残缺</VV_Vivi.root.children.1.debugLabel>
+  <!-- EN: Head tattoo -->
+  <VV_Vivi.root.children.2.children.0.children.0.debugLabel>头部纹身</VV_Vivi.root.children.2.children.0.children.0.debugLabel>
+  <!-- EN: Head wounds -->
+  <VV_Vivi.root.children.2.children.0.children.3.debugLabel>头部伤口</VV_Vivi.root.children.2.children.0.children.3.debugLabel>
+  <!-- EN: Apparel root -->
+  <VV_Vivi.root.children.2.children.0.children.4.debugLabel>服装根部</VV_Vivi.root.children.2.children.0.children.4.debugLabel>
+  <!-- EN: Status overlay -->
+  <VV_Vivi.root.children.2.children.0.children.8.debugLabel>叠加状态</VV_Vivi.root.children.2.children.0.children.8.debugLabel>
+  
+</LanguageData>

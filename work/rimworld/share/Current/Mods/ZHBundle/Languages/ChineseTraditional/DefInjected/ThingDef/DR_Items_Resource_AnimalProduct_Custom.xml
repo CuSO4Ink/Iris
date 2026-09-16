@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: dragonian milk -->
+  <DragonianMilk.label>龍娘 奶</DragonianMilk.label>
+  <!-- EN: It is a rare milk that can be obtained only from dragonian. -->
+  <DragonianMilk.description>這是一種罕見的牛奶，只能從龍娘那裡獲得。</DragonianMilk.description>
+  
+  <!-- EN: dragonian orb -->
+  <DragonianOrb.label>龍人 龍珠</DragonianOrb.label>
+  <!-- EN: A mysterious orb that can heal serious wounds. -->
+  <DragonianOrb.description>一個神秘的球體，可以治癒嚴重的傷口。</DragonianOrb.description>
+  <!-- EN: Use {0_label} -->
+  <DragonianOrb.comps.CompUsable.useLabel>使用 {0_label}</DragonianOrb.comps.CompUsable.useLabel>
+  
+</LanguageData>

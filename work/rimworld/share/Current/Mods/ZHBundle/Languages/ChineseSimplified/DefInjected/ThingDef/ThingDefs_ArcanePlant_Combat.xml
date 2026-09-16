@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: cornlauncher -->
+  <VV_Cornlauncher.label>玉米炮手</VV_Cornlauncher.label>
+  <!-- EN: It is a arcane plant that detects nearby enemies and attacks by launching corn. It consumes mana each time it fires, and the launched corn explodes upon impact, scattering corn kernels around, which then explode on a smaller scale. It works well against many enemies, but the explosion can also hurt allies. -->
+  <VV_Cornlauncher.description>一种神秘植物，可以侦测附近的敌人并发射玉米进行攻击。每次发射都会消耗魔能，其发射的玉米棒在撞击时会发生爆炸，将玉米粒撒在周围，玉米粒又会在较小的范围内爆炸。\n\n它能对许多敌人都很有效，但爆炸也会伤及盟友。如果受损，玉米炮手可能会爆炸，因此需要小心放置。</VV_Cornlauncher.description>
+  
+  <!-- EN: corn pod -->
+  <VV_Gun_Cornlauncher.label>玉米荚</VV_Gun_Cornlauncher.label>
+  <!-- EN: . -->
+  <VV_Gun_Cornlauncher.description>。</VV_Gun_Cornlauncher.description>
+  <!-- EN: corn pod -->
+  <VV_Gun_Cornlauncher.verbs.Verb_ShootWithMana.label>玉米荚</VV_Gun_Cornlauncher.verbs.Verb_ShootWithMana.label>
+  
+  <!-- EN: pea pod -->
+  <VV_Gun_Peashooter.label>豌豆荚</VV_Gun_Peashooter.label>
+  <!-- EN: . -->
+  <VV_Gun_Peashooter.description>。</VV_Gun_Peashooter.description>
+  <!-- EN: pea pod -->
+  <VV_Gun_Peashooter.verbs.Verb_ShootWithMana.label>豌豆荚</VV_Gun_Peashooter.verbs.Verb_ShootWithMana.label>
+  
+  <!-- EN: peashooter -->
+  <VV_Peashooter.label>豌豆射手</VV_Peashooter.label>
+  <!-- EN: It is a arcane plant that fires peas to drive away nearby enemies when it detects them. Consumes mana each time it fires a pea. While its damage is low, it excels in sustained firepower.\n\nPeashooter is affected by the mana of adjacent arcane plants, and the type of arcane plant can enhance the fired peas. -->
+  <VV_Peashooter.description>一种神秘植物，当它发现附近的敌人时，会发射豌豆驱赶他们。每次发射豌豆都会消耗魔能，虽然单粒豌豆伤害不高，但能通过数量弥补这一点。\n\n附近的某些神秘植物的魔能能够影响豌豆射手并强化其发射的豌豆。</VV_Peashooter.description>
+  
+  <!-- EN: Shootus -->
+  <VV_Shootus.label>射人掌</VV_Shootus.label>
+  <!-- EN: It is a arcane cactus with a peculiar facial expression. It moves so flexibly that it doesn't seem like a plant, and it is extremely tough, resistant to most types of damage.\n\nIt can be equipped with a ranged weapon in one hand, and when it detects enemies, it automatically attacks them using the equipped weapon. It cannot wear melee or biocoded weapons, and its reloading is somewhat slower than when handled by a person. -->
+  <VV_Shootus.description>一种神秘仙人掌，有着奇特的面部表情。它的行动非常灵活，看起来不像植物，且非常坚韧，能抵抗大多数类型的伤害。\n\n它的一只手可以装备远程武器，当探测到敌人时，它会自动使用装备的武器攻击他们。它不能装备近战或生物编码武器，且重装填速度比由人类慢一些。</VV_Shootus.description>
+  
+</LanguageData>

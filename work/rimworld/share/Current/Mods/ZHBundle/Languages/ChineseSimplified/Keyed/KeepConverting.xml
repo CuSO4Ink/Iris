@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+	<KC_GizmoKeepConvertingLabel>自动教化</KC_GizmoKeepConvertingLabel>
+	<KC_GizmoKeepConvertingDesc>设置目标自动教化，直到目标教化完成</KC_GizmoKeepConvertingDesc>
+	<KC_GizmoKeepConvertingCancelLabel>自动教化： {0}</KC_GizmoKeepConvertingCancelLabel>
+	<KC_GizmoKeepConvertingCancelDesc>单击取消自动教化的目标</KC_GizmoKeepConvertingCancelDesc>
+	<KC_RejectInputNoTarget>不能使用自动教化：必须指定目标</KC_RejectInputNoTarget>
+	<KC_RejectInputNoHumanlike>不能使用自动转换：必须针对殖民者</KC_RejectInputNoHumanlike>
+	<KC_RejectInputSelf>不能对自己使用自动教化</KC_RejectInputSelf>
+	<KC_RejectInputDeadTarget>不能使用自动教化：目标已死</KC_RejectInputDeadTarget>
+	<KC_RejectInputHostileTarget>不能使用自动教化：目标不能是敌对的</KC_RejectInputHostileTarget>
+	<KC_RejectInputTargetNotOnMap>不能使用自动教化：目标不在同一地图上</KC_RejectInputTargetNotOnMap>
+	<KC_RejectInputTargetHasSameIdeology>不能使用自动教化： 目标具有相同文化</KC_RejectInputTargetHasSameIdeology>
+	<KC_RejectInputAreaNotAllowed>不能使用自动教化：目标在允许区域之外</KC_RejectInputAreaNotAllowed>
+	<KC_RejectInputCanNotReach>不能使用自动教化：无法安全接触目标</KC_RejectInputCanNotReach>
+	<KC_SettingsTitle>自动教化</KC_SettingsTitle>
+	<KC_SettingsTicksBetweenChecksLabel>每多少刻检测一次： {0}</KC_SettingsTicksBetweenChecksLabel>
+	<KC_SettingsTicksBetweenChecksDesc>(2500刻 = 1 小时, 60000刻 = 1 天)</KC_SettingsTicksBetweenChecksDesc>
+	<KC_SettingsEnableMaxDistanceLabel>限制自动教化的检测范围</KC_SettingsEnableMaxDistanceLabel>
+	<KC_SettingsEnableMaxDistanceDesc>如果传教者距离目标大于检测范围，将会忽略此次教化。你也不想传教者跨越整个地图教化吧</KC_SettingsEnableMaxDistanceDesc>
+	<KC_SettingsMaxDistanceLabel>目标触发自动教化的最大距离： {0}</KC_SettingsMaxDistanceLabel>
+	<KC_SettingsAllowWakeupLabel>允许唤醒目标</KC_SettingsAllowWakeupLabel>
+	<KC_SettingsAllowWakeupDesc>如果不启用此选项，传教者不会在目标睡觉时试图教化目标</KC_SettingsAllowWakeupDesc>
+	<KC_SettingsSkipWhenConversionRitualOffPenaltyLabel>在教化仪式冷却时禁止自动教化</KC_SettingsSkipWhenConversionRitualOffPenaltyLabel>
+	<KC_SettingsSkipWhenConversionRitualOffPenaltyDesc>教化仪式举行后有20天的冷却。启用此选项将在此期间禁用自动教化,请注意教化仪式不是自动的</KC_SettingsSkipWhenConversionRitualOffPenaltyDesc>
+</LanguageData>

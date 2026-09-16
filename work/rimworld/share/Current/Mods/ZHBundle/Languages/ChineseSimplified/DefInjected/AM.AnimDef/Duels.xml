@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Duel -->
+  <AM_Duel_Swords.label>决斗</AM_Duel_Swords.label>
+  <!-- EN: Dueling [OTHER]. -->
+  <AM_Duel_Swords.jobString>与[OTHER]决斗。</AM_Duel_Swords.jobString>
+  
+  <!-- EN: Win Friendly Duel -->
+  <AM_Duel_WinFriendlyDuel.label>在切磋决斗中取胜</AM_Duel_WinFriendlyDuel.label>
+  <!-- EN: Deafeating [OTHER] in a duel! -->
+  <AM_Duel_WinFriendlyDuel.jobString>在决斗中击败[OTHER]！</AM_Duel_WinFriendlyDuel.jobString>
+
+  <!-- EN: Win Friendly Duel -->
+  <AM_Duel_WinFriendlyDuel_Reject.label>在切磋决斗中取胜</AM_Duel_WinFriendlyDuel_Reject.label>
+  <!-- EN: Deafeating [OTHER] in a duel! -->
+  <AM_Duel_WinFriendlyDuel_Reject.jobString>在决斗中击败[OTHER]！</AM_Duel_WinFriendlyDuel_Reject.jobString>
+
+  <!-- EN: Duel Bow -->
+  <AM_DuelBow_Colossal.label>决斗行礼</AM_DuelBow_Colossal.label>
+  <!-- EN: Bowing before a duel. -->
+  <AM_DuelBow_Colossal.jobString>于决斗前鞠躬行礼。</AM_DuelBow_Colossal.jobString>
+  
+  <!-- EN: Duel Bow -->
+  <AM_DuelBow_Medium.label>决斗行礼</AM_DuelBow_Medium.label>
+  <!-- EN: Bowing before a duel. -->
+  <AM_DuelBow_Medium.jobString>于决斗前鞠躬行礼。</AM_DuelBow_Medium.jobString>
+  
+</LanguageData>

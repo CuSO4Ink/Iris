@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- TENDRIL END -->
+
+  <RH_DF_Tendril.label>卷須</RH_DF_Tendril.label>
+  <RH_DF_Tendril.labelPlural>卷須</RH_DF_Tendril.labelPlural>
+  <RH_DF_Tendril.labelMale>男性 卷須</RH_DF_Tendril.labelMale>
+  <RH_DF_Tendril.labelMalePlural>男性 卷須</RH_DF_Tendril.labelMalePlural>
+  <RH_DF_Tendril.labelFemale>女性 卷須</RH_DF_Tendril.labelFemale>
+  <RH_DF_Tendril.labelFemalePlural>女性 卷須</RH_DF_Tendril.labelFemalePlural>
+
+
+  <!-- Bone END -->
+
+  <RH_DF_Bone.label>骨突</RH_DF_Bone.label>
+  <RH_DF_Bone.labelPlural>骨突</RH_DF_Bone.labelPlural>
+  <RH_DF_Bone.labelMale>男性 骨突</RH_DF_Bone.labelMale>
+  <RH_DF_Bone.labelMalePlural>男性 骨突</RH_DF_Bone.labelMalePlural>
+  <RH_DF_Bone.labelFemale>女性 骨突</RH_DF_Bone.labelFemale>
+  <RH_DF_Bone.labelFemalePlural>女性 骨突</RH_DF_Bone.labelFemalePlural>
+
+
+  <!-- roid hulk END -->
+
+  <RH_DF2_RoidHulk.label>綠巨人</RH_DF2_RoidHulk.label>
+  <RH_DF2_RoidHulk.labelPlural>綠巨人</RH_DF2_RoidHulk.labelPlural>
+  <RH_DF2_RoidHulk.labelMale>男性 綠巨人</RH_DF2_RoidHulk.labelMale>
+  <RH_DF2_RoidHulk.labelMalePlural>男性 綠巨人</RH_DF2_RoidHulk.labelMalePlural>
+  <RH_DF2_RoidHulk.labelFemale>女性 綠巨人</RH_DF2_RoidHulk.labelFemale>
+  <RH_DF2_RoidHulk.labelFemalePlural>女性 綠巨人</RH_DF2_RoidHulk.labelFemalePlural>
+
+  <RH_DF_Reaper.label>收割者</RH_DF_Reaper.label>
+  <RH_DF_Reaper.labelPlural>收割者</RH_DF_Reaper.labelPlural>
+  <RH_DF_Reaper.labelMale>男性 收割者</RH_DF_Reaper.labelMale>
+  <RH_DF_Reaper.labelMalePlural>男性 收割者</RH_DF_Reaper.labelMalePlural>
+  <RH_DF_Reaper.labelFemale>女性 收割者</RH_DF_Reaper.labelFemale>
+  <RH_DF_Reaper.labelFemalePlural>女性 收割者</RH_DF_Reaper.labelFemalePlural>
+
+
+</LanguageData>

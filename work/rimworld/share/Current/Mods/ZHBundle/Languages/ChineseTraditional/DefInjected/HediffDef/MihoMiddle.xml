@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 메딕아머 -->
+  <Miho_Medic_Hediff.label>軍醫戰術背心輔助</Miho_Medic_Hediff.label>
+  <!-- EN: 메딕아머. -->
+  <Miho_Medic_Hediff.description>此單位正穿著軍醫戰術背心，可以使用額外搭載的醫療模塊來快速包紮並治愈他人身上的傷口與疾病。</Miho_Medic_Hediff.description>
+  <!-- EN: 메딕아머 -->
+  <Miho_Medic_Hediff.labelNoun>軍醫戰術背心輔助</Miho_Medic_Hediff.labelNoun>
+  
+</LanguageData>

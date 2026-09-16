@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: Dragonian -->
+  <DragonianXenotype.label>龙人</DragonianXenotype.label>
+  <!-- EN: It is a beautiful creature with human and dragon characteristics. It is mainly seen in the wild. Their silver-haired fur is hard and soft, making them expensive on the black market and often a target for hunters./nto the Empire, these individuals are considered illegal users of superpowers and are subject to arrest or summary execution. -->
+  <DragonianXenotype.description>这是一种同时具备人类与龙族特征的美丽生物，主要在野外被目击。它们那银色的毛发既坚硬又柔软，常在黑市中以高价交易，因此往往成为猎人们的目标。\n此外，由于在帝国眼中它们属于非法超能者，常成为被逮捕或就地处决的对象。</DragonianXenotype.description>
+  
+  <!-- EN: Black-Dragonian -->
+  <DragonianXenotypeBlack.label>黑龙人</DragonianXenotypeBlack.label>
+  <!-- EN: It is a beautiful creature with human and Black-dragon characteristics. It is mainly seen in the wild. Their Darksilver-haired fur is hard and soft, making them expensive on the black market and often a target for hunters./nto the Empire, these individuals are considered illegal users of superpowers and are subject to arrest or summary execution. -->
+  <DragonianXenotypeBlack.description>这是一种同时具备人类与龙族特征的美丽生物，主要在野外被目击。它们那暗银色的毛发既坚硬又柔软，常在黑市中以高价交易，因此往往成为猎人们的目标。\n此外，由于在帝国眼中它们属于非法超能者，常成为被逮捕或即刻处决的对象。</DragonianXenotypeBlack.description>
+  
+</LanguageData>

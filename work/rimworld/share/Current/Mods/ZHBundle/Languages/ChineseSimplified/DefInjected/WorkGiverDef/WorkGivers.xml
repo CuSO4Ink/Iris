@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: milk dragonian -->
+  <MilkDragonian.label>挤取龙娘奶</MilkDragonian.label>
+  <!-- EN: milking -->
+  <MilkDragonian.gerund>挤奶中</MilkDragonian.gerund>
+  <!-- EN: milk -->
+  <MilkDragonian.verb>挤奶</MilkDragonian.verb>
+  
+  <!-- EN: shear dragonian -->
+  <ShearDragonian.label>修剪龙人毛发</ShearDragonian.label>
+  <!-- EN: shearing -->
+  <ShearDragonian.gerund>修剪中</ShearDragonian.gerund>
+  <!-- EN: shear -->
+  <ShearDragonian.verb>修剪</ShearDragonian.verb>
+  
+</LanguageData>

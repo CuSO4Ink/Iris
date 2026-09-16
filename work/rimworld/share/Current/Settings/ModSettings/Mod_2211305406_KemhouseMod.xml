@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SettingsBlock>
+	<ModSettings Class="Kz.KemhouseSettings">
+		<自动刷新生成计时器日志>True</自动刷新生成计时器日志>
+	</ModSettings>
+</SettingsBlock>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+  <!-- EN: 메카나이트 혐오체 -->
+  <Miho_Abomi.label>駭憎魔械</Miho_Abomi.label>
+  <!-- EN: 혐오스럽게 변이된 비밀병기 입니다. 이 녀석을 자세히 보았다간... -->
+  <Miho_Abomi.description>由大量機械分子組成的神秘戰爭機器。</Miho_Abomi.description>
+  <!-- EN: tentacles -->
+  <Miho_Abomi.tools.tentacles.label>觸手</Miho_Abomi.tools.tentacles.label>
+  <!-- EN: head -->
+  <Miho_Abomi.tools.head.label>頭</Miho_Abomi.tools.head.label>
+  
+  <!-- EN: 칼날나비 -->
+  <Miho_Butterfly.label>刃舞蝶</Miho_Butterfly.label>
+  <!-- EN: 날카로운 날개의 메카나이트 생명체 입니다. -->
+  <Miho_Butterfly.description>由機械分子組成的生物，翅膀如同刀刃一般鋒利。</Miho_Butterfly.description>
+  <!-- EN: blades -->
+  <Miho_Butterfly.tools.blades.label>蝶刃</Miho_Butterfly.tools.blades.label>
+  
+  <!-- EN: 미호 운반여우 -->
+  <Miho_Fox.label>秘靈狐</Miho_Fox.label>
+  <!-- EN: 운반을 잘하는 메카나이트 생명체 입니다. -->
+  <Miho_Fox.description>由機械分子組成的生物，相當擅長搬運物品。</Miho_Fox.description>
+  <!-- EN: left claw -->
+  <Miho_Fox.tools.left_claw.label>左爪</Miho_Fox.tools.left_claw.label>
+  <!-- EN: right claw -->
+  <Miho_Fox.tools.right_claw.label>右爪</Miho_Fox.tools.right_claw.label>
+  <!-- EN: head -->
+  <Miho_Fox.tools.head.label>頭</Miho_Fox.tools.head.label>
+  
+  <!-- EN: 사냥매 -->
+  <Miho_Hawk.label>秘靈獵鷹</Miho_Hawk.label>
+  <!-- EN: 날카로운 부리의 메카나이트 생명체 입니다. -->
+  <Miho_Hawk.description>由機械分子組成的生物，喙部異常銳利。</Miho_Hawk.description>
+  <!-- EN: Beak -->
+  <Miho_Hawk.tools.Beak.label>喙</Miho_Hawk.tools.Beak.label>
+  
+</LanguageData>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+	<!-- EN: {0} is on cooldown for {1} -->
+  <VFEA.AbilityDisableReasonCooldown>{0}正在冷却。剩余时间：{1}</VFEA.AbilityDisableReasonCooldown>
+	<!-- EN: {0} doesn't meet the requirements -->
+  <VFEA.AbilityDisableReasonGeneral>{0}不满足使用要求</VFEA.AbilityDisableReasonGeneral>
+
+	<!-- EN: Power -->
+  <VFEA.AbilityStatsPower>威力</VFEA.AbilityStatsPower>
+	<!-- EN: Duration -->
+  <VFEA.AbilityStatsDuration>持续时间</VFEA.AbilityStatsDuration>
+	
+	<!-- EN: Target must be hostile -->
+  <VFEA.TargetMustBeHostile>目标必须处于敌对状态</VFEA.TargetMustBeHostile>
+
+	<!-- EN: Minimum radius -->
+  <VFEA.MinRadius>最小半径</VFEA.MinRadius>
+
+	<!-- EN: Right-click to enable autocasting. -->
+  <VFEA.RClickToAuto>右键单击以切换至自动施放模式。</VFEA.RClickToAuto>
+	<!-- EN: Right-click to disable autocasting. -->
+  <VFEA.RClickToNoAuto>右键单击以切换至自动施放模式。</VFEA.RClickToNoAuto>
+	
+	<!-- EN: Disable corpse decaying -->
+  <VEF_DisableCorpseDecaying>禁用腐尸能力</VEF_DisableCorpseDecaying>
+	<!-- EN: Disable the constant corpse decaying ability of this animal. -->
+  <VEF_DisableCorpseDecayingDesc>禁用此动物加速尸体腐烂的能力。</VEF_DisableCorpseDecayingDesc>
+	<!-- EN: Enable corpse decaying -->
+  <VEF_EnableCorpseDecaying>启用腐尸能力</VEF_EnableCorpseDecaying>
+	<!-- EN: Enable the constant corpse decaying ability of this animal. -->
+  <VEF_EnableCorpseDecayingDesc>启用此动物加速尸体腐烂的能力。</VEF_EnableCorpseDecayingDesc>
+	
+	<!-- EN: Disable digging for food -->
+  <VEF_DisableDigging>禁用挖掘能力</VEF_DisableDigging>
+	<!-- EN: Disable the ability to dig the terrain for food of this animal. -->
+  <VEF_DisableDiggingDesc>禁用此动物从地形中挖掘物品的能力。</VEF_DisableDiggingDesc>
+	<!-- EN: Enable digging for food -->
+  <VEF_EnableDigging>启用挖掘能力</VEF_EnableDigging>
+	<!-- EN: Enable the ability to dig the terrain for food of this animal. -->
+  <VEF_EnableDiggingDesc>启用此动物从地形中挖掘物品的能力。</VEF_EnableDiggingDesc>
+	
+	<!-- EN: Disable gas production -->
+  <VEF_DisableGas>禁用雾气能力</VEF_DisableGas>
+	<!-- EN: Disable the ability to produce gas of this animal. -->
+  <VEF_DisableGasDesc>禁用此动物释放气体、烟雾和尘埃的能力。</VEF_DisableGasDesc>
+	<!-- EN: Enable gas production -->
+  <VEF_EnableGas>启用雾气能力</VEF_EnableGas>
+	<!-- EN: Enable the ability to produce gas of this animal. -->
+  <VEF_EnableGasDesc>启用此动物释放气体、烟雾和尘埃的能力。</VEF_EnableGasDesc>
+</LanguageData>

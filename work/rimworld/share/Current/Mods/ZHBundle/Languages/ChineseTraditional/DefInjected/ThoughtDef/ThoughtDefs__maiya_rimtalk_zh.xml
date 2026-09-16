@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  
+<!-- EN: chitchat+ -->
+  <RimTalk_Chitchat.stages.chitchat.label>閒談+</RimTalk_Chitchat.stages.chitchat.label>
+  
+  <!-- EN: kind words+ -->
+  <RimTalk_KindWords.stages.kind_words.label>好言相待+</RimTalk_KindWords.stages.kind_words.label>
+  <!-- EN: I've been bestowed with kind words! What a nice person!(RimTalk) -->
+  <RimTalk_KindWords.stages.kind_words.description>有人對我說了好話！真是個友善的人！(RimTalk)</RimTalk_KindWords.stages.kind_words.description>
+  
+  <!-- EN: slighted+ -->
+  <RimTalk_Slighted.stages.slighted.label>遭人冷落+</RimTalk_Slighted.stages.slighted.label>
+  <!-- EN: I've been ignored! That hurt my feelings. (RimTalk) -->
+  <RimTalk_Slighted.stages.slighted.description>我被無視了！這真讓我傷心。(RimTalk)</RimTalk_Slighted.stages.slighted.description>
+</LanguageData>

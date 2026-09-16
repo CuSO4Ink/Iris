@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+
+  <!-- EN: gather manufacturing experience -->
+  <Analyse.header_Ancestor>积累制造经验</Analyse.header_Ancestor>
+  <!-- EN: reverse engineer -->
+  <Analyse.header_Direct>逆向工程</Analyse.header_Direct>
+  <!-- EN: Inspect production methodology used in creation of {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat\n\nAffected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <Analyse.shortDesc_Ancestor>检查用于制造 {0} 的生产方法。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</Analyse.shortDesc_Ancestor>
+  <!-- EN: Nondestructively reverse engineer {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat\n\nAffected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <Analyse.shortDesc_Direct>对 {0} 进行无损逆向工程。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</Analyse.shortDesc_Direct>
+
+  <!-- EN: Dissect a {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseDissect.shortDesc_Ancestor>解剖一个 {0}。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseDissect.shortDesc_Ancestor>
+  <!-- EN: Dissect a {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseDissect.shortDesc_Direct>解剖一个 {0}。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseDissect.shortDesc_Direct>
+
+  <!-- EN: examine internals -->
+  <AnalyseDissectNonFlesh.header_Ancestor>内部构造检查</AnalyseDissectNonFlesh.header_Ancestor>
+  <!-- EN: examine internals -->
+  <AnalyseDissectNonFlesh.header_Direct>内部构造检查</AnalyseDissectNonFlesh.header_Direct>
+  <!-- EN: Examine the internal workings of a {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseDissectNonFlesh.shortDesc_Ancestor>检查 {0} 的内部运作。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseDissectNonFlesh.shortDesc_Ancestor>
+  <!-- EN: Examine the internal workings of a {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseDissectNonFlesh.shortDesc_Direct>检查 {0} 的内部运作。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseDissectNonFlesh.shortDesc_Direct>
+
+  <!-- EN: chemical compound analysis -->
+  <AnalyseDrug.header_Direct>化合物分析</AnalyseDrug.header_Direct>
+  <!-- EN: Analyse chemical properties of {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseDrug.shortDesc_Direct>分析 {0} 的化学性质。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseDrug.shortDesc_Direct>
+
+  <!-- EN: resupply material analysis -->
+  <AnalyseFuel.header_Direct>补给材料分析</AnalyseFuel.header_Direct>
+  <!-- EN: Determine an efficient method of resupply of {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseFuel.shortDesc_Direct>确定 {0} 的高效补给方式。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseFuel.shortDesc_Direct>
+
+  <!-- EN: active ingredient analysis -->
+  <AnalyseFuelDrug.header_Direct>有效成分分析</AnalyseFuelDrug.header_Direct>
+  <!-- EN: Determine active components of {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseFuelDrug.shortDesc_Direct>确定 {0} 的活性成分。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseFuelDrug.shortDesc_Direct>
+
+  <!-- EN: fuel efficiency analysis -->
+  <AnalyseFuelFlammable.header_Direct>燃效分析</AnalyseFuelFlammable.header_Direct>
+  <!-- EN: Measure energy density of {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseFuelFlammable.shortDesc_Direct>测量 {0} 的能量密度。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseFuelFlammable.shortDesc_Direct>
+
+  <!-- EN: examine harvest products -->
+  <AnalyseHarvestProduct.header_Direct>收获产物检视</AnalyseHarvestProduct.header_Direct>
+  <!-- EN: Examine harvest production of {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseHarvestProduct.shortDesc_Direct>检视 {0} 的收获产量。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseHarvestProduct.shortDesc_Direct>
+
+  <!-- EN: material analysis -->
+  <AnalyseIngredients.header_Direct>材料分析</AnalyseIngredients.header_Direct>
+  <!-- EN: Determine material properties of {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseIngredients.shortDesc_Direct>确定 {0} 的材料性质。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseIngredients.shortDesc_Direct>
+
+  <!-- EN: ingredient analysis -->
+  <AnalyseIngredientsFood.header_Direct>配料分析</AnalyseIngredientsFood.header_Direct>
+  <!-- EN: Analyze nutritional and gastronomical properties of {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseIngredientsFood.shortDesc_Direct>分析 {0} 的营养与餐饮属性。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseIngredientsFood.shortDesc_Direct>
+
+  <!-- EN: ingredient analysis -->
+  <AnalyseIngredientsRawFood.header_Direct>原料分析</AnalyseIngredientsRawFood.header_Direct>
+  <!-- EN: Analyze nutritional and gastronomical properties of {0}.\n\nAffected by (at bench):\nBench research speed stat\nResearcher research speed stat -->
+  <AnalyseIngredientsRawFood.shortDesc_Direct>分析 {0} 的营养与餐饮属性。\n\n受影响（在研究台）：\n研究台研究速度\n研究者研究速度</AnalyseIngredientsRawFood.shortDesc_Direct>
+
+  <!-- EN: Observe a {0} in motion.\n\nAffected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <AnalysePawn.shortDesc_Ancestor>观察一个 {0} 的运动状态。\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</AnalysePawn.shortDesc_Ancestor>
+  <!-- EN: Observe a {0} in motion.\n\nAffected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <AnalysePawn.shortDesc_Direct>观察一个 {0} 的运动状态。\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</AnalysePawn.shortDesc_Direct>
+
+  <!-- EN: Observe a {0} in motion.\n\nAffected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <AnalysePawnNonFlesh.shortDesc_Ancestor>观察一个 {0} 的运动状态。\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</AnalysePawnNonFlesh.shortDesc_Ancestor>
+  <!-- EN: Observe a {0} in motion.\n\nAffected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <AnalysePawnNonFlesh.shortDesc_Direct>观察一个 {0} 的运动状态。\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</AnalysePawnNonFlesh.shortDesc_Direct>
+
+  <!-- EN: observe plant growth (at location) -->
+  <AnalysePlant.header_Direct>观察植物生长</AnalysePlant.header_Direct>
+  <!-- EN: Observe {0} growth in a suitable habitat.\n\nAffected by (in the field):\nResearch kit research speed stat\nResearcher research speed stat -->
+  <AnalysePlant.shortDesc_Direct>在合适的栖息地观察 {0} 的生长。\n\n受影响（野外）：\n研究套件研究速度\n研究者研究速度</AnalysePlant.shortDesc_Direct>
+
+</LanguageData>

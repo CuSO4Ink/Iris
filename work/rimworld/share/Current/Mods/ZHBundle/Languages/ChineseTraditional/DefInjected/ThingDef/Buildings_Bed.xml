@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Bed -->
+
+  <RH2_CorpoBed.label>公司床</RH2_CorpoBed.label>
+  <RH2_CorpoBed.description>舒適的床墊和床單鋪設在光滑的框架上用以休息。配有智能床墊和光滑的羽絨被，檢查時看起來很美觀。</RH2_CorpoBed.description>
+
+
+  <!-- Officer Bed -->
+
+  <RH2_CorpoDoubleBed.label>公司雙人床</RH2_CorpoDoubleBed.label>
+  <RH2_CorpoDoubleBed.description>為高管準備的豪華床。配有智能床墊和光滑的羽絨被，這本身就是一件藝術品。\n\n適合兩個人。</RH2_CorpoDoubleBed.description>
+
+
+</LanguageData>

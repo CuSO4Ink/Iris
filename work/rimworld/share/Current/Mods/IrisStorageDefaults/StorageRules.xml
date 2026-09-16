@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='utf-8'?>
+<IrisStorageRules>
+  <buildings>
+    <li def="Shelf" role="generic" />
+    <li def="ShelfSmall" role="meal" />
+    <li def="Bookcase" role="book" />
+    <li def="BookcaseSmall" role="book" />
+    <li def="sbz_Crate" role="generic" />
+    <li def="sbz_MidCrate" role="generic" />
+    <li def="sbz_SmallCrate" role="precision" />
+    <li def="sbz_Pallet" role="bulk" />
+    <li def="sbz_MiniPallet" role="bulk" />
+    <li def="sbz_OpenShelf" role="generic" />
+    <li def="sbz_TwoTierDisplayShelf" role="generic" />
+    <li def="sbz_DisplayShelf" role="generic" />
+    <li def="sbz_SmallDisplayShelf" role="generic" />
+    <li def="sbz_TallDisplayShelf" role="generic" />
+    <li def="sbz_NarrowTallDisplayShelf" role="generic" />
+    <li def="sbz_WideHangerShelf" role="apparel" />
+    <li def="sbz_HangerShelf" role="apparel" />
+    <li def="sbz_DisplayCabinet" role="medical" />
+    <li def="sbz_NarrowDisplayCabinet" role="medical" />
+    <li def="sbz_DisplayTable" role="generic" />
+    <li def="sbz_MeatHook" role="animalcorpse" />
+    <li def="sbz_TextileRack" role="textile" />
+    <li def="sbz_Safe" role="valuable" />
+    <li def="sbz_Drum" role="fuel" />
+    <li def="sbz_HorizontalWeaponRack" role="weapon" />
+    <li def="sbz_VerticalWeaponRack" role="weapon" />
+    <li def="sbz_WeaponRack" role="weapon" />
+    <li def="sbz_Fridge" role="meal" />
+    <li def="sbz_LargeFridge" role="raw" />
+    <li def="sbz_SingleChestFridge" role="raw" />
+    <li def="sbz_DoubleChestFridge" role="raw" />
+    <li def="sbz_SingleWallFridge" role="meal" />
+    <li def="sbz_DoubleWallFridge" role="meal" />
+    <li def="RI_Building_AncientShelf" role="generic" />
+    <li def="Shelf_Ratkin_Extraordinary_mechanic" role="generic" />
+    <li def="MiNi_Shelf_Ratkin_Extraordinary_mechanic" role="meal" />
+    <li def="PFK_ShelfSmall" role="generic" />
+    <li def="PFK_AdaptiveClothingRack" role="apparel" />
+    <li def="Wolfein_ShelfSmall" role="generic" />
+    <li def="XXK_Geo_Chest" role="generic" />
+    <li def="Wolfein_1x2_Shelf" role="generic" />
+    <li def="Wolfein_1x1_Shelf" role="generic" />
+    <li def="sbz_TallCrate" role="generic" />
+    <li def="sbz_HalfPallet" role="bulk" />
+    <li def="sbz_RoundPedestal" role="generic" />
+    <li def="OARO_OrderShelf" role="generic" />
+  </buildings>
+  <zones>
+    <li name="储存区" role="fallback" />
+    <li name="非食用生物材料" role="bio" />
+    <li name="厨房原料" role="raw" />
+    <li name="医疗用品" role="medical" />
+    <li name="精密材料" role="precision" />
+  </zones>
+</IrisStorageRules>
