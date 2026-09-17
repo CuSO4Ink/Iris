@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>空洞骑士</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_Charms_QuickSlash"]/stages/li/statFactors/MeleeCooldownFactor</xpath>
+          <value>
+            <MeleeCooldownFactor>0.8</MeleeCooldownFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_Charms_QuickSlash"]/stages/li/statFactors/RangedCooldownFactor</xpath>
+          <value>
+            <RangedCooldownFactor>1</RangedCooldownFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_Charms_QuickSlash"]/stages/li/statFactors/AimingDelayFactor</xpath>
+          <value>
+            <AimingDelayFactor>1</AimingDelayFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_Charms_FragileStrength"]/stages/li/statFactors/MeleeDamageFactor</xpath>
+          <value>
+            <MeleeDamageFactor>1.25</MeleeDamageFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_Charms_FragileStrength"]/stages/li/statOffsets/MeleeArmorPenetration</xpath>
+          <value>
+            <MeleeArmorPenetration>0.05</MeleeArmorPenetration>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_Charms_FragileStrength_Super"]/stages/li/statFactors/MeleeDamageFactor</xpath>
+          <value>
+            <MeleeDamageFactor>1.35</MeleeDamageFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_Charms_FragileStrength_Super"]/stages/li/statOffsets/MeleeArmorPenetration</xpath>
+          <value>
+            <MeleeArmorPenetration>0.05</MeleeArmorPenetration>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_Charms_SteadyBody"]/stages/li/statOffsets/MeleeCooldownFactor</xpath>
+          <value>
+            <MeleeCooldownFactor>-0.05</MeleeCooldownFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_Charms_SteadyBody"]/stages/li/statOffsets/RangedCooldownFactor</xpath>
+          <value>
+            <RangedCooldownFactor>-0.05</RangedCooldownFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_BossImplant_BrokenVessel"]/stages/li/statOffsets/MeleeCooldownFactor</xpath>
+          <value>
+            <MeleeCooldownFactor>-0.05</MeleeCooldownFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_BossImplant_BrokenVessel"]/stages/li/statOffsets/RangedCooldownFactor</xpath>
+          <value>
+            <RangedCooldownFactor>-0.05</RangedCooldownFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_BossImplant_PureVesse"]/stages/li/statFactors/IncomingDamageFactor</xpath>
+          <value>
+            <IncomingDamageFactor>0.85</IncomingDamageFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="XXK_BossImplant_PureVesse"]/stages/li/capMods/li[capacity="Consciousness"]/offset</xpath>
+          <value>
+            <offset>0.05</offset>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/TraitDef[defName="XXK_The_Pale_King_Trait_A"]/degreeDatas/li/statFactors/IncomingDamageFactor</xpath>
+          <value>
+            <IncomingDamageFactor>0.7</IncomingDamageFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/TraitDef[defName="XXK_The_Pale_King_Trait_A"]/degreeDatas/li/statFactors/MeleeDamageFactor</xpath>
+          <value>
+            <MeleeDamageFactor>1.35</MeleeDamageFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/TraitDef[defName="XXK_The_Pale_King_Trait_A"]/degreeDatas/li/statFactors/RangedCooldownFactor</xpath>
+          <value>
+            <RangedCooldownFactor>0.8</RangedCooldownFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/TraitDef[defName="XXK_The_Pale_King_Trait_A"]/degreeDatas/li/statFactors/MeleeHitChance</xpath>
+          <value>
+            <MeleeHitChance>1.15</MeleeHitChance>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/TraitDef[defName="XXK_The_Pale_King_Trait_A"]/degreeDatas/li/statFactors/MeleeDodgeChance</xpath>
+          <value>
+            <MeleeDodgeChance>1.15</MeleeDodgeChance>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/TraitDef[defName="XXK_The_Pale_King_Trait_A"]/degreeDatas/li/statOffsets/MeleeArmorPenetration</xpath>
+          <value>
+            <MeleeArmorPenetration>0.05</MeleeArmorPenetration>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/TraitDef[defName="XXK_Quirrel_Trait_A"]/degreeDatas/li/statFactors/IncomingDamageFactor</xpath>
+          <value>
+            <IncomingDamageFactor>0.85</IncomingDamageFactor>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/TraitDef[defName="XXK_Quirrel_Trait_A"]/degreeDatas/li/statOffsets/MeleeArmorPenetration</xpath>
+          <value>
+            <MeleeArmorPenetration>0.05</MeleeArmorPenetration>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/TraitDef[defName="XXK_Quirrel_Trait_A"]/degreeDatas/li/statOffsets/MeleeHitChance</xpath>
+          <value>
+            <MeleeHitChance>0.05</MeleeHitChance>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/TraitDef[defName="XXK_Quirrel_Trait_A"]/degreeDatas/li/statOffsets/MeleeDodgeChance</xpath>
+          <value>
+            <MeleeDodgeChance>0.05</MeleeDodgeChance>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>

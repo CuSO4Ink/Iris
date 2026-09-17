@@ -59,3 +59,7 @@ IrisTextureBudget、ZHBundle、IrisBalance、IrisFixes、IrisTalentProgression�
 ## 残疫袭击频率更新
 
 IrisBalance 已包含 8 种残疫专属事件的权重调整。尸潮和中心空投改为大型威胁；共用冷却默认 3 个游戏日，在 Iris 袭击平衡设置中可调整。冷却跨地图并随存档保存；第一次加载补丁给 3 天缓冲。任务／强制事件和地图上已有的巢穴刷怪不拦截；正常随机袭击冷却期间不选择残疫派系。不会取消已排队专属事件转出的真正 RaidEnemy。
+
+## 空洞骑士第一版平衡
+
+已加入独立 XML 补丁：收敛快速劈砍、力量护符、Boss永久奖励和两项特殊角色特性的全局倍率。Boss阶段机制保持不变。详细前后数值见 Manifests/HollowKnightBalance.md。无新增模组，仍为272项；需要重启生效，未做独立实战启动测试。
