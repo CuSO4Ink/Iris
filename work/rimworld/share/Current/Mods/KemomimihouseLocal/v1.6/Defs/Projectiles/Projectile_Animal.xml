@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <ThingDef ParentName="BaseBullet">
+    <defName>Projectile_kohimeshot</defName>
+    <label>homura</label>
+    <graphicData>
+      <texPath>AnimalProjectile/kohimeshot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <speed>20</speed>
+      <damageDef>Flame</damageDef>
+      <stoppingPower>1.5</stoppingPower>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <damageAmountBase>60</damageAmountBase>
+    </projectile>
+  </ThingDef>
+  <ThingDef ParentName="BaseBullet">
+    <defName>Projectile_mikoshot</defName>
+    <label>sikigami</label>
+    <graphicData>
+      <texPath>AnimalProjectile/mikoshot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <speed>30</speed>
+      <damageDef>Flame</damageDef>
+      <stoppingPower>1.5</stoppingPower>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <damageAmountBase>16</damageAmountBase>
+    </projectile>
+  </ThingDef>
+    <ThingDef ParentName="BaseBullet">
+    <defName>Projectile_kumagonshot</defName>
+    <label>kumagon</label>
+    <graphicData>
+      <texPath>AnimalProjectile/kumagon</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <speed>15</speed>
+      <damageDef>Bullet</damageDef>
+      <stoppingPower>1.5</stoppingPower>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <damageAmountBase>16</damageAmountBase>
+    </projectile>
+  </ThingDef>  
+    <ThingDef ParentName="BaseBullet">
+    <defName>Projectile_kumagoroushot</defName>
+    <label>kumagorou</label>
+    <graphicData>
+      <texPath>AnimalProjectile/kumagorou</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <speed>25</speed>
+      <damageDef>Bullet_harapan</damageDef>
+      <stoppingPower>1.5</stoppingPower>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <damageAmountBase>16</damageAmountBase>
+    </projectile>
+  </ThingDef>  
+      <ThingDef ParentName="BaseBullet">
+    <defName>Projectile_kuroshot</defName>
+    <label>mari</label>
+    <graphicData>
+      <texPath>AnimalProjectile/kuroshot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <speed>20</speed>
+      <damageDef>Bullet</damageDef>
+      <stoppingPower>1.5</stoppingPower>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <damageAmountBase>10</damageAmountBase>
+    </projectile>
+  </ThingDef>  
+      <ThingDef ParentName="BaseBullet">
+    <defName>Projectile_yukishot</defName>
+    <label>ice</label>
+    <graphicData>
+      <texPath>AnimalProjectile/yukishot</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+    </graphicData>
+    <projectile>
+      <flyOverhead>false</flyOverhead>
+      <speed>20</speed>
+      <damageDef>Frostbite</damageDef>
+      <stoppingPower>1,0</stoppingPower>
+      <armorPenetrationBase>0.25</armorPenetrationBase>
+      <damageAmountBase>10</damageAmountBase>
+    </projectile>
+  </ThingDef>  
+</Defs>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  <LifeStageDef>
+    <defName>AnimalAdultFood</defName>
+    <label>adult</label>
+    <visible>false</visible>
+    <foodMaxFactor>5</foodMaxFactor>
+    <reproductive>true</reproductive>
+    <shearable>true</shearable>
+  </LifeStageDef>
+</Defs>

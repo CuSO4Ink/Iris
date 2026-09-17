@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <MeleeWeapon_konkatana.label>реплика самурайского меча Кон</MeleeWeapon_konkatana.label>
+  <MeleeWeapon_konkatana.description>Это точная копия знаменитого меча, передаваемого в семье Кон. Она всегда носит меч с собой и не хочет, чтобы другие касались его. Его изготовление чрезвычайно сложно.\n\n"Имя меча?... Конконмару".</MeleeWeapon_konkatana.description>
+  <MeleeWeapon_konkatana.tools.0.label>рукоять</MeleeWeapon_konkatana.tools.0.label>
+  <MeleeWeapon_konkatana.tools.1.label>остриё</MeleeWeapon_konkatana.tools.1.label>
+  <MeleeWeapon_konkatana.tools.2.label>лезвие</MeleeWeapon_konkatana.tools.2.label>
+
+  <MeleeWeapon_sirokatana.label>реплика меча Щиро</MeleeWeapon_sirokatana.label>
+  <MeleeWeapon_sirokatana.description>Это точная копия по образцу меча, принадлежащего Щиро. Кажется, она использует его больше для очистки фруктов, чем для того, чтобы указывать им в сторону врагов.</MeleeWeapon_sirokatana.description>
+  <MeleeWeapon_sirokatana.tools.0.label>рукоять</MeleeWeapon_sirokatana.tools.0.label>
+  <MeleeWeapon_sirokatana.tools.1.label>остриё</MeleeWeapon_sirokatana.tools.1.label>
+  <MeleeWeapon_sirokatana.tools.2.label>лезвие</MeleeWeapon_sirokatana.tools.2.label>
+
+</LanguageData>

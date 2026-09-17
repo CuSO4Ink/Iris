@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <aome.label>양뿔 아오메</aome.label>
+  <aome.description>하나의 저택에서 일하고 있는 견습 메이드입니다.
+언니인 아카메와 달리 착실한 그녀는 아카메에게 발신기를 붙여놔서 언니의 위치를 파악하고 있습니다.
+만일 소중한 언니를 다치게 하는 어리석은 자가 있을 경우, 그녀로부터 제재를 받을 것입니다.
+
+전투시 그녀는 직접 만든 인형 [쿠마고로]로 싸웁니다.</aome.description>
+  <aome.tools.0.label>쿠마고로</aome.tools.0.label>
+  <aome.tools.1.label>쿠마고로</aome.tools.1.label>
+
+
+</LanguageData>

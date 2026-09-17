@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <akame.label>아카메</akame.label>
+  <akame.description>하나의 저택에서 일하고 있는 견습 메이드입니다.
+아오메의 언니지만, 매우 겁쟁이이고 여동생 뒤에 자주 숨는 울보입니다.
+진짜 언니처럼 흠모하는 하나를 찾아나선 건 좋지만, 숲속에서 미아가 되어버리고 말았습니다.
+우주 제일 귀여운 언니의 빠른 보호를 요청합니다. 아오메가
+
+그녀는 기본적으로 전투를 좋아하지 않지만, 싸워야 할 때는 인형 친구인 [쿠마곤]이 싸워줍니다.
+원거리에선 쿠마곤을 내던져서 싸웁니다. 친구니깐요.</akame.description>
+  <akame.tools.0.label>쿠마곤</akame.tools.0.label>
+  <akame.tools.1.label>쿠마곤</akame.tools.1.label>
+
+
+</LanguageData>

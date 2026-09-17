@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+<RulePackDef>
+          <defName>name_miko</defName>
+    <rulePack>
+      <rulesStrings>
+        <li>name->[MyAnimalname]</li>
+      </rulesStrings>
+      <rulesRaw>
+        <li Class="Rule_File">
+          <keyword>MyAnimalname</keyword>
+          <path>Names/Animal_miko</path>
+        </li>
+      </rulesRaw>
+          </rulePack>
+  </RulePackDef>
+</Defs>

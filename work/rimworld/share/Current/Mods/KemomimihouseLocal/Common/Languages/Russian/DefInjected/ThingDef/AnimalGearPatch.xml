@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Apparel_konarmor.label>броня Кон</Apparel_konarmor.label>
+  <Apparel_konarmor.description>Доспехи Кон, немного тяжелые...</Apparel_konarmor.description>
+
+  <Apparel_konkasa.label>шляпа Кон</Apparel_konkasa.label>
+  <Apparel_konkasa.description>Бронепляпа Кон, которая закладывает её уши.</Apparel_konkasa.description>
+
+  <Apparel_siroarmor.label>свиток Щиро</Apparel_siroarmor.label>
+  <Apparel_siroarmor.description>Реплика секретного свитка деревни Щиро, немного тяжёлый и громоздкий.</Apparel_siroarmor.description>
+
+  <Apparel_siroomen.label>маска Щиро</Apparel_siroomen.label>
+  <Apparel_siroomen.description>Устрашающая маска наёмника.</Apparel_siroomen.description>
+
+  <Apparel_kuroomen.label>маска Куро</Apparel_kuroomen.label>
+  <Apparel_kuroomen.description>Маска, которую Куро использовала в битвах.</Apparel_kuroomen.description>
+
+</LanguageData>

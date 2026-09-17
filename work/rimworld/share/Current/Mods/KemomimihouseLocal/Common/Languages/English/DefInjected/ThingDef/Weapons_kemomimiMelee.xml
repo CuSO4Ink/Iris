@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <MeleeWeapon_konkatana.label>Kon's Samurai Sword Replica</MeleeWeapon_konkatana.label>
+  <MeleeWeapon_konkatana.description>It is a replica of a famous sword passed down in the family of Kon.
+Since she always wears a sword and does not want other people to touch her sword, her production is extremely difficult.
+"The name of the sword?...Konkonmaru"</MeleeWeapon_konkatana.description>
+  <MeleeWeapon_konkatana.tools.0.label>handle</MeleeWeapon_konkatana.tools.0.label>
+  <MeleeWeapon_konkatana.tools.1.label>point</MeleeWeapon_konkatana.tools.1.label>
+  <MeleeWeapon_konkatana.tools.2.label>edge</MeleeWeapon_konkatana.tools.2.label>
+
+  <MeleeWeapon_sirokatana.label>Shiro's Ninja Sword Replica</MeleeWeapon_sirokatana.label>
+  <MeleeWeapon_sirokatana.description>It is a replica modeled on a sword owned by Shiro.
+She seems to use it more for peeling fruits than to point her at a person.</MeleeWeapon_sirokatana.description>
+  <MeleeWeapon_sirokatana.tools.0.label>handle</MeleeWeapon_sirokatana.tools.0.label>
+  <MeleeWeapon_sirokatana.tools.1.label>point</MeleeWeapon_sirokatana.tools.1.label>
+  <MeleeWeapon_sirokatana.tools.2.label>edge</MeleeWeapon_sirokatana.tools.2.label>
+
+
+</LanguageData>

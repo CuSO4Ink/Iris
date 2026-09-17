@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <Def Class="Kemomimi.Data.ICPDataXmlLoader">
+    <defName>kemomimihana</defName>
+    <ICPortraitData>
+      <li>
+    <key>hana</key>
+    <value>System/hana</value>
+      </li>
+    </ICPortraitData>
+  </Def>
+  <ThingDef ParentName="AnimalThingBase" Class="AnimalMultiPostures.ThingDef_AnimalMultiPostures"
+  ADogSaidBody="LegsArms">
+    <defName>hana</defName>
+    <label>兎獣耳族ハナ</label>
+    <description>とあるコロニーでシロとコンが捕まっていると誤情報を真に受け
+単身乗り込んできました。
+彼女は非常にパワーがありますが、戦闘経験がなく戦いには不慣れです。
+自分の部下（勝手に任命）だからという理由で助けにきましたが
+大事な友達が捕まっていると聞き居ても立っても居られなかったようです。
+
+要するに彼女はツンデレです。
+
+彼女はとても裕福な商人の娘です。
+トレーダーが来た際にいつの間にか取引を行っているようで
+定期的にあなたにシルバーを恵んでくれるでしょう。</description>
+    <statBases>
+      <ComfyTemperatureMin>-20</ComfyTemperatureMin>
+      <ComfyTemperatureMax>50</ComfyTemperatureMax>
+      <MeatAmount>0</MeatAmount>
+      <LeatherAmount>0</LeatherAmount>
+      <ArmorRating_Blunt>0.30</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.30</ArmorRating_Sharp>
+      <ArmorRating_Heat>1</ArmorRating_Heat>
+      <PsychicSensitivity>0</PsychicSensitivity>
+      <Flammability>0.2</Flammability>
+      <MoveSpeed>3.0</MoveSpeed>
+      <MarketValue>2000</MarketValue>
+      <MeleeDodgeChance>0.5</MeleeDodgeChance>
+      <ImmunityGainSpeed>2.0</ImmunityGainSpeed>
+      <Mass>40</Mass>
+    </statBases>
+    <thingClass>AnimalMultiPostures.AMP_SpecialBody</thingClass>
+    <SleepBodyData>
+      <texPath>Things/Pawn/Animal/hanaSleep</texPath>
+      <drawSize>1.5</drawSize>
+    </SleepBodyData>
+    <tools>
+      <li>
+        <label>パンチ</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <cooldownTime>3.0</cooldownTime>
+        <power>1</power>
+        <linkedBodyPartsGroup>LeftHand</linkedBodyPartsGroup>
+      </li>
+      <li>
+        <label>パンチ</label>
+        <capacities>
+          <li>Blunt</li>
+        </capacities>
+        <cooldownTime>3.0</cooldownTime>
+        <power>1</power>
+        <linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
+        <surpriseAttack>
+          <extraMeleeDamages>
+            <li>
+              <def>Stun</def>
+              <amount>40</amount>
+            </li>
+          </extraMeleeDamages>
+        </surpriseAttack>
+      </li>
+    </tools>
+    <race>
+      <nameGenerator>name_hana</nameGenerator>
+      <nameGeneratorFemale>name_hana</nameGeneratorFemale>
+      <body>Human</body>
+      <useMeatFrom>Human</useMeatFrom>
+      <petness>1</petness>
+      <baseBodySize>0.9</baseBodySize>
+      <baseHungerRate>1</baseHungerRate>
+      <baseHealthScale>1.00</baseHealthScale>
+      <foodType>VegetarianRoughAnimal</foodType>
+      <gestationPeriodDays>0</gestationPeriodDays>
+      <trainability>Advanced</trainability>
+      <wildness>0.01</wildness>
+      <packAnimal>true</packAnimal>
+      <nuzzleMtbHours>48</nuzzleMtbHours>
+      <manhunterOnTameFailChance>0.8</manhunterOnTameFailChance>
+      <hasGenders>false</hasGenders>
+      <wildBiomes>
+        <SeaIce>0</SeaIce>
+        <IceSheet>0</IceSheet>
+        <Tundra>0</Tundra>
+        <BorealForest>0.05</BorealForest>
+        <TemperateForest>0.05</TemperateForest>
+        <TropicalRainforest>0.05</TropicalRainforest>
+        <AridShrubland>0</AridShrubland>
+        <Desert>0</Desert>
+        <ExtremeDesert>0</ExtremeDesert>
+        <TemperateSwamp>0</TemperateSwamp>
+        <ColdBog>0</ColdBog>
+        <TropicalSwamp>0.05</TropicalSwamp>
+      </wildBiomes>
+      <lifeExpectancy>80</lifeExpectancy>
+      <lifeStageAges>
+        <li>
+          <def>AnimalBaby</def>
+          <minAge>0</minAge>
+        </li>
+        <li>
+          <def>AnimalJuvenile</def>
+          <minAge>3</minAge>
+        </li>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>7</minAge>
+        </li>
+      </lifeStageAges>
+      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+    </race>
+    <comps>
+          <li Class="Kemomimi.CompProperties_SpawnController">
+    <LimitInt>1</LimitInt>
+    <countDead>false</countDead>
+    <sameGroup />
+    </li>
+      <li Class="CompProperties_Milkable">
+        <milkDef>Silver</milkDef>
+        <milkIntervalDays>5</milkIntervalDays>
+        <milkAmount>50</milkAmount>
+        <milkFemaleOnly>false</milkFemaleOnly>
+      </li>
+      <li Class="CompProperties_Shearable">
+        <woolDef>hanaWool</woolDef>
+        <shearIntervalDays>20</shearIntervalDays>
+        <woolAmount>100</woolAmount>
+      </li>
+    </comps>
+    <tradeTags>
+    </tradeTags>
+  </ThingDef>
+  <PawnKindDef ParentName="AnimalKindBase">
+    <defName>hana</defName>
+    <label>兎獣耳族ハナ</label>
+    <race>hana</race>
+    <canArriveManhunter>false</canArriveManhunter>
+    <combatPower>20</combatPower>
+    <ecoSystemWeight>1</ecoSystemWeight>
+    <wildGroupSize>
+      <min>1</min>
+      <max>1</max>
+    </wildGroupSize>
+    <minGenerationAge>14</minGenerationAge>
+    <maxGenerationAge>15</maxGenerationAge>
+    <labelMale>hana</labelMale>
+    <labelFemale>hana</labelFemale>
+    <lifeStages>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/hana</texPath>
+          <drawSize>1.5</drawSize>
+        </bodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/hana</texPath>
+          <drawSize>1.5</drawSize>
+        </bodyGraphicData>
+        <femaleGraphicData>
+          <texPath>Things/Pawn/Animal/hana</texPath>
+          <drawSize>1.5</drawSize>
+        </femaleGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Things/Pawn/Animal/hana</texPath>
+          <drawSize>1.5</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/hana</texPath>
+          <drawSize>1.5</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+    </lifeStages>
+  </PawnKindDef>
+</Defs>

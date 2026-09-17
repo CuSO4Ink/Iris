@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <ThingDef ParentName="WoolBase">
+    <defName>siroWool</defName>
+    <label>シロの髪の毛</label>
+    <description>狼獣耳族シロの髪の毛です。
+非常にいい香りでモフモフ。</description>
+    <graphicData>
+      <color>(228,225,219)</color>
+    </graphicData>
+    <statBases>
+      <StuffPower_Insulation_Heat>20</StuffPower_Insulation_Heat>
+      <StuffPower_Insulation_Cold>15</StuffPower_Insulation_Cold>
+      <StuffPower_Armor_Sharp>1.4</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>1.0</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>2.0</StuffPower_Armor_Heat>
+      <MarketValue>6</MarketValue>
+      <Beauty>2</Beauty>
+    </statBases>
+    <stuffProps>
+      <color>(228,225,219)</color>
+    </stuffProps>
+  </ThingDef>
+   <ThingDef ParentName="WoolBase">
+    <defName>konWool</defName>
+    <label>コンの髪の毛</label>
+    <description>狐獣耳族の髪の毛です。
+しなやかで触り心地は最高です。</description>
+    <graphicData>
+      <color>(196,143,103)</color>
+    </graphicData>
+    <statBases>
+      <StuffPower_Insulation_Heat>15</StuffPower_Insulation_Heat>
+      <StuffPower_Insulation_Cold>20</StuffPower_Insulation_Cold>
+      <StuffPower_Armor_Sharp>1.0</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>1.4</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>1.0</StuffPower_Armor_Heat>
+      <MarketValue>6</MarketValue>
+      <Beauty>2</Beauty>
+    </statBases>
+    <stuffProps>
+      <color>(196,143,103)</color>
+    </stuffProps>
+  </ThingDef>
+   <ThingDef ParentName="WoolBase">
+    <defName>hanaWool</defName>
+    <label>ハナの髪の毛</label>
+    <description>兎獣耳族の髪の毛です。
+非常に美しい、そしていい香りがする</description>
+    <graphicData>
+      <color>(228,181,168)</color>
+    </graphicData>
+    <statBases>
+      <StuffPower_Insulation_Heat>25</StuffPower_Insulation_Heat>
+      <StuffPower_Insulation_Cold>25</StuffPower_Insulation_Cold>
+      <StuffPower_Armor_Sharp>1.0</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>1.0</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>0.5</StuffPower_Armor_Heat>
+      <MarketValue>8</MarketValue>
+      <Beauty>2</Beauty>
+    </statBases>
+    <stuffProps>
+      <color>(228,181,168)</color>
+    </stuffProps>
+  </ThingDef>
+   <ThingDef ParentName="WoolBase">
+    <defName>mikoWool</defName>
+    <label>ミコの金色毛</label>
+    <description>化猫獣耳、ミコの黄金に輝く毛です。
+眩しすぎる・・・！</description>
+    <graphicData>
+      <color>(224,199,159)</color>
+    </graphicData>
+    <statBases>
+      <StuffPower_Insulation_Heat>30</StuffPower_Insulation_Heat>
+      <StuffPower_Insulation_Cold>30</StuffPower_Insulation_Cold>
+      <StuffPower_Armor_Sharp>1.8</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>1.8</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>2.0</StuffPower_Armor_Heat>
+      <MarketValue>12</MarketValue>
+      <Beauty>4</Beauty>
+    </statBases>
+    <stuffProps>
+      <color>(224,199,159)</color>
+    </stuffProps>
+  </ThingDef>
+     <ThingDef ParentName="WoolBase">
+    <defName>akameWool</defName>
+    <label>アカメの羊毛</label>
+    <description>羊角族の羊毛です。ぴんくのモフモフモフモフモフモフモフ</description>
+    <graphicData>
+      <color>(245,215,212)</color>
+    </graphicData>
+    <statBases>
+      <StuffPower_Insulation_Heat>30</StuffPower_Insulation_Heat>
+      <StuffPower_Insulation_Cold>60</StuffPower_Insulation_Cold>
+      <StuffPower_Armor_Sharp>1.0</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>1.0</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>2.0</StuffPower_Armor_Heat>
+      <MarketValue>10</MarketValue>
+      <Beauty>3</Beauty>
+    </statBases>
+    <stuffProps>
+      <color>(245,215,212)</color>
+    </stuffProps>
+  </ThingDef>
+     <ThingDef ParentName="WoolBase">
+    <defName>aomeWool</defName>
+    <label>アオメの羊毛</label>
+    <description>羊角族の羊毛です。あおのモフモフモフモフモフモフモフ</description>
+    <graphicData>
+      <color>(220,242,247)</color>
+    </graphicData>
+    <statBases>
+      <StuffPower_Insulation_Heat>30</StuffPower_Insulation_Heat>
+      <StuffPower_Insulation_Cold>60</StuffPower_Insulation_Cold>
+      <StuffPower_Armor_Sharp>1.0</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>1.0</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>2.0</StuffPower_Armor_Heat>
+      <MarketValue>10</MarketValue>
+      <Beauty>3</Beauty>
+    </statBases>
+    <stuffProps>
+      <color>(220,242,247)</color>
+    </stuffProps>
+  </ThingDef>
+   <ThingDef ParentName="WoolBase">
+    <defName>kuroWool</defName>
+    <label>クロの毛</label>
+    <description>クロの黒い毛です。
+「とても強靭なので首に巻きつけても簡単には切れませんよ・・・」</description>
+    <graphicData>
+      <color>(107,99,91)</color>
+    </graphicData>
+    <statBases>
+      <StuffPower_Insulation_Heat>10</StuffPower_Insulation_Heat>
+      <StuffPower_Insulation_Cold>10</StuffPower_Insulation_Cold>
+      <StuffPower_Armor_Sharp>1.5</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>1.5</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>4.0</StuffPower_Armor_Heat>
+      <MarketValue>10</MarketValue>
+      <Beauty>3</Beauty>
+    </statBases>
+    <stuffProps>
+      <color>(107,99,91)</color>
+    </stuffProps>
+  </ThingDef>
+   <ThingDef ParentName="WoolBase">
+    <defName>yukiwool</defName>
+    <label>ユキの鱗</label>
+    <description>ユキの強靭な鱗です。
+触ると少し冷たい。</description>
+    <graphicData>
+      <color>(126,138,186)</color>
+    </graphicData>
+    <statBases>
+      <StuffPower_Insulation_Heat>5</StuffPower_Insulation_Heat>
+      <StuffPower_Insulation_Cold>100</StuffPower_Insulation_Cold>
+      <StuffPower_Armor_Sharp>2.0</StuffPower_Armor_Sharp>
+      <StuffPower_Armor_Blunt>2.0</StuffPower_Armor_Blunt>
+      <StuffPower_Armor_Heat>0.5</StuffPower_Armor_Heat>
+      <MarketValue>50</MarketValue>
+      <Beauty>5</Beauty>
+    </statBases>
+    <stuffProps>
+      <color>(126,138,186)</color>
+       <commonality>0.001</commonality>
+       <statFactors>
+        <MaxHitPoints>3.0</MaxHitPoints>
+      </statFactors>
+    </stuffProps>
+  </ThingDef>
+</Defs>

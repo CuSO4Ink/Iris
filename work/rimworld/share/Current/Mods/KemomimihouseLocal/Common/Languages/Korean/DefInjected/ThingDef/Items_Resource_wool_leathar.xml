@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <siroWool.label>시로의 머리카락</siroWool.label>
+  <siroWool.description>늑대 귀 시로의 머리입니다. 
+매우 향기롭고 푹신합니다.</siroWool.description>
+
+  <konWool.label>콘의 머리카락</konWool.label>
+  <konWool.description>여우 귀 콘의 머리카락입니다. 
+부드럽고 촉감은 최고입니다.</konWool.description>
+
+  <hanaWool.label>하나의 머리카락</hanaWool.label>
+  <hanaWool.description>토끼 귀 히나의 머리카락입니다.
+매우 아름답고, 좋은 향기가 납니다</hanaWool.description>
+
+  <mikoWool.label>미코의 금색 머리카락</mikoWool.label>
+  <mikoWool.description>고양이 귀 미코의 금발 머리카락입니다.
+너무 눈부십니다...!</mikoWool.description>
+
+  <akameWool.label>아카메의 양털</akameWool.label>
+  <akameWool.description>아카메의 양털입니다. 핑크색 복슬복슬복슬복슬복슬복슬복슬</akameWool.description>
+  <aomeWool.label>아오메의 양털</aomeWool.label>
+  <aomeWool.description>아오메의 양털입니다. 파란색 복슬복슬복슬복슬복슬복슬복슬</aomeWool.description>
+
+  <kuroWool.label>쿠로의 머리카락</kuroWool.label>
+  <kuroWool.description>검고 검은 머리카락입니다
+"너무 강해서 목에 감겨도 쉽게 부러지지 않습니다 ..."</kuroWool.description>
+
+  <yukiwool.label>유키의 비늘들</yukiwool.label>
+  <yukiwool.description>유키의 딱딱한 비늘들입니다.
+만지면 약간 차갑습니다.</yukiwool.description>
+
+  <Projectile_mikoshot.label>식신</Projectile_mikoshot.label>
+  <Projectile_kumagonshot.label>쿠마곤</Projectile_kumagonshot.label>
+  <Projectile_kumagoroushot.label>쿠마고로</Projectile_kumagoroushot.label>
+
+</LanguageData>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <yuki.label>빙룡 유키</yuki.label>
+  <yuki.description>한때 동쪽에서 두려워했던 용입니다.
+미코와의 7일 간의 전투에서 패배하여 용에서 인간으로 변했습니다.
+동시에 일부 능력이 봉인된 것 같습니다.
+
+인간과 미코에 대한 복수는 점차 희미해졌고, 이제는 인간 문화를 즐기고 있습니다.
+개인용 컴퓨터를 사용할 수 있는 것 같습니다.
+미코를 힘으로 이길 수 없으므로, IT 지식으로 승리하려고 합니다.
+물리 또는 주술로 반격합니다.</yuki.description>
+  <yuki.tools.0.label>용의 발톱</yuki.tools.0.label>
+  <yuki.tools.1.label>용의 발톱</yuki.tools.1.label>
+
+
+</LanguageData>

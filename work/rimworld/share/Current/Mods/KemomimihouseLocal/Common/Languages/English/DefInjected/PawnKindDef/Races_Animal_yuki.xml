@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <yuki.label>Ice Dragon Yuki</yuki.label>
+  <yuki.labelPlural>Ice Dragon Yukis</yuki.labelPlural>
+  <yuki.lifeStages.0.label>Ice Dragon Yuki</yuki.lifeStages.0.label>
+  <yuki.lifeStages.0.labelPlural>Ice Dragon Yuki</yuki.lifeStages.0.labelPlural>
+  <yuki.lifeStages.0.labelMale>yuki</yuki.lifeStages.0.labelMale>
+  <yuki.lifeStages.0.labelMalePlural>male Ice Dragon Yukis</yuki.lifeStages.0.labelMalePlural>
+  <yuki.lifeStages.0.labelFemale>yuki</yuki.lifeStages.0.labelFemale>
+  <yuki.lifeStages.0.labelFemalePlural>female Ice Dragon Yukis</yuki.lifeStages.0.labelFemalePlural>
+  <yuki.lifeStages.1.label>Ice Dragon Yuki</yuki.lifeStages.1.label>
+  <yuki.lifeStages.1.labelPlural>Ice Dragon Yuki</yuki.lifeStages.1.labelPlural>
+  <yuki.lifeStages.1.labelMale>yuki</yuki.lifeStages.1.labelMale>
+  <yuki.lifeStages.1.labelMalePlural>male Ice Dragon Yukis</yuki.lifeStages.1.labelMalePlural>
+  <yuki.lifeStages.1.labelFemale>yuki</yuki.lifeStages.1.labelFemale>
+  <yuki.lifeStages.1.labelFemalePlural>female Ice Dragon Yukis</yuki.lifeStages.1.labelFemalePlural>
+  <yuki.lifeStages.2.label>Ice Dragon Yuki</yuki.lifeStages.2.label>
+  <yuki.lifeStages.2.labelPlural>Ice Dragon Yuki</yuki.lifeStages.2.labelPlural>
+  <yuki.lifeStages.2.labelMale>yuki</yuki.lifeStages.2.labelMale>
+  <yuki.lifeStages.2.labelMalePlural>male Ice Dragon Yukis</yuki.lifeStages.2.labelMalePlural>
+  <yuki.lifeStages.2.labelFemale>yuki</yuki.lifeStages.2.labelFemale>
+  <yuki.lifeStages.2.labelFemalePlural>female Ice Dragon Yukis</yuki.lifeStages.2.labelFemalePlural>
+  <yuki.labelMale>yuki</yuki.labelMale>
+  <yuki.labelMalePlural>yukis</yuki.labelMalePlural>
+  <yuki.labelFemale>yuki</yuki.labelFemale>
+  <yuki.labelFemalePlural>yukis</yuki.labelFemalePlural>
+
+
+</LanguageData>

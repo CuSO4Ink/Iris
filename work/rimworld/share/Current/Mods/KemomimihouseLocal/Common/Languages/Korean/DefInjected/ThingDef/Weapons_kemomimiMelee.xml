@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <MeleeWeapon_konkatana.label>콘의 사무라이 칼 복제</MeleeWeapon_konkatana.label>
+  <MeleeWeapon_konkatana.description>콘의 집안(가계)에 전해지는 명도의 복제입니다.
+그녀는 늘 칼을 지니고 다니며, 다른 사람이 칼을 만지는걸 싫어하기 때문에, 제작하는게 매우 곤란했습니다.(제작은 곤란함의 극치였습니다)
+칼의 이름?....콘콘마루카게미츠...</MeleeWeapon_konkatana.description>
+  <MeleeWeapon_konkatana.tools.0.label>손잡이</MeleeWeapon_konkatana.tools.0.label>
+  <MeleeWeapon_konkatana.tools.1.label>끝</MeleeWeapon_konkatana.tools.1.label>
+  <MeleeWeapon_konkatana.tools.2.label>검날</MeleeWeapon_konkatana.tools.2.label>
+
+  <MeleeWeapon_sirokatana.label>흰색의 닌도 복제</MeleeWeapon_sirokatana.label>
+  <MeleeWeapon_sirokatana.description>시로가 소유하고 있는 닌도를 모델로 만든 복제입니다.
+그녀는 날을 사람에게 겨누는 것보다, 과일을 깎는데 쓰는 일이 많은 모양입니다.</MeleeWeapon_sirokatana.description>
+  <MeleeWeapon_sirokatana.tools.0.label>손잡이</MeleeWeapon_sirokatana.tools.0.label>
+  <MeleeWeapon_sirokatana.tools.1.label>끝</MeleeWeapon_sirokatana.tools.1.label>
+  <MeleeWeapon_sirokatana.tools.2.label>검날</MeleeWeapon_sirokatana.tools.2.label>
+</LanguageData>

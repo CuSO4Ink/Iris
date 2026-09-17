@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <siroWool.label>шерсть Щиро</siroWool.label>
+  <siroWool.description>Это серебристый волос волко-девушки Щиро. Очень ароматная и пушистая шерсть.</siroWool.description>
+
+  <konWool.label>шерсть Кон</konWool.label>
+  <konWool.description>Это каштановый волос лисо-девушки Кон. Гибкая шерсть, и на ощупь прекрасная.</konWool.description>
+
+  <hanaWool.label>шерсть Ханы</hanaWool.label>
+  <hanaWool.description>Это розовый волос кролико-девушки Ханы. Очень красивая и приятно пахнущая шерсть.</hanaWool.description>
+
+  <mikoWool.label>шерсть Мико</mikoWool.label>
+  <mikoWool.description>Это золотистый волос кошко-девушки Мико. Он слишком ослепительный!</mikoWool.description>
+
+  <akameWool.label>шерсть Акамэ</akameWool.label>
+  <akameWool.description>Это розовый волос девушки-овечки Акамэ. Розовый Мофу Мофу Мофу Мофу Мофу Мофу Мофу Мофу</akameWool.description>
+
+  <aomeWool.label>шерсть Аомэ</aomeWool.label>
+  <aomeWool.description>Это голубой волос девушки-овечки Аомэ. Голубой Мофу Мофу Мофу Мофу Мофу Мофу Мофу Мофу</aomeWool.description>
+
+  <kuroWool.label>шерсть Куро</kuroWool.label>
+  <kuroWool.description>Это тёмный волос собачко-девушки Куро. "Он довольно прочный, что не порвётся, если обвить его вокруг своей шеи..."</kuroWool.description>
+
+  <yukiwool.label>шерсть Юки</yukiwool.label>
+  <yukiwool.description>Это "ледяной" волос драконо-девушки Юки. На ощупь немного прохладный.</yukiwool.description>
+
+</LanguageData>

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>kemomimihouse</name>
+  <author>psychelo</author>
+  <supportedVersions>
+    <li>1.0</li>
+    <li>1.1</li>
+    <li>1.2</li>
+    <li>1.3</li>
+    <li>1.4</li>
+    <li>1.5</li>
+    <li>1.6</li>
+  </supportedVersions>
+  <modIconPath IgnoreIfNoMatchingField="True">System/KemomimiIcon</modIconPath>
+  <packageId>psyche.kemomimihouse</packageId>
+  <url>https://twitter.com/psyche047</url>
+
+  <description>
+とある自作ゲーム（制作中）から派遣された9人の獣耳少女を追加するmodです。
+【シロ】
+白髪の狼獣耳忍者少女は、里を焼かれ一人森を彷徨っています。
+見つけたらやさしく説得し保護してあげましょう。
+彼女をブラッシングすることでモフモフな髪の毛を取得できます。
+また、彼女はご主人の役に立とうと綺麗な石を拾ってきてくれます。
+数日ごとに彼女からヒスイを少量取得できるでしょう。
+
+【コン】
+茶髪の狐獣耳侍少女は、隣村の行方不明となった友人を探し森を探索しています。
+彼女を説得しコロニーに迎え入れれば心強い用心棒となることでしょう。
+彼女もまたブラッシングにより美しい毛を提供してくれます。
+彼女は金に目がありません。外をうろうろしているときに見つけてくるようです。
+宿代として彼女からゴールドを少量取得することができます。
+
+【ハナ】
+赤髪の兎獣耳少女は、お金持ちの商人の娘です。自分の部下二人（大事な友達）が
+とあるコロニーで捕虜にされているという噂を聞き救出にきました。
+あなたの話術が低い場合、高確率で彼女は襲ってきます。
+ですが戦闘能力はほぼ皆無ですので安心してください。
+彼女は非常に力持ちなので旅の際にはとても役に立ってくれるでしょう。
+また、彼女からの信頼を得たのであれば、あなたに定期的にシルバーを恵んでくれます。
+
+【ミコ】
+金色の毛のを持つ化猫獣耳は、人里離れた場所で孤独な暮らしをしています。
+陰陽師である彼女はその強大な力故、人々に恐れられる存在です。
+彼女の住処である森の近くに、あなたがコロニーを建てたため、彼女は警戒しています。
+彼女を受け入れることができた場合、あなたにその力を少しばかり貸してくれることでしょう。
+ただし彼女の資産価値は非常に高く、彼女は非常に食いしん坊です。
+
+【アカメ】
+ピンク髪の羊獣角少女は、ハナのお屋敷で働いている見習いメイドです。
+アオメの姉ですが非常に臆病で妹の後ろに隠れていることが多い泣き虫な子です。
+実の姉のように慕っていたハナを探しに出たのはいいものの、森の中で迷子になってしまいました。
+宇宙一かわいい姉の早急な保護を要請します。by aome
+
+【アオメ】
+青髪の羊獣角少女は、アカメと同じくハナのお屋敷でメイド見習いをしています。
+姉のアカメと違いしっかり者の彼女は、アカメに発信機を取り付けており姉の位置を把握しています。
+万が一大事な姉を傷つけるような愚か者がいた場合、彼女からの制裁を受けるでしょう。
+
+【クロ】
+黒髪の犬獣耳少女は、シロとは別の里の見習い忍者です。
+彼女はシロのことをとても慕っており、行方不明となったシロを探索していますが
+非常に方向音痴なため砂漠を彷徨っているようです。
+下忍ではあるものの、戦闘能力は非常に高いため説得には細心の注意が必要です。
+
+【ユキ】
+強靭な鱗を持つ氷竜人は、かつて金色の化猫と戦い、純粋な竜から竜人に変えられてしまいました。
+以来まったく姿を見る者はいませんでしたが、最近になり氷の大地にて
+青い竜の尻尾を持つ少女の目撃例が報告されています。
+探しに行くのであれば、万全の準備をすることをおすすめします。
+
+【コヒメ】
+二つの角を持つ彼女は、鬼の力を持つ人間です。
+鬼の力を持つ彼女は恐れられ、虐げられてきましたが
+やさしい心を持つ彼女は暴力を振るうことが苦手で、一人各地を旅しています。
+鬼の力は非常に強力で、特に火炎攻撃が得意です。
+戦闘となれば仲間を守ることに躊躇はないでしょう。
+
+※このmodは開発途中です。
+アイテムやキャラクターの追加、ステータスの調整など行われる可能性がありますのでご注意ください。
+
+
+It is a mod that adds seven animal-ear girls dispatched from a certain self-made game (under construction).
+[Siro]
+A white-haired wolf-beast ear ninja girl is roaming the forest after being burnt in a village.
+If you find one, persuade it gently and protect it.
+You can get fluffy hair by brushing her.
+She also picks up beautiful stones to help her master.
+You will get a small amount of jade from her every few days.
+
+[Kon]
+The brown-haired fox animal ear samurai girl is exploring the forest in search of a missing friend in the neighboring village.
+Persuading her and welcoming her to the colony would be a powerful bouncer.
+She also provides beautiful hair by brushing.
+She has no interest in gold It seems that you will find it while wandering outside.
+You can get a small amount of gold from her for lodging.
+
+[Hana]
+The red-haired rabbit-eared girl is the daughter of a rich merchant. Two of my subordinates (important friends)
+I heard a rumor that they were being taken prisoner in a certain colony and rescued.
+If your speaking skill is low, there is a high probability that she will attack.
+But please be assured that there is almost no combat ability.
+She is very strong and will be very helpful when traveling.
+Also, if you trust her, she will bless you with silver on a regular basis.
+
+[Miko]
+The cat ears with golden hair have a lonely life in remote areas.
+As an onmyoji, she is a feared person because of her mighty power.
+She's on the alert because you've built a colony near the forest where she lives.
+If you can accept her, it will lend you some of the power.
+However, her property value is very high and she is very gluttonous.
+
+[Akame]
+Sheep girl with pink hair is an apprentice maid working in Hana's mansion.
+She is Aome's older sister, but she is a very timid and often crying child hiding behind her sister.
+She went out looking for Hana, who was longing for her like her real sister, but she got lost in the woods.
+I request the immediate protection of the cute little sister in the universe. from aome
+
+[Aome]
+The blue-haired sheep-beast horn girl is a maid apprentice at Hana's mansion, just like Akame.
+Unlike her sister, Akame, she is a solid person and has a transmitter attached to Akame, so she knows where she is.
+If a fool would hurt her big sister, she would be sanctioned.
+
+[Kuro]
+The black-haired dog-eared girl is an apprentice ninja in a village different from Shiro.
+She is very fond of Shiro and is exploring the missing Shiro
+She seems to be wandering the desert because she is so deaf.
+Although she is vulgar, she must be very careful in persuading her, as her combat ability is extremely high.
+
+[Yuki]
+An ice dragonman with strong scales once fought a golden cat and was transformed from a pure dragon into a dragonman.
+Since then, no one has ever seen him, but recently on the ice land
+Sightings of a girl with a blue dragon tail have been reported.
+If you are looking for something, i recommend that you make all the necessary preparations.
+
+[Kohime]
+With two horns, she is a human with the power of a Oni.
+She has the power of a Oni and has been feared and oppressed
+With a kind heart, she is not good at using violence and travels alone.
+The power of Oni is very strong, and they are especially good at flame attacks.
+When it comes to combat, she won't hesitate to protect her friends.
+[
+* This mod is under development.
+Please note that items and characters may be added and status may be adjusted.
+
+[言語/language]
+japanese
+english
+chinese(Nekoshi's translation)
+Korean(13th Guest's translation)
+Russia(いのしし_3's translation)
+-----------------------------------------------
+注意
+当MODの再配布、商用利用、営利利用を禁止します。
+
+Caution
+Redistribution, commercial use, and commercial use of this MOD is prohibited.
+
+注意事项
+禁止重新分发，商业使用和该MOD的商业使用。
+
+주의
+이 MOD 재배포 상용 이용, 영리를 금지합니다.
+
+Запись
+Распространение, коммерческое использование и коммерческое использование этого мода запрещено.
+-----------------------------------------------
+</description>
+</ModMetaData>

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <miko.label>Кошко-девушка Мико</miko.label>
+  <miko.labelPlural>Кошко-девушки Мико</miko.labelPlural>
+  <miko.lifeStages.0.label>Кошко-девушка Мико</miko.lifeStages.0.label>
+  <miko.lifeStages.0.labelPlural>Кошко-девушка Мико</miko.lifeStages.0.labelPlural>
+  <miko.lifeStages.0.labelMale>Мико</miko.lifeStages.0.labelMale>
+  <miko.lifeStages.0.labelMalePlural>Кошко-девушка Мико</miko.lifeStages.0.labelMalePlural>
+  <miko.lifeStages.0.labelFemale>Мико</miko.lifeStages.0.labelFemale>
+  <miko.lifeStages.0.labelFemalePlural>Кошко-девушка Мико</miko.lifeStages.0.labelFemalePlural>
+  <miko.lifeStages.1.label>Кошко-девушка Мико</miko.lifeStages.1.label>
+  <miko.lifeStages.1.labelPlural>Кошко-девушка Мико</miko.lifeStages.1.labelPlural>
+  <miko.lifeStages.1.labelMale>Мико</miko.lifeStages.1.labelMale>
+  <miko.lifeStages.1.labelMalePlural>Кошко-девушка Мико</miko.lifeStages.1.labelMalePlural>
+  <miko.lifeStages.1.labelFemale>Мико</miko.lifeStages.1.labelFemale>
+  <miko.lifeStages.1.labelFemalePlural>Кошко-девушка Мико</miko.lifeStages.1.labelFemalePlural>
+  <miko.lifeStages.2.label>Кошко-девушка Мико</miko.lifeStages.2.label>
+  <miko.lifeStages.2.labelPlural>Кошко-девушка Мико</miko.lifeStages.2.labelPlural>
+  <miko.lifeStages.2.labelMale>Мико</miko.lifeStages.2.labelMale>
+  <miko.lifeStages.2.labelMalePlural>Кошко-девушка Мико</miko.lifeStages.2.labelMalePlural>
+  <miko.lifeStages.2.labelFemale>Мико</miko.lifeStages.2.labelFemale>
+  <miko.lifeStages.2.labelFemalePlural>Кошко-девушка Мико</miko.lifeStages.2.labelFemalePlural>
+  <miko.labelMale>Мико</miko.labelMale>
+  <miko.labelMalePlural>Мико</miko.labelMalePlural>
+  <miko.labelFemale>Мико</miko.labelFemale>
+  <miko.labelFemalePlural>Мико</miko.labelFemalePlural>
+
+</LanguageData>

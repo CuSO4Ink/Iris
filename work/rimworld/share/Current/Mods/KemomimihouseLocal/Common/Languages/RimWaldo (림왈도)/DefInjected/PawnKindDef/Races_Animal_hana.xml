@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <hana.label>토끼 귀 하나</hana.label>
+  <hana.labelPlural>토끼 귀 하나들</hana.labelPlural>
+  <hana.lifeStages.0.label>토끼 귀 하나</hana.lifeStages.0.label>
+  <hana.lifeStages.0.labelPlural>토끼 귀 하나</hana.lifeStages.0.labelPlural>
+  <hana.lifeStages.0.labelMale>하나</hana.lifeStages.0.labelMale>
+  <hana.lifeStages.0.labelMalePlural>수컷 토끼 귀 하나들</hana.lifeStages.0.labelMalePlural>
+  <hana.lifeStages.0.labelFemale>하나</hana.lifeStages.0.labelFemale>
+  <hana.lifeStages.0.labelFemalePlural>암컷 토끼 귀 하나들</hana.lifeStages.0.labelFemalePlural>
+  <hana.lifeStages.1.label>토끼 귀 하나</hana.lifeStages.1.label>
+  <hana.lifeStages.1.labelPlural>토끼 귀 하나</hana.lifeStages.1.labelPlural>
+  <hana.lifeStages.1.labelMale>하나</hana.lifeStages.1.labelMale>
+  <hana.lifeStages.1.labelMalePlural>수컷 토끼 귀 하나들</hana.lifeStages.1.labelMalePlural>
+  <hana.lifeStages.1.labelFemale>하나</hana.lifeStages.1.labelFemale>
+  <hana.lifeStages.1.labelFemalePlural>암컷 토끼 귀 하나들</hana.lifeStages.1.labelFemalePlural>
+  <hana.lifeStages.2.label>토끼 귀 하나</hana.lifeStages.2.label>
+  <hana.lifeStages.2.labelPlural>토끼 귀 하나</hana.lifeStages.2.labelPlural>
+  <hana.lifeStages.2.labelMale>하나</hana.lifeStages.2.labelMale>
+  <hana.lifeStages.2.labelMalePlural>수컷 토끼 귀 하나들</hana.lifeStages.2.labelMalePlural>
+  <hana.lifeStages.2.labelFemale>하나</hana.lifeStages.2.labelFemale>
+  <hana.lifeStages.2.labelFemalePlural>암컷 토끼 귀 하나들</hana.lifeStages.2.labelFemalePlural>
+  <hana.labelMale>하나</hana.labelMale>
+  <hana.labelMalePlural>하나들</hana.labelMalePlural>
+  <hana.labelFemale>하나</hana.labelFemale>
+  <hana.labelFemalePlural>하나들</hana.labelFemalePlural>
+
+
+</LanguageData>

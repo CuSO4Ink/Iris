@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <miko.label>Cat ears miko</miko.label>
+  <miko.labelPlural>Cat ears mikos</miko.labelPlural>
+  <miko.lifeStages.0.label>Cat ears miko</miko.lifeStages.0.label>
+  <miko.lifeStages.0.labelPlural>Cat ears miko</miko.lifeStages.0.labelPlural>
+  <miko.lifeStages.0.labelMale>miko</miko.lifeStages.0.labelMale>
+  <miko.lifeStages.0.labelMalePlural>male Cat ears mikos</miko.lifeStages.0.labelMalePlural>
+  <miko.lifeStages.0.labelFemale>miko</miko.lifeStages.0.labelFemale>
+  <miko.lifeStages.0.labelFemalePlural>female Cat ears mikos</miko.lifeStages.0.labelFemalePlural>
+  <miko.lifeStages.1.label>Cat ears miko</miko.lifeStages.1.label>
+  <miko.lifeStages.1.labelPlural>Cat ears miko</miko.lifeStages.1.labelPlural>
+  <miko.lifeStages.1.labelMale>miko</miko.lifeStages.1.labelMale>
+  <miko.lifeStages.1.labelMalePlural>male Cat ears mikos</miko.lifeStages.1.labelMalePlural>
+  <miko.lifeStages.1.labelFemale>miko</miko.lifeStages.1.labelFemale>
+  <miko.lifeStages.1.labelFemalePlural>female Cat ears mikos</miko.lifeStages.1.labelFemalePlural>
+  <miko.lifeStages.2.label>Cat ears miko</miko.lifeStages.2.label>
+  <miko.lifeStages.2.labelPlural>Cat ears miko</miko.lifeStages.2.labelPlural>
+  <miko.lifeStages.2.labelMale>miko</miko.lifeStages.2.labelMale>
+  <miko.lifeStages.2.labelMalePlural>male Cat ears mikos</miko.lifeStages.2.labelMalePlural>
+  <miko.lifeStages.2.labelFemale>miko</miko.lifeStages.2.labelFemale>
+  <miko.lifeStages.2.labelFemalePlural>female Cat ears mikos</miko.lifeStages.2.labelFemalePlural>
+  <miko.labelMale>miko</miko.labelMale>
+  <miko.labelMalePlural>mikos</miko.labelMalePlural>
+  <miko.labelFemale>miko</miko.labelFemale>
+  <miko.labelFemalePlural>mikos</miko.labelFemalePlural>
+
+
+</LanguageData>

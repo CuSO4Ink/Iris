@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <MeleeWeapon_konkatana.label>小空武士刀的複製品</MeleeWeapon_konkatana.label>
+  <MeleeWeapon_konkatana.description>狐耳家被當做傳家之寶的名刀的複製品。
+   因為小空經常隨身帶著刀而且非常討厭別人碰她的刀，所以複製品製作起來非常困難。
+   「刀的名字？・・・・・・・・・空空丸景光・・・」</MeleeWeapon_konkatana.description>
+  <MeleeWeapon_konkatana.tools.0.label>手柄</MeleeWeapon_konkatana.tools.0.label>
+  <MeleeWeapon_konkatana.tools.1.label>刀尖</MeleeWeapon_konkatana.tools.1.label>
+  <MeleeWeapon_konkatana.tools.2.label>刀鋒</MeleeWeapon_konkatana.tools.2.label>
+
+  <MeleeWeapon_sirokatana.label>小白忍者劍的複製品</MeleeWeapon_sirokatana.label>
+  <MeleeWeapon_sirokatana.description>小白擁有的忍者劍的複製品。
+   小白拿忍者劍更多的時候是用來削水果，而不是對著人。</MeleeWeapon_sirokatana.description>
+  <MeleeWeapon_sirokatana.tools.0.label>手柄</MeleeWeapon_sirokatana.tools.0.label>
+  <MeleeWeapon_sirokatana.tools.1.label>劍尖</MeleeWeapon_sirokatana.tools.1.label>
+  <MeleeWeapon_sirokatana.tools.2.label>劍鋒</MeleeWeapon_sirokatana.tools.2.label>
+
+
+</LanguageData>

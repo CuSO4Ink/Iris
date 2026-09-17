@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <hana.label>토끼 귀 하나</hana.label>
+  <hana.description>시로와 콘이 정착지에서 납치되었다는 잘못된 정보를 진심으로 믿고 
+단신으로 나섰습니다.
+그녀는 매우 힘이 세지만, 전투경험이 없으며, 싸움에는 익숙치 못합니다.
+자신의 부하 (마음대로 임명)라는 이유에서 도우러 왔지만
+소중한 친구가 잡혀 있다고 들었기에 가만히 있을 수는 없었던 것 같습니다.
+
+즉 그녀는 츤데레입니다.
+
+그녀는 매우 부유한 상인의 딸입니다.
+상단이 왔을때 어느샌가 거래를 하는듯 하며 
+정기적으로 당신에게 은을 배풀어줄 것입니다.</hana.description>
+  <hana.tools.0.label>주먹</hana.tools.0.label>
+  <hana.tools.1.label>주먹</hana.tools.1.label>
+
+
+</LanguageData>
