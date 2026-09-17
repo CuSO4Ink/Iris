@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Patch>
+  <Operation Class="PatchOperationFindMod">
+    <mods>
+      <li>空洞骑士</li>
+    </mods>
+    <match Class="PatchOperationSequence">
+      <operations>
+        <li Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <ThingDef ParentName="BaseBullet">
+              <defName>Iris_HK_PlayerGrimmFire</defName>
+              <label>格林火焰</label>
+              <graphicData>
+                <texPath>Bullet/Bullet_Grimm_A_Weapon</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <projectile>
+                <damageDef>Flame</damageDef>
+                <damageAmountBase>18</damageAmountBase>
+                <armorPenetrationBase>0.9</armorPenetrationBase>
+                <speed>30</speed>
+                <stoppingPower>0.1</stoppingPower>
+              </projectile>
+            </ThingDef>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="XXK_5_Nail"]/tools/li[1]/cooldownTime</xpath>
+          <value>
+            <cooldownTime>1.1</cooldownTime>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="XXK_5_Nail"]/tools/li[2]/power</xpath>
+          <value>
+            <power>32</power>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="XXK_5_Nail"]/tools/li[2]/cooldownTime</xpath>
+          <value>
+            <cooldownTime>1.4</cooldownTime>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="XXK_5_Nail"]/tools/li[2]/extraMeleeDamages/li[def="Stun"]/amount</xpath>
+          <value>
+            <amount>4</amount>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="XXK_Big_Nail"]/tools/li/power</xpath>
+          <value>
+            <power>45</power>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="XXK_Big_Nail"]/tools/li/cooldownTime</xpath>
+          <value>
+            <cooldownTime>3.2</cooldownTime>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="XXK_TrueKnightWeapon"]/tools/li/power</xpath>
+          <value>
+            <power>36</power>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Grimm_HumanMakeable_Weapon"]/verbs/li/burstShotCount</xpath>
+          <value>
+            <burstShotCount>6</burstShotCount>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Grimm_HumanMakeable_Weapon"]/verbs/li/range</xpath>
+          <value>
+            <range>36</range>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Grimm_HumanMakeable_Weapon"]/verbs/li/warmupTime</xpath>
+          <value>
+            <warmupTime>1.2</warmupTime>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Grimm_HumanMakeable_Weapon"]/verbs/li/ticksBetweenBurstShots</xpath>
+          <value>
+            <ticksBetweenBurstShots>5</ticksBetweenBurstShots>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Grimm_HumanMakeable_Weapon"]/statBases/RangedWeapon_Cooldown</xpath>
+          <value>
+            <RangedWeapon_Cooldown>1.8</RangedWeapon_Cooldown>
+          </value>
+        </li>
+        <li Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Grimm_HumanMakeable_Weapon"]/verbs/li/defaultProjectile</xpath>
+          <value>
+            <defaultProjectile>Iris_HK_PlayerGrimmFire</defaultProjectile>
+          </value>
+        </li>
+      </operations>
+    </match>
+  </Operation>
+</Patch>
