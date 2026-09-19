@@ -54,5 +54,10 @@
     <li name="厨房原料" role="raw" />
     <li name="医疗用品" role="medical" />
     <li name="精密材料" role="precision" />
+    <li name="婴儿食品" role="baby" />
+    <li name="孵化用蛋" role="eggs" />
+    <li name="药物与特殊消耗品" role="reserved" />
+    <li name="编码装备暂存" role="coded" />
+    <li name="待洗衣物" role="laundry" />
   </zones>
 </IrisStorageRules>

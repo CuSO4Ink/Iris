@@ -1,1 +1,19 @@
-<Defs><SpecialThingFilterDef><defName>Iris_ForbiddenFoodSources</defName><label>禁食来源（种族、虫类及异常肉）</label><description>允许含有智慧种族、虫娘、虫类、残疫军团或异常生物肉的食品。日常食谱应关闭此项。</description><parentCategory>Foods</parentCategory><allowedByDefault>true</allowedByDefault><workerClass>IrisStorageDefaults.ForbiddenSourceFilter</workerClass></SpecialThingFilterDef></Defs>
+<?xml version='1.0' encoding='utf-8'?>
+<Defs>
+  <SpecialThingFilterDef>
+    <defName>Iris_ForbiddenFoodSources</defName>
+    <label>禁食来源（种族、虫类及异常肉）</label>
+    <description>允许含有智慧种族、虫娘、虫类、残疫军团或异常生物肉的食品。日常食谱应关闭此项。</description>
+    <parentCategory>Foods</parentCategory>
+    <allowedByDefault>true</allowedByDefault>
+    <workerClass>IrisStorageDefaults.ForbiddenSourceFilter</workerClass>
+  </SpecialThingFilterDef>
+  <SpecialThingFilterDef>
+    <defName>Iris_CleanFoodSources</defName>
+    <label>正常来源食品</label>
+    <description>非食用生物材料区关闭此项，只接收禁食来源或含禁食原料的食品。</description>
+    <parentCategory>Foods</parentCategory>
+    <allowedByDefault>true</allowedByDefault>
+    <workerClass>IrisStorageDefaults.CleanFoodSourceFilter</workerClass>
+  </SpecialThingFilterDef>
+</Defs>
