@@ -71,3 +71,5 @@ IrisBalance 已包含 8 种残疫专属事件的权重调整。尸潮和中心�
 KemomimihouseLocal 已替代失效的工坊条目2075974335，保留原 packageId psyche.kemomimihouse 和原启用位置。使用9月10日本机备份的XML/DLL，并合并此前恢复的203张贴图。总数仍272项：258工坊、8本地、6官方；144份参数。不要再次同时启用同包名的工坊本体。完全重启后生效；尚未做新的运行验证。
 
 2026-09-19: added IrisSessionRepairs companion assembly (off-map lifecycle guards and provisional RK_Mai/FA side-view fit); installed storage classification fixes including Steel. Active list unchanged. See ../../SESSION-REPAIR-20260919.md; normal-game verification remains pending.
+
+2026-09-19 follow-up: fixed ingredient filter category scope, explicit profession skill ranges, fatal-damage spawner map context; reduced redundant draw cleanup, added legacy RI generation and invalid-reference/blueprint guards. Installed list unchanged. See ../../FOLLOWUP-REPAIR-20260919.md for verification limits and rollback.

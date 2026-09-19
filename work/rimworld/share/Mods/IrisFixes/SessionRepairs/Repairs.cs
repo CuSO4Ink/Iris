@@ -7,6 +7,7 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 using UnityEngine;
+using System.Runtime.CompilerServices;
 
 namespace IrisSessionRepairs {
  [StaticConstructorOnStartup]
@@ -15,7 +16,9 @@ namespace IrisSessionRepairs {
    var h=new Harmony("local.iris.sessionrepairs");
    Install(h,AccessTools.Method(typeof(WanderUtility),nameof(WanderUtility.BestCloseWanderRoot)),nameof(Repairs.WanderRoot));
    Install(h,AccessTools.Method(typeof(JobGiver_Wander),"TryGiveJob"),nameof(Repairs.WanderJob));
-   Install(h,AccessTools.Method("VFEInsectoids.CompInsectSpawner:PostPostApplyDamage"),nameof(Repairs.SpawnerDamage));
+   SpawnerContext.Install(h);
+   DrawCache.Install(h);
+   GenerationEdges.Install(h);
    HairFit.Install(h);
    var wait=AccessTools.Method(typeof(JobDriver_Wait),"CheckForAutoAttack");
    try {
@@ -41,9 +44,6 @@ namespace IrisSessionRepairs {
    if(OnMap(pawn))return true;
    __result=null;return false;
   }
-  // A fatal hit has already called Destroy and removed the building from its map.
-  // The mod's Destroy prefix retains the building's own insect release.
-  public static bool SpawnerDamage(ThingComp __instance)=>__instance?.parent?.Map!=null;
   public static bool WaitContext(JobDriver_Wait __instance)=>OnMap(__instance?.pawn)&&__instance.job!=null;
   public static bool InBounds(IntVec3 cell,Map map)=>map!=null&&cell.InBounds(map);
   public static bool BeatFire(Pawn_NativeVerbs verbs,Fire fire)=>verbs!=null&&fire!=null&&fire.Spawned&&verbs.TryBeatFire(fire);
@@ -68,6 +68,8 @@ namespace IrisSessionRepairs {
  }
  public static class HairFit {
   static Func<Pawn,bool> usesFace;
+  sealed class Seen {public int mask;}
+  static readonly ConditionalWeakTable<Pawn,Seen> seen=new ConditionalWeakTable<Pawn,Seen>();
   public static void Install(Harmony h){
    var m=AccessTools.Method("FacialAnimation.FAHelper:ShouldDrawPawn",new[]{typeof(Pawn)});
    if(m==null)return;
@@ -82,7 +84,13 @@ namespace IrisSessionRepairs {
   static bool Applies(PawnRenderNode node,PawnDrawParms parms)=>node is PawnRenderNode_Hair&&Matches(parms.pawn?.def?.defName,parms.pawn?.story?.hairDef?.defName,parms.facing.IsHorizontal)&&usesFace!=null&&usesFace(parms.pawn);
   // Fit the existing Mai artwork to FA's larger side-profile scalp. No asset rewriting.
   // Kept local to this combination; north/south, ears, head and other hairstyles are untouched.
-  public static void Scale(PawnRenderNode node,PawnDrawParms parms,ref Vector3 __result){if(Applies(node,parms)){__result.x*=1.08f;__result.z*=1.08f;}}
+  public static void Scale(PawnRenderNode node,PawnDrawParms parms,ref Vector3 __result){if(Applies(node,parms)){
+   __result.x*=1.08f;__result.z*=1.08f;
+   // Render workers may run off the main thread: inspect managed properties only, no Mesh/Texture API.
+   var record=seen.GetOrCreateValue(parms.pawn);int bit=1<<(parms.facing.AsInt+(parms.Portrait?4:0));
+   bool report=false;lock(record){if((record.mask&bit)==0){record.mask|=bit;report=true;}}
+   if(report)Log.Message("[Iris Hair Fit] pawn="+parms.pawn.ThingID+" facing="+parms.facing.AsInt+" portrait="+parms.Portrait+" flip="+parms.flipHead+" localScale="+__result+" nodeSize="+node.Props.drawSize+" parentSize="+node.parent?.Props.drawSize+". Side-view contour fit still requires visual verification.");
+  }}
   public static void Offset(PawnRenderNode node,PawnDrawParms parms,ref Vector3 __result){if(Applies(node,parms))__result.z+=0.015f;}
  }
 }
