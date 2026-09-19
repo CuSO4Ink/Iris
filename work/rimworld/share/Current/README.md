@@ -73,3 +73,5 @@ KemomimihouseLocal 已替代失效的工坊条目2075974335，保留原 packageI
 2026-09-19: added IrisSessionRepairs companion assembly (off-map lifecycle guards and provisional RK_Mai/FA side-view fit); installed storage classification fixes including Steel. Active list unchanged. See ../../SESSION-REPAIR-20260919.md; normal-game verification remains pending.
 
 2026-09-19 follow-up: fixed ingredient filter category scope, explicit profession skill ranges, fatal-damage spawner map context; reduced redundant draw cleanup, added legacy RI generation and invalid-reference/blueprint guards. Installed list unchanged. See ../../FOLLOWUP-REPAIR-20260919.md for verification limits and rollback.
+
+2026-09-19 visual follow-up: Ratkin/Smelted Loong with generic FA faces use original native heads and hair sizing. Dedicated FA heads/other races retained. Removes prior RK_Mai empirical scaling. Targeted generic FA facial animation is disabled; see ../../NATIVE-HEAD-REPAIR-20260919.md.
